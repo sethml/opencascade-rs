@@ -95,29 +95,60 @@ impl Curve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlConverter_Curve_ctor()) }
     }
-}
 
-// ── Skipped symbols for Curve (3 total) ──
-// SKIPPED: **Source:** `VrmlConverter_Curve.hxx`:45 - `VrmlConverter_Curve::Add`
-//   static_method: adds to the OStream the drawing of the curve aCurve.
-//   static_method: The aspect is defined by LineAspect in aDrawer.
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(aCurve: &Curve, aDrawer: &HandleDrawer, anOStream: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `VrmlConverter_Curve.hxx`:53 - `VrmlConverter_Curve::Add`
-//   static_method: adds to the OStream the drawing of the curve aCurve.
-//   static_method: The aspect is defined by LineAspect in aDrawer.
-//   static_method: The drawing will be limited between the points of parameter
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(aCurve: &Curve, U1: f64, U2: f64, aDrawer: &HandleDrawer, anOStream: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `VrmlConverter_Curve.hxx`:63 - `VrmlConverter_Curve::Add`
-//   static_method: adds to the OStream the drawing of the curve aCurve.
-//   static_method: The aspect is the current aspect.
-//   static_method: The drawing will be limited between the points of parameter
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(aCurve: &Curve, U1: f64, U2: f64, anOStream: /* Standard_OStream& */, aNbPoints: i32);
-//
+    /// **Source:** `VrmlConverter_Curve.hxx`:45 - `VrmlConverter_Curve::Add()`
+    /// adds to the OStream the drawing of the curve aCurve.
+    /// The aspect is defined by LineAspect in aDrawer.
+    pub fn add_curve_handlevrmlconverterdrawer_ostream(
+        aCurve: &crate::adaptor3d::Curve,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_Curve_add_curve_handlevrmlconverterdrawer_ostream(
+                aCurve, aDrawer, anOStream,
+            )
+        }
+    }
+
+    /// **Source:** `VrmlConverter_Curve.hxx`:53 - `VrmlConverter_Curve::Add()`
+    /// adds to the OStream the drawing of the curve aCurve.
+    /// The aspect is defined by LineAspect in aDrawer.
+    /// The drawing will be limited between the points of parameter
+    /// U1 and U2.
+    pub fn add_curve_real2_handlevrmlconverterdrawer_ostream(
+        aCurve: &crate::adaptor3d::Curve,
+        U1: f64,
+        U2: f64,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_Curve_add_curve_real2_handlevrmlconverterdrawer_ostream(
+                aCurve, U1, U2, aDrawer, anOStream,
+            )
+        }
+    }
+
+    /// **Source:** `VrmlConverter_Curve.hxx`:63 - `VrmlConverter_Curve::Add()`
+    /// adds to the OStream the drawing of the curve aCurve.
+    /// The aspect is the current aspect.
+    /// The drawing will be limited between the points of parameter
+    /// U1 and U2. aNbPoints defines  number of points on  one interval.
+    pub fn add_curve_real2_ostream_int(
+        aCurve: &crate::adaptor3d::Curve,
+        U1: f64,
+        U2: f64,
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aNbPoints: i32,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_Curve_add_curve_real2_ostream_int(
+                aCurve, U1, U2, anOStream, aNbPoints,
+            )
+        }
+    }
+}
 
 // ========================
 // From VrmlConverter_DeflectionCurve.hxx
@@ -147,50 +178,117 @@ impl DeflectionCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlConverter_DeflectionCurve_ctor()) }
     }
-}
 
-// ── Skipped symbols for DeflectionCurve (6 total) ──
-// SKIPPED: **Source:** `VrmlConverter_DeflectionCurve.hxx`:48 - `VrmlConverter_DeflectionCurve::Add`
-//   static_method: adds to the OStream the drawing of the curve aCurve with
-//   static_method: respect to the maximal chordial deviation defined
-//   static_method: by the drawer aDrawer.
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aCurve: &mut Curve, aDrawer: &HandleDrawer);
-//
-// SKIPPED: **Source:** `VrmlConverter_DeflectionCurve.hxx`:58 - `VrmlConverter_DeflectionCurve::Add`
-//   static_method: adds to the OStream the drawing of the curve aCurve with
-//   static_method: respect to the maximal chordial deviation defined
-//   static_method: by the drawer aDrawer.
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aCurve: &mut Curve, U1: f64, U2: f64, aDrawer: &HandleDrawer);
-//
-// SKIPPED: **Source:** `VrmlConverter_DeflectionCurve.hxx`:67 - `VrmlConverter_DeflectionCurve::Add`
-//   static_method: adds to the OStream the drawing of the curve aCurve with
-//   static_method: respect to the maximal chordial deviation aDeflection.
-//   static_method: The aspect is the current aspect
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aCurve: &mut Curve, aDeflection: f64, aLimit: f64);
-//
-// SKIPPED: **Source:** `VrmlConverter_DeflectionCurve.hxx`:75 - `VrmlConverter_DeflectionCurve::Add`
-//   static_method: adds to the OStream the drawing of the curve aCurve with
-//   static_method: respect to the maximal chordial deviation aDeflection.
-//   static_method: The aspect is the current aspect
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aCurve: &mut Curve, aDeflection: f64, aDrawer: &HandleDrawer);
-//
-// SKIPPED: **Source:** `VrmlConverter_DeflectionCurve.hxx`:85 - `VrmlConverter_DeflectionCurve::Add`
-//   static_method: adds to the OStream the drawing of the curve aCurve with
-//   static_method: respect to the maximal chordial deviation aDeflection.
-//   static_method: The aspect is the current aspect
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aCurve: &mut Curve, U1: f64, U2: f64, aDeflection: f64);
-//
-// SKIPPED: **Source:** `VrmlConverter_DeflectionCurve.hxx`:93 - `VrmlConverter_DeflectionCurve::Add`
-//   static_method: adds to the OStream the drawing of the curve aCurve with
-//   static_method: the array of parameters to retrieve points on curve.
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aCurve: &Curve, aParams: &HandleHArray1OfReal, aNbNodes: i32, aDrawer: &HandleDrawer);
-//
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:48 - `VrmlConverter_DeflectionCurve::Add()`
+    /// adds to the OStream the drawing of the curve aCurve with
+    /// respect to the maximal chordial deviation defined
+    /// by the drawer aDrawer.
+    /// The aspect is defined by LineAspect in aDrawer.
+    pub fn add_ostream_curve_handlevrmlconverterdrawer(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aCurve: &mut crate::adaptor3d::Curve,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_DeflectionCurve_add_ostream_curve_handlevrmlconverterdrawer(
+                anOStream, aCurve, aDrawer,
+            )
+        }
+    }
+
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:58 - `VrmlConverter_DeflectionCurve::Add()`
+    /// adds to the OStream the drawing of the curve aCurve with
+    /// respect to the maximal chordial deviation defined
+    /// by the drawer aDrawer.
+    /// The aspect is defined by LineAspect in aDrawer.
+    /// The drawing will be limited between the points of parameter
+    /// U1 and U2.
+    pub fn add_ostream_curve_real2_handlevrmlconverterdrawer(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aCurve: &mut crate::adaptor3d::Curve,
+        U1: f64,
+        U2: f64,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_DeflectionCurve_add_ostream_curve_real2_handlevrmlconverterdrawer(anOStream, aCurve, U1, U2, aDrawer)
+        }
+    }
+
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:67 - `VrmlConverter_DeflectionCurve::Add()`
+    /// adds to the OStream the drawing of the curve aCurve with
+    /// respect to the maximal chordial deviation aDeflection.
+    /// The aspect is the current aspect
+    pub fn add_ostream_curve_real2(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aCurve: &mut crate::adaptor3d::Curve,
+        aDeflection: f64,
+        aLimit: f64,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_DeflectionCurve_add_ostream_curve_real2(
+                anOStream,
+                aCurve,
+                aDeflection,
+                aLimit,
+            )
+        }
+    }
+
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:75 - `VrmlConverter_DeflectionCurve::Add()`
+    /// adds to the OStream the drawing of the curve aCurve with
+    /// respect to the maximal chordial deviation aDeflection.
+    /// The aspect is the current aspect
+    pub fn add_ostream_curve_real_handlevrmlconverterdrawer(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aCurve: &mut crate::adaptor3d::Curve,
+        aDeflection: f64,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_DeflectionCurve_add_ostream_curve_real_handlevrmlconverterdrawer(anOStream, aCurve, aDeflection, aDrawer)
+        }
+    }
+
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:85 - `VrmlConverter_DeflectionCurve::Add()`
+    /// adds to the OStream the drawing of the curve aCurve with
+    /// respect to the maximal chordial deviation aDeflection.
+    /// The aspect is the current aspect
+    /// The drawing will be limited between the points of parameter
+    /// U1 and U2.
+    pub fn add_ostream_curve_real3(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aCurve: &mut crate::adaptor3d::Curve,
+        U1: f64,
+        U2: f64,
+        aDeflection: f64,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_DeflectionCurve_add_ostream_curve_real3(
+                anOStream,
+                aCurve,
+                U1,
+                U2,
+                aDeflection,
+            )
+        }
+    }
+
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:93 - `VrmlConverter_DeflectionCurve::Add()`
+    /// adds to the OStream the drawing of the curve aCurve with
+    /// the array of parameters to retrieve points on curve.
+    pub fn add_ostream_curve_handletcolstdharray1ofreal_int_handlevrmlconverterdrawer(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aCurve: &crate::adaptor3d::Curve,
+        aParams: &crate::ffi::HandleTColStdHArray1OfReal,
+        aNbNodes: i32,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_DeflectionCurve_add_ostream_curve_handletcolstdharray1ofreal_int_handlevrmlconverterdrawer(anOStream, aCurve, aParams, aNbNodes, aDrawer)
+        }
+    }
+}
 
 // ========================
 // From VrmlConverter_Drawer.hxx
@@ -730,13 +828,17 @@ impl HLRShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlConverter_HLRShape_ctor()) }
     }
-}
 
-// ── Skipped symbols for HLRShape (1 total) ──
-// SKIPPED: **Source:** `VrmlConverter_HLRShape.hxx`:48 - `VrmlConverter_HLRShape::Add`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aShape: &Shape, aDrawer: &HandleDrawer, aProjector: &HandleProjector);
-//
+    /// **Source:** `VrmlConverter_HLRShape.hxx`:48 - `VrmlConverter_HLRShape::Add()`
+    pub fn add(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aShape: &crate::topo_ds::Shape,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+        aProjector: &crate::ffi::HandleVrmlConverterProjector,
+    ) {
+        unsafe { crate::ffi::VrmlConverter_HLRShape_add(anOStream, aShape, aDrawer, aProjector) }
+    }
+}
 
 // ========================
 // From VrmlConverter_IsoAspect.hxx
@@ -1442,6 +1544,18 @@ impl Projector {
         }
     }
 
+    /// **Source:** `VrmlConverter_Projector.hxx`:75 - `VrmlConverter_Projector::Add()`
+    /// Adds  into anOStream  if  they  are  defined in  Create.
+    /// PerspectiveCamera,
+    /// OrthographicCamera,
+    /// DirectionLight,
+    /// PointLight,
+    /// SpotLight
+    /// with  MatrixTransform  from VrmlConverter;
+    pub fn add(&self, anOStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::VrmlConverter_Projector_add(self as *const Self, anOStream) }
+    }
+
     /// **Source:** `VrmlConverter_Projector.hxx`:77 - `VrmlConverter_Projector::Projector()`
     pub fn projector(&self) -> crate::OwnedPtr<crate::hlr_algo::Projector> {
         unsafe {
@@ -1576,15 +1690,6 @@ impl HandleVrmlConverterProjector {
     }
 }
 
-// ── Skipped symbols for Projector (1 total) ──
-// SKIPPED: **Source:** `VrmlConverter_Projector.hxx`:75 - `VrmlConverter_Projector::Add`
-//   method: Adds  into anOStream  if  they  are  defined in  Create.
-//   method: PerspectiveCamera,
-//   method: OrthographicCamera,
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(&self, anOStream: /* Standard_OStream& */);
-//
-
 // ========================
 // From VrmlConverter_ShadedShape.hxx
 // ========================
@@ -1612,6 +1717,15 @@ impl ShadedShape {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlConverter_ShadedShape_ctor()) }
     }
 
+    /// **Source:** `VrmlConverter_ShadedShape.hxx`:43 - `VrmlConverter_ShadedShape::Add()`
+    pub fn add(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aShape: &crate::topo_ds::Shape,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe { crate::ffi::VrmlConverter_ShadedShape_add(anOStream, aShape, aDrawer) }
+    }
+
     /// **Source:** `VrmlConverter_ShadedShape.hxx`:47 - `VrmlConverter_ShadedShape::ComputeNormal()`
     pub fn compute_normal(
         aFace: &crate::topo_ds::Face,
@@ -1621,12 +1735,6 @@ impl ShadedShape {
         unsafe { crate::ffi::VrmlConverter_ShadedShape_compute_normal(aFace, pc, Nor) }
     }
 }
-
-// ── Skipped symbols for ShadedShape (1 total) ──
-// SKIPPED: **Source:** `VrmlConverter_ShadedShape.hxx`:43 - `VrmlConverter_ShadedShape::Add`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aShape: &Shape, aDrawer: &HandleDrawer);
-//
 
 // ========================
 // From VrmlConverter_ShadingAspect.hxx
@@ -1882,25 +1990,60 @@ impl WFDeflectionRestrictedFace {
             crate::OwnedPtr::from_raw(crate::ffi::VrmlConverter_WFDeflectionRestrictedFace_ctor())
         }
     }
-}
 
-// ── Skipped symbols for WFDeflectionRestrictedFace (4 total) ──
-// SKIPPED: **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:40 - `VrmlConverter_WFDeflectionRestrictedFace::Add`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aFace: &HandleSurface, aDrawer: &HandleDrawer);
-//
-// SKIPPED: **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:44 - `VrmlConverter_WFDeflectionRestrictedFace::AddUIso`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add_u_iso(anOStream: /* Standard_OStream& */, aFace: &HandleSurface, aDrawer: &HandleDrawer);
-//
-// SKIPPED: **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:48 - `VrmlConverter_WFDeflectionRestrictedFace::AddVIso`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add_v_iso(anOStream: /* Standard_OStream& */, aFace: &HandleSurface, aDrawer: &HandleDrawer);
-//
-// SKIPPED: **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:52 - `VrmlConverter_WFDeflectionRestrictedFace::Add`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aFace: &HandleSurface, DrawUIso: bool, DrawVIso: bool, Deflection: f64, NBUiso: i32, NBViso: i32, aDrawer: &HandleDrawer);
-//
+    /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:40 - `VrmlConverter_WFDeflectionRestrictedFace::Add()`
+    pub fn add_ostream_handlebrepadaptorsurface_handlevrmlconverterdrawer(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aFace: &crate::ffi::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_WFDeflectionRestrictedFace_add_ostream_handlebrepadaptorsurface_handlevrmlconverterdrawer(anOStream, aFace, aDrawer)
+        }
+    }
+
+    /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:44 - `VrmlConverter_WFDeflectionRestrictedFace::AddUIso()`
+    pub fn add_u_iso(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aFace: &crate::ffi::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_WFDeflectionRestrictedFace_add_u_iso(
+                anOStream, aFace, aDrawer,
+            )
+        }
+    }
+
+    /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:48 - `VrmlConverter_WFDeflectionRestrictedFace::AddVIso()`
+    pub fn add_v_iso(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aFace: &crate::ffi::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_WFDeflectionRestrictedFace_add_v_iso(
+                anOStream, aFace, aDrawer,
+            )
+        }
+    }
+
+    /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:52 - `VrmlConverter_WFDeflectionRestrictedFace::Add()`
+    pub fn add_ostream_handlebrepadaptorsurface_bool2_real_int2_handlevrmlconverterdrawer(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aFace: &crate::ffi::HandleBRepAdaptorSurface,
+        DrawUIso: bool,
+        DrawVIso: bool,
+        Deflection: f64,
+        NBUiso: i32,
+        NBViso: i32,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_WFDeflectionRestrictedFace_add_ostream_handlebrepadaptorsurface_bool2_real_int2_handlevrmlconverterdrawer(anOStream, aFace, DrawUIso, DrawVIso, Deflection, NBUiso, NBViso, aDrawer)
+        }
+    }
+}
 
 // ========================
 // From VrmlConverter_WFDeflectionShape.hxx
@@ -1930,13 +2073,16 @@ impl WFDeflectionShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlConverter_WFDeflectionShape_ctor()) }
     }
-}
 
-// ── Skipped symbols for WFDeflectionShape (1 total) ──
-// SKIPPED: **Source:** `VrmlConverter_WFDeflectionShape.hxx`:42 - `VrmlConverter_WFDeflectionShape::Add`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aShape: &Shape, aDrawer: &HandleDrawer);
-//
+    /// **Source:** `VrmlConverter_WFDeflectionShape.hxx`:42 - `VrmlConverter_WFDeflectionShape::Add()`
+    pub fn add(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aShape: &crate::topo_ds::Shape,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe { crate::ffi::VrmlConverter_WFDeflectionShape_add(anOStream, aShape, aDrawer) }
+    }
+}
 
 // ========================
 // From VrmlConverter_WFRestrictedFace.hxx
@@ -1966,25 +2112,51 @@ impl WFRestrictedFace {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlConverter_WFRestrictedFace_ctor()) }
     }
-}
 
-// ── Skipped symbols for WFRestrictedFace (4 total) ──
-// SKIPPED: **Source:** `VrmlConverter_WFRestrictedFace.hxx`:39 - `VrmlConverter_WFRestrictedFace::Add`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aFace: &HandleSurface, aDrawer: &HandleDrawer);
-//
-// SKIPPED: **Source:** `VrmlConverter_WFRestrictedFace.hxx`:43 - `VrmlConverter_WFRestrictedFace::AddUIso`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add_u_iso(anOStream: /* Standard_OStream& */, aFace: &HandleSurface, aDrawer: &HandleDrawer);
-//
-// SKIPPED: **Source:** `VrmlConverter_WFRestrictedFace.hxx`:47 - `VrmlConverter_WFRestrictedFace::AddVIso`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add_v_iso(anOStream: /* Standard_OStream& */, aFace: &HandleSurface, aDrawer: &HandleDrawer);
-//
-// SKIPPED: **Source:** `VrmlConverter_WFRestrictedFace.hxx`:51 - `VrmlConverter_WFRestrictedFace::Add`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aFace: &HandleSurface, DrawUIso: bool, DrawVIso: bool, NBUiso: i32, NBViso: i32, aDrawer: &HandleDrawer);
-//
+    /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:39 - `VrmlConverter_WFRestrictedFace::Add()`
+    pub fn add_ostream_handlebrepadaptorsurface_handlevrmlconverterdrawer(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aFace: &crate::ffi::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_WFRestrictedFace_add_ostream_handlebrepadaptorsurface_handlevrmlconverterdrawer(anOStream, aFace, aDrawer)
+        }
+    }
+
+    /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:43 - `VrmlConverter_WFRestrictedFace::AddUIso()`
+    pub fn add_u_iso(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aFace: &crate::ffi::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe { crate::ffi::VrmlConverter_WFRestrictedFace_add_u_iso(anOStream, aFace, aDrawer) }
+    }
+
+    /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:47 - `VrmlConverter_WFRestrictedFace::AddVIso()`
+    pub fn add_v_iso(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aFace: &crate::ffi::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe { crate::ffi::VrmlConverter_WFRestrictedFace_add_v_iso(anOStream, aFace, aDrawer) }
+    }
+
+    /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:51 - `VrmlConverter_WFRestrictedFace::Add()`
+    pub fn add_ostream_handlebrepadaptorsurface_bool2_int2_handlevrmlconverterdrawer(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aFace: &crate::ffi::HandleBRepAdaptorSurface,
+        DrawUIso: bool,
+        DrawVIso: bool,
+        NBUiso: i32,
+        NBViso: i32,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe {
+            crate::ffi::VrmlConverter_WFRestrictedFace_add_ostream_handlebrepadaptorsurface_bool2_int2_handlevrmlconverterdrawer(anOStream, aFace, DrawUIso, DrawVIso, NBUiso, NBViso, aDrawer)
+        }
+    }
+}
 
 // ========================
 // From VrmlConverter_WFShape.hxx
@@ -2014,10 +2186,13 @@ impl WFShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlConverter_WFShape_ctor()) }
     }
-}
 
-// ── Skipped symbols for WFShape (1 total) ──
-// SKIPPED: **Source:** `VrmlConverter_WFShape.hxx`:42 - `VrmlConverter_WFShape::Add`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&)
-//   // pub fn add(anOStream: /* Standard_OStream& */, aShape: &Shape, aDrawer: &HandleDrawer);
-//
+    /// **Source:** `VrmlConverter_WFShape.hxx`:42 - `VrmlConverter_WFShape::Add()`
+    pub fn add(
+        anOStream: &mut crate::ffi::Standard_OStream,
+        aShape: &crate::topo_ds::Shape,
+        aDrawer: &crate::ffi::HandleVrmlConverterDrawer,
+    ) {
+        unsafe { crate::ffi::VrmlConverter_WFShape_add(anOStream, aShape, aDrawer) }
+    }
+}

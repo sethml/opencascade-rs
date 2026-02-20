@@ -5478,9 +5478,14 @@ impl ExprFailure {
     }
 
     /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Expr_ExprFailure_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Expr_ExprFailure_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Expr_ExprFailure_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::NewInstance()`
@@ -5549,6 +5554,11 @@ impl ExprFailure {
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExprExprFailure> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_ExprFailure_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Expr_ExprFailure_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -5729,12 +5739,6 @@ impl HandleExprExprFailure {
         }
     }
 }
-
-// ── Skipped symbols for ExprFailure (1 total) ──
-// SKIPPED: **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Expr_FunctionDerivative.hxx
@@ -8199,9 +8203,14 @@ impl InvalidAssignment {
     }
 
     /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Expr_InvalidAssignment_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Expr_InvalidAssignment_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Expr_InvalidAssignment_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::NewInstance()`
@@ -8287,6 +8296,13 @@ impl InvalidAssignment {
     ) -> crate::OwnedPtr<crate::ffi::HandleExprInvalidAssignment> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_InvalidAssignment_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Expr_InvalidAssignment_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -8403,12 +8419,6 @@ impl HandleExprInvalidAssignment {
     }
 }
 
-// ── Skipped symbols for InvalidAssignment (1 total) ──
-// SKIPPED: **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Expr_InvalidFunction.hxx
 // ========================
@@ -8456,9 +8466,14 @@ impl InvalidFunction {
     }
 
     /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Expr_InvalidFunction_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Expr_InvalidFunction_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Expr_InvalidFunction_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::NewInstance()`
@@ -8545,6 +8560,11 @@ impl InvalidFunction {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_InvalidFunction_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Expr_InvalidFunction_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -8652,12 +8672,6 @@ impl HandleExprInvalidFunction {
     }
 }
 
-// ── Skipped symbols for InvalidFunction (1 total) ──
-// SKIPPED: **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Expr_InvalidOperand.hxx
 // ========================
@@ -8705,9 +8719,14 @@ impl InvalidOperand {
     }
 
     /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Expr_InvalidOperand_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Expr_InvalidOperand_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Expr_InvalidOperand_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::NewInstance()`
@@ -8794,6 +8813,11 @@ impl InvalidOperand {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_InvalidOperand_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Expr_InvalidOperand_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -8900,12 +8924,6 @@ impl HandleExprInvalidOperand {
         }
     }
 }
-
-// ── Skipped symbols for InvalidOperand (1 total) ──
-// SKIPPED: **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Expr_LessThan.hxx
@@ -11479,9 +11497,14 @@ impl NotAssigned {
     }
 
     /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Expr_NotAssigned_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Expr_NotAssigned_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Expr_NotAssigned_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::NewInstance()`
@@ -11560,6 +11583,11 @@ impl NotAssigned {
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExprNotAssigned> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_NotAssigned_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Expr_NotAssigned_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -11662,12 +11690,6 @@ impl HandleExprNotAssigned {
     }
 }
 
-// ── Skipped symbols for NotAssigned (1 total) ──
-// SKIPPED: **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Expr_NotEvaluable.hxx
 // ========================
@@ -11715,9 +11737,14 @@ impl NotEvaluable {
     }
 
     /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Expr_NotEvaluable_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Expr_NotEvaluable_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Expr_NotEvaluable_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::NewInstance()`
@@ -11800,6 +11827,11 @@ impl NotEvaluable {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_NotEvaluable_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Expr_NotEvaluable_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -11901,12 +11933,6 @@ impl HandleExprNotEvaluable {
         }
     }
 }
-
-// ── Skipped symbols for NotEvaluable (1 total) ──
-// SKIPPED: **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Expr_NumericValue.hxx

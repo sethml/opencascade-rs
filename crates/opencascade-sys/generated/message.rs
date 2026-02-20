@@ -3209,9 +3209,34 @@ unsafe impl crate::CppDeletable for AttributeStream {
 }
 
 impl AttributeStream {
+    /// **Source:** `Message_AttributeStream.hxx`:27 - `Message_AttributeStream::Message_AttributeStream()`
+    /// Constructor with string argument
+    pub fn new_sstream_asciistring(
+        theStream: &crate::ffi::Standard_SStream,
+        theName: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_AttributeStream_ctor_sstream_asciistring(
+                theStream, theName,
+            ))
+        }
+    }
+
     /// **Source:** `Message_AttributeStream.hxx`:24 - `Message_AttributeStream::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Message_AttributeStream_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Message_AttributeStream.hxx`:32 - `Message_AttributeStream::Stream()`
+    /// Returns stream value
+    pub fn stream(&self) -> &crate::ffi::Standard_SStream {
+        unsafe { &*(crate::ffi::Message_AttributeStream_stream(self as *const Self)) }
+    }
+
+    /// **Source:** `Message_AttributeStream.hxx`:35 - `Message_AttributeStream::SetStream()`
+    /// Sets stream value
+    pub fn set_stream(&mut self, theStream: &crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Message_AttributeStream_set_stream(self as *mut Self, theStream) }
     }
 
     /// **Source:** `Message_AttributeStream.hxx`:24 - `Message_AttributeStream::get_type_name()`
@@ -3384,23 +3409,6 @@ impl HandleMessageAttributeStream {
         }
     }
 }
-
-// ── Skipped symbols for AttributeStream (3 total) ──
-// SKIPPED: **Source:** `Message_AttributeStream.hxx`:27 - `Message_AttributeStream::Message_AttributeStream`
-//   constructor: Constructor with string argument
-//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
-//   // pub fn new_sstream_asciistring(theStream: &SStream, theName: &AsciiString) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Message_AttributeStream.hxx`:32 - `Message_AttributeStream::Stream`
-//   method: Returns stream value
-//   Reason: return type 'const Standard_SStream&' is unknown
-//   // pub fn stream(&self) -> &SStream;
-//
-// SKIPPED: **Source:** `Message_AttributeStream.hxx`:35 - `Message_AttributeStream::SetStream`
-//   method: Sets stream value
-//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
-//   // pub fn set_stream(&mut self, theStream: &SStream);
-//
 
 // ========================
 // From Message_CompositeAlerts.hxx
@@ -4011,6 +4019,22 @@ impl Messenger {
         }
     }
 
+    /// **Source:** `Message_Messenger.hxx`:182 - `Message_Messenger::Send()`
+    /// See above
+    pub fn send_sstream_gravity(
+        &self,
+        theStream: &crate::ffi::Standard_SStream,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_Messenger_send_sstream_gravity(
+                self as *const Self,
+                theStream,
+                theGravity.into(),
+            )
+        }
+    }
+
     /// **Source:** `Message_Messenger.hxx`:186 - `Message_Messenger::Send()`
     /// See above
     pub fn send_asciistring_gravity(
@@ -4260,13 +4284,6 @@ impl HandleMessageMessenger {
     }
 }
 
-// ── Skipped symbols for Messenger (1 total) ──
-// SKIPPED: **Source:** `Message_Messenger.hxx`:182 - `Message_Messenger::Send`
-//   method: See above
-//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
-//   // pub fn send(&self, theStream: &SStream, theGravity: Gravity);
-//
-
 /// **Source:** `Message_Messenger.hxx`:63 - `Message_Messenger_StreamBuffer`
 /// Auxiliary class wrapping std::stringstream thus allowing constructing
 /// message via stream interface, and putting result into its creator
@@ -4287,6 +4304,12 @@ impl Messenger_StreamBuffer {
     /// Flush collected string to messenger
     pub fn flush(&mut self, doForce: bool) {
         unsafe { crate::ffi::Message_Messenger_StreamBuffer_flush(self as *mut Self, doForce) }
+    }
+
+    /// **Source:** `Message_Messenger.hxx`:116 - `Message_Messenger_StreamBuffer::Stream()`
+    /// Access to the stream object
+    pub fn stream(&mut self) -> &mut crate::ffi::Standard_SStream {
+        unsafe { &mut *(crate::ffi::Message_Messenger_StreamBuffer_stream(self as *mut Self)) }
     }
 
     /// **Source:** `Message_Messenger.hxx`:122 - `Message_Messenger_StreamBuffer::Messenger()`
@@ -4312,13 +4335,6 @@ impl Messenger_StreamBuffer {
         }
     }
 }
-
-// ── Skipped symbols for Messenger_StreamBuffer (1 total) ──
-// SKIPPED: **Source:** `Message_Messenger.hxx`:116 - `Message_Messenger::StreamBuffer::Stream`
-//   method: Access to the stream object
-//   Reason: return type 'Standard_SStream&' is unknown
-//   // pub fn stream(&mut self) -> &mut SStream;
-//
 
 // ========================
 // From Message_Msg.hxx
@@ -4692,6 +4708,24 @@ impl Printer {
         }
     }
 
+    /// **Source:** `Message_Printer.hxx`:69 - `Message_Printer::SendStringStream()`
+    /// Send a string message with specified trace level.
+    /// Stream is converted to string value.
+    /// Default implementation calls first method Send().
+    pub fn send_string_stream(
+        &self,
+        theStream: &crate::ffi::Standard_SStream,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_Printer_send_string_stream(
+                self as *const Self,
+                theStream,
+                theGravity.into(),
+            )
+        }
+    }
+
     /// **Source:** `Message_Printer.hxx`:75 - `Message_Printer::SendObject()`
     /// Send a string message with specified trace level.
     /// The object is converted to string in format: <object kind> : <object pointer>.
@@ -4860,15 +4894,6 @@ impl HandleMessagePrinter {
     }
 }
 
-// ── Skipped symbols for Printer (1 total) ──
-// SKIPPED: **Source:** `Message_Printer.hxx`:69 - `Message_Printer::SendStringStream`
-//   method: Send a string message with specified trace level.
-//   method: Stream is converted to string value.
-//   method: Default implementation calls first method Send().
-//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
-//   // pub fn send_string_stream(&self, theStream: &SStream, theGravity: Gravity);
-//
-
 // ========================
 // From Message_PrinterOStream.hxx
 // ========================
@@ -4929,6 +4954,12 @@ impl PrinterOStream {
         unsafe { crate::ffi::Message_PrinterOStream_close(self as *mut Self) }
     }
 
+    /// **Source:** `Message_PrinterOStream.hxx`:66 - `Message_PrinterOStream::GetStream()`
+    /// Returns reference to the output stream
+    pub fn get_stream(&mut self) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Message_PrinterOStream_get_stream(self as *mut Self)) }
+    }
+
     /// **Source:** `Message_PrinterOStream.hxx`:70 - `Message_PrinterOStream::ToColorize()`
     /// Returns TRUE if text output into console should be colorized depending on message gravity;
     /// TRUE by default.
@@ -4956,6 +4987,30 @@ impl PrinterOStream {
     /// **Source:** `Message_PrinterOStream.hxx`:31 - `Message_PrinterOStream::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Message_PrinterOStream_get_type_descriptor()) }
+    }
+
+    /// **Source:** `Message_PrinterOStream.hxx`:42 - `Message_PrinterOStream::SetConsoleTextColor()`
+    /// Setup console text color.
+    ///
+    /// On Windows, this would affect active terminal color output.
+    /// On other systems, this would put special terminal codes;
+    /// the terminal should support these codes or them will appear in text otherwise.
+    /// The same will happen when stream is redirected into text file.
+    ///
+    /// Beware that within multi-threaded environment inducing console colors
+    /// might lead to colored text mixture due to concurrency.
+    pub fn set_console_text_color(
+        theOStream: &mut crate::ffi::Standard_OStream,
+        theTextColor: crate::message::ConsoleColor,
+        theIsIntenseText: bool,
+    ) {
+        unsafe {
+            crate::ffi::Message_PrinterOStream_set_console_text_color(
+                theOStream as *mut _,
+                theTextColor.into(),
+                theIsIntenseText,
+            )
+        }
     }
 
     /// Upcast to Message_Printer
@@ -5021,6 +5076,21 @@ impl PrinterOStream {
             crate::ffi::Message_PrinterOStream_inherited_Send(
                 self as *const Self,
                 theString,
+                theGravity.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Printer.hxx`:69 - `Message_Printer::SendStringStream()`
+    pub fn send_string_stream(
+        &self,
+        theStream: &crate::ffi::Standard_SStream,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_PrinterOStream_inherited_SendStringStream(
+                self as *const Self,
+                theStream,
                 theGravity.into(),
             )
         }
@@ -5132,19 +5202,6 @@ impl HandleMessagePrinterOStream {
         }
     }
 }
-
-// ── Skipped symbols for PrinterOStream (2 total) ──
-// SKIPPED: **Source:** `Message_PrinterOStream.hxx`:66 - `Message_PrinterOStream::GetStream`
-//   method: Returns reference to the output stream
-//   Reason: has unbindable types: return: stream type (Standard_OStream&)
-//   // pub fn get_stream(&self) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `Message_PrinterOStream.hxx`:42 - `Message_PrinterOStream::SetConsoleTextColor`
-//   static_method: Setup console text color.
-//   static_method: On Windows, this would affect active terminal color output.
-//   Reason: param 'theOStream' uses unknown type 'Standard_OStream*'
-//   // pub fn set_console_text_color(theOStream: /* Standard_OStream* */, theTextColor: ConsoleColor, theIsIntenseText: bool);
-//
 
 // ========================
 // From Message_PrinterSystemLog.hxx
@@ -5269,6 +5326,21 @@ impl PrinterSystemLog {
             crate::ffi::Message_PrinterSystemLog_inherited_Send(
                 self as *const Self,
                 theString,
+                theGravity.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Printer.hxx`:69 - `Message_Printer::SendStringStream()`
+    pub fn send_string_stream(
+        &self,
+        theStream: &crate::ffi::Standard_SStream,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_PrinterSystemLog_inherited_SendStringStream(
+                self as *const Self,
+                theStream,
                 theGravity.into(),
             )
         }
@@ -5422,6 +5494,24 @@ impl PrinterToReport {
     /// @param theReport report for messages processing, if NULL, the default report is used
     pub fn set_report(&mut self, theReport: &crate::ffi::HandleMessageReport) {
         unsafe { crate::ffi::Message_PrinterToReport_set_report(self as *mut Self, theReport) }
+    }
+
+    /// **Source:** `Message_PrinterToReport.hxx`:45 - `Message_PrinterToReport::SendStringStream()`
+    /// Send a string message with specified trace level.
+    /// Stream is converted to string value.
+    /// Default implementation calls first method Send().
+    pub fn send_string_stream(
+        &self,
+        theStream: &crate::ffi::Standard_SStream,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_PrinterToReport_send_string_stream(
+                self as *const Self,
+                theStream,
+                theGravity.into(),
+            )
+        }
     }
 
     /// **Source:** `Message_PrinterToReport.hxx`:53 - `Message_PrinterToReport::SendObject()`
@@ -5620,15 +5710,6 @@ impl HandleMessagePrinterToReport {
         }
     }
 }
-
-// ── Skipped symbols for PrinterToReport (1 total) ──
-// SKIPPED: **Source:** `Message_PrinterToReport.hxx`:45 - `Message_PrinterToReport::SendStringStream`
-//   method: Send a string message with specified trace level.
-//   method: Stream is converted to string value.
-//   method: Default implementation calls first method Send().
-//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
-//   // pub fn send_string_stream(&self, theStream: &SStream, theGravity: Gravity);
-//
 
 // ========================
 // From Message_ProgressIndicator.hxx
@@ -6632,6 +6713,28 @@ impl Report {
         unsafe { crate::ffi::Message_Report_set_limit(self as *mut Self, theLimit) }
     }
 
+    /// **Source:** `Message_Report.hxx`:134 - `Message_Report::Dump()`
+    /// Dumps all collected alerts to stream
+    pub fn dump_ostream(&mut self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Message_Report_dump_ostream(self as *mut Self, theOS) }
+    }
+
+    /// **Source:** `Message_Report.hxx`:137 - `Message_Report::Dump()`
+    /// Dumps collected alerts with specified gravity to stream
+    pub fn dump_ostream_gravity(
+        &mut self,
+        theOS: &mut crate::ffi::Standard_OStream,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_Report_dump_ostream_gravity(
+                self as *mut Self,
+                theOS,
+                theGravity.into(),
+            )
+        }
+    }
+
     /// **Source:** `Message_Report.hxx`:140 - `Message_Report::SendMessages()`
     /// Sends all collected alerts to messenger.
     pub fn send_messages_handlemessagemessenger(
@@ -6794,21 +6897,11 @@ impl HandleMessageReport {
     }
 }
 
-// ── Skipped symbols for Report (3 total) ──
+// ── Skipped symbols for Report (1 total) ──
 // SKIPPED: **Source:** `Message_Report.hxx`:111 - `Message_Report::ActiveMetrics`
 //   method: Returns computed metrics when alerts are performed
 //   Reason: has unbindable types: return: unresolved template type (const NCollection_IndexedMap<Message_MetricType>&)
 //   // pub fn active_metrics(&self) -> /* const NCollection_IndexedMap<Message_MetricType>& */;
-//
-// SKIPPED: **Source:** `Message_Report.hxx`:134 - `Message_Report::Dump`
-//   method: Dumps all collected alerts to stream
-//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&)
-//   // pub fn dump(&mut self, theOS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `Message_Report.hxx`:137 - `Message_Report::Dump`
-//   method: Dumps collected alerts with specified gravity to stream
-//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&)
-//   // pub fn dump(&mut self, theOS: /* Standard_OStream& */, theGravity: Gravity);
 //
 
 // ========================

@@ -231,16 +231,15 @@ impl BFGS {
     pub fn nb_iterations(&self) -> i32 {
         unsafe { crate::ffi::math_BFGS_nb_iterations(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for BFGS (1 total) ──
-// SKIPPED: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_BFGS_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_BissecNewton.hxx
@@ -327,16 +326,15 @@ impl BissecNewton {
     pub fn value(&self) -> f64 {
         unsafe { crate::ffi::math_BissecNewton_value(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for BissecNewton (1 total) ──
-// SKIPPED: **Source:** `math_BissecNewton.hxx`:77 - `math_BissecNewton::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_BissecNewton.hxx`:77 - `math_BissecNewton::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_BissecNewton_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_BracketMinimum.hxx
@@ -462,16 +460,15 @@ impl BracketMinimum {
     pub fn function_values(&self, FA: &mut f64, FB: &mut f64, FC: &mut f64) {
         unsafe { crate::ffi::math_BracketMinimum_function_values(self as *const Self, FA, FB, FC) }
     }
-}
 
-// ── Skipped symbols for BracketMinimum (1 total) ──
-// SKIPPED: **Source:** `math_BracketMinimum.hxx`:109 - `math_BracketMinimum::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_BracketMinimum.hxx`:109 - `math_BracketMinimum::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_BracketMinimum_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_BracketedRoot.hxx
@@ -579,15 +576,14 @@ impl BracketedRoot {
     pub fn nb_iterations(&self) -> i32 {
         unsafe { crate::ffi::math_BracketedRoot_nb_iterations(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for BracketedRoot (1 total) ──
-// SKIPPED: **Source:** `math_BracketedRoot.hxx`:67 - `math_BracketedRoot::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_BracketedRoot.hxx`:67 - `math_BracketedRoot::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_BracketedRoot_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_BrentMinimum.hxx
@@ -714,16 +710,15 @@ impl BrentMinimum {
     pub fn nb_iterations(&self) -> i32 {
         unsafe { crate::ffi::math_BrentMinimum_nb_iterations(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for BrentMinimum (1 total) ──
-// SKIPPED: **Source:** `math_BrentMinimum.hxx`:87 - `math_BrentMinimum::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_BrentMinimum.hxx`:87 - `math_BrentMinimum::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_BrentMinimum_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_BullardGenerator.hxx
@@ -953,15 +948,14 @@ impl Crout {
     pub fn determinant(&self) -> f64 {
         unsafe { crate::ffi::math_Crout_determinant(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for Crout (1 total) ──
-// SKIPPED: **Source:** `math_Crout.hxx`:78 - `math_Crout::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_Crout.hxx`:78 - `math_Crout::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_Crout_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_DirectPolynomialRoots.hxx
@@ -1044,16 +1038,15 @@ impl DirectPolynomialRoots {
     pub fn value(&self, Nieme: i32) -> f64 {
         unsafe { crate::ffi::math_DirectPolynomialRoots_value(self as *const Self, Nieme) }
     }
-}
 
-// ── Skipped symbols for DirectPolynomialRoots (1 total) ──
-// SKIPPED: **Source:** `math_DirectPolynomialRoots.hxx`:78 - `math_DirectPolynomialRoots::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_DirectPolynomialRoots.hxx`:78 - `math_DirectPolynomialRoots::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_DirectPolynomialRoots_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_DoubleTab.hxx
@@ -1332,16 +1325,15 @@ impl FRPR {
     pub fn nb_iterations(&self) -> i32 {
         unsafe { crate::ffi::math_FRPR_nb_iterations(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for FRPR (1 total) ──
-// SKIPPED: **Source:** `math_FRPR.hxx`:91 - `math_FRPR::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_FRPR.hxx`:91 - `math_FRPR::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_FRPR_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_Function.hxx
@@ -1491,15 +1483,14 @@ impl FunctionAllRoots {
     pub fn get_point_state(&self, Index: i32) -> i32 {
         unsafe { crate::ffi::math_FunctionAllRoots_get_point_state(self as *const Self, Index) }
     }
-}
 
-// ── Skipped symbols for FunctionAllRoots (1 total) ──
-// SKIPPED: **Source:** `math_FunctionAllRoots.hxx`:91 - `math_FunctionAllRoots::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_FunctionAllRoots.hxx`:91 - `math_FunctionAllRoots::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_FunctionAllRoots_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_FunctionRoot.hxx
@@ -1641,16 +1632,15 @@ impl FunctionRoot {
     pub fn nb_iterations(&self) -> i32 {
         unsafe { crate::ffi::math_FunctionRoot_nb_iterations(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for FunctionRoot (1 total) ──
-// SKIPPED: **Source:** `math_FunctionRoot.hxx`:85 - `math_FunctionRoot::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_FunctionRoot.hxx`:85 - `math_FunctionRoot::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_FunctionRoot_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_FunctionRoots.hxx
@@ -1804,15 +1794,14 @@ impl FunctionRoots {
     pub fn state_number(&self, Nieme: i32) -> i32 {
         unsafe { crate::ffi::math_FunctionRoots_state_number(self as *const Self, Nieme) }
     }
-}
 
-// ── Skipped symbols for FunctionRoots (1 total) ──
-// SKIPPED: **Source:** `math_FunctionRoots.hxx`:77 - `math_FunctionRoots::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_FunctionRoots.hxx`:77 - `math_FunctionRoots::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_FunctionRoots_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_FunctionSample.hxx
@@ -2140,20 +2129,19 @@ impl FunctionSetRoot {
         }
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:172 - `math_FunctionSetRoot::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_FunctionSetRoot_dump(self as *const Self, o) }
+    }
+
     /// **Source:** `math_FunctionSetRoot.hxx`:174 - `math_FunctionSetRoot::IsDivergent()`
     pub fn is_divergent(&self) -> bool {
         unsafe { crate::ffi::math_FunctionSetRoot_is_divergent(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for FunctionSetRoot (1 total) ──
-// SKIPPED: **Source:** `math_FunctionSetRoot.hxx`:172 - `math_FunctionSetRoot::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
 
 // ========================
 // From math_FunctionSetWithDerivatives.hxx
@@ -2389,16 +2377,15 @@ impl Gauss {
     pub fn invert(&self, Inv: &mut Matrix) {
         unsafe { crate::ffi::math_Gauss_invert(self as *const Self, Inv) }
     }
-}
 
-// ── Skipped symbols for Gauss (1 total) ──
-// SKIPPED: **Source:** `math_Gauss.hxx`:86 - `math_Gauss::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_Gauss.hxx`:86 - `math_Gauss::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_Gauss_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_GaussLeastSquare.hxx
@@ -2465,16 +2452,15 @@ impl GaussLeastSquare {
     pub fn solve(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
         unsafe { crate::ffi::math_GaussLeastSquare_solve(self as *const Self, B, X) }
     }
-}
 
-// ── Skipped symbols for GaussLeastSquare (1 total) ──
-// SKIPPED: **Source:** `math_GaussLeastSquare.hxx`:65 - `math_GaussLeastSquare::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_GaussLeastSquare.hxx`:65 - `math_GaussLeastSquare::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_GaussLeastSquare_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_GaussMultipleIntegration.hxx
@@ -2519,14 +2505,13 @@ impl GaussMultipleIntegration {
     pub fn value(&self) -> f64 {
         unsafe { crate::ffi::math_GaussMultipleIntegration_value(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for GaussMultipleIntegration (1 total) ──
-// SKIPPED: **Source:** `math_GaussMultipleIntegration.hxx`:51 - `math_GaussMultipleIntegration::Dump`
-//   method: Prints information on the current state of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_GaussMultipleIntegration.hxx`:51 - `math_GaussMultipleIntegration::Dump()`
+    /// Prints information on the current state of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_GaussMultipleIntegration_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_GaussSetIntegration.hxx
@@ -2576,14 +2561,13 @@ impl GaussSetIntegration {
     pub fn value(&self) -> &crate::ffi::math_Vector {
         unsafe { &*(crate::ffi::math_GaussSetIntegration_value(self as *const Self)) }
     }
-}
 
-// ── Skipped symbols for GaussSetIntegration (1 total) ──
-// SKIPPED: **Source:** `math_GaussSetIntegration.hxx`:52 - `math_GaussSetIntegration::Dump`
-//   method: Prints information on the current state of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_GaussSetIntegration.hxx`:52 - `math_GaussSetIntegration::Dump()`
+    /// Prints information on the current state of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_GaussSetIntegration_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_GaussSingleIntegration.hxx
@@ -2656,14 +2640,13 @@ impl GaussSingleIntegration {
     pub fn value(&self) -> f64 {
         unsafe { crate::ffi::math_GaussSingleIntegration_value(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for GaussSingleIntegration (1 total) ──
-// SKIPPED: **Source:** `math_GaussSingleIntegration.hxx`:60 - `math_GaussSingleIntegration::Dump`
-//   method: Prints information on the current state of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_GaussSingleIntegration.hxx`:60 - `math_GaussSingleIntegration::Dump()`
+    /// Prints information on the current state of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_GaussSingleIntegration_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_GlobOptMin.hxx
@@ -3089,14 +3072,13 @@ impl Householder {
     pub fn all_values(&self) -> &Matrix {
         unsafe { &*(crate::ffi::math_Householder_all_values(self as *const Self)) }
     }
-}
 
-// ── Skipped symbols for Householder (1 total) ──
-// SKIPPED: **Source:** `math_Householder.hxx`:97 - `math_Householder::Dump`
-//   method: Prints information on the current state of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_Householder.hxx`:97 - `math_Householder::Dump()`
+    /// Prints information on the current state of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_Householder_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_Jacobi.hxx
@@ -3159,15 +3141,14 @@ impl Jacobi {
     pub fn vector(&self, Num: i32, V: &mut crate::ffi::math_Vector) {
         unsafe { crate::ffi::math_Jacobi_vector(self as *const Self, Num, V) }
     }
-}
 
-// ── Skipped symbols for Jacobi (1 total) ──
-// SKIPPED: **Source:** `math_Jacobi.hxx`:65 - `math_Jacobi::Dump`
-//   method: Prints information on the current state of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_Jacobi.hxx`:65 - `math_Jacobi::Dump()`
+    /// Prints information on the current state of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_Jacobi_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_KronrodSingleIntegration.hxx
@@ -3792,13 +3773,20 @@ impl Matrix {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_opposite(self as *mut Self)) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:399 - `math_Matrix::Dump()`
+    /// Prints information on the current state of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_Matrix_dump(self as *const Self, o) }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_to_owned(self as *const Self)) }
     }
 }
 
-// ── Skipped symbols for Matrix (9 total) ──
+// ── Skipped symbols for Matrix (8 total) ──
 // SKIPPED: **Source:** `math_Matrix.hxx`:105 - `math_Matrix::math_Matrix`
 //   constructor: constructs a matrix of range [LowerRow..UpperRow,
 //   constructor: LowerCol..UpperCol]
@@ -3848,12 +3836,6 @@ impl Matrix {
 //   method: An exception is raised if the dimensions are different.
 //   Reason: has unbindable types: param 'Right': unresolved template type (const math_VectorBase<>&); return: unresolved template type (math_VectorBase<>)
 //   // pub fn multiplied(&self, Right: /* const math_VectorBase<>& */) -> OwnedPtr<math_VectorBase<>>;
-//
-// SKIPPED: **Source:** `math_Matrix.hxx`:399 - `math_Matrix::Dump`
-//   method: Prints information on the current state of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
 //
 
 // ========================
@@ -4305,14 +4287,13 @@ impl NewtonFunctionRoot {
     pub fn nb_iterations(&self) -> i32 {
         unsafe { crate::ffi::math_NewtonFunctionRoot_nb_iterations(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for NewtonFunctionRoot (1 total) ──
-// SKIPPED: **Source:** `math_NewtonFunctionRoot.hxx`:93 - `math_NewtonFunctionRoot::Dump`
-//   method: Prints information on the current state of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:93 - `math_NewtonFunctionRoot::Dump()`
+    /// Prints information on the current state of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_NewtonFunctionRoot_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_NewtonFunctionSetRoot.hxx
@@ -4537,15 +4518,14 @@ impl NewtonFunctionSetRoot {
     pub fn nb_iterations(&self) -> i32 {
         unsafe { crate::ffi::math_NewtonFunctionSetRoot_nb_iterations(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for NewtonFunctionSetRoot (1 total) ──
-// SKIPPED: **Source:** `math_NewtonFunctionSetRoot.hxx`:132 - `math_NewtonFunctionSetRoot::Dump`
-//   method: Prints information on the current state of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:132 - `math_NewtonFunctionSetRoot::Dump()`
+    /// Prints information on the current state of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_NewtonFunctionSetRoot_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_NewtonMinimum.hxx
@@ -4746,16 +4726,15 @@ impl NewtonMinimum {
             .unwrap()
         }
     }
-}
 
-// ── Skipped symbols for NewtonMinimum (1 total) ──
-// SKIPPED: **Source:** `math_NewtonMinimum.hxx`:106 - `math_NewtonMinimum::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_NewtonMinimum.hxx`:106 - `math_NewtonMinimum::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_NewtonMinimum_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_NotSquare.hxx
@@ -4804,9 +4783,14 @@ impl NotSquare {
     }
 
     /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::math_NotSquare_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::math_NotSquare_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::math_NotSquare_raise_sstream(theMessage) }
     }
 
     /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::NewInstance()`
@@ -4897,6 +4881,11 @@ impl NotSquare {
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlemathNotSquare> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_NotSquare_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_NotSquare_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -5011,12 +5000,6 @@ impl HandlemathNotSquare {
         }
     }
 }
-
-// ── Skipped symbols for NotSquare (1 total) ──
-// SKIPPED: **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From math_PSO.hxx
@@ -5406,15 +5389,14 @@ impl Powell {
     pub fn nb_iterations(&self) -> i32 {
         unsafe { crate::ffi::math_Powell_nb_iterations(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for Powell (1 total) ──
-// SKIPPED: **Source:** `math_Powell.hxx`:84 - `math_Powell::Dump`
-//   method: Prints information on the current state of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_Powell.hxx`:84 - `math_Powell::Dump()`
+    /// Prints information on the current state of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_Powell_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_SVD.hxx
@@ -5475,15 +5457,14 @@ impl SVD {
     pub fn pseudo_inverse(&mut self, Inv: &mut Matrix, Eps: f64) {
         unsafe { crate::ffi::math_SVD_pseudo_inverse(self as *mut Self, Inv, Eps) }
     }
-}
 
-// ── Skipped symbols for SVD (1 total) ──
-// SKIPPED: **Source:** `math_SVD.hxx`:66 - `math_SVD::Dump`
-//   method: Prints information on the current state of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_SVD.hxx`:66 - `math_SVD::Dump()`
+    /// Prints information on the current state of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_SVD_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_SingularMatrix.hxx
@@ -5532,9 +5513,14 @@ impl SingularMatrix {
     }
 
     /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::math_SingularMatrix_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::math_SingularMatrix_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::math_SingularMatrix_raise_sstream(theMessage) }
     }
 
     /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::NewInstance()`
@@ -5609,6 +5595,11 @@ impl SingularMatrix {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::math_SingularMatrix_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_SingularMatrix_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -5706,12 +5697,6 @@ impl HandlemathSingularMatrix {
         }
     }
 }
-
-// ── Skipped symbols for SingularMatrix (1 total) ──
-// SKIPPED: **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From math_TrigonometricEquationFunction.hxx
@@ -5896,14 +5881,13 @@ impl TrigonometricFunctionRoots {
     pub fn nb_solutions(&self) -> i32 {
         unsafe { crate::ffi::math_TrigonometricFunctionRoots_nb_solutions(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for TrigonometricFunctionRoots (1 total) ──
-// SKIPPED: **Source:** `math_TrigonometricFunctionRoots.hxx`:85 - `math_TrigonometricFunctionRoots::Dump`
-//   method: Prints information on the current state of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_TrigonometricFunctionRoots.hxx`:85 - `math_TrigonometricFunctionRoots::Dump()`
+    /// Prints information on the current state of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_TrigonometricFunctionRoots_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_Uzawa.hxx
@@ -6212,14 +6196,13 @@ impl Uzawa {
     pub fn inverse_cont(&self) -> &Matrix {
         unsafe { &*(crate::ffi::math_Uzawa_inverse_cont(self as *const Self)) }
     }
-}
 
-// ── Skipped symbols for Uzawa (1 total) ──
-// SKIPPED: **Source:** `math_Uzawa.hxx`:112 - `math_Uzawa::Dump`
-//   method: Prints information on the current state of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `math_Uzawa.hxx`:112 - `math_Uzawa::Dump()`
+    /// Prints information on the current state of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::math_Uzawa_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From math_ValueAndWeight.hxx

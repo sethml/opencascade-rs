@@ -6,6 +6,16 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `TDataStd.hxx`:58 - `TDataStd::Print`
+/// Prints the name of the real dimension <DIM> as a String on
+/// the Stream <S> and returns <S>.
+pub fn print_realenum_ostream(
+    DIM: crate::t_data_std::RealEnum,
+    S: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::TDataStd_print_realenum_ostream(DIM.into(), S)) }
+}
+
 /// The terms of this enumeration define the
 /// semantics of a real number value.
 /// C++ enum: `TDataStd_RealEnum`
@@ -430,6 +440,23 @@ impl AsciiString {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_AsciiString_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -525,8 +552,8 @@ impl HandleTDataStdAsciiString {
 
 // ── Skipped symbols for AsciiString (1 total) ──
 // SKIPPED: **Source:** `TDataStd_AsciiString.hxx`:78 - `TDataStd_AsciiString::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -945,6 +972,23 @@ impl BooleanArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_BooleanArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -1044,8 +1088,8 @@ impl HandleTDataStdBooleanArray {
 
 // ── Skipped symbols for BooleanArray (1 total) ──
 // SKIPPED: **Source:** `TDataStd_BooleanArray.hxx`:96 - `TDataStd_BooleanArray::Dump`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, OS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1472,6 +1516,23 @@ impl BooleanList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_BooleanList_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -1567,8 +1628,8 @@ impl HandleTDataStdBooleanList {
 
 // ── Skipped symbols for BooleanList (1 total) ──
 // SKIPPED: **Source:** `TDataStd_BooleanList.hxx`:98 - `TDataStd_BooleanList::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1997,6 +2058,23 @@ impl ByteArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_ByteArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_ByteArray_inherited_Forget(self as *mut Self, aTransaction) }
@@ -2097,8 +2175,8 @@ impl HandleTDataStdByteArray {
 //   // pub fn value(&self, Index: i32) -> OwnedPtr<Standard_Byte>;
 //
 // SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:120 - `TDataStd_ByteArray::Dump`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, OS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2564,6 +2642,23 @@ impl Comment {
         unsafe { crate::ffi::TDataStd_Comment_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Comment_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Comment_inherited_Forget(self as *mut Self, aTransaction) }
@@ -2665,8 +2760,8 @@ impl HandleTDataStdComment {
 
 // ── Skipped symbols for Comment (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Comment.hxx`:57 - `TDataStd_Comment::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3012,6 +3107,23 @@ impl Current {
         unsafe { crate::ffi::TDataStd_Current_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Current_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Current_inherited_Forget(self as *mut Self, aTransaction) }
@@ -3100,8 +3212,8 @@ impl HandleTDataStdCurrent {
 
 // ── Skipped symbols for Current (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Current.hxx`:69 - `TDataStd_Current::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -4897,6 +5009,23 @@ impl Directory {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Directory_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Directory_inherited_Forget(self as *mut Self, aTransaction) }
@@ -4998,8 +5127,8 @@ impl HandleTDataStdDirectory {
 
 // ── Skipped symbols for Directory (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Directory.hxx`:70 - `TDataStd_Directory::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -5369,6 +5498,23 @@ impl Expression {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Expression_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Expression_inherited_Forget(self as *mut Self, aTransaction) }
@@ -5480,8 +5626,8 @@ impl HandleTDataStdExpression {
 
 // ── Skipped symbols for Expression (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Expression.hxx`:74 - `TDataStd_Expression::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -5945,6 +6091,23 @@ impl ExtStringArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_ExtStringArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -6046,8 +6209,8 @@ impl HandleTDataStdExtStringArray {
 
 // ── Skipped symbols for ExtStringArray (1 total) ──
 // SKIPPED: **Source:** `TDataStd_ExtStringArray.hxx`:127 - `TDataStd_ExtStringArray::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -6534,6 +6697,23 @@ impl ExtStringList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_ExtStringList_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -6633,8 +6813,8 @@ impl HandleTDataStdExtStringList {
 
 // ── Skipped symbols for ExtStringList (1 total) ──
 // SKIPPED: **Source:** `TDataStd_ExtStringList.hxx`:108 - `TDataStd_ExtStringList::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -6945,6 +7125,23 @@ impl GenericEmpty {
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
             crate::ffi::TDataStd_GenericEmpty_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_GenericEmpty_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
         }
     }
 
@@ -7737,6 +7934,23 @@ impl GenericExtString {
             crate::ffi::TDataStd_GenericExtString_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_GenericExtString_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         }
     }
@@ -9696,6 +9910,23 @@ impl IntPackedMap {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_IntPackedMap_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -9795,8 +10026,8 @@ impl HandleTDataStdIntPackedMap {
 
 // ── Skipped symbols for IntPackedMap (1 total) ──
 // SKIPPED: **Source:** `TDataStd_IntPackedMap.hxx`:93 - `TDataStd_IntPackedMap::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -10162,6 +10393,23 @@ impl Integer {
         unsafe { crate::ffi::TDataStd_Integer_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Integer_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Integer_inherited_Forget(self as *mut Self, aTransaction) }
@@ -10250,8 +10498,8 @@ impl HandleTDataStdInteger {
 
 // ── Skipped symbols for Integer (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Integer.hxx`:79 - `TDataStd_Integer::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -10708,6 +10956,23 @@ impl IntegerArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_IntegerArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -10807,8 +11072,8 @@ impl HandleTDataStdIntegerArray {
 
 // ── Skipped symbols for IntegerArray (1 total) ──
 // SKIPPED: **Source:** `TDataStd_IntegerArray.hxx`:125 - `TDataStd_IntegerArray::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -11263,6 +11528,23 @@ impl IntegerList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_IntegerList_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -11358,8 +11640,8 @@ impl HandleTDataStdIntegerList {
 
 // ── Skipped symbols for IntegerList (1 total) ──
 // SKIPPED: **Source:** `TDataStd_IntegerList.hxx`:107 - `TDataStd_IntegerList::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -11745,6 +12027,23 @@ impl Name {
         unsafe { crate::ffi::TDataStd_Name_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Name_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Name_inherited_Forget(self as *mut Self, aTransaction) }
@@ -11846,8 +12145,8 @@ impl HandleTDataStdName {
 
 // ── Skipped symbols for Name (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Name.hxx`:81 - `TDataStd_Name::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -12595,6 +12894,23 @@ impl NamedData {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_NamedData_inherited_Forget(self as *mut Self, aTransaction) }
@@ -12701,8 +13017,8 @@ impl HandleTDataStdNamedData {
 //   // pub fn set_byte(&mut self, theName: &ExtendedString, theByte: Byte);
 //
 // SKIPPED: **Source:** `TDataStd_NamedData.hxx`:296 - `TDataStd_NamedData::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -13093,6 +13409,23 @@ impl NoteBook {
         unsafe { crate::ffi::TDataStd_NoteBook_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_NoteBook_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_NoteBook_inherited_Forget(self as *mut Self, aTransaction) }
@@ -13194,8 +13527,8 @@ impl HandleTDataStdNoteBook {
 
 // ── Skipped symbols for NoteBook (1 total) ──
 // SKIPPED: **Source:** `TDataStd_NoteBook.hxx`:74 - `TDataStd_NoteBook::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -13557,6 +13890,23 @@ impl Real {
         unsafe { crate::ffi::TDataStd_Real_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Real_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Real_inherited_Forget(self as *mut Self, aTransaction) }
@@ -13673,8 +14023,8 @@ impl HandleTDataStdReal {
 
 // ── Skipped symbols for Real (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Real.hxx`:98 - `TDataStd_Real::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -14121,6 +14471,23 @@ impl RealArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_RealArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_RealArray_inherited_Forget(self as *mut Self, aTransaction) }
@@ -14209,8 +14576,8 @@ impl HandleTDataStdRealArray {
 
 // ── Skipped symbols for RealArray (1 total) ──
 // SKIPPED: **Source:** `TDataStd_RealArray.hxx`:126 - `TDataStd_RealArray::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -14653,6 +15020,23 @@ impl RealList {
         unsafe { crate::ffi::TDataStd_RealList_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_RealList_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_RealList_inherited_Forget(self as *mut Self, aTransaction) }
@@ -14741,8 +15125,8 @@ impl HandleTDataStdRealList {
 
 // ── Skipped symbols for RealList (1 total) ──
 // SKIPPED: **Source:** `TDataStd_RealList.hxx`:108 - `TDataStd_RealList::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -15184,6 +15568,23 @@ impl ReferenceArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_ReferenceArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -15285,8 +15686,8 @@ impl HandleTDataStdReferenceArray {
 
 // ── Skipped symbols for ReferenceArray (1 total) ──
 // SKIPPED: **Source:** `TDataStd_ReferenceArray.hxx`:102 - `TDataStd_ReferenceArray::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -15766,6 +16167,23 @@ impl ReferenceList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_ReferenceList_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -15865,8 +16283,8 @@ impl HandleTDataStdReferenceList {
 
 // ── Skipped symbols for ReferenceList (1 total) ──
 // SKIPPED: **Source:** `TDataStd_ReferenceList.hxx`:111 - `TDataStd_ReferenceList::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -16251,6 +16669,23 @@ impl Relation {
         unsafe { crate::ffi::TDataStd_Relation_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Relation_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Relation_inherited_Forget(self as *mut Self, aTransaction) }
@@ -16348,8 +16783,8 @@ impl HandleTDataStdRelation {
 
 // ── Skipped symbols for Relation (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Relation.hxx`:54 - `TDataStd_Relation::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -16675,6 +17110,23 @@ impl Tick {
         unsafe { crate::ffi::TDataStd_Tick_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Tick_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Tick_inherited_Forget(self as *mut Self, aTransaction) }
@@ -16774,8 +17226,8 @@ impl HandleTDataStdTick {
 
 // ── Skipped symbols for Tick (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Tick.hxx`:47 - `TDataStd_Tick::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -17346,6 +17798,23 @@ impl TreeNode {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_TreeNode_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_TreeNode_inherited_Forget(self as *mut Self, aTransaction) }
@@ -17434,8 +17903,8 @@ impl HandleTDataStdTreeNode {
 
 // ── Skipped symbols for TreeNode (1 total) ──
 // SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:214 - `TDataStd_TreeNode::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -17771,6 +18240,23 @@ impl UAttribute {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_UAttribute_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_UAttribute_inherited_Forget(self as *mut Self, aTransaction) }
@@ -17864,8 +18350,8 @@ impl HandleTDataStdUAttribute {
 
 // ── Skipped symbols for UAttribute (1 total) ──
 // SKIPPED: **Source:** `TDataStd_UAttribute.hxx`:60 - `TDataStd_UAttribute::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -18316,6 +18802,23 @@ impl Variable {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Variable_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Variable_inherited_Forget(self as *mut Self, aTransaction) }
@@ -18404,8 +18907,8 @@ impl HandleTDataStdVariable {
 
 // ── Skipped symbols for Variable (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Variable.hxx`:137 - `TDataStd_Variable::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================

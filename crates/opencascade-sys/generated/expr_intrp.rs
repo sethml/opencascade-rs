@@ -1030,9 +1030,14 @@ impl SyntaxError {
     }
 
     /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::ExprIntrp_SyntaxError_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::ExprIntrp_SyntaxError_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::ExprIntrp_SyntaxError_raise_sstream(theMessage) }
     }
 
     /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::NewInstance()`
@@ -1107,6 +1112,11 @@ impl SyntaxError {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_SyntaxError_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::ExprIntrp_SyntaxError_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -1210,12 +1220,6 @@ impl HandleExprIntrpSyntaxError {
         }
     }
 }
-
-// ── Skipped symbols for SyntaxError (1 total) ──
-// SKIPPED: **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // Additional type re-exports

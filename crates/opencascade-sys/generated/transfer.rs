@@ -3612,6 +3612,22 @@ impl FinderProcess {
         }
     }
 
+    /// **Source:** `Transfer_FinderProcess.hxx`:71 - `Transfer_FinderProcess::PrintTrace()`
+    /// Specific printing to trace a Finder (by its method ValueType)
+    pub fn print_trace(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::Transfer_FinderProcess_print_trace(self as *const Self, start, S) }
+    }
+
+    /// **Source:** `Transfer_FinderProcess.hxx`:75 - `Transfer_FinderProcess::PrintStats()`
+    /// Prints statistics on a given output, according mode
+    pub fn print_stats(&self, mode: i32, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Transfer_FinderProcess_print_stats(self as *const Self, mode, S) }
+    }
+
     /// **Source:** `Transfer_FinderProcess.hxx`:77 - `Transfer_FinderProcess::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Transfer_FinderProcess_dynamic_type(self as *const Self)) }
@@ -4270,18 +4286,6 @@ impl HandleTransferFinderProcess {
         }
     }
 }
-
-// ── Skipped symbols for FinderProcess (2 total) ──
-// SKIPPED: **Source:** `Transfer_FinderProcess.hxx`:71 - `Transfer_FinderProcess::PrintTrace`
-//   method: Specific printing to trace a Finder (by its method ValueType)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_trace(&self, start: &HandleFinder, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `Transfer_FinderProcess.hxx`:75 - `Transfer_FinderProcess::PrintStats`
-//   method: Prints statistics on a given output, according mode
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_stats(&self, mode: i32, S: /* Standard_OStream& */);
-//
 
 // ========================
 // From Transfer_HSequenceOfBinder.hxx
@@ -6376,6 +6380,17 @@ impl ProcessForFinder {
         }
     }
 
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:376 - `Transfer_ProcessForFinder::PrintTrace()`
+    /// Prints a short information on a starting object. By default
+    /// prints its Dynamic Type. Can be redefined
+    pub fn print_trace(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_print_trace(self as *const Self, start, S) }
+    }
+
     /// **Source:** `Transfer_ProcessForFinder.hxx`:382 - `Transfer_ProcessForFinder::IsLooping()`
     /// Returns True if we are surely in a DeadLoop. Evaluation is not
     /// exact, it is a "majorant" which must be computed fast.
@@ -6676,14 +6691,6 @@ impl HandleTransferProcessForFinder {
         }
     }
 }
-
-// ── Skipped symbols for ProcessForFinder (1 total) ──
-// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:376 - `Transfer_ProcessForFinder::PrintTrace`
-//   method: Prints a short information on a starting object. By default
-//   method: prints its Dynamic Type. Can be redefined
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_trace(&self, start: &HandleFinder, S: /* Standard_OStream& */);
-//
 
 // ========================
 // From Transfer_ProcessForTransient.hxx
@@ -7384,6 +7391,19 @@ impl ProcessForTransient {
         }
     }
 
+    /// **Source:** `Transfer_ProcessForTransient.hxx`:360 - `Transfer_ProcessForTransient::PrintTrace()`
+    /// Prints a short information on a starting object. By default
+    /// prints its Dynamic Type. Can be redefined
+    pub fn print_trace(
+        &self,
+        start: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_ProcessForTransient_print_trace(self as *const Self, start, S)
+        }
+    }
+
     /// **Source:** `Transfer_ProcessForTransient.hxx`:366 - `Transfer_ProcessForTransient::IsLooping()`
     /// Returns True if we are surely in a DeadLoop. Evaluation is not
     /// exact, it is a "majorant" which must be computed fast.
@@ -7696,14 +7716,6 @@ impl HandleTransferProcessForTransient {
         }
     }
 }
-
-// ── Skipped symbols for ProcessForTransient (1 total) ──
-// SKIPPED: **Source:** `Transfer_ProcessForTransient.hxx`:360 - `Transfer_ProcessForTransient::PrintTrace`
-//   method: Prints a short information on a starting object. By default
-//   method: prints its Dynamic Type. Can be redefined
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_trace(&self, start: &HandleTransient, S: /* Standard_OStream& */);
-//
 
 // ========================
 // From Transfer_ResultFromModel.hxx
@@ -8831,9 +8843,14 @@ impl TransferDeadLoop {
     }
 
     /// **Source:** `Transfer_TransferDeadLoop.hxx`:35 - `Transfer_TransferDeadLoop::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Transfer_TransferDeadLoop_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Transfer_TransferDeadLoop_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Transfer_TransferDeadLoop.hxx`:35 - `Transfer_TransferDeadLoop::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Transfer_TransferDeadLoop_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Transfer_TransferDeadLoop.hxx`:35 - `Transfer_TransferDeadLoop::NewInstance()`
@@ -8951,6 +8968,13 @@ impl TransferDeadLoop {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_TransferDeadLoop_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Transfer_TransferDeadLoop_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -9084,12 +9108,6 @@ impl HandleTransferTransferDeadLoop {
         }
     }
 }
-
-// ── Skipped symbols for TransferDeadLoop (1 total) ──
-// SKIPPED: **Source:** `Transfer_TransferDeadLoop.hxx`:35 - `Transfer_TransferDeadLoop::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Transfer_TransferDispatch.hxx
@@ -9389,9 +9407,14 @@ impl TransferFailure {
     }
 
     /// **Source:** `Transfer_TransferFailure.hxx`:36 - `Transfer_TransferFailure::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Transfer_TransferFailure_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Transfer_TransferFailure_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Transfer_TransferFailure.hxx`:36 - `Transfer_TransferFailure::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Transfer_TransferFailure_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Transfer_TransferFailure.hxx`:36 - `Transfer_TransferFailure::NewInstance()`
@@ -9489,6 +9512,13 @@ impl TransferFailure {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_TransferFailure_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Transfer_TransferFailure_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -9626,12 +9656,6 @@ impl HandleTransferTransferFailure {
         }
     }
 }
-
-// ── Skipped symbols for TransferFailure (1 total) ──
-// SKIPPED: **Source:** `Transfer_TransferFailure.hxx`:36 - `Transfer_TransferFailure::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Transfer_TransferInput.hxx
@@ -10786,6 +10810,17 @@ impl TransientProcess {
         unsafe { &mut *(crate::ffi::Transfer_TransientProcess_context(self as *mut Self)) }
     }
 
+    /// **Source:** `Transfer_TransientProcess.hxx`:86 - `Transfer_TransientProcess::PrintTrace()`
+    /// Specific printing to trace an entity : prints label and type
+    /// (if model is set)
+    pub fn print_trace(
+        &self,
+        start: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::Transfer_TransientProcess_print_trace(self as *const Self, start, S) }
+    }
+
     /// **Source:** `Transfer_TransientProcess.hxx`:91 - `Transfer_TransientProcess::CheckNum()`
     /// Specific number of a starting object for check-list : Number
     /// in model
@@ -10828,6 +10863,12 @@ impl TransientProcess {
     /// data checking
     pub fn is_data_fail(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
         unsafe { crate::ffi::Transfer_TransientProcess_is_data_fail(self as *const Self, ent) }
+    }
+
+    /// **Source:** `Transfer_TransientProcess.hxx`:114 - `Transfer_TransientProcess::PrintStats()`
+    /// Prints statistics on a given output, according mode
+    pub fn print_stats(&self, mode: i32, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Transfer_TransientProcess_print_stats(self as *const Self, mode, S) }
     }
 
     /// **Source:** `Transfer_TransientProcess.hxx`:116 - `Transfer_TransientProcess::RootsForTransfer()`
@@ -11542,19 +11583,6 @@ impl HandleTransferTransientProcess {
         }
     }
 }
-
-// ── Skipped symbols for TransientProcess (2 total) ──
-// SKIPPED: **Source:** `Transfer_TransientProcess.hxx`:86 - `Transfer_TransientProcess::PrintTrace`
-//   method: Specific printing to trace an entity : prints label and type
-//   method: (if model is set)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_trace(&self, start: &HandleTransient, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `Transfer_TransientProcess.hxx`:114 - `Transfer_TransientProcess::PrintStats`
-//   method: Prints statistics on a given output, according mode
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_stats(&self, mode: i32, S: /* Standard_OStream& */);
-//
 
 // ========================
 // From Transfer_VoidBinder.hxx

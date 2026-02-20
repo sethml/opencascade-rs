@@ -2025,8 +2025,8 @@ impl HandleRWGltfGltfMaterialMap {
 //   method: Add material images into GLB stream.
 //   method: @param[in][out] theBinFile   output file stream
 //   method: @param[in] theStyle    material images to add
-//   Reason: has unbindable types: param 'theBinFile': stream type (std::ostream&)
-//   // pub fn add_glb_images(&mut self, theBinFile: /* std::ostream& */, theStyle: &Style);
+//   Reason: param 'theBinFile' uses unknown type 'std::ostream&'
+//   // pub fn add_glb_images(&mut self, theBinFile: &mut ostream, theStyle: &Style);
 //
 // SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:42 - `RWGltf_GltfMaterialMap::FlushGlbBufferViews`
 //   method: Add bufferView's into RWGltf_GltfRootElement_BufferViews section with images collected by

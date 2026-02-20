@@ -1405,10 +1405,32 @@ impl Reader {
     /// mode = 0 : per entity, prints messages
     /// mode = 1 : per message, just gives count of entities per check
     /// mode = 2 : also gives entity numbers
-    pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
+    pub fn print_check_load_bool_printcount(
+        &self,
+        failsonly: bool,
+        mode: crate::if_select::PrintCount,
+    ) {
         unsafe {
-            crate::ffi::XSControl_Reader_print_check_load(
+            crate::ffi::XSControl_Reader_print_check_load_bool_printcount(
                 self as *const Self,
+                failsonly,
+                mode.into(),
+            )
+        }
+    }
+
+    /// **Source:** `XSControl_Reader.hxx`:229 - `XSControl_Reader::PrintCheckLoad()`
+    /// Prints the check list attached to loaded data.
+    pub fn print_check_load_ostream_bool_printcount(
+        &self,
+        theStream: &mut crate::ffi::Standard_OStream,
+        failsonly: bool,
+        mode: crate::if_select::PrintCount,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_Reader_print_check_load_ostream_bool_printcount(
+                self as *const Self,
+                theStream,
                 failsonly,
                 mode.into(),
             )
@@ -1422,10 +1444,33 @@ impl Reader {
     /// true. All messages are displayed if failsonly is
     /// false. mode determines the contents and the order of the
     /// messages according to the terms of the IFSelect_PrintCount enumeration.
-    pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
+    pub fn print_check_transfer_bool_printcount(
+        &self,
+        failsonly: bool,
+        mode: crate::if_select::PrintCount,
+    ) {
         unsafe {
-            crate::ffi::XSControl_Reader_print_check_transfer(
+            crate::ffi::XSControl_Reader_print_check_transfer_bool_printcount(
                 self as *const Self,
+                failsonly,
+                mode.into(),
+            )
+        }
+    }
+
+    /// **Source:** `XSControl_Reader.hxx`:244 - `XSControl_Reader::PrintCheckTransfer()`
+    /// Displays check results for the last translation of IGES or STEP entities to Open CASCADE
+    /// entities.
+    pub fn print_check_transfer_ostream_bool_printcount(
+        &self,
+        theStream: &mut crate::ffi::Standard_OStream,
+        failsonly: bool,
+        mode: crate::if_select::PrintCount,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_Reader_print_check_transfer_ostream_bool_printcount(
+                self as *const Self,
+                theStream,
                 failsonly,
                 mode.into(),
             )
@@ -1460,9 +1505,27 @@ impl Reader {
     /// - if mode is 0 all warnings and checks per entity are returned
     /// - if mode is 2 the list of entities per warning is returned.
     /// If mode is not set, only the list of all entities per warning is given.
-    pub fn print_stats_transfer(&self, what: i32, mode: i32) {
+    pub fn print_stats_transfer_int2(&self, what: i32, mode: i32) {
         unsafe {
-            crate::ffi::XSControl_Reader_print_stats_transfer(self as *const Self, what, mode)
+            crate::ffi::XSControl_Reader_print_stats_transfer_int2(self as *const Self, what, mode)
+        }
+    }
+
+    /// **Source:** `XSControl_Reader.hxx`:279 - `XSControl_Reader::PrintStatsTransfer()`
+    /// Displays the statistics for the last translation.
+    pub fn print_stats_transfer_ostream_int2(
+        &self,
+        theStream: &mut crate::ffi::Standard_OStream,
+        what: i32,
+        mode: i32,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_Reader_print_stats_transfer_ostream_int2(
+                self as *const Self,
+                theStream,
+                what,
+                mode,
+            )
         }
     }
 
@@ -1538,27 +1601,11 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (6 total) ──
+// ── Skipped symbols for Reader (3 total) ──
 // SKIPPED: **Source:** `XSControl_Reader.hxx`:110 - `XSControl_Reader::ReadStream`
 //   method: Loads a file from stream and returns the read status
-//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
-//   // pub fn read_stream(&mut self, theName: *const char, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
-// SKIPPED: **Source:** `XSControl_Reader.hxx`:229 - `XSControl_Reader::PrintCheckLoad`
-//   method: Prints the check list attached to loaded data.
-//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
-//   // pub fn print_check_load(&self, theStream: /* Standard_OStream& */, failsonly: bool, mode: PrintCount);
-//
-// SKIPPED: **Source:** `XSControl_Reader.hxx`:244 - `XSControl_Reader::PrintCheckTransfer`
-//   method: Displays check results for the last translation of IGES or STEP entities to Open CASCADE
-//   method: entities.
-//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
-//   // pub fn print_check_transfer(&self, theStream: /* Standard_OStream& */, failsonly: bool, mode: PrintCount);
-//
-// SKIPPED: **Source:** `XSControl_Reader.hxx`:279 - `XSControl_Reader::PrintStatsTransfer`
-//   method: Displays the statistics for the last translation.
-//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
-//   // pub fn print_stats_transfer(&self, theStream: /* Standard_OStream& */, what: i32, mode: i32);
+//   Reason: param 'theIStream' uses unknown type 'std::istream&'
+//   // pub fn read_stream(&mut self, theName: *const char, theIStream: &mut istream) -> OwnedPtr<IFSelect_ReturnStatus>;
 //
 // SKIPPED: **Source:** `XSControl_Reader.hxx`:297 - `XSControl_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
@@ -3037,6 +3084,25 @@ impl TransferReader {
         }
     }
 
+    /// **Source:** `XSControl_TransferReader.hxx`:311 - `XSControl_TransferReader::PrintStats()`
+    /// Prints statistics on current Trace File, according <what> and
+    /// <mode>.  See PrintStatsProcess for details
+    pub fn print_stats(
+        &self,
+        theStream: &mut crate::ffi::Standard_OStream,
+        theWhat: i32,
+        theMode: i32,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_TransferReader_print_stats(
+                self as *const Self,
+                theStream,
+                theWhat,
+                theMode,
+            )
+        }
+    }
+
     /// **Source:** `XSControl_TransferReader.hxx`:317 - `XSControl_TransferReader::LastCheckList()`
     /// Returns the CheckList resulting from last TransferRead
     /// i.e. from TransientProcess itself, recorded from last Clear
@@ -3263,14 +3329,6 @@ impl HandleXSControlTransferReader {
         }
     }
 }
-
-// ── Skipped symbols for TransferReader (1 total) ──
-// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:311 - `XSControl_TransferReader::PrintStats`
-//   method: Prints statistics on current Trace File, according <what> and
-//   method: <mode>.  See PrintStatsProcess for details
-//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
-//   // pub fn print_stats(&self, theStream: /* Standard_OStream& */, theWhat: i32, theMode: i32);
-//
 
 // ========================
 // From XSControl_TransferWriter.hxx
@@ -4321,6 +4379,27 @@ impl WorkSession {
     /// Clears the whole current Context (nullifies it)
     pub fn clear_context(&mut self) {
         unsafe { crate::ffi::XSControl_WorkSession_clear_context(self as *mut Self) }
+    }
+
+    /// **Source:** `XSControl_WorkSession.hxx`:98 - `XSControl_WorkSession::PrintTransferStatus()`
+    /// Prints the transfer status of a transferred item, as being
+    /// the Mapped n0 <num>, from MapWriter if <wri> is True, or
+    /// from MapReader if <wri> is False
+    /// Returns True when done, False else (i.e. num out of range)
+    pub fn print_transfer_status(
+        &self,
+        theNum: i32,
+        theWri: bool,
+        theS: &mut crate::ffi::Standard_OStream,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XSControl_WorkSession_print_transfer_status(
+                self as *const Self,
+                theNum,
+                theWri,
+                theS,
+            )
+        }
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:108 - `XSControl_WorkSession::InitTransferReader()`
@@ -5668,10 +5747,45 @@ impl WorkSession {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1079 - `IFSelect_WorkSession::DumpModel()`
+    pub fn dump_model(&mut self, level: i32, S: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::XSControl_WorkSession_inherited_DumpModel(self as *mut Self, level, S)
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1083 - `IFSelect_WorkSession::TraceDumpModel()`
     pub fn trace_dump_model(&mut self, mode: i32) {
         unsafe {
             crate::ffi::XSControl_WorkSession_inherited_TraceDumpModel(self as *mut Self, mode)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1090 - `IFSelect_WorkSession::DumpEntity()`
+    pub fn dump_entity(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        level: i32,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_WorkSession_inherited_DumpEntity(
+                self as *const Self,
+                ent,
+                level,
+                S,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1097 - `IFSelect_WorkSession::PrintEntityStatus()`
+    pub fn print_entity_status(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_WorkSession_inherited_PrintEntityStatus(self as *mut Self, ent, S)
         }
     }
 
@@ -5682,6 +5796,42 @@ impl WorkSession {
                 self as *const Self,
                 ent,
                 level,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1114 - `IFSelect_WorkSession::PrintCheckList()`
+    pub fn print_check_list(
+        &self,
+        S: &mut crate::ffi::Standard_OStream,
+        checklist: &crate::interface::CheckIterator,
+        failsonly: bool,
+        mode: crate::if_select::PrintCount,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_WorkSession_inherited_PrintCheckList(
+                self as *const Self,
+                S,
+                checklist,
+                failsonly,
+                mode.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1122 - `IFSelect_WorkSession::PrintSignatureList()`
+    pub fn print_signature_list(
+        &self,
+        S: &mut crate::ffi::Standard_OStream,
+        signlist: &crate::ffi::HandleIFSelectSignatureList,
+        mode: crate::if_select::PrintCount,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_WorkSession_inherited_PrintSignatureList(
+                self as *const Self,
+                S,
+                signlist,
+                mode.into(),
             )
         }
     }
@@ -5708,6 +5858,23 @@ impl WorkSession {
     pub fn evaluate_complete(&self, mode: i32) {
         unsafe {
             crate::ffi::XSControl_WorkSession_inherited_EvaluateComplete(self as *const Self, mode)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1157 - `IFSelect_WorkSession::ListEntities()`
+    pub fn list_entities(
+        &self,
+        iter: &crate::interface::EntityIterator,
+        mode: i32,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_WorkSession_inherited_ListEntities(
+                self as *const Self,
+                iter,
+                mode,
+                S,
+            )
         }
     }
 
@@ -5803,7 +5970,7 @@ impl HandleXSControlWorkSession {
     }
 }
 
-// ── Skipped symbols for WorkSession (3 total) ──
+// ── Skipped symbols for WorkSession (2 total) ──
 // SKIPPED: **Source:** `XSControl_WorkSession.hxx`:85 - `XSControl_WorkSession::Context`
 //   method: Returns the current Context List, Null if not defined
 //   method: The Context is given to the TransientProcess for TransferRead
@@ -5815,13 +5982,6 @@ impl HandleXSControlWorkSession {
 //   method: Sets it to the TransferReader
 //   Reason: param 'theContext' uses unknown type 'const XSControl_WorkSessionMap&'
 //   // pub fn set_all_context(&mut self, theContext: &WorkSessionMap);
-//
-// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:98 - `XSControl_WorkSession::PrintTransferStatus`
-//   method: Prints the transfer status of a transferred item, as being
-//   method: the Mapped n0 <num>, from MapWriter if <wri> is True, or
-//   method: from MapReader if <wri> is False
-//   Reason: has unbindable types: param 'theS': stream type (Standard_OStream&)
-//   // pub fn print_transfer_status(&self, theNum: i32, theWri: bool, theS: /* Standard_OStream& */) -> bool;
 //
 
 // ========================

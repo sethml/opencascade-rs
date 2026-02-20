@@ -1069,9 +1069,14 @@ impl AbortiveTransaction {
     }
 
     /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_AbortiveTransaction_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_AbortiveTransaction_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_AbortiveTransaction_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::NewInstance()`
@@ -1159,6 +1164,13 @@ impl AbortiveTransaction {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_AbortiveTransaction_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Standard_AbortiveTransaction_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -1275,12 +1287,6 @@ impl HandleStandardAbortiveTransaction {
         }
     }
 }
-
-// ── Skipped symbols for AbortiveTransaction (1 total) ──
-// SKIPPED: **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Standard_ArrayStreamBuffer.hxx
@@ -1509,9 +1515,14 @@ impl ConstructionError {
     }
 
     /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_ConstructionError_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_ConstructionError_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_ConstructionError_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::NewInstance()`
@@ -1611,6 +1622,13 @@ impl ConstructionError {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_ConstructionError_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Standard_ConstructionError_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -1733,12 +1751,6 @@ impl HandleStandardConstructionError {
     }
 }
 
-// ── Skipped symbols for ConstructionError (1 total) ──
-// SKIPPED: **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_DimensionError.hxx
 // ========================
@@ -1786,9 +1798,14 @@ impl DimensionError {
     }
 
     /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_DimensionError_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_DimensionError_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_DimensionError_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::NewInstance()`
@@ -1880,6 +1897,13 @@ impl DimensionError {
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardDimensionError> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DimensionError_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Standard_DimensionError_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -2034,12 +2058,6 @@ impl HandleStandardDimensionError {
     }
 }
 
-// ── Skipped symbols for DimensionError (1 total) ──
-// SKIPPED: **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_DimensionMismatch.hxx
 // ========================
@@ -2087,9 +2105,14 @@ impl DimensionMismatch {
     }
 
     /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_DimensionMismatch_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_DimensionMismatch_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_DimensionMismatch_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::NewInstance()`
@@ -2207,6 +2230,13 @@ impl DimensionMismatch {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DimensionMismatch_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Standard_DimensionMismatch_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -2342,12 +2372,6 @@ impl HandleStandardDimensionMismatch {
     }
 }
 
-// ── Skipped symbols for DimensionMismatch (1 total) ──
-// SKIPPED: **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_DivideByZero.hxx
 // ========================
@@ -2395,9 +2419,14 @@ impl DivideByZero {
     }
 
     /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_DivideByZero_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_DivideByZero_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_DivideByZero_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::NewInstance()`
@@ -2488,6 +2517,11 @@ impl DivideByZero {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DivideByZero_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_DivideByZero_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -2605,12 +2639,6 @@ impl HandleStandardDivideByZero {
     }
 }
 
-// ── Skipped symbols for DivideByZero (1 total) ──
-// SKIPPED: **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_DomainError.hxx
 // ========================
@@ -2658,9 +2686,14 @@ impl DomainError {
     }
 
     /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_DomainError_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_DomainError_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_DomainError_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::NewInstance()`
@@ -2735,6 +2768,11 @@ impl DomainError {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DomainError_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_DomainError_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -3427,12 +3465,6 @@ impl HandleStandardDomainError {
     }
 }
 
-// ── Skipped symbols for DomainError (1 total) ──
-// SKIPPED: **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_Dump.hxx
 // ========================
@@ -3484,6 +3516,36 @@ impl Dump {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_ctor()) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:333 - `Standard_Dump::Text()`
+    /// Converts stream value to string value. The result is original stream value.
+    /// @param theStream source value
+    /// @return text presentation
+    pub fn text(
+        theStream: &crate::ffi::Standard_SStream,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_text(theStream)) }
+    }
+
+    /// **Source:** `Standard_Dump.hxx`:345 - `Standard_Dump::FormatJson()`
+    /// Converts stream value to string value. Improves the text presentation with the following
+    /// cases:
+    /// - for '{' append after '\n' and indent to the next value, increment current indent value
+    /// - for '}' append '\n' and current indent before it, decrement indent value
+    /// - for ',' append after '\n' and indent to the next value. If the current symbol is in massive
+    /// container [], do nothing Covers result with opened and closed brackets on the top level, if it
+    /// has no symbols there.
+    /// @param theStream source value
+    /// @param theIndent count of ' ' symbols to apply hierarchical indent of the text values
+    /// @return text presentation
+    pub fn format_json(
+        theStream: &crate::ffi::Standard_SStream,
+        theIndent: i32,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_format_json(theStream, theIndent))
+        }
+    }
+
     /// **Source:** `Standard_Dump.hxx`:366 - `Standard_Dump::HierarchicalValueIndices()`
     /// Returns container of indices in values, that has hierarchical value
     pub fn hierarchical_value_indices(
@@ -3518,6 +3580,12 @@ impl Dump {
         unsafe { crate::ffi::Standard_Dump_json_key_length(theKey.into()) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:380 - `Standard_Dump::AddValuesSeparator()`
+    /// @param theOStream source value
+    pub fn add_values_separator(theOStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_Dump_add_values_separator(theOStream) }
+    }
+
     /// **Source:** `Standard_Dump.hxx`:384 - `Standard_Dump::GetPointerPrefix()`
     /// Returns default prefix added for each pointer info string if short presentation of pointer
     /// used
@@ -3541,6 +3609,35 @@ impl Dump {
                 isShortInfo,
             ))
         }
+    }
+
+    /// **Source:** `Standard_Dump.hxx`:407 - `Standard_Dump::DumpKeyToClass()`
+    /// Append into output value: "Name": { Field }
+    /// @param[out] theOStream  stream to be fill with values
+    /// @param theKey a source value
+    /// @param theField stream value
+    pub fn dump_key_to_class(
+        theOStream: &mut crate::ffi::Standard_OStream,
+        theKey: &crate::t_collection::AsciiString,
+        theField: &crate::t_collection::AsciiString,
+    ) {
+        unsafe { crate::ffi::Standard_Dump_dump_key_to_class(theOStream, theKey, theField) }
+    }
+
+    /// **Source:** `Standard_Dump.hxx`:414 - `Standard_Dump::DumpCharacterValues()`
+    /// Unite values in one value using template: "value_1", "value_2", ..., "value_n"
+    /// @param[out] theOStream  stream to be fill with values
+    /// @param[in] theCount     number of values
+    pub fn dump_character_values(theOStream: &mut crate::ffi::Standard_OStream, theCount: i32) {
+        unsafe { crate::ffi::Standard_Dump_dump_character_values(theOStream, theCount) }
+    }
+
+    /// **Source:** `Standard_Dump.hxx`:419 - `Standard_Dump::DumpRealValues()`
+    /// Unite values in one value using template: value_1, value_2, ..., value_n
+    /// @param[out] theOStream  stream to be fill with values
+    /// @param[in] theCount     number of values
+    pub fn dump_real_values(theOStream: &mut crate::ffi::Standard_OStream, theCount: i32) {
+        unsafe { crate::ffi::Standard_Dump_dump_real_values(theOStream, theCount) }
     }
 
     /// **Source:** `Standard_Dump.hxx`:425 - `Standard_Dump::ProcessStreamName()`
@@ -3608,31 +3705,12 @@ impl Dump {
     }
 }
 
-// ── Skipped symbols for Dump (8 total) ──
-// SKIPPED: **Source:** `Standard_Dump.hxx`:333 - `Standard_Dump::Text`
-//   static_method: Converts stream value to string value. The result is original stream value.
-//   static_method: @param theStream source value
-//   static_method: @return text presentation
-//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
-//   // pub fn text(theStream: &SStream) -> OwnedPtr<TCollection_AsciiString>;
-//
-// SKIPPED: **Source:** `Standard_Dump.hxx`:345 - `Standard_Dump::FormatJson`
-//   static_method: Converts stream value to string value. Improves the text presentation with the following
-//   static_method: cases:
-//   static_method: - for '{' append after '\n' and indent to the next value, increment current indent value
-//   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
-//   // pub fn format_json(theStream: &SStream, theIndent: i32) -> OwnedPtr<TCollection_AsciiString>;
-//
+// ── Skipped symbols for Dump (2 total) ──
 // SKIPPED: **Source:** `Standard_Dump.hxx`:361 - `Standard_Dump::SplitJson`
 //   static_method: Converts stream into map of values.
 //   static_method: The one level stream example: 'key_1: value_1, key_2: value_2'
 //   Reason: has unbindable types: param 'theKeyToValues': unresolved template type (NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>&)
 //   // pub fn split_json(theStreamStr: &AsciiString, theKeyToValues: /* NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>& */) -> bool;
-//
-// SKIPPED: **Source:** `Standard_Dump.hxx`:380 - `Standard_Dump::AddValuesSeparator`
-//   static_method: @param theOStream source value
-//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
-//   // pub fn add_values_separator(theOStream: /* Standard_OStream& */);
 //
 // SKIPPED: **Source:** `Standard_Dump.hxx`:400 - `Standard_Dump::GetPointerInfo`
 //   static_method: Convert pointer to address of the pointer. If the handle is NULL, the result is an empty
@@ -3640,27 +3718,6 @@ impl Dump {
 //   static_method: @param thePointer a pointer
 //   Reason: param 'thePointer' uses unknown type 'const void*'
 //   // pub fn get_pointer_info(thePointer: /* const void* */, isShortInfo: bool) -> OwnedPtr<TCollection_AsciiString>;
-//
-// SKIPPED: **Source:** `Standard_Dump.hxx`:407 - `Standard_Dump::DumpKeyToClass`
-//   static_method: Append into output value: "Name": { Field }
-//   static_method: @param[out] theOStream  stream to be fill with values
-//   static_method: @param theKey a source value
-//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
-//   // pub fn dump_key_to_class(theOStream: /* Standard_OStream& */, theKey: &AsciiString, theField: &AsciiString);
-//
-// SKIPPED: **Source:** `Standard_Dump.hxx`:414 - `Standard_Dump::DumpCharacterValues`
-//   static_method: Unite values in one value using template: "value_1", "value_2", ..., "value_n"
-//   static_method: @param[out] theOStream  stream to be fill with values
-//   static_method: @param[in] theCount     number of values
-//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
-//   // pub fn dump_character_values(theOStream: /* Standard_OStream& */, theCount: i32);
-//
-// SKIPPED: **Source:** `Standard_Dump.hxx`:419 - `Standard_Dump::DumpRealValues`
-//   static_method: Unite values in one value using template: value_1, value_2, ..., value_n
-//   static_method: @param[out] theOStream  stream to be fill with values
-//   static_method: @param[in] theCount     number of values
-//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
-//   // pub fn dump_real_values(theOStream: /* Standard_OStream& */, theCount: i32);
 //
 
 // ========================
@@ -3830,6 +3887,14 @@ impl Failure {
         }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Prints on the stream @p theStream the exception name followed by the error message.
+    ///
+    /// Note: there is a short-cut @c operator<< (Standard_OStream&, Handle(Standard_Failure)&)
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_Failure_print(self as *const Self, theStream) }
+    }
+
     /// **Source:** `Standard_Failure.hxx`:61 - `Standard_Failure::GetMessageString()`
     /// Returns error message
     pub fn get_message_string(&self) -> String {
@@ -3888,6 +3953,12 @@ impl Failure {
         }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:77 - `Standard_Failure::Reraise()`
+    /// Reraises a caught exception and changes its error message.
+    pub fn reraise_sstream(&mut self, aReason: &crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_Failure_reraise_sstream(self as *mut Self, aReason) }
+    }
+
     /// **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     /// Used to throw CASCADE exception from C signal handler.
     /// On platforms that do not allow throwing C++ exceptions
@@ -3907,9 +3978,17 @@ impl Failure {
     /// Raises an exception of type "Failure" and associates
     /// an error message to it. The message can be printed
     /// in an exception handler.
-    pub fn raise(aMessage: &str) {
+    pub fn raise_charptr(aMessage: &str) {
         let c_aMessage = std::ffi::CString::new(aMessage).unwrap();
-        unsafe { crate::ffi::Standard_Failure_raise(c_aMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_Failure_raise_charptr(c_aMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_Failure.hxx`:88 - `Standard_Failure::Raise()`
+    /// Raises an exception of type "Failure" and associates
+    /// an error message to it. The message can be constructed
+    /// at run-time.
+    pub fn raise_sstream(aReason: &crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_Failure_raise_sstream(aReason) }
     }
 
     /// **Source:** `Standard_Failure.hxx`:93 - `Standard_Failure::NewInstance()`
@@ -5531,26 +5610,6 @@ impl HandleStandardFailure {
     }
 }
 
-// ── Skipped symbols for Failure (3 total) ──
-// SKIPPED: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print`
-//   method: Prints on the stream @p theStream the exception name followed by the error message.
-//   method: Note: there is a short-cut @c operator<< (Standard_OStream&, Handle(Standard_Failure)&)
-//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
-//   // pub fn print(&self, theStream: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `Standard_Failure.hxx`:77 - `Standard_Failure::Reraise`
-//   method: Reraises a caught exception and changes its error message.
-//   Reason: param 'aReason' uses unknown type 'const Standard_SStream&'
-//   // pub fn reraise(&mut self, aReason: &SStream);
-//
-// SKIPPED: **Source:** `Standard_Failure.hxx`:88 - `Standard_Failure::Raise`
-//   static_method: Raises an exception of type "Failure" and associates
-//   static_method: an error message to it. The message can be constructed
-//   static_method: at run-time.
-//   Reason: param 'aReason' uses unknown type 'const Standard_SStream&'
-//   // pub fn raise(aReason: &SStream);
-//
-
 // ========================
 // From Standard_GUID.hxx
 // ========================
@@ -5612,6 +5671,14 @@ impl GUID {
         unsafe { crate::ffi::Standard_GUID_assign_uuid(self as *mut Self, uid) }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:101 - `Standard_GUID::ShallowDump()`
+    /// Display the GUID with the following format:
+    ///
+    /// "00000000-0000-0000-0000-000000000000"
+    pub fn shallow_dump(&self, aStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_GUID_shallow_dump(self as *const Self, aStream) }
+    }
+
     /// **Source:** `Standard_GUID.hxx`:105 - `Standard_GUID::CheckGUIDFormat()`
     /// Check the format of a GUID string.
     /// It checks the size, the position of the '-' and the correct size of fields.
@@ -5628,7 +5695,7 @@ impl GUID {
     }
 }
 
-// ── Skipped symbols for GUID (5 total) ──
+// ── Skipped symbols for GUID (4 total) ──
 // SKIPPED: **Source:** `Standard_GUID.hxx`:49 - `Standard_GUID::Standard_GUID`
 //   constructor: build a GUID from an unicode string with the
 //   constructor: following format:
@@ -5652,12 +5719,6 @@ impl GUID {
 //   method: the guid have the following format:
 //   Reason: param 'aStrGuid' uses unknown type 'Standard_PExtCharacter'
 //   // pub fn to_ext_string(&self, aStrGuid: PExtCharacter);
-//
-// SKIPPED: **Source:** `Standard_GUID.hxx`:101 - `Standard_GUID::ShallowDump`
-//   method: Display the GUID with the following format:
-//   method: "00000000-0000-0000-0000-000000000000"
-//   Reason: has unbindable types: param 'aStream': stream type (Standard_OStream&)
-//   // pub fn shallow_dump(&self, aStream: /* Standard_OStream& */);
 //
 
 // ========================
@@ -5707,9 +5768,14 @@ impl ImmutableObject {
     }
 
     /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_ImmutableObject_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_ImmutableObject_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_ImmutableObject_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::NewInstance()`
@@ -5805,6 +5871,13 @@ impl ImmutableObject {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_ImmutableObject_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Standard_ImmutableObject_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -5923,12 +5996,6 @@ impl HandleStandardImmutableObject {
     }
 }
 
-// ── Skipped symbols for ImmutableObject (1 total) ──
-// SKIPPED: **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_LicenseError.hxx
 // ========================
@@ -5976,9 +6043,14 @@ impl LicenseError {
     }
 
     /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_LicenseError_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_LicenseError_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_LicenseError_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::NewInstance()`
@@ -6053,6 +6125,11 @@ impl LicenseError {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseError_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_LicenseError_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -6175,12 +6252,6 @@ impl HandleStandardLicenseError {
     }
 }
 
-// ── Skipped symbols for LicenseError (1 total) ──
-// SKIPPED: **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_LicenseNotFound.hxx
 // ========================
@@ -6228,9 +6299,14 @@ impl LicenseNotFound {
     }
 
     /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_LicenseNotFound_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_LicenseNotFound_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_LicenseNotFound_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::NewInstance()`
@@ -6326,6 +6402,13 @@ impl LicenseNotFound {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseNotFound_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Standard_LicenseNotFound_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -6445,12 +6528,6 @@ impl HandleStandardLicenseNotFound {
         }
     }
 }
-
-// ── Skipped symbols for LicenseNotFound (1 total) ──
-// SKIPPED: **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Standard_MMgrOpt.hxx
@@ -6718,9 +6795,14 @@ impl MultiplyDefined {
     }
 
     /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_MultiplyDefined_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_MultiplyDefined_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_MultiplyDefined_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::NewInstance()`
@@ -6816,6 +6898,13 @@ impl MultiplyDefined {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_MultiplyDefined_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Standard_MultiplyDefined_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -6933,12 +7022,6 @@ impl HandleStandardMultiplyDefined {
         }
     }
 }
-
-// ── Skipped symbols for MultiplyDefined (1 total) ──
-// SKIPPED: **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Standard_Mutex.hxx
@@ -7125,9 +7208,14 @@ impl NegativeValue {
     }
 
     /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_NegativeValue_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_NegativeValue_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_NegativeValue_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::NewInstance()`
@@ -7231,6 +7319,13 @@ impl NegativeValue {
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardNegativeValue> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NegativeValue_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Standard_NegativeValue_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -7358,12 +7453,6 @@ impl HandleStandardNegativeValue {
     }
 }
 
-// ── Skipped symbols for NegativeValue (1 total) ──
-// SKIPPED: **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_NoMoreObject.hxx
 // ========================
@@ -7411,9 +7500,14 @@ impl NoMoreObject {
     }
 
     /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_NoMoreObject_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_NoMoreObject_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_NoMoreObject_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::NewInstance()`
@@ -7502,6 +7596,11 @@ impl NoMoreObject {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NoMoreObject_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_NoMoreObject_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -7617,12 +7716,6 @@ impl HandleStandardNoMoreObject {
     }
 }
 
-// ── Skipped symbols for NoMoreObject (1 total) ──
-// SKIPPED: **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_NoSuchObject.hxx
 // ========================
@@ -7670,9 +7763,14 @@ impl NoSuchObject {
     }
 
     /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_NoSuchObject_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_NoSuchObject_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_NoSuchObject_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::NewInstance()`
@@ -7761,6 +7859,11 @@ impl NoSuchObject {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NoSuchObject_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_NoSuchObject_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -7930,12 +8033,6 @@ impl HandleStandardNoSuchObject {
     }
 }
 
-// ── Skipped symbols for NoSuchObject (1 total) ──
-// SKIPPED: **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_NotImplemented.hxx
 // ========================
@@ -7983,9 +8080,14 @@ impl NotImplemented {
     }
 
     /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_NotImplemented_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_NotImplemented_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_NotImplemented_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::NewInstance()`
@@ -8077,6 +8179,13 @@ impl NotImplemented {
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardNotImplemented> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NotImplemented_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Standard_NotImplemented_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -8197,12 +8306,6 @@ impl HandleStandardNotImplemented {
     }
 }
 
-// ── Skipped symbols for NotImplemented (1 total) ──
-// SKIPPED: **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_NullObject.hxx
 // ========================
@@ -8250,9 +8353,14 @@ impl NullObject {
     }
 
     /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_NullObject_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_NullObject_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_NullObject_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::NewInstance()`
@@ -8339,6 +8447,11 @@ impl NullObject {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NullObject_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_NullObject_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -8448,12 +8561,6 @@ impl HandleStandardNullObject {
     }
 }
 
-// ── Skipped symbols for NullObject (1 total) ──
-// SKIPPED: **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_NullValue.hxx
 // ========================
@@ -8501,9 +8608,14 @@ impl NullValue {
     }
 
     /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_NullValue_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_NullValue_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_NullValue_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::NewInstance()`
@@ -8600,6 +8712,11 @@ impl NullValue {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NullValue_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_NullValue_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -8715,12 +8832,6 @@ impl HandleStandardNullValue {
     }
 }
 
-// ── Skipped symbols for NullValue (1 total) ──
-// SKIPPED: **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_NumericError.hxx
 // ========================
@@ -8768,9 +8879,14 @@ impl NumericError {
     }
 
     /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_NumericError_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_NumericError_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_NumericError_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::NewInstance()`
@@ -8845,6 +8961,11 @@ impl NumericError {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NumericError_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_NumericError_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -9003,12 +9124,6 @@ impl HandleStandardNumericError {
     }
 }
 
-// ── Skipped symbols for NumericError (1 total) ──
-// SKIPPED: **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_OutOfMemory.hxx
 // ========================
@@ -9078,9 +9193,15 @@ impl OutOfMemory {
 
     /// **Source:** `Standard_OutOfMemory.hxx`:63 - `Standard_OutOfMemory::Raise()`
     /// Raises exception with specified message string
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_OutOfMemory_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_OutOfMemory_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_OutOfMemory.hxx`:66 - `Standard_OutOfMemory::Raise()`
+    /// Raises exception with specified message string
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_OutOfMemory_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_OutOfMemory.hxx`:69 - `Standard_OutOfMemory::NewInstance()`
@@ -9171,6 +9292,11 @@ impl OutOfMemory {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_OutOfMemory_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_OutOfMemory_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -9282,13 +9408,6 @@ impl HandleStandardOutOfMemory {
     }
 }
 
-// ── Skipped symbols for OutOfMemory (1 total) ──
-// SKIPPED: **Source:** `Standard_OutOfMemory.hxx`:66 - `Standard_OutOfMemory::Raise`
-//   static_method: Raises exception with specified message string
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_OutOfRange.hxx
 // ========================
@@ -9336,9 +9455,14 @@ impl OutOfRange {
     }
 
     /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_OutOfRange_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_OutOfRange_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_OutOfRange_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::NewInstance()`
@@ -9437,6 +9561,11 @@ impl OutOfRange {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_OutOfRange_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_OutOfRange_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -9557,12 +9686,6 @@ impl HandleStandardOutOfRange {
     }
 }
 
-// ── Skipped symbols for OutOfRange (1 total) ──
-// SKIPPED: **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_Overflow.hxx
 // ========================
@@ -9610,9 +9733,14 @@ impl Overflow {
     }
 
     /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_Overflow_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_Overflow_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_Overflow_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::NewInstance()`
@@ -9697,6 +9825,11 @@ impl Overflow {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_Overflow_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_Overflow_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -9802,12 +9935,6 @@ impl HandleStandardOverflow {
         }
     }
 }
-
-// ── Skipped symbols for Overflow (1 total) ──
-// SKIPPED: **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Standard_Persistent.hxx
@@ -9999,9 +10126,14 @@ impl ProgramError {
     }
 
     /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_ProgramError_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_ProgramError_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_ProgramError_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::NewInstance()`
@@ -10076,6 +10208,11 @@ impl ProgramError {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_ProgramError_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_ProgramError_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -10216,12 +10353,6 @@ impl HandleStandardProgramError {
     }
 }
 
-// ── Skipped symbols for ProgramError (1 total) ──
-// SKIPPED: **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_RangeError.hxx
 // ========================
@@ -10269,9 +10400,14 @@ impl RangeError {
     }
 
     /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_RangeError_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_RangeError_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_RangeError_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::NewInstance()`
@@ -10358,6 +10494,11 @@ impl RangeError {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_RangeError_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_RangeError_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -10520,12 +10661,6 @@ impl HandleStandardRangeError {
         }
     }
 }
-
-// ── Skipped symbols for RangeError (1 total) ──
-// SKIPPED: **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Standard_ReadBuffer.hxx
@@ -49425,6 +49560,12 @@ impl Type {
         }
     }
 
+    /// **Source:** `Standard_Type.hxx`:144 - `Standard_Type::Print()`
+    /// Prints type (address of descriptor + name) to a stream
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_Type_print(self as *const Self, theStream) }
+    }
+
     /// **Source:** `Standard_Type.hxx`:174 - `Standard_Type::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Type_dynamic_type(self as *const Self)) }
@@ -49533,12 +49674,7 @@ impl HandleStandardType {
     }
 }
 
-// ── Skipped symbols for Type (2 total) ──
-// SKIPPED: **Source:** `Standard_Type.hxx`:144 - `Standard_Type::Print`
-//   method: Prints type (address of descriptor + name) to a stream
-//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
-//   // pub fn print(&self, theStream: /* Standard_OStream& */);
-//
+// ── Skipped symbols for Type (1 total) ──
 // SKIPPED: **Source:** `Standard_Type.hxx`:165 - `Standard_Type::Register`
 //   static_method: Register a type; returns either new or existing descriptor.
 //   static_method: @param theInfo object stores system name of the class
@@ -49593,9 +49729,14 @@ impl TypeMismatch {
     }
 
     /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_TypeMismatch_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_TypeMismatch_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_TypeMismatch_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::NewInstance()`
@@ -49684,6 +49825,11 @@ impl TypeMismatch {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_TypeMismatch_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_TypeMismatch_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -49799,12 +49945,6 @@ impl HandleStandardTypeMismatch {
     }
 }
 
-// ── Skipped symbols for TypeMismatch (1 total) ──
-// SKIPPED: **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Standard_UUID.hxx
 // ========================
@@ -49873,9 +50013,14 @@ impl Underflow {
     }
 
     /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Standard_Underflow_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Standard_Underflow_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Standard_Underflow_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::NewInstance()`
@@ -49960,6 +50105,11 @@ impl Underflow {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_Underflow_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Standard_Underflow_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -50066,18 +50216,21 @@ impl HandleStandardUnderflow {
     }
 }
 
-// ── Skipped symbols for Underflow (1 total) ──
-// SKIPPED: **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    Standard_Byte as Byte, Standard_JmpBuf as JmpBuf, Standard_PCharacter as PCharacter,
+    Standard_Byte as Byte, Standard_IStream as IStream, Standard_JmpBuf as JmpBuf,
+    Standard_OStream as OStream, Standard_PCharacter as PCharacter,
     Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream,
     Standard_ThreadId as ThreadId, Standard_Utf16Char as Utf16Char,
 };
+
+// Manual bindings:
+// Manual bindings for C++ iostream global objects (std::cout, std::cerr, etc.)
+//
+// These provide access to C++ standard output/error streams, which can be
+// passed to OCCT methods that take Standard_OStream& parameters (e.g., Dump,
+// DumpJson, Print).
+include!("../manual/standard.rs");

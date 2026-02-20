@@ -251,6 +251,11 @@ impl AssemblyExplorer {
         unsafe { crate::ffi::STEPSelections_AssemblyExplorer_init(self as *mut Self, G) }
     }
 
+    /// **Source:** `STEPSelections_AssemblyExplorer.hxx`:44 - `STEPSelections_AssemblyExplorer::Dump()`
+    pub fn dump(&self, os: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::STEPSelections_AssemblyExplorer_dump(self as *const Self, os) }
+    }
+
     /// **Source:** `STEPSelections_AssemblyExplorer.hxx`:46 - `STEPSelections_AssemblyExplorer::FindSDRWithProduct()`
     pub fn find_sdr_with_product(
         &self,
@@ -311,12 +316,6 @@ impl AssemblyExplorer {
         }
     }
 }
-
-// ── Skipped symbols for AssemblyExplorer (1 total) ──
-// SKIPPED: **Source:** `STEPSelections_AssemblyExplorer.hxx`:44 - `STEPSelections_AssemblyExplorer::Dump`
-//   Reason: has unbindable types: param 'os': stream type (Standard_OStream&)
-//   // pub fn dump(&self, os: /* Standard_OStream& */);
-//
 
 // ========================
 // From STEPSelections_AssemblyLink.hxx

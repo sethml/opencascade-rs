@@ -166,3 +166,12 @@ exclude_methods = [
 
 [general]
 resolve_deps = true
+
+# Opaque types defined in manual/ files. These are not parsed from OCCT headers
+# but referenced by auto-generated bindings. The generator adds them to the known
+# class set so methods using them aren't skipped as "unknown type".
+# Format: "CppTypeName" = { header = "Header.hxx" }
+[manual_types]
+Standard_OStream = { header = "Standard_OStream.hxx" }
+Standard_IStream = { header = "Standard_IStream.hxx" }
+Standard_SStream = { header = "Standard_SStream.hxx" }

@@ -4332,9 +4332,14 @@ impl IsParallel {
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Geom2dGcc_IsParallel_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Geom2dGcc_IsParallel_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Geom2dGcc_IsParallel_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::NewInstance()`
@@ -4421,6 +4426,11 @@ impl IsParallel {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_IsParallel_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Geom2dGcc_IsParallel_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -4529,12 +4539,6 @@ impl HandleGeom2dGccIsParallel {
         }
     }
 }
-
-// ── Skipped symbols for IsParallel (1 total) ──
-// SKIPPED: **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Geom2dGcc_Lin2d2Tan.hxx

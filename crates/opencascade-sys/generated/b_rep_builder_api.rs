@@ -725,6 +725,17 @@ impl FastSewing {
         unsafe { &*(crate::ffi::BRepBuilderAPI_FastSewing_get_result(self as *const Self)) }
     }
 
+    /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:88 - `BRepBuilderAPI_FastSewing::GetStatuses()`
+    /// Returns list of statuses. Print message if theOS != 0
+    pub fn get_statuses(&mut self, theOS: Option<&mut crate::ffi::Standard_OStream>) -> u32 {
+        unsafe {
+            crate::ffi::BRepBuilderAPI_FastSewing_get_statuses(
+                self as *mut Self,
+                theOS.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:90 - `BRepBuilderAPI_FastSewing::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepBuilderAPI_FastSewing_dynamic_type(self as *const Self)) }
@@ -854,13 +865,6 @@ impl HandleBRepBuilderAPIFastSewing {
         }
     }
 }
-
-// ── Skipped symbols for FastSewing (1 total) ──
-// SKIPPED: **Source:** `BRepBuilderAPI_FastSewing.hxx`:88 - `BRepBuilderAPI_FastSewing::GetStatuses`
-//   method: Returns list of statuses. Print message if theOS != 0
-//   Reason: param 'theOS' uses unknown type 'Standard_OStream*'
-//   // pub fn get_statuses(&mut self, theOS: /* Standard_OStream* */) -> u32;
-//
 
 // ========================
 // From BRepBuilderAPI_FindPlane.hxx

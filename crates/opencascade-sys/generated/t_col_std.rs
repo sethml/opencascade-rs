@@ -4555,6 +4555,13 @@ impl PackedMapOfInteger {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_get_maximal_mapped(self as *const Self) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:321 - `TColStd_PackedMapOfInteger::Statistics()`
+    /// Prints useful statistics about the map.
+    /// It can be used to test the quality of the hashcoding.
+    pub fn statistics(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_statistics(self as *const Self, theStream) }
+    }
+
     /// **Source:** `TColStd_PackedMapOfInteger.hxx`:333 - `TColStd_PackedMapOfInteger::Union()`
     ///
     /// Sets this Map to be the result of union (aka addition, fuse, merge, boolean OR) operation
@@ -4677,16 +4684,10 @@ impl PackedMapOfInteger {
     }
 }
 
-// ── Skipped symbols for PackedMapOfInteger (2 total) ──
+// ── Skipped symbols for PackedMapOfInteger (1 total) ──
 // SKIPPED: **Source:** `TColStd_PackedMapOfInteger.hxx`:289 - `TColStd_PackedMapOfInteger::Assign`
 //   Reason: returns &mut with reference params (ambiguous lifetimes)
 //   // pub fn assign(&mut self, arg0: &PackedMapOfInteger) -> &mut PackedMapOfInteger;
-//
-// SKIPPED: **Source:** `TColStd_PackedMapOfInteger.hxx`:321 - `TColStd_PackedMapOfInteger::Statistics`
-//   method: Prints useful statistics about the map.
-//   method: It can be used to test the quality of the hashcoding.
-//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
-//   // pub fn statistics(&self, theStream: /* Standard_OStream& */);
 //
 
 /// **Source:** `TColStd_PackedMapOfInteger.hxx`:155 - `TColStd_PackedMapOfInteger_Iterator`

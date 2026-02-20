@@ -263,6 +263,18 @@ impl AlertAttribute {
         }
     }
 
+    /// Inherited: **Source:** `Message_AttributeStream.hxx`:32 - `Message_AttributeStream::Stream()`
+    pub fn stream(&self) -> &crate::ffi::Standard_SStream {
+        unsafe { &*(crate::ffi::TopoDS_AlertAttribute_inherited_Stream(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Message_AttributeStream.hxx`:35 - `Message_AttributeStream::SetStream()`
+    pub fn set_stream(&mut self, theStream: &crate::ffi::Standard_SStream) {
+        unsafe {
+            crate::ffi::TopoDS_AlertAttribute_inherited_SetStream(self as *mut Self, theStream)
+        }
+    }
+
     /// Inherited: **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
     pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::TopoDS_AlertAttribute_inherited_GetName(self as *const Self)) }
@@ -2186,9 +2198,14 @@ impl FrozenShape {
     }
 
     /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::TopoDS_FrozenShape_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::TopoDS_FrozenShape_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::TopoDS_FrozenShape_raise_sstream(theMessage) }
     }
 
     /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::NewInstance()`
@@ -2273,6 +2290,11 @@ impl FrozenShape {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_FrozenShape_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TopoDS_FrozenShape_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -2376,12 +2398,6 @@ impl HandleTopoDSFrozenShape {
         }
     }
 }
-
-// ── Skipped symbols for FrozenShape (1 total) ──
-// SKIPPED: **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From TopoDS_HShape.hxx
@@ -2700,9 +2716,14 @@ impl LockedShape {
     }
 
     /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::TopoDS_LockedShape_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::TopoDS_LockedShape_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::TopoDS_LockedShape_raise_sstream(theMessage) }
     }
 
     /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::NewInstance()`
@@ -2787,6 +2808,11 @@ impl LockedShape {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_LockedShape_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TopoDS_LockedShape_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -2890,12 +2916,6 @@ impl HandleTopoDSLockedShape {
         }
     }
 }
-
-// ── Skipped symbols for LockedShape (1 total) ──
-// SKIPPED: **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From TopoDS_Shape.hxx
@@ -5972,9 +5992,14 @@ impl UnCompatibleShapes {
     }
 
     /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::TopoDS_UnCompatibleShapes_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::TopoDS_UnCompatibleShapes_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::TopoDS_UnCompatibleShapes_raise_sstream(theMessage) }
     }
 
     /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::NewInstance()`
@@ -6072,6 +6097,13 @@ impl UnCompatibleShapes {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_UnCompatibleShapes_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::TopoDS_UnCompatibleShapes_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -6190,12 +6222,6 @@ impl HandleTopoDSUnCompatibleShapes {
         }
     }
 }
-
-// ── Skipped symbols for UnCompatibleShapes (1 total) ──
-// SKIPPED: **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From TopoDS_Vertex.hxx

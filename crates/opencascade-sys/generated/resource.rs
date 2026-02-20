@@ -550,9 +550,14 @@ impl NoSuchResource {
     }
 
     /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Resource_NoSuchResource_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Resource_NoSuchResource_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Resource_NoSuchResource_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::NewInstance()`
@@ -660,6 +665,13 @@ impl NoSuchResource {
     ) -> crate::OwnedPtr<crate::ffi::HandleResourceNoSuchResource> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Resource_NoSuchResource_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -790,12 +802,6 @@ impl HandleResourceNoSuchResource {
         }
     }
 }
-
-// ── Skipped symbols for NoSuchResource (1 total) ──
-// SKIPPED: **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Resource_Unicode.hxx

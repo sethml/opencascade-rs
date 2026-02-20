@@ -3023,6 +3023,7 @@ pub fn compute_all_class_bindings(
     collection_names: &HashSet<String>,
     extra_typedef_names: &HashSet<String>,
     exclude_methods: &HashSet<(String, String)>,
+    manual_type_names: &HashSet<String>,
 ) -> Vec<ClassBindings> {
     // Classes with CppDeletable impls: ParsedClasses (without protected dtor) +
     // the manually-specified known collections (which get generated destructors) +
@@ -3064,6 +3065,7 @@ pub fn compute_all_class_bindings(
         all_classes.iter().map(|c| c.name.clone()).collect();
     all_class_names.extend(collection_names.iter().cloned());
     all_class_names.extend(extra_typedef_names.iter().cloned());
+    all_class_names.extend(manual_type_names.iter().cloned());
     let all_enum_names = &symbol_table.all_enum_names;
 
     let handle_able_classes = compute_handle_able_classes(all_classes);
@@ -3178,6 +3180,7 @@ pub fn compute_all_function_bindings(
     collection_names: &HashSet<String>,
     extra_typedef_names: &HashSet<String>,
     known_headers: &HashSet<String>,
+    manual_type_names: &HashSet<String>,
 ) -> (Vec<FunctionBinding>, Vec<SkippedSymbol>) {
     let all_functions = symbol_table.all_included_functions();
     if all_functions.is_empty() {
@@ -3207,6 +3210,7 @@ pub fn compute_all_function_bindings(
         all_classes.iter().map(|c| c.name.clone()).collect();
     all_class_names.extend(collection_names.iter().cloned());
     all_class_names.extend(extra_typedef_names.iter().cloned());
+    all_class_names.extend(manual_type_names.iter().cloned());
     let all_enum_names = &symbol_table.all_enum_names;
 
     let handle_able_classes = compute_handle_able_classes(all_classes);
@@ -3327,6 +3331,30 @@ pub fn compute_all_function_bindings(
                         });
                         continue;
                     }
+                }
+            }
+        }
+
+        // Ambiguous lifetime check for free functions:
+        // If the function returns &mut and has reference params, Rust can't infer
+        // which param the return borrows from.
+        if let Some(ref ret) = func.return_type {
+            if matches!(&ret.original, Type::MutRef(_)) {
+                let ref_param_count = func.params.iter().filter(|p| {
+                    matches!(&p.ty.original, Type::ConstRef(_) | Type::MutRef(_)) || p.ty.original.is_c_string()
+                }).count();
+                if ref_param_count >= 2 {
+                    skipped.push(SkippedSymbol {
+                        kind: "function",
+                        module: func.rust_module.clone(),
+                        cpp_name: format!("{}::{}", func.namespace, func.short_name),
+                        source_header: func.source_header.clone(),
+                        source_line: func.source_line,
+                        doc_comment: func.doc_comment.clone(),
+                        skip_reason: "returns &mut with reference params \u{2014} ambiguous lifetime".to_string(),
+                        stub_rust_decl: generate_function_stub(func),
+                    });
+                    continue;
                 }
             }
         }

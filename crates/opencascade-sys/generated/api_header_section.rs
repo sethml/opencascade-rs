@@ -192,6 +192,24 @@ impl EditHeader {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
+    pub fn print_names(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::APIHeaderSection_EditHeader_inherited_PrintNames(self as *const Self, S)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
+    pub fn print_defs(&self, S: &mut crate::ffi::Standard_OStream, labels: bool) {
+        unsafe {
+            crate::ffi::APIHeaderSection_EditHeader_inherited_PrintDefs(
+                self as *const Self,
+                S,
+                labels,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:99 - `IFSelect_Editor::MaxNameLength()`
     pub fn max_name_length(&self, what: i32) -> i32 {
         unsafe {

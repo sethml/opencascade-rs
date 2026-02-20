@@ -1457,6 +1457,33 @@ impl CheckCounter {
         unsafe { crate::ffi::IFSelect_CheckCounter_inherited_NbNulls(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:116 - `IFSelect_SignatureList::PrintCount()`
+    pub fn print_count(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IFSelect_CheckCounter_inherited_PrintCount(self as *const Self, S) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:128 - `IFSelect_SignatureList::PrintList()`
+    pub fn print_list(
+        &self,
+        S: &mut crate::ffi::Standard_OStream,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        mod_: crate::if_select::PrintCount,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_CheckCounter_inherited_PrintList(
+                self as *const Self,
+                S,
+                model,
+                mod_.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:136 - `IFSelect_SignatureList::PrintSum()`
+    pub fn print_sum(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IFSelect_CheckCounter_inherited_PrintSum(self as *const Self, S) }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -4515,6 +4542,38 @@ impl EditForm {
         unsafe { crate::ffi::IFSelect_EditForm_clear_edit(self as *mut Self, num) }
     }
 
+    /// **Source:** `IFSelect_EditForm.hxx`:267 - `IFSelect_EditForm::PrintDefs()`
+    /// Prints Definitions, relative to the Editor
+    pub fn print_defs(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IFSelect_EditForm_print_defs(self as *const Self, S) }
+    }
+
+    /// **Source:** `IFSelect_EditForm.hxx`:276 - `IFSelect_EditForm::PrintValues()`
+    /// Prints Values, according to what and alsolist
+    /// <names> True : prints Long Names; False : prints Short Names
+    /// <what> < 0 : prints Original Values (+ flag Modified)
+    /// <what> > 0 : prints Final Values (+flag Modified)
+    /// <what> = 0 : prints Modified Values (Original + Edited)
+    /// <alsolist> False (D) : lists are printed only as their count
+    /// <alsolist> True : lists are printed for all their items
+    pub fn print_values(
+        &self,
+        S: &mut crate::ffi::Standard_OStream,
+        what: i32,
+        names: bool,
+        alsolist: bool,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_EditForm_print_values(
+                self as *const Self,
+                S,
+                what,
+                names,
+                alsolist,
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_EditForm.hxx`:283 - `IFSelect_EditForm::Apply()`
     /// Applies modifications to own data
     /// Calls ApplyData then Clears Status according EditKeepStatus
@@ -4661,20 +4720,6 @@ impl HandleIFSelectEditForm {
     }
 }
 
-// ── Skipped symbols for EditForm (2 total) ──
-// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:267 - `IFSelect_EditForm::PrintDefs`
-//   method: Prints Definitions, relative to the Editor
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_defs(&self, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:276 - `IFSelect_EditForm::PrintValues`
-//   method: Prints Values, according to what and alsolist
-//   method: <names> True : prints Long Names; False : prints Short Names
-//   method: <what> < 0 : prints Original Values (+ flag Modified)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_values(&self, S: /* Standard_OStream& */, what: i32, names: bool, alsolist: bool);
-//
-
 // ========================
 // From IFSelect_Editor.hxx
 // ========================
@@ -4790,6 +4835,16 @@ impl Editor {
     pub fn name_number(&self, name: &str) -> i32 {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe { crate::ffi::IFSelect_Editor_name_number(self as *const Self, c_name.as_ptr()) }
+    }
+
+    /// **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
+    pub fn print_names(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IFSelect_Editor_print_names(self as *const Self, S) }
+    }
+
+    /// **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
+    pub fn print_defs(&self, S: &mut crate::ffi::Standard_OStream, labels: bool) {
+        unsafe { crate::ffi::IFSelect_Editor_print_defs(self as *const Self, S, labels) }
     }
 
     /// **Source:** `IFSelect_Editor.hxx`:99 - `IFSelect_Editor::MaxNameLength()`
@@ -5158,16 +5213,6 @@ impl HandleIFSelectEditor {
         }
     }
 }
-
-// ── Skipped symbols for Editor (2 total) ──
-// SKIPPED: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames`
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_names(&self, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs`
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_defs(&self, S: /* Standard_OStream& */, labels: bool);
-//
 
 // ========================
 // From IFSelect_Functions.hxx
@@ -6134,6 +6179,33 @@ impl GraphCounter {
     /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:97 - `IFSelect_SignatureList::NbNulls()`
     pub fn nb_nulls(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_GraphCounter_inherited_NbNulls(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:116 - `IFSelect_SignatureList::PrintCount()`
+    pub fn print_count(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IFSelect_GraphCounter_inherited_PrintCount(self as *const Self, S) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:128 - `IFSelect_SignatureList::PrintList()`
+    pub fn print_list(
+        &self,
+        S: &mut crate::ffi::Standard_OStream,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        mod_: crate::if_select::PrintCount,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_GraphCounter_inherited_PrintList(
+                self as *const Self,
+                S,
+                model,
+                mod_.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:136 - `IFSelect_SignatureList::PrintSum()`
+    pub fn print_sum(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IFSelect_GraphCounter_inherited_PrintSum(self as *const Self, S) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -8975,6 +9047,18 @@ impl ParamEditor {
                 crate::ffi::IFSelect_ParamEditor_inherited_EditMode(self as *const Self, num),
             )
             .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
+    pub fn print_names(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IFSelect_ParamEditor_inherited_PrintNames(self as *const Self, S) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
+    pub fn print_defs(&self, S: &mut crate::ffi::Standard_OStream, labels: bool) {
+        unsafe {
+            crate::ffi::IFSelect_ParamEditor_inherited_PrintDefs(self as *const Self, S, labels)
         }
     }
 
@@ -25531,6 +25615,33 @@ impl SignCounter {
         unsafe { crate::ffi::IFSelect_SignCounter_inherited_NbNulls(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:116 - `IFSelect_SignatureList::PrintCount()`
+    pub fn print_count(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IFSelect_SignCounter_inherited_PrintCount(self as *const Self, S) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:128 - `IFSelect_SignatureList::PrintList()`
+    pub fn print_list(
+        &self,
+        S: &mut crate::ffi::Standard_OStream,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        mod_: crate::if_select::PrintCount,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_SignCounter_inherited_PrintList(
+                self as *const Self,
+                S,
+                model,
+                mod_.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:136 - `IFSelect_SignatureList::PrintSum()`
+    pub fn print_sum(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IFSelect_SignCounter_inherited_PrintSum(self as *const Self, S) }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -27399,6 +27510,48 @@ impl SignatureList {
         }
     }
 
+    /// **Source:** `IFSelect_SignatureList.hxx`:116 - `IFSelect_SignatureList::PrintCount()`
+    /// Prints the counts of items (not the list)
+    pub fn print_count(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IFSelect_SignatureList_print_count(self as *const Self, S) }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:128 - `IFSelect_SignatureList::PrintList()`
+    /// Prints the lists of items, if they are present (else, prints
+    /// a message "no list available")
+    /// Uses <model> to determine for each entity to be listed, its
+    /// number, and its specific identifier (by PrintLabel)
+    /// <mod> gives a mode for printing :
+    /// - CountByItem : just count (as PrintCount)
+    /// - ShortByItem : minimum i.e. count plus 5 first entity numbers
+    /// - ShortByItem(D) complete list of entity numbers (0: "Global")
+    /// - EntitiesByItem : list of (entity number/PrintLabel from the model)
+    /// other modes are ignored
+    pub fn print_list(
+        &self,
+        S: &mut crate::ffi::Standard_OStream,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        mod_: crate::if_select::PrintCount,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_SignatureList_print_list(
+                self as *const Self,
+                S,
+                model,
+                mod_.into(),
+            )
+        }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:136 - `IFSelect_SignatureList::PrintSum()`
+    /// Prints a summary
+    /// Item which has the greatest count of entities
+    /// For items which are numeric values : their count, maximum,
+    /// minimum values, cumul, average
+    pub fn print_sum(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IFSelect_SignatureList_print_sum(self as *const Self, S) }
+    }
+
     /// **Source:** `IFSelect_SignatureList.hxx`:138 - `IFSelect_SignatureList::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IFSelect_SignatureList_dynamic_type(self as *const Self)) }
@@ -27592,30 +27745,11 @@ impl HandleIFSelectSignatureList {
     }
 }
 
-// ── Skipped symbols for SignatureList (4 total) ──
+// ── Skipped symbols for SignatureList (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:78 - `IFSelect_SignatureList::Init`
 //   method: Aknowledges the list in once. Name identifies the Signature
 //   Reason: has unbindable types: param 'list': unresolved template type (const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>&)
 //   // pub fn init(&mut self, name: *const char, count: &MapOfTypes, list: /* const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>& */, nbnuls: i32);
-//
-// SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:116 - `IFSelect_SignatureList::PrintCount`
-//   method: Prints the counts of items (not the list)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_count(&self, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:128 - `IFSelect_SignatureList::PrintList`
-//   method: Prints the lists of items, if they are present (else, prints
-//   method: a message "no list available")
-//   method: Uses <model> to determine for each entity to be listed, its
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_list(&self, S: /* Standard_OStream& */, model: &HandleInterfaceModel, mod_: PrintCount);
-//
-// SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:136 - `IFSelect_SignatureList::PrintSum`
-//   method: Prints a summary
-//   method: Item which has the greatest count of entities
-//   method: For items which are numeric values : their count, maximum,
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_sum(&self, S: /* Standard_OStream& */);
 //
 
 // ========================
@@ -28382,6 +28516,38 @@ impl WorkLibrary {
         }
     }
 
+    /// **Source:** `IFSelect_WorkLibrary.hxx`:113 - `IFSelect_WorkLibrary::DumpEntity()`
+    /// Gives the way of dumping an entity under a form comprehensive
+    /// for each norm. <model> helps to identify, number ... entities.
+    /// <level> is to be interpreted for each norm (because of the
+    /// formats which can be very different)
+    pub fn dump_entity_handleinterfaceinterfacemodel_handleinterfaceprotocol_handlestandardtransient_ostream_int(
+        &self,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+        entity: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+        level: i32,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_WorkLibrary_dump_entity_handleinterfaceinterfacemodel_handleinterfaceprotocol_handlestandardtransient_ostream_int(self as *const Self, model, protocol, entity, S, level)
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkLibrary.hxx`:120 - `IFSelect_WorkLibrary::DumpEntity()`
+    /// Calls deferred DumpEntity with the recorded default level
+    pub fn dump_entity_handleinterfaceinterfacemodel_handleinterfaceprotocol_handlestandardtransient_ostream(
+        &self,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+        entity: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_WorkLibrary_dump_entity_handleinterfaceinterfacemodel_handleinterfaceprotocol_handlestandardtransient_ostream(self as *const Self, model, protocol, entity, S)
+        }
+    }
+
     /// **Source:** `IFSelect_WorkLibrary.hxx`:128 - `IFSelect_WorkLibrary::SetDumpLevels()`
     /// Records a default level and a maximum value for level
     /// level for DumpEntity can go between 0 and <max>
@@ -28567,25 +28733,13 @@ impl HandleIFSelectWorkLibrary {
     }
 }
 
-// ── Skipped symbols for WorkLibrary (3 total) ──
+// ── Skipped symbols for WorkLibrary (1 total) ──
 // SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:68 - `IFSelect_WorkLibrary::ReadStream`
 //   method: Interface to read a data from the specified stream.
 //   method: @param model is the resulting Model, which has to be created by this method.
 //   method: In case of error, model must be returned Null
-//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
-//   // pub fn read_stream(&self, theName: *const char, theIStream: /* std::istream& */, model: &mut HandleInterfaceModel, protocol: &HandleProtocol) -> i32;
-//
-// SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:113 - `IFSelect_WorkLibrary::DumpEntity`
-//   method: Gives the way of dumping an entity under a form comprehensive
-//   method: for each norm. <model> helps to identify, number ... entities.
-//   method: <level> is to be interpreted for each norm (because of the
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn dump_entity(&self, model: &HandleInterfaceModel, protocol: &HandleProtocol, entity: &HandleTransient, S: /* Standard_OStream& */, level: i32);
-//
-// SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:120 - `IFSelect_WorkLibrary::DumpEntity`
-//   method: Calls deferred DumpEntity with the recorded default level
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn dump_entity(&self, model: &HandleInterfaceModel, protocol: &HandleProtocol, entity: &HandleTransient, S: /* Standard_OStream& */);
+//   Reason: param 'theIStream' uses unknown type 'std::istream&'
+//   // pub fn read_stream(&self, theName: *const char, theIStream: &mut istream, model: &mut HandleInterfaceModel, protocol: &HandleProtocol) -> i32;
 //
 
 // ========================
@@ -30655,11 +30809,50 @@ impl WorkSession {
         unsafe { crate::ffi::IFSelect_WorkSession_dump_selection(self as *const Self, sel) }
     }
 
+    /// **Source:** `IFSelect_WorkSession.hxx`:1079 - `IFSelect_WorkSession::DumpModel()`
+    /// Lists the content of the Input Model (if there is one)
+    /// According level : 0 -> gives only count of Entities and Roots
+    /// 1 -> Lists also Roots;  2 -> Lists all Entities (by TraceType)
+    /// 3 -> Performs a call to CheckList (Fails) and lists the result
+    /// 4 -> as 3 but all CheckList (Fails + Warnings)
+    /// 5,6,7  : as 3 but resp. Count,List,Labels by Fail
+    /// 8,9,10 : as 4 but resp. Count,List,Labels by message
+    pub fn dump_model(&mut self, level: i32, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IFSelect_WorkSession_dump_model(self as *mut Self, level, S) }
+    }
+
     /// **Source:** `IFSelect_WorkSession.hxx`:1083 - `IFSelect_WorkSession::TraceDumpModel()`
     /// Dumps the current Model (as inherited DumpModel), on currently
     /// defined Default Trace File (default is standard output)
     pub fn trace_dump_model(&mut self, mode: i32) {
         unsafe { crate::ffi::IFSelect_WorkSession_trace_dump_model(self as *mut Self, mode) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:1090 - `IFSelect_WorkSession::DumpEntity()`
+    /// Dumps a starting entity according to the current norm.
+    /// To do this, it calls DumpEntity from WorkLibrary.
+    /// <level> is to be interpreted for each norm : see specific
+    /// classes of WorkLibrary for it. Generally, 0 if for very basic
+    /// (only type ...), greater values give more and more details.
+    pub fn dump_entity(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        level: i32,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::IFSelect_WorkSession_dump_entity(self as *const Self, ent, level, S) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:1097 - `IFSelect_WorkSession::PrintEntityStatus()`
+    /// Prints main information about an entity : its number, type,
+    /// validity (and checks if any), category, shareds and sharings..
+    /// mutable because it can recompute checks as necessary
+    pub fn print_entity_status(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::IFSelect_WorkSession_print_entity_status(self as *mut Self, ent, S) }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:1103 - `IFSelect_WorkSession::TraceDumpEntity()`
@@ -30669,6 +30862,53 @@ impl WorkSession {
     pub fn trace_dump_entity(&self, ent: &crate::ffi::HandleStandardTransient, level: i32) {
         unsafe {
             crate::ffi::IFSelect_WorkSession_trace_dump_entity(self as *const Self, ent, level)
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:1114 - `IFSelect_WorkSession::PrintCheckList()`
+    /// Prints a CheckIterator to the current Trace File, controlled
+    /// with the current Model
+    /// complete or fails only, according to <failsonly>
+    /// <mode> defines the mode of printing
+    /// 0 : sequential, according entities; else with a CheckCounter
+    /// 1 : according messages, count of entities
+    /// 2 : id but with list of entities, designated by their numbers
+    /// 3 : as 2 but with labels of entities
+    pub fn print_check_list(
+        &self,
+        S: &mut crate::ffi::Standard_OStream,
+        checklist: &crate::interface::CheckIterator,
+        failsonly: bool,
+        mode: crate::if_select::PrintCount,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_print_check_list(
+                self as *const Self,
+                S,
+                checklist,
+                failsonly,
+                mode.into(),
+            )
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:1122 - `IFSelect_WorkSession::PrintSignatureList()`
+    /// Prints a SignatureList to the current Trace File, controlled
+    /// with the current Model
+    /// <mode> defines the mode of printing (see SignatureList)
+    pub fn print_signature_list(
+        &self,
+        S: &mut crate::ffi::Standard_OStream,
+        signlist: &crate::ffi::HandleIFSelectSignatureList,
+        mode: crate::if_select::PrintCount,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_print_signature_list(
+                self as *const Self,
+                S,
+                signlist,
+                mode.into(),
+            )
         }
     }
 
@@ -30706,6 +30946,23 @@ impl WorkSession {
     /// entities (which are in no packet at all)
     pub fn evaluate_complete(&self, mode: i32) {
         unsafe { crate::ffi::IFSelect_WorkSession_evaluate_complete(self as *const Self, mode) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:1157 - `IFSelect_WorkSession::ListEntities()`
+    /// Internal method which displays an EntityIterator
+    /// <mode> 0 gives short display (only entity numbers)
+    /// 1 gives a more complete trace (1 line per Entity)
+    /// (can be used each time a trace has to be output from a list)
+    /// 2 gives a form suitable for givelist : (n1,n2,n3...)
+    pub fn list_entities(
+        &self,
+        iter: &crate::interface::EntityIterator,
+        mode: i32,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_list_entities(self as *const Self, iter, mode, S)
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:1161 - `IFSelect_WorkSession::DynamicType()`
@@ -30843,13 +31100,13 @@ impl HandleIFSelectWorkSession {
     }
 }
 
-// ── Skipped symbols for WorkSession (8 total) ──
+// ── Skipped symbols for WorkSession (2 total) ──
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:157 - `IFSelect_WorkSession::ReadStream`
 //   method: Reads a file from stream with the WorkLibrary (sets Model and LoadedFile)
 //   method: Returns a integer status which can be :
 //   method: RetDone if OK,  RetVoid if no Protocol not defined,
-//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
-//   // pub fn read_stream(&mut self, theName: *const char, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//   Reason: param 'theIStream' uses unknown type 'std::istream&'
+//   // pub fn read_stream(&mut self, theName: *const char, theIStream: &mut istream) -> OwnedPtr<IFSelect_ReturnStatus>;
 //
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1042 - `IFSelect_WorkSession::SetParams`
 //   method: Sets a list of Parameters, i.e. TypedValue, to be handled
@@ -30857,48 +31114,6 @@ impl HandleIFSelectWorkSession {
 //   method: The two lists are parallel, if <params> is longer than <uses>,
 //   Reason: has unbindable types: param 'params': unresolved template type (const NCollection_Vector<opencascade::handle<Standard_Transient>>&); param 'uselist': unresolved template type (const NCollection_Vector<Standard_Integer>&)
 //   // pub fn set_params(&mut self, params: /* const NCollection_Vector<opencascade::handle<Standard_Transient>>& */, uselist: /* const NCollection_Vector<Standard_Integer>& */);
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1079 - `IFSelect_WorkSession::DumpModel`
-//   method: Lists the content of the Input Model (if there is one)
-//   method: According level : 0 -> gives only count of Entities and Roots
-//   method: 1 -> Lists also Roots;  2 -> Lists all Entities (by TraceType)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn dump_model(&mut self, level: i32, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1090 - `IFSelect_WorkSession::DumpEntity`
-//   method: Dumps a starting entity according to the current norm.
-//   method: To do this, it calls DumpEntity from WorkLibrary.
-//   method: <level> is to be interpreted for each norm : see specific
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn dump_entity(&self, ent: &HandleTransient, level: i32, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1097 - `IFSelect_WorkSession::PrintEntityStatus`
-//   method: Prints main information about an entity : its number, type,
-//   method: validity (and checks if any), category, shareds and sharings..
-//   method: mutable because it can recompute checks as necessary
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_entity_status(&mut self, ent: &HandleTransient, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1114 - `IFSelect_WorkSession::PrintCheckList`
-//   method: Prints a CheckIterator to the current Trace File, controlled
-//   method: with the current Model
-//   method: complete or fails only, according to <failsonly>
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_check_list(&self, S: /* Standard_OStream& */, checklist: &CheckIterator, failsonly: bool, mode: PrintCount);
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1122 - `IFSelect_WorkSession::PrintSignatureList`
-//   method: Prints a SignatureList to the current Trace File, controlled
-//   method: with the current Model
-//   method: <mode> defines the mode of printing (see SignatureList)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_signature_list(&self, S: /* Standard_OStream& */, signlist: &HandleSignatureList, mode: PrintCount);
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1157 - `IFSelect_WorkSession::ListEntities`
-//   method: Internal method which displays an EntityIterator
-//   method: <mode> 0 gives short display (only entity numbers)
-//   method: 1 gives a more complete trace (1 line per Entity)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn list_entities(&self, iter: &EntityIterator, mode: i32, S: /* Standard_OStream& */);
 //
 
 // ========================

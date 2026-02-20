@@ -537,6 +537,21 @@ impl Attribute {
         unsafe { crate::ffi::TDF_Attribute_references(self as *const Self, aDataSet) }
     }
 
+    /// **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    /// Dumps the attribute content on <aStream>, using
+    /// <aMap> like this: if an attribute is not in the
+    /// map, first put add it to the map and then dump it.
+    /// Use the map rank instead of dumping each attribute
+    /// field.
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe { crate::ffi::TDF_Attribute_extended_dump(self as *const Self, anOS, aFilter, aMap) }
+    }
+
     /// **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     /// Forgets the attribute. <aTransaction> is the
     /// current transaction in which the forget is done. A
@@ -2079,19 +2094,12 @@ impl HandleTDFAttribute {
     }
 }
 
-// ── Skipped symbols for Attribute (2 total) ──
+// ── Skipped symbols for Attribute (1 total) ──
 // SKIPPED: **Source:** `TDF_Attribute.hxx`:349 - `TDF_Attribute::Dump`
 //   method: Dumps the minimum information about <me> on
 //   method: <aStream>.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump`
-//   method: Dumps the attribute content on <aStream>, using
-//   method: <aMap> like this: if an attribute is not in the
-//   method: map, first put add it to the map and then dump it.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
-//   // pub fn extended_dump(&self, anOS: /* Standard_OStream& */, aFilter: &IDFilter, aMap: &mut AttributeIndexedMap);
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2497,8 +2505,8 @@ impl HandleTDFAttributeDelta {
 // ── Skipped symbols for AttributeDelta (1 total) ──
 // SKIPPED: **Source:** `TDF_AttributeDelta.hxx`:59 - `TDF_AttributeDelta::Dump`
 //   method: Dumps the contents.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, OS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3499,8 +3507,8 @@ impl HandleTDFData {
 // ── Skipped symbols for Data (2 total) ──
 // SKIPPED: **Source:** `TDF_Data.hxx`:81 - `TDF_Data::Dump`
 //   method: Dumps the Data on <aStream>.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 // SKIPPED: **Source:** `TDF_Data.hxx`:147 - `TDF_Data::LabelNodeAllocator`
 //   method: Returns TDF_HAllocator, which is an
@@ -3704,8 +3712,8 @@ impl HandleTDFDataSet {
 // SKIPPED: **Source:** `TDF_DataSet.hxx`:76 - `TDF_DataSet::Dump`
 //   method: Dumps the minimum information about <me> on
 //   method: <aStream>.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -4302,6 +4310,11 @@ impl Delta {
         unsafe { crate::ffi::TDF_Delta_set_name(self as *mut Self, theName) }
     }
 
+    /// **Source:** `TDF_Delta.hxx`:71 - `TDF_Delta::Dump()`
+    pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TDF_Delta_dump(self as *const Self, OS) }
+    }
+
     /// **Source:** `TDF_Delta.hxx`:78 - `TDF_Delta::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDF_Delta_dynamic_type(self as *const Self)) }
@@ -4423,12 +4436,6 @@ impl HandleTDFDelta {
         }
     }
 }
-
-// ── Skipped symbols for Delta (1 total) ──
-// SKIPPED: **Source:** `TDF_Delta.hxx`:71 - `TDF_Delta::Dump`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump(&self, OS: /* Standard_OStream& */);
-//
 
 // ========================
 // From TDF_DeltaOnAddition.hxx
@@ -5957,19 +5964,18 @@ impl IDFilter {
         unsafe { crate::ffi::TDF_IDFilter_copy(self as *mut Self, fromFilter) }
     }
 
+    /// **Source:** `TDF_IDFilter.hxx`:101 - `TDF_IDFilter::Dump()`
+    /// Writes the contents of <me> to <OS>.
+    pub fn dump(&self, anOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TDF_IDFilter_dump(self as *const Self, anOS) }
+    }
+
     /// **Source:** `TDF_IDFilter.hxx`:104 - `TDF_IDFilter::Assign()`
     /// Assignment
     pub fn assign(&mut self, theFilter: &IDFilter) {
         unsafe { crate::ffi::TDF_IDFilter_assign(self as *mut Self, theFilter) }
     }
 }
-
-// ── Skipped symbols for IDFilter (1 total) ──
-// SKIPPED: **Source:** `TDF_IDFilter.hxx`:101 - `TDF_IDFilter::Dump`
-//   method: Writes the contents of <me> to <OS>.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */);
-//
 
 // ========================
 // From TDF_Label.hxx
@@ -6304,25 +6310,32 @@ impl Label {
     pub fn has_greater_node(&self, otherLabel: &Label) -> bool {
         unsafe { crate::ffi::TDF_Label_has_greater_node(self as *const Self, otherLabel) }
     }
+
+    /// **Source:** `TDF_Label.hxx`:249 - `TDF_Label::ExtendedDump()`
+    /// Dumps the label on <aStream> and its attributes
+    /// rank in <aMap> if their IDs are kept by <IDFilter>.
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe { crate::ffi::TDF_Label_extended_dump(self as *const Self, anOS, aFilter, aMap) }
+    }
+
+    /// **Source:** `TDF_Label.hxx`:254 - `TDF_Label::EntryDump()`
+    /// Dumps the label entry.
+    pub fn entry_dump(&self, anOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TDF_Label_entry_dump(self as *const Self, anOS) }
+    }
 }
 
-// ── Skipped symbols for Label (3 total) ──
+// ── Skipped symbols for Label (1 total) ──
 // SKIPPED: **Source:** `TDF_Label.hxx`:243 - `TDF_Label::Dump`
 //   method: Dumps the minimum information about <me> on
 //   method: <aStream>.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDF_Label.hxx`:249 - `TDF_Label::ExtendedDump`
-//   method: Dumps the label on <aStream> and its attributes
-//   method: rank in <aMap> if their IDs are kept by <IDFilter>.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
-//   // pub fn extended_dump(&self, anOS: /* Standard_OStream& */, aFilter: &IDFilter, aMap: &mut AttributeIndexedMap);
-//
-// SKIPPED: **Source:** `TDF_Label.hxx`:254 - `TDF_Label::EntryDump`
-//   method: Dumps the label entry.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
-//   // pub fn entry_dump(&self, anOS: /* Standard_OStream& */);
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -6645,6 +6658,23 @@ impl Reference {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDF_Reference_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDF_Reference_inherited_Forget(self as *mut Self, aTransaction) }
@@ -6733,8 +6763,8 @@ impl HandleTDFReference {
 
 // ── Skipped symbols for Reference (1 total) ──
 // SKIPPED: **Source:** `TDF_Reference.hxx`:56 - `TDF_Reference::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -7093,8 +7123,8 @@ impl HandleTDFRelocationTable {
 // ── Skipped symbols for RelocationTable (1 total) ──
 // SKIPPED: **Source:** `TDF_RelocationTable.hxx`:151 - `TDF_RelocationTable::Dump`
 //   method: Dumps the relocation table.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, dumpLabels: bool, dumpAttributes: bool, dumpTransients: bool, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, dumpLabels: bool, dumpAttributes: bool, dumpTransients: bool, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -7437,6 +7467,23 @@ impl TagSource {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDF_TagSource_inherited_References(self as *const Self, aDataSet) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDF_TagSource_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -7785,33 +7832,52 @@ impl Tool {
     ) {
         unsafe { crate::ffi::TDF_Tool_deduct_labels(aLabelList, aLabelMap) }
     }
-}
 
-// ── Skipped symbols for Tool (4 total) ──
-// SKIPPED: **Source:** `TDF_Tool.hxx`:165 - `TDF_Tool::DeepDump`
-//   static_method: Dumps <aDF> and its labels and their attributes.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
-//   // pub fn deep_dump(anOS: /* Standard_OStream& */, aDF: &HandleData);
-//
-// SKIPPED: **Source:** `TDF_Tool.hxx`:170 - `TDF_Tool::ExtendedDeepDump`
-//   static_method: Dumps <aDF> and its labels and their attributes,
-//   static_method: if their IDs are kept by <aFilter>. Dumps also the
-//   static_method: attributes content.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
-//   // pub fn extended_deep_dump(anOS: /* Standard_OStream& */, aDF: &HandleData, aFilter: &IDFilter);
-//
-// SKIPPED: **Source:** `TDF_Tool.hxx`:175 - `TDF_Tool::DeepDump`
-//   static_method: Dumps <aLabel>, its children and their attributes.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
-//   // pub fn deep_dump(anOS: /* Standard_OStream& */, aLabel: &Label);
-//
-// SKIPPED: **Source:** `TDF_Tool.hxx`:180 - `TDF_Tool::ExtendedDeepDump`
-//   static_method: Dumps <aLabel>, its children and their attributes,
-//   static_method: if their IDs are kept by <aFilter>. Dumps also the
-//   static_method: attributes content.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
-//   // pub fn extended_deep_dump(anOS: /* Standard_OStream& */, aLabel: &Label, aFilter: &IDFilter);
-//
+    /// **Source:** `TDF_Tool.hxx`:165 - `TDF_Tool::DeepDump()`
+    /// Dumps <aDF> and its labels and their attributes.
+    pub fn deep_dump_ostream_handletdfdata(
+        anOS: &mut crate::ffi::Standard_OStream,
+        aDF: &crate::ffi::HandleTDFData,
+    ) {
+        unsafe { crate::ffi::TDF_Tool_deep_dump_ostream_handletdfdata(anOS, aDF) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:170 - `TDF_Tool::ExtendedDeepDump()`
+    /// Dumps <aDF> and its labels and their attributes,
+    /// if their IDs are kept by <aFilter>. Dumps also the
+    /// attributes content.
+    pub fn extended_deep_dump_ostream_handletdfdata_idfilter(
+        anOS: &mut crate::ffi::Standard_OStream,
+        aDF: &crate::ffi::HandleTDFData,
+        aFilter: &IDFilter,
+    ) {
+        unsafe {
+            crate::ffi::TDF_Tool_extended_deep_dump_ostream_handletdfdata_idfilter(
+                anOS, aDF, aFilter,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:175 - `TDF_Tool::DeepDump()`
+    /// Dumps <aLabel>, its children and their attributes.
+    pub fn deep_dump_ostream_label(anOS: &mut crate::ffi::Standard_OStream, aLabel: &Label) {
+        unsafe { crate::ffi::TDF_Tool_deep_dump_ostream_label(anOS, aLabel) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:180 - `TDF_Tool::ExtendedDeepDump()`
+    /// Dumps <aLabel>, its children and their attributes,
+    /// if their IDs are kept by <aFilter>. Dumps also the
+    /// attributes content.
+    pub fn extended_deep_dump_ostream_label_idfilter(
+        anOS: &mut crate::ffi::Standard_OStream,
+        aLabel: &Label,
+        aFilter: &IDFilter,
+    ) {
+        unsafe {
+            crate::ffi::TDF_Tool_extended_deep_dump_ostream_label_idfilter(anOS, aLabel, aFilter)
+        }
+    }
+}
 
 // ========================
 // From TDF_Transaction.hxx

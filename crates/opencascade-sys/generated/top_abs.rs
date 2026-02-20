@@ -70,6 +70,33 @@ pub fn complement(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientatio
         crate::top_abs::Orientation::try_from(crate::ffi::TopAbs_complement(Or.into())).unwrap()
     }
 }
+/// **Source:** `TopAbs.hxx`:100 - `TopAbs::Print`
+/// Prints the name of Shape type as a String on the Stream.
+pub fn print_shapeenum_ostream(
+    theShapeType: crate::top_abs::ShapeEnum,
+    theStream: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::TopAbs_print_shapeenum_ostream(theShapeType.into(), theStream)) }
+}
+/// **Source:** `TopAbs.hxx`:106 - `TopAbs::Print`
+/// Prints the name of the Orientation as a String on the Stream.
+pub fn print_orientation_ostream(
+    theOrientation: crate::top_abs::Orientation,
+    theStream: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe {
+        &mut *(crate::ffi::TopAbs_print_orientation_ostream(theOrientation.into(), theStream))
+    }
+}
+/// **Source:** `TopAbs.hxx`:114 - `TopAbs::Print`
+/// Prints the name of the State <St> as a String on
+/// the Stream <S> and returns <S>.
+pub fn print_state_ostream(
+    St: crate::top_abs::State,
+    S: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::TopAbs_print_state_ostream(St.into(), S)) }
+}
 /// **Source:** `TopAbs.hxx`:120 - `TopAbs::ShapeTypeToString`
 /// Returns the string name for a given shape type.
 /// @param theType shape type

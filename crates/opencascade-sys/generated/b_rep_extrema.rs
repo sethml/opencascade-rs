@@ -267,6 +267,12 @@ impl DistShapeShape {
         }
     }
 
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:160 - `BRepExtrema_DistShapeShape::Dump()`
+    /// Prints on the stream o information on the current state of the object. <br>
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BRepExtrema_DistShapeShape_dump(self as *const Self, o) }
+    }
+
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:164 - `BRepExtrema_DistShapeShape::SetFlag()`
     /// Sets unused parameter
     /// Obsolete
@@ -299,13 +305,6 @@ impl DistShapeShape {
         unsafe { crate::ffi::BRepExtrema_DistShapeShape_is_multi_thread(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for DistShapeShape (1 total) ──
-// SKIPPED: **Source:** `BRepExtrema_DistShapeShape.hxx`:160 - `BRepExtrema_DistShapeShape::Dump`
-//   method: Prints on the stream o information on the current state of the object. <br>
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
 
 // ========================
 // From BRepExtrema_DistanceSS.hxx
@@ -2154,9 +2153,14 @@ impl UnCompatibleShape {
     }
 
     /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_raise_sstream(theMessage) }
     }
 
     /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::NewInstance()`
@@ -2262,6 +2266,16 @@ impl UnCompatibleShape {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_UnCompatibleShape_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BRepExtrema_UnCompatibleShape_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         }
     }
 
@@ -2389,12 +2403,6 @@ impl HandleBRepExtremaUnCompatibleShape {
         }
     }
 }
-
-// ── Skipped symbols for UnCompatibleShape (1 total) ──
-// SKIPPED: **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // Additional type re-exports

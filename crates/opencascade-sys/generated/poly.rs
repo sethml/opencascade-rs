@@ -6,6 +6,93 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `Poly.hxx`:67 - `Poly::Write`
+/// Writes the content of the triangulation <T> on the
+/// stream <OS>. If <Compact> is true this is a "save"
+/// format  intended  to  be read back   with the Read
+/// method. If compact is False  it is a "Dump" format
+/// intended to be informative.
+pub fn write_handlepolytriangulation_ostream_bool(
+    T: &crate::ffi::HandlePolyTriangulation,
+    OS: &mut crate::ffi::Standard_OStream,
+    Compact: bool,
+) {
+    unsafe { crate::ffi::Poly_write_handlepolytriangulation_ostream_bool(T, OS, Compact) }
+}
+/// **Source:** `Poly.hxx`:76 - `Poly::Write`
+/// Writes  the  content  of the 3D polygon <P> on the
+/// stream <OS>. If <Compact> is true this is a "save"
+/// format  intended  to  be read back   with the Read
+/// method. If compact is False  it is a "Dump" format
+/// intended to be informative.
+pub fn write_handlepolypolygon3d_ostream_bool(
+    P: &crate::ffi::HandlePolyPolygon3D,
+    OS: &mut crate::ffi::Standard_OStream,
+    Compact: bool,
+) {
+    unsafe { crate::ffi::Poly_write_handlepolypolygon3d_ostream_bool(P, OS, Compact) }
+}
+/// **Source:** `Poly.hxx`:85 - `Poly::Write`
+/// Writes the  content  of the 2D polygon  <P> on the
+/// stream <OS>. If <Compact> is true this is a "save"
+/// format  intended  to  be read back   with the Read
+/// method. If compact is False  it is a "Dump" format
+/// intended to be informative.
+pub fn write_handlepolypolygon2d_ostream_bool(
+    P: &crate::ffi::HandlePolyPolygon2D,
+    OS: &mut crate::ffi::Standard_OStream,
+    Compact: bool,
+) {
+    unsafe { crate::ffi::Poly_write_handlepolypolygon2d_ostream_bool(P, OS, Compact) }
+}
+/// **Source:** `Poly.hxx`:91 - `Poly::Dump`
+/// Dumps  the triangulation.  This   is a call to  the
+/// previous method with Comapct set to False.
+pub fn dump_handlepolytriangulation_ostream(
+    T: &crate::ffi::HandlePolyTriangulation,
+    OS: &mut crate::ffi::Standard_OStream,
+) {
+    unsafe { crate::ffi::Poly_dump_handlepolytriangulation_ostream(T, OS) }
+}
+/// **Source:** `Poly.hxx`:95 - `Poly::Dump`
+/// Dumps  the  3D  polygon.  This   is a call to  the
+/// previous method with Comapct set to False.
+pub fn dump_handlepolypolygon3d_ostream(
+    P: &crate::ffi::HandlePolyPolygon3D,
+    OS: &mut crate::ffi::Standard_OStream,
+) {
+    unsafe { crate::ffi::Poly_dump_handlepolypolygon3d_ostream(P, OS) }
+}
+/// **Source:** `Poly.hxx`:99 - `Poly::Dump`
+/// Dumps  the  2D  polygon.  This   is a call to  the
+/// previous method with Comapct set to False.
+pub fn dump_handlepolypolygon2d_ostream(
+    P: &crate::ffi::HandlePolyPolygon2D,
+    OS: &mut crate::ffi::Standard_OStream,
+) {
+    unsafe { crate::ffi::Poly_dump_handlepolypolygon2d_ostream(P, OS) }
+}
+/// **Source:** `Poly.hxx`:102 - `Poly::ReadTriangulation`
+/// Reads a triangulation from the stream <IS>.
+pub fn read_triangulation(
+    IS: &mut crate::ffi::Standard_IStream,
+) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_read_triangulation(IS)) }
+}
+/// **Source:** `Poly.hxx`:105 - `Poly::ReadPolygon3D`
+/// Reads a 3d polygon from the stream <IS>.
+pub fn read_polygon3_d(
+    IS: &mut crate::ffi::Standard_IStream,
+) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygon3D> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_read_polygon3_d(IS)) }
+}
+/// **Source:** `Poly.hxx`:108 - `Poly::ReadPolygon2D`
+/// Reads a 2D polygon from the stream <IS>.
+pub fn read_polygon2_d(
+    IS: &mut crate::ffi::Standard_IStream,
+) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygon2D> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_read_polygon2_d(IS)) }
+}
 /// **Source:** `Poly.hxx`:112 - `Poly::ComputeNormals`
 /// Compute node normals for face triangulation
 /// as mean normal of surrounding triangles
@@ -520,6 +607,11 @@ impl CoherentNode {
         unsafe { crate::ffi::Poly_CoherentNode_remove_triangle(self as *mut Self, theTri, theA) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:144 - `Poly_CoherentNode::Dump()`
+    pub fn dump(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Poly_CoherentNode_dump(self as *const Self, theStream) }
+    }
+
     /// Upcast to gp_XYZ
     pub fn as_gp_xyz(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::Poly_CoherentNode_as_gp_XYZ(self as *const Self)) }
@@ -788,15 +880,11 @@ impl CoherentNode {
     }
 }
 
-// ── Skipped symbols for CoherentNode (2 total) ──
+// ── Skipped symbols for CoherentNode (1 total) ──
 // SKIPPED: **Source:** `Poly_CoherentNode.hxx`:142 - `Poly_CoherentNode::TriangleIterator`
 //   method: Create an iterator of incident triangles.
 //   Reason: return type 'Poly_CoherentTriPtr::Iterator' is unknown
 //   // pub fn triangle_iterator(&self) -> OwnedPtr<Poly_CoherentTriPtr::Iterator>;
-//
-// SKIPPED: **Source:** `Poly_CoherentNode.hxx`:144 - `Poly_CoherentNode::Dump`
-//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
-//   // pub fn dump(&self, theStream: /* Standard_OStream& */);
 //
 
 // ========================
@@ -1322,6 +1410,13 @@ impl CoherentTriangulation {
         }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:358 - `Poly_CoherentTriangulation::Dump()`
+    ///
+    /// Debugging output.
+    pub fn dump(&self, arg0: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Poly_CoherentTriangulation_dump(self as *const Self, arg0) }
+    }
+
     /// **Source:** `Poly_CoherentTriangulation.hxx`:374 - `Poly_CoherentTriangulation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_CoherentTriangulation_dynamic_type(self as *const Self)) }
@@ -1455,7 +1550,7 @@ impl HandlePolyCoherentTriangulation {
     }
 }
 
-// ── Skipped symbols for CoherentTriangulation (3 total) ──
+// ── Skipped symbols for CoherentTriangulation (2 total) ──
 // SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:198 - `Poly_CoherentTriangulation::RemoveDegenerated`
 //   method: Find and remove degenerated triangles in Triangulation.
 //   method: @param theTol
@@ -1467,11 +1562,6 @@ impl HandlePolyCoherentTriangulation {
 //   method: @param theLink
 //   Reason: has unbindable types: param 'pTri': C-style array (Poly_CoherentTriangle *[2])
 //   // pub fn find_triangle(&self, theLink: &CoherentLink, pTri: /* Poly_CoherentTriangle *[2] */) -> bool;
-//
-// SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:358 - `Poly_CoherentTriangulation::Dump`
-//   method: Debugging output.
-//   Reason: has unbindable types: param 'arg0': stream type (Standard_OStream&)
-//   // pub fn dump(&self, arg0: /* Standard_OStream& */);
 //
 
 /// **Source:** `Poly_CoherentTriangulation.hxx`:112 - `Poly_CoherentTriangulation_IteratorOfTriangle`

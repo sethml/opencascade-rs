@@ -1773,6 +1773,16 @@ impl OSStream {
     pub fn clear(&mut self) {
         unsafe { crate::ffi::LDOM_OSStream_clear(self as *mut Self) }
     }
+
+    /// Upcast to Standard_OStream
+    pub fn as_standard_o_stream(&self) -> &crate::standard::OStream {
+        unsafe { &*(crate::ffi::LDOM_OSStream_as_Standard_OStream(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_OStream (mutable)
+    pub fn as_standard_o_stream_mut(&mut self) -> &mut crate::standard::OStream {
+        unsafe { &mut *(crate::ffi::LDOM_OSStream_as_Standard_OStream_mut(self as *mut Self)) }
+    }
 }
 
 // ========================
@@ -1960,6 +1970,23 @@ impl XmlReader {
         Self::new_handleldommemmanager_asciistring_bool(aDocument, anErrorString, false)
     }
 
+    /// **Source:** `LDOM_XmlReader.hxx`:57 - `LDOM_XmlReader::ReadRecord()`
+    pub fn read_record(
+        &mut self,
+        theIStream: &mut crate::ffi::Standard_IStream,
+        theData: &mut OSStream,
+        theDocStart: &mut bool,
+    ) -> crate::OwnedPtr<crate::ffi::LDOM_XmlReader_RecordType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LDOM_XmlReader_read_record(
+                self as *mut Self,
+                theIStream,
+                theData,
+                theDocStart,
+            ))
+        }
+    }
+
     /// **Source:** `LDOM_XmlReader.hxx`:63 - `LDOM_XmlReader::GetElement()`
     pub fn get_element(&mut self) -> &mut BasicElement {
         unsafe { &mut *(crate::ffi::LDOM_XmlReader_get_element(self as *mut Self)) }
@@ -1994,12 +2021,6 @@ impl XmlReader {
     }
 }
 
-// ── Skipped symbols for XmlReader (1 total) ──
-// SKIPPED: **Source:** `LDOM_XmlReader.hxx`:57 - `LDOM_XmlReader::ReadRecord`
-//   Reason: has unbindable types: param 'theIStream': stream type (Standard_IStream&)
-//   // pub fn read_record(&mut self, theIStream: /* Standard_IStream& */, theData: &mut OSStream, theDocStart: &mut bool) -> OwnedPtr<LDOM_XmlReader::RecordType>;
-//
-
 // ========================
 // From LDOM_XmlWriter.hxx
 // ========================
@@ -2028,14 +2049,26 @@ impl XmlWriter {
     pub fn set_indentation(&mut self, theIndent: i32) {
         unsafe { crate::ffi::LDOM_XmlWriter_set_indentation(self as *mut Self, theIndent) }
     }
-}
 
-// ── Skipped symbols for XmlWriter (2 total) ──
-// SKIPPED: **Source:** `LDOM_XmlWriter.hxx`:36 - `LDOM_XmlWriter::Write`
-//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
-//   // pub fn write(&mut self, theOStream: /* Standard_OStream& */, theDoc: &Document);
-//
-// SKIPPED: **Source:** `LDOM_XmlWriter.hxx`:41 - `LDOM_XmlWriter::Write`
-//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
-//   // pub fn write(&mut self, theOStream: /* Standard_OStream& */, theNode: &Node);
-//
+    /// **Source:** `LDOM_XmlWriter.hxx`:36 - `LDOM_XmlWriter::Write()`
+    pub fn write_ostream_document(
+        &mut self,
+        theOStream: &mut crate::ffi::Standard_OStream,
+        theDoc: &Document,
+    ) {
+        unsafe {
+            crate::ffi::LDOM_XmlWriter_write_ostream_document(self as *mut Self, theOStream, theDoc)
+        }
+    }
+
+    /// **Source:** `LDOM_XmlWriter.hxx`:41 - `LDOM_XmlWriter::Write()`
+    pub fn write_ostream_node(
+        &mut self,
+        theOStream: &mut crate::ffi::Standard_OStream,
+        theNode: &Node,
+    ) {
+        unsafe {
+            crate::ffi::LDOM_XmlWriter_write_ostream_node(self as *mut Self, theOStream, theNode)
+        }
+    }
+}

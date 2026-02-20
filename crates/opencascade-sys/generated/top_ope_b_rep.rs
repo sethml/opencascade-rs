@@ -6,6 +6,16 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `TopOpeBRep.hxx`:36 - `TopOpeBRep::Print`
+/// Prints the name  of  <TLC>  as  a String  on the
+/// Stream <S> and returns <S>.
+pub fn print_typelinecurve_ostream(
+    TLC: crate::top_ope_b_rep::TypeLineCurve,
+    OS: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::TopOpeBRep_print_typelinecurve_ostream(TLC.into(), OS)) }
+}
+
 /// C++ enum: `TopOpeBRep_P2Dstatus`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -2917,8 +2927,8 @@ impl LineInter {
 
 // ── Skipped symbols for LineInter (1 total) ──
 // SKIPPED: **Source:** `TopOpeBRep_LineInter.hxx`:154 - `TopOpeBRep_LineInter::DumpLineTransitions`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump_line_transitions(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump_line_transitions(&self, OS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3618,8 +3628,8 @@ impl ShapeScanner {
 
 // ── Skipped symbols for ShapeScanner (1 total) ──
 // SKIPPED: **Source:** `TopOpeBRep_ShapeScanner.hxx`:64 - `TopOpeBRep_ShapeScanner::DumpCurrent`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump_current(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump_current(&self, OS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3937,12 +3947,12 @@ impl VPointInter {
 
 // ── Skipped symbols for VPointInter (3 total) ──
 // SKIPPED: **Source:** `TopOpeBRep_VPointInter.hxx`:171 - `TopOpeBRep_VPointInter::Dump`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, I: i32, F: &Face, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, I: i32, F: &Face, OS: &mut OStream) -> &mut OStream;
 //
 // SKIPPED: **Source:** `TopOpeBRep_VPointInter.hxx`:175 - `TopOpeBRep_VPointInter::Dump`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, F1: &Face, F2: &Face, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, F1: &Face, F2: &Face, OS: &mut OStream) -> &mut OStream;
 //
 // SKIPPED: **Source:** `TopOpeBRep_VPointInter.hxx`:179 - `TopOpeBRep_VPointInter::PThePointOfIntersectionDummy`
 //   Reason: return type 'TopOpeBRep_PThePointOfIntersection' is unknown

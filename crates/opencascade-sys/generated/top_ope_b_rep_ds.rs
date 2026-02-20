@@ -13,6 +13,13 @@ pub fn s_print_state(
 ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_s_print_state(S.into())) }
 }
+/// **Source:** `TopOpeBRepDS.hxx`:43 - `TopOpeBRepDS::Print`
+pub fn print_mut(
+    S: crate::top_abs::State,
+    OS: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::TopOpeBRepDS_print_mut(S.into(), OS)) }
+}
 /// **Source:** `TopOpeBRepDS.hxx`:46 - `TopOpeBRepDS::SPrint`
 /// <K>
 pub fn s_print_kind(
@@ -37,6 +44,13 @@ pub fn s_print_kind_int_asciistring2(
         ))
     }
 }
+/// **Source:** `TopOpeBRepDS.hxx`:54 - `TopOpeBRepDS::Print`
+pub fn print_kind_ostream(
+    K: crate::top_ope_b_rep_ds::Kind,
+    S: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::TopOpeBRepDS_print_kind_ostream(K.into(), S)) }
+}
 /// **Source:** `TopOpeBRepDS.hxx`:62 - `TopOpeBRepDS::SPrint`
 pub fn s_print_shapeenum(
     T: crate::top_abs::ShapeEnum,
@@ -53,6 +67,14 @@ pub fn s_print_shapeenum_int(
         crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_s_print_shapeenum_int(T.into(), I))
     }
 }
+/// **Source:** `TopOpeBRepDS.hxx`:68 - `TopOpeBRepDS::Print`
+pub fn print_shapeenum_int_ostream(
+    T: crate::top_abs::ShapeEnum,
+    I: i32,
+    S: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::TopOpeBRepDS_print_shapeenum_int_ostream(T.into(), I, S)) }
+}
 /// **Source:** `TopOpeBRepDS.hxx`:72 - `TopOpeBRepDS::SPrint`
 pub fn s_print_orientation(
     O: crate::top_abs::Orientation,
@@ -64,6 +86,13 @@ pub fn s_print_config(
     C: crate::top_ope_b_rep_ds::Config,
 ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_s_print_config(C.into())) }
+}
+/// **Source:** `TopOpeBRepDS.hxx`:76 - `TopOpeBRepDS::Print`
+pub fn print_config_ostream(
+    C: crate::top_ope_b_rep_ds::Config,
+    S: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::TopOpeBRepDS_print_config_ostream(C.into(), S)) }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:78 - `TopOpeBRepDS::IsGeometry`
 pub fn is_geometry(K: crate::top_ope_b_rep_ds::Kind) -> bool {
@@ -1067,23 +1096,23 @@ impl HandleTopOpeBRepDSCheck {
 
 // ── Skipped symbols for Check (4 total) ──
 // SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:77 - `TopOpeBRepDS_Check::PrintIntg`
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print_intg(&mut self, S: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print_intg(&mut self, S: &mut OStream) -> &mut OStream;
 //
 // SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:80 - `TopOpeBRepDS_Check::Print`
 //   method: Prints the name  of CheckStatus  <stat>  as  a String
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&mut self, stat: CheckStatus, S: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&mut self, stat: CheckStatus, S: &mut OStream) -> &mut OStream;
 //
 // SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:83 - `TopOpeBRepDS_Check::PrintShape`
 //   method: Prints the name  of CheckStatus  <stat>  as  a String
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print_shape(&mut self, SE: ShapeEnum, S: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print_shape(&mut self, SE: ShapeEnum, S: &mut OStream) -> &mut OStream;
 //
 // SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:86 - `TopOpeBRepDS_Check::PrintShape`
 //   method: Prints the name  of CheckStatus  <stat>  as  a String
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print_shape(&mut self, index: i32, S: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print_shape(&mut self, index: i32, S: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -8744,3 +8773,9 @@ pub use crate::ffi::{
     TopOpeBRepDS_ListOfInterference as ListOfInterference,
     TopOpeBRepDS_MapOfShapeData as MapOfShapeData, TopOpeBRepDS_PDataStructure as PDataStructure,
 };
+
+// ── Skipped free functions (1 total) ──
+// SKIPPED: **Source:** `TopOpeBRepDS.hxx`:56 - `TopOpeBRepDS::Print`
+//   Reason: returns &mut with reference params — ambiguous lifetime
+//   // pub fn print(K: Kind, I: i32, S: &mut OStream, B: &AsciiString, A: &AsciiString) -> &mut OStream;
+//

@@ -621,6 +621,11 @@ impl Writer {
         unsafe { crate::ffi::IGESCAFControl_Writer_inherited_ComputeModel(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `IGESControl_Writer.hxx`:109 - `IGESControl_Writer::Write()`
+    pub fn write(&mut self, S: &mut crate::ffi::Standard_OStream, fnes: bool) -> bool {
+        unsafe { crate::ffi::IGESCAFControl_Writer_inherited_Write(self as *mut Self, S, fnes) }
+    }
+
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:122 - `IGESControl_Writer::SetShapeFixParameters()`
     pub fn set_shape_fix_parameters(
         &mut self,

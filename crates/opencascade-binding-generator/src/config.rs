@@ -40,6 +40,20 @@ pub struct BindingConfig {
     /// even though the rest of the class is bound.
     #[serde(default)]
     pub exclude_methods: Vec<String>,
+
+    /// Opaque types defined in manual/ files but referenced by auto-generated bindings.
+    /// The generator adds these to the known class set so methods using them
+    /// aren't skipped as "unknown type".
+    /// Format: `TypeName = { header = "Header.hxx" }`
+    #[serde(default)]
+    pub manual_types: std::collections::HashMap<String, ManualType>,
+}
+
+/// A manually-defined opaque type referenced by auto-generated bindings.
+#[derive(Debug, Deserialize)]
+pub struct ManualType {
+    /// The C++ header that defines this type (for wrappers.cpp includes).
+    pub header: String,
 }
 
 /// General configuration options.

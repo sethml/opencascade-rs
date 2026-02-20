@@ -6,6 +6,79 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `GeomTools.hxx`:45 - `GeomTools::Dump`
+/// A set of Curves from Geom2d.
+/// Dumps the surface on the stream.
+pub fn dump_handlegeomsurface_ostream(
+    S: &crate::ffi::HandleGeomSurface,
+    OS: &mut crate::ffi::Standard_OStream,
+) {
+    unsafe { crate::ffi::GeomTools_dump_handlegeomsurface_ostream(S, OS) }
+}
+/// **Source:** `GeomTools.hxx`:48 - `GeomTools::Write`
+/// Writes the surface on the stream.
+pub fn write_handlegeomsurface_ostream(
+    S: &crate::ffi::HandleGeomSurface,
+    OS: &mut crate::ffi::Standard_OStream,
+) {
+    unsafe { crate::ffi::GeomTools_write_handlegeomsurface_ostream(S, OS) }
+}
+/// **Source:** `GeomTools.hxx`:51 - `GeomTools::Read`
+/// Reads the surface from the stream.
+pub fn read_handlegeomsurface_istream(
+    S: &mut crate::ffi::HandleGeomSurface,
+    IS: &mut crate::ffi::Standard_IStream,
+) {
+    unsafe { crate::ffi::GeomTools_read_handlegeomsurface_istream(S, IS) }
+}
+/// **Source:** `GeomTools.hxx`:54 - `GeomTools::Dump`
+/// Dumps the Curve on the stream.
+pub fn dump_handlegeomcurve_ostream(
+    C: &crate::ffi::HandleGeomCurve,
+    OS: &mut crate::ffi::Standard_OStream,
+) {
+    unsafe { crate::ffi::GeomTools_dump_handlegeomcurve_ostream(C, OS) }
+}
+/// **Source:** `GeomTools.hxx`:57 - `GeomTools::Write`
+/// Writes the Curve on the stream.
+pub fn write_handlegeomcurve_ostream(
+    C: &crate::ffi::HandleGeomCurve,
+    OS: &mut crate::ffi::Standard_OStream,
+) {
+    unsafe { crate::ffi::GeomTools_write_handlegeomcurve_ostream(C, OS) }
+}
+/// **Source:** `GeomTools.hxx`:60 - `GeomTools::Read`
+/// Reads the Curve from the stream.
+pub fn read_handlegeomcurve_istream(
+    C: &mut crate::ffi::HandleGeomCurve,
+    IS: &mut crate::ffi::Standard_IStream,
+) {
+    unsafe { crate::ffi::GeomTools_read_handlegeomcurve_istream(C, IS) }
+}
+/// **Source:** `GeomTools.hxx`:63 - `GeomTools::Dump`
+/// Dumps the Curve on the stream.
+pub fn dump_handlegeom2dcurve_ostream(
+    C: &crate::ffi::HandleGeom2dCurve,
+    OS: &mut crate::ffi::Standard_OStream,
+) {
+    unsafe { crate::ffi::GeomTools_dump_handlegeom2dcurve_ostream(C, OS) }
+}
+/// **Source:** `GeomTools.hxx`:66 - `GeomTools::Write`
+/// Writes the Curve on the stream.
+pub fn write_handlegeom2dcurve_ostream(
+    C: &crate::ffi::HandleGeom2dCurve,
+    OS: &mut crate::ffi::Standard_OStream,
+) {
+    unsafe { crate::ffi::GeomTools_write_handlegeom2dcurve_ostream(C, OS) }
+}
+/// **Source:** `GeomTools.hxx`:69 - `GeomTools::Read`
+/// Reads the Curve from the stream.
+pub fn read_handlegeom2dcurve_istream(
+    C: &mut crate::ffi::HandleGeom2dCurve,
+    IS: &mut crate::ffi::Standard_IStream,
+) {
+    unsafe { crate::ffi::GeomTools_read_handlegeom2dcurve_istream(C, IS) }
+}
 /// **Source:** `GeomTools.hxx`:71 - `GeomTools::SetUndefinedTypeHandler`
 pub fn set_undefined_type_handler(aHandler: &crate::ffi::HandleGeomToolsUndefinedTypeHandler) {
     unsafe { crate::ffi::GeomTools_set_undefined_type_handler(aHandler) }
@@ -14,6 +87,12 @@ pub fn set_undefined_type_handler(aHandler: &crate::ffi::HandleGeomToolsUndefine
 pub fn get_undefined_type_handler(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomToolsUndefinedTypeHandler> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_get_undefined_type_handler()) }
+}
+/// **Source:** `GeomTools.hxx`:78 - `GeomTools::GetReal`
+/// Reads the Standard_Real value from the stream. Zero is read
+/// in case of error
+pub fn get_real(IS: &mut crate::ffi::Standard_IStream, theValue: &mut f64) {
+    unsafe { crate::ffi::GeomTools_get_real(IS, theValue) }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -69,39 +148,56 @@ impl Curve2dSet {
     pub fn index(&self, C: &crate::ffi::HandleGeom2dCurve) -> i32 {
         unsafe { crate::ffi::GeomTools_Curve2dSet_index(self as *const Self, C) }
     }
-}
 
-// ── Skipped symbols for Curve2dSet (5 total) ──
-// SKIPPED: **Source:** `GeomTools_Curve2dSet.hxx`:55 - `GeomTools_Curve2dSet::Dump`
-//   method: Dumps the content of me on the stream <OS>.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump(&self, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `GeomTools_Curve2dSet.hxx`:59 - `GeomTools_Curve2dSet::Write`
-//   method: Writes the content of  me  on the stream <OS> in a
-//   method: format that can be read back by Read.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write(&self, OS: /* Standard_OStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `GeomTools_Curve2dSet.hxx`:65 - `GeomTools_Curve2dSet::Read`
-//   method: Reads the content of me from the  stream  <IS>. me
-//   method: is first cleared.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `GeomTools_Curve2dSet.hxx`:70 - `GeomTools_Curve2dSet::PrintCurve2d`
-//   static_method: Dumps the curve on the stream,  if compact is True
-//   static_method: use the compact format that can be read back.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn print_curve2d(C: &HandleCurve, OS: /* Standard_OStream& */, compact: bool);
-//
-// SKIPPED: **Source:** `GeomTools_Curve2dSet.hxx`:77 - `GeomTools_Curve2dSet::ReadCurve2d`
-//   static_method: Reads the curve  from  the stream.  The  curve  is
-//   static_method: assumed   to have  been  written  with  the Print
-//   static_method: method (compact = True).
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read_curve2d(IS: /* Standard_IStream& */) -> OwnedPtr<Handle<Geom2d_Curve>>;
-//
+    /// **Source:** `GeomTools_Curve2dSet.hxx`:55 - `GeomTools_Curve2dSet::Dump()`
+    /// Dumps the content of me on the stream <OS>.
+    pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::GeomTools_Curve2dSet_dump(self as *const Self, OS) }
+    }
+
+    /// **Source:** `GeomTools_Curve2dSet.hxx`:59 - `GeomTools_Curve2dSet::Write()`
+    /// Writes the content of  me  on the stream <OS> in a
+    /// format that can be read back by Read.
+    pub fn write(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe { crate::ffi::GeomTools_Curve2dSet_write(self as *const Self, OS, theProgress) }
+    }
+
+    /// **Source:** `GeomTools_Curve2dSet.hxx`:65 - `GeomTools_Curve2dSet::Read()`
+    /// Reads the content of me from the  stream  <IS>. me
+    /// is first cleared.
+    pub fn read(
+        &mut self,
+        IS: &mut crate::ffi::Standard_IStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe { crate::ffi::GeomTools_Curve2dSet_read(self as *mut Self, IS, theProgress) }
+    }
+
+    /// **Source:** `GeomTools_Curve2dSet.hxx`:70 - `GeomTools_Curve2dSet::PrintCurve2d()`
+    /// Dumps the curve on the stream,  if compact is True
+    /// use the compact format that can be read back.
+    pub fn print_curve2d(
+        C: &crate::ffi::HandleGeom2dCurve,
+        OS: &mut crate::ffi::Standard_OStream,
+        compact: bool,
+    ) {
+        unsafe { crate::ffi::GeomTools_Curve2dSet_print_curve2d(C, OS, compact) }
+    }
+
+    /// **Source:** `GeomTools_Curve2dSet.hxx`:77 - `GeomTools_Curve2dSet::ReadCurve2d()`
+    /// Reads the curve  from  the stream.  The  curve  is
+    /// assumed   to have  been  written  with  the Print
+    /// method (compact = True).
+    pub fn read_curve2d(
+        IS: &mut crate::ffi::Standard_IStream,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_Curve2dSet_read_curve2d(IS)) }
+    }
+}
 
 // ========================
 // From GeomTools_CurveSet.hxx
@@ -150,39 +246,56 @@ impl CurveSet {
     pub fn index(&self, C: &crate::ffi::HandleGeomCurve) -> i32 {
         unsafe { crate::ffi::GeomTools_CurveSet_index(self as *const Self, C) }
     }
-}
 
-// ── Skipped symbols for CurveSet (5 total) ──
-// SKIPPED: **Source:** `GeomTools_CurveSet.hxx`:55 - `GeomTools_CurveSet::Dump`
-//   method: Dumps the content of me on the stream <OS>.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump(&self, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `GeomTools_CurveSet.hxx`:59 - `GeomTools_CurveSet::Write`
-//   method: Writes the content of  me  on the stream <OS> in a
-//   method: format that can be read back by Read.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write(&self, OS: /* Standard_OStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `GeomTools_CurveSet.hxx`:65 - `GeomTools_CurveSet::Read`
-//   method: Reads the content of me from the  stream  <IS>. me
-//   method: is first cleared.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `GeomTools_CurveSet.hxx`:70 - `GeomTools_CurveSet::PrintCurve`
-//   static_method: Dumps the curve on the stream,  if compact is True
-//   static_method: use the compact format that can be read back.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn print_curve(C: &HandleCurve, OS: /* Standard_OStream& */, compact: bool);
-//
-// SKIPPED: **Source:** `GeomTools_CurveSet.hxx`:77 - `GeomTools_CurveSet::ReadCurve`
-//   static_method: Reads the curve  from  the stream.  The  curve  is
-//   static_method: assumed   to have  been  written  with  the Print
-//   static_method: method (compact = True).
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read_curve(IS: /* Standard_IStream& */) -> OwnedPtr<Handle<Geom_Curve>>;
-//
+    /// **Source:** `GeomTools_CurveSet.hxx`:55 - `GeomTools_CurveSet::Dump()`
+    /// Dumps the content of me on the stream <OS>.
+    pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::GeomTools_CurveSet_dump(self as *const Self, OS) }
+    }
+
+    /// **Source:** `GeomTools_CurveSet.hxx`:59 - `GeomTools_CurveSet::Write()`
+    /// Writes the content of  me  on the stream <OS> in a
+    /// format that can be read back by Read.
+    pub fn write(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe { crate::ffi::GeomTools_CurveSet_write(self as *const Self, OS, theProgress) }
+    }
+
+    /// **Source:** `GeomTools_CurveSet.hxx`:65 - `GeomTools_CurveSet::Read()`
+    /// Reads the content of me from the  stream  <IS>. me
+    /// is first cleared.
+    pub fn read(
+        &mut self,
+        IS: &mut crate::ffi::Standard_IStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe { crate::ffi::GeomTools_CurveSet_read(self as *mut Self, IS, theProgress) }
+    }
+
+    /// **Source:** `GeomTools_CurveSet.hxx`:70 - `GeomTools_CurveSet::PrintCurve()`
+    /// Dumps the curve on the stream,  if compact is True
+    /// use the compact format that can be read back.
+    pub fn print_curve(
+        C: &crate::ffi::HandleGeomCurve,
+        OS: &mut crate::ffi::Standard_OStream,
+        compact: bool,
+    ) {
+        unsafe { crate::ffi::GeomTools_CurveSet_print_curve(C, OS, compact) }
+    }
+
+    /// **Source:** `GeomTools_CurveSet.hxx`:77 - `GeomTools_CurveSet::ReadCurve()`
+    /// Reads the curve  from  the stream.  The  curve  is
+    /// assumed   to have  been  written  with  the Print
+    /// method (compact = True).
+    pub fn read_curve(
+        IS: &mut crate::ffi::Standard_IStream,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_CurveSet_read_curve(IS)) }
+    }
+}
 
 // ========================
 // From GeomTools_SurfaceSet.hxx
@@ -234,39 +347,56 @@ impl SurfaceSet {
     pub fn index(&self, S: &crate::ffi::HandleGeomSurface) -> i32 {
         unsafe { crate::ffi::GeomTools_SurfaceSet_index(self as *const Self, S) }
     }
-}
 
-// ── Skipped symbols for SurfaceSet (5 total) ──
-// SKIPPED: **Source:** `GeomTools_SurfaceSet.hxx`:55 - `GeomTools_SurfaceSet::Dump`
-//   method: Dumps the content of me on the stream <OS>.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump(&self, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `GeomTools_SurfaceSet.hxx`:59 - `GeomTools_SurfaceSet::Write`
-//   method: Writes the content of  me  on the stream <OS> in a
-//   method: format that can be read back by Read.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write(&self, OS: /* Standard_OStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `GeomTools_SurfaceSet.hxx`:65 - `GeomTools_SurfaceSet::Read`
-//   method: Reads the content of me from the  stream  <IS>. me
-//   method: is first cleared.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `GeomTools_SurfaceSet.hxx`:70 - `GeomTools_SurfaceSet::PrintSurface`
-//   static_method: Dumps the surface on the stream,  if compact is True
-//   static_method: use the compact format that can be read back.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn print_surface(S: &HandleSurface, OS: /* Standard_OStream& */, compact: bool);
-//
-// SKIPPED: **Source:** `GeomTools_SurfaceSet.hxx`:77 - `GeomTools_SurfaceSet::ReadSurface`
-//   static_method: Reads the surface  from  the stream.  The  surface  is
-//   static_method: assumed   to have  been  written  with  the Print
-//   static_method: method (compact = True).
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read_surface(IS: /* Standard_IStream& */) -> OwnedPtr<Handle<Geom_Surface>>;
-//
+    /// **Source:** `GeomTools_SurfaceSet.hxx`:55 - `GeomTools_SurfaceSet::Dump()`
+    /// Dumps the content of me on the stream <OS>.
+    pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::GeomTools_SurfaceSet_dump(self as *const Self, OS) }
+    }
+
+    /// **Source:** `GeomTools_SurfaceSet.hxx`:59 - `GeomTools_SurfaceSet::Write()`
+    /// Writes the content of  me  on the stream <OS> in a
+    /// format that can be read back by Read.
+    pub fn write(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe { crate::ffi::GeomTools_SurfaceSet_write(self as *const Self, OS, theProgress) }
+    }
+
+    /// **Source:** `GeomTools_SurfaceSet.hxx`:65 - `GeomTools_SurfaceSet::Read()`
+    /// Reads the content of me from the  stream  <IS>. me
+    /// is first cleared.
+    pub fn read(
+        &mut self,
+        IS: &mut crate::ffi::Standard_IStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe { crate::ffi::GeomTools_SurfaceSet_read(self as *mut Self, IS, theProgress) }
+    }
+
+    /// **Source:** `GeomTools_SurfaceSet.hxx`:70 - `GeomTools_SurfaceSet::PrintSurface()`
+    /// Dumps the surface on the stream,  if compact is True
+    /// use the compact format that can be read back.
+    pub fn print_surface(
+        S: &crate::ffi::HandleGeomSurface,
+        OS: &mut crate::ffi::Standard_OStream,
+        compact: bool,
+    ) {
+        unsafe { crate::ffi::GeomTools_SurfaceSet_print_surface(S, OS, compact) }
+    }
+
+    /// **Source:** `GeomTools_SurfaceSet.hxx`:77 - `GeomTools_SurfaceSet::ReadSurface()`
+    /// Reads the surface  from  the stream.  The  surface  is
+    /// assumed   to have  been  written  with  the Print
+    /// method (compact = True).
+    pub fn read_surface(
+        IS: &mut crate::ffi::Standard_IStream,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_SurfaceSet_read_surface(IS)) }
+    }
+}
 
 // ========================
 // From GeomTools_UndefinedTypeHandler.hxx
@@ -285,6 +415,57 @@ impl UndefinedTypeHandler {
     /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:38 - `GeomTools_UndefinedTypeHandler::GeomTools_UndefinedTypeHandler()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_UndefinedTypeHandler_ctor()) }
+    }
+
+    /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:40 - `GeomTools_UndefinedTypeHandler::PrintCurve()`
+    pub fn print_curve(
+        &self,
+        C: &crate::ffi::HandleGeomCurve,
+        OS: &mut crate::ffi::Standard_OStream,
+        compact: bool,
+    ) {
+        unsafe {
+            crate::ffi::GeomTools_UndefinedTypeHandler_print_curve(
+                self as *const Self,
+                C,
+                OS,
+                compact,
+            )
+        }
+    }
+
+    /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:48 - `GeomTools_UndefinedTypeHandler::PrintCurve2d()`
+    pub fn print_curve2d(
+        &self,
+        C: &crate::ffi::HandleGeom2dCurve,
+        OS: &mut crate::ffi::Standard_OStream,
+        compact: bool,
+    ) {
+        unsafe {
+            crate::ffi::GeomTools_UndefinedTypeHandler_print_curve2d(
+                self as *const Self,
+                C,
+                OS,
+                compact,
+            )
+        }
+    }
+
+    /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:56 - `GeomTools_UndefinedTypeHandler::PrintSurface()`
+    pub fn print_surface(
+        &self,
+        S: &crate::ffi::HandleGeomSurface,
+        OS: &mut crate::ffi::Standard_OStream,
+        compact: bool,
+    ) {
+        unsafe {
+            crate::ffi::GeomTools_UndefinedTypeHandler_print_surface(
+                self as *const Self,
+                S,
+                OS,
+                compact,
+            )
+        }
     }
 
     /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:64 - `GeomTools_UndefinedTypeHandler::DynamicType()`
@@ -433,28 +614,16 @@ impl HandleGeomToolsUndefinedTypeHandler {
     }
 }
 
-// ── Skipped symbols for UndefinedTypeHandler (6 total) ──
-// SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:40 - `GeomTools_UndefinedTypeHandler::PrintCurve`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn print_curve(&self, C: &HandleCurve, OS: /* Standard_OStream& */, compact: bool);
-//
+// ── Skipped symbols for UndefinedTypeHandler (3 total) ──
 // SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:44 - `GeomTools_UndefinedTypeHandler::ReadCurve`
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&); return: stream type (Standard_IStream&)
-//   // pub fn read_curve(&self, ctype: i32, IS: /* Standard_IStream& */, C: &mut HandleCurve) -> /* Standard_IStream& */;
-//
-// SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:48 - `GeomTools_UndefinedTypeHandler::PrintCurve2d`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn print_curve2d(&self, C: &HandleCurve, OS: /* Standard_OStream& */, compact: bool);
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn read_curve(&self, ctype: i32, IS: &mut IStream, C: &mut HandleCurve) -> &mut IStream;
 //
 // SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:52 - `GeomTools_UndefinedTypeHandler::ReadCurve2d`
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&); return: stream type (Standard_IStream&)
-//   // pub fn read_curve2d(&self, ctype: i32, IS: /* Standard_IStream& */, C: &mut HandleCurve) -> /* Standard_IStream& */;
-//
-// SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:56 - `GeomTools_UndefinedTypeHandler::PrintSurface`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn print_surface(&self, S: &HandleSurface, OS: /* Standard_OStream& */, compact: bool);
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn read_curve2d(&self, ctype: i32, IS: &mut IStream, C: &mut HandleCurve) -> &mut IStream;
 //
 // SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:60 - `GeomTools_UndefinedTypeHandler::ReadSurface`
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&); return: stream type (Standard_IStream&)
-//   // pub fn read_surface(&self, ctype: i32, IS: /* Standard_IStream& */, S: &mut HandleSurface) -> /* Standard_IStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn read_surface(&self, ctype: i32, IS: &mut IStream, S: &mut HandleSurface) -> &mut IStream;
 //

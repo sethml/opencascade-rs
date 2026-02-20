@@ -2345,6 +2345,12 @@ impl AppSurface {
         unsafe { crate::ffi::BRepBlend_AppSurface_tol_curve_on_surf(self as *const Self, Index) }
     }
 
+    /// **Source:** `BRepBlend_AppSurface.hxx`:121 - `BRepBlend_AppSurface::Dump()`
+    /// display information on approximation.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BRepBlend_AppSurface_dump(self as *const Self, o) }
+    }
+
     /// Upcast to AppBlend_Approx
     pub fn as_app_blend_approx(&self) -> &crate::app_blend::Approx {
         unsafe { &*(crate::ffi::BRepBlend_AppSurface_as_AppBlend_Approx(self as *const Self)) }
@@ -2357,13 +2363,6 @@ impl AppSurface {
         }
     }
 }
-
-// ── Skipped symbols for AppSurface (1 total) ──
-// SKIPPED: **Source:** `BRepBlend_AppSurface.hxx`:121 - `BRepBlend_AppSurface::Dump`
-//   method: display information on approximation.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
 
 // ========================
 // From BRepBlend_BlendTool.hxx

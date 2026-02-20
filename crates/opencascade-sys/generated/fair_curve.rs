@@ -359,15 +359,16 @@ impl Batten {
             crate::OwnedPtr::from_raw(crate::ffi::FairCurve_Batten_curve(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for Batten (1 total) ──
-// SKIPPED: **Source:** `FairCurve_Batten.hxx`:217 - `FairCurve_Batten::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `FairCurve_Batten.hxx`:217 - `FairCurve_Batten::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    ///
+    /// Private methodes  --------------------------------------
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::FairCurve_Batten_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From FairCurve_BattenLaw.hxx
@@ -1728,6 +1729,14 @@ impl MinimalVariation {
         unsafe { crate::ffi::FairCurve_MinimalVariation_get_physical_ratio(self as *const Self) }
     }
 
+    /// **Source:** `FairCurve_MinimalVariation.hxx`:109 - `FairCurve_MinimalVariation::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::FairCurve_MinimalVariation_dump(self as *const Self, o) }
+    }
+
     /// Upcast to FairCurve_Batten
     pub fn as_batten(&self) -> &Batten {
         unsafe {
@@ -1900,15 +1909,6 @@ impl MinimalVariation {
         }
     }
 }
-
-// ── Skipped symbols for MinimalVariation (1 total) ──
-// SKIPPED: **Source:** `FairCurve_MinimalVariation.hxx`:109 - `FairCurve_MinimalVariation::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
 
 // ========================
 // From FairCurve_Newton.hxx
@@ -2138,5 +2138,10 @@ impl Newton {
             ))
             .unwrap()
         }
+    }
+
+    /// Inherited: **Source:** `math_NewtonMinimum.hxx`:106 - `math_NewtonMinimum::Dump()`
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::FairCurve_Newton_inherited_Dump(self as *const Self, o) }
     }
 }

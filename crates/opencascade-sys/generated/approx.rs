@@ -204,14 +204,13 @@ impl Curve3d {
     pub fn max_error(&self) -> f64 {
         unsafe { crate::ffi::Approx_Curve3d_max_error(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for Curve3d (1 total) ──
-// SKIPPED: **Source:** `Approx_Curve3d.hxx`:53 - `Approx_Curve3d::Dump`
-//   method: Print on the stream  o  information about the object
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `Approx_Curve3d.hxx`:53 - `Approx_Curve3d::Dump()`
+    /// Print on the stream  o  information about the object
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Approx_Curve3d_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From Approx_CurveOnSurface.hxx
@@ -459,14 +458,13 @@ impl CurvilinearParameter {
     pub fn max_error2d2(&self) -> f64 {
         unsafe { crate::ffi::Approx_CurvilinearParameter_max_error2d2(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for CurvilinearParameter (1 total) ──
-// SKIPPED: **Source:** `Approx_CurvilinearParameter.hxx`:91 - `Approx_CurvilinearParameter::Dump`
-//   method: print the maximum errors(s)
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `Approx_CurvilinearParameter.hxx`:91 - `Approx_CurvilinearParameter::Dump()`
+    /// print the maximum errors(s)
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Approx_CurvilinearParameter_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From Approx_CurvlinFunc.hxx
@@ -1987,14 +1985,13 @@ impl SweepApproximation {
             crate::ffi::Approx_SweepApproximation_tol_curve_on_surf(self as *const Self, Index)
         }
     }
-}
 
-// ── Skipped symbols for SweepApproximation (1 total) ──
-// SKIPPED: **Source:** `Approx_SweepApproximation.hxx`:166 - `Approx_SweepApproximation::Dump`
-//   method: display information on approximation.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `Approx_SweepApproximation.hxx`:166 - `Approx_SweepApproximation::Dump()`
+    /// display information on approximation.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Approx_SweepApproximation_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From Approx_SweepFunction.hxx

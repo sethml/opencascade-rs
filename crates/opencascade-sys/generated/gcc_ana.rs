@@ -2724,9 +2724,14 @@ impl NoSolution {
     }
 
     /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::GccAna_NoSolution_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::GccAna_NoSolution_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::GccAna_NoSolution_raise_sstream(theMessage) }
     }
 
     /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::NewInstance()`
@@ -2799,6 +2804,11 @@ impl NoSolution {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_NoSolution_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::GccAna_NoSolution_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -2891,12 +2901,6 @@ impl HandleGccAnaNoSolution {
         }
     }
 }
-
-// ── Skipped symbols for NoSolution (1 total) ──
-// SKIPPED: **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From GccAna_Pnt2dBisec.hxx

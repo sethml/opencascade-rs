@@ -1182,15 +1182,15 @@ impl HandleRWObjReader {
 //   method: Reads data from OBJ file.
 //   method: Unicode paths can be given in UTF-8 encoding.
 //   method: Returns true if success, false on error or user break.
-//   Reason: has unbindable types: param 'theStream': stream type (std::istream&)
-//   // pub fn read(&mut self, theStream: /* std::istream& */, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
+//   Reason: param 'theStream' uses unknown type 'std::istream&'
+//   // pub fn read(&mut self, theStream: &mut istream, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
 //
 // SKIPPED: **Source:** `RWObj_Reader.hxx`:91 - `RWObj_Reader::Probe`
 //   method: Probe data from OBJ file (comments, external references) without actually reading mesh data.
 //   method: Although mesh data will not be collected, the full file content will be parsed, due to OBJ
 //   method: format limitations.
-//   Reason: has unbindable types: param 'theStream': stream type (std::istream&)
-//   // pub fn probe(&mut self, theStream: /* std::istream& */, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
+//   Reason: param 'theStream' uses unknown type 'std::istream&'
+//   // pub fn probe(&mut self, theStream: &mut istream, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
 //
 
 // ========================

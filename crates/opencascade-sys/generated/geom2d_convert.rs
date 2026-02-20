@@ -340,14 +340,13 @@ impl ApproxCurve {
     pub fn max_error(&self) -> f64 {
         unsafe { crate::ffi::Geom2dConvert_ApproxCurve_max_error(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for ApproxCurve (1 total) ──
-// SKIPPED: **Source:** `Geom2dConvert_ApproxCurve.hxx`:79 - `Geom2dConvert_ApproxCurve::Dump`
-//   method: Print on the stream  o  information about the object
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `Geom2dConvert_ApproxCurve.hxx`:79 - `Geom2dConvert_ApproxCurve::Dump()`
+    /// Print on the stream  o  information about the object
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Geom2dConvert_ApproxCurve_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From Geom2dConvert_BSplineCurveKnotSplitting.hxx

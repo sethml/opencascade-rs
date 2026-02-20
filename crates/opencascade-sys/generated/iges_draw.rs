@@ -11254,6 +11254,28 @@ impl SpecificModule {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESDraw_SpecificModule_ctor()) }
     }
 
+    /// **Source:** `IGESDraw_SpecificModule.hxx`:41 - `IGESDraw_SpecificModule::OwnDump()`
+    /// Specific Dump (own parameters) for IGESDraw
+    pub fn own_dump(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_SpecificModule_own_dump(
+                self as *const Self,
+                CN,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+
     /// **Source:** `IGESDraw_SpecificModule.hxx`:49 - `IGESDraw_SpecificModule::OwnCorrect()`
     /// Performs non-ambiguous Corrections on Entities which support
     /// them (Planar)
@@ -11415,13 +11437,6 @@ impl HandleIGESDrawSpecificModule {
     }
 }
 
-// ── Skipped symbols for SpecificModule (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_SpecificModule.hxx`:41 - `IGESDraw_SpecificModule::OwnDump`
-//   method: Specific Dump (own parameters) for IGESDraw
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, CN: i32, ent: &HandleIGESEntity, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
-
 // ========================
 // From IGESDraw_ToolCircArraySubfigure.hxx
 // ========================
@@ -11541,14 +11556,27 @@ impl ToolCircArraySubfigure {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolCircArraySubfigure (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolCircArraySubfigure.hxx`:76 - `IGESDraw_ToolCircArraySubfigure::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleCircArraySubfigure, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDraw_ToolCircArraySubfigure.hxx`:76 - `IGESDraw_ToolCircArraySubfigure::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawCircArraySubfigure,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolCircArraySubfigure_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDraw_ToolConnectPoint.hxx
@@ -11648,14 +11676,21 @@ impl ToolConnectPoint {
             crate::ffi::IGESDraw_ToolConnectPoint_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolConnectPoint (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolConnectPoint.hxx`:75 - `IGESDraw_ToolConnectPoint::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleConnectPoint, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDraw_ToolConnectPoint.hxx`:75 - `IGESDraw_ToolConnectPoint::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawConnectPoint,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolConnectPoint_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESDraw_ToolDrawing.hxx
@@ -11758,14 +11793,21 @@ impl ToolDrawing {
             crate::ffi::IGESDraw_ToolDrawing_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolDrawing (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolDrawing.hxx`:79 - `IGESDraw_ToolDrawing::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleDrawing, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDraw_ToolDrawing.hxx`:79 - `IGESDraw_ToolDrawing::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawDrawing,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolDrawing_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESDraw_ToolDrawingWithRotation.hxx
@@ -11895,14 +11937,27 @@ impl ToolDrawingWithRotation {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolDrawingWithRotation (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolDrawingWithRotation.hxx`:81 - `IGESDraw_ToolDrawingWithRotation::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleDrawingWithRotation, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDraw_ToolDrawingWithRotation.hxx`:81 - `IGESDraw_ToolDrawingWithRotation::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawDrawingWithRotation,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolDrawingWithRotation_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDraw_ToolLabelDisplay.hxx
@@ -12002,14 +12057,21 @@ impl ToolLabelDisplay {
             crate::ffi::IGESDraw_ToolLabelDisplay_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolLabelDisplay (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolLabelDisplay.hxx`:75 - `IGESDraw_ToolLabelDisplay::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleLabelDisplay, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDraw_ToolLabelDisplay.hxx`:75 - `IGESDraw_ToolLabelDisplay::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawLabelDisplay,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolLabelDisplay_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESDraw_ToolNetworkSubfigure.hxx
@@ -12126,14 +12188,27 @@ impl ToolNetworkSubfigure {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolNetworkSubfigure (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolNetworkSubfigure.hxx`:76 - `IGESDraw_ToolNetworkSubfigure::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleNetworkSubfigure, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDraw_ToolNetworkSubfigure.hxx`:76 - `IGESDraw_ToolNetworkSubfigure::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawNetworkSubfigure,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolNetworkSubfigure_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDraw_ToolNetworkSubfigureDef.hxx
@@ -12254,14 +12329,27 @@ impl ToolNetworkSubfigureDef {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolNetworkSubfigureDef (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolNetworkSubfigureDef.hxx`:76 - `IGESDraw_ToolNetworkSubfigureDef::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleNetworkSubfigureDef, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDraw_ToolNetworkSubfigureDef.hxx`:76 - `IGESDraw_ToolNetworkSubfigureDef::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawNetworkSubfigureDef,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolNetworkSubfigureDef_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDraw_ToolPerspectiveView.hxx
@@ -12378,14 +12466,27 @@ impl ToolPerspectiveView {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolPerspectiveView (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolPerspectiveView.hxx`:75 - `IGESDraw_ToolPerspectiveView::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandlePerspectiveView, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDraw_ToolPerspectiveView.hxx`:75 - `IGESDraw_ToolPerspectiveView::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawPerspectiveView,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolPerspectiveView_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDraw_ToolPlanar.hxx
@@ -12484,14 +12585,21 @@ impl ToolPlanar {
     ) {
         unsafe { crate::ffi::IGESDraw_ToolPlanar_own_copy(self as *const Self, entfrom, entto, TC) }
     }
-}
 
-// ── Skipped symbols for ToolPlanar (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolPlanar.hxx`:79 - `IGESDraw_ToolPlanar::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandlePlanar, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDraw_ToolPlanar.hxx`:79 - `IGESDraw_ToolPlanar::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawPlanar,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolPlanar_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESDraw_ToolRectArraySubfigure.hxx
@@ -12612,14 +12720,27 @@ impl ToolRectArraySubfigure {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolRectArraySubfigure (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolRectArraySubfigure.hxx`:76 - `IGESDraw_ToolRectArraySubfigure::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleRectArraySubfigure, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDraw_ToolRectArraySubfigure.hxx`:76 - `IGESDraw_ToolRectArraySubfigure::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawRectArraySubfigure,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolRectArraySubfigure_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDraw_ToolSegmentedViewsVisible.hxx
@@ -12744,14 +12865,27 @@ impl ToolSegmentedViewsVisible {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolSegmentedViewsVisible (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolSegmentedViewsVisible.hxx`:76 - `IGESDraw_ToolSegmentedViewsVisible::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleSegmentedViewsVisible, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDraw_ToolSegmentedViewsVisible.hxx`:76 - `IGESDraw_ToolSegmentedViewsVisible::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawSegmentedViewsVisible,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolSegmentedViewsVisible_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDraw_ToolView.hxx
@@ -12843,14 +12977,19 @@ impl ToolView {
     ) {
         unsafe { crate::ffi::IGESDraw_ToolView_own_copy(self as *const Self, entfrom, entto, TC) }
     }
-}
 
-// ── Skipped symbols for ToolView (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolView.hxx`:75 - `IGESDraw_ToolView::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleView, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDraw_ToolView.hxx`:75 - `IGESDraw_ToolView::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawView,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe { crate::ffi::IGESDraw_ToolView_own_dump(self as *const Self, ent, dumper, S, own) }
+    }
+}
 
 // ========================
 // From IGESDraw_ToolViewsVisible.hxx
@@ -12984,6 +13123,20 @@ impl ToolViewsVisible {
         unsafe { crate::ffi::IGESDraw_ToolViewsVisible_own_when_delete(self as *const Self, ent) }
     }
 
+    /// **Source:** `IGESDraw_ToolViewsVisible.hxx`:91 - `IGESDraw_ToolViewsVisible::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawViewsVisible,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolViewsVisible_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+
     /// **Source:** `IGESDraw_ToolViewsVisible.hxx`:99 - `IGESDraw_ToolViewsVisible::OwnCorrect()`
     /// Sets automatic unambiguous Correction on a ViewsVisible
     /// (all displayed entities must refer to <ent> in directory part,
@@ -12992,13 +13145,6 @@ impl ToolViewsVisible {
         unsafe { crate::ffi::IGESDraw_ToolViewsVisible_own_correct(self as *const Self, ent) }
     }
 }
-
-// ── Skipped symbols for ToolViewsVisible (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolViewsVisible.hxx`:91 - `IGESDraw_ToolViewsVisible::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleViewsVisible, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
 
 // ========================
 // From IGESDraw_ToolViewsVisibleWithAttr.hxx
@@ -13167,6 +13313,26 @@ impl ToolViewsVisibleWithAttr {
         }
     }
 
+    /// **Source:** `IGESDraw_ToolViewsVisibleWithAttr.hxx`:93 - `IGESDraw_ToolViewsVisibleWithAttr::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+
     /// **Source:** `IGESDraw_ToolViewsVisibleWithAttr.hxx`:102 - `IGESDraw_ToolViewsVisibleWithAttr::OwnCorrect()`
     /// Sets automatic unambiguous Correction on a ViewsVisibleWithAttr
     /// (all displayed entities must refer to <ent> in directory part,
@@ -13177,13 +13343,6 @@ impl ToolViewsVisibleWithAttr {
         }
     }
 }
-
-// ── Skipped symbols for ToolViewsVisibleWithAttr (1 total) ──
-// SKIPPED: **Source:** `IGESDraw_ToolViewsVisibleWithAttr.hxx`:93 - `IGESDraw_ToolViewsVisibleWithAttr::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleViewsVisibleWithAttr, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
 
 // ========================
 // From IGESDraw_View.hxx

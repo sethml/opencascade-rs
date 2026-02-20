@@ -499,14 +499,13 @@ impl ApproxCurve {
     pub fn max_error(&self) -> f64 {
         unsafe { crate::ffi::GeomConvert_ApproxCurve_max_error(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for ApproxCurve (1 total) ──
-// SKIPPED: **Source:** `GeomConvert_ApproxCurve.hxx`:80 - `GeomConvert_ApproxCurve::Dump`
-//   method: Print on the stream  o  information about the object
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `GeomConvert_ApproxCurve.hxx`:80 - `GeomConvert_ApproxCurve::Dump()`
+    /// Print on the stream  o  information about the object
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::GeomConvert_ApproxCurve_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From GeomConvert_ApproxSurface.hxx
@@ -633,14 +632,13 @@ impl ApproxSurface {
     pub fn max_error(&self) -> f64 {
         unsafe { crate::ffi::GeomConvert_ApproxSurface_max_error(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for ApproxSurface (1 total) ──
-// SKIPPED: **Source:** `GeomConvert_ApproxSurface.hxx`:93 - `GeomConvert_ApproxSurface::Dump`
-//   method: Prints on the stream o information on the current state of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `GeomConvert_ApproxSurface.hxx`:93 - `GeomConvert_ApproxSurface::Dump()`
+    /// Prints on the stream o information on the current state of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::GeomConvert_ApproxSurface_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From GeomConvert_BSplineCurveKnotSplitting.hxx

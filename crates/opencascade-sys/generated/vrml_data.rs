@@ -3801,11 +3801,12 @@ unsafe impl crate::CppDeletable for InBuffer {
     }
 }
 
-// ── Skipped symbols for InBuffer (1 total) ──
-// SKIPPED: **Source:** `VrmlData_InBuffer.hxx`:31 - `VrmlData_InBuffer::VrmlData_InBuffer`
-//   Reason: has unbindable types: param 'theStream': stream type (Standard_IStream&)
-//   // pub fn new_istream(theStream: /* Standard_IStream& */) -> OwnedPtr<Self>;
-//
+impl InBuffer {
+    /// **Source:** `VrmlData_InBuffer.hxx`:31 - `VrmlData_InBuffer::VrmlData_InBuffer()`
+    pub fn new_istream(theStream: &mut crate::ffi::Standard_IStream) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_InBuffer_ctor_istream(theStream)) }
+    }
+}
 
 // ========================
 // From VrmlData_IndexedFaceSet.hxx
@@ -6374,6 +6375,13 @@ impl Scene {
         unsafe { &*(crate::ffi::VrmlData_Scene_world_info(self as *const Self)) }
     }
 
+    /// **Source:** `VrmlData_Scene.hxx`:202 - `VrmlData_Scene::Dump()`
+    ///
+    /// Diagnostic dump of the contents
+    pub fn dump(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::VrmlData_Scene_dump(self as *const Self, theStream) }
+    }
+
     /// **Source:** `VrmlData_Scene.hxx`:207 - `VrmlData_Scene::ReadReal()`
     ///
     /// Read one real value.
@@ -6580,16 +6588,11 @@ impl Scene {
     }
 }
 
-// ── Skipped symbols for Scene (4 total) ──
+// ── Skipped symbols for Scene (3 total) ──
 // SKIPPED: **Source:** `VrmlData_Scene.hxx`:98 - `VrmlData_Scene::NamedNodesIterator`
 //   method: Get the iterator of named nodes.
 //   Reason: return type 'VrmlData_MapOfNode::Iterator' is not CppDeletable
 //   // pub fn named_nodes_iterator(&self) -> OwnedPtr<VrmlData_MapOfNode::Iterator>;
-//
-// SKIPPED: **Source:** `VrmlData_Scene.hxx`:202 - `VrmlData_Scene::Dump`
-//   method: Diagnostic dump of the contents
-//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
-//   // pub fn dump(&self, theStream: /* Standard_OStream& */);
 //
 // SKIPPED: **Source:** `VrmlData_Scene.hxx`:230 - `VrmlData_Scene::ReadArrIndex`
 //   method: Read an array of integer indices, for IndexedfaceSet and IndexedLineSet.

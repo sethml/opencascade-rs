@@ -53,6 +53,15 @@ pub fn tool(
 ) -> crate::OwnedPtr<crate::topo_ds::Solid> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFeat_tool(SRef, Fac, Orf.into())) }
 }
+/// **Source:** `BRepFeat.hxx`:116 - `BRepFeat::Print`
+/// Prints the Error description of the State <St> as a String on
+/// the Stream <S> and returns <S>.
+pub fn print_statuserror_ostream(
+    SE: crate::b_rep_feat::StatusError,
+    S: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::BRepFeat_print_statuserror_ostream(SE.into(), S)) }
+}
 
 /// To declare the type of selection semantics for local operation Perform methods
 /// -   NoSelection
@@ -657,6 +666,16 @@ impl Builder {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_GetReport(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BRepFeat_Builder_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BRepFeat_Builder_inherited_DumpWarnings(self as *const Self, theOS) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -1712,6 +1731,26 @@ impl MakeCylindricalHole {
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe {
             &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_GetReport(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_DumpErrors(
+                self as *const Self,
+                theOS,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_DumpWarnings(
+                self as *const Self,
+                theOS,
+            )
         }
     }
 

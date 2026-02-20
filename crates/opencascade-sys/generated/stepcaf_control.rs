@@ -1790,8 +1790,8 @@ impl Reader {
 //   method: Loads a file from stream and returns the read status.
 //   method: @param[in] theName  auxiliary stream name
 //   method: @param[in] theIStream  stream to read from
-//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
-//   // pub fn read_stream(&mut self, theName: *const char, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//   Reason: param 'theIStream' uses unknown type 'std::istream&'
+//   // pub fn read_stream(&mut self, theName: *const char, theIStream: &mut istream) -> OwnedPtr<IFSelect_ReturnStatus>;
 //
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:113 - `STEPCAFControl_Reader::TransferOneRoot`
 //   method: Translates currently loaded STEP file into the document
@@ -2184,8 +2184,8 @@ impl Writer {
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:81 - `STEPCAFControl_Writer::WriteStream`
 //   method: Writes all the produced models into the stream.
 //   method: Provided for use like single-file writer
-//   Reason: has unbindable types: param 'theStream': stream type (std::ostream&)
-//   // pub fn write_stream(&mut self, theStream: /* std::ostream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//   Reason: param 'theStream' uses unknown type 'std::ostream&'
+//   // pub fn write_stream(&mut self, theStream: &mut ostream) -> OwnedPtr<IFSelect_ReturnStatus>;
 //
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:90 - `STEPCAFControl_Writer::Transfer`
 //   method: Transfers a document (or single label) to a STEP model

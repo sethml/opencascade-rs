@@ -351,15 +351,14 @@ impl ApproxAFunc2Var {
             crate::ffi::AdvApp2Var_ApproxAFunc2Var_crit_error(self as *const Self, Dimension, Index)
         }
     }
-}
 
-// ── Skipped symbols for ApproxAFunc2Var (1 total) ──
-// SKIPPED: **Source:** `AdvApp2Var_ApproxAFunc2Var.hxx`:194 - `AdvApp2Var_ApproxAFunc2Var::Dump`
-//   method: Prints on the stream 'o' information on the current state
-//   method: of the object.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `AdvApp2Var_ApproxAFunc2Var.hxx`:194 - `AdvApp2Var_ApproxAFunc2Var::Dump()`
+    /// Prints on the stream 'o' information on the current state
+    /// of the object.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::AdvApp2Var_ApproxAFunc2Var_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From AdvApp2Var_ApproxF2var.hxx

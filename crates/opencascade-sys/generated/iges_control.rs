@@ -1877,15 +1877,28 @@ impl Writer {
         unsafe { crate::ffi::IGESControl_Writer_compute_model(self as *mut Self) }
     }
 
+    /// **Source:** `IGESControl_Writer.hxx`:109 - `IGESControl_Writer::Write()`
+    /// Computes then writes the model to an OStream
+    /// Returns True when done, false in case of error
+    pub fn write_ostream_bool(&mut self, S: &mut crate::ffi::Standard_OStream, fnes: bool) -> bool {
+        unsafe { crate::ffi::IGESControl_Writer_write_ostream_bool(self as *mut Self, S, fnes) }
+    }
+
     /// **Source:** `IGESControl_Writer.hxx`:117 - `IGESControl_Writer::Write()`
     /// Prepares and writes an IGES model
     /// either to an OStream, S or to a file name,CString.
     /// Returns True if the operation was performed correctly and
     /// False if an error occurred (for instance,
     /// if the processor could not create the file).
-    pub fn write(&mut self, file: &str, fnes: bool) -> bool {
+    pub fn write_charptr_bool(&mut self, file: &str, fnes: bool) -> bool {
         let c_file = std::ffi::CString::new(file).unwrap();
-        unsafe { crate::ffi::IGESControl_Writer_write(self as *mut Self, c_file.as_ptr(), fnes) }
+        unsafe {
+            crate::ffi::IGESControl_Writer_write_charptr_bool(
+                self as *mut Self,
+                c_file.as_ptr(),
+                fnes,
+            )
+        }
     }
 
     /// **Source:** `IGESControl_Writer.hxx`:122 - `IGESControl_Writer::SetShapeFixParameters()`
@@ -1932,13 +1945,7 @@ impl Writer {
     }
 }
 
-// ── Skipped symbols for Writer (4 total) ──
-// SKIPPED: **Source:** `IGESControl_Writer.hxx`:109 - `IGESControl_Writer::Write`
-//   method: Computes then writes the model to an OStream
-//   method: Returns True when done, false in case of error
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn write(&mut self, S: /* Standard_OStream& */, fnes: bool) -> bool;
-//
+// ── Skipped symbols for Writer (3 total) ──
 // SKIPPED: **Source:** `IGESControl_Writer.hxx`:128 - `IGESControl_Writer::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.

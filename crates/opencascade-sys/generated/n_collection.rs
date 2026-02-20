@@ -850,19 +850,18 @@ impl BaseMap {
         unsafe { crate::ffi::NCollection_BaseMap_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `NCollection_BaseMap.hxx`:149 - `NCollection_BaseMap::Statistics()`
+    /// Statistics
+    pub fn statistics(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::NCollection_BaseMap_statistics(self as *const Self, S) }
+    }
+
     /// **Source:** `NCollection_BaseMap.hxx`:152 - `NCollection_BaseMap::Allocator()`
     /// Returns attached allocator
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
         unsafe { &*(crate::ffi::NCollection_BaseMap_allocator(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for BaseMap (1 total) ──
-// SKIPPED: **Source:** `NCollection_BaseMap.hxx`:149 - `NCollection_BaseMap::Statistics`
-//   method: Statistics
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn statistics(&self, S: /* Standard_OStream& */);
-//
 
 /// **Source:** `NCollection_BaseMap.hxx`:46 - `NCollection_BaseMap_Iterator`
 /// Memory allocation

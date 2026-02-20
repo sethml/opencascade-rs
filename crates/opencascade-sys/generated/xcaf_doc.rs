@@ -512,6 +512,23 @@ impl Area {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Area_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_Forget(self as *mut Self, aTransaction) }
@@ -609,8 +626,8 @@ impl HandleXCAFDocArea {
 
 // ── Skipped symbols for Area (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_Area.hxx`:56 - `XCAFDoc_Area::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1551,6 +1568,23 @@ impl AssemblyItemRef {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyItemRef_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -1652,8 +1686,8 @@ impl HandleXCAFDocAssemblyItemRef {
 
 // ── Skipped symbols for AssemblyItemRef (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_AssemblyItemRef.hxx`:146 - `XCAFDoc_AssemblyItemRef::Dump`
-//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, theOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2048,6 +2082,23 @@ impl Centroid {
         unsafe { crate::ffi::XCAFDoc_Centroid_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Centroid_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Centroid_inherited_Forget(self as *mut Self, aTransaction) }
@@ -2136,8 +2187,8 @@ impl HandleXCAFDocCentroid {
 
 // ── Skipped symbols for Centroid (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_Centroid.hxx`:66 - `XCAFDoc_Centroid::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2729,6 +2780,23 @@ impl ClippingPlaneTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -3241,6 +3309,23 @@ impl Color {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Color_inherited_References(self as *const Self, aDataSet) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Color_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -4258,6 +4343,23 @@ impl ColorTool {
         unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ColorTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_Forget(self as *mut Self, aTransaction) }
@@ -4736,6 +4838,23 @@ impl Datum {
         unsafe { crate::ffi::XCAFDoc_Datum_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Datum_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Datum_inherited_Forget(self as *mut Self, aTransaction) }
@@ -5175,6 +5294,23 @@ impl DimTol {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_DimTol_inherited_References(self as *const Self, aDataSet) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTol_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -6122,6 +6258,23 @@ impl DimTolTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_Forget(self as *mut Self, aTransaction) }
@@ -6593,6 +6746,23 @@ impl Dimension {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Dimension_inherited_References(self as *const Self, aDataSet) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Dimension_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -7261,6 +7431,23 @@ impl DocumentTool {
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
             crate::ffi::XCAFDoc_DocumentTool_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DocumentTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
         }
     }
 
@@ -7969,6 +8156,23 @@ impl GeomTolerance {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_GeomTolerance_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -8555,6 +8759,23 @@ impl GraphNode {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_GraphNode_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_Forget(self as *mut Self, aTransaction) }
@@ -8643,8 +8864,8 @@ impl HandleXCAFDocGraphNode {
 
 // ── Skipped symbols for GraphNode (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:136 - `XCAFDoc_GraphNode::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -9437,6 +9658,23 @@ impl LayerTool {
         unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_LayerTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_Forget(self as *mut Self, aTransaction) }
@@ -9941,6 +10179,23 @@ impl LengthUnit {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_LengthUnit_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_Forget(self as *mut Self, aTransaction) }
@@ -10029,8 +10284,8 @@ impl HandleXCAFDocLengthUnit {
 
 // ── Skipped symbols for LengthUnit (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_LengthUnit.hxx`:87 - `XCAFDoc_LengthUnit::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -10365,6 +10620,23 @@ impl Location {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Location_inherited_References(self as *const Self, aDataSet) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Location_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -10832,6 +11104,23 @@ impl Material {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Material_inherited_References(self as *const Self, aDataSet) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Material_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -11378,6 +11667,23 @@ impl MaterialTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_MaterialTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -11823,6 +12129,23 @@ impl Note {
         unsafe { crate::ffi::XCAFDoc_Note_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Note_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Note_inherited_Forget(self as *mut Self, aTransaction) }
@@ -11959,8 +12282,8 @@ impl HandleXCAFDocNote {
 
 // ── Skipped symbols for Note (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_Note.hxx`:66 - `XCAFDoc_Note::Dump`
-//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, theOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -12378,6 +12701,23 @@ impl NoteBalloon {
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
             crate::ffi::XCAFDoc_NoteBalloon_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_NoteBalloon_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
         }
     }
 
@@ -12981,6 +13321,23 @@ impl NoteBinData {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_NoteBinData_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_Forget(self as *mut Self, aTransaction) }
@@ -13083,8 +13440,8 @@ impl HandleXCAFDocNoteBinData {
 
 // ── Skipped symbols for NoteBinData (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_NoteBinData.hxx`:115 - `XCAFDoc_NoteBinData::Dump`
-//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, theOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -13498,6 +13855,23 @@ impl NoteComment {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_NoteComment_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_Forget(self as *mut Self, aTransaction) }
@@ -13618,8 +13992,8 @@ impl HandleXCAFDocNoteComment {
 
 // ── Skipped symbols for NoteComment (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_NoteComment.hxx`:59 - `XCAFDoc_NoteComment::Dump`
-//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, theOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -14869,6 +15243,23 @@ impl NotesTool {
         unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_NotesTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_Forget(self as *mut Self, aTransaction) }
@@ -14970,8 +15361,8 @@ impl HandleXCAFDocNotesTool {
 
 // ── Skipped symbols for NotesTool (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:512 - `XCAFDoc_NotesTool::Dump`
-//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, theOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -15323,6 +15714,23 @@ impl ShapeMapTool {
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
             crate::ffi::XCAFDoc_ShapeMapTool_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ShapeMapTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
         }
     }
 
@@ -16225,6 +16633,19 @@ impl ShapeTool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_get_sub_shapes(L, Labels) }
     }
 
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:370 - `XCAFDoc_ShapeTool::DumpShape()`
+    /// Print to std::ostream <theDumpLog> type of shape found on <L> label
+    /// and the entry of <L>, with <level> tabs before.
+    /// If <deep>, print also TShape and Location addresses
+    pub fn dump_shape(
+        theDumpLog: &mut crate::ffi::Standard_OStream,
+        L: &crate::tdf::Label,
+        level: i32,
+        deep: bool,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_dump_shape(theDumpLog, L, level, deep) }
+    }
+
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:380 - `XCAFDoc_ShapeTool::IsExternRef()`
     /// Returns True if the label is a label of external references, i.e.
     /// there are some reference on the no-step files, which are
@@ -16588,6 +17009,23 @@ impl ShapeTool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ShapeTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_Forget(self as *mut Self, aTransaction) }
@@ -16687,21 +17125,14 @@ impl HandleXCAFDocShapeTool {
     }
 }
 
-// ── Skipped symbols for ShapeTool (3 total) ──
+// ── Skipped symbols for ShapeTool (2 total) ──
 // SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:361 - `XCAFDoc_ShapeTool::Dump`
-//   Reason: has unbindable types: param 'theDumpLog': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, theDumpLog: /* Standard_OStream& */, deep: bool) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, theDumpLog: &mut OStream, deep: bool) -> &mut OStream;
 //
 // SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:364 - `XCAFDoc_ShapeTool::Dump`
-//   Reason: has unbindable types: param 'theDumpLog': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, theDumpLog: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:370 - `XCAFDoc_ShapeTool::DumpShape`
-//   static_method: Print to std::ostream <theDumpLog> type of shape found on <L> label
-//   static_method: and the entry of <L>, with <level> tabs before.
-//   static_method: If <deep>, print also TShape and Location addresses
-//   Reason: has unbindable types: param 'theDumpLog': stream type (Standard_OStream&)
-//   // pub fn dump_shape(theDumpLog: /* Standard_OStream& */, L: &Label, level: i32, deep: bool);
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, theDumpLog: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -17025,6 +17456,23 @@ impl View {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_View_inherited_References(self as *const Self, aDataSet) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_View_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -17751,6 +18199,23 @@ impl ViewTool {
         unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_Forget(self as *mut Self, aTransaction) }
@@ -18327,6 +18792,23 @@ impl VisMaterial {
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterial_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_VisMaterial_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
         }
     }
 
@@ -19085,6 +19567,23 @@ impl VisMaterialTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_VisMaterialTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -19529,6 +20028,23 @@ impl Volume {
         unsafe { crate::ffi::XCAFDoc_Volume_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Volume_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Volume_inherited_Forget(self as *mut Self, aTransaction) }
@@ -19626,8 +20142,8 @@ impl HandleXCAFDocVolume {
 
 // ── Skipped symbols for Volume (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_Volume.hxx`:56 - `XCAFDoc_Volume::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================

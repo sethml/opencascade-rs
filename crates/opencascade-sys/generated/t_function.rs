@@ -421,8 +421,8 @@ impl HandleTFunctionDriverTable {
 
 // ── Skipped symbols for DriverTable (1 total) ──
 // SKIPPED: **Source:** `TFunction_DriverTable.hxx`:61 - `TFunction_DriverTable::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -809,6 +809,23 @@ impl Function {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TFunction_Function_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TFunction_Function_inherited_Forget(self as *mut Self, aTransaction) }
@@ -897,8 +914,8 @@ impl HandleTFunctionFunction {
 
 // ── Skipped symbols for Function (1 total) ──
 // SKIPPED: **Source:** `TFunction_Function.hxx`:93 - `TFunction_Function::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1330,6 +1347,23 @@ impl GraphNode {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TFunction_GraphNode_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TFunction_GraphNode_inherited_Forget(self as *mut Self, aTransaction) }
@@ -1423,8 +1457,8 @@ impl HandleTFunctionGraphNode {
 
 // ── Skipped symbols for GraphNode (1 total) ──
 // SKIPPED: **Source:** `TFunction_GraphNode.hxx`:110 - `TFunction_GraphNode::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1936,8 +1970,8 @@ impl Iterator {
 
 // ── Skipped symbols for Iterator (1 total) ──
 // SKIPPED: **Source:** `TFunction_Iterator.hxx`:84 - `TFunction_Iterator::Dump`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, OS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2342,6 +2376,23 @@ impl Logbook {
         unsafe { crate::ffi::TFunction_Logbook_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TFunction_Logbook_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TFunction_Logbook_inherited_Forget(self as *mut Self, aTransaction) }
@@ -2436,8 +2487,8 @@ impl HandleTFunctionLogbook {
 // ── Skipped symbols for Logbook (1 total) ──
 // SKIPPED: **Source:** `TFunction_Logbook.hxx`:117 - `TFunction_Logbook::Dump`
 //   method: Prints th data of the attributes (touched, impacted and valid labels).
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2835,6 +2886,23 @@ impl Scope {
         unsafe { crate::ffi::TFunction_Scope_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TFunction_Scope_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TFunction_Scope_inherited_Forget(self as *mut Self, aTransaction) }
@@ -2923,8 +2991,8 @@ impl HandleTFunctionScope {
 
 // ── Skipped symbols for Scope (1 total) ──
 // SKIPPED: **Source:** `TFunction_Scope.hxx`:92 - `TFunction_Scope::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================

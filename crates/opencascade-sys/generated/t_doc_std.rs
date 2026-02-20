@@ -352,15 +352,15 @@ impl Application {
 //   method: Retrieves document from standard stream.
 //   method: @param[in,out] theIStream input seekable stream
 //   method: @param[out]    theDoc     result document
-//   Reason: has unbindable types: param 'theIStream': stream type (Standard_IStream&)
-//   // pub fn open(&mut self, theIStream: /* Standard_IStream& */, theDoc: &mut HandleDocument, theFilter: &HandleReaderFilter, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
+//   Reason: param 'theDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   // pub fn open(&mut self, theIStream: &mut IStream, theDoc: &mut HandleDocument, theFilter: &HandleReaderFilter, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:268 - `TDocStd_Application::Open`
 //   method: Retrieves document from standard stream.
 //   method: @param[in,out] theIStream input seekable stream
 //   method: @param[out]    theDoc     result document
-//   Reason: has unbindable types: param 'theIStream': stream type (Standard_IStream&)
-//   // pub fn open(&mut self, theIStream: /* Standard_IStream& */, theDoc: &mut HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
+//   Reason: param 'theDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   // pub fn open(&mut self, theIStream: &mut IStream, theDoc: &mut HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:278 - `TDocStd_Application::SaveAs`
 //   method: Save the  active document  in the file  <name> in the
@@ -371,8 +371,8 @@ impl Application {
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:285 - `TDocStd_Application::SaveAs`
 //   method: Save theDoc to standard SEEKABLE stream theOStream.
 //   method: the stream should support SEEK functionality
-//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
-//   // pub fn save_as(&mut self, theDoc: &HandleDocument, theOStream: /* Standard_OStream& */, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn save_as(&mut self, theDoc: &HandleDocument, theOStream: &mut OStream, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:294 - `TDocStd_Application::Save`
 //   method: Save aDoc active document.
@@ -391,8 +391,8 @@ impl Application {
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:309 - `TDocStd_Application::SaveAs`
 //   method: Save theDoc TO standard SEEKABLE stream theOStream.
 //   method: the stream should support SEEK functionality
-//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
-//   // pub fn save_as(&mut self, theDoc: &HandleDocument, theOStream: /* Standard_OStream& */, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
+//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn save_as(&mut self, theDoc: &HandleDocument, theOStream: &mut OStream, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:316 - `TDocStd_Application::Save`
 //   method: Save the document overwriting the previous file
@@ -447,6 +447,11 @@ impl ApplicationDelta {
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:39 - `TDocStd_ApplicationDelta::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDocStd_ApplicationDelta_set_name(self as *mut Self, theName) }
+    }
+
+    /// **Source:** `TDocStd_ApplicationDelta.hxx`:41 - `TDocStd_ApplicationDelta::Dump()`
+    pub fn dump(&self, anOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TDocStd_ApplicationDelta_dump(self as *const Self, anOS) }
     }
 
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:43 - `TDocStd_ApplicationDelta::DynamicType()`
@@ -578,12 +583,6 @@ impl HandleTDocStdApplicationDelta {
     }
 }
 
-// ── Skipped symbols for ApplicationDelta (1 total) ──
-// SKIPPED: **Source:** `TDocStd_ApplicationDelta.hxx`:41 - `TDocStd_ApplicationDelta::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */);
-//
-
 // ========================
 // From TDocStd_CompoundDelta.hxx
 // ========================
@@ -711,6 +710,11 @@ impl CompoundDelta {
     /// Inherited: **Source:** `TDF_Delta.hxx`:69 - `TDF_Delta::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDocStd_CompoundDelta_inherited_SetName(self as *mut Self, theName) }
+    }
+
+    /// Inherited: **Source:** `TDF_Delta.hxx`:71 - `TDF_Delta::Dump()`
+    pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TDocStd_CompoundDelta_inherited_Dump(self as *const Self, OS) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1645,6 +1649,23 @@ impl Modified {
         unsafe { crate::ffi::TDocStd_Modified_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Modified_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDocStd_Modified_inherited_Forget(self as *mut Self, aTransaction) }
@@ -1733,8 +1754,8 @@ impl HandleTDocStdModified {
 
 // ── Skipped symbols for Modified (1 total) ──
 // SKIPPED: **Source:** `TDocStd_Modified.hxx`:83 - `TDocStd_Modified::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1871,6 +1892,14 @@ impl MultiTransactionManager {
     /// all documents which have been modified during the transaction.
     pub fn remove_last_undo(&mut self) {
         unsafe { crate::ffi::TDocStd_MultiTransactionManager_remove_last_undo(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:106 - `TDocStd_MultiTransactionManager::DumpTransaction()`
+    /// Dumps transactions in undos and redos
+    pub fn dump_transaction(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_dump_transaction(self as *const Self, theOS)
+        }
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:116 - `TDocStd_MultiTransactionManager::Documents()`
@@ -2081,12 +2110,7 @@ impl HandleTDocStdMultiTransactionManager {
     }
 }
 
-// ── Skipped symbols for MultiTransactionManager (3 total) ──
-// SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:106 - `TDocStd_MultiTransactionManager::DumpTransaction`
-//   method: Dumps transactions in undos and redos
-//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&)
-//   // pub fn dump_transaction(&self, theOS: /* Standard_OStream& */);
-//
+// ── Skipped symbols for MultiTransactionManager (2 total) ──
 // SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:110 - `TDocStd_MultiTransactionManager::AddDocument`
 //   method: Adds the document to the transaction manager and
 //   method: checks if it has been already added
@@ -2420,6 +2444,23 @@ impl Owner {
         unsafe { crate::ffi::TDocStd_Owner_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Owner_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDocStd_Owner_inherited_Forget(self as *mut Self, aTransaction) }
@@ -2516,8 +2557,8 @@ impl HandleTDocStdOwner {
 //   // pub fn get_document(&self) -> OwnedPtr<Handle<TDocStd_Document>>;
 //
 // SKIPPED: **Source:** `TDocStd_Owner.hxx`:71 - `TDocStd_Owner::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 // SKIPPED: **Source:** `TDocStd_Owner.hxx`:45 - `TDocStd_Owner::SetDocument`
 //   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
@@ -2953,6 +2994,23 @@ impl XLink {
         unsafe { crate::ffi::TDocStd_XLink_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_XLink_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDocStd_XLink_inherited_Forget(self as *mut Self, aTransaction) }
@@ -3042,8 +3100,8 @@ impl HandleTDocStdXLink {
 // ── Skipped symbols for XLink (1 total) ──
 // SKIPPED: **Source:** `TDocStd_XLink.hxx`:110 - `TDocStd_XLink::Dump`
 //   method: Dumps the attribute on <aStream>.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3439,6 +3497,23 @@ impl XLinkRoot {
         unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_XLinkRoot_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_Forget(self as *mut Self, aTransaction) }
@@ -3528,8 +3603,8 @@ impl HandleTDocStdXLinkRoot {
 // ── Skipped symbols for XLinkRoot (3 total) ──
 // SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:72 - `TDocStd_XLinkRoot::Dump`
 //   method: Dumps the attribute on <aStream>.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 // SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:49 - `TDocStd_XLinkRoot::Insert`
 //   static_method: Inserts <anXLinkPtr> at the beginning of the XLink chain.

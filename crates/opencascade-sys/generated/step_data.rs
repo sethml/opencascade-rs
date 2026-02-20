@@ -8301,23 +8301,55 @@ impl StepDumper {
     pub fn step_writer(&mut self) -> &mut StepWriter {
         unsafe { &mut *(crate::ffi::StepData_StepDumper_step_writer(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for StepDumper (2 total) ──
-// SKIPPED: **Source:** `StepData_StepDumper.hxx`:76 - `StepData_StepDumper::Dump`
-//   method: Dumps a Entity on an Messenger. Returns True if
-//   method: success, False, if the entity to dump has not been recognized
-//   method: by the Protocol. <level> can have one of these values :
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn dump(&mut self, S: /* Standard_OStream& */, ent: &HandleTransient, level: i32) -> bool;
-//
-// SKIPPED: **Source:** `StepData_StepDumper.hxx`:83 - `StepData_StepDumper::Dump`
-//   method: Works as Dump with a Transient, but directly takes the
-//   method: entity designated by its number in the Model
-//   method: Returns False, also if <num> is out of range
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn dump(&mut self, S: /* Standard_OStream& */, num: i32, level: i32) -> bool;
-//
+    /// **Source:** `StepData_StepDumper.hxx`:76 - `StepData_StepDumper::Dump()`
+    /// Dumps a Entity on an Messenger. Returns True if
+    /// success, False, if the entity to dump has not been recognized
+    /// by the Protocol. <level> can have one of these values :
+    /// - 0 : prints the TYPE only, as known in STEP Files (StepType)
+    /// If <ent> has not been regognized by the Protocol, or if its
+    /// type is Complex, the StepType is replaced by the display of
+    /// the cdl type. Complex Type are well processed by level 1.
+    /// - 1 : dumps the entity, completely (whatever it has simple or
+    /// complex type) but alone.
+    /// - 2 : dumps the entity completely, plus the item its refers to
+    /// at first level (a header message designates the starting
+    /// entity of the dump) <Lists Shared and Implied>
+    /// - 3 : dumps the entity and its referred items at any levels
+    ///
+    /// For levels 1,2,3, the numbers displayed (form #nnn) are the
+    /// numbers of the corresponding entities in the Model
+    pub fn dump_ostream_handlestandardtransient_int(
+        &mut self,
+        S: &mut crate::ffi::Standard_OStream,
+        ent: &crate::ffi::HandleStandardTransient,
+        level: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StepData_StepDumper_dump_ostream_handlestandardtransient_int(
+                self as *mut Self,
+                S,
+                ent,
+                level,
+            )
+        }
+    }
+
+    /// **Source:** `StepData_StepDumper.hxx`:83 - `StepData_StepDumper::Dump()`
+    /// Works as Dump with a Transient, but directly takes the
+    /// entity designated by its number in the Model
+    /// Returns False, also if <num> is out of range
+    pub fn dump_ostream_int2(
+        &mut self,
+        S: &mut crate::ffi::Standard_OStream,
+        num: i32,
+        level: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StepData_StepDumper_dump_ostream_int2(self as *mut Self, S, num, level)
+        }
+    }
+}
 
 // ========================
 // From StepData_StepModel.hxx
@@ -8416,6 +8448,16 @@ impl StepModel {
         unsafe { crate::ffi::StepData_StepModel_verify_check(self as *const Self, ach) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:79 - `StepData_StepModel::DumpHeader()`
+    /// Dumps the Header, with the Header Protocol of StepData.
+    /// If the Header Protocol is not defined, for each Header Entity,
+    /// prints its Type. Else sends the Header under the form of
+    /// HEADER Section of an Ascii Step File
+    /// <level> is not used because Header is not so big
+    pub fn dump_header(&self, S: &mut crate::ffi::Standard_OStream, level: i32) {
+        unsafe { crate::ffi::StepData_StepModel_dump_header(self as *const Self, S, level) }
+    }
+
     /// **Source:** `StepData_StepModel.hxx`:83 - `StepData_StepModel::ClearLabels()`
     /// erases specific labels, i.e. clears the map (entity-ident)
     pub fn clear_labels(&mut self) {
@@ -8433,6 +8475,18 @@ impl StepModel {
     /// returns the label ident attached to an entity, 0 if not in me
     pub fn ident_label(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
         unsafe { crate::ffi::StepData_StepModel_ident_label(self as *const Self, ent) }
+    }
+
+    /// **Source:** `StepData_StepModel.hxx`:96 - `StepData_StepModel::PrintLabel()`
+    /// Prints label specific to STEP norm for a given entity, i.e.
+    /// if a LabelIdent has been recorded, its value with '#', else
+    /// the number in the model with '#' and between ()
+    pub fn print_label(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::StepData_StepModel_print_label(self as *const Self, ent, S) }
     }
 
     /// **Source:** `StepData_StepModel.hxx`:101 - `StepData_StepModel::StringLabel()`
@@ -8877,6 +8931,25 @@ impl StepModel {
         unsafe { crate::ffi::StepData_StepModel_inherited_SetGlobalCheck(self as *mut Self, ach) }
     }
 
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:370 - `Interface_InterfaceModel::Print()`
+    pub fn print(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        s: &mut crate::ffi::Standard_OStream,
+        mode: i32,
+    ) {
+        unsafe { crate::ffi::StepData_StepModel_inherited_Print(self as *const Self, ent, s, mode) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:383 - `Interface_InterfaceModel::PrintToLog()`
+    pub fn print_to_log(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::StepData_StepModel_inherited_PrintToLog(self as *const Self, ent, S) }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::StepData_StepModel_inherited_IsInstance(self as *const Self, theType) }
@@ -8961,22 +9034,6 @@ impl HandleStepDataStepModel {
         }
     }
 }
-
-// ── Skipped symbols for StepModel (2 total) ──
-// SKIPPED: **Source:** `StepData_StepModel.hxx`:79 - `StepData_StepModel::DumpHeader`
-//   method: Dumps the Header, with the Header Protocol of StepData.
-//   method: If the Header Protocol is not defined, for each Header Entity,
-//   method: prints its Type. Else sends the Header under the form of
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn dump_header(&self, S: /* Standard_OStream& */, level: i32);
-//
-// SKIPPED: **Source:** `StepData_StepModel.hxx`:96 - `StepData_StepModel::PrintLabel`
-//   method: Prints label specific to STEP norm for a given entity, i.e.
-//   method: if a LabelIdent has been recorded, its value with '#', else
-//   method: the number in the model with '#' and between ()
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_label(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
-//
 
 // ========================
 // From StepData_StepReaderData.hxx
@@ -10807,15 +10864,14 @@ impl StepWriter {
             ))
         }
     }
-}
 
-// ── Skipped symbols for StepWriter (1 total) ──
-// SKIPPED: **Source:** `StepData_StepWriter.hxx`:268 - `StepData_StepWriter::Print`
-//   method: writes result on an output defined as an OStream
-//   method: then clears it
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print(&mut self, S: /* Standard_OStream& */) -> bool;
-//
+    /// **Source:** `StepData_StepWriter.hxx`:268 - `StepData_StepWriter::Print()`
+    /// writes result on an output defined as an OStream
+    /// then clears it
+    pub fn print(&mut self, S: &mut crate::ffi::Standard_OStream) -> bool {
+        unsafe { crate::ffi::StepData_StepWriter_print(self as *mut Self, S) }
+    }
+}
 
 // ========================
 // From StepData_UndefinedEntity.hxx

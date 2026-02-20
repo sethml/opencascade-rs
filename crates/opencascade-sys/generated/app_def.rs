@@ -148,6 +148,16 @@ impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
             crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_NbIterations(self as *const Self)
         }
     }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Dump(
+                self as *const Self,
+                o,
+            )
+        }
+    }
 }
 
 // ========================
@@ -2129,6 +2139,16 @@ impl Gradient_BFGSOfMyGradientOfCompute {
             )
         }
     }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Dump(
+                self as *const Self,
+                o,
+            )
+        }
+    }
 }
 
 // ========================
@@ -2282,6 +2302,16 @@ impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
             )
         }
     }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Dump(
+                self as *const Self,
+                o,
+            )
+        }
+    }
 }
 
 // ========================
@@ -2427,6 +2457,13 @@ impl Gradient_BFGSOfTheGradient {
             crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_NbIterations(
                 self as *const Self,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Dump(self as *const Self, o)
         }
     }
 }
@@ -3138,16 +3175,15 @@ impl MultiLine {
             ))
         }
     }
-}
 
-// ── Skipped symbols for MultiLine (1 total) ──
-// SKIPPED: **Source:** `AppDef_MultiLine.hxx`:110 - `AppDef_MultiLine::Dump`
-//   method: Prints on the stream o information on the current
-//   method: state of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `AppDef_MultiLine.hxx`:110 - `AppDef_MultiLine::Dump()`
+    /// Prints on the stream o information on the current
+    /// state of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::AppDef_MultiLine_dump(self as *const Self, o) }
+    }
+}
 
 // ========================
 // From AppDef_MultiPointConstraint.hxx
@@ -3455,6 +3491,14 @@ impl MultiPointConstraint {
         unsafe { crate::ffi::AppDef_MultiPointConstraint_is_curvature_point(self as *const Self) }
     }
 
+    /// **Source:** `AppDef_MultiPointConstraint.hxx`:189 - `AppDef_MultiPointConstraint::Dump()`
+    /// Prints on the stream o information on the current
+    /// state of the object.
+    /// Is used to redefine the operator <<.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::AppDef_MultiPointConstraint_dump(self as *const Self, o) }
+    }
+
     /// Upcast to AppParCurves_MultiPoint
     pub fn as_app_par_curves_multi_point(&self) -> &crate::app_par_curves::MultiPoint {
         unsafe {
@@ -3559,15 +3603,6 @@ impl MultiPointConstraint {
         }
     }
 }
-
-// ── Skipped symbols for MultiPointConstraint (1 total) ──
-// SKIPPED: **Source:** `AppDef_MultiPointConstraint.hxx`:189 - `AppDef_MultiPointConstraint::Dump`
-//   method: Prints on the stream o information on the current
-//   method: state of the object.
-//   method: Is used to redefine the operator <<.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
 
 // ========================
 // From AppDef_MyBSplGradientOfBSplineCompute.hxx
@@ -7589,6 +7624,15 @@ impl Variational {
         unsafe { crate::ffi::AppDef_Variational_nb_iterations(self as *const Self) }
     }
 
+    /// **Source:** `AppDef_Variational.hxx`:158 - `AppDef_Variational::Dump()`
+    /// Prints on the stream o information on the current state
+    /// of the object.
+    /// MaxError,MaxErrorIndex,AverageError,QuadraticError,Criterium
+    /// Distances,Degre,Nombre de poles, parametres, noeuds
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::AppDef_Variational_dump(self as *const Self, o) }
+    }
+
     /// **Source:** `AppDef_Variational.hxx`:164 - `AppDef_Variational::SetConstraints()`
     /// Define the constraints to approximate
     /// If this value is incompatible with the others fields
@@ -7698,15 +7742,6 @@ impl Variational {
         unsafe { crate::ffi::AppDef_Variational_set_nb_iterations(self as *mut Self, Iter) }
     }
 }
-
-// ── Skipped symbols for Variational (1 total) ──
-// SKIPPED: **Source:** `AppDef_Variational.hxx`:158 - `AppDef_Variational::Dump`
-//   method: Prints on the stream o information on the current state
-//   method: of the object.
-//   method: MaxError,MaxErrorIndex,AverageError,QuadraticError,Criterium
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
 
 // ========================
 // Additional type re-exports

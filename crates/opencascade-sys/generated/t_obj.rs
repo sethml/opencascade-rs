@@ -193,8 +193,8 @@ impl Application {
 //
 // SKIPPED: **Source:** `TObj_Application.hxx`:49 - `TObj_Application::SaveDocument`
 //   method: Saving the OCAF document to a stream
-//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
-//   // pub fn save_document(&mut self, theSourceDoc: &HandleDocument, theOStream: /* Standard_OStream& */) -> bool;
+//   Reason: param 'theSourceDoc' uses unknown type 'const Handle(TDocStd_Document)&'
+//   // pub fn save_document(&mut self, theSourceDoc: &HandleDocument, theOStream: &mut OStream) -> bool;
 //
 // SKIPPED: **Source:** `TObj_Application.hxx`:54 - `TObj_Application::LoadDocument`
 //   method: Loading the OCAF document from a file
@@ -203,8 +203,8 @@ impl Application {
 //
 // SKIPPED: **Source:** `TObj_Application.hxx`:59 - `TObj_Application::LoadDocument`
 //   method: Loading the OCAF document from a stream
-//   Reason: has unbindable types: param 'theIStream': stream type (Standard_IStream&)
-//   // pub fn load_document(&mut self, theIStream: /* Standard_IStream& */, theTargetDoc: &mut HandleDocument) -> bool;
+//   Reason: param 'theTargetDoc' uses unknown type 'Handle(TDocStd_Document)&'
+//   // pub fn load_document(&mut self, theIStream: &mut IStream, theTargetDoc: &mut HandleDocument) -> bool;
 //
 // SKIPPED: **Source:** `TObj_Application.hxx`:64 - `TObj_Application::CreateNewDocument`
 //   method: Create the OCAF document from scratch
@@ -1463,14 +1463,30 @@ impl Model {
     /// **Source:** `TObj_Model.hxx`:87 - `TObj_Model::Load()`
     /// Load the OCAF model from a file. If the filename is empty or file does
     /// not exists, it just initializes model by empty data.
-    pub fn load(&mut self, theFile: &crate::t_collection::ExtendedString) -> bool {
-        unsafe { crate::ffi::TObj_Model_load(self as *mut Self, theFile) }
+    pub fn load_extendedstring(&mut self, theFile: &crate::t_collection::ExtendedString) -> bool {
+        unsafe { crate::ffi::TObj_Model_load_extendedstring(self as *mut Self, theFile) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:91 - `TObj_Model::Load()`
+    /// Load the OCAF model from a stream. If case of failure,
+    /// it initializes the model by empty data.
+    pub fn load_istream(&mut self, theIStream: &mut crate::ffi::Standard_IStream) -> bool {
+        unsafe { crate::ffi::TObj_Model_load_istream(self as *mut Self, theIStream) }
     }
 
     /// **Source:** `TObj_Model.hxx`:94 - `TObj_Model::SaveAs()`
     /// Save the model to a file
-    pub fn save_as(&mut self, theFile: &crate::t_collection::ExtendedString) -> bool {
-        unsafe { crate::ffi::TObj_Model_save_as(self as *mut Self, theFile) }
+    pub fn save_as_extendedstring(
+        &mut self,
+        theFile: &crate::t_collection::ExtendedString,
+    ) -> bool {
+        unsafe { crate::ffi::TObj_Model_save_as_extendedstring(self as *mut Self, theFile) }
+    }
+
+    /// **Source:** `TObj_Model.hxx`:97 - `TObj_Model::SaveAs()`
+    /// Save the model to a stream
+    pub fn save_as_ostream(&mut self, theOStream: &mut crate::ffi::Standard_OStream) -> bool {
+        unsafe { crate::ffi::TObj_Model_save_as_ostream(self as *mut Self, theOStream) }
     }
 
     /// **Source:** `TObj_Model.hxx`:100 - `TObj_Model::Save()`
@@ -1795,18 +1811,7 @@ impl HandleTObjModel {
     }
 }
 
-// ── Skipped symbols for Model (5 total) ──
-// SKIPPED: **Source:** `TObj_Model.hxx`:91 - `TObj_Model::Load`
-//   method: Load the OCAF model from a stream. If case of failure,
-//   method: it initializes the model by empty data.
-//   Reason: has unbindable types: param 'theIStream': stream type (Standard_IStream&)
-//   // pub fn load(&mut self, theIStream: /* Standard_IStream& */) -> bool;
-//
-// SKIPPED: **Source:** `TObj_Model.hxx`:97 - `TObj_Model::SaveAs`
-//   method: Save the model to a stream
-//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
-//   // pub fn save_as(&mut self, theOStream: /* Standard_OStream& */) -> bool;
-//
+// ── Skipped symbols for Model (3 total) ──
 // SKIPPED: **Source:** `TObj_Model.hxx`:111 - `TObj_Model::CloseDocument`
 //   method: Close Free OCAF document
 //   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
@@ -3826,15 +3831,14 @@ impl Persistence {
             ))
         }
     }
-}
 
-// ── Skipped symbols for Persistence (1 total) ──
-// SKIPPED: **Source:** `TObj_Persistence.hxx`:49 - `TObj_Persistence::DumpTypes`
-//   static_method: Dumps names of all the types registered for persistence to the
-//   static_method: specified stream
-//   Reason: has unbindable types: param 'theOs': stream type (Standard_OStream&)
-//   // pub fn dump_types(theOs: /* Standard_OStream& */);
-//
+    /// **Source:** `TObj_Persistence.hxx`:49 - `TObj_Persistence::DumpTypes()`
+    /// Dumps names of all the types registered for persistence to the
+    /// specified stream
+    pub fn dump_types(theOs: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TObj_Persistence_dump_types(theOs) }
+    }
+}
 
 // ========================
 // From TObj_ReferenceIterator.hxx
@@ -4851,6 +4855,23 @@ impl TIntSparseArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TObj_TIntSparseArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -5260,6 +5281,18 @@ impl TModel {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TObj_TModel_inherited_References(self as *const Self, aDataSet) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TObj_TModel_inherited_ExtendedDump(self as *const Self, anOS, aFilter, aMap)
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -5737,6 +5770,23 @@ impl TNameContainer {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TObj_TNameContainer_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TObj_TNameContainer_inherited_Forget(self as *mut Self, aTransaction) }
@@ -6162,6 +6212,23 @@ impl TObject {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TObj_TObject_inherited_References(self as *const Self, aDataSet) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TObj_TObject_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -6634,6 +6701,23 @@ impl TReference {
         unsafe { crate::ffi::TObj_TReference_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TObj_TReference_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TObj_TReference_inherited_Forget(self as *mut Self, aTransaction) }
@@ -7039,6 +7123,18 @@ impl TXYZ {
         unsafe { crate::ffi::TObj_TXYZ_inherited_References(self as *const Self, aDataSet) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TObj_TXYZ_inherited_ExtendedDump(self as *const Self, anOS, aFilter, aMap)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TObj_TXYZ_inherited_Forget(self as *mut Self, aTransaction) }
@@ -7128,8 +7224,8 @@ impl HandleTObjTXYZ {
 // ── Skipped symbols for TXYZ (1 total) ──
 // SKIPPED: **Source:** `TObj_TXYZ.hxx`:77 - `TObj_TXYZ::Dump`
 //   method: This method dumps the attribute value into the stream
-//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, theOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================

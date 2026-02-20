@@ -2606,6 +2606,13 @@ impl CounterOfLevelNumber {
         }
     }
 
+    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:85 - `IGESSelect_CounterOfLevelNumber::PrintCount()`
+    /// Prints the counts of items (not the list) then the Highest
+    /// Level Number recorded
+    pub fn print_count(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IGESSelect_CounterOfLevelNumber_print_count(self as *const Self, S) }
+    }
+
     /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:87 - `IGESSelect_CounterOfLevelNumber::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESSelect_CounterOfLevelNumber_dynamic_type(self as *const Self)) }
@@ -2857,6 +2864,30 @@ impl CounterOfLevelNumber {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:128 - `IFSelect_SignatureList::PrintList()`
+    pub fn print_list(
+        &self,
+        S: &mut crate::ffi::Standard_OStream,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        mod_: crate::if_select::PrintCount,
+    ) {
+        unsafe {
+            crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_PrintList(
+                self as *const Self,
+                S,
+                model,
+                mod_.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:136 - `IFSelect_SignatureList::PrintSum()`
+    pub fn print_sum(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_PrintSum(self as *const Self, S)
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -2978,14 +3009,6 @@ impl HandleIGESSelectCounterOfLevelNumber {
         }
     }
 }
-
-// ── Skipped symbols for CounterOfLevelNumber (1 total) ──
-// SKIPPED: **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:85 - `IGESSelect_CounterOfLevelNumber::PrintCount`
-//   method: Prints the counts of items (not the list) then the Highest
-//   method: Level Number recorded
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_count(&self, S: /* Standard_OStream& */);
-//
 
 // ========================
 // From IGESSelect_DispPerDrawing.hxx
@@ -3989,6 +4012,18 @@ impl EditDirPart {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
+    pub fn print_names(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IGESSelect_EditDirPart_inherited_PrintNames(self as *const Self, S) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
+    pub fn print_defs(&self, S: &mut crate::ffi::Standard_OStream, labels: bool) {
+        unsafe {
+            crate::ffi::IGESSelect_EditDirPart_inherited_PrintDefs(self as *const Self, S, labels)
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:99 - `IFSelect_Editor::MaxNameLength()`
     pub fn max_name_length(&self, what: i32) -> i32 {
         unsafe {
@@ -4323,6 +4358,18 @@ impl EditHeader {
                 crate::ffi::IGESSelect_EditHeader_inherited_EditMode(self as *const Self, num),
             )
             .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
+    pub fn print_names(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::IGESSelect_EditHeader_inherited_PrintNames(self as *const Self, S) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
+    pub fn print_defs(&self, S: &mut crate::ffi::Standard_OStream, labels: bool) {
+        unsafe {
+            crate::ffi::IGESSelect_EditHeader_inherited_PrintDefs(self as *const Self, S, labels)
         }
     }
 
@@ -16329,6 +16376,29 @@ impl WorkLibrary {
         unsafe { crate::ffi::IGESSelect_WorkLibrary_write_file(self as *const Self, ctx) }
     }
 
+    /// **Source:** `IGESSelect_WorkLibrary.hxx`:61 - `IGESSelect_WorkLibrary::DumpEntity()`
+    /// Dumps an IGES Entity with an IGES Dumper. <level> is the one
+    /// used by IGESDumper.
+    pub fn dump_entity(
+        &self,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+        entity: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+        level: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESSelect_WorkLibrary_dump_entity(
+                self as *const Self,
+                model,
+                protocol,
+                entity,
+                S,
+                level,
+            )
+        }
+    }
+
     /// **Source:** `IGESSelect_WorkLibrary.hxx`:67 - `IGESSelect_WorkLibrary::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESSelect_WorkLibrary_dynamic_type(self as *const Self)) }
@@ -16516,11 +16586,3 @@ impl HandleIGESSelectWorkLibrary {
         }
     }
 }
-
-// ── Skipped symbols for WorkLibrary (1 total) ──
-// SKIPPED: **Source:** `IGESSelect_WorkLibrary.hxx`:61 - `IGESSelect_WorkLibrary::DumpEntity`
-//   method: Dumps an IGES Entity with an IGES Dumper. <level> is the one
-//   method: used by IGESDumper.
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn dump_entity(&self, model: &HandleInterfaceModel, protocol: &HandleProtocol, entity: &HandleTransient, S: /* Standard_OStream& */, level: i32);
-//

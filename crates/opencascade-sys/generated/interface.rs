@@ -967,6 +967,18 @@ impl Check {
         unsafe { crate::ffi::Interface_Check_get_as_warning(self as *mut Self, other, failsonly) }
     }
 
+    /// **Source:** `Interface_Check.hxx`:253 - `Interface_Check::Print()`
+    /// Prints the messages of the check to an Messenger
+    /// <level> = 1 : only fails
+    /// <level> = 2 : fails and warnings
+    /// <level> = 3 : all (fails, warnings, info msg)
+    /// <final> : if positive (D) prints final values of messages
+    /// if negative, prints originals
+    /// if null, prints both forms
+    pub fn print(&self, S: &mut crate::ffi::Standard_OStream, level: i32, final_: i32) {
+        unsafe { crate::ffi::Interface_Check_print(self as *const Self, S, level, final_) }
+    }
+
     /// **Source:** `Interface_Check.hxx`:260 - `Interface_Check::Trace()`
     /// Prints the messages of the check to the default trace file
     /// By default, according to the default standard level
@@ -1083,15 +1095,6 @@ impl HandleInterfaceCheck {
     }
 }
 
-// ── Skipped symbols for Check (1 total) ──
-// SKIPPED: **Source:** `Interface_Check.hxx`:253 - `Interface_Check::Print`
-//   method: Prints the messages of the check to an Messenger
-//   method: <level> = 1 : only fails
-//   method: <level> = 2 : fails and warnings
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print(&self, S: /* Standard_OStream& */, level: i32, final_: i32);
-//
-
 // ========================
 // From Interface_CheckFailure.hxx
 // ========================
@@ -1139,9 +1142,14 @@ impl CheckFailure {
     }
 
     /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Interface_CheckFailure_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Interface_CheckFailure_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Interface_CheckFailure_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::NewInstance()`
@@ -1231,6 +1239,13 @@ impl CheckFailure {
     ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheckFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Interface_CheckFailure_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Interface_CheckFailure_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -1348,12 +1363,6 @@ impl HandleInterfaceCheckFailure {
         }
     }
 }
-
-// ── Skipped symbols for CheckFailure (1 total) ──
-// SKIPPED: **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Interface_CheckIterator.hxx
@@ -1628,6 +1637,53 @@ impl CheckIterator {
         unsafe { crate::ffi::Interface_CheckIterator_number(self as *const Self) }
     }
 
+    /// **Source:** `Interface_CheckIterator.hxx`:185 - `Interface_CheckIterator::Print()`
+    /// Prints the list of Checks with their attached Numbers
+    /// If <failsonly> is True, prints only Fail messages
+    /// If <failsonly> is False, prints all messages
+    /// If <final> = 0 (D), prints also original messages if different
+    /// If <final> < 0, prints only original messages
+    /// If <final> > 0, prints only final messages
+    /// It uses the recorded Model if it is defined
+    /// Remark : Works apart from the iteration methods (no interference)
+    pub fn print_ostream_bool_int(
+        &self,
+        S: &mut crate::ffi::Standard_OStream,
+        failsonly: bool,
+        final_: i32,
+    ) {
+        unsafe {
+            crate::ffi::Interface_CheckIterator_print_ostream_bool_int(
+                self as *const Self,
+                S,
+                failsonly,
+                final_,
+            )
+        }
+    }
+
+    /// **Source:** `Interface_CheckIterator.hxx`:192 - `Interface_CheckIterator::Print()`
+    /// Works as Print without a model, but for entities which have
+    /// no attached number (Number not positive), tries to compute
+    /// this Number from <model> and displays "original" or "computed"
+    pub fn print_ostream_handleinterfaceinterfacemodel_bool_int(
+        &self,
+        S: &mut crate::ffi::Standard_OStream,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        failsonly: bool,
+        final_: i32,
+    ) {
+        unsafe {
+            crate::ffi::Interface_CheckIterator_print_ostream_handleinterfaceinterfacemodel_bool_int(
+                self as *const Self,
+                S,
+                model,
+                failsonly,
+                final_,
+            )
+        }
+    }
+
     /// **Source:** `Interface_CheckIterator.hxx`:198 - `Interface_CheckIterator::Destroy()`
     /// Clears data of iteration
     pub fn destroy(&mut self) {
@@ -1635,27 +1691,13 @@ impl CheckIterator {
     }
 }
 
-// ── Skipped symbols for CheckIterator (3 total) ──
+// ── Skipped symbols for CheckIterator (1 total) ──
 // SKIPPED: **Source:** `Interface_CheckIterator.hxx`:104 - `Interface_CheckIterator::CCheck`
 //   method: Returns the Check bound to an Entity, in order to be consulted
 //   method: or completed on the spot
 //   method: I.e. returns the Check if is already exists, or adds it then
 //   Reason: returns &mut with reference params (ambiguous lifetimes)
 //   // pub fn c_check(&mut self, ent: &HandleTransient) -> &mut HandleCheck;
-//
-// SKIPPED: **Source:** `Interface_CheckIterator.hxx`:185 - `Interface_CheckIterator::Print`
-//   method: Prints the list of Checks with their attached Numbers
-//   method: If <failsonly> is True, prints only Fail messages
-//   method: If <failsonly> is False, prints all messages
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print(&self, S: /* Standard_OStream& */, failsonly: bool, final_: i32);
-//
-// SKIPPED: **Source:** `Interface_CheckIterator.hxx`:192 - `Interface_CheckIterator::Print`
-//   method: Works as Print without a model, but for entities which have
-//   method: no attached number (Number not positive), tries to compute
-//   method: this Number from <model> and displays "original" or "computed"
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print(&self, S: /* Standard_OStream& */, model: &HandleInterfaceModel, failsonly: bool, final_: i32);
 //
 
 // ========================
@@ -1732,6 +1774,40 @@ impl CheckTool {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         unsafe { crate::ffi::Interface_CheckTool_fill_check(self as *mut Self, ent, sh, ach) }
+    }
+
+    /// **Source:** `Interface_CheckTool.hxx`:70 - `Interface_CheckTool::Print()`
+    /// Utility method which Prints the content of a Check
+    pub fn print_handleinterfacecheck_ostream(
+        &self,
+        ach: &crate::ffi::HandleInterfaceCheck,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::Interface_CheckTool_print_handleinterfacecheck_ostream(
+                self as *const Self,
+                ach,
+                S,
+            )
+        }
+    }
+
+    /// **Source:** `Interface_CheckTool.hxx`:75 - `Interface_CheckTool::Print()`
+    /// Simply Lists all the Checks and the Content (messages) and the
+    /// Entity, if there is, of each Check
+    /// (if all Checks are OK, nothing is Printed)
+    pub fn print_checkiterator_ostream(
+        &self,
+        list: &CheckIterator,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::Interface_CheckTool_print_checkiterator_ostream(
+                self as *const Self,
+                list,
+                S,
+            )
+        }
     }
 
     /// **Source:** `Interface_CheckTool.hxx`:79 - `Interface_CheckTool::Check()`
@@ -1823,20 +1899,6 @@ impl CheckTool {
         }
     }
 }
-
-// ── Skipped symbols for CheckTool (2 total) ──
-// SKIPPED: **Source:** `Interface_CheckTool.hxx`:70 - `Interface_CheckTool::Print`
-//   method: Utility method which Prints the content of a Check
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print(&self, ach: &HandleCheck, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `Interface_CheckTool.hxx`:75 - `Interface_CheckTool::Print`
-//   method: Simply Lists all the Checks and the Content (messages) and the
-//   method: Entity, if there is, of each Check
-//   method: (if all Checks are OK, nothing is Printed)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print(&self, list: &CheckIterator, S: /* Standard_OStream& */);
-//
 
 // ========================
 // From Interface_CopyControl.hxx
@@ -7174,9 +7236,14 @@ impl InterfaceError {
     }
 
     /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Interface_InterfaceError_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Interface_InterfaceError_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Interface_InterfaceError_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::NewInstance()`
@@ -7256,6 +7323,13 @@ impl InterfaceError {
             crate::OwnedPtr::from_raw(crate::ffi::Interface_InterfaceError_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Interface_InterfaceError_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -7435,12 +7509,6 @@ impl HandleInterfaceInterfaceError {
     }
 }
 
-// ── Skipped symbols for InterfaceError (1 total) ──
-// SKIPPED: **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Interface_InterfaceMismatch.hxx
 // ========================
@@ -7488,9 +7556,14 @@ impl InterfaceMismatch {
     }
 
     /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Interface_InterfaceMismatch_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Interface_InterfaceMismatch_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Interface_InterfaceMismatch_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::NewInstance()`
@@ -7594,6 +7667,13 @@ impl InterfaceMismatch {
             crate::OwnedPtr::from_raw(crate::ffi::Interface_InterfaceMismatch_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Interface_InterfaceMismatch_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -7719,12 +7799,6 @@ impl HandleInterfaceInterfaceMismatch {
         }
     }
 }
-
-// ── Skipped symbols for InterfaceMismatch (1 total) ──
-// SKIPPED: **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Interface_InterfaceModel.hxx
@@ -8296,6 +8370,55 @@ impl InterfaceModel {
         unsafe { crate::ffi::Interface_InterfaceModel_verify_check(self as *const Self, ach) }
     }
 
+    /// **Source:** `Interface_InterfaceModel.hxx`:360 - `Interface_InterfaceModel::DumpHeader()`
+    /// Dumps Header in a short, easy to read, form, onto a Stream
+    /// <level> allows to print more or less parts of the header,
+    /// if necessary. 0 for basic print
+    pub fn dump_header(&self, S: &mut crate::ffi::Standard_OStream, level: i32) {
+        unsafe { crate::ffi::Interface_InterfaceModel_dump_header(self as *const Self, S, level) }
+    }
+
+    /// **Source:** `Interface_InterfaceModel.hxx`:370 - `Interface_InterfaceModel::Print()`
+    /// Prints identification of a given entity in <me>, in order to
+    /// be printed in a list or phrase
+    /// <mode> < 0 : prints only its number
+    /// <mode> = 1 : just calls PrintLabel
+    /// <mode> = 0 (D) : prints its number plus '/' plus PrintLabel
+    /// If <ent> == <me>, simply prints "Global"
+    /// If <ent> is unknown, prints "??/its type"
+    pub fn print(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        s: &mut crate::ffi::Standard_OStream,
+        mode: i32,
+    ) {
+        unsafe { crate::ffi::Interface_InterfaceModel_print(self as *const Self, ent, s, mode) }
+    }
+
+    /// **Source:** `Interface_InterfaceModel.hxx`:377 - `Interface_InterfaceModel::PrintLabel()`
+    /// Prints label specific to each norm, for a given entity.
+    /// Must only print label itself, in order to be included in a
+    /// phrase. Can call the result of StringLabel, but not obliged.
+    pub fn print_label(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::Interface_InterfaceModel_print_label(self as *const Self, ent, S) }
+    }
+
+    /// **Source:** `Interface_InterfaceModel.hxx`:383 - `Interface_InterfaceModel::PrintToLog()`
+    /// Prints label specific to each norm in log format, for
+    /// a given entity.
+    /// By default, just calls PrintLabel, can be redefined
+    pub fn print_to_log(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::Interface_InterfaceModel_print_to_log(self as *const Self, ent, S) }
+    }
+
     /// **Source:** `Interface_InterfaceModel.hxx`:389 - `Interface_InterfaceModel::StringLabel()`
     /// Returns a string with the label attached to a given entity.
     /// Warning : While this string may be edited on the spot, if it is a read
@@ -8536,36 +8659,6 @@ impl HandleInterfaceInterfaceModel {
         }
     }
 }
-
-// ── Skipped symbols for InterfaceModel (4 total) ──
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:360 - `Interface_InterfaceModel::DumpHeader`
-//   method: Dumps Header in a short, easy to read, form, onto a Stream
-//   method: <level> allows to print more or less parts of the header,
-//   method: if necessary. 0 for basic print
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn dump_header(&self, S: /* Standard_OStream& */, level: i32);
-//
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:370 - `Interface_InterfaceModel::Print`
-//   method: Prints identification of a given entity in <me>, in order to
-//   method: be printed in a list or phrase
-//   method: <mode> < 0 : prints only its number
-//   Reason: has unbindable types: param 's': stream type (Standard_OStream&)
-//   // pub fn print(&self, ent: &HandleTransient, s: /* Standard_OStream& */, mode: i32);
-//
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:377 - `Interface_InterfaceModel::PrintLabel`
-//   method: Prints label specific to each norm, for a given entity.
-//   method: Must only print label itself, in order to be included in a
-//   method: phrase. Can call the result of StringLabel, but not obliged.
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_label(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:383 - `Interface_InterfaceModel::PrintToLog`
-//   method: Prints label specific to each norm in log format, for
-//   method: a given entity.
-//   method: By default, just calls PrintLabel, can be redefined
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_to_log(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
-//
 
 // ========================
 // From Interface_LineBuffer.hxx
@@ -8889,11 +8982,27 @@ impl MSG {
         }
     }
 
+    /// **Source:** `Interface_MSG.hxx`:120 - `Interface_MSG::Read()`
+    /// Reads a list of messages from a stream, returns read count
+    /// 0 means empty file, -1 means error
+    pub fn read_istream(S: &mut crate::ffi::Standard_IStream) -> i32 {
+        unsafe { crate::ffi::Interface_MSG_read_istream(S) }
+    }
+
     /// **Source:** `Interface_MSG.hxx`:123 - `Interface_MSG::Read()`
     /// Reads a list of messages from a file defined by its name
-    pub fn read(file: &str) -> i32 {
+    pub fn read_charptr(file: &str) -> i32 {
         let c_file = std::ffi::CString::new(file).unwrap();
-        unsafe { crate::ffi::Interface_MSG_read(c_file.as_ptr()) }
+        unsafe { crate::ffi::Interface_MSG_read_charptr(c_file.as_ptr()) }
+    }
+
+    /// **Source:** `Interface_MSG.hxx`:128 - `Interface_MSG::Write()`
+    /// Writes the list of messages recorded to be translated, to a
+    /// stream. Writes all the list (Default) or only keys which begin
+    /// by <rootkey>. Returns the count of written messages
+    pub fn write(S: &mut crate::ffi::Standard_OStream, rootkey: &str) -> i32 {
+        let c_rootkey = std::ffi::CString::new(rootkey).unwrap();
+        unsafe { crate::ffi::Interface_MSG_write(S, c_rootkey.as_ptr()) }
     }
 
     /// **Source:** `Interface_MSG.hxx`:134 - `Interface_MSG::IsKey()`
@@ -8947,6 +9056,13 @@ impl MSG {
     /// see also Trace Modes above
     pub fn set_mode(running: bool, raising: bool) {
         unsafe { crate::ffi::Interface_MSG_set_mode(running, raising) }
+    }
+
+    /// **Source:** `Interface_MSG.hxx`:165 - `Interface_MSG::PrintTrace()`
+    /// Prints the recorded errors (without title; can be empty, this
+    /// is the normally expected case)
+    pub fn print_trace(S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Interface_MSG_print_trace(S) }
     }
 
     /// **Source:** `Interface_MSG.hxx`:182 - `Interface_MSG::Intervalled()`
@@ -9058,35 +9174,18 @@ impl MSG {
                 .into_owned()
         }
     }
-}
 
-// ── Skipped symbols for MSG (4 total) ──
-// SKIPPED: **Source:** `Interface_MSG.hxx`:120 - `Interface_MSG::Read`
-//   static_method: Reads a list of messages from a stream, returns read count
-//   static_method: 0 means empty file, -1 means error
-//   Reason: has unbindable types: param 'S': stream type (Standard_IStream&)
-//   // pub fn read(S: /* Standard_IStream& */) -> i32;
-//
-// SKIPPED: **Source:** `Interface_MSG.hxx`:128 - `Interface_MSG::Write`
-//   static_method: Writes the list of messages recorded to be translated, to a
-//   static_method: stream. Writes all the list (Default) or only keys which begin
-//   static_method: by <rootkey>. Returns the count of written messages
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn write(S: /* Standard_OStream& */, rootkey: *const char) -> i32;
-//
-// SKIPPED: **Source:** `Interface_MSG.hxx`:165 - `Interface_MSG::PrintTrace`
-//   static_method: Prints the recorded errors (without title; can be empty, this
-//   static_method: is the normally expected case)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_trace(S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `Interface_MSG.hxx`:239 - `Interface_MSG::Print`
-//   static_method: Prints a String on an Output Stream, as follows :
-//   static_method: Accompanied with blanks, to give up to <max> charis at all,
-//   static_method: justified according just :
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print(S: /* Standard_OStream& */, val: *const char, max: i32, just: i32);
-//
+    /// **Source:** `Interface_MSG.hxx`:239 - `Interface_MSG::Print()`
+    /// Prints a String on an Output Stream, as follows :
+    /// Accompanied with blanks, to give up to <max> charis at all,
+    /// justified according just :
+    /// -1 (D) : left     0 : center    1 : right
+    /// Maximum 76 characters
+    pub fn print(S: &mut crate::ffi::Standard_OStream, val: &str, max: i32, just: i32) {
+        let c_val = std::ffi::CString::new(val).unwrap();
+        unsafe { crate::ffi::Interface_MSG_print(S, c_val.as_ptr(), max, just) }
+    }
+}
 
 // ========================
 // From Interface_NodeOfGeneralLib.hxx
@@ -11673,15 +11772,14 @@ impl ShareTool {
             ))
         }
     }
-}
 
-// ── Skipped symbols for ShareTool (1 total) ──
-// SKIPPED: **Source:** `Interface_ShareTool.hxx`:111 - `Interface_ShareTool::Print`
-//   method: Utility method which Prints the content of an iterator
-//   method: (by their Numbers)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print(&self, iter: &EntityIterator, S: /* Standard_OStream& */);
-//
+    /// **Source:** `Interface_ShareTool.hxx`:111 - `Interface_ShareTool::Print()`
+    /// Utility method which Prints the content of an iterator
+    /// (by their Numbers)
+    pub fn print(&self, iter: &EntityIterator, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Interface_ShareTool_print(self as *const Self, iter, S) }
+    }
+}
 
 // ========================
 // From Interface_SignLabel.hxx
@@ -12427,6 +12525,19 @@ impl Static {
         }
     }
 
+    /// **Source:** `Interface_Static.hxx`:89 - `Interface_Static::PrintStatic()`
+    /// Writes the properties of a
+    /// parameter in the diagnostic file. These include:
+    /// - Name
+    /// - Family,
+    /// - Wildcard (if it has one)
+    /// - Current status (empty  string if it was updated or
+    /// if it is the original one)
+    /// - Value
+    pub fn print_static(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Interface_Static_print_static(self as *const Self, S) }
+    }
+
     /// **Source:** `Interface_Static.hxx`:94 - `Interface_Static::Family()`
     /// Returns the family. It can be : a resource name for applis,
     /// an internal name between : $e (environment variables),
@@ -12815,6 +12926,16 @@ impl Static {
         }
     }
 
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:91 - `MoniTool_TypedValue::Print()`
+    pub fn print(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Interface_Static_inherited_Print(self as *const Self, S) }
+    }
+
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:94 - `MoniTool_TypedValue::PrintValue()`
+    pub fn print_value(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Interface_Static_inherited_PrintValue(self as *const Self, S) }
+    }
+
     /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:119 - `MoniTool_TypedValue::SetMaxLength()`
     pub fn set_max_length(&mut self, max: i32) {
         unsafe { crate::ffi::Interface_Static_inherited_SetMaxLength(self as *mut Self, max) }
@@ -13069,15 +13190,6 @@ impl HandleInterfaceStatic {
     }
 }
 
-// ── Skipped symbols for Static (1 total) ──
-// SKIPPED: **Source:** `Interface_Static.hxx`:89 - `Interface_Static::PrintStatic`
-//   method: Writes the properties of a
-//   method: parameter in the diagnostic file. These include:
-//   method: - Name
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_static(&self, S: /* Standard_OStream& */);
-//
-
 // ========================
 // From Interface_TypedValue.hxx
 // ========================
@@ -13244,6 +13356,16 @@ impl TypedValue {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:91 - `MoniTool_TypedValue::Print()`
+    pub fn print(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Interface_TypedValue_inherited_Print(self as *const Self, S) }
+    }
+
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:94 - `MoniTool_TypedValue::PrintValue()`
+    pub fn print_value(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Interface_TypedValue_inherited_PrintValue(self as *const Self, S) }
     }
 
     /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:119 - `MoniTool_TypedValue::SetMaxLength()`

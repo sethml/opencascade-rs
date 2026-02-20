@@ -6,6 +6,26 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `LocalAnalysis.hxx`:39 - `LocalAnalysis::Dump`
+/// This  class  compute s and gives tools to check the local
+/// continuity between two points situated on 2 curves.
+///
+/// This function gives information about a variable CurveContinuity
+pub fn dump_surfacecontinuity_ostream(
+    surfconti: &SurfaceContinuity,
+    o: &mut crate::ffi::Standard_OStream,
+) {
+    unsafe { crate::ffi::LocalAnalysis_dump_surfacecontinuity_ostream(surfconti, o) }
+}
+/// **Source:** `LocalAnalysis.hxx`:43 - `LocalAnalysis::Dump`
+/// This function gives information about a variable SurfaceContinuity
+pub fn dump_curvecontinuity_ostream(
+    curvconti: &CurveContinuity,
+    o: &mut crate::ffi::Standard_OStream,
+) {
+    unsafe { crate::ffi::LocalAnalysis_dump_curvecontinuity_ostream(curvconti, o) }
+}
+
 /// C++ enum: `LocalAnalysis_StatusErrorType`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]

@@ -14647,6 +14647,28 @@ impl SpecificModule {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESBasic_SpecificModule_ctor()) }
     }
 
+    /// **Source:** `IGESBasic_SpecificModule.hxx`:41 - `IGESBasic_SpecificModule::OwnDump()`
+    /// Specific Dump (own parameters) for IGESBasic
+    pub fn own_dump(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_SpecificModule_own_dump(
+                self as *const Self,
+                CN,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+
     /// **Source:** `IGESBasic_SpecificModule.hxx`:49 - `IGESBasic_SpecificModule::OwnCorrect()`
     /// Performs non-ambiguous Corrections on Entities which support
     /// them (AssocGroupType,Hierarchy,Name,SingleParent)
@@ -14811,13 +14833,6 @@ impl HandleIGESBasicSpecificModule {
         }
     }
 }
-
-// ── Skipped symbols for SpecificModule (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_SpecificModule.hxx`:41 - `IGESBasic_SpecificModule::OwnDump`
-//   method: Specific Dump (own parameters) for IGESBasic
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, CN: i32, ent: &HandleIGESEntity, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
 
 // ========================
 // From IGESBasic_SubfigureDef.hxx
@@ -15692,14 +15707,27 @@ impl ToolAssocGroupType {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolAssocGroupType (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolAssocGroupType.hxx`:79 - `IGESBasic_ToolAssocGroupType::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleAssocGroupType, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolAssocGroupType.hxx`:79 - `IGESBasic_ToolAssocGroupType::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicAssocGroupType,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolAssocGroupType_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolExternalRefFile.hxx
@@ -15816,14 +15844,27 @@ impl ToolExternalRefFile {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolExternalRefFile (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolExternalRefFile.hxx`:76 - `IGESBasic_ToolExternalRefFile::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleExternalRefFile, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolExternalRefFile.hxx`:76 - `IGESBasic_ToolExternalRefFile::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicExternalRefFile,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolExternalRefFile_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolExternalRefFileIndex.hxx
@@ -15948,14 +15989,27 @@ impl ToolExternalRefFileIndex {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolExternalRefFileIndex (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolExternalRefFileIndex.hxx`:76 - `IGESBasic_ToolExternalRefFileIndex::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleExternalRefFileIndex, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolExternalRefFileIndex.hxx`:76 - `IGESBasic_ToolExternalRefFileIndex::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicExternalRefFileIndex,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolExternalRefFileIndex_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolExternalRefFileName.hxx
@@ -16076,14 +16130,27 @@ impl ToolExternalRefFileName {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolExternalRefFileName (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolExternalRefFileName.hxx`:76 - `IGESBasic_ToolExternalRefFileName::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleExternalRefFileName, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolExternalRefFileName.hxx`:76 - `IGESBasic_ToolExternalRefFileName::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicExternalRefFileName,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolExternalRefFileName_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolExternalRefLibName.hxx
@@ -16204,14 +16271,27 @@ impl ToolExternalRefLibName {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolExternalRefLibName (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolExternalRefLibName.hxx`:76 - `IGESBasic_ToolExternalRefLibName::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleExternalRefLibName, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolExternalRefLibName.hxx`:76 - `IGESBasic_ToolExternalRefLibName::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicExternalRefLibName,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolExternalRefLibName_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolExternalRefName.hxx
@@ -16328,14 +16408,27 @@ impl ToolExternalRefName {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolExternalRefName (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolExternalRefName.hxx`:76 - `IGESBasic_ToolExternalRefName::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleExternalRefName, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolExternalRefName.hxx`:76 - `IGESBasic_ToolExternalRefName::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicExternalRefName,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolExternalRefName_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolExternalReferenceFile.hxx
@@ -16460,14 +16553,27 @@ impl ToolExternalReferenceFile {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolExternalReferenceFile (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolExternalReferenceFile.hxx`:76 - `IGESBasic_ToolExternalReferenceFile::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleExternalReferenceFile, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolExternalReferenceFile.hxx`:76 - `IGESBasic_ToolExternalReferenceFile::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicExternalReferenceFile,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolExternalReferenceFile_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolGroup.hxx
@@ -16566,14 +16672,21 @@ impl ToolGroup {
     ) {
         unsafe { crate::ffi::IGESBasic_ToolGroup_own_copy(self as *const Self, entfrom, entto, TC) }
     }
-}
 
-// ── Skipped symbols for ToolGroup (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolGroup.hxx`:79 - `IGESBasic_ToolGroup::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleGroup, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolGroup.hxx`:79 - `IGESBasic_ToolGroup::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicGroup,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolGroup_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolGroupWithoutBackP.hxx
@@ -16701,14 +16814,27 @@ impl ToolGroupWithoutBackP {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolGroupWithoutBackP (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolGroupWithoutBackP.hxx`:80 - `IGESBasic_ToolGroupWithoutBackP::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleGroupWithoutBackP, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolGroupWithoutBackP.hxx`:80 - `IGESBasic_ToolGroupWithoutBackP::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicGroupWithoutBackP,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolGroupWithoutBackP_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolHierarchy.hxx
@@ -16815,14 +16941,21 @@ impl ToolHierarchy {
             crate::ffi::IGESBasic_ToolHierarchy_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolHierarchy (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolHierarchy.hxx`:79 - `IGESBasic_ToolHierarchy::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleHierarchy, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolHierarchy.hxx`:79 - `IGESBasic_ToolHierarchy::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicHierarchy,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolHierarchy_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolName.hxx
@@ -16921,14 +17054,19 @@ impl ToolName {
     ) {
         unsafe { crate::ffi::IGESBasic_ToolName_own_copy(self as *const Self, entfrom, entto, TC) }
     }
-}
 
-// ── Skipped symbols for ToolName (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolName.hxx`:79 - `IGESBasic_ToolName::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleName, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolName.hxx`:79 - `IGESBasic_ToolName::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicName,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe { crate::ffi::IGESBasic_ToolName_own_dump(self as *const Self, ent, dumper, S, own) }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolOrderedGroup.hxx
@@ -17035,14 +17173,27 @@ impl ToolOrderedGroup {
             crate::ffi::IGESBasic_ToolOrderedGroup_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolOrderedGroup (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolOrderedGroup.hxx`:79 - `IGESBasic_ToolOrderedGroup::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleOrderedGroup, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolOrderedGroup.hxx`:79 - `IGESBasic_ToolOrderedGroup::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicOrderedGroup,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolOrderedGroup_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolOrderedGroupWithoutBackP.hxx
@@ -17180,14 +17331,27 @@ impl ToolOrderedGroupWithoutBackP {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolOrderedGroupWithoutBackP (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolOrderedGroupWithoutBackP.hxx`:81 - `IGESBasic_ToolOrderedGroupWithoutBackP::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleOrderedGroupWithoutBackP, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolOrderedGroupWithoutBackP.hxx`:81 - `IGESBasic_ToolOrderedGroupWithoutBackP::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicOrderedGroupWithoutBackP,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolOrderedGroupWithoutBackP_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolSingleParent.hxx
@@ -17294,14 +17458,27 @@ impl ToolSingleParent {
             crate::ffi::IGESBasic_ToolSingleParent_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolSingleParent (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolSingleParent.hxx`:79 - `IGESBasic_ToolSingleParent::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleSingleParent, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolSingleParent.hxx`:79 - `IGESBasic_ToolSingleParent::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicSingleParent,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolSingleParent_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolSingularSubfigure.hxx
@@ -17422,14 +17599,27 @@ impl ToolSingularSubfigure {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolSingularSubfigure (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolSingularSubfigure.hxx`:76 - `IGESBasic_ToolSingularSubfigure::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleSingularSubfigure, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolSingularSubfigure.hxx`:76 - `IGESBasic_ToolSingularSubfigure::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicSingularSubfigure,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolSingularSubfigure_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESBasic_ToolSubfigureDef.hxx
@@ -17529,14 +17719,27 @@ impl ToolSubfigureDef {
             crate::ffi::IGESBasic_ToolSubfigureDef_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolSubfigureDef (1 total) ──
-// SKIPPED: **Source:** `IGESBasic_ToolSubfigureDef.hxx`:75 - `IGESBasic_ToolSubfigureDef::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleSubfigureDef, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESBasic_ToolSubfigureDef.hxx`:75 - `IGESBasic_ToolSubfigureDef::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESBasicSubfigureDef,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESBasic_ToolSubfigureDef_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // Additional type re-exports

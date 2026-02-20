@@ -6,6 +6,15 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `Vrml.hxx`:43 - `Vrml::VrmlHeaderWriter`
+/// Writes a header in anOStream (VRML file).
+/// Writes one line of commentary in  anOStream (VRML file).
+pub fn vrml_header_writer(
+    anOStream: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::Vrml_vrml_header_writer(anOStream)) }
+}
+
 /// C++ enum: `Vrml_AsciiTextJustification`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -580,8 +589,8 @@ impl HandleVrmlAsciiText {
 
 // ── Skipped symbols for AsciiText (1 total) ──
 // SKIPPED: **Source:** `Vrml_AsciiText.hxx`:68 - `Vrml_AsciiText::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -669,8 +678,8 @@ impl Cone {
 
 // ── Skipped symbols for Cone (1 total) ──
 // SKIPPED: **Source:** `Vrml_Cone.hxx`:56 - `Vrml_Cone::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -831,8 +840,8 @@ impl HandleVrmlCoordinate3 {
 
 // ── Skipped symbols for Coordinate3 (1 total) ──
 // SKIPPED: **Source:** `Vrml_Coordinate3.hxx`:48 - `Vrml_Coordinate3::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -911,8 +920,8 @@ impl Cube {
 
 // ── Skipped symbols for Cube (1 total) ──
 // SKIPPED: **Source:** `Vrml_Cube.hxx`:55 - `Vrml_Cube::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1001,8 +1010,8 @@ impl Cylinder {
 
 // ── Skipped symbols for Cylinder (1 total) ──
 // SKIPPED: **Source:** `Vrml_Cylinder.hxx`:55 - `Vrml_Cylinder::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1093,8 +1102,8 @@ impl DirectionalLight {
 
 // ── Skipped symbols for DirectionalLight (1 total) ──
 // SKIPPED: **Source:** `Vrml_DirectionalLight.hxx`:62 - `Vrml_DirectionalLight::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1176,8 +1185,8 @@ impl FontStyle {
 
 // ── Skipped symbols for FontStyle (1 total) ──
 // SKIPPED: **Source:** `Vrml_FontStyle.hxx`:55 - `Vrml_FontStyle::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1209,8 +1218,8 @@ impl Group {
 
 // ── Skipped symbols for Group (1 total) ──
 // SKIPPED: **Source:** `Vrml_Group.hxx`:41 - `Vrml_Group::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&mut self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&mut self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1446,8 +1455,8 @@ impl HandleVrmlIndexedFaceSet {
 
 // ── Skipped symbols for IndexedFaceSet (1 total) ──
 // SKIPPED: **Source:** `Vrml_IndexedFaceSet.hxx`:63 - `Vrml_IndexedFaceSet::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1691,8 +1700,8 @@ impl HandleVrmlIndexedLineSet {
 
 // ── Skipped symbols for IndexedLineSet (1 total) ──
 // SKIPPED: **Source:** `Vrml_IndexedLineSet.hxx`:71 - `Vrml_IndexedLineSet::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1732,8 +1741,8 @@ impl Info {
 
 // ── Skipped symbols for Info (1 total) ──
 // SKIPPED: **Source:** `Vrml_Info.hxx`:43 - `Vrml_Info::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1770,12 +1779,12 @@ impl Instancing {
 // ── Skipped symbols for Instancing (2 total) ──
 // SKIPPED: **Source:** `Vrml_Instancing.hxx`:46 - `Vrml_Instancing::DEF`
 //   method: Adds "USE  <myName>" in  anOStream (VRML  file).
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn def(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn def(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 // SKIPPED: **Source:** `Vrml_Instancing.hxx`:48 - `Vrml_Instancing::USE`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn use_(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn use_(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -1958,8 +1967,8 @@ impl HandleVrmlLOD {
 
 // ── Skipped symbols for LOD (1 total) ──
 // SKIPPED: **Source:** `Vrml_LOD.hxx`:68 - `Vrml_LOD::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2189,8 +2198,8 @@ impl HandleVrmlMaterial {
 
 // ── Skipped symbols for Material (1 total) ──
 // SKIPPED: **Source:** `Vrml_Material.hxx`:74 - `Vrml_Material::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2251,8 +2260,8 @@ impl MaterialBinding {
 
 // ── Skipped symbols for MaterialBinding (1 total) ──
 // SKIPPED: **Source:** `Vrml_MaterialBinding.hxx`:48 - `Vrml_MaterialBinding::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2306,8 +2315,8 @@ impl MatrixTransform {
 
 // ── Skipped symbols for MatrixTransform (1 total) ──
 // SKIPPED: **Source:** `Vrml_MatrixTransform.hxx`:51 - `Vrml_MatrixTransform::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2465,8 +2474,8 @@ impl HandleVrmlNormal {
 
 // ── Skipped symbols for Normal (1 total) ──
 // SKIPPED: **Source:** `Vrml_Normal.hxx`:49 - `Vrml_Normal::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2525,8 +2534,8 @@ impl NormalBinding {
 
 // ── Skipped symbols for NormalBinding (1 total) ──
 // SKIPPED: **Source:** `Vrml_NormalBinding.hxx`:48 - `Vrml_NormalBinding::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2629,8 +2638,8 @@ impl OrthographicCamera {
 
 // ── Skipped symbols for OrthographicCamera (1 total) ──
 // SKIPPED: **Source:** `Vrml_OrthographicCamera.hxx`:60 - `Vrml_OrthographicCamera::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2727,8 +2736,8 @@ impl PerspectiveCamera {
 
 // ── Skipped symbols for PerspectiveCamera (1 total) ──
 // SKIPPED: **Source:** `Vrml_PerspectiveCamera.hxx`:59 - `Vrml_PerspectiveCamera::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2816,8 +2825,8 @@ impl PointLight {
 
 // ── Skipped symbols for PointLight (1 total) ──
 // SKIPPED: **Source:** `Vrml_PointLight.hxx`:63 - `Vrml_PointLight::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2875,8 +2884,8 @@ impl PointSet {
 
 // ── Skipped symbols for PointSet (1 total) ──
 // SKIPPED: **Source:** `Vrml_PointSet.hxx`:43 - `Vrml_PointSet::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2921,8 +2930,8 @@ impl Rotation {
 
 // ── Skipped symbols for Rotation (1 total) ──
 // SKIPPED: **Source:** `Vrml_Rotation.hxx`:43 - `Vrml_Rotation::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3241,8 +3250,8 @@ impl Scale {
 
 // ── Skipped symbols for Scale (1 total) ──
 // SKIPPED: **Source:** `Vrml_Scale.hxx`:45 - `Vrml_Scale::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3305,8 +3314,8 @@ impl Separator {
 
 // ── Skipped symbols for Separator (1 total) ──
 // SKIPPED: **Source:** `Vrml_Separator.hxx`:51 - `Vrml_Separator::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&mut self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&mut self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3439,8 +3448,8 @@ impl ShapeHints {
 
 // ── Skipped symbols for ShapeHints (1 total) ──
 // SKIPPED: **Source:** `Vrml_ShapeHints.hxx`:76 - `Vrml_ShapeHints::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3483,8 +3492,8 @@ impl Sphere {
 
 // ── Skipped symbols for Sphere (1 total) ──
 // SKIPPED: **Source:** `Vrml_Sphere.hxx`:41 - `Vrml_Sphere::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3618,8 +3627,8 @@ impl SpotLight {
 
 // ── Skipped symbols for SpotLight (1 total) ──
 // SKIPPED: **Source:** `Vrml_SpotLight.hxx`:83 - `Vrml_SpotLight::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3668,8 +3677,8 @@ impl Switch {
 
 // ── Skipped symbols for Switch (1 total) ──
 // SKIPPED: **Source:** `Vrml_Switch.hxx`:46 - `Vrml_Switch::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3777,8 +3786,8 @@ impl Texture2 {
 
 // ── Skipped symbols for Texture2 (1 total) ──
 // SKIPPED: **Source:** `Vrml_Texture2.hxx`:69 - `Vrml_Texture2::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -3890,8 +3899,8 @@ impl Texture2Transform {
 
 // ── Skipped symbols for Texture2Transform (1 total) ──
 // SKIPPED: **Source:** `Vrml_Texture2Transform.hxx`:69 - `Vrml_Texture2Transform::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -4076,8 +4085,8 @@ impl HandleVrmlTextureCoordinate2 {
 
 // ── Skipped symbols for TextureCoordinate2 (1 total) ──
 // SKIPPED: **Source:** `Vrml_TextureCoordinate2.hxx`:53 - `Vrml_TextureCoordinate2::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -4196,8 +4205,8 @@ impl Transform {
 
 // ── Skipped symbols for Transform (1 total) ──
 // SKIPPED: **Source:** `Vrml_Transform.hxx`:72 - `Vrml_Transform::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -4227,8 +4236,8 @@ impl TransformSeparator {
 
 // ── Skipped symbols for TransformSeparator (1 total) ──
 // SKIPPED: **Source:** `Vrml_TransformSeparator.hxx`:39 - `Vrml_TransformSeparator::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&mut self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&mut self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -4275,8 +4284,8 @@ impl Translation {
 
 // ── Skipped symbols for Translation (1 total) ──
 // SKIPPED: **Source:** `Vrml_Translation.hxx`:45 - `Vrml_Translation::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -4354,8 +4363,8 @@ impl WWWAnchor {
 
 // ── Skipped symbols for WWWAnchor (1 total) ──
 // SKIPPED: **Source:** `Vrml_WWWAnchor.hxx`:57 - `Vrml_WWWAnchor::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -4442,6 +4451,12 @@ impl WWWInline {
 
 // ── Skipped symbols for WWWInline (1 total) ──
 // SKIPPED: **Source:** `Vrml_WWWInline.hxx`:63 - `Vrml_WWWInline::Print`
-//   Reason: has unbindable types: param 'anOStream': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn print(&self, anOStream: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
+//
+
+// ── Skipped free functions (1 total) ──
+// SKIPPED: **Source:** `Vrml.hxx`:45 - `Vrml::CommentWriter`
+//   Reason: returns &mut with reference params — ambiguous lifetime
+//   // pub fn comment_writer(aComment: *const char, anOStream: &mut OStream) -> &mut OStream;
 //

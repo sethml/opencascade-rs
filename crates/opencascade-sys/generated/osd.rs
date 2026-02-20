@@ -857,6 +857,14 @@ impl Chronometer {
         unsafe { crate::ffi::OSD_Chronometer_show(self as *const Self) }
     }
 
+    /// **Source:** `OSD_Chronometer.hxx`:73 - `OSD_Chronometer::Show()`
+    /// Shows the current CPU user and system time on the output
+    /// stream <os>.
+    /// The chronometer can be running (laps Time) or stopped.
+    pub fn show_ostream(&self, theOStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_Chronometer_show_ostream(self as *const Self, theOStream) }
+    }
+
     /// **Source:** `OSD_Chronometer.hxx`:77 - `OSD_Chronometer::UserTimeCPU()`
     /// Returns the current CPU user time in seconds.
     /// The chronometer can be running (laps Time) or stopped.
@@ -921,15 +929,6 @@ impl Chronometer {
         unsafe { crate::ffi::OSD_Chronometer_get_thread_cpu(UserSeconds, SystemSeconds) }
     }
 }
-
-// ── Skipped symbols for Chronometer (1 total) ──
-// SKIPPED: **Source:** `OSD_Chronometer.hxx`:73 - `OSD_Chronometer::Show`
-//   method: Shows the current CPU user and system time on the output
-//   method: stream <os>.
-//   method: The chronometer can be running (laps Time) or stopped.
-//   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
-//   // pub fn show(&self, theOStream: /* Standard_OStream& */);
-//
 
 // ========================
 // From OSD_Directory.hxx
@@ -1478,9 +1477,14 @@ impl Exception {
     }
 
     /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Exception_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_Exception_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Exception_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::NewInstance()`
@@ -1549,6 +1553,11 @@ impl Exception {
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_Exception_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -1840,12 +1849,6 @@ impl HandleOSDException {
     }
 }
 
-// ── Skipped symbols for Exception (1 total) ──
-// SKIPPED: **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_Exception_ACCESS_VIOLATION.hxx
 // ========================
@@ -1893,9 +1896,14 @@ impl Exception_ACCESS_VIOLATION {
     }
 
     /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Exception_ACCESS_VIOLATION_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_Exception_ACCESS_VIOLATION_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Exception_ACCESS_VIOLATION_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::NewInstance()`
@@ -2001,6 +2009,16 @@ impl Exception_ACCESS_VIOLATION {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ACCESS_VIOLATION_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::OSD_Exception_ACCESS_VIOLATION_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         }
     }
 
@@ -2132,12 +2150,6 @@ impl HandleOSDExceptionACCESSVIOLATION {
     }
 }
 
-// ── Skipped symbols for Exception_ACCESS_VIOLATION (1 total) ──
-// SKIPPED: **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx
 // ========================
@@ -2189,9 +2201,16 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
     }
 
     /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_raise(c_theMessage.as_ptr()) }
+        unsafe {
+            crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_raise_charptr(c_theMessage.as_ptr())
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::NewInstance()`
@@ -2299,6 +2318,16 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         }
     }
 
@@ -2438,12 +2467,6 @@ impl HandleOSDExceptionARRAYBOUNDSEXCEEDED {
     }
 }
 
-// ── Skipped symbols for Exception_ARRAY_BOUNDS_EXCEEDED (1 total) ──
-// SKIPPED: **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_Exception_CTRL_BREAK.hxx
 // ========================
@@ -2491,9 +2514,14 @@ impl Exception_CTRL_BREAK {
     }
 
     /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::NewInstance()`
@@ -2585,6 +2613,13 @@ impl Exception_CTRL_BREAK {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_CTRL_BREAK_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::OSD_Exception_CTRL_BREAK_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -2701,12 +2736,6 @@ impl HandleOSDExceptionCTRLBREAK {
     }
 }
 
-// ── Skipped symbols for Exception_CTRL_BREAK (1 total) ──
-// SKIPPED: **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_Exception_ILLEGAL_INSTRUCTION.hxx
 // ========================
@@ -2756,9 +2785,16 @@ impl Exception_ILLEGAL_INSTRUCTION {
     }
 
     /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_raise(c_theMessage.as_ptr()) }
+        unsafe {
+            crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_raise_charptr(c_theMessage.as_ptr())
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::NewInstance()`
@@ -2866,6 +2902,16 @@ impl Exception_ILLEGAL_INSTRUCTION {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         }
     }
 
@@ -3003,12 +3049,6 @@ impl HandleOSDExceptionILLEGALINSTRUCTION {
     }
 }
 
-// ── Skipped symbols for Exception_ILLEGAL_INSTRUCTION (1 total) ──
-// SKIPPED: **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_Exception_INT_OVERFLOW.hxx
 // ========================
@@ -3056,9 +3096,14 @@ impl Exception_INT_OVERFLOW {
     }
 
     /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::NewInstance()`
@@ -3154,6 +3199,13 @@ impl Exception_INT_OVERFLOW {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_INT_OVERFLOW_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::OSD_Exception_INT_OVERFLOW_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -3276,12 +3328,6 @@ impl HandleOSDExceptionINTOVERFLOW {
     }
 }
 
-// ── Skipped symbols for Exception_INT_OVERFLOW (1 total) ──
-// SKIPPED: **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_Exception_INVALID_DISPOSITION.hxx
 // ========================
@@ -3331,9 +3377,16 @@ impl Exception_INVALID_DISPOSITION {
     }
 
     /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Exception_INVALID_DISPOSITION_raise(c_theMessage.as_ptr()) }
+        unsafe {
+            crate::ffi::OSD_Exception_INVALID_DISPOSITION_raise_charptr(c_theMessage.as_ptr())
+        }
+    }
+
+    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Exception_INVALID_DISPOSITION_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::NewInstance()`
@@ -3441,6 +3494,16 @@ impl Exception_INVALID_DISPOSITION {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_INVALID_DISPOSITION_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::OSD_Exception_INVALID_DISPOSITION_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         }
     }
 
@@ -3578,12 +3641,6 @@ impl HandleOSDExceptionINVALIDDISPOSITION {
     }
 }
 
-// ── Skipped symbols for Exception_INVALID_DISPOSITION (1 total) ──
-// SKIPPED: **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_Exception_IN_PAGE_ERROR.hxx
 // ========================
@@ -3631,9 +3688,14 @@ impl Exception_IN_PAGE_ERROR {
     }
 
     /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::NewInstance()`
@@ -3731,6 +3793,13 @@ impl Exception_IN_PAGE_ERROR {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_IN_PAGE_ERROR_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::OSD_Exception_IN_PAGE_ERROR_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -3855,12 +3924,6 @@ impl HandleOSDExceptionINPAGEERROR {
     }
 }
 
-// ── Skipped symbols for Exception_IN_PAGE_ERROR (1 total) ──
-// SKIPPED: **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx
 // ========================
@@ -3916,9 +3979,16 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
     }
 
     /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_raise(c_theMessage.as_ptr()) }
+        unsafe {
+            crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_raise_charptr(c_theMessage.as_ptr())
+        }
+    }
+
+    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::NewInstance()`
@@ -4030,6 +4100,16 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         }
     }
 
@@ -4175,12 +4255,6 @@ impl HandleOSDExceptionNONCONTINUABLEEXCEPTION {
     }
 }
 
-// ── Skipped symbols for Exception_NONCONTINUABLE_EXCEPTION (1 total) ──
-// SKIPPED: **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_Exception_PRIV_INSTRUCTION.hxx
 // ========================
@@ -4228,9 +4302,14 @@ impl Exception_PRIV_INSTRUCTION {
     }
 
     /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Exception_PRIV_INSTRUCTION_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_Exception_PRIV_INSTRUCTION_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Exception_PRIV_INSTRUCTION_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::NewInstance()`
@@ -4336,6 +4415,16 @@ impl Exception_PRIV_INSTRUCTION {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_PRIV_INSTRUCTION_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::OSD_Exception_PRIV_INSTRUCTION_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         }
     }
 
@@ -4467,12 +4556,6 @@ impl HandleOSDExceptionPRIVINSTRUCTION {
     }
 }
 
-// ── Skipped symbols for Exception_PRIV_INSTRUCTION (1 total) ──
-// SKIPPED: **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_Exception_STACK_OVERFLOW.hxx
 // ========================
@@ -4520,9 +4603,14 @@ impl Exception_STACK_OVERFLOW {
     }
 
     /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Exception_STACK_OVERFLOW_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_Exception_STACK_OVERFLOW_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Exception_STACK_OVERFLOW_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::NewInstance()`
@@ -4624,6 +4712,13 @@ impl Exception_STACK_OVERFLOW {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_STACK_OVERFLOW_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::OSD_Exception_STACK_OVERFLOW_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -4752,12 +4847,6 @@ impl HandleOSDExceptionSTACKOVERFLOW {
     }
 }
 
-// ── Skipped symbols for Exception_STACK_OVERFLOW (1 total) ──
-// SKIPPED: **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_Exception_STATUS_NO_MEMORY.hxx
 // ========================
@@ -4805,9 +4894,14 @@ impl Exception_STATUS_NO_MEMORY {
     }
 
     /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Exception_STATUS_NO_MEMORY_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_Exception_STATUS_NO_MEMORY_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Exception_STATUS_NO_MEMORY_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::NewInstance()`
@@ -4913,6 +5007,16 @@ impl Exception_STATUS_NO_MEMORY {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_STATUS_NO_MEMORY_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::OSD_Exception_STATUS_NO_MEMORY_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         }
     }
 
@@ -5043,12 +5147,6 @@ impl HandleOSDExceptionSTATUSNOMEMORY {
         }
     }
 }
-
-// ── Skipped symbols for Exception_STATUS_NO_MEMORY (1 total) ──
-// SKIPPED: **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From OSD_File.hxx
@@ -6734,9 +6832,14 @@ impl OSDError {
     }
 
     /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_OSDError_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_OSDError_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_OSDError_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::NewInstance()`
@@ -6803,6 +6906,11 @@ impl OSDError {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDOSDError> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_OSDError_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_OSDError_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -6895,12 +7003,6 @@ impl HandleOSDOSDError {
         }
     }
 }
-
-// ── Skipped symbols for OSDError (1 total) ──
-// SKIPPED: **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From OSD_Parallel.hxx
@@ -7912,9 +8014,14 @@ impl SIGBUS {
     }
 
     /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_SIGBUS_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_SIGBUS_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_SIGBUS_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::NewInstance()`
@@ -7989,6 +8096,11 @@ impl SIGBUS {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGBUS> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGBUS_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_SIGBUS_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -8091,12 +8203,6 @@ impl HandleOSDSIGBUS {
     }
 }
 
-// ── Skipped symbols for SIGBUS (1 total) ──
-// SKIPPED: **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_SIGHUP.hxx
 // ========================
@@ -8142,9 +8248,14 @@ impl SIGHUP {
     }
 
     /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_SIGHUP_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_SIGHUP_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_SIGHUP_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::NewInstance()`
@@ -8219,6 +8330,11 @@ impl SIGHUP {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGHUP> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGHUP_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_SIGHUP_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -8321,12 +8437,6 @@ impl HandleOSDSIGHUP {
     }
 }
 
-// ── Skipped symbols for SIGHUP (1 total) ──
-// SKIPPED: **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_SIGILL.hxx
 // ========================
@@ -8372,9 +8482,14 @@ impl SIGILL {
     }
 
     /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_SIGILL_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_SIGILL_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_SIGILL_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::NewInstance()`
@@ -8449,6 +8564,11 @@ impl SIGILL {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGILL> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGILL_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_SIGILL_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -8551,12 +8671,6 @@ impl HandleOSDSIGILL {
     }
 }
 
-// ── Skipped symbols for SIGILL (1 total) ──
-// SKIPPED: **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_SIGINT.hxx
 // ========================
@@ -8602,9 +8716,14 @@ impl SIGINT {
     }
 
     /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_SIGINT_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_SIGINT_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_SIGINT_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::NewInstance()`
@@ -8679,6 +8798,11 @@ impl SIGINT {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGINT> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGINT_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_SIGINT_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -8781,12 +8905,6 @@ impl HandleOSDSIGINT {
     }
 }
 
-// ── Skipped symbols for SIGINT (1 total) ──
-// SKIPPED: **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_SIGKILL.hxx
 // ========================
@@ -8832,9 +8950,14 @@ impl SIGKILL {
     }
 
     /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_SIGKILL_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_SIGKILL_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_SIGKILL_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::NewInstance()`
@@ -8909,6 +9032,11 @@ impl SIGKILL {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGKILL> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGKILL_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_SIGKILL_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -9011,12 +9139,6 @@ impl HandleOSDSIGKILL {
     }
 }
 
-// ── Skipped symbols for SIGKILL (1 total) ──
-// SKIPPED: **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_SIGQUIT.hxx
 // ========================
@@ -9062,9 +9184,14 @@ impl SIGQUIT {
     }
 
     /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_SIGQUIT_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_SIGQUIT_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_SIGQUIT_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::NewInstance()`
@@ -9139,6 +9266,11 @@ impl SIGQUIT {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGQUIT> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGQUIT_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_SIGQUIT_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -9241,12 +9373,6 @@ impl HandleOSDSIGQUIT {
     }
 }
 
-// ── Skipped symbols for SIGQUIT (1 total) ──
-// SKIPPED: **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_SIGSEGV.hxx
 // ========================
@@ -9292,9 +9418,14 @@ impl SIGSEGV {
     }
 
     /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_SIGSEGV_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_SIGSEGV_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_SIGSEGV_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::NewInstance()`
@@ -9369,6 +9500,11 @@ impl SIGSEGV {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGSEGV> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGSEGV_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_SIGSEGV_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -9471,12 +9607,6 @@ impl HandleOSDSIGSEGV {
     }
 }
 
-// ── Skipped symbols for SIGSEGV (1 total) ──
-// SKIPPED: **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From OSD_SIGSYS.hxx
 // ========================
@@ -9522,9 +9652,14 @@ impl SIGSYS {
     }
 
     /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_SIGSYS_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_SIGSYS_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_SIGSYS_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::NewInstance()`
@@ -9599,6 +9734,11 @@ impl SIGSYS {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGSYS> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGSYS_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_SIGSYS_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -9700,12 +9840,6 @@ impl HandleOSDSIGSYS {
         }
     }
 }
-
-// ── Skipped symbols for SIGSYS (1 total) ──
-// SKIPPED: **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From OSD_SharedLibrary.hxx
@@ -9867,9 +10001,14 @@ impl Signal {
     }
 
     /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::OSD_Signal_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::OSD_Signal_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::OSD_Signal_raise_sstream(theMessage) }
     }
 
     /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::NewInstance()`
@@ -9934,6 +10073,11 @@ impl Signal {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSignal> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Signal_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_Signal_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -10133,12 +10277,6 @@ impl HandleOSDSignal {
         }
     }
 }
-
-// ── Skipped symbols for Signal (1 total) ──
-// SKIPPED: **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From OSD_Thread.hxx
@@ -10631,6 +10769,13 @@ impl Timer {
         unsafe { crate::ffi::OSD_Timer_show(self as *const Self) }
     }
 
+    /// **Source:** `OSD_Timer.hxx`:76 - `OSD_Timer::Show()`
+    /// Shows both the elapsed time and CPU  time on the
+    /// output stream <OS>.
+    pub fn show_ostream(&self, os: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::OSD_Timer_show_ostream(self as *const Self, os) }
+    }
+
     /// **Source:** `OSD_Timer.hxx`:80 - `OSD_Timer::Show()`
     /// returns both the elapsed time(seconds,minutes,hours)
     /// and CPU  time.
@@ -10718,14 +10863,6 @@ impl Timer {
         }
     }
 }
-
-// ── Skipped symbols for Timer (1 total) ──
-// SKIPPED: **Source:** `OSD_Timer.hxx`:76 - `OSD_Timer::Show`
-//   method: Shows both the elapsed time and CPU  time on the
-//   method: output stream <OS>.
-//   Reason: has unbindable types: param 'os': stream type (Standard_OStream&)
-//   // pub fn show(&self, os: /* Standard_OStream& */);
-//
 
 // ========================
 // Additional type re-exports

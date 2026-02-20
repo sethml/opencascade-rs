@@ -6,6 +6,13 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `BRepCheck.hxx`:39 - `BRepCheck::Print`
+pub fn print_status_ostream(
+    Stat: crate::b_rep_check::Status,
+    OS: &mut crate::ffi::Standard_OStream,
+) {
+    unsafe { crate::ffi::BRepCheck_print_status_ostream(Stat.into(), OS) }
+}
 /// **Source:** `BRepCheck.hxx`:41 - `BRepCheck::SelfIntersection`
 pub fn self_intersection(
     W: &crate::topo_ds::Wire,

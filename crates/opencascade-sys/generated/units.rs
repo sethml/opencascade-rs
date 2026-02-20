@@ -1162,9 +1162,14 @@ impl NoSuchType {
     }
 
     /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Units_NoSuchType_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Units_NoSuchType_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Units_NoSuchType_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::NewInstance()`
@@ -1257,6 +1262,11 @@ impl NoSuchType {
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchType> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchType_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Units_NoSuchType_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -1372,12 +1382,6 @@ impl HandleUnitsNoSuchType {
     }
 }
 
-// ── Skipped symbols for NoSuchType (1 total) ──
-// SKIPPED: **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Units_NoSuchUnit.hxx
 // ========================
@@ -1425,9 +1429,14 @@ impl NoSuchUnit {
     }
 
     /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Units_NoSuchUnit_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Units_NoSuchUnit_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Units_NoSuchUnit_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::NewInstance()`
@@ -1520,6 +1529,11 @@ impl NoSuchUnit {
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchUnit> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchUnit_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Units_NoSuchUnit_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -1634,12 +1648,6 @@ impl HandleUnitsNoSuchUnit {
         }
     }
 }
-
-// ── Skipped symbols for NoSuchUnit (1 total) ──
-// SKIPPED: **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Units_QuantitiesSequence.hxx

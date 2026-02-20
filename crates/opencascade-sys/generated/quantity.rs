@@ -2191,9 +2191,14 @@ impl DateDefinitionError {
     }
 
     /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Quantity_DateDefinitionError_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Quantity_DateDefinitionError_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Quantity_DateDefinitionError_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::NewInstance()`
@@ -2299,6 +2304,13 @@ impl DateDefinitionError {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_DateDefinitionError_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Quantity_DateDefinitionError_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -2426,12 +2438,6 @@ impl HandleQuantityDateDefinitionError {
         }
     }
 }
-
-// ── Skipped symbols for DateDefinitionError (1 total) ──
-// SKIPPED: **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Quantity_HArray1OfColor.hxx
@@ -2895,9 +2901,14 @@ impl PeriodDefinitionError {
     }
 
     /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Quantity_PeriodDefinitionError_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Quantity_PeriodDefinitionError_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Quantity_PeriodDefinitionError_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::NewInstance()`
@@ -3005,6 +3016,16 @@ impl PeriodDefinitionError {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_PeriodDefinitionError_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Quantity_PeriodDefinitionError_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         }
     }
 
@@ -3137,12 +3158,6 @@ impl HandleQuantityPeriodDefinitionError {
         }
     }
 }
-
-// ── Skipped symbols for PeriodDefinitionError (1 total) ──
-// SKIPPED: **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // Additional type re-exports

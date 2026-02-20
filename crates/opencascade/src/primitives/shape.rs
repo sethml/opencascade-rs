@@ -544,7 +544,7 @@ impl Shape {
         writer.compute_model();
         let path_str = path.as_ref().to_string_lossy();
         let fnes = true;
-        let success = writer.write(&path_str, fnes);
+        let success = writer.write_charptr_bool(&path_str, fnes);
         if success {
             Ok(())
         } else {

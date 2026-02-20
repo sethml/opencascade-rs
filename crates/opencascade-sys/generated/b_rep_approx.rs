@@ -461,6 +461,13 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
             crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_NbIterations(self as *const Self)
         }
     }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Dump(self as *const Self, o)
+        }
+    }
 }
 
 // ========================
@@ -1141,6 +1148,13 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
             crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_NbIterations(self as *const Self)
         }
     }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Dump(self as *const Self, o)
+        }
+    }
 }
 
 // ========================
@@ -1267,6 +1281,13 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
     pub fn nb_iterations(&self) -> i32 {
         unsafe {
             crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_NbIterations(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Dump(self as *const Self, o)
         }
     }
 }

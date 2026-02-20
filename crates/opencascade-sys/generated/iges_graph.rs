@@ -10282,6 +10282,28 @@ impl SpecificModule {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGraph_SpecificModule_ctor()) }
     }
 
+    /// **Source:** `IGESGraph_SpecificModule.hxx`:41 - `IGESGraph_SpecificModule::OwnDump()`
+    /// Specific Dump (own parameters) for IGESGraph
+    pub fn own_dump(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_SpecificModule_own_dump(
+                self as *const Self,
+                CN,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+
     /// **Source:** `IGESGraph_SpecificModule.hxx`:50 - `IGESGraph_SpecificModule::OwnCorrect()`
     /// Performs non-ambiguous Corrections on Entities which support
     /// them (DrawingSize,DrawingUnits,HighLight,IntercharacterSpacing,
@@ -10447,13 +10469,6 @@ impl HandleIGESGraphSpecificModule {
         }
     }
 }
-
-// ── Skipped symbols for SpecificModule (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_SpecificModule.hxx`:41 - `IGESGraph_SpecificModule::OwnDump`
-//   method: Specific Dump (own parameters) for IGESGraph
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, CN: i32, ent: &HandleIGESEntity, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
 
 // ========================
 // From IGESGraph_TextDisplayTemplate.hxx
@@ -12316,14 +12331,21 @@ impl ToolColor {
     ) {
         unsafe { crate::ffi::IGESGraph_ToolColor_own_copy(self as *const Self, entfrom, entto, TC) }
     }
-}
 
-// ── Skipped symbols for ToolColor (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolColor.hxx`:75 - `IGESGraph_ToolColor::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleColor, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolColor.hxx`:75 - `IGESGraph_ToolColor::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphColor,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolColor_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolDefinitionLevel.hxx
@@ -12440,14 +12462,27 @@ impl ToolDefinitionLevel {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolDefinitionLevel (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolDefinitionLevel.hxx`:76 - `IGESGraph_ToolDefinitionLevel::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleDefinitionLevel, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolDefinitionLevel.hxx`:76 - `IGESGraph_ToolDefinitionLevel::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphDefinitionLevel,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolDefinitionLevel_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolDrawingSize.hxx
@@ -12554,14 +12589,21 @@ impl ToolDrawingSize {
             crate::ffi::IGESGraph_ToolDrawingSize_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolDrawingSize (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolDrawingSize.hxx`:79 - `IGESGraph_ToolDrawingSize::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleDrawingSize, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolDrawingSize.hxx`:79 - `IGESGraph_ToolDrawingSize::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphDrawingSize,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolDrawingSize_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolDrawingUnits.hxx
@@ -12668,14 +12710,27 @@ impl ToolDrawingUnits {
             crate::ffi::IGESGraph_ToolDrawingUnits_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolDrawingUnits (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolDrawingUnits.hxx`:79 - `IGESGraph_ToolDrawingUnits::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleDrawingUnits, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolDrawingUnits.hxx`:79 - `IGESGraph_ToolDrawingUnits::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphDrawingUnits,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolDrawingUnits_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolHighLight.hxx
@@ -12782,14 +12837,21 @@ impl ToolHighLight {
             crate::ffi::IGESGraph_ToolHighLight_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolHighLight (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolHighLight.hxx`:79 - `IGESGraph_ToolHighLight::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleHighLight, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolHighLight.hxx`:79 - `IGESGraph_ToolHighLight::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphHighLight,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolHighLight_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolIntercharacterSpacing.hxx
@@ -12923,14 +12985,27 @@ impl ToolIntercharacterSpacing {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolIntercharacterSpacing (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolIntercharacterSpacing.hxx`:81 - `IGESGraph_ToolIntercharacterSpacing::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleIntercharacterSpacing, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolIntercharacterSpacing.hxx`:81 - `IGESGraph_ToolIntercharacterSpacing::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphIntercharacterSpacing,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolIntercharacterSpacing_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolLineFontDefPattern.hxx
@@ -13051,14 +13126,27 @@ impl ToolLineFontDefPattern {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolLineFontDefPattern (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolLineFontDefPattern.hxx`:76 - `IGESGraph_ToolLineFontDefPattern::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleLineFontDefPattern, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolLineFontDefPattern.hxx`:76 - `IGESGraph_ToolLineFontDefPattern::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphLineFontDefPattern,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolLineFontDefPattern_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolLineFontDefTemplate.hxx
@@ -13179,14 +13267,27 @@ impl ToolLineFontDefTemplate {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolLineFontDefTemplate (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolLineFontDefTemplate.hxx`:76 - `IGESGraph_ToolLineFontDefTemplate::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleLineFontDefTemplate, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolLineFontDefTemplate.hxx`:76 - `IGESGraph_ToolLineFontDefTemplate::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphLineFontDefTemplate,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolLineFontDefTemplate_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolLineFontPredefined.hxx
@@ -13316,14 +13417,27 @@ impl ToolLineFontPredefined {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolLineFontPredefined (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolLineFontPredefined.hxx`:81 - `IGESGraph_ToolLineFontPredefined::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleLineFontPredefined, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolLineFontPredefined.hxx`:81 - `IGESGraph_ToolLineFontPredefined::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphLineFontPredefined,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolLineFontPredefined_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolNominalSize.hxx
@@ -13430,14 +13544,21 @@ impl ToolNominalSize {
             crate::ffi::IGESGraph_ToolNominalSize_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolNominalSize (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolNominalSize.hxx`:79 - `IGESGraph_ToolNominalSize::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleNominalSize, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolNominalSize.hxx`:79 - `IGESGraph_ToolNominalSize::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphNominalSize,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolNominalSize_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolPick.hxx
@@ -13536,14 +13657,19 @@ impl ToolPick {
     ) {
         unsafe { crate::ffi::IGESGraph_ToolPick_own_copy(self as *const Self, entfrom, entto, TC) }
     }
-}
 
-// ── Skipped symbols for ToolPick (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolPick.hxx`:79 - `IGESGraph_ToolPick::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandlePick, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolPick.hxx`:79 - `IGESGraph_ToolPick::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphPick,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe { crate::ffi::IGESGraph_ToolPick_own_dump(self as *const Self, ent, dumper, S, own) }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolTextDisplayTemplate.hxx
@@ -13664,14 +13790,27 @@ impl ToolTextDisplayTemplate {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolTextDisplayTemplate (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolTextDisplayTemplate.hxx`:76 - `IGESGraph_ToolTextDisplayTemplate::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleTextDisplayTemplate, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolTextDisplayTemplate.hxx`:76 - `IGESGraph_ToolTextDisplayTemplate::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphTextDisplayTemplate,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolTextDisplayTemplate_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolTextFontDef.hxx
@@ -13771,14 +13910,21 @@ impl ToolTextFontDef {
             crate::ffi::IGESGraph_ToolTextFontDef_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolTextFontDef (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolTextFontDef.hxx`:75 - `IGESGraph_ToolTextFontDef::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleTextFontDef, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolTextFontDef.hxx`:75 - `IGESGraph_ToolTextFontDef::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphTextFontDef,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolTextFontDef_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_ToolUniformRectGrid.hxx
@@ -13902,14 +14048,27 @@ impl ToolUniformRectGrid {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolUniformRectGrid (1 total) ──
-// SKIPPED: **Source:** `IGESGraph_ToolUniformRectGrid.hxx`:80 - `IGESGraph_ToolUniformRectGrid::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleUniformRectGrid, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGraph_ToolUniformRectGrid.hxx`:80 - `IGESGraph_ToolUniformRectGrid::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGraphUniformRectGrid,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGraph_ToolUniformRectGrid_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGraph_UniformRectGrid.hxx

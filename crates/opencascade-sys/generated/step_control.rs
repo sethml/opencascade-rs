@@ -1789,13 +1789,13 @@ impl Reader {
 // ── Skipped symbols for Reader (2 total) ──
 // SKIPPED: **Source:** `STEPControl_Reader.hxx`:92 - `STEPControl_Reader::ReadStream`
 //   method: Loads a file from stream and returns the read status
-//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
-//   // pub fn read_stream(&mut self, theName: *const char, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//   Reason: param 'theIStream' uses unknown type 'std::istream&'
+//   // pub fn read_stream(&mut self, theName: *const char, theIStream: &mut istream) -> OwnedPtr<IFSelect_ReturnStatus>;
 //
 // SKIPPED: **Source:** `STEPControl_Reader.hxx`:102 - `STEPControl_Reader::ReadStream`
 //   method: Loads a file from stream and returns the read status
-//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
-//   // pub fn read_stream(&mut self, theName: *const char, theParams: &Parameters, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//   Reason: param 'theIStream' uses unknown type 'std::istream&'
+//   // pub fn read_stream(&mut self, theName: *const char, theParams: &Parameters, theIStream: &mut istream) -> OwnedPtr<IFSelect_ReturnStatus>;
 //
 
 // ========================
@@ -2030,8 +2030,8 @@ impl Writer {
 // ── Skipped symbols for Writer (3 total) ──
 // SKIPPED: **Source:** `STEPControl_Writer.hxx`:109 - `STEPControl_Writer::WriteStream`
 //   method: Writes a STEP model in the std::ostream.
-//   Reason: has unbindable types: param 'theOStream': stream type (std::ostream&)
-//   // pub fn write_stream(&mut self, theOStream: /* std::ostream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
+//   Reason: param 'theOStream' uses unknown type 'std::ostream&'
+//   // pub fn write_stream(&mut self, theOStream: &mut ostream) -> OwnedPtr<IFSelect_ReturnStatus>;
 //
 // SKIPPED: **Source:** `STEPControl_Writer.hxx`:142 - `STEPControl_Writer::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.

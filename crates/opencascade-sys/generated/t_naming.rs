@@ -126,6 +126,24 @@ pub fn outer_shell_solid_shell(
 ) -> bool {
     unsafe { crate::ffi::TNaming_outer_shell_solid_shell(theSolid, theShell) }
 }
+/// **Source:** `TNaming.hxx`:185 - `TNaming::Print`
+/// Prints the  evolution  <EVOL> as  a String on  the
+/// Stream <S> and returns <S>.
+pub fn print_evolution_ostream(
+    EVOL: crate::t_naming::Evolution,
+    S: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::TNaming_print_evolution_ostream(EVOL.into(), S)) }
+}
+/// **Source:** `TNaming.hxx`:189 - `TNaming::Print`
+/// Prints the name of name type <NAME> as a String on
+/// the Stream <S> and returns <S>.
+pub fn print_nametype_ostream(
+    NAME: crate::t_naming::NameType,
+    S: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::TNaming_print_nametype_ostream(NAME.into(), S)) }
+}
 
 /// Defines the type of evolution in old shape - new shape pairs.
 /// The definitions - in the form of the terms of
@@ -1890,6 +1908,23 @@ impl NamedShape {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TNaming_NamedShape_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TNaming_NamedShape_inherited_Forget(self as *mut Self, aTransaction) }
@@ -1979,8 +2014,8 @@ impl HandleTNamingNamedShape {
 // ── Skipped symbols for NamedShape (1 total) ──
 // SKIPPED: **Source:** `TNaming_NamedShape.hxx`:135 - `TNaming_NamedShape::Dump`
 //   method: Dumps the attribute on <aStream>.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -2067,6 +2102,18 @@ impl Naming {
     /// **Source:** `TNaming_Naming.hxx`:100 - `TNaming_Naming::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TNaming_Naming_references(self as *const Self, aDataSet) }
+    }
+
+    /// **Source:** `TNaming_Naming.hxx`:105 - `TNaming_Naming::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TNaming_Naming_extended_dump(self as *const Self, anOS, aFilter, aMap)
+        }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:113 - `TNaming_Naming::DynamicType()`
@@ -2444,14 +2491,10 @@ impl HandleTNamingNaming {
     }
 }
 
-// ── Skipped symbols for Naming (2 total) ──
+// ── Skipped symbols for Naming (1 total) ──
 // SKIPPED: **Source:** `TNaming_Naming.hxx`:103 - `TNaming_Naming::Dump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TNaming_Naming.hxx`:105 - `TNaming_Naming::ExtendedDump`
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
-//   // pub fn extended_dump(&self, anOS: /* Standard_OStream& */, aFilter: &IDFilter, aMap: &mut AttributeIndexedMap);
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -4045,6 +4088,23 @@ impl UsedShapes {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+    ) {
+        unsafe {
+            crate::ffi::TNaming_UsedShapes_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TNaming_UsedShapes_inherited_Forget(self as *mut Self, aTransaction) }
@@ -4134,8 +4194,8 @@ impl HandleTNamingUsedShapes {
 // ── Skipped symbols for UsedShapes (1 total) ──
 // SKIPPED: **Source:** `TNaming_UsedShapes.hxx`:105 - `TNaming_UsedShapes::Dump`
 //   method: Dumps the attribute on <aStream>.
-//   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
 //
 
 // ========================
@@ -4147,3 +4207,11 @@ pub use crate::ffi::{
     TNaming_ListOfNamedShape as ListOfNamedShape, TNaming_MapOfNamedShape as MapOfNamedShape,
     TNaming_PtrNode as PtrNode,
 };
+
+// ── Skipped free functions (1 total) ──
+// SKIPPED: **Source:** `TNaming.hxx`:193 - `TNaming::Print`
+//   function: Prints the content of UsedShapes private  attribute as a String Table on
+//   function: the Stream <S> and returns <S>.
+//   Reason: returns &mut with reference params — ambiguous lifetime
+//   // pub fn print(ACCESS: &Label, S: &mut OStream) -> &mut OStream;
+//

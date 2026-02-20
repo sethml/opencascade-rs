@@ -74,7 +74,8 @@ pub fn collect_referenced_types(
 
 /// Recursively collect OCCT class and Handle types from a type
 fn collect_types_from_type(ty: &Type, collected: &mut CollectedTypes) {
-    // Skip unbindable types (arrays, streams, void ptrs, etc.)
+    // Skip unbindable types (arrays, void ptrs, etc.) — but NOT streams,
+    // which are manually-defined opaque types that we DO want to collect.
     if ty.is_unbindable() {
         return;
     }

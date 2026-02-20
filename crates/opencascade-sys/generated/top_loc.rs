@@ -62,6 +62,12 @@ impl Datum3D {
         }
     }
 
+    /// **Source:** `TopLoc_Datum3D.hxx`:59 - `TopLoc_Datum3D::ShallowDump()`
+    /// Writes the contents of this Datum3D to the stream S.
+    pub fn shallow_dump(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TopLoc_Datum3D_shallow_dump(self as *const Self, S) }
+    }
+
     /// **Source:** `TopLoc_Datum3D.hxx`:61 - `TopLoc_Datum3D::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopLoc_Datum3D_dynamic_type(self as *const Self)) }
@@ -169,13 +175,6 @@ impl HandleTopLocDatum3D {
         }
     }
 }
-
-// ── Skipped symbols for Datum3D (1 total) ──
-// SKIPPED: **Source:** `TopLoc_Datum3D.hxx`:59 - `TopLoc_Datum3D::ShallowDump`
-//   method: Writes the contents of this Datum3D to the stream S.
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn shallow_dump(&self, S: /* Standard_OStream& */);
-//
 
 // ========================
 // From TopLoc_ItemLocation.hxx
@@ -395,6 +394,12 @@ impl Location {
         unsafe { crate::ffi::TopLoc_Location_is_different(self as *const Self, Other) }
     }
 
+    /// **Source:** `TopLoc_Location.hxx`:141 - `TopLoc_Location::ShallowDump()`
+    /// Prints the contents of <me> on the stream <s>.
+    pub fn shallow_dump(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TopLoc_Location_shallow_dump(self as *const Self, S) }
+    }
+
     /// **Source:** `TopLoc_Location.hxx`:144 - `TopLoc_Location::Clear()`
     /// Clear myItems
     pub fn clear(&mut self) {
@@ -413,13 +418,6 @@ impl Location {
         }
     }
 }
-
-// ── Skipped symbols for Location (1 total) ──
-// SKIPPED: **Source:** `TopLoc_Location.hxx`:141 - `TopLoc_Location::ShallowDump`
-//   method: Prints the contents of <me> on the stream <s>.
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn shallow_dump(&self, S: /* Standard_OStream& */);
-//
 
 // ========================
 // From TopLoc_SListNodeOfItemLocation.hxx

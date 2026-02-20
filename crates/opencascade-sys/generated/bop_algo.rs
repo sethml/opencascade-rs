@@ -9899,6 +9899,18 @@ impl ParallelAlgo {
         unsafe { &*(crate::ffi::BOPAlgo_ParallelAlgo_inherited_GetReport(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_ParallelAlgo_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_ParallelAlgo_inherited_DumpWarnings(self as *const Self, theOS)
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_ParallelAlgo_inherited_ClearWarnings(self as *mut Self) }
@@ -10204,6 +10216,20 @@ impl ArgumentAnalyzer {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe { &*(crate::ffi::BOPAlgo_ArgumentAnalyzer_inherited_GetReport(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_ArgumentAnalyzer_inherited_DumpErrors(self as *const Self, theOS)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_ArgumentAnalyzer_inherited_DumpWarnings(self as *const Self, theOS)
+        }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -10617,6 +10643,16 @@ impl BOP {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_GetReport(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_DumpWarnings(self as *const Self, theOS) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -11059,6 +11095,16 @@ impl Builder {
         unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_GetReport(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_DumpWarnings(self as *const Self, theOS) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_Builder_inherited_ClearWarnings(self as *mut Self) }
@@ -11372,6 +11418,18 @@ impl BuilderFace {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderFace_inherited_GetReport(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_BuilderFace_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_BuilderFace_inherited_DumpWarnings(self as *const Self, theOS)
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_BuilderFace_inherited_ClearWarnings(self as *mut Self) }
@@ -11570,6 +11628,18 @@ impl BuilderShape {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_inherited_GetReport(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_BuilderShape_inherited_DumpWarnings(self as *const Self, theOS)
+        }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -11837,6 +11907,18 @@ impl BuilderSolid {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderSolid_inherited_GetReport(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_BuilderSolid_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_BuilderSolid_inherited_DumpWarnings(self as *const Self, theOS)
+        }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -12422,6 +12504,18 @@ impl CellsBuilder {
         unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_inherited_GetReport(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_CellsBuilder_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_CellsBuilder_inherited_DumpWarnings(self as *const Self, theOS)
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_CellsBuilder_inherited_ClearWarnings(self as *mut Self) }
@@ -12799,6 +12893,16 @@ impl CheckerSI {
         unsafe { &*(crate::ffi::BOPAlgo_CheckerSI_inherited_GetReport(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_DumpWarnings(self as *const Self, theOS) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_ClearWarnings(self as *mut Self) }
@@ -13161,6 +13265,20 @@ impl MakeConnected {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe { &*(crate::ffi::BOPAlgo_MakeConnected_inherited_GetReport(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_MakeConnected_inherited_DumpErrors(self as *const Self, theOS)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_MakeConnected_inherited_DumpWarnings(self as *const Self, theOS)
+        }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -13776,6 +13894,18 @@ impl MakePeriodic {
         unsafe { &*(crate::ffi::BOPAlgo_MakePeriodic_inherited_GetReport(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_MakePeriodic_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_MakePeriodic_inherited_DumpWarnings(self as *const Self, theOS)
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_MakePeriodic_inherited_ClearWarnings(self as *mut Self) }
@@ -14256,6 +14386,18 @@ impl MakerVolume {
         unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_inherited_GetReport(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_MakerVolume_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_MakerVolume_inherited_DumpWarnings(self as *const Self, theOS)
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_MakerVolume_inherited_ClearWarnings(self as *mut Self) }
@@ -14393,6 +14535,18 @@ impl Options {
         unsafe { &*(crate::ffi::BOPAlgo_Options_get_report(self as *const Self)) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    /// Dumps the error status into the given stream
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_Options_dump_errors(self as *const Self, theOS) }
+    }
+
+    /// **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    /// Dumps the warning statuses into the given stream
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_Options_dump_warnings(self as *const Self, theOS) }
+    }
+
     /// **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     /// Clears the warnings of the algorithm
     pub fn clear_warnings(&mut self) {
@@ -14449,18 +14603,6 @@ impl Options {
         unsafe { crate::ffi::BOPAlgo_Options_set_parallel_mode(theNewMode) }
     }
 }
-
-// ── Skipped symbols for Options (2 total) ──
-// SKIPPED: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors`
-//   method: Dumps the error status into the given stream
-//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&)
-//   // pub fn dump_errors(&self, theOS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings`
-//   method: Dumps the warning statuses into the given stream
-//   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&)
-//   // pub fn dump_warnings(&self, theOS: /* Standard_OStream& */);
-//
 
 // ========================
 // From BOPAlgo_PaveFiller.hxx
@@ -14682,6 +14824,16 @@ impl PaveFiller {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe { &*(crate::ffi::BOPAlgo_PaveFiller_inherited_GetReport(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_PaveFiller_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_PaveFiller_inherited_DumpWarnings(self as *const Self, theOS) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -15073,6 +15225,20 @@ impl RemoveFeatures {
         unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_GetReport(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_RemoveFeatures_inherited_DumpErrors(self as *const Self, theOS)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_RemoveFeatures_inherited_DumpWarnings(self as *const Self, theOS)
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_ClearWarnings(self as *mut Self) }
@@ -15418,6 +15584,16 @@ impl Section {
         unsafe { &*(crate::ffi::BOPAlgo_Section_inherited_GetReport(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_Section_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_Section_inherited_DumpWarnings(self as *const Self, theOS) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_Section_inherited_ClearWarnings(self as *mut Self) }
@@ -15675,6 +15851,20 @@ impl ShellSplitter {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe { &*(crate::ffi::BOPAlgo_ShellSplitter_inherited_GetReport(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_ShellSplitter_inherited_DumpErrors(self as *const Self, theOS)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_ShellSplitter_inherited_DumpWarnings(self as *const Self, theOS)
+        }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -16066,6 +16256,16 @@ impl Splitter {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_GetReport(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_Splitter_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_Splitter_inherited_DumpWarnings(self as *const Self, theOS) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -16648,6 +16848,20 @@ impl ToolsProvider {
         unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_GetReport(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_DumpErrors(self as *const Self, theOS)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_DumpWarnings(self as *const Self, theOS)
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_ClearWarnings(self as *mut Self) }
@@ -16903,6 +17117,18 @@ impl WireSplitter {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe { &*(crate::ffi::BOPAlgo_WireSplitter_inherited_GetReport(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BOPAlgo_WireSplitter_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BOPAlgo_WireSplitter_inherited_DumpWarnings(self as *const Self, theOS)
+        }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`

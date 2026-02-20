@@ -5721,13 +5721,12 @@ impl GIter {
         *s1 = crate::top_abs::State::try_from(s1_i32_).unwrap();
         *s2 = crate::top_abs::State::try_from(s2_i32_).unwrap();
     }
-}
 
-// ── Skipped symbols for GIter (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_GIter.hxx`:48 - `TopOpeBRepBuild_GIter::Dump`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump(&self, OS: /* Standard_OStream& */);
-//
+    /// **Source:** `TopOpeBRepBuild_GIter.hxx`:48 - `TopOpeBRepBuild_GIter::Dump()`
+    pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TopOpeBRepBuild_GIter_dump(self as *const Self, OS) }
+    }
+}
 
 // ========================
 // From TopOpeBRepBuild_GTool.hxx
@@ -5865,13 +5864,12 @@ impl GTool {
             ))
         }
     }
-}
 
-// ── Skipped symbols for GTool (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_GTool.hxx`:59 - `TopOpeBRepBuild_GTool::Dump`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump(OS: /* Standard_OStream& */);
-//
+    /// **Source:** `TopOpeBRepBuild_GTool.hxx`:59 - `TopOpeBRepBuild_GTool::Dump()`
+    pub fn dump(OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TopOpeBRepBuild_GTool_dump(OS) }
+    }
+}
 
 // ========================
 // From TopOpeBRepBuild_GTopo.hxx
@@ -6078,6 +6076,28 @@ impl GTopo {
         unsafe { crate::ffi::TopOpeBRepBuild_GTopo_index(self as *const Self, II, i1, i2) }
     }
 
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:95 - `TopOpeBRepBuild_GTopo::DumpVal()`
+    pub fn dump_val(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        s1: crate::top_abs::State,
+        s2: crate::top_abs::State,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_GTopo_dump_val(
+                self as *const Self,
+                OS,
+                s1.into(),
+                s2.into(),
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:99 - `TopOpeBRepBuild_GTopo::DumpType()`
+    pub fn dump_type(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_dump_type(self as *const Self, OS) }
+    }
+
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:108 - `TopOpeBRepBuild_GTopo::StatesON()`
     pub fn states_on(&self, s1: &mut crate::top_abs::State, s2: &mut crate::top_abs::State) {
         let mut s1_i32_: i32 = (*s1).into();
@@ -6121,24 +6141,22 @@ impl GTopo {
             ))
         }
     }
+
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:101 - `TopOpeBRepBuild_GTopo::DumpSSB()`
+    pub fn dump_ssb(
+        OS: &mut crate::ffi::Standard_OStream,
+        s1: crate::top_abs::State,
+        s2: crate::top_abs::State,
+        b: bool,
+    ) {
+        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_dump_ssb(OS, s1.into(), s2.into(), b) }
+    }
 }
 
-// ── Skipped symbols for GTopo (4 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_GTopo.hxx`:95 - `TopOpeBRepBuild_GTopo::DumpVal`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump_val(&self, OS: /* Standard_OStream& */, s1: State, s2: State);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_GTopo.hxx`:99 - `TopOpeBRepBuild_GTopo::DumpType`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump_type(&self, OS: /* Standard_OStream& */);
-//
+// ── Skipped symbols for GTopo (1 total) ──
 // SKIPPED: **Source:** `TopOpeBRepBuild_GTopo.hxx`:106 - `TopOpeBRepBuild_GTopo::Dump`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); param 's': void pointer (Standard_Address)
-//   // pub fn dump(&self, OS: /* Standard_OStream& */, s: /* Standard_Address */);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_GTopo.hxx`:101 - `TopOpeBRepBuild_GTopo::DumpSSB`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump_ssb(OS: /* Standard_OStream& */, s1: State, s2: State, b: bool);
+//   Reason: has unbindable types: param 's': void pointer (Standard_Address)
+//   // pub fn dump(&self, OS: &mut OStream, s: /* Standard_Address */);
 //
 
 // ========================
@@ -7621,6 +7639,28 @@ impl ShapeSet {
         }
     }
 
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:126 - `TopOpeBRepBuild_ShapeSet::DumpName()`
+    pub fn dump_name(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_dump_name(self as *const Self, OS, str) }
+    }
+
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:128 - `TopOpeBRepBuild_ShapeSet::DumpCheck()`
+    pub fn dump_check(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        str: &crate::t_collection::AsciiString,
+        S: &crate::topo_ds::Shape,
+        chk: bool,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_ShapeSet_dump_check(self as *const Self, OS, str, S, chk)
+        }
+    }
+
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:133 - `TopOpeBRepBuild_ShapeSet::DumpSS()`
     pub fn dump_ss(&mut self) {
         unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_dump_ss(self as *mut Self) }
@@ -7727,16 +7767,6 @@ impl ShapeSet {
         }
     }
 }
-
-// ── Skipped symbols for ShapeSet (2 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:126 - `TopOpeBRepBuild_ShapeSet::DumpName`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump_name(&self, OS: /* Standard_OStream& */, str: &AsciiString);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:128 - `TopOpeBRepBuild_ShapeSet::DumpCheck`
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump_check(&self, OS: /* Standard_OStream& */, str: &AsciiString, S: &Shape, chk: bool);
-//
 
 // ========================
 // From TopOpeBRepBuild_ShellFaceClassifier.hxx
@@ -8178,6 +8208,40 @@ impl ShellFaceSet {
             crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_CheckShape(
                 self as *mut Self,
                 checkshape,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:126 - `TopOpeBRepBuild_ShapeSet::DumpName()`
+    pub fn dump_name(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_DumpName(
+                self as *const Self,
+                OS,
+                str,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:128 - `TopOpeBRepBuild_ShapeSet::DumpCheck()`
+    pub fn dump_check(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        str: &crate::t_collection::AsciiString,
+        S: &crate::topo_ds::Shape,
+        chk: bool,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_DumpCheck(
+                self as *const Self,
+                OS,
+                str,
+                S,
+                chk,
             )
         }
     }
@@ -9444,6 +9508,36 @@ impl WireEdgeSet {
             crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_CheckShape(
                 self as *mut Self,
                 checkshape,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:126 - `TopOpeBRepBuild_ShapeSet::DumpName()`
+    pub fn dump_name(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DumpName(self as *const Self, OS, str)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:128 - `TopOpeBRepBuild_ShapeSet::DumpCheck()`
+    pub fn dump_check(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        str: &crate::t_collection::AsciiString,
+        S: &crate::topo_ds::Shape,
+        chk: bool,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DumpCheck(
+                self as *const Self,
+                OS,
+                str,
+                S,
+                chk,
             )
         }
     }

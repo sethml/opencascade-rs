@@ -6,6 +6,14 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `GccEnt.hxx`:55 - `GccEnt::Print`
+/// Prints the name of Position type as a String on the Stream.
+pub fn print_position_ostream(
+    thePosition: crate::gcc_ent::Position,
+    theStream: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::GccEnt_print_position_ostream(thePosition.into(), theStream)) }
+}
 /// **Source:** `GccEnt.hxx`:63 - `GccEnt::PositionToString`
 /// Returns the string name for a given position.
 /// @param thePosition position type
@@ -182,9 +190,14 @@ impl BadQualifier {
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::GccEnt_BadQualifier_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::GccEnt_BadQualifier_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::GccEnt_BadQualifier_raise_sstream(theMessage) }
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::NewInstance()`
@@ -271,6 +284,11 @@ impl BadQualifier {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccEnt_BadQualifier_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::GccEnt_BadQualifier_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -379,12 +397,6 @@ impl HandleGccEntBadQualifier {
         }
     }
 }
-
-// ── Skipped symbols for BadQualifier (1 total) ──
-// SKIPPED: **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From GccEnt_QualifiedCirc.hxx

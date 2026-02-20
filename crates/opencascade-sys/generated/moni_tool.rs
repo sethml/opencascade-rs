@@ -2472,6 +2472,12 @@ impl Timer {
         unsafe { crate::ffi::MoniTool_Timer_amend(self as *const Self) }
     }
 
+    /// **Source:** `MoniTool_Timer.hxx`:73 - `MoniTool_Timer::Dump()`
+    /// Dumps current state of a timer shortly (one-line output)
+    pub fn dump(&mut self, ostr: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::MoniTool_Timer_dump(self as *mut Self, ostr) }
+    }
+
     /// **Source:** `MoniTool_Timer.hxx`:105 - `MoniTool_Timer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::MoniTool_Timer_dynamic_type(self as *const Self)) }
@@ -2511,6 +2517,12 @@ impl Timer {
     /// Clears map of timers
     pub fn clear_timers() {
         unsafe { crate::ffi::MoniTool_Timer_clear_timers() }
+    }
+
+    /// **Source:** `MoniTool_Timer.hxx`:92 - `MoniTool_Timer::DumpTimers()`
+    /// Dumps contents of the whole dictionary
+    pub fn dump_timers(ostr: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::MoniTool_Timer_dump_timers(ostr) }
     }
 
     /// **Source:** `MoniTool_Timer.hxx`:97 - `MoniTool_Timer::ComputeAmendments()`
@@ -2634,18 +2646,6 @@ impl HandleMoniToolTimer {
         }
     }
 }
-
-// ── Skipped symbols for Timer (2 total) ──
-// SKIPPED: **Source:** `MoniTool_Timer.hxx`:73 - `MoniTool_Timer::Dump`
-//   method: Dumps current state of a timer shortly (one-line output)
-//   Reason: has unbindable types: param 'ostr': stream type (Standard_OStream&)
-//   // pub fn dump(&mut self, ostr: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `MoniTool_Timer.hxx`:92 - `MoniTool_Timer::DumpTimers`
-//   static_method: Dumps contents of the whole dictionary
-//   Reason: has unbindable types: param 'ostr': stream type (Standard_OStream&)
-//   // pub fn dump_timers(ostr: /* Standard_OStream& */);
-//
 
 // ========================
 // From MoniTool_TimerSentry.hxx
@@ -3045,6 +3045,18 @@ impl TypedValue {
         unsafe {
             crate::ffi::MoniTool_TypedValue_set_definition(self as *mut Self, c_deftext.as_ptr())
         }
+    }
+
+    /// **Source:** `MoniTool_TypedValue.hxx`:91 - `MoniTool_TypedValue::Print()`
+    /// Prints definition, specification, and actual status and value
+    pub fn print(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::MoniTool_TypedValue_print(self as *const Self, S) }
+    }
+
+    /// **Source:** `MoniTool_TypedValue.hxx`:94 - `MoniTool_TypedValue::PrintValue()`
+    /// Prints only the Value
+    pub fn print_value(&self, S: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::MoniTool_TypedValue_print_value(self as *const Self, S) }
     }
 
     /// **Source:** `MoniTool_TypedValue.hxx`:110 - `MoniTool_TypedValue::AddDef()`
@@ -3655,21 +3667,11 @@ impl HandleMoniToolTypedValue {
     }
 }
 
-// ── Skipped symbols for TypedValue (4 total) ──
+// ── Skipped symbols for TypedValue (2 total) ──
 // SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:70 - `MoniTool_TypedValue::Internals`
 //   method: Access to internal data which have no other access
 //   Reason: has string ref param 'satisname' of type 'const char*&' (needs manual binding)
 //   // pub fn internals(&self, interp: &mut ValueInterpret, satisf: &mut ValueSatisfies, satisname: &mut *const char, enums: &mut DataMapOfAsciiStringInteger);
-//
-// SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:91 - `MoniTool_TypedValue::Print`
-//   method: Prints definition, specification, and actual status and value
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print(&self, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:94 - `MoniTool_TypedValue::PrintValue`
-//   method: Prints only the Value
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_value(&self, S: /* Standard_OStream& */);
 //
 // SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:211 - `MoniTool_TypedValue::SetSatisfies`
 //   method: Sets a specific Satisfies function : it is added to the

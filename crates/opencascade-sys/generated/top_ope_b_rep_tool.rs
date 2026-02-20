@@ -10,6 +10,14 @@
 pub fn correct_onuviso(F: &crate::topo_ds::Face, Fsp: &mut crate::topo_ds::Face) -> bool {
     unsafe { crate::ffi::TopOpeBRepTool_correct_onuviso(F, Fsp) }
 }
+/// **Source:** `TopOpeBRepTool.hxx`:112 - `TopOpeBRepTool::Print`
+/// Prints <OCT> as string on stream <S>; returns <S>.
+pub fn print_outcurvetype_ostream(
+    OCT: crate::top_ope_b_rep_tool::OutCurveType,
+    S: &mut crate::ffi::Standard_OStream,
+) -> &mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::TopOpeBRepTool_print_outcurvetype_ostream(OCT.into(), S)) }
+}
 
 /// C++ enum: `TopOpeBRepTool_OutCurveType`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -1962,8 +1970,8 @@ impl ShapeExplorer {
 // ── Skipped symbols for ShapeExplorer (1 total) ──
 // SKIPPED: **Source:** `TopOpeBRepTool_ShapeExplorer.hxx`:72 - `TopOpeBRepTool_ShapeExplorer::DumpCurrent`
 //   method: Dump info on current shape to stream
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump_current(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump_current(&self, OS: &mut OStream) -> &mut OStream;
 //
 
 // ========================

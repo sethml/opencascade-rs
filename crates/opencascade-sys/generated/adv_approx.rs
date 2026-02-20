@@ -249,6 +249,12 @@ impl ApproxAFunction {
         }
     }
 
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:163 - `AdvApprox_ApproxAFunction::Dump()`
+    /// display information on approximation.
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::AdvApprox_ApproxAFunction_dump(self as *const Self, o) }
+    }
+
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:94 - `AdvApprox_ApproxAFunction::Approximation()`
     pub fn approximation(
         TotalDimension: i32,
@@ -296,13 +302,6 @@ impl ApproxAFunction {
         }
     }
 }
-
-// ── Skipped symbols for ApproxAFunction (1 total) ──
-// SKIPPED: **Source:** `AdvApprox_ApproxAFunction.hxx`:163 - `AdvApprox_ApproxAFunction::Dump`
-//   method: display information on approximation.
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
 
 // ========================
 // From AdvApprox_Cutting.hxx
@@ -623,11 +622,10 @@ impl SimpleApprox {
     pub fn average_error(&self, Index: i32) -> f64 {
         unsafe { crate::ffi::AdvApprox_SimpleApprox_average_error(self as *const Self, Index) }
     }
-}
 
-// ── Skipped symbols for SimpleApprox (1 total) ──
-// SKIPPED: **Source:** `AdvApprox_SimpleApprox.hxx`:86 - `AdvApprox_SimpleApprox::Dump`
-//   method: display information on approximation
-//   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
-//   // pub fn dump(&self, o: /* Standard_OStream& */);
-//
+    /// **Source:** `AdvApprox_SimpleApprox.hxx`:86 - `AdvApprox_SimpleApprox::Dump()`
+    /// display information on approximation
+    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::AdvApprox_SimpleApprox_dump(self as *const Self, o) }
+    }
+}

@@ -288,6 +288,69 @@ pub fn detect_closedness(
 ) {
     unsafe { crate::ffi::BRepTools_detect_closedness(theFace, theUclosed, theVclosed) }
 }
+/// **Source:** `BRepTools.hxx`:278 - `BRepTools::Dump`
+/// Dumps the topological structure and the geometry
+/// of <Sh> on the stream <S>.
+pub fn dump_shape_ostream(Sh: &crate::topo_ds::Shape, S: &mut crate::ffi::Standard_OStream) {
+    unsafe { crate::ffi::BRepTools_dump_shape_ostream(Sh, S) }
+}
+/// **Source:** `BRepTools.hxx`:285 - `BRepTools::Write`
+/// Writes the shape to the stream in an ASCII format TopTools_FormatVersion_VERSION_1.
+/// This alias writes shape with triangulation data.
+/// @param[in] theShape        the shape to write
+/// @param[in][out] theStream  the stream to output shape into
+/// @param theRange            the range of progress indicator to fill in
+pub fn write_shape_ostream_progressrange(
+    theShape: &crate::topo_ds::Shape,
+    theStream: &mut crate::ffi::Standard_OStream,
+    theProgress: &crate::message::ProgressRange,
+) {
+    unsafe {
+        crate::ffi::BRepTools_write_shape_ostream_progressrange(theShape, theStream, theProgress)
+    }
+}
+/// **Source:** `BRepTools.hxx`:308 - `BRepTools::Write`
+/// Writes the shape to the stream in an ASCII format of specified version.
+/// @param[in] theShape          the shape to write
+/// @param[in][out] theStream    the stream to output shape into
+/// @param[in] theWithTriangles  flag which specifies whether to save shape with (TRUE) or without
+/// (FALSE) triangles;
+/// has no effect on triangulation-only geometry
+/// @param[in] theWithNormals    flag which specifies whether to save triangulation with (TRUE) or
+/// without (FALSE) normals;
+/// has no effect on triangulation-only geometry
+/// @param[in] theVersion        the TopTools format version
+/// @param theProgress the range of progress indicator to fill in
+pub fn write_shape_ostream_bool2_formatversion_progressrange(
+    theShape: &crate::topo_ds::Shape,
+    theStream: &mut crate::ffi::Standard_OStream,
+    theWithTriangles: bool,
+    theWithNormals: bool,
+    theVersion: crate::top_tools::FormatVersion,
+    theProgress: &crate::message::ProgressRange,
+) {
+    unsafe {
+        crate::ffi::BRepTools_write_shape_ostream_bool2_formatversion_progressrange(
+            theShape,
+            theStream,
+            theWithTriangles,
+            theWithNormals,
+            theVersion.into(),
+            theProgress,
+        )
+    }
+}
+/// **Source:** `BRepTools.hxx`:318 - `BRepTools::Read`
+/// Reads a Shape  from <S> in  returns it in  <Sh>.
+/// <B> is used to build the shape.
+pub fn read_shape_istream_builder_progressrange(
+    Sh: &mut crate::topo_ds::Shape,
+    S: &mut crate::ffi::Standard_IStream,
+    B: &crate::b_rep::Builder,
+    theProgress: &crate::message::ProgressRange,
+) {
+    unsafe { crate::ffi::BRepTools_read_shape_istream_builder_progressrange(Sh, S, B, theProgress) }
+}
 /// **Source:** `BRepTools.hxx`:329 - `BRepTools::Write`
 /// Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1.
 /// This alias writes shape with triangulation data.
@@ -343,14 +406,21 @@ pub fn write_shape_charptr_bool2_formatversion_progressrange(
 /// **Source:** `BRepTools.hxx`:362 - `BRepTools::Read`
 /// Reads a Shape  from <File>,  returns it in  <Sh>.
 /// <B> is used to build the shape.
-pub fn read(
+pub fn read_shape_charptr_builder_progressrange(
     Sh: &mut crate::topo_ds::Shape,
     File: &str,
     B: &crate::b_rep::Builder,
     theProgress: &crate::message::ProgressRange,
 ) -> bool {
     let c_File = std::ffi::CString::new(File).unwrap();
-    unsafe { crate::ffi::BRepTools_read(Sh, c_File.as_ptr(), B, theProgress) }
+    unsafe {
+        crate::ffi::BRepTools_read_shape_charptr_builder_progressrange(
+            Sh,
+            c_File.as_ptr(),
+            B,
+            theProgress,
+        )
+    }
 }
 /// **Source:** `BRepTools.hxx`:374 - `BRepTools::EvalAndUpdateTol`
 /// Evals real tolerance of edge  <theE>.
@@ -1457,6 +1527,13 @@ impl History {
         unsafe { crate::ffi::BRepTools_History_merge_history(self as *mut Self, theHistory23) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:219 - `BRepTools_History::Dump()`
+    /// A method to dump a history
+    /// Prints the brief description of the history into a stream
+    pub fn dump(&mut self, theS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BRepTools_History_dump(self as *mut Self, theS) }
+    }
+
     /// **Source:** `BRepTools_History.hxx`:229 - `BRepTools_History::DynamicType()`
     /// Define the OCCT RTTI for the type.
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
@@ -1577,14 +1654,6 @@ impl HandleBRepToolsHistory {
         }
     }
 }
-
-// ── Skipped symbols for History (1 total) ──
-// SKIPPED: **Source:** `BRepTools_History.hxx`:219 - `BRepTools_History::Dump`
-//   method: A method to dump a history
-//   method: Prints the brief description of the history into a stream
-//   Reason: has unbindable types: param 'theS': stream type (Standard_OStream&)
-//   // pub fn dump(&mut self, theS: /* Standard_OStream& */);
-//
 
 // ========================
 // From BRepTools_Modification.hxx
@@ -3257,6 +3326,89 @@ impl ShapeSet {
         unsafe { crate::ffi::BRepTools_ShapeSet_add_geometry(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:82 - `BRepTools_ShapeSet::DumpGeometry()`
+    /// Dumps the geometry of me on the stream <OS>.
+    pub fn dump_geometry_ostream(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BRepTools_ShapeSet_dump_geometry_ostream(self as *const Self, OS) }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:86 - `BRepTools_ShapeSet::WriteGeometry()`
+    /// Writes the geometry of  me  on the stream <OS> in a
+    /// format that can be read back by Read.
+    pub fn write_geometry_ostream_progressrange(
+        &mut self,
+        OS: &mut crate::ffi::Standard_OStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_write_geometry_ostream_progressrange(
+                self as *mut Self,
+                OS,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:91 - `BRepTools_ShapeSet::ReadGeometry()`
+    /// Reads the geometry of me from the  stream  <IS>.
+    pub fn read_geometry_istream_progressrange(
+        &mut self,
+        IS: &mut crate::ffi::Standard_IStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_read_geometry_istream_progressrange(
+                self as *mut Self,
+                IS,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:96 - `BRepTools_ShapeSet::DumpGeometry()`
+    /// Dumps the geometry of <S> on the stream <OS>.
+    pub fn dump_geometry_shape_ostream(
+        &self,
+        S: &crate::topo_ds::Shape,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_dump_geometry_shape_ostream(self as *const Self, S, OS)
+        }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:101 - `BRepTools_ShapeSet::WriteGeometry()`
+    /// Writes the geometry of <S>  on the stream <OS> in a
+    /// format that can be read back by Read.
+    pub fn write_geometry_shape_ostream(
+        &self,
+        S: &crate::topo_ds::Shape,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_write_geometry_shape_ostream(self as *const Self, S, OS)
+        }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:106 - `BRepTools_ShapeSet::ReadGeometry()`
+    /// Reads the geometry of a shape of type <T> from the
+    /// stream <IS> and returns it in <S>.
+    pub fn read_geometry_shapeenum_istream_shape(
+        &mut self,
+        T: crate::top_abs::ShapeEnum,
+        IS: &mut crate::ffi::Standard_IStream,
+        S: &mut crate::topo_ds::Shape,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_read_geometry_shapeenum_istream_shape(
+                self as *mut Self,
+                T.into(),
+                IS,
+                S,
+            )
+        }
+    }
+
     /// **Source:** `BRepTools_ShapeSet.hxx`:113 - `BRepTools_ShapeSet::AddShapes()`
     /// Inserts  the shape <S2> in  the  shape <S1>.  This
     /// method must be   redefined  to  use   the  correct
@@ -3268,6 +3420,132 @@ impl ShapeSet {
     /// **Source:** `BRepTools_ShapeSet.hxx`:116 - `BRepTools_ShapeSet::Check()`
     pub fn check(&mut self, T: crate::top_abs::ShapeEnum, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepTools_ShapeSet_check(self as *mut Self, T.into(), S) }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:120 - `BRepTools_ShapeSet::ReadPolygon3D()`
+    /// Reads the 3d polygons  of me
+    /// from the  stream  <IS>.
+    pub fn read_polygon3_d(
+        &mut self,
+        IS: &mut crate::ffi::Standard_IStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_read_polygon3_d(self as *mut Self, IS, theProgress)
+        }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:127 - `BRepTools_ShapeSet::WritePolygon3D()`
+    /// Writes the 3d polygons
+    /// on the stream <OS> in a format that can
+    /// be read back by Read.
+    pub fn write_polygon3_d(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        Compact: bool,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_write_polygon3_d(
+                self as *const Self,
+                OS,
+                Compact,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:134 - `BRepTools_ShapeSet::DumpPolygon3D()`
+    /// Dumps the 3d polygons
+    /// on the stream <OS>.
+    pub fn dump_polygon3_d(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BRepTools_ShapeSet_dump_polygon3_d(self as *const Self, OS) }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:138 - `BRepTools_ShapeSet::ReadTriangulation()`
+    /// Reads the triangulation of me
+    /// from the  stream  <IS>.
+    pub fn read_triangulation(
+        &mut self,
+        IS: &mut crate::ffi::Standard_IStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_read_triangulation(self as *mut Self, IS, theProgress)
+        }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:145 - `BRepTools_ShapeSet::WriteTriangulation()`
+    /// Writes the triangulation
+    /// on the stream <OS> in a format that can
+    /// be read back by Read.
+    pub fn write_triangulation(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        Compact: bool,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_write_triangulation(
+                self as *const Self,
+                OS,
+                Compact,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:152 - `BRepTools_ShapeSet::DumpTriangulation()`
+    /// Dumps the triangulation
+    /// on the stream <OS>.
+    pub fn dump_triangulation(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BRepTools_ShapeSet_dump_triangulation(self as *const Self, OS) }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:156 - `BRepTools_ShapeSet::ReadPolygonOnTriangulation()`
+    /// Reads the polygons on triangulation of me
+    /// from the  stream  <IS>.
+    pub fn read_polygon_on_triangulation(
+        &mut self,
+        IS: &mut crate::ffi::Standard_IStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_read_polygon_on_triangulation(
+                self as *mut Self,
+                IS,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:163 - `BRepTools_ShapeSet::WritePolygonOnTriangulation()`
+    /// Writes the polygons on triangulation
+    /// on the stream <OS> in a format that can
+    /// be read back by Read.
+    pub fn write_polygon_on_triangulation(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        Compact: bool,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_write_polygon_on_triangulation(
+                self as *const Self,
+                OS,
+                Compact,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `BRepTools_ShapeSet.hxx`:170 - `BRepTools_ShapeSet::DumpPolygonOnTriangulation()`
+    /// Dumps the polygons on triangulation
+    /// on the stream <OS>.
+    pub fn dump_polygon_on_triangulation(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_dump_polygon_on_triangulation(self as *const Self, OS)
+        }
     }
 
     /// Upcast to TopTools_ShapeSet
@@ -3326,103 +3604,36 @@ impl ShapeSet {
         unsafe { crate::ffi::BRepTools_ShapeSet_inherited_DumpExtent(self as *const Self, S) }
     }
 
+    /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:91 - `TopTools_ShapeSet::Dump()`
+    pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BRepTools_ShapeSet_inherited_Dump(self as *const Self, OS) }
+    }
+
+    /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:105 - `TopTools_ShapeSet::Write()`
+    pub fn write(
+        &mut self,
+        OS: &mut crate::ffi::Standard_OStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_inherited_Write(self as *mut Self, OS, theProgress)
+        }
+    }
+
+    /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:121 - `TopTools_ShapeSet::Read()`
+    pub fn read(
+        &mut self,
+        IS: &mut crate::ffi::Standard_IStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe { crate::ffi::BRepTools_ShapeSet_inherited_Read(self as *mut Self, IS, theProgress) }
+    }
+
     /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:181 - `TopTools_ShapeSet::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
         unsafe { crate::ffi::BRepTools_ShapeSet_inherited_NbShapes(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for ShapeSet (15 total) ──
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:82 - `BRepTools_ShapeSet::DumpGeometry`
-//   method: Dumps the geometry of me on the stream <OS>.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump_geometry(&self, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:86 - `BRepTools_ShapeSet::WriteGeometry`
-//   method: Writes the geometry of  me  on the stream <OS> in a
-//   method: format that can be read back by Read.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write_geometry(&mut self, OS: /* Standard_OStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:91 - `BRepTools_ShapeSet::ReadGeometry`
-//   method: Reads the geometry of me from the  stream  <IS>.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read_geometry(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:96 - `BRepTools_ShapeSet::DumpGeometry`
-//   method: Dumps the geometry of <S> on the stream <OS>.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump_geometry(&self, S: &Shape, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:101 - `BRepTools_ShapeSet::WriteGeometry`
-//   method: Writes the geometry of <S>  on the stream <OS> in a
-//   method: format that can be read back by Read.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write_geometry(&self, S: &Shape, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:106 - `BRepTools_ShapeSet::ReadGeometry`
-//   method: Reads the geometry of a shape of type <T> from the
-//   method: stream <IS> and returns it in <S>.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read_geometry(&mut self, T: ShapeEnum, IS: /* Standard_IStream& */, S: &mut Shape);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:120 - `BRepTools_ShapeSet::ReadPolygon3D`
-//   method: Reads the 3d polygons  of me
-//   method: from the  stream  <IS>.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read_polygon3_d(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:127 - `BRepTools_ShapeSet::WritePolygon3D`
-//   method: Writes the 3d polygons
-//   method: on the stream <OS> in a format that can
-//   method: be read back by Read.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write_polygon3_d(&self, OS: /* Standard_OStream& */, Compact: bool, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:134 - `BRepTools_ShapeSet::DumpPolygon3D`
-//   method: Dumps the 3d polygons
-//   method: on the stream <OS>.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump_polygon3_d(&self, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:138 - `BRepTools_ShapeSet::ReadTriangulation`
-//   method: Reads the triangulation of me
-//   method: from the  stream  <IS>.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read_triangulation(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:145 - `BRepTools_ShapeSet::WriteTriangulation`
-//   method: Writes the triangulation
-//   method: on the stream <OS> in a format that can
-//   method: be read back by Read.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write_triangulation(&self, OS: /* Standard_OStream& */, Compact: bool, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:152 - `BRepTools_ShapeSet::DumpTriangulation`
-//   method: Dumps the triangulation
-//   method: on the stream <OS>.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump_triangulation(&self, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:156 - `BRepTools_ShapeSet::ReadPolygonOnTriangulation`
-//   method: Reads the polygons on triangulation of me
-//   method: from the  stream  <IS>.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read_polygon_on_triangulation(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:163 - `BRepTools_ShapeSet::WritePolygonOnTriangulation`
-//   method: Writes the polygons on triangulation
-//   method: on the stream <OS> in a format that can
-//   method: be read back by Read.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write_polygon_on_triangulation(&self, OS: /* Standard_OStream& */, Compact: bool, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `BRepTools_ShapeSet.hxx`:170 - `BRepTools_ShapeSet::DumpPolygonOnTriangulation`
-//   method: Dumps the polygons on triangulation
-//   method: on the stream <OS>.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump_polygon_on_triangulation(&self, OS: /* Standard_OStream& */);
-//
 
 // ========================
 // From BRepTools_Substitution.hxx

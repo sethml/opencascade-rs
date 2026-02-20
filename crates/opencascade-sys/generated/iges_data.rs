@@ -1791,6 +1791,30 @@ impl DefaultSpecific {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_DefaultSpecific_ctor()) }
     }
 
+    /// **Source:** `IGESData_DefaultSpecific.hxx`:41 - `IGESData_DefaultSpecific::OwnDump()`
+    /// Specific Dump for UndefinedEntity : it concerns only
+    /// own parameters, the general data (Directory Part, Lists) are
+    /// taken into account by the IGESDumper
+    pub fn own_dump(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        dumper: &IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_DefaultSpecific_own_dump(
+                self as *const Self,
+                CN,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+
     /// **Source:** `IGESData_DefaultSpecific.hxx`:47 - `IGESData_DefaultSpecific::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESData_DefaultSpecific_dynamic_type(self as *const Self)) }
@@ -1955,15 +1979,6 @@ impl HandleIGESDataDefaultSpecific {
         }
     }
 }
-
-// ── Skipped symbols for DefaultSpecific (1 total) ──
-// SKIPPED: **Source:** `IGESData_DefaultSpecific.hxx`:41 - `IGESData_DefaultSpecific::OwnDump`
-//   method: Specific Dump for UndefinedEntity : it concerns only
-//   method: own parameters, the general data (Directory Part, Lists) are
-//   method: taken into account by the IGESDumper
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, CN: i32, ent: &HandleIGESEntity, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
 
 // ========================
 // From IGESData_DirChecker.hxx
@@ -5679,33 +5694,54 @@ impl IGESDumper {
             )
         }
     }
-}
 
-// ── Skipped symbols for IGESDumper (4 total) ──
-// SKIPPED: **Source:** `IGESData_IGESDumper.hxx`:56 - `IGESData_IGESDumper::PrintDNum`
-//   method: Prints onto an output, the "Number of Directory Entry" which
-//   method: corresponds to an IGESEntity in the IGESModel, under the form
-//   method: "D#nnn" (a Null Handle gives D#0)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_d_num(&self, ent: &HandleIGESEntity, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `IGESData_IGESDumper.hxx`:61 - `IGESData_IGESDumper::PrintShort`
-//   method: Prints onto an output, the "Number of Directory Entry" (see
-//   method: PrintDNum) plus IGES Type and Form Numbers, which gives
-//   method: "D#nnn  Type nnn  Form nnn"
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_short(&self, ent: &HandleIGESEntity, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `IGESData_IGESDumper.hxx`:64 - `IGESData_IGESDumper::Dump`
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn dump(&self, ent: &HandleIGESEntity, S: /* Standard_OStream& */, own: i32, attached: i32);
-//
-// SKIPPED: **Source:** `IGESData_IGESDumper.hxx`:71 - `IGESData_IGESDumper::OwnDump`
-//   method: Specific Dump for each IGES Entity, call by Dump (just above)
-//   method: <own> is the parameter <own> from Dump
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleIGESEntity, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESData_IGESDumper.hxx`:56 - `IGESData_IGESDumper::PrintDNum()`
+    /// Prints onto an output, the "Number of Directory Entry" which
+    /// corresponds to an IGESEntity in the IGESModel, under the form
+    /// "D#nnn" (a Null Handle gives D#0)
+    pub fn print_d_num(
+        &self,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::IGESData_IGESDumper_print_d_num(self as *const Self, ent, S) }
+    }
+
+    /// **Source:** `IGESData_IGESDumper.hxx`:61 - `IGESData_IGESDumper::PrintShort()`
+    /// Prints onto an output, the "Number of Directory Entry" (see
+    /// PrintDNum) plus IGES Type and Form Numbers, which gives
+    /// "D#nnn  Type nnn  Form nnn"
+    pub fn print_short(
+        &self,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::IGESData_IGESDumper_print_short(self as *const Self, ent, S) }
+    }
+
+    /// **Source:** `IGESData_IGESDumper.hxx`:64 - `IGESData_IGESDumper::Dump()`
+    pub fn dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+        attached: i32,
+    ) {
+        unsafe { crate::ffi::IGESData_IGESDumper_dump(self as *const Self, ent, S, own, attached) }
+    }
+
+    /// **Source:** `IGESData_IGESDumper.hxx`:71 - `IGESData_IGESDumper::OwnDump()`
+    /// Specific Dump for each IGES Entity, call by Dump (just above)
+    /// <own> is the parameter <own> from Dump
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe { crate::ffi::IGESData_IGESDumper_own_dump(self as *const Self, ent, S, own) }
+    }
+}
 
 // ========================
 // From IGESData_IGESEntity.hxx
@@ -9047,6 +9083,14 @@ impl IGESModel {
         unsafe { crate::ffi::IGESData_IGESModel_clear_header(self as *mut Self) }
     }
 
+    /// **Source:** `IGESData_IGESModel.hxx`:56 - `IGESData_IGESModel::DumpHeader()`
+    /// Prints the IGES file header
+    /// (Start and Global Sections) to the log file. The integer
+    /// parameter is intended to be used as a level indicator but is not used at present.
+    pub fn dump_header(&self, S: &mut crate::ffi::Standard_OStream, level: i32) {
+        unsafe { crate::ffi::IGESData_IGESModel_dump_header(self as *const Self, S, level) }
+    }
+
     /// **Source:** `IGESData_IGESModel.hxx`:60 - `IGESData_IGESModel::StartSection()`
     /// Returns Model's Start Section (list of comment lines)
     pub fn start_section(
@@ -9202,6 +9246,40 @@ impl IGESModel {
     /// erases specific labels, i.e. does nothing
     pub fn clear_labels(&mut self) {
         unsafe { crate::ffi::IGESData_IGESModel_clear_labels(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:139 - `IGESData_IGESModel::PrintLabel()`
+    /// Prints label specific to IGES norm for a given entity, i.e.
+    /// its directory entry number (2*Number-1)
+    pub fn print_label(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::IGESData_IGESModel_print_label(self as *const Self, ent, S) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:145 - `IGESData_IGESModel::PrintToLog()`
+    /// Prints label specific to IGES norm  for a given -- --
+    /// entity,  i.e.  its directory entry number (2*Number-1)
+    /// in the log file format.
+    pub fn print_to_log(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::IGESData_IGESModel_print_to_log(self as *const Self, ent, S) }
+    }
+
+    /// **Source:** `IGESData_IGESModel.hxx`:150 - `IGESData_IGESModel::PrintInfo()`
+    /// Prints label specific to IGES norm for a given entity, i.e.
+    /// its directory entry number (2*Number-1)
+    pub fn print_info(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::IGESData_IGESModel_print_info(self as *const Self, ent, S) }
     }
 
     /// **Source:** `IGESData_IGESModel.hxx`:154 - `IGESData_IGESModel::StringLabel()`
@@ -9593,6 +9671,16 @@ impl IGESModel {
         unsafe { crate::ffi::IGESData_IGESModel_inherited_SetGlobalCheck(self as *mut Self, ach) }
     }
 
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:370 - `Interface_InterfaceModel::Print()`
+    pub fn print(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        s: &mut crate::ffi::Standard_OStream,
+        mode: i32,
+    ) {
+        unsafe { crate::ffi::IGESData_IGESModel_inherited_Print(self as *const Self, ent, s, mode) }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::IGESData_IGESModel_inherited_IsInstance(self as *const Self, theType) }
@@ -9677,34 +9765,6 @@ impl HandleIGESDataIGESModel {
         }
     }
 }
-
-// ── Skipped symbols for IGESModel (4 total) ──
-// SKIPPED: **Source:** `IGESData_IGESModel.hxx`:56 - `IGESData_IGESModel::DumpHeader`
-//   method: Prints the IGES file header
-//   method: (Start and Global Sections) to the log file. The integer
-//   method: parameter is intended to be used as a level indicator but is not used at present.
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn dump_header(&self, S: /* Standard_OStream& */, level: i32);
-//
-// SKIPPED: **Source:** `IGESData_IGESModel.hxx`:139 - `IGESData_IGESModel::PrintLabel`
-//   method: Prints label specific to IGES norm for a given entity, i.e.
-//   method: its directory entry number (2*Number-1)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_label(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `IGESData_IGESModel.hxx`:145 - `IGESData_IGESModel::PrintToLog`
-//   method: Prints label specific to IGES norm  for a given -- --
-//   method: entity,  i.e.  its directory entry number (2*Number-1)
-//   method: in the log file format.
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_to_log(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `IGESData_IGESModel.hxx`:150 - `IGESData_IGESModel::PrintInfo`
-//   method: Prints label specific to IGES norm for a given entity, i.e.
-//   method: its directory entry number (2*Number-1)
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print_info(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
-//
 
 // ========================
 // From IGESData_IGESReaderData.hxx
@@ -10813,6 +10873,15 @@ impl IGESWriter {
         }
     }
 
+    /// **Source:** `IGESData_IGESWriter.hxx`:176 - `IGESData_IGESWriter::Print()`
+    /// Writes result on an output defined as an OStream
+    /// resolves stored infos at this time; in particular, numbers of
+    /// lines used to address P-section from D-section and final totals
+    /// Takes WriteMode into account
+    pub fn print(&self, S: &mut crate::ffi::Standard_OStream) -> bool {
+        unsafe { crate::ffi::IGESData_IGESWriter_print(self as *const Self, S) }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -10820,15 +10889,6 @@ impl IGESWriter {
         }
     }
 }
-
-// ── Skipped symbols for IGESWriter (1 total) ──
-// SKIPPED: **Source:** `IGESData_IGESWriter.hxx`:176 - `IGESData_IGESWriter::Print`
-//   method: Writes result on an output defined as an OStream
-//   method: resolves stored infos at this time; in particular, numbers of
-//   method: lines used to address P-section from D-section and final totals
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn print(&self, S: /* Standard_OStream& */) -> bool;
-//
 
 // ========================
 // From IGESData_LabelDisplayEntity.hxx
@@ -16863,6 +16923,32 @@ unsafe impl crate::CppDeletable for SpecificModule {
 }
 
 impl SpecificModule {
+    /// **Source:** `IGESData_SpecificModule.hxx`:42 - `IGESData_SpecificModule::OwnDump()`
+    /// Specific Dump for each type of IGES Entity : it concerns only
+    /// own parameters, the general data (Directory Part, Lists) are
+    /// taken into account by the IGESDumper
+    /// See class IGESDumper for the rules to follow for <own> and
+    /// <attached> level
+    pub fn own_dump(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        dumper: &IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_SpecificModule_own_dump(
+                self as *const Self,
+                CN,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+
     /// **Source:** `IGESData_SpecificModule.hxx`:65 - `IGESData_SpecificModule::OwnCorrect()`
     /// Specific Automatic Correction on own Parameters of an Entity.
     /// It works by setting in accordance redundant data, if there are
@@ -17162,15 +17248,6 @@ impl HandleIGESDataSpecificModule {
         }
     }
 }
-
-// ── Skipped symbols for SpecificModule (1 total) ──
-// SKIPPED: **Source:** `IGESData_SpecificModule.hxx`:42 - `IGESData_SpecificModule::OwnDump`
-//   method: Specific Dump for each type of IGES Entity : it concerns only
-//   method: own parameters, the general data (Directory Part, Lists) are
-//   method: taken into account by the IGESDumper
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, CN: i32, ent: &HandleIGESEntity, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
 
 // ========================
 // From IGESData_ToolLocation.hxx

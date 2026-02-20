@@ -25807,9 +25807,14 @@ impl UndefinedDerivative {
     }
 
     /// **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Geom_UndefinedDerivative_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Geom_UndefinedDerivative_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Geom_UndefinedDerivative_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::NewInstance()`
@@ -25905,6 +25910,13 @@ impl UndefinedDerivative {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_UndefinedDerivative_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::Geom_UndefinedDerivative_inherited_Print(self as *const Self, theStream)
         }
     }
 
@@ -26023,12 +26035,6 @@ impl HandleGeomUndefinedDerivative {
     }
 }
 
-// ── Skipped symbols for UndefinedDerivative (1 total) ──
-// SKIPPED: **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
-
 // ========================
 // From Geom_UndefinedValue.hxx
 // ========================
@@ -26076,9 +26082,14 @@ impl UndefinedValue {
     }
 
     /// **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Geom_UndefinedValue_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::Geom_UndefinedValue_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::Geom_UndefinedValue_raise_sstream(theMessage) }
     }
 
     /// **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::NewInstance()`
@@ -26165,6 +26176,11 @@ impl UndefinedValue {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_UndefinedValue_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::Geom_UndefinedValue_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -26273,12 +26289,6 @@ impl HandleGeomUndefinedValue {
         }
     }
 }
-
-// ── Skipped symbols for UndefinedValue (1 total) ──
-// SKIPPED: **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From Geom_Vector.hxx

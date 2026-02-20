@@ -2338,6 +2338,16 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:184 - `BRepMesh_DataStructureOfDelaun::Statistics()`
+    /// @name Auxiliary API
+    /// Dumps information about this structure.
+    /// @param theStream stream to be used for dump.
+    pub fn statistics(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_statistics(self as *const Self, theStream)
+        }
+    }
+
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:187 - `BRepMesh_DataStructureOfDelaun::Allocator()`
     /// Returns memory allocator used by the structure.
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionIncAllocator {
@@ -2509,7 +2519,7 @@ impl HandleBRepMeshDataStructureOfDelaun {
     }
 }
 
-// ── Skipped symbols for DataStructureOfDelaun (5 total) ──
+// ── Skipped symbols for DataStructureOfDelaun (4 total) ──
 // SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:86 - `BRepMesh_DataStructureOfDelaun::LinksConnectedTo`
 //   method: Get list of links attached to the node with the given index.
 //   method: @param theIndex index of node whose links should be retrieved.
@@ -2533,13 +2543,6 @@ impl HandleBRepMeshDataStructureOfDelaun {
 //   method: @param[out] theNodes nodes of the given element.
 //   Reason: has unbindable types: param 'theNodes': C-style array (Standard_Integer[3]&)
 //   // pub fn element_nodes(&mut self, theElement: &Triangle, theNodes: /* Standard_Integer[3]& */);
-//
-// SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:184 - `BRepMesh_DataStructureOfDelaun::Statistics`
-//   method: @name Auxiliary API
-//   method: Dumps information about this structure.
-//   method: @param theStream stream to be used for dump.
-//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
-//   // pub fn statistics(&self, theStream: /* Standard_OStream& */);
 //
 
 // ========================
@@ -9069,6 +9072,12 @@ impl VertexTool {
         unsafe { crate::ffi::BRepMesh_VertexTool_remove_last(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:135 - `BRepMesh_VertexTool::Statistics()`
+    /// Prints statistics.
+    pub fn statistics(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BRepMesh_VertexTool_statistics(self as *const Self, theStream) }
+    }
+
     /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_VertexTool_dynamic_type(self as *const Self)) }
@@ -9186,7 +9195,7 @@ impl HandleBRepMeshVertexTool {
     }
 }
 
-// ── Skipped symbols for VertexTool (4 total) ──
+// ── Skipped symbols for VertexTool (3 total) ──
 // SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:93 - `BRepMesh_VertexTool::Vertices`
 //   method: Returns set of mesh vertices.
 //   Reason: return type 'const Handle(IMeshData::VectorOfVertex)&' is unknown
@@ -9202,9 +9211,4 @@ impl HandleBRepMeshVertexTool {
 //   method: equal to BRepMesh_Deleted and can be replaced with another node.
 //   Reason: return type 'const IMeshData::ListOfInteger&' is unknown
 //   // pub fn get_list_of_del_nodes(&self) -> &ListOfInteger;
-//
-// SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:135 - `BRepMesh_VertexTool::Statistics`
-//   method: Prints statistics.
-//   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
-//   // pub fn statistics(&self, theStream: /* Standard_OStream& */);
 //

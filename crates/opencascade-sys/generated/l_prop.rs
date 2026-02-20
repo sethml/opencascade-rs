@@ -159,9 +159,14 @@ impl BadContinuity {
     }
 
     /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::LProp_BadContinuity_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::LProp_BadContinuity_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::LProp_BadContinuity_raise_sstream(theMessage) }
     }
 
     /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::NewInstance()`
@@ -236,6 +241,11 @@ impl BadContinuity {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LProp_BadContinuity_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::LProp_BadContinuity_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -333,12 +343,6 @@ impl HandleLPropBadContinuity {
         }
     }
 }
-
-// ── Skipped symbols for BadContinuity (1 total) ──
-// SKIPPED: **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//
 
 // ========================
 // From LProp_CurAndInf.hxx
@@ -462,9 +466,14 @@ impl NotDefined {
     }
 
     /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::Raise()`
-    pub fn raise(theMessage: &str) {
+    pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::LProp_NotDefined_raise(c_theMessage.as_ptr()) }
+        unsafe { crate::ffi::LProp_NotDefined_raise_charptr(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::Raise()`
+    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+        unsafe { crate::ffi::LProp_NotDefined_raise_sstream(theMessage) }
     }
 
     /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::NewInstance()`
@@ -533,6 +542,11 @@ impl NotDefined {
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleLPropNotDefined> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LProp_NotDefined_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::LProp_NotDefined_inherited_Print(self as *const Self, theStream) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -625,9 +639,3 @@ impl HandleLPropNotDefined {
         }
     }
 }
-
-// ── Skipped symbols for NotDefined (1 total) ──
-// SKIPPED: **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::Raise`
-//   Reason: param 'theMessage' uses unknown type 'Standard_SStream&'
-//   // pub fn raise(theMessage: &mut SStream);
-//

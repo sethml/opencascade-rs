@@ -1568,6 +1568,32 @@ impl WorkLibrary {
         }
     }
 
+    /// **Source:** `StepSelect_WorkLibrary.hxx`:87 - `StepSelect_WorkLibrary::DumpEntity()`
+    /// Dumps an entity under STEP form, i.e. as a part of a Step file
+    /// Works with a StepDumper.
+    /// Level 0 just displays type; level 1 displays the entity itself
+    /// and level 2 displays the entity plus its shared ones (one
+    /// sub-level : immediately shared entities)
+    pub fn dump_entity(
+        &self,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+        entity: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi::Standard_OStream,
+        level: i32,
+    ) {
+        unsafe {
+            crate::ffi::StepSelect_WorkLibrary_dump_entity(
+                self as *const Self,
+                model,
+                protocol,
+                entity,
+                S,
+                level,
+            )
+        }
+    }
+
     /// **Source:** `StepSelect_WorkLibrary.hxx`:93 - `StepSelect_WorkLibrary::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StepSelect_WorkLibrary_dynamic_type(self as *const Self)) }
@@ -1730,18 +1756,11 @@ impl HandleStepSelectWorkLibrary {
     }
 }
 
-// ── Skipped symbols for WorkLibrary (2 total) ──
+// ── Skipped symbols for WorkLibrary (1 total) ──
 // SKIPPED: **Source:** `StepSelect_WorkLibrary.hxx`:62 - `StepSelect_WorkLibrary::ReadStream`
 //   method: Reads a STEP File from stream and returns a STEP Model (into <mod>),
 //   method: or lets <mod> "Null" in case of Error
 //   method: Returns 0 if OK, 1 if Read Error, -1 if File not opened
-//   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
-//   // pub fn read_stream(&self, theName: *const char, theIStream: /* std::istream& */, model: &mut HandleInterfaceModel, protocol: &HandleProtocol) -> i32;
-//
-// SKIPPED: **Source:** `StepSelect_WorkLibrary.hxx`:87 - `StepSelect_WorkLibrary::DumpEntity`
-//   method: Dumps an entity under STEP form, i.e. as a part of a Step file
-//   method: Works with a StepDumper.
-//   method: Level 0 just displays type; level 1 displays the entity itself
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn dump_entity(&self, model: &HandleInterfaceModel, protocol: &HandleProtocol, entity: &HandleTransient, S: /* Standard_OStream& */, level: i32);
+//   Reason: param 'theIStream' uses unknown type 'std::istream&'
+//   // pub fn read_stream(&self, theName: *const char, theIStream: &mut istream, model: &mut HandleInterfaceModel, protocol: &HandleProtocol) -> i32;
 //

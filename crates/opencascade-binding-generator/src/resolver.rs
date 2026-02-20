@@ -763,12 +763,15 @@ pub fn build_symbol_table(
     all_functions: &[&ParsedFunction],
     collection_type_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
+    manual_type_names: &HashSet<String>,
 ) -> SymbolTable {
     // Collect all enum and class names first
     let all_enum_names: HashSet<String> = all_enums.iter().map(|e| e.name.clone()).collect();
     let mut all_class_names: HashSet<String> = all_classes.iter().map(|c| c.name.clone()).collect();
     // Collection typedefs are known types for filtering purposes
     all_class_names.extend(collection_type_names.iter().cloned());
+    // Manual types (defined in manual/ files) are also known types
+    all_class_names.extend(manual_type_names.iter().cloned());
 
     // Start from the pre-computed handle-able classes (transitive closure of inheritance graph)
     let mut handle_able_classes = handle_able_classes.clone();

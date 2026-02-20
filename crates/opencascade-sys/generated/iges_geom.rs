@@ -14900,6 +14900,28 @@ impl SpecificModule {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_SpecificModule_ctor()) }
     }
 
+    /// **Source:** `IGESGeom_SpecificModule.hxx`:41 - `IGESGeom_SpecificModule::OwnDump()`
+    /// Specific Dump (own parameters) for IGESGeom
+    pub fn own_dump(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_SpecificModule_own_dump(
+                self as *const Self,
+                CN,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+
     /// **Source:** `IGESGeom_SpecificModule.hxx`:49 - `IGESGeom_SpecificModule::OwnCorrect()`
     /// Performs non-ambiguous Correction on Entities which support
     /// them (Boundary,ConicArc,Flash,OffsetCurve,TransformationMatrix)
@@ -15060,13 +15082,6 @@ impl HandleIGESGeomSpecificModule {
         }
     }
 }
-
-// ── Skipped symbols for SpecificModule (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_SpecificModule.hxx`:41 - `IGESGeom_SpecificModule::OwnDump`
-//   method: Specific Dump (own parameters) for IGESGeom
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, CN: i32, ent: &HandleIGESEntity, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
 
 // ========================
 // From IGESGeom_SplineCurve.hxx
@@ -18472,14 +18487,21 @@ impl ToolBSplineCurve {
             crate::ffi::IGESGeom_ToolBSplineCurve_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolBSplineCurve (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolBSplineCurve.hxx`:75 - `IGESGeom_ToolBSplineCurve::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleBSplineCurve, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolBSplineCurve.hxx`:75 - `IGESGeom_ToolBSplineCurve::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBSplineCurve,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBSplineCurve_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolBSplineSurface.hxx
@@ -18591,14 +18613,27 @@ impl ToolBSplineSurface {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolBSplineSurface (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolBSplineSurface.hxx`:75 - `IGESGeom_ToolBSplineSurface::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleBSplineSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolBSplineSurface.hxx`:75 - `IGESGeom_ToolBSplineSurface::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBSplineSurface,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBSplineSurface_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolBoundary.hxx
@@ -18703,14 +18738,21 @@ impl ToolBoundary {
             crate::ffi::IGESGeom_ToolBoundary_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolBoundary (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolBoundary.hxx`:79 - `IGESGeom_ToolBoundary::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleBoundary, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolBoundary.hxx`:79 - `IGESGeom_ToolBoundary::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBoundary,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBoundary_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolBoundedSurface.hxx
@@ -18822,14 +18864,27 @@ impl ToolBoundedSurface {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolBoundedSurface (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolBoundedSurface.hxx`:75 - `IGESGeom_ToolBoundedSurface::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleBoundedSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolBoundedSurface.hxx`:75 - `IGESGeom_ToolBoundedSurface::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomBoundedSurface,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolBoundedSurface_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolCircularArc.hxx
@@ -18929,14 +18984,21 @@ impl ToolCircularArc {
             crate::ffi::IGESGeom_ToolCircularArc_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolCircularArc (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolCircularArc.hxx`:75 - `IGESGeom_ToolCircularArc::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleCircularArc, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolCircularArc.hxx`:75 - `IGESGeom_ToolCircularArc::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCircularArc,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCircularArc_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolCompositeCurve.hxx
@@ -19048,14 +19110,27 @@ impl ToolCompositeCurve {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolCompositeCurve (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolCompositeCurve.hxx`:75 - `IGESGeom_ToolCompositeCurve::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleCompositeCurve, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolCompositeCurve.hxx`:75 - `IGESGeom_ToolCompositeCurve::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCompositeCurve,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCompositeCurve_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolConicArc.hxx
@@ -19160,14 +19235,21 @@ impl ToolConicArc {
             crate::ffi::IGESGeom_ToolConicArc_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolConicArc (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolConicArc.hxx`:79 - `IGESGeom_ToolConicArc::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleConicArc, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolConicArc.hxx`:79 - `IGESGeom_ToolConicArc::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomConicArc,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolConicArc_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolCopiousData.hxx
@@ -19267,14 +19349,21 @@ impl ToolCopiousData {
             crate::ffi::IGESGeom_ToolCopiousData_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolCopiousData (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolCopiousData.hxx`:75 - `IGESGeom_ToolCopiousData::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleCopiousData, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolCopiousData.hxx`:75 - `IGESGeom_ToolCopiousData::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCopiousData,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCopiousData_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolCurveOnSurface.hxx
@@ -19393,14 +19482,27 @@ impl ToolCurveOnSurface {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolCurveOnSurface (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolCurveOnSurface.hxx`:79 - `IGESGeom_ToolCurveOnSurface::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleCurveOnSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolCurveOnSurface.hxx`:79 - `IGESGeom_ToolCurveOnSurface::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomCurveOnSurface,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolCurveOnSurface_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolDirection.hxx
@@ -19498,14 +19600,21 @@ impl ToolDirection {
             crate::ffi::IGESGeom_ToolDirection_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolDirection (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolDirection.hxx`:75 - `IGESGeom_ToolDirection::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleDirection, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolDirection.hxx`:75 - `IGESGeom_ToolDirection::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomDirection,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolDirection_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolFlash.hxx
@@ -19604,14 +19713,19 @@ impl ToolFlash {
     ) {
         unsafe { crate::ffi::IGESGeom_ToolFlash_own_copy(self as *const Self, entfrom, entto, TC) }
     }
-}
 
-// ── Skipped symbols for ToolFlash (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolFlash.hxx`:79 - `IGESGeom_ToolFlash::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleFlash, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolFlash.hxx`:79 - `IGESGeom_ToolFlash::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomFlash,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolFlash_own_dump(self as *const Self, ent, dumper, S, own) }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolLine.hxx
@@ -19703,14 +19817,19 @@ impl ToolLine {
     ) {
         unsafe { crate::ffi::IGESGeom_ToolLine_own_copy(self as *const Self, entfrom, entto, TC) }
     }
-}
 
-// ── Skipped symbols for ToolLine (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolLine.hxx`:75 - `IGESGeom_ToolLine::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleLine, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolLine.hxx`:75 - `IGESGeom_ToolLine::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomLine,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolLine_own_dump(self as *const Self, ent, dumper, S, own) }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolOffsetCurve.hxx
@@ -19817,14 +19936,21 @@ impl ToolOffsetCurve {
             crate::ffi::IGESGeom_ToolOffsetCurve_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolOffsetCurve (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolOffsetCurve.hxx`:79 - `IGESGeom_ToolOffsetCurve::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleOffsetCurve, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolOffsetCurve.hxx`:79 - `IGESGeom_ToolOffsetCurve::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomOffsetCurve,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolOffsetCurve_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolOffsetSurface.hxx
@@ -19924,14 +20050,27 @@ impl ToolOffsetSurface {
             crate::ffi::IGESGeom_ToolOffsetSurface_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolOffsetSurface (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolOffsetSurface.hxx`:75 - `IGESGeom_ToolOffsetSurface::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleOffsetSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolOffsetSurface.hxx`:75 - `IGESGeom_ToolOffsetSurface::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomOffsetSurface,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolOffsetSurface_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolPlane.hxx
@@ -20023,14 +20162,19 @@ impl ToolPlane {
     ) {
         unsafe { crate::ffi::IGESGeom_ToolPlane_own_copy(self as *const Self, entfrom, entto, TC) }
     }
-}
 
-// ── Skipped symbols for ToolPlane (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolPlane.hxx`:75 - `IGESGeom_ToolPlane::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandlePlane, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolPlane.hxx`:75 - `IGESGeom_ToolPlane::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomPlane,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolPlane_own_dump(self as *const Self, ent, dumper, S, own) }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolPoint.hxx
@@ -20122,14 +20266,19 @@ impl ToolPoint {
     ) {
         unsafe { crate::ffi::IGESGeom_ToolPoint_own_copy(self as *const Self, entfrom, entto, TC) }
     }
-}
 
-// ── Skipped symbols for ToolPoint (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolPoint.hxx`:75 - `IGESGeom_ToolPoint::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandlePoint, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolPoint.hxx`:75 - `IGESGeom_ToolPoint::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomPoint,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe { crate::ffi::IGESGeom_ToolPoint_own_dump(self as *const Self, ent, dumper, S, own) }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolRuledSurface.hxx
@@ -20229,14 +20378,21 @@ impl ToolRuledSurface {
             crate::ffi::IGESGeom_ToolRuledSurface_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolRuledSurface (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolRuledSurface.hxx`:75 - `IGESGeom_ToolRuledSurface::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleRuledSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolRuledSurface.hxx`:75 - `IGESGeom_ToolRuledSurface::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomRuledSurface,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolRuledSurface_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolSplineCurve.hxx
@@ -20336,14 +20492,21 @@ impl ToolSplineCurve {
             crate::ffi::IGESGeom_ToolSplineCurve_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolSplineCurve (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolSplineCurve.hxx`:75 - `IGESGeom_ToolSplineCurve::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleSplineCurve, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolSplineCurve.hxx`:75 - `IGESGeom_ToolSplineCurve::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSplineCurve,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSplineCurve_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolSplineSurface.hxx
@@ -20443,14 +20606,27 @@ impl ToolSplineSurface {
             crate::ffi::IGESGeom_ToolSplineSurface_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolSplineSurface (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolSplineSurface.hxx`:75 - `IGESGeom_ToolSplineSurface::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleSplineSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolSplineSurface.hxx`:75 - `IGESGeom_ToolSplineSurface::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSplineSurface,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSplineSurface_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolSurfaceOfRevolution.hxx
@@ -20571,14 +20747,27 @@ impl ToolSurfaceOfRevolution {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolSurfaceOfRevolution (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolSurfaceOfRevolution.hxx`:76 - `IGESGeom_ToolSurfaceOfRevolution::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleSurfaceOfRevolution, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolSurfaceOfRevolution.hxx`:76 - `IGESGeom_ToolSurfaceOfRevolution::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomSurfaceOfRevolution,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolSurfaceOfRevolution_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolTabulatedCylinder.hxx
@@ -20699,14 +20888,27 @@ impl ToolTabulatedCylinder {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolTabulatedCylinder (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolTabulatedCylinder.hxx`:76 - `IGESGeom_ToolTabulatedCylinder::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleTabulatedCylinder, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolTabulatedCylinder.hxx`:76 - `IGESGeom_ToolTabulatedCylinder::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTabulatedCylinder,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTabulatedCylinder_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolTransformationMatrix.hxx
@@ -20836,14 +21038,27 @@ impl ToolTransformationMatrix {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolTransformationMatrix (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolTransformationMatrix.hxx`:81 - `IGESGeom_ToolTransformationMatrix::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleTransformationMatrix, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolTransformationMatrix.hxx`:81 - `IGESGeom_ToolTransformationMatrix::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTransformationMatrix,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTransformationMatrix_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_ToolTrimmedSurface.hxx
@@ -20955,14 +21170,27 @@ impl ToolTrimmedSurface {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolTrimmedSurface (1 total) ──
-// SKIPPED: **Source:** `IGESGeom_ToolTrimmedSurface.hxx`:75 - `IGESGeom_ToolTrimmedSurface::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleTrimmedSurface, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESGeom_ToolTrimmedSurface.hxx`:75 - `IGESGeom_ToolTrimmedSurface::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESGeomTrimmedSurface,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESGeom_ToolTrimmedSurface_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESGeom_TransformationMatrix.hxx

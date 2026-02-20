@@ -968,6 +968,16 @@ impl Check {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Check_inherited_GetReport(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
+    pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_DumpErrors(self as *const Self, theOS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
+    pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_DumpWarnings(self as *const Self, theOS) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_ClearWarnings(self as *mut Self) }

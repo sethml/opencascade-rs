@@ -19922,6 +19922,28 @@ impl SpecificModule {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESDimen_SpecificModule_ctor()) }
     }
 
+    /// **Source:** `IGESDimen_SpecificModule.hxx`:41 - `IGESDimen_SpecificModule::OwnDump()`
+    /// Specific Dump (own parameters) for IGESDimen
+    pub fn own_dump(
+        &self,
+        CN: i32,
+        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_SpecificModule_own_dump(
+                self as *const Self,
+                CN,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+
     /// **Source:** `IGESDimen_SpecificModule.hxx`:51 - `IGESDimen_SpecificModule::OwnCorrect()`
     /// Performs non-ambiguous Corrections on Entities which support
     /// them (BasicDimension,CenterLine,DimensionDisplayData,
@@ -20089,13 +20111,6 @@ impl HandleIGESDimenSpecificModule {
     }
 }
 
-// ── Skipped symbols for SpecificModule (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_SpecificModule.hxx`:41 - `IGESDimen_SpecificModule::OwnDump`
-//   method: Specific Dump (own parameters) for IGESDimen
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, CN: i32, ent: &HandleIGESEntity, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
-
 // ========================
 // From IGESDimen_ToolAngularDimension.hxx
 // ========================
@@ -20215,14 +20230,27 @@ impl ToolAngularDimension {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolAngularDimension (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolAngularDimension.hxx`:76 - `IGESDimen_ToolAngularDimension::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleAngularDimension, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolAngularDimension.hxx`:76 - `IGESDimen_ToolAngularDimension::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenAngularDimension,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolAngularDimension_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolBasicDimension.hxx
@@ -20346,14 +20374,27 @@ impl ToolBasicDimension {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolBasicDimension (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolBasicDimension.hxx`:79 - `IGESDimen_ToolBasicDimension::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleBasicDimension, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolBasicDimension.hxx`:79 - `IGESDimen_ToolBasicDimension::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenBasicDimension,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolBasicDimension_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolCenterLine.hxx
@@ -20460,14 +20501,21 @@ impl ToolCenterLine {
             crate::ffi::IGESDimen_ToolCenterLine_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolCenterLine (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolCenterLine.hxx`:79 - `IGESDimen_ToolCenterLine::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleCenterLine, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolCenterLine.hxx`:79 - `IGESDimen_ToolCenterLine::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenCenterLine,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolCenterLine_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolCurveDimension.hxx
@@ -20584,14 +20632,27 @@ impl ToolCurveDimension {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolCurveDimension (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolCurveDimension.hxx`:75 - `IGESDimen_ToolCurveDimension::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleCurveDimension, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolCurveDimension.hxx`:75 - `IGESDimen_ToolCurveDimension::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenCurveDimension,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolCurveDimension_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolDiameterDimension.hxx
@@ -20712,14 +20773,27 @@ impl ToolDiameterDimension {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolDiameterDimension (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolDiameterDimension.hxx`:76 - `IGESDimen_ToolDiameterDimension::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleDiameterDimension, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolDiameterDimension.hxx`:76 - `IGESDimen_ToolDiameterDimension::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenDiameterDimension,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolDiameterDimension_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolDimensionDisplayData.hxx
@@ -20853,14 +20927,27 @@ impl ToolDimensionDisplayData {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolDimensionDisplayData (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolDimensionDisplayData.hxx`:81 - `IGESDimen_ToolDimensionDisplayData::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleDimensionDisplayData, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolDimensionDisplayData.hxx`:81 - `IGESDimen_ToolDimensionDisplayData::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenDimensionDisplayData,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolDimensionDisplayData_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolDimensionTolerance.hxx
@@ -20990,14 +21077,27 @@ impl ToolDimensionTolerance {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolDimensionTolerance (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolDimensionTolerance.hxx`:81 - `IGESDimen_ToolDimensionTolerance::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleDimensionTolerance, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolDimensionTolerance.hxx`:81 - `IGESDimen_ToolDimensionTolerance::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenDimensionTolerance,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolDimensionTolerance_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolDimensionUnits.hxx
@@ -21121,14 +21221,27 @@ impl ToolDimensionUnits {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolDimensionUnits (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolDimensionUnits.hxx`:79 - `IGESDimen_ToolDimensionUnits::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleDimensionUnits, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolDimensionUnits.hxx`:79 - `IGESDimen_ToolDimensionUnits::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenDimensionUnits,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolDimensionUnits_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolDimensionedGeometry.hxx
@@ -21258,14 +21371,27 @@ impl ToolDimensionedGeometry {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolDimensionedGeometry (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolDimensionedGeometry.hxx`:81 - `IGESDimen_ToolDimensionedGeometry::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleDimensionedGeometry, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolDimensionedGeometry.hxx`:81 - `IGESDimen_ToolDimensionedGeometry::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenDimensionedGeometry,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolDimensionedGeometry_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolFlagNote.hxx
@@ -21363,14 +21489,21 @@ impl ToolFlagNote {
             crate::ffi::IGESDimen_ToolFlagNote_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolFlagNote (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolFlagNote.hxx`:75 - `IGESDimen_ToolFlagNote::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleFlagNote, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolFlagNote.hxx`:75 - `IGESDimen_ToolFlagNote::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenFlagNote,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolFlagNote_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolGeneralLabel.hxx
@@ -21470,14 +21603,27 @@ impl ToolGeneralLabel {
             crate::ffi::IGESDimen_ToolGeneralLabel_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolGeneralLabel (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolGeneralLabel.hxx`:75 - `IGESDimen_ToolGeneralLabel::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleGeneralLabel, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolGeneralLabel.hxx`:75 - `IGESDimen_ToolGeneralLabel::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenGeneralLabel,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolGeneralLabel_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolGeneralNote.hxx
@@ -21577,14 +21723,21 @@ impl ToolGeneralNote {
             crate::ffi::IGESDimen_ToolGeneralNote_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolGeneralNote (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolGeneralNote.hxx`:75 - `IGESDimen_ToolGeneralNote::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleGeneralNote, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolGeneralNote.hxx`:75 - `IGESDimen_ToolGeneralNote::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenGeneralNote,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolGeneralNote_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolGeneralSymbol.hxx
@@ -21696,14 +21849,27 @@ impl ToolGeneralSymbol {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolGeneralSymbol (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolGeneralSymbol.hxx`:75 - `IGESDimen_ToolGeneralSymbol::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleGeneralSymbol, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolGeneralSymbol.hxx`:75 - `IGESDimen_ToolGeneralSymbol::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenGeneralSymbol,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolGeneralSymbol_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolLeaderArrow.hxx
@@ -21803,14 +21969,21 @@ impl ToolLeaderArrow {
             crate::ffi::IGESDimen_ToolLeaderArrow_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolLeaderArrow (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolLeaderArrow.hxx`:75 - `IGESDimen_ToolLeaderArrow::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleLeaderArrow, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolLeaderArrow.hxx`:75 - `IGESDimen_ToolLeaderArrow::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenLeaderArrow,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolLeaderArrow_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolLinearDimension.hxx
@@ -21927,14 +22100,27 @@ impl ToolLinearDimension {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolLinearDimension (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolLinearDimension.hxx`:76 - `IGESDimen_ToolLinearDimension::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleLinearDimension, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolLinearDimension.hxx`:76 - `IGESDimen_ToolLinearDimension::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenLinearDimension,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolLinearDimension_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolNewDimensionedGeometry.hxx
@@ -22070,14 +22256,27 @@ impl ToolNewDimensionedGeometry {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolNewDimensionedGeometry (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolNewDimensionedGeometry.hxx`:81 - `IGESDimen_ToolNewDimensionedGeometry::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleNewDimensionedGeometry, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolNewDimensionedGeometry.hxx`:81 - `IGESDimen_ToolNewDimensionedGeometry::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenNewDimensionedGeometry,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolNewDimensionedGeometry_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolNewGeneralNote.hxx
@@ -22194,14 +22393,27 @@ impl ToolNewGeneralNote {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolNewGeneralNote (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolNewGeneralNote.hxx`:75 - `IGESDimen_ToolNewGeneralNote::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleNewGeneralNote, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolNewGeneralNote.hxx`:75 - `IGESDimen_ToolNewGeneralNote::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenNewGeneralNote,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolNewGeneralNote_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolOrdinateDimension.hxx
@@ -22322,14 +22534,27 @@ impl ToolOrdinateDimension {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolOrdinateDimension (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolOrdinateDimension.hxx`:76 - `IGESDimen_ToolOrdinateDimension::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleOrdinateDimension, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolOrdinateDimension.hxx`:76 - `IGESDimen_ToolOrdinateDimension::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenOrdinateDimension,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolOrdinateDimension_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolPointDimension.hxx
@@ -22446,14 +22671,27 @@ impl ToolPointDimension {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolPointDimension (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolPointDimension.hxx`:75 - `IGESDimen_ToolPointDimension::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandlePointDimension, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolPointDimension.hxx`:75 - `IGESDimen_ToolPointDimension::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenPointDimension,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolPointDimension_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolRadiusDimension.hxx
@@ -22570,14 +22808,27 @@ impl ToolRadiusDimension {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolRadiusDimension (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolRadiusDimension.hxx`:76 - `IGESDimen_ToolRadiusDimension::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleRadiusDimension, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolRadiusDimension.hxx`:76 - `IGESDimen_ToolRadiusDimension::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenRadiusDimension,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolRadiusDimension_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolSection.hxx
@@ -22682,14 +22933,21 @@ impl ToolSection {
             crate::ffi::IGESDimen_ToolSection_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolSection (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolSection.hxx`:79 - `IGESDimen_ToolSection::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleSection, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolSection.hxx`:79 - `IGESDimen_ToolSection::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenSection,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolSection_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolSectionedArea.hxx
@@ -22801,14 +23059,27 @@ impl ToolSectionedArea {
             )
         }
     }
-}
 
-// ── Skipped symbols for ToolSectionedArea (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolSectionedArea.hxx`:75 - `IGESDimen_ToolSectionedArea::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleSectionedArea, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolSectionedArea.hxx`:75 - `IGESDimen_ToolSectionedArea::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenSectionedArea,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolSectionedArea_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_ToolWitnessLine.hxx
@@ -22915,14 +23186,21 @@ impl ToolWitnessLine {
             crate::ffi::IGESDimen_ToolWitnessLine_own_copy(self as *const Self, entfrom, entto, TC)
         }
     }
-}
 
-// ── Skipped symbols for ToolWitnessLine (1 total) ──
-// SKIPPED: **Source:** `IGESDimen_ToolWitnessLine.hxx`:79 - `IGESDimen_ToolWitnessLine::OwnDump`
-//   method: Dump of Specific Parameters
-//   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
-//   // pub fn own_dump(&self, ent: &HandleWitnessLine, dumper: &IGESDumper, S: /* Standard_OStream& */, own: i32);
-//
+    /// **Source:** `IGESDimen_ToolWitnessLine.hxx`:79 - `IGESDimen_ToolWitnessLine::OwnDump()`
+    /// Dump of Specific Parameters
+    pub fn own_dump(
+        &self,
+        ent: &crate::ffi::HandleIGESDimenWitnessLine,
+        dumper: &crate::iges_data::IGESDumper,
+        S: &mut crate::ffi::Standard_OStream,
+        own: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESDimen_ToolWitnessLine_own_dump(self as *const Self, ent, dumper, S, own)
+        }
+    }
+}
 
 // ========================
 // From IGESDimen_WitnessLine.hxx

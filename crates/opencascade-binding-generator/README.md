@@ -318,6 +318,29 @@ NCollection typedefs (e.g., `TopTools_ListOfShape`) get iterator wrappers:
 - Rust `Iterator` trait impl yielding `OwnedPtr<Element>`
 - Impl methods: `iter()`, `from_iter()`, `append()`, etc.
 
+### Standard Streams (iostream)
+
+OCCT uses `Standard_OStream` (typedef for `std::ostream`) and `Standard_IStream` (typedef for `std::istream`) in many debug/dump methods. These are declared as `manual_types` in `bindings.toml` so the generator recognizes them as known types without generating class bindings.
+
+Manual bindings in the `standard` module provide access to the global C++ stream objects:
+
+```rust
+use opencascade_sys::standard;
+use opencascade_sys::b_rep_tools;
+
+// Get a mutable reference to std::cout (valid for program lifetime)
+let cout = standard::cout();
+
+// Dump a shape's topological structure to stdout
+let mut make_box = opencascade_sys::b_rep_prim_api::MakeBox::new_real3(10.0, 20.0, 30.0);
+let shape = make_box.shape();
+b_rep_tools::dump_shape_ostream(shape, cout);
+
+// Also available: standard::cerr(), standard::clog(), standard::cin()
+```
+
+The `OStream` and `IStream` type aliases are re-exported from the `standard` module alongside the auto-generated Standard types.
+
 ### Naming Conventions
 
 - **Types in ffi.rs**: Full C++ names (`gp_Pnt`, `TopoDS_Shape`, `BRepPrimAPI_MakeBox`)
@@ -337,13 +360,13 @@ Manual replacements live in `crates/opencascade-sys/manual/`:
 
 The generator appends `include!("../manual/<module>.rs");` (with a comment explaining why) to the generated module re-export file when a corresponding `manual/<module>.rs` exists. Because `include!()` is a textual insertion, the manual code has full access to the module's type aliases (e.g., `AdvancedEvolved`, `Finder`). The `extern "C"` declarations in manual files are not marked `pub`, so they are private to the module and not exposed as part of the public API. `build.rs` globs `manual/*_wrappers.cpp` and compiles them alongside `generated/wrappers.cpp`. Since Rust allows multiple `impl` blocks for a type, manual methods appear seamlessly alongside the auto-generated ones.
 
-See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for the two existing examples (`Transfer_Finder::GetStringAttribute` and `BRepFill_AdvancedEvolved::SetTemporaryDirectory`).
+See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for examples (`Transfer_Finder::GetStringAttribute`, `BRepFill_AdvancedEvolved::SetTemporaryDirectory`, and `standard` iostream accessors).
 
 ---
 
 ## Skipped Symbols
 
-The binding generator skips ~1,519 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator skips ~1,036 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -362,36 +385,38 @@ Example from `gp.rs`:
 
 | Count | % | Category | Description |
 |------:|----:|----------|-------------|
-| 546 | 35.9% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |
-| 432 | 28.4% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`Standard_SStream`, `Handle(TDocStd_Document)`, etc.) |
-| 199 | 13.1% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
-| 135 | 8.9% | **Raw pointer** | `T*`/`const T*` returns (static/free fn) or primitive pointer params (`int*`, `double*`) — class pointer returns on instance methods are now bound as `Option<&T>`/`Option<&mut T>` |
-| 53 | 3.5% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
-| 49 | 3.2% | **Unresolved template type** | Template instantiations that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `LDOMBasicString`, etc.) |
-| 43 | 2.8% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
-| 18 | 1.2% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
-| 17 | 1.1% | **String ref param** | `const char*&` or `const char* const&` parameters — needs manual binding |
-| 12 | 0.8% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
-| 7 | 0.5% | **Unknown Handle type** | Handle to a class not in the binding set (`Handle(IGESData_IGESModel)`, `Handle(CDM_MetaData)`, etc.) |
-| 5 | 0.3% | **Not CppDeletable** | Return type class has no destructor in the binding set |
-| 4 | 0.3% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
-| 2 | 0.1% | **Excluded by bindings.toml** | Explicitly excluded in config (e.g., ambiguous overload workarounds) |
+| 356 | 34.4% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`Handle(TDocStd_Document)`, `std::istream&`, `XCAFPrs_Style`, `IMeshData::IEdgeHandle`, etc.) |
+| 200 | 19.3% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
+| 176 | 17.0% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
+| 134 | 12.9% | **Raw pointer** | `T*`/`const T*` returns (static/free fn) or primitive pointer params (`int*`, `double*`) — class pointer returns on instance methods are now bound as `Option<&T>`/`Option<&mut T>` |
+| 48 | 4.6% | **Unresolved template type** | Template instantiations that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `LDOMBasicString`, etc.) |
+| 43 | 4.2% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
+| 17 | 1.6% | **String ref param** | `const char*&` or `const char* const&` parameters — needs manual binding |
+| 16 | 1.5% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
+| 15 | 1.4% | **Stream (shared_ptr)** | `std::shared_ptr<std::istream/ostream>` — smart-pointer-wrapped streams not yet bindable |
+| 12 | 1.2% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
+| 7 | 0.7% | **Unknown Handle type** | Handle to a class not in the binding set (`Handle(IGESData_IGESModel)`, `Handle(CDM_MetaData)`, etc.) |
+| 5 | 0.5% | **Not CppDeletable** | Return type class has no destructor in the binding set |
+| 4 | 0.4% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
+| 2 | 0.2% | **Excluded by bindings.toml** | Explicitly excluded in config (e.g., ambiguous overload workarounds) |
 | 1 | 0.1% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
 
 ### Most Common Unknown Types
 
-The "unknown type" and "unknown Handle type" categories (29% of all skips) are dominated by a few types:
+The "unknown type" and "unknown Handle type" categories (35% of all skips) are dominated by a few types:
 
 | Count | Type | How to Unblock |
 |------:|------|----------------|
-| 87 | `Handle(TDocStd_Document)` | Add `TDocStd_Document` — needed for document framework access |
-| 86 | `Standard_SStream` | Map `Standard_SStream` (`std::stringstream`) — mainly used in `Raise()` methods on exception classes |
+| 99 | `Handle(TDocStd_Document)` | Add `TDocStd_Document` — needed for document framework access |
+| 24 | `void*` (return type) | Would need raw pointer return support for non-method contexts |
 | 19 | `XCAFPrs_Style` | Add `XCAFPrs_Style` — used in XCAF presentation styles |
 | 12 | `IMeshData::IEdgeHandle` | Nested handle typedef in meshing internals — low priority |
+| 12 | `std::istream&` | Map bare `std::istream&` params (not `Standard_IStream`) — mostly in RWGltf/RWObj readers |
 | 11 | `ShapeProcess::OperationsFlags` | Nested type in ShapeProcess — used in STEP/IGES processing flags |
 | 10 | `IMeshData::IFaceHandle` | Nested handle typedef in meshing internals — low priority |
 
 Previously common unknown types that have been resolved:
+- ~~`Standard_OStream`/`Standard_IStream`~~ (was 546 skips) — resolved by adding `manual_types` config for stream types. `Standard_OStream&`/`Standard_IStream&` params are now fully bound; `std::cout`/`std::cerr`/`std::clog`/`std::cin` accessors provided via manual bindings in `standard` module
 - ~~`math_Vector`~~ (was 665 skips) — resolved by fixing typedef collection filter that excluded lowercase-prefix OCCT types (`math_*`)
 - ~~`Standard_Character`~~ (was 33 skips) — now mapped as `c_char` (`i8`)
 - ~~`Standard_ExtString`~~ (was 26 skips) — now mapped as `*const u16`
@@ -408,17 +433,17 @@ Previously common unknown types that have been resolved:
 
 Most skipped symbols are in internal, low-use, or specialized modules. However, some affect functionality that users commonly need:
 
-**Data Exchange (40 symbols)** — Reduced from 189 after adding `Transfer_TransientProcess`, `Interface_Protocol`, and `Interface_EntityIterator` to the binding set. Remaining skips in `STEPControl_*` (5), `IGESControl_*` (4), `XSControl_*` (27), and `RWStl` (4) are mostly stream types (`Standard_OStream`/`Standard_IStream`), string ref params (`const char*&` in `XSControl_Vars`), unknown IGES-specific Handle types (`Handle(IGESData_IGESModel)`), and rvalue references (`XSAlgo_ShapeProcessor::ParameterMap&&`). The core `Read()`/`Write()` operations are fully bound. **Remaining unblock opportunity**: add `IGESData_IGESModel` (14 skips).
+**Data Exchange (57 symbols)** — Reduced from 189 after adding `Transfer_TransientProcess`, `Interface_Protocol`, and `Interface_EntityIterator` to the binding set, then further reduced from 40 after stream type support unblocked many `OStream`/`IStream` methods. Remaining skips in `STEPControl_*` (5), `IGESControl_*` (3), `IGESCAFControl_*` (6), `STEPCAFControl_*` (19), `XSControl_*` (22), and `RWStl` (2) are mostly unknown `Handle(TDocStd_Document)` types (in XCAF modules), string ref params (`const char*&` in `XSControl_Vars`), unknown IGES-specific Handle types (`Handle(IGESData_IGESModel)`), and rvalue references (`XSAlgo_ShapeProcessor::ParameterMap&&`). The core `Read()`/`Write()` operations are fully bound. **Remaining unblock opportunity**: add `TDocStd_Document` (would unblock ~99 symbols across all modules).
 
-**Document Framework (86 symbols)** — `TDocStd_*` (38 skipped), `TDF_*` (18 skipped), `XCAFDoc_*` (30 skipped), `XCAFPrs_*` (0 skipped). Previously had 215+ skipped symbols due to `TDF_LabelMap` and `TDF_AttributeMap` being unknown — those are now resolved via the header text scan fallback. Remaining skips are dominated by stream types (`Standard_OStream`), with raw pointers, unknown types (`TDocStd_XLinkPtr`, `TDF_LabelNodePtr`), and XCAFDoc-specific handles.
+**Document Framework (74 symbols)** — `TDocStd_*` (36 skipped), `TDF_*` (9 skipped), `XCAFDoc_*` (29 skipped), `XCAFPrs_*` (0 skipped). Previously had 215+ skipped symbols due to `TDF_LabelMap` and `TDF_AttributeMap` being unknown — those are now resolved via the header text scan fallback. Many previous stream-type skips are now unblocked. Remaining skips are dominated by `Handle(TDocStd_Document)` params, with raw pointers, unknown types (`TDocStd_XLinkPtr`, `TDF_LabelNodePtr`), and XCAFDoc-specific handles.
 
-**Shape Meshing (93 symbols across 3 modules)** — `BRepMesh_*` (78 skipped), `IMeshData_*` (14 skipped), `IMeshTools_*` (1 skipped). The `IMeshData` and `IMeshTools` modules are now in the binding set, but many BRepMesh methods reference internal mesh data types (`IMeshData::IEdgeHandle`, `IMeshData::IFaceHandle`, `IMeshData::MapOfInteger`) that are nested typedefs not yet resolvable. Also includes C-style array params and `std::pair` return types. The core `BRepMesh_IncrementalMesh` meshing API is fully bound.
+**Shape Meshing (91 symbols across 3 modules)** — `BRepMesh_*` (76 skipped), `IMeshData_*` (14 skipped), `IMeshTools_*` (1 skipped). The `IMeshData` and `IMeshTools` modules are now in the binding set, but many BRepMesh methods reference internal mesh data types (`IMeshData::IEdgeHandle`, `IMeshData::IFaceHandle`, `IMeshData::MapOfInteger`) that are nested typedefs not yet resolvable. Also includes C-style array params and `std::pair` return types. The core `BRepMesh_IncrementalMesh` meshing API is fully bound.
 
 **Shape Analysis/Fix (0 symbols)** — Reduced from 72 after fixing the OSD_WNT.hxx fatal parse error root cause and adding `ShapeBuild_ReShape` and `GeomAdaptor_Surface`. The 54 legitimate `Standard_Integer&` mode accessors in `ShapeFix_*` are now bound. The remaining 5 `TColgp_SequenceOfPnt` skips were resolved by fixing typedef map pollution (see above).
 
-**Geometry (7 symbols in gp/Geom/Geom2d)** — Raw pointer returns (`gp_XYZ::GetData()`, `Geom_BSplineCurve::Weights()`, `Geom_BSplineSurface::Weights()`) and `Standard_SStream` parameters (exception `Raise()` methods). All core geometry operations are available; only internal data access and exception-raising methods are skipped.
+**Geometry (2 symbols in gp/Geom/Geom2d)** — Down from 7 after stream type support unblocked `Raise()` methods. Remaining: raw pointer returns (`gp_XYZ::GetData()` returning `const double*`, `gp_XYZ::ChangeData()` returning `double*`). All core geometry operations are available.
 
-**Poly (15 symbols)** — Raw pointers, ambiguous lifetimes, C-style arrays, stream types, void pointers, and misc others. `Poly_CoherentTriangulation` internal access and `Poly_MakeLoops` helper interfaces. All core triangulation access is available.
+**Poly (13 symbols)** — Raw pointers, ambiguous lifetimes, C-style arrays, void pointers, and misc others. `Poly_CoherentTriangulation` internal access and `Poly_MakeLoops` helper interfaces. All core triangulation access is available.
 
 ### How Skipped Symbols Are Tracked
 

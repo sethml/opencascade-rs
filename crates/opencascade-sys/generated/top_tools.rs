@@ -6,6 +6,13 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `TopTools.hxx`:75 - `TopTools::Dump`
+/// A set of Shapes. Can be dump, wrote or read.
+/// Dumps the topological structure  of <Sh>  on the
+/// stream <S>.
+pub fn dump_mut(Sh: &crate::topo_ds::Shape, S: &mut crate::ffi::Standard_OStream) {
+    unsafe { crate::ffi::TopTools_dump_mut(Sh, S) }
+}
 /// **Source:** `TopTools.hxx`:81 - `TopTools::Dummy`
 /// This is to bypass an extraction bug. It will force
 /// the  inclusion    of  Standard_Integer.hxx  itself
@@ -1392,26 +1399,35 @@ impl LocationSet {
     pub fn index(&self, L: &crate::top_loc::Location) -> i32 {
         unsafe { crate::ffi::TopTools_LocationSet_index(self as *const Self, L) }
     }
-}
 
-// ── Skipped symbols for LocationSet (3 total) ──
-// SKIPPED: **Source:** `TopTools_LocationSet.hxx`:61 - `TopTools_LocationSet::Dump`
-//   method: Dumps the content of me on the stream <OS>.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump(&self, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `TopTools_LocationSet.hxx`:65 - `TopTools_LocationSet::Write`
-//   method: Writes the content of  me  on the stream <OS> in a
-//   method: format that can be read back by Read.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write(&self, OS: /* Standard_OStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `TopTools_LocationSet.hxx`:71 - `TopTools_LocationSet::Read`
-//   method: Reads the content of me from the  stream  <IS>. me
-//   method: is first cleared.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
-//
+    /// **Source:** `TopTools_LocationSet.hxx`:61 - `TopTools_LocationSet::Dump()`
+    /// Dumps the content of me on the stream <OS>.
+    pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TopTools_LocationSet_dump(self as *const Self, OS) }
+    }
+
+    /// **Source:** `TopTools_LocationSet.hxx`:65 - `TopTools_LocationSet::Write()`
+    /// Writes the content of  me  on the stream <OS> in a
+    /// format that can be read back by Read.
+    pub fn write(
+        &self,
+        OS: &mut crate::ffi::Standard_OStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe { crate::ffi::TopTools_LocationSet_write(self as *const Self, OS, theProgress) }
+    }
+
+    /// **Source:** `TopTools_LocationSet.hxx`:71 - `TopTools_LocationSet::Read()`
+    /// Reads the content of me from the  stream  <IS>. me
+    /// is first cleared.
+    pub fn read(
+        &mut self,
+        IS: &mut crate::ffi::Standard_IStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe { crate::ffi::TopTools_LocationSet_read(self as *mut Self, IS, theProgress) }
+    }
+}
 
 // ========================
 // From TopTools_MutexForShapeProvider.hxx
@@ -1565,10 +1581,196 @@ impl ShapeSet {
         unsafe { crate::ffi::TopTools_ShapeSet_dump_extent(self as *const Self, S) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:91 - `TopTools_ShapeSet::Dump()`
+    /// Dumps the content of me on the stream <OS>.
+    ///
+    /// Dumps the shapes from first to last.
+    /// For each Shape
+    /// Dump the type, the flags, the subshapes
+    /// calls DumpGeometry(S)
+    ///
+    /// Dumps the geometry calling DumpGeometry.
+    ///
+    /// Dumps the locations.
+    pub fn dump_ostream(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TopTools_ShapeSet_dump_ostream(self as *const Self, OS) }
+    }
+
+    /// **Source:** `TopTools_ShapeSet.hxx`:105 - `TopTools_ShapeSet::Write()`
+    /// Writes the content of  me  on the stream <OS> in a
+    /// format that can be read back by Read.
+    ///
+    /// Writes the locations.
+    ///
+    /// Writes the geometry calling WriteGeometry.
+    ///
+    /// Dumps the shapes from last to first.
+    /// For each shape  :
+    /// Write the type.
+    /// calls WriteGeometry(S).
+    /// Write the flags, the subshapes.
+    pub fn write_ostream_progressrange(
+        &mut self,
+        OS: &mut crate::ffi::Standard_OStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::TopTools_ShapeSet_write_ostream_progressrange(
+                self as *mut Self,
+                OS,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `TopTools_ShapeSet.hxx`:121 - `TopTools_ShapeSet::Read()`
+    /// Reads the content of me from the  stream  <IS>. me
+    /// is first cleared.
+    ///
+    /// Reads the locations.
+    ///
+    /// Reads the geometry calling ReadGeometry.
+    ///
+    /// Reads the shapes.
+    /// For each shape
+    /// Reads the type.
+    /// calls ReadGeometry(T,S).
+    /// Reads the flag, the subshapes.
+    pub fn read_istream_progressrange(
+        &mut self,
+        IS: &mut crate::ffi::Standard_IStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::TopTools_ShapeSet_read_istream_progressrange(
+                self as *mut Self,
+                IS,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `TopTools_ShapeSet.hxx`:128 - `TopTools_ShapeSet::Dump()`
+    /// Dumps   on  <OS>    the  shape  <S>.   Dumps   the
+    /// orientation, the index of the TShape and the index
+    /// of the Location.
+    pub fn dump_shape_ostream(
+        &self,
+        S: &crate::topo_ds::Shape,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::TopTools_ShapeSet_dump_shape_ostream(self as *const Self, S, OS) }
+    }
+
+    /// **Source:** `TopTools_ShapeSet.hxx`:133 - `TopTools_ShapeSet::Write()`
+    /// Writes   on  <OS>   the shape   <S>.    Writes the
+    /// orientation, the index of the TShape and the index
+    /// of the Location.
+    pub fn write_shape_ostream(
+        &self,
+        S: &crate::topo_ds::Shape,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe { crate::ffi::TopTools_ShapeSet_write_shape_ostream(self as *const Self, S, OS) }
+    }
+
+    /// **Source:** `TopTools_ShapeSet.hxx`:136 - `TopTools_ShapeSet::Read()`
+    /// Reads from <IS> a shape and returns it in S.
+    pub fn read_shape_istream(
+        &self,
+        S: &mut crate::topo_ds::Shape,
+        IS: &mut crate::ffi::Standard_IStream,
+    ) {
+        unsafe { crate::ffi::TopTools_ShapeSet_read_shape_istream(self as *const Self, S, IS) }
+    }
+
     /// **Source:** `TopTools_ShapeSet.hxx`:139 - `TopTools_ShapeSet::AddGeometry()`
     /// Stores the geometry of <S>.
     pub fn add_geometry(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TopTools_ShapeSet_add_geometry(self as *mut Self, S) }
+    }
+
+    /// **Source:** `TopTools_ShapeSet.hxx`:142 - `TopTools_ShapeSet::DumpGeometry()`
+    /// Dumps the geometry of me on the stream <OS>.
+    pub fn dump_geometry_ostream(&self, OS: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TopTools_ShapeSet_dump_geometry_ostream(self as *const Self, OS) }
+    }
+
+    /// **Source:** `TopTools_ShapeSet.hxx`:146 - `TopTools_ShapeSet::WriteGeometry()`
+    /// Writes the geometry of  me  on the stream <OS> in a
+    /// format that can be read back by Read.
+    pub fn write_geometry_ostream_progressrange(
+        &mut self,
+        OS: &mut crate::ffi::Standard_OStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::TopTools_ShapeSet_write_geometry_ostream_progressrange(
+                self as *mut Self,
+                OS,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `TopTools_ShapeSet.hxx`:151 - `TopTools_ShapeSet::ReadGeometry()`
+    /// Reads the geometry of me from the  stream  <IS>.
+    pub fn read_geometry_istream_progressrange(
+        &mut self,
+        IS: &mut crate::ffi::Standard_IStream,
+        theProgress: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::TopTools_ShapeSet_read_geometry_istream_progressrange(
+                self as *mut Self,
+                IS,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `TopTools_ShapeSet.hxx`:156 - `TopTools_ShapeSet::DumpGeometry()`
+    /// Dumps the geometry of <S> on the stream <OS>.
+    pub fn dump_geometry_shape_ostream(
+        &self,
+        S: &crate::topo_ds::Shape,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::TopTools_ShapeSet_dump_geometry_shape_ostream(self as *const Self, S, OS)
+        }
+    }
+
+    /// **Source:** `TopTools_ShapeSet.hxx`:160 - `TopTools_ShapeSet::WriteGeometry()`
+    /// Writes the geometry of <S>  on the stream <OS> in a
+    /// format that can be read back by Read.
+    pub fn write_geometry_shape_ostream(
+        &self,
+        S: &crate::topo_ds::Shape,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) {
+        unsafe {
+            crate::ffi::TopTools_ShapeSet_write_geometry_shape_ostream(self as *const Self, S, OS)
+        }
+    }
+
+    /// **Source:** `TopTools_ShapeSet.hxx`:164 - `TopTools_ShapeSet::ReadGeometry()`
+    /// Reads the geometry of a shape of type <T> from the
+    /// stream <IS> and returns it in <S>.
+    pub fn read_geometry_shapeenum_istream_shape(
+        &mut self,
+        T: crate::top_abs::ShapeEnum,
+        IS: &mut crate::ffi::Standard_IStream,
+        S: &mut crate::topo_ds::Shape,
+    ) {
+        unsafe {
+            crate::ffi::TopTools_ShapeSet_read_geometry_shapeenum_istream_shape(
+                self as *mut Self,
+                T.into(),
+                IS,
+                S,
+            )
+        }
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:171 - `TopTools_ShapeSet::AddShapes()`
@@ -1596,82 +1798,12 @@ impl ShapeSet {
     }
 }
 
-// ── Skipped symbols for ShapeSet (13 total) ──
+// ── Skipped symbols for ShapeSet (1 total) ──
 // SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:75 - `TopTools_ShapeSet::DumpExtent`
 //   method: Dumps the number of objects in me on the stream <OS>.
 //   method: (Number of shapes of each type)
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
-//   // pub fn dump_extent(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:91 - `TopTools_ShapeSet::Dump`
-//   method: Dumps the content of me on the stream <OS>.
-//   method: Dumps the shapes from first to last.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump(&self, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:105 - `TopTools_ShapeSet::Write`
-//   method: Writes the content of  me  on the stream <OS> in a
-//   method: format that can be read back by Read.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write(&mut self, OS: /* Standard_OStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:121 - `TopTools_ShapeSet::Read`
-//   method: Reads the content of me from the  stream  <IS>. me
-//   method: is first cleared.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:128 - `TopTools_ShapeSet::Dump`
-//   method: Dumps   on  <OS>    the  shape  <S>.   Dumps   the
-//   method: orientation, the index of the TShape and the index
-//   method: of the Location.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump(&self, S: &Shape, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:133 - `TopTools_ShapeSet::Write`
-//   method: Writes   on  <OS>   the shape   <S>.    Writes the
-//   method: orientation, the index of the TShape and the index
-//   method: of the Location.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write(&self, S: &Shape, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:136 - `TopTools_ShapeSet::Read`
-//   method: Reads from <IS> a shape and returns it in S.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read(&self, S: &mut Shape, IS: /* Standard_IStream& */);
-//
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:142 - `TopTools_ShapeSet::DumpGeometry`
-//   method: Dumps the geometry of me on the stream <OS>.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump_geometry(&self, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:146 - `TopTools_ShapeSet::WriteGeometry`
-//   method: Writes the geometry of  me  on the stream <OS> in a
-//   method: format that can be read back by Read.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write_geometry(&mut self, OS: /* Standard_OStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:151 - `TopTools_ShapeSet::ReadGeometry`
-//   method: Reads the geometry of me from the  stream  <IS>.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read_geometry(&mut self, IS: /* Standard_IStream& */, theProgress: &ProgressRange);
-//
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:156 - `TopTools_ShapeSet::DumpGeometry`
-//   method: Dumps the geometry of <S> on the stream <OS>.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn dump_geometry(&self, S: &Shape, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:160 - `TopTools_ShapeSet::WriteGeometry`
-//   method: Writes the geometry of <S>  on the stream <OS> in a
-//   method: format that can be read back by Read.
-//   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&)
-//   // pub fn write_geometry(&self, S: &Shape, OS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:164 - `TopTools_ShapeSet::ReadGeometry`
-//   method: Reads the geometry of a shape of type <T> from the
-//   method: stream <IS> and returns it in <S>.
-//   Reason: has unbindable types: param 'IS': stream type (Standard_IStream&)
-//   // pub fn read_geometry(&mut self, T: ShapeEnum, IS: /* Standard_IStream& */, S: &mut Shape);
+//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   // pub fn dump_extent(&self, OS: &mut OStream) -> &mut OStream;
 //
 
 // ========================

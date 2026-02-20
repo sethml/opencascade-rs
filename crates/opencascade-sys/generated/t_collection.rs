@@ -776,6 +776,18 @@ impl AsciiString {
         unsafe { crate::ffi::TCollection_AsciiString_prepend(self as *mut Self, other) }
     }
 
+    /// **Source:** `TCollection_AsciiString.hxx`:517 - `TCollection_AsciiString::Print()`
+    /// Displays <me> on a stream.
+    pub fn print(&self, astream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TCollection_AsciiString_print(self as *const Self, astream) }
+    }
+
+    /// **Source:** `TCollection_AsciiString.hxx`:522 - `TCollection_AsciiString::Read()`
+    /// Read <me> from a stream.
+    pub fn read(&mut self, astream: &mut crate::ffi::Standard_IStream) {
+        unsafe { crate::ffi::TCollection_AsciiString_read(self as *mut Self, astream) }
+    }
+
     /// **Source:** `TCollection_AsciiString.hxx`:530 - `TCollection_AsciiString::RealValue()`
     /// Converts an AsciiString containing a numeric expression.
     /// to a Real.
@@ -1088,7 +1100,7 @@ impl AsciiString {
     }
 }
 
-// ── Skipped symbols for AsciiString (5 total) ──
+// ── Skipped symbols for AsciiString (3 total) ──
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:110 - `TCollection_AsciiString::TCollection_AsciiString`
 //   constructor: Initialize UTF-8 Unicode string from wide-char string considering it as Unicode string
 //   constructor: (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16).
@@ -1099,16 +1111,6 @@ impl AsciiString {
 //   method: Moves string without reallocations
 //   Reason: has unbindable types: param 'theOther': rvalue reference (TCollection_AsciiString&&)
 //   // pub fn move_(&mut self, theOther: /* TCollection_AsciiString&& */);
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:517 - `TCollection_AsciiString::Print`
-//   method: Displays <me> on a stream.
-//   Reason: has unbindable types: param 'astream': stream type (Standard_OStream&)
-//   // pub fn print(&self, astream: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:522 - `TCollection_AsciiString::Read`
-//   method: Read <me> from a stream.
-//   Reason: has unbindable types: param 'astream': stream type (Standard_IStream&)
-//   // pub fn read(&mut self, astream: /* Standard_IStream& */);
 //
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:671 - `TCollection_AsciiString::Value`
 //   method: Returns character at position <where> in <me>.
@@ -1375,6 +1377,12 @@ impl ExtendedString {
         unsafe { crate::ffi::TCollection_ExtendedString_length(self as *const Self) }
     }
 
+    /// **Source:** `TCollection_ExtendedString.hxx`:251 - `TCollection_ExtendedString::Print()`
+    /// Displays <me> .
+    pub fn print(&self, astream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TCollection_ExtendedString_print(self as *const Self, astream) }
+    }
+
     /// **Source:** `TCollection_ExtendedString.hxx`:256 - `TCollection_ExtendedString::RemoveAll()`
     /// Removes every <what> characters from <me>.
     pub fn remove_all(&mut self, what: u16) {
@@ -1516,7 +1524,7 @@ impl ExtendedString {
     }
 }
 
-// ── Skipped symbols for ExtendedString (12 total) ──
+// ── Skipped symbols for ExtendedString (11 total) ──
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:68 - `TCollection_ExtendedString::TCollection_ExtendedString`
 //   constructor: Creation by converting an ExtString to an extended string.
 //   Reason: has unbindable types: param 'astring': raw pointer (const uint16_t*)
@@ -1561,11 +1569,6 @@ impl ExtendedString {
 //   method: Returns TRUE if <me> is greater than <other>.
 //   Reason: has unbindable types: param 'other': raw pointer (const uint16_t*)
 //   // pub fn is_greater(&self, other: /* const uint16_t* */) -> bool;
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:251 - `TCollection_ExtendedString::Print`
-//   method: Displays <me> .
-//   Reason: has unbindable types: param 'astream': stream type (Standard_OStream&)
-//   // pub fn print(&self, astream: /* Standard_OStream& */);
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:307 - `TCollection_ExtendedString::Token`
 //   method: Extracts <whichone> token from <me>.
@@ -2159,6 +2162,12 @@ impl HAsciiString {
         unsafe { crate::ffi::TCollection_HAsciiString_prepend(self as *mut Self, other) }
     }
 
+    /// **Source:** `TCollection_HAsciiString.hxx`:331 - `TCollection_HAsciiString::Print()`
+    /// Prints this string on the stream <astream>.
+    pub fn print(&self, astream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TCollection_HAsciiString_print(self as *const Self, astream) }
+    }
+
     /// **Source:** `TCollection_HAsciiString.hxx`:337 - `TCollection_HAsciiString::RealValue()`
     /// Converts a string containing a numeric expression to a Real.
     /// Example:
@@ -2587,16 +2596,11 @@ impl HandleTCollectionHAsciiString {
     }
 }
 
-// ── Skipped symbols for HAsciiString (3 total) ──
+// ── Skipped symbols for HAsciiString (2 total) ──
 // SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:69 - `TCollection_HAsciiString::TCollection_HAsciiString`
 //   constructor: Initializes a HAsciiString with a AsciiString.
 //   Reason: has unbindable types: param 'theString': rvalue reference (TCollection_AsciiString&&)
 //   // pub fn new_asciistring(theString: /* TCollection_AsciiString&& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:331 - `TCollection_HAsciiString::Print`
-//   method: Prints this string on the stream <astream>.
-//   Reason: has unbindable types: param 'astream': stream type (Standard_OStream&)
-//   // pub fn print(&self, astream: /* Standard_OStream& */);
 //
 // SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:481 - `TCollection_HAsciiString::Value`
 //   method: Returns character at position <where> in <me>.
@@ -2912,6 +2916,12 @@ impl HExtendedString {
         unsafe { &*(crate::ffi::TCollection_HExtendedString_string(self as *const Self)) }
     }
 
+    /// **Source:** `TCollection_HExtendedString.hxx`:205 - `TCollection_HExtendedString::Print()`
+    /// Displays <me> .
+    pub fn print(&self, astream: &mut crate::ffi::Standard_OStream) {
+        unsafe { crate::ffi::TCollection_HExtendedString_print(self as *const Self, astream) }
+    }
+
     /// **Source:** `TCollection_HExtendedString.hxx`:208 - `TCollection_HExtendedString::IsSameState()`
     pub fn is_same_state(&self, other: &crate::ffi::HandleTCollectionHExtendedString) -> bool {
         unsafe { crate::ffi::TCollection_HExtendedString_is_same_state(self as *const Self, other) }
@@ -3052,7 +3062,7 @@ impl HandleTCollectionHExtendedString {
     }
 }
 
-// ── Skipped symbols for HExtendedString (5 total) ──
+// ── Skipped symbols for HExtendedString (4 total) ──
 // SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:55 - `TCollection_HExtendedString::TCollection_HExtendedString`
 //   constructor: Initializes a HExtendedString with an ExtString.
 //   Reason: has unbindable types: param 'message': raw pointer (const uint16_t*)
@@ -3074,9 +3084,4 @@ impl HandleTCollectionHExtendedString {
 //   method: By default, the token extracted is the first one (whichone = 1).
 //   Reason: has unbindable types: param 'separators': raw pointer (const uint16_t*)
 //   // pub fn token(&self, separators: /* const uint16_t* */, whichone: i32) -> OwnedPtr<Handle<TCollection_HExtendedString>>;
-//
-// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:205 - `TCollection_HExtendedString::Print`
-//   method: Displays <me> .
-//   Reason: has unbindable types: param 'astream': stream type (Standard_OStream&)
-//   // pub fn print(&self, astream: /* Standard_OStream& */);
 //

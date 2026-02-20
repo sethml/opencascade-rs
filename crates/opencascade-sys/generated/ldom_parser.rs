@@ -52,6 +52,6 @@ impl LDOMParser {
 
 // ── Skipped symbols for LDOMParser (1 total) ──
 // SKIPPED: **Source:** `LDOMParser.hxx`:54 - `LDOMParser::parse`
-//   Reason: has unbindable types: param 'anInput': stream type (std::istream&)
-//   // pub fn parse(&mut self, anInput: /* std::istream& */, theTagPerStep: bool, theWithoutRoot: bool) -> bool;
+//   Reason: param 'anInput' uses unknown type 'std::istream&'
+//   // pub fn parse(&mut self, anInput: &mut istream, theTagPerStep: bool, theWithoutRoot: bool) -> bool;
 //

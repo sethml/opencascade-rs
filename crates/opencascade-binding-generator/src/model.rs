@@ -638,7 +638,7 @@ impl Type {
     /// (Parent::Nested → Parent_Nested in Rust FFI), BUT unresolved template types
     /// and unqualified names without underscore remain unbindable.
     pub fn is_unbindable(&self) -> bool {
-        self.is_stream() || self.is_void_ptr() || self.is_array() || self.is_raw_ptr() || self.is_rvalue_ref() || self.is_unresolved_template_type()
+        self.is_void_ptr() || self.is_array() || self.is_raw_ptr() || self.is_rvalue_ref() || self.is_unresolved_template_type()
     }
 
     /// Get a human-readable C++-like type string for diagnostic messages.

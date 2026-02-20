@@ -93,7 +93,7 @@ fn main() -> Result<()> {
     }
 
     // Determine explicit headers from config file or CLI arguments
-    let (explicit_headers, resolve_deps, exclude_set, exclude_modules, exclude_methods) = if let Some(ref config_path) = args.config {
+    let (explicit_headers, resolve_deps, exclude_set, exclude_modules, exclude_methods, manual_type_names) = if let Some(ref config_path) = args.config {
         let cfg = config::load_config(config_path)?;
         let resolve = cfg.general.resolve_deps;
 
@@ -136,9 +136,10 @@ fn main() -> Result<()> {
 
         let excludes: std::collections::HashSet<String> = cfg.exclude_headers.into_iter().collect();
         let exclude_mods: Vec<String> = cfg.exclude_modules;
-        (headers, resolve, excludes, exclude_mods, method_exclusions)
+        let manual_names: HashSet<String> = cfg.manual_types.keys().cloned().collect();
+        (headers, resolve, excludes, exclude_mods, method_exclusions, manual_names)
     } else if !args.headers.is_empty() {
-        (args.headers.clone(), args.resolve_deps, std::collections::HashSet::new(), Vec::new(), HashSet::new())
+        (args.headers.clone(), args.resolve_deps, std::collections::HashSet::new(), Vec::new(), HashSet::new(), HashSet::new())
     } else {
         anyhow::bail!("Either --config <file.toml> or positional header arguments are required");
     };
@@ -306,6 +307,7 @@ fn main() -> Result<()> {
         &all_functions,
         &collection_type_names,
         &handle_able_classes,
+        &manual_type_names,
     );
 
     if args.verbose {
@@ -360,13 +362,17 @@ fn main() -> Result<()> {
     } else {
         HashSet::new()
     };
+    // Remove excluded headers from the known set so they won't be included
+    // in wrappers.cpp (e.g., RWGltf_GltfOStreamWriter.hxx depends on rapidjson
+    // which is not bundled)
+    let known_headers: HashSet<String> = known_headers.difference(&exclude_set).cloned().collect();
 
     if args.verbose {
         println!("  Found {} known OCCT headers", known_headers.len());
     }
 
     // Generate FFI output
-    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &handle_able_classes)
+    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &handle_able_classes, &manual_type_names)
 }
 
 /// Detect "utility namespace classes" and convert their static methods to free functions.
@@ -578,6 +584,7 @@ fn generate_output(
     known_headers: &HashSet<String>,
     exclude_methods: &HashSet<(String, String)>,
     handle_able_classes: &HashSet<String>,
+    manual_type_names: &HashSet<String>,
 ) -> Result<()> {
     use model::ParsedClass;
 
@@ -601,11 +608,11 @@ fn generate_output(
         all_collections.iter().map(|c| c.typedef_name.clone()).collect();
     let extra_typedef_names = parser::get_collected_typedef_names();
     let all_bindings =
-        codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names, exclude_methods);
+        codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names, exclude_methods, manual_type_names);
 
     // Compute FunctionBindings once for ALL free functions — shared by all three generators
     let (all_function_bindings, all_skipped_functions) = codegen::bindings::compute_all_function_bindings(
-        symbol_table, all_classes, &collection_type_names, &extra_typedef_names, known_headers,
+        symbol_table, all_classes, &collection_type_names, &extra_typedef_names, known_headers, manual_type_names,
     );
 
     // Track generated files for formatting

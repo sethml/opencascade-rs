@@ -564,15 +564,15 @@ impl HandleRWMeshCafReader {
 //
 // SKIPPED: **Source:** `RWMesh_CafReader.hxx`:202 - `RWMesh_CafReader::Perform`
 //   method: Read the data from specified file.
-//   Reason: has unbindable types: param 'theStream': stream type (std::istream&)
-//   // pub fn perform(&mut self, theStream: /* std::istream& */, theProgress: &ProgressRange, theFile: &AsciiString) -> bool;
+//   Reason: param 'theStream' uses unknown type 'std::istream&'
+//   // pub fn perform(&mut self, theStream: &mut istream, theProgress: &ProgressRange, theFile: &AsciiString) -> bool;
 //
 // SKIPPED: **Source:** `RWMesh_CafReader.hxx`:238 - `RWMesh_CafReader::ProbeHeader`
 //   method: Read the header data from specified file without reading entire model.
 //   method: The main purpose is collecting metadata and external references - for copying model into a new
 //   method: location, for example. Can be NOT implemented (unsupported by format / reader).
-//   Reason: has unbindable types: param 'theStream': stream type (std::istream&)
-//   // pub fn probe_header(&mut self, theStream: /* std::istream& */, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
+//   Reason: param 'theStream' uses unknown type 'std::istream&'
+//   // pub fn probe_header(&mut self, theStream: &mut istream, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
 //
 
 /// **Source:** `RWMesh_CafReader.hxx`:55 - `RWMesh_CafReader_CafDocumentTools`
