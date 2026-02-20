@@ -379,61 +379,288 @@ impl ApproxF2var {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::AdvApp2Var_ApproxF2var_ctor()) }
     }
-}
 
-// ── Skipped symbols for ApproxF2var (13 total) ──
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:31 - `AdvApp2Var_ApproxF2var::mma2fnc_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (int*); param 'nbsesp': raw pointer (int*); param 'ndimse': raw pointer (int*); param 'uvfonc': raw pointer (double*); param 'tconst': raw pointer (double*); param 'isofav': raw pointer (int*); param 'nbroot': raw pointer (int*); param 'rootlg': raw pointer (double*); param 'iordre': raw pointer (int*); param 'ideriv': raw pointer (int*); param 'ndgjac': raw pointer (int*); param 'nbcrmx': raw pointer (int*); param 'ncflim': raw pointer (int*); param 'epsapr': raw pointer (double*); param 'ncoeff': raw pointer (int*); param 'courbe': raw pointer (double*); param 'nbcrbe': raw pointer (int*); param 'somtab': raw pointer (double*); param 'diftab': raw pointer (double*); param 'contr1': raw pointer (double*); param 'contr2': raw pointer (double*); param 'tabdec': raw pointer (double*); param 'errmax': raw pointer (double*); param 'errmoy': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mma2fnc(ndimen: /* int* */, nbsesp: /* int* */, ndimse: /* int* */, uvfonc: /* double* */, foncnp: &EvaluatorFunc2Var, tconst: /* double* */, isofav: /* int* */, nbroot: /* int* */, rootlg: /* double* */, iordre: /* int* */, ideriv: /* int* */, ndgjac: /* int* */, nbcrmx: /* int* */, ncflim: /* int* */, epsapr: /* double* */, ncoeff: /* int* */, courbe: /* double* */, nbcrbe: /* int* */, somtab: /* double* */, diftab: /* double* */, contr1: /* double* */, contr2: /* double* */, tabdec: /* double* */, errmax: /* double* */, errmoy: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:58 - `AdvApp2Var_ApproxF2var::mma2roo_`
-//   Reason: has unbindable types: param 'nbpntu': raw pointer (int*); param 'nbpntv': raw pointer (int*); param 'urootl': raw pointer (double*); param 'vrootl': raw pointer (double*)
-//   // pub fn mma2roo(nbpntu: /* int* */, nbpntv: /* int* */, urootl: /* double* */, vrootl: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:63 - `AdvApp2Var_ApproxF2var::mma2jmx_`
-//   Reason: has unbindable types: param 'ndgjac': raw pointer (int*); param 'iordre': raw pointer (int*); param 'xjacmx': raw pointer (double*)
-//   // pub fn mma2jmx(ndgjac: /* int* */, iordre: /* int* */, xjacmx: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:65 - `AdvApp2Var_ApproxF2var::mmapptt_`
-//   Reason: has unbindable types: param 'arg0': raw pointer (const int*); param 'arg1': raw pointer (const int*); param 'arg2': raw pointer (const int*); param 'arg3': raw pointer (double*); param 'arg4': raw pointer (int*)
-//   // pub fn mmapptt(arg0: /* const int* */, arg1: /* const int* */, arg2: /* const int* */, arg3: /* double* */, arg4: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:71 - `AdvApp2Var_ApproxF2var::mma2cdi_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (int*); param 'nbpntu': raw pointer (int*); param 'urootl': raw pointer (double*); param 'nbpntv': raw pointer (int*); param 'vrootl': raw pointer (double*); param 'iordru': raw pointer (int*); param 'iordrv': raw pointer (int*); param 'contr1': raw pointer (double*); param 'contr2': raw pointer (double*); param 'contr3': raw pointer (double*); param 'contr4': raw pointer (double*); param 'sotbu1': raw pointer (double*); param 'sotbu2': raw pointer (double*); param 'ditbu1': raw pointer (double*); param 'ditbu2': raw pointer (double*); param 'sotbv1': raw pointer (double*); param 'sotbv2': raw pointer (double*); param 'ditbv1': raw pointer (double*); param 'ditbv2': raw pointer (double*); param 'sosotb': raw pointer (double*); param 'soditb': raw pointer (double*); param 'disotb': raw pointer (double*); param 'diditb': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mma2cdi(ndimen: /* int* */, nbpntu: /* int* */, urootl: /* double* */, nbpntv: /* int* */, vrootl: /* double* */, iordru: /* int* */, iordrv: /* int* */, contr1: /* double* */, contr2: /* double* */, contr3: /* double* */, contr4: /* double* */, sotbu1: /* double* */, sotbu2: /* double* */, ditbu1: /* double* */, ditbu2: /* double* */, sotbv1: /* double* */, sotbv2: /* double* */, ditbv1: /* double* */, ditbv2: /* double* */, sosotb: /* double* */, soditb: /* double* */, disotb: /* double* */, diditb: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:96 - `AdvApp2Var_ApproxF2var::mma2ds1_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (int*); param 'uintfn': raw pointer (double*); param 'vintfn': raw pointer (double*); param 'nbpntu': raw pointer (int*); param 'nbpntv': raw pointer (int*); param 'urootb': raw pointer (double*); param 'vrootb': raw pointer (double*); param 'isofav': raw pointer (int*); param 'sosotb': raw pointer (double*); param 'disotb': raw pointer (double*); param 'soditb': raw pointer (double*); param 'diditb': raw pointer (double*); param 'fpntab': raw pointer (double*); param 'ttable': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mma2ds1(ndimen: /* int* */, uintfn: /* double* */, vintfn: /* double* */, foncnp: &EvaluatorFunc2Var, nbpntu: /* int* */, nbpntv: /* int* */, urootb: /* double* */, vrootb: /* double* */, isofav: /* int* */, sosotb: /* double* */, disotb: /* double* */, soditb: /* double* */, diditb: /* double* */, fpntab: /* double* */, ttable: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:113 - `AdvApp2Var_ApproxF2var::mma2ce1_`
-//   Reason: has unbindable types: param 'numdec': raw pointer (int*); param 'ndimen': raw pointer (int*); param 'nbsesp': raw pointer (int*); param 'ndimse': raw pointer (int*); param 'ndminu': raw pointer (int*); param 'ndminv': raw pointer (int*); param 'ndguli': raw pointer (int*); param 'ndgvli': raw pointer (int*); param 'ndjacu': raw pointer (int*); param 'ndjacv': raw pointer (int*); param 'iordru': raw pointer (int*); param 'iordrv': raw pointer (int*); param 'nbpntu': raw pointer (int*); param 'nbpntv': raw pointer (int*); param 'epsapr': raw pointer (double*); param 'sosotb': raw pointer (double*); param 'disotb': raw pointer (double*); param 'soditb': raw pointer (double*); param 'diditb': raw pointer (double*); param 'patjac': raw pointer (double*); param 'errmax': raw pointer (double*); param 'errmoy': raw pointer (double*); param 'ndegpu': raw pointer (int*); param 'ndegpv': raw pointer (int*); param 'itydec': raw pointer (int*); param 'iercod': raw pointer (int*)
-//   // pub fn mma2ce1(numdec: /* int* */, ndimen: /* int* */, nbsesp: /* int* */, ndimse: /* int* */, ndminu: /* int* */, ndminv: /* int* */, ndguli: /* int* */, ndgvli: /* int* */, ndjacu: /* int* */, ndjacv: /* int* */, iordru: /* int* */, iordrv: /* int* */, nbpntu: /* int* */, nbpntv: /* int* */, epsapr: /* double* */, sosotb: /* double* */, disotb: /* double* */, soditb: /* double* */, diditb: /* double* */, patjac: /* double* */, errmax: /* double* */, errmoy: /* double* */, ndegpu: /* int* */, ndegpv: /* int* */, itydec: /* int* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:140 - `AdvApp2Var_ApproxF2var::mma2can_`
-//   Reason: has unbindable types: param 'arg0': raw pointer (const int*); param 'arg1': raw pointer (const int*); param 'arg2': raw pointer (const int*); param 'arg3': raw pointer (const int*); param 'arg4': raw pointer (const int*); param 'arg5': raw pointer (const int*); param 'arg6': raw pointer (const int*); param 'arg7': raw pointer (const double*); param 'arg8': raw pointer (double*); param 'arg9': raw pointer (double*); param 'arg10': raw pointer (int*)
-//   // pub fn mma2can(arg0: /* const int* */, arg1: /* const int* */, arg2: /* const int* */, arg3: /* const int* */, arg4: /* const int* */, arg5: /* const int* */, arg6: /* const int* */, arg7: /* const double* */, arg8: /* double* */, arg9: /* double* */, arg10: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:152 - `AdvApp2Var_ApproxF2var::mma1her_`
-//   Reason: has unbindable types: param 'arg0': raw pointer (const int*); param 'arg1': raw pointer (double*); param 'arg2': raw pointer (int*)
-//   // pub fn mma1her(arg0: /* const int* */, arg1: /* double* */, arg2: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:154 - `AdvApp2Var_ApproxF2var::mma2ac2_`
-//   Reason: has unbindable types: param 'arg0': raw pointer (const int*); param 'arg1': raw pointer (const int*); param 'arg2': raw pointer (const int*); param 'arg3': raw pointer (const int*); param 'arg4': raw pointer (const int*); param 'arg5': raw pointer (const int*); param 'arg6': raw pointer (const double*); param 'arg7': raw pointer (const int*); param 'arg8': raw pointer (const double*); param 'arg9': raw pointer (const double*); param 'arg10': raw pointer (double*)
-//   // pub fn mma2ac2(arg0: /* const int* */, arg1: /* const int* */, arg2: /* const int* */, arg3: /* const int* */, arg4: /* const int* */, arg5: /* const int* */, arg6: /* const double* */, arg7: /* const int* */, arg8: /* const double* */, arg9: /* const double* */, arg10: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:166 - `AdvApp2Var_ApproxF2var::mma2ac3_`
-//   Reason: has unbindable types: param 'arg0': raw pointer (const int*); param 'arg1': raw pointer (const int*); param 'arg2': raw pointer (const int*); param 'arg3': raw pointer (const int*); param 'arg4': raw pointer (const int*); param 'arg5': raw pointer (const int*); param 'arg6': raw pointer (const double*); param 'arg7': raw pointer (const int*); param 'arg8': raw pointer (const double*); param 'arg9': raw pointer (const double*); param 'arg10': raw pointer (double*)
-//   // pub fn mma2ac3(arg0: /* const int* */, arg1: /* const int* */, arg2: /* const int* */, arg3: /* const int* */, arg4: /* const int* */, arg5: /* const int* */, arg6: /* const double* */, arg7: /* const int* */, arg8: /* const double* */, arg9: /* const double* */, arg10: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:178 - `AdvApp2Var_ApproxF2var::mma2ac1_`
-//   Reason: has unbindable types: param 'arg0': raw pointer (const int*); param 'arg1': raw pointer (const int*); param 'arg2': raw pointer (const int*); param 'arg3': raw pointer (const int*); param 'arg4': raw pointer (const int*); param 'arg5': raw pointer (const double*); param 'arg6': raw pointer (const double*); param 'arg7': raw pointer (const double*); param 'arg8': raw pointer (const double*); param 'arg9': raw pointer (const double*); param 'arg10': raw pointer (const double*); param 'arg11': raw pointer (double*)
-//   // pub fn mma2ac1(arg0: /* const int* */, arg1: /* const int* */, arg2: /* const int* */, arg3: /* const int* */, arg4: /* const int* */, arg5: /* const double* */, arg6: /* const double* */, arg7: /* const double* */, arg8: /* const double* */, arg9: /* const double* */, arg10: /* const double* */, arg11: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_ApproxF2var.hxx`:191 - `AdvApp2Var_ApproxF2var::mma2fx6_`
-//   Reason: has unbindable types: param 'ncfmxu': raw pointer (int*); param 'ncfmxv': raw pointer (int*); param 'ndimen': raw pointer (int*); param 'nbsesp': raw pointer (int*); param 'ndimse': raw pointer (int*); param 'nbupat': raw pointer (int*); param 'nbvpat': raw pointer (int*); param 'iordru': raw pointer (int*); param 'iordrv': raw pointer (int*); param 'epsapr': raw pointer (double*); param 'epsfro': raw pointer (double*); param 'patcan': raw pointer (double*); param 'errmax': raw pointer (double*); param 'ncoefu': raw pointer (int*); param 'ncoefv': raw pointer (int*)
-//   // pub fn mma2fx6(ncfmxu: /* int* */, ncfmxv: /* int* */, ndimen: /* int* */, nbsesp: /* int* */, ndimse: /* int* */, nbupat: /* int* */, nbvpat: /* int* */, iordru: /* int* */, iordrv: /* int* */, epsapr: /* double* */, epsfro: /* double* */, patcan: /* double* */, errmax: /* double* */, ncoefu: /* int* */, ncoefv: /* int* */) -> i32;
-//
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:31 - `AdvApp2Var_ApproxF2var::mma2fnc_()`
+    pub unsafe fn mma2fnc(
+        ndimen: *mut i32,
+        nbsesp: *mut i32,
+        ndimse: *mut i32,
+        uvfonc: *mut f64,
+        foncnp: &EvaluatorFunc2Var,
+        tconst: *mut f64,
+        isofav: *mut i32,
+        nbroot: *mut i32,
+        rootlg: *mut f64,
+        iordre: *mut i32,
+        ideriv: *mut i32,
+        ndgjac: *mut i32,
+        nbcrmx: *mut i32,
+        ncflim: *mut i32,
+        epsapr: *mut f64,
+        ncoeff: *mut i32,
+        courbe: *mut f64,
+        nbcrbe: *mut i32,
+        somtab: *mut f64,
+        diftab: *mut f64,
+        contr1: *mut f64,
+        contr2: *mut f64,
+        tabdec: *mut f64,
+        errmax: *mut f64,
+        errmoy: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_ApproxF2var_mma2fnc(
+                ndimen, nbsesp, ndimse, uvfonc, foncnp, tconst, isofav, nbroot, rootlg, iordre,
+                ideriv, ndgjac, nbcrmx, ncflim, epsapr, ncoeff, courbe, nbcrbe, somtab, diftab,
+                contr1, contr2, tabdec, errmax, errmoy, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:58 - `AdvApp2Var_ApproxF2var::mma2roo_()`
+    pub unsafe fn mma2roo(
+        nbpntu: *mut i32,
+        nbpntv: *mut i32,
+        urootl: *mut f64,
+        vrootl: *mut f64,
+    ) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_ApproxF2var_mma2roo(nbpntu, nbpntv, urootl, vrootl) }
+    }
+
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:63 - `AdvApp2Var_ApproxF2var::mma2jmx_()`
+    pub unsafe fn mma2jmx(ndgjac: *mut i32, iordre: *mut i32, xjacmx: *mut f64) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_ApproxF2var_mma2jmx(ndgjac, iordre, xjacmx) }
+    }
+
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:65 - `AdvApp2Var_ApproxF2var::mmapptt_()`
+    pub unsafe fn mmapptt(
+        arg0: *const i32,
+        arg1: *const i32,
+        arg2: *const i32,
+        arg3: *mut f64,
+        arg4: *mut i32,
+    ) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_ApproxF2var_mmapptt(arg0, arg1, arg2, arg3, arg4) }
+    }
+
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:71 - `AdvApp2Var_ApproxF2var::mma2cdi_()`
+    pub unsafe fn mma2cdi(
+        ndimen: *mut i32,
+        nbpntu: *mut i32,
+        urootl: *mut f64,
+        nbpntv: *mut i32,
+        vrootl: *mut f64,
+        iordru: *mut i32,
+        iordrv: *mut i32,
+        contr1: *mut f64,
+        contr2: *mut f64,
+        contr3: *mut f64,
+        contr4: *mut f64,
+        sotbu1: *mut f64,
+        sotbu2: *mut f64,
+        ditbu1: *mut f64,
+        ditbu2: *mut f64,
+        sotbv1: *mut f64,
+        sotbv2: *mut f64,
+        ditbv1: *mut f64,
+        ditbv2: *mut f64,
+        sosotb: *mut f64,
+        soditb: *mut f64,
+        disotb: *mut f64,
+        diditb: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_ApproxF2var_mma2cdi(
+                ndimen, nbpntu, urootl, nbpntv, vrootl, iordru, iordrv, contr1, contr2, contr3,
+                contr4, sotbu1, sotbu2, ditbu1, ditbu2, sotbv1, sotbv2, ditbv1, ditbv2, sosotb,
+                soditb, disotb, diditb, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:96 - `AdvApp2Var_ApproxF2var::mma2ds1_()`
+    pub unsafe fn mma2ds1(
+        ndimen: *mut i32,
+        uintfn: *mut f64,
+        vintfn: *mut f64,
+        foncnp: &EvaluatorFunc2Var,
+        nbpntu: *mut i32,
+        nbpntv: *mut i32,
+        urootb: *mut f64,
+        vrootb: *mut f64,
+        isofav: *mut i32,
+        sosotb: *mut f64,
+        disotb: *mut f64,
+        soditb: *mut f64,
+        diditb: *mut f64,
+        fpntab: *mut f64,
+        ttable: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_ApproxF2var_mma2ds1(
+                ndimen, uintfn, vintfn, foncnp, nbpntu, nbpntv, urootb, vrootb, isofav, sosotb,
+                disotb, soditb, diditb, fpntab, ttable, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:113 - `AdvApp2Var_ApproxF2var::mma2ce1_()`
+    pub unsafe fn mma2ce1(
+        numdec: *mut i32,
+        ndimen: *mut i32,
+        nbsesp: *mut i32,
+        ndimse: *mut i32,
+        ndminu: *mut i32,
+        ndminv: *mut i32,
+        ndguli: *mut i32,
+        ndgvli: *mut i32,
+        ndjacu: *mut i32,
+        ndjacv: *mut i32,
+        iordru: *mut i32,
+        iordrv: *mut i32,
+        nbpntu: *mut i32,
+        nbpntv: *mut i32,
+        epsapr: *mut f64,
+        sosotb: *mut f64,
+        disotb: *mut f64,
+        soditb: *mut f64,
+        diditb: *mut f64,
+        patjac: *mut f64,
+        errmax: *mut f64,
+        errmoy: *mut f64,
+        ndegpu: *mut i32,
+        ndegpv: *mut i32,
+        itydec: *mut i32,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_ApproxF2var_mma2ce1(
+                numdec, ndimen, nbsesp, ndimse, ndminu, ndminv, ndguli, ndgvli, ndjacu, ndjacv,
+                iordru, iordrv, nbpntu, nbpntv, epsapr, sosotb, disotb, soditb, diditb, patjac,
+                errmax, errmoy, ndegpu, ndegpv, itydec, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:140 - `AdvApp2Var_ApproxF2var::mma2can_()`
+    pub unsafe fn mma2can(
+        arg0: *const i32,
+        arg1: *const i32,
+        arg2: *const i32,
+        arg3: *const i32,
+        arg4: *const i32,
+        arg5: *const i32,
+        arg6: *const i32,
+        arg7: *const f64,
+        arg8: *mut f64,
+        arg9: *mut f64,
+        arg10: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_ApproxF2var_mma2can(
+                arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:152 - `AdvApp2Var_ApproxF2var::mma1her_()`
+    pub unsafe fn mma1her(arg0: *const i32, arg1: *mut f64, arg2: *mut i32) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_ApproxF2var_mma1her(arg0, arg1, arg2) }
+    }
+
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:154 - `AdvApp2Var_ApproxF2var::mma2ac2_()`
+    pub unsafe fn mma2ac2(
+        arg0: *const i32,
+        arg1: *const i32,
+        arg2: *const i32,
+        arg3: *const i32,
+        arg4: *const i32,
+        arg5: *const i32,
+        arg6: *const f64,
+        arg7: *const i32,
+        arg8: *const f64,
+        arg9: *const f64,
+        arg10: *mut f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_ApproxF2var_mma2ac2(
+                arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:166 - `AdvApp2Var_ApproxF2var::mma2ac3_()`
+    pub unsafe fn mma2ac3(
+        arg0: *const i32,
+        arg1: *const i32,
+        arg2: *const i32,
+        arg3: *const i32,
+        arg4: *const i32,
+        arg5: *const i32,
+        arg6: *const f64,
+        arg7: *const i32,
+        arg8: *const f64,
+        arg9: *const f64,
+        arg10: *mut f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_ApproxF2var_mma2ac3(
+                arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:178 - `AdvApp2Var_ApproxF2var::mma2ac1_()`
+    pub unsafe fn mma2ac1(
+        arg0: *const i32,
+        arg1: *const i32,
+        arg2: *const i32,
+        arg3: *const i32,
+        arg4: *const i32,
+        arg5: *const f64,
+        arg6: *const f64,
+        arg7: *const f64,
+        arg8: *const f64,
+        arg9: *const f64,
+        arg10: *const f64,
+        arg11: *mut f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_ApproxF2var_mma2ac1(
+                arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:191 - `AdvApp2Var_ApproxF2var::mma2fx6_()`
+    pub unsafe fn mma2fx6(
+        ncfmxu: *mut i32,
+        ncfmxv: *mut i32,
+        ndimen: *mut i32,
+        nbsesp: *mut i32,
+        ndimse: *mut i32,
+        nbupat: *mut i32,
+        nbvpat: *mut i32,
+        iordru: *mut i32,
+        iordrv: *mut i32,
+        epsapr: *mut f64,
+        epsfro: *mut f64,
+        patcan: *mut f64,
+        errmax: *mut f64,
+        ncoefu: *mut i32,
+        ncoefv: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_ApproxF2var_mma2fx6(
+                ncfmxu, ncfmxv, ndimen, nbsesp, ndimse, nbupat, nbvpat, iordru, iordrv, epsapr,
+                epsfro, patcan, errmax, ncoefu, ncoefv,
+            )
+        }
+    }
+}
 
 // ========================
 // From AdvApp2Var_Context.hxx
@@ -667,14 +894,6 @@ pub use crate::ffi::maovpar_1_;
 unsafe impl crate::CppDeletable for maovpar_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::maovpar_1__destructor(ptr);
-    }
-}
-
-impl maovpar_1_ {
-    /// **Source:** `AdvApp2Var_Data.hxx` - `maovpar_1_::maovpar_1_()`
-    /// Default constructor
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::maovpar_1__ctor()) }
     }
 }
 
@@ -994,16 +1213,47 @@ unsafe impl crate::CppDeletable for EvaluatorFunc2Var {
     }
 }
 
-// ── Skipped symbols for EvaluatorFunc2Var (2 total) ──
+impl EvaluatorFunc2Var {
+    /// **Source:** `AdvApp2Var_EvaluatorFunc2Var.hxx`:34 - `AdvApp2Var_EvaluatorFunc2Var::Evaluate()`
+    /// Function evaluation method to be defined by descendant
+    pub unsafe fn evaluate(
+        &self,
+        theDimension: *mut i32,
+        theUStartEnd: *mut f64,
+        theVStartEnd: *mut f64,
+        theFavorIso: *mut i32,
+        theConstParam: *mut f64,
+        theNbParams: *mut i32,
+        theParameters: *mut f64,
+        theUOrder: *mut i32,
+        theVOrder: *mut i32,
+        theResult: *mut f64,
+        theErrorCode: *mut i32,
+    ) {
+        unsafe {
+            crate::ffi::AdvApp2Var_EvaluatorFunc2Var_evaluate(
+                self as *const Self,
+                theDimension,
+                theUStartEnd,
+                theVStartEnd,
+                theFavorIso,
+                theConstParam,
+                theNbParams,
+                theParameters,
+                theUOrder,
+                theVOrder,
+                theResult,
+                theErrorCode,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for EvaluatorFunc2Var (1 total) ──
 // SKIPPED: **Source:** `AdvApp2Var_EvaluatorFunc2Var.hxx`:28 - `AdvApp2Var_EvaluatorFunc2Var::AdvApp2Var_EvaluatorFunc2Var`
 //   constructor: Empty constructor
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AdvApp2Var_EvaluatorFunc2Var.hxx`:34 - `AdvApp2Var_EvaluatorFunc2Var::Evaluate`
-//   method: Function evaluation method to be defined by descendant
-//   Reason: has unbindable types: param 'theDimension': raw pointer (int*); param 'theUStartEnd': raw pointer (double*); param 'theVStartEnd': raw pointer (double*); param 'theFavorIso': raw pointer (int*); param 'theConstParam': raw pointer (double*); param 'theNbParams': raw pointer (int*); param 'theParameters': raw pointer (double*); param 'theUOrder': raw pointer (int*); param 'theVOrder': raw pointer (int*); param 'theResult': raw pointer (double*); param 'theErrorCode': raw pointer (int*)
-//   // pub fn evaluate(&self, theDimension: /* int* */, theUStartEnd: /* double* */, theVStartEnd: /* double* */, theFavorIso: /* int* */, theConstParam: /* double* */, theNbParams: /* int* */, theParameters: /* double* */, theUOrder: /* int* */, theVOrder: /* int* */, theResult: /* double* */, theErrorCode: /* int* */);
 //
 
 // ========================
@@ -1518,164 +1768,527 @@ impl MathBase {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::AdvApp2Var_MathBase_ctor()) }
     }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:25 - `AdvApp2Var_MathBase::mmapcmp_()`
+    pub unsafe fn mmapcmp(
+        arg0: *mut i32,
+        arg1: *mut i32,
+        arg2: *mut i32,
+        arg3: *mut f64,
+        arg4: *mut f64,
+    ) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mmapcmp(arg0, arg1, arg2, arg3, arg4) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:27 - `AdvApp2Var_MathBase::mmdrc11_()`
+    pub unsafe fn mmdrc11(
+        arg0: *mut i32,
+        arg1: *mut i32,
+        arg2: *mut i32,
+        arg3: *mut f64,
+        arg4: *mut f64,
+        arg5: *mut f64,
+    ) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mmdrc11(arg0, arg1, arg2, arg3, arg4, arg5) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:34 - `AdvApp2Var_MathBase::mmfmca9_()`
+    pub unsafe fn mmfmca9(
+        arg0: *mut i32,
+        arg1: *mut i32,
+        arg2: *mut i32,
+        arg3: *mut i32,
+        arg4: *mut i32,
+        arg5: *mut i32,
+        arg6: *mut f64,
+        arg7: *mut f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmfmca9(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:43 - `AdvApp2Var_MathBase::mmfmcb5_()`
+    pub unsafe fn mmfmcb5(
+        arg0: *mut i32,
+        arg1: *mut i32,
+        arg2: *mut i32,
+        arg3: *mut f64,
+        arg4: *mut i32,
+        arg5: *mut i32,
+        arg6: *mut i32,
+        arg7: *mut f64,
+        arg8: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmfmcb5(
+                arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:53 - `AdvApp2Var_MathBase::mmwprcs_()`
+    pub unsafe fn mmwprcs(
+        arg0: *mut f64,
+        arg1: *mut f64,
+        arg2: *mut f64,
+        arg3: *mut f64,
+        arg4: *mut i32,
+        arg5: *mut i32,
+    ) {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mmwprcs(arg0, arg1, arg2, arg3, arg4, arg5) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:60 - `AdvApp2Var_MathBase::mmcglc1_()`
+    pub unsafe fn mmcglc1(
+        ndimax: *mut i32,
+        ndimen: *mut i32,
+        ncoeff: *mut i32,
+        courbe: *mut f64,
+        tdebut: *mut f64,
+        tfinal: *mut f64,
+        epsiln: *mut f64,
+        xlongc: *mut f64,
+        erreur: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmcglc1(
+                ndimax, ndimen, ncoeff, courbe, tdebut, tfinal, epsiln, xlongc, erreur, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:71 - `AdvApp2Var_MathBase::mmbulld_()`
+    pub unsafe fn mmbulld(
+        nbcoln: *mut i32,
+        nblign: *mut i32,
+        dtabtr: *mut f64,
+        numcle: *mut i32,
+    ) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mmbulld(nbcoln, nblign, dtabtr, numcle) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:76 - `AdvApp2Var_MathBase::mmcdriv_()`
+    pub unsafe fn mmcdriv(
+        ndimen: *mut i32,
+        ncoeff: *mut i32,
+        courbe: *mut f64,
+        ideriv: *mut i32,
+        ncofdv: *mut i32,
+        crvdrv: *mut f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmcdriv(ndimen, ncoeff, courbe, ideriv, ncofdv, crvdrv)
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:83 - `AdvApp2Var_MathBase::mmcvctx_()`
+    pub unsafe fn mmcvctx(
+        ndimen: *mut i32,
+        ncofmx: *mut i32,
+        nderiv: *mut i32,
+        ctrtes: *mut f64,
+        crvres: *mut f64,
+        tabaux: *mut f64,
+        xmatri: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmcvctx(
+                ndimen, ncofmx, nderiv, ctrtes, crvres, tabaux, xmatri, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:92 - `AdvApp2Var_MathBase::mdsptpt_()`
+    pub unsafe fn mdsptpt(
+        ndimen: *mut i32,
+        point1: *mut f64,
+        point2: *mut f64,
+        distan: *mut f64,
+    ) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mdsptpt(ndimen, point1, point2, distan) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:97 - `AdvApp2Var_MathBase::mmaperx_()`
+    pub unsafe fn mmaperx(
+        ncofmx: *mut i32,
+        ndimen: *mut i32,
+        ncoeff: *mut i32,
+        iordre: *mut i32,
+        crvjac: *mut f64,
+        ncfnew: *mut i32,
+        ycvmax: *mut f64,
+        errmax: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmaperx(
+                ncofmx, ndimen, ncoeff, iordre, crvjac, ncfnew, ycvmax, errmax, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:107 - `AdvApp2Var_MathBase::mmdrvck_()`
+    pub unsafe fn mmdrvck(
+        ncoeff: *mut i32,
+        ndimen: *mut i32,
+        courbe: *mut f64,
+        ideriv: *mut i32,
+        tparam: *mut f64,
+        pntcrb: *mut f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmdrvck(ncoeff, ndimen, courbe, ideriv, tparam, pntcrb)
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:114 - `AdvApp2Var_MathBase::mmeps1_()`
+    pub unsafe fn mmeps1(epsilo: *mut f64) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mmeps1(epsilo) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:116 - `AdvApp2Var_MathBase::mmfmca8_()`
+    pub unsafe fn mmfmca8(
+        ndimen: *const i32,
+        ncoefu: *const i32,
+        ncoefv: *const i32,
+        ndimax: *const i32,
+        ncfumx: *const i32,
+        ncfvmx: *const i32,
+        tabini: *mut f64,
+        tabres: *mut f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmfmca8(
+                ndimen, ncoefu, ncoefv, ndimax, ncfumx, ncfvmx, tabini, tabres,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:125 - `AdvApp2Var_MathBase::mmfmcar_()`
+    pub unsafe fn mmfmcar(
+        ndimen: *mut i32,
+        ncofmx: *mut i32,
+        ncoefu: *mut i32,
+        ncoefv: *mut i32,
+        patold: *mut f64,
+        upara1: *mut f64,
+        upara2: *mut f64,
+        vpara1: *mut f64,
+        vpara2: *mut f64,
+        patnew: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmfmcar(
+                ndimen, ncofmx, ncoefu, ncoefv, patold, upara1, upara2, vpara1, vpara2, patnew,
+                iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:137 - `AdvApp2Var_MathBase::mmfmtb1_()`
+    pub unsafe fn mmfmtb1(
+        maxsz1: *mut i32,
+        table1: *mut f64,
+        isize1: *mut i32,
+        jsize1: *mut i32,
+        maxsz2: *mut i32,
+        table2: *mut f64,
+        isize2: *mut i32,
+        jsize2: *mut i32,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmfmtb1(
+                maxsz1, table1, isize1, jsize1, maxsz2, table2, isize2, jsize2, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:162 - `AdvApp2Var_MathBase::mmhjcan_()`
+    pub unsafe fn mmhjcan(
+        ndimen: *mut i32,
+        ncourb: *mut i32,
+        ncftab: *mut i32,
+        orcont: *mut i32,
+        ncflim: *mut i32,
+        tcbold: *mut f64,
+        tdecop: *mut f64,
+        tcbnew: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmhjcan(
+                ndimen, ncourb, ncftab, orcont, ncflim, tcbold, tdecop, tcbnew, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:172 - `AdvApp2Var_MathBase::mminltt_()`
+    pub unsafe fn mminltt(
+        ncolmx: *mut i32,
+        nlgnmx: *mut i32,
+        tabtri: *mut f64,
+        nbrcol: *mut i32,
+        nbrlgn: *mut i32,
+        ajoute: *mut f64,
+        epseg: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mminltt(
+                ncolmx, nlgnmx, tabtri, nbrcol, nbrlgn, ajoute, epseg, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:181 - `AdvApp2Var_MathBase::mmjaccv_()`
+    pub unsafe fn mmjaccv(
+        ncoef: *const i32,
+        ndim: *const i32,
+        ider: *const i32,
+        crvlgd: *const f64,
+        polaux: *mut f64,
+        crvcan: *mut f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmjaccv(ncoef, ndim, ider, crvlgd, polaux, crvcan)
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:188 - `AdvApp2Var_MathBase::mmpobas_()`
+    pub unsafe fn mmpobas(
+        tparam: *mut f64,
+        iordre: *mut i32,
+        ncoeff: *mut i32,
+        nderiv: *mut i32,
+        valbas: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmpobas(tparam, iordre, ncoeff, nderiv, valbas, iercod)
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:195 - `AdvApp2Var_MathBase::mmmpocur_()`
+    pub unsafe fn mmmpocur(
+        ncofmx: *mut i32,
+        ndim: *mut i32,
+        ndeg: *mut i32,
+        courbe: *mut f64,
+        tparam: *mut f64,
+        tabval: *mut f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmmpocur(ncofmx, ndim, ndeg, courbe, tparam, tabval)
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:202 - `AdvApp2Var_MathBase::mmposui_()`
+    pub unsafe fn mmposui(
+        dimmat: *mut i32,
+        nistoc: *mut i32,
+        aposit: *mut i32,
+        posuiv: *mut i32,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mmposui(dimmat, nistoc, aposit, posuiv, iercod) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:208 - `AdvApp2Var_MathBase::mmresol_()`
+    pub unsafe fn mmresol(
+        hdimen: *mut i32,
+        gdimen: *mut i32,
+        hnstoc: *mut i32,
+        gnstoc: *mut i32,
+        mnstoc: *mut i32,
+        matsyh: *mut f64,
+        matsyg: *mut f64,
+        vecsyh: *mut f64,
+        vecsyg: *mut f64,
+        hposit: *mut i32,
+        hposui: *mut i32,
+        gposit: *mut i32,
+        mmposui: *mut i32,
+        mposit: *mut i32,
+        vecsol: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmresol(
+                hdimen, gdimen, hnstoc, gnstoc, mnstoc, matsyh, matsyg, vecsyh, vecsyg, hposit,
+                hposui, gposit, mmposui, mposit, vecsol, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:225 - `AdvApp2Var_MathBase::mmrtptt_()`
+    pub unsafe fn mmrtptt(ndglgd: *mut i32, rtlegd: *mut f64) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mmrtptt(ndglgd, rtlegd) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:227 - `AdvApp2Var_MathBase::mmsrre2_()`
+    pub unsafe fn mmsrre2(
+        tparam: *mut f64,
+        nbrval: *mut i32,
+        tablev: *mut f64,
+        epsil: *mut f64,
+        numint: *mut i32,
+        itypen: *mut i32,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmsrre2(
+                tparam, nbrval, tablev, epsil, numint, itypen, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:235 - `AdvApp2Var_MathBase::mmtrpjj_()`
+    pub unsafe fn mmtrpjj(
+        ncofmx: *mut i32,
+        ndimen: *mut i32,
+        ncoeff: *mut i32,
+        epsi3d: *mut f64,
+        iordre: *mut i32,
+        crvlgd: *mut f64,
+        ycvmax: *mut f64,
+        errmax: *mut f64,
+        ncfnew: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmtrpjj(
+                ncofmx, ndimen, ncoeff, epsi3d, iordre, crvlgd, ycvmax, errmax, ncfnew,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:245 - `AdvApp2Var_MathBase::mmunivt_()`
+    pub unsafe fn mmunivt(
+        ndimen: *mut i32,
+        vector: *mut f64,
+        vecnrm: *mut f64,
+        epsiln: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mmunivt(ndimen, vector, vecnrm, epsiln, iercod) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:251 - `AdvApp2Var_MathBase::mmvncol_()`
+    pub unsafe fn mmvncol(
+        ndimen: *mut i32,
+        vecin: *mut f64,
+        vecout: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mmvncol(ndimen, vecin, vecout, iercod) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:256 - `AdvApp2Var_MathBase::msc_()`
+    pub unsafe fn msc(ndimen: *mut i32, vecte1: *mut f64, vecte2: *mut f64) -> f64 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_msc(ndimen, vecte1, vecte2) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:258 - `AdvApp2Var_MathBase::mvsheld_()`
+    pub unsafe fn mvsheld(n: *mut i32, is: *mut i32, dtab: *mut f64, icle: *mut i32) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mvsheld(n, is, dtab, icle) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:260 - `AdvApp2Var_MathBase::mmarcin_()`
+    pub unsafe fn mmarcin(
+        ndimax: *mut i32,
+        ndim: *mut i32,
+        ncoeff: *mut i32,
+        crvold: *mut f64,
+        u0: *mut f64,
+        u1: *mut f64,
+        crvnew: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmarcin(
+                ndimax, ndim, ncoeff, crvold, u0, u1, crvnew, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:269 - `AdvApp2Var_MathBase::mmcvinv_()`
+    pub unsafe fn mmcvinv(
+        ndimax: *mut i32,
+        ncoef: *mut i32,
+        ndim: *mut i32,
+        curveo: *mut f64,
+        curve: *mut f64,
+    ) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mmcvinv(ndimax, ncoef, ndim, curveo, curve) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:275 - `AdvApp2Var_MathBase::mmjacan_()`
+    pub unsafe fn mmjacan(
+        ideriv: *const i32,
+        ndeg: *mut i32,
+        poljac: *mut f64,
+        polcan: *mut f64,
+    ) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mmjacan(ideriv, ndeg, poljac, polcan) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:280 - `AdvApp2Var_MathBase::mmpocrb_()`
+    pub unsafe fn mmpocrb(
+        ndimax: *mut i32,
+        ncoeff: *mut i32,
+        courbe: *mut f64,
+        ndim: *mut i32,
+        tparam: *mut f64,
+        pntcrb: *mut f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmpocrb(ndimax, ncoeff, courbe, ndim, tparam, pntcrb)
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:287 - `AdvApp2Var_MathBase::mmmrslwd_()`
+    pub unsafe fn mmmrslwd(
+        normax: *mut i32,
+        nordre: *mut i32,
+        ndim: *mut i32,
+        amat: *mut f64,
+        bmat: *mut f64,
+        epspiv: *mut f64,
+        aaux: *mut f64,
+        xmat: *mut f64,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_MathBase_mmmrslwd(
+                normax, nordre, ndim, amat, bmat, epspiv, aaux, xmat, iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:297 - `AdvApp2Var_MathBase::mmveps3_()`
+    pub unsafe fn mmveps3(eps03: *mut f64) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mmveps3(eps03) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:299 - `AdvApp2Var_MathBase::pow__di()`
+    pub unsafe fn pow_di(x: *mut f64, n: *mut i32) -> f64 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_pow_di(x, n) }
+    }
+
+    /// **Source:** `AdvApp2Var_MathBase.hxx`:301 - `AdvApp2Var_MathBase::mzsnorm_()`
+    pub unsafe fn mzsnorm(ndimen: *mut i32, vecteu: *mut f64) -> f64 {
+        unsafe { crate::ffi::AdvApp2Var_MathBase_mzsnorm(ndimen, vecteu) }
+    }
 }
 
-// ── Skipped symbols for MathBase (39 total) ──
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:25 - `AdvApp2Var_MathBase::mmapcmp_`
-//   Reason: has unbindable types: param 'arg0': raw pointer (int*); param 'arg1': raw pointer (int*); param 'arg2': raw pointer (int*); param 'arg3': raw pointer (double*); param 'arg4': raw pointer (double*)
-//   // pub fn mmapcmp(arg0: /* int* */, arg1: /* int* */, arg2: /* int* */, arg3: /* double* */, arg4: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:27 - `AdvApp2Var_MathBase::mmdrc11_`
-//   Reason: has unbindable types: param 'arg0': raw pointer (int*); param 'arg1': raw pointer (int*); param 'arg2': raw pointer (int*); param 'arg3': raw pointer (double*); param 'arg4': raw pointer (double*); param 'arg5': raw pointer (double*)
-//   // pub fn mmdrc11(arg0: /* int* */, arg1: /* int* */, arg2: /* int* */, arg3: /* double* */, arg4: /* double* */, arg5: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:34 - `AdvApp2Var_MathBase::mmfmca9_`
-//   Reason: has unbindable types: param 'arg0': raw pointer (int*); param 'arg1': raw pointer (int*); param 'arg2': raw pointer (int*); param 'arg3': raw pointer (int*); param 'arg4': raw pointer (int*); param 'arg5': raw pointer (int*); param 'arg6': raw pointer (double*); param 'arg7': raw pointer (double*)
-//   // pub fn mmfmca9(arg0: /* int* */, arg1: /* int* */, arg2: /* int* */, arg3: /* int* */, arg4: /* int* */, arg5: /* int* */, arg6: /* double* */, arg7: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:43 - `AdvApp2Var_MathBase::mmfmcb5_`
-//   Reason: has unbindable types: param 'arg0': raw pointer (int*); param 'arg1': raw pointer (int*); param 'arg2': raw pointer (int*); param 'arg3': raw pointer (double*); param 'arg4': raw pointer (int*); param 'arg5': raw pointer (int*); param 'arg6': raw pointer (int*); param 'arg7': raw pointer (double*); param 'arg8': raw pointer (int*)
-//   // pub fn mmfmcb5(arg0: /* int* */, arg1: /* int* */, arg2: /* int* */, arg3: /* double* */, arg4: /* int* */, arg5: /* int* */, arg6: /* int* */, arg7: /* double* */, arg8: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:53 - `AdvApp2Var_MathBase::mmwprcs_`
-//   Reason: has unbindable types: param 'arg0': raw pointer (double*); param 'arg1': raw pointer (double*); param 'arg2': raw pointer (double*); param 'arg3': raw pointer (double*); param 'arg4': raw pointer (int*); param 'arg5': raw pointer (int*)
-//   // pub fn mmwprcs(arg0: /* double* */, arg1: /* double* */, arg2: /* double* */, arg3: /* double* */, arg4: /* int* */, arg5: /* int* */);
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:60 - `AdvApp2Var_MathBase::mmcglc1_`
-//   Reason: has unbindable types: param 'ndimax': raw pointer (int*); param 'ndimen': raw pointer (int*); param 'ncoeff': raw pointer (int*); param 'courbe': raw pointer (double*); param 'tdebut': raw pointer (double*); param 'tfinal': raw pointer (double*); param 'epsiln': raw pointer (double*); param 'xlongc': raw pointer (double*); param 'erreur': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mmcglc1(ndimax: /* int* */, ndimen: /* int* */, ncoeff: /* int* */, courbe: /* double* */, tdebut: /* double* */, tfinal: /* double* */, epsiln: /* double* */, xlongc: /* double* */, erreur: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:71 - `AdvApp2Var_MathBase::mmbulld_`
-//   Reason: has unbindable types: param 'nbcoln': raw pointer (int*); param 'nblign': raw pointer (int*); param 'dtabtr': raw pointer (double*); param 'numcle': raw pointer (int*)
-//   // pub fn mmbulld(nbcoln: /* int* */, nblign: /* int* */, dtabtr: /* double* */, numcle: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:76 - `AdvApp2Var_MathBase::mmcdriv_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (int*); param 'ncoeff': raw pointer (int*); param 'courbe': raw pointer (double*); param 'ideriv': raw pointer (int*); param 'ncofdv': raw pointer (int*); param 'crvdrv': raw pointer (double*)
-//   // pub fn mmcdriv(ndimen: /* int* */, ncoeff: /* int* */, courbe: /* double* */, ideriv: /* int* */, ncofdv: /* int* */, crvdrv: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:83 - `AdvApp2Var_MathBase::mmcvctx_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (int*); param 'ncofmx': raw pointer (int*); param 'nderiv': raw pointer (int*); param 'ctrtes': raw pointer (double*); param 'crvres': raw pointer (double*); param 'tabaux': raw pointer (double*); param 'xmatri': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mmcvctx(ndimen: /* int* */, ncofmx: /* int* */, nderiv: /* int* */, ctrtes: /* double* */, crvres: /* double* */, tabaux: /* double* */, xmatri: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:92 - `AdvApp2Var_MathBase::mdsptpt_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (int*); param 'point1': raw pointer (double*); param 'point2': raw pointer (double*); param 'distan': raw pointer (double*)
-//   // pub fn mdsptpt(ndimen: /* int* */, point1: /* double* */, point2: /* double* */, distan: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:97 - `AdvApp2Var_MathBase::mmaperx_`
-//   Reason: has unbindable types: param 'ncofmx': raw pointer (int*); param 'ndimen': raw pointer (int*); param 'ncoeff': raw pointer (int*); param 'iordre': raw pointer (int*); param 'crvjac': raw pointer (double*); param 'ncfnew': raw pointer (int*); param 'ycvmax': raw pointer (double*); param 'errmax': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mmaperx(ncofmx: /* int* */, ndimen: /* int* */, ncoeff: /* int* */, iordre: /* int* */, crvjac: /* double* */, ncfnew: /* int* */, ycvmax: /* double* */, errmax: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:107 - `AdvApp2Var_MathBase::mmdrvck_`
-//   Reason: has unbindable types: param 'ncoeff': raw pointer (int*); param 'ndimen': raw pointer (int*); param 'courbe': raw pointer (double*); param 'ideriv': raw pointer (int*); param 'tparam': raw pointer (double*); param 'pntcrb': raw pointer (double*)
-//   // pub fn mmdrvck(ncoeff: /* int* */, ndimen: /* int* */, courbe: /* double* */, ideriv: /* int* */, tparam: /* double* */, pntcrb: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:114 - `AdvApp2Var_MathBase::mmeps1_`
-//   Reason: has unbindable types: param 'epsilo': raw pointer (double*)
-//   // pub fn mmeps1(epsilo: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:116 - `AdvApp2Var_MathBase::mmfmca8_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (const int*); param 'ncoefu': raw pointer (const int*); param 'ncoefv': raw pointer (const int*); param 'ndimax': raw pointer (const int*); param 'ncfumx': raw pointer (const int*); param 'ncfvmx': raw pointer (const int*); param 'tabini': raw pointer (double*); param 'tabres': raw pointer (double*)
-//   // pub fn mmfmca8(ndimen: /* const int* */, ncoefu: /* const int* */, ncoefv: /* const int* */, ndimax: /* const int* */, ncfumx: /* const int* */, ncfvmx: /* const int* */, tabini: /* double* */, tabres: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:125 - `AdvApp2Var_MathBase::mmfmcar_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (int*); param 'ncofmx': raw pointer (int*); param 'ncoefu': raw pointer (int*); param 'ncoefv': raw pointer (int*); param 'patold': raw pointer (double*); param 'upara1': raw pointer (double*); param 'upara2': raw pointer (double*); param 'vpara1': raw pointer (double*); param 'vpara2': raw pointer (double*); param 'patnew': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mmfmcar(ndimen: /* int* */, ncofmx: /* int* */, ncoefu: /* int* */, ncoefv: /* int* */, patold: /* double* */, upara1: /* double* */, upara2: /* double* */, vpara1: /* double* */, vpara2: /* double* */, patnew: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:137 - `AdvApp2Var_MathBase::mmfmtb1_`
-//   Reason: has unbindable types: param 'maxsz1': raw pointer (int*); param 'table1': raw pointer (double*); param 'isize1': raw pointer (int*); param 'jsize1': raw pointer (int*); param 'maxsz2': raw pointer (int*); param 'table2': raw pointer (double*); param 'isize2': raw pointer (int*); param 'jsize2': raw pointer (int*); param 'iercod': raw pointer (int*)
-//   // pub fn mmfmtb1(maxsz1: /* int* */, table1: /* double* */, isize1: /* int* */, jsize1: /* int* */, maxsz2: /* int* */, table2: /* double* */, isize2: /* int* */, jsize2: /* int* */, iercod: /* int* */) -> i32;
-//
+// ── Skipped symbols for MathBase (1 total) ──
 // SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:147 - `AdvApp2Var_MathBase::mmgaus1_`
-//   Reason: has unbindable types: param 'ndimf': raw pointer (int*); param 'k': raw pointer (int*); param 'xd': raw pointer (double*); param 'xf': raw pointer (double*); param 'saux1': raw pointer (double*); param 'saux2': raw pointer (double*); param 'somme': raw pointer (double*); param 'niter': raw pointer (int*); param 'iercod': raw pointer (int*)
-//   // pub fn mmgaus1(ndimf: /* int* */, bfunx: /* int (integer *, doublereal *, doublereal *, integer *)* */, k: /* int* */, xd: /* double* */, xf: /* double* */, saux1: /* double* */, saux2: /* double* */, somme: /* double* */, niter: /* int* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:162 - `AdvApp2Var_MathBase::mmhjcan_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (int*); param 'ncourb': raw pointer (int*); param 'ncftab': raw pointer (int*); param 'orcont': raw pointer (int*); param 'ncflim': raw pointer (int*); param 'tcbold': raw pointer (double*); param 'tdecop': raw pointer (double*); param 'tcbnew': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mmhjcan(ndimen: /* int* */, ncourb: /* int* */, ncftab: /* int* */, orcont: /* int* */, ncflim: /* int* */, tcbold: /* double* */, tdecop: /* double* */, tcbnew: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:172 - `AdvApp2Var_MathBase::mminltt_`
-//   Reason: has unbindable types: param 'ncolmx': raw pointer (int*); param 'nlgnmx': raw pointer (int*); param 'tabtri': raw pointer (double*); param 'nbrcol': raw pointer (int*); param 'nbrlgn': raw pointer (int*); param 'ajoute': raw pointer (double*); param 'epseg': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mminltt(ncolmx: /* int* */, nlgnmx: /* int* */, tabtri: /* double* */, nbrcol: /* int* */, nbrlgn: /* int* */, ajoute: /* double* */, epseg: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:181 - `AdvApp2Var_MathBase::mmjaccv_`
-//   Reason: has unbindable types: param 'ncoef': raw pointer (const int*); param 'ndim': raw pointer (const int*); param 'ider': raw pointer (const int*); param 'crvlgd': raw pointer (const double*); param 'polaux': raw pointer (double*); param 'crvcan': raw pointer (double*)
-//   // pub fn mmjaccv(ncoef: /* const int* */, ndim: /* const int* */, ider: /* const int* */, crvlgd: /* const double* */, polaux: /* double* */, crvcan: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:188 - `AdvApp2Var_MathBase::mmpobas_`
-//   Reason: has unbindable types: param 'tparam': raw pointer (double*); param 'iordre': raw pointer (int*); param 'ncoeff': raw pointer (int*); param 'nderiv': raw pointer (int*); param 'valbas': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mmpobas(tparam: /* double* */, iordre: /* int* */, ncoeff: /* int* */, nderiv: /* int* */, valbas: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:195 - `AdvApp2Var_MathBase::mmmpocur_`
-//   Reason: has unbindable types: param 'ncofmx': raw pointer (int*); param 'ndim': raw pointer (int*); param 'ndeg': raw pointer (int*); param 'courbe': raw pointer (double*); param 'tparam': raw pointer (double*); param 'tabval': raw pointer (double*)
-//   // pub fn mmmpocur(ncofmx: /* int* */, ndim: /* int* */, ndeg: /* int* */, courbe: /* double* */, tparam: /* double* */, tabval: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:202 - `AdvApp2Var_MathBase::mmposui_`
-//   Reason: has unbindable types: param 'dimmat': raw pointer (int*); param 'nistoc': raw pointer (int*); param 'aposit': raw pointer (int*); param 'posuiv': raw pointer (int*); param 'iercod': raw pointer (int*)
-//   // pub fn mmposui(dimmat: /* int* */, nistoc: /* int* */, aposit: /* int* */, posuiv: /* int* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:208 - `AdvApp2Var_MathBase::mmresol_`
-//   Reason: has unbindable types: param 'hdimen': raw pointer (int*); param 'gdimen': raw pointer (int*); param 'hnstoc': raw pointer (int*); param 'gnstoc': raw pointer (int*); param 'mnstoc': raw pointer (int*); param 'matsyh': raw pointer (double*); param 'matsyg': raw pointer (double*); param 'vecsyh': raw pointer (double*); param 'vecsyg': raw pointer (double*); param 'hposit': raw pointer (int*); param 'hposui': raw pointer (int*); param 'gposit': raw pointer (int*); param 'mmposui': raw pointer (int*); param 'mposit': raw pointer (int*); param 'vecsol': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mmresol(hdimen: /* int* */, gdimen: /* int* */, hnstoc: /* int* */, gnstoc: /* int* */, mnstoc: /* int* */, matsyh: /* double* */, matsyg: /* double* */, vecsyh: /* double* */, vecsyg: /* double* */, hposit: /* int* */, hposui: /* int* */, gposit: /* int* */, mmposui: /* int* */, mposit: /* int* */, vecsol: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:225 - `AdvApp2Var_MathBase::mmrtptt_`
-//   Reason: has unbindable types: param 'ndglgd': raw pointer (int*); param 'rtlegd': raw pointer (double*)
-//   // pub fn mmrtptt(ndglgd: /* int* */, rtlegd: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:227 - `AdvApp2Var_MathBase::mmsrre2_`
-//   Reason: has unbindable types: param 'tparam': raw pointer (double*); param 'nbrval': raw pointer (int*); param 'tablev': raw pointer (double*); param 'epsil': raw pointer (double*); param 'numint': raw pointer (int*); param 'itypen': raw pointer (int*); param 'iercod': raw pointer (int*)
-//   // pub fn mmsrre2(tparam: /* double* */, nbrval: /* int* */, tablev: /* double* */, epsil: /* double* */, numint: /* int* */, itypen: /* int* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:235 - `AdvApp2Var_MathBase::mmtrpjj_`
-//   Reason: has unbindable types: param 'ncofmx': raw pointer (int*); param 'ndimen': raw pointer (int*); param 'ncoeff': raw pointer (int*); param 'epsi3d': raw pointer (double*); param 'iordre': raw pointer (int*); param 'crvlgd': raw pointer (double*); param 'ycvmax': raw pointer (double*); param 'errmax': raw pointer (double*); param 'ncfnew': raw pointer (int*)
-//   // pub fn mmtrpjj(ncofmx: /* int* */, ndimen: /* int* */, ncoeff: /* int* */, epsi3d: /* double* */, iordre: /* int* */, crvlgd: /* double* */, ycvmax: /* double* */, errmax: /* double* */, ncfnew: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:245 - `AdvApp2Var_MathBase::mmunivt_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (int*); param 'vector': raw pointer (double*); param 'vecnrm': raw pointer (double*); param 'epsiln': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mmunivt(ndimen: /* int* */, vector: /* double* */, vecnrm: /* double* */, epsiln: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:251 - `AdvApp2Var_MathBase::mmvncol_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (int*); param 'vecin': raw pointer (double*); param 'vecout': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mmvncol(ndimen: /* int* */, vecin: /* double* */, vecout: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:256 - `AdvApp2Var_MathBase::msc_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (int*); param 'vecte1': raw pointer (double*); param 'vecte2': raw pointer (double*)
-//   // pub fn msc(ndimen: /* int* */, vecte1: /* double* */, vecte2: /* double* */) -> f64;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:258 - `AdvApp2Var_MathBase::mvsheld_`
-//   Reason: has unbindable types: param 'n': raw pointer (int*); param 'is': raw pointer (int*); param 'dtab': raw pointer (double*); param 'icle': raw pointer (int*)
-//   // pub fn mvsheld(n: /* int* */, is: /* int* */, dtab: /* double* */, icle: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:260 - `AdvApp2Var_MathBase::mmarcin_`
-//   Reason: has unbindable types: param 'ndimax': raw pointer (int*); param 'ndim': raw pointer (int*); param 'ncoeff': raw pointer (int*); param 'crvold': raw pointer (double*); param 'u0': raw pointer (double*); param 'u1': raw pointer (double*); param 'crvnew': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mmarcin(ndimax: /* int* */, ndim: /* int* */, ncoeff: /* int* */, crvold: /* double* */, u0: /* double* */, u1: /* double* */, crvnew: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:269 - `AdvApp2Var_MathBase::mmcvinv_`
-//   Reason: has unbindable types: param 'ndimax': raw pointer (int*); param 'ncoef': raw pointer (int*); param 'ndim': raw pointer (int*); param 'curveo': raw pointer (double*); param 'curve': raw pointer (double*)
-//   // pub fn mmcvinv(ndimax: /* int* */, ncoef: /* int* */, ndim: /* int* */, curveo: /* double* */, curve: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:275 - `AdvApp2Var_MathBase::mmjacan_`
-//   Reason: has unbindable types: param 'ideriv': raw pointer (const int*); param 'ndeg': raw pointer (int*); param 'poljac': raw pointer (double*); param 'polcan': raw pointer (double*)
-//   // pub fn mmjacan(ideriv: /* const int* */, ndeg: /* int* */, poljac: /* double* */, polcan: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:280 - `AdvApp2Var_MathBase::mmpocrb_`
-//   Reason: has unbindable types: param 'ndimax': raw pointer (int*); param 'ncoeff': raw pointer (int*); param 'courbe': raw pointer (double*); param 'ndim': raw pointer (int*); param 'tparam': raw pointer (double*); param 'pntcrb': raw pointer (double*)
-//   // pub fn mmpocrb(ndimax: /* int* */, ncoeff: /* int* */, courbe: /* double* */, ndim: /* int* */, tparam: /* double* */, pntcrb: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:287 - `AdvApp2Var_MathBase::mmmrslwd_`
-//   Reason: has unbindable types: param 'normax': raw pointer (int*); param 'nordre': raw pointer (int*); param 'ndim': raw pointer (int*); param 'amat': raw pointer (double*); param 'bmat': raw pointer (double*); param 'epspiv': raw pointer (double*); param 'aaux': raw pointer (double*); param 'xmat': raw pointer (double*); param 'iercod': raw pointer (int*)
-//   // pub fn mmmrslwd(normax: /* int* */, nordre: /* int* */, ndim: /* int* */, amat: /* double* */, bmat: /* double* */, epspiv: /* double* */, aaux: /* double* */, xmat: /* double* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:297 - `AdvApp2Var_MathBase::mmveps3_`
-//   Reason: has unbindable types: param 'eps03': raw pointer (double*)
-//   // pub fn mmveps3(eps03: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:299 - `AdvApp2Var_MathBase::pow__di`
-//   Reason: has unbindable types: param 'x': raw pointer (double*); param 'n': raw pointer (int*)
-//   // pub fn pow_di(x: /* double* */, n: /* int* */) -> f64;
-//
-// SKIPPED: **Source:** `AdvApp2Var_MathBase.hxx`:301 - `AdvApp2Var_MathBase::mzsnorm_`
-//   Reason: has unbindable types: param 'ndimen': raw pointer (int*); param 'vecteu': raw pointer (double*)
-//   // pub fn mzsnorm(ndimen: /* int* */, vecteu: /* double* */) -> f64;
+//   Reason: param 'bfunx' uses unknown type 'int (integer *, doublereal *, doublereal *, integer *)*'
+//   // pub fn mmgaus1(ndimf: *mut i32, bfunx: *mut int (integer *, doublereal *, doublereal *, integer *), k: *mut i32, xd: *mut f64, xf: *mut f64, saux1: *mut f64, saux2: *mut f64, somme: *mut f64, niter: *mut i32, iercod: *mut i32) -> i32;
 //
 
 // ========================
@@ -2317,6 +2930,95 @@ impl SysBase {
         unsafe { crate::ffi::AdvApp2Var_SysBase_mainial(self as *mut Self) }
     }
 
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:49 - `AdvApp2Var_SysBase::macrai4_()`
+    pub unsafe fn macrai4(
+        &mut self,
+        nbelem: *mut i32,
+        maxelm: *mut i32,
+        itablo: *mut i32,
+        iofset: *mut std::ffi::c_long,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_SysBase_macrai4(
+                self as *mut Self,
+                nbelem,
+                maxelm,
+                itablo,
+                iofset,
+                iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:54 - `AdvApp2Var_SysBase::macrar8_()`
+    pub unsafe fn macrar8(
+        &mut self,
+        nbelem: *mut i32,
+        maxelm: *mut i32,
+        xtablo: *mut f64,
+        iofset: *mut std::ffi::c_long,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_SysBase_macrar8(
+                self as *mut Self,
+                nbelem,
+                maxelm,
+                xtablo,
+                iofset,
+                iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:59 - `AdvApp2Var_SysBase::macrdi4_()`
+    pub unsafe fn macrdi4(
+        &mut self,
+        nbelem: *mut i32,
+        maxelm: *mut i32,
+        itablo: *mut i32,
+        iofset: *mut std::ffi::c_long,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_SysBase_macrdi4(
+                self as *mut Self,
+                nbelem,
+                maxelm,
+                itablo,
+                iofset,
+                iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:65 - `AdvApp2Var_SysBase::macrdr8_()`
+    pub unsafe fn macrdr8(
+        &mut self,
+        nbelem: *mut i32,
+        maxelm: *mut i32,
+        xtablo: *mut f64,
+        iofset: *mut std::ffi::c_long,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_SysBase_macrdr8(
+                self as *mut Self,
+                nbelem,
+                maxelm,
+                xtablo,
+                iofset,
+                iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:30 - `AdvApp2Var_SysBase::macinit_()`
+    pub unsafe fn macinit(arg0: *mut i32, arg1: *mut i32) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_SysBase_macinit(arg0, arg1) }
+    }
+
     /// **Source:** `AdvApp2Var_SysBase.hxx`:45 - `AdvApp2Var_SysBase::mnfndeb_()`
     pub fn mnfndeb() -> i32 {
         unsafe { crate::ffi::AdvApp2Var_SysBase_mnfndeb() }
@@ -2332,6 +3034,22 @@ impl SysBase {
         unsafe { crate::ffi::AdvApp2Var_SysBase_do_lio() }
     }
 
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:70 - `AdvApp2Var_SysBase::maermsg_()`
+    pub unsafe fn maermsg(cnompg: &str, icoder: *mut i32, cnompg_len: std::ffi::c_long) -> i32 {
+        let c_cnompg = std::ffi::CString::new(cnompg).unwrap();
+        unsafe { crate::ffi::AdvApp2Var_SysBase_maermsg(c_cnompg.as_ptr(), icoder, cnompg_len) }
+    }
+
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:71 - `AdvApp2Var_SysBase::maitbr8_()`
+    pub unsafe fn maitbr8(itaill: *mut i32, xtab: *mut f64, xval: *mut f64) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_SysBase_maitbr8(itaill, xtab, xval) }
+    }
+
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:72 - `AdvApp2Var_SysBase::maovsr8_()`
+    pub unsafe fn maovsr8(ivalcs: *mut i32) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_SysBase_maovsr8(ivalcs) }
+    }
+
     /// **Source:** `AdvApp2Var_SysBase.hxx`:73 - `AdvApp2Var_SysBase::mgenmsg_()`
     pub fn mgenmsg(nomprg: &str, nomprg_len: std::ffi::c_long) -> i32 {
         let c_nomprg = std::ffi::CString::new(nomprg).unwrap();
@@ -2344,6 +3062,16 @@ impl SysBase {
         unsafe { crate::ffi::AdvApp2Var_SysBase_mgsomsg(c_nomprg.as_ptr(), nomprg_len) }
     }
 
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:77 - `AdvApp2Var_SysBase::msifill_()`
+    pub unsafe fn msifill(nbintg: *mut i32, ivecin: *mut i32, ivecou: *mut i32) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_SysBase_msifill(nbintg, ivecin, ivecou) }
+    }
+
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:78 - `AdvApp2Var_SysBase::msrfill_()`
+    pub unsafe fn msrfill(nbreel: *mut i32, vecent: *mut f64, vecsor: *mut f64) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_SysBase_msrfill(nbreel, vecent, vecsor) }
+    }
+
     /// **Source:** `AdvApp2Var_SysBase.hxx`:79 - `AdvApp2Var_SysBase::mswrdbg_()`
     pub fn mswrdbg(ctexte: &str, ctexte_len: std::ffi::c_long) -> i32 {
         let c_ctexte = std::ffi::CString::new(ctexte).unwrap();
@@ -2351,66 +3079,26 @@ impl SysBase {
     }
 }
 
-// ── Skipped symbols for SysBase (15 total) ──
+// ── Skipped symbols for SysBase (5 total) ──
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:32 - `AdvApp2Var_SysBase::mcrdelt_`
-//   Reason: has unbindable types: param 'iunit': raw pointer (int*); param 'isize': raw pointer (int*); param 'iofset': raw pointer (long*); param 'iercod': raw pointer (int*)
-//   // pub fn mcrdelt(&mut self, iunit: /* int* */, isize: /* int* */, t: /* void* */, iofset: /* long* */, iercod: /* int* */) -> i32;
+//   Reason: param 't' uses unknown type 'void*'
+//   // pub fn mcrdelt(&mut self, iunit: *mut i32, isize: *mut i32, t: *mut void, iofset: *mut std::ffi::c_long, iercod: *mut i32) -> i32;
 //
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:40 - `AdvApp2Var_SysBase::mcrrqst_`
-//   Reason: has unbindable types: param 'iunit': raw pointer (int*); param 'isize': raw pointer (int*); param 'iofset': raw pointer (long*); param 'iercod': raw pointer (int*)
-//   // pub fn mcrrqst(&mut self, iunit: /* int* */, isize: /* int* */, t: /* void* */, iofset: /* long* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:49 - `AdvApp2Var_SysBase::macrai4_`
-//   Reason: has unbindable types: param 'nbelem': raw pointer (int*); param 'maxelm': raw pointer (int*); param 'itablo': raw pointer (int*); param 'iofset': raw pointer (long*); param 'iercod': raw pointer (int*)
-//   // pub fn macrai4(&mut self, nbelem: /* int* */, maxelm: /* int* */, itablo: /* int* */, iofset: /* long* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:54 - `AdvApp2Var_SysBase::macrar8_`
-//   Reason: has unbindable types: param 'nbelem': raw pointer (int*); param 'maxelm': raw pointer (int*); param 'xtablo': raw pointer (double*); param 'iofset': raw pointer (long*); param 'iercod': raw pointer (int*)
-//   // pub fn macrar8(&mut self, nbelem: /* int* */, maxelm: /* int* */, xtablo: /* double* */, iofset: /* long* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:59 - `AdvApp2Var_SysBase::macrdi4_`
-//   Reason: has unbindable types: param 'nbelem': raw pointer (int*); param 'maxelm': raw pointer (int*); param 'itablo': raw pointer (int*); param 'iofset': raw pointer (long*); param 'iercod': raw pointer (int*)
-//   // pub fn macrdi4(&mut self, nbelem: /* int* */, maxelm: /* int* */, itablo: /* int* */, iofset: /* long* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:65 - `AdvApp2Var_SysBase::macrdr8_`
-//   Reason: has unbindable types: param 'nbelem': raw pointer (int*); param 'maxelm': raw pointer (int*); param 'xtablo': raw pointer (double*); param 'iofset': raw pointer (long*); param 'iercod': raw pointer (int*)
-//   // pub fn macrdr8(&mut self, nbelem: /* int* */, maxelm: /* int* */, xtablo: /* double* */, iofset: /* long* */, iercod: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:30 - `AdvApp2Var_SysBase::macinit_`
-//   Reason: has unbindable types: param 'arg0': raw pointer (int*); param 'arg1': raw pointer (int*)
-//   // pub fn macinit(arg0: /* int* */, arg1: /* int* */) -> i32;
+//   Reason: param 't' uses unknown type 'void*'
+//   // pub fn mcrrqst(&mut self, iunit: *mut i32, isize: *mut i32, t: *mut void, iofset: *mut std::ffi::c_long, iercod: *mut i32) -> i32;
 //
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:38 - `AdvApp2Var_SysBase::mcrfill_`
-//   Reason: has unbindable types: param 'size': raw pointer (int*)
-//   // pub fn mcrfill(size: /* int* */, tin: /* void* */, tout: /* void* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:70 - `AdvApp2Var_SysBase::maermsg_`
-//   Reason: has unbindable types: param 'icoder': raw pointer (int*)
-//   // pub fn maermsg(cnompg: *const char, icoder: /* int* */, cnompg_len: std::ffi::c_long) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:71 - `AdvApp2Var_SysBase::maitbr8_`
-//   Reason: has unbindable types: param 'itaill': raw pointer (int*); param 'xtab': raw pointer (double*); param 'xval': raw pointer (double*)
-//   // pub fn maitbr8(itaill: /* int* */, xtab: /* double* */, xval: /* double* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:72 - `AdvApp2Var_SysBase::maovsr8_`
-//   Reason: has unbindable types: param 'ivalcs': raw pointer (int*)
-//   // pub fn maovsr8(ivalcs: /* int* */) -> i32;
+//   Reason: param 'tin' uses unknown type 'void*'
+//   // pub fn mcrfill(size: *mut i32, tin: *mut void, tout: *mut void) -> i32;
 //
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:76 - `AdvApp2Var_SysBase::miraz_`
-//   Reason: has unbindable types: param 'taille': raw pointer (int*)
-//   // pub fn miraz(taille: /* int* */, adt: /* void* */);
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:77 - `AdvApp2Var_SysBase::msifill_`
-//   Reason: has unbindable types: param 'nbintg': raw pointer (int*); param 'ivecin': raw pointer (int*); param 'ivecou': raw pointer (int*)
-//   // pub fn msifill(nbintg: /* int* */, ivecin: /* int* */, ivecou: /* int* */) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:78 - `AdvApp2Var_SysBase::msrfill_`
-//   Reason: has unbindable types: param 'nbreel': raw pointer (int*); param 'vecent': raw pointer (double*); param 'vecsor': raw pointer (double*)
-//   // pub fn msrfill(nbreel: /* int* */, vecent: /* double* */, vecsor: /* double* */) -> i32;
+//   Reason: param 'adt' uses unknown type 'void*'
+//   // pub fn miraz(taille: *mut i32, adt: *mut void);
 //
 // SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:80 - `AdvApp2Var_SysBase::mvriraz_`
-//   Reason: has unbindable types: param 'taille': raw pointer (int*)
-//   // pub fn mvriraz(taille: /* int* */, adt: /* void* */);
+//   Reason: param 'adt' uses unknown type 'void*'
+//   // pub fn mvriraz(taille: *mut i32, adt: *mut void);
 //
 
 // ========================

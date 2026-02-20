@@ -1116,8 +1116,8 @@ impl DoubleTab {
 
 // ── Skipped symbols for DoubleTab (1 total) ──
 // SKIPPED: **Source:** `math_DoubleTab.hxx`:37 - `math_DoubleTab::math_DoubleTab`
-//   Reason: has unbindable types: param 'Tab': void pointer (Standard_Address)
-//   // pub fn new_address_int4(Tab: /* Standard_Address */, LowerRow: i32, UpperRow: i32, LowerCol: i32, UpperCol: i32) -> OwnedPtr<Self>;
+//   Reason: param 'Tab' uses unknown type 'Standard_Address'
+//   // pub fn new_address_int4(Tab: Address, LowerRow: i32, UpperRow: i32, LowerCol: i32, UpperCol: i32) -> OwnedPtr<Self>;
 //
 
 // ========================
@@ -3791,8 +3791,8 @@ impl Matrix {
 //   constructor: constructs a matrix of range [LowerRow..UpperRow,
 //   constructor: LowerCol..UpperCol]
 //   constructor: Sharing data with a "C array" pointed by Tab.
-//   Reason: has unbindable types: param 'Tab': void pointer (Standard_Address)
-//   // pub fn new_address_int4(Tab: /* Standard_Address */, LowerRow: i32, UpperRow: i32, LowerCol: i32, UpperCol: i32) -> OwnedPtr<Self>;
+//   Reason: param 'Tab' uses unknown type 'Standard_Address'
+//   // pub fn new_address_int4(Tab: Address, LowerRow: i32, UpperRow: i32, LowerCol: i32, UpperCol: i32) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `math_Matrix.hxx`:292 - `math_Matrix::SetRow`
 //   method: Sets the row of index Row of a matrix to the vector <V>.

@@ -584,7 +584,7 @@ impl HandleRWObjCafWriter {
 //   method: Triangulation data should be precomputed within shapes!
 //   method: @param[in] theDocument     input document
 //   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theDocument: &HandleDocument, theRootLabels: &LabelSequence, theLabelFilter: /* const TColStd_MapOfAsciiString* */, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
+//   // pub fn perform(&mut self, theDocument: &HandleDocument, theRootLabels: &LabelSequence, theLabelFilter: *const MapOfAsciiString, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
 //
 // SKIPPED: **Source:** `RWObj_CafWriter.hxx`:88 - `RWObj_CafWriter::Perform`
 //   method: Write OBJ file and associated MTL material file.

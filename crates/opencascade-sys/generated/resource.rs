@@ -317,6 +317,16 @@ impl Manager {
         }
     }
 
+    /// **Source:** `Resource_Manager.hxx`:93 - `Resource_Manager::ExtValue()`
+    /// Gets the value of an ExtString resource according to its instance
+    /// and its type.
+    pub unsafe fn ext_value(&mut self, aResourceName: &str) -> *const u16 {
+        let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
+        unsafe {
+            crate::ffi::Resource_Manager_ext_value(self as *mut Self, c_aResourceName.as_ptr())
+        }
+    }
+
     /// **Source:** `Resource_Manager.hxx`:97 - `Resource_Manager::SetResource()`
     /// Sets the new value of an integer resource.
     /// If the resource does not exist, it is created.
@@ -356,6 +366,20 @@ impl Manager {
                 self as *mut Self,
                 c_aResourceName.as_ptr(),
                 c_aValue.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:112 - `Resource_Manager::SetResource()`
+    /// Sets the new value of an ExtString resource.
+    /// If the resource does not exist, it is created.
+    pub unsafe fn set_resource_charptr_u16ptr(&mut self, aResourceName: &str, aValue: *const u16) {
+        let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
+        unsafe {
+            crate::ffi::Resource_Manager_set_resource_charptr_u16ptr(
+                self as *mut Self,
+                c_aResourceName.as_ptr(),
+                aValue,
             )
         }
     }
@@ -484,19 +508,7 @@ impl HandleResourceManager {
     }
 }
 
-// ── Skipped symbols for Manager (3 total) ──
-// SKIPPED: **Source:** `Resource_Manager.hxx`:93 - `Resource_Manager::ExtValue`
-//   method: Gets the value of an ExtString resource according to its instance
-//   method: and its type.
-//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
-//   // pub fn ext_value(&mut self, aResourceName: *const char) -> /* const uint16_t* */;
-//
-// SKIPPED: **Source:** `Resource_Manager.hxx`:112 - `Resource_Manager::SetResource`
-//   method: Sets the new value of an ExtString resource.
-//   method: If the resource does not exist, it is created.
-//   Reason: has unbindable types: param 'aValue': raw pointer (const uint16_t*)
-//   // pub fn set_resource(&mut self, aResourceName: *const char, aValue: /* const uint16_t* */);
-//
+// ── Skipped symbols for Manager (1 total) ──
 // SKIPPED: **Source:** `Resource_Manager.hxx`:123 - `Resource_Manager::GetMap`
 //   method: Returns internal Ref or User map with parameters
 //   Reason: return type 'Resource_DataMapOfAsciiStringAsciiString&' is unknown

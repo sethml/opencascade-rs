@@ -12639,6 +12639,22 @@ impl XYZ {
         unsafe { crate::ffi::gp_XYZ_coord_real3(self as *const Self, theX, theY, theZ) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:109 - `gp_XYZ::GetData()`
+    /// Returns a const ptr to coordinates location.
+    /// Is useful for algorithms, but DOES NOT PERFORM
+    /// ANY CHECKS!
+    pub unsafe fn get_data(&self) -> *const f64 {
+        unsafe { crate::ffi::gp_XYZ_get_data(self as *const Self) }
+    }
+
+    /// **Source:** `gp_XYZ.hxx`:114 - `gp_XYZ::ChangeData()`
+    /// Returns a ptr to coordinates location.
+    /// Is useful for algorithms, but DOES NOT PERFORM
+    /// ANY CHECKS!
+    pub unsafe fn change_data(&mut self) -> *mut f64 {
+        unsafe { crate::ffi::gp_XYZ_change_data(self as *mut Self) }
+    }
+
     /// **Source:** `gp_XYZ.hxx`:117 - `gp_XYZ::X()`
     /// Returns the X coordinate
     pub fn x(&self) -> f64 {
@@ -13044,22 +13060,6 @@ impl XYZ {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_XYZ_to_owned(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for XYZ (2 total) ──
-// SKIPPED: **Source:** `gp_XYZ.hxx`:109 - `gp_XYZ::GetData`
-//   method: Returns a const ptr to coordinates location.
-//   method: Is useful for algorithms, but DOES NOT PERFORM
-//   method: ANY CHECKS!
-//   Reason: has unbindable types: return: raw pointer (const double*)
-//   // pub fn get_data(&self) -> /* const double* */;
-//
-// SKIPPED: **Source:** `gp_XYZ.hxx`:114 - `gp_XYZ::ChangeData`
-//   method: Returns a ptr to coordinates location.
-//   method: Is useful for algorithms, but DOES NOT PERFORM
-//   method: ANY CHECKS!
-//   Reason: has unbindable types: return: raw pointer (double*)
-//   // pub fn change_data(&mut self) -> /* double* */;
-//
 
 // ========================
 // Additional type re-exports

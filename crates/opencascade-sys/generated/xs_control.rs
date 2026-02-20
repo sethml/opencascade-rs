@@ -3820,13 +3820,13 @@ impl Utils {
     }
 
     /// **Source:** `XSControl_Utils.hxx`:109 - `XSControl_Utils::ToHString()`
-    pub fn to_h_string(
+    pub fn to_h_string_charptr(
         &self,
         strcon: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         let c_strcon = std::ffi::CString::new(strcon).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_to_h_string(
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_to_h_string_charptr(
                 self as *const Self,
                 c_strcon.as_ptr(),
             ))
@@ -3844,6 +3844,80 @@ impl Utils {
         }
     }
 
+    /// **Source:** `XSControl_Utils.hxx`:114 - `XSControl_Utils::ToEString()`
+    pub unsafe fn to_e_string_handletcollectionhextendedstring(
+        &self,
+        strval: &crate::ffi::HandleTCollectionHExtendedString,
+    ) -> *const u16 {
+        unsafe {
+            crate::ffi::XSControl_Utils_to_e_string_handletcollectionhextendedstring(
+                self as *const Self,
+                strval,
+            )
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:116 - `XSControl_Utils::ToEString()`
+    pub unsafe fn to_e_string_extendedstring(
+        &self,
+        strval: &crate::t_collection::ExtendedString,
+    ) -> *const u16 {
+        unsafe {
+            crate::ffi::XSControl_Utils_to_e_string_extendedstring(self as *const Self, strval)
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:118 - `XSControl_Utils::ToHString()`
+    pub unsafe fn to_h_string_u16ptr(
+        &self,
+        strcon: *const u16,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_to_h_string_u16ptr(
+                self as *const Self,
+                strcon,
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:121 - `XSControl_Utils::ToXString()`
+    pub unsafe fn to_x_string(
+        &self,
+        strcon: *const u16,
+    ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_to_x_string(
+                self as *const Self,
+                strcon,
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:123 - `XSControl_Utils::AsciiToExtended()`
+    pub unsafe fn ascii_to_extended(&self, str: &str) -> *const u16 {
+        let c_str = std::ffi::CString::new(str).unwrap();
+        unsafe {
+            crate::ffi::XSControl_Utils_ascii_to_extended(self as *const Self, c_str.as_ptr())
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:125 - `XSControl_Utils::IsAscii()`
+    pub unsafe fn is_ascii(&self, str: *const u16) -> bool {
+        unsafe { crate::ffi::XSControl_Utils_is_ascii(self as *const Self, str) }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:127 - `XSControl_Utils::ExtendedToAscii()`
+    pub unsafe fn extended_to_ascii(&self, str: *const u16) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XSControl_Utils_extended_to_ascii(
+                self as *const Self,
+                str,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
     /// **Source:** `XSControl_Utils.hxx`:129 - `XSControl_Utils::CStrValue()`
     pub fn c_str_value(&self, list: &crate::ffi::HandleStandardTransient, num: i32) -> String {
         unsafe {
@@ -3855,6 +3929,15 @@ impl Utils {
             .to_string_lossy()
             .into_owned()
         }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:132 - `XSControl_Utils::EStrValue()`
+    pub unsafe fn e_str_value(
+        &self,
+        list: &crate::ffi::HandleStandardTransient,
+        num: i32,
+    ) -> *const u16 {
+        unsafe { crate::ffi::XSControl_Utils_e_str_value(self as *const Self, list, num) }
     }
 
     /// **Source:** `XSControl_Utils.hxx`:135 - `XSControl_Utils::NewSeqCStr()`
@@ -3889,6 +3972,15 @@ impl Utils {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:142 - `XSControl_Utils::AppendEStr()`
+    pub unsafe fn append_e_str(
+        &self,
+        seqval: &crate::ffi::HandleTColStdHSequenceOfHExtendedString,
+        strval: *const u16,
+    ) {
+        unsafe { crate::ffi::XSControl_Utils_append_e_str(self as *const Self, seqval, strval) }
     }
 
     /// **Source:** `XSControl_Utils.hxx`:147 - `XSControl_Utils::CompoundFromSeq()`
@@ -4063,44 +4155,6 @@ impl Utils {
         unsafe { crate::ffi::XSControl_Utils_seq_int_value(self as *const Self, list, num) }
     }
 }
-
-// ── Skipped symbols for Utils (9 total) ──
-// SKIPPED: **Source:** `XSControl_Utils.hxx`:114 - `XSControl_Utils::ToEString`
-//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
-//   // pub fn to_e_string(&self, strval: &HandleHExtendedString) -> /* const uint16_t* */;
-//
-// SKIPPED: **Source:** `XSControl_Utils.hxx`:116 - `XSControl_Utils::ToEString`
-//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
-//   // pub fn to_e_string(&self, strval: &ExtendedString) -> /* const uint16_t* */;
-//
-// SKIPPED: **Source:** `XSControl_Utils.hxx`:118 - `XSControl_Utils::ToHString`
-//   Reason: has unbindable types: param 'strcon': raw pointer (const uint16_t*)
-//   // pub fn to_h_string(&self, strcon: /* const uint16_t* */) -> OwnedPtr<Handle<TCollection_HExtendedString>>;
-//
-// SKIPPED: **Source:** `XSControl_Utils.hxx`:121 - `XSControl_Utils::ToXString`
-//   Reason: has unbindable types: param 'strcon': raw pointer (const uint16_t*)
-//   // pub fn to_x_string(&self, strcon: /* const uint16_t* */) -> OwnedPtr<TCollection_ExtendedString>;
-//
-// SKIPPED: **Source:** `XSControl_Utils.hxx`:123 - `XSControl_Utils::AsciiToExtended`
-//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
-//   // pub fn ascii_to_extended(&self, str: *const char) -> /* const uint16_t* */;
-//
-// SKIPPED: **Source:** `XSControl_Utils.hxx`:125 - `XSControl_Utils::IsAscii`
-//   Reason: has unbindable types: param 'str': raw pointer (const uint16_t*)
-//   // pub fn is_ascii(&self, str: /* const uint16_t* */) -> bool;
-//
-// SKIPPED: **Source:** `XSControl_Utils.hxx`:127 - `XSControl_Utils::ExtendedToAscii`
-//   Reason: has unbindable types: param 'str': raw pointer (const uint16_t*)
-//   // pub fn extended_to_ascii(&self, str: /* const uint16_t* */) -> *const char;
-//
-// SKIPPED: **Source:** `XSControl_Utils.hxx`:132 - `XSControl_Utils::EStrValue`
-//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
-//   // pub fn e_str_value(&self, list: &HandleTransient, num: i32) -> /* const uint16_t* */;
-//
-// SKIPPED: **Source:** `XSControl_Utils.hxx`:142 - `XSControl_Utils::AppendEStr`
-//   Reason: has unbindable types: param 'strval': raw pointer (const uint16_t*)
-//   // pub fn append_e_str(&self, seqval: &HandleHSequenceOfHExtendedString, strval: /* const uint16_t* */);
-//
 
 // ========================
 // From XSControl_Vars.hxx

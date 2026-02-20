@@ -5430,8 +5430,8 @@ impl TheMultiLineOfApprox {
 //   constructor: The class SvSurfaces is used when the approximation algorithm
 //   constructor: needs some extra points on the line <line>.
 //   constructor: A New line  is then created which shares the same surfaces and functions.
-//   Reason: has unbindable types: param 'PtrSvSurfaces': void pointer (Standard_Address)
-//   // pub fn new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(line: &HandleApproxLine, PtrSvSurfaces: /* Standard_Address */, NbP3d: i32, NbP2d: i32, ApproxU1V1: bool, ApproxU2V2: bool, xo: f64, yo: f64, zo: f64, u1o: f64, v1o: f64, u2o: f64, v2o: f64, P2DOnFirst: bool, IndMin: i32, IndMax: i32) -> OwnedPtr<Self>;
+//   Reason: param 'PtrSvSurfaces' uses unknown type 'Standard_Address'
+//   // pub fn new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(line: &HandleApproxLine, PtrSvSurfaces: Address, NbP3d: i32, NbP2d: i32, ApproxU1V1: bool, ApproxU2V2: bool, xo: f64, yo: f64, zo: f64, u1o: f64, v1o: f64, u2o: f64, v2o: f64, P2DOnFirst: bool, IndMin: i32, IndMax: i32) -> OwnedPtr<Self>;
 //
 
 // ========================

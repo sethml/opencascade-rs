@@ -1266,8 +1266,8 @@ impl Document {
 //   method: This method Update   will be called
 //   method: to signal the end   of the modified references list.
 //   method: The    document     should    be  recomputed     and
-//   Reason: has unbindable types: param 'aModifContext': void pointer (Standard_Address)
-//   // pub fn update(&mut self, aToDocument: &HandleDocument, aReferenceIdentifier: i32, aModifContext: /* Standard_Address */);
+//   Reason: param 'aToDocument' uses unknown type 'const Handle(CDM_Document)&'
+//   // pub fn update(&mut self, aToDocument: &HandleDocument, aReferenceIdentifier: i32, aModifContext: Address);
 //
 // SKIPPED: **Source:** `TDocStd_Document.hxx`:54 - `TDocStd_Document::Get`
 //   static_method: Will Abort any execution, clear fields

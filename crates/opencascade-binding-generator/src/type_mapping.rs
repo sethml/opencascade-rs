@@ -53,6 +53,12 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
             needs_pin: false,
             source_module: None,
         },
+        Type::I16 => RustTypeMapping {
+            rust_type: "i16".to_string(),
+            needs_unique_ptr: false,
+            needs_pin: false,
+            source_module: None,
+        },
         Type::I64 => RustTypeMapping {
             rust_type: "i64".to_string(),
             needs_unique_ptr: false,
@@ -153,6 +159,15 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
                 needs_unique_ptr: true, // Returned as *mut T, caller must free
                 needs_pin: false,
                 source_module,
+            }
+        }
+        Type::Class(class_name) if class_name == "Standard_Address" => {
+            // Standard_Address is a typedef for void* — map to raw c_void pointer
+            RustTypeMapping {
+                rust_type: "*mut std::ffi::c_void".to_string(),
+                needs_unique_ptr: false,
+                needs_pin: false,
+                source_module: None,
             }
         }
         Type::Class(class_name) if class_name == "char" => {
@@ -488,6 +503,7 @@ pub fn map_cpp_type_string(cpp_type: &str) -> RustTypeMapping {
         "int" | "Standard_Integer" => return map_type_to_rust(&Type::I32),
         "unsigned int" => return map_type_to_rust(&Type::U32),
         "unsigned short" | "uint16_t" | "char16_t" | "Standard_ExtCharacter" => return map_type_to_rust(&Type::U16),
+        "short" | "int16_t" => return map_type_to_rust(&Type::I16),
         "long" => return map_type_to_rust(&Type::Long),
         "unsigned long" => return map_type_to_rust(&Type::ULong),
         "float" => return map_type_to_rust(&Type::F32),

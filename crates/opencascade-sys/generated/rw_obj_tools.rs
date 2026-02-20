@@ -6,6 +6,16 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `RWObj_Tools.hxx`:38 - `RWObj_Tools::ReadVec3`
+/// Read 3 double values.
+pub unsafe fn read_vec3(
+    thePos: &str,
+    theNext: &mut *mut std::ffi::c_char,
+    theVec: &mut crate::gp::XYZ,
+) -> bool {
+    let c_thePos = std::ffi::CString::new(thePos).unwrap();
+    unsafe { crate::ffi::RWObj_Tools_read_vec3(c_thePos.as_ptr(), theNext, theVec) }
+}
 /// **Source:** `RWObj_Tools.hxx`:50 - `RWObj_Tools::ReadName`
 /// Read string.
 pub fn read_name(thePos: &str, theName: &mut crate::t_collection::AsciiString) -> bool {

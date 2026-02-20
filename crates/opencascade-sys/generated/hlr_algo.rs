@@ -2539,25 +2539,98 @@ impl PolyInternalData {
     }
 
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:39 - `HLRAlgo_PolyInternalData::UpdateLinks()`
-    pub fn update_links(
+    pub fn update_links_array1oftdata_array1ofpiseg_array1ofpinod(
         &mut self,
         theTData: &mut crate::ffi::HLRAlgo_Array1OfTData,
         thePISeg: &mut crate::ffi::HLRAlgo_Array1OfPISeg,
         thePINod: &mut crate::ffi::HLRAlgo_Array1OfPINod,
     ) {
         unsafe {
-            crate::ffi::HLRAlgo_PolyInternalData_update_links(
+            crate::ffi::HLRAlgo_PolyInternalData_update_links_array1oftdata_array1ofpiseg_array1ofpinod(self as *mut Self, theTData, thePISeg, thePINod)
+        }
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:43 - `HLRAlgo_PolyInternalData::AddNode()`
+    pub unsafe fn add_node(
+        &mut self,
+        theNod1RValues: &mut PolyInternalNode_NodeData,
+        theNod2RValues: &mut PolyInternalNode_NodeData,
+        thePINod1: &mut *mut crate::ffi::HLRAlgo_Array1OfPINod,
+        thePINod2: &mut *mut crate::ffi::HLRAlgo_Array1OfPINod,
+        theCoef1: f64,
+        theX3: f64,
+        theY3: f64,
+        theZ3: f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalData_add_node(
                 self as *mut Self,
-                theTData,
-                thePISeg,
-                thePINod,
+                theNod1RValues,
+                theNod2RValues,
+                thePINod1,
+                thePINod2,
+                theCoef1,
+                theX3,
+                theY3,
+                theZ3,
             )
+        }
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:52 - `HLRAlgo_PolyInternalData::UpdateLinks()`
+    pub unsafe fn update_links_int3_array1oftdataptr2_array1ofpisegptr2_array1ofpinodptr2(
+        &mut self,
+        theIp1: i32,
+        theIp2: i32,
+        theIp3: i32,
+        theTData1: &mut *mut crate::ffi::HLRAlgo_Array1OfTData,
+        theTData2: &mut *mut crate::ffi::HLRAlgo_Array1OfTData,
+        thePISeg1: &mut *mut crate::ffi::HLRAlgo_Array1OfPISeg,
+        thePISeg2: &mut *mut crate::ffi::HLRAlgo_Array1OfPISeg,
+        thePINod1: &mut *mut crate::ffi::HLRAlgo_Array1OfPINod,
+        thePINod2: &mut *mut crate::ffi::HLRAlgo_Array1OfPINod,
+    ) {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalData_update_links_int3_array1oftdataptr2_array1ofpisegptr2_array1ofpinodptr2(self as *mut Self, theIp1, theIp2, theIp3, theTData1, theTData2, thePISeg1, thePISeg2, thePINod1, thePINod2)
         }
     }
 
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:62 - `HLRAlgo_PolyInternalData::Dump()`
     pub fn dump(&self) {
         unsafe { crate::ffi::HLRAlgo_PolyInternalData_dump(self as *const Self) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:64 - `HLRAlgo_PolyInternalData::IncTData()`
+    pub unsafe fn inc_t_data(
+        &mut self,
+        TData1: &mut *mut crate::ffi::HLRAlgo_Array1OfTData,
+        TData2: &mut *mut crate::ffi::HLRAlgo_Array1OfTData,
+    ) {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalData_inc_t_data(self as *mut Self, TData1, TData2)
+        }
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:66 - `HLRAlgo_PolyInternalData::IncPISeg()`
+    pub unsafe fn inc_pi_seg(
+        &mut self,
+        PISeg1: &mut *mut crate::ffi::HLRAlgo_Array1OfPISeg,
+        PISeg2: &mut *mut crate::ffi::HLRAlgo_Array1OfPISeg,
+    ) {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalData_inc_pi_seg(self as *mut Self, PISeg1, PISeg2)
+        }
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:68 - `HLRAlgo_PolyInternalData::IncPINod()`
+    pub unsafe fn inc_pi_nod(
+        &mut self,
+        thePINod1: &mut *mut crate::ffi::HLRAlgo_Array1OfPINod,
+        thePINod2: &mut *mut crate::ffi::HLRAlgo_Array1OfPINod,
+    ) {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalData_inc_pi_nod(self as *mut Self, thePINod1, thePINod2)
+        }
     }
 
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:71 - `HLRAlgo_PolyInternalData::DecTData()`
@@ -2753,28 +2826,6 @@ impl HandleHLRAlgoPolyInternalData {
         }
     }
 }
-
-// ── Skipped symbols for PolyInternalData (5 total) ──
-// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:43 - `HLRAlgo_PolyInternalData::AddNode`
-//   Reason: has unbindable types: param 'thePINod1': raw pointer (HLRAlgo_Array1OfPINod*&); param 'thePINod2': raw pointer (HLRAlgo_Array1OfPINod*&)
-//   // pub fn add_node(&mut self, theNod1RValues: &mut PolyInternalNode_NodeData, theNod2RValues: &mut PolyInternalNode_NodeData, thePINod1: /* HLRAlgo_Array1OfPINod*& */, thePINod2: /* HLRAlgo_Array1OfPINod*& */, theCoef1: f64, theX3: f64, theY3: f64, theZ3: f64) -> i32;
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:52 - `HLRAlgo_PolyInternalData::UpdateLinks`
-//   Reason: has unbindable types: param 'theTData1': raw pointer (HLRAlgo_Array1OfTData*&); param 'theTData2': raw pointer (HLRAlgo_Array1OfTData*&); param 'thePISeg1': raw pointer (HLRAlgo_Array1OfPISeg*&); param 'thePISeg2': raw pointer (HLRAlgo_Array1OfPISeg*&); param 'thePINod1': raw pointer (HLRAlgo_Array1OfPINod*&); param 'thePINod2': raw pointer (HLRAlgo_Array1OfPINod*&)
-//   // pub fn update_links(&mut self, theIp1: i32, theIp2: i32, theIp3: i32, theTData1: /* HLRAlgo_Array1OfTData*& */, theTData2: /* HLRAlgo_Array1OfTData*& */, thePISeg1: /* HLRAlgo_Array1OfPISeg*& */, thePISeg2: /* HLRAlgo_Array1OfPISeg*& */, thePINod1: /* HLRAlgo_Array1OfPINod*& */, thePINod2: /* HLRAlgo_Array1OfPINod*& */);
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:64 - `HLRAlgo_PolyInternalData::IncTData`
-//   Reason: has unbindable types: param 'TData1': raw pointer (HLRAlgo_Array1OfTData*&); param 'TData2': raw pointer (HLRAlgo_Array1OfTData*&)
-//   // pub fn inc_t_data(&mut self, TData1: /* HLRAlgo_Array1OfTData*& */, TData2: /* HLRAlgo_Array1OfTData*& */);
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:66 - `HLRAlgo_PolyInternalData::IncPISeg`
-//   Reason: has unbindable types: param 'PISeg1': raw pointer (HLRAlgo_Array1OfPISeg*&); param 'PISeg2': raw pointer (HLRAlgo_Array1OfPISeg*&)
-//   // pub fn inc_pi_seg(&mut self, PISeg1: /* HLRAlgo_Array1OfPISeg*& */, PISeg2: /* HLRAlgo_Array1OfPISeg*& */);
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:68 - `HLRAlgo_PolyInternalData::IncPINod`
-//   Reason: has unbindable types: param 'thePINod1': raw pointer (HLRAlgo_Array1OfPINod*&); param 'thePINod2': raw pointer (HLRAlgo_Array1OfPINod*&)
-//   // pub fn inc_pi_nod(&mut self, thePINod1: /* HLRAlgo_Array1OfPINod*& */, thePINod2: /* HLRAlgo_Array1OfPINod*& */);
-//
 
 // ========================
 // From HLRAlgo_PolyInternalNode.hxx

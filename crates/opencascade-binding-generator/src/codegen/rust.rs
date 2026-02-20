@@ -713,7 +713,8 @@ fn emit_free_function_wrapper(
 
     let has_return = !return_type_str.is_empty();
 
-    writeln!(output, "pub fn {}({}){} {{", func.rust_ffi_name, params.join(", "), return_type_str).unwrap();
+    let unsafe_kw = if func.is_unsafe { "unsafe " } else { "" };
+    writeln!(output, "pub {}fn {}({}){} {{", unsafe_kw, func.rust_ffi_name, params.join(", "), return_type_str).unwrap();
     write!(output, "{}", prelude).unwrap();
 
     if postamble.is_empty() {

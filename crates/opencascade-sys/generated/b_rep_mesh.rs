@@ -4893,7 +4893,7 @@ impl FaceChecker_Segment {
 // ── Skipped symbols for FaceChecker_Segment (1 total) ──
 // SKIPPED: **Source:** `BRepMesh_FaceChecker.hxx`:46 - `BRepMesh_FaceChecker::Segment::BRepMesh_FaceChecker::Segment`
 //   Reason: param 'theEdgePtr' uses unknown type 'const IMeshData_Edge *const&'
-//   // pub fn new_edge *const_pnt2dptr2(theEdgePtr: &Edge *const, thePoint1: /* gp_Pnt2d* */, thePoint2: /* gp_Pnt2d* */) -> OwnedPtr<Self>;
+//   // pub fn new_edge *const_pnt2dptr2(theEdgePtr: &Edge *const, thePoint1: *mut Pnt2d, thePoint2: *mut Pnt2d) -> OwnedPtr<Self>;
 //
 
 // ========================
@@ -5349,7 +5349,7 @@ impl GeomTool {
 //
 // SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:206 - `BRepMesh_GeomTool::CellsCount`
 //   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Integer, Standard_Integer>)
-//   // pub fn cells_count(theSurface: &HandleSurface, theVerticesNb: i32, theDeflection: f64, theRangeSplitter: /* const BRepMesh_DefaultRangeSplitter* */) -> OwnedPtr<std::pair<Standard_Integer, Standard_Integer>>;
+//   // pub fn cells_count(theSurface: &HandleSurface, theVerticesNb: i32, theDeflection: f64, theRangeSplitter: *const DefaultRangeSplitter) -> OwnedPtr<std::pair<Standard_Integer, Standard_Integer>>;
 //
 
 // ========================
@@ -5540,6 +5540,30 @@ impl IncrementalMesh {
         unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:116 - `BRepMesh_IncrementalMesh::Discret()`
+    /// @name plugin API
+    /// Plugin interface for the Mesh Factories.
+    /// Initializes meshing algorithm with the given parameters.
+    /// @param theShape shape to be meshed.
+    /// @param theLinDeflection linear deflection.
+    /// @param theAngDeflection angular deflection.
+    /// @param[out] theAlgo pointer to initialized algorithm.
+    pub unsafe fn discret(
+        theShape: &crate::topo_ds::Shape,
+        theLinDeflection: f64,
+        theAngDeflection: f64,
+        theAlgo: &mut *mut DiscretRoot,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::BRepMesh_IncrementalMesh_discret(
+                theShape,
+                theLinDeflection,
+                theAngDeflection,
+                theAlgo,
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:123 - `BRepMesh_IncrementalMesh::IsParallelDefault()`
     /// Returns multi-threading usage flag set by default in
     /// Discret() static method (thus applied only to Mesh Factories).
@@ -5721,15 +5745,6 @@ impl HandleBRepMeshIncrementalMesh {
         }
     }
 }
-
-// ── Skipped symbols for IncrementalMesh (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_IncrementalMesh.hxx`:116 - `BRepMesh_IncrementalMesh::Discret`
-//   static_method: @name plugin API
-//   static_method: Plugin interface for the Mesh Factories.
-//   static_method: Initializes meshing algorithm with the given parameters.
-//   Reason: has unbindable types: param 'theAlgo': raw pointer (BRepMesh_DiscretRoot*&)
-//   // pub fn discret(theShape: &Shape, theLinDeflection: f64, theAngDeflection: f64, theAlgo: /* BRepMesh_DiscretRoot*& */) -> i32;
-//
 
 // ========================
 // From BRepMesh_MeshAlgoFactory.hxx
@@ -6145,7 +6160,7 @@ impl HandleBRepMeshMeshTool {
 // SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:86 - `BRepMesh_MeshTool::DumpTriangles`
 //   method: Dumps triangles to specified file.
 //   Reason: param 'theTriangles' uses unknown type 'IMeshData::MapOfInteger*'
-//   // pub fn dump_triangles(&mut self, theFileName: *const char, theTriangles: /* IMeshData::MapOfInteger* */);
+//   // pub fn dump_triangles(&mut self, theFileName: *const char, theTriangles: *mut MapOfInteger);
 //
 // SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:103 - `BRepMesh_MeshTool::AddTriangle`
 //   method: Adds new triangle with specified nodes to mesh.

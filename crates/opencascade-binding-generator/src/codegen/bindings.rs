@@ -119,6 +119,8 @@ pub struct ConstructorBinding {
     /// When set, no ffi.rs or wrappers.hxx entry is generated — only a Rust-only
     /// method in the module re-export that calls the full-argument version.
     pub convenience_of: Option<ConvenienceInfo>,
+    /// Whether this constructor should be marked `unsafe fn` (has raw pointer params/returns)
+    pub is_unsafe: bool,
 }
 
 /// Info for a convenience constructor that delegates to a full-argument version.
@@ -148,6 +150,8 @@ pub struct DirectMethodBinding {
     pub doc_comment: Option<String>,
     /// Source line in C++ header
     pub source_line: Option<u32>,
+    /// Whether this method should be marked `unsafe fn` (has raw pointer params/returns)
+    pub is_unsafe: bool,
 }
 
 /// What kind of C++ wrapper is needed.
@@ -192,6 +196,8 @@ pub struct WrapperMethodBinding {
     pub doc_comment: Option<String>,
     /// Source line in C++ header
     pub source_line: Option<u32>,
+    /// Whether this method should be marked `unsafe fn` (has raw pointer params/returns)
+    pub is_unsafe: bool,
 }
 
 /// A static method binding.
@@ -213,6 +219,8 @@ pub struct StaticMethodBinding {
     pub doc_comment: Option<String>,
     /// Source line in C++ header
     pub source_line: Option<u32>,
+    /// Whether this method should be marked `unsafe fn` (has raw pointer params/returns)
+    pub is_unsafe: bool,
 }
 
 /// An upcast binding (Derived → Base).
@@ -286,6 +294,8 @@ pub struct InheritedMethodBinding {
     pub source_header: String,
     /// Source line number in the header file
     pub source_line: Option<u32>,
+    /// Whether this method should be marked `unsafe fn` (has raw pointer params/returns)
+    pub is_unsafe: bool,
 }
 
 /// A parameter binding with info for all three output targets.
@@ -400,6 +410,8 @@ pub struct FunctionBinding {
     pub doc_comment: Option<String>,
     /// C++ headers needed for this function's parameter and return types
     pub cpp_headers: Vec<String>,
+    /// Whether this function should be marked `unsafe fn` (has raw pointer params/returns)
+    pub is_unsafe: bool,
 }
 
 // ── Helper functions ────────────────────────────────────────────────────────
@@ -417,6 +429,7 @@ fn type_to_ffi_full_name(ty: &Type) -> String {
         Type::I32 => "i32".to_string(),
         Type::U32 => "u32".to_string(),
         Type::U16 => "u16".to_string(),
+        Type::I16 => "i16".to_string(),
         Type::I64 => "i64".to_string(),
         Type::U64 => "u64".to_string(),
         Type::Long => "std::ffi::c_long".to_string(),
@@ -587,7 +600,8 @@ fn type_to_cpp(ty: &Type) -> String {
         Type::Bool => "Standard_Boolean".to_string(),
         Type::I32 => "Standard_Integer".to_string(),
         Type::U32 => "unsigned int".to_string(),
-        Type::U16 => "uint16_t".to_string(),
+            Type::U16 => "char16_t".to_string(),
+        Type::I16 => "int16_t".to_string(),
         Type::I64 => "long long".to_string(),
         Type::U64 => "unsigned long long".to_string(),
         Type::Long => "long".to_string(),
@@ -672,6 +686,7 @@ fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) ->
         Type::I32 => "i32".to_string(),
         Type::U32 => "u32".to_string(),
         Type::U16 => "u16".to_string(),
+        Type::I16 => "i16".to_string(),
         Type::I64 => "i64".to_string(),
         Type::U64 => "u64".to_string(),
         Type::Long => "std::ffi::c_long".to_string(),
@@ -682,6 +697,8 @@ fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) ->
         Type::Class(name) => {
             if name == "char" {
                 "std::ffi::c_char".to_string()
+            } else if name == "Standard_Address" {
+                "*mut std::ffi::c_void".to_string()
             } else if let Some(ctx) = reexport_ctx {
                 ctx.resolve_class(name)
             } else {
@@ -708,7 +725,7 @@ fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) ->
 /// Convert a return Type to Rust type string for re-export files
 fn return_type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) -> String {
     match ty {
-        Type::Class(name) if name != "char" => {
+        Type::Class(name) if name != "char" && name != "Standard_Address" => {
             let inner = if let Some(ctx) = reexport_ctx {
                 ctx.resolve_class(name)
             } else {
@@ -738,7 +755,7 @@ fn return_type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeConte
                 unreachable!()
             }
         }
-        Type::MutPtr(inner) if matches!(inner.as_ref(), Type::Class(_)) => {
+        Type::MutPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name != "char" && name != "Standard_Address") => {
             if let Type::Class(name) = inner.as_ref() {
                 let resolved = if let Some(ctx) = reexport_ctx {
                     ctx.resolve_class(name)
@@ -1330,7 +1347,7 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
     let rust_ffi_type = mapped.rust_type;
     let rust_reexport_type = return_type_to_rust_string(ty, reexport_ctx);
     let cpp_type = type_to_cpp(ty);
-    let needs_unique_ptr = ty.is_class() || ty.is_handle();
+    let needs_unique_ptr = (ty.is_class() && !ty.is_void_ptr()) || ty.is_handle();
 
     ReturnTypeBinding {
         rust_ffi_type,
@@ -1627,6 +1644,7 @@ pub fn compute_class_bindings(
                 doc_comment: Some("Default constructor".to_string()),
                 source_line: None,
                 convenience_of: None,
+                is_unsafe: false,
             });
         }
         ctors
@@ -1756,6 +1774,7 @@ pub fn compute_class_bindings(
                 return_type,
                 doc_comment: method.comment.clone(),
                 source_line: method.source_line,
+                is_unsafe: method.has_unsafe_types(),
             }
         })
         .collect();
@@ -1841,6 +1860,7 @@ pub fn compute_class_bindings(
                 cpp_method_name: method.name.clone(),
                 doc_comment: method.comment.clone(),
                 source_line: method.source_line,
+                is_unsafe: method.has_unsafe_types(),
             }
         })
         .collect();
@@ -1903,7 +1923,7 @@ pub fn compute_class_bindings(
             let needs_static_lifetime = method
                 .return_type
                 .as_ref()
-                .map(|ty| ty.is_reference())
+                .map(|ty| ty.is_reference() || matches!(ty, Type::ConstPtr(inner) | Type::MutPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name != "char" && name != "Standard_Address")))
                 .unwrap_or(false);
 
             StaticMethodBinding {
@@ -1915,6 +1935,7 @@ pub fn compute_class_bindings(
                 needs_static_lifetime,
                 doc_comment: method.comment.clone(),
                 source_line: method.source_line,
+                is_unsafe: method.has_unsafe_types(),
             }
         })
         .collect();
@@ -2059,6 +2080,7 @@ fn pod_field_rust_type(ty: &Type) -> Option<&'static str> {
         Type::I32 => Some("i32"),
         Type::U32 => Some("u32"),
         Type::U16 => Some("u16"),
+        Type::I16 => Some("i16"),
         Type::I64 => Some("i64"),
         Type::U64 => Some("u64"),
         Type::Long => Some("std::os::raw::c_long"),
@@ -2122,7 +2144,7 @@ fn adapt_default_for_rust_type(default_expr: &str, param_type: &Type) -> Option<
                 None
             }
         }
-        Type::I32 | Type::U32 | Type::U16 | Type::I64 | Type::U64 | Type::Long | Type::ULong | Type::Usize => {
+        Type::I32 | Type::U32 | Type::U16 | Type::I16 | Type::I64 | Type::U64 | Type::Long | Type::ULong | Type::Usize => {
             // Integer literals should work directly
             if default_expr.parse::<i64>().is_ok() || default_expr.parse::<u64>().is_ok() {
                 Some(default_expr.to_string())
@@ -2455,6 +2477,8 @@ fn compute_constructor_bindings(
                 (ffi_fn_name, cpp_arg_exprs)
             };
 
+            let is_unsafe = trimmed.original.has_unsafe_types();
+
             ConstructorBinding {
                 ffi_fn_name,
                 impl_method_name,
@@ -2463,6 +2487,7 @@ fn compute_constructor_bindings(
                 doc_comment: trimmed.original.comment.clone(),
                 source_line: trimmed.original.source_line,
                 convenience_of,
+                is_unsafe,
             }
         })
         .collect()
@@ -2959,6 +2984,15 @@ fn compute_inherited_method_bindings(
                     }
                 }
 
+                // Check if inherited method has unsafe types (raw pointers / void pointers)
+                let is_unsafe = resolved_method.params.iter().any(|p| {
+                    p.ty.original.needs_unsafe_fn()
+                        && !p.is_nullable_ptr()
+                        && p.ty.original.class_ptr_inner_name().is_none()
+                }) || resolved_method.return_type.as_ref().map_or(false, |rt| {
+                    rt.original.needs_unsafe_fn() && rt.original.class_ptr_inner_name().is_none()
+                });
+
                 result.push(InheritedMethodBinding {
                     ffi_fn_name,
                     impl_method_name,
@@ -2969,6 +3003,7 @@ fn compute_inherited_method_bindings(
                     source_class: ancestor_name.clone(),
                     source_header: ancestor_class.source_header.clone(),
                     source_line: resolved_method.source_line,
+                    is_unsafe,
                 });
             }
         }
@@ -3463,6 +3498,8 @@ pub fn compute_all_function_bindings(
             source_line: func.source_line,
             doc_comment: func.doc_comment.clone(),
             cpp_headers,
+            is_unsafe: func.params.iter().any(|p| p.ty.original.needs_unsafe_fn())
+                || func.return_type.as_ref().map_or(false, |rt| rt.original.needs_unsafe_fn()),
         });
     }
 
@@ -4795,9 +4832,11 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             let convenience_args: Vec<String> = ctor.params.iter().map(|p| p.rust_name.clone()).collect();
             let mut all_args = convenience_args;
             all_args.extend(conv.default_exprs.iter().cloned());
+            let unsafe_kw = if ctor.is_unsafe { "unsafe " } else { "" };
             impl_methods.push(format!(
-                "{}    pub fn {}({}) -> crate::OwnedPtr<Self> {{\n        Self::{}({})\n    }}\n",
+                "{}    pub {}fn {}({}) -> crate::OwnedPtr<Self> {{\n        Self::{}({})\n    }}\n",
                 doc,
+                unsafe_kw,
                 ctor.impl_method_name,
                 params.join(", "),
                 conv.full_method_name,
@@ -4806,9 +4845,11 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         } else {
             // Regular constructor: delegates to ffi function
             let prelude = cstr_prelude_params(&ctor.params);
+            let unsafe_kw = if ctor.is_unsafe { "unsafe " } else { "" };
             impl_methods.push(format!(
-                "{}    pub fn {}({}) -> crate::OwnedPtr<Self> {{\n{}        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}({})) }}\n    }}\n",
+                "{}    pub {}fn {}({}) -> crate::OwnedPtr<Self> {{\n{}        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}({})) }}\n    }}\n",
                 doc,
+                unsafe_kw,
                 ctor.impl_method_name,
                 params.join(", "),
                 prelude,
@@ -4868,9 +4909,11 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             &format!("{}::{}()", cn, wm.cpp_method_name),
         );
         let doc = format_reexport_doc(&source_attr, &wm.doc_comment);
+        let unsafe_kw = if wm.is_unsafe { "unsafe " } else { "" };
         impl_methods.push(format!(
-            "{}    pub fn {}({}){} {{\n{}        {}\n    }}\n",
+            "{}    pub {}fn {}({}){} {{\n{}        {}\n    }}\n",
             doc,
+            unsafe_kw,
             wm.impl_method_name,
             params.join(", "),
             return_type,
@@ -4930,9 +4973,11 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             &format!("{}::{}()", cn, dm.cxx_name),
         );
         let doc = format_reexport_doc(&source_attr, &dm.doc_comment);
+        let unsafe_kw = if dm.is_unsafe { "unsafe " } else { "" };
         impl_methods.push(format!(
-            "{}    pub fn {}({}){} {{\n{}        {}\n    }}\n",
+            "{}    pub {}fn {}({}){} {{\n{}        {}\n    }}\n",
             doc,
+            unsafe_kw,
             dm.rust_name,
             params.join(", "),
             return_type,
@@ -4955,11 +5000,12 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             .as_ref()
             .map(|rt| {
                 let mut ty_str = rt.rust_reexport_type.clone();
-                if sm.needs_static_lifetime
-                    && ty_str.starts_with('&')
-                    && !ty_str.contains("'static")
-                {
-                    ty_str = ty_str.replacen('&', "&'static ", 1);
+                if sm.needs_static_lifetime {
+                    if ty_str.starts_with('&') && !ty_str.contains("'static") {
+                        ty_str = ty_str.replacen('&', "&'static ", 1);
+                    } else if ty_str.starts_with("Option<&") && !ty_str.contains("'static") {
+                        ty_str = ty_str.replacen("Option<&", "Option<&'static ", 1);
+                    }
                 }
                 format!(" -> {}", ty_str)
             })
@@ -4984,9 +5030,11 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);
 
+        let unsafe_kw = if sm.is_unsafe { "unsafe " } else { "" };
         impl_methods.push(format!(
-            "{}    pub fn {}({}){} {{\n{}        {}\n    }}\n",
+            "{}    pub {}fn {}({}){} {{\n{}        {}\n    }}\n",
             doc,
+            unsafe_kw,
             sm.impl_method_name,
             params.join(", "),
             return_type,
@@ -5082,8 +5130,9 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let body = wrap_body_with_postamble(&body, &postamble, has_return);
 
         let no_doc: Option<String> = None;
+        let unsafe_kw = if im.is_unsafe { "unsafe " } else { "" };
         impl_methods.push(format!(
-            "{}    pub fn {}({}){} {{\n{}        {}\n    }}\n",
+            "{}    pub {}fn {}({}){} {{\n{}        {}\n    }}\n",
             format_reexport_doc(
                 &format!("Inherited: {}", format_source_attribution(
                     &im.source_header,
@@ -5092,6 +5141,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
                 )),
                 &no_doc,
             ),
+            unsafe_kw,
             im.impl_method_name,
             params.join(", "),
             return_type,

@@ -385,8 +385,8 @@ unsafe impl crate::CppDeletable for EvaluatorFunction {
 //
 // SKIPPED: **Source:** `AdvApprox_EvaluatorFunction.hxx`:37 - `AdvApprox_EvaluatorFunction::Evaluate`
 //   method: Function evaluation method to be defined by descendant
-//   Reason: has unbindable types: param 'Dimension': raw pointer (int*); param 'StartEnd': C-style array (Standard_Real[2]); param 'Parameter': raw pointer (double*); param 'DerivativeRequest': raw pointer (int*); param 'Result': raw pointer (double*); param 'ErrorCode': raw pointer (int*)
-//   // pub fn evaluate(&mut self, Dimension: /* int* */, StartEnd: /* Standard_Real[2] */, Parameter: /* double* */, DerivativeRequest: /* int* */, Result: /* double* */, ErrorCode: /* int* */);
+//   Reason: has unbindable types: param 'StartEnd': C-style array (Standard_Real[2])
+//   // pub fn evaluate(&mut self, Dimension: *mut i32, StartEnd: /* Standard_Real[2] */, Parameter: *mut f64, DerivativeRequest: *mut i32, Result: *mut f64, ErrorCode: *mut i32);
 //
 
 // ========================

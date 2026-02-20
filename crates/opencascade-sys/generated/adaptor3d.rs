@@ -3389,6 +3389,6 @@ impl HandleAdaptor3dTopolTool {
 
 // ── Skipped symbols for TopolTool (1 total) ──
 // SKIPPED: **Source:** `Adaptor3d_TopolTool.hxx`:133 - `Adaptor3d_TopolTool::Edge`
-//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   Reason: return type 'Standard_Address' is unknown
 //   // pub fn edge(&self) -> OwnedPtr<Standard_Address>;
 //

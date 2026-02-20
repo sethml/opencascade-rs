@@ -6363,8 +6363,8 @@ impl HandleTopOpeBRepDSMarker {
 
 // ── Skipped symbols for Marker (1 total) ──
 // SKIPPED: **Source:** `TopOpeBRepDS_Marker.hxx`:40 - `TopOpeBRepDS_Marker::Set`
-//   Reason: has unbindable types: param 'a': void pointer (Standard_Address)
-//   // pub fn set(&mut self, b: bool, n: i32, a: /* Standard_Address */);
+//   Reason: param 'a' uses unknown type 'Standard_Address'
+//   // pub fn set(&mut self, b: bool, n: i32, a: Address);
 //
 
 // ========================

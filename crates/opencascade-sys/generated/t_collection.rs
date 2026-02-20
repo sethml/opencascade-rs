@@ -1105,7 +1105,7 @@ impl AsciiString {
 //   constructor: Initialize UTF-8 Unicode string from wide-char string considering it as Unicode string
 //   constructor: (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16).
 //   Reason: param 'theStringUtf' uses unknown type 'const Standard_WideChar*'
-//   // pub fn new_widecharptr(theStringUtf: /* const Standard_WideChar* */) -> OwnedPtr<Self>;
+//   // pub fn new_widecharptr(theStringUtf: *const WideChar) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:263 - `TCollection_AsciiString::Move`
 //   method: Moves string without reallocations
@@ -1168,6 +1168,14 @@ impl ExtendedString {
                 c_astring.as_ptr(),
                 isMultiByte,
             ))
+        }
+    }
+
+    /// **Source:** `TCollection_ExtendedString.hxx`:68 - `TCollection_ExtendedString::TCollection_ExtendedString()`
+    /// Creation by converting an ExtString to an extended string.
+    pub unsafe fn new_u16ptr(astring: *const u16) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_u16ptr(astring))
         }
     }
 
@@ -1319,32 +1327,86 @@ impl ExtendedString {
         unsafe { crate::ffi::TCollection_ExtendedString_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `TCollection_ExtendedString.hxx`:178 - `TCollection_ExtendedString::IsEqual()`
+    /// Returns true if the characters in this extended
+    /// string are identical to the characters in the other extended string.
+    /// Note that this method is an alias of operator ==
+    pub unsafe fn is_equal_u16ptr(&self, other: *const u16) -> bool {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_is_equal_u16ptr(self as *const Self, other)
+        }
+    }
+
     /// **Source:** `TCollection_ExtendedString.hxx`:185 - `TCollection_ExtendedString::IsEqual()`
     /// Returns true if the characters in this extended
     /// string are identical to the characters in the other extended string.
     /// Note that this method is an alias of operator ==
-    pub fn is_equal(&self, other: &ExtendedString) -> bool {
-        unsafe { crate::ffi::TCollection_ExtendedString_is_equal(self as *const Self, other) }
+    pub fn is_equal_extendedstring(&self, other: &ExtendedString) -> bool {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_is_equal_extendedstring(
+                self as *const Self,
+                other,
+            )
+        }
+    }
+
+    /// **Source:** `TCollection_ExtendedString.hxx`:195 - `TCollection_ExtendedString::IsDifferent()`
+    /// Returns true if there are differences between the
+    /// characters in this extended string and the other extended string.
+    /// Note that this method is an alias of operator !=.
+    pub unsafe fn is_different_u16ptr(&self, other: *const u16) -> bool {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_is_different_u16ptr(self as *const Self, other)
+        }
     }
 
     /// **Source:** `TCollection_ExtendedString.hxx`:202 - `TCollection_ExtendedString::IsDifferent()`
     /// Returns true if there are differences between the
     /// characters in this extended string and the other extended string.
     /// Note that this method is an alias of operator !=.
-    pub fn is_different(&self, other: &ExtendedString) -> bool {
-        unsafe { crate::ffi::TCollection_ExtendedString_is_different(self as *const Self, other) }
+    pub fn is_different_extendedstring(&self, other: &ExtendedString) -> bool {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_is_different_extendedstring(
+                self as *const Self,
+                other,
+            )
+        }
+    }
+
+    /// **Source:** `TCollection_ExtendedString.hxx`:210 - `TCollection_ExtendedString::IsLess()`
+    /// Returns TRUE if <me> is less than <other>.
+    pub unsafe fn is_less_u16ptr(&self, other: *const u16) -> bool {
+        unsafe { crate::ffi::TCollection_ExtendedString_is_less_u16ptr(self as *const Self, other) }
     }
 
     /// **Source:** `TCollection_ExtendedString.hxx`:215 - `TCollection_ExtendedString::IsLess()`
     /// Returns TRUE if <me> is less than <other>.
-    pub fn is_less(&self, other: &ExtendedString) -> bool {
-        unsafe { crate::ffi::TCollection_ExtendedString_is_less(self as *const Self, other) }
+    pub fn is_less_extendedstring(&self, other: &ExtendedString) -> bool {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_is_less_extendedstring(
+                self as *const Self,
+                other,
+            )
+        }
+    }
+
+    /// **Source:** `TCollection_ExtendedString.hxx`:223 - `TCollection_ExtendedString::IsGreater()`
+    /// Returns TRUE if <me> is greater than <other>.
+    pub unsafe fn is_greater_u16ptr(&self, other: *const u16) -> bool {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_is_greater_u16ptr(self as *const Self, other)
+        }
     }
 
     /// **Source:** `TCollection_ExtendedString.hxx`:228 - `TCollection_ExtendedString::IsGreater()`
     /// Returns TRUE if <me> is greater than <other>.
-    pub fn is_greater(&self, other: &ExtendedString) -> bool {
-        unsafe { crate::ffi::TCollection_ExtendedString_is_greater(self as *const Self, other) }
+    pub fn is_greater_extendedstring(&self, other: &ExtendedString) -> bool {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_is_greater_extendedstring(
+                self as *const Self,
+                other,
+            )
+        }
     }
 
     /// **Source:** `TCollection_ExtendedString.hxx`:237 - `TCollection_ExtendedString::StartsWith()`
@@ -1459,6 +1521,42 @@ impl ExtendedString {
         }
     }
 
+    /// **Source:** `TCollection_ExtendedString.hxx`:307 - `TCollection_ExtendedString::Token()`
+    /// Extracts <whichone> token from <me>.
+    /// By default, the <separators> is set to space and tabulation.
+    /// By default, the token extracted is the first one (whichone = 1).
+    /// <separators> contains all separators you need.
+    /// If no token indexed by <whichone> is found, it returns an empty AsciiString.
+    /// Example:
+    /// aString contains "This is a     message"
+    /// aString.Token()  returns "This"
+    /// aString.Token(" ",4) returns "message"
+    /// aString.Token(" ",2) returns "is"
+    /// aString.Token(" ",9) returns ""
+    /// Other separators than space character and tabulation are allowed :
+    /// aString contains "1234; test:message   , value"
+    /// aString.Token("; :,",4) returns "value"
+    /// aString.Token("; :,",2) returns "test"
+    pub unsafe fn token(
+        &self,
+        separators: *const u16,
+        whichone: i32,
+    ) -> crate::OwnedPtr<ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_token(
+                self as *const Self,
+                separators,
+                whichone,
+            ))
+        }
+    }
+
+    /// **Source:** `TCollection_ExtendedString.hxx`:311 - `TCollection_ExtendedString::ToExtString()`
+    /// Returns pointer to ExtString
+    pub unsafe fn to_ext_string(&self) -> *const u16 {
+        unsafe { crate::ffi::TCollection_ExtendedString_to_ext_string(self as *const Self) }
+    }
+
     /// **Source:** `TCollection_ExtendedString.hxx`:325 - `TCollection_ExtendedString::Trunc()`
     /// Truncates <me> to <ahowmany> characters.
     /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
@@ -1505,13 +1603,8 @@ impl ExtendedString {
     /// Returns true if the characters in this extended
     /// string are identical to the characters in the other extended string.
     /// Note that this method is an alias of operator ==.
-    pub fn is_equal_extendedstring2(
-        theString1: &ExtendedString,
-        theString2: &ExtendedString,
-    ) -> bool {
-        unsafe {
-            crate::ffi::TCollection_ExtendedString_is_equal_extendedstring2(theString1, theString2)
-        }
+    pub fn is_equal(theString1: &ExtendedString, theString2: &ExtendedString) -> bool {
+        unsafe { crate::ffi::TCollection_ExtendedString_is_equal(theString1, theString2) }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
@@ -1524,17 +1617,12 @@ impl ExtendedString {
     }
 }
 
-// ── Skipped symbols for ExtendedString (11 total) ──
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:68 - `TCollection_ExtendedString::TCollection_ExtendedString`
-//   constructor: Creation by converting an ExtString to an extended string.
-//   Reason: has unbindable types: param 'astring': raw pointer (const uint16_t*)
-//   // pub fn new_u16ptr(astring: /* const uint16_t* */) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for ExtendedString (4 total) ──
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:76 - `TCollection_ExtendedString::TCollection_ExtendedString`
 //   constructor: Initialize from wide-char string considering it as Unicode string
 //   constructor: (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16).
 //   Reason: param 'theStringUtf' uses unknown type 'const Standard_WideChar*'
-//   // pub fn new_widecharptr(theStringUtf: /* const Standard_WideChar* */) -> OwnedPtr<Self>;
+//   // pub fn new_widecharptr(theStringUtf: *const WideChar) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:118 - `TCollection_ExtendedString::AssignCat`
 //   method: Appends the utf16 char to this extended string.
@@ -1545,42 +1633,6 @@ impl ExtendedString {
 //   method: Moves string without reallocations
 //   Reason: has unbindable types: param 'theOther': rvalue reference (TCollection_ExtendedString&&)
 //   // pub fn move_(&mut self, theOther: /* TCollection_ExtendedString&& */);
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:178 - `TCollection_ExtendedString::IsEqual`
-//   method: Returns true if the characters in this extended
-//   method: string are identical to the characters in the other extended string.
-//   method: Note that this method is an alias of operator ==
-//   Reason: has unbindable types: param 'other': raw pointer (const uint16_t*)
-//   // pub fn is_equal(&self, other: /* const uint16_t* */) -> bool;
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:195 - `TCollection_ExtendedString::IsDifferent`
-//   method: Returns true if there are differences between the
-//   method: characters in this extended string and the other extended string.
-//   method: Note that this method is an alias of operator !=.
-//   Reason: has unbindable types: param 'other': raw pointer (const uint16_t*)
-//   // pub fn is_different(&self, other: /* const uint16_t* */) -> bool;
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:210 - `TCollection_ExtendedString::IsLess`
-//   method: Returns TRUE if <me> is less than <other>.
-//   Reason: has unbindable types: param 'other': raw pointer (const uint16_t*)
-//   // pub fn is_less(&self, other: /* const uint16_t* */) -> bool;
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:223 - `TCollection_ExtendedString::IsGreater`
-//   method: Returns TRUE if <me> is greater than <other>.
-//   Reason: has unbindable types: param 'other': raw pointer (const uint16_t*)
-//   // pub fn is_greater(&self, other: /* const uint16_t* */) -> bool;
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:307 - `TCollection_ExtendedString::Token`
-//   method: Extracts <whichone> token from <me>.
-//   method: By default, the <separators> is set to space and tabulation.
-//   method: By default, the token extracted is the first one (whichone = 1).
-//   Reason: has unbindable types: param 'separators': raw pointer (const uint16_t*)
-//   // pub fn token(&self, separators: /* const uint16_t* */, whichone: i32) -> OwnedPtr<TCollection_ExtendedString>;
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:311 - `TCollection_ExtendedString::ToExtString`
-//   method: Returns pointer to ExtString
-//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
-//   // pub fn to_ext_string(&self) -> /* const uint16_t* */;
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:365 - `TCollection_ExtendedString::ToUTF8CString`
 //   method: Converts the internal <mystring> to UTF8 coding and
@@ -2652,6 +2704,14 @@ impl HExtendedString {
         }
     }
 
+    /// **Source:** `TCollection_HExtendedString.hxx`:55 - `TCollection_HExtendedString::TCollection_HExtendedString()`
+    /// Initializes a HExtendedString with an ExtString.
+    pub unsafe fn new_u16ptr(message: *const u16) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_u16ptr(message))
+        }
+    }
+
     /// **Source:** `TCollection_HExtendedString.hxx`:58 - `TCollection_HExtendedString::TCollection_HExtendedString()`
     /// Initializes a HExtendedString with a single character.
     pub fn new_u16(aChar: u16) -> crate::OwnedPtr<Self> {
@@ -2892,6 +2952,42 @@ impl HExtendedString {
         }
     }
 
+    /// **Source:** `TCollection_HExtendedString.hxx`:168 - `TCollection_HExtendedString::ToExtString()`
+    /// Returns pointer to ExtString
+    pub unsafe fn to_ext_string(&self) -> *const u16 {
+        unsafe { crate::ffi::TCollection_HExtendedString_to_ext_string(self as *const Self) }
+    }
+
+    /// **Source:** `TCollection_HExtendedString.hxx`:185 - `TCollection_HExtendedString::Token()`
+    /// Extracts <whichone> token from <me>.
+    /// By default, the <separators> is set to space and tabulation.
+    /// By default, the token extracted is the first one (whichone = 1).
+    /// <separators> contains all separators you need.
+    /// If no token indexed by <whichone> is found, it returns an empty String.
+    /// Example:
+    /// aString contains "This is a     message"
+    /// aString.Token()  returns "This"
+    /// aString.Token(" ",4) returns "message"
+    /// aString.Token(" ",2) returns "is"
+    /// aString.Token(" ",9) returns ""
+    /// Other separators than space character and tabulation are allowed
+    /// aString contains "1234; test:message   , value"
+    /// aString.Token("; :,",4) returns "value"
+    /// aString.Token("; :,",2) returns "test"
+    pub unsafe fn token(
+        &self,
+        separators: *const u16,
+        whichone: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_token(
+                self as *const Self,
+                separators,
+                whichone,
+            ))
+        }
+    }
+
     /// **Source:** `TCollection_HExtendedString.hxx`:191 - `TCollection_HExtendedString::Trunc()`
     /// Truncates <me> to <ahowmany> characters.
     /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
@@ -3062,26 +3158,9 @@ impl HandleTCollectionHExtendedString {
     }
 }
 
-// ── Skipped symbols for HExtendedString (4 total) ──
-// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:55 - `TCollection_HExtendedString::TCollection_HExtendedString`
-//   constructor: Initializes a HExtendedString with an ExtString.
-//   Reason: has unbindable types: param 'message': raw pointer (const uint16_t*)
-//   // pub fn new_u16ptr(message: /* const uint16_t* */) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for HExtendedString (1 total) ──
 // SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:69 - `TCollection_HExtendedString::TCollection_HExtendedString`
 //   constructor: Initializes a HExtendedString with a ExtendedString.
 //   Reason: has unbindable types: param 'theString': rvalue reference (TCollection_ExtendedString&&)
 //   // pub fn new_extendedstring(theString: /* TCollection_ExtendedString&& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:168 - `TCollection_HExtendedString::ToExtString`
-//   method: Returns pointer to ExtString
-//   Reason: has unbindable types: return: raw pointer (const uint16_t*)
-//   // pub fn to_ext_string(&self) -> /* const uint16_t* */;
-//
-// SKIPPED: **Source:** `TCollection_HExtendedString.hxx`:185 - `TCollection_HExtendedString::Token`
-//   method: Extracts <whichone> token from <me>.
-//   method: By default, the <separators> is set to space and tabulation.
-//   method: By default, the token extracted is the first one (whichone = 1).
-//   Reason: has unbindable types: param 'separators': raw pointer (const uint16_t*)
-//   // pub fn token(&self, separators: /* const uint16_t* */, whichone: i32) -> OwnedPtr<Handle<TCollection_HExtendedString>>;
 //

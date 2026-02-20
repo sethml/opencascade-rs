@@ -771,7 +771,7 @@ impl HandleOSDCachedFileSystem {
 // SKIPPED: **Source:** `OSD_CachedFileSystem.hxx`:69 - `OSD_CachedFileSystem::OpenStreamBuffer`
 //   method: Opens stream buffer for specified file URL.
 //   Reason: has unbindable types: return: unresolved template type (std::shared_ptr<std::streambuf>)
-//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: /* long long* */) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
+//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: *mut i64) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
 //
 
 // ========================
@@ -5481,14 +5481,14 @@ impl File {
 //   method: Attempts to read Nbyte bytes from the files associated with
 //   method: the object File.
 //   method: Upon successful completion, Read returns the number of
-//   Reason: has unbindable types: param 'Buffer': void pointer (Standard_Address)
-//   // pub fn read(&mut self, Buffer: /* Standard_Address */, Nbyte: i32, Readbyte: &mut i32);
+//   Reason: param 'Buffer' uses unknown type 'Standard_Address'
+//   // pub fn read(&mut self, Buffer: Address, Nbyte: i32, Readbyte: &mut i32);
 //
 // SKIPPED: **Source:** `OSD_File.hxx`:117 - `OSD_File::Write`
 //   method: Attempts to write theNbBytes bytes from the buffer pointed
 //   method: to by theBuffer to the file associated to the object File.
-//   Reason: has unbindable types: param 'theBuffer': void pointer (Standard_Address)
-//   // pub fn write(&mut self, theBuffer: /* Standard_Address */, theNbBytes: i32);
+//   Reason: param 'theBuffer' uses unknown type 'Standard_Address'
+//   // pub fn write(&mut self, theBuffer: Address, theNbBytes: i32);
 //
 
 // ========================
@@ -5931,7 +5931,7 @@ impl HandleOSDFileSystem {
 //   method: @param[in] theUrl          path to open
 //   method: @param[in] theMode         flags describing the requested input mode for the stream
 //   Reason: has unbindable types: return: unresolved template type (std::shared_ptr<std::streambuf>)
-//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: /* long long* */) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
+//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: *mut i64) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
 //
 
 // ========================
@@ -6154,7 +6154,7 @@ impl HandleOSDFileSystemSelector {
 // SKIPPED: **Source:** `OSD_FileSystemSelector.hxx`:66 - `OSD_FileSystemSelector::OpenStreamBuffer`
 //   method: Opens stream buffer using one of registered protocols.
 //   Reason: has unbindable types: return: unresolved template type (std::shared_ptr<std::streambuf>)
-//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: /* long long* */) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
+//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: *mut i64) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
 //
 
 // ========================
@@ -6425,7 +6425,7 @@ impl HandleOSDLocalFileSystem {
 // SKIPPED: **Source:** `OSD_LocalFileSystem.hxx`:40 - `OSD_LocalFileSystem::OpenStreamBuffer`
 //   method: Opens stream buffer for specified file URL.
 //   Reason: has unbindable types: return: unresolved template type (std::shared_ptr<std::streambuf>)
-//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: /* long long* */) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
+//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: ios_base_openmode, theOffset: i64, theOutBufSize: *mut i64) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
 //
 
 // ========================
@@ -6463,24 +6463,46 @@ impl MAllocHook {
     pub fn set_callback(theCB: &mut MAllocHook_Callback) {
         unsafe { crate::ffi::OSD_MAllocHook_set_callback(theCB as *mut _) }
     }
-}
 
-// ── Skipped symbols for MAllocHook (3 total) ──
-// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:161 - `OSD_MAllocHook::GetCallback`
-//   static_method: Get current handler of allocation/deallocation events
-//   Reason: has unbindable types: return: raw pointer (OSD_MAllocHook::Callback*)
-//   // pub fn get_callback() -> /* OSD_MAllocHook::Callback* */;
-//
-// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:164 - `OSD_MAllocHook::GetLogFileHandler`
-//   static_method: Get static instance of LogFileHandler handler
-//   Reason: has unbindable types: return: raw pointer (OSD_MAllocHook::LogFileHandler*)
-//   // pub fn get_log_file_handler() -> /* OSD_MAllocHook::LogFileHandler* */;
-//
-// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:167 - `OSD_MAllocHook::GetCollectBySize`
-//   static_method: Get static instance of CollectBySize handler
-//   Reason: has unbindable types: return: raw pointer (OSD_MAllocHook::CollectBySize*)
-//   // pub fn get_collect_by_size() -> /* OSD_MAllocHook::CollectBySize* */;
-//
+    /// **Source:** `OSD_MAllocHook.hxx`:161 - `OSD_MAllocHook::GetCallback()`
+    /// Get current handler of allocation/deallocation events
+    pub unsafe fn get_callback() -> Option<&'static mut MAllocHook_Callback> {
+        {
+            let ptr = unsafe { crate::ffi::OSD_MAllocHook_get_callback() };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// **Source:** `OSD_MAllocHook.hxx`:164 - `OSD_MAllocHook::GetLogFileHandler()`
+    /// Get static instance of LogFileHandler handler
+    pub unsafe fn get_log_file_handler() -> Option<&'static mut MAllocHook_LogFileHandler> {
+        {
+            let ptr = unsafe { crate::ffi::OSD_MAllocHook_get_log_file_handler() };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// **Source:** `OSD_MAllocHook.hxx`:167 - `OSD_MAllocHook::GetCollectBySize()`
+    /// Get static instance of CollectBySize handler
+    pub unsafe fn get_collect_by_size() -> Option<&'static mut MAllocHook_CollectBySize> {
+        {
+            let ptr = unsafe { crate::ffi::OSD_MAllocHook_get_collect_by_size() };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+}
 
 /// **Source:** `OSD_MAllocHook.hxx`:34 - `OSD_MAllocHook_Callback`
 ///
@@ -6518,7 +6540,7 @@ impl MAllocHook_Callback {
 //   method: Freeing event handler
 //   method: It is called when the block is freed
 //   Reason: param 'theData' uses unknown type 'void*'
-//   // pub fn free_event(&mut self, theData: /* void* */, theSize: usize, theRequestNum: std::ffi::c_long);
+//   // pub fn free_event(&mut self, theData: *mut void, theSize: usize, theRequestNum: std::ffi::c_long);
 //
 
 /// **Source:** `OSD_MAllocHook.hxx`:65 - `OSD_MAllocHook_LogFileHandler`
@@ -6590,7 +6612,7 @@ impl MAllocHook_LogFileHandler {
 // ── Skipped symbols for MAllocHook_LogFileHandler (1 total) ──
 // SKIPPED: **Source:** `OSD_MAllocHook.hxx`:94 - `OSD_MAllocHook::LogFileHandler::FreeEvent`
 //   Reason: param 'arg0' uses unknown type 'void*'
-//   // pub fn free_event(&mut self, arg0: /* void* */, arg1: usize, arg2: std::ffi::c_long);
+//   // pub fn free_event(&mut self, arg0: *mut void, arg1: usize, arg2: std::ffi::c_long);
 //
 
 /// **Source:** `OSD_MAllocHook.hxx`:106 - `OSD_MAllocHook_CollectBySize`
@@ -6641,7 +6663,7 @@ impl MAllocHook_CollectBySize {
 // ── Skipped symbols for MAllocHook_CollectBySize (1 total) ──
 // SKIPPED: **Source:** `OSD_MAllocHook.hxx`:122 - `OSD_MAllocHook::CollectBySize::FreeEvent`
 //   Reason: param 'arg0' uses unknown type 'void*'
-//   // pub fn free_event(&mut self, arg0: /* void* */, arg1: usize, arg2: std::ffi::c_long);
+//   // pub fn free_event(&mut self, arg0: *mut void, arg1: usize, arg2: std::ffi::c_long);
 //
 
 /// **Source:** `OSD_MAllocHook.hxx`:125 - `OSD_MAllocHook_CollectBySize_Numbers`
@@ -10352,21 +10374,21 @@ impl Thread {
 //   method: Starts a thread with thread function given in constructor,
 //   method: passing the specified input data (as void *) to it.
 //   method: The parameter \a WNTStackSize (on Windows only)
-//   Reason: has unbindable types: param 'data': void pointer (Standard_Address)
-//   // pub fn run(&mut self, data: /* Standard_Address */, WNTStackSize: i32) -> bool;
+//   Reason: param 'data' uses unknown type 'Standard_Address'
+//   // pub fn run(&mut self, data: Address, WNTStackSize: i32) -> bool;
 //
 // SKIPPED: **Source:** `OSD_Thread.hxx`:98 - `OSD_Thread::Wait`
 //   method: Wait till the thread finishes execution.
 //   method: Returns True if wait was successful, False in case of error.
-//   Reason: has unbindable types: param 'theResult': void pointer (Standard_Address&)
-//   // pub fn wait(&mut self, theResult: /* Standard_Address& */) -> bool;
+//   Reason: param 'theResult' uses unknown type 'Standard_Address&'
+//   // pub fn wait(&mut self, theResult: &mut Address) -> bool;
 //
 // SKIPPED: **Source:** `OSD_Thread.hxx`:103 - `OSD_Thread::Wait`
 //   method: Waits for some time and if the thread is finished,
 //   method: it returns the result.
 //   method: The function returns false if the thread is not finished yet.
-//   Reason: has unbindable types: param 'theResult': void pointer (Standard_Address&)
-//   // pub fn wait(&mut self, time: i32, theResult: /* Standard_Address& */) -> bool;
+//   Reason: param 'theResult' uses unknown type 'Standard_Address&'
+//   // pub fn wait(&mut self, time: i32, theResult: &mut Address) -> bool;
 //
 // SKIPPED: **Source:** `OSD_Thread.hxx`:107 - `OSD_Thread::GetId`
 //   method: Returns ID of the currently controlled thread ID,

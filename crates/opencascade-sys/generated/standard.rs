@@ -1358,8 +1358,8 @@ impl ArrayStreamBuffer {
 // ── Skipped symbols for ArrayStreamBuffer (1 total) ──
 // SKIPPED: **Source:** `Standard_ArrayStreamBuffer.hxx`:99 - `Standard_ArrayStreamBuffer::xsgetn`
 //   method: Read a bunch of bytes at once.
-//   Reason: has unbindable types: param 'thePtr': raw pointer (char*)
-//   // pub fn xsgetn(&mut self, thePtr: /* char* */, theCount: streamsize) -> OwnedPtr<std::streamsize>;
+//   Reason: param 'theCount' uses unknown type 'std::streamsize'
+//   // pub fn xsgetn(&mut self, thePtr: *mut char, theCount: streamsize) -> OwnedPtr<std::streamsize>;
 //
 
 // ========================
@@ -3717,7 +3717,7 @@ impl Dump {
 //   static_method: string.
 //   static_method: @param thePointer a pointer
 //   Reason: param 'thePointer' uses unknown type 'const void*'
-//   // pub fn get_pointer_info(thePointer: /* const void* */, isShortInfo: bool) -> OwnedPtr<TCollection_AsciiString>;
+//   // pub fn get_pointer_info(thePointer: *const void, isShortInfo: bool) -> OwnedPtr<TCollection_AsciiString>;
 //
 
 // ========================
@@ -5641,6 +5641,15 @@ impl GUID {
         }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:49 - `Standard_GUID::Standard_GUID()`
+    /// build a GUID from an unicode string with the
+    /// following format:
+    ///
+    /// "00000000-0000-0000-0000-000000000000"
+    pub unsafe fn new_u16ptr(aGuid: *const u16) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_u16ptr(aGuid)) }
+    }
+
     /// **Source:** `Standard_GUID.hxx`:62 - `Standard_GUID::Standard_GUID()`
     pub fn new_uuid(aGuid: &UUID) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_uuid(aGuid)) }
@@ -5695,13 +5704,7 @@ impl GUID {
     }
 }
 
-// ── Skipped symbols for GUID (4 total) ──
-// SKIPPED: **Source:** `Standard_GUID.hxx`:49 - `Standard_GUID::Standard_GUID`
-//   constructor: build a GUID from an unicode string with the
-//   constructor: following format:
-//   Reason: has unbindable types: param 'aGuid': raw pointer (const uint16_t*)
-//   // pub fn new_u16ptr(aGuid: /* const uint16_t* */) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for GUID (3 total) ──
 // SKIPPED: **Source:** `Standard_GUID.hxx`:51 - `Standard_GUID::Standard_GUID`
 //   Reason: param 'a8b1' uses unknown type 'Standard_Byte'
 //   // pub fn new_int_u163_byte6(a32b: i32, a16b1: u16, a16b2: u16, a16b3: u16, a8b1: Byte, a8b2: Byte, a8b3: Byte, a8b4: Byte, a8b5: Byte, a8b6: Byte) -> OwnedPtr<Self>;
@@ -6674,21 +6677,21 @@ impl MMgrOpt {
 // ── Skipped symbols for MMgrOpt (3 total) ──
 // SKIPPED: **Source:** `Standard_MMgrOpt.hxx`:78 - `Standard_MMgrOpt::Allocate`
 //   method: Allocate aSize bytes; see class description above
-//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   Reason: return type 'Standard_Address' is unknown
 //   // pub fn allocate(&mut self, aSize: usize) -> OwnedPtr<Standard_Address>;
 //
 // SKIPPED: **Source:** `Standard_MMgrOpt.hxx`:82 - `Standard_MMgrOpt::Reallocate`
 //   method: Reallocate previously allocated aPtr to a new size; new address is returned.
 //   method: In case that aPtr is null, the function behaves exactly as Allocate.
-//   Reason: has unbindable types: param 'thePtr': void pointer (Standard_Address); return: void pointer (Standard_Address)
-//   // pub fn reallocate(&mut self, thePtr: /* Standard_Address */, theSize: usize) -> OwnedPtr<Standard_Address>;
+//   Reason: param 'thePtr' uses unknown type 'Standard_Address'
+//   // pub fn reallocate(&mut self, thePtr: Address, theSize: usize) -> OwnedPtr<Standard_Address>;
 //
 // SKIPPED: **Source:** `Standard_MMgrOpt.hxx`:88 - `Standard_MMgrOpt::Free`
 //   method: Free previously allocated block.
 //   method: Note that block can not all blocks are released to the OS by this
 //   method: method (see class description)
-//   Reason: has unbindable types: param 'thePtr': void pointer (Standard_Address)
-//   // pub fn free(&mut self, thePtr: /* Standard_Address */);
+//   Reason: param 'thePtr' uses unknown type 'Standard_Address'
+//   // pub fn free(&mut self, thePtr: Address);
 //
 
 // ========================
@@ -6733,19 +6736,19 @@ impl MMgrRoot {
 //   method: Allocate specified number of bytes.
 //   method: The actually allocated space should be rounded up to
 //   method: double word size (4 bytes), as this is expected by implementation
-//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   Reason: return type 'Standard_Address' is unknown
 //   // pub fn allocate(&mut self, theSize: usize) -> OwnedPtr<Standard_Address>;
 //
 // SKIPPED: **Source:** `Standard_MMgrRoot.hxx`:40 - `Standard_MMgrRoot::Reallocate`
 //   method: Reallocate previously allocated memory to contain at least theSize bytes.
 //   method: In case of success, new pointer is returned.
-//   Reason: has unbindable types: param 'thePtr': void pointer (Standard_Address); return: void pointer (Standard_Address)
-//   // pub fn reallocate(&mut self, thePtr: /* Standard_Address */, theSize: usize) -> OwnedPtr<Standard_Address>;
+//   Reason: param 'thePtr' uses unknown type 'Standard_Address'
+//   // pub fn reallocate(&mut self, thePtr: Address, theSize: usize) -> OwnedPtr<Standard_Address>;
 //
 // SKIPPED: **Source:** `Standard_MMgrRoot.hxx`:44 - `Standard_MMgrRoot::Free`
 //   method: Frees previously allocated memory at specified address.
-//   Reason: has unbindable types: param 'thePtr': void pointer (Standard_Address)
-//   // pub fn free(&mut self, thePtr: /* Standard_Address */);
+//   Reason: param 'thePtr' uses unknown type 'Standard_Address'
+//   // pub fn free(&mut self, thePtr: Address);
 //
 
 // ========================
@@ -49678,8 +49681,8 @@ impl HandleStandardType {
 // SKIPPED: **Source:** `Standard_Type.hxx`:165 - `Standard_Type::Register`
 //   static_method: Register a type; returns either new or existing descriptor.
 //   static_method: @param theInfo object stores system name of the class
-//   Reason: has unbindable types: return: raw pointer (Standard_Type*)
-//   // pub fn register(theInfo: &type_info, theName: *const char, theSize: usize, theParent: &HandleType) -> /* Standard_Type* */;
+//   Reason: param 'theInfo' uses unknown type 'const std::type_info&'
+//   // pub fn register(theInfo: &type_info, theName: *const char, theSize: usize, theParent: &HandleType) -> *mut Type;
 //
 
 // ========================
@@ -50221,10 +50224,10 @@ impl HandleStandardUnderflow {
 // ========================
 
 pub use crate::ffi::{
-    Standard_Byte as Byte, Standard_IStream as IStream, Standard_JmpBuf as JmpBuf,
-    Standard_OStream as OStream, Standard_PCharacter as PCharacter,
+    Standard_Address as Address, Standard_Byte as Byte, Standard_IStream as IStream,
+    Standard_JmpBuf as JmpBuf, Standard_OStream as OStream, Standard_PCharacter as PCharacter,
     Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream,
-    Standard_ThreadId as ThreadId, Standard_Utf16Char as Utf16Char,
+    Standard_ThreadId as ThreadId, Standard_Utf16Char as Utf16Char, Standard_WideChar as WideChar,
 };
 
 // Manual bindings:
@@ -50233,4 +50236,7 @@ pub use crate::ffi::{
 // These provide access to C++ standard output/error streams, which can be
 // passed to OCCT methods that take Standard_OStream& parameters (e.g., Dump,
 // DumpJson, Print).
+//
+// This file is include!()'d into the generated standard.rs module, which
+// already provides OStream/IStream type aliases via its re-exports section.
 include!("../manual/standard.rs");

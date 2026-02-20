@@ -6334,7 +6334,7 @@ impl ProgressScope {
 //   constructor: scale described by theRange. The new scope has own range from 0 to
 //   constructor: theMax, which is mapped to the given range.
 //   Reason: class pointer param 'theName' inner type 'const Message_ProgressScope::NullString*' is unknown
-//   // pub fn new_progressrange_nullstringptr_real_bool(theRange: &ProgressRange, theName: /* const Message_ProgressScope::NullString* */, theMax: f64, isInfinite: bool) -> OwnedPtr<Self>;
+//   // pub fn new_progressrange_nullstringptr_real_bool(theRange: &ProgressRange, theName: *const ProgressScope_NullString, theMax: f64, isInfinite: bool) -> OwnedPtr<Self>;
 //
 
 // ========================

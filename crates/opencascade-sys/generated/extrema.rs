@@ -271,14 +271,14 @@ impl CCLocFOfLocECC {
 // SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:87 - `Extrema_CCLocFOfLocECC::CurvePtr`
 //   method: Returns a pointer to the curve specified in the constructor
 //   method: or in SetCurve() method.
-//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   Reason: return type 'Standard_Address' is unknown
 //   // pub fn curve_ptr(&self, theRank: i32) -> OwnedPtr<Standard_Address>;
 //
 // SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:99 - `Extrema_CCLocFOfLocECC::SearchOfTolerance`
 //   method: Computes a Tol value. If 1st derivative of curve
 //   method: |D1|<Tol, it is considered D1=0.
-//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
-//   // pub fn search_of_tolerance(&mut self, C: /* Standard_Address */) -> f64;
+//   Reason: param 'C' uses unknown type 'Standard_Address'
+//   // pub fn search_of_tolerance(&mut self, C: Address) -> f64;
 //
 
 // ========================
@@ -459,14 +459,14 @@ impl CCLocFOfLocECC2d {
 // SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:87 - `Extrema_CCLocFOfLocECC2d::CurvePtr`
 //   method: Returns a pointer to the curve specified in the constructor
 //   method: or in SetCurve() method.
-//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   Reason: return type 'Standard_Address' is unknown
 //   // pub fn curve_ptr(&self, theRank: i32) -> OwnedPtr<Standard_Address>;
 //
 // SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:99 - `Extrema_CCLocFOfLocECC2d::SearchOfTolerance`
 //   method: Computes a Tol value. If 1st derivative of curve
 //   method: |D1|<Tol, it is considered D1=0.
-//   Reason: has unbindable types: param 'C': void pointer (Standard_Address)
-//   // pub fn search_of_tolerance(&mut self, C: /* Standard_Address */) -> f64;
+//   Reason: param 'C' uses unknown type 'Standard_Address'
+//   // pub fn search_of_tolerance(&mut self, C: Address) -> f64;
 //
 
 // ========================

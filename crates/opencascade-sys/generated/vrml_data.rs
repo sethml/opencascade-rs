@@ -717,7 +717,7 @@ impl HandleVrmlDataArrayVec3d {
 // SKIPPED: **Source:** `VrmlData_ArrayVec3d.hxx`:43 - `VrmlData_ArrayVec3d::VrmlData_ArrayVec3d`
 //   constructor: Constructor
 //   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_scene_charptr_size_xyzptr(theScene: &Scene, theName: *const char, nVec: usize, arrVec: /* const gp_XYZ* */) -> OwnedPtr<Self>;
+//   // pub fn new_scene_charptr_size_xyzptr(theScene: &Scene, theName: *const char, nVec: usize, arrVec: *const XYZ) -> OwnedPtr<Self>;
 //
 
 // ========================
@@ -3928,11 +3928,73 @@ impl IndexedFaceSet {
         unsafe { &*(crate::ffi::VrmlData_IndexedFaceSet_coordinates(self as *const Self)) }
     }
 
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:100 - `VrmlData_IndexedFaceSet::Polygons()`
+    ///
+    /// Query the array of polygons
+    pub unsafe fn polygons(&self, arrPolygons: &mut *mut *const i32) -> usize {
+        unsafe { crate::ffi::VrmlData_IndexedFaceSet_polygons(self as *const Self, arrPolygons) }
+    }
+
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:115 - `VrmlData_IndexedFaceSet::Polygon()`
+    ///
+    /// Query one polygon.
+    /// @param iFace
+    /// rank of the polygon [0 .. N-1]
+    /// @param outIndice
+    /// <tt>[out]</tt> array of vertex indice
+    /// @return
+    /// number of vertice in the polygon - the dimension of outIndice array
+    pub unsafe fn polygon(&mut self, iFace: i32, outIndice: &mut *const i32) -> i32 {
+        unsafe { crate::ffi::VrmlData_IndexedFaceSet_polygon(self as *mut Self, iFace, outIndice) }
+    }
+
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:123 - `VrmlData_IndexedFaceSet::SetCoordinates()`
     ///
     /// Set the nodes
     pub fn set_coordinates(&mut self, theCoord: &crate::ffi::HandleVrmlDataCoordinate) {
         unsafe { crate::ffi::VrmlData_IndexedFaceSet_set_coordinates(self as *mut Self, theCoord) }
+    }
+
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:128 - `VrmlData_IndexedFaceSet::SetPolygons()`
+    ///
+    /// Set the polygons
+    pub unsafe fn set_polygons(&mut self, nPolygons: usize, thePolygons: *mut *const i32) {
+        unsafe {
+            crate::ffi::VrmlData_IndexedFaceSet_set_polygons(
+                self as *mut Self,
+                nPolygons,
+                thePolygons,
+            )
+        }
+    }
+
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:144 - `VrmlData_IndexedFaceSet::ArrayNormalInd()`
+    ///
+    /// Query the array of normal indice
+    /// @param arrNormalInd
+    /// <tt>[out]</tt> array of normalIndex as it is described in VRML2.0 spec
+    /// @return
+    /// Number of integers in the array arrNormalInd.
+    pub unsafe fn array_normal_ind(&self, arrNormalInd: &mut *mut *const i32) -> usize {
+        unsafe {
+            crate::ffi::VrmlData_IndexedFaceSet_array_normal_ind(self as *const Self, arrNormalInd)
+        }
+    }
+
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:160 - `VrmlData_IndexedFaceSet::IndiceNormals()`
+    ///
+    /// Query normals indice for one face. This method should be called after
+    /// checking myArrNormalInd != NULL, otherwise exception will be thrown.
+    /// @param iFace
+    /// rank of the face [0 .. N-1]
+    /// @param outIndice
+    /// <tt>[out]</tt> array of normals indice
+    /// @return
+    /// number of indice in the array - the dimension of outIndice array
+    pub unsafe fn indice_normals(&mut self, iFace: i32, outIndice: &mut *const i32) -> i32 {
+        unsafe {
+            crate::ffi::VrmlData_IndexedFaceSet_indice_normals(self as *mut Self, iFace, outIndice)
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:178 - `VrmlData_IndexedFaceSet::GetNormal()`
@@ -3957,6 +4019,19 @@ impl IndexedFaceSet {
         }
     }
 
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:183 - `VrmlData_IndexedFaceSet::SetNormalInd()`
+    ///
+    /// Set the normals array of indice
+    pub unsafe fn set_normal_ind(&mut self, nIndice: usize, theIndice: *mut *const i32) {
+        unsafe {
+            crate::ffi::VrmlData_IndexedFaceSet_set_normal_ind(
+                self as *mut Self,
+                nIndice,
+                theIndice,
+            )
+        }
+    }
+
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:192 - `VrmlData_IndexedFaceSet::SetNormals()`
     ///
     /// Set the normals node
@@ -3973,6 +4048,19 @@ impl IndexedFaceSet {
                 self as *mut Self,
                 isNormalPerVertex,
             )
+        }
+    }
+
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:212 - `VrmlData_IndexedFaceSet::ArrayColorInd()`
+    ///
+    /// Query the array of color indice
+    /// @param arrColorInd
+    /// <tt>[out]</tt> array of colorIndex as it is described in VRML2.0 spec
+    /// @return
+    /// Number of integers in the array arrColorInd.
+    pub unsafe fn array_color_ind(&self, arrColorInd: &mut *mut *const i32) -> usize {
+        unsafe {
+            crate::ffi::VrmlData_IndexedFaceSet_array_color_ind(self as *const Self, arrColorInd)
         }
     }
 
@@ -4002,6 +4090,15 @@ impl IndexedFaceSet {
         }
     }
 
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:236 - `VrmlData_IndexedFaceSet::SetColorInd()`
+    ///
+    /// Set the colors array of indice
+    pub unsafe fn set_color_ind(&mut self, nIndice: usize, theIndice: *mut *const i32) {
+        unsafe {
+            crate::ffi::VrmlData_IndexedFaceSet_set_color_ind(self as *mut Self, nIndice, theIndice)
+        }
+    }
+
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:245 - `VrmlData_IndexedFaceSet::SetColors()`
     ///
     /// Set the Color node
@@ -4017,6 +4114,38 @@ impl IndexedFaceSet {
             crate::ffi::VrmlData_IndexedFaceSet_set_color_per_vertex(
                 self as *mut Self,
                 isColorPerVertex,
+            )
+        }
+    }
+
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:265 - `VrmlData_IndexedFaceSet::ArrayTextureCoordInd()`
+    ///
+    /// Query the array of texture coordinate indice
+    /// @param arrTextureCoordInd
+    /// <tt>[out]</tt> array of texCoordIndex as it is described in VRML2.0 spec
+    /// @return
+    /// Number of integers in the array texCoordIndex.
+    pub unsafe fn array_texture_coord_ind(
+        &self,
+        arrTextureCoordInd: &mut *mut *const i32,
+    ) -> usize {
+        unsafe {
+            crate::ffi::VrmlData_IndexedFaceSet_array_texture_coord_ind(
+                self as *const Self,
+                arrTextureCoordInd,
+            )
+        }
+    }
+
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:274 - `VrmlData_IndexedFaceSet::SetTextureCoordInd()`
+    ///
+    /// Set the TexCoordiante array of indice
+    pub unsafe fn set_texture_coord_ind(&mut self, nIndice: usize, theIndice: *mut *const i32) {
+        unsafe {
+            crate::ffi::VrmlData_IndexedFaceSet_set_texture_coord_ind(
+                self as *mut Self,
+                nIndice,
+                theIndice,
             )
         }
     }
@@ -4363,63 +4492,6 @@ impl HandleVrmlDataIndexedFaceSet {
     }
 }
 
-// ── Skipped symbols for IndexedFaceSet (10 total) ──
-// SKIPPED: **Source:** `VrmlData_IndexedFaceSet.hxx`:100 - `VrmlData_IndexedFaceSet::Polygons`
-//   method: Query the array of polygons
-//   Reason: has unbindable types: param 'arrPolygons': raw pointer (const int**&)
-//   // pub fn polygons(&self, arrPolygons: /* const int**& */) -> usize;
-//
-// SKIPPED: **Source:** `VrmlData_IndexedFaceSet.hxx`:115 - `VrmlData_IndexedFaceSet::Polygon`
-//   method: Query one polygon.
-//   method: @param iFace
-//   Reason: has unbindable types: param 'outIndice': raw pointer (const int*&)
-//   // pub fn polygon(&mut self, iFace: i32, outIndice: /* const int*& */) -> i32;
-//
-// SKIPPED: **Source:** `VrmlData_IndexedFaceSet.hxx`:128 - `VrmlData_IndexedFaceSet::SetPolygons`
-//   method: Set the polygons
-//   Reason: has unbindable types: param 'thePolygons': raw pointer (const int**)
-//   // pub fn set_polygons(&mut self, nPolygons: usize, thePolygons: /* const int** */);
-//
-// SKIPPED: **Source:** `VrmlData_IndexedFaceSet.hxx`:144 - `VrmlData_IndexedFaceSet::ArrayNormalInd`
-//   method: Query the array of normal indice
-//   method: @param arrNormalInd
-//   Reason: has unbindable types: param 'arrNormalInd': raw pointer (const int**&)
-//   // pub fn array_normal_ind(&self, arrNormalInd: /* const int**& */) -> usize;
-//
-// SKIPPED: **Source:** `VrmlData_IndexedFaceSet.hxx`:160 - `VrmlData_IndexedFaceSet::IndiceNormals`
-//   method: Query normals indice for one face. This method should be called after
-//   method: checking myArrNormalInd != NULL, otherwise exception will be thrown.
-//   Reason: has unbindable types: param 'outIndice': raw pointer (const int*&)
-//   // pub fn indice_normals(&mut self, iFace: i32, outIndice: /* const int*& */) -> i32;
-//
-// SKIPPED: **Source:** `VrmlData_IndexedFaceSet.hxx`:183 - `VrmlData_IndexedFaceSet::SetNormalInd`
-//   method: Set the normals array of indice
-//   Reason: has unbindable types: param 'theIndice': raw pointer (const int**)
-//   // pub fn set_normal_ind(&mut self, nIndice: usize, theIndice: /* const int** */);
-//
-// SKIPPED: **Source:** `VrmlData_IndexedFaceSet.hxx`:212 - `VrmlData_IndexedFaceSet::ArrayColorInd`
-//   method: Query the array of color indice
-//   method: @param arrColorInd
-//   Reason: has unbindable types: param 'arrColorInd': raw pointer (const int**&)
-//   // pub fn array_color_ind(&self, arrColorInd: /* const int**& */) -> usize;
-//
-// SKIPPED: **Source:** `VrmlData_IndexedFaceSet.hxx`:236 - `VrmlData_IndexedFaceSet::SetColorInd`
-//   method: Set the colors array of indice
-//   Reason: has unbindable types: param 'theIndice': raw pointer (const int**)
-//   // pub fn set_color_ind(&mut self, nIndice: usize, theIndice: /* const int** */);
-//
-// SKIPPED: **Source:** `VrmlData_IndexedFaceSet.hxx`:265 - `VrmlData_IndexedFaceSet::ArrayTextureCoordInd`
-//   method: Query the array of texture coordinate indice
-//   method: @param arrTextureCoordInd
-//   Reason: has unbindable types: param 'arrTextureCoordInd': raw pointer (const int**&)
-//   // pub fn array_texture_coord_ind(&self, arrTextureCoordInd: /* const int**& */) -> usize;
-//
-// SKIPPED: **Source:** `VrmlData_IndexedFaceSet.hxx`:274 - `VrmlData_IndexedFaceSet::SetTextureCoordInd`
-//   method: Set the TexCoordiante array of indice
-//   Reason: has unbindable types: param 'theIndice': raw pointer (const int**)
-//   // pub fn set_texture_coord_ind(&mut self, nIndice: usize, theIndice: /* const int** */);
-//
-
 // ========================
 // From VrmlData_IndexedLineSet.hxx
 // ========================
@@ -4496,6 +4568,54 @@ impl IndexedLineSet {
         unsafe { crate::ffi::VrmlData_IndexedLineSet_set_colors(self as *mut Self, theColors) }
     }
 
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:86 - `VrmlData_IndexedLineSet::Polygons()`
+    ///
+    /// Query the array of polygons
+    pub unsafe fn polygons(&self, arrPolygons: &mut *mut *const i32) -> usize {
+        unsafe { crate::ffi::VrmlData_IndexedLineSet_polygons(self as *const Self, arrPolygons) }
+    }
+
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:101 - `VrmlData_IndexedLineSet::Polygon()`
+    ///
+    /// Query one polygon.
+    /// @param iPolygon
+    /// rank of the polygon [0 .. N-1]
+    /// @param outIndice
+    /// <tt>[out]</tt> array of vertex indice
+    /// @return
+    /// number of vertice in the polygon - the dimension of outIndice array
+    pub unsafe fn polygon(&mut self, iPolygon: i32, outIndice: &mut *const i32) -> i32 {
+        unsafe {
+            crate::ffi::VrmlData_IndexedLineSet_polygon(self as *mut Self, iPolygon, outIndice)
+        }
+    }
+
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:110 - `VrmlData_IndexedLineSet::SetPolygons()`
+    ///
+    /// Set the polygons
+    pub unsafe fn set_polygons(&mut self, nPolygons: usize, thePolygons: *mut *const i32) {
+        unsafe {
+            crate::ffi::VrmlData_IndexedLineSet_set_polygons(
+                self as *mut Self,
+                nPolygons,
+                thePolygons,
+            )
+        }
+    }
+
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:125 - `VrmlData_IndexedLineSet::ArrayColorInd()`
+    ///
+    /// Query the array of color indice
+    /// @param arrColorInd
+    /// <tt>[out]</tt> array of colorIndex as it is described in VRML2.0 spec
+    /// @return
+    /// Number of integers in the array arrColorInd.
+    pub unsafe fn array_color_ind(&self, arrColorInd: &mut *mut *const i32) -> usize {
+        unsafe {
+            crate::ffi::VrmlData_IndexedLineSet_array_color_ind(self as *const Self, arrColorInd)
+        }
+    }
+
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:143 - `VrmlData_IndexedLineSet::GetColor()`
     ///
     /// Query a color for one node in the given element. The color is
@@ -4519,6 +4639,15 @@ impl IndexedLineSet {
                 iFace,
                 iVertex,
             ))
+        }
+    }
+
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:149 - `VrmlData_IndexedLineSet::SetColorInd()`
+    ///
+    /// Set the colors array of indice
+    pub unsafe fn set_color_ind(&mut self, nIndice: usize, theIndice: *mut *const i32) {
+        unsafe {
+            crate::ffi::VrmlData_IndexedLineSet_set_color_ind(self as *mut Self, nIndice, theIndice)
         }
     }
 
@@ -4796,35 +4925,6 @@ impl HandleVrmlDataIndexedLineSet {
         }
     }
 }
-
-// ── Skipped symbols for IndexedLineSet (5 total) ──
-// SKIPPED: **Source:** `VrmlData_IndexedLineSet.hxx`:86 - `VrmlData_IndexedLineSet::Polygons`
-//   method: Query the array of polygons
-//   Reason: has unbindable types: param 'arrPolygons': raw pointer (const int**&)
-//   // pub fn polygons(&self, arrPolygons: /* const int**& */) -> usize;
-//
-// SKIPPED: **Source:** `VrmlData_IndexedLineSet.hxx`:101 - `VrmlData_IndexedLineSet::Polygon`
-//   method: Query one polygon.
-//   method: @param iPolygon
-//   Reason: has unbindable types: param 'outIndice': raw pointer (const int*&)
-//   // pub fn polygon(&mut self, iPolygon: i32, outIndice: /* const int*& */) -> i32;
-//
-// SKIPPED: **Source:** `VrmlData_IndexedLineSet.hxx`:110 - `VrmlData_IndexedLineSet::SetPolygons`
-//   method: Set the polygons
-//   Reason: has unbindable types: param 'thePolygons': raw pointer (const int**)
-//   // pub fn set_polygons(&mut self, nPolygons: usize, thePolygons: /* const int** */);
-//
-// SKIPPED: **Source:** `VrmlData_IndexedLineSet.hxx`:125 - `VrmlData_IndexedLineSet::ArrayColorInd`
-//   method: Query the array of color indice
-//   method: @param arrColorInd
-//   Reason: has unbindable types: param 'arrColorInd': raw pointer (const int**&)
-//   // pub fn array_color_ind(&self, arrColorInd: /* const int**& */) -> usize;
-//
-// SKIPPED: **Source:** `VrmlData_IndexedLineSet.hxx`:149 - `VrmlData_IndexedLineSet::SetColorInd`
-//   method: Set the colors array of indice
-//   Reason: has unbindable types: param 'theIndice': raw pointer (const int**)
-//   // pub fn set_color_ind(&mut self, nIndice: usize, theIndice: /* const int** */);
-//
 
 // ========================
 // From VrmlData_Material.hxx
@@ -6448,6 +6548,26 @@ impl Scene {
         }
     }
 
+    /// **Source:** `VrmlData_Scene.hxx`:230 - `VrmlData_Scene::ReadArrIndex()`
+    ///
+    /// Read an array of integer indices, for IndexedfaceSet and IndexedLineSet.
+    pub unsafe fn read_arr_index(
+        &self,
+        theBuffer: &mut InBuffer,
+        theArr: &mut *mut *const i32,
+        theNBl: &mut usize,
+    ) -> crate::vrml_data::ErrorStatus {
+        unsafe {
+            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_read_arr_index(
+                self as *const Self,
+                theBuffer,
+                theArr,
+                theNBl,
+            ))
+            .unwrap()
+        }
+    }
+
     /// **Source:** `VrmlData_Scene.hxx`:237 - `VrmlData_Scene::GetLineError()`
     ///
     /// Query the line where the error occurred (if the status is not OK)
@@ -6486,6 +6606,27 @@ impl Scene {
                 theXYZ,
                 isScale,
                 c_thePostfix.as_ptr(),
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `VrmlData_Scene.hxx`:261 - `VrmlData_Scene::WriteArrIndex()`
+    ///
+    /// Write an array of integer indices, for IndexedFaceSet and IndexedLineSet.
+    pub unsafe fn write_arr_index(
+        &self,
+        thePrefix: &str,
+        theArr: *mut *const i32,
+        theNbBl: usize,
+    ) -> crate::vrml_data::ErrorStatus {
+        let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
+        unsafe {
+            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_write_arr_index(
+                self as *const Self,
+                c_thePrefix.as_ptr(),
+                theArr,
+                theNbBl,
             ))
             .unwrap()
         }
@@ -6588,21 +6729,11 @@ impl Scene {
     }
 }
 
-// ── Skipped symbols for Scene (3 total) ──
+// ── Skipped symbols for Scene (1 total) ──
 // SKIPPED: **Source:** `VrmlData_Scene.hxx`:98 - `VrmlData_Scene::NamedNodesIterator`
 //   method: Get the iterator of named nodes.
 //   Reason: return type 'VrmlData_MapOfNode::Iterator' is not CppDeletable
 //   // pub fn named_nodes_iterator(&self) -> OwnedPtr<VrmlData_MapOfNode::Iterator>;
-//
-// SKIPPED: **Source:** `VrmlData_Scene.hxx`:230 - `VrmlData_Scene::ReadArrIndex`
-//   method: Read an array of integer indices, for IndexedfaceSet and IndexedLineSet.
-//   Reason: has unbindable types: param 'theArr': raw pointer (const int**&)
-//   // pub fn read_arr_index(&self, theBuffer: &mut InBuffer, theArr: /* const int**& */, theNBl: &mut usize) -> OwnedPtr<VrmlData_ErrorStatus>;
-//
-// SKIPPED: **Source:** `VrmlData_Scene.hxx`:261 - `VrmlData_Scene::WriteArrIndex`
-//   method: Write an array of integer indices, for IndexedFaceSet and IndexedLineSet.
-//   Reason: has unbindable types: param 'theArr': raw pointer (const int**)
-//   // pub fn write_arr_index(&self, thePrefix: *const char, theArr: /* const int** */, theNbBl: usize) -> OwnedPtr<VrmlData_ErrorStatus>;
 //
 
 // ========================

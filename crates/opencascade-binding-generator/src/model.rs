@@ -57,6 +57,20 @@ impl ParsedFunction {
         }
         false
     }
+
+    /// Check if this function has any unsafe raw pointer types that require
+    /// the function to be marked `unsafe fn`.
+    pub fn has_unsafe_types(&self) -> bool {
+        if self.params.iter().any(|p| p.ty.needs_unsafe_fn() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none()) {
+            return true;
+        }
+        if let Some(ref ret) = self.return_type {
+            if ret.needs_unsafe_fn() {
+                return true;
+            }
+        }
+        false
+    }
 }
 
 /// A parsed C++ enum
@@ -216,6 +230,11 @@ impl Constructor {
     pub fn has_unbindable_types(&self) -> bool {
         self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none())
     }
+
+    /// Check if this constructor has any unsafe raw pointer types.
+    pub fn has_unsafe_types(&self) -> bool {
+        self.params.iter().any(|p| p.ty.needs_unsafe_fn() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none())
+    }
 }
 
 /// An instance method declaration
@@ -252,6 +271,21 @@ impl Method {
         // Check return type
         if let Some(ref ret) = self.return_type {
             if ret.is_unbindable() && ret.class_ptr_inner_name().is_none() {
+                return true;
+            }
+        }
+        false
+    }
+
+    /// Check if this method has any unsafe raw pointer types that require
+    /// the function to be marked `unsafe fn`.
+    pub fn has_unsafe_types(&self) -> bool {
+        if self.params.iter().any(|p| p.ty.needs_unsafe_fn() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none()) {
+            return true;
+        }
+        if let Some(ref ret) = self.return_type {
+            // Instance method class pointer returns are handled safely as Option<&T>
+            if ret.needs_unsafe_fn() && ret.class_ptr_inner_name().is_none() {
                 return true;
             }
         }
@@ -320,6 +354,19 @@ impl StaticMethod {
         // Check return type
         if let Some(ref ret) = self.return_type {
             if ret.is_unbindable() {
+                return true;
+            }
+        }
+        false
+    }
+
+    /// Check if this static method has any unsafe raw pointer types.
+    pub fn has_unsafe_types(&self) -> bool {
+        if self.params.iter().any(|p| p.ty.needs_unsafe_fn() && !p.is_nullable_ptr() && p.ty.class_ptr_inner_name().is_none()) {
+            return true;
+        }
+        if let Some(ref ret) = self.return_type {
+            if ret.needs_unsafe_fn() {
                 return true;
             }
         }
@@ -404,6 +451,8 @@ pub enum Type {
     U32,
     /// unsigned short / uint16_t / Standard_ExtCharacter
     U16,
+    /// short / int16_t
+    I16,
     /// long long / int64_t
     I64,
     /// unsigned long long / uint64_t
@@ -443,6 +492,7 @@ impl Type {
             Type::I32 => "int".to_string(),
             Type::U32 => "uint".to_string(),
             Type::U16 => "u16".to_string(),
+            Type::I16 => "i16".to_string(),
             Type::I64 => "longlong".to_string(),
             Type::U64 => "ulonglong".to_string(),
             Type::Long => "long".to_string(),
@@ -466,6 +516,7 @@ impl Type {
                 | Type::I32
                 | Type::U32
                 | Type::U16
+                | Type::I16
                 | Type::I64
                 | Type::U64
                 | Type::Long
@@ -481,7 +532,7 @@ impl Type {
     pub fn is_pod_field_type(&self) -> bool {
         matches!(
             self,
-            Type::Bool | Type::I32 | Type::U32 | Type::U16 | Type::I64 | Type::U64
+            Type::Bool | Type::I32 | Type::U32 | Type::U16 | Type::I16 | Type::I64 | Type::U64
                 | Type::Long | Type::ULong | Type::Usize | Type::F32 | Type::F64
         )
     }
@@ -634,11 +685,20 @@ impl Type {
 
     /// Check if this type is unbindable through the FFI.
     /// Note: const char* (C strings) ARE bindable - we generate wrappers that pass const char* directly.
+    /// Note: Raw pointers (void*, int*, T*) are NOT unbindable — they are bound as unsafe raw pointer types.
     /// Nested types (Parent::Nested) are supported via name flattening
     /// (Parent::Nested → Parent_Nested in Rust FFI), BUT unresolved template types
     /// and unqualified names without underscore remain unbindable.
     pub fn is_unbindable(&self) -> bool {
-        self.is_void_ptr() || self.is_array() || self.is_raw_ptr() || self.is_rvalue_ref() || self.is_unresolved_template_type()
+        self.is_array() || self.is_rvalue_ref() || self.is_unresolved_template_type()
+    }
+
+    /// Check if this type involves raw pointers that require the containing
+    /// function to be marked `unsafe`. True for void pointers (Standard_Address)
+    /// and raw T*/const T* pointers (excluding const char* which is handled
+    /// as C strings).
+    pub fn needs_unsafe_fn(&self) -> bool {
+        self.is_void_ptr() || self.is_raw_ptr()
     }
 
     /// Get a human-readable C++-like type string for diagnostic messages.
@@ -648,7 +708,8 @@ impl Type {
             Type::Bool => "bool".to_string(),
             Type::I32 => "int".to_string(),
             Type::U32 => "unsigned int".to_string(),
-            Type::U16 => "uint16_t".to_string(),
+            Type::U16 => "char16_t".to_string(),
+            Type::I16 => "int16_t".to_string(),
             Type::I64 => "long long".to_string(),
             Type::U64 => "unsigned long long".to_string(),
             Type::Long => "long".to_string(),
@@ -692,6 +753,7 @@ impl Type {
             Type::I32 => "i32".to_string(),
             Type::U32 => "u32".to_string(),
             Type::U16 => "u16".to_string(),
+            Type::I16 => "i16".to_string(),
             Type::I64 => "i64".to_string(),
             Type::U64 => "u64".to_string(),
             Type::Long => "std::ffi::c_long".to_string(),
@@ -760,6 +822,7 @@ impl Type {
             Type::I32 => "i32".to_string(),
             Type::U32 => "u32".to_string(),
             Type::U16 => "u16".to_string(),
+            Type::I16 => "i16".to_string(),
             Type::I64 => "i64".to_string(),
             Type::U64 => "u64".to_string(),
             Type::Long => "std::ffi::c_long".to_string(),

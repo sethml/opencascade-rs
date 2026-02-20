@@ -5587,7 +5587,7 @@ impl SpecialPoints {
 //   static_method: theRefPoint with help of adding/subtracting corresponding periods.
 //   static_method: theArrPeriods must be filled as follows:
 //   Reason: has unbindable types: param 'theArrPeriods': C-style array (Standard_Real[4])
-//   // pub fn adjust_point_and_vertex(theRefPoint: &PntOn2S, theArrPeriods: /* Standard_Real[4] */, theNewPoint: &mut PntOn2S, theVertex: /* IntPatch_Point* */);
+//   // pub fn adjust_point_and_vertex(theRefPoint: &PntOn2S, theArrPeriods: /* Standard_Real[4] */, theNewPoint: &mut PntOn2S, theVertex: *mut Point);
 //
 
 // ========================
@@ -7313,8 +7313,8 @@ impl WLineTool {
 //   static_method: Extends every line from theSlin (if it is possible) to be started/finished
 //   static_method: in strictly determined point (in the place of joint of two lines).
 //   static_method: As result, some gaps between two lines will vanish.
-//   Reason: has unbindable types: param 'theArrPeriods': raw pointer (const double*); param 'theListOfCriticalPoints': unresolved template type (const NCollection_List<gp_Pnt>&)
-//   // pub fn extend_two_w_lines(theSlin: &mut SequenceOfLine, theS1: &HandleSurface, theS2: &HandleSurface, theToler3D: f64, theArrPeriods: /* const double* */, theBoxS1: &Box2d, theBoxS2: &Box2d, theListOfCriticalPoints: /* const NCollection_List<gp_Pnt>& */);
+//   Reason: has unbindable types: param 'theListOfCriticalPoints': unresolved template type (const NCollection_List<gp_Pnt>&)
+//   // pub fn extend_two_w_lines(theSlin: &mut SequenceOfLine, theS1: &HandleSurface, theS2: &HandleSurface, theToler3D: f64, theArrPeriods: *const f64, theBoxS1: &Box2d, theBoxS2: &Box2d, theListOfCriticalPoints: /* const NCollection_List<gp_Pnt>& */);
 //
 
 // ========================

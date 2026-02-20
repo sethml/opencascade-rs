@@ -242,18 +242,18 @@ impl HandleNCollectionAccAllocator {
 // SKIPPED: **Source:** `NCollection_AccAllocator.hxx`:63 - `NCollection_AccAllocator::Allocate`
 //   method: Allocate memory with given size
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
+//   // pub fn allocate(&mut self, theSize: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_AccAllocator.hxx`:66 - `NCollection_AccAllocator::AllocateOptimal`
 //   method: Allocate memory with given size
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
+//   // pub fn allocate_optimal(&mut self, theSize: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_AccAllocator.hxx`:70 - `NCollection_AccAllocator::Free`
 //   method: Free a previously allocated memory;
 //   method: memory is returned to the OS when all allocations in some block are freed
 //   Reason: param 'theAddress' uses unknown type 'void*'
-//   // pub fn free(&mut self, theAddress: /* void* */);
+//   // pub fn free(&mut self, theAddress: *mut void);
 //
 
 // ========================
@@ -457,17 +457,17 @@ impl HandleNCollectionAlignedAllocator {
 // SKIPPED: **Source:** `NCollection_AlignedAllocator.hxx`:32 - `NCollection_AlignedAllocator::Allocate`
 //   method: Allocate memory with given size. Returns NULL on failure.
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
+//   // pub fn allocate(&mut self, theSize: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_AlignedAllocator.hxx`:35 - `NCollection_AlignedAllocator::AllocateOptimal`
 //   method: Allocate memory with given size. Returns NULL on failure.
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
+//   // pub fn allocate_optimal(&mut self, theSize: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_AlignedAllocator.hxx`:38 - `NCollection_AlignedAllocator::Free`
 //   method: Free a previously allocated memory.
 //   Reason: param 'thePtr' uses unknown type 'void*'
-//   // pub fn free(&mut self, thePtr: /* void* */);
+//   // pub fn free(&mut self, thePtr: *mut void);
 //
 
 // ========================
@@ -727,15 +727,15 @@ impl HandleNCollectionBaseAllocator {
 // ── Skipped symbols for BaseAllocator (3 total) ──
 // SKIPPED: **Source:** `NCollection_BaseAllocator.hxx`:49 - `NCollection_BaseAllocator::Allocate`
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
+//   // pub fn allocate(&mut self, theSize: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_BaseAllocator.hxx`:50 - `NCollection_BaseAllocator::AllocateOptimal`
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
+//   // pub fn allocate_optimal(&mut self, theSize: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_BaseAllocator.hxx`:51 - `NCollection_BaseAllocator::Free`
 //   Reason: param 'theAddress' uses unknown type 'void*'
-//   // pub fn free(&mut self, theAddress: /* void* */);
+//   // pub fn free(&mut self, theAddress: *mut void);
 //
 
 // ========================
@@ -965,26 +965,26 @@ impl BasePointerVector {
 // ── Skipped symbols for BasePointerVector (4 total) ──
 // SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:71 - `NCollection_BasePointerVector::GetArray`
 //   method: Gets array, can be null
-//   Reason: has unbindable types: return: raw pointer (void**)
-//   // pub fn get_array(&self) -> /* void** */;
+//   Reason: return type 'void**' is unknown
+//   // pub fn get_array(&self) -> *mut *mut void;
 //
 // SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:74 - `NCollection_BasePointerVector::Value`
 //   method: Gets value by index, no access validation
 //   Reason: return type 'void*' is unknown
-//   // pub fn value(&self, theInd: usize) -> /* void* */;
+//   // pub fn value(&self, theInd: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:79 - `NCollection_BasePointerVector::Append`
 //   method: Inserts new element at the end, increase size,
 //   method: if capacity is not enough, call resize.
 //   Reason: param 'thePnt' uses unknown type 'const void*'
-//   // pub fn append(&mut self, thePnt: /* const void* */);
+//   // pub fn append(&mut self, thePnt: *const void);
 //
 // SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:84 - `NCollection_BasePointerVector::SetValue`
 //   method: Updates value of existed element,
 //   method: If index more then size, increase size of container,
 //   method: in this case capacity can be updated.
 //   Reason: param 'thePnt' uses unknown type 'const void*'
-//   // pub fn set_value(&mut self, theInd: usize, thePnt: /* const void* */);
+//   // pub fn set_value(&mut self, theInd: usize, thePnt: *const void);
 //
 
 // ========================
@@ -1260,17 +1260,17 @@ impl HandleNCollectionBuffer {
 //   constructor: When theData is NULL but theSize is not 0 than buffer of specified size will be allocated.
 //   constructor: @param theAlloc memory allocator
 //   Reason: param 'theData' uses unknown type 'Standard_Byte*'
-//   // pub fn new_handlencollectionbaseallocator_size_byteptr(theAlloc: &HandleBaseAllocator, theSize: usize, theData: /* Standard_Byte* */) -> OwnedPtr<Self>;
+//   // pub fn new_handlencollectionbaseallocator_size_byteptr(theAlloc: &HandleBaseAllocator, theSize: usize, theData: *mut Byte) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `NCollection_Buffer.hxx`:54 - `NCollection_Buffer::Data`
 //   method: @return buffer data
 //   Reason: return type 'const Standard_Byte*' is unknown
-//   // pub fn data(&self) -> /* const Standard_Byte* */;
+//   // pub fn data(&self) -> *const Byte;
 //
 // SKIPPED: **Source:** `NCollection_Buffer.hxx`:57 - `NCollection_Buffer::ChangeData`
 //   method: @return buffer data
 //   Reason: return type 'Standard_Byte*' is unknown
-//   // pub fn change_data(&mut self) -> /* Standard_Byte* */;
+//   // pub fn change_data(&mut self) -> *mut Byte;
 //
 
 // ========================
@@ -1458,15 +1458,15 @@ impl HandleNCollectionHeapAllocator {
 // ── Skipped symbols for HeapAllocator (3 total) ──
 // SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:29 - `NCollection_HeapAllocator::Allocate`
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
+//   // pub fn allocate(&mut self, theSize: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:31 - `NCollection_HeapAllocator::AllocateOptimal`
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
+//   // pub fn allocate_optimal(&mut self, theSize: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:33 - `NCollection_HeapAllocator::Free`
 //   Reason: param 'anAddress' uses unknown type 'void*'
-//   // pub fn free(&mut self, anAddress: /* void* */);
+//   // pub fn free(&mut self, anAddress: *mut void);
 //
 
 // ========================
@@ -1706,17 +1706,17 @@ impl HandleNCollectionIncAllocator {
 // SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:67 - `NCollection_IncAllocator::Allocate`
 //   method: Allocate memory with given size. Returns NULL on failure
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate(&mut self, size: usize) -> /* void* */;
+//   // pub fn allocate(&mut self, size: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:70 - `NCollection_IncAllocator::AllocateOptimal`
 //   method: Allocate memory with given size. Returns NULL on failure
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate_optimal(&mut self, size: usize) -> /* void* */;
+//   // pub fn allocate_optimal(&mut self, size: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:73 - `NCollection_IncAllocator::Free`
 //   method: Free a previously allocated memory. Does nothing
 //   Reason: param 'arg0' uses unknown type 'void*'
-//   // pub fn free(&mut self, arg0: /* void* */);
+//   // pub fn free(&mut self, arg0: *mut void);
 //
 
 /// **Source:** `NCollection_IncAllocator.hxx`:98 - `NCollection_IncAllocator_IBlock`
@@ -1733,7 +1733,7 @@ unsafe impl crate::CppDeletable for IncAllocator_IBlock {
 // ── Skipped symbols for IncAllocator_IBlock (1 total) ──
 // SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:100 - `NCollection_IncAllocator::IBlock::NCollection_IncAllocator::IBlock`
 //   Reason: param 'thePointer' uses unknown type 'void*'
-//   // pub fn new_voidptr_size(thePointer: /* void* */, theSize: usize) -> OwnedPtr<Self>;
+//   // pub fn new_voidptr_size(thePointer: *mut void, theSize: usize) -> OwnedPtr<Self>;
 //
 
 // ========================
@@ -2022,15 +2022,15 @@ impl HandleNCollectionWinHeapAllocator {
 // SKIPPED: **Source:** `NCollection_WinHeapAllocator.hxx`:44 - `NCollection_WinHeapAllocator::Allocate`
 //   method: Allocate memory
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
+//   // pub fn allocate(&mut self, theSize: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_WinHeapAllocator.hxx`:47 - `NCollection_WinHeapAllocator::AllocateOptimal`
 //   method: Allocate memory
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
+//   // pub fn allocate_optimal(&mut self, theSize: usize) -> *mut void;
 //
 // SKIPPED: **Source:** `NCollection_WinHeapAllocator.hxx`:50 - `NCollection_WinHeapAllocator::Free`
 //   method: Release memory
 //   Reason: param 'theAddress' uses unknown type 'void*'
-//   // pub fn free(&mut self, theAddress: /* void* */);
+//   // pub fn free(&mut self, theAddress: *mut void);
 //

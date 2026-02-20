@@ -454,7 +454,7 @@ impl MakeCone {
 // ── Skipped symbols for MakeCone (1 total) ──
 // SKIPPED: **Source:** `BRepPrimAPI_MakeCone.hxx`:104 - `BRepPrimAPI_MakeCone::OneAxis`
 //   method: Returns the algorithm.
-//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   Reason: return type 'Standard_Address' is unknown
 //   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
 //
 
@@ -663,7 +663,7 @@ impl MakeCylinder {
 // ── Skipped symbols for MakeCylinder (1 total) ──
 // SKIPPED: **Source:** `BRepPrimAPI_MakeCylinder.hxx`:91 - `BRepPrimAPI_MakeCylinder::OneAxis`
 //   method: Returns the algorithm.
-//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   Reason: return type 'Standard_Address' is unknown
 //   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
 //
 
@@ -910,7 +910,7 @@ impl MakeOneAxis {
 // SKIPPED: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:37 - `BRepPrimAPI_MakeOneAxis::OneAxis`
 //   method: The inherited commands should provide the algorithm.
 //   method: Returned as a pointer.
-//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   Reason: return type 'Standard_Address' is unknown
 //   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
 //
 
@@ -1718,7 +1718,7 @@ impl MakeRevolution {
 // ── Skipped symbols for MakeRevolution (1 total) ──
 // SKIPPED: **Source:** `BRepPrimAPI_MakeRevolution.hxx`:88 - `BRepPrimAPI_MakeRevolution::OneAxis`
 //   method: Returns the algorithm.
-//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   Reason: return type 'Standard_Address' is unknown
 //   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
 //
 
@@ -2025,7 +2025,7 @@ impl MakeSphere {
 // ── Skipped symbols for MakeSphere (1 total) ──
 // SKIPPED: **Source:** `BRepPrimAPI_MakeSphere.hxx`:140 - `BRepPrimAPI_MakeSphere::OneAxis`
 //   method: Returns the algorithm.
-//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   Reason: return type 'Standard_Address' is unknown
 //   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
 //
 
@@ -2421,7 +2421,7 @@ impl MakeTorus {
 // ── Skipped symbols for MakeTorus (1 total) ──
 // SKIPPED: **Source:** `BRepPrimAPI_MakeTorus.hxx`:131 - `BRepPrimAPI_MakeTorus::OneAxis`
 //   method: Returns the algorithm.
-//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   Reason: return type 'Standard_Address' is unknown
 //   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
 //
 

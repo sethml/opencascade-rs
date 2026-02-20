@@ -278,6 +278,7 @@ pub mod vrml;
 pub mod vrml_api;
 pub mod vrml_converter;
 pub mod vrml_data;
+pub mod xb_rep_mesh;
 pub mod xcaf_app;
 pub mod xcaf_dim_tol_objects;
 pub mod xcaf_doc;

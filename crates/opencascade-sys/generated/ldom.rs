@@ -632,17 +632,22 @@ impl CharReference {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_CharReference_ctor()) }
     }
-}
 
-// ── Skipped symbols for CharReference (2 total) ──
-// SKIPPED: **Source:** `LDOM_CharReference.hxx`:47 - `LDOM_CharReference::Decode`
-//   Reason: has unbindable types: param 'theSrc': raw pointer (char*); return: raw pointer (char*)
-//   // pub fn decode(theSrc: /* char* */, theLen: &mut i32) -> /* char* */;
-//
-// SKIPPED: **Source:** `LDOM_CharReference.hxx`:49 - `LDOM_CharReference::Encode`
-//   Reason: has unbindable types: return: raw pointer (char*)
-//   // pub fn encode(theSrc: *const char, theLen: &mut i32, isAttribute: bool) -> /* char* */;
-//
+    /// **Source:** `LDOM_CharReference.hxx`:47 - `LDOM_CharReference::Decode()`
+    pub unsafe fn decode(theSrc: *mut std::ffi::c_char, theLen: &mut i32) -> *mut std::ffi::c_char {
+        unsafe { crate::ffi::LDOM_CharReference_decode(theSrc, theLen) }
+    }
+
+    /// **Source:** `LDOM_CharReference.hxx`:49 - `LDOM_CharReference::Encode()`
+    pub unsafe fn encode(
+        theSrc: &str,
+        theLen: &mut i32,
+        isAttribute: bool,
+    ) -> *mut std::ffi::c_char {
+        let c_theSrc = std::ffi::CString::new(theSrc).unwrap();
+        unsafe { crate::ffi::LDOM_CharReference_encode(c_theSrc.as_ptr(), theLen, isAttribute) }
+    }
+}
 
 // ========================
 // From LDOM_CharacterData.hxx
@@ -1525,7 +1530,7 @@ impl HandleLDOMMemManager {
 // ── Skipped symbols for MemManager (1 total) ──
 // SKIPPED: **Source:** `LDOM_MemManager.hxx`:43 - `LDOM_MemManager::Allocate`
 //   Reason: return type 'void*' is unknown
-//   // pub fn allocate(&mut self, aSize: i32) -> /* void* */;
+//   // pub fn allocate(&mut self, aSize: i32) -> *mut void;
 //
 
 // ========================

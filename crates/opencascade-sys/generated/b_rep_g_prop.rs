@@ -1196,8 +1196,8 @@ impl MeshProps {
 //   static_method: Computes the global properties of triangle {p1, p2, p3} relatively
 //   static_method: point Apex
 //   static_method: If isVolume = true, volume properties are calculated
-//   Reason: has unbindable types: param 'GProps': C-style array (Standard_Real[10]); param 'GaussPnts': raw pointer (const double*)
-//   // pub fn calculate_props(p1: &Pnt, p2: &Pnt, p3: &Pnt, Apex: &Pnt, isVolume: bool, GProps: /* Standard_Real[10] */, NbGaussPoints: i32, GaussPnts: /* const double* */);
+//   Reason: has unbindable types: param 'GProps': C-style array (Standard_Real[10])
+//   // pub fn calculate_props(p1: &Pnt, p2: &Pnt, p3: &Pnt, Apex: &Pnt, isVolume: bool, GProps: /* Standard_Real[10] */, NbGaussPoints: i32, GaussPnts: *const f64);
 //
 
 // ========================
@@ -1390,6 +1390,44 @@ unsafe impl crate::CppDeletable for TFunction {
 }
 
 impl TFunction {
+    /// **Source:** `BRepGProp_TFunction.hxx`:54 - `BRepGProp_TFunction::BRepGProp_TFunction()`
+    /// Constructor. Initializes the function with the face, the
+    /// location point, the flag IsByPoint, the coefficients
+    /// theCoeff that have different meaning depending on the value
+    /// of IsByPoint. The last two parameters are theUMin - the
+    /// lower bound of the inner integral. This value is fixed for
+    /// any integral. And the value of tolerance of inner integral
+    /// computation.
+    /// If IsByPoint is equal to Standard_True, the number of the
+    /// coefficients is equal to 3 and they represent X, Y and Z
+    /// coordinates (theCoeff[0], theCoeff[1] and theCoeff[2]
+    /// correspondingly) of the shift if the inertia is computed
+    /// with respect to the point different then the location.
+    /// If IsByPoint is equal to Standard_False, the number of the
+    /// coefficients is 4 and they represent the combination of
+    /// plane parameters and shift values.
+    pub unsafe fn new_face_pnt_bool_realptr_real2(
+        theSurface: &Face,
+        theVertex: &crate::gp::Pnt,
+        IsByPoint: bool,
+        theCoeffs: *const f64,
+        theUMin: f64,
+        theTolerance: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepGProp_TFunction_ctor_face_pnt_bool_realptr_real2(
+                    theSurface,
+                    theVertex,
+                    IsByPoint,
+                    theCoeffs,
+                    theUMin,
+                    theTolerance,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `BRepGProp_TFunction.hxx`:61 - `BRepGProp_TFunction::Init()`
     pub fn init(&mut self) {
         unsafe { crate::ffi::BRepGProp_TFunction_init(self as *mut Self) }
@@ -1469,15 +1507,6 @@ impl TFunction {
     }
 }
 
-// ── Skipped symbols for TFunction (1 total) ──
-// SKIPPED: **Source:** `BRepGProp_TFunction.hxx`:54 - `BRepGProp_TFunction::BRepGProp_TFunction`
-//   constructor: Constructor. Initializes the function with the face, the
-//   constructor: location point, the flag IsByPoint, the coefficients
-//   constructor: theCoeff that have different meaning depending on the value
-//   Reason: has unbindable types: param 'theCoeffs': raw pointer (const double*)
-//   // pub fn new_face_pnt_bool_realptr_real2(theSurface: &Face, theVertex: &Pnt, IsByPoint: bool, theCoeffs: /* const double* */, theUMin: f64, theTolerance: f64) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From BRepGProp_UFunction.hxx
 // ========================
@@ -1511,6 +1540,32 @@ unsafe impl crate::CppDeletable for UFunction {
 }
 
 impl UFunction {
+    /// **Source:** `BRepGProp_UFunction.hxx`:66 - `BRepGProp_UFunction::BRepGProp_UFunction()`
+    /// Constructor. Initializes the function with the face, the
+    /// location point, the flag IsByPoint and the coefficients
+    /// theCoeff that have different meaning depending on the value
+    /// of IsByPoint.
+    /// If IsByPoint is equal to Standard_True, the number of the
+    /// coefficients is equal to 3 and they represent X, Y and Z
+    /// coordinates (theCoeff[0], theCoeff[1] and theCoeff[2]
+    /// correspondingly) of the shift, if the inertia is computed
+    /// with respect to the point different then the location.
+    /// If IsByPoint is equal to Standard_False, the number of the
+    /// coefficients is 4 and they represent the combination of
+    /// plane parameters and shift values.
+    pub unsafe fn new_face_pnt_bool_realptr(
+        theSurface: &Face,
+        theVertex: &crate::gp::Pnt,
+        IsByPoint: bool,
+        theCoeffs: *const f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_UFunction_ctor_face_pnt_bool_realptr(
+                theSurface, theVertex, IsByPoint, theCoeffs,
+            ))
+        }
+    }
+
     /// **Source:** `BRepGProp_UFunction.hxx`:72 - `BRepGProp_UFunction::SetValueType()`
     /// Setting the type of the value to be returned.
     pub fn set_value_type(&mut self, theType: crate::g_prop::ValueType) {
@@ -1545,15 +1600,6 @@ impl UFunction {
         unsafe { crate::ffi::BRepGProp_UFunction_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for UFunction (1 total) ──
-// SKIPPED: **Source:** `BRepGProp_UFunction.hxx`:66 - `BRepGProp_UFunction::BRepGProp_UFunction`
-//   constructor: Constructor. Initializes the function with the face, the
-//   constructor: location point, the flag IsByPoint and the coefficients
-//   constructor: theCoeff that have different meaning depending on the value
-//   Reason: has unbindable types: param 'theCoeffs': raw pointer (const double*)
-//   // pub fn new_face_pnt_bool_realptr(theSurface: &Face, theVertex: &Pnt, IsByPoint: bool, theCoeffs: /* const double* */) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From BRepGProp_Vinert.hxx

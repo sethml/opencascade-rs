@@ -781,14 +781,33 @@ unsafe impl crate::CppDeletable for EvaluatorFunction {
     }
 }
 
-// ── Skipped symbols for EvaluatorFunction (2 total) ──
+impl EvaluatorFunction {
+    /// **Source:** `BSplCLib_EvaluatorFunction.hxx`:38 - `BSplCLib_EvaluatorFunction::Evaluate()`
+    /// Function evaluation method to be defined by descendant
+    pub unsafe fn evaluate(
+        &self,
+        theDerivativeRequest: i32,
+        theStartEnd: *const f64,
+        theParameter: f64,
+        theResult: &mut f64,
+        theErrorCode: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::BSplCLib_EvaluatorFunction_evaluate(
+                self as *const Self,
+                theDerivativeRequest,
+                theStartEnd,
+                theParameter,
+                theResult,
+                theErrorCode,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for EvaluatorFunction (1 total) ──
 // SKIPPED: **Source:** `BSplCLib_EvaluatorFunction.hxx`:32 - `BSplCLib_EvaluatorFunction::BSplCLib_EvaluatorFunction`
 //   constructor: Empty constructor
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BSplCLib_EvaluatorFunction.hxx`:38 - `BSplCLib_EvaluatorFunction::Evaluate`
-//   method: Function evaluation method to be defined by descendant
-//   Reason: has unbindable types: param 'theStartEnd': raw pointer (const double*)
-//   // pub fn evaluate(&self, theDerivativeRequest: i32, theStartEnd: /* const double* */, theParameter: f64, theResult: &mut f64, theErrorCode: &mut i32);
 //

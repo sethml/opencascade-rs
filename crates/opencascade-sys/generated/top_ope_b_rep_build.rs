@@ -163,16 +163,16 @@ impl Area1dBuilder {
 
 // ── Skipped symbols for Area1dBuilder (3 total) ──
 // SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:53 - `TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop`
-//   Reason: has unbindable types: param 's': void pointer (Standard_Address)
-//   // pub fn add_loop_to_listof_loop(&self, L: &HandleLoop, LOL: &mut ListOfLoop, s: /* Standard_Address */);
+//   Reason: param 's' uses unknown type 'Standard_Address'
+//   // pub fn add_loop_to_listof_loop(&self, L: &HandleLoop, LOL: &mut ListOfLoop, s: Address);
 //
 // SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:58 - `TopOpeBRepBuild_Area1dBuilder::REM_Loop_FROM_LISTOFLoop`
-//   Reason: has unbindable types: param 's': void pointer (Standard_Address)
-//   // pub fn rem_loop_from_listof_loop(&self, ITLOL: &mut ListIteratorOfListOfLoop, LOL: &mut ListOfLoop, s: /* Standard_Address */);
+//   Reason: param 's' uses unknown type 'Standard_Address'
+//   // pub fn rem_loop_from_listof_loop(&self, ITLOL: &mut ListIteratorOfListOfLoop, LOL: &mut ListOfLoop, s: Address);
 //
 // SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:63 - `TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop`
-//   Reason: has unbindable types: param 's': void pointer (Standard_Address); param 's1': void pointer (Standard_Address); param 's2': void pointer (Standard_Address)
-//   // pub fn add_listof_loop_to_listof_loop(&self, LOL1: &mut ListOfLoop, LOL2: &mut ListOfLoop, s: /* Standard_Address */, s1: /* Standard_Address */, s2: /* Standard_Address */);
+//   Reason: param 's' uses unknown type 'Standard_Address'
+//   // pub fn add_listof_loop_to_listof_loop(&self, LOL1: &mut ListOfLoop, LOL2: &mut ListOfLoop, s: Address, s1: Address, s2: Address);
 //
 
 // ========================
@@ -552,16 +552,16 @@ impl AreaBuilder {
 
 // ── Skipped symbols for AreaBuilder (3 total) ──
 // SKIPPED: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop`
-//   Reason: has unbindable types: param 's': void pointer (Standard_Address)
-//   // pub fn add_loop_to_listof_loop(&self, L: &HandleLoop, LOL: &mut ListOfLoop, s: /* Standard_Address */);
+//   Reason: param 's' uses unknown type 'Standard_Address'
+//   // pub fn add_loop_to_listof_loop(&self, L: &HandleLoop, LOL: &mut ListOfLoop, s: Address);
 //
 // SKIPPED: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop`
-//   Reason: has unbindable types: param 's': void pointer (Standard_Address)
-//   // pub fn rem_loop_from_listof_loop(&self, ITLOL: &mut ListIteratorOfListOfLoop, LOL: &mut ListOfLoop, s: /* Standard_Address */);
+//   Reason: param 's' uses unknown type 'Standard_Address'
+//   // pub fn rem_loop_from_listof_loop(&self, ITLOL: &mut ListIteratorOfListOfLoop, LOL: &mut ListOfLoop, s: Address);
 //
 // SKIPPED: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop`
-//   Reason: has unbindable types: param 's': void pointer (Standard_Address); param 's1': void pointer (Standard_Address); param 's2': void pointer (Standard_Address)
-//   // pub fn add_listof_loop_to_listof_loop(&self, LOL1: &mut ListOfLoop, LOL2: &mut ListOfLoop, s: /* Standard_Address */, s1: /* Standard_Address */, s2: /* Standard_Address */);
+//   Reason: param 's' uses unknown type 'Standard_Address'
+//   // pub fn add_listof_loop_to_listof_loop(&self, LOL1: &mut ListOfLoop, LOL2: &mut ListOfLoop, s: Address, s1: Address, s2: Address);
 //
 
 // ========================
@@ -2687,28 +2687,28 @@ impl Builder {
 //   // pub fn change_split(&mut self, S: &Shape, TB: State) -> &mut ListOfShape;
 //
 // SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:653 - `TopOpeBRepBuild_Builder::GdumpSHA`
-//   Reason: has unbindable types: param 'str': void pointer (Standard_Address)
-//   // pub fn gdump_sha(&self, S: &Shape, str: /* Standard_Address */);
+//   Reason: param 'str' uses unknown type 'Standard_Address'
+//   // pub fn gdump_sha(&self, S: &Shape, str: Address);
 //
 // SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:655 - `TopOpeBRepBuild_Builder::GdumpSHAORI`
-//   Reason: has unbindable types: param 'str': void pointer (Standard_Address)
-//   // pub fn gdump_shaori(&self, S: &Shape, str: /* Standard_Address */);
+//   Reason: param 'str' uses unknown type 'Standard_Address'
+//   // pub fn gdump_shaori(&self, S: &Shape, str: Address);
 //
 // SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:657 - `TopOpeBRepBuild_Builder::GdumpSHAORIGEO`
-//   Reason: has unbindable types: param 'str': void pointer (Standard_Address)
-//   // pub fn gdump_shaorigeo(&self, S: &Shape, str: /* Standard_Address */);
+//   Reason: param 'str' uses unknown type 'Standard_Address'
+//   // pub fn gdump_shaorigeo(&self, S: &Shape, str: Address);
 //
 // SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:677 - `TopOpeBRepBuild_Builder::GdumpEDG`
-//   Reason: has unbindable types: param 'str': void pointer (Standard_Address)
-//   // pub fn gdump_edg(&self, S: &Shape, str: /* Standard_Address */);
+//   Reason: param 'str' uses unknown type 'Standard_Address'
+//   // pub fn gdump_edg(&self, S: &Shape, str: Address);
 //
 // SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:679 - `TopOpeBRepBuild_Builder::GdumpEDGVER`
-//   Reason: has unbindable types: param 'str': void pointer (Standard_Address)
-//   // pub fn gdump_edgver(&self, E: &Shape, V: &Shape, str: /* Standard_Address */);
+//   Reason: param 'str' uses unknown type 'Standard_Address'
+//   // pub fn gdump_edgver(&self, E: &Shape, V: &Shape, str: Address);
 //
 // SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:683 - `TopOpeBRepBuild_Builder::GdumpSAMDOM`
-//   Reason: has unbindable types: param 'str': void pointer (Standard_Address)
-//   // pub fn gdump_samdom(&self, L: &ListOfShape, str: /* Standard_Address */);
+//   Reason: param 'str' uses unknown type 'Standard_Address'
+//   // pub fn gdump_samdom(&self, L: &ListOfShape, str: Address);
 //
 
 // ========================
@@ -6155,8 +6155,8 @@ impl GTopo {
 
 // ── Skipped symbols for GTopo (1 total) ──
 // SKIPPED: **Source:** `TopOpeBRepBuild_GTopo.hxx`:106 - `TopOpeBRepBuild_GTopo::Dump`
-//   Reason: has unbindable types: param 's': void pointer (Standard_Address)
-//   // pub fn dump(&self, OS: &mut OStream, s: /* Standard_Address */);
+//   Reason: param 's' uses unknown type 'Standard_Address'
+//   // pub fn dump(&self, OS: &mut OStream, s: Address);
 //
 
 // ========================
@@ -7953,6 +7953,13 @@ impl ShellFaceSet {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_ShellFaceSet_ctor()) }
     }
 
+    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:46 - `TopOpeBRepBuild_ShellFaceSet::TopOpeBRepBuild_ShellFaceSet()`
+    /// Creates a ShellFaceSet to build blocks of faces
+    /// connected by edges.
+    pub unsafe fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_ShellFaceSet_ctor_shape(S)) }
+    }
+
     /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:49 - `TopOpeBRepBuild_ShellFaceSet::Solid()`
     pub fn solid(&self) -> &crate::topo_ds::Solid {
         unsafe { &*(crate::ffi::TopOpeBRepBuild_ShellFaceSet_solid(self as *const Self)) }
@@ -8268,8 +8275,8 @@ impl ShellFaceSet {
 // SKIPPED: **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:46 - `TopOpeBRepBuild_ShellFaceSet::TopOpeBRepBuild_ShellFaceSet`
 //   constructor: Creates a ShellFaceSet to build blocks of faces
 //   constructor: connected by edges.
-//   Reason: has unbindable types: param 'Addr': void pointer (Standard_Address)
-//   // pub fn new_shape_address(S: &Shape, Addr: /* Standard_Address */) -> OwnedPtr<Self>;
+//   Reason: param 'Addr' uses unknown type 'Standard_Address'
+//   // pub fn new_shape_address(S: &Shape, Addr: Address) -> OwnedPtr<Self>;
 //
 
 // ========================
@@ -9250,6 +9257,14 @@ unsafe impl crate::CppDeletable for WireEdgeSet {
 }
 
 impl WireEdgeSet {
+    /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:48 - `TopOpeBRepBuild_WireEdgeSet::TopOpeBRepBuild_WireEdgeSet()`
+    /// Creates a WireEdgeSet to build edges connected by vertices
+    /// on face F. Edges of the WireEdgeSet must have a representation
+    /// on surface of face F.
+    pub unsafe fn new_shape(F: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_WireEdgeSet_ctor_shape(F)) }
+    }
+
     /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:52 - `TopOpeBRepBuild_WireEdgeSet::Face()`
     /// value of field myFace
     pub fn face(&self) -> &crate::topo_ds::Face {
@@ -9563,8 +9578,8 @@ impl WireEdgeSet {
 //   constructor: Creates a WireEdgeSet to build edges connected by vertices
 //   constructor: on face F. Edges of the WireEdgeSet must have a representation
 //   constructor: on surface of face F.
-//   Reason: has unbindable types: param 'Addr': void pointer (Standard_Address)
-//   // pub fn new_shape_address(F: &Shape, Addr: /* Standard_Address */) -> OwnedPtr<Self>;
+//   Reason: param 'Addr' uses unknown type 'Standard_Address'
+//   // pub fn new_shape_address(F: &Shape, Addr: Address) -> OwnedPtr<Self>;
 //
 
 // ========================

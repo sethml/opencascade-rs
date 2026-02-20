@@ -103,6 +103,42 @@ impl ReadData {
         unsafe { crate::ffi::StepFile_ReadData_clear_recorder(self as *mut Self, theMode) }
     }
 
+    /// **Source:** `StepFile_ReadData.hxx`:172 - `StepFile_ReadData::GetFileNbR()`
+    /// Returns a value of all file counters
+    pub unsafe fn get_file_nb_r(
+        &mut self,
+        theNbHead: *mut i32,
+        theNbRec: *mut i32,
+        theNbPage: *mut i32,
+    ) {
+        unsafe {
+            crate::ffi::StepFile_ReadData_get_file_nb_r(
+                self as *mut Self,
+                theNbHead,
+                theNbRec,
+                theNbPage,
+            )
+        }
+    }
+
+    /// **Source:** `StepFile_ReadData.hxx`:177 - `StepFile_ReadData::GetRecordDescription()`
+    /// Returns a value of fields of current record
+    pub unsafe fn get_record_description(
+        &mut self,
+        theIdent: *mut *mut std::ffi::c_char,
+        theType: *mut *mut std::ffi::c_char,
+        theNbArg: *mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StepFile_ReadData_get_record_description(
+                self as *mut Self,
+                theIdent,
+                theType,
+                theNbArg,
+            )
+        }
+    }
+
     /// **Source:** `StepFile_ReadData.hxx`:180 - `StepFile_ReadData::RecordTypeText()`
     /// Initializes the record type with myResText
     pub fn record_type_text(&mut self) {
@@ -189,19 +225,9 @@ impl ReadData {
     }
 }
 
-// ── Skipped symbols for ReadData (3 total) ──
+// ── Skipped symbols for ReadData (1 total) ──
 // SKIPPED: **Source:** `StepFile_ReadData.hxx`:169 - `StepFile_ReadData::GetArgDescription`
 //   method: Returns a value of fields of current argument
-//   Reason: has unbindable types: param 'theValue': raw pointer (char**)
-//   // pub fn get_arg_description(&mut self, theType: /* Interface_ParamType* */, theValue: /* char** */) -> bool;
-//
-// SKIPPED: **Source:** `StepFile_ReadData.hxx`:172 - `StepFile_ReadData::GetFileNbR`
-//   method: Returns a value of all file counters
-//   Reason: has unbindable types: param 'theNbHead': raw pointer (int*); param 'theNbRec': raw pointer (int*); param 'theNbPage': raw pointer (int*)
-//   // pub fn get_file_nb_r(&mut self, theNbHead: /* int* */, theNbRec: /* int* */, theNbPage: /* int* */);
-//
-// SKIPPED: **Source:** `StepFile_ReadData.hxx`:177 - `StepFile_ReadData::GetRecordDescription`
-//   method: Returns a value of fields of current record
-//   Reason: has unbindable types: param 'theIdent': raw pointer (char**); param 'theType': raw pointer (char**); param 'theNbArg': raw pointer (int*)
-//   // pub fn get_record_description(&mut self, theIdent: /* char** */, theType: /* char** */, theNbArg: /* int* */) -> bool;
+//   Reason: param 'theType' uses unknown type 'Interface_ParamType*'
+//   // pub fn get_arg_description(&mut self, theType: *mut ParamType, theValue: *mut *mut char) -> bool;
 //

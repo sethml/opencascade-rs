@@ -466,13 +466,13 @@ impl CoherentLink {
 // ── Skipped symbols for CoherentLink (2 total) ──
 // SKIPPED: **Source:** `Poly_CoherentLink.hxx`:93 - `Poly_CoherentLink::GetAttribute`
 //   method: Query the attribute of the Link.
-//   Reason: has unbindable types: return: void pointer (Standard_Address)
+//   Reason: return type 'Standard_Address' is unknown
 //   // pub fn get_attribute(&self) -> OwnedPtr<Standard_Address>;
 //
 // SKIPPED: **Source:** `Poly_CoherentLink.hxx`:98 - `Poly_CoherentLink::SetAttribute`
 //   method: Set the attribute of the Link.
-//   Reason: has unbindable types: param 'theAtt': void pointer (Standard_Address)
-//   // pub fn set_attribute(&mut self, theAtt: /* Standard_Address */);
+//   Reason: param 'theAtt' uses unknown type 'Standard_Address'
+//   // pub fn set_attribute(&mut self, theAtt: Address);
 //
 
 // ========================
@@ -2122,7 +2122,7 @@ impl MakeLoops {
 //   constructor: Constructor. If helper is NULL then the algorithm will
 //   constructor: probably return a wrong result
 //   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_helperptr_handlencollectionbaseallocator(theHelper: /* const Poly_MakeLoops::Helper* */, theAlloc: &HandleBaseAllocator) -> OwnedPtr<Self>;
+//   // pub fn new_helperptr_handlencollectionbaseallocator(theHelper: *const MakeLoops_Helper, theAlloc: &HandleBaseAllocator) -> OwnedPtr<Self>;
 //
 
 /// **Source:** `Poly_MakeLoops.hxx`:45 - `Poly_MakeLoops_Link`
@@ -2748,16 +2748,6 @@ impl MergeNodesTool {
         unsafe { crate::ffi::Poly_MergeNodesTool_set_merge_elems(self as *mut Self, theToMerge) }
     }
 
-    /// **Source:** `Poly_MergeNodesTool.hxx`:90 - `Poly_MergeNodesTool::computeTriNormal()`
-    /// Compute normal for the mesh element.
-    pub fn compute_tri_normal(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_MergeNodesTool_compute_tri_normal(
-                self as *const Self,
-            ))
-        }
-    }
-
     /// **Source:** `Poly_MergeNodesTool.hxx`:104 - `Poly_MergeNodesTool::AddTriangulation()`
     /// Add another triangulation to created one.
     /// @param[in] theTris triangulation to add
@@ -3008,7 +2998,12 @@ impl HandlePolyMergeNodesTool {
     }
 }
 
-// ── Skipped symbols for MergeNodesTool (2 total) ──
+// ── Skipped symbols for MergeNodesTool (3 total) ──
+// SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:90 - `Poly_MergeNodesTool::computeTriNormal`
+//   method: Compute normal for the mesh element.
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Vec3<float>)
+//   // pub fn compute_tri_normal(&self) -> OwnedPtr<NCollection_Vec3<float>>;
+//
 // SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:114 - `Poly_MergeNodesTool::AddTriangle`
 //   method: Add new triangle.
 //   method: @param[in] theElemNodes 3 element nodes
