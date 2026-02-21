@@ -739,6 +739,36 @@ fn check_protected_destructor(entity: &Entity) -> bool {
     false
 }
 
+/// Collect enum variants (EnumConstantDecl children) from an enum entity.
+/// Used by both `parse_enum` and `parse_anonymous_enum`.
+fn collect_enum_variants(entity: &Entity, verbose: bool) -> Vec<EnumVariant> {
+    let mut variants = Vec::new();
+    entity.visit_children(|child, _| {
+        if child.get_kind() == EntityKind::EnumConstantDecl {
+            if let Some(variant_name) = child.get_name() {
+                let value = child.get_enum_constant_value().map(|(signed, _unsigned)| signed);
+                let comment = extract_doxygen_comment(&child);
+
+                if verbose {
+                    if let Some(v) = value {
+                        println!("    Variant: {} = {}", variant_name, v);
+                    } else {
+                        println!("    Variant: {}", variant_name);
+                    }
+                }
+
+                variants.push(EnumVariant {
+                    name: variant_name,
+                    value,
+                    comment,
+                });
+            }
+        }
+        EntityVisitResult::Continue
+    });
+    variants
+}
+
 /// Parse an enum declaration
 fn parse_enum(entity: &Entity, source_header: &str, verbose: bool) -> Option<ParsedEnum> {
     let raw_name = entity.get_name();
@@ -774,31 +804,7 @@ fn parse_enum(entity: &Entity, source_header: &str, verbose: bool) -> Option<Par
         println!("  Parsing enum: {}", name);
     }
 
-    let mut variants = Vec::new();
-
-    entity.visit_children(|child, _| {
-        if child.get_kind() == EntityKind::EnumConstantDecl {
-            if let Some(variant_name) = child.get_name() {
-                let value = child.get_enum_constant_value().map(|(signed, _unsigned)| signed);
-                let comment = extract_doxygen_comment(&child);
-
-                if verbose {
-                    if let Some(v) = value {
-                        println!("    Variant: {} = {}", variant_name, v);
-                    } else {
-                        println!("    Variant: {}", variant_name);
-                    }
-                }
-
-                variants.push(EnumVariant {
-                    name: variant_name,
-                    value,
-                    comment,
-                });
-            }
-        }
-        EntityVisitResult::Continue
-    });
+    let variants = collect_enum_variants(entity, verbose);
 
     if variants.is_empty() {
         return None;
@@ -830,23 +836,15 @@ fn parse_enum(entity: &Entity, source_header: &str, verbose: bool) -> Option<Par
 /// We detect this pattern and synthesize a named enum `Graphic3d_ZLayerId` from the
 /// anonymous enum's variants.
 fn parse_anonymous_enum(entity: &Entity, source_header: &str, verbose: bool) -> Option<ParsedEnum> {
-    // Collect all variant names first
-    let mut variant_names = Vec::new();
-    entity.visit_children(|child, _| {
-        if child.get_kind() == EntityKind::EnumConstantDecl {
-            if let Some(name) = child.get_name() {
-                variant_names.push(name);
-            }
-        }
-        EntityVisitResult::Continue
-    });
+    let variants = collect_enum_variants(entity, verbose);
 
-    if variant_names.is_empty() {
+    if variants.is_empty() {
         return None;
     }
 
     // Find the longest common prefix of all variant names.
     // The prefix must end with '_' and have at least one '_' (OCCT naming: Module_Name_VARIANT).
+    let variant_names: Vec<String> = variants.iter().map(|v| v.name.clone()).collect();
     let common_prefix = longest_common_prefix(&variant_names);
 
     // The common prefix should end with '_' and contain at least one '_' before the trailing one
@@ -866,32 +864,6 @@ fn parse_anonymous_enum(entity: &Entity, source_header: &str, verbose: bool) -> 
     if verbose {
         println!("  Parsing anonymous enum as: {} ({} variants)", enum_name, variant_names.len());
     }
-
-    // Now collect full variant info
-    let mut variants = Vec::new();
-    entity.visit_children(|child, _| {
-        if child.get_kind() == EntityKind::EnumConstantDecl {
-            if let Some(variant_name) = child.get_name() {
-                let value = child.get_enum_constant_value().map(|(signed, _unsigned)| signed);
-                let comment = extract_doxygen_comment(&child);
-
-                if verbose {
-                    if let Some(v) = value {
-                        println!("    Variant: {} = {}", variant_name, v);
-                    } else {
-                        println!("    Variant: {}", variant_name);
-                    }
-                }
-
-                variants.push(EnumVariant {
-                    name: variant_name,
-                    value,
-                    comment,
-                });
-            }
-        }
-        EntityVisitResult::Continue
-    });
 
     // Extract the doxygen comment from above the enum (if any)
     let comment = extract_doxygen_comment(entity);

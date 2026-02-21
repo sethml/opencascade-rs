@@ -16,6 +16,19 @@ fn format_source_attribution(header: &str, line: Option<u32>, cpp_name: &str) ->
     }
 }
 
+/// Write a doc comment (`///` lines) to `output`.
+/// `indent` is the leading whitespace (e.g. `""` or `"    "`).
+fn emit_doc_comment(output: &mut String, comment: &str, indent: &str) {
+    for line in comment.lines() {
+        let trimmed = line.trim();
+        if trimmed.is_empty() {
+            writeln!(output, "{}///", indent).unwrap();
+        } else {
+            writeln!(output, "{}/// {}", indent, trimmed).unwrap();
+        }
+    }
+}
+
 /// Types collected from class interfaces
 pub struct CollectedTypes {
     /// Class types (e.g., "gp_Pnt", "Geom_TrimmedCurve") - sorted for deterministic output
@@ -274,14 +287,7 @@ pub fn generate_ffi(
                 writeln!(out, "pub struct {} {{", b.cpp_name).unwrap();
                 for field in &b.pod_fields {
                     if let Some(ref comment) = field.doc_comment {
-                        for line in comment.lines() {
-                            let trimmed = line.trim();
-                            if trimmed.is_empty() {
-                                writeln!(out, "    ///").unwrap();
-                            } else {
-                                writeln!(out, "    /// {}", trimmed).unwrap();
-                            }
-                        }
+                        emit_doc_comment(&mut out, comment, "    ");
                     }
                     if let Some(size) = field.array_size {
                         writeln!(out, "    pub {}: [{}; {}],", field.rust_name, field.rust_type, size).unwrap();
@@ -550,14 +556,7 @@ fn generate_opaque_declarations(
 fn emit_rust_enum(output: &mut String, resolved: &crate::resolver::ResolvedEnum) {
     // Doc comment
     if let Some(ref comment) = resolved.doc_comment {
-        for line in comment.lines() {
-            let trimmed = line.trim();
-            if trimmed.is_empty() {
-                writeln!(output, "///").unwrap();
-            } else {
-                writeln!(output, "/// {}", trimmed).unwrap();
-            }
-        }
+        emit_doc_comment(output, comment, "");
     }
     writeln!(output, "/// C++ enum: `{}`", resolved.cpp_name).unwrap();
 
@@ -579,14 +578,7 @@ fn emit_rust_enum(output: &mut String, resolved: &crate::resolver::ResolvedEnum)
 
     for (variant, value) in &unique_variants {
         if let Some(ref comment) = variant.doc_comment {
-            for line in comment.lines() {
-                let trimmed = line.trim();
-                if trimmed.is_empty() {
-                    writeln!(output, "    ///").unwrap();
-                } else {
-                    writeln!(output, "    /// {}", trimmed).unwrap();
-                }
-            }
+            emit_doc_comment(output, comment, "    ");
         }
         writeln!(output, "    {} = {},", variant.rust_name, value).unwrap();
     }
@@ -637,14 +629,7 @@ fn emit_free_function_wrapper(
     );
     writeln!(output, "/// {}", source_attr).unwrap();
     if let Some(ref comment) = func.doc_comment {
-        for line in comment.lines() {
-            let trimmed = line.trim();
-            if trimmed.is_empty() {
-                writeln!(output, "///").unwrap();
-            } else {
-                writeln!(output, "/// {}", trimmed).unwrap();
-            }
-        }
+        emit_doc_comment(output, comment, "");
     }
 
     // Build parameter list using pre-computed re-export types

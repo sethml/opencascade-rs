@@ -859,3 +859,374 @@ Added `parse_anonymous_enum()` which detects the OCCT pattern where `typedef Sta
 - **Resolver**: Strip the full enum name prefix (`Graphic3d_ZLayerId_`) from variants instead of just the module prefix (`Graphic3d_`), producing cleaner names like `Unknown` instead of `ZlayeridUnknown`. Falls back to module-prefix stripping when full-prefix stripping would produce numeric identifiers (e.g., `Graphic3d_TextureUnit_0`).
 - **Main**: Deduplicate enums by name, merging variants from anonymous sentinel enums (like `{ Foo_NB, Foo_LOWER, Foo_UPPER }`) into the primary named enum.
 - **opencascade crate**: Updated one reference from `ExtAlgo::ExtalgoGrad` to `ExtAlgo::Grad` to match the improved naming.
+
+User: Commit. Then think about whether you discovered opportunities to refactor the code the avoid repetition in this session. If refactoring seems worthwhile, do it, and commit.
+
+GitHub Copilot: Read changed files in [](file:///Users/sethml/src/opencascade-rs)
+
+Summarized conversation history
+
+Created 4 todos
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/commit-msg.txt)
+
+Replacing 28 lines with 28 lines in [](file:///Users/sethml/src/opencascade-rs/tmp/commit-msg.txt)
+
+Ran terminal command:  cat > tmp/commit-msg.txt << 'ENDMSG'
+Fix typedef resolution for chained typedefs and generate enums from anonymous C++ enums
+
+Three related changes to the binding generator:
+
+1. Fix typedef-to-primitive resolution for chained typedefs (parser.rs)
+   - The is_primitive_typedef check matched TypeKind::Typedef but not
+     TypeKind::Elaborated. Clang wraps typedef references in Elaborated
+     sugar, so Graphic3d_ZLayerId -> Standard_Integer appeared as
+     Elaborated rather than Typedef. Added TypeKind::Elaborated to the
+     accepted underlying type kinds.
+   - This unblocks methods like Graphic3d_CStructure::SetZLayer/ZLayer
+     that were being skipped due to "unknown type Graphic3d_ZLayerId".
+
+2. Parse anonymous enums by deriving names from variant prefixes (parser.rs)
+   - Added parse_anonymous_enum() which detects the OCCT pattern where
+     typedef Standard_Integer Foo is followed by enum { Foo_A, Foo_B }.
+   - Finds the longest common prefix and synthesizes a named enum.
+   - Generates new enums like Graphic3d_ZLayerId, Aspect_VKeyFlags,
+     Aspect_VKeyMouse, XCAFPrs_DocumentExplorerFlags, etc.
+
+3. Improved enum variant name stripping + deduplication (resolver.rs, main.rs)
+   - Resolver: Strip full enum name prefix from variants instead of just
+     the module prefix, producing cleaner names like Unknown instead of
+     ZlayeridUnknown. Falls back to module-prefix stripping when
+     full-prefix stripping would produce numeric identifiers.
+   - Main: Deduplicate enums by name, merging variants from anonymous
+     sentinel enums into the primary named enum.
+   - opencascade crate: Updated ExtAlgo::ExtalgoGrad -> ExtAlgo::Grad.
+ENDMSG
+
+Ran terminal command:  git add -A && git commit -F tmp/commit-msg.txt
+
+Starting: *Identify refactoring opportunities* (2/4)
+
+Now let me review the code I touched for refactoring opportunities. Let me re-read the key files to look for repetition.   
+
+Reading lines 742-930 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L742-L931)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 742,
+  "endLine": 930
+}
+
+Reading lines 843-910 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L843-L911)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 843,
+  "endLine": 910
+}
+
+Reading lines 280-315 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L280-L316)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 280,
+  "endLine": 315
+}
+
+I can see a clear repetition: the variant-collection loop (lines 779-801 and 872-894 in parser.rs) is identical between `parse_enum` and `parse_anonymous_enum`. Additionally, `parse_anonymous_enum` collects variant names in a first pass (lines 834-842) then collects full variant info in a second pass (lines 872-894), which could be consolidated.
+
+Let me also check the codegen side for similar patterns: 
+
+Reading lines 550-700 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L550-L701)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 550,
+  "endLine": 700
+}
+
+Clear refactoring opportunity: the variant-collection visitor loop is copy-pasted between `parse_enum` (lines 779-801) and `parse_anonymous_enum` (lines 872-894). Also, `parse_anonymous_enum` iterates children twice (once for names, once for full variants). I'll extract a helper and also notice a doc-comment formatting pattern repeated 3 times in rust.rs. 
+
+Starting: *Implement refactoring* (3/4)
+
+Let me also check the doc comment pattern in rust.rs more carefully: 
+
+Searched for text `for line in comment.lines()` (`**/crates/opencascade-binding-generator/src/codegen/rust.rs`), 4 results
+
+Reading lines 270-290 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L270-L291)
+Completed with input: {
+  "endLine": 290,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 270
+}
+
+So there are 4 instances of the same doc-comment formatting pattern. Let me do both refactorings:
+
+1. Extract `collect_enum_variants()` in parser.rs
+2. Extract `emit_doc_comment()` in rust.rs 
+
+Edited: [parser.rs -25+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L777-L778), [-19+11](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L808-L819), [-27+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L838-L839)
+Completed with input: {
+  "edits": [
+    {
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "777:vd,778:dd,779:jt,780:rd,781:ic,782:zd,783:yx,784:dd,785:pp,786:fj,787:wu,788:ip,789:bl,790:or,791:gl,792:dd,793:oy,794:dx,795:av,796:ih,797:qx,798:uo,799:cy,800:xz,801:ew",
+      "content": "    let variants = collect_enum_variants(entity, verbose);"
+    },
+    {
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "832:kr,833:xb,834:rb,835:jt,836:rd,837:wv,838:wu,839:uo,840:cy,841:xz,842:ew,843:dd,844:od,845:ei,846:ax,847:dd,848:da,849:ld,850:sr",
+      "content": "fn parse_anonymous_enum(entity: &Entity, source_header: &str, verbose: bool) -> Option<ParsedEnum> {\n    let variants = collect_enum_variants(entity, verbose);\n\n    if variants.is_empty() {\n        return None;\n    }\n\n    // Find the longest common prefix of all variant names.\n    // The prefix must end with '_' and have at least one '_' (OCCT naming: Module_Name_VARIANT).\n    let variant_names: Vec<String> = variants.iter().map(|v| v.name.clone()).collect();\n    let common_prefix = longest_common_prefix(&variant_names);"
+    },
+    {
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "870:hi,871:vd,872:jt,873:rd,874:ic,875:zd,876:yx,877:dd,878:pp,879:fj,880:wu,881:ip,882:bl,883:or,884:gl,885:dd,886:oy,887:dx,888:av,889:ih,890:qx,891:uo,892:cy,893:xz,894:ew,895:dd,896:dk",
+      "content": "    // Extract the doxygen comment from above the enum (if any)"
+    }
+  ]
+}
+
+Now I need to add the `collect_enum_variants` helper function. Let me read the current state to find where to insert it: 
+
+Reading lines 740-785 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L740-L786)
+Completed with input: {
+  "endLine": 785,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 740
+}
+
+Good. Now let me find the spot right before `parse_enum` to add the helper:  
+
+Edited: [parser.rs -1+31](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L742-L773)
+Completed with input: {
+  "edits": [
+    {
+      "content": "/// Collect enum variants (EnumConstantDecl children) from an enum entity.\n/// Used by both `parse_enum` and `parse_anonymous_enum`.\nfn collect_enum_variants(entity: &Entity, verbose: bool) -> Vec<EnumVariant> {\n    let mut variants = Vec::new();\n    entity.visit_children(|child, _| {\n        if child.get_kind() == EntityKind::EnumConstantDecl {\n            if let Some(variant_name) = child.get_name() {\n                let value = child.get_enum_constant_value().map(|(signed, _unsigned)| signed);\n                let comment = extract_doxygen_comment(&child);\n\n                if verbose {\n                    if let Some(v) = value {\n                        println!(\"    Variant: {} = {}\", variant_name, v);\n                    } else {\n                        println!(\"    Variant: {}\", variant_name);\n                    }\n                }\n\n                variants.push(EnumVariant {\n                    name: variant_name,\n                    value,\n                    comment,\n                });\n            }\n        }\n        EntityVisitResult::Continue\n    });\n    variants\n}\n\n/// Parse an enum declaration",
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "742:tp",
+      "insertAfter": false
+    }
+  ]
+}
+
+Now let me also look at the current state of `parse_anonymous_enum` to make sure it's correct:  
+
+Reading lines 840-878 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L840-L879)
+Completed with input: {
+  "endLine": 878,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 840
+}
+
+Good, `parse_anonymous_enum` now uses `collect_enum_variants`, then derives names from the result. Let me verify this compiles:   
+
+Ran terminal command:  cargo check -p opencascade-binding-generator 2>&1
+
+Now let me do the doc-comment refactoring in rust.rs. Let me read all 4 instances:    
+
+Reading lines 550-562 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L550-L563)
+Completed with input: {
+  "endLine": 562,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 550
+}
+
+Reading lines 578-595 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L578-L596)
+Completed with input: {
+  "endLine": 595,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 578
+}
+
+Reading lines 636-650 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L636-L651)
+Completed with input: {
+  "endLine": 650,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 636
+}
+
+Reading lines 274-290 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L274-L291)
+Completed with input: {
+  "endLine": 290,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 274
+}
+
+All 4 instances follow the same pattern: iterate over lines, trim, write `///` or `/// {trimmed}`. The only difference is the indentation prefix (`""` or `"    "`). Let me check if there's a common place to add the helper — I'll put it near the top of the file:    
+
+Reading lines 1-25 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L1-L26)
+Completed with input: {
+  "endLine": 25,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 1
+}
+
+I'll add the helper right after `format_source_attribution`:     
+
+Edited: [rust.rs -1+15](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L17-L32)
+Completed with input: {
+  "edits": [
+    {
+      "content": "}\n\n/// Write a doc comment (`///` lines) to `output`.\n/// `indent` is the leading whitespace (e.g. `\"\"` or `\"    \"`).\nfn emit_doc_comment(output: &mut String, comment: &str, indent: &str) {\n    for line in comment.lines() {\n        let trimmed = line.trim();\n        if trimmed.is_empty() {\n            writeln!(output, \"{}///\", indent).unwrap();\n        } else {\n            writeln!(output, \"{}/// {}\", indent, trimmed).unwrap();\n        }\n    }\n}\n",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+      "lineHashes": "17:io"
+    }
+  ]
+}
+
+Now replace the 4 instances. Let me re-read the new line numbers:     
+
+Reading lines 563-577 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L563-L578)
+Completed with input: {
+  "endLine": 577,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 563
+}
+
+Reading lines 594-607 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L594-L608)
+Completed with input: {
+  "endLine": 607,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 594
+}
+
+Reading lines 652-665 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L652-L666)
+Completed with input: {
+  "endLine": 665,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 652
+}
+
+Reading lines 288-302 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L288-L303)
+Completed with input: {
+  "endLine": 302,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 288
+}
+
+Now replace all 4 instances: 
+
+Edited: [rust.rs -10+3](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L290-L293), [-10+3](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L559-L562), [-10+3](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L581-L584), [-10+3](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L632-L635)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    if let Some(ref comment) = resolved.doc_comment {\n        emit_doc_comment(output, comment, \"\");\n    }",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+      "lineHashes": "566:yg,567:ri,568:ze,569:qt,570:zd,571:ud,572:zq,573:uo,574:cy,575:ax"
+    },
+    {
+      "content": "        if let Some(ref comment) = variant.doc_comment {\n            emit_doc_comment(output, comment, \"    \");\n        }",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+      "lineHashes": "595:hy,596:fu,597:xk,598:mt,599:tv,600:cu,601:px,602:gl,603:uo,604:cy"
+    },
+    {
+      "content": "    if let Some(ref comment) = func.doc_comment {\n        emit_doc_comment(output, comment, \"\");\n    }",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+      "lineHashes": "653:sg,654:ri,655:ze,656:qt,657:zd,658:ud,659:zq,660:uo,661:cy,662:ax"
+    },
+    {
+      "content": "                    if let Some(ref comment) = field.doc_comment {\n                        emit_doc_comment(out, comment, \"    \");\n                    }",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+      "lineHashes": "290:sc,291:bw,292:fz,293:sj,294:ux,295:cf,296:ui,297:qf,298:mf,299:or"
+    }
+  ]
+}
+
+Ran terminal command:  cargo check -p opencascade-binding-generator 2>&1
+Completed with input:  cargo check -p opencascade-binding-generator 2>&1
+
+Reading lines 289-295 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L289-L296)
+Completed with input: {
+  "endLine": 295,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 289
+}
+
+Edited: [rust.rs -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L291-L292)
+Completed with input: {
+  "edits": [
+    {
+      "content": "                        emit_doc_comment(&mut out, comment, \"    \");",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+      "lineHashes": "291:en"
+    }
+  ]
+}
+
+Ran terminal command:  cargo check -p opencascade-binding-generator 2>&1
+
+Now let me verify the generated output is identical (the refactoring should produce the same output):   
+
+Ran terminal command:  time scripts/regenerate-bindings.sh 2>&1 | tail -5
+
+Ran terminal command:  git diff --stat crates/opencascade-sys/generated/ 2>&1 | tail -5
+
+No output changes — the refactoring is purely structural. Let me run tests to be safe:   
+
+Ran terminal command:  time scripts/run-binding-generator-tests.sh 2>&1 | tail -10
+
+Ran terminal command:  time cargo build 2>&1 | tail -3
+
+Ran terminal command:  time cargo test --workspace --exclude opencascade-binding-generator 2>&1 | tail -10
+
+All passing. Now let me commit the refactoring: 
+
+Starting: *Commit refactoring* (4/4)
+
+Ran terminal command:  cat > tmp/commit-msg.txt << 'ENDMSG'
+Refactor: extract shared helpers to reduce repetition
+
+- parser.rs: Extract collect_enum_variants() helper used by both
+  parse_enum() and parse_anonymous_enum(), eliminating a duplicated
+  25-line visitor loop. parse_anonymous_enum() no longer does two
+  passes over children (one for names, one for full variants).
+
+- codegen/rust.rs: Extract emit_doc_comment() helper replacing 4
+  identical doc-comment formatting loops across emit_rust_enum(),
+  emit_free_function_wrapper(), and POD struct field emission.
+
+No functional changes; regenerated output is identical.
+ENDMSG
+
+Ran terminal command:  git add -A && git commit -F tmp/commit-msg.txt
+
+Completed: *Commit refactoring* (4/4)
+
+Done. Two commits:
+
+1. **89c0c63** — The feature commit (typedef resolution + anonymous enum generation + variant naming)
+2. **d00b3b3** — Refactoring: extracted `collect_enum_variants()` in parser.rs (eliminated duplicated 25-line visitor loop) and `emit_doc_comment()` in rust.rs (eliminated 4 identical doc-comment formatting loops). Net -42 lines, no functional changes.
+
+User: You mentioned whitespace differences when refactoring. Does that seem deliberate, or like a mistake? If it's a mistake, make it consistent, then commit.
+
+GitHub Copilot: Let me check what I actually committed — I want to see if the `emit_doc_comment` calls use consistent indentation arguments vs what the original code used. 
+
+Searched for text `emit_doc_comment` (`**/crates/opencascade-binding-generator/src/codegen/rust.rs`), 5 results
+
+Those look correct — the indent arg matches the context (top-level items get `""`, nested items like enum variants and struct fields get `"    "`). I don't think I mentioned whitespace differences during the refactoring. Let me re-check the git diff to see if there are any unintended whitespace changes: 
+
+Ran terminal command:  git show --stat HEAD && echo "---" && git diff HEAD~1 HEAD -- crates/opencascade-binding-generator/src/codegen/rust.rs
+
+I see it — there's a double blank line after `emit_doc_comment` (lines 32-33). Let me also check the parser.rs diff: 
+
+Ran terminal command:  git diff HEAD~1 HEAD -- crates/opencascade-binding-generator/src/parser.rs
+
+The only whitespace issue is the double blank line after `emit_doc_comment` in rust.rs. Let me fix it: 
+
+Reading lines 28-38 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L28-L39)
+Completed with input: {
+  "endLine": 38,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 28
+}
+
+Edited: [rust.rs -4+3](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L30-L33)
+Completed with input: {
+  "edits": [
+    {
+      "content": "}\n\n/// Types collected from class interfaces",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+      "lineHashes": "30:io,31:dd,32:dd,33:gv"
+    }
+  ]
+}
+
+Ran terminal command:  git add -A && git commit --amend --no-edit
+
+Fixed — it was just an extra blank line after the `emit_doc_comment` function definition. Amended into the refactoring commit.
