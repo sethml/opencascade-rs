@@ -11283,31 +11283,29 @@ impl HArray1OfGeneralNote {
     }
 
     /// **Source:** `IGESDimen_HArray1OfGeneralNote.hxx`:23 - `IGESDimen_HArray1OfGeneralNote::IGESDimen_HArray1OfGeneralNote()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesdimengeneralnote(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESDimen_Array1OfGeneralNote_value_type,
+        theValue: &crate::ffi::HandleIGESDimenGeneralNote,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESDimen_HArray1OfGeneralNote_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESDimen_HArray1OfGeneralNote_ctor_int2_handleigesdimengeneralnote(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESDimen_HArray1OfGeneralNote.hxx`:23 - `IGESDimen_HArray1OfGeneralNote::IGESDimen_HArray1OfGeneralNote()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESDimen_Array1OfGeneralNote_value_type,
+    pub fn new_handleigesdimengeneralnote_int2_bool(
+        theBegin: &crate::ffi::HandleIGESDimenGeneralNote,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IGESDimen_HArray1OfGeneralNote_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESDimen_HArray1OfGeneralNote_ctor_handleigesdimengeneralnote_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -11509,31 +11507,29 @@ impl HArray1OfLeaderArrow {
     }
 
     /// **Source:** `IGESDimen_HArray1OfLeaderArrow.hxx`:23 - `IGESDimen_HArray1OfLeaderArrow::IGESDimen_HArray1OfLeaderArrow()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesdimenleaderarrow(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESDimen_Array1OfLeaderArrow_value_type,
+        theValue: &crate::ffi::HandleIGESDimenLeaderArrow,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESDimen_HArray1OfLeaderArrow_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESDimen_HArray1OfLeaderArrow_ctor_int2_handleigesdimenleaderarrow(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESDimen_HArray1OfLeaderArrow.hxx`:23 - `IGESDimen_HArray1OfLeaderArrow::IGESDimen_HArray1OfLeaderArrow()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESDimen_Array1OfLeaderArrow_value_type,
+    pub fn new_handleigesdimenleaderarrow_int2_bool(
+        theBegin: &crate::ffi::HandleIGESDimenLeaderArrow,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IGESDimen_HArray1OfLeaderArrow_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESDimen_HArray1OfLeaderArrow_ctor_handleigesdimenleaderarrow_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 

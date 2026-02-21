@@ -2024,29 +2024,33 @@ impl HArrayOfCallBack {
     }
 
     /// **Source:** `Storage_HArrayOfCallBack.hxx`:23 - `Storage_HArrayOfCallBack::Storage_HArrayOfCallBack()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestoragecallback(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::Storage_ArrayOfCallBack_value_type,
+        theValue: &crate::ffi::HandleStorageCallBack,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Storage_HArrayOfCallBack_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Storage_HArrayOfCallBack_ctor_int2_handlestoragecallback(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `Storage_HArrayOfCallBack.hxx`:23 - `Storage_HArrayOfCallBack::Storage_HArrayOfCallBack()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::Storage_ArrayOfCallBack_value_type,
+    pub fn new_handlestoragecallback_int2_bool(
+        theBegin: &crate::ffi::HandleStorageCallBack,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Storage_HArrayOfCallBack_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Storage_HArrayOfCallBack_ctor_handlestoragecallback_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -2229,29 +2233,33 @@ impl HArrayOfSchema {
     }
 
     /// **Source:** `Storage_HArrayOfSchema.hxx`:23 - `Storage_HArrayOfSchema::Storage_HArrayOfSchema()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestorageschema(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::Storage_ArrayOfSchema_value_type,
+        theValue: &crate::ffi::HandleStorageSchema,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Storage_HArrayOfSchema_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Storage_HArrayOfSchema_ctor_int2_handlestorageschema(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `Storage_HArrayOfSchema.hxx`:23 - `Storage_HArrayOfSchema::Storage_HArrayOfSchema()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::Storage_ArrayOfSchema_value_type,
+    pub fn new_handlestorageschema_int2_bool(
+        theBegin: &crate::ffi::HandleStorageSchema,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Storage_HArrayOfSchema_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Storage_HArrayOfSchema_ctor_handlestorageschema_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -2424,29 +2432,33 @@ impl HPArray {
     }
 
     /// **Source:** `Storage_HPArray.hxx`:23 - `Storage_HPArray::Storage_HPArray()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestandardpersistent(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::Storage_PArray_value_type,
+        theValue: &crate::ffi::HandleStandardPersistent,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Storage_HPArray_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Storage_HPArray_ctor_int2_handlestandardpersistent(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `Storage_HPArray.hxx`:23 - `Storage_HPArray::Storage_HPArray()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::Storage_PArray_value_type,
+    pub fn new_handlestandardpersistent_int2_bool(
+        theBegin: &crate::ffi::HandleStandardPersistent,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Storage_HPArray_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Storage_HPArray_ctor_handlestandardpersistent_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -2605,8 +2617,10 @@ impl HSeqOfRoot {
     }
 
     /// **Source:** `Storage_HSeqOfRoot.hxx`:23 - `Storage_HSeqOfRoot::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::Storage_SeqOfRoot_value_type) {
-        unsafe { crate::ffi::Storage_HSeqOfRoot_append_type(self as *mut Self, theItem) }
+    pub fn append_handlestorageroot(&mut self, theItem: &crate::ffi::HandleStorageRoot) {
+        unsafe {
+            crate::ffi::Storage_HSeqOfRoot_append_handlestorageroot(self as *mut Self, theItem)
+        }
     }
 
     /// **Source:** `Storage_HSeqOfRoot.hxx`:23 - `Storage_HSeqOfRoot::Append()`

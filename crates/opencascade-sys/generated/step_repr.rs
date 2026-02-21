@@ -9958,33 +9958,25 @@ impl HArray1OfMaterialPropertyRepresentation {
     }
 
     /// **Source:** `StepRepr_HArray1OfMaterialPropertyRepresentation.hxx`:23 - `StepRepr_HArray1OfMaterialPropertyRepresentation::StepRepr_HArray1OfMaterialPropertyRepresentation()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepreprmaterialpropertyrepresentation(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepRepr_Array1OfMaterialPropertyRepresentation_value_type,
+        theValue: &crate::ffi::HandleStepReprMaterialPropertyRepresentation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepRepr_HArray1OfMaterialPropertyRepresentation_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_HArray1OfMaterialPropertyRepresentation_ctor_int2_handlestepreprmaterialpropertyrepresentation(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepRepr_HArray1OfMaterialPropertyRepresentation.hxx`:23 - `StepRepr_HArray1OfMaterialPropertyRepresentation::StepRepr_HArray1OfMaterialPropertyRepresentation()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepRepr_Array1OfMaterialPropertyRepresentation_value_type,
+    pub fn new_handlestepreprmaterialpropertyrepresentation_int2_bool(
+        theBegin: &crate::ffi::HandleStepReprMaterialPropertyRepresentation,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepRepr_HArray1OfMaterialPropertyRepresentation_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_HArray1OfMaterialPropertyRepresentation_ctor_handlestepreprmaterialpropertyrepresentation_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -10212,33 +10204,25 @@ impl HArray1OfPropertyDefinitionRepresentation {
     }
 
     /// **Source:** `StepRepr_HArray1OfPropertyDefinitionRepresentation.hxx`:23 - `StepRepr_HArray1OfPropertyDefinitionRepresentation::StepRepr_HArray1OfPropertyDefinitionRepresentation()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepreprpropertydefinitionrepresentation(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepRepr_Array1OfPropertyDefinitionRepresentation_value_type,
+        theValue: &crate::ffi::HandleStepReprPropertyDefinitionRepresentation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepRepr_HArray1OfPropertyDefinitionRepresentation_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_HArray1OfPropertyDefinitionRepresentation_ctor_int2_handlestepreprpropertydefinitionrepresentation(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepRepr_HArray1OfPropertyDefinitionRepresentation.hxx`:23 - `StepRepr_HArray1OfPropertyDefinitionRepresentation::StepRepr_HArray1OfPropertyDefinitionRepresentation()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepRepr_Array1OfPropertyDefinitionRepresentation_value_type,
+    pub fn new_handlestepreprpropertydefinitionrepresentation_int2_bool(
+        theBegin: &crate::ffi::HandleStepReprPropertyDefinitionRepresentation,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepRepr_HArray1OfPropertyDefinitionRepresentation_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_HArray1OfPropertyDefinitionRepresentation_ctor_handlestepreprpropertydefinitionrepresentation_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -10464,33 +10448,25 @@ impl HArray1OfRepresentationItem {
     }
 
     /// **Source:** `StepRepr_HArray1OfRepresentationItem.hxx`:23 - `StepRepr_HArray1OfRepresentationItem::StepRepr_HArray1OfRepresentationItem()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepreprrepresentationitem(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepRepr_Array1OfRepresentationItem_value_type,
+        theValue: &crate::ffi::HandleStepReprRepresentationItem,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepRepr_HArray1OfRepresentationItem_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_HArray1OfRepresentationItem_ctor_int2_handlestepreprrepresentationitem(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepRepr_HArray1OfRepresentationItem.hxx`:23 - `StepRepr_HArray1OfRepresentationItem::StepRepr_HArray1OfRepresentationItem()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepRepr_Array1OfRepresentationItem_value_type,
+    pub fn new_handlestepreprrepresentationitem_int2_bool(
+        theBegin: &crate::ffi::HandleStepReprRepresentationItem,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepRepr_HArray1OfRepresentationItem_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_HArray1OfRepresentationItem_ctor_handlestepreprrepresentationitem_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -10706,28 +10682,30 @@ impl HArray1OfShapeAspect {
     }
 
     /// **Source:** `StepRepr_HArray1OfShapeAspect.hxx`:22 - `StepRepr_HArray1OfShapeAspect::StepRepr_HArray1OfShapeAspect()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepreprshapeaspect(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepRepr_Array1OfShapeAspect_value_type,
+        theValue: &crate::ffi::HandleStepReprShapeAspect,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_HArray1OfShapeAspect_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepRepr_HArray1OfShapeAspect_ctor_int2_handlestepreprshapeaspect(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepRepr_HArray1OfShapeAspect.hxx`:22 - `StepRepr_HArray1OfShapeAspect::StepRepr_HArray1OfShapeAspect()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepRepr_Array1OfShapeAspect_value_type,
+    pub fn new_handlestepreprshapeaspect_int2_bool(
+        theBegin: &crate::ffi::HandleStepReprShapeAspect,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::StepRepr_HArray1OfShapeAspect_ctor_type_int2_bool(
+                crate::ffi::StepRepr_HArray1OfShapeAspect_ctor_handlestepreprshapeaspect_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             )
@@ -10938,15 +10916,12 @@ impl HSequenceOfMaterialPropertyRepresentation {
     }
 
     /// **Source:** `StepRepr_HSequenceOfMaterialPropertyRepresentation.hxx`:24 - `StepRepr_HSequenceOfMaterialPropertyRepresentation::Append()`
-    pub fn append_type(
+    pub fn append_handlestepreprmaterialpropertyrepresentation(
         &mut self,
-        theItem: &crate::ffi::StepRepr_SequenceOfMaterialPropertyRepresentation_value_type,
+        theItem: &crate::ffi::HandleStepReprMaterialPropertyRepresentation,
     ) {
         unsafe {
-            crate::ffi::StepRepr_HSequenceOfMaterialPropertyRepresentation_append_type(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi::StepRepr_HSequenceOfMaterialPropertyRepresentation_append_handlestepreprmaterialpropertyrepresentation(self as *mut Self, theItem)
         }
     }
 
@@ -11171,15 +11146,12 @@ impl HSequenceOfRepresentationItem {
     }
 
     /// **Source:** `StepRepr_HSequenceOfRepresentationItem.hxx`:24 - `StepRepr_HSequenceOfRepresentationItem::Append()`
-    pub fn append_type(
+    pub fn append_handlestepreprrepresentationitem(
         &mut self,
-        theItem: &crate::ffi::StepRepr_SequenceOfRepresentationItem_value_type,
+        theItem: &crate::ffi::HandleStepReprRepresentationItem,
     ) {
         unsafe {
-            crate::ffi::StepRepr_HSequenceOfRepresentationItem_append_type(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi::StepRepr_HSequenceOfRepresentationItem_append_handlestepreprrepresentationitem(self as *mut Self, theItem)
         }
     }
 

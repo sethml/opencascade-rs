@@ -6253,31 +6253,29 @@ impl HArray1OfHAsciiString {
     }
 
     /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
-    pub fn new_int2_type(
+    pub fn new_int2_handletcollectionhasciistring(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::Interface_Array1OfHAsciiString_value_type,
+        theValue: &crate::ffi::HandleTCollectionHAsciiString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Interface_HArray1OfHAsciiString_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Interface_HArray1OfHAsciiString_ctor_int2_handletcollectionhasciistring(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::Interface_Array1OfHAsciiString_value_type,
+    pub fn new_handletcollectionhasciistring_int2_bool(
+        theBegin: &crate::ffi::HandleTCollectionHAsciiString,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Interface_HArray1OfHAsciiString_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_HArray1OfHAsciiString_ctor_handletcollectionhasciistring_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -6731,8 +6729,13 @@ impl HSequenceOfCheck {
     }
 
     /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::Interface_SequenceOfCheck_value_type) {
-        unsafe { crate::ffi::Interface_HSequenceOfCheck_append_type(self as *mut Self, theItem) }
+    pub fn append_handleinterfacecheck(&mut self, theItem: &crate::ffi::HandleInterfaceCheck) {
+        unsafe {
+            crate::ffi::Interface_HSequenceOfCheck_append_handleinterfacecheck(
+                self as *mut Self,
+                theItem,
+            )
+        }
     }
 
     /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Append()`

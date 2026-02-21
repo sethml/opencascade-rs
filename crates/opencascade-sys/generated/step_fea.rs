@@ -12847,33 +12847,25 @@ impl HArray1OfCurveElementEndOffset {
     }
 
     /// **Source:** `StepFEA_HArray1OfCurveElementEndOffset.hxx`:20 - `StepFEA_HArray1OfCurveElementEndOffset::StepFEA_HArray1OfCurveElementEndOffset()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepfeacurveelementendoffset(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepFEA_Array1OfCurveElementEndOffset_value_type,
+        theValue: &crate::ffi::HandleStepFEACurveElementEndOffset,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepFEA_HArray1OfCurveElementEndOffset_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepFEA_HArray1OfCurveElementEndOffset_ctor_int2_handlestepfeacurveelementendoffset(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepFEA_HArray1OfCurveElementEndOffset.hxx`:20 - `StepFEA_HArray1OfCurveElementEndOffset::StepFEA_HArray1OfCurveElementEndOffset()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepFEA_Array1OfCurveElementEndOffset_value_type,
+    pub fn new_handlestepfeacurveelementendoffset_int2_bool(
+        theBegin: &crate::ffi::HandleStepFEACurveElementEndOffset,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepFEA_HArray1OfCurveElementEndOffset_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepFEA_HArray1OfCurveElementEndOffset_ctor_handlestepfeacurveelementendoffset_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -13093,33 +13085,25 @@ impl HArray1OfCurveElementEndRelease {
     }
 
     /// **Source:** `StepFEA_HArray1OfCurveElementEndRelease.hxx`:20 - `StepFEA_HArray1OfCurveElementEndRelease::StepFEA_HArray1OfCurveElementEndRelease()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepfeacurveelementendrelease(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepFEA_Array1OfCurveElementEndRelease_value_type,
+        theValue: &crate::ffi::HandleStepFEACurveElementEndRelease,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepFEA_HArray1OfCurveElementEndRelease_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepFEA_HArray1OfCurveElementEndRelease_ctor_int2_handlestepfeacurveelementendrelease(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepFEA_HArray1OfCurveElementEndRelease.hxx`:20 - `StepFEA_HArray1OfCurveElementEndRelease::StepFEA_HArray1OfCurveElementEndRelease()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepFEA_Array1OfCurveElementEndRelease_value_type,
+    pub fn new_handlestepfeacurveelementendrelease_int2_bool(
+        theBegin: &crate::ffi::HandleStepFEACurveElementEndRelease,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepFEA_HArray1OfCurveElementEndRelease_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepFEA_HArray1OfCurveElementEndRelease_ctor_handlestepfeacurveelementendrelease_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -13343,33 +13327,25 @@ impl HArray1OfCurveElementInterval {
     }
 
     /// **Source:** `StepFEA_HArray1OfCurveElementInterval.hxx`:21 - `StepFEA_HArray1OfCurveElementInterval::StepFEA_HArray1OfCurveElementInterval()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepfeacurveelementinterval(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepFEA_Array1OfCurveElementInterval_value_type,
+        theValue: &crate::ffi::HandleStepFEACurveElementInterval,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepFEA_HArray1OfCurveElementInterval_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepFEA_HArray1OfCurveElementInterval_ctor_int2_handlestepfeacurveelementinterval(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepFEA_HArray1OfCurveElementInterval.hxx`:21 - `StepFEA_HArray1OfCurveElementInterval::StepFEA_HArray1OfCurveElementInterval()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepFEA_Array1OfCurveElementInterval_value_type,
+    pub fn new_handlestepfeacurveelementinterval_int2_bool(
+        theBegin: &crate::ffi::HandleStepFEACurveElementInterval,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepFEA_HArray1OfCurveElementInterval_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepFEA_HArray1OfCurveElementInterval_ctor_handlestepfeacurveelementinterval_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -13823,33 +13799,25 @@ impl HArray1OfElementRepresentation {
     }
 
     /// **Source:** `StepFEA_HArray1OfElementRepresentation.hxx`:21 - `StepFEA_HArray1OfElementRepresentation::StepFEA_HArray1OfElementRepresentation()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepfeaelementrepresentation(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepFEA_Array1OfElementRepresentation_value_type,
+        theValue: &crate::ffi::HandleStepFEAElementRepresentation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepFEA_HArray1OfElementRepresentation_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepFEA_HArray1OfElementRepresentation_ctor_int2_handlestepfeaelementrepresentation(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepFEA_HArray1OfElementRepresentation.hxx`:21 - `StepFEA_HArray1OfElementRepresentation::StepFEA_HArray1OfElementRepresentation()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepFEA_Array1OfElementRepresentation_value_type,
+    pub fn new_handlestepfeaelementrepresentation_int2_bool(
+        theBegin: &crate::ffi::HandleStepFEAElementRepresentation,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepFEA_HArray1OfElementRepresentation_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepFEA_HArray1OfElementRepresentation_ctor_handlestepfeaelementrepresentation_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -14067,33 +14035,25 @@ impl HArray1OfNodeRepresentation {
     }
 
     /// **Source:** `StepFEA_HArray1OfNodeRepresentation.hxx`:20 - `StepFEA_HArray1OfNodeRepresentation::StepFEA_HArray1OfNodeRepresentation()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepfeanoderepresentation(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepFEA_Array1OfNodeRepresentation_value_type,
+        theValue: &crate::ffi::HandleStepFEANodeRepresentation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepFEA_HArray1OfNodeRepresentation_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepFEA_HArray1OfNodeRepresentation_ctor_int2_handlestepfeanoderepresentation(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepFEA_HArray1OfNodeRepresentation.hxx`:20 - `StepFEA_HArray1OfNodeRepresentation::StepFEA_HArray1OfNodeRepresentation()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepFEA_Array1OfNodeRepresentation_value_type,
+    pub fn new_handlestepfeanoderepresentation_int2_bool(
+        theBegin: &crate::ffi::HandleStepFEANodeRepresentation,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepFEA_HArray1OfNodeRepresentation_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepFEA_HArray1OfNodeRepresentation_ctor_handlestepfeanoderepresentation_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -14310,15 +14270,12 @@ impl HSequenceOfCurve3dElementProperty {
     }
 
     /// **Source:** `StepFEA_HSequenceOfCurve3dElementProperty.hxx`:21 - `StepFEA_HSequenceOfCurve3dElementProperty::Append()`
-    pub fn append_type(
+    pub fn append_handlestepfeacurve3delementproperty(
         &mut self,
-        theItem: &crate::ffi::StepFEA_SequenceOfCurve3dElementProperty_value_type,
+        theItem: &crate::ffi::HandleStepFEACurve3dElementProperty,
     ) {
         unsafe {
-            crate::ffi::StepFEA_HSequenceOfCurve3dElementProperty_append_type(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi::StepFEA_HSequenceOfCurve3dElementProperty_append_handlestepfeacurve3delementproperty(self as *mut Self, theItem)
         }
     }
 
@@ -14543,15 +14500,12 @@ impl HSequenceOfElementGeometricRelationship {
     }
 
     /// **Source:** `StepFEA_HSequenceOfElementGeometricRelationship.hxx`:20 - `StepFEA_HSequenceOfElementGeometricRelationship::Append()`
-    pub fn append_type(
+    pub fn append_handlestepfeaelementgeometricrelationship(
         &mut self,
-        theItem: &crate::ffi::StepFEA_SequenceOfElementGeometricRelationship_value_type,
+        theItem: &crate::ffi::HandleStepFEAElementGeometricRelationship,
     ) {
         unsafe {
-            crate::ffi::StepFEA_HSequenceOfElementGeometricRelationship_append_type(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi::StepFEA_HSequenceOfElementGeometricRelationship_append_handlestepfeaelementgeometricrelationship(self as *mut Self, theItem)
         }
     }
 
@@ -14774,15 +14728,12 @@ impl HSequenceOfElementRepresentation {
     }
 
     /// **Source:** `StepFEA_HSequenceOfElementRepresentation.hxx`:20 - `StepFEA_HSequenceOfElementRepresentation::Append()`
-    pub fn append_type(
+    pub fn append_handlestepfeaelementrepresentation(
         &mut self,
-        theItem: &crate::ffi::StepFEA_SequenceOfElementRepresentation_value_type,
+        theItem: &crate::ffi::HandleStepFEAElementRepresentation,
     ) {
         unsafe {
-            crate::ffi::StepFEA_HSequenceOfElementRepresentation_append_type(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi::StepFEA_HSequenceOfElementRepresentation_append_handlestepfeaelementrepresentation(self as *mut Self, theItem)
         }
     }
 
@@ -15007,12 +14958,12 @@ impl HSequenceOfNodeRepresentation {
     }
 
     /// **Source:** `StepFEA_HSequenceOfNodeRepresentation.hxx`:21 - `StepFEA_HSequenceOfNodeRepresentation::Append()`
-    pub fn append_type(
+    pub fn append_handlestepfeanoderepresentation(
         &mut self,
-        theItem: &crate::ffi::StepFEA_SequenceOfNodeRepresentation_value_type,
+        theItem: &crate::ffi::HandleStepFEANodeRepresentation,
     ) {
         unsafe {
-            crate::ffi::StepFEA_HSequenceOfNodeRepresentation_append_type(
+            crate::ffi::StepFEA_HSequenceOfNodeRepresentation_append_handlestepfeanoderepresentation(
                 self as *mut Self,
                 theItem,
             )

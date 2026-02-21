@@ -5611,11 +5611,15 @@ unsafe impl crate::CppDeletable for TheIWLineOfTheIWalking {
 
 impl TheIWLineOfTheIWalking {
     /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:43 - `IntPatch_TheIWLineOfTheIWalking::IntPatch_TheIWLineOfTheIWalking()`
-    pub fn new_allocator(theAllocator: &crate::ffi::IntSurf_Allocator) -> crate::OwnedPtr<Self> {
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_TheIWLineOfTheIWalking_ctor_allocator(
-                theAllocator,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IntPatch_TheIWLineOfTheIWalking_ctor_handlencollectionbaseallocator(
+                    theAllocator,
+                ),
+            )
         }
     }
 

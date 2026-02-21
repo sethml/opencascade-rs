@@ -4441,33 +4441,25 @@ impl HArray1OfCurveElementEndReleasePacket {
     }
 
     /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::StepElement_HArray1OfCurveElementEndReleasePacket()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepelementcurveelementendreleasepacket(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepElement_Array1OfCurveElementEndReleasePacket_value_type,
+        theValue: &crate::ffi::HandleStepElementCurveElementEndReleasePacket,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepElement_HArray1OfCurveElementEndReleasePacket_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfCurveElementEndReleasePacket_ctor_int2_handlestepelementcurveelementendreleasepacket(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::StepElement_HArray1OfCurveElementEndReleasePacket()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepElement_Array1OfCurveElementEndReleasePacket_value_type,
+    pub fn new_handlestepelementcurveelementendreleasepacket_int2_bool(
+        theBegin: &crate::ffi::HandleStepElementCurveElementEndReleasePacket,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepElement_HArray1OfCurveElementEndReleasePacket_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfCurveElementEndReleasePacket_ctor_handlestepelementcurveelementendreleasepacket_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -4697,33 +4689,25 @@ impl HArray1OfCurveElementSectionDefinition {
     }
 
     /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::StepElement_HArray1OfCurveElementSectionDefinition()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepelementcurveelementsectiondefinition(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepElement_Array1OfCurveElementSectionDefinition_value_type,
+        theValue: &crate::ffi::HandleStepElementCurveElementSectionDefinition,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepElement_HArray1OfCurveElementSectionDefinition_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfCurveElementSectionDefinition_ctor_int2_handlestepelementcurveelementsectiondefinition(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::StepElement_HArray1OfCurveElementSectionDefinition()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepElement_Array1OfCurveElementSectionDefinition_value_type,
+    pub fn new_handlestepelementcurveelementsectiondefinition_int2_bool(
+        theBegin: &crate::ffi::HandleStepElementCurveElementSectionDefinition,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepElement_HArray1OfCurveElementSectionDefinition_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfCurveElementSectionDefinition_ctor_handlestepelementcurveelementsectiondefinition_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -4953,25 +4937,25 @@ impl HArray1OfHSequenceOfCurveElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepelementhsequenceofcurveelementpurposemember(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepElement_Array1OfHSequenceOfCurveElementPurposeMember_value_type,
+        theValue: &crate::ffi::HandleStepElementHSequenceOfCurveElementPurposeMember,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_ctor_int2_type(theLower, theUpper, theValue))
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_ctor_int2_handlestepelementhsequenceofcurveelementpurposemember(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepElement_Array1OfHSequenceOfCurveElementPurposeMember_value_type,
+    pub fn new_handlestepelementhsequenceofcurveelementpurposemember_int2_bool(
+        theBegin: &crate::ffi::HandleStepElementHSequenceOfCurveElementPurposeMember,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_ctor_type_int2_bool(theBegin, theLower, theUpper, arg3))
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_ctor_handlestepelementhsequenceofcurveelementpurposemember_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -5192,25 +5176,25 @@ impl HArray1OfHSequenceOfSurfaceElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepelementhsequenceofsurfaceelementpurposemember(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember_value_type,
+        theValue: &crate::ffi::HandleStepElementHSequenceOfSurfaceElementPurposeMember,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_ctor_int2_type(theLower, theUpper, theValue))
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_ctor_int2_handlestepelementhsequenceofsurfaceelementpurposemember(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember_value_type,
+    pub fn new_handlestepelementhsequenceofsurfaceelementpurposemember_int2_bool(
+        theBegin: &crate::ffi::HandleStepElementHSequenceOfSurfaceElementPurposeMember,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_ctor_type_int2_bool(theBegin, theLower, theUpper, arg3))
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_ctor_handlestepelementhsequenceofsurfaceelementpurposemember_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -5674,33 +5658,25 @@ impl HArray1OfSurfaceSection {
     }
 
     /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::StepElement_HArray1OfSurfaceSection()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepelementsurfacesection(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepElement_Array1OfSurfaceSection_value_type,
+        theValue: &crate::ffi::HandleStepElementSurfaceSection,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepElement_HArray1OfSurfaceSection_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfSurfaceSection_ctor_int2_handlestepelementsurfacesection(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::StepElement_HArray1OfSurfaceSection()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepElement_Array1OfSurfaceSection_value_type,
+    pub fn new_handlestepelementsurfacesection_int2_bool(
+        theBegin: &crate::ffi::HandleStepElementSurfaceSection,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepElement_HArray1OfSurfaceSection_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfSurfaceSection_ctor_handlestepelementsurfacesection_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -6152,33 +6128,25 @@ impl HArray1OfVolumeElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::StepElement_HArray1OfVolumeElementPurposeMember()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepelementvolumeelementpurposemember(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepElement_Array1OfVolumeElementPurposeMember_value_type,
+        theValue: &crate::ffi::HandleStepElementVolumeElementPurposeMember,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepElement_HArray1OfVolumeElementPurposeMember_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfVolumeElementPurposeMember_ctor_int2_handlestepelementvolumeelementpurposemember(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::StepElement_HArray1OfVolumeElementPurposeMember()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepElement_Array1OfVolumeElementPurposeMember_value_type,
+    pub fn new_handlestepelementvolumeelementpurposemember_int2_bool(
+        theBegin: &crate::ffi::HandleStepElementVolumeElementPurposeMember,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepElement_HArray1OfVolumeElementPurposeMember_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray1OfVolumeElementPurposeMember_ctor_handlestepelementvolumeelementpurposemember_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -6402,19 +6370,15 @@ impl HArray2OfCurveElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HArray2OfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray2OfCurveElementPurposeMember::StepElement_HArray2OfCurveElementPurposeMember()`
-    pub fn new_int4_type(
+    pub fn new_int4_handlestepelementcurveelementpurposemember(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::StepElement_Array2OfCurveElementPurposeMember_value_type,
+        theValue: &crate::ffi::HandleStepElementCurveElementPurposeMember,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepElement_HArray2OfCurveElementPurposeMember_ctor_int4_type(
-                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray2OfCurveElementPurposeMember_ctor_int4_handlestepelementcurveelementpurposemember(theRowLow, theRowUpp, theColLow, theColUpp, theValue))
         }
     }
 
@@ -6870,19 +6834,15 @@ impl HArray2OfSurfaceElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HArray2OfSurfaceElementPurposeMember.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurposeMember::StepElement_HArray2OfSurfaceElementPurposeMember()`
-    pub fn new_int4_type(
+    pub fn new_int4_handlestepelementsurfaceelementpurposemember(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::StepElement_Array2OfSurfaceElementPurposeMember_value_type,
+        theValue: &crate::ffi::HandleStepElementSurfaceElementPurposeMember,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepElement_HArray2OfSurfaceElementPurposeMember_ctor_int4_type(
-                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepElement_HArray2OfSurfaceElementPurposeMember_ctor_int4_handlestepelementsurfaceelementpurposemember(theRowLow, theRowUpp, theColLow, theColUpp, theValue))
         }
     }
 
@@ -7117,15 +7077,12 @@ impl HSequenceOfCurveElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HSequenceOfCurveElementPurposeMember::Append()`
-    pub fn append_type(
+    pub fn append_handlestepelementcurveelementpurposemember(
         &mut self,
-        theItem: &crate::ffi::StepElement_SequenceOfCurveElementPurposeMember_value_type,
+        theItem: &crate::ffi::HandleStepElementCurveElementPurposeMember,
     ) {
         unsafe {
-            crate::ffi::StepElement_HSequenceOfCurveElementPurposeMember_append_type(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi::StepElement_HSequenceOfCurveElementPurposeMember_append_handlestepelementcurveelementpurposemember(self as *mut Self, theItem)
         }
     }
 
@@ -7352,15 +7309,12 @@ impl HSequenceOfCurveElementSectionDefinition {
     }
 
     /// **Source:** `StepElement_HSequenceOfCurveElementSectionDefinition.hxx`:20 - `StepElement_HSequenceOfCurveElementSectionDefinition::Append()`
-    pub fn append_type(
+    pub fn append_handlestepelementcurveelementsectiondefinition(
         &mut self,
-        theItem: &crate::ffi::StepElement_SequenceOfCurveElementSectionDefinition_value_type,
+        theItem: &crate::ffi::HandleStepElementCurveElementSectionDefinition,
     ) {
         unsafe {
-            crate::ffi::StepElement_HSequenceOfCurveElementSectionDefinition_append_type(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi::StepElement_HSequenceOfCurveElementSectionDefinition_append_handlestepelementcurveelementsectiondefinition(self as *mut Self, theItem)
         }
     }
 
@@ -7589,15 +7543,12 @@ impl HSequenceOfElementMaterial {
     }
 
     /// **Source:** `StepElement_HSequenceOfElementMaterial.hxx`:20 - `StepElement_HSequenceOfElementMaterial::Append()`
-    pub fn append_type(
+    pub fn append_handlestepelementelementmaterial(
         &mut self,
-        theItem: &crate::ffi::StepElement_SequenceOfElementMaterial_value_type,
+        theItem: &crate::ffi::HandleStepElementElementMaterial,
     ) {
         unsafe {
-            crate::ffi::StepElement_HSequenceOfElementMaterial_append_type(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi::StepElement_HSequenceOfElementMaterial_append_handlestepelementelementmaterial(self as *mut Self, theItem)
         }
     }
 
@@ -7825,15 +7776,12 @@ impl HSequenceOfSurfaceElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HSequenceOfSurfaceElementPurposeMember::Append()`
-    pub fn append_type(
+    pub fn append_handlestepelementsurfaceelementpurposemember(
         &mut self,
-        theItem: &crate::ffi::StepElement_SequenceOfSurfaceElementPurposeMember_value_type,
+        theItem: &crate::ffi::HandleStepElementSurfaceElementPurposeMember,
     ) {
         unsafe {
-            crate::ffi::StepElement_HSequenceOfSurfaceElementPurposeMember_append_type(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi::StepElement_HSequenceOfSurfaceElementPurposeMember_append_handlestepelementsurfaceelementpurposemember(self as *mut Self, theItem)
         }
     }
 

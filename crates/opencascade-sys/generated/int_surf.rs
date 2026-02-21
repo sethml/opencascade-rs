@@ -292,9 +292,13 @@ unsafe impl crate::CppDeletable for LineOn2S {
 
 impl LineOn2S {
     /// **Source:** `IntSurf_LineOn2S.hxx`:38 - `IntSurf_LineOn2S::IntSurf_LineOn2S()`
-    pub fn new_allocator(theAllocator: &crate::ffi::IntSurf_Allocator) -> crate::OwnedPtr<Self> {
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_LineOn2S_ctor_allocator(theAllocator))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IntSurf_LineOn2S_ctor_handlencollectionbaseallocator(theAllocator),
+            )
         }
     }
 
@@ -1188,7 +1192,7 @@ impl Transition {
 // ========================
 
 pub use crate::ffi::{
-    IntSurf_Allocator as Allocator, IntSurf_ListOfPntOn2S as ListOfPntOn2S,
+    IntSurf_ListOfPntOn2S as ListOfPntOn2S,
     IntSurf_SequenceOfInteriorPoint as SequenceOfInteriorPoint,
     IntSurf_SequenceOfPathPoint as SequenceOfPathPoint,
 };

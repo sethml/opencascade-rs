@@ -9243,29 +9243,33 @@ impl HArray1OfBoundary {
     }
 
     /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::IGESGeom_HArray1OfBoundary()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesgeomboundary(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESGeom_Array1OfBoundary_value_type,
+        theValue: &crate::ffi::HandleIGESGeomBoundary,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfBoundary_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_HArray1OfBoundary_ctor_int2_handleigesgeomboundary(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::IGESGeom_HArray1OfBoundary()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESGeom_Array1OfBoundary_value_type,
+    pub fn new_handleigesgeomboundary_int2_bool(
+        theBegin: &crate::ffi::HandleIGESGeomBoundary,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfBoundary_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_HArray1OfBoundary_ctor_handleigesgeomboundary_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -9452,31 +9456,29 @@ impl HArray1OfCurveOnSurface {
     }
 
     /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::IGESGeom_HArray1OfCurveOnSurface()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesgeomcurveonsurface(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESGeom_Array1OfCurveOnSurface_value_type,
+        theValue: &crate::ffi::HandleIGESGeomCurveOnSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGeom_HArray1OfCurveOnSurface_ctor_int2_handleigesgeomcurveonsurface(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::IGESGeom_HArray1OfCurveOnSurface()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESGeom_Array1OfCurveOnSurface_value_type,
+    pub fn new_handleigesgeomcurveonsurface_int2_bool(
+        theBegin: &crate::ffi::HandleIGESGeomCurveOnSurface,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IGESGeom_HArray1OfCurveOnSurface_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_ctor_handleigesgeomcurveonsurface_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -9684,33 +9686,25 @@ impl HArray1OfTransformationMatrix {
     }
 
     /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::IGESGeom_HArray1OfTransformationMatrix()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesgeomtransformationmatrix(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESGeom_Array1OfTransformationMatrix_value_type,
+        theValue: &crate::ffi::HandleIGESGeomTransformationMatrix,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IGESGeom_HArray1OfTransformationMatrix_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfTransformationMatrix_ctor_int2_handleigesgeomtransformationmatrix(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::IGESGeom_HArray1OfTransformationMatrix()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESGeom_Array1OfTransformationMatrix_value_type,
+    pub fn new_handleigesgeomtransformationmatrix_int2_bool(
+        theBegin: &crate::ffi::HandleIGESGeomTransformationMatrix,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IGESGeom_HArray1OfTransformationMatrix_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGeom_HArray1OfTransformationMatrix_ctor_handleigesgeomtransformationmatrix_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 

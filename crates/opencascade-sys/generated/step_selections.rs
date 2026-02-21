@@ -664,15 +664,12 @@ impl HSequenceOfAssemblyLink {
     }
 
     /// **Source:** `STEPSelections_HSequenceOfAssemblyLink.hxx`:23 - `STEPSelections_HSequenceOfAssemblyLink::Append()`
-    pub fn append_type(
+    pub fn append_handlestepselectionsassemblylink(
         &mut self,
-        theItem: &crate::ffi::STEPSelections_SequenceOfAssemblyLink_value_type,
+        theItem: &crate::ffi::HandleSTEPSelectionsAssemblyLink,
     ) {
         unsafe {
-            crate::ffi::STEPSelections_HSequenceOfAssemblyLink_append_type(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi::STEPSelections_HSequenceOfAssemblyLink_append_handlestepselectionsassemblylink(self as *mut Self, theItem)
         }
     }
 

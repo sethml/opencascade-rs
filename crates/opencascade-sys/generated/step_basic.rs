@@ -17081,29 +17081,33 @@ impl HArray1OfApproval {
     }
 
     /// **Source:** `StepBasic_HArray1OfApproval.hxx`:23 - `StepBasic_HArray1OfApproval::StepBasic_HArray1OfApproval()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepbasicapproval(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepBasic_Array1OfApproval_value_type,
+        theValue: &crate::ffi::HandleStepBasicApproval,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfApproval_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepBasic_HArray1OfApproval_ctor_int2_handlestepbasicapproval(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepBasic_HArray1OfApproval.hxx`:23 - `StepBasic_HArray1OfApproval::StepBasic_HArray1OfApproval()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepBasic_Array1OfApproval_value_type,
+    pub fn new_handlestepbasicapproval_int2_bool(
+        theBegin: &crate::ffi::HandleStepBasicApproval,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfApproval_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepBasic_HArray1OfApproval_ctor_handlestepbasicapproval_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -17294,33 +17298,25 @@ impl HArray1OfDerivedUnitElement {
     }
 
     /// **Source:** `StepBasic_HArray1OfDerivedUnitElement.hxx`:23 - `StepBasic_HArray1OfDerivedUnitElement::StepBasic_HArray1OfDerivedUnitElement()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepbasicderivedunitelement(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepBasic_Array1OfDerivedUnitElement_value_type,
+        theValue: &crate::ffi::HandleStepBasicDerivedUnitElement,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepBasic_HArray1OfDerivedUnitElement_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfDerivedUnitElement_ctor_int2_handlestepbasicderivedunitelement(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepBasic_HArray1OfDerivedUnitElement.hxx`:23 - `StepBasic_HArray1OfDerivedUnitElement::StepBasic_HArray1OfDerivedUnitElement()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepBasic_Array1OfDerivedUnitElement_value_type,
+    pub fn new_handlestepbasicderivedunitelement_int2_bool(
+        theBegin: &crate::ffi::HandleStepBasicDerivedUnitElement,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepBasic_HArray1OfDerivedUnitElement_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfDerivedUnitElement_ctor_handlestepbasicderivedunitelement_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -17540,29 +17536,33 @@ impl HArray1OfDocument {
     }
 
     /// **Source:** `StepBasic_HArray1OfDocument.hxx`:23 - `StepBasic_HArray1OfDocument::StepBasic_HArray1OfDocument()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepbasicdocument(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepBasic_Array1OfDocument_value_type,
+        theValue: &crate::ffi::HandleStepBasicDocument,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfDocument_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepBasic_HArray1OfDocument_ctor_int2_handlestepbasicdocument(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepBasic_HArray1OfDocument.hxx`:23 - `StepBasic_HArray1OfDocument::StepBasic_HArray1OfDocument()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepBasic_Array1OfDocument_value_type,
+    pub fn new_handlestepbasicdocument_int2_bool(
+        theBegin: &crate::ffi::HandleStepBasicDocument,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfDocument_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepBasic_HArray1OfDocument_ctor_handlestepbasicdocument_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -17751,29 +17751,33 @@ impl HArray1OfNamedUnit {
     }
 
     /// **Source:** `StepBasic_HArray1OfNamedUnit.hxx`:23 - `StepBasic_HArray1OfNamedUnit::StepBasic_HArray1OfNamedUnit()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepbasicnamedunit(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepBasic_Array1OfNamedUnit_value_type,
+        theValue: &crate::ffi::HandleStepBasicNamedUnit,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfNamedUnit_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepBasic_HArray1OfNamedUnit_ctor_int2_handlestepbasicnamedunit(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepBasic_HArray1OfNamedUnit.hxx`:23 - `StepBasic_HArray1OfNamedUnit::StepBasic_HArray1OfNamedUnit()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepBasic_Array1OfNamedUnit_value_type,
+    pub fn new_handlestepbasicnamedunit_int2_bool(
+        theBegin: &crate::ffi::HandleStepBasicNamedUnit,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfNamedUnit_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepBasic_HArray1OfNamedUnit_ctor_handlestepbasicnamedunit_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -17966,31 +17970,29 @@ impl HArray1OfOrganization {
     }
 
     /// **Source:** `StepBasic_HArray1OfOrganization.hxx`:23 - `StepBasic_HArray1OfOrganization::StepBasic_HArray1OfOrganization()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepbasicorganization(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepBasic_Array1OfOrganization_value_type,
+        theValue: &crate::ffi::HandleStepBasicOrganization,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfOrganization_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepBasic_HArray1OfOrganization_ctor_int2_handlestepbasicorganization(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepBasic_HArray1OfOrganization.hxx`:23 - `StepBasic_HArray1OfOrganization::StepBasic_HArray1OfOrganization()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepBasic_Array1OfOrganization_value_type,
+    pub fn new_handlestepbasicorganization_int2_bool(
+        theBegin: &crate::ffi::HandleStepBasicOrganization,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepBasic_HArray1OfOrganization_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfOrganization_ctor_handlestepbasicorganization_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -18192,29 +18194,33 @@ impl HArray1OfPerson {
     }
 
     /// **Source:** `StepBasic_HArray1OfPerson.hxx`:23 - `StepBasic_HArray1OfPerson::StepBasic_HArray1OfPerson()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepbasicperson(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepBasic_Array1OfPerson_value_type,
+        theValue: &crate::ffi::HandleStepBasicPerson,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfPerson_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepBasic_HArray1OfPerson_ctor_int2_handlestepbasicperson(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepBasic_HArray1OfPerson.hxx`:23 - `StepBasic_HArray1OfPerson::StepBasic_HArray1OfPerson()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepBasic_Array1OfPerson_value_type,
+    pub fn new_handlestepbasicperson_int2_bool(
+        theBegin: &crate::ffi::HandleStepBasicPerson,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfPerson_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepBasic_HArray1OfPerson_ctor_handlestepbasicperson_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -18398,29 +18404,33 @@ impl HArray1OfProduct {
     }
 
     /// **Source:** `StepBasic_HArray1OfProduct.hxx`:23 - `StepBasic_HArray1OfProduct::StepBasic_HArray1OfProduct()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepbasicproduct(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepBasic_Array1OfProduct_value_type,
+        theValue: &crate::ffi::HandleStepBasicProduct,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfProduct_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepBasic_HArray1OfProduct_ctor_int2_handlestepbasicproduct(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepBasic_HArray1OfProduct.hxx`:23 - `StepBasic_HArray1OfProduct::StepBasic_HArray1OfProduct()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepBasic_Array1OfProduct_value_type,
+    pub fn new_handlestepbasicproduct_int2_bool(
+        theBegin: &crate::ffi::HandleStepBasicProduct,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfProduct_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepBasic_HArray1OfProduct_ctor_handlestepbasicproduct_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -18607,31 +18617,25 @@ impl HArray1OfProductContext {
     }
 
     /// **Source:** `StepBasic_HArray1OfProductContext.hxx`:23 - `StepBasic_HArray1OfProductContext::StepBasic_HArray1OfProductContext()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepbasicproductcontext(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepBasic_Array1OfProductContext_value_type,
+        theValue: &crate::ffi::HandleStepBasicProductContext,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfProductContext_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfProductContext_ctor_int2_handlestepbasicproductcontext(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepBasic_HArray1OfProductContext.hxx`:23 - `StepBasic_HArray1OfProductContext::StepBasic_HArray1OfProductContext()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepBasic_Array1OfProductContext_value_type,
+    pub fn new_handlestepbasicproductcontext_int2_bool(
+        theBegin: &crate::ffi::HandleStepBasicProductContext,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepBasic_HArray1OfProductContext_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfProductContext_ctor_handlestepbasicproductcontext_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -18839,33 +18843,25 @@ impl HArray1OfProductDefinition {
     }
 
     /// **Source:** `StepBasic_HArray1OfProductDefinition.hxx`:24 - `StepBasic_HArray1OfProductDefinition::StepBasic_HArray1OfProductDefinition()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepbasicproductdefinition(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepBasic_Array1OfProductDefinition_value_type,
+        theValue: &crate::ffi::HandleStepBasicProductDefinition,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepBasic_HArray1OfProductDefinition_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfProductDefinition_ctor_int2_handlestepbasicproductdefinition(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepBasic_HArray1OfProductDefinition.hxx`:24 - `StepBasic_HArray1OfProductDefinition::StepBasic_HArray1OfProductDefinition()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepBasic_Array1OfProductDefinition_value_type,
+    pub fn new_handlestepbasicproductdefinition_int2_bool(
+        theBegin: &crate::ffi::HandleStepBasicProductDefinition,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepBasic_HArray1OfProductDefinition_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfProductDefinition_ctor_handlestepbasicproductdefinition_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -19087,33 +19083,25 @@ impl HArray1OfUncertaintyMeasureWithUnit {
     }
 
     /// **Source:** `StepBasic_HArray1OfUncertaintyMeasureWithUnit.hxx`:23 - `StepBasic_HArray1OfUncertaintyMeasureWithUnit::StepBasic_HArray1OfUncertaintyMeasureWithUnit()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepbasicuncertaintymeasurewithunit(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepBasic_Array1OfUncertaintyMeasureWithUnit_value_type,
+        theValue: &crate::ffi::HandleStepBasicUncertaintyMeasureWithUnit,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepBasic_HArray1OfUncertaintyMeasureWithUnit_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfUncertaintyMeasureWithUnit_ctor_int2_handlestepbasicuncertaintymeasurewithunit(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepBasic_HArray1OfUncertaintyMeasureWithUnit.hxx`:23 - `StepBasic_HArray1OfUncertaintyMeasureWithUnit::StepBasic_HArray1OfUncertaintyMeasureWithUnit()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepBasic_Array1OfUncertaintyMeasureWithUnit_value_type,
+    pub fn new_handlestepbasicuncertaintymeasurewithunit_int2_bool(
+        theBegin: &crate::ffi::HandleStepBasicUncertaintyMeasureWithUnit,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepBasic_HArray1OfUncertaintyMeasureWithUnit_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_HArray1OfUncertaintyMeasureWithUnit_ctor_handlestepbasicuncertaintymeasurewithunit_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 

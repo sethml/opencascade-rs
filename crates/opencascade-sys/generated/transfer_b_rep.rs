@@ -609,15 +609,12 @@ impl HSequenceOfTransferResultInfo {
     }
 
     /// **Source:** `TransferBRep_HSequenceOfTransferResultInfo.hxx`:23 - `TransferBRep_HSequenceOfTransferResultInfo::Append()`
-    pub fn append_type(
+    pub fn append_handletransferbreptransferresultinfo(
         &mut self,
-        theItem: &crate::ffi::TransferBRep_SequenceOfTransferResultInfo_value_type,
+        theItem: &crate::ffi::HandleTransferBRepTransferResultInfo,
     ) {
         unsafe {
-            crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_append_type(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_append_handletransferbreptransferresultinfo(self as *mut Self, theItem)
         }
     }
 

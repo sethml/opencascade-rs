@@ -12228,33 +12228,25 @@ impl HArray1OfDatumReference {
     }
 
     /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::StepDimTol_HArray1OfDatumReference()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepdimtoldatumreference(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepDimTol_Array1OfDatumReference_value_type,
+        theValue: &crate::ffi::HandleStepDimTolDatumReference,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepDimTol_HArray1OfDatumReference_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReference_ctor_int2_handlestepdimtoldatumreference(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::StepDimTol_HArray1OfDatumReference()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepDimTol_Array1OfDatumReference_value_type,
+    pub fn new_handlestepdimtoldatumreference_int2_bool(
+        theBegin: &crate::ffi::HandleStepDimTolDatumReference,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepDimTol_HArray1OfDatumReference_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReference_ctor_handlestepdimtoldatumreference_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -12470,33 +12462,25 @@ impl HArray1OfDatumReferenceCompartment {
     }
 
     /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::StepDimTol_HArray1OfDatumReferenceCompartment()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepdimtoldatumreferencecompartment(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepDimTol_Array1OfDatumReferenceCompartment_value_type,
+        theValue: &crate::ffi::HandleStepDimTolDatumReferenceCompartment,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_ctor_int2_handlestepdimtoldatumreferencecompartment(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::StepDimTol_HArray1OfDatumReferenceCompartment()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepDimTol_Array1OfDatumReferenceCompartment_value_type,
+    pub fn new_handlestepdimtoldatumreferencecompartment_int2_bool(
+        theBegin: &crate::ffi::HandleStepDimTolDatumReferenceCompartment,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_ctor_handlestepdimtoldatumreferencecompartment_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -12722,33 +12706,25 @@ impl HArray1OfDatumReferenceElement {
     }
 
     /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::StepDimTol_HArray1OfDatumReferenceElement()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepdimtoldatumreferenceelement(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepDimTol_Array1OfDatumReferenceElement_value_type,
+        theValue: &crate::ffi::HandleStepDimTolDatumReferenceElement,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_ctor_int2_handlestepdimtoldatumreferenceelement(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::StepDimTol_HArray1OfDatumReferenceElement()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepDimTol_Array1OfDatumReferenceElement_value_type,
+    pub fn new_handlestepdimtoldatumreferenceelement_int2_bool(
+        theBegin: &crate::ffi::HandleStepDimTolDatumReferenceElement,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_ctor_handlestepdimtoldatumreferenceelement_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 

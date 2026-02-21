@@ -1683,8 +1683,13 @@ impl QuantitiesSequence {
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::Units_QtsSequence_value_type) {
-        unsafe { crate::ffi::Units_QuantitiesSequence_append_type(self as *mut Self, theItem) }
+    pub fn append_handleunitsquantity(&mut self, theItem: &crate::ffi::HandleUnitsQuantity) {
+        unsafe {
+            crate::ffi::Units_QuantitiesSequence_append_handleunitsquantity(
+                self as *mut Self,
+                theItem,
+            )
+        }
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Append()`
@@ -3197,8 +3202,10 @@ impl TokensSequence {
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::Units_TksSequence_value_type) {
-        unsafe { crate::ffi::Units_TokensSequence_append_type(self as *mut Self, theItem) }
+    pub fn append_handleunitstoken(&mut self, theItem: &crate::ffi::HandleUnitsToken) {
+        unsafe {
+            crate::ffi::Units_TokensSequence_append_handleunitstoken(self as *mut Self, theItem)
+        }
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Append()`
@@ -4104,8 +4111,10 @@ impl UnitsSequence {
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::Units_UtsSequence_value_type) {
-        unsafe { crate::ffi::Units_UnitsSequence_append_type(self as *mut Self, theItem) }
+    pub fn append_handleunitsunit(&mut self, theItem: &crate::ffi::HandleUnitsUnit) {
+        unsafe {
+            crate::ffi::Units_UnitsSequence_append_handleunitsunit(self as *mut Self, theItem)
+        }
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Append()`

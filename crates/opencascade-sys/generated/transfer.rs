@@ -4310,8 +4310,13 @@ impl HSequenceOfBinder {
     }
 
     /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::Transfer_SequenceOfBinder_value_type) {
-        unsafe { crate::ffi::Transfer_HSequenceOfBinder_append_type(self as *mut Self, theItem) }
+    pub fn append_handletransferbinder(&mut self, theItem: &crate::ffi::HandleTransferBinder) {
+        unsafe {
+            crate::ffi::Transfer_HSequenceOfBinder_append_handletransferbinder(
+                self as *mut Self,
+                theItem,
+            )
+        }
     }
 
     /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::Append()`
@@ -4501,8 +4506,13 @@ impl HSequenceOfFinder {
     }
 
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::Transfer_SequenceOfFinder_value_type) {
-        unsafe { crate::ffi::Transfer_HSequenceOfFinder_append_type(self as *mut Self, theItem) }
+    pub fn append_handletransferfinder(&mut self, theItem: &crate::ffi::HandleTransferFinder) {
+        unsafe {
+            crate::ffi::Transfer_HSequenceOfFinder_append_handletransferfinder(
+                self as *mut Self,
+                theItem,
+            )
+        }
     }
 
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Append()`

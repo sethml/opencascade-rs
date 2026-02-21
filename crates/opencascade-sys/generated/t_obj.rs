@@ -4821,8 +4821,10 @@ impl HSequenceOfObject {
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::TObj_SequenceOfObject_value_type) {
-        unsafe { crate::ffi::TObj_HSequenceOfObject_append_type(self as *mut Self, theItem) }
+    pub fn append_handletobjobject(&mut self, theItem: &crate::ffi::HandleTObjObject) {
+        unsafe {
+            crate::ffi::TObj_HSequenceOfObject_append_handletobjobject(self as *mut Self, theItem)
+        }
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::Append()`

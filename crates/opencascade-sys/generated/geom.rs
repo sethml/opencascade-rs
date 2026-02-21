@@ -14497,9 +14497,15 @@ impl HSequenceOfBSplineSurface {
     }
 
     /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::Geom_SequenceOfBSplineSurface_value_type) {
+    pub fn append_handlegeombsplinesurface(
+        &mut self,
+        theItem: &crate::ffi::HandleGeomBSplineSurface,
+    ) {
         unsafe {
-            crate::ffi::Geom_HSequenceOfBSplineSurface_append_type(self as *mut Self, theItem)
+            crate::ffi::Geom_HSequenceOfBSplineSurface_append_handlegeombsplinesurface(
+                self as *mut Self,
+                theItem,
+            )
         }
     }
 

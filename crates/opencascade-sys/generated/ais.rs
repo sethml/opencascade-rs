@@ -20292,6 +20292,11 @@ impl ManipulatorObjectSequence {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::AIS_ManipulatorObjectSequence_ctor()) }
     }
 
+    /// **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::Append()`
+    pub fn append(&mut self, theItem: &crate::ffi::HandleAISInteractiveObject) {
+        unsafe { crate::ffi::AIS_ManipulatorObjectSequence_append(self as *mut Self, theItem) }
+    }
+
     /// **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::AIS_ManipulatorObjectSequence_dynamic_type(self as *const Self)) }
@@ -20431,7 +20436,7 @@ impl HandleAISManipulatorObjectSequence {
     }
 }
 
-// ── Skipped symbols for ManipulatorObjectSequence (5 total) ──
+// ── Skipped symbols for ManipulatorObjectSequence (4 total) ──
 // SKIPPED: **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::AIS_ManipulatorObjectSequence`
 //   Reason: has unbindable types: param 'theOther': unresolved template type (const NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>&)
 //   // pub fn new_interactiveobject>>(theOther: /* const NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>& */) -> OwnedPtr<Self>;
@@ -20439,10 +20444,6 @@ impl HandleAISManipulatorObjectSequence {
 // SKIPPED: **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::Sequence`
 //   Reason: has unbindable types: return: unresolved template type (const NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>&)
 //   // pub fn sequence(&self) -> /* const NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>& */;
-//
-// SKIPPED: **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::Append`
-//   Reason: has unbindable types: param 'theItem': unresolved template type (const NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>::value_type&)
-//   // pub fn append(&mut self, theItem: /* const NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>::value_type& */);
 //
 // SKIPPED: **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::Append`
 //   Reason: has unbindable types: param 'theSequence': unresolved template type (NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>&)

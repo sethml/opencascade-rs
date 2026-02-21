@@ -17597,33 +17597,25 @@ impl HArray1OfCurveStyleFontPattern {
     }
 
     /// **Source:** `StepVisual_HArray1OfCurveStyleFontPattern.hxx`:23 - `StepVisual_HArray1OfCurveStyleFontPattern::StepVisual_HArray1OfCurveStyleFontPattern()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepvisualcurvestylefontpattern(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepVisual_Array1OfCurveStyleFontPattern_value_type,
+        theValue: &crate::ffi::HandleStepVisualCurveStyleFontPattern,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepVisual_HArray1OfCurveStyleFontPattern_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_HArray1OfCurveStyleFontPattern_ctor_int2_handlestepvisualcurvestylefontpattern(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepVisual_HArray1OfCurveStyleFontPattern.hxx`:23 - `StepVisual_HArray1OfCurveStyleFontPattern::StepVisual_HArray1OfCurveStyleFontPattern()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepVisual_Array1OfCurveStyleFontPattern_value_type,
+    pub fn new_handlestepvisualcurvestylefontpattern_int2_bool(
+        theBegin: &crate::ffi::HandleStepVisualCurveStyleFontPattern,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepVisual_HArray1OfCurveStyleFontPattern_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_HArray1OfCurveStyleFontPattern_ctor_handlestepvisualcurvestylefontpattern_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -19029,33 +19021,25 @@ impl HArray1OfPresentationStyleAssignment {
     }
 
     /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::StepVisual_HArray1OfPresentationStyleAssignment()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepvisualpresentationstyleassignment(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepVisual_Array1OfPresentationStyleAssignment_value_type,
+        theValue: &crate::ffi::HandleStepVisualPresentationStyleAssignment,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_ctor_int2_handlestepvisualpresentationstyleassignment(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::StepVisual_HArray1OfPresentationStyleAssignment()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepVisual_Array1OfPresentationStyleAssignment_value_type,
+    pub fn new_handlestepvisualpresentationstyleassignment_int2_bool(
+        theBegin: &crate::ffi::HandleStepVisualPresentationStyleAssignment,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_ctor_handlestepvisualpresentationstyleassignment_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -20505,33 +20489,25 @@ impl HArray1OfTessellatedStructuredItem {
     }
 
     /// **Source:** `StepVisual_HArray1OfTessellatedStructuredItem.hxx`:23 - `StepVisual_HArray1OfTessellatedStructuredItem::StepVisual_HArray1OfTessellatedStructuredItem()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepvisualtessellatedstructureditem(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepVisual_Array1OfTessellatedStructuredItem_value_type,
+        theValue: &crate::ffi::HandleStepVisualTessellatedStructuredItem,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepVisual_HArray1OfTessellatedStructuredItem_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_HArray1OfTessellatedStructuredItem_ctor_int2_handlestepvisualtessellatedstructureditem(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepVisual_HArray1OfTessellatedStructuredItem.hxx`:23 - `StepVisual_HArray1OfTessellatedStructuredItem::StepVisual_HArray1OfTessellatedStructuredItem()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepVisual_Array1OfTessellatedStructuredItem_value_type,
+    pub fn new_handlestepvisualtessellatedstructureditem_int2_bool(
+        theBegin: &crate::ffi::HandleStepVisualTessellatedStructuredItem,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepVisual_HArray1OfTessellatedStructuredItem_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_HArray1OfTessellatedStructuredItem_ctor_handlestepvisualtessellatedstructureditem_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 

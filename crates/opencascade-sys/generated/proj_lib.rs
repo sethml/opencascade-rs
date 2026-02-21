@@ -1714,12 +1714,15 @@ impl HSequenceOfHSequenceOfPnt {
     }
 
     /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::Append()`
-    pub fn append_type(
+    pub fn append_handletcolgphsequenceofpnt(
         &mut self,
-        theItem: &crate::ffi::ProjLib_SequenceOfHSequenceOfPnt_value_type,
+        theItem: &crate::ffi::HandleTColgpHSequenceOfPnt,
     ) {
         unsafe {
-            crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_append_type(self as *mut Self, theItem)
+            crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_append_handletcolgphsequenceofpnt(
+                self as *mut Self,
+                theItem,
+            )
         }
     }
 

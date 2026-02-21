@@ -3552,29 +3552,33 @@ impl HArray1OfColor {
     }
 
     /// **Source:** `IGESGraph_HArray1OfColor.hxx`:23 - `IGESGraph_HArray1OfColor::IGESGraph_HArray1OfColor()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesgraphcolor(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESGraph_Array1OfColor_value_type,
+        theValue: &crate::ffi::HandleIGESGraphColor,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESGraph_HArray1OfColor_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGraph_HArray1OfColor_ctor_int2_handleigesgraphcolor(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESGraph_HArray1OfColor.hxx`:23 - `IGESGraph_HArray1OfColor::IGESGraph_HArray1OfColor()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESGraph_Array1OfColor_value_type,
+    pub fn new_handleigesgraphcolor_int2_bool(
+        theBegin: &crate::ffi::HandleIGESGraphColor,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESGraph_HArray1OfColor_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGraph_HArray1OfColor_ctor_handleigesgraphcolor_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -3759,33 +3763,25 @@ impl HArray1OfTextDisplayTemplate {
     }
 
     /// **Source:** `IGESGraph_HArray1OfTextDisplayTemplate.hxx`:23 - `IGESGraph_HArray1OfTextDisplayTemplate::IGESGraph_HArray1OfTextDisplayTemplate()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesgraphtextdisplaytemplate(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESGraph_Array1OfTextDisplayTemplate_value_type,
+        theValue: &crate::ffi::HandleIGESGraphTextDisplayTemplate,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_ctor_int2_handleigesgraphtextdisplaytemplate(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `IGESGraph_HArray1OfTextDisplayTemplate.hxx`:23 - `IGESGraph_HArray1OfTextDisplayTemplate::IGESGraph_HArray1OfTextDisplayTemplate()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESGraph_Array1OfTextDisplayTemplate_value_type,
+    pub fn new_handleigesgraphtextdisplaytemplate_int2_bool(
+        theBegin: &crate::ffi::HandleIGESGraphTextDisplayTemplate,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_ctor_handleigesgraphtextdisplaytemplate_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -4007,31 +4003,29 @@ impl HArray1OfTextFontDef {
     }
 
     /// **Source:** `IGESGraph_HArray1OfTextFontDef.hxx`:23 - `IGESGraph_HArray1OfTextFontDef::IGESGraph_HArray1OfTextFontDef()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesgraphtextfontdef(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESGraph_Array1OfTextFontDef_value_type,
+        theValue: &crate::ffi::HandleIGESGraphTextFontDef,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESGraph_HArray1OfTextFontDef_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESGraph_HArray1OfTextFontDef_ctor_int2_handleigesgraphtextfontdef(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESGraph_HArray1OfTextFontDef.hxx`:23 - `IGESGraph_HArray1OfTextFontDef::IGESGraph_HArray1OfTextFontDef()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESGraph_Array1OfTextFontDef_value_type,
+    pub fn new_handleigesgraphtextfontdef_int2_bool(
+        theBegin: &crate::ffi::HandleIGESGraphTextFontDef,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IGESGraph_HArray1OfTextFontDef_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESGraph_HArray1OfTextFontDef_ctor_handleigesgraphtextfontdef_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 

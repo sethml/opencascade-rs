@@ -6349,8 +6349,16 @@ impl HSeqOfSelection {
     }
 
     /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::IFSelect_TSeqOfSelection_value_type) {
-        unsafe { crate::ffi::IFSelect_HSeqOfSelection_append_type(self as *mut Self, theItem) }
+    pub fn append_handleifselectselection(
+        &mut self,
+        theItem: &crate::ffi::HandleIFSelectSelection,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_HSeqOfSelection_append_handleifselectselection(
+                self as *mut Self,
+                theItem,
+            )
+        }
     }
 
     /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::Append()`

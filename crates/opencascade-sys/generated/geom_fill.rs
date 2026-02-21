@@ -7983,28 +7983,30 @@ impl HArray1OfLocationLaw {
     }
 
     /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::GeomFill_HArray1OfLocationLaw()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlegeomfilllocationlaw(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::GeomFill_Array1OfLocationLaw_value_type,
+        theValue: &crate::ffi::HandleGeomFillLocationLaw,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfLocationLaw_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomFill_HArray1OfLocationLaw_ctor_int2_handlegeomfilllocationlaw(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::GeomFill_HArray1OfLocationLaw()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::GeomFill_Array1OfLocationLaw_value_type,
+    pub fn new_handlegeomfilllocationlaw_int2_bool(
+        theBegin: &crate::ffi::HandleGeomFillLocationLaw,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::GeomFill_HArray1OfLocationLaw_ctor_type_int2_bool(
+                crate::ffi::GeomFill_HArray1OfLocationLaw_ctor_handlegeomfilllocationlaw_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             )
@@ -8202,29 +8204,33 @@ impl HArray1OfSectionLaw {
     }
 
     /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::GeomFill_HArray1OfSectionLaw()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlegeomfillsectionlaw(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::GeomFill_Array1OfSectionLaw_value_type,
+        theValue: &crate::ffi::HandleGeomFillSectionLaw,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_int2_handlegeomfillsectionlaw(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::GeomFill_HArray1OfSectionLaw()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::GeomFill_Array1OfSectionLaw_value_type,
+    pub fn new_handlegeomfillsectionlaw_int2_bool(
+        theBegin: &crate::ffi::HandleGeomFillSectionLaw,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_handlegeomfillsectionlaw_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 

@@ -14610,33 +14610,25 @@ impl HArray1OfConnectedEdgeSet {
     }
 
     /// **Source:** `StepShape_HArray1OfConnectedEdgeSet.hxx`:23 - `StepShape_HArray1OfConnectedEdgeSet::StepShape_HArray1OfConnectedEdgeSet()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepshapeconnectededgeset(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepShape_Array1OfConnectedEdgeSet_value_type,
+        theValue: &crate::ffi::HandleStepShapeConnectedEdgeSet,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepShape_HArray1OfConnectedEdgeSet_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfConnectedEdgeSet_ctor_int2_handlestepshapeconnectededgeset(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepShape_HArray1OfConnectedEdgeSet.hxx`:23 - `StepShape_HArray1OfConnectedEdgeSet::StepShape_HArray1OfConnectedEdgeSet()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepShape_Array1OfConnectedEdgeSet_value_type,
+    pub fn new_handlestepshapeconnectededgeset_int2_bool(
+        theBegin: &crate::ffi::HandleStepShapeConnectedEdgeSet,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepShape_HArray1OfConnectedEdgeSet_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfConnectedEdgeSet_ctor_handlestepshapeconnectededgeset_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -14844,33 +14836,25 @@ impl HArray1OfConnectedFaceSet {
     }
 
     /// **Source:** `StepShape_HArray1OfConnectedFaceSet.hxx`:23 - `StepShape_HArray1OfConnectedFaceSet::StepShape_HArray1OfConnectedFaceSet()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepshapeconnectedfaceset(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepShape_Array1OfConnectedFaceSet_value_type,
+        theValue: &crate::ffi::HandleStepShapeConnectedFaceSet,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepShape_HArray1OfConnectedFaceSet_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfConnectedFaceSet_ctor_int2_handlestepshapeconnectedfaceset(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepShape_HArray1OfConnectedFaceSet.hxx`:23 - `StepShape_HArray1OfConnectedFaceSet::StepShape_HArray1OfConnectedFaceSet()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepShape_Array1OfConnectedFaceSet_value_type,
+    pub fn new_handlestepshapeconnectedfaceset_int2_bool(
+        theBegin: &crate::ffi::HandleStepShapeConnectedFaceSet,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepShape_HArray1OfConnectedFaceSet_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfConnectedFaceSet_ctor_handlestepshapeconnectedfaceset_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -15078,29 +15062,33 @@ impl HArray1OfEdge {
     }
 
     /// **Source:** `StepShape_HArray1OfEdge.hxx`:23 - `StepShape_HArray1OfEdge::StepShape_HArray1OfEdge()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepshapeedge(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepShape_Array1OfEdge_value_type,
+        theValue: &crate::ffi::HandleStepShapeEdge,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfEdge_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepShape_HArray1OfEdge_ctor_int2_handlestepshapeedge(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepShape_HArray1OfEdge.hxx`:23 - `StepShape_HArray1OfEdge::StepShape_HArray1OfEdge()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepShape_Array1OfEdge_value_type,
+    pub fn new_handlestepshapeedge_int2_bool(
+        theBegin: &crate::ffi::HandleStepShapeEdge,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfEdge_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepShape_HArray1OfEdge_ctor_handlestepshapeedge_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -15279,29 +15267,33 @@ impl HArray1OfFace {
     }
 
     /// **Source:** `StepShape_HArray1OfFace.hxx`:23 - `StepShape_HArray1OfFace::StepShape_HArray1OfFace()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepshapeface(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepShape_Array1OfFace_value_type,
+        theValue: &crate::ffi::HandleStepShapeFace,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfFace_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepShape_HArray1OfFace_ctor_int2_handlestepshapeface(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepShape_HArray1OfFace.hxx`:23 - `StepShape_HArray1OfFace::StepShape_HArray1OfFace()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepShape_Array1OfFace_value_type,
+    pub fn new_handlestepshapeface_int2_bool(
+        theBegin: &crate::ffi::HandleStepShapeFace,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfFace_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepShape_HArray1OfFace_ctor_handlestepshapeface_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -15480,29 +15472,33 @@ impl HArray1OfFaceBound {
     }
 
     /// **Source:** `StepShape_HArray1OfFaceBound.hxx`:23 - `StepShape_HArray1OfFaceBound::StepShape_HArray1OfFaceBound()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepshapefacebound(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepShape_Array1OfFaceBound_value_type,
+        theValue: &crate::ffi::HandleStepShapeFaceBound,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfFaceBound_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepShape_HArray1OfFaceBound_ctor_int2_handlestepshapefacebound(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepShape_HArray1OfFaceBound.hxx`:23 - `StepShape_HArray1OfFaceBound::StepShape_HArray1OfFaceBound()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepShape_Array1OfFaceBound_value_type,
+    pub fn new_handlestepshapefacebound_int2_bool(
+        theBegin: &crate::ffi::HandleStepShapeFaceBound,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfFaceBound_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepShape_HArray1OfFaceBound_ctor_handlestepshapefacebound_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -15945,33 +15941,25 @@ impl HArray1OfOrientedClosedShell {
     }
 
     /// **Source:** `StepShape_HArray1OfOrientedClosedShell.hxx`:23 - `StepShape_HArray1OfOrientedClosedShell::StepShape_HArray1OfOrientedClosedShell()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepshapeorientedclosedshell(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepShape_Array1OfOrientedClosedShell_value_type,
+        theValue: &crate::ffi::HandleStepShapeOrientedClosedShell,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepShape_HArray1OfOrientedClosedShell_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfOrientedClosedShell_ctor_int2_handlestepshapeorientedclosedshell(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepShape_HArray1OfOrientedClosedShell.hxx`:23 - `StepShape_HArray1OfOrientedClosedShell::StepShape_HArray1OfOrientedClosedShell()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepShape_Array1OfOrientedClosedShell_value_type,
+    pub fn new_handlestepshapeorientedclosedshell_int2_bool(
+        theBegin: &crate::ffi::HandleStepShapeOrientedClosedShell,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepShape_HArray1OfOrientedClosedShell_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfOrientedClosedShell_ctor_handlestepshapeorientedclosedshell_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -16193,31 +16181,29 @@ impl HArray1OfOrientedEdge {
     }
 
     /// **Source:** `StepShape_HArray1OfOrientedEdge.hxx`:23 - `StepShape_HArray1OfOrientedEdge::StepShape_HArray1OfOrientedEdge()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepshapeorientededge(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepShape_Array1OfOrientedEdge_value_type,
+        theValue: &crate::ffi::HandleStepShapeOrientedEdge,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfOrientedEdge_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepShape_HArray1OfOrientedEdge_ctor_int2_handlestepshapeorientededge(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepShape_HArray1OfOrientedEdge.hxx`:23 - `StepShape_HArray1OfOrientedEdge::StepShape_HArray1OfOrientedEdge()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepShape_Array1OfOrientedEdge_value_type,
+    pub fn new_handlestepshapeorientededge_int2_bool(
+        theBegin: &crate::ffi::HandleStepShapeOrientedEdge,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepShape_HArray1OfOrientedEdge_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_HArray1OfOrientedEdge_ctor_handlestepshapeorientededge_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 

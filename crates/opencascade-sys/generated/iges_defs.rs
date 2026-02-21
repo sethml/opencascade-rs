@@ -4158,28 +4158,30 @@ impl HArray1OfTabularData {
     }
 
     /// **Source:** `IGESDefs_HArray1OfTabularData.hxx`:23 - `IGESDefs_HArray1OfTabularData::IGESDefs_HArray1OfTabularData()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesdefstabulardata(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESDefs_Array1OfTabularData_value_type,
+        theValue: &crate::ffi::HandleIGESDefsTabularData,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESDefs_HArray1OfTabularData_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESDefs_HArray1OfTabularData_ctor_int2_handleigesdefstabulardata(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESDefs_HArray1OfTabularData.hxx`:23 - `IGESDefs_HArray1OfTabularData::IGESDefs_HArray1OfTabularData()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESDefs_Array1OfTabularData_value_type,
+    pub fn new_handleigesdefstabulardata_int2_bool(
+        theBegin: &crate::ffi::HandleIGESDefsTabularData,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::IGESDefs_HArray1OfTabularData_ctor_type_int2_bool(
+                crate::ffi::IGESDefs_HArray1OfTabularData_ctor_handleigesdefstabulardata_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             )

@@ -1645,18 +1645,27 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     }
 
     // Handle Handle<T> types (opencascade::handle<T>)
-    // Strip const prefix before checking
+    // Check both the display name AND the canonical type spelling, because
+    // namespace-scoped Handle typedefs (e.g., IMeshData::IEdgeHandle) have
+    // a display name like "IMeshData::IEdgeHandle" but canonical type
+    // "opencascade::handle<IMeshData_Edge>".
+    // Be careful NOT to match function pointer typedefs whose return type is a Handle,
+    // e.g., StdObjMgt_Persistent::Instantiator = Handle(StdObjMgt_Persistent) (*)()
+    // has canonical "opencascade::handle<StdObjMgt_Persistent> (*)()". These are
+    // detected by checking that the canonical ends with '>' (a pure handle type).
     let clean_spelling = spelling.trim_start_matches("const ").trim();
-    if clean_spelling.starts_with("opencascade::handle<") || clean_spelling.starts_with("Handle(") {
+    let canonical_clean_for_handle = canonical_spelling.trim_start_matches("const ").trim();
+    let canonical_is_pure_handle = canonical_clean_for_handle.starts_with("opencascade::handle<")
+        && canonical_clean_for_handle.ends_with('>');
+    if clean_spelling.starts_with("opencascade::handle<") || clean_spelling.starts_with("Handle(")
+        || canonical_is_pure_handle
+    {
         // Prefer the canonical type spelling for the inner type name, because
         // clang's display name may use unqualified names for nested classes
         // (e.g., "Curve" instead of "ShapePersistent_BRep::Curve") when the
         // Handle appears in a method within the parent class scope.
-        let canonical = clang_type.get_canonical_type();
-        let canonical_spelling = canonical.get_display_name();
-        let clean_canonical = canonical_spelling.trim_start_matches("const ").trim();
-        let inner = if clean_canonical.starts_with("opencascade::handle<") {
-            extract_template_arg(clean_canonical)
+        let inner = if canonical_is_pure_handle {
+            extract_template_arg(canonical_clean_for_handle)
         } else {
             extract_template_arg(clean_spelling)
         };

@@ -3496,7 +3496,7 @@ impl Data {
     /// data, because each document now
     /// occupies a smaller number of
     /// memory pages.
-    pub fn label_node_allocator(&self) -> &crate::ffi::TDF_HAllocator {
+    pub fn label_node_allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
         unsafe { &*(crate::ffi::TDF_Data_label_node_allocator(self as *const Self)) }
     }
 
@@ -5756,29 +5756,33 @@ impl HAttributeArray1 {
     }
 
     /// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1::TDF_HAttributeArray1()`
-    pub fn new_int2_type(
+    pub fn new_int2_handletdfattribute(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TDF_AttributeArray1_value_type,
+        theValue: &crate::ffi::HandleTDFAttribute,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TDF_HAttributeArray1_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDF_HAttributeArray1_ctor_int2_handletdfattribute(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1::TDF_HAttributeArray1()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TDF_AttributeArray1_value_type,
+    pub fn new_handletdfattribute_int2_bool(
+        theBegin: &crate::ffi::HandleTDFAttribute,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TDF_HAttributeArray1_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDF_HAttributeArray1_ctor_handletdfattribute_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -8127,9 +8131,8 @@ pub use crate::ffi::{
     TDF_AttributeArray1 as AttributeArray1, TDF_AttributeDataMap as AttributeDataMap,
     TDF_AttributeDeltaList as AttributeDeltaList, TDF_AttributeIndexedMap as AttributeIndexedMap,
     TDF_AttributeList as AttributeList, TDF_AttributeMap as AttributeMap,
-    TDF_AttributeSequence as AttributeSequence, TDF_DeltaList as DeltaList,
-    TDF_HAllocator as HAllocator, TDF_IDList as IDList, TDF_LabelDataMap as LabelDataMap,
-    TDF_LabelIndexedMap as LabelIndexedMap, TDF_LabelIntegerMap as LabelIntegerMap,
-    TDF_LabelList as LabelList, TDF_LabelMap as LabelMap, TDF_LabelNodePtr as LabelNodePtr,
-    TDF_LabelSequence as LabelSequence,
+    TDF_AttributeSequence as AttributeSequence, TDF_DeltaList as DeltaList, TDF_IDList as IDList,
+    TDF_LabelDataMap as LabelDataMap, TDF_LabelIndexedMap as LabelIndexedMap,
+    TDF_LabelIntegerMap as LabelIntegerMap, TDF_LabelList as LabelList, TDF_LabelMap as LabelMap,
+    TDF_LabelNodePtr as LabelNodePtr, TDF_LabelSequence as LabelSequence,
 };

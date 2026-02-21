@@ -597,6 +597,24 @@ unsafe impl crate::CppDeletable for MeshAlgo {
 }
 
 impl MeshAlgo {
+    /// **Source:** `IMeshTools_MeshAlgo.hxx`:33 - `IMeshTools_MeshAlgo::Perform()`
+    /// Performs processing of the given face.
+    pub fn perform(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &Parameters,
+        theRange: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::IMeshTools_MeshAlgo_perform(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+                theRange,
+            )
+        }
+    }
+
     /// **Source:** `IMeshTools_MeshAlgo.hxx`:37 - `IMeshTools_MeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_MeshAlgo_dynamic_type(self as *const Self)) }
@@ -758,13 +776,6 @@ impl HandleIMeshToolsMeshAlgo {
         }
     }
 }
-
-// ── Skipped symbols for MeshAlgo (1 total) ──
-// SKIPPED: **Source:** `IMeshTools_MeshAlgo.hxx`:33 - `IMeshTools_MeshAlgo::Perform`
-//   method: Performs processing of the given face.
-//   Reason: param 'theDFace' uses unknown type 'const IMeshData::IFaceHandle&'
-//   // pub fn perform(&mut self, theDFace: &IFaceHandle, theParameters: &Parameters, theRange: &ProgressRange);
-//
 
 // ========================
 // From IMeshTools_MeshAlgoFactory.hxx

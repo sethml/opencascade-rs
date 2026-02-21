@@ -429,8 +429,13 @@ impl HSequenceOfRoots {
     }
 
     /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::StdStorage_SequenceOfRoots_value_type) {
-        unsafe { crate::ffi::StdStorage_HSequenceOfRoots_append_type(self as *mut Self, theItem) }
+    pub fn append_handlestdstorageroot(&mut self, theItem: &crate::ffi::HandleStdStorageRoot) {
+        unsafe {
+            crate::ffi::StdStorage_HSequenceOfRoots_append_handlestdstorageroot(
+                self as *mut Self,
+                theItem,
+            )
+        }
     }
 
     /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::Append()`

@@ -38,31 +38,29 @@ impl HArray1OfBSplineCurve {
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::TColGeom2d_HArray1OfBSplineCurve()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlegeom2dbsplinecurve(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColGeom2d_Array1OfBSplineCurve_value_type,
+        theValue: &crate::ffi::HandleGeom2dBSplineCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_int2_handlegeom2dbsplinecurve(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::TColGeom2d_HArray1OfBSplineCurve()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColGeom2d_Array1OfBSplineCurve_value_type,
+    pub fn new_handlegeom2dbsplinecurve_int2_bool(
+        theBegin: &crate::ffi::HandleGeom2dBSplineCurve,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_handlegeom2dbsplinecurve_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -268,28 +266,30 @@ impl HArray1OfBezierCurve {
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::TColGeom2d_HArray1OfBezierCurve()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlegeom2dbeziercurve(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColGeom2d_Array1OfBezierCurve_value_type,
+        theValue: &crate::ffi::HandleGeom2dBezierCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_int2_handlegeom2dbeziercurve(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::TColGeom2d_HArray1OfBezierCurve()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColGeom2d_Array1OfBezierCurve_value_type,
+    pub fn new_handlegeom2dbeziercurve_int2_bool(
+        theBegin: &crate::ffi::HandleGeom2dBezierCurve,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_type_int2_bool(
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_handlegeom2dbeziercurve_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             )
@@ -494,29 +494,33 @@ impl HArray1OfCurve {
     }
 
     /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::TColGeom2d_HArray1OfCurve()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlegeom2dcurve(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColGeom2d_Array1OfCurve_value_type,
+        theValue: &crate::ffi::HandleGeom2dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfCurve_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColGeom2d_HArray1OfCurve_ctor_int2_handlegeom2dcurve(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::TColGeom2d_HArray1OfCurve()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColGeom2d_Array1OfCurve_value_type,
+    pub fn new_handlegeom2dcurve_int2_bool(
+        theBegin: &crate::ffi::HandleGeom2dCurve,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfCurve_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColGeom2d_HArray1OfCurve_ctor_handlegeom2dcurve_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -709,12 +713,15 @@ impl HSequenceOfBoundedCurve {
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::Append()`
-    pub fn append_type(
+    pub fn append_handlegeom2dboundedcurve(
         &mut self,
-        theItem: &crate::ffi::TColGeom2d_SequenceOfBoundedCurve_value_type,
+        theItem: &crate::ffi::HandleGeom2dBoundedCurve,
     ) {
         unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_append_type(self as *mut Self, theItem)
+            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_append_handlegeom2dboundedcurve(
+                self as *mut Self,
+                theItem,
+            )
         }
     }
 
@@ -928,8 +935,13 @@ impl HSequenceOfCurve {
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::TColGeom2d_SequenceOfCurve_value_type) {
-        unsafe { crate::ffi::TColGeom2d_HSequenceOfCurve_append_type(self as *mut Self, theItem) }
+    pub fn append_handlegeom2dcurve(&mut self, theItem: &crate::ffi::HandleGeom2dCurve) {
+        unsafe {
+            crate::ffi::TColGeom2d_HSequenceOfCurve_append_handlegeom2dcurve(
+                self as *mut Self,
+                theItem,
+            )
+        }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::Append()`

@@ -4572,31 +4572,29 @@ impl HArray1OfFiniteElement {
     }
 
     /// **Source:** `IGESAppli_HArray1OfFiniteElement.hxx`:23 - `IGESAppli_HArray1OfFiniteElement::IGESAppli_HArray1OfFiniteElement()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesapplifiniteelement(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESAppli_Array1OfFiniteElement_value_type,
+        theValue: &crate::ffi::HandleIGESAppliFiniteElement,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESAppli_HArray1OfFiniteElement_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESAppli_HArray1OfFiniteElement_ctor_int2_handleigesapplifiniteelement(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESAppli_HArray1OfFiniteElement.hxx`:23 - `IGESAppli_HArray1OfFiniteElement::IGESAppli_HArray1OfFiniteElement()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESAppli_Array1OfFiniteElement_value_type,
+    pub fn new_handleigesapplifiniteelement_int2_bool(
+        theBegin: &crate::ffi::HandleIGESAppliFiniteElement,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IGESAppli_HArray1OfFiniteElement_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESAppli_HArray1OfFiniteElement_ctor_handleigesapplifiniteelement_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -4802,29 +4800,33 @@ impl HArray1OfFlow {
     }
 
     /// **Source:** `IGESAppli_HArray1OfFlow.hxx`:24 - `IGESAppli_HArray1OfFlow::IGESAppli_HArray1OfFlow()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesappliflow(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESAppli_Array1OfFlow_value_type,
+        theValue: &crate::ffi::HandleIGESAppliFlow,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESAppli_HArray1OfFlow_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESAppli_HArray1OfFlow_ctor_int2_handleigesappliflow(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESAppli_HArray1OfFlow.hxx`:24 - `IGESAppli_HArray1OfFlow::IGESAppli_HArray1OfFlow()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESAppli_Array1OfFlow_value_type,
+    pub fn new_handleigesappliflow_int2_bool(
+        theBegin: &crate::ffi::HandleIGESAppliFlow,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESAppli_HArray1OfFlow_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESAppli_HArray1OfFlow_ctor_handleigesappliflow_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -5003,29 +5005,33 @@ impl HArray1OfNode {
     }
 
     /// **Source:** `IGESAppli_HArray1OfNode.hxx`:23 - `IGESAppli_HArray1OfNode::IGESAppli_HArray1OfNode()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesapplinode(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESAppli_Array1OfNode_value_type,
+        theValue: &crate::ffi::HandleIGESAppliNode,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESAppli_HArray1OfNode_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESAppli_HArray1OfNode_ctor_int2_handleigesapplinode(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESAppli_HArray1OfNode.hxx`:23 - `IGESAppli_HArray1OfNode::IGESAppli_HArray1OfNode()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESAppli_Array1OfNode_value_type,
+    pub fn new_handleigesapplinode_int2_bool(
+        theBegin: &crate::ffi::HandleIGESAppliNode,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESAppli_HArray1OfNode_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESAppli_HArray1OfNode_ctor_handleigesapplinode_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 

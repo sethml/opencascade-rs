@@ -7400,29 +7400,33 @@ impl HArray1OfFace {
     }
 
     /// **Source:** `IGESSolid_HArray1OfFace.hxx`:23 - `IGESSolid_HArray1OfFace::IGESSolid_HArray1OfFace()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigessolidface(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESSolid_Array1OfFace_value_type,
+        theValue: &crate::ffi::HandleIGESSolidFace,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESSolid_HArray1OfFace_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESSolid_HArray1OfFace_ctor_int2_handleigessolidface(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESSolid_HArray1OfFace.hxx`:23 - `IGESSolid_HArray1OfFace::IGESSolid_HArray1OfFace()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESSolid_Array1OfFace_value_type,
+    pub fn new_handleigessolidface_int2_bool(
+        theBegin: &crate::ffi::HandleIGESSolidFace,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESSolid_HArray1OfFace_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESSolid_HArray1OfFace_ctor_handleigessolidface_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -7601,29 +7605,33 @@ impl HArray1OfLoop {
     }
 
     /// **Source:** `IGESSolid_HArray1OfLoop.hxx`:23 - `IGESSolid_HArray1OfLoop::IGESSolid_HArray1OfLoop()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigessolidloop(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESSolid_Array1OfLoop_value_type,
+        theValue: &crate::ffi::HandleIGESSolidLoop,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESSolid_HArray1OfLoop_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESSolid_HArray1OfLoop_ctor_int2_handleigessolidloop(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESSolid_HArray1OfLoop.hxx`:23 - `IGESSolid_HArray1OfLoop::IGESSolid_HArray1OfLoop()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESSolid_Array1OfLoop_value_type,
+    pub fn new_handleigessolidloop_int2_bool(
+        theBegin: &crate::ffi::HandleIGESSolidLoop,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESSolid_HArray1OfLoop_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESSolid_HArray1OfLoop_ctor_handleigessolidloop_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -7802,29 +7810,33 @@ impl HArray1OfShell {
     }
 
     /// **Source:** `IGESSolid_HArray1OfShell.hxx`:23 - `IGESSolid_HArray1OfShell::IGESSolid_HArray1OfShell()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigessolidshell(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESSolid_Array1OfShell_value_type,
+        theValue: &crate::ffi::HandleIGESSolidShell,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESSolid_HArray1OfShell_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESSolid_HArray1OfShell_ctor_int2_handleigessolidshell(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESSolid_HArray1OfShell.hxx`:23 - `IGESSolid_HArray1OfShell::IGESSolid_HArray1OfShell()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESSolid_Array1OfShell_value_type,
+    pub fn new_handleigessolidshell_int2_bool(
+        theBegin: &crate::ffi::HandleIGESSolidShell,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESSolid_HArray1OfShell_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESSolid_HArray1OfShell_ctor_handleigessolidshell_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -8007,28 +8019,30 @@ impl HArray1OfVertexList {
     }
 
     /// **Source:** `IGESSolid_HArray1OfVertexList.hxx`:23 - `IGESSolid_HArray1OfVertexList::IGESSolid_HArray1OfVertexList()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigessolidvertexlist(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESSolid_Array1OfVertexList_value_type,
+        theValue: &crate::ffi::HandleIGESSolidVertexList,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESSolid_HArray1OfVertexList_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESSolid_HArray1OfVertexList_ctor_int2_handleigessolidvertexlist(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESSolid_HArray1OfVertexList.hxx`:23 - `IGESSolid_HArray1OfVertexList::IGESSolid_HArray1OfVertexList()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESSolid_Array1OfVertexList_value_type,
+    pub fn new_handleigessolidvertexlist_int2_bool(
+        theBegin: &crate::ffi::HandleIGESSolidVertexList,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::IGESSolid_HArray1OfVertexList_ctor_type_int2_bool(
+                crate::ffi::IGESSolid_HArray1OfVertexList_ctor_handleigessolidvertexlist_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             )

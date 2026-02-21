@@ -1176,8 +1176,13 @@ impl HSequenceOfElement {
     }
 
     /// **Source:** `MoniTool_HSequenceOfElement.hxx`:24 - `MoniTool_HSequenceOfElement::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::MoniTool_SequenceOfElement_value_type) {
-        unsafe { crate::ffi::MoniTool_HSequenceOfElement_append_type(self as *mut Self, theItem) }
+    pub fn append_handlemonitoolelement(&mut self, theItem: &crate::ffi::HandleMoniToolElement) {
+        unsafe {
+            crate::ffi::MoniTool_HSequenceOfElement_append_handlemonitoolelement(
+                self as *mut Self,
+                theItem,
+            )
+        }
     }
 
     /// **Source:** `MoniTool_HSequenceOfElement.hxx`:24 - `MoniTool_HSequenceOfElement::Append()`

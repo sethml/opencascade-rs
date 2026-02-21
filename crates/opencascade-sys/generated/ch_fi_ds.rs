@@ -2263,8 +2263,8 @@ impl HData {
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::ChFiDS_SequenceOfSurfData_value_type) {
-        unsafe { crate::ffi::ChFiDS_HData_append_type(self as *mut Self, theItem) }
+    pub fn append_handlechfidssurfdata(&mut self, theItem: &crate::ffi::HandleChFiDSSurfData) {
+        unsafe { crate::ffi::ChFiDS_HData_append_handlechfidssurfdata(self as *mut Self, theItem) }
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append()`

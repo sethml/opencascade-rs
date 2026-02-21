@@ -1507,29 +1507,33 @@ impl HArray1OfHCurve {
     }
 
     /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleadaptor3dcurve(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::GeomPlate_Array1OfHCurve_value_type,
+        theValue: &crate::ffi::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomPlate_HArray1OfHCurve_ctor_int2_handleadaptor3dcurve(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::GeomPlate_Array1OfHCurve_value_type,
+    pub fn new_handleadaptor3dcurve_int2_bool(
+        theBegin: &crate::ffi::HandleAdaptor3dCurve,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomPlate_HArray1OfHCurve_ctor_handleadaptor3dcurve_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -1956,12 +1960,15 @@ impl HSequenceOfCurveConstraint {
     }
 
     /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::Append()`
-    pub fn append_type(
+    pub fn append_handlegeomplatecurveconstraint(
         &mut self,
-        theItem: &crate::ffi::GeomPlate_SequenceOfCurveConstraint_value_type,
+        theItem: &crate::ffi::HandleGeomPlateCurveConstraint,
     ) {
         unsafe {
-            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_append_type(self as *mut Self, theItem)
+            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_append_handlegeomplatecurveconstraint(
+                self as *mut Self,
+                theItem,
+            )
         }
     }
 
@@ -2185,12 +2192,15 @@ impl HSequenceOfPointConstraint {
     }
 
     /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::Append()`
-    pub fn append_type(
+    pub fn append_handlegeomplatepointconstraint(
         &mut self,
-        theItem: &crate::ffi::GeomPlate_SequenceOfPointConstraint_value_type,
+        theItem: &crate::ffi::HandleGeomPlatePointConstraint,
     ) {
         unsafe {
-            crate::ffi::GeomPlate_HSequenceOfPointConstraint_append_type(self as *mut Self, theItem)
+            crate::ffi::GeomPlate_HSequenceOfPointConstraint_append_handlegeomplatepointconstraint(
+                self as *mut Self,
+                theItem,
+            )
         }
     }
 

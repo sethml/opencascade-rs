@@ -1187,29 +1187,33 @@ impl HArray1OfPINod {
     }
 
     /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlehlralgopolyinternalnode(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::HLRAlgo_Array1OfPINod_value_type,
+        theValue: &crate::ffi::HandleHLRAlgoPolyInternalNode,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPINod_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRAlgo_HArray1OfPINod_ctor_int2_handlehlralgopolyinternalnode(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::HLRAlgo_Array1OfPINod_value_type,
+    pub fn new_handlehlralgopolyinternalnode_int2_bool(
+        theBegin: &crate::ffi::HandleHLRAlgoPolyInternalNode,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPINod_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRAlgo_HArray1OfPINod_ctor_handlehlralgopolyinternalnode_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 

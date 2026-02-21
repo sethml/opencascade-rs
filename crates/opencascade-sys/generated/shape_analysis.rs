@@ -2629,12 +2629,15 @@ impl HSequenceOfFreeBounds {
     }
 
     /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::Append()`
-    pub fn append_type(
+    pub fn append_handleshapeanalysisfreebounddata(
         &mut self,
-        theItem: &crate::ffi::ShapeAnalysis_SequenceOfFreeBounds_value_type,
+        theItem: &crate::ffi::HandleShapeAnalysisFreeBoundData,
     ) {
         unsafe {
-            crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_append_type(self as *mut Self, theItem)
+            crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_append_handleshapeanalysisfreebounddata(
+                self as *mut Self,
+                theItem,
+            )
         }
     }
 

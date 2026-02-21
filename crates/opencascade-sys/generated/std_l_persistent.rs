@@ -609,6 +609,33 @@ impl HArray1OfPersistent {
         }
     }
 
+    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
+    pub fn new_int2_handlestdobjmgtpersistent(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::HandleStdObjMgtPersistent,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StdLPersistent_HArray1OfPersistent_ctor_int2_handlestdobjmgtpersistent(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
+    pub fn new_handlestdobjmgtpersistent_int2_bool(
+        theBegin: &crate::ffi::HandleStdObjMgtPersistent,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdLPersistent_HArray1OfPersistent_ctor_handlestdobjmgtpersistent_int2_bool(theBegin, theLower, theUpper, arg3))
+        }
+    }
+
     /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
@@ -761,15 +788,7 @@ impl HandleStdLPersistentHArray1OfPersistent {
     }
 }
 
-// ── Skipped symbols for HArray1OfPersistent (5 total) ──
-// SKIPPED: **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent`
-//   Reason: has unbindable types: param 'theValue': unresolved template type (const NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>::value_type&)
-//   // pub fn new_int2_type(theLower: i32, theUpper: i32, theValue: /* const NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>::value_type& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent`
-//   Reason: has unbindable types: param 'theBegin': unresolved template type (const NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>::value_type&)
-//   // pub fn new_type_int2_bool(theBegin: /* const NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>::value_type& */, theLower: i32, theUpper: i32, arg3: bool) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for HArray1OfPersistent (3 total) ──
 // SKIPPED: **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent`
 //   Reason: has unbindable types: param 'theOther': unresolved template type (const NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>&)
 //   // pub fn new_persistent>>(theOther: /* const NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>& */) -> OwnedPtr<Self>;
@@ -808,6 +827,23 @@ impl HArray2OfPersistent {
             crate::OwnedPtr::from_raw(crate::ffi::StdLPersistent_HArray2OfPersistent_ctor_int4(
                 theRowLow, theRowUpp, theColLow, theColUpp,
             ))
+        }
+    }
+
+    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::StdLPersistent_HArray2OfPersistent()`
+    pub fn new_int4_handlestdobjmgtpersistent(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &crate::ffi::HandleStdObjMgtPersistent,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StdLPersistent_HArray2OfPersistent_ctor_int4_handlestdobjmgtpersistent(
+                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+                ),
+            )
         }
     }
 
@@ -963,11 +999,7 @@ impl HandleStdLPersistentHArray2OfPersistent {
     }
 }
 
-// ── Skipped symbols for HArray2OfPersistent (4 total) ──
-// SKIPPED: **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::StdLPersistent_HArray2OfPersistent`
-//   Reason: has unbindable types: param 'theValue': unresolved template type (const NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>>::value_type&)
-//   // pub fn new_int4_type(theRowLow: i32, theRowUpp: i32, theColLow: i32, theColUpp: i32, theValue: /* const NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>>::value_type& */) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for HArray2OfPersistent (3 total) ──
 // SKIPPED: **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::StdLPersistent_HArray2OfPersistent`
 //   Reason: has unbindable types: param 'theOther': unresolved template type (const NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>>&)
 //   // pub fn new_persistent>>(theOther: /* const NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>>& */) -> OwnedPtr<Self>;

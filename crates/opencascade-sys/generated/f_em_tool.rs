@@ -730,17 +730,19 @@ impl HAssemblyTable {
     }
 
     /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable::FEmTool_HAssemblyTable()`
-    pub fn new_int4_type(
+    pub fn new_int4_handletcolstdharray1ofinteger(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::FEmTool_AssemblyTable_value_type,
+        theValue: &crate::ffi::HandleTColStdHArray1OfInteger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_HAssemblyTable_ctor_int4_type(
-                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::FEmTool_HAssemblyTable_ctor_int4_handletcolstdharray1ofinteger(
+                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+                ),
+            )
         }
     }
 

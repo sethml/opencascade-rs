@@ -4030,31 +4030,29 @@ impl HArray1OfConnectPoint {
     }
 
     /// **Source:** `IGESDraw_HArray1OfConnectPoint.hxx`:23 - `IGESDraw_HArray1OfConnectPoint::IGESDraw_HArray1OfConnectPoint()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesdrawconnectpoint(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESDraw_Array1OfConnectPoint_value_type,
+        theValue: &crate::ffi::HandleIGESDrawConnectPoint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESDraw_HArray1OfConnectPoint_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESDraw_HArray1OfConnectPoint_ctor_int2_handleigesdrawconnectpoint(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESDraw_HArray1OfConnectPoint.hxx`:23 - `IGESDraw_HArray1OfConnectPoint::IGESDraw_HArray1OfConnectPoint()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESDraw_Array1OfConnectPoint_value_type,
+    pub fn new_handleigesdrawconnectpoint_int2_bool(
+        theBegin: &crate::ffi::HandleIGESDrawConnectPoint,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IGESDraw_HArray1OfConnectPoint_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESDraw_HArray1OfConnectPoint_ctor_handleigesdrawconnectpoint_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -4256,31 +4254,29 @@ impl HArray1OfViewKindEntity {
     }
 
     /// **Source:** `IGESDraw_HArray1OfViewKindEntity.hxx`:23 - `IGESDraw_HArray1OfViewKindEntity::IGESDraw_HArray1OfViewKindEntity()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesdataviewkindentity(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESDraw_Array1OfViewKindEntity_value_type,
+        theValue: &crate::ffi::HandleIGESDataViewKindEntity,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESDraw_HArray1OfViewKindEntity_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESDraw_HArray1OfViewKindEntity_ctor_int2_handleigesdataviewkindentity(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `IGESDraw_HArray1OfViewKindEntity.hxx`:23 - `IGESDraw_HArray1OfViewKindEntity::IGESDraw_HArray1OfViewKindEntity()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESDraw_Array1OfViewKindEntity_value_type,
+    pub fn new_handleigesdataviewkindentity_int2_bool(
+        theBegin: &crate::ffi::HandleIGESDataViewKindEntity,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IGESDraw_HArray1OfViewKindEntity_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESDraw_HArray1OfViewKindEntity_ctor_handleigesdataviewkindentity_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 

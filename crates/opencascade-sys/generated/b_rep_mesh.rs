@@ -96,6 +96,24 @@ unsafe impl crate::CppDeletable for BaseMeshAlgo {
 }
 
 impl BaseMeshAlgo {
+    /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform()`
+    /// Performs processing of the given face.
+    pub fn perform(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+        theRange: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_BaseMeshAlgo_perform(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+                theRange,
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_BaseMeshAlgo_dynamic_type(self as *const Self)) }
@@ -285,16 +303,11 @@ impl HandleBRepMeshBaseMeshAlgo {
     }
 }
 
-// ── Skipped symbols for BaseMeshAlgo (2 total) ──
+// ── Skipped symbols for BaseMeshAlgo (1 total) ──
 // SKIPPED: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:35 - `BRepMesh_BaseMeshAlgo::BRepMesh_BaseMeshAlgo`
 //   constructor: Constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform`
-//   method: Performs processing of the given face.
-//   Reason: param 'theDFace' uses unknown type 'const IMeshData::IFaceHandle&'
-//   // pub fn perform(&mut self, theDFace: &IFaceHandle, theParameters: &Parameters, theRange: &ProgressRange);
 //
 
 // ========================
@@ -386,6 +399,21 @@ impl BoundaryParamsRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
+    pub fn reset(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Reset(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
         unsafe {
@@ -419,6 +447,15 @@ impl BoundaryParamsRangeSplitter {
                     thePoint2d,
                 ),
             )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
+        unsafe {
+            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetDFace(
+                self as *const Self,
+            ))
         }
     }
 
@@ -872,6 +909,21 @@ impl ConeRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:38 - `BRepMesh_DefaultRangeSplitter::Reset()`
+    pub fn reset(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Reset(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
@@ -911,6 +963,13 @@ impl ConeRangeSplitter {
                 self as *const Self,
                 thePoint2d,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetDFace(self as *const Self))
         }
     }
 
@@ -1024,6 +1083,23 @@ impl ConstrainedBaseMeshAlgo {
             &mut *(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform()`
+    pub fn perform(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+        theRange: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_Perform(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+                theRange,
+            )
         }
     }
 
@@ -1521,6 +1597,64 @@ unsafe impl crate::CppDeletable for CurveTessellator {
 }
 
 impl CurveTessellator {
+    /// **Source:** `BRepMesh_CurveTessellator.hxx`:34 - `BRepMesh_CurveTessellator::BRepMesh_CurveTessellator()`
+    /// Constructor.
+    pub fn new_handleimeshdataedge_parameters_int(
+        theEdge: &crate::ffi::HandleIMeshDataEdge,
+        theParameters: &crate::i_mesh_tools::Parameters,
+        theMinPointsNb: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_CurveTessellator_ctor_handleimeshdataedge_parameters_int(
+                    theEdge,
+                    theParameters,
+                    theMinPointsNb,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepMesh_CurveTessellator.hxx`:39 - `BRepMesh_CurveTessellator::BRepMesh_CurveTessellator()`
+    /// Constructor.
+    pub fn new_handleimeshdataedge_orientation_handleimeshdataface_parameters_int(
+        theEdge: &crate::ffi::HandleIMeshDataEdge,
+        theOrientation: crate::top_abs::Orientation,
+        theFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+        theMinPointsNb: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CurveTessellator_ctor_handleimeshdataedge_orientation_handleimeshdataface_parameters_int(theEdge, theOrientation.into(), theFace, theParameters, theMinPointsNb))
+        }
+    }
+
+    /// **Source:** `BRepMesh_CurveTessellator.hxx`:34 - `BRepMesh_CurveTessellator::BRepMesh_CurveTessellator()`
+    /// Constructor.
+    pub fn new_handleimeshdataedge_parameters(
+        theEdge: &crate::ffi::HandleIMeshDataEdge,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleimeshdataedge_parameters_int(theEdge, theParameters, 2)
+    }
+
+    /// **Source:** `BRepMesh_CurveTessellator.hxx`:39 - `BRepMesh_CurveTessellator::BRepMesh_CurveTessellator()`
+    /// Constructor.
+    pub fn new_handleimeshdataedge_orientation_handleimeshdataface_parameters(
+        theEdge: &crate::ffi::HandleIMeshDataEdge,
+        theOrientation: crate::top_abs::Orientation,
+        theFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleimeshdataedge_orientation_handleimeshdataface_parameters_int(
+            theEdge,
+            theOrientation,
+            theFace,
+            theParameters,
+            2,
+        )
+    }
+
     /// **Source:** `BRepMesh_CurveTessellator.hxx`:49 - `BRepMesh_CurveTessellator::PointsNb()`
     /// Returns number of tessellation points.
     pub fn points_nb(&self) -> i32 {
@@ -1712,18 +1846,6 @@ impl HandleBRepMeshCurveTessellator {
     }
 }
 
-// ── Skipped symbols for CurveTessellator (2 total) ──
-// SKIPPED: **Source:** `BRepMesh_CurveTessellator.hxx`:34 - `BRepMesh_CurveTessellator::BRepMesh_CurveTessellator`
-//   constructor: Constructor.
-//   Reason: param 'theEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
-//   // pub fn new_iedgehandle_parameters_int(theEdge: &IEdgeHandle, theParameters: &Parameters, theMinPointsNb: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepMesh_CurveTessellator.hxx`:39 - `BRepMesh_CurveTessellator::BRepMesh_CurveTessellator`
-//   constructor: Constructor.
-//   Reason: param 'theEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
-//   // pub fn new_iedgehandle_orientation_ifacehandle_parameters_int(theEdge: &IEdgeHandle, theOrientation: Orientation, theFace: &IFaceHandle, theParameters: &Parameters, theMinPointsNb: i32) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From BRepMesh_CustomBaseMeshAlgo.hxx
 // ========================
@@ -1824,6 +1946,23 @@ impl CustomBaseMeshAlgo {
             &mut *(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform()`
+    pub fn perform(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+        theRange: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_Perform(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+                theRange,
+            )
         }
     }
 
@@ -1994,6 +2133,22 @@ impl CylinderRangeSplitter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CylinderRangeSplitter_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:36 - `BRepMesh_CylinderRangeSplitter::Reset()`
+    /// Resets this splitter. Must be called before first use.
+    pub fn reset(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_CylinderRangeSplitter_reset(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+            )
+        }
+    }
+
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
         unsafe {
@@ -2059,6 +2214,13 @@ impl CylinderRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
+        unsafe {
+            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetDFace(self as *const Self))
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
         unsafe {
@@ -2067,12 +2229,7 @@ impl CylinderRangeSplitter {
     }
 }
 
-// ── Skipped symbols for CylinderRangeSplitter (2 total) ──
-// SKIPPED: **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:36 - `BRepMesh_CylinderRangeSplitter::Reset`
-//   method: Resets this splitter. Must be called before first use.
-//   Reason: param 'theDFace' uses unknown type 'const IMeshData::IFaceHandle&'
-//   // pub fn reset(&mut self, theDFace: &IFaceHandle, theParameters: &Parameters);
-//
+// ── Skipped symbols for CylinderRangeSplitter (1 total) ──
 // SKIPPED: **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:40 - `BRepMesh_CylinderRangeSplitter::GenerateSurfaceNodes`
 //   method: Returns list of nodes generated using surface data and specified parameters.
 //   Reason: return type 'Handle(NCollection_Shared<NCollection_List<gp_Pnt2d>>)' is unknown
@@ -2567,6 +2724,22 @@ impl DefaultRangeSplitter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DefaultRangeSplitter_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:38 - `BRepMesh_DefaultRangeSplitter::Reset()`
+    /// Resets this splitter. Must be called before first use.
+    pub fn reset(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_DefaultRangeSplitter_reset(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     /// Registers border point.
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
@@ -2618,6 +2791,12 @@ impl DefaultRangeSplitter {
         }
     }
 
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    /// Returns face model.
+    pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
+        unsafe { &*(crate::ffi::BRepMesh_DefaultRangeSplitter_get_d_face(self as *const Self)) }
+    }
+
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     /// Returns surface.
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
@@ -2625,22 +2804,12 @@ impl DefaultRangeSplitter {
     }
 }
 
-// ── Skipped symbols for DefaultRangeSplitter (7 total) ──
-// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:38 - `BRepMesh_DefaultRangeSplitter::Reset`
-//   method: Resets this splitter. Must be called before first use.
-//   Reason: param 'theDFace' uses unknown type 'const IMeshData::IFaceHandle&'
-//   // pub fn reset(&mut self, theDFace: &IFaceHandle, theParameters: &Parameters);
-//
+// ── Skipped symbols for DefaultRangeSplitter (5 total) ──
 // SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:61 - `BRepMesh_DefaultRangeSplitter::GenerateSurfaceNodes`
 //   method: Returns list of nodes generated using surface data and specified parameters.
 //   method: By default returns null ptr.
 //   Reason: return type 'Handle(NCollection_Shared<NCollection_List<gp_Pnt2d>>)' is unknown
 //   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<NCollection_Shared<NCollection_List<gp_Pnt2d>>>>;
-//
-// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace`
-//   method: Returns face model.
-//   Reason: return type 'const IMeshData::IFaceHandle&' is unknown
-//   // pub fn get_d_face(&self) -> &IFaceHandle;
 //
 // SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU`
 //   method: Returns U range.
@@ -2705,6 +2874,50 @@ impl Deflection {
                 theShape,
                 theRelativeDeflection,
                 theMaxShapeSize,
+            )
+        }
+    }
+
+    /// **Source:** `BRepMesh_Deflection.hxx`:41 - `BRepMesh_Deflection::ComputeDeflection()`
+    /// Computes and updates deflection of the given discrete edge.
+    pub fn compute_deflection_handleimeshdataedge_real_parameters(
+        theDEdge: &crate::ffi::HandleIMeshDataEdge,
+        theMaxShapeSize: f64,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_Deflection_compute_deflection_handleimeshdataedge_real_parameters(
+                theDEdge,
+                theMaxShapeSize,
+                theParameters,
+            )
+        }
+    }
+
+    /// **Source:** `BRepMesh_Deflection.hxx`:46 - `BRepMesh_Deflection::ComputeDeflection()`
+    /// Computes and updates deflection of the given discrete wire.
+    pub fn compute_deflection_handleimeshdatawire_parameters(
+        theDWire: &crate::ffi::HandleIMeshDataWire,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_Deflection_compute_deflection_handleimeshdatawire_parameters(
+                theDWire,
+                theParameters,
+            )
+        }
+    }
+
+    /// **Source:** `BRepMesh_Deflection.hxx`:50 - `BRepMesh_Deflection::ComputeDeflection()`
+    /// Computes and updates deflection of the given discrete face.
+    pub fn compute_deflection_handleimeshdataface_parameters(
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_Deflection_compute_deflection_handleimeshdataface_parameters(
+                theDFace,
+                theParameters,
             )
         }
     }
@@ -2846,23 +3059,6 @@ impl HandleBRepMeshDeflection {
     }
 }
 
-// ── Skipped symbols for Deflection (3 total) ──
-// SKIPPED: **Source:** `BRepMesh_Deflection.hxx`:41 - `BRepMesh_Deflection::ComputeDeflection`
-//   static_method: Computes and updates deflection of the given discrete edge.
-//   Reason: param 'theDEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
-//   // pub fn compute_deflection(theDEdge: &IEdgeHandle, theMaxShapeSize: f64, theParameters: &Parameters);
-//
-// SKIPPED: **Source:** `BRepMesh_Deflection.hxx`:46 - `BRepMesh_Deflection::ComputeDeflection`
-//   static_method: Computes and updates deflection of the given discrete wire.
-//   Reason: param 'theDWire' uses unknown type 'const IMeshData::IWireHandle&'
-//   // pub fn compute_deflection(theDWire: &IWireHandle, theParameters: &Parameters);
-//
-// SKIPPED: **Source:** `BRepMesh_Deflection.hxx`:50 - `BRepMesh_Deflection::ComputeDeflection`
-//   static_method: Computes and updates deflection of the given discrete face.
-//   Reason: param 'theDFace' uses unknown type 'const IMeshData::IFaceHandle&'
-//   // pub fn compute_deflection(theDFace: &IFaceHandle, theParameters: &Parameters);
-//
-
 // ========================
 // From BRepMesh_DelabellaBaseMeshAlgo.hxx
 // ========================
@@ -3000,6 +3196,23 @@ impl DelabellaBaseMeshAlgo {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform()`
+    pub fn perform(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+        theRange: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_Perform(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+                theRange,
+            )
         }
     }
 
@@ -3664,6 +3877,23 @@ impl DelaunayBaseMeshAlgo {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform()`
+    pub fn perform(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+        theRange: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_Perform(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+                theRange,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -4177,6 +4407,65 @@ impl EdgeDiscret {
         unsafe { &*(crate::ffi::BRepMesh_EdgeDiscret_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_EdgeDiscret.hxx`:39 - `BRepMesh_EdgeDiscret::CreateEdgeTessellator()`
+    /// Creates instance of free edge tessellator.
+    pub fn create_edge_tessellator_handleimeshdataedge_parameters_int(
+        theDEdge: &crate::ffi::HandleIMeshDataEdge,
+        theParameters: &crate::i_mesh_tools::Parameters,
+        theMinPointsNb: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsCurveTessellator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_EdgeDiscret_create_edge_tessellator_handleimeshdataedge_parameters_int(theDEdge, theParameters, theMinPointsNb))
+        }
+    }
+
+    /// **Source:** `BRepMesh_EdgeDiscret.hxx`:45 - `BRepMesh_EdgeDiscret::CreateEdgeTessellator()`
+    /// Creates instance of edge tessellator.
+    pub fn create_edge_tessellator_handleimeshdataedge_orientation_handleimeshdataface_parameters_int(
+        theDEdge: &crate::ffi::HandleIMeshDataEdge,
+        theOrientation: crate::top_abs::Orientation,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+        theMinPointsNb: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsCurveTessellator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_EdgeDiscret_create_edge_tessellator_handleimeshdataedge_orientation_handleimeshdataface_parameters_int(theDEdge, theOrientation.into(), theDFace, theParameters, theMinPointsNb))
+        }
+    }
+
+    /// **Source:** `BRepMesh_EdgeDiscret.hxx`:53 - `BRepMesh_EdgeDiscret::CreateEdgeTessellationExtractor()`
+    /// Creates instance of tessellation extractor.
+    pub fn create_edge_tessellation_extractor(
+        theDEdge: &crate::ffi::HandleIMeshDataEdge,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsCurveTessellator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_EdgeDiscret_create_edge_tessellation_extractor(
+                    theDEdge, theDFace,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepMesh_EdgeDiscret.hxx`:61 - `BRepMesh_EdgeDiscret::Tessellate3d()`
+    /// Updates 3d discrete edge model using the given tessellation tool.
+    pub fn tessellate3d(
+        theDEdge: &crate::ffi::HandleIMeshDataEdge,
+        theTessellator: &crate::ffi::HandleIMeshToolsCurveTessellator,
+        theUpdateEnds: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_EdgeDiscret_tessellate3d(theDEdge, theTessellator, theUpdateEnds)
+        }
+    }
+
+    /// **Source:** `BRepMesh_EdgeDiscret.hxx`:67 - `BRepMesh_EdgeDiscret::Tessellate2d()`
+    /// Updates 2d discrete edge model using tessellation of 3D curve.
+    pub fn tessellate2d(theDEdge: &crate::ffi::HandleIMeshDataEdge, theUpdateEnds: bool) {
+        unsafe { crate::ffi::BRepMesh_EdgeDiscret_tessellate2d(theDEdge, theUpdateEnds) }
+    }
+
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
@@ -4329,33 +4618,6 @@ impl HandleBRepMeshEdgeDiscret {
     }
 }
 
-// ── Skipped symbols for EdgeDiscret (5 total) ──
-// SKIPPED: **Source:** `BRepMesh_EdgeDiscret.hxx`:39 - `BRepMesh_EdgeDiscret::CreateEdgeTessellator`
-//   static_method: Creates instance of free edge tessellator.
-//   Reason: param 'theDEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
-//   // pub fn create_edge_tessellator(theDEdge: &IEdgeHandle, theParameters: &Parameters, theMinPointsNb: i32) -> OwnedPtr<Handle<IMeshTools_CurveTessellator>>;
-//
-// SKIPPED: **Source:** `BRepMesh_EdgeDiscret.hxx`:45 - `BRepMesh_EdgeDiscret::CreateEdgeTessellator`
-//   static_method: Creates instance of edge tessellator.
-//   Reason: param 'theDEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
-//   // pub fn create_edge_tessellator(theDEdge: &IEdgeHandle, theOrientation: Orientation, theDFace: &IFaceHandle, theParameters: &Parameters, theMinPointsNb: i32) -> OwnedPtr<Handle<IMeshTools_CurveTessellator>>;
-//
-// SKIPPED: **Source:** `BRepMesh_EdgeDiscret.hxx`:53 - `BRepMesh_EdgeDiscret::CreateEdgeTessellationExtractor`
-//   static_method: Creates instance of tessellation extractor.
-//   Reason: param 'theDEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
-//   // pub fn create_edge_tessellation_extractor(theDEdge: &IEdgeHandle, theDFace: &IFaceHandle) -> OwnedPtr<Handle<IMeshTools_CurveTessellator>>;
-//
-// SKIPPED: **Source:** `BRepMesh_EdgeDiscret.hxx`:61 - `BRepMesh_EdgeDiscret::Tessellate3d`
-//   static_method: Updates 3d discrete edge model using the given tessellation tool.
-//   Reason: param 'theDEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
-//   // pub fn tessellate3d(theDEdge: &IEdgeHandle, theTessellator: &HandleCurveTessellator, theUpdateEnds: bool);
-//
-// SKIPPED: **Source:** `BRepMesh_EdgeDiscret.hxx`:67 - `BRepMesh_EdgeDiscret::Tessellate2d`
-//   static_method: Updates 2d discrete edge model using tessellation of 3D curve.
-//   Reason: param 'theDEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
-//   // pub fn tessellate2d(theDEdge: &IEdgeHandle, theUpdateEnds: bool);
-//
-
 // ========================
 // From BRepMesh_EdgeTessellationExtractor.hxx
 // ========================
@@ -4372,6 +4634,17 @@ unsafe impl crate::CppDeletable for EdgeTessellationExtractor {
 }
 
 impl EdgeTessellationExtractor {
+    /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:30 - `BRepMesh_EdgeTessellationExtractor::BRepMesh_EdgeTessellationExtractor()`
+    /// Constructor.
+    pub fn new_handleimeshdataedge_handleimeshdataface(
+        theEdge: &crate::ffi::HandleIMeshDataEdge,
+        theFace: &crate::ffi::HandleIMeshDataFace,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_EdgeTessellationExtractor_ctor_handleimeshdataedge_handleimeshdataface(theEdge, theFace))
+        }
+    }
+
     /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:37 - `BRepMesh_EdgeTessellationExtractor::PointsNb()`
     /// Returns number of tessellation points.
     pub fn points_nb(&self) -> i32 {
@@ -4579,13 +4852,6 @@ impl HandleBRepMeshEdgeTessellationExtractor {
     }
 }
 
-// ── Skipped symbols for EdgeTessellationExtractor (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:30 - `BRepMesh_EdgeTessellationExtractor::BRepMesh_EdgeTessellationExtractor`
-//   constructor: Constructor.
-//   Reason: param 'theEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
-//   // pub fn new_iedgehandle_ifacehandle(theEdge: &IEdgeHandle, theFace: &IFaceHandle) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From BRepMesh_ExtrusionRangeSplitter.hxx
 // ========================
@@ -4668,6 +4934,21 @@ impl ExtrusionRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
+    pub fn reset(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Reset(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
@@ -4708,6 +4989,13 @@ impl ExtrusionRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetDFace(self as *const Self))
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
         unsafe {
@@ -4736,6 +5024,22 @@ unsafe impl crate::CppDeletable for FaceChecker {
 }
 
 impl FaceChecker {
+    /// **Source:** `BRepMesh_FaceChecker.hxx`:61 - `BRepMesh_FaceChecker::BRepMesh_FaceChecker()`
+    /// Default constructor
+    pub fn new_handleimeshdataface_parameters(
+        theFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_FaceChecker_ctor_handleimeshdataface_parameters(
+                    theFace,
+                    theParameters,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_FaceChecker.hxx`:69 - `BRepMesh_FaceChecker::Perform()`
     /// Performs check wires of the face for intersections.
     /// @return True if there is no intersection, False elsewhere.
@@ -4860,12 +5164,7 @@ impl HandleBRepMeshFaceChecker {
     }
 }
 
-// ── Skipped symbols for FaceChecker (2 total) ──
-// SKIPPED: **Source:** `BRepMesh_FaceChecker.hxx`:61 - `BRepMesh_FaceChecker::BRepMesh_FaceChecker`
-//   constructor: Default constructor
-//   Reason: param 'theFace' uses unknown type 'const IMeshData::IFaceHandle&'
-//   // pub fn new_ifacehandle_parameters(theFace: &IFaceHandle, theParameters: &Parameters) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for FaceChecker (1 total) ──
 // SKIPPED: **Source:** `BRepMesh_FaceChecker.hxx`:72 - `BRepMesh_FaceChecker::GetIntersectingEdges`
 //   method: Returns intersecting edges.
 //   Reason: return type 'const Handle(NCollection_Shared<NCollection_Map<IMeshData_Edge *>>)&' is unknown
@@ -7192,6 +7491,21 @@ impl NURBSRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
+    pub fn reset(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Reset(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
@@ -7226,6 +7540,13 @@ impl NURBSRangeSplitter {
                 self as *const Self,
                 thePoint2d,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
+        unsafe {
+            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetDFace(self as *const Self))
         }
     }
 
@@ -7754,6 +8075,20 @@ impl ShapeTool {
         unsafe { crate::ffi::BRepMesh_ShapeTool_box_max_dimension(theBox, theMaxDimension) }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:53 - `BRepMesh_ShapeTool::CheckAndUpdateFlags()`
+    /// Checks same parameter, same range and degenerativity attributes
+    /// using geometrical data of the given edge and updates edge model
+    /// by computed parameters in case of worst case - it can drop flags
+    /// same parameter and same range to False but never to True if it is
+    /// already set to False. In contrary, it can also drop degenerated
+    /// flag to True, but never to False if it is already set to True.
+    pub fn check_and_update_flags(
+        theEdge: &crate::ffi::HandleIMeshDataEdge,
+        thePCurve: &crate::ffi::HandleIMeshDataPCurve,
+    ) {
+        unsafe { crate::ffi::BRepMesh_ShapeTool_check_and_update_flags(theEdge, thePCurve) }
+    }
+
     /// **Source:** `BRepMesh_ShapeTool.hxx`:59 - `BRepMesh_ShapeTool::AddInFace()`
     /// Stores the given triangulation into the given face.
     /// @param theFace face to be updated by triangulation.
@@ -8035,15 +8370,6 @@ impl HandleBRepMeshShapeTool {
     }
 }
 
-// ── Skipped symbols for ShapeTool (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_ShapeTool.hxx`:53 - `BRepMesh_ShapeTool::CheckAndUpdateFlags`
-//   static_method: Checks same parameter, same range and degenerativity attributes
-//   static_method: using geometrical data of the given edge and updates edge model
-//   static_method: by computed parameters in case of worst case - it can drop flags
-//   Reason: param 'theEdge' uses unknown type 'const IMeshData::IEdgeHandle&'
-//   // pub fn check_and_update_flags(theEdge: &IEdgeHandle, thePCurve: &IPCurveHandle);
-//
-
 // ========================
 // From BRepMesh_ShapeVisitor.hxx
 // ========================
@@ -8276,6 +8602,21 @@ impl SphereRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:38 - `BRepMesh_DefaultRangeSplitter::Reset()`
+    pub fn reset(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Reset(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
@@ -8315,6 +8656,13 @@ impl SphereRangeSplitter {
                 self as *const Self,
                 thePoint2d,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
+        unsafe {
+            &*(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetDFace(self as *const Self))
         }
     }
 
@@ -8397,6 +8745,21 @@ impl TorusRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
+    pub fn reset(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Reset(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
         unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_inherited_AdjustRange(self as *mut Self) }
@@ -8429,6 +8792,13 @@ impl TorusRangeSplitter {
                 self as *const Self,
                 thePoint2d,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
+        unsafe {
+            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetDFace(self as *const Self))
         }
     }
 
@@ -8581,6 +8951,22 @@ impl UVParamRangeSplitter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UVParamRangeSplitter_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
+    /// Resets this splitter.
+    pub fn reset(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_UVParamRangeSplitter_reset(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+            )
+        }
+    }
+
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
         unsafe {
@@ -8646,6 +9032,13 @@ impl UVParamRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetDFace(self as *const Self))
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
         unsafe {
@@ -8654,12 +9047,7 @@ impl UVParamRangeSplitter {
     }
 }
 
-// ── Skipped symbols for UVParamRangeSplitter (5 total) ──
-// SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset`
-//   method: Resets this splitter.
-//   Reason: param 'theDFace' uses unknown type 'const IMeshData::IFaceHandle&'
-//   // pub fn reset(&mut self, theDFace: &IFaceHandle, theParameters: &Parameters);
-//
+// ── Skipped symbols for UVParamRangeSplitter (4 total) ──
 // SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU`
 //   method: Returns U parameters.
 //   Reason: return type 'const IMeshData::IMapOfReal&' is unknown
@@ -8764,6 +9152,21 @@ impl UndefinedRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
+    pub fn reset(
+        &mut self,
+        theDFace: &crate::ffi::HandleIMeshDataFace,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Reset(
+                self as *mut Self,
+                theDFace,
+                theParameters,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
@@ -8801,6 +9204,13 @@ impl UndefinedRangeSplitter {
                 self as *const Self,
                 thePoint2d,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetDFace(self as *const Self))
         }
     }
 

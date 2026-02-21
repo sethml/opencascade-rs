@@ -21236,31 +21236,29 @@ impl HArray1OfBoundaryCurve {
     }
 
     /// **Source:** `StepGeom_HArray1OfBoundaryCurve.hxx`:24 - `StepGeom_HArray1OfBoundaryCurve::StepGeom_HArray1OfBoundaryCurve()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepgeomboundarycurve(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepGeom_Array1OfBoundaryCurve_value_type,
+        theValue: &crate::ffi::HandleStepGeomBoundaryCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepGeom_HArray1OfBoundaryCurve_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepGeom_HArray1OfBoundaryCurve_ctor_int2_handlestepgeomboundarycurve(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepGeom_HArray1OfBoundaryCurve.hxx`:24 - `StepGeom_HArray1OfBoundaryCurve::StepGeom_HArray1OfBoundaryCurve()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepGeom_Array1OfBoundaryCurve_value_type,
+    pub fn new_handlestepgeomboundarycurve_int2_bool(
+        theBegin: &crate::ffi::HandleStepGeomBoundaryCurve,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepGeom_HArray1OfBoundaryCurve_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepGeom_HArray1OfBoundaryCurve_ctor_handlestepgeomboundarycurve_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -21462,31 +21460,29 @@ impl HArray1OfCartesianPoint {
     }
 
     /// **Source:** `StepGeom_HArray1OfCartesianPoint.hxx`:23 - `StepGeom_HArray1OfCartesianPoint::StepGeom_HArray1OfCartesianPoint()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepgeomcartesianpoint(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepGeom_Array1OfCartesianPoint_value_type,
+        theValue: &crate::ffi::HandleStepGeomCartesianPoint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepGeom_HArray1OfCartesianPoint_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepGeom_HArray1OfCartesianPoint_ctor_int2_handlestepgeomcartesianpoint(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepGeom_HArray1OfCartesianPoint.hxx`:23 - `StepGeom_HArray1OfCartesianPoint::StepGeom_HArray1OfCartesianPoint()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepGeom_Array1OfCartesianPoint_value_type,
+    pub fn new_handlestepgeomcartesianpoint_int2_bool(
+        theBegin: &crate::ffi::HandleStepGeomCartesianPoint,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepGeom_HArray1OfCartesianPoint_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepGeom_HArray1OfCartesianPoint_ctor_handlestepgeomcartesianpoint_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -21694,33 +21690,25 @@ impl HArray1OfCompositeCurveSegment {
     }
 
     /// **Source:** `StepGeom_HArray1OfCompositeCurveSegment.hxx`:23 - `StepGeom_HArray1OfCompositeCurveSegment::StepGeom_HArray1OfCompositeCurveSegment()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepgeomcompositecurvesegment(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepGeom_Array1OfCompositeCurveSegment_value_type,
+        theValue: &crate::ffi::HandleStepGeomCompositeCurveSegment,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepGeom_HArray1OfCompositeCurveSegment_ctor_int2_type(
-                    theLower, theUpper, theValue,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepGeom_HArray1OfCompositeCurveSegment_ctor_int2_handlestepgeomcompositecurvesegment(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `StepGeom_HArray1OfCompositeCurveSegment.hxx`:23 - `StepGeom_HArray1OfCompositeCurveSegment::StepGeom_HArray1OfCompositeCurveSegment()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepGeom_Array1OfCompositeCurveSegment_value_type,
+    pub fn new_handlestepgeomcompositecurvesegment_int2_bool(
+        theBegin: &crate::ffi::HandleStepGeomCompositeCurveSegment,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::StepGeom_HArray1OfCompositeCurveSegment_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::StepGeom_HArray1OfCompositeCurveSegment_ctor_handlestepgeomcompositecurvesegment_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -21942,29 +21930,33 @@ impl HArray1OfCurve {
     }
 
     /// **Source:** `StepGeom_HArray1OfCurve.hxx`:24 - `StepGeom_HArray1OfCurve::StepGeom_HArray1OfCurve()`
-    pub fn new_int2_type(
+    pub fn new_int2_handlestepgeomcurve(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::StepGeom_Array1OfCurve_value_type,
+        theValue: &crate::ffi::HandleStepGeomCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepGeom_HArray1OfCurve_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepGeom_HArray1OfCurve_ctor_int2_handlestepgeomcurve(
+                    theLower, theUpper, theValue,
+                ),
+            )
         }
     }
 
     /// **Source:** `StepGeom_HArray1OfCurve.hxx`:24 - `StepGeom_HArray1OfCurve::StepGeom_HArray1OfCurve()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::StepGeom_Array1OfCurve_value_type,
+    pub fn new_handlestepgeomcurve_int2_bool(
+        theBegin: &crate::ffi::HandleStepGeomCurve,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepGeom_HArray1OfCurve_ctor_type_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepGeom_HArray1OfCurve_ctor_handlestepgeomcurve_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -22843,17 +22835,19 @@ impl HArray2OfCartesianPoint {
     }
 
     /// **Source:** `StepGeom_HArray2OfCartesianPoint.hxx`:23 - `StepGeom_HArray2OfCartesianPoint::StepGeom_HArray2OfCartesianPoint()`
-    pub fn new_int4_type(
+    pub fn new_int4_handlestepgeomcartesianpoint(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::StepGeom_Array2OfCartesianPoint_value_type,
+        theValue: &crate::ffi::HandleStepGeomCartesianPoint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepGeom_HArray2OfCartesianPoint_ctor_int4_type(
-                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepGeom_HArray2OfCartesianPoint_ctor_int4_handlestepgeomcartesianpoint(
+                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+                ),
+            )
         }
     }
 
@@ -23059,17 +23053,19 @@ impl HArray2OfSurfacePatch {
     }
 
     /// **Source:** `StepGeom_HArray2OfSurfacePatch.hxx`:23 - `StepGeom_HArray2OfSurfacePatch::StepGeom_HArray2OfSurfacePatch()`
-    pub fn new_int4_type(
+    pub fn new_int4_handlestepgeomsurfacepatch(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::StepGeom_Array2OfSurfacePatch_value_type,
+        theValue: &crate::ffi::HandleStepGeomSurfacePatch,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StepGeom_HArray2OfSurfacePatch_ctor_int4_type(
-                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepGeom_HArray2OfSurfacePatch_ctor_int4_handlestepgeomsurfacepatch(
+                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+                ),
+            )
         }
     }
 

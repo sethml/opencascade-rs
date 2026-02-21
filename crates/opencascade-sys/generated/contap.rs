@@ -1665,11 +1665,15 @@ unsafe impl crate::CppDeletable for TheIWLineOfTheIWalking {
 
 impl TheIWLineOfTheIWalking {
     /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:44 - `Contap_TheIWLineOfTheIWalking::Contap_TheIWLineOfTheIWalking()`
-    pub fn new_allocator(theAllocator: &crate::ffi::IntSurf_Allocator) -> crate::OwnedPtr<Self> {
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Contap_TheIWLineOfTheIWalking_ctor_allocator(
-                theAllocator,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Contap_TheIWLineOfTheIWalking_ctor_handlencollectionbaseallocator(
+                    theAllocator,
+                ),
+            )
         }
     }
 

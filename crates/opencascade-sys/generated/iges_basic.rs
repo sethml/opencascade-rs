@@ -8866,31 +8866,25 @@ impl HArray1OfLineFontEntity {
     }
 
     /// **Source:** `IGESBasic_HArray1OfLineFontEntity.hxx`:24 - `IGESBasic_HArray1OfLineFontEntity::IGESBasic_HArray1OfLineFontEntity()`
-    pub fn new_int2_type(
+    pub fn new_int2_handleigesdatalinefontentity(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::IGESBasic_Array1OfLineFontEntity_value_type,
+        theValue: &crate::ffi::HandleIGESDataLineFontEntity,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESBasic_HArray1OfLineFontEntity_ctor_int2_type(
-                theLower, theUpper, theValue,
-            ))
+            crate::OwnedPtr::from_raw(crate::ffi::IGESBasic_HArray1OfLineFontEntity_ctor_int2_handleigesdatalinefontentity(theLower, theUpper, theValue))
         }
     }
 
     /// **Source:** `IGESBasic_HArray1OfLineFontEntity.hxx`:24 - `IGESBasic_HArray1OfLineFontEntity::IGESBasic_HArray1OfLineFontEntity()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::IGESBasic_Array1OfLineFontEntity_value_type,
+    pub fn new_handleigesdatalinefontentity_int2_bool(
+        theBegin: &crate::ffi::HandleIGESDataLineFontEntity,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IGESBasic_HArray1OfLineFontEntity_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESBasic_HArray1OfLineFontEntity_ctor_handleigesdatalinefontentity_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 
@@ -9096,17 +9090,19 @@ impl HArray2OfHArray1OfReal {
     }
 
     /// **Source:** `IGESBasic_HArray2OfHArray1OfReal.hxx`:23 - `IGESBasic_HArray2OfHArray1OfReal::IGESBasic_HArray2OfHArray1OfReal()`
-    pub fn new_int4_type(
+    pub fn new_int4_handletcolstdharray1ofreal(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::IGESBasic_Array2OfHArray1OfReal_value_type,
+        theValue: &crate::ffi::HandleTColStdHArray1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IGESBasic_HArray2OfHArray1OfReal_ctor_int4_type(
-                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESBasic_HArray2OfHArray1OfReal_ctor_int4_handletcolstdharray1ofreal(
+                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+                ),
+            )
         }
     }
 
