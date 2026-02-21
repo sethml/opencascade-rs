@@ -466,7 +466,7 @@ fn convert_utility_classes_to_functions(
                 // strip the ConstRef wrapper (return by-value copy). The FFI can't
                 // express references from free functions with no borrowable
                 // params, so we copy instead.
-                let has_ref_params = sm.params.iter().any(|p| matches!(&p.ty, model::Type::ConstRef(_) | model::Type::MutRef(_)));
+                let has_ref_params = sm.params.iter().any(|p| p.ty.is_lifetime_source());
                 if !has_ref_params {
                     if let Some(model::Type::ConstRef(inner)) = &return_type {
                         return_type = Some(*inner.clone());

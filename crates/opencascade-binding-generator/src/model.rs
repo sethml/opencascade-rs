@@ -583,6 +583,13 @@ impl Type {
         matches!(self, Type::ConstRef(_) | Type::MutRef(_))
     }
 
+    /// Check if this type counts as a "lifetime source" for elision purposes.
+    /// References (&T, &mut T) and C-string pointers (const char*) both introduce
+    /// an input lifetime that could be tied to a returned reference.
+    pub fn is_lifetime_source(&self) -> bool {
+        self.is_reference() || self.is_c_string()
+    }
+
     /// Check if this is a const char* type (C string pointer)
     pub fn is_c_string(&self) -> bool {
         match self {

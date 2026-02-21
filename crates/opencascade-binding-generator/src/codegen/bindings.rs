@@ -2987,11 +2987,9 @@ fn compute_inherited_method_bindings(
                 // Check if inherited method returns a reference with reference params (ambiguous lifetime)
                 let unsafe_lifetime = {
                     let returns_ref = resolved_method.return_type.as_ref()
-                        .map(|rt| matches!(&rt.original, Type::MutRef(_) | Type::ConstRef(_)))
-                        .unwrap_or(false);
-                    returns_ref && resolved_method.params.iter().any(|p| {
-                        matches!(&p.ty.original, Type::ConstRef(_) | Type::MutRef(_)) || p.ty.original.is_c_string()
-                    })
+                        .map_or(false, |rt| rt.original.is_reference());
+                    returns_ref && resolved_method.params.iter()
+                        .any(|p| p.ty.original.is_lifetime_source())
                 };
 
                 let is_unsafe = has_unsafe_types || unsafe_lifetime;
@@ -3440,18 +3438,10 @@ pub fn compute_all_function_bindings(
         // Ambiguous lifetime check for free functions:
         // If the function returns a reference and has 2+ reference params, Rust can't infer
         // which param the return borrows from. We mark it unsafe instead of skipping.
-        let unsafe_lifetime = if let Some(ref ret) = func.return_type {
-            if matches!(&ret.original, Type::MutRef(_) | Type::ConstRef(_)) {
-                let ref_param_count = func.params.iter().filter(|p| {
-                    matches!(&p.ty.original, Type::ConstRef(_) | Type::MutRef(_)) || p.ty.original.is_c_string()
-                }).count();
-                ref_param_count >= 2
-            } else {
-                false
-            }
-        } else {
-            false
-        };
+        // Threshold is 2 (not 1 as for methods) because free functions have no &self.
+        let unsafe_lifetime = func.return_type.as_ref()
+            .map_or(false, |rt| rt.original.is_reference())
+            && func.params.iter().filter(|p| p.ty.original.is_lifetime_source()).count() >= 2;
 
         let base_rust_name = &func.rust_name;
         let is_overloaded = name_groups.get(base_rust_name).copied().unwrap_or(0) > 1;

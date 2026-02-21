@@ -575,24 +575,13 @@ pub fn function_uses_enum(func: &ParsedFunction, all_enums: &HashSet<String>) ->
         || func.return_type.as_ref().is_some_and(|t| type_uses_enum(t, all_enums))
 }
 
-/// Check if a method needs explicit lifetimes (FFI limitation)
+/// Check if a method has ambiguous return lifetimes (FFI limitation).
 /// Returns true if the method returns a reference and has other reference parameters.
-/// Rust can't infer lifetimes when there are multiple potential sources.
+/// For methods with `&self`, any single ref param creates ambiguity (self is the other source).
 pub fn method_needs_explicit_lifetimes(method: &Method) -> bool {
-    // Check if return type is a reference (&Self, &mut Self, ConstRef, or MutRef)
-    let returns_ref = method.return_type.as_ref().map(|ty| {
-        matches!(ty, Type::MutRef(_) | Type::ConstRef(_))
-    }).unwrap_or(false);
-    
-    if !returns_ref {
-        return false;
-    }
-    
-    // Check if any parameter is a reference (other than self which is handled separately)
-    // Also treat const char* as a reference parameter
-    method.params.iter().any(|p| {
-        matches!(&p.ty, Type::ConstRef(_) | Type::MutRef(_)) || p.ty.is_c_string()
-    })
+    let returns_ref = method.return_type.as_ref()
+        .map_or(false, |ty| ty.is_reference());
+    returns_ref && method.params.iter().any(|p| p.ty.is_lifetime_source())
 }
 
 /// Check if a const method returns a mutable reference (not allowed at FFI boundary)

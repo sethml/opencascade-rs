@@ -1921,3 +1921,415 @@ All changes are complete and passing. Here's what was done:
 **4. Updated README** — Skip count: 671 → 661. Removed the "Ambiguous lifetimes" row from the breakdown table.
 
 **Build and tests**: `cargo build` passes cleanly, all 16 binding generator tests pass, all 22 workspace tests pass (1 ignored as before). No callers needed fixing — the `opencascade` crate didn't call any of the newly-unsafe methods.
+
+User: Add to the README a description of why functions returns refs are sometimes unsafe. Commit. Then think about whether you discovered opportunities to refactor the code the avoid repetition in this session. If refactoring seems worthwhile, do it, and commit.
+
+GitHub Copilot: Created 4 todos
+
+Let me find the right place in the README — after the public API section where `unsafe` methods would be relevant, and also check the existing content around the skip table: 
+
+Searched for text `unsafe` (`**/crates/opencascade-binding-generator/README.md`), 5 results
+
+Let me find where the public API descriptions section is — I'll add an "Unsafe Reference Returns" subsection there: 
+
+Reading lines 190-220 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L190-L221)
+Completed with input: {
+  "endLine": 220,
+  "filePath": "crates/opencascade-binding-generator/README.md",
+  "startLine": 190
+}
+
+Reading lines 225-245 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L225-L246)
+Completed with input: {
+  "endLine": 245,
+  "filePath": "crates/opencascade-binding-generator/README.md",
+  "startLine": 225
+}
+
+Good spot — I'll add the unsafe reference returns section after the "Class Pointer Returns" section (after line 199) and before "Collection Iterators". Let me also look at the generated message.rs to show a real example: 
+
+Ran terminal command:  grep -B5 -A10 "pub unsafe fn arg_charptr" crates/opencascade-sys/generated/message.rs | head -20
+
+Now let me write the README section and also look at a const ref example: 
+
+Ran terminal command:  grep -B3 -A8 "It is not known whether" crates/opencascade-sys/generated/tdf.rs | head -20
+
+Ran terminal command:  grep -B3 -A8 "It is not known whether" crates/opencascade-sys/generated/b_rep_lib.rs | head -20
+
+Good — `descendant_faces` returns `&T` (const ref) and takes a ref param. Now let me also get a free function example:   
+
+Ran terminal command:  grep -B3 -A8 "It is not known which" crates/opencascade-sys/generated/bin_tools.rs | head -15
+
+Now I have good material for the README section. Let me add it: 
+
+Reading lines 198-202 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L198-L203)
+Completed with input: {
+  "endLine": 202,
+  "filePath": "crates/opencascade-binding-generator/README.md",
+  "startLine": 198
+}
+
+Edited: [README.md -3+27](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L199-L226)
+Completed with input: {
+  "edits": [
+    {
+      "content": "```\n\n### Unsafe Reference Returns (Ambiguous Lifetimes)\n\nSome methods and free functions return a reference (`&T` or `&mut T`) while also taking reference parameters. In C++, the returned reference might borrow from `self`, from one of the parameters, or from neither (e.g., a global or class-static). Rust's lifetime elision rules assume the return borrows from `self` for methods, but this assumption may be incorrect — the return could actually borrow from a parameter, which might be dropped before `self`.\n\nThe generator marks these methods as `unsafe fn` with a `# Safety` doc comment explaining the ambiguity. This applies to:\n\n- **Instance methods** returning `&T` or `&mut T` that also take reference parameters (other than `self`)\n- **Free functions** returning a reference with 2+ reference parameters (no `self` to disambiguate)\n\nFor free functions, explicit lifetime annotations (`<'a>`) tie all reference parameters and the return type together, since Rust's elision rules cannot resolve the ambiguity without `self`.\n\n```rust\nuse opencascade_sys::message::Msg;\n\n// Method: returns &mut Msg, takes &str — could borrow from self or theString\nlet result: &mut Msg = unsafe { msg.arg_charptr(\"value\") };\n\n// Free function: explicit lifetime <'a> ties parameters and return together\nuse opencascade_sys::bin_tools;\nlet stream: &mut OStream = unsafe { bin_tools::put_real(&mut os, &value) };\n```\n\nMethods that return references but take no reference parameters (other than `self`) are **safe** — Rust's lifetime elision correctly binds the return to `self`.\n\n### Collection Iterators",
+      "filePath": "crates/opencascade-binding-generator/README.md",
+      "lineHashes": "199:pi,200:dd,201:ri"
+    }
+  ]
+}
+
+Now let me also update the "Document Framework" note that references the old behavior, and update the wrapper function table to mention the unsafe lifetime pattern:   
+
+Searched for text `Previously-skipped` (`**/crates/opencascade-binding-generator/README.md`), 1 result
+
+Reading lines 447-452 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L447-L453)
+Completed with input: {
+  "endLine": 452,
+  "filePath": "crates/opencascade-binding-generator/README.md",
+  "startLine": 447
+}
+
+Edited: [README.md -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L449-L450)
+Completed with input: {
+  "edits": [
+    {
+      "content": "**Document Framework (4 symbols)** — `TDocStd_*` (3), `TDF_*` (1). All unknown types (`TDocStd_XLinkPtr`, `TDF_LabelNodePtr`). Methods returning references with reference params are bound as `unsafe fn` (see \"Unsafe Reference Returns\" above).",
+      "filePath": "crates/opencascade-binding-generator/README.md",
+      "lineHashes": "449:gm"
+    }
+  ]
+}
+
+Now let me commit. First, let me write the commit message: 
+
+Starting: *Commit changes* (2/4)
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/commit-msg.txt)
+
+Ran terminal command:  rm tmp/commit-msg.txt
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/commit-msg.txt)
+
+Ran terminal command:  git add -A && git commit -F tmp/commit-msg.txt
+
+Starting: *Identify refactoring opportunities* (3/4)
+
+Now let me analyze the code for repetition. The key concern is the "returns a reference + has ref params" check, which appears in three places:  
+
+Find repeated lifetime check patterns
+
+Searched for text `method_needs_explicit_lifetimes`, 20 results
+
+Searched for regex `unsafe_lifetime|returns_ref|ref_param_count`, 20 results
+
+Searched for regex `ConstRef.*MutRef|MutRef.*ConstRef` (`**/crates/opencascade-binding-generator/**`), 20 results
+
+Searched for text `is_c_string` (`**/crates/opencascade-binding-generator/**`), 7 results
+
+Searched for text `needs_unsafe_fn` (`**/crates/opencascade-binding-generator/**`), 12 results
+
+Reading lines 575-620 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L575-L621)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 575,
+  "endLine": 620
+}
+
+Reading lines 2970-3010 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L2970-L3011)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 2970,
+  "endLine": 3010
+}
+
+Reading lines 3430-3470 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L3430-L3471)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 3430,
+  "endLine": 3470
+}
+
+Reading lines 3545-3575 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L3545-L3576)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 3545,
+  "endLine": 3575
+}
+
+Reading lines 460-490 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L460-L491)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 460,
+  "endLine": 490
+}
+
+Reading lines 55-80 of [model.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L55-L81)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/model.rs",
+  "startLine": 55,
+  "endLine": 80
+}
+
+Searched for regex `unsafe_lifetime.*\{|let unsafe_lifetime` (`**/crates/opencascade-binding-generator/src/codegen/bindings.rs`), 5 results
+
+Reading lines 225-300 of [model.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L225-L301)
+Completed with input: {
+  "endLine": 300,
+  "filePath": "crates/opencascade-binding-generator/src/model.rs",
+  "startLine": 225
+}
+
+Reading lines 360-400 of [model.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L360-L401)
+Completed with input: {
+  "endLine": 400,
+  "filePath": "crates/opencascade-binding-generator/src/model.rs",
+  "startLine": 360
+}
+
+Searched for regex `let unsafe_lifetime|let has_unsafe_types|let has_ref_params_beyond_self|returns_ref.*MutRef.*ConstRef` (`**/crates/opencascade-binding-generator/src/codegen/bindings.rs`), 3 results
+
+Searched for regex `DirectMethodBinding \{|WrapperMethodBinding \{|\.is_unsafe.*=|\.unsafe_lifetime.*=` (`**/crates/opencascade-binding-generator/src/codegen/bindings.rs`), 4 results
+
+Reading lines 1680-1750 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L1680-L1751)
+Completed with input: {
+  "endLine": 1750,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 1680
+}
+
+Reading lines 1770-1850 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L1770-L1851)
+Completed with input: {
+  "endLine": 1850,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 1770
+}
+
+Reading lines 130-180 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L130-L181)
+Completed with input: {
+  "endLine": 180,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 130
+}
+
+Reading lines 180-280 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L180-L281)
+Completed with input: {
+  "endLine": 280,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 180
+}
+
+Reading lines 280-340 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L280-L341)
+Completed with input: {
+  "endLine": 340,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 280
+}
+
+Reading lines 1850-1920 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L1850-L1921)
+Completed with input: {
+  "endLine": 1920,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 1850
+}
+
+Reading lines 575-600 of [model.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L575-L601)
+Completed with input: {
+  "endLine": 600,
+  "filePath": "crates/opencascade-binding-generator/src/model.rs",
+  "startLine": 575
+}
+
+Reading lines 725-750 of [model.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L725-L751)
+Completed with input: {
+  "endLine": 750,
+  "filePath": "crates/opencascade-binding-generator/src/model.rs",
+  "startLine": 725
+}
+
+Excellent analysis. Let me focus on the most valuable refactoring — the repeated "ambiguous lifetime" check in 3 places: 
+
+Starting: *Refactor and commit if worthwhile* (4/4)
+
+The main repetition is:
+1. **"Is a reference param" check** — `matches!(ty, ConstRef(_) | MutRef(_)) || ty.is_c_string()` × 3 places
+2. **"Returns a reference" check** — `matches!(ty, MutRef(_) | ConstRef(_))` × 3 places  
+3. **The full ambiguous lifetime check** — 3 copies (A: resolver for methods, B: bindings.rs for inherited methods, C: bindings.rs for free functions)
+
+The difference between A/B and C is justified (threshold ≥1 vs ≥2), but the core logic should be a shared function. Let me also check the `Type::is_reference()` that already exists:   
+
+Searched for text `is_reference` (`**/crates/opencascade-binding-generator/src/model.rs`), 1 result
+
+Reading lines 580-590 of [model.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L580-L591)
+Completed with input: {
+  "endLine": 590,
+  "filePath": "crates/opencascade-binding-generator/src/model.rs",
+  "startLine": 580
+}
+
+There's already `Type::is_reference()` and `Type::is_c_string()`. I can add `Type::is_lifetime_source()` (reference OR c_string) and then refactor the check into a shared function. Let me also read the full context of where each check is used:    
+
+Reading lines 578-600 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L578-L601)
+Completed with input: {
+  "endLine": 600,
+  "filePath": "crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 578
+}
+
+Now let me also look at the main.rs location mentioned in the subagent report:  
+
+Reading lines 460-480 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L460-L481)
+Completed with input: {
+  "endLine": 480,
+  "filePath": "crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 460
+}
+
+The subagent correctly identified a subtle bug at line 469 — `is_c_string()` is missing from the ref params check. If a static method takes only `const char*` and returns `ConstRef`, the `ConstRef` would be incorrectly stripped. Let me plan the refactoring:
+
+1. Add `Type::is_lifetime_source()` → `is_reference() || is_c_string()`
+2. Refactor `method_needs_explicit_lifetimes()` to use it
+3. Add a shared `has_ambiguous_lifetime()` helper on resolver that works for both methods and free functions
+4. Use the shared helper from bindings.rs (inherited methods, free functions)
+5. Fix the main.rs bug with missing `is_c_string()` check     
+
+Reading lines 578-598 of [model.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L578-L599)
+Completed with input: {
+  "endLine": 598,
+  "filePath": "crates/opencascade-binding-generator/src/model.rs",
+  "startLine": 578
+}
+
+Edited: [model.rs -4+11](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L581-L592)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    /// Check if this is a reference type (const ref or mutable ref)\n    pub fn is_reference(&self) -> bool {\n        matches!(self, Type::ConstRef(_) | Type::MutRef(_))\n    }\n\n    /// Check if this type counts as a \"lifetime source\" for elision purposes.\n    /// References (&T, &mut T) and C-string pointers (const char*) both introduce\n    /// an input lifetime that could be tied to a returned reference.\n    pub fn is_lifetime_source(&self) -> bool {\n        self.is_reference() || self.is_c_string()\n    }",
+      "filePath": "crates/opencascade-binding-generator/src/model.rs",
+      "lineHashes": "581:kz,582:dv,583:nu,584:ax"
+    }
+  ]
+}
+
+Now refactor `method_needs_explicit_lifetimes()` in resolver.rs:   
+
+Reading lines 576-598 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L576-L599)
+Completed with input: {
+  "endLine": 598,
+  "filePath": "crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 576
+}
+
+Edited: [resolver.rs -19+8](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L578-L586)
+Completed with input: {
+  "edits": [
+    {
+      "content": "/// Check if a method has ambiguous return lifetimes (FFI limitation).\n/// Returns true if the method returns a reference and has other reference parameters.\n/// For methods with `&self`, any single ref param creates ambiguity (self is the other source).\npub fn method_needs_explicit_lifetimes(method: &Method) -> bool {\n    let returns_ref = method.return_type.as_ref()\n        .map_or(false, |ty| ty.is_reference());\n    returns_ref && method.params.iter().any(|p| p.ty.is_lifetime_source())\n}",
+      "filePath": "crates/opencascade-binding-generator/src/resolver.rs",
+      "lineHashes": "578:wg,579:pt,580:lo,581:op,582:zn,583:hr,584:ei,585:ru,586:jt,587:pe,588:fc,589:ax,590:jt,591:sc,592:od,593:oa,594:ym,595:xi,596:io"
+    }
+  ]
+}
+
+Now refactor the inherited method check in bindings.rs:    
+
+Reading lines 2985-2998 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L2985-L2999)
+Completed with input: {
+  "endLine": 2998,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 2985
+}
+
+Edited: [bindings.rs -9+7](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L2987-L2994)
+Completed with input: {
+  "edits": [
+    {
+      "content": "                // Check if inherited method returns a reference with reference params (ambiguous lifetime)\n                let unsafe_lifetime = {\n                    let returns_ref = resolved_method.return_type.as_ref()\n                        .map_or(false, |rt| rt.original.is_reference());\n                    returns_ref && resolved_method.params.iter()\n                        .any(|p| p.ty.original.is_lifetime_source())\n                };",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "2987:nj,2988:wr,2989:ux,2990:lc,2991:ng,2992:oi,2993:iw,2994:lh,2995:fj"
+    }
+  ]
+}
+
+Now refactor the free function check:     
+
+Reading lines 3438-3460 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L3438-L3461)
+Completed with input: {
+  "endLine": 3460,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 3438
+}
+
+Edited: [bindings.rs -15+7](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L3438-L3445)
+Completed with input: {
+  "edits": [
+    {
+      "content": "        // Ambiguous lifetime check for free functions:\n        // If the function returns a reference and has 2+ reference params, Rust can't infer\n        // which param the return borrows from. We mark it unsafe instead of skipping.\n        // Threshold is 2 (not 1 as for methods) because free functions have no &self.\n        let unsafe_lifetime = func.return_type.as_ref()\n            .map_or(false, |rt| rt.original.is_reference())\n            && func.params.iter().filter(|p| p.ty.original.is_lifetime_source()).count() >= 2;",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "3438:qo,3439:sa,3440:yb,3441:rf,3442:to,3443:mh,3444:of,3445:eg,3446:fj,3447:ud,3448:uu,3449:uo,3450:ag,3451:sr,3452:dv"
+    }
+  ]
+}
+
+Now fix the main.rs bug — the missing `is_c_string()` check:     
+
+Reading lines 463-475 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L463-L476)
+Completed with input: {
+  "endLine": 475,
+  "filePath": "crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 463
+}
+
+Edited: [main.rs -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L469-L470)
+Completed with input: {
+  "edits": [
+    {
+      "content": "                let has_ref_params = sm.params.iter().any(|p| p.ty.is_lifetime_source());",
+      "filePath": "crates/opencascade-binding-generator/src/main.rs",
+      "lineHashes": "469:id"
+    }
+  ]
+}
+
+Now let me verify everything compiles:       
+
+Ran terminal command:  time cargo check -p opencascade-binding-generator 2>&1
+
+Wait, that was cached. Let me touch a file:    
+
+Ran terminal command:  touch crates/opencascade-binding-generator/src/model.rs && time cargo check -p opencascade-binding-generator 2>&1
+
+Compiles. Now regenerate, build, and test:       
+
+Ran terminal command:  time scripts/regenerate-bindings.sh 2>&1 | tail -5
+
+Ran terminal command:  git diff --stat -- crates/opencascade-sys/generated/
+
+No changes to generated code — the refactoring is behavior-preserving. Now run tests:        
+
+Ran terminal command:  time scripts/run-binding-generator-tests.sh 2>&1
+
+All 16 tests pass. Let me also do the full workspace build and test to be thorough:         
+
+Ran terminal command:  time cargo build 2>&1 | grep "^error" | sort -u
+
+Ran terminal command:  time cargo test --workspace --exclude opencascade-binding-generator 2>&1 | grep "test result"
+
+All tests pass, no errors, generated code unchanged. Now commit.   
+
+Ran terminal command:  rm tmp/commit-msg.txt
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/commit-msg.txt)
+
+Ran terminal command:  git add -A && git commit -F tmp/commit-msg.txt
+
+Completed: *Refactor and commit if worthwhile* (4/4)
+
+Done. Two commits:
+
+1. **`77f5ac2`** — Added "Unsafe Reference Returns" README section explaining why methods/functions returning refs are sometimes `unsafe`, and updated the Document Framework note.
+
+2. **`7936ef9`** — Refactored the repeated "is this a lifetime source?" pattern into `Type::is_lifetime_source()` on `model::Type`. This deduplicates the `matches!(ty, ConstRef(_) | MutRef(_)) || ty.is_c_string()` check from 3 locations into one method, and simplifies `method_needs_explicit_lifetimes()` from 19 lines to 7. Also fixed a latent bug in `main.rs` where the static-method-to-free-function conversion was missing the `is_c_string()` check. Generated output is identical (verified by regeneration + diff).
+
+Made changes.
