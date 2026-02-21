@@ -53,7 +53,7 @@ fn collect_handle_types(classes: &[&ParsedClass], handle_able_classes: &HashSet<
         })
         .map(|inner_class| {
             // Use full class name to match Rust side (e.g., HandleGeom2dCurve not HandleCurve)
-            let handle_name = format!("Handle{}", inner_class.replace("_", ""));
+            let handle_name = crate::type_mapping::handle_type_name(&inner_class);
             (inner_class, handle_name)
         })
         .collect();

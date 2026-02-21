@@ -98,7 +98,8 @@ pub use crate::ffi::{
     HandleAppDefHArray1OfMultiPointConstraint, HandleAppDefLinearCriteria,
     HandleAppParCurvesHArray1OfConstraintCouple, HandleAppParCurvesHArray1OfMultiBSpCurve,
     HandleAppParCurvesHArray1OfMultiCurve, HandleAppParCurvesHArray1OfMultiPoint,
-    HandleApproxCurvlinFunc, HandleApproxHArray1OfAdHSurface, HandleApproxHArray1OfGTrsf2d,
+    HandleAppStdApplication, HandleAppStdLApplication, HandleApproxCurvlinFunc,
+    HandleApproxHArray1OfAdHSurface, HandleApproxHArray1OfGTrsf2d,
     HandleBOPAlgoAlertAcquiredSelfIntersection, HandleBOPAlgoAlertBOPNotAllowed,
     HandleBOPAlgoAlertBOPNotSet, HandleBOPAlgoAlertBadPositioning, HandleBOPAlgoAlertBuilderFailed,
     HandleBOPAlgoAlertBuildingPCurveFailed, HandleBOPAlgoAlertEmptyShape,
@@ -148,25 +149,57 @@ pub use crate::ffi::{
     HandleBRepToolsTrsfModification, HandleBRepTopAdaptorHVertex, HandleBRepTopAdaptorTopolTool,
     HandleBSplCLibCache, HandleBSplSLibCache, HandleBVHBuildThread, HandleBVHBuilderTransient,
     HandleBVHObjectTransient, HandleBVHTreeBaseTransient, HandleBiTgteCurveOnEdge,
-    HandleBiTgteCurveOnVertex, HandleBisectorBisecAna, HandleBisectorBisecCC,
+    HandleBiTgteCurveOnVertex, HandleBinDriversDocumentRetrievalDriver,
+    HandleBinDriversDocumentStorageDriver, HandleBinLDriversDocumentRetrievalDriver,
+    HandleBinLDriversDocumentStorageDriver, HandleBinMDFADriverTable, HandleBinMDFDerivedDriver,
+    HandleBinMDFReferenceDriver, HandleBinMDFTagSourceDriver, HandleBinMDataStdAsciiStringDriver,
+    HandleBinMDataStdBooleanArrayDriver, HandleBinMDataStdBooleanListDriver,
+    HandleBinMDataStdByteArrayDriver, HandleBinMDataStdExpressionDriver,
+    HandleBinMDataStdExtStringArrayDriver, HandleBinMDataStdExtStringListDriver,
+    HandleBinMDataStdGenericEmptyDriver, HandleBinMDataStdGenericExtStringDriver,
+    HandleBinMDataStdIntPackedMapDriver, HandleBinMDataStdIntegerArrayDriver,
+    HandleBinMDataStdIntegerDriver, HandleBinMDataStdIntegerListDriver,
+    HandleBinMDataStdNamedDataDriver, HandleBinMDataStdRealArrayDriver,
+    HandleBinMDataStdRealDriver, HandleBinMDataStdRealListDriver,
+    HandleBinMDataStdReferenceArrayDriver, HandleBinMDataStdReferenceListDriver,
+    HandleBinMDataStdTreeNodeDriver, HandleBinMDataStdUAttributeDriver,
+    HandleBinMDataStdVariableDriver, HandleBinMDataXtdConstraintDriver,
+    HandleBinMDataXtdGeometryDriver, HandleBinMDataXtdPatternStdDriver,
+    HandleBinMDataXtdPositionDriver, HandleBinMDataXtdPresentationDriver,
+    HandleBinMDataXtdTriangulationDriver, HandleBinMDocStdXLinkDriver,
+    HandleBinMFunctionFunctionDriver, HandleBinMFunctionGraphNodeDriver,
+    HandleBinMFunctionScopeDriver, HandleBinMNamingNamedShapeDriver, HandleBinMNamingNamingDriver,
+    HandleBinMXCAFDocAssemblyItemRefDriver, HandleBinMXCAFDocCentroidDriver,
+    HandleBinMXCAFDocColorDriver, HandleBinMXCAFDocDatumDriver, HandleBinMXCAFDocDimTolDriver,
+    HandleBinMXCAFDocGraphNodeDriver, HandleBinMXCAFDocLengthUnitDriver,
+    HandleBinMXCAFDocLocationDriver, HandleBinMXCAFDocMaterialDriver,
+    HandleBinMXCAFDocNoteBinDataDriver, HandleBinMXCAFDocNoteCommentDriver,
+    HandleBinMXCAFDocNoteDriver, HandleBinMXCAFDocVisMaterialDriver,
+    HandleBinMXCAFDocVisMaterialToolDriver, HandleBinObjMgtPosition,
+    HandleBinTObjDriversDocumentRetrievalDriver, HandleBinTObjDriversDocumentStorageDriver,
+    HandleBinTObjDriversIntSparseArrayDriver, HandleBinTObjDriversModelDriver,
+    HandleBinTObjDriversObjectDriver, HandleBinTObjDriversReferenceDriver,
+    HandleBinTObjDriversXYZDriver, HandleBinXCAFDriversDocumentRetrievalDriver,
+    HandleBinXCAFDriversDocumentStorageDriver, HandleBisectorBisecAna, HandleBisectorBisecCC,
     HandleBisectorBisecPC, HandleBndHArray1OfBox, HandleBndHArray1OfBox2d,
-    HandleBndHArray1OfSphere, HandleChFiDSChamfSpine, HandleChFiDSElSpine, HandleChFiDSFilSpine,
-    HandleChFiDSHData, HandleChFiDSSecHArray1, HandleChFiDSSpine, HandleChFiDSStripe,
-    HandleChFiDSSurfData, HandleContapTheHSequenceOfPoint, HandleContapTheIWLineOfTheIWalking,
-    HandleDEBREPConfigurationNode, HandleDEBREPProvider, HandleDEConfigurationContext,
-    HandleDEGLTFConfigurationNode, HandleDEGLTFProvider, HandleDEIGESConfigurationNode,
-    HandleDEIGESProvider, HandleDEOBJConfigurationNode, HandleDEOBJProvider,
-    HandleDEPLYConfigurationNode, HandleDEPLYProvider, HandleDESTEPConfigurationNode,
-    HandleDESTEPProvider, HandleDESTLConfigurationNode, HandleDESTLProvider,
-    HandleDEShapeFixConfigurationNode, HandleDEVRMLConfigurationNode, HandleDEVRMLProvider,
-    HandleDEWrapper, HandleDEXCAFConfigurationNode, HandleDEXCAFProvider, HandleDraftModification,
-    HandleExprAbsolute, HandleExprArcCosine, HandleExprArcSine, HandleExprArcTangent,
-    HandleExprArgCosh, HandleExprArgSinh, HandleExprArgTanh, HandleExprBinaryExpression,
-    HandleExprBinaryFunction, HandleExprCosh, HandleExprCosine, HandleExprDifference,
-    HandleExprDifferent, HandleExprDivision, HandleExprEqual, HandleExprExponential,
-    HandleExprExponentiate, HandleExprExprFailure, HandleExprFunctionDerivative,
-    HandleExprGreaterThan, HandleExprGreaterThanOrEqual, HandleExprIntrpGenExp,
-    HandleExprIntrpGenFct, HandleExprIntrpGenRel, HandleExprIntrpGenerator,
+    HandleBndHArray1OfSphere, HandleCDFApplication, HandleCDFDirectory, HandleCDFFWOSDriver,
+    HandleCDFStoreList, HandleCDMMetaData, HandleCDMReference, HandleChFiDSChamfSpine,
+    HandleChFiDSElSpine, HandleChFiDSFilSpine, HandleChFiDSHData, HandleChFiDSSecHArray1,
+    HandleChFiDSSpine, HandleChFiDSStripe, HandleChFiDSSurfData, HandleContapTheHSequenceOfPoint,
+    HandleContapTheIWLineOfTheIWalking, HandleDEBREPConfigurationNode, HandleDEBREPProvider,
+    HandleDEConfigurationContext, HandleDEGLTFConfigurationNode, HandleDEGLTFProvider,
+    HandleDEIGESConfigurationNode, HandleDEIGESProvider, HandleDEOBJConfigurationNode,
+    HandleDEOBJProvider, HandleDEPLYConfigurationNode, HandleDEPLYProvider,
+    HandleDESTEPConfigurationNode, HandleDESTEPProvider, HandleDESTLConfigurationNode,
+    HandleDESTLProvider, HandleDEShapeFixConfigurationNode, HandleDEVRMLConfigurationNode,
+    HandleDEVRMLProvider, HandleDEWrapper, HandleDEXCAFConfigurationNode, HandleDEXCAFProvider,
+    HandleDraftModification, HandleExprAbsolute, HandleExprArcCosine, HandleExprArcSine,
+    HandleExprArcTangent, HandleExprArgCosh, HandleExprArgSinh, HandleExprArgTanh,
+    HandleExprBinaryExpression, HandleExprBinaryFunction, HandleExprCosh, HandleExprCosine,
+    HandleExprDifference, HandleExprDifferent, HandleExprDivision, HandleExprEqual,
+    HandleExprExponential, HandleExprExponentiate, HandleExprExprFailure,
+    HandleExprFunctionDerivative, HandleExprGreaterThan, HandleExprGreaterThanOrEqual,
+    HandleExprIntrpGenExp, HandleExprIntrpGenFct, HandleExprIntrpGenRel, HandleExprIntrpGenerator,
     HandleExprIntrpSyntaxError, HandleExprInvalidAssignment, HandleExprInvalidFunction,
     HandleExprInvalidOperand, HandleExprLessThan, HandleExprLessThanOrEqual, HandleExprLogOf10,
     HandleExprLogOfe, HandleExprNamedConstant, HandleExprNamedExpression, HandleExprNamedFunction,
@@ -179,20 +212,21 @@ pub use crate::ffi::{
     HandleExtremaHArray1OfPOnCurv2d, HandleExtremaHArray1OfPOnSurf, HandleExtremaHArray2OfPOnCurv,
     HandleExtremaHArray2OfPOnCurv2d, HandleExtremaHArray2OfPOnSurf, HandleFEmToolCurve,
     HandleFEmToolHAssemblyTable, HandleFEmToolLinearFlexion, HandleFEmToolLinearJerk,
-    HandleFEmToolLinearTension, HandleFEmToolProfileMatrix, HandleGPropUndefinedAxis,
-    HandleGccAnaNoSolution, HandleGccEntBadQualifier, HandleGccIntBCirc, HandleGccIntBElips,
-    HandleGccIntBHyper, HandleGccIntBLine, HandleGccIntBParab, HandleGccIntBPoint,
-    HandleGeom2dAdaptorCurve, HandleGeom2dAxisPlacement, HandleGeom2dBSplineCurve,
-    HandleGeom2dBezierCurve, HandleGeom2dCartesianPoint, HandleGeom2dCircle, HandleGeom2dDirection,
-    HandleGeom2dEllipse, HandleGeom2dEvaluatorOffsetCurve, HandleGeom2dGccIsParallel,
-    HandleGeom2dHyperbola, HandleGeom2dLine, HandleGeom2dOffsetCurve, HandleGeom2dParabola,
-    HandleGeom2dTransformation, HandleGeom2dTrimmedCurve, HandleGeom2dUndefinedDerivative,
-    HandleGeom2dUndefinedValue, HandleGeom2dVectorWithMagnitude, HandleGeomAdaptorCurve,
-    HandleGeomAdaptorSurface, HandleGeomAdaptorSurfaceOfLinearExtrusion,
-    HandleGeomAdaptorSurfaceOfRevolution, HandleGeomAxis1Placement, HandleGeomAxis2Placement,
-    HandleGeomBSplineCurve, HandleGeomBSplineSurface, HandleGeomBezierCurve,
-    HandleGeomBezierSurface, HandleGeomBoundedSurface, HandleGeomCartesianPoint, HandleGeomCircle,
-    HandleGeomConicalSurface, HandleGeomCylindricalSurface, HandleGeomDirection, HandleGeomEllipse,
+    HandleFEmToolLinearTension, HandleFEmToolProfileMatrix, HandleFSDBinaryFile, HandleFSDCmpFile,
+    HandleFSDFile, HandleGPropUndefinedAxis, HandleGccAnaNoSolution, HandleGccEntBadQualifier,
+    HandleGccIntBCirc, HandleGccIntBElips, HandleGccIntBHyper, HandleGccIntBLine,
+    HandleGccIntBParab, HandleGccIntBPoint, HandleGeom2dAdaptorCurve, HandleGeom2dAxisPlacement,
+    HandleGeom2dBSplineCurve, HandleGeom2dBezierCurve, HandleGeom2dCartesianPoint,
+    HandleGeom2dCircle, HandleGeom2dDirection, HandleGeom2dEllipse,
+    HandleGeom2dEvaluatorOffsetCurve, HandleGeom2dGccIsParallel, HandleGeom2dHyperbola,
+    HandleGeom2dLine, HandleGeom2dOffsetCurve, HandleGeom2dParabola, HandleGeom2dTransformation,
+    HandleGeom2dTrimmedCurve, HandleGeom2dUndefinedDerivative, HandleGeom2dUndefinedValue,
+    HandleGeom2dVectorWithMagnitude, HandleGeomAdaptorCurve, HandleGeomAdaptorSurface,
+    HandleGeomAdaptorSurfaceOfLinearExtrusion, HandleGeomAdaptorSurfaceOfRevolution,
+    HandleGeomAxis1Placement, HandleGeomAxis2Placement, HandleGeomBSplineCurve,
+    HandleGeomBSplineSurface, HandleGeomBezierCurve, HandleGeomBezierSurface,
+    HandleGeomBoundedSurface, HandleGeomCartesianPoint, HandleGeomCircle, HandleGeomConicalSurface,
+    HandleGeomCylindricalSurface, HandleGeomDirection, HandleGeomEllipse,
     HandleGeomEvaluatorOffsetCurve, HandleGeomEvaluatorOffsetSurface,
     HandleGeomEvaluatorSurfaceOfExtrusion, HandleGeomEvaluatorSurfaceOfRevolution,
     HandleGeomFillBoundWithSurf, HandleGeomFillCircularBlendFunc, HandleGeomFillConstantBiNormal,
@@ -381,8 +415,10 @@ pub use crate::ffi::{
     HandleOSDExceptionSTATUSNOMEMORY, HandleOSDFileSystemSelector, HandleOSDLocalFileSystem,
     HandleOSDOSDError, HandleOSDSIGBUS, HandleOSDSIGHUP, HandleOSDSIGILL, HandleOSDSIGINT,
     HandleOSDSIGKILL, HandleOSDSIGQUIT, HandleOSDSIGSEGV, HandleOSDSIGSYS, HandleOSDSignal,
-    HandleOSDThreadPool, HandlePLibHermitJacobi, HandlePLibJacobiPolynomial,
-    HandlePlateHArray1OfPinpointConstraint, HandlePolyCoherentTriangulation,
+    HandleOSDThreadPool, HandlePCDMDocument, HandlePCDMDriverError, HandlePCDMReadWriter1,
+    HandlePCDMReaderFilter, HandlePCDMReferenceIterator, HandlePCDMRetrievalDriver,
+    HandlePCDMStorageDriver, HandlePLibHermitJacobi, HandlePLibJacobiPolynomial,
+    HandlePlateHArray1OfPinpointConstraint, HandlePluginFailure, HandlePolyCoherentTriangulation,
     HandlePolyHArray1OfTriangle, HandlePolyMergeNodesTool, HandlePolyPolygon2D,
     HandlePolyPolygon3D, HandlePolyPolygonOnTriangulation, HandlePolyTriangulation,
     HandlePolyTriangulationParameters, HandleProjLibCompProjectedCurve,
@@ -428,8 +464,11 @@ pub use crate::ffi::{
     HandleShapeUpgradeSplitSurfaceAngle, HandleShapeUpgradeSplitSurfaceArea,
     HandleShapeUpgradeSplitSurfaceContinuity, HandleShapeUpgradeTool,
     HandleShapeUpgradeUnifySameDomain, HandleShapeUpgradeWireDivide,
-    HandleStdFailInfiniteSolutions, HandleStdFailNotDone, HandleStdFailUndefined,
-    HandleStdFailUndefinedDerivative, HandleStdFailUndefinedValue, HandleStepAP203CcDesignApproval,
+    HandleStdDriversDocumentRetrievalDriver, HandleStdFailInfiniteSolutions, HandleStdFailNotDone,
+    HandleStdFailUndefined, HandleStdFailUndefinedDerivative, HandleStdFailUndefinedValue,
+    HandleStdLDriversDocumentRetrievalDriver, HandleStdStorageData,
+    HandleStdStorageHSequenceOfRoots, HandleStdStorageHeaderData, HandleStdStorageRoot,
+    HandleStdStorageRootData, HandleStdStorageTypeData, HandleStepAP203CcDesignApproval,
     HandleStepAP203CcDesignCertification, HandleStepAP203CcDesignContract,
     HandleStepAP203CcDesignDateAndTimeAssignment,
     HandleStepAP203CcDesignPersonAndOrganizationAssignment,
@@ -901,11 +940,18 @@ pub use crate::ffi::{
     HandleStepVisualTextLiteral, HandleStepVisualTextStyle,
     HandleStepVisualTextStyleForDefinedFont, HandleStepVisualTextStyleWithBoxCharacteristics,
     HandleStepVisualTriangulatedFace, HandleStepVisualTriangulatedSurfaceSet,
-    HandleStepVisualViewVolume, HandleTColGeom2dHArray1OfBSplineCurve,
-    HandleTColGeom2dHArray1OfBezierCurve, HandleTColGeom2dHArray1OfCurve,
-    HandleTColGeom2dHSequenceOfBoundedCurve, HandleTColGeom2dHSequenceOfCurve,
-    HandleTColGeomHArray1OfBSplineCurve, HandleTColGeomHArray1OfBezierCurve,
-    HandleTColGeomHArray1OfCurve, HandleTColGeomHArray1OfSurface, HandleTColGeomHArray2OfSurface,
+    HandleStepVisualViewVolume, HandleStorageData, HandleStorageDefaultCallBack,
+    HandleStorageHArrayOfCallBack, HandleStorageHArrayOfSchema, HandleStorageHPArray,
+    HandleStorageHSeqOfRoot, HandleStorageHeaderData, HandleStorageInternalData, HandleStorageRoot,
+    HandleStorageRootData, HandleStorageSchema, HandleStorageStreamExtCharParityError,
+    HandleStorageStreamFormatError, HandleStorageStreamModeError, HandleStorageStreamReadError,
+    HandleStorageStreamTypeMismatchError, HandleStorageStreamUnknownTypeError,
+    HandleStorageStreamWriteError, HandleStorageTypeData, HandleStorageTypedCallBack,
+    HandleTColGeom2dHArray1OfBSplineCurve, HandleTColGeom2dHArray1OfBezierCurve,
+    HandleTColGeom2dHArray1OfCurve, HandleTColGeom2dHSequenceOfBoundedCurve,
+    HandleTColGeom2dHSequenceOfCurve, HandleTColGeomHArray1OfBSplineCurve,
+    HandleTColGeomHArray1OfBezierCurve, HandleTColGeomHArray1OfCurve,
+    HandleTColGeomHArray1OfSurface, HandleTColGeomHArray2OfSurface,
     HandleTColGeomHSequenceOfBoundedCurve, HandleTColGeomHSequenceOfCurve,
     HandleTColStdHArray1OfAsciiString, HandleTColStdHArray1OfBoolean, HandleTColStdHArray1OfByte,
     HandleTColStdHArray1OfCharacter, HandleTColStdHArray1OfExtendedString,
@@ -948,18 +994,20 @@ pub use crate::ffi::{
     HandleTDataStdVariable, HandleTDataXtdAxis, HandleTDataXtdConstraint, HandleTDataXtdGeometry,
     HandleTDataXtdHArray1OfTrsf, HandleTDataXtdPatternStd, HandleTDataXtdPlacement,
     HandleTDataXtdPlane, HandleTDataXtdPoint, HandleTDataXtdPosition, HandleTDataXtdPresentation,
-    HandleTDataXtdShape, HandleTDataXtdTriangulation, HandleTDocStdApplicationDelta,
-    HandleTDocStdCompoundDelta, HandleTDocStdModified, HandleTDocStdMultiTransactionManager,
-    HandleTDocStdOwner, HandleTDocStdXLink, HandleTDocStdXLinkRoot, HandleTFunctionDriverTable,
+    HandleTDataXtdShape, HandleTDataXtdTriangulation, HandleTDocStdApplication,
+    HandleTDocStdApplicationDelta, HandleTDocStdCompoundDelta, HandleTDocStdDocument,
+    HandleTDocStdModified, HandleTDocStdMultiTransactionManager, HandleTDocStdOwner,
+    HandleTDocStdXLink, HandleTDocStdXLinkRoot, HandleTFunctionDriverTable,
     HandleTFunctionFunction, HandleTFunctionGraphNode, HandleTFunctionHArray1OfDataMapOfGUIDDriver,
     HandleTFunctionLogbook, HandleTFunctionScope, HandleTNamingDeltaOnModification,
     HandleTNamingDeltaOnRemoval, HandleTNamingNamedShape, HandleTNamingNaming,
-    HandleTNamingTranslateTool, HandleTNamingUsedShapes, HandleTObjCheckModel,
-    HandleTObjHSequenceOfObject, HandleTObjHiddenPartition, HandleTObjModelIterator,
-    HandleTObjObject, HandleTObjObjectIterator, HandleTObjOcafObjectIterator, HandleTObjPartition,
-    HandleTObjReferenceIterator, HandleTObjSequenceIterator, HandleTObjTIntSparseArray,
-    HandleTObjTModel, HandleTObjTNameContainer, HandleTObjTObject, HandleTObjTReference,
-    HandleTObjTXYZ, HandleTShortHArray1OfShortReal, HandleTShortHArray2OfShortReal,
+    HandleTNamingTranslateTool, HandleTNamingUsedShapes, HandleTObjApplication,
+    HandleTObjCheckModel, HandleTObjHSequenceOfObject, HandleTObjHiddenPartition,
+    HandleTObjModelIterator, HandleTObjObject, HandleTObjObjectIterator,
+    HandleTObjOcafObjectIterator, HandleTObjPartition, HandleTObjReferenceIterator,
+    HandleTObjSequenceIterator, HandleTObjTIntSparseArray, HandleTObjTModel,
+    HandleTObjTNameContainer, HandleTObjTObject, HandleTObjTReference, HandleTObjTXYZ,
+    HandleTShortHArray1OfShortReal, HandleTShortHArray2OfShortReal,
     HandleTShortHSequenceOfShortReal, HandleTopLocDatum3D, HandleTopLocSListNodeOfItemLocation,
     HandleTopOpeBRepBuildHBuilder, HandleTopOpeBRepBuildLoop, HandleTopOpeBRepBuildPave,
     HandleTopOpeBRepDSAssociation, HandleTopOpeBRepDSCheck,
@@ -1004,14 +1052,14 @@ pub use crate::ffi::{
     HandleVrmlDataTextureCoordinate, HandleVrmlDataTextureTransform, HandleVrmlDataUnknownNode,
     HandleVrmlDataWorldInfo, HandleVrmlIndexedFaceSet, HandleVrmlIndexedLineSet, HandleVrmlLOD,
     HandleVrmlMaterial, HandleVrmlNormal, HandleVrmlSFImage, HandleVrmlTextureCoordinate2,
-    HandleXCAFDimTolObjectsDatumObject, HandleXCAFDimTolObjectsDimensionObject,
-    HandleXCAFDimTolObjectsGeomToleranceObject, HandleXCAFDocArea, HandleXCAFDocAssemblyGraph,
-    HandleXCAFDocAssemblyItemRef, HandleXCAFDocCentroid, HandleXCAFDocClippingPlaneTool,
-    HandleXCAFDocColor, HandleXCAFDocColorTool, HandleXCAFDocDatum, HandleXCAFDocDimTol,
-    HandleXCAFDocDimTolTool, HandleXCAFDocDimension, HandleXCAFDocDocumentTool,
-    HandleXCAFDocGeomTolerance, HandleXCAFDocGraphNode, HandleXCAFDocLayerTool,
-    HandleXCAFDocLengthUnit, HandleXCAFDocLocation, HandleXCAFDocMaterial,
-    HandleXCAFDocMaterialTool, HandleXCAFDocNote, HandleXCAFDocNoteBalloon,
+    HandleXCAFAppApplication, HandleXCAFDimTolObjectsDatumObject,
+    HandleXCAFDimTolObjectsDimensionObject, HandleXCAFDimTolObjectsGeomToleranceObject,
+    HandleXCAFDocArea, HandleXCAFDocAssemblyGraph, HandleXCAFDocAssemblyItemRef,
+    HandleXCAFDocCentroid, HandleXCAFDocClippingPlaneTool, HandleXCAFDocColor,
+    HandleXCAFDocColorTool, HandleXCAFDocDatum, HandleXCAFDocDimTol, HandleXCAFDocDimTolTool,
+    HandleXCAFDocDimension, HandleXCAFDocDocumentTool, HandleXCAFDocGeomTolerance,
+    HandleXCAFDocGraphNode, HandleXCAFDocLayerTool, HandleXCAFDocLengthUnit, HandleXCAFDocLocation,
+    HandleXCAFDocMaterial, HandleXCAFDocMaterialTool, HandleXCAFDocNote, HandleXCAFDocNoteBalloon,
     HandleXCAFDocNoteBinData, HandleXCAFDocNoteComment, HandleXCAFDocNotesTool,
     HandleXCAFDocShapeMapTool, HandleXCAFDocShapeTool, HandleXCAFDocView, HandleXCAFDocViewTool,
     HandleXCAFDocVisMaterial, HandleXCAFDocVisMaterialTool, HandleXCAFDocVolume,
@@ -1019,6 +1067,37 @@ pub use crate::ffi::{
     HandleXSControlConnectedShapes, HandleXSControlSelectForTransfer,
     HandleXSControlSignTransferStatus, HandleXSControlTransferReader,
     HandleXSControlTransferWriter, HandleXSControlVars, HandleXSControlWorkSession,
+    HandleXmlDriversDocumentRetrievalDriver, HandleXmlDriversDocumentStorageDriver,
+    HandleXmlLDriversDocumentRetrievalDriver, HandleXmlLDriversDocumentStorageDriver,
+    HandleXmlMDFADriverTable, HandleXmlMDFDerivedDriver, HandleXmlMDFReferenceDriver,
+    HandleXmlMDFTagSourceDriver, HandleXmlMDataStdAsciiStringDriver,
+    HandleXmlMDataStdBooleanArrayDriver, HandleXmlMDataStdBooleanListDriver,
+    HandleXmlMDataStdByteArrayDriver, HandleXmlMDataStdExpressionDriver,
+    HandleXmlMDataStdExtStringArrayDriver, HandleXmlMDataStdExtStringListDriver,
+    HandleXmlMDataStdGenericEmptyDriver, HandleXmlMDataStdGenericExtStringDriver,
+    HandleXmlMDataStdIntPackedMapDriver, HandleXmlMDataStdIntegerArrayDriver,
+    HandleXmlMDataStdIntegerDriver, HandleXmlMDataStdIntegerListDriver,
+    HandleXmlMDataStdNamedDataDriver, HandleXmlMDataStdRealArrayDriver,
+    HandleXmlMDataStdRealDriver, HandleXmlMDataStdRealListDriver,
+    HandleXmlMDataStdReferenceArrayDriver, HandleXmlMDataStdReferenceListDriver,
+    HandleXmlMDataStdTreeNodeDriver, HandleXmlMDataStdUAttributeDriver,
+    HandleXmlMDataStdVariableDriver, HandleXmlMDataXtdConstraintDriver,
+    HandleXmlMDataXtdGeometryDriver, HandleXmlMDataXtdPatternStdDriver,
+    HandleXmlMDataXtdPositionDriver, HandleXmlMDataXtdPresentationDriver,
+    HandleXmlMDataXtdTriangulationDriver, HandleXmlMDocStdXLinkDriver,
+    HandleXmlMFunctionFunctionDriver, HandleXmlMFunctionGraphNodeDriver,
+    HandleXmlMFunctionScopeDriver, HandleXmlMNamingNamedShapeDriver, HandleXmlMNamingNamingDriver,
+    HandleXmlMXCAFDocAssemblyItemRefDriver, HandleXmlMXCAFDocCentroidDriver,
+    HandleXmlMXCAFDocColorDriver, HandleXmlMXCAFDocDatumDriver, HandleXmlMXCAFDocDimTolDriver,
+    HandleXmlMXCAFDocGraphNodeDriver, HandleXmlMXCAFDocLengthUnitDriver,
+    HandleXmlMXCAFDocLocationDriver, HandleXmlMXCAFDocMaterialDriver,
+    HandleXmlMXCAFDocNoteBinDataDriver, HandleXmlMXCAFDocNoteCommentDriver,
+    HandleXmlMXCAFDocNoteDriver, HandleXmlMXCAFDocVisMaterialDriver,
+    HandleXmlMXCAFDocVisMaterialToolDriver, HandleXmlTObjDriversDocumentRetrievalDriver,
+    HandleXmlTObjDriversDocumentStorageDriver, HandleXmlTObjDriversIntSparseArrayDriver,
+    HandleXmlTObjDriversModelDriver, HandleXmlTObjDriversObjectDriver,
+    HandleXmlTObjDriversReferenceDriver, HandleXmlTObjDriversXYZDriver,
+    HandleXmlXCAFDriversDocumentRetrievalDriver, HandleXmlXCAFDriversDocumentStorageDriver,
     HandlegpVectorWithNullMagnitude, HandlemathNotSquare, HandlemathSingularMatrix,
 };
 
@@ -4861,6 +4940,36 @@ impl HandleStandardFailure {
         }
     }
 
+    /// Downcast Handle<Standard_Failure> to Handle<PCDM_DriverError>
+    ///
+    /// Returns `None` if the handle does not point to a `PCDM_DriverError` (or subclass).
+    pub fn downcast_to_driver_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMDriverError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandlePCDMDriverError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Plugin_Failure>
+    ///
+    /// Returns `None` if the handle does not point to a `Plugin_Failure` (or subclass).
+    pub fn downcast_to_failure(&self) -> Option<crate::OwnedPtr<crate::ffi::HandlePluginFailure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandlePluginFailure(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Failure> to Handle<Quantity_DateDefinitionError>
     ///
     /// Returns `None` if the handle does not point to a `Quantity_DateDefinitionError` (or subclass).
@@ -5425,6 +5534,132 @@ impl HandleStandardFailure {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdFailUndefinedValue>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardFailure_downcast_to_HandleStdFailUndefinedValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Storage_StreamExtCharParityError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamExtCharParityError` (or subclass).
+    pub fn downcast_to_stream_ext_char_parity_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamExtCharParityError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleStorageStreamExtCharParityError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Storage_StreamFormatError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamFormatError` (or subclass).
+    pub fn downcast_to_stream_format_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamFormatError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleStorageStreamFormatError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Storage_StreamModeError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamModeError` (or subclass).
+    pub fn downcast_to_stream_mode_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamModeError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleStorageStreamModeError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Storage_StreamReadError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamReadError` (or subclass).
+    pub fn downcast_to_stream_read_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamReadError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleStorageStreamReadError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Storage_StreamTypeMismatchError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamTypeMismatchError` (or subclass).
+    pub fn downcast_to_stream_type_mismatch_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamTypeMismatchError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleStorageStreamTypeMismatchError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Storage_StreamUnknownTypeError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamUnknownTypeError` (or subclass).
+    pub fn downcast_to_stream_unknown_type_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamUnknownTypeError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleStorageStreamUnknownTypeError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Storage_StreamWriteError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamWriteError` (or subclass).
+    pub fn downcast_to_stream_write_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamWriteError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleStorageStreamWriteError(
                 self as *const Self,
             )
         };
@@ -10096,6 +10331,20 @@ impl HandleStandardPersistent {
             )
         }
     }
+
+    /// Downcast Handle<Standard_Persistent> to Handle<PCDM_Document>
+    ///
+    /// Returns `None` if the handle does not point to a `PCDM_Document` (or subclass).
+    pub fn downcast_to_document(&self) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMDocument>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardPersistent_downcast_to_HandlePCDMDocument(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -11295,6 +11544,42 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfMultiPoint>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleAppParCurvesHArray1OfMultiPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AppStdL_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `AppStdL_Application` (or subclass).
+    pub fn downcast_to_app_std_l_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppStdLApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAppStdLApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AppStd_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `AppStd_Application` (or subclass).
+    pub fn downcast_to_app_std_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppStdApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAppStdApplication(
                 self as *const Self,
             )
         };
@@ -13644,6 +13929,1186 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<BinDrivers_DocumentRetrievalDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinDrivers_DocumentRetrievalDriver` (or subclass).
+    pub fn downcast_to_bin_drivers_document_retrieval_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinDriversDocumentRetrievalDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinDriversDocumentRetrievalDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinDrivers_DocumentStorageDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinDrivers_DocumentStorageDriver` (or subclass).
+    pub fn downcast_to_bin_drivers_document_storage_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinDriversDocumentStorageDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinDriversDocumentStorageDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinLDrivers_DocumentRetrievalDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinLDrivers_DocumentRetrievalDriver` (or subclass).
+    pub fn downcast_to_bin_l_drivers_document_retrieval_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinLDriversDocumentRetrievalDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinLDriversDocumentRetrievalDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinLDrivers_DocumentStorageDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinLDrivers_DocumentStorageDriver` (or subclass).
+    pub fn downcast_to_bin_l_drivers_document_storage_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinLDriversDocumentStorageDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinLDriversDocumentStorageDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDF_ADriverTable>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDF_ADriverTable` (or subclass).
+    pub fn downcast_to_bin_mdf_a_driver_table(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDFADriverTable>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDFADriverTable(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDF_DerivedDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDF_DerivedDriver` (or subclass).
+    pub fn downcast_to_bin_mdf_derived_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDFDerivedDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDFDerivedDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDF_ReferenceDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDF_ReferenceDriver` (or subclass).
+    pub fn downcast_to_bin_mdf_reference_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDFReferenceDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDFReferenceDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDF_TagSourceDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDF_TagSourceDriver` (or subclass).
+    pub fn downcast_to_bin_mdf_tag_source_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDFTagSourceDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDFTagSourceDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_AsciiStringDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_AsciiStringDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_ascii_string_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdAsciiStringDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdAsciiStringDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_BooleanArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_BooleanArrayDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_boolean_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdBooleanArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdBooleanArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_BooleanListDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_BooleanListDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_boolean_list_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdBooleanListDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdBooleanListDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_ByteArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_ByteArrayDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_byte_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdByteArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdByteArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_ExpressionDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_ExpressionDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_expression_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdExpressionDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdExpressionDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_ExtStringArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_ExtStringArrayDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_ext_string_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdExtStringArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdExtStringArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_ExtStringListDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_ExtStringListDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_ext_string_list_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdExtStringListDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdExtStringListDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_GenericEmptyDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_GenericEmptyDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_generic_empty_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdGenericEmptyDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdGenericEmptyDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_GenericExtStringDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_GenericExtStringDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_generic_ext_string_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdGenericExtStringDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdGenericExtStringDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_IntPackedMapDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_IntPackedMapDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_int_packed_map_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdIntPackedMapDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdIntPackedMapDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_IntegerArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_IntegerArrayDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_integer_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdIntegerArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdIntegerArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_IntegerDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_IntegerDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_integer_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdIntegerDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdIntegerDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_IntegerListDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_IntegerListDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_integer_list_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdIntegerListDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdIntegerListDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_NamedDataDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_NamedDataDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_named_data_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdNamedDataDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdNamedDataDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_RealArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_RealArrayDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_real_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdRealArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdRealArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_RealDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_RealDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_real_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdRealDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdRealDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_RealListDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_RealListDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_real_list_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdRealListDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdRealListDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_ReferenceArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_ReferenceArrayDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_reference_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdReferenceArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdReferenceArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_ReferenceListDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_ReferenceListDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_reference_list_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdReferenceListDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdReferenceListDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_TreeNodeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_TreeNodeDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_tree_node_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdTreeNodeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdTreeNodeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_UAttributeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_UAttributeDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_u_attribute_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdUAttributeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdUAttributeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataStd_VariableDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataStd_VariableDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_std_variable_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataStdVariableDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataStdVariableDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataXtd_ConstraintDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataXtd_ConstraintDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_xtd_constraint_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataXtdConstraintDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataXtdConstraintDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataXtd_GeometryDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataXtd_GeometryDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_xtd_geometry_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataXtdGeometryDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataXtdGeometryDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataXtd_PatternStdDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataXtd_PatternStdDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_xtd_pattern_std_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataXtdPatternStdDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataXtdPatternStdDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataXtd_PositionDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataXtd_PositionDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_xtd_position_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataXtdPositionDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataXtdPositionDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataXtd_PresentationDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataXtd_PresentationDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_xtd_presentation_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataXtdPresentationDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataXtdPresentationDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDataXtd_TriangulationDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDataXtd_TriangulationDriver` (or subclass).
+    pub fn downcast_to_bin_m_data_xtd_triangulation_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDataXtdTriangulationDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDataXtdTriangulationDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMDocStd_XLinkDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMDocStd_XLinkDriver` (or subclass).
+    pub fn downcast_to_bin_m_doc_std_x_link_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMDocStdXLinkDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMDocStdXLinkDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMFunction_FunctionDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMFunction_FunctionDriver` (or subclass).
+    pub fn downcast_to_bin_m_function_function_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMFunctionFunctionDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMFunctionFunctionDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMFunction_GraphNodeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMFunction_GraphNodeDriver` (or subclass).
+    pub fn downcast_to_bin_m_function_graph_node_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMFunctionGraphNodeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMFunctionGraphNodeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMFunction_ScopeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMFunction_ScopeDriver` (or subclass).
+    pub fn downcast_to_bin_m_function_scope_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMFunctionScopeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMFunctionScopeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMNaming_NamedShapeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMNaming_NamedShapeDriver` (or subclass).
+    pub fn downcast_to_bin_m_naming_named_shape_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMNamingNamedShapeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMNamingNamedShapeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMNaming_NamingDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMNaming_NamingDriver` (or subclass).
+    pub fn downcast_to_bin_m_naming_naming_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMNamingNamingDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMNamingNamingDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_AssemblyItemRefDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_AssemblyItemRefDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_assembly_item_ref_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocAssemblyItemRefDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocAssemblyItemRefDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_CentroidDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_CentroidDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_centroid_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocCentroidDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocCentroidDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_ColorDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_ColorDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_color_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocColorDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocColorDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_DatumDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_DatumDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_datum_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocDatumDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocDatumDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_DimTolDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_DimTolDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_dim_tol_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocDimTolDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocDimTolDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_GraphNodeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_GraphNodeDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_graph_node_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocGraphNodeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocGraphNodeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_LengthUnitDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_LengthUnitDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_length_unit_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocLengthUnitDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocLengthUnitDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_LocationDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_LocationDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_location_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocLocationDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocLocationDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_MaterialDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_MaterialDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_material_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocMaterialDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocMaterialDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_NoteBinDataDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_NoteBinDataDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_note_bin_data_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocNoteBinDataDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocNoteBinDataDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_NoteCommentDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_NoteCommentDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_note_comment_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocNoteCommentDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocNoteCommentDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_NoteDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_NoteDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_note_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocNoteDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocNoteDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_VisMaterialDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_VisMaterialDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_vis_material_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocVisMaterialDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocVisMaterialDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinMXCAFDoc_VisMaterialToolDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinMXCAFDoc_VisMaterialToolDriver` (or subclass).
+    pub fn downcast_to_bin_mxcaf_doc_vis_material_tool_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocVisMaterialToolDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinMXCAFDocVisMaterialToolDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinObjMgt_Position>
+    ///
+    /// Returns `None` if the handle does not point to a `BinObjMgt_Position` (or subclass).
+    pub fn downcast_to_bin_obj_mgt_position(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinObjMgtPosition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinObjMgtPosition(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinTObjDrivers_DocumentRetrievalDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinTObjDrivers_DocumentRetrievalDriver` (or subclass).
+    pub fn downcast_to_bin_t_obj_drivers_document_retrieval_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversDocumentRetrievalDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinTObjDriversDocumentRetrievalDriver(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinTObjDrivers_DocumentStorageDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinTObjDrivers_DocumentStorageDriver` (or subclass).
+    pub fn downcast_to_bin_t_obj_drivers_document_storage_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversDocumentStorageDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinTObjDriversDocumentStorageDriver(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinTObjDrivers_IntSparseArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinTObjDrivers_IntSparseArrayDriver` (or subclass).
+    pub fn downcast_to_bin_t_obj_drivers_int_sparse_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversIntSparseArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinTObjDriversIntSparseArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinTObjDrivers_ModelDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinTObjDrivers_ModelDriver` (or subclass).
+    pub fn downcast_to_bin_t_obj_drivers_model_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversModelDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinTObjDriversModelDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinTObjDrivers_ObjectDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinTObjDrivers_ObjectDriver` (or subclass).
+    pub fn downcast_to_bin_t_obj_drivers_object_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversObjectDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinTObjDriversObjectDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinTObjDrivers_ReferenceDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinTObjDrivers_ReferenceDriver` (or subclass).
+    pub fn downcast_to_bin_t_obj_drivers_reference_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversReferenceDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinTObjDriversReferenceDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinTObjDrivers_XYZDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinTObjDrivers_XYZDriver` (or subclass).
+    pub fn downcast_to_bin_t_obj_drivers_xyz_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversXYZDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinTObjDriversXYZDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinXCAFDrivers_DocumentRetrievalDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinXCAFDrivers_DocumentRetrievalDriver` (or subclass).
+    pub fn downcast_to_bin_xcaf_drivers_document_retrieval_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinXCAFDriversDocumentRetrievalDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<BinXCAFDrivers_DocumentStorageDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `BinXCAFDrivers_DocumentStorageDriver` (or subclass).
+    pub fn downcast_to_bin_xcaf_drivers_document_storage_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinXCAFDriversDocumentStorageDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<Bisector_BisecAna>
     ///
     /// Returns `None` if the handle does not point to a `Bisector_BisecAna` (or subclass).
@@ -13744,6 +15209,102 @@ impl HandleStandardTransient {
             crate::ffi::HandleStandardTransient_downcast_to_HandleBndHArray1OfSphere(
                 self as *const Self,
             )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<CDF_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `CDF_Application` (or subclass).
+    pub fn downcast_to_cdf_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleCDFApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleCDFApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<CDF_Directory>
+    ///
+    /// Returns `None` if the handle does not point to a `CDF_Directory` (or subclass).
+    pub fn downcast_to_cdf_directory(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleCDFDirectory>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleCDFDirectory(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<CDF_FWOSDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `CDF_FWOSDriver` (or subclass).
+    pub fn downcast_to_fwos_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleCDFFWOSDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleCDFFWOSDriver(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<CDF_StoreList>
+    ///
+    /// Returns `None` if the handle does not point to a `CDF_StoreList` (or subclass).
+    pub fn downcast_to_store_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleCDFStoreList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleCDFStoreList(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<CDM_MetaData>
+    ///
+    /// Returns `None` if the handle does not point to a `CDM_MetaData` (or subclass).
+    pub fn downcast_to_meta_data(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleCDMMetaData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleCDMMetaData(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<CDM_Reference>
+    ///
+    /// Returns `None` if the handle does not point to a `CDM_Reference` (or subclass).
+    pub fn downcast_to_cdm_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleCDMReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleCDMReference(self as *const Self)
         };
         if ptr.is_null() {
             None
@@ -15472,6 +17033,50 @@ impl HandleStandardTransient {
             crate::ffi::HandleStandardTransient_downcast_to_HandleFEmToolProfileMatrix(
                 self as *const Self,
             )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<FSD_BinaryFile>
+    ///
+    /// Returns `None` if the handle does not point to a `FSD_BinaryFile` (or subclass).
+    pub fn downcast_to_binary_file(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFSDBinaryFile>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFSDBinaryFile(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<FSD_CmpFile>
+    ///
+    /// Returns `None` if the handle does not point to a `FSD_CmpFile` (or subclass).
+    pub fn downcast_to_cmp_file(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleFSDCmpFile>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFSDCmpFile(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<FSD_File>
+    ///
+    /// Returns `None` if the handle does not point to a `FSD_File` (or subclass).
+    pub fn downcast_to_file(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleFSDFile>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFSDFile(self as *const Self)
         };
         if ptr.is_null() {
             None
@@ -25535,6 +27140,130 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<PCDM_Document>
+    ///
+    /// Returns `None` if the handle does not point to a `PCDM_Document` (or subclass).
+    pub fn downcast_to_pcdm_document(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMDocument>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePCDMDocument(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PCDM_DriverError>
+    ///
+    /// Returns `None` if the handle does not point to a `PCDM_DriverError` (or subclass).
+    pub fn downcast_to_driver_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMDriverError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePCDMDriverError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PCDM_ReadWriter_1>
+    ///
+    /// Returns `None` if the handle does not point to a `PCDM_ReadWriter_1` (or subclass).
+    pub fn downcast_to_read_writer_1(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMReadWriter1>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePCDMReadWriter1(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PCDM_ReaderFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `PCDM_ReaderFilter` (or subclass).
+    pub fn downcast_to_reader_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMReaderFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePCDMReaderFilter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PCDM_ReferenceIterator>
+    ///
+    /// Returns `None` if the handle does not point to a `PCDM_ReferenceIterator` (or subclass).
+    pub fn downcast_to_pcdm_reference_iterator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMReferenceIterator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePCDMReferenceIterator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PCDM_RetrievalDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `PCDM_RetrievalDriver` (or subclass).
+    pub fn downcast_to_retrieval_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMRetrievalDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePCDMRetrievalDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PCDM_StorageDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `PCDM_StorageDriver` (or subclass).
+    pub fn downcast_to_storage_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMStorageDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePCDMStorageDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<PLib_HermitJacobi>
     ///
     /// Returns `None` if the handle does not point to a `PLib_HermitJacobi` (or subclass).
@@ -25581,6 +27310,22 @@ impl HandleStandardTransient {
             crate::ffi::HandleStandardTransient_downcast_to_HandlePlateHArray1OfPinpointConstraint(
                 self as *const Self,
             )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Plugin_Failure>
+    ///
+    /// Returns `None` if the handle does not point to a `Plugin_Failure` (or subclass).
+    pub fn downcast_to_plugin_failure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePluginFailure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePluginFailure(self as *const Self)
         };
         if ptr.is_null() {
             None
@@ -26964,7 +28709,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<ShapeFix_Root>
     ///
     /// Returns `None` if the handle does not point to a `ShapeFix_Root` (or subclass).
-    pub fn downcast_to_root(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixRoot>> {
+    pub fn downcast_to_shape_fix_root(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixRoot>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleShapeFixRoot(self as *const Self)
         };
@@ -27668,7 +29415,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<Standard_Failure>
     ///
     /// Returns `None` if the handle does not point to a `Standard_Failure` (or subclass).
-    pub fn downcast_to_failure(
+    pub fn downcast_to_standard_failure(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStandardFailure>> {
         let ptr = unsafe {
@@ -28039,6 +29786,24 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<StdDrivers_DocumentRetrievalDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `StdDrivers_DocumentRetrievalDriver` (or subclass).
+    pub fn downcast_to_std_drivers_document_retrieval_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdDriversDocumentRetrievalDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdDriversDocumentRetrievalDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<StdFail_InfiniteSolutions>
     ///
     /// Returns `None` if the handle does not point to a `StdFail_InfiniteSolutions` (or subclass).
@@ -28119,6 +29884,132 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdFailUndefinedValue>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStdFailUndefinedValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdLDrivers_DocumentRetrievalDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `StdLDrivers_DocumentRetrievalDriver` (or subclass).
+    pub fn downcast_to_std_l_drivers_document_retrieval_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdLDriversDocumentRetrievalDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdLDriversDocumentRetrievalDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdStorage_Data>
+    ///
+    /// Returns `None` if the handle does not point to a `StdStorage_Data` (or subclass).
+    pub fn downcast_to_std_storage_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdStorageData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdStorageData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdStorage_HSequenceOfRoots>
+    ///
+    /// Returns `None` if the handle does not point to a `StdStorage_HSequenceOfRoots` (or subclass).
+    pub fn downcast_to_h_sequence_of_roots(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdStorageHSequenceOfRoots>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdStorageHSequenceOfRoots(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdStorage_HeaderData>
+    ///
+    /// Returns `None` if the handle does not point to a `StdStorage_HeaderData` (or subclass).
+    pub fn downcast_to_std_storage_header_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdStorageHeaderData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdStorageHeaderData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdStorage_Root>
+    ///
+    /// Returns `None` if the handle does not point to a `StdStorage_Root` (or subclass).
+    pub fn downcast_to_std_storage_root(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdStorageRoot>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdStorageRoot(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdStorage_RootData>
+    ///
+    /// Returns `None` if the handle does not point to a `StdStorage_RootData` (or subclass).
+    pub fn downcast_to_std_storage_root_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdStorageRootData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdStorageRootData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdStorage_TypeData>
+    ///
+    /// Returns `None` if the handle does not point to a `StdStorage_TypeData` (or subclass).
+    pub fn downcast_to_std_storage_type_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdStorageTypeData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdStorageTypeData(
                 self as *const Self,
             )
         };
@@ -30114,7 +32005,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<StepBasic_Document>
     ///
     /// Returns `None` if the handle does not point to a `StepBasic_Document` (or subclass).
-    pub fn downcast_to_document(
+    pub fn downcast_to_step_basic_document(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicDocument>> {
         let ptr = unsafe {
@@ -43578,6 +45469,358 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_Data>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_Data` (or subclass).
+    pub fn downcast_to_storage_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageData(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_DefaultCallBack>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_DefaultCallBack` (or subclass).
+    pub fn downcast_to_default_call_back(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageDefaultCallBack>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageDefaultCallBack(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_HArrayOfCallBack>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_HArrayOfCallBack` (or subclass).
+    pub fn downcast_to_h_array_of_call_back(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageHArrayOfCallBack>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageHArrayOfCallBack(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_HArrayOfSchema>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_HArrayOfSchema` (or subclass).
+    pub fn downcast_to_h_array_of_schema(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageHArrayOfSchema>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageHArrayOfSchema(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_HPArray>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_HPArray` (or subclass).
+    pub fn downcast_to_hp_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageHPArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageHPArray(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_HSeqOfRoot>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_HSeqOfRoot` (or subclass).
+    pub fn downcast_to_h_seq_of_root(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageHSeqOfRoot>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageHSeqOfRoot(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_HeaderData>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_HeaderData` (or subclass).
+    pub fn downcast_to_storage_header_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageHeaderData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageHeaderData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_InternalData>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_InternalData` (or subclass).
+    pub fn downcast_to_internal_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageInternalData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageInternalData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_Root>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_Root` (or subclass).
+    pub fn downcast_to_storage_root(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageRoot>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageRoot(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_RootData>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_RootData` (or subclass).
+    pub fn downcast_to_storage_root_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageRootData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageRootData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_Schema>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_Schema` (or subclass).
+    pub fn downcast_to_schema(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageSchema>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageSchema(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_StreamExtCharParityError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamExtCharParityError` (or subclass).
+    pub fn downcast_to_stream_ext_char_parity_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamExtCharParityError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageStreamExtCharParityError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_StreamFormatError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamFormatError` (or subclass).
+    pub fn downcast_to_stream_format_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamFormatError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageStreamFormatError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_StreamModeError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamModeError` (or subclass).
+    pub fn downcast_to_stream_mode_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamModeError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageStreamModeError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_StreamReadError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamReadError` (or subclass).
+    pub fn downcast_to_stream_read_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamReadError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageStreamReadError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_StreamTypeMismatchError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamTypeMismatchError` (or subclass).
+    pub fn downcast_to_stream_type_mismatch_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamTypeMismatchError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageStreamTypeMismatchError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_StreamUnknownTypeError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamUnknownTypeError` (or subclass).
+    pub fn downcast_to_stream_unknown_type_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamUnknownTypeError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageStreamUnknownTypeError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_StreamWriteError>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_StreamWriteError` (or subclass).
+    pub fn downcast_to_stream_write_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageStreamWriteError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageStreamWriteError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_TypeData>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_TypeData` (or subclass).
+    pub fn downcast_to_storage_type_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageTypeData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageTypeData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Storage_TypedCallBack>
+    ///
+    /// Returns `None` if the handle does not point to a `Storage_TypedCallBack` (or subclass).
+    pub fn downcast_to_typed_call_back(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStorageTypedCallBack>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStorageTypedCallBack(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<TColGeom2d_HArray1OfBSplineCurve>
     ///
     /// Returns `None` if the handle does not point to a `TColGeom2d_HArray1OfBSplineCurve` (or subclass).
@@ -44919,7 +47162,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TDF_Reference>
     ///
     /// Returns `None` if the handle does not point to a `TDF_Reference` (or subclass).
-    pub fn downcast_to_reference(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFReference>> {
+    pub fn downcast_to_tdf_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFReference>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTDFReference(self as *const Self)
         };
@@ -45156,7 +47401,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TDataStd_Directory>
     ///
     /// Returns `None` if the handle does not point to a `TDataStd_Directory` (or subclass).
-    pub fn downcast_to_directory(
+    pub fn downcast_to_t_data_std_directory(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDirectory>> {
         let ptr = unsafe {
@@ -45818,7 +48063,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TDataXtd_Position>
     ///
     /// Returns `None` if the handle does not point to a `TDataXtd_Position` (or subclass).
-    pub fn downcast_to_position(
+    pub fn downcast_to_t_data_xtd_position(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPosition>> {
         let ptr = unsafe {
@@ -45885,6 +48130,24 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<TDocStd_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `TDocStd_Application` (or subclass).
+    pub fn downcast_to_t_doc_std_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTDocStdApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<TDocStd_ApplicationDelta>
     ///
     /// Returns `None` if the handle does not point to a `TDocStd_ApplicationDelta` (or subclass).
@@ -45911,6 +48174,24 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdCompoundDelta>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTDocStdCompoundDelta(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TDocStd_Document>
+    ///
+    /// Returns `None` if the handle does not point to a `TDocStd_Document` (or subclass).
+    pub fn downcast_to_t_doc_std_document(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdDocument>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTDocStdDocument(
                 self as *const Self,
             )
         };
@@ -46211,6 +48492,24 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<TObj_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `TObj_Application` (or subclass).
+    pub fn downcast_to_t_obj_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTObjApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<TObj_CheckModel>
     ///
     /// Returns `None` if the handle does not point to a `TObj_CheckModel` (or subclass).
@@ -46354,7 +48653,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TObj_ReferenceIterator>
     ///
     /// Returns `None` if the handle does not point to a `TObj_ReferenceIterator` (or subclass).
-    pub fn downcast_to_reference_iterator(
+    pub fn downcast_to_t_obj_reference_iterator(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjReferenceIterator>> {
         let ptr = unsafe {
@@ -48675,6 +50974,24 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<XCAFApp_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFApp_Application` (or subclass).
+    pub fn downcast_to_xcaf_app_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXCAFAppApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<XCAFDimTolObjects_DatumObject>
     ///
     /// Returns `None` if the handle does not point to a `XCAFDimTolObjects_DatumObject` (or subclass).
@@ -49431,6 +51748,1168 @@ impl HandleStandardTransient {
             crate::ffi::HandleStandardTransient_downcast_to_HandleXSControlWorkSession(
                 self as *const Self,
             )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlDrivers_DocumentRetrievalDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlDrivers_DocumentRetrievalDriver` (or subclass).
+    pub fn downcast_to_xml_drivers_document_retrieval_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlDriversDocumentRetrievalDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlDriversDocumentRetrievalDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlDrivers_DocumentStorageDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlDrivers_DocumentStorageDriver` (or subclass).
+    pub fn downcast_to_xml_drivers_document_storage_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlDriversDocumentStorageDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlDriversDocumentStorageDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlLDrivers_DocumentRetrievalDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlLDrivers_DocumentRetrievalDriver` (or subclass).
+    pub fn downcast_to_xml_l_drivers_document_retrieval_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlLDriversDocumentRetrievalDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlLDriversDocumentRetrievalDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlLDrivers_DocumentStorageDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlLDrivers_DocumentStorageDriver` (or subclass).
+    pub fn downcast_to_xml_l_drivers_document_storage_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlLDriversDocumentStorageDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlLDriversDocumentStorageDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDF_ADriverTable>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDF_ADriverTable` (or subclass).
+    pub fn downcast_to_xml_mdf_a_driver_table(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDFADriverTable>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDFADriverTable(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDF_DerivedDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDF_DerivedDriver` (or subclass).
+    pub fn downcast_to_xml_mdf_derived_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDFDerivedDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDFDerivedDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDF_ReferenceDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDF_ReferenceDriver` (or subclass).
+    pub fn downcast_to_xml_mdf_reference_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDFReferenceDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDFReferenceDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDF_TagSourceDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDF_TagSourceDriver` (or subclass).
+    pub fn downcast_to_xml_mdf_tag_source_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDFTagSourceDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDFTagSourceDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_AsciiStringDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_AsciiStringDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_ascii_string_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdAsciiStringDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdAsciiStringDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_BooleanArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_BooleanArrayDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_boolean_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdBooleanArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdBooleanArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_BooleanListDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_BooleanListDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_boolean_list_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdBooleanListDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdBooleanListDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_ByteArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_ByteArrayDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_byte_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdByteArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdByteArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_ExpressionDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_ExpressionDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_expression_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdExpressionDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdExpressionDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_ExtStringArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_ExtStringArrayDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_ext_string_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdExtStringArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdExtStringArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_ExtStringListDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_ExtStringListDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_ext_string_list_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdExtStringListDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdExtStringListDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_GenericEmptyDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_GenericEmptyDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_generic_empty_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdGenericEmptyDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdGenericEmptyDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_GenericExtStringDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_GenericExtStringDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_generic_ext_string_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdGenericExtStringDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdGenericExtStringDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_IntPackedMapDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_IntPackedMapDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_int_packed_map_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdIntPackedMapDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdIntPackedMapDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_IntegerArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_IntegerArrayDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_integer_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdIntegerArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdIntegerArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_IntegerDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_IntegerDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_integer_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdIntegerDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdIntegerDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_IntegerListDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_IntegerListDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_integer_list_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdIntegerListDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdIntegerListDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_NamedDataDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_NamedDataDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_named_data_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdNamedDataDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdNamedDataDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_RealArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_RealArrayDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_real_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdRealArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdRealArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_RealDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_RealDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_real_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdRealDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdRealDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_RealListDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_RealListDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_real_list_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdRealListDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdRealListDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_ReferenceArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_ReferenceArrayDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_reference_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdReferenceArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdReferenceArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_ReferenceListDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_ReferenceListDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_reference_list_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdReferenceListDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdReferenceListDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_TreeNodeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_TreeNodeDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_tree_node_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdTreeNodeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdTreeNodeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_UAttributeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_UAttributeDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_u_attribute_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdUAttributeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdUAttributeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataStd_VariableDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataStd_VariableDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_std_variable_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataStdVariableDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataStdVariableDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataXtd_ConstraintDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataXtd_ConstraintDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_xtd_constraint_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataXtdConstraintDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataXtdConstraintDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataXtd_GeometryDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataXtd_GeometryDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_xtd_geometry_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataXtdGeometryDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataXtdGeometryDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataXtd_PatternStdDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataXtd_PatternStdDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_xtd_pattern_std_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataXtdPatternStdDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataXtdPatternStdDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataXtd_PositionDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataXtd_PositionDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_xtd_position_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataXtdPositionDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataXtdPositionDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataXtd_PresentationDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataXtd_PresentationDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_xtd_presentation_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataXtdPresentationDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataXtdPresentationDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDataXtd_TriangulationDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDataXtd_TriangulationDriver` (or subclass).
+    pub fn downcast_to_xml_m_data_xtd_triangulation_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDataXtdTriangulationDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDataXtdTriangulationDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMDocStd_XLinkDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMDocStd_XLinkDriver` (or subclass).
+    pub fn downcast_to_xml_m_doc_std_x_link_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMDocStdXLinkDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMDocStdXLinkDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMFunction_FunctionDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMFunction_FunctionDriver` (or subclass).
+    pub fn downcast_to_xml_m_function_function_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMFunctionFunctionDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMFunctionFunctionDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMFunction_GraphNodeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMFunction_GraphNodeDriver` (or subclass).
+    pub fn downcast_to_xml_m_function_graph_node_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMFunctionGraphNodeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMFunctionGraphNodeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMFunction_ScopeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMFunction_ScopeDriver` (or subclass).
+    pub fn downcast_to_xml_m_function_scope_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMFunctionScopeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMFunctionScopeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMNaming_NamedShapeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMNaming_NamedShapeDriver` (or subclass).
+    pub fn downcast_to_xml_m_naming_named_shape_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMNamingNamedShapeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMNamingNamedShapeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMNaming_NamingDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMNaming_NamingDriver` (or subclass).
+    pub fn downcast_to_xml_m_naming_naming_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMNamingNamingDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMNamingNamingDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_AssemblyItemRefDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_AssemblyItemRefDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_assembly_item_ref_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocAssemblyItemRefDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocAssemblyItemRefDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_CentroidDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_CentroidDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_centroid_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocCentroidDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocCentroidDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_ColorDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_ColorDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_color_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocColorDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocColorDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_DatumDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_DatumDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_datum_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocDatumDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocDatumDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_DimTolDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_DimTolDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_dim_tol_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocDimTolDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocDimTolDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_GraphNodeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_GraphNodeDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_graph_node_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocGraphNodeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocGraphNodeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_LengthUnitDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_LengthUnitDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_length_unit_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocLengthUnitDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocLengthUnitDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_LocationDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_LocationDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_location_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocLocationDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocLocationDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_MaterialDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_MaterialDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_material_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocMaterialDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocMaterialDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_NoteBinDataDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_NoteBinDataDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_note_bin_data_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocNoteBinDataDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocNoteBinDataDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_NoteCommentDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_NoteCommentDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_note_comment_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocNoteCommentDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocNoteCommentDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_NoteDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_NoteDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_note_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocNoteDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocNoteDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_VisMaterialDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_VisMaterialDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_vis_material_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocVisMaterialDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocVisMaterialDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlMXCAFDoc_VisMaterialToolDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlMXCAFDoc_VisMaterialToolDriver` (or subclass).
+    pub fn downcast_to_xml_mxcaf_doc_vis_material_tool_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlMXCAFDocVisMaterialToolDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlMXCAFDocVisMaterialToolDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlTObjDrivers_DocumentRetrievalDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlTObjDrivers_DocumentRetrievalDriver` (or subclass).
+    pub fn downcast_to_xml_t_obj_drivers_document_retrieval_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversDocumentRetrievalDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlTObjDriversDocumentRetrievalDriver(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlTObjDrivers_DocumentStorageDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlTObjDrivers_DocumentStorageDriver` (or subclass).
+    pub fn downcast_to_xml_t_obj_drivers_document_storage_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversDocumentStorageDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlTObjDriversDocumentStorageDriver(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlTObjDrivers_IntSparseArrayDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlTObjDrivers_IntSparseArrayDriver` (or subclass).
+    pub fn downcast_to_xml_t_obj_drivers_int_sparse_array_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversIntSparseArrayDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlTObjDriversIntSparseArrayDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlTObjDrivers_ModelDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlTObjDrivers_ModelDriver` (or subclass).
+    pub fn downcast_to_xml_t_obj_drivers_model_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversModelDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlTObjDriversModelDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlTObjDrivers_ObjectDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlTObjDrivers_ObjectDriver` (or subclass).
+    pub fn downcast_to_xml_t_obj_drivers_object_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversObjectDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlTObjDriversObjectDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlTObjDrivers_ReferenceDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlTObjDrivers_ReferenceDriver` (or subclass).
+    pub fn downcast_to_xml_t_obj_drivers_reference_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversReferenceDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlTObjDriversReferenceDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlTObjDrivers_XYZDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlTObjDrivers_XYZDriver` (or subclass).
+    pub fn downcast_to_xml_t_obj_drivers_xyz_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversXYZDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlTObjDriversXYZDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlXCAFDrivers_DocumentRetrievalDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlXCAFDrivers_DocumentRetrievalDriver` (or subclass).
+    pub fn downcast_to_xml_xcaf_drivers_document_retrieval_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlXCAFDriversDocumentRetrievalDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlXCAFDriversDocumentRetrievalDriver(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XmlXCAFDrivers_DocumentStorageDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `XmlXCAFDrivers_DocumentStorageDriver` (or subclass).
+    pub fn downcast_to_xml_xcaf_drivers_document_storage_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlXCAFDriversDocumentStorageDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXmlXCAFDriversDocumentStorageDriver(self as *const Self)
         };
         if ptr.is_null() {
             None

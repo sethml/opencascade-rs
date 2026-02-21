@@ -91,8 +91,8 @@ pub fn get_undefined_type_handler(
 /// **Source:** `GeomTools.hxx`:78 - `GeomTools::GetReal`
 /// Reads the Standard_Real value from the stream. Zero is read
 /// in case of error
-pub fn get_real(IS: &mut crate::ffi::Standard_IStream, theValue: &mut f64) {
-    unsafe { crate::ffi::GeomTools_get_real(IS, theValue) }
+pub fn get_real_mut(IS: &mut crate::ffi::Standard_IStream, theValue: &mut f64) {
+    unsafe { crate::ffi::GeomTools_get_real_mut(IS, theValue) }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)

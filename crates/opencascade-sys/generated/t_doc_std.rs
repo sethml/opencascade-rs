@@ -106,8 +106,9 @@ impl TryFrom<i32> for FormatVersion {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
-    HandleAppStdApplication, HandleAppStdLApplication, HandleStandardTransient, HandleTDFAttribute,
-    HandleTDFDelta, HandleTObjApplication, HandleXCAFAppApplication,
+    HandleAppStdApplication, HandleAppStdLApplication, HandleCDFApplication, HandleCDMApplication,
+    HandleCDMDocument, HandleStandardTransient, HandleTDFAttribute, HandleTDFDelta,
+    HandleTObjApplication, HandleXCAFAppApplication,
 };
 
 // ========================
@@ -230,6 +231,38 @@ impl Application {
         }
     }
 
+    /// **Source:** `TDocStd_Application.hxx`:140 - `TDocStd_Application::DefineFormat()`
+    /// Sets up resources and registers read and storage drivers for
+    /// the specified format.
+    ///
+    /// @param theFormat - unique name for the format, used to identify it.
+    /// @param theDescription - textual description of the format.
+    /// @param theExtension - extension of the files in that format.
+    /// The same extension can be used by several formats.
+    /// @param theReader - instance of the read driver for the format.
+    /// Null value is allowed (no possibility to read).
+    /// @param theWriter - instance of the write driver for the format.
+    /// Null value is allowed (no possibility to write).
+    pub fn define_format(
+        &mut self,
+        theFormat: &crate::t_collection::AsciiString,
+        theDescription: &crate::t_collection::AsciiString,
+        theExtension: &crate::t_collection::AsciiString,
+        theReader: &crate::ffi::HandlePCDMRetrievalDriver,
+        theWriter: &crate::ffi::HandlePCDMStorageDriver,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Application_define_format(
+                self as *mut Self,
+                theFormat,
+                theDescription,
+                theExtension,
+                theReader,
+                theWriter,
+            )
+        }
+    }
+
     /// **Source:** `TDocStd_Application.hxx`:149 - `TDocStd_Application::ReadingFormats()`
     /// Returns the sequence of reading formats supported by the application.
     ///
@@ -269,15 +302,53 @@ impl Application {
         unsafe { crate::ffi::TDocStd_Application_get_document(self as *const Self, index, aDoc) }
     }
 
+    /// **Source:** `TDocStd_Application.hxx`:179 - `TDocStd_Application::NewDocument()`
+    /// Constructs the empty new document aDoc.
+    /// This document will have the format format.
+    /// If InitDocument is redefined for a specific
+    /// application, the new document is handled by the
+    /// applicative session.
+    pub fn new_document_extendedstring_handlecdmdocument(
+        &mut self,
+        format: &crate::t_collection::ExtendedString,
+        aDoc: &mut crate::ffi::HandleCDMDocument,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Application_new_document_extendedstring_handlecdmdocument(
+                self as *mut Self,
+                format,
+                aDoc,
+            )
+        }
+    }
+
     /// **Source:** `TDocStd_Application.hxx`:184 - `TDocStd_Application::NewDocument()`
     /// A non-virtual method taking a TDocStd_Documment object as an input.
     /// Internally it calls a virtual method NewDocument() with CDM_Document object.
-    pub fn new_document(
+    pub fn new_document_extendedstring_handletdocstddocument(
         &mut self,
         format: &crate::t_collection::ExtendedString,
         aDoc: &mut crate::ffi::HandleTDocStdDocument,
     ) {
-        unsafe { crate::ffi::TDocStd_Application_new_document(self as *mut Self, format, aDoc) }
+        unsafe {
+            crate::ffi::TDocStd_Application_new_document_extendedstring_handletdocstddocument(
+                self as *mut Self,
+                format,
+                aDoc,
+            )
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:194 - `TDocStd_Application::InitDocument()`
+    /// Initialize the document aDoc for the applicative session.
+    /// This virtual function is called by NewDocument
+    /// and is to be redefined for each specific application.
+    /// Modified flag (different of disk version)
+    /// =============
+    /// to open/save a document
+    /// =======================
+    pub fn init_document(&self, aDoc: &crate::ffi::HandleCDMDocument) {
+        unsafe { crate::ffi::TDocStd_Application_init_document(self as *const Self, aDoc) }
     }
 
     /// **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close()`
@@ -310,6 +381,192 @@ impl Application {
     /// }
     pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
         unsafe { crate::ffi::TDocStd_Application_is_in_session(self as *const Self, path) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:232 - `TDocStd_Application::Open()`
+    /// Retrieves the document from specified file.
+    /// In order not to override a version of the document which is already in memory,
+    /// this method can be made to depend on the value returned by IsInSession.
+    /// @param[in]  thePath   file path to open
+    /// @param[out] theDoc    result document
+    /// @param[in]  theFilter optional filter to skip attributes or parts of the retrieved tree
+    /// @param[in]  theRange  optional progress indicator
+    /// @return reading status
+    pub fn open_extendedstring_handletdocstddocument_handlepcdmreaderfilter_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::ExtendedString,
+        theDoc: &mut crate::ffi::HandleTDocStdDocument,
+        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::ReaderStatus {
+        unsafe {
+            crate::pcdm::ReaderStatus::try_from(crate::ffi::TDocStd_Application_open_extendedstring_handletdocstddocument_handlepcdmreaderfilter_progressrange(self as *mut Self, thePath, theDoc, theFilter, theRange)).unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:244 - `TDocStd_Application::Open()`
+    /// Retrieves the document from specified file.
+    /// In order not to override a version of the document which is already in memory,
+    /// this method can be made to depend on the value returned by IsInSession.
+    /// @param[in]  thePath  file path to open
+    /// @param[out] theDoc   result document
+    /// @param[in]  theRange optional progress indicator
+    /// @return reading status
+    pub fn open_extendedstring_handletdocstddocument_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::ExtendedString,
+        theDoc: &mut crate::ffi::HandleTDocStdDocument,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::ReaderStatus {
+        unsafe {
+            crate::pcdm::ReaderStatus::try_from(crate::ffi::TDocStd_Application_open_extendedstring_handletdocstddocument_progressrange(self as *mut Self, thePath, theDoc, theRange)).unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:258 - `TDocStd_Application::Open()`
+    /// Retrieves document from standard stream.
+    /// @param[in,out] theIStream input seekable stream
+    /// @param[out]    theDoc     result document
+    /// @param[in]     theFilter  optional filter to skip attributes or parts of the retrieved tree
+    /// @param[in]     theRange   optional progress indicator
+    /// @return reading status
+    pub fn open_istream_handletdocstddocument_handlepcdmreaderfilter_progressrange(
+        &mut self,
+        theIStream: &mut crate::ffi::Standard_IStream,
+        theDoc: &mut crate::ffi::HandleTDocStdDocument,
+        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::ReaderStatus {
+        unsafe {
+            crate::pcdm::ReaderStatus::try_from(crate::ffi::TDocStd_Application_open_istream_handletdocstddocument_handlepcdmreaderfilter_progressrange(self as *mut Self, theIStream, theDoc, theFilter, theRange)).unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:268 - `TDocStd_Application::Open()`
+    /// Retrieves document from standard stream.
+    /// @param[in,out] theIStream input seekable stream
+    /// @param[out]    theDoc     result document
+    /// @param[in]     theRange   optional progress indicator
+    /// @return reading status
+    pub fn open_istream_handletdocstddocument_progressrange(
+        &mut self,
+        theIStream: &mut crate::ffi::Standard_IStream,
+        theDoc: &mut crate::ffi::HandleTDocStdDocument,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::ReaderStatus {
+        unsafe {
+            crate::pcdm::ReaderStatus::try_from(
+                crate::ffi::TDocStd_Application_open_istream_handletdocstddocument_progressrange(
+                    self as *mut Self,
+                    theIStream,
+                    theDoc,
+                    theRange,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:278 - `TDocStd_Application::SaveAs()`
+    /// Save the  active document  in the file  <name> in the
+    /// path <path> ; o verwrites  the file  if  it already exists.
+    pub fn save_as_handletdocstddocument_extendedstring_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        path: &crate::t_collection::ExtendedString,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::StoreStatus {
+        unsafe {
+            crate::pcdm::StoreStatus::try_from(crate::ffi::TDocStd_Application_save_as_handletdocstddocument_extendedstring_progressrange(self as *mut Self, theDoc, path, theRange)).unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:285 - `TDocStd_Application::SaveAs()`
+    /// Save theDoc to standard SEEKABLE stream theOStream.
+    /// the stream should support SEEK functionality
+    pub fn save_as_handletdocstddocument_ostream_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theOStream: &mut crate::ffi::Standard_OStream,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::StoreStatus {
+        unsafe {
+            crate::pcdm::StoreStatus::try_from(
+                crate::ffi::TDocStd_Application_save_as_handletdocstddocument_ostream_progressrange(
+                    self as *mut Self,
+                    theDoc,
+                    theOStream,
+                    theRange,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:294 - `TDocStd_Application::Save()`
+    /// Save aDoc active document.
+    /// Exceptions:
+    /// Standard_NotImplemented if the document
+    /// was not retrieved in the applicative session by using Open.
+    pub fn save_handletdocstddocument_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::StoreStatus {
+        unsafe {
+            crate::pcdm::StoreStatus::try_from(
+                crate::ffi::TDocStd_Application_save_handletdocstddocument_progressrange(
+                    self as *mut Self,
+                    theDoc,
+                    theRange,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:301 - `TDocStd_Application::SaveAs()`
+    /// Save the  active document  in the file  <name> in the
+    /// path <path>  .  overwrite  the file  if  it
+    /// already exist.
+    pub fn save_as_handletdocstddocument_extendedstring2_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        path: &crate::t_collection::ExtendedString,
+        theStatusMessage: &mut crate::t_collection::ExtendedString,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::StoreStatus {
+        unsafe {
+            crate::pcdm::StoreStatus::try_from(crate::ffi::TDocStd_Application_save_as_handletdocstddocument_extendedstring2_progressrange(self as *mut Self, theDoc, path, theStatusMessage, theRange)).unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:309 - `TDocStd_Application::SaveAs()`
+    /// Save theDoc TO standard SEEKABLE stream theOStream.
+    /// the stream should support SEEK functionality
+    pub fn save_as_handletdocstddocument_ostream_extendedstring_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theOStream: &mut crate::ffi::Standard_OStream,
+        theStatusMessage: &mut crate::t_collection::ExtendedString,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::StoreStatus {
+        unsafe {
+            crate::pcdm::StoreStatus::try_from(crate::ffi::TDocStd_Application_save_as_handletdocstddocument_ostream_extendedstring_progressrange(self as *mut Self, theDoc, theOStream, theStatusMessage, theRange)).unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:316 - `TDocStd_Application::Save()`
+    /// Save the document overwriting the previous file
+    pub fn save_handletdocstddocument_extendedstring_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theStatusMessage: &mut crate::t_collection::ExtendedString,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::StoreStatus {
+        unsafe {
+            crate::pcdm::StoreStatus::try_from(crate::ffi::TDocStd_Application_save_handletdocstddocument_extendedstring_progressrange(self as *mut Self, theDoc, theStatusMessage, theRange)).unwrap()
+        }
     }
 
     /// **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction()`
@@ -349,6 +606,38 @@ impl Application {
         unsafe { &*(crate::ffi::TDocStd_Application_get_type_descriptor()) }
     }
 
+    /// Upcast to CDF_Application
+    pub fn as_cdf_application(&self) -> &crate::cdf::Application {
+        unsafe { &*(crate::ffi::TDocStd_Application_as_CDF_Application(self as *const Self)) }
+    }
+
+    /// Upcast to CDF_Application (mutable)
+    pub fn as_cdf_application_mut(&mut self) -> &mut crate::cdf::Application {
+        unsafe { &mut *(crate::ffi::TDocStd_Application_as_CDF_Application_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to CDM_Application
+    pub fn as_cdm_application(&self) -> &crate::cdm::Application {
+        unsafe { &*(crate::ffi::TDocStd_Application_as_CDM_Application(self as *const Self)) }
+    }
+
+    /// Upcast to CDM_Application (mutable)
+    pub fn as_cdm_application_mut(&mut self) -> &mut crate::cdm::Application {
+        unsafe { &mut *(crate::ffi::TDocStd_Application_as_CDM_Application_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TDocStd_Application_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TDocStd_Application_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -356,6 +645,242 @@ impl Application {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_to_handle(obj.into_raw()))
         }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
+    pub fn can_close(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+    ) -> crate::cdm::CanCloseStatus {
+        unsafe {
+            crate::cdm::CanCloseStatus::try_from(
+                crate::ffi::TDocStd_Application_inherited_CanClose(self as *mut Self, aDocument),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:97 - `CDF_Application::Retrieve()`
+    pub fn retrieve(
+        &mut self,
+        aFolder: &crate::t_collection::ExtendedString,
+        aName: &crate::t_collection::ExtendedString,
+        UseStorageConfiguration: bool,
+        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_Retrieve(
+                self as *mut Self,
+                aFolder,
+                aName,
+                UseStorageConfiguration,
+                theFilter,
+                theRange,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
+    pub fn can_retrieve(
+        &mut self,
+        theFolder: &crate::t_collection::ExtendedString,
+        theName: &crate::t_collection::ExtendedString,
+        theAppendMode: bool,
+    ) -> crate::pcdm::ReaderStatus {
+        unsafe {
+            crate::pcdm::ReaderStatus::try_from(
+                crate::ffi::TDocStd_Application_inherited_CanRetrieve(
+                    self as *mut Self,
+                    theFolder,
+                    theName,
+                    theAppendMode,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:136 - `CDF_Application::GetRetrieveStatus()`
+    pub fn get_retrieve_status(&self) -> crate::pcdm::ReaderStatus {
+        unsafe {
+            crate::pcdm::ReaderStatus::try_from(
+                crate::ffi::TDocStd_Application_inherited_GetRetrieveStatus(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:140 - `CDF_Application::Read()`
+    pub fn read(
+        &mut self,
+        theIStream: &mut crate::ffi::Standard_IStream,
+        theDocument: &mut crate::ffi::HandleCDMDocument,
+        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theRange: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Application_inherited_Read(
+                self as *mut Self,
+                theIStream,
+                theDocument,
+                theFilter,
+                theRange,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:158 - `CDF_Application::ReaderFromFormat()`
+    pub fn reader_from_format(
+        &mut self,
+        aFormat: &crate::t_collection::ExtendedString,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReader> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_ReaderFromFormat(
+                self as *mut Self,
+                aFormat,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:173 - `CDF_Application::WriterFromFormat()`
+    pub fn writer_from_format(
+        &mut self,
+        aFormat: &crate::t_collection::ExtendedString,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMStorageDriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_WriterFromFormat(
+                self as *mut Self,
+                aFormat,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:179 - `CDF_Application::Format()`
+    pub fn format(
+        &mut self,
+        aFileName: &crate::t_collection::ExtendedString,
+        theFormat: &mut crate::t_collection::ExtendedString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Application_inherited_Format(
+                self as *mut Self,
+                aFileName,
+                theFormat,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:187 - `CDF_Application::MetaDataDriver()`
+    pub fn meta_data_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFMetaDataDriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_MetaDataDriver(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
+    pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_MessageDriver(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
+    pub fn begin_of_update(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+        unsafe {
+            crate::ffi::TDocStd_Application_inherited_BeginOfUpdate(self as *mut Self, aDocument)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
+    pub fn end_of_update(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        theStatus: bool,
+        ErrorString: &crate::t_collection::ExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Application_inherited_EndOfUpdate(
+                self as *mut Self,
+                aDocument,
+                theStatus,
+                ErrorString,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
+    pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_Version(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn meta_data_look_up_table(&mut self) -> &mut crate::ffi::CDM_MetaDataLookUpTable {
+        unsafe {
+            &mut *(crate::ffi::TDocStd_Application_inherited_MetaDataLookUpTable(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Application_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TDocStd_Application_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::TDocStd_Application_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Application_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TDocStd_Application_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Application_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TDocStd_Application_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -376,6 +901,35 @@ impl HandleTDocStdApplication {
     /// Dereference this Handle to mutably access the underlying TDocStd_Application
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_Application {
         unsafe { &mut *(crate::ffi::HandleTDocStdApplication_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDocStd_Application> to Handle<CDF_Application>
+    pub fn to_handle_cdf_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDocStdApplication_to_HandleCDFApplication(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TDocStd_Application> to Handle<CDM_Application>
+    pub fn to_handle_cdm_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDocStdApplication_to_HandleCDMApplication(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TDocStd_Application> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDocStdApplication_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Downcast Handle<TDocStd_Application> to Handle<AppStdL_Application>
@@ -450,93 +1004,6 @@ impl HandleTDocStdApplication {
         }
     }
 }
-
-// ── Skipped symbols for Application (13 total) ──
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:140 - `TDocStd_Application::DefineFormat`
-//   method: Sets up resources and registers read and storage drivers for
-//   method: the specified format.
-//   Reason: param 'theReader' uses unknown type 'const Handle(PCDM_RetrievalDriver)&'
-//   // pub fn define_format(&mut self, theFormat: &AsciiString, theDescription: &AsciiString, theExtension: &AsciiString, theReader: &HandleRetrievalDriver, theWriter: &HandleStorageDriver);
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:179 - `TDocStd_Application::NewDocument`
-//   method: Constructs the empty new document aDoc.
-//   method: This document will have the format format.
-//   method: If InitDocument is redefined for a specific
-//   Reason: param 'aDoc' uses unknown type 'Handle(CDM_Document)&'
-//   // pub fn new_document(&mut self, format: &ExtendedString, aDoc: &mut HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:194 - `TDocStd_Application::InitDocument`
-//   method: Initialize the document aDoc for the applicative session.
-//   method: This virtual function is called by NewDocument
-//   method: and is to be redefined for each specific application.
-//   Reason: param 'aDoc' uses unknown type 'const Handle(CDM_Document)&'
-//   // pub fn init_document(&self, aDoc: &HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:232 - `TDocStd_Application::Open`
-//   method: Retrieves the document from specified file.
-//   method: In order not to override a version of the document which is already in memory,
-//   method: this method can be made to depend on the value returned by IsInSession.
-//   Reason: param 'theFilter' uses unknown type 'const Handle(PCDM_ReaderFilter)&'
-//   // pub fn open(&mut self, thePath: &ExtendedString, theDoc: &mut HandleDocument, theFilter: &HandleReaderFilter, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:244 - `TDocStd_Application::Open`
-//   method: Retrieves the document from specified file.
-//   method: In order not to override a version of the document which is already in memory,
-//   method: this method can be made to depend on the value returned by IsInSession.
-//   Reason: return type 'PCDM_ReaderStatus' is unknown
-//   // pub fn open(&mut self, thePath: &ExtendedString, theDoc: &mut HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:258 - `TDocStd_Application::Open`
-//   method: Retrieves document from standard stream.
-//   method: @param[in,out] theIStream input seekable stream
-//   method: @param[out]    theDoc     result document
-//   Reason: param 'theFilter' uses unknown type 'const Handle(PCDM_ReaderFilter)&'
-//   // pub fn open(&mut self, theIStream: &mut IStream, theDoc: &mut HandleDocument, theFilter: &HandleReaderFilter, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:268 - `TDocStd_Application::Open`
-//   method: Retrieves document from standard stream.
-//   method: @param[in,out] theIStream input seekable stream
-//   method: @param[out]    theDoc     result document
-//   Reason: return type 'PCDM_ReaderStatus' is unknown
-//   // pub fn open(&mut self, theIStream: &mut IStream, theDoc: &mut HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:278 - `TDocStd_Application::SaveAs`
-//   method: Save the  active document  in the file  <name> in the
-//   method: path <path> ; o verwrites  the file  if  it already exists.
-//   Reason: return type 'PCDM_StoreStatus' is unknown
-//   // pub fn save_as(&mut self, theDoc: &HandleDocument, path: &ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:285 - `TDocStd_Application::SaveAs`
-//   method: Save theDoc to standard SEEKABLE stream theOStream.
-//   method: the stream should support SEEK functionality
-//   Reason: return type 'PCDM_StoreStatus' is unknown
-//   // pub fn save_as(&mut self, theDoc: &HandleDocument, theOStream: &mut OStream, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:294 - `TDocStd_Application::Save`
-//   method: Save aDoc active document.
-//   method: Exceptions:
-//   method: Standard_NotImplemented if the document
-//   Reason: return type 'PCDM_StoreStatus' is unknown
-//   // pub fn save(&mut self, theDoc: &HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:301 - `TDocStd_Application::SaveAs`
-//   method: Save the  active document  in the file  <name> in the
-//   method: path <path>  .  overwrite  the file  if  it
-//   method: already exist.
-//   Reason: return type 'PCDM_StoreStatus' is unknown
-//   // pub fn save_as(&mut self, theDoc: &HandleDocument, path: &ExtendedString, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:309 - `TDocStd_Application::SaveAs`
-//   method: Save theDoc TO standard SEEKABLE stream theOStream.
-//   method: the stream should support SEEK functionality
-//   Reason: return type 'PCDM_StoreStatus' is unknown
-//   // pub fn save_as(&mut self, theDoc: &HandleDocument, theOStream: &mut OStream, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:316 - `TDocStd_Application::Save`
-//   method: Save the document overwriting the previous file
-//   Reason: return type 'PCDM_StoreStatus' is unknown
-//   // pub fn save(&mut self, theDoc: &HandleDocument, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
-//
 
 // ========================
 // From TDocStd_ApplicationDelta.hxx
@@ -1391,11 +1858,525 @@ impl Document {
         unsafe { &mut *(crate::ffi::TDocStd_Document_as_CDM_Document_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TDocStd_Document_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::TDocStd_Document_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:95 - `CDM_Document::Extensions()`
+    pub fn extensions(&self, Extensions: &mut crate::ffi::TColStd_SequenceOfExtendedString) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_Extensions(self as *const Self, Extensions)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:100 - `CDM_Document::GetAlternativeDocument()`
+    pub fn get_alternative_document(
+        &mut self,
+        aFormat: &crate::t_collection::ExtendedString,
+        anAlternativeDocument: &mut crate::ffi::HandleCDMDocument,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_GetAlternativeDocument(
+                self as *mut Self,
+                aFormat,
+                anAlternativeDocument,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:111 - `CDM_Document::CreateReference()`
+    pub fn create_reference(&mut self, anOtherDocument: &crate::ffi::HandleCDMDocument) -> i32 {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_CreateReference(
+                self as *mut Self,
+                anOtherDocument,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:115 - `CDM_Document::RemoveReference()`
+    pub fn remove_reference(&mut self, aReferenceIdentifier: i32) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_RemoveReference(
+                self as *mut Self,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:118 - `CDM_Document::RemoveAllReferences()`
+    pub fn remove_all_references(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_RemoveAllReferences(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:123 - `CDM_Document::Document()`
+    pub fn document(
+        &self,
+        aReferenceIdentifier: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Document(
+                self as *const Self,
+                aReferenceIdentifier,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:128 - `CDM_Document::IsInSession()`
+    pub fn is_in_session(&self, aReferenceIdentifier: i32) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsInSession(
+                self as *const Self,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:133 - `CDM_Document::IsStored()`
+    pub fn is_stored(&self, aReferenceIdentifier: i32) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsStored(
+                self as *const Self,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:138 - `CDM_Document::Name()`
+    pub fn name(
+        &self,
+        aReferenceIdentifier: i32,
+    ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Name(
+                self as *const Self,
+                aReferenceIdentifier,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:152 - `CDM_Document::ToReferencesNumber()`
+    pub fn to_references_number(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_inherited_ToReferencesNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:156 - `CDM_Document::FromReferencesNumber()`
+    pub fn from_references_number(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_inherited_FromReferencesNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:159 - `CDM_Document::ShallowReferences()`
+    pub fn shallow_references(&self, aDocument: &crate::ffi::HandleCDMDocument) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_ShallowReferences(self as *const Self, aDocument)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:162 - `CDM_Document::DeepReferences()`
+    pub fn deep_references(&self, aDocument: &crate::ffi::HandleCDMDocument) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_DeepReferences(self as *const Self, aDocument)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:168 - `CDM_Document::CopyReference()`
+    pub fn copy_reference(
+        &mut self,
+        aFromDocument: &crate::ffi::HandleCDMDocument,
+        aReferenceIdentifier: i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_CopyReference(
+                self as *mut Self,
+                aFromDocument,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:172 - `CDM_Document::IsReadOnly()`
+    pub fn is_read_only(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_IsReadOnly(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:177 - `CDM_Document::SetIsReadOnly()`
+    pub fn set_is_read_only(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_SetIsReadOnly(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:179 - `CDM_Document::UnsetIsReadOnly()`
+    pub fn unset_is_read_only(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_UnsetIsReadOnly(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:183 - `CDM_Document::Modify()`
+    pub fn modify(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_Modify(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:186 - `CDM_Document::Modifications()`
+    pub fn modifications(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_inherited_Modifications(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:188 - `CDM_Document::UnModify()`
+    pub fn un_modify(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_UnModify(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:194 - `CDM_Document::IsUpToDate()`
+    pub fn is_up_to_date(&self, aReferenceIdentifier: i32) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsUpToDate(
+                self as *const Self,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:200 - `CDM_Document::SetIsUpToDate()`
+    pub fn set_is_up_to_date(&mut self, aReferenceIdentifier: i32) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetIsUpToDate(
+                self as *mut Self,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:203 - `CDM_Document::SetComment()`
+    pub fn set_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_SetComment(self as *mut Self, aComment) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:206 - `CDM_Document::AddComment()`
+    pub fn add_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_AddComment(self as *mut Self, aComment) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:209 - `CDM_Document::SetComments()`
+    pub fn set_comments(&mut self, aComments: &crate::ffi::TColStd_SequenceOfExtendedString) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_SetComments(self as *mut Self, aComments) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:213 - `CDM_Document::Comments()`
+    pub fn comments(&self, aComments: &mut crate::ffi::TColStd_SequenceOfExtendedString) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_Comments(self as *const Self, aComments) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:223 - `CDM_Document::StorageVersion()`
+    pub fn storage_version(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_inherited_StorageVersion(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:228 - `CDM_Document::SetMetaData()`
+    pub fn set_meta_data(&mut self, aMetaData: &crate::ffi::HandleCDMMetaData) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_SetMetaData(self as *mut Self, aMetaData) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:230 - `CDM_Document::UnsetIsStored()`
+    pub fn unset_is_stored(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_UnsetIsStored(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:232 - `CDM_Document::MetaData()`
+    pub fn meta_data(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMMetaData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_MetaData(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:234 - `CDM_Document::Folder()`
+    pub fn folder(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Folder(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:237 - `CDM_Document::SetRequestedFolder()`
+    pub fn set_requested_folder(&mut self, aFolder: &crate::t_collection::ExtendedString) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetRequestedFolder(self as *mut Self, aFolder)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:239 - `CDM_Document::RequestedFolder()`
+    pub fn requested_folder(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_RequestedFolder(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:241 - `CDM_Document::HasRequestedFolder()`
+    pub fn has_requested_folder(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_HasRequestedFolder(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:244 - `CDM_Document::SetRequestedName()`
+    pub fn set_requested_name(&mut self, aName: &crate::t_collection::ExtendedString) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_SetRequestedName(self as *mut Self, aName) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:249 - `CDM_Document::RequestedName()`
+    pub fn requested_name(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_RequestedName(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:251 - `CDM_Document::SetRequestedPreviousVersion()`
+    pub fn set_requested_previous_version(
+        &mut self,
+        aPreviousVersion: &crate::t_collection::ExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetRequestedPreviousVersion(
+                self as *mut Self,
+                aPreviousVersion,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:254 - `CDM_Document::UnsetRequestedPreviousVersion()`
+    pub fn unset_requested_previous_version(&mut self) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_UnsetRequestedPreviousVersion(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:256 - `CDM_Document::HasRequestedPreviousVersion()`
+    pub fn has_requested_previous_version(&self) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_HasRequestedPreviousVersion(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:258 - `CDM_Document::RequestedPreviousVersion()`
+    pub fn requested_previous_version(
+        &self,
+    ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDocStd_Document_inherited_RequestedPreviousVersion(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:261 - `CDM_Document::SetRequestedComment()`
+    pub fn set_requested_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetRequestedComment(self as *mut Self, aComment)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:263 - `CDM_Document::RequestedComment()`
+    pub fn requested_comment(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_RequestedComment(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:266 - `CDM_Document::LoadResources()`
+    pub fn load_resources(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_LoadResources(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:268 - `CDM_Document::FindFileExtension()`
+    pub fn find_file_extension(&mut self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_FindFileExtension(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:271 - `CDM_Document::FileExtension()`
+    pub fn file_extension(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_FileExtension(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:273 - `CDM_Document::FindDescription()`
+    pub fn find_description(&mut self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_FindDescription(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:276 - `CDM_Document::Description()`
+    pub fn description(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Description(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:280 - `CDM_Document::IsModified()`
+    pub fn is_modified(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_IsModified(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:285 - `CDM_Document::IsOpened()`
+    pub fn is_opened(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_IsOpened(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:287 - `CDM_Document::Open()`
+    pub fn open(&mut self, anApplication: &crate::ffi::HandleCDMApplication) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_Open(self as *mut Self, anApplication) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:289 - `CDM_Document::CanClose()`
+    pub fn can_close(&self) -> crate::cdm::CanCloseStatus {
+        unsafe {
+            crate::cdm::CanCloseStatus::try_from(crate::ffi::TDocStd_Document_inherited_CanClose(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:291 - `CDM_Document::Close()`
+    pub fn close(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_Close(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:293 - `CDM_Document::Application()`
+    pub fn application(&self) -> &crate::ffi::HandleCDMApplication {
+        unsafe { &*(crate::ffi::TDocStd_Document_inherited_Application(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:299 - `CDM_Document::CanCloseReference()`
+    pub fn can_close_reference(
+        &self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        aReferenceIdentifier: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_CanCloseReference(
+                self as *const Self,
+                aDocument,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:307 - `CDM_Document::CloseReference()`
+    pub fn close_reference(
+        &mut self,
+        aDocument: &crate::ffi::HandleCDMDocument,
+        aReferenceIdentifier: i32,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_CloseReference(
+                self as *mut Self,
+                aDocument,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:327 - `CDM_Document::ReferenceCounter()`
+    pub fn reference_counter(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_inherited_ReferenceCounter(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:335 - `CDM_Document::Reference()`
+    pub fn reference(
+        &self,
+        aReferenceIdentifier: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDMReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Reference(
+                self as *const Self,
+                aReferenceIdentifier,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:338 - `CDM_Document::SetModifications()`
+    pub fn set_modifications(&mut self, Modifications: i32) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetModifications(
+                self as *mut Self,
+                Modifications,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:340 - `CDM_Document::SetReferenceCounter()`
+    pub fn set_reference_counter(&mut self, aReferenceCounter: i32) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetReferenceCounter(
+                self as *mut Self,
+                aReferenceCounter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::TDocStd_Document_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_Delete(self as *const Self) }
     }
 }
 
@@ -1417,6 +2398,24 @@ impl HandleTDocStdDocument {
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_Document {
         unsafe { &mut *(crate::ffi::HandleTDocStdDocument_get_mut(self as *mut Self)) }
     }
+
+    /// Upcast Handle<TDocStd_Document> to Handle<CDM_Document>
+    pub fn to_handle_document(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDocStdDocument_to_HandleCDMDocument(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TDocStd_Document> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDocStdDocument_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ── Skipped symbols for Document (1 total) ──
@@ -1424,7 +2423,7 @@ impl HandleTDocStdDocument {
 //   method: This method Update   will be called
 //   method: to signal the end   of the modified references list.
 //   method: The    document     should    be  recomputed     and
-//   Reason: param 'aToDocument' uses unknown type 'const Handle(CDM_Document)&'
+//   Reason: param 'aModifContext' uses unknown type 'Standard_Address'
 //   // pub fn update(&mut self, aToDocument: &HandleDocument, aReferenceIdentifier: i32, aModifContext: Address);
 //
 

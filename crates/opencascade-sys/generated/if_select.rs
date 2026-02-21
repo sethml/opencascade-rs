@@ -27748,8 +27748,8 @@ impl HandleIFSelectSignatureList {
 // ── Skipped symbols for SignatureList (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:78 - `IFSelect_SignatureList::Init`
 //   method: Aknowledges the list in once. Name identifies the Signature
-//   Reason: has unbindable types: param 'count': unresolved template type (const NCollection_IndexedDataMap<TCollection_AsciiString, Standard_Integer>&); param 'list': unresolved template type (const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>&)
-//   // pub fn init(&mut self, name: *const char, count: /* const NCollection_IndexedDataMap<TCollection_AsciiString, Standard_Integer>& */, list: /* const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>& */, nbnuls: i32);
+//   Reason: has unbindable types: param 'list': unresolved template type (const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>&)
+//   // pub fn init(&mut self, name: *const char, count: &PType, list: /* const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>& */, nbnuls: i32);
 //
 
 // ========================

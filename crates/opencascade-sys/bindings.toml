@@ -49,49 +49,6 @@ exclude_modules = [
     "Image",               # Image processing
     "Media",               # Media playback
 
-    # === Persistence / Storage / Serialization ===
-    # These handle document persistence via binary/XML formats.
-    # Not needed for CAD modeling operations.
-    "BinDrivers",          # Binary persistence drivers
-    "BinLDrivers",         # Binary persistence lite drivers
-    "BinMDF",              # Binary MDF persistence
-    "BinMDataStd",         # Binary MDataStd persistence
-    "BinMDataXtd",         # Binary MDataXtd persistence
-    "BinMDocStd",          # Binary MDocStd persistence
-    "BinMFunction",        # Binary MFunction persistence
-    "BinMNaming",          # Binary MNaming persistence
-    "BinMXCAFDoc",         # Binary MXCAFDoc persistence
-    "BinObjMgt",           # Binary object management
-    "BinTObjDrivers",      # Binary TObj drivers
-    "BinTools",            # Binary tools
-    "BinXCAFDrivers",      # Binary XCAF drivers
-    "CDF",                 # Component Document Framework
-    "CDM",                 # Component Document Manager
-    "FSD",                 # File storage/retrieval
-    "PCDM",                # Persistent CDM
-    "Plugin",              # Plugin management
-    "ShapePersistent",     # Shape persistence
-    "StdDrivers",          # Standard persistence drivers
-    "StdLDrivers",         # Standard lite persistence drivers
-    "StdLPersistent",      # Standard lite persistent objects
-    "StdObjMgt",           # Standard object management
-    "StdObject",           # Standard persistent objects
-    "StdPersistent",       # Standard persistent
-    "StdStorage",          # Standard storage
-    "Storage",             # Storage base
-    "UTL",                 # Utility library
-    "XmlDrivers",          # XML persistence drivers
-    "XmlLDrivers",         # XML persistence lite drivers
-    "XmlMDF",              # XML MDF persistence
-    "XmlMDataStd",         # XML MDataStd persistence
-    "XmlMDataXtd",         # XML MDataXtd persistence
-    "XmlMDocStd",          # XML MDocStd persistence
-    "XmlMFunction",        # XML MFunction persistence
-    "XmlMNaming",          # XML MNaming persistence
-    "XmlMXCAFDoc",         # XML MXCAFDoc persistence
-    "XmlObjMgt",           # XML object management
-    "XmlTObjDrivers",      # XML TObj drivers
-    "XmlXCAFDrivers",      # XML XCAF drivers
 
     # === Draw test harness ===
     # (no Draw* modules in OCCT include)
@@ -108,7 +65,14 @@ exclude_modules = [
     "TKernel",             # PCH stub
 
     # === Internal mesh data (protected operator new, not heap-allocatable) ===
-    "BRepMeshData",        # Internal mesh data model (protected new/delete)
+    "BRepMeshData",        # Protected new/delete inherited from NCollection allocator
+
+    # === Nested C++ classes not yet supported by binding generator ===
+    # These modules define nested classes (e.g., ShapePersistent_BRep::Curve3D)
+    # whose unqualified names cannot be resolved in generated C++ typedefs.
+    "ShapePersistent",     # Nested classes: ShapePersistent_BRep::*, ShapePersistent_Poly::*, etc.
+    "StdPersistent",       # Nested classes: StdPersistent_TopLoc::*, StdPersistent_Naming::*, etc.
+    "StdLPersistent",      # Nested classes: StdLPersistent_*::* (same issue as StdPersistent)
 
     # === EXPRESS schema parser (internal codegen tool, not user-facing) ===
     "Express",             # EXPRESS schema parser (String type conflicts with Rust String)
@@ -116,13 +80,14 @@ exclude_modules = [
 
 # Exclude specific headers (even if their module is in `modules` above).
 exclude_headers = [
-    # Protected inheritance from Message_ProgressScope makes operator new/delete
-    # protected; the class cannot be heap-allocated via std::make_unique.
-    # This is intentional to hide the parent API. The class is stack-only by design.
-    "Message_LazyProgressScope.hxx",
+    # Protected operator new/delete: class cannot be heap-allocated via std::make_unique.
+    "Message_LazyProgressScope.hxx",  # Inherits protected new/delete from Message_ProgressScope
+    "Poly_CoherentTriPtr.hxx",         # No suitable operator delete
 
-    # No suitable operator delete for Poly_CoherentTriPtr.
-    "Poly_CoherentTriPtr.hxx",
+    # Internal-only class: all constructors/destructors are private, accessible only
+    # to friend classes TDF_Data and TDF_Label. No public API returns TDF_LabelNode*;
+    # it's entirely hidden behind the TDF_Label value-type facade.
+    "TDF_LabelNode.hxx",
 
     # Third-party dependency (rapidjson): these headers #include rapidjson which
     # is not bundled with our OCCT build.
@@ -130,14 +95,6 @@ exclude_headers = [
     "RWGltf_GltfJsonParser.hxx",
     "RWGltf_CafWriter.hxx",
     "RWGltf_GltfAccessor.hxx",
-
-    # Internal-only class: all constructors/destructors are private, accessible only
-    # to friend classes TDF_Data and TDF_Label. No public API returns TDF_LabelNode*;
-    # it's entirely hidden behind the TDF_Label value-type facade.
-    "TDF_LabelNode.hxx",
-
-    # RWObj_MtlReader: constructor takes OSD_OpenFile_Mode not available.
-    "RWObj_MtlReader.hxx",
 
     # Windows-only: includes <windows.h> which causes a fatal error on non-Windows
     # and corrupts clang's type resolution for subsequent headers.
@@ -153,11 +110,13 @@ include_headers = []
 # individually so the rest of each class remains accessible.
 # Format: "ClassName::MethodName" for methods, "ClassName::ClassName" for constructors.
 exclude_methods = [
-    # BRepExtrema_ProximityDistTool::PrjState: constructor takes BVH_PrjState
-    # (a template-dependent enum typedef) that clang can't resolve through the
-    # template specialization. PrjState is an internal struct not exposed by
-    # public methods.
-    "BRepExtrema_ProximityDistTool::PrjState::*",
+    # C++ `New()` factory method name-collides with constructor wrapper `fn new()`
+    "Storage_CallBack::New",
+    "Storage_DefaultCallBack::New",
+
+    # `const char**` (double pointer) mapped as `&mut &str` but FFI needs raw pointer
+    "XmlObjMgt::GetInteger",
+    "XmlObjMgt::GetReal",
 ]
 
 [general]

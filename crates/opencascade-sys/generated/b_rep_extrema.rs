@@ -1311,6 +1311,32 @@ unsafe impl crate::CppDeletable for ProximityDistTool_PrjState {
 }
 
 impl ProximityDistTool_PrjState {
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:54 - `BRepExtrema_ProximityDistTool_PrjState::BRepExtrema_ProximityDistTool_PrjState()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityDistTool_PrjState_ctor())
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:62 - `BRepExtrema_ProximityDistTool_PrjState::BRepExtrema_ProximityDistTool_PrjState()`
+    pub fn new_int_prjstate_int2(
+        theTrgIdx: i32,
+        thePrjState: &crate::ffi::BRepExtrema_ProximityDistTool_BVH_PrjState,
+        theNumberOfFirstNode: i32,
+        theNumberOfLastNode: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepExtrema_ProximityDistTool_PrjState_ctor_int_prjstate_int2(
+                    theTrgIdx,
+                    thePrjState,
+                    theNumberOfFirstNode,
+                    theNumberOfLastNode,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:73 - `BRepExtrema_ProximityDistTool_PrjState::GetTrgIdx()`
     pub fn get_trg_idx(&self) -> i32 {
         unsafe {
@@ -1349,16 +1375,6 @@ impl ProximityDistTool_PrjState {
         }
     }
 }
-
-// ── Skipped symbols for ProximityDistTool_PrjState (2 total) ──
-// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:54 - `BRepExtrema_ProximityDistTool::PrjState::BRepExtrema_ProximityDistTool::PrjState`
-//   Reason: excluded by bindings.toml
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:62 - `BRepExtrema_ProximityDistTool::PrjState::BRepExtrema_ProximityDistTool::PrjState`
-//   Reason: excluded by bindings.toml
-//   // pub fn new_int_prjstate_int2(theTrgIdx: i32, thePrjState: ProximityDistTool_BVH_PrjState, theNumberOfFirstNode: i32, theNumberOfLastNode: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From BRepExtrema_ProximityValueTool.hxx

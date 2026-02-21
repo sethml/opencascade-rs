@@ -3,7 +3,7 @@
 //! A tool using libclang to parse OCCT C++ headers and generate extern "C" FFI bindings
 //! Generates FFI bindings with a single ffi.rs module and per-module re-exports.
 
-use opencascade_binding_generator::{codegen, config, header_deps, model, module_graph, parser, resolver};
+use opencascade_binding_generator::{codegen, config, header_deps, model, module_graph, parser, resolver, type_mapping};
 
 use anyhow::Result;
 use clap::Parser;
@@ -211,7 +211,7 @@ fn main() -> Result<()> {
     // These are OCCT's namespace-like patterns (e.g., `gp` with `gp::OX()`, `gp::Origin()`).
     // Convert their static methods to free functions so they appear as module-level
     // functions (e.g., `gp::ox()`) instead of awkward `gp::gp::ox()`.
-    convert_utility_classes_to_functions(&mut parsed, args.verbose);
+    convert_utility_classes_to_functions(&mut parsed, &exclude_methods, args.verbose);
 
     if args.verbose {
         println!("\nParsing complete. Summary:");
@@ -390,6 +390,7 @@ fn main() -> Result<()> {
 /// and the utility class is removed from the header's class list.
 fn convert_utility_classes_to_functions(
     parsed: &mut [model::ParsedHeader],
+    exclude_methods: &HashSet<(String, String)>,
     verbose: bool,
 ) {
     for header in parsed.iter_mut() {
@@ -428,6 +429,14 @@ fn convert_utility_classes_to_functions(
             }
 
             for sm in &class.static_methods {
+                // Check exclude_methods for this static method
+                if exclude_methods.contains(&(class.name.clone(), sm.name.clone())) {
+                    if verbose {
+                        println!("    Skipping excluded method {}::{}", class.name, sm.name);
+                    }
+                    continue;
+                }
+
                 let mut return_type = sm.return_type.clone();
 
                 // If return type is ConstRef and there are no ref params,
@@ -692,7 +701,7 @@ fn generate_output(
         already_reexported.insert(b.cpp_name.clone());
         // Handle types generated for this class
         if b.has_to_handle || b.has_handle_get {
-            let handle_name = format!("Handle{}", b.cpp_name.replace('_', ""));
+            let handle_name = type_mapping::handle_type_name(&b.cpp_name);
             already_reexported.insert(handle_name);
         }
         // Handle upcasts reference base handle types
@@ -711,7 +720,7 @@ fn generate_output(
     let mut all_ffi_types: Vec<(String, String)> = Vec::new(); // (ffi_name, module_prefix)
     for class in all_classes {
         if handle_able_classes.contains(&class.name) {
-            let handle_name = format!("Handle{}", class.name.replace('_', ""));
+            let handle_name = type_mapping::handle_type_name(&class.name);
             if !already_reexported.contains(&handle_name) {
                 // Use the class's actual module (not derived from handle name)
                 all_ffi_types.push((handle_name, class.module.clone()));

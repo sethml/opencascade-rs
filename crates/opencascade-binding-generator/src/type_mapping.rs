@@ -7,6 +7,20 @@
 use crate::model::Type;
 use crate::module_graph::module_to_rust_name;
 
+/// Convert a C++ class name to its Rust Handle type name.
+///
+/// Strips underscores and `::` (from nested classes) to produce a valid
+/// Rust identifier.  e.g. `ShapePersistent_BRep::CurveRepresentation`
+/// → `HandleShapePersistentBRepCurveRepresentation`.
+pub fn handle_type_name(cpp_name: &str) -> String {
+    format!("Handle{}", cpp_name.replace("::", "").replace('_', ""))
+}
+
+/// Lowercase variant used for parameter names.
+pub fn handle_param_name(cpp_name: &str) -> String {
+    format!("handle{}", cpp_name.to_lowercase().replace("::", "").replace('_', ""))
+}
+
 /// Result of mapping a C++ type to Rust
 #[derive(Debug, Clone)]
 pub struct RustTypeMapping {
@@ -171,7 +185,7 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
         }
         Type::Handle(class_name) => {
             let source_module = extract_module_from_class(class_name);
-            let handle_type = format!("Handle{}", class_name.replace("_", ""));
+            let handle_type = handle_type_name(class_name);
             RustTypeMapping {
                 rust_type: handle_type,
                 needs_unique_ptr: true, // Returned as *mut T, caller must free
@@ -475,7 +489,7 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
         }
         Type::Handle(class_name) => {
             let source_module = lookup_module_for_type(class_name, ctx.type_to_module);
-            let handle_type = format!("Handle{}", class_name.replace("_", ""));
+            let handle_type = handle_type_name(class_name);
             RustTypeMapping {
                 rust_type: handle_type,
                 needs_unique_ptr: true,

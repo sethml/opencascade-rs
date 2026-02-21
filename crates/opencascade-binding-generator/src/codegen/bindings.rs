@@ -614,7 +614,7 @@ fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) ->
                 format!("crate::ffi::{}", Type::ffi_safe_class_name(name))
             }
         }
-        Type::Handle(name) => format!("crate::ffi::Handle{}", name.replace("_", "")),
+        Type::Handle(name) => format!("crate::ffi::{}", type_mapping::handle_type_name(name)),
         Type::ConstRef(inner) => format!("&{}", type_to_rust_string(inner, reexport_ctx)),
         Type::MutRef(inner) => {
             format!("&mut {}", type_to_rust_string(inner, reexport_ctx))
@@ -2460,7 +2460,7 @@ fn compute_handle_upcast_bindings(
     let cpp_name = class.name.replace("::", "_");
     let cpp_name = &cpp_name;
 
-    let handle_type_name = format!("Handle{}", cpp_name.replace("_", ""));
+    let handle_type_name = type_mapping::handle_type_name(cpp_name);
 
     all_ancestors
         .iter()
@@ -2471,7 +2471,7 @@ fn compute_handle_upcast_bindings(
                 && symbol_table.class_by_name(base).is_some()
         })
         .map(|base_class| {
-            let base_handle_name = format!("Handle{}", base_class.replace("_", ""));
+            let base_handle_name = type_mapping::handle_type_name(base_class);
             let ffi_fn_name =
                 format!("{}_to_{}", handle_type_name, base_handle_name);
             let base_module = if let Some(underscore_pos) = base_class.find('_') {
@@ -2502,7 +2502,7 @@ fn compute_handle_downcast_bindings(
     let cpp_name = class.name.replace("::", "_");
     let cpp_name = &cpp_name;
 
-    let handle_type_name = format!("Handle{}", cpp_name.replace("_", ""));
+    let handle_type_name = type_mapping::handle_type_name(cpp_name);
 
     all_descendants
         .iter()
@@ -2518,7 +2518,7 @@ fn compute_handle_downcast_bindings(
             }
         })
         .map(|derived_class| {
-            let derived_handle_name = format!("Handle{}", derived_class.replace("_", ""));
+            let derived_handle_name = type_mapping::handle_type_name(derived_class);
             let ffi_fn_name =
                 format!("{}_downcast_to_{}", handle_type_name, derived_handle_name);
             let derived_module = if let Some(underscore_pos) = derived_class.find('_') {
@@ -4333,7 +4333,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 
     // 8. to_handle wrapper
     if bindings.has_to_handle {
-        let handle_type = format!("Handle{}", ffi_cn.replace("_", ""));
+        let handle_type = type_mapping::handle_type_name(ffi_cn);
         let fn_name = format!("{ffi_cn}_to_handle");
         writeln!(
             output,
@@ -4350,7 +4350,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 
     // 8b. Handle get (dereference) wrapper
     if bindings.has_handle_get {
-        let handle_type = format!("Handle{}", ffi_cn.replace("_", ""));
+        let handle_type = type_mapping::handle_type_name(ffi_cn);
         writeln!(
             output,
             "extern \"C\" const {cn}* {handle_type}_get(const {handle_type}* handle) {{ return (*handle).get(); }}"
@@ -5048,7 +5048,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
     // 6. to_handle
     if bindings.has_to_handle {
         let ffi_fn_name = format!("{}_to_handle", cn);
-        let handle_type_name = format!("Handle{}", cn.replace("_", ""));
+        let handle_type_name = type_mapping::handle_type_name(cn);
         impl_methods.push(format!(
             "    /// Wrap in a Handle (reference-counted smart pointer)\n    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::{}> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}(obj.into_raw())) }}\n    }}\n",
             handle_type_name, ffi_fn_name
@@ -5134,7 +5134,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
 
     // Handle type re-export, CppDeletable, get method, and handle upcast methods
     if bindings.has_handle_get {
-        let handle_type_name = format!("Handle{}", cn.replace("_", ""));
+        let handle_type_name = type_mapping::handle_type_name(cn);
         // Re-export the handle type so external crates can name it
         output.push_str(&format!(
             "pub use crate::ffi::{};\n\n",
@@ -5416,14 +5416,14 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
 
     // ── to_handle ───────────────────────────────────────────────────────
     if bindings.has_to_handle {
-        let handle_type_name = format!("Handle{}", cn.replace('_', ""));
+        let handle_type_name = type_mapping::handle_type_name(cn);
         writeln!(out, "    /// Wrap {} in a Handle", cn).unwrap();
         writeln!(out, "    pub fn {}_to_handle(obj: *mut {}) -> *mut {};", cn, cn, handle_type_name).unwrap();
     }
 
     // ── Handle get (dereference) ─────────────────────────────────────────
     if bindings.has_handle_get {
-        let handle_type_name = format!("Handle{}", cn.replace('_', ""));
+        let handle_type_name = type_mapping::handle_type_name(cn);
         writeln!(out, "    /// Destroy Handle<{}>", cn).unwrap();
         writeln!(out, "    pub fn {}_destructor(self_: *mut {});", handle_type_name, handle_type_name).unwrap();
         writeln!(out, "    /// Dereference Handle to get *const {}", cn).unwrap();

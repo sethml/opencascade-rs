@@ -6,6 +6,7 @@
 use crate::model::{ParsedClass, Type};
 use std::collections::{BTreeSet, HashSet};
 use std::fmt::Write as _;
+use crate::type_mapping;
 
 /// Generate source attribution for a declaration (header, line number, and C++ identifier)
 fn format_source_attribution(header: &str, line: Option<u32>, cpp_name: &str) -> String {
@@ -423,7 +424,7 @@ fn generate_handle_declarations(
 
     let mut out = String::new();
     for class_name in &handles {
-        let handle_type_name = format!("Handle{}", class_name.replace('_', ""));
+        let handle_type_name = type_mapping::handle_type_name(class_name);
         writeln!(out, "/// Handle to {}", class_name).unwrap();
         writeln!(out, "#[repr(C)]").unwrap();
         writeln!(out, "pub struct {} {{ _opaque: [u8; 0] }}", handle_type_name).unwrap();
@@ -439,13 +440,13 @@ fn generate_handle_declarations(
         writeln!(out).unwrap();
         writeln!(out, "extern \"C\" {{").unwrap();
         for class_name in &extra_handles {
-            let handle_type_name = format!("Handle{}", class_name.replace('_', ""));
+            let handle_type_name = type_mapping::handle_type_name(class_name);
             writeln!(out, "    pub fn {}_destructor(ptr: *mut {});", handle_type_name, handle_type_name).unwrap();
         }
         writeln!(out, "}}").unwrap();
         writeln!(out).unwrap();
         for class_name in &extra_handles {
-            let handle_type_name = format!("Handle{}", class_name.replace('_', ""));
+            let handle_type_name = type_mapping::handle_type_name(class_name);
             writeln!(out, "unsafe impl crate::CppDeletable for {} {{", handle_type_name).unwrap();
             writeln!(out, "    unsafe fn cpp_delete(ptr: *mut Self) {{").unwrap();
             writeln!(out, "        {}_destructor(ptr);", handle_type_name).unwrap();
@@ -817,7 +818,7 @@ pub fn generate_module_reexports(
     let mut directly_exported_handles: std::collections::HashSet<String> = std::collections::HashSet::new();
     for b in module_bindings {
         if b.has_to_handle || b.has_handle_get {
-            let handle_type_name = format!("Handle{}", b.cpp_name.replace("_", ""));
+            let handle_type_name = type_mapping::handle_type_name(&b.cpp_name);
             directly_exported_handles.insert(handle_type_name);
         }
     }

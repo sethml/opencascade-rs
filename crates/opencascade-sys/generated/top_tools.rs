@@ -1826,5 +1826,5 @@ pub use crate::ffi::{
     TopTools_IndexedDataMapOfShapeShape as IndexedDataMapOfShapeShape,
     TopTools_IndexedMapOfOrientedShape as IndexedMapOfOrientedShape,
     TopTools_ListIteratorOfListOfShape as ListIteratorOfListOfShape,
-    TopTools_ListOfListOfShape as ListOfListOfShape,
+    TopTools_ListOfListOfShape as ListOfListOfShape, TopTools_LocationSetPtr as LocationSetPtr,
 };
