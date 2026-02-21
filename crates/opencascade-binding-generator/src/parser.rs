@@ -42,6 +42,31 @@ fn normalize_template_spelling(s: &str) -> String {
     s.chars().filter(|c| !c.is_whitespace()).collect()
 }
 
+/// Strip C++ type qualifier prefixes (const, volatile, struct, class, typename, enum)
+/// from a type spelling. Call sites used to chain these manually; this centralizes the
+/// stripping logic and avoids accidental divergence.
+fn strip_type_qualifiers(s: &str) -> &str {
+    s.trim()
+        .trim_start_matches("const ")
+        .trim_start_matches("volatile ")
+        .trim_start_matches("struct ")
+        .trim_start_matches("class ")
+        .trim_start_matches("typename ")
+        .trim_start_matches("enum ")
+        .trim()
+}
+
+/// Strip type qualifier prefixes AND trailing reference/pointer decorators.
+/// Useful when extracting the base type name from a fully decorated C++ type spelling.
+fn strip_type_decorators(s: &str) -> &str {
+    strip_type_qualifiers(s)
+        .trim_end_matches(" &")
+        .trim_end_matches(" &&")
+        .trim_end_matches(" *")
+        .trim_end_matches('&')
+        .trim_end_matches('*')
+        .trim()
+}
 
 /// Walk the AST to collect all typedef/using declarations that resolve to
 /// template specializations (NCollection, math_VectorBase, etc.).
@@ -402,6 +427,18 @@ fn get_entity_line(entity: &Entity) -> Option<u32> {
     Some(location.get_file_location().line)
 }
 
+/// Resolve an entity to its header index by matching its source file name.
+/// Returns `(index, entity_file_path)` if the entity belongs to a target header,
+/// or `None` if the entity is from a non-target file or has no location.
+fn resolve_header_index<'a>(
+    entity: &Entity,
+    filename_to_index: &std::collections::HashMap<&str, usize>,
+) -> Option<(usize, std::path::PathBuf)> {
+    let entity_file = get_entity_file(entity)?;
+    let filename = entity_file.file_name().and_then(|n| n.to_str())?;
+    let &index = filename_to_index.get(filename)?;
+    Some((index, entity_file))
+}
 /// Visit top-level entities for batch parsing
 /// Distributes entities to the appropriate ParsedHeader based on source file
 fn visit_top_level_batch(
@@ -411,21 +448,8 @@ fn visit_top_level_batch(
     results: &mut [ParsedHeader],
     verbose: bool,
 ) -> EntityVisitResult {
-    // Get the file this entity is from
-    let entity_file = match get_entity_file(entity) {
-        Some(f) => f,
-        None => return EntityVisitResult::Continue,
-    };
-
-    // Match by filename since wrapper headers include real source files
-    let filename = match entity_file.file_name().and_then(|n| n.to_str()) {
-        Some(name) => name,
-        None => return EntityVisitResult::Continue,
-    };
-
-    // Check if this is one of our target headers
-    let index = match filename_to_index.get(filename) {
-        Some(&i) => i,
+    let (index, entity_file) = match resolve_header_index(entity, filename_to_index) {
+        Some(resolved) => resolved,
         None => {
             // Not from our target headers - but might need to recurse into namespaces
             // because namespace declarations span multiple files
@@ -472,21 +496,8 @@ fn visit_namespace_member_batch(
     results: &mut [ParsedHeader],
     verbose: bool,
 ) -> EntityVisitResult {
-    // Get the file this entity is from
-    let entity_file = match get_entity_file(entity) {
-        Some(f) => f,
-        None => return EntityVisitResult::Continue,
-    };
-
-    // Match by filename since wrapper headers include real source files
-    let filename = match entity_file.file_name().and_then(|n| n.to_str()) {
-        Some(name) => name,
-        None => return EntityVisitResult::Continue,
-    };
-
-    // Check if this is one of our target headers
-    let index = match filename_to_index.get(filename) {
-        Some(&i) => i,
+    let (index, entity_file) = match resolve_header_index(entity, filename_to_index) {
+        Some(resolved) => resolved,
         None => return EntityVisitResult::Continue,
     };
 
@@ -1487,12 +1498,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // the display name may show the raw template form instead of the typedef.
     // E.g., "NCollection_Map<TDF_Label, NCollection_DefaultHasher<TDF_Label>>"
     // instead of "TDF_LabelMap". Look up the typedef name from our pre-scanned map.
-    let clean_for_lookup = trimmed_spelling
-        .trim_start_matches("const ")
-        .trim_start_matches("struct ")
-        .trim_start_matches("class ")
-        .trim_start_matches("typename ")
-        .trim();
+    let clean_for_lookup = strip_type_qualifiers(trimmed_spelling);
     if clean_for_lookup.contains('<') && !clean_for_lookup.starts_with("opencascade::handle<") && !clean_for_lookup.starts_with("Handle(") {
         if let Some(typedef_name) = lookup_typedef(clean_for_lookup) {
             return Type::Class(typedef_name);
@@ -1505,22 +1511,13 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     let canonical_spelling = canonical.get_display_name();
     
     // Strip const/volatile from canonical spelling for primitive matching
-    let canonical_clean = canonical_spelling
-        .trim()
-        .trim_start_matches("const ")
-        .trim_start_matches("volatile ")
-        .trim();
+    let canonical_clean = strip_type_qualifiers(&canonical_spelling);
     // Defense-in-depth: detect when clang's canonical type is a primitive (int, double, etc.)
     // but the display name clearly identifies a class/typedef. This can happen if a template
     // type fails to instantiate. Legitimate typedefs to primitives (e.g.,
     // `typedef unsigned int Poly_MeshPurpose`) use a typedef chain to a builtin type.
     let spelling_looks_like_class = {
-        let s = trimmed_spelling
-            .trim_start_matches("const ")
-            .trim_start_matches("struct ")
-            .trim_start_matches("class ")
-            .trim_start_matches("typename ")
-            .trim();
+        let s = strip_type_qualifiers(trimmed_spelling);
         let looks_like_class = s.starts_with(|c: char| c.is_ascii_uppercase())
             && map_standard_type(s).is_none()
             && s != "Standard_Boolean"
@@ -1562,10 +1559,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // 2. The spelling contains '<' or '::' — template or namespace-scoped types
     //    whose canonical resolves to int/double/etc. should not be treated as primitives.
     let spelling_is_template_or_namespaced = {
-        let s = trimmed_spelling
-            .trim_start_matches("const ")
-            .trim_start_matches("volatile ")
-            .trim();
+        let s = strip_type_qualifiers(trimmed_spelling);
         s.contains('<') || s.contains("::")
     };
     if !spelling_looks_like_class && !spelling_is_template_or_namespaced {
@@ -1596,22 +1590,10 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     if kind == TypeKind::LValueReference || kind == TypeKind::RValueReference || kind == TypeKind::Pointer
 
     {
-        let canonical_base = canonical_clean
-            .trim_end_matches(" &")
-            .trim_end_matches(" &&")
-            .trim_end_matches(" *")
-            .trim();
+        let canonical_base = strip_type_decorators(canonical_clean);
         if canonical_base == "int" {
             // Strip qualifiers and ref/ptr decorators from the outer display name
-            let base = trimmed_spelling
-                .trim_start_matches("const ")
-                .trim_start_matches("volatile ")
-                .trim_start_matches("struct ")
-                .trim_start_matches("class ")
-                .trim_start_matches("typename ")
-                .trim_end_matches('&')
-                .trim_end_matches('*')
-                .trim();
+            let base = strip_type_decorators(trimmed_spelling);
             let base_looks_like_class = base.starts_with(|c: char| c.is_ascii_uppercase())
                 && map_standard_type(base).is_none()
                 && base != "Standard_Boolean"
@@ -1698,15 +1680,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // For nested types (e.g., TColgp_Array1OfPnt::value_type) or template types,
     // use the canonical type to get the resolved underlying type.
     // clang resolves these for us (e.g., value_type -> gp_Pnt)
-    let clean_name = spelling
-        .trim_start_matches("const ")
-        .trim_start_matches("class ")
-        .trim_start_matches("struct ")
-        .trim_start_matches("typename ")
-        .trim_start_matches("enum ")
-        .trim_end_matches(" &")
-        .trim_end_matches(" *")
-        .trim();
+    let clean_name = strip_type_decorators(&spelling);
     
     // If the spelling contains :: or < (nested/template type), try typedef map first,
     // then try to use canonical
@@ -1717,15 +1691,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
                 return Type::Class(typedef_name);
             }
         }
-        let canonical_clean = canonical_spelling
-
-            .trim_start_matches("const ")
-            .trim_start_matches("class ")
-            .trim_start_matches("struct ")
-            .trim_start_matches("enum ")
-            .trim_end_matches(" &")
-            .trim_end_matches(" *")
-            .trim();
+        let canonical_clean = strip_type_decorators(&canonical_spelling);
         
         // Only use canonical if it's simpler (no :: or <) AND still looks like a class name.
         // If canonical is a primitive like "int", that would produce Type::Class("int")
@@ -1791,12 +1757,7 @@ fn extract_template_arg(type_name: &str) -> String {
 /// Map OCCT Standard_* typedefs to Rust primitive types
 fn map_standard_type(type_name: &str) -> Option<Type> {
     // Strip any const/class/struct prefixes
-    let clean = type_name
-        .trim()
-        .trim_start_matches("const ")
-        .trim_start_matches("class ")
-        .trim_start_matches("struct ")
-        .trim();
+    let clean = strip_type_qualifiers(type_name);
 
     match clean {
         // OCCT standard type aliases

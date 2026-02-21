@@ -777,3 +777,518 @@ Completed: *Commit changes* (7/7)
 Committed as `6023047`. 26 files changed, 2714 insertions, 1131 deletions.
 
 Made changes.
+
+User: It looks like you messed up the commit message. Fix it and amend. Then think about whether you discovered opportunities to refactor the code the avoid repetition in this session. If refactoring seems worthwhile, do it, and commit.
+
+GitHub Copilot: Created 4 todos
+
+Ran terminal command:  cd /Users/sethml/src/opencascade-rs && cat > tmp/commit-msg.txt << 'ENDMSG'
+Add simple typedef resolution for class-to-class typedefs
+
+The binding generator previously only resolved template typedefs (like
+NCollection_List<T> -> TopTools_ListOfShape) and primitive typedefs
+(like Graphic3d_ZLayerId -> Standard_Integer -> int). Simple non-template
+typedefs where one OCCT class aliases another were left unresolved,
+causing 94 methods to be skipped as "unknown type".
+
+Add a new pre-scan pass (collect_simple_typedefs) that walks the AST to
+find typedefs like:
+  typedef TColStd_IndexedMapOfTransient BinObjMgt_SRelocationTable;
+  typedef LDOM_Element XmlObjMgt_Element;
+  typedef NCollection_Utf8String NCollection_String;
+
+These are stored in a thread-local SIMPLE_TYPEDEF_MAP and looked up at
+the end of parse_type() before returning Type::Class(name). The lookup
+includes transitive chain resolution (A -> B -> C resolves A -> C).
+
+Only class-to-class typedefs are resolved; pointer typedefs (T*),
+function pointer typedefs, and primitive typedefs are excluded to
+avoid generating invalid FFI types.
+
+Results: 661 -> 567 skipped symbols (-94, 14.2% reduction)
+- Unknown/unresolved type: 332 -> 233 (-99)
+- BinObjMgt_SRelocationTable (58 skips) fully resolved
+- XmlObjMgt_Element (19 skips) fully resolved
+- NCollection_String (10 skips) fully resolved
+- XmlObjMgt_DOMString (6 skips) fully resolved
+- MeshVS_DisplayModeFlags (5 skips) fully resolved
+- 134 simple typedef entries collected from OCCT headers
+ENDMSG
+
+Ran terminal command:  cat tmp/commit-msg.txt
+
+The heredoc is getting corrupted. Let me use Python to write the file cleanly. 
+
+Ran terminal command:  cd /Users/sethml/src/opencascade-rs && python3 -c "
+msg = '''Add simple typedef resolution for class-to-class typedefs
+
+The binding generator previously only resolved template typedefs (like
+NCollection_List<T> -> TopTools_ListOfShape) and primitive typedefs
+(like Graphic3d_ZLayerId -> Standard_Integer -> int). Simple non-template
+typedefs where one OCCT class aliases another were left unresolved,
+causing 94 methods to be skipped as \"unknown type\".
+
+Add a new pre-scan pass (collect_simple_typedefs) that walks the AST to
+find typedefs like:
+  typedef TColStd_IndexedMapOfTransient BinObjMgt_SRelocationTable;
+  typedef LDOM_Element XmlObjMgt_Element;
+  typedef NCollection_Utf8String NCollection_String;
+
+These are stored in a thread-local SIMPLE_TYPEDEF_MAP and looked up at
+the end of parse_type() before returning Type::Class(name). The lookup
+includes transitive chain resolution (A -> B -> C resolves A -> C).
+
+Only class-to-class typedefs are resolved; pointer typedefs (T*),
+function pointer typedefs, and primitive typedefs are excluded to
+avoid generating invalid FFI types.
+
+Results: 661 -> 567 skipped symbols (-94, 14.2% reduction)
+- Unknown/unresolved type: 332 -> 233 (-99)
+- BinObjMgt_SRelocationTable (58 skips) fully resolved
+- XmlObjMgt_Element (19 skips) fully resolved
+- NCollection_String (10 skips) fully resolved
+- XmlObjMgt_DOMString (6 skips) fully resolved
+- MeshVS_DisplayModeFlags (5 skips) fully resolved
+- 134 simple typedef entries collected from OCCT headers
+'''
+with open('tmp/commit-msg.txt', 'w') as f:
+    f.write(msg)
+print('Written successfully')
+"
+Completed with input:  cd /Users/sethml/src/opencascade-rs && python3 -c "
+msg = '''Add simple typedef resolution for class-to-class typedefs
+
+The binding generator previously only resolved template typedefs (like
+NCollection_List<T> -> TopTools_ListOfShape) and primitive typedefs
+(like Graphic3d_ZLayerId -> Standard_Integer -> int). Simple non-template
+typedefs where one OCCT class aliases another were left unresolved,
+causing 94 methods to be skipped as \"unknown type\".
+
+Add a new pre-scan pass (collect_simple_typedefs) that walks the AST to
+find typedefs like:
+  typedef TColStd_IndexedMapOfTransient BinObjMgt_SRelocationTable;
+  typedef LDOM_Element XmlObjMgt_Element;
+  typedef NCollection_Utf8String NCollection_String;
+
+These are stored in a thread-local SIMPLE_TYPEDEF_MAP and looked up at
+the end of parse_type() before returning Type::Class(name). The lookup
+includes transitive chain resolution (A -> B -> C resolves A -> C).
+
+Only class-to-class typedefs are resolved; pointer typedefs (T*),
+function pointer typedefs, and primitive typedefs are excluded to
+avoid generating invalid FFI types.
+
+Results: 661 -> 567 skipped symbols (-94, 14.2% reduction)
+- Unknown/unresolved type: 332 -> 233 (-99)
+- BinObjMgt_SRelocationTable (58 skips) fully resolved
+- XmlObjMgt_Element (19 skips) fully resolved
+- NCollection_String (10 skips) fully resolved
+- XmlObjMgt_DOMString (6 skips) fully resolved
+- MeshVS_DisplayModeFlags (5 skips) fully resolved
+- 134 simple typedef entries collected from OCCT headers
+'''
+with open('tmp/commit-msg.txt', 'w') as f:
+    f.write(msg)
+print('Written successfully')
+"
+
+Per the project guidelines, let me write a script file instead of using inline quoting. 
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/write_commit_msg.py)
+
+Ran terminal command:  python3 tmp/write_commit_msg.py && cat tmp/commit-msg.txt
+
+Good, the message is clean now. 
+
+Ran terminal command:  git commit --amend -F tmp/commit-msg.txt
+
+Starting: *Review code for refactoring* (2/4)
+
+Now let me review the parser code for refactoring opportunities, particularly around the typedef handling which now has two similar maps (TYPEDEF_MAP and SIMPLE_TYPEDEF_MAP). 
+
+Reading lines 1-60 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1-L61)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1,
+  "endLine": 60
+}
+
+Reading lines 60-240 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L60-L241)
+Completed with input: {
+  "endLine": 240,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 60
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/bc1ce43a-eedc-466d-a915-58671840616e/toolu_0128C6zhQC8KtPF12M3vP5au__vscode-1771608613627/content.txt)
+
+Review parser.rs for refactoring
+
+Reading lines 1-200 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1-L201)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1,
+  "endLine": 200
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/bc1ce43a-eedc-466d-a915-58671840616e/toolu_bdrk_01H8sM5W52xzcbTRQ6YMEWDf__vscode-1771608613630/content.txt)
+
+Reading lines 201-400 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L201-L401)
+Completed with input: {
+  "endLine": 400,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 201
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/bc1ce43a-eedc-466d-a915-58671840616e/toolu_01SxWc9resXjgeCv8N68jjgb__vscode-1771608613632/content.txt)
+
+Reading lines 401-600 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L401-L601)
+Completed with input: {
+  "endLine": 600,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 401
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/bc1ce43a-eedc-466d-a915-58671840616e/toolu_01D8PRkvYPfrYuGVTvYFebEa__vscode-1771608613634/content.txt)
+
+Reading lines 601-800 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L601-L801)
+Completed with input: {
+  "endLine": 800,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 601
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/bc1ce43a-eedc-466d-a915-58671840616e/toolu_01HFUj5aDuSCrBSyvhWxgSAx__vscode-1771608613636/content.txt)
+
+Reading lines 801-1000 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L801-L1001)
+Completed with input: {
+  "endLine": 1000,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 801
+}
+
+Reading lines 1001-1200 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1001-L1201)
+Completed with input: {
+  "endLine": 1200,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1001
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/bc1ce43a-eedc-466d-a915-58671840616e/toolu_01R3V239uFBPzd2qm4UKKjST__vscode-1771608613639/content.txt)
+
+Reading lines 1201-1400 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1201-L1401)
+Completed with input: {
+  "endLine": 1400,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1201
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/bc1ce43a-eedc-466d-a915-58671840616e/toolu_019mskPGtUyxZpQR4A9cJyL6__vscode-1771608613641/content.txt)
+
+Reading lines 1401-1600 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1401-L1601)
+Completed with input: {
+  "endLine": 1600,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1401
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/bc1ce43a-eedc-466d-a915-58671840616e/toolu_bdrk_01SWiZoPPpgWR3zSF5HT8wcL__vscode-1771608613643/content.txt)
+
+Reading lines 1601-1850 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1601-L1851)
+Completed with input: {
+  "endLine": 1850,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1601
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/bc1ce43a-eedc-466d-a915-58671840616e/toolu_01NNR47pXNFj42Spf8Ldnrhb__vscode-1771608613645/content.txt)
+
+Reading lines 1851-1950 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1851-L1951)
+Completed with input: {
+  "endLine": 1950,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1851
+}
+
+Good analysis. Let me implement the top two refactorings: the strip-qualifiers helper and the entity-to-header-index helper. Let me read the specific sections. 
+
+Starting: *Implement refactoring* (3/4)
+
+Let me read all the relevant code sections in parallel:   
+
+Reading lines 400-500 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L400-L501)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 400,
+  "endLine": 500
+}
+
+Reading lines 1480-1630 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1480-L1631)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1480,
+  "endLine": 1630
+}
+
+Reading lines 1690-1810 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1690-L1811)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1690,
+  "endLine": 1810
+}
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/bc1ce43a-eedc-466d-a915-58671840616e/toolu_bdrk_01QpKBp3PhLzyFqTMzE43Gxs__vscode-1771608613650/content.txt)
+
+Now let me read the remaining strip-qualifiers sites: 
+
+Reading lines 1630-1660 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1630-L1661)
+Completed with input: {
+  "endLine": 1660,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1630
+}
+
+Now I have a clear picture. Let me implement both refactorings:
+
+1. **`strip_type_qualifiers` / `strip_type_decorators` helpers** - replace 7 instances of repeated qualifier stripping
+2. **`resolve_header_index` helper** - deduplicate entity-to-header resolutionNow let me implement both refactorings. First, add the helper functions after the existing utility functions: 
+
+Edited: [parser.rs -2+27](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L43-L70)
+Completed with input: {
+  "edits": [
+    {
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "43:io,44:dd",
+      "content": "}\n\n/// Strip C++ type qualifier prefixes (const, volatile, struct, class, typename, enum)\n/// from a type spelling. Call sites used to chain these manually; this centralizes the\n/// stripping logic and avoids accidental divergence.\nfn strip_type_qualifiers(s: &str) -> &str {\n    s.trim()\n        .trim_start_matches(\"const \")\n        .trim_start_matches(\"volatile \")\n        .trim_start_matches(\"struct \")\n        .trim_start_matches(\"class \")\n        .trim_start_matches(\"typename \")\n        .trim_start_matches(\"enum \")\n        .trim()\n}\n\n/// Strip type qualifier prefixes AND trailing reference/pointer decorators.\n/// Useful when extracting the base type name from a fully decorated C++ type spelling.\nfn strip_type_decorators(s: &str) -> &str {\n    strip_type_qualifiers(s)\n        .trim_end_matches(\" &\")\n        .trim_end_matches(\" &&\")\n        .trim_end_matches(\" *\")\n        .trim_end_matches('&')\n        .trim_end_matches('*')\n        .trim()\n}"
+    }
+  ]
+}
+
+Now add the `resolve_header_index` helper near the visit functions. Let me re-read the area first to get fresh hashes: 
+
+Reading lines 420-435 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L420-L436)
+Completed with input: {
+  "endLine": 435,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 420
+}
+
+Edited: [parser.rs -2+14](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L428-L442)
+Completed with input: {
+  "edits": [
+    {
+      "content": "}\n\n/// Resolve an entity to its header index by matching its source file name.\n/// Returns `(index, entity_file_path)` if the entity belongs to a target header,\n/// or `None` if the entity is from a non-target file or has no location.\nfn resolve_header_index<'a>(\n    entity: &Entity,\n    filename_to_index: &std::collections::HashMap<&str, usize>,\n) -> Option<(usize, std::path::PathBuf)> {\n    let entity_file = get_entity_file(entity)?;\n    let filename = entity_file.file_name().and_then(|n| n.to_str())?;\n    let &index = filename_to_index.get(filename)?;\n    Some((index, entity_file))\n}",
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "428:io,429:dd"
+    }
+  ]
+}
+
+Now update `visit_top_level_batch` to use the new helper. Let me re-read it:  
+
+Reading lines 442-500 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L442-L501)
+Completed with input: {
+  "endLine": 500,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 442
+}
+
+Edited: [parser.rs -34+21](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L444-L465)
+Completed with input: {
+  "edits": [
+    {
+      "content": "fn visit_top_level_batch(\n    entity: &Entity,\n    _header_set: &std::collections::HashSet<&Path>,\n    filename_to_index: &std::collections::HashMap<&str, usize>,\n    results: &mut [ParsedHeader],\n    verbose: bool,\n) -> EntityVisitResult {\n    let (index, entity_file) = match resolve_header_index(entity, filename_to_index) {\n        Some(resolved) => resolved,\n        None => {\n            // Not from our target headers - but might need to recurse into namespaces\n            // because namespace declarations span multiple files\n            if entity.get_kind() == EntityKind::Namespace && entity.get_name().as_deref() != Some(\"std\") {\n                let namespace_name = entity.get_name().unwrap_or_default();\n                entity.visit_children(|child, _| {\n                    visit_namespace_member_batch(&child, filename_to_index, &namespace_name, results, verbose)\n                });\n            }\n            return EntityVisitResult::Continue;\n        }\n    };",
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "444:uw,445:pd,446:rj,447:yb,448:bn,449:hx,450:ll,451:db,452:yp,453:rb,454:cy,455:jv,456:dd,457:nx,458:hf,459:xs,460:cy,461:jv,462:dd,463:ax,464:zw,465:ha,466:lx,467:in,468:oi,469:gw,470:bu,471:ta,472:mf,473:qx,474:uo,475:eu,476:cy,477:jv"
+    }
+  ]
+}
+
+Now update `visit_namespace_member_batch`. Let me re-read it:  
+
+Reading lines 486-530 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L486-L531)
+Completed with input: {
+  "endLine": 530,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 486
+}
+
+Edited: [parser.rs -24+11](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L492-L503)
+Completed with input: {
+  "edits": [
+    {
+      "content": "fn visit_namespace_member_batch(\n    entity: &Entity,\n    filename_to_index: &std::collections::HashMap<&str, usize>,\n    namespace: &str,\n    results: &mut [ParsedHeader],\n    verbose: bool,\n) -> EntityVisitResult {\n    let (index, entity_file) = match resolve_header_index(entity, filename_to_index) {\n        Some(resolved) => resolved,\n        None => return EntityVisitResult::Continue,\n    };",
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "492:wh,493:pd,494:yb,495:lm,496:bn,497:hx,498:ll,499:db,500:yp,501:rb,502:cy,503:jv,504:dd,505:nx,506:hf,507:xs,508:cy,509:jv,510:dd,511:ax,512:zw,513:ha,514:cy,515:jv"
+    }
+  ]
+}
+
+Now let me apply the `strip_type_qualifiers` / `strip_type_decorators` replacements in `parse_type` and `map_standard_type`. Let me re-read the relevant sections with fresh hashes:   
+
+Reading lines 1495-1530 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1495-L1531)
+Completed with input: {
+  "endLine": 1530,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1495
+}
+
+Reading lines 1528-1590 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1528-L1591)
+Completed with input: {
+  "endLine": 1590,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1528
+}
+
+Reading lines 1600-1660 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1600-L1661)
+Completed with input: {
+  "endLine": 1660,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1600
+}
+
+Now let me read the last section with the clean_name area:   
+
+Reading lines 1700-1810 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1700-L1811)
+Completed with input: {
+  "endLine": 1810,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1700
+}
+
+Now I'll apply all the qualifier-stripping replacements in batch: 
+
+Edited: [parser.rs -6+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1501-L1502), [-5+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1514-L1515), [-6+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1520-L1521), [-4+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1562-L1563), [-9+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1600-L1601), [-9+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1687-L1688), [-9+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1698-L1699), [-6+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1764-L1765)
+Completed with input: {
+  "edits": [
+    {
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "1501:oj,1502:ab,1503:cr,1504:ds,1505:uc,1506:dr",
+      "content": "    let clean_for_lookup = strip_type_qualifiers(trimmed_spelling);"
+    },
+    {
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "1519:eg,1520:oc,1521:ab,1522:lx,1523:dr",
+      "content": "    let canonical_clean = strip_type_qualifiers(&canonical_spelling);"
+    },
+    {
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "1529:hk,1530:ej,1531:qa,1532:te,1533:mz,1534:vg",
+      "content": "        let s = strip_type_qualifiers(trimmed_spelling);"
+    },
+    {
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "1576:hk,1577:ej,1578:xe,1579:vg",
+      "content": "        let s = strip_type_qualifiers(trimmed_spelling);"
+    },
+    {
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "1617:hx,1618:oz,1619:td,1620:cz,1621:rd,1622:eu,1623:gv,1624:ay,1625:nx",
+      "content": "            let base = strip_type_decorators(trimmed_spelling);"
+    },
+    {
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "1712:sq,1713:ab,1714:ds,1715:cr,1716:uc,1717:oe,1718:kv,1719:yw,1720:dr",
+      "content": "    let clean_name = strip_type_decorators(spelling);"
+    },
+    {
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "1731:sg,1732:dd,1733:ej,1734:te,1735:qa,1736:ko,1737:yh,1738:iw,1739:vg",
+      "content": "        let canonical_clean = strip_type_decorators(&canonical_spelling);"
+    },
+    {
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "1805:yq,1806:oc,1807:ab,1808:ds,1809:cr,1810:dr",
+      "content": "    let clean = strip_type_qualifiers(type_name);"
+    }
+  ]
+}
+
+Also simplify the `canonical_base` stripping (L1610-1614 range):  
+
+Reading lines 1595-1620 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1595-L1621)
+Completed with input: {
+  "endLine": 1620,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1595
+}
+
+Reading lines 1587-1600 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1587-L1601)
+Completed with input: {
+  "endLine": 1600,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1587
+}
+
+Edited: [parser.rs -5+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1593-L1594)
+Completed with input: {
+  "edits": [
+    {
+      "content": "        let canonical_base = strip_type_decorators(canonical_clean);",
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "1593:zy,1594:yh,1595:km,1596:iw,1597:vg"
+    }
+  ]
+}
+
+Now let's check it compiles:  
+
+Ran terminal command:  time cargo check -p opencascade-binding-generator 2>&1
+Completed with input:  time cargo check -p opencascade-binding-generator 2>&1
+
+Reading lines 1682-1685 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1682-L1686)
+Completed with input: {
+  "endLine": 1685,
+  "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1682
+}
+
+Edited: [parser.rs -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1683-L1684)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    let clean_name = strip_type_decorators(&spelling);",
+      "filePath": "crates/opencascade-binding-generator/src/parser.rs",
+      "lineHashes": "1683:so"
+    }
+  ]
+}
+
+Ran terminal command:  time cargo check -p opencascade-binding-generator 2>&1
+
+Compiles. Now let me regenerate bindings and run the full test suite to make sure the refactoring is behavior-preserving:  
+
+Ran terminal command:  time scripts/regenerate-bindings.sh 2>&1
+
+Ran terminal command:  git diff --stat crates/opencascade-sys/generated/
+
+No changes to generated output — the refactoring is purely structural. Now run the tests:   
+
+Ran terminal command:  time scripts/run-binding-generator-tests.sh 2>&1
+
+All 16 tests pass. Now run the workspace build and tests:   
+
+Ran terminal command:  time cargo build 2>&1
+
+Ran terminal command:  time cargo test --workspace --exclude opencascade-binding-generator 2>&1
+
+Ran terminal command:  cargo test --workspace --exclude opencascade-binding-generator 2>&1 | tail -20
+
+All tests pass. Now commit:  
+
+Starting: *Test and commit refactoring* (4/4)
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/write_commit_msg2.py)
+
+Ran terminal command:  python3 tmp/write_commit_msg2.py && cat tmp/commit-msg.txt
+
+Ran terminal command:  git add crates/opencascade-binding-generator/src/parser.rs && git commit -F tmp/commit-msg.txt
+
+Completed: *Test and commit refactoring* (4/4)
+
+Done. Two commits:
+
+1. **`873cefe`** — Fixed (amended) commit message for the typedef resolution commit
+2. **`4559e2f`** — Refactoring: extracted `strip_type_qualifiers`/`strip_type_decorators` (replaced 8 duplicate call sites, -39 net lines) and `resolve_header_index` (deduplicated 3-step entity resolution in 2 visitor functions). Pure refactoring — regenerated bindings are identical.
+
+Made changes.
