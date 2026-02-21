@@ -6,6 +6,35 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `XmlMDF.hxx`:57 - `XmlMDF::FromTo`
+/// Translates a transient <aSource> into a persistent
+/// <aTarget>.
+pub fn from_to_handletdfdata_element_srelocationtable_handlexmlmdfadrivertable_progressrange(
+    aSource: &crate::ffi::HandleTDFData,
+    aTarget: &mut crate::ldom::Element,
+    aReloc: &mut crate::xml_obj_mgt::SRelocationTable,
+    aDrivers: &crate::ffi::HandleXmlMDFADriverTable,
+    theRange: &crate::message::ProgressRange,
+) {
+    unsafe {
+        crate::ffi::XmlMDF_from_to_handletdfdata_element_srelocationtable_handlexmlmdfadrivertable_progressrange(aSource, aTarget, aReloc, aDrivers, theRange)
+    }
+}
+/// **Source:** `XmlMDF.hxx`:67 - `XmlMDF::FromTo`
+/// Translates a persistent <aSource> into a transient
+/// <aTarget>.
+/// Returns True if completed successfully (False on error)
+pub fn from_to_element_handletdfdata_rrelocationtable_handlexmlmdfadrivertable_progressrange(
+    aSource: &crate::ldom::Element,
+    aTarget: &mut crate::ffi::HandleTDFData,
+    aReloc: &mut crate::xml_obj_mgt::RRelocationTable,
+    aDrivers: &crate::ffi::HandleXmlMDFADriverTable,
+    theRange: &crate::message::ProgressRange,
+) -> bool {
+    unsafe {
+        crate::ffi::XmlMDF_from_to_element_handletdfdata_rrelocationtable_handlexmlmdfadrivertable_progressrange(aSource, aTarget, aReloc, aDrivers, theRange)
+    }
+}
 /// **Source:** `XmlMDF.hxx`:75 - `XmlMDF::AddDrivers`
 /// Adds the attribute storage drivers to <aDriverSeq>.
 pub fn add_drivers_handlexmlmdfadrivertable_handlemessagemessenger_6(

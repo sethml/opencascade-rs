@@ -412,6 +412,27 @@ impl FTFont {
         unsafe { crate::ffi::Font_FTFont_glyph_rect(self as *const Self, theRect) }
     }
 
+    /// **Source:** `Font_FTFont.hxx`:292 - `Font_FTFont::BoundingBox()`
+    /// Computes bounding box of the given text using plain-text formatter (Font_TextFormatter).
+    /// Note that bounding box takes into account the text alignment options.
+    /// Its corners are relative to the text alignment anchor point, their coordinates can be
+    /// negative.
+    pub fn bounding_box(
+        &mut self,
+        theString: &crate::ffi::NCollection_Utf8String,
+        theAlignX: crate::graphic3d::HorizontalTextAlignment,
+        theAlignY: crate::graphic3d::VerticalTextAlignment,
+    ) -> crate::OwnedPtr<Rect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Font_FTFont_bounding_box(
+                self as *mut Self,
+                theString,
+                theAlignX.into(),
+                theAlignY.into(),
+            ))
+        }
+    }
+
     /// **Source:** `Font_FTFont.hxx`:77 - `Font_FTFont::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
@@ -536,7 +557,7 @@ impl HandleFontFTFont {
     }
 }
 
-// ── Skipped symbols for FTFont (15 total) ──
+// ── Skipped symbols for FTFont (14 total) ──
 // SKIPPED: **Source:** `Font_FTFont.hxx`:229 - `Font_FTFont::RenderGlyph`
 //   method: Render specified glyph into internal buffer (bitmap).
 //   Reason: param 'theChar' uses unknown type 'Standard_Utf32Char'
@@ -575,19 +596,12 @@ impl HandleFontFTFont {
 //   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
 //   // pub fn advance_y(&mut self, theUChar: Utf32Char, theUCharNext: Utf32Char) -> f32;
 //
-// SKIPPED: **Source:** `Font_FTFont.hxx`:292 - `Font_FTFont::BoundingBox`
-//   method: Computes bounding box of the given text using plain-text formatter (Font_TextFormatter).
-//   method: Note that bounding box takes into account the text alignment options.
-//   method: Its corners are relative to the text alignment anchor point, their coordinates can be
-//   Reason: param 'theString' uses unknown type 'const NCollection_String&'
-//   // pub fn bounding_box(&mut self, theString: &String, theAlignX: HorizontalTextAlignment, theAlignY: VerticalTextAlignment) -> OwnedPtr<Font_Rect>;
-//
 // SKIPPED: **Source:** `Font_FTFont.hxx`:301 - `Font_FTFont::renderGlyphOutline`
 //   method: Computes outline contour for the symbol.
 //   method: @param[in] theUChar     the character to be loaded as current one
 //   method: @param[out] theOutline   outline contour
 //   Reason: param 'theChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn render_glyph_outline(&mut self, theChar: Utf32Char) -> *const Outline;
+//   // pub fn render_glyph_outline(&mut self, theChar: Utf32Char) -> *const Outline_;
 //
 // SKIPPED: **Source:** `Font_FTFont.hxx`:92 - `Font_FTFont::IsCharFromCJK`
 //   static_method: Return TRUE if specified character is within subset of modern CJK characters.
@@ -1515,6 +1529,12 @@ impl TextFormatter {
         unsafe { crate::ffi::Font_TextFormatter_reset(self as *mut Self) }
     }
 
+    /// **Source:** `Font_TextFormatter.hxx`:158 - `Font_TextFormatter::Append()`
+    /// Render specified text to inner buffer.
+    pub fn append(&mut self, theString: &crate::ffi::NCollection_Utf8String, theFont: &mut FTFont) {
+        unsafe { crate::ffi::Font_TextFormatter_append(self as *mut Self, theString, theFont) }
+    }
+
     /// **Source:** `Font_TextFormatter.hxx`:162 - `Font_TextFormatter::Format()`
     /// Perform formatting on the buffered text.
     /// Should not be called more than once after initialization!
@@ -1526,6 +1546,12 @@ impl TextFormatter {
     /// Returns specific glyph rectangle.
     pub fn bottom_left(&self, theIndex: i32) -> &crate::ffi::gp_Vec2f {
         unsafe { &*(crate::ffi::Font_TextFormatter_bottom_left(self as *const Self, theIndex)) }
+    }
+
+    /// **Source:** `Font_TextFormatter.hxx`:178 - `Font_TextFormatter::String()`
+    /// Returns current rendering string.
+    pub fn string(&self) -> &crate::ffi::NCollection_Utf8String {
+        unsafe { &*(crate::ffi::Font_TextFormatter_string(self as *const Self)) }
     }
 
     /// **Source:** `Font_TextFormatter.hxx`:182 - `Font_TextFormatter::GlyphBoundingBox()`
@@ -1774,17 +1800,7 @@ impl HandleFontTextFormatter {
     }
 }
 
-// ── Skipped symbols for TextFormatter (6 total) ──
-// SKIPPED: **Source:** `Font_TextFormatter.hxx`:158 - `Font_TextFormatter::Append`
-//   method: Render specified text to inner buffer.
-//   Reason: param 'theString' uses unknown type 'const NCollection_String&'
-//   // pub fn append(&mut self, theString: &String, theFont: &mut FTFont);
-//
-// SKIPPED: **Source:** `Font_TextFormatter.hxx`:178 - `Font_TextFormatter::String`
-//   method: Returns current rendering string.
-//   Reason: return type 'const NCollection_String&' is unknown
-//   // pub fn string(&self) -> &String;
-//
+// ── Skipped symbols for TextFormatter (4 total) ──
 // SKIPPED: **Source:** `Font_TextFormatter.hxx`:270 - `Font_TextFormatter::Corners`
 //   method: Returns internal container of the top left corners of a formatted rectangles.
 //   Reason: has unbindable types: return: unresolved template type (const NCollection_Vector<NCollection_Vec2<Standard_ShortReal>>&)

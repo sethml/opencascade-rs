@@ -68,6 +68,61 @@ impl BRepFont {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdPrs_BRepFont_ctor()) }
     }
 
+    /// **Source:** `StdPrs_BRepFont.hxx`:63 - `StdPrs_BRepFont::StdPrs_BRepFont()`
+    /// Constructor with initialization.
+    /// @param theFontPath FULL path to the font
+    /// @param theSize     the face size in model units
+    /// @param theFaceId   face id within the file (0 by default)
+    pub fn new_utf8string_real_int(
+        theFontPath: &crate::ffi::NCollection_Utf8String,
+        theSize: f64,
+        theFaceId: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdPrs_BRepFont_ctor_utf8string_real_int(
+                theFontPath,
+                theSize,
+                theFaceId,
+            ))
+        }
+    }
+
+    /// **Source:** `StdPrs_BRepFont.hxx`:72 - `StdPrs_BRepFont::StdPrs_BRepFont()`
+    /// Constructor with initialization.
+    /// @param theFontName    the font name
+    /// @param theFontAspect  the font style
+    /// @param theSize        the face size in model units
+    /// @param theStrictLevel search strict level for using aliases and fallback
+    pub fn new_utf8string_fontaspect_real_strictlevel(
+        theFontName: &crate::ffi::NCollection_Utf8String,
+        theFontAspect: crate::font::FontAspect,
+        theSize: f64,
+        theStrictLevel: crate::font::StrictLevel,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StdPrs_BRepFont_ctor_utf8string_fontaspect_real_strictlevel(
+                    theFontName,
+                    theFontAspect.into(),
+                    theSize,
+                    theStrictLevel.into(),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StdPrs_BRepFont.hxx`:63 - `StdPrs_BRepFont::StdPrs_BRepFont()`
+    /// Constructor with initialization.
+    /// @param theFontPath FULL path to the font
+    /// @param theSize     the face size in model units
+    /// @param theFaceId   face id within the file (0 by default)
+    pub fn new_utf8string_real(
+        theFontPath: &crate::ffi::NCollection_Utf8String,
+        theSize: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_utf8string_real_int(theFontPath, theSize, 0)
+    }
+
     /// **Source:** `StdPrs_BRepFont.hxx`:42 - `StdPrs_BRepFont::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StdPrs_BRepFont_dynamic_type(self as *const Self)) }
@@ -77,6 +132,28 @@ impl BRepFont {
     /// Release currently loaded font.
     pub fn release(&mut self) {
         unsafe { crate::ffi::StdPrs_BRepFont_release(self as *mut Self) }
+    }
+
+    /// **Source:** `StdPrs_BRepFont.hxx`:85 - `StdPrs_BRepFont::Init()`
+    /// Initialize the font.
+    /// @param theFontPath FULL path to the font
+    /// @param theSize     the face size in model units
+    /// @param theFaceId   face id within the file (0 by default)
+    /// @return true on success
+    pub fn init_utf8string_real_int(
+        &mut self,
+        theFontPath: &crate::ffi::NCollection_Utf8String,
+        theSize: f64,
+        theFaceId: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StdPrs_BRepFont_init_utf8string_real_int(
+                self as *mut Self,
+                theFontPath,
+                theSize,
+                theFaceId,
+            )
+        }
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:99 - `StdPrs_BRepFont::FindAndInit()`
@@ -171,6 +248,25 @@ impl BRepFont {
     /// Returns mutex.
     pub fn mutex(&mut self) -> &mut crate::standard::Mutex {
         unsafe { &mut *(crate::ffi::StdPrs_BRepFont_mutex(self as *mut Self)) }
+    }
+
+    /// **Source:** `StdPrs_BRepFont.hxx`:177 - `StdPrs_BRepFont::Init()`
+    /// Find (using Font_FontMgr) and initialize the font from the given name.
+    /// Alias for FindAndInit() for backward compatibility.
+    pub fn init_utf8string_fontaspect_real(
+        &mut self,
+        theFontName: &crate::ffi::NCollection_Utf8String,
+        theFontAspect: crate::font::FontAspect,
+        theSize: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StdPrs_BRepFont_init_utf8string_fontaspect_real(
+                self as *mut Self,
+                theFontName,
+                theFontAspect.into(),
+                theSize,
+            )
+        }
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:42 - `StdPrs_BRepFont::get_type_name()`
@@ -299,28 +395,7 @@ impl HandleStdPrsBRepFont {
     }
 }
 
-// ── Skipped symbols for BRepFont (9 total) ──
-// SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:63 - `StdPrs_BRepFont::StdPrs_BRepFont`
-//   constructor: Constructor with initialization.
-//   constructor: @param theFontPath FULL path to the font
-//   constructor: @param theSize     the face size in model units
-//   Reason: param 'theFontPath' uses unknown type 'const NCollection_String&'
-//   // pub fn new_string_real_int(theFontPath: &String, theSize: f64, theFaceId: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:72 - `StdPrs_BRepFont::StdPrs_BRepFont`
-//   constructor: Constructor with initialization.
-//   constructor: @param theFontName    the font name
-//   constructor: @param theFontAspect  the font style
-//   Reason: param 'theFontName' uses unknown type 'const NCollection_String&'
-//   // pub fn new_string_fontaspect_real_strictlevel(theFontName: &String, theFontAspect: FontAspect, theSize: f64, theStrictLevel: StrictLevel) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:85 - `StdPrs_BRepFont::Init`
-//   method: Initialize the font.
-//   method: @param theFontPath FULL path to the font
-//   method: @param theSize     the face size in model units
-//   Reason: param 'theFontPath' uses unknown type 'const NCollection_String&'
-//   // pub fn init(&mut self, theFontPath: &String, theSize: f64, theFaceId: i32) -> bool;
-//
+// ── Skipped symbols for BRepFont (5 total) ──
 // SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:110 - `StdPrs_BRepFont::RenderGlyph`
 //   method: Render single glyph as TopoDS_Shape.
 //   method: @param theChar glyph identifier
@@ -352,12 +427,6 @@ impl HandleStdPrsBRepFont {
 //   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
 //   // pub fn advance_y(&mut self, theUChar: Utf32Char, theUCharNext: Utf32Char) -> f64;
 //
-// SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:177 - `StdPrs_BRepFont::Init`
-//   method: Find (using Font_FontMgr) and initialize the font from the given name.
-//   method: Alias for FindAndInit() for backward compatibility.
-//   Reason: param 'theFontName' uses unknown type 'const NCollection_String&'
-//   // pub fn init(&mut self, theFontName: &String, theFontAspect: FontAspect, theSize: f64) -> bool;
-//
 
 // ========================
 // From StdPrs_BRepTextBuilder.hxx
@@ -385,31 +454,44 @@ impl BRepTextBuilder {
     /// @param theFormatter formatter which defines aligned text
     /// @param thePenLoc start position and orientation on the baseline
     /// @return result shape with pen transformation applied as shape location
-    pub fn perform(
+    pub fn perform_brepfont_handlefonttextformatter_ax3(
         &mut self,
         theFont: &mut BRepFont,
         theFormatter: &crate::ffi::HandleFontTextFormatter,
         thePenLoc: &crate::gp::Ax3,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StdPrs_BRepTextBuilder_perform(
-                self as *mut Self,
-                theFont,
-                theFormatter,
-                thePenLoc,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StdPrs_BRepTextBuilder_perform_brepfont_handlefonttextformatter_ax3(
+                    self as *mut Self,
+                    theFont,
+                    theFormatter,
+                    thePenLoc,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StdPrs_BRepTextBuilder.hxx`:41 - `StdPrs_BRepTextBuilder::Perform()`
+    /// Render text as BRep shape.
+    /// @param theString text in UTF-8 encoding
+    /// @param thePenLoc start position and orientation on the baseline
+    /// @param theHAlign horizontal alignment of the text
+    /// @param theVAlign vertical alignment of the text
+    /// @return result shape with pen transformation applied as shape location
+    pub fn perform_brepfont_utf8string_ax3_horizontaltextalignment_verticaltextalignment(
+        &mut self,
+        theFont: &mut BRepFont,
+        theString: &crate::ffi::NCollection_Utf8String,
+        thePenLoc: &crate::gp::Ax3,
+        theHAlign: crate::graphic3d::HorizontalTextAlignment,
+        theVAlign: crate::graphic3d::VerticalTextAlignment,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdPrs_BRepTextBuilder_perform_brepfont_utf8string_ax3_horizontaltextalignment_verticaltextalignment(self as *mut Self, theFont, theString, thePenLoc, theHAlign.into(), theVAlign.into()))
         }
     }
 }
-
-// ── Skipped symbols for BRepTextBuilder (1 total) ──
-// SKIPPED: **Source:** `StdPrs_BRepTextBuilder.hxx`:41 - `StdPrs_BRepTextBuilder::Perform`
-//   method: Render text as BRep shape.
-//   method: @param theString text in UTF-8 encoding
-//   method: @param thePenLoc start position and orientation on the baseline
-//   Reason: param 'theString' uses unknown type 'const NCollection_String&'
-//   // pub fn perform(&mut self, theFont: &mut BRepFont, theString: &String, thePenLoc: &Ax3, theHAlign: HorizontalTextAlignment, theVAlign: VerticalTextAlignment) -> OwnedPtr<TopoDS_Shape>;
-//
 
 // ========================
 // From StdPrs_Curve.hxx

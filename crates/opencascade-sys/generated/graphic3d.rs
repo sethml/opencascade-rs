@@ -33121,6 +33121,18 @@ impl Text {
         unsafe { &*(crate::ffi::Graphic3d_Text_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Graphic3d_Text.hxx`:47 - `Graphic3d_Text::Text()`
+    /// Returns text value.
+    pub fn text(&self) -> &crate::ffi::NCollection_Utf8String {
+        unsafe { &*(crate::ffi::Graphic3d_Text_text(self as *const Self)) }
+    }
+
+    /// **Source:** `Graphic3d_Text.hxx`:50 - `Graphic3d_Text::SetText()`
+    /// Sets text value.
+    pub fn set_text_utf8string(&mut self, theText: &crate::ffi::NCollection_Utf8String) {
+        unsafe { crate::ffi::Graphic3d_Text_set_text_utf8string(self as *mut Self, theText) }
+    }
+
     /// **Source:** `Graphic3d_Text.hxx`:53 - `Graphic3d_Text::SetText()`
     /// Sets text value.
     pub fn set_text_asciistring(&mut self, theText: &crate::t_collection::AsciiString) {
@@ -33363,18 +33375,6 @@ impl HandleGraphic3dText {
         }
     }
 }
-
-// ── Skipped symbols for Text (2 total) ──
-// SKIPPED: **Source:** `Graphic3d_Text.hxx`:47 - `Graphic3d_Text::Text`
-//   method: Returns text value.
-//   Reason: return type 'const NCollection_String&' is unknown
-//   // pub fn text(&self) -> &String;
-//
-// SKIPPED: **Source:** `Graphic3d_Text.hxx`:50 - `Graphic3d_Text::SetText`
-//   method: Sets text value.
-//   Reason: param 'theText' uses unknown type 'const NCollection_String&'
-//   // pub fn set_text(&mut self, theText: &String);
-//
 
 // ========================
 // From Graphic3d_Texture1D.hxx

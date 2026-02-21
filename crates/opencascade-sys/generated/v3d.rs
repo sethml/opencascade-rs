@@ -6106,8 +6106,8 @@ impl HandleV3dView {
 //
 // SKIPPED: **Source:** `V3d_View.hxx`:827 - `V3d_View::ActiveLightIterator`
 //   method: Return iterator for defined lights.
-//   Reason: return type 'V3d_ListOfLightIterator' is unknown
-//   // pub fn active_light_iterator(&self) -> OwnedPtr<V3d_ListOfLightIterator>;
+//   Reason: return type 'V3d_ListOfLight::Iterator' is not CppDeletable
+//   // pub fn active_light_iterator(&self) -> OwnedPtr<V3d_ListOfLight::Iterator>;
 //
 // SKIPPED: **Source:** `V3d_View.hxx`:1113 - `V3d_View::Subviews`
 //   method: Return subview list.
@@ -7058,23 +7058,23 @@ impl HandleV3dViewer {
 // ── Skipped symbols for Viewer (4 total) ──
 // SKIPPED: **Source:** `V3d_Viewer.hxx`:252 - `V3d_Viewer::ActiveViewIterator`
 //   method: Return an iterator for active views.
-//   Reason: return type 'V3d_ListOfViewIterator' is unknown
-//   // pub fn active_view_iterator(&self) -> OwnedPtr<V3d_ListOfViewIterator>;
+//   Reason: return type 'V3d_ListOfView::Iterator' is not CppDeletable
+//   // pub fn active_view_iterator(&self) -> OwnedPtr<V3d_ListOfView::Iterator>;
 //
 // SKIPPED: **Source:** `V3d_Viewer.hxx`:265 - `V3d_Viewer::DefinedViewIterator`
 //   method: Return an iterator for defined views.
-//   Reason: return type 'V3d_ListOfViewIterator' is unknown
-//   // pub fn defined_view_iterator(&self) -> OwnedPtr<V3d_ListOfViewIterator>;
+//   Reason: return type 'V3d_ListOfView::Iterator' is not CppDeletable
+//   // pub fn defined_view_iterator(&self) -> OwnedPtr<V3d_ListOfView::Iterator>;
 //
 // SKIPPED: **Source:** `V3d_Viewer.hxx`:305 - `V3d_Viewer::ActiveLightIterator`
 //   method: Return an iterator for defined lights.
-//   Reason: return type 'V3d_ListOfLightIterator' is unknown
-//   // pub fn active_light_iterator(&self) -> OwnedPtr<V3d_ListOfLightIterator>;
+//   Reason: return type 'V3d_ListOfLight::Iterator' is not CppDeletable
+//   // pub fn active_light_iterator(&self) -> OwnedPtr<V3d_ListOfLight::Iterator>;
 //
 // SKIPPED: **Source:** `V3d_Viewer.hxx`:315 - `V3d_Viewer::DefinedLightIterator`
 //   method: Return an iterator for defined lights.
-//   Reason: return type 'V3d_ListOfLightIterator' is unknown
-//   // pub fn defined_light_iterator(&self) -> OwnedPtr<V3d_ListOfLightIterator>;
+//   Reason: return type 'V3d_ListOfLight::Iterator' is not CppDeletable
+//   // pub fn defined_light_iterator(&self) -> OwnedPtr<V3d_ListOfLight::Iterator>;
 //
 
 // ========================
@@ -7082,7 +7082,6 @@ impl HandleV3dViewer {
 // ========================
 
 pub use crate::ffi::{
-    V3d_ListOfLight as ListOfLight, V3d_ListOfLightIterator as ListOfLightIterator,
-    V3d_ListOfView as ListOfView, V3d_ListOfViewIterator as ListOfViewIterator,
+    V3d_ListOfLight as ListOfLight, V3d_ListOfView as ListOfView,
     V3d_ViewerPointer as ViewerPointer,
 };

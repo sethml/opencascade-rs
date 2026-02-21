@@ -10,4 +10,4 @@
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{FT_Library as Library, FT_Outline as Outline};
+pub use crate::ffi::{FT_Library as Library, FT_Outline_ as Outline_};

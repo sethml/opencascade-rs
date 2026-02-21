@@ -1885,6 +1885,42 @@ impl LocationDriver {
         }
     }
 
+    /// **Source:** `XmlMXCAFDoc_LocationDriver.hxx`:54 - `XmlMXCAFDoc_LocationDriver::Translate()`
+    /// Translate a non storable Location to a storable Location.
+    pub fn translate_location_element_srelocationtable(
+        &self,
+        theLoc: &crate::top_loc::Location,
+        theParent: &mut crate::ldom::Element,
+        theMap: &mut crate::xml_obj_mgt::SRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XmlMXCAFDoc_LocationDriver_translate_location_element_srelocationtable(
+                self as *const Self,
+                theLoc,
+                theParent,
+                theMap,
+            )
+        }
+    }
+
+    /// **Source:** `XmlMXCAFDoc_LocationDriver.hxx`:59 - `XmlMXCAFDoc_LocationDriver::Translate()`
+    /// Translate a storable Location to a non storable Location.
+    pub fn translate_element_location_rrelocationtable(
+        &self,
+        theParent: &crate::ldom::Element,
+        theLoc: &mut crate::top_loc::Location,
+        theMap: &mut crate::xml_obj_mgt::RRelocationTable,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XmlMXCAFDoc_LocationDriver_translate_element_location_rrelocationtable(
+                self as *const Self,
+                theParent,
+                theLoc,
+                theMap,
+            )
+        }
+    }
+
     /// **Source:** `XmlMXCAFDoc_LocationDriver.hxx`:65 - `XmlMXCAFDoc_LocationDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XmlMXCAFDoc_LocationDriver_dynamic_type(self as *const Self)) }
@@ -2078,17 +2114,7 @@ impl HandleXmlMXCAFDocLocationDriver {
     }
 }
 
-// ── Skipped symbols for LocationDriver (3 total) ──
-// SKIPPED: **Source:** `XmlMXCAFDoc_LocationDriver.hxx`:54 - `XmlMXCAFDoc_LocationDriver::Translate`
-//   method: Translate a non storable Location to a storable Location.
-//   Reason: param 'theParent' uses unknown type 'XmlObjMgt_Element&'
-//   // pub fn translate(&self, theLoc: &Location, theParent: &mut Element, theMap: &mut SRelocationTable);
-//
-// SKIPPED: **Source:** `XmlMXCAFDoc_LocationDriver.hxx`:59 - `XmlMXCAFDoc_LocationDriver::Translate`
-//   method: Translate a storable Location to a non storable Location.
-//   Reason: param 'theParent' uses unknown type 'const XmlObjMgt_Element&'
-//   // pub fn translate(&self, theParent: &Element, theLoc: &mut Location, theMap: &mut RRelocationTable) -> bool;
-//
+// ── Skipped symbols for LocationDriver (1 total) ──
 // SKIPPED: **Source:** `XmlMXCAFDoc_LocationDriver.hxx`:63 - `XmlMXCAFDoc_LocationDriver::SetSharedLocations`
 //   Reason: param 'theLocations' uses unknown type 'const TopTools_LocationSetPtr&'
 //   // pub fn set_shared_locations(&mut self, theLocations: &LocationSetPtr);

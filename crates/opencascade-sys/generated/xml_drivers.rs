@@ -65,6 +65,25 @@ impl DocumentRetrievalDriver {
         }
     }
 
+    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:40 - `XmlDrivers_DocumentRetrievalDriver::ReadShapeSection()`
+    pub fn read_shape_section(
+        &mut self,
+        thePDoc: &crate::ldom::Element,
+        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXmlMDFADriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XmlDrivers_DocumentRetrievalDriver_read_shape_section(
+                    self as *mut Self,
+                    thePDoc,
+                    theMsgDriver,
+                    theRange,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:45 - `XmlDrivers_DocumentRetrievalDriver::ShapeSetCleaning()`
     pub fn shape_set_cleaning(&mut self, theDriver: &crate::ffi::HandleXmlMDFADriver) {
         unsafe {
@@ -382,12 +401,6 @@ impl HandleXmlDriversDocumentRetrievalDriver {
     }
 }
 
-// ── Skipped symbols for DocumentRetrievalDriver (1 total) ──
-// SKIPPED: **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:40 - `XmlDrivers_DocumentRetrievalDriver::ReadShapeSection`
-//   Reason: param 'thePDoc' uses unknown type 'const XmlObjMgt_Element&'
-//   // pub fn read_shape_section(&mut self, thePDoc: &Element, theMsgDriver: &HandleMessenger, theRange: &ProgressRange) -> OwnedPtr<Handle<XmlMDF_ADriver>>;
-//
-
 // ========================
 // From XmlDrivers_DocumentStorageDriver.hxx
 // ========================
@@ -424,6 +437,23 @@ impl DocumentStorageDriver {
                     self as *mut Self,
                     theMsgDriver,
                 ),
+            )
+        }
+    }
+
+    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:39 - `XmlDrivers_DocumentStorageDriver::WriteShapeSection()`
+    pub fn write_shape_section(
+        &mut self,
+        thePDoc: &mut crate::ldom::Element,
+        theStorageFormatVersion: crate::t_doc_std::FormatVersion,
+        theRange: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XmlDrivers_DocumentStorageDriver_write_shape_section(
+                self as *mut Self,
+                thePDoc,
+                theStorageFormatVersion.into(),
+                theRange,
             )
         }
     }
@@ -768,9 +798,3 @@ impl HandleXmlDriversDocumentStorageDriver {
         }
     }
 }
-
-// ── Skipped symbols for DocumentStorageDriver (1 total) ──
-// SKIPPED: **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:39 - `XmlDrivers_DocumentStorageDriver::WriteShapeSection`
-//   Reason: param 'thePDoc' uses unknown type 'XmlObjMgt_Element&'
-//   // pub fn write_shape_section(&mut self, thePDoc: &mut Element, theStorageFormatVersion: FormatVersion, theRange: &ProgressRange) -> bool;
-//

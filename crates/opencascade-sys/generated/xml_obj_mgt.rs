@@ -6,6 +6,92 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `XmlObjMgt.hxx`:40 - `XmlObjMgt::IdString`
+/// Define the name of XMLattribute 'ID' (to be used everywhere)
+pub fn id_string() -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_id_string()) }
+}
+/// **Source:** `XmlObjMgt.hxx`:43 - `XmlObjMgt::SetExtendedString`
+/// Add attribute <theElement extstring="theString" ...>
+pub fn set_extended_string(
+    theElement: &mut crate::ldom::Element,
+    theString: &crate::t_collection::ExtendedString,
+) -> bool {
+    unsafe { crate::ffi::XmlObjMgt_set_extended_string(theElement, theString) }
+}
+/// **Source:** `XmlObjMgt.hxx`:48 - `XmlObjMgt::GetExtendedString`
+/// Get attribute <theElement extstring="theString" ...>
+pub fn get_extended_string(
+    theElement: &crate::ldom::Element,
+    theString: &mut crate::t_collection::ExtendedString,
+) -> bool {
+    unsafe { crate::ffi::XmlObjMgt_get_extended_string(theElement, theString) }
+}
+/// **Source:** `XmlObjMgt.hxx`:52 - `XmlObjMgt::GetStringValue`
+/// Returns the first child text node
+pub fn get_string_value(
+    theElement: &crate::ldom::Element,
+) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_get_string_value(theElement)) }
+}
+/// **Source:** `XmlObjMgt.hxx`:58 - `XmlObjMgt::SetStringValue`
+/// Add theData as the last child text node to theElement
+/// isClearText(True) avoids analysis of the string and replacement
+/// of characters like '<' and '&' during XML file storage.
+/// Do NEVER set isClearText unless you have a hell of a reason
+pub fn set_string_value(
+    theElement: &mut crate::ldom::Element,
+    theData: &crate::ldom_string::LDOMString,
+    isClearText: bool,
+) {
+    unsafe { crate::ffi::XmlObjMgt_set_string_value(theElement, theData, isClearText) }
+}
+/// **Source:** `XmlObjMgt.hxx`:64 - `XmlObjMgt::GetTagEntryString`
+/// Convert XPath expression (DOMString) into TagEntry string
+/// returns False on Error
+pub fn get_tag_entry_string(
+    theTarget: &crate::ldom_string::LDOMString,
+    theTagEntry: &mut crate::t_collection::AsciiString,
+) -> bool {
+    unsafe { crate::ffi::XmlObjMgt_get_tag_entry_string(theTarget, theTagEntry) }
+}
+/// **Source:** `XmlObjMgt.hxx`:69 - `XmlObjMgt::SetTagEntryString`
+/// Convert XPath expression (DOMString) into TagEntry string
+/// returns False on Error
+pub fn set_tag_entry_string(
+    theSource: &mut crate::ldom_string::LDOMString,
+    theTagEntry: &crate::t_collection::AsciiString,
+) {
+    unsafe { crate::ffi::XmlObjMgt_set_tag_entry_string(theSource, theTagEntry) }
+}
+/// **Source:** `XmlObjMgt.hxx`:72 - `XmlObjMgt::FindChildElement`
+pub fn find_child_element(
+    theSource: &crate::ldom::Element,
+    theObjId: i32,
+) -> crate::OwnedPtr<crate::ldom::Element> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_find_child_element(theSource, theObjId))
+    }
+}
+/// **Source:** `XmlObjMgt.hxx`:75 - `XmlObjMgt::FindChildByRef`
+pub fn find_child_by_ref(
+    theSource: &crate::ldom::Element,
+    theRefName: &crate::ldom_string::LDOMString,
+) -> crate::OwnedPtr<crate::ldom::Element> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_find_child_by_ref(theSource, theRefName))
+    }
+}
+/// **Source:** `XmlObjMgt.hxx`:78 - `XmlObjMgt::FindChildByName`
+pub fn find_child_by_name(
+    theSource: &crate::ldom::Element,
+    theName: &crate::ldom_string::LDOMString,
+) -> crate::OwnedPtr<crate::ldom::Element> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_find_child_by_name(theSource, theName))
+    }
+}
+
 // ========================
 // From XmlObjMgt_Array1.hxx
 // ========================
@@ -35,6 +121,40 @@ impl Array1 {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_Array1_ctor_int2(Low, Up)) }
     }
 
+    /// **Source:** `XmlObjMgt_Array1.hxx`:48 - `XmlObjMgt_Array1::XmlObjMgt_Array1()`
+    /// for restoration from DOM_Element which is child of
+    /// theParent:
+    /// <theParent ...>
+    /// <theName ...>
+    pub fn new_element_ldomstring(
+        theParent: &crate::ldom::Element,
+        theName: &crate::ldom_string::LDOMString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_Array1_ctor_element_ldomstring(
+                theParent, theName,
+            ))
+        }
+    }
+
+    /// **Source:** `XmlObjMgt_Array1.hxx`:52 - `XmlObjMgt_Array1::CreateArrayElement()`
+    /// Create DOM_Element representing the array, under 'theParent'
+    pub fn create_array_element(
+        &mut self,
+        theParent: &mut crate::ldom::Element,
+        theName: &crate::ldom_string::LDOMString,
+    ) {
+        unsafe {
+            crate::ffi::XmlObjMgt_Array1_create_array_element(self as *mut Self, theParent, theName)
+        }
+    }
+
+    /// **Source:** `XmlObjMgt_Array1.hxx`:56 - `XmlObjMgt_Array1::Element()`
+    /// Returns the DOM element of <me>.
+    pub fn element(&self) -> &crate::ldom::Element {
+        unsafe { &*(crate::ffi::XmlObjMgt_Array1_element(self as *const Self)) }
+    }
+
     /// **Source:** `XmlObjMgt_Array1.hxx`:59 - `XmlObjMgt_Array1::Length()`
     /// Returns the number of elements of <me>.
     pub fn length(&self) -> i32 {
@@ -52,36 +172,24 @@ impl Array1 {
     pub fn upper(&self) -> i32 {
         unsafe { crate::ffi::XmlObjMgt_Array1_upper(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for Array1 (5 total) ──
-// SKIPPED: **Source:** `XmlObjMgt_Array1.hxx`:48 - `XmlObjMgt_Array1::XmlObjMgt_Array1`
-//   constructor: for restoration from DOM_Element which is child of
-//   constructor: theParent:
-//   constructor: <theParent ...>
-//   Reason: param 'theParent' uses unknown type 'const XmlObjMgt_Element&'
-//   // pub fn new_element_domstring(theParent: &Element, theName: &DOMString) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XmlObjMgt_Array1.hxx`:52 - `XmlObjMgt_Array1::CreateArrayElement`
-//   method: Create DOM_Element representing the array, under 'theParent'
-//   Reason: param 'theParent' uses unknown type 'XmlObjMgt_Element&'
-//   // pub fn create_array_element(&mut self, theParent: &mut Element, theName: &DOMString);
-//
-// SKIPPED: **Source:** `XmlObjMgt_Array1.hxx`:56 - `XmlObjMgt_Array1::Element`
-//   method: Returns the DOM element of <me>.
-//   Reason: return type 'const XmlObjMgt_Element&' is unknown
-//   // pub fn element(&self) -> &Element;
-//
-// SKIPPED: **Source:** `XmlObjMgt_Array1.hxx`:68 - `XmlObjMgt_Array1::SetValue`
-//   method: Set the <Index>th element of the array to <Value>.
-//   Reason: param 'Value' uses unknown type 'XmlObjMgt_Element&'
-//   // pub fn set_value(&mut self, Index: i32, Value: &mut Element);
-//
-// SKIPPED: **Source:** `XmlObjMgt_Array1.hxx`:71 - `XmlObjMgt_Array1::Value`
-//   method: Returns the value of <Index>th element of the array.
-//   Reason: return type 'XmlObjMgt_Element' is unknown
-//   // pub fn value(&self, Index: i32) -> OwnedPtr<XmlObjMgt_Element>;
-//
+    /// **Source:** `XmlObjMgt_Array1.hxx`:68 - `XmlObjMgt_Array1::SetValue()`
+    /// Set the <Index>th element of the array to <Value>.
+    pub fn set_value(&mut self, Index: i32, Value: &mut crate::ldom::Element) {
+        unsafe { crate::ffi::XmlObjMgt_Array1_set_value(self as *mut Self, Index, Value) }
+    }
+
+    /// **Source:** `XmlObjMgt_Array1.hxx`:71 - `XmlObjMgt_Array1::Value()`
+    /// Returns the value of <Index>th element of the array.
+    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::ldom::Element> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_Array1_value(
+                self as *const Self,
+                Index,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XmlObjMgt_GP.hxx
@@ -103,33 +211,50 @@ impl GP {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_GP_ctor()) }
     }
-}
 
-// ── Skipped symbols for GP (6 total) ──
-// SKIPPED: **Source:** `XmlObjMgt_GP.hxx`:31 - `XmlObjMgt_GP::Translate`
-//   Reason: return type 'XmlObjMgt_DOMString' is unknown
-//   // pub fn translate(aTrsf: &Trsf) -> OwnedPtr<XmlObjMgt_DOMString>;
-//
-// SKIPPED: **Source:** `XmlObjMgt_GP.hxx`:33 - `XmlObjMgt_GP::Translate`
-//   Reason: return type 'XmlObjMgt_DOMString' is unknown
-//   // pub fn translate(aMat: &Mat) -> OwnedPtr<XmlObjMgt_DOMString>;
-//
-// SKIPPED: **Source:** `XmlObjMgt_GP.hxx`:35 - `XmlObjMgt_GP::Translate`
-//   Reason: return type 'XmlObjMgt_DOMString' is unknown
-//   // pub fn translate(anXYZ: &XYZ) -> OwnedPtr<XmlObjMgt_DOMString>;
-//
-// SKIPPED: **Source:** `XmlObjMgt_GP.hxx`:37 - `XmlObjMgt_GP::Translate`
-//   Reason: param 'aStr' uses unknown type 'const XmlObjMgt_DOMString&'
-//   // pub fn translate(aStr: &DOMString, T: &mut Trsf) -> bool;
-//
-// SKIPPED: **Source:** `XmlObjMgt_GP.hxx`:39 - `XmlObjMgt_GP::Translate`
-//   Reason: param 'aStr' uses unknown type 'const XmlObjMgt_DOMString&'
-//   // pub fn translate(aStr: &DOMString, T: &mut Mat) -> bool;
-//
-// SKIPPED: **Source:** `XmlObjMgt_GP.hxx`:41 - `XmlObjMgt_GP::Translate`
-//   Reason: param 'aStr' uses unknown type 'const XmlObjMgt_DOMString&'
-//   // pub fn translate(aStr: &DOMString, T: &mut XYZ) -> bool;
-//
+    /// **Source:** `XmlObjMgt_GP.hxx`:31 - `XmlObjMgt_GP::Translate()`
+    pub fn translate_trsf(
+        aTrsf: &crate::gp::Trsf,
+    ) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_GP_translate_trsf(aTrsf)) }
+    }
+
+    /// **Source:** `XmlObjMgt_GP.hxx`:33 - `XmlObjMgt_GP::Translate()`
+    pub fn translate_mat(aMat: &crate::gp::Mat) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_GP_translate_mat(aMat)) }
+    }
+
+    /// **Source:** `XmlObjMgt_GP.hxx`:35 - `XmlObjMgt_GP::Translate()`
+    pub fn translate_xyz(
+        anXYZ: &crate::gp::XYZ,
+    ) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_GP_translate_xyz(anXYZ)) }
+    }
+
+    /// **Source:** `XmlObjMgt_GP.hxx`:37 - `XmlObjMgt_GP::Translate()`
+    pub fn translate_ldomstring_trsf(
+        aStr: &crate::ldom_string::LDOMString,
+        T: &mut crate::gp::Trsf,
+    ) -> bool {
+        unsafe { crate::ffi::XmlObjMgt_GP_translate_ldomstring_trsf(aStr, T) }
+    }
+
+    /// **Source:** `XmlObjMgt_GP.hxx`:39 - `XmlObjMgt_GP::Translate()`
+    pub fn translate_ldomstring_mat(
+        aStr: &crate::ldom_string::LDOMString,
+        T: &mut crate::gp::Mat,
+    ) -> bool {
+        unsafe { crate::ffi::XmlObjMgt_GP_translate_ldomstring_mat(aStr, T) }
+    }
+
+    /// **Source:** `XmlObjMgt_GP.hxx`:41 - `XmlObjMgt_GP::Translate()`
+    pub fn translate_ldomstring_xyz(
+        aStr: &crate::ldom_string::LDOMString,
+        T: &mut crate::gp::XYZ,
+    ) -> bool {
+        unsafe { crate::ffi::XmlObjMgt_GP_translate_ldomstring_xyz(aStr, T) }
+    }
+}
 
 // ========================
 // From XmlObjMgt_Persistent.hxx
@@ -152,9 +277,60 @@ impl Persistent {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_Persistent_ctor()) }
     }
 
+    /// **Source:** `XmlObjMgt_Persistent.hxx`:36 - `XmlObjMgt_Persistent::XmlObjMgt_Persistent()`
+    /// constructor
+    pub fn new_element(theElement: &crate::ldom::Element) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_Persistent_ctor_element(theElement))
+        }
+    }
+
+    /// **Source:** `XmlObjMgt_Persistent.hxx`:39 - `XmlObjMgt_Persistent::XmlObjMgt_Persistent()`
+    /// constructor from sub-element of Element referenced by theRef
+    pub fn new_element_ldomstring(
+        theElement: &crate::ldom::Element,
+        theRef: &crate::ldom_string::LDOMString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XmlObjMgt_Persistent_ctor_element_ldomstring(
+                theElement, theRef,
+            ))
+        }
+    }
+
+    /// **Source:** `XmlObjMgt_Persistent.hxx`:43 - `XmlObjMgt_Persistent::CreateElement()`
+    /// myElement := <theType id="theID"/>
+    pub fn create_element(
+        &mut self,
+        theParent: &mut crate::ldom::Element,
+        theType: &crate::ldom_string::LDOMString,
+        theID: i32,
+    ) {
+        unsafe {
+            crate::ffi::XmlObjMgt_Persistent_create_element(
+                self as *mut Self,
+                theParent,
+                theType,
+                theID,
+            )
+        }
+    }
+
     /// **Source:** `XmlObjMgt_Persistent.hxx`:47 - `XmlObjMgt_Persistent::SetId()`
     pub fn set_id(&mut self, theId: i32) {
         unsafe { crate::ffi::XmlObjMgt_Persistent_set_id(self as *mut Self, theId) }
+    }
+
+    /// **Source:** `XmlObjMgt_Persistent.hxx`:50 - `XmlObjMgt_Persistent::Element()`
+    /// return myElement
+    pub fn element(&self) -> &crate::ldom::Element {
+        unsafe { &*(crate::ffi::XmlObjMgt_Persistent_element(self as *const Self)) }
+    }
+
+    /// **Source:** `XmlObjMgt_Persistent.hxx`:54 - `XmlObjMgt_Persistent::Element()`
+    /// return myElement
+    pub fn element_mut(&mut self) -> &mut crate::ldom::Element {
+        unsafe { &mut *(crate::ffi::XmlObjMgt_Persistent_element_mut(self as *mut Self)) }
     }
 
     /// **Source:** `XmlObjMgt_Persistent.hxx`:57 - `XmlObjMgt_Persistent::Id()`
@@ -162,33 +338,6 @@ impl Persistent {
         unsafe { crate::ffi::XmlObjMgt_Persistent_id(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for Persistent (5 total) ──
-// SKIPPED: **Source:** `XmlObjMgt_Persistent.hxx`:36 - `XmlObjMgt_Persistent::XmlObjMgt_Persistent`
-//   constructor: constructor
-//   Reason: param 'theElement' uses unknown type 'const XmlObjMgt_Element&'
-//   // pub fn new_element(theElement: &Element) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XmlObjMgt_Persistent.hxx`:39 - `XmlObjMgt_Persistent::XmlObjMgt_Persistent`
-//   constructor: constructor from sub-element of Element referenced by theRef
-//   Reason: param 'theElement' uses unknown type 'const XmlObjMgt_Element&'
-//   // pub fn new_element_domstring(theElement: &Element, theRef: &DOMString) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XmlObjMgt_Persistent.hxx`:43 - `XmlObjMgt_Persistent::CreateElement`
-//   method: myElement := <theType id="theID"/>
-//   Reason: param 'theParent' uses unknown type 'XmlObjMgt_Element&'
-//   // pub fn create_element(&mut self, theParent: &mut Element, theType: &DOMString, theID: i32);
-//
-// SKIPPED: **Source:** `XmlObjMgt_Persistent.hxx`:50 - `XmlObjMgt_Persistent::Element`
-//   method: return myElement
-//   Reason: return type 'const XmlObjMgt_Element&' is unknown
-//   // pub fn element(&self) -> &Element;
-//
-// SKIPPED: **Source:** `XmlObjMgt_Persistent.hxx`:54 - `XmlObjMgt_Persistent::Element`
-//   method: return myElement
-//   Reason: return type 'XmlObjMgt_Element&' is unknown
-//   // pub fn element(&mut self) -> &mut Element;
-//
 
 // ========================
 // From XmlObjMgt_RRelocationTable.hxx
@@ -281,11 +430,3 @@ impl SRelocationTable {
         unsafe { crate::ffi::XmlObjMgt_SRelocationTable_clear(self as *mut Self, doReleaseMemory) }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi::{
-    XmlObjMgt_DOMString as DOMString, XmlObjMgt_Document as Document, XmlObjMgt_Element as Element,
-};

@@ -199,6 +199,25 @@ impl DocumentRetrievalDriver {
         }
     }
 
+    /// Inherited: **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:40 - `XmlDrivers_DocumentRetrievalDriver::ReadShapeSection()`
+    pub fn read_shape_section(
+        &mut self,
+        thePDoc: &crate::ldom::Element,
+        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXmlMDFADriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XmlXCAFDrivers_DocumentRetrievalDriver_inherited_ReadShapeSection(
+                    self as *mut Self,
+                    thePDoc,
+                    theMsgDriver,
+                    theRange,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:45 - `XmlDrivers_DocumentRetrievalDriver::ShapeSetCleaning()`
     pub fn shape_set_cleaning(&mut self, theDriver: &crate::ffi::HandleXmlMDFADriver) {
         unsafe {
@@ -571,6 +590,23 @@ impl DocumentStorageDriver {
             crate::OwnedPtr::from_raw(crate::ffi::XmlXCAFDrivers_DocumentStorageDriver_to_handle(
                 obj.into_raw(),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:39 - `XmlDrivers_DocumentStorageDriver::WriteShapeSection()`
+    pub fn write_shape_section(
+        &mut self,
+        thePDoc: &mut crate::ldom::Element,
+        theStorageFormatVersion: crate::t_doc_std::FormatVersion,
+        theRange: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XmlXCAFDrivers_DocumentStorageDriver_inherited_WriteShapeSection(
+                self as *mut Self,
+                thePDoc,
+                theStorageFormatVersion.into(),
+                theRange,
+            )
         }
     }
 

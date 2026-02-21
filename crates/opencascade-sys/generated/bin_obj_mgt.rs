@@ -740,5 +740,4 @@ impl RRelocationTable {
 pub use crate::ffi::{
     BinObjMgt_PByte as PByte, BinObjMgt_PChar as PChar, BinObjMgt_PExtChar as PExtChar,
     BinObjMgt_PInteger as PInteger, BinObjMgt_PReal as PReal, BinObjMgt_PShortReal as PShortReal,
-    BinObjMgt_SRelocationTable as SRelocationTable,
 };

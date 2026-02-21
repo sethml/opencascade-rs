@@ -81,6 +81,40 @@ impl NamedShapeDriver {
         }
     }
 
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:54 - `XmlMNaming_NamedShapeDriver::ReadShapeSection()`
+    /// Input the shapes from DOM element
+    pub fn read_shape_section(
+        &mut self,
+        anElement: &crate::ldom::Element,
+        theRange: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::XmlMNaming_NamedShapeDriver_read_shape_section(
+                self as *mut Self,
+                anElement,
+                theRange,
+            )
+        }
+    }
+
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:59 - `XmlMNaming_NamedShapeDriver::WriteShapeSection()`
+    /// Output the shapes into DOM element
+    pub fn write_shape_section(
+        &mut self,
+        anElement: &mut crate::ldom::Element,
+        theStorageFormatVersion: crate::t_doc_std::FormatVersion,
+        theRange: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::XmlMNaming_NamedShapeDriver_write_shape_section(
+                self as *mut Self,
+                anElement,
+                theStorageFormatVersion.into(),
+                theRange,
+            )
+        }
+    }
+
     /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:65 - `XmlMNaming_NamedShapeDriver::Clear()`
     /// Clear myShapeSet
     pub fn clear(&mut self) {
@@ -291,18 +325,6 @@ impl HandleXmlMNamingNamedShapeDriver {
         }
     }
 }
-
-// ── Skipped symbols for NamedShapeDriver (2 total) ──
-// SKIPPED: **Source:** `XmlMNaming_NamedShapeDriver.hxx`:54 - `XmlMNaming_NamedShapeDriver::ReadShapeSection`
-//   method: Input the shapes from DOM element
-//   Reason: param 'anElement' uses unknown type 'const XmlObjMgt_Element&'
-//   // pub fn read_shape_section(&mut self, anElement: &Element, theRange: &ProgressRange);
-//
-// SKIPPED: **Source:** `XmlMNaming_NamedShapeDriver.hxx`:59 - `XmlMNaming_NamedShapeDriver::WriteShapeSection`
-//   method: Output the shapes into DOM element
-//   Reason: param 'anElement' uses unknown type 'XmlObjMgt_Element&'
-//   // pub fn write_shape_section(&mut self, anElement: &mut Element, theStorageFormatVersion: FormatVersion, theRange: &ProgressRange);
-//
 
 // ========================
 // From XmlMNaming_NamingDriver.hxx
@@ -571,6 +593,28 @@ unsafe impl crate::CppDeletable for Shape1 {
 }
 
 impl Shape1 {
+    /// **Source:** `XmlMNaming_Shape1.hxx`:38 - `XmlMNaming_Shape1::XmlMNaming_Shape1()`
+    pub fn new_document(Doc: &mut crate::ldom::Document) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XmlMNaming_Shape1_ctor_document(Doc)) }
+    }
+
+    /// **Source:** `XmlMNaming_Shape1.hxx`:40 - `XmlMNaming_Shape1::XmlMNaming_Shape1()`
+    pub fn new_element(E: &crate::ldom::Element) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XmlMNaming_Shape1_ctor_element(E)) }
+    }
+
+    /// **Source:** `XmlMNaming_Shape1.hxx`:43 - `XmlMNaming_Shape1::Element()`
+    /// return myElement
+    pub fn element(&self) -> &crate::ldom::Element {
+        unsafe { &*(crate::ffi::XmlMNaming_Shape1_element(self as *const Self)) }
+    }
+
+    /// **Source:** `XmlMNaming_Shape1.hxx`:46 - `XmlMNaming_Shape1::Element()`
+    /// return myElement
+    pub fn element_mut(&mut self) -> &mut crate::ldom::Element {
+        unsafe { &mut *(crate::ffi::XmlMNaming_Shape1_element_mut(self as *mut Self)) }
+    }
+
     /// **Source:** `XmlMNaming_Shape1.hxx`:48 - `XmlMNaming_Shape1::TShapeId()`
     pub fn t_shape_id(&self) -> i32 {
         unsafe { crate::ffi::XmlMNaming_Shape1_t_shape_id(self as *const Self) }
@@ -603,23 +647,3 @@ impl Shape1 {
         unsafe { crate::ffi::XmlMNaming_Shape1_set_vertex(self as *mut Self, theVertex) }
     }
 }
-
-// ── Skipped symbols for Shape1 (4 total) ──
-// SKIPPED: **Source:** `XmlMNaming_Shape1.hxx`:38 - `XmlMNaming_Shape1::XmlMNaming_Shape1`
-//   Reason: param 'Doc' uses unknown type 'XmlObjMgt_Document&'
-//   // pub fn new_document(Doc: &mut Document) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XmlMNaming_Shape1.hxx`:40 - `XmlMNaming_Shape1::XmlMNaming_Shape1`
-//   Reason: param 'E' uses unknown type 'const XmlObjMgt_Element&'
-//   // pub fn new_element(E: &Element) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XmlMNaming_Shape1.hxx`:43 - `XmlMNaming_Shape1::Element`
-//   method: return myElement
-//   Reason: return type 'const XmlObjMgt_Element&' is unknown
-//   // pub fn element(&self) -> &Element;
-//
-// SKIPPED: **Source:** `XmlMNaming_Shape1.hxx`:46 - `XmlMNaming_Shape1::Element`
-//   method: return myElement
-//   Reason: return type 'XmlObjMgt_Element&' is unknown
-//   // pub fn element(&mut self) -> &mut Element;
-//

@@ -27,6 +27,14 @@ thread_local! {
     /// the canonical form (with C++ primitives like float) are stored as keys,
     /// so lookups work regardless of which spelling clang uses.
     static TYPEDEF_MAP: RefCell<HashMap<String, Vec<String>>> = RefCell::new(HashMap::new());
+
+    /// Map from simple typedef names to their underlying class names.
+    /// Populated by `collect_simple_typedefs()` before type parsing begins.
+    /// Key: typedef name (e.g., "BinObjMgt_SRelocationTable")
+    /// Value: underlying type name (e.g., "TColStd_IndexedMapOfTransient")
+    /// Only contains typedefs where the underlying type is another OCCT class/typedef
+    /// (not template specializations, primitives, or pointers).
+    static SIMPLE_TYPEDEF_MAP: RefCell<HashMap<String, String>> = RefCell::new(HashMap::new());
 }
 
 /// Strip whitespace from a C++ type spelling for typedef map key/lookup.
@@ -122,6 +130,100 @@ fn lookup_typedef(display_name: &str) -> Option<String> {
 /// Used by the resolver to register these as known class types.
 pub fn get_collected_typedef_names() -> HashSet<String> {
     TYPEDEF_MAP.with(|m| m.borrow().values().flat_map(|v| v.iter()).cloned().collect())
+}
+
+/// Walk the AST to collect simple (non-template) typedef declarations where
+/// the underlying type is another OCCT class name. Populates SIMPLE_TYPEDEF_MAP.
+///
+/// This handles cases like:
+///   typedef TColStd_IndexedMapOfTransient BinObjMgt_SRelocationTable;
+///   typedef LDOM_Element XmlObjMgt_Element;
+///   typedef NCollection_Utf8String NCollection_String;
+///
+/// Function pointer typedefs, pointer typedefs (T*), and primitive typedefs
+/// are excluded. Template typedefs (containing '<') are handled separately
+/// by `collect_ncollection_typedefs()`.
+fn collect_simple_typedefs(root: &Entity) {
+    let mut map: HashMap<String, String> = HashMap::new();
+
+    root.visit_children(|entity, _| {
+        if entity.get_kind() == EntityKind::TypedefDecl
+            || entity.get_kind() == EntityKind::TypeAliasDecl
+        {
+            if let Some(name) = entity.get_name() {
+                // Only OCCT-style names (contain underscore)
+                if !name.contains('_') {
+                    return EntityVisitResult::Recurse;
+                }
+
+                if let Some(underlying) = entity.get_typedef_underlying_type() {
+                    let underlying_display = underlying.get_display_name();
+                    let underlying_kind = underlying.get_kind();
+
+                    // Skip template typedefs (handled by collect_ncollection_typedefs)
+                    if underlying_display.contains('<') {
+                        return EntityVisitResult::Recurse;
+                    }
+
+                    // Only record typedefs to class/struct types (Record, Elaborated wrapping Record)
+                    // This excludes pointer typedefs, function pointer typedefs, primitives, etc.
+                    let is_record_type = matches!(
+                        underlying_kind,
+                        TypeKind::Record | TypeKind::Elaborated | TypeKind::Typedef
+                    );
+
+                    if is_record_type {
+                        // Get the clean underlying type name
+                        let clean = underlying_display
+                            .trim()
+                            .trim_start_matches("const ")
+                            .trim_start_matches("struct ")
+                            .trim_start_matches("class ")
+                            .trim();
+
+                        // Must look like an OCCT class name (starts with uppercase, no special chars)
+                        let looks_like_class = !clean.is_empty()
+                            && clean.starts_with(|c: char| c.is_ascii_uppercase())
+                            && !clean.contains('<')
+                            && !clean.contains('*')
+                            && !clean.contains('(')
+                            && clean != &name; // skip self-referential typedefs
+
+                        if looks_like_class {
+                            map.insert(name.clone(), clean.to_string());
+                        }
+                    }
+                }
+            }
+        }
+        EntityVisitResult::Recurse
+    });
+
+    // Chase typedef chains: if A -> B and B -> C, resolve A -> C
+    let mut changed = true;
+    while changed {
+        changed = false;
+        let snapshot: Vec<(String, String)> = map.iter().map(|(k, v)| (k.clone(), v.clone())).collect();
+        for (key, value) in &snapshot {
+            if let Some(resolved) = map.get(value) {
+                if resolved != value && map.get(key).unwrap() != resolved {
+                    map.insert(key.clone(), resolved.clone());
+                    changed = true;
+                }
+            }
+        }
+    }
+
+    eprintln!("  Collected {} simple typedef entries", map.len());
+    SIMPLE_TYPEDEF_MAP.with(|m| {
+        *m.borrow_mut() = map;
+    });
+}
+
+/// Look up a type name in the simple typedef map.
+/// Returns the underlying class name if this is a known typedef.
+fn lookup_simple_typedef(name: &str) -> Option<String> {
+    SIMPLE_TYPEDEF_MAP.with(|m| m.borrow().get(name).cloned())
 }
 
 
@@ -268,6 +370,11 @@ pub fn parse_headers(
     // This must happen before class/method parsing so parse_type() can
     // resolve template types back to their typedef names.
     collect_ncollection_typedefs(&root, &included_modules);
+
+    // Pre-scan AST to collect simple (non-template) typedefs that alias other classes.
+    // This must happen before class/method parsing so parse_type() can resolve
+    // typedef names like BinObjMgt_SRelocationTable -> TColStd_IndexedMapOfTransient.
+    collect_simple_typedefs(&root);
 
     root.visit_children(|entity, _parent| {
         visit_top_level_batch(&entity, &header_set, &filename_to_index, &mut results, verbose)
@@ -1444,6 +1551,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
                         TypeKind::Elaborated  // clang sugar around typedef (e.g., Standard_Integer via Elaborated)
                     ))
                     .unwrap_or(false);
+
             !is_primitive_typedef
         }
     };
@@ -1647,6 +1755,16 @@ fn parse_type(clang_type: &clang::Type) -> Type {
                 }
             }
         }
+    }
+
+    // Check if this class name is actually a simple typedef for another class.
+    // E.g., BinObjMgt_SRelocationTable -> TColStd_IndexedMapOfTransient,
+    // XmlObjMgt_Element -> LDOM_Element, NCollection_String -> NCollection_Utf8String.
+    // This must be done at the end, after all other type resolution has been attempted,
+    // because reference/pointer wrapping strips the typedef TypeKind layer by the time
+    // we recurse into the pointee type.
+    if let Some(resolved_name) = lookup_simple_typedef(clean_name) {
+        return Type::Class(resolved_name);
     }
 
     Type::Class(clean_name.to_string())

@@ -61,19 +61,26 @@ impl NamedShapeDriver {
     }
 
     /// **Source:** `BinMNaming_NamedShapeDriver.hxx`:46 - `BinMNaming_NamedShapeDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi::HandleTDFAttribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_paste(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+            crate::ffi::BinMNaming_NamedShapeDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
+        }
+    }
+
+    /// **Source:** `BinMNaming_NamedShapeDriver.hxx`:50 - `BinMNaming_NamedShapeDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
+        &self,
+        Source: &crate::ffi::HandleTDFAttribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+    ) {
+        unsafe {
+            crate::ffi::BinMNaming_NamedShapeDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
         }
     }
 
@@ -370,12 +377,6 @@ impl HandleBinMNamingNamedShapeDriver {
     }
 }
 
-// ── Skipped symbols for NamedShapeDriver (1 total) ──
-// SKIPPED: **Source:** `BinMNaming_NamedShapeDriver.hxx`:50 - `BinMNaming_NamedShapeDriver::Paste`
-//   Reason: param 'RelocTable' uses unknown type 'BinObjMgt_SRelocationTable&'
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: &mut SRelocationTable);
-//
-
 // ========================
 // From BinMNaming_NamingDriver.hxx
 // ========================
@@ -412,19 +413,31 @@ impl NamingDriver {
     }
 
     /// **Source:** `BinMNaming_NamingDriver.hxx`:42 - `BinMNaming_NamingDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi::HandleTDFAttribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         unsafe {
-            crate::ffi::BinMNaming_NamingDriver_paste(
+            crate::ffi::BinMNaming_NamingDriver_paste_persistent_handletdfattribute_rrelocationtable(
                 self as *const Self,
                 Source,
                 Target,
                 RelocTable,
             )
+        }
+    }
+
+    /// **Source:** `BinMNaming_NamingDriver.hxx`:46 - `BinMNaming_NamingDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
+        &self,
+        Source: &crate::ffi::HandleTDFAttribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+    ) {
+        unsafe {
+            crate::ffi::BinMNaming_NamingDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
         }
     }
 
@@ -592,9 +605,3 @@ impl HandleBinMNamingNamingDriver {
         }
     }
 }
-
-// ── Skipped symbols for NamingDriver (1 total) ──
-// SKIPPED: **Source:** `BinMNaming_NamingDriver.hxx`:46 - `BinMNaming_NamingDriver::Paste`
-//   Reason: param 'RelocTable' uses unknown type 'BinObjMgt_SRelocationTable&'
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: &mut SRelocationTable);
-//

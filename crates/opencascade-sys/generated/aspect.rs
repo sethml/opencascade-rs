@@ -3244,13 +3244,13 @@ impl HandleAspectDisplayConnection {
 //
 // SKIPPED: **Source:** `Aspect_DisplayConnection.hxx`:80 - `Aspect_DisplayConnection::GetDefaultFBConfig`
 //   method: @return native Window FB config (GLXFBConfig on Xlib)
-//   Reason: return type 'Aspect_FBConfig' is unknown
-//   // pub fn get_default_fb_config(&self) -> OwnedPtr<Aspect_FBConfig>;
+//   Reason: return type 'GLXFBConfig' is unknown
+//   // pub fn get_default_fb_config(&self) -> OwnedPtr<GLXFBConfig>;
 //
 // SKIPPED: **Source:** `Aspect_DisplayConnection.hxx`:83 - `Aspect_DisplayConnection::SetDefaultVisualInfo`
 //   method: Set default window visual; the visual will be deallocated using XFree().
 //   Reason: param 'theVisual' uses unknown type 'Aspect_XVisualInfo*'
-//   // pub fn set_default_visual_info(&mut self, theVisual: *mut XVisualInfo, theFBConfig: FBConfig);
+//   // pub fn set_default_visual_info(&mut self, theVisual: *mut XVisualInfo, theFBConfig: GLXFBConfig);
 //
 
 // ========================
@@ -5269,14 +5269,14 @@ impl HandleAspectNeutralWindow {
 // ── Skipped symbols for NeutralWindow (2 total) ──
 // SKIPPED: **Source:** `Aspect_NeutralWindow.hxx`:39 - `Aspect_NeutralWindow::NativeFBConfig`
 //   method: Return FBConfig.
-//   Reason: return type 'Aspect_FBConfig' is unknown
-//   // pub fn native_fb_config(&self) -> OwnedPtr<Aspect_FBConfig>;
+//   Reason: return type 'GLXFBConfig' is unknown
+//   // pub fn native_fb_config(&self) -> OwnedPtr<GLXFBConfig>;
 //
 // SKIPPED: **Source:** `Aspect_NeutralWindow.hxx`:50 - `Aspect_NeutralWindow::SetNativeHandles`
 //   method: Set native handles.
 //   method: @return true if definition has been changed
-//   Reason: param 'theFbConfig' uses unknown type 'Aspect_FBConfig'
-//   // pub fn set_native_handles(&mut self, theWindow: std::ffi::c_ulong, theParentWindow: std::ffi::c_ulong, theFbConfig: FBConfig) -> bool;
+//   Reason: param 'theFbConfig' uses unknown type 'GLXFBConfig'
+//   // pub fn set_native_handles(&mut self, theWindow: std::ffi::c_ulong, theParentWindow: std::ffi::c_ulong, theFbConfig: GLXFBConfig) -> bool;
 //
 
 // ========================
@@ -7063,8 +7063,8 @@ impl HandleAspectWindow {
 // ── Skipped symbols for Window (1 total) ──
 // SKIPPED: **Source:** `Aspect_Window.hxx`:128 - `Aspect_Window::NativeFBConfig`
 //   method: Returns native Window FB config (GLXFBConfig on Xlib)
-//   Reason: return type 'Aspect_FBConfig' is unknown
-//   // pub fn native_fb_config(&self) -> OwnedPtr<Aspect_FBConfig>;
+//   Reason: return type 'GLXFBConfig' is unknown
+//   // pub fn native_fb_config(&self) -> OwnedPtr<GLXFBConfig>;
 //
 
 // ========================
@@ -9075,8 +9075,8 @@ impl HandleAspectXRSession {
 // ========================
 
 pub use crate::ffi::{
-    Aspect_FBConfig as FBConfig, Aspect_RenderingContext as RenderingContext,
-    Aspect_SequenceOfColor as SequenceOfColor, Aspect_TouchMap as TouchMap,
-    Aspect_TrackedDevicePoseArray as TrackedDevicePoseArray, Aspect_XDisplay as XDisplay,
-    Aspect_XRActionMap as XRActionMap, Aspect_XVisualInfo as XVisualInfo,
+    Aspect_RenderingContext as RenderingContext, Aspect_SequenceOfColor as SequenceOfColor,
+    Aspect_TouchMap as TouchMap, Aspect_TrackedDevicePoseArray as TrackedDevicePoseArray,
+    Aspect_XDisplay as XDisplay, Aspect_XRActionMap as XRActionMap,
+    Aspect_XVisualInfo as XVisualInfo,
 };

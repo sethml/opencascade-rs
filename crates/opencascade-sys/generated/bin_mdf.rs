@@ -89,14 +89,39 @@ impl ADriver {
     /// Translate the contents of <aSource> and put it
     /// into <aTarget>, using the relocation table
     /// <aRelocTable> to keep the sharings.
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         aSource: &crate::bin_obj_mgt::Persistent,
         aTarget: &crate::ffi::HandleTDFAttribute,
         aRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         unsafe {
-            crate::ffi::BinMDF_ADriver_paste(self as *const Self, aSource, aTarget, aRelocTable)
+            crate::ffi::BinMDF_ADriver_paste_persistent_handletdfattribute_rrelocationtable(
+                self as *const Self,
+                aSource,
+                aTarget,
+                aRelocTable,
+            )
+        }
+    }
+
+    /// **Source:** `BinMDF_ADriver.hxx`:56 - `BinMDF_ADriver::Paste()`
+    /// Translate the contents of <aSource> and put it
+    /// into <aTarget>, using the relocation table
+    /// <aRelocTable> to keep the sharings.
+    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
+        &self,
+        aSource: &crate::ffi::HandleTDFAttribute,
+        aTarget: &mut crate::bin_obj_mgt::Persistent,
+        aRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+    ) {
+        unsafe {
+            crate::ffi::BinMDF_ADriver_paste_handletdfattribute_persistent_indexedmapoftransient(
+                self as *const Self,
+                aSource,
+                aTarget,
+                aRelocTable,
+            )
         }
     }
 
@@ -1215,15 +1240,6 @@ impl HandleBinMDFADriver {
     }
 }
 
-// ── Skipped symbols for ADriver (1 total) ──
-// SKIPPED: **Source:** `BinMDF_ADriver.hxx`:56 - `BinMDF_ADriver::Paste`
-//   method: Translate the contents of <aSource> and put it
-//   method: into <aTarget>, using the relocation table
-//   method: <aRelocTable> to keep the sharings.
-//   Reason: param 'aRelocTable' uses unknown type 'BinObjMgt_SRelocationTable&'
-//   // pub fn paste(&self, aSource: &HandleAttribute, aTarget: &mut Persistent, aRelocTable: &mut SRelocationTable);
-//
-
 // ========================
 // From BinMDF_ADriverTable.hxx
 // ========================
@@ -1525,19 +1541,32 @@ impl DerivedDriver {
 
     /// **Source:** `BinMDF_DerivedDriver.hxx`:44 - `BinMDF_DerivedDriver::Paste()`
     /// Reuses the base driver to read the base fields
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         theSource: &crate::bin_obj_mgt::Persistent,
         theTarget: &crate::ffi::HandleTDFAttribute,
         theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         unsafe {
-            crate::ffi::BinMDF_DerivedDriver_paste(
+            crate::ffi::BinMDF_DerivedDriver_paste_persistent_handletdfattribute_rrelocationtable(
                 self as *const Self,
                 theSource,
                 theTarget,
                 theRelocTable,
             )
+        }
+    }
+
+    /// **Source:** `BinMDF_DerivedDriver.hxx`:56 - `BinMDF_DerivedDriver::Paste()`
+    /// Reuses the base driver to store the base fields
+    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
+        &self,
+        theSource: &crate::ffi::HandleTDFAttribute,
+        theTarget: &mut crate::bin_obj_mgt::Persistent,
+        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+    ) {
+        unsafe {
+            crate::ffi::BinMDF_DerivedDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
         }
     }
 
@@ -1687,13 +1716,6 @@ impl HandleBinMDFDerivedDriver {
     }
 }
 
-// ── Skipped symbols for DerivedDriver (1 total) ──
-// SKIPPED: **Source:** `BinMDF_DerivedDriver.hxx`:56 - `BinMDF_DerivedDriver::Paste`
-//   method: Reuses the base driver to store the base fields
-//   Reason: param 'theRelocTable' uses unknown type 'BinObjMgt_SRelocationTable&'
-//   // pub fn paste(&self, theSource: &HandleAttribute, theTarget: &mut Persistent, theRelocTable: &mut SRelocationTable);
-//
-
 // ========================
 // From BinMDF_ReferenceDriver.hxx
 // ========================
@@ -1730,19 +1752,31 @@ impl ReferenceDriver {
     }
 
     /// **Source:** `BinMDF_ReferenceDriver.hxx`:40 - `BinMDF_ReferenceDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi::HandleTDFAttribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         unsafe {
-            crate::ffi::BinMDF_ReferenceDriver_paste(
+            crate::ffi::BinMDF_ReferenceDriver_paste_persistent_handletdfattribute_rrelocationtable(
                 self as *const Self,
                 Source,
                 Target,
                 RelocTable,
             )
+        }
+    }
+
+    /// **Source:** `BinMDF_ReferenceDriver.hxx`:45 - `BinMDF_ReferenceDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
+        &self,
+        Source: &crate::ffi::HandleTDFAttribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+    ) {
+        unsafe {
+            crate::ffi::BinMDF_ReferenceDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
         }
     }
 
@@ -1905,12 +1939,6 @@ impl HandleBinMDFReferenceDriver {
     }
 }
 
-// ── Skipped symbols for ReferenceDriver (1 total) ──
-// SKIPPED: **Source:** `BinMDF_ReferenceDriver.hxx`:45 - `BinMDF_ReferenceDriver::Paste`
-//   Reason: param 'RelocTable' uses unknown type 'BinObjMgt_SRelocationTable&'
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: &mut SRelocationTable);
-//
-
 // ========================
 // From BinMDF_TagSourceDriver.hxx
 // ========================
@@ -1947,19 +1975,31 @@ impl TagSourceDriver {
     }
 
     /// **Source:** `BinMDF_TagSourceDriver.hxx`:41 - `BinMDF_TagSourceDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi::HandleTDFAttribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         unsafe {
-            crate::ffi::BinMDF_TagSourceDriver_paste(
+            crate::ffi::BinMDF_TagSourceDriver_paste_persistent_handletdfattribute_rrelocationtable(
                 self as *const Self,
                 Source,
                 Target,
                 RelocTable,
             )
+        }
+    }
+
+    /// **Source:** `BinMDF_TagSourceDriver.hxx`:45 - `BinMDF_TagSourceDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
+        &self,
+        Source: &crate::ffi::HandleTDFAttribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+    ) {
+        unsafe {
+            crate::ffi::BinMDF_TagSourceDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
         }
     }
 
@@ -2121,9 +2161,3 @@ impl HandleBinMDFTagSourceDriver {
         }
     }
 }
-
-// ── Skipped symbols for TagSourceDriver (1 total) ──
-// SKIPPED: **Source:** `BinMDF_TagSourceDriver.hxx`:45 - `BinMDF_TagSourceDriver::Paste`
-//   Reason: param 'RelocTable' uses unknown type 'BinObjMgt_SRelocationTable&'
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: &mut SRelocationTable);
-//

@@ -2177,4 +2177,4 @@ impl HandleNCollectionWinHeapAllocator {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::NCollection_String as String;
+pub use crate::ffi::NCollection_Utf8String as Utf8String;

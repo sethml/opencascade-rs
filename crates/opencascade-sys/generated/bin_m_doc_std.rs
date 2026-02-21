@@ -59,19 +59,31 @@ impl XLinkDriver {
     }
 
     /// **Source:** `BinMDocStd_XLinkDriver.hxx`:41 - `BinMDocStd_XLinkDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi::HandleTDFAttribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         unsafe {
-            crate::ffi::BinMDocStd_XLinkDriver_paste(
+            crate::ffi::BinMDocStd_XLinkDriver_paste_persistent_handletdfattribute_rrelocationtable(
                 self as *const Self,
                 Source,
                 Target,
                 RelocTable,
             )
+        }
+    }
+
+    /// **Source:** `BinMDocStd_XLinkDriver.hxx`:46 - `BinMDocStd_XLinkDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
+        &self,
+        Source: &crate::ffi::HandleTDFAttribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+    ) {
+        unsafe {
+            crate::ffi::BinMDocStd_XLinkDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
         }
     }
 
@@ -233,9 +245,3 @@ impl HandleBinMDocStdXLinkDriver {
         }
     }
 }
-
-// ── Skipped symbols for XLinkDriver (1 total) ──
-// SKIPPED: **Source:** `BinMDocStd_XLinkDriver.hxx`:46 - `BinMDocStd_XLinkDriver::Paste`
-//   Reason: param 'RelocTable' uses unknown type 'BinObjMgt_SRelocationTable&'
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: &mut SRelocationTable);
-//
