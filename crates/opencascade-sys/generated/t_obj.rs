@@ -7373,6 +7373,20 @@ impl TXYZ {
         unsafe { crate::ffi::TObj_TXYZ_paste(self as *const Self, theInto, theRT) }
     }
 
+    /// **Source:** `TObj_TXYZ.hxx`:77 - `TObj_TXYZ::Dump()`
+    /// This method dumps the attribute value into the stream
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        theOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TObj_TXYZ_dump(self as *mut Self, theOS)) }
+    }
+
     /// **Source:** `TObj_TXYZ.hxx`:85 - `TObj_TXYZ::DynamicType()`
     /// CASCADE RTTI
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
@@ -7725,13 +7739,6 @@ impl HandleTObjTXYZ {
         }
     }
 }
-
-// ── Skipped symbols for TXYZ (1 total) ──
-// SKIPPED: **Source:** `TObj_TXYZ.hxx`:77 - `TObj_TXYZ::Dump`
-//   method: This method dumps the attribute value into the stream
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, theOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // Additional type re-exports

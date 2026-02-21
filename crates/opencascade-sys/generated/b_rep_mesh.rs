@@ -666,7 +666,7 @@ impl CircleTool {
 // SKIPPED: **Source:** `BRepMesh_CircleTool.hxx`:118 - `BRepMesh_CircleTool::Select`
 //   method: Select the circles shot by the given point.
 //   method: @param thePoint bullet point.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
+//   Reason: return type 'IMeshData::ListOfInteger&' is unknown
 //   // pub fn select(&mut self, thePoint: &XY) -> &mut ListOfInteger;
 //
 

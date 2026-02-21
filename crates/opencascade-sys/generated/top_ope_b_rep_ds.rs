@@ -271,6 +271,19 @@ impl Association {
         unsafe { crate::ffi::TopOpeBRepDS_Association_has_association(self as *const Self, I) }
     }
 
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:45 - `TopOpeBRepDS_Association::Associated()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn associated(
+        &mut self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe { &mut *(crate::ffi::TopOpeBRepDS_Association_associated(self as *mut Self, I)) }
+    }
+
     /// **Source:** `TopOpeBRepDS_Association.hxx`:48 - `TopOpeBRepDS_Association::AreAssociated()`
     pub fn are_associated(
         &self,
@@ -408,12 +421,6 @@ impl HandleTopOpeBRepDSAssociation {
         }
     }
 }
-
-// ── Skipped symbols for Association (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_Association.hxx`:45 - `TopOpeBRepDS_Association::Associated`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn associated(&mut self, I: &HandleInterference) -> &mut ListOfInterference;
-//
 
 // ========================
 // From TopOpeBRepDS_BuildTool.hxx
@@ -982,6 +989,76 @@ impl Check {
         unsafe { &mut *(crate::ffi::TopOpeBRepDS_Check_change_hds(self as *mut Self)) }
     }
 
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:77 - `TopOpeBRepDS_Check::PrintIntg()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print_intg(
+        &mut self,
+        S: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TopOpeBRepDS_Check_print_intg(self as *mut Self, S)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:80 - `TopOpeBRepDS_Check::Print()`
+    /// Prints the name  of CheckStatus  <stat>  as  a String
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        stat: crate::top_ope_b_rep_ds::CheckStatus,
+        S: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TopOpeBRepDS_Check_print(self as *mut Self, stat.into(), S)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:83 - `TopOpeBRepDS_Check::PrintShape()`
+    /// Prints the name  of CheckStatus  <stat>  as  a String
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print_shape_shapeenum_ostream(
+        &mut self,
+        SE: crate::top_abs::ShapeEnum,
+        S: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_Check_print_shape_shapeenum_ostream(
+                self as *mut Self,
+                SE.into(),
+                S,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:86 - `TopOpeBRepDS_Check::PrintShape()`
+    /// Prints the name  of CheckStatus  <stat>  as  a String
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print_shape_int_ostream(
+        &mut self,
+        index: i32,
+        S: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_Check_print_shape_int_ostream(
+                self as *mut Self,
+                index,
+                S,
+            ))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_Check.hxx`:88 - `TopOpeBRepDS_Check::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopOpeBRepDS_Check_dynamic_type(self as *const Self)) }
@@ -1093,27 +1170,6 @@ impl HandleTopOpeBRepDSCheck {
         }
     }
 }
-
-// ── Skipped symbols for Check (4 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:77 - `TopOpeBRepDS_Check::PrintIntg`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print_intg(&mut self, S: &mut OStream) -> &mut OStream;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:80 - `TopOpeBRepDS_Check::Print`
-//   method: Prints the name  of CheckStatus  <stat>  as  a String
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&mut self, stat: CheckStatus, S: &mut OStream) -> &mut OStream;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:83 - `TopOpeBRepDS_Check::PrintShape`
-//   method: Prints the name  of CheckStatus  <stat>  as  a String
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print_shape(&mut self, SE: ShapeEnum, S: &mut OStream) -> &mut OStream;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:86 - `TopOpeBRepDS_Check::PrintShape`
-//   method: Prints the name  of CheckStatus  <stat>  as  a String
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print_shape(&mut self, index: i32, S: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TopOpeBRepDS_Curve.hxx
@@ -2229,6 +2285,24 @@ impl DataStructure {
         }
     }
 
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:145 - `TopOpeBRepDS_DataStructure::ChangeShapeInterferences()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn change_shape_interferences_shape(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_shape_interferences_shape(
+                self as *mut Self,
+                S,
+            ))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:147 - `TopOpeBRepDS_DataStructure::ShapeInterferences()`
     pub fn shape_interferences_int_bool(
         &self,
@@ -2245,12 +2319,12 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:151 - `TopOpeBRepDS_DataStructure::ChangeShapeInterferences()`
-    pub fn change_shape_interferences(
+    pub fn change_shape_interferences_int(
         &mut self,
         I: i32,
     ) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
         unsafe {
-            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_shape_interferences(
+            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_shape_interferences_int(
                 self as *mut Self,
                 I,
             ))
@@ -2270,6 +2344,24 @@ impl DataStructure {
         }
     }
 
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:156 - `TopOpeBRepDS_DataStructure::ChangeShapeSameDomain()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn change_shape_same_domain_shape(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &mut crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_shape_same_domain_shape(
+                self as *mut Self,
+                S,
+            ))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:158 - `TopOpeBRepDS_DataStructure::ShapeSameDomain()`
     pub fn shape_same_domain_int(&self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
@@ -2278,9 +2370,12 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:160 - `TopOpeBRepDS_DataStructure::ChangeShapeSameDomain()`
-    pub fn change_shape_same_domain(&mut self, I: i32) -> &mut crate::ffi::TopTools_ListOfShape {
+    pub fn change_shape_same_domain_int(
+        &mut self,
+        I: i32,
+    ) -> &mut crate::ffi::TopTools_ListOfShape {
         unsafe {
-            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_shape_same_domain(
+            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_shape_same_domain_int(
                 self as *mut Self,
                 I,
             ))
@@ -2737,6 +2832,26 @@ impl DataStructure {
         }
     }
 
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:295 - `TopOpeBRepDS_DataStructure::ChangeMapOfShapeWithState()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn change_map_of_shape_with_state(
+        &mut self,
+        aShape: &crate::topo_ds::Shape,
+        aFlag: &mut bool,
+    ) -> &mut crate::ffi::TopOpeBRepDS_IndexedDataMapOfShapeWithState {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_map_of_shape_with_state(
+                self as *mut Self,
+                aShape,
+                aFlag,
+            ))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:299 - `TopOpeBRepDS_DataStructure::GetShapeWithState()`
     pub fn get_shape_with_state(&self, aShape: &crate::topo_ds::Shape) -> &ShapeWithState {
         unsafe {
@@ -2769,20 +2884,6 @@ impl DataStructure {
         }
     }
 }
-
-// ── Skipped symbols for DataStructure (3 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:145 - `TopOpeBRepDS_DataStructure::ChangeShapeInterferences`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn change_shape_interferences(&mut self, S: &Shape) -> &mut ListOfInterference;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:156 - `TopOpeBRepDS_DataStructure::ChangeShapeSameDomain`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn change_shape_same_domain(&mut self, S: &Shape) -> &mut ListOfShape;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:295 - `TopOpeBRepDS_DataStructure::ChangeMapOfShapeWithState`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn change_map_of_shape_with_state(&mut self, aShape: &Shape, aFlag: &mut bool) -> &mut IndexedDataMapOfShapeWithState;
-//
 
 // ========================
 // From TopOpeBRepDS_Dumper.hxx
@@ -4329,6 +4430,21 @@ impl GapTool {
         unsafe { &*(crate::ffi::TopOpeBRepDS_GapTool_same_interferences(self as *const Self, I)) }
     }
 
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:52 - `TopOpeBRepDS_GapTool::ChangeSameInterferences()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn change_same_interferences(
+        &mut self,
+        I: &crate::ffi::HandleTopOpeBRepDSInterference,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_GapTool_change_same_interferences(self as *mut Self, I))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_GapTool.hxx`:55 - `TopOpeBRepDS_GapTool::Curve()`
     pub fn curve(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference, C: &mut Curve) -> bool {
         unsafe { crate::ffi::TopOpeBRepDS_GapTool_curve(self as *const Self, I, C) }
@@ -4498,12 +4614,6 @@ impl HandleTopOpeBRepDSGapTool {
         }
     }
 }
-
-// ── Skipped symbols for GapTool (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_GapTool.hxx`:52 - `TopOpeBRepDS_GapTool::ChangeSameInterferences`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn change_same_interferences(&mut self, I: &HandleInterference) -> &mut ListOfInterference;
-//
 
 // ========================
 // From TopOpeBRepDS_GeometryData.hxx
@@ -8421,13 +8531,26 @@ impl TKI {
         *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
         result_
     }
-}
 
-// ── Skipped symbols for TKI (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_TKI.hxx`:75 - `TopOpeBRepDS_TKI::ChangeValue`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn change_value(&mut self, K: &mut Kind, G: &mut i32) -> &mut ListOfInterference;
-//
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:75 - `TopOpeBRepDS_TKI::ChangeValue()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn change_value(
+        &mut self,
+        K: &mut crate::top_ope_b_rep_ds::Kind,
+        G: &mut i32,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        let mut K_i32_: i32 = (*K).into();
+        let result_ = unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_TKI_change_value(self as *mut Self, &mut K_i32_, G))
+        };
+        *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
+        result_
+    }
+}
 
 // ========================
 // From TopOpeBRepDS_TOOL.hxx

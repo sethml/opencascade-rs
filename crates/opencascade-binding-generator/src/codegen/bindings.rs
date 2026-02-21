@@ -152,6 +152,8 @@ pub struct DirectMethodBinding {
     pub source_line: Option<u32>,
     /// Whether this method should be marked `unsafe fn` (has raw pointer params/returns)
     pub is_unsafe: bool,
+    /// Whether this returns a reference and has reference params (ambiguous lifetime)
+    pub unsafe_lifetime: bool,
 }
 
 /// What kind of C++ wrapper is needed.
@@ -198,6 +200,8 @@ pub struct WrapperMethodBinding {
     pub source_line: Option<u32>,
     /// Whether this method should be marked `unsafe fn` (has raw pointer params/returns)
     pub is_unsafe: bool,
+    /// Whether this returns a reference and has reference params (ambiguous lifetime)
+    pub unsafe_lifetime: bool,
 }
 
 /// A static method binding.
@@ -296,6 +300,8 @@ pub struct InheritedMethodBinding {
     pub source_line: Option<u32>,
     /// Whether this method should be marked `unsafe fn` (has raw pointer params/returns)
     pub is_unsafe: bool,
+    /// Whether this returns a reference and has reference params (ambiguous lifetime)
+    pub unsafe_lifetime: bool,
 }
 
 /// A parameter binding with info for all three output targets.
@@ -814,9 +820,6 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> R
     }
     // Const/mut return mismatch is now handled via C++ wrappers (ConstMutReturnFix).
     // &mut enum output params are now handled via C++ wrappers (MutRefEnumParam).
-    if resolver::method_needs_explicit_lifetimes(method) {
-        return Err("returns &mut with reference params (ambiguous lifetimes)".to_string());
-    }
     if let Some(p) = method
         .params
         .iter()
@@ -1708,7 +1711,8 @@ pub fn compute_class_bindings(
                 return_type,
                 doc_comment: method.comment.clone(),
                 source_line: method.source_line,
-                is_unsafe: method.has_unsafe_types(),
+                is_unsafe: method.has_unsafe_types() || resolver::method_needs_explicit_lifetimes(method),
+                unsafe_lifetime: resolver::method_needs_explicit_lifetimes(method),
             }
         })
         .collect();
@@ -1794,7 +1798,8 @@ pub fn compute_class_bindings(
                 cpp_method_name: method.name.clone(),
                 doc_comment: method.comment.clone(),
                 source_line: method.source_line,
-                is_unsafe: method.has_unsafe_types(),
+                is_unsafe: method.has_unsafe_types() || resolver::method_needs_explicit_lifetimes(method),
+                unsafe_lifetime: resolver::method_needs_explicit_lifetimes(method),
             }
         })
         .collect();
@@ -2969,13 +2974,25 @@ fn compute_inherited_method_bindings(
                 }
 
                 // Check if inherited method has unsafe types (raw pointers / void pointers)
-                let is_unsafe = resolved_method.params.iter().any(|p| {
+                let has_unsafe_types = resolved_method.params.iter().any(|p| {
                     p.ty.original.needs_unsafe_fn()
                         && !p.is_nullable_ptr()
                         && p.ty.original.class_ptr_inner_name().is_none()
                 }) || resolved_method.return_type.as_ref().map_or(false, |rt| {
                     rt.original.needs_unsafe_fn() && rt.original.class_ptr_inner_name().is_none()
                 });
+
+                // Check if inherited method returns a reference with reference params (ambiguous lifetime)
+                let unsafe_lifetime = {
+                    let returns_mut_ref = resolved_method.return_type.as_ref()
+                        .map(|rt| matches!(&rt.original, Type::MutRef(_)))
+                        .unwrap_or(false);
+                    returns_mut_ref && resolved_method.params.iter().any(|p| {
+                        matches!(&p.ty.original, Type::ConstRef(_) | Type::MutRef(_)) || p.ty.original.is_c_string()
+                    })
+                };
+
+                let is_unsafe = has_unsafe_types || unsafe_lifetime;
 
                 result.push(InheritedMethodBinding {
                     ffi_fn_name,
@@ -2988,6 +3005,7 @@ fn compute_inherited_method_bindings(
                     source_header: ancestor_class.source_header.clone(),
                     source_line: resolved_method.source_line,
                     is_unsafe,
+                    unsafe_lifetime,
                 });
             }
         }
@@ -4955,7 +4973,10 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             wm.source_line,
             &format!("{}::{}()", cn, wm.cpp_method_name),
         );
-        let doc = format_reexport_doc(&source_attr, &wm.doc_comment);
+        let mut doc = format_reexport_doc(&source_attr, &wm.doc_comment);
+        if wm.unsafe_lifetime {
+            doc.push_str(format_lifetime_safety_doc());
+        }
         let unsafe_kw = if wm.is_unsafe { "unsafe " } else { "" };
         impl_methods.push(format!(
             "{}    pub {}fn {}({}){} {{\n{}        {}\n    }}\n",
@@ -5019,7 +5040,10 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             dm.source_line,
             &format!("{}::{}()", cn, dm.cxx_name),
         );
-        let doc = format_reexport_doc(&source_attr, &dm.doc_comment);
+        let mut doc = format_reexport_doc(&source_attr, &dm.doc_comment);
+        if dm.unsafe_lifetime {
+            doc.push_str(format_lifetime_safety_doc());
+        }
         let unsafe_kw = if dm.is_unsafe { "unsafe " } else { "" };
         impl_methods.push(format!(
             "{}    pub {}fn {}({}){} {{\n{}        {}\n    }}\n",
@@ -5177,17 +5201,21 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let body = wrap_body_with_postamble(&body, &postamble, has_return);
 
         let no_doc: Option<String> = None;
+        let mut inherited_doc = format_reexport_doc(
+            &format!("Inherited: {}", format_source_attribution(
+                &im.source_header,
+                im.source_line,
+                &format!("{}::{}()", im.source_class, im.cpp_method_name),
+            )),
+            &no_doc,
+        );
+        if im.unsafe_lifetime {
+            inherited_doc.push_str(format_lifetime_safety_doc());
+        }
         let unsafe_kw = if im.is_unsafe { "unsafe " } else { "" };
         impl_methods.push(format!(
             "{}    pub {}fn {}({}){} {{\n{}        {}\n    }}\n",
-            format_reexport_doc(
-                &format!("Inherited: {}", format_source_attribution(
-                    &im.source_header,
-                    im.source_line,
-                    &format!("{}::{}()", im.source_class, im.cpp_method_name),
-                )),
-                &no_doc,
-            ),
+            inherited_doc,
             unsafe_kw,
             im.impl_method_name,
             params.join(", "),
@@ -5346,6 +5374,11 @@ fn format_reexport_doc(source_attr: &str, doc: &Option<String>) -> String {
         }
     }
     out
+}
+
+/// Format a `# Safety` doc comment section for methods with ambiguous return lifetimes.
+fn format_lifetime_safety_doc() -> &'static str {
+    "    ///\n    /// # Safety\n    ///\n    /// The returned reference borrows from `self`. The caller must ensure that\n    /// any reference parameters do not need to outlive the returned reference.\n"
 }
 
 // ── FFI TokenStream emit ────────────────────────────────────────────────────

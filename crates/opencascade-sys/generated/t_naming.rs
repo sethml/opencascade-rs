@@ -1703,6 +1703,20 @@ impl NamedShape {
         unsafe { crate::ffi::TNaming_NamedShape_after_undo(self as *mut Self, anAttDelta, forceIt) }
     }
 
+    /// **Source:** `TNaming_NamedShape.hxx`:135 - `TNaming_NamedShape::Dump()`
+    /// Dumps the attribute on <aStream>.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TNaming_NamedShape_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TNaming_NamedShape.hxx`:146 - `TNaming_NamedShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TNaming_NamedShape_dynamic_type(self as *const Self)) }
@@ -2011,13 +2025,6 @@ impl HandleTNamingNamedShape {
     }
 }
 
-// ── Skipped symbols for NamedShape (1 total) ──
-// SKIPPED: **Source:** `TNaming_NamedShape.hxx`:135 - `TNaming_NamedShape::Dump`
-//   method: Dumps the attribute on <aStream>.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TNaming_Naming.hxx
 // ========================
@@ -2102,6 +2109,19 @@ impl Naming {
     /// **Source:** `TNaming_Naming.hxx`:100 - `TNaming_Naming::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TNaming_Naming_references(self as *const Self, aDataSet) }
+    }
+
+    /// **Source:** `TNaming_Naming.hxx`:103 - `TNaming_Naming::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TNaming_Naming_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:105 - `TNaming_Naming::ExtendedDump()`
@@ -2490,12 +2510,6 @@ impl HandleTNamingNaming {
         }
     }
 }
-
-// ── Skipped symbols for Naming (1 total) ──
-// SKIPPED: **Source:** `TNaming_Naming.hxx`:103 - `TNaming_Naming::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TNaming_NamingTool.hxx
@@ -3866,6 +3880,20 @@ impl UsedShapes {
         unsafe { crate::ffi::TNaming_UsedShapes_references(self as *const Self, aDataSet) }
     }
 
+    /// **Source:** `TNaming_UsedShapes.hxx`:105 - `TNaming_UsedShapes::Dump()`
+    /// Dumps the attribute on <aStream>.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TNaming_UsedShapes_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TNaming_UsedShapes.hxx`:113 - `TNaming_UsedShapes::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TNaming_UsedShapes_dynamic_type(self as *const Self)) }
@@ -4190,13 +4218,6 @@ impl HandleTNamingUsedShapes {
         }
     }
 }
-
-// ── Skipped symbols for UsedShapes (1 total) ──
-// SKIPPED: **Source:** `TNaming_UsedShapes.hxx`:105 - `TNaming_UsedShapes::Dump`
-//   method: Dumps the attribute on <aStream>.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // Additional type re-exports

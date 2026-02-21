@@ -434,6 +434,28 @@ impl UndefinedTypeHandler {
         }
     }
 
+    /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:44 - `GeomTools_UndefinedTypeHandler::ReadCurve()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn read_curve(
+        &mut self,
+        ctype: i32,
+        IS: &mut crate::ffi::Standard_IStream,
+        C: &mut crate::ffi::HandleGeomCurve,
+    ) -> &mut crate::ffi::Standard_IStream {
+        unsafe {
+            &mut *(crate::ffi::GeomTools_UndefinedTypeHandler_read_curve(
+                self as *mut Self,
+                ctype,
+                IS,
+                C,
+            ))
+        }
+    }
+
     /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:48 - `GeomTools_UndefinedTypeHandler::PrintCurve2d()`
     pub fn print_curve2d(
         &self,
@@ -451,6 +473,28 @@ impl UndefinedTypeHandler {
         }
     }
 
+    /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:52 - `GeomTools_UndefinedTypeHandler::ReadCurve2d()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn read_curve2d(
+        &mut self,
+        ctype: i32,
+        IS: &mut crate::ffi::Standard_IStream,
+        C: &mut crate::ffi::HandleGeom2dCurve,
+    ) -> &mut crate::ffi::Standard_IStream {
+        unsafe {
+            &mut *(crate::ffi::GeomTools_UndefinedTypeHandler_read_curve2d(
+                self as *mut Self,
+                ctype,
+                IS,
+                C,
+            ))
+        }
+    }
+
     /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:56 - `GeomTools_UndefinedTypeHandler::PrintSurface()`
     pub fn print_surface(
         &self,
@@ -465,6 +509,28 @@ impl UndefinedTypeHandler {
                 OS,
                 compact,
             )
+        }
+    }
+
+    /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:60 - `GeomTools_UndefinedTypeHandler::ReadSurface()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn read_surface(
+        &mut self,
+        ctype: i32,
+        IS: &mut crate::ffi::Standard_IStream,
+        S: &mut crate::ffi::HandleGeomSurface,
+    ) -> &mut crate::ffi::Standard_IStream {
+        unsafe {
+            &mut *(crate::ffi::GeomTools_UndefinedTypeHandler_read_surface(
+                self as *mut Self,
+                ctype,
+                IS,
+                S,
+            ))
         }
     }
 
@@ -613,17 +679,3 @@ impl HandleGeomToolsUndefinedTypeHandler {
         }
     }
 }
-
-// ── Skipped symbols for UndefinedTypeHandler (3 total) ──
-// SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:44 - `GeomTools_UndefinedTypeHandler::ReadCurve`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn read_curve(&self, ctype: i32, IS: &mut IStream, C: &mut HandleCurve) -> &mut IStream;
-//
-// SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:52 - `GeomTools_UndefinedTypeHandler::ReadCurve2d`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn read_curve2d(&self, ctype: i32, IS: &mut IStream, C: &mut HandleCurve) -> &mut IStream;
-//
-// SKIPPED: **Source:** `GeomTools_UndefinedTypeHandler.hxx`:60 - `GeomTools_UndefinedTypeHandler::ReadSurface`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn read_surface(&self, ctype: i32, IS: &mut IStream, S: &mut HandleSurface) -> &mut IStream;
-//

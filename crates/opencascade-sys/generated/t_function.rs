@@ -279,6 +279,19 @@ impl DriverTable {
         }
     }
 
+    /// **Source:** `TFunction_DriverTable.hxx`:61 - `TFunction_DriverTable::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TFunction_DriverTable_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TFunction_DriverTable.hxx`:67 - `TFunction_DriverTable::RemoveDriver()`
     /// Removes a driver with the given GUID.
     /// Returns true if the driver has been removed successfully.
@@ -419,12 +432,6 @@ impl HandleTFunctionDriverTable {
     }
 }
 
-// ── Skipped symbols for DriverTable (1 total) ──
-// SKIPPED: **Source:** `TFunction_DriverTable.hxx`:61 - `TFunction_DriverTable::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TFunction_Function.hxx
 // ========================
@@ -511,6 +518,19 @@ impl Function {
     /// **Source:** `TFunction_Function.hxx`:90 - `TFunction_Function::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TFunction_Function_references(self as *const Self, aDataSet) }
+    }
+
+    /// **Source:** `TFunction_Function.hxx`:93 - `TFunction_Function::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TFunction_Function_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TFunction_Function.hxx`:99 - `TFunction_Function::DynamicType()`
@@ -912,12 +932,6 @@ impl HandleTFunctionFunction {
     }
 }
 
-// ── Skipped symbols for Function (1 total) ──
-// SKIPPED: **Source:** `TFunction_Function.hxx`:93 - `TFunction_Function::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TFunction_GraphNode.hxx
 // ========================
@@ -1060,6 +1074,19 @@ impl GraphNode {
     /// **Source:** `TFunction_GraphNode.hxx`:107 - `TFunction_GraphNode::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TFunction_GraphNode_references(self as *const Self, aDataSet) }
+    }
+
+    /// **Source:** `TFunction_GraphNode.hxx`:110 - `TFunction_GraphNode::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TFunction_GraphNode_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:112 - `TFunction_GraphNode::DynamicType()`
@@ -1454,12 +1481,6 @@ impl HandleTFunctionGraphNode {
         }
     }
 }
-
-// ── Skipped symbols for GraphNode (1 total) ──
-// SKIPPED: **Source:** `TFunction_GraphNode.hxx`:110 - `TFunction_GraphNode::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TFunction_HArray1OfDataMapOfGUIDDriver.hxx
@@ -1966,13 +1987,20 @@ impl Iterator {
             crate::ffi::TFunction_Iterator_set_status(self as *const Self, func, status.into())
         }
     }
-}
 
-// ── Skipped symbols for Iterator (1 total) ──
-// SKIPPED: **Source:** `TFunction_Iterator.hxx`:84 - `TFunction_Iterator::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, OS: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `TFunction_Iterator.hxx`:84 - `TFunction_Iterator::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TFunction_Iterator_dump(self as *mut Self, OS)) }
+    }
+}
 
 // ========================
 // From TFunction_Logbook.hxx
@@ -2112,6 +2140,20 @@ impl Logbook {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TFunction_Logbook_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TFunction_Logbook.hxx`:117 - `TFunction_Logbook::Dump()`
+    /// Prints th data of the attributes (touched, impacted and valid labels).
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TFunction_Logbook_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:46 - `TFunction_Logbook::Set()`
@@ -2484,13 +2526,6 @@ impl HandleTFunctionLogbook {
     }
 }
 
-// ── Skipped symbols for Logbook (1 total) ──
-// SKIPPED: **Source:** `TFunction_Logbook.hxx`:117 - `TFunction_Logbook::Dump`
-//   method: Prints th data of the attributes (touched, impacted and valid labels).
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TFunction_Scope.hxx
 // ========================
@@ -2593,6 +2628,19 @@ impl Scope {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TFunction_Scope_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TFunction_Scope.hxx`:92 - `TFunction_Scope::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TFunction_Scope_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TFunction_Scope.hxx`:95 - `TFunction_Scope::GetFunctions()`
@@ -2988,12 +3036,6 @@ impl HandleTFunctionScope {
         }
     }
 }
-
-// ── Skipped symbols for Scope (1 total) ──
-// SKIPPED: **Source:** `TFunction_Scope.hxx`:92 - `TFunction_Scope::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // Additional type re-exports

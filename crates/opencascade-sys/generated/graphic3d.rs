@@ -21089,6 +21089,19 @@ impl CubeMapOrder {
         }
     }
 
+    /// **Source:** `Graphic3d_CubeMapOrder.hxx`:47 - `Graphic3d_CubeMapOrder::Set()`
+    /// Alias of 'operator='.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn set_cubemaporder(&mut self, theOrder: &CubeMapOrder) -> &mut CubeMapOrder {
+        unsafe {
+            &mut *(crate::ffi::Graphic3d_CubeMapOrder_set_cubemaporder(self as *mut Self, theOrder))
+        }
+    }
+
     /// **Source:** `Graphic3d_CubeMapOrder.hxx`:52 - `Graphic3d_CubeMapOrder::Validated()`
     /// Checks whether order is valid and returns object containing it.
     /// If order is invalid then exception will be thrown.
@@ -21103,13 +21116,13 @@ impl CubeMapOrder {
 
     /// **Source:** `Graphic3d_CubeMapOrder.hxx`:56 - `Graphic3d_CubeMapOrder::Set()`
     /// Sets number of tile in packed cubemap image according passed cubemap side.
-    pub fn set(
+    pub fn set_cubemapside_u8(
         &mut self,
         theCubeMapSide: crate::graphic3d::CubeMapSide,
         theValue: u8,
     ) -> &mut CubeMapOrder {
         unsafe {
-            &mut *(crate::ffi::Graphic3d_CubeMapOrder_set(
+            &mut *(crate::ffi::Graphic3d_CubeMapOrder_set_cubemapside_u8(
                 self as *mut Self,
                 theCubeMapSide.into(),
                 theValue,
@@ -21121,6 +21134,17 @@ impl CubeMapOrder {
     /// Sets default order (just from 0 to 5)
     pub fn set_default(&mut self) -> &mut CubeMapOrder {
         unsafe { &mut *(crate::ffi::Graphic3d_CubeMapOrder_set_default(self as *mut Self)) }
+    }
+
+    /// **Source:** `Graphic3d_CubeMapOrder.hxx`:63 - `Graphic3d_CubeMapOrder::Permute()`
+    /// Applies another cubemap order as permutation for the current one.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn permute(&mut self, anOrder: &ValidatedCubeMapOrder) -> &mut CubeMapOrder {
+        unsafe { &mut *(crate::ffi::Graphic3d_CubeMapOrder_permute(self as *mut Self, anOrder)) }
     }
 
     /// **Source:** `Graphic3d_CubeMapOrder.hxx`:67 - `Graphic3d_CubeMapOrder::Permuted()`
@@ -21213,18 +21237,6 @@ impl CubeMapOrder {
         unsafe { &*(crate::ffi::Graphic3d_CubeMapOrder_default()) }
     }
 }
-
-// ── Skipped symbols for CubeMapOrder (2 total) ──
-// SKIPPED: **Source:** `Graphic3d_CubeMapOrder.hxx`:47 - `Graphic3d_CubeMapOrder::Set`
-//   method: Alias of 'operator='.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn set(&mut self, theOrder: &CubeMapOrder) -> &mut CubeMapOrder;
-//
-// SKIPPED: **Source:** `Graphic3d_CubeMapOrder.hxx`:63 - `Graphic3d_CubeMapOrder::Permute`
-//   method: Applies another cubemap order as permutation for the current one.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn permute(&mut self, anOrder: &ValidatedCubeMapOrder) -> &mut CubeMapOrder;
-//
 
 /// **Source:** `Graphic3d_CubeMapOrder.hxx`:126 - `Graphic3d_ValidatedCubeMapOrder`
 /// Graphic3d_ValidatedCubeMapOrder contains completely valid order object.

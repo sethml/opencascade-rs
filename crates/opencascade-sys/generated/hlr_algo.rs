@@ -2061,6 +2061,35 @@ impl PolyAlgo {
         unsafe { crate::ffi::HLRAlgo_PolyAlgo_next_hide(self as *mut Self) }
     }
 
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:58 - `HLRAlgo_PolyAlgo::Hide()`
+    /// process hiding between <Pt1> and <Pt2>.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn hide(
+        &mut self,
+        status: &mut EdgeStatus,
+        Index: &mut i32,
+        reg1: &mut bool,
+        regn: &mut bool,
+        outl: &mut bool,
+        intl: &mut bool,
+    ) -> &mut BiPoint_PointsT {
+        unsafe {
+            &mut *(crate::ffi::HLRAlgo_PolyAlgo_hide(
+                self as *mut Self,
+                status,
+                Index,
+                reg1,
+                regn,
+                outl,
+                intl,
+            ))
+        }
+    }
+
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:65 - `HLRAlgo_PolyAlgo::InitShow()`
     pub fn init_show(&mut self) {
         unsafe { crate::ffi::HLRAlgo_PolyAlgo_init_show(self as *mut Self) }
@@ -2074,6 +2103,33 @@ impl PolyAlgo {
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:73 - `HLRAlgo_PolyAlgo::NextShow()`
     pub fn next_show(&mut self) {
         unsafe { crate::ffi::HLRAlgo_PolyAlgo_next_show(self as *mut Self) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:76 - `HLRAlgo_PolyAlgo::Show()`
+    /// process hiding between <Pt1> and <Pt2>.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn show(
+        &mut self,
+        Index: &mut i32,
+        reg1: &mut bool,
+        regn: &mut bool,
+        outl: &mut bool,
+        intl: &mut bool,
+    ) -> &mut BiPoint_PointsT {
+        unsafe {
+            &mut *(crate::ffi::HLRAlgo_PolyAlgo_show(
+                self as *mut Self,
+                Index,
+                reg1,
+                regn,
+                outl,
+                intl,
+            ))
+        }
     }
 
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:82 - `HLRAlgo_PolyAlgo::DynamicType()`
@@ -2184,7 +2240,7 @@ impl HandleHLRAlgoPolyAlgo {
     }
 }
 
-// ── Skipped symbols for PolyAlgo (4 total) ──
+// ── Skipped symbols for PolyAlgo (2 total) ──
 // SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:38 - `HLRAlgo_PolyAlgo::PolyShell`
 //   Reason: has unbindable types: return: unresolved template type (const NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>&)
 //   // pub fn poly_shell(&self) -> /* const NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>& */;
@@ -2192,16 +2248,6 @@ impl HandleHLRAlgoPolyAlgo {
 // SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:40 - `HLRAlgo_PolyAlgo::ChangePolyShell`
 //   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>&)
 //   // pub fn change_poly_shell(&mut self) -> /* NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>& */;
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:58 - `HLRAlgo_PolyAlgo::Hide`
-//   method: process hiding between <Pt1> and <Pt2>.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn hide(&mut self, status: &mut EdgeStatus, Index: &mut i32, reg1: &mut bool, regn: &mut bool, outl: &mut bool, intl: &mut bool) -> &mut BiPoint_PointsT;
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:76 - `HLRAlgo_PolyAlgo::Show`
-//   method: process hiding between <Pt1> and <Pt2>.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn show(&mut self, Index: &mut i32, reg1: &mut bool, regn: &mut bool, outl: &mut bool, intl: &mut bool) -> &mut BiPoint_PointsT;
 //
 
 // ========================

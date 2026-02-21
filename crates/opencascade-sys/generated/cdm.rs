@@ -838,6 +838,19 @@ impl Document {
         unsafe { crate::ffi::CDM_Document_is_modified(self as *const Self) }
     }
 
+    /// **Source:** `CDM_Document.hxx`:282 - `CDM_Document::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::CDM_Document_print(self as *mut Self, anOStream)) }
+    }
+
     /// **Source:** `CDM_Document.hxx`:285 - `CDM_Document::IsOpened()`
     pub fn is_opened(&self) -> bool {
         unsafe { crate::ffi::CDM_Document_is_opened(self as *const Self) }
@@ -1056,12 +1069,6 @@ impl HandleCDMDocument {
     }
 }
 
-// ── Skipped symbols for Document (1 total) ──
-// SKIPPED: **Source:** `CDM_Document.hxx`:282 - `CDM_Document::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From CDM_MetaData.hxx
 // ========================
@@ -1119,6 +1126,19 @@ impl MetaData {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::CDM_MetaData_file_name(self as *const Self))
         }
+    }
+
+    /// **Source:** `CDM_MetaData.hxx`:76 - `CDM_MetaData::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::CDM_MetaData_print(self as *mut Self, anOStream)) }
     }
 
     /// **Source:** `CDM_MetaData.hxx`:79 - `CDM_MetaData::Path()`
@@ -1299,12 +1319,6 @@ impl HandleCDMMetaData {
         }
     }
 }
-
-// ── Skipped symbols for MetaData (1 total) ──
-// SKIPPED: **Source:** `CDM_MetaData.hxx`:76 - `CDM_MetaData::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From CDM_Reference.hxx

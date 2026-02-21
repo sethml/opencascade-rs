@@ -537,6 +537,21 @@ impl Attribute {
         unsafe { crate::ffi::TDF_Attribute_references(self as *const Self, aDataSet) }
     }
 
+    /// **Source:** `TDF_Attribute.hxx`:349 - `TDF_Attribute::Dump()`
+    /// Dumps the minimum information about <me> on
+    /// <aStream>.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDF_Attribute_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     /// Dumps the attribute content on <aStream>, using
     /// <aMap> like this: if an attribute is not in the
@@ -2128,14 +2143,6 @@ impl HandleTDFAttribute {
     }
 }
 
-// ── Skipped symbols for Attribute (1 total) ──
-// SKIPPED: **Source:** `TDF_Attribute.hxx`:349 - `TDF_Attribute::Dump`
-//   method: Dumps the minimum information about <me> on
-//   method: <aStream>.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDF_AttributeDelta.hxx
 // ========================
@@ -2188,6 +2195,20 @@ impl AttributeDelta {
     /// Returns the ID of the attribute concerned by <me>.
     pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_AttributeDelta_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TDF_AttributeDelta.hxx`:59 - `TDF_AttributeDelta::Dump()`
+    /// Dumps the contents.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDF_AttributeDelta_dump(self as *mut Self, OS)) }
     }
 
     /// **Source:** `TDF_AttributeDelta.hxx`:67 - `TDF_AttributeDelta::DynamicType()`
@@ -2535,13 +2556,6 @@ impl HandleTDFAttributeDelta {
         }
     }
 }
-
-// ── Skipped symbols for AttributeDelta (1 total) ──
-// SKIPPED: **Source:** `TDF_AttributeDelta.hxx`:59 - `TDF_AttributeDelta::Dump`
-//   method: Dumps the contents.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, OS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TDF_AttributeIterator.hxx
@@ -3383,6 +3397,20 @@ impl Data {
         unsafe { crate::ffi::TDF_Data_not_undo_mode(self as *const Self) }
     }
 
+    /// **Source:** `TDF_Data.hxx`:81 - `TDF_Data::Dump()`
+    /// Dumps the Data on <aStream>.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDF_Data_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TDF_Data.hxx`:86 - `TDF_Data::AllowModification()`
     /// Sets modification mode.
     pub fn allow_modification(&mut self, isAllowed: bool) {
@@ -3575,13 +3603,6 @@ impl HandleTDFData {
     }
 }
 
-// ── Skipped symbols for Data (1 total) ──
-// SKIPPED: **Source:** `TDF_Data.hxx`:81 - `TDF_Data::Dump`
-//   method: Dumps the Data on <aStream>.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDF_DataSet.hxx
 // ========================
@@ -3664,6 +3685,21 @@ impl DataSet {
     /// Returns <myRootLabels> to be used or updated.
     pub fn roots(&mut self) -> &mut crate::ffi::TDF_LabelList {
         unsafe { &mut *(crate::ffi::TDF_DataSet_roots(self as *mut Self)) }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:76 - `TDF_DataSet::Dump()`
+    /// Dumps the minimum information about <me> on
+    /// <aStream>.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDF_DataSet_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDF_DataSet.hxx`:80 - `TDF_DataSet::DynamicType()`
@@ -3771,14 +3807,6 @@ impl HandleTDFDataSet {
         }
     }
 }
-
-// ── Skipped symbols for DataSet (1 total) ──
-// SKIPPED: **Source:** `TDF_DataSet.hxx`:76 - `TDF_DataSet::Dump`
-//   method: Dumps the minimum information about <me> on
-//   method: <aStream>.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TDF_DefaultDeltaOnModification.hxx
@@ -6375,6 +6403,21 @@ impl Label {
         unsafe { crate::ffi::TDF_Label_has_greater_node(self as *const Self, otherLabel) }
     }
 
+    /// **Source:** `TDF_Label.hxx`:243 - `TDF_Label::Dump()`
+    /// Dumps the minimum information about <me> on
+    /// <aStream>.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDF_Label_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TDF_Label.hxx`:249 - `TDF_Label::ExtendedDump()`
     /// Dumps the label on <aStream> and its attributes
     /// rank in <aMap> if their IDs are kept by <IDFilter>.
@@ -6393,14 +6436,6 @@ impl Label {
         unsafe { crate::ffi::TDF_Label_entry_dump(self as *const Self, anOS) }
     }
 }
-
-// ── Skipped symbols for Label (1 total) ──
-// SKIPPED: **Source:** `TDF_Label.hxx`:243 - `TDF_Label::Dump`
-//   method: Dumps the minimum information about <me> on
-//   method: <aStream>.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TDF_Reference.hxx
@@ -6462,6 +6497,19 @@ impl Reference {
     /// **Source:** `TDF_Reference.hxx`:54 - `TDF_Reference::References()`
     pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDF_Reference_references(self as *const Self, DS) }
+    }
+
+    /// **Source:** `TDF_Reference.hxx`:56 - `TDF_Reference::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDF_Reference_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDF_Reference.hxx`:64 - `TDF_Reference::DynamicType()`
@@ -6825,12 +6873,6 @@ impl HandleTDFReference {
     }
 }
 
-// ── Skipped symbols for Reference (1 total) ──
-// SKIPPED: **Source:** `TDF_Reference.hxx`:56 - `TDF_Reference::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDF_RelocationTable.hxx
 // ========================
@@ -7067,6 +7109,31 @@ impl RelocationTable {
         unsafe { &mut *(crate::ffi::TDF_RelocationTable_transient_table(self as *mut Self)) }
     }
 
+    /// **Source:** `TDF_RelocationTable.hxx`:151 - `TDF_RelocationTable::Dump()`
+    /// Dumps the relocation table.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        dumpLabels: bool,
+        dumpAttributes: bool,
+        dumpTransients: bool,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe {
+            &mut *(crate::ffi::TDF_RelocationTable_dump(
+                self as *mut Self,
+                dumpLabels,
+                dumpAttributes,
+                dumpTransients,
+                anOS,
+            ))
+        }
+    }
+
     /// **Source:** `TDF_RelocationTable.hxx`:156 - `TDF_RelocationTable::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDF_RelocationTable_dynamic_type(self as *const Self)) }
@@ -7183,13 +7250,6 @@ impl HandleTDFRelocationTable {
         }
     }
 }
-
-// ── Skipped symbols for RelocationTable (1 total) ──
-// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:151 - `TDF_RelocationTable::Dump`
-//   method: Dumps the relocation table.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, dumpLabels: bool, dumpAttributes: bool, dumpTransients: bool, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TDF_TagSource.hxx

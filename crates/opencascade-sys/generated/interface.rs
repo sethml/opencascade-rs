@@ -1486,8 +1486,30 @@ impl CheckIterator {
     /// in order to be consulted or completed on the spot
     /// I.e. returns the Check if is already exists, or adds it then
     /// returns the new empty Check
-    pub fn c_check(&mut self, num: i32) -> &mut crate::ffi::HandleInterfaceCheck {
-        unsafe { &mut *(crate::ffi::Interface_CheckIterator_c_check(self as *mut Self, num)) }
+    pub fn c_check_int(&mut self, num: i32) -> &mut crate::ffi::HandleInterfaceCheck {
+        unsafe { &mut *(crate::ffi::Interface_CheckIterator_c_check_int(self as *mut Self, num)) }
+    }
+
+    /// **Source:** `Interface_CheckIterator.hxx`:104 - `Interface_CheckIterator::CCheck()`
+    /// Returns the Check bound to an Entity, in order to be consulted
+    /// or completed on the spot
+    /// I.e. returns the Check if is already exists, or adds it then
+    /// returns the new empty Check
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn c_check_handlestandardtransient(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> &mut crate::ffi::HandleInterfaceCheck {
+        unsafe {
+            &mut *(crate::ffi::Interface_CheckIterator_c_check_handlestandardtransient(
+                self as *mut Self,
+                ent,
+            ))
+        }
     }
 
     /// **Source:** `Interface_CheckIterator.hxx`:108 - `Interface_CheckIterator::IsEmpty()`
@@ -1690,15 +1712,6 @@ impl CheckIterator {
         unsafe { crate::ffi::Interface_CheckIterator_destroy(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for CheckIterator (1 total) ──
-// SKIPPED: **Source:** `Interface_CheckIterator.hxx`:104 - `Interface_CheckIterator::CCheck`
-//   method: Returns the Check bound to an Entity, in order to be consulted
-//   method: or completed on the spot
-//   method: I.e. returns the Check if is already exists, or adds it then
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn c_check(&mut self, ent: &HandleTransient) -> &mut HandleCheck;
-//
 
 // ========================
 // From Interface_CheckTool.hxx

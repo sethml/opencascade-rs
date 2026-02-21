@@ -1701,6 +1701,16 @@ impl Set {
         }
     }
 
+    /// **Source:** `BOPTools_Set.hxx`:40 - `BOPTools_Set::Assign()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn assign(&mut self, Other: &Set) -> &mut Set {
+        unsafe { &mut *(crate::ffi::BOPTools_Set_assign(self as *mut Self, Other)) }
+    }
+
     /// **Source:** `BOPTools_Set.hxx`:44 - `BOPTools_Set::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPTools_Set_shape(self as *const Self)) }
@@ -1731,12 +1741,6 @@ impl Set {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_Set_to_owned(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for Set (1 total) ──
-// SKIPPED: **Source:** `BOPTools_Set.hxx`:40 - `BOPTools_Set::Assign`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn assign(&mut self, Other: &Set) -> &mut Set;
-//
 
 // ========================
 // Additional type re-exports

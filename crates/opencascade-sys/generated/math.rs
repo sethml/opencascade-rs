@@ -3817,6 +3817,18 @@ impl Matrix {
         unsafe { &mut *(crate::ffi::math_Matrix_value(self as *mut Self, Row, Col)) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:365 - `math_Matrix::Initialized()`
+    /// Matrixes are copied through assignment.
+    /// An exception is raised if the dimensions are different.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn initialized(&mut self, Other: &Matrix) -> &mut Matrix {
+        unsafe { &mut *(crate::ffi::math_Matrix_initialized(self as *mut Self, Other)) }
+    }
+
     /// **Source:** `math_Matrix.hxx`:371 - `math_Matrix::Multiply()`
     /// Returns the product of 2 matrices.
     /// An exception is raised if the dimensions are different.
@@ -3870,14 +3882,6 @@ impl Matrix {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_to_owned(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for Matrix (1 total) ──
-// SKIPPED: **Source:** `math_Matrix.hxx`:365 - `math_Matrix::Initialized`
-//   method: Matrixes are copied through assignment.
-//   method: An exception is raised if the dimensions are different.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn initialized(&mut self, Other: &Matrix) -> &mut Matrix;
-//
 
 // ========================
 // From math_MultipleVarFunction.hxx

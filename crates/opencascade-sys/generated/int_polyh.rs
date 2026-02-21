@@ -1148,6 +1148,16 @@ impl SectionLine {
         unsafe { &mut *(crate::ffi::IntPolyh_SectionLine_change_value(self as *mut Self, nn)) }
     }
 
+    /// **Source:** `IntPolyh_SectionLine.hxx`:48 - `IntPolyh_SectionLine::Copy()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn copy(&mut self, Other: &SectionLine) -> &mut SectionLine {
+        unsafe { &mut *(crate::ffi::IntPolyh_SectionLine_copy(self as *mut Self, Other)) }
+    }
+
     /// **Source:** `IntPolyh_SectionLine.hxx`:52 - `IntPolyh_SectionLine::GetN()`
     pub fn get_n(&self) -> i32 {
         unsafe { crate::ffi::IntPolyh_SectionLine_get_n(self as *const Self) }
@@ -1187,12 +1197,6 @@ impl SectionLine {
         }
     }
 }
-
-// ── Skipped symbols for SectionLine (1 total) ──
-// SKIPPED: **Source:** `IntPolyh_SectionLine.hxx`:48 - `IntPolyh_SectionLine::Copy`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn copy(&mut self, Other: &SectionLine) -> &mut SectionLine;
-//
 
 // ========================
 // From IntPolyh_StartPoint.hxx

@@ -3135,6 +3135,21 @@ impl Group {
         Self::new_scene_charptr_bool(theScene, theName, false)
     }
 
+    /// **Source:** `VrmlData_Group.hxx`:65 - `VrmlData_Group::AddNode()`
+    ///
+    /// Add one node to the Group.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn add_node(
+        &mut self,
+        theNode: &crate::ffi::HandleVrmlDataNode,
+    ) -> &mut crate::ffi::HandleVrmlDataNode {
+        unsafe { &mut *(crate::ffi::VrmlData_Group_add_node(self as *mut Self, theNode)) }
+    }
+
     /// **Source:** `VrmlData_Group.hxx`:75 - `VrmlData_Group::RemoveNode()`
     ///
     /// Remove one node from the Group.
@@ -3431,13 +3446,6 @@ impl HandleVrmlDataGroup {
         }
     }
 }
-
-// ── Skipped symbols for Group (1 total) ──
-// SKIPPED: **Source:** `VrmlData_Group.hxx`:65 - `VrmlData_Group::AddNode`
-//   method: Add one node to the Group.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn add_node(&mut self, theNode: &HandleNode) -> &mut HandleNode;
-//
 
 // ========================
 // From VrmlData_ImageTexture.hxx

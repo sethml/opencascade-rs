@@ -723,6 +723,82 @@ impl BinaryFile {
         unsafe { &mut *(crate::ffi::FSD_BinaryFile_put_short_real(self as *mut Self, aValue)) }
     }
 
+    /// **Source:** `FSD_BinaryFile.hxx`:269 - `FSD_BinaryFile::GetReference()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_reference(&mut self, aValue: &mut i32) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_BinaryFile_get_reference(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `FSD_BinaryFile.hxx`:271 - `FSD_BinaryFile::GetCharacter()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_character(
+        &mut self,
+        aValue: &mut std::ffi::c_char,
+    ) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_BinaryFile_get_character(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `FSD_BinaryFile.hxx`:275 - `FSD_BinaryFile::GetExtCharacter()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_ext_character(
+        &mut self,
+        aValue: &mut u16,
+    ) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_BinaryFile_get_ext_character(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `FSD_BinaryFile.hxx`:278 - `FSD_BinaryFile::GetInteger()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_integer(&mut self, aValue: &mut i32) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_BinaryFile_get_integer(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `FSD_BinaryFile.hxx`:282 - `FSD_BinaryFile::GetBoolean()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_boolean(&mut self, aValue: &mut bool) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_BinaryFile_get_boolean(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `FSD_BinaryFile.hxx`:284 - `FSD_BinaryFile::GetReal()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_real(&mut self, aValue: &mut f64) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_BinaryFile_get_real(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `FSD_BinaryFile.hxx`:286 - `FSD_BinaryFile::GetShortReal()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_short_real(&mut self, aValue: &mut f32) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_BinaryFile_get_short_real(self as *mut Self, aValue)) }
+    }
+
     /// **Source:** `FSD_BinaryFile.hxx`:288 - `FSD_BinaryFile::Close()`
     pub fn close(&mut self) -> crate::storage::Error {
         unsafe {
@@ -876,13 +952,19 @@ impl BinaryFile {
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:273 - `FSD_BinaryFile::GetReference()`
-    pub fn get_reference(theIStream: &mut crate::ffi::Standard_IStream, aValue: &mut i32) {
-        unsafe { crate::ffi::FSD_BinaryFile_get_reference(theIStream, aValue) }
+    pub fn get_reference_istream_int(
+        theIStream: &mut crate::ffi::Standard_IStream,
+        aValue: &mut i32,
+    ) {
+        unsafe { crate::ffi::FSD_BinaryFile_get_reference_istream_int(theIStream, aValue) }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:280 - `FSD_BinaryFile::GetInteger()`
-    pub fn get_integer(theIStream: &mut crate::ffi::Standard_IStream, aValue: &mut i32) {
-        unsafe { crate::ffi::FSD_BinaryFile_get_integer(theIStream, aValue) }
+    pub fn get_integer_istream_int(
+        theIStream: &mut crate::ffi::Standard_IStream,
+        aValue: &mut i32,
+    ) {
+        unsafe { crate::ffi::FSD_BinaryFile_get_integer_istream_int(theIStream, aValue) }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:298 - `FSD_BinaryFile::InverseInt()`
@@ -1097,36 +1179,6 @@ impl HandleFSDBinaryFile {
         }
     }
 }
-
-// ── Skipped symbols for BinaryFile (7 total) ──
-// SKIPPED: **Source:** `FSD_BinaryFile.hxx`:269 - `FSD_BinaryFile::GetReference`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_reference(&mut self, aValue: &mut i32) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `FSD_BinaryFile.hxx`:271 - `FSD_BinaryFile::GetCharacter`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_character(&mut self, aValue: &mut char) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `FSD_BinaryFile.hxx`:275 - `FSD_BinaryFile::GetExtCharacter`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_ext_character(&mut self, aValue: &mut u16) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `FSD_BinaryFile.hxx`:278 - `FSD_BinaryFile::GetInteger`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_integer(&mut self, aValue: &mut i32) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `FSD_BinaryFile.hxx`:282 - `FSD_BinaryFile::GetBoolean`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_boolean(&mut self, aValue: &mut bool) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `FSD_BinaryFile.hxx`:284 - `FSD_BinaryFile::GetReal`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_real(&mut self, aValue: &mut f64) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `FSD_BinaryFile.hxx`:286 - `FSD_BinaryFile::GetShortReal`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_short_real(&mut self, aValue: &mut f32) -> &mut BaseDriver;
-//
 
 // ========================
 // From FSD_CmpFile.hxx
@@ -2450,6 +2502,82 @@ impl File {
         unsafe { &mut *(crate::ffi::FSD_File_put_short_real(self as *mut Self, aValue)) }
     }
 
+    /// **Source:** `FSD_File.hxx`:215 - `FSD_File::GetReference()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_reference(&mut self, aValue: &mut i32) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_File_get_reference(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `FSD_File.hxx`:218 - `FSD_File::GetCharacter()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_character(
+        &mut self,
+        aValue: &mut std::ffi::c_char,
+    ) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_File_get_character(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `FSD_File.hxx`:221 - `FSD_File::GetExtCharacter()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_ext_character(
+        &mut self,
+        aValue: &mut u16,
+    ) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_File_get_ext_character(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `FSD_File.hxx`:224 - `FSD_File::GetInteger()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_integer(&mut self, aValue: &mut i32) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_File_get_integer(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `FSD_File.hxx`:227 - `FSD_File::GetBoolean()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_boolean(&mut self, aValue: &mut bool) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_File_get_boolean(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `FSD_File.hxx`:230 - `FSD_File::GetReal()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_real(&mut self, aValue: &mut f64) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_File_get_real(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `FSD_File.hxx`:232 - `FSD_File::GetShortReal()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_short_real(&mut self, aValue: &mut f32) -> &mut crate::storage::BaseDriver {
+        unsafe { &mut *(crate::ffi::FSD_File_get_short_real(self as *mut Self, aValue)) }
+    }
+
     /// **Source:** `FSD_File.hxx`:240 - `FSD_File::Close()`
     /// Closes the file driven by this driver. This file was
     /// opened by the last call to the function Open.
@@ -2632,36 +2760,6 @@ impl HandleFSDFile {
         }
     }
 }
-
-// ── Skipped symbols for File (7 total) ──
-// SKIPPED: **Source:** `FSD_File.hxx`:215 - `FSD_File::GetReference`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_reference(&mut self, aValue: &mut i32) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `FSD_File.hxx`:218 - `FSD_File::GetCharacter`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_character(&mut self, aValue: &mut char) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `FSD_File.hxx`:221 - `FSD_File::GetExtCharacter`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_ext_character(&mut self, aValue: &mut u16) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `FSD_File.hxx`:224 - `FSD_File::GetInteger`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_integer(&mut self, aValue: &mut i32) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `FSD_File.hxx`:227 - `FSD_File::GetBoolean`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_boolean(&mut self, aValue: &mut bool) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `FSD_File.hxx`:230 - `FSD_File::GetReal`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_real(&mut self, aValue: &mut f64) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `FSD_File.hxx`:232 - `FSD_File::GetShortReal`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_short_real(&mut self, aValue: &mut f32) -> &mut BaseDriver;
-//
 
 // ========================
 // From FSD_FileHeader.hxx

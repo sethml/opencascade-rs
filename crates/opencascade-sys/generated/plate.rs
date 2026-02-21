@@ -1053,6 +1053,16 @@ impl Plate {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_ctor()) }
     }
 
+    /// **Source:** `Plate_Plate.hxx`:57 - `Plate_Plate::Copy()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn copy(&mut self, Ref: &Plate) -> &mut Plate {
+        unsafe { &mut *(crate::ffi::Plate_Plate_copy(self as *mut Self, Ref)) }
+    }
+
     /// **Source:** `Plate_Plate.hxx`:61 - `Plate_Plate::Load()`
     pub fn load_pinpointconstraint(&mut self, PConst: &PinpointConstraint) {
         unsafe { crate::ffi::Plate_Plate_load_pinpointconstraint(self as *mut Self, PConst) }
@@ -1189,12 +1199,6 @@ impl Plate {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_to_owned(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for Plate (1 total) ──
-// SKIPPED: **Source:** `Plate_Plate.hxx`:57 - `Plate_Plate::Copy`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn copy(&mut self, Ref: &Plate) -> &mut Plate;
-//
 
 // ========================
 // From Plate_SampledCurveConstraint.hxx

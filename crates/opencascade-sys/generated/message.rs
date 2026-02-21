@@ -4452,6 +4452,86 @@ impl Msg {
         unsafe { crate::ffi::Message_Msg_set_extendedstring(self as *mut Self, theMsg) }
     }
 
+    /// **Source:** `Message_Msg.hxx`:77 - `Message_Msg::Arg()`
+    /// Set a value for %..s conversion
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn arg_charptr(&mut self, theString: &str) -> &mut Msg {
+        let c_theString = std::ffi::CString::new(theString).unwrap();
+        unsafe {
+            &mut *(crate::ffi::Message_Msg_arg_charptr(self as *mut Self, c_theString.as_ptr()))
+        }
+    }
+
+    /// **Source:** `Message_Msg.hxx`:82 - `Message_Msg::Arg()`
+    /// Set a value for %..s conversion
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn arg_asciistring(
+        &mut self,
+        theString: &crate::t_collection::AsciiString,
+    ) -> &mut Msg {
+        unsafe { &mut *(crate::ffi::Message_Msg_arg_asciistring(self as *mut Self, theString)) }
+    }
+
+    /// **Source:** `Message_Msg.hxx`:87 - `Message_Msg::Arg()`
+    /// Set a value for %..s conversion
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn arg_handletcollectionhasciistring(
+        &mut self,
+        theString: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> &mut Msg {
+        unsafe {
+            &mut *(crate::ffi::Message_Msg_arg_handletcollectionhasciistring(
+                self as *mut Self,
+                theString,
+            ))
+        }
+    }
+
+    /// **Source:** `Message_Msg.hxx`:95 - `Message_Msg::Arg()`
+    /// Set a value for %..s conversion
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn arg_extendedstring(
+        &mut self,
+        theString: &crate::t_collection::ExtendedString,
+    ) -> &mut Msg {
+        unsafe { &mut *(crate::ffi::Message_Msg_arg_extendedstring(self as *mut Self, theString)) }
+    }
+
+    /// **Source:** `Message_Msg.hxx`:100 - `Message_Msg::Arg()`
+    /// Set a value for %..s conversion
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn arg_handletcollectionhextendedstring(
+        &mut self,
+        theString: &crate::ffi::HandleTCollectionHExtendedString,
+    ) -> &mut Msg {
+        unsafe {
+            &mut *(crate::ffi::Message_Msg_arg_handletcollectionhextendedstring(
+                self as *mut Self,
+                theString,
+            ))
+        }
+    }
+
     /// **Source:** `Message_Msg.hxx`:108 - `Message_Msg::Arg()`
     /// Set a value for %..d, %..i, %..o, %..u, %..x or %..X conversion
     pub fn arg_int(&mut self, theInt: i32) -> &mut Msg {
@@ -4497,33 +4577,6 @@ impl Msg {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_Msg_to_owned(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for Msg (5 total) ──
-// SKIPPED: **Source:** `Message_Msg.hxx`:77 - `Message_Msg::Arg`
-//   method: Set a value for %..s conversion
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn arg(&mut self, theString: *const char) -> &mut Msg;
-//
-// SKIPPED: **Source:** `Message_Msg.hxx`:82 - `Message_Msg::Arg`
-//   method: Set a value for %..s conversion
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn arg(&mut self, theString: &AsciiString) -> &mut Msg;
-//
-// SKIPPED: **Source:** `Message_Msg.hxx`:87 - `Message_Msg::Arg`
-//   method: Set a value for %..s conversion
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn arg(&mut self, theString: &HandleHAsciiString) -> &mut Msg;
-//
-// SKIPPED: **Source:** `Message_Msg.hxx`:95 - `Message_Msg::Arg`
-//   method: Set a value for %..s conversion
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn arg(&mut self, theString: &ExtendedString) -> &mut Msg;
-//
-// SKIPPED: **Source:** `Message_Msg.hxx`:100 - `Message_Msg::Arg`
-//   method: Set a value for %..s conversion
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn arg(&mut self, theString: &HandleHExtendedString) -> &mut Msg;
-//
 
 // ========================
 // From Message_MsgFile.hxx

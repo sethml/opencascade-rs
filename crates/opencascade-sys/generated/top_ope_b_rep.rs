@@ -2923,13 +2923,22 @@ impl LineInter {
     pub fn get_trace_index(&self, exF1: &mut i32, exF2: &mut i32) {
         unsafe { crate::ffi::TopOpeBRep_LineInter_get_trace_index(self as *const Self, exF1, exF2) }
     }
-}
 
-// ── Skipped symbols for LineInter (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRep_LineInter.hxx`:154 - `TopOpeBRep_LineInter::DumpLineTransitions`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump_line_transitions(&self, OS: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `TopOpeBRep_LineInter.hxx`:154 - `TopOpeBRep_LineInter::DumpLineTransitions()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump_line_transitions(
+        &mut self,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRep_LineInter_dump_line_transitions(self as *mut Self, OS))
+        }
+    }
+}
 
 // ========================
 // From TopOpeBRep_Point2d.hxx
@@ -3624,13 +3633,20 @@ impl ShapeScanner {
     pub fn index(&self) -> i32 {
         unsafe { crate::ffi::TopOpeBRep_ShapeScanner_index(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for ShapeScanner (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRep_ShapeScanner.hxx`:64 - `TopOpeBRep_ShapeScanner::DumpCurrent`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump_current(&self, OS: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:64 - `TopOpeBRep_ShapeScanner::DumpCurrent()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump_current(
+        &mut self,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TopOpeBRep_ShapeScanner_dump_current(self as *mut Self, OS)) }
+    }
+}
 
 // ========================
 // From TopOpeBRep_VPointInter.hxx
@@ -3943,17 +3959,53 @@ impl VPointInter {
     pub fn index(&self) -> i32 {
         unsafe { crate::ffi::TopOpeBRep_VPointInter_index(self as *const Self) }
     }
+
+    /// **Source:** `TopOpeBRep_VPointInter.hxx`:171 - `TopOpeBRep_VPointInter::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump_int_face_ostream(
+        &mut self,
+        I: i32,
+        F: &crate::topo_ds::Face,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRep_VPointInter_dump_int_face_ostream(
+                self as *mut Self,
+                I,
+                F,
+                OS,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRep_VPointInter.hxx`:175 - `TopOpeBRep_VPointInter::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump_face2_ostream(
+        &mut self,
+        F1: &crate::topo_ds::Face,
+        F2: &crate::topo_ds::Face,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRep_VPointInter_dump_face2_ostream(
+                self as *mut Self,
+                F1,
+                F2,
+                OS,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for VPointInter (3 total) ──
-// SKIPPED: **Source:** `TopOpeBRep_VPointInter.hxx`:171 - `TopOpeBRep_VPointInter::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, I: i32, F: &Face, OS: &mut OStream) -> &mut OStream;
-//
-// SKIPPED: **Source:** `TopOpeBRep_VPointInter.hxx`:175 - `TopOpeBRep_VPointInter::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, F1: &Face, F2: &Face, OS: &mut OStream) -> &mut OStream;
-//
+// ── Skipped symbols for VPointInter (1 total) ──
 // SKIPPED: **Source:** `TopOpeBRep_VPointInter.hxx`:179 - `TopOpeBRep_VPointInter::PThePointOfIntersectionDummy`
 //   Reason: return type 'TopOpeBRep_PThePointOfIntersection' is unknown
 //   // pub fn p_the_point_of_intersection_dummy(&self) -> OwnedPtr<TopOpeBRep_PThePointOfIntersection>;

@@ -597,6 +597,20 @@ impl Described {
         unsafe { &*(crate::ffi::StepData_Described_field(self as *const Self, c_name.as_ptr())) }
     }
 
+    /// **Source:** `StepData_Described.hxx`:62 - `StepData_Described::CField()`
+    /// Returns a Field from its name; read or write
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn c_field(&mut self, name: &str) -> &mut Field {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            &mut *(crate::ffi::StepData_Described_c_field(self as *mut Self, c_name.as_ptr()))
+        }
+    }
+
     /// **Source:** `StepData_Described.hxx`:65 - `StepData_Described::Check()`
     /// Fills a Check by using its Description
     pub fn check(&self, ach: &mut crate::ffi::HandleInterfaceCheck) {
@@ -741,13 +755,6 @@ impl HandleStepDataDescribed {
         }
     }
 }
-
-// ── Skipped symbols for Described (1 total) ──
-// SKIPPED: **Source:** `StepData_Described.hxx`:62 - `StepData_Described::CField`
-//   method: Returns a Field from its name; read or write
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn c_field(&mut self, name: *const char) -> &mut Field;
-//
 
 // ========================
 // From StepData_ECDescr.hxx
@@ -4685,6 +4692,18 @@ impl Plex {
         unsafe { &*(crate::ffi::StepData_Plex_field(self as *const Self, c_name.as_ptr())) }
     }
 
+    /// **Source:** `StepData_Plex.hxx`:74 - `StepData_Plex::CField()`
+    /// Returns a Field from its name; read or write
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn c_field(&mut self, name: &str) -> &mut Field {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { &mut *(crate::ffi::StepData_Plex_c_field(self as *mut Self, c_name.as_ptr())) }
+    }
+
     /// **Source:** `StepData_Plex.hxx`:77 - `StepData_Plex::NbMembers()`
     /// Returns the count of simple members
     pub fn nb_members(&self) -> i32 {
@@ -4854,13 +4873,6 @@ impl HandleStepDataPlex {
         }
     }
 }
-
-// ── Skipped symbols for Plex (1 total) ──
-// SKIPPED: **Source:** `StepData_Plex.hxx`:74 - `StepData_Plex::CField`
-//   method: Returns a Field from its name; read or write
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn c_field(&mut self, name: *const char) -> &mut Field;
-//
 
 // ========================
 // From StepData_Protocol.hxx
@@ -8059,6 +8071,18 @@ impl Simple {
         unsafe { &*(crate::ffi::StepData_Simple_field(self as *const Self, c_name.as_ptr())) }
     }
 
+    /// **Source:** `StepData_Simple.hxx`:71 - `StepData_Simple::CField()`
+    /// Returns a Field from its name; read or write
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn c_field(&mut self, name: &str) -> &mut Field {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { &mut *(crate::ffi::StepData_Simple_c_field(self as *mut Self, c_name.as_ptr())) }
+    }
+
     /// **Source:** `StepData_Simple.hxx`:74 - `StepData_Simple::NbFields()`
     /// Returns the count of fields
     pub fn nb_fields(&self) -> i32 {
@@ -8236,13 +8260,6 @@ impl HandleStepDataSimple {
         }
     }
 }
-
-// ── Skipped symbols for Simple (1 total) ──
-// SKIPPED: **Source:** `StepData_Simple.hxx`:71 - `StepData_Simple::CField`
-//   method: Returns a Field from its name; read or write
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn c_field(&mut self, name: *const char) -> &mut Field;
-//
 
 // ========================
 // From StepData_StepDumper.hxx

@@ -2534,6 +2534,19 @@ impl Modified {
         unsafe { crate::ffi::TDocStd_Modified_paste(self as *const Self, Into, RT) }
     }
 
+    /// **Source:** `TDocStd_Modified.hxx`:83 - `TDocStd_Modified::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDocStd_Modified_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TDocStd_Modified.hxx`:85 - `TDocStd_Modified::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDocStd_Modified_dynamic_type(self as *const Self)) }
@@ -2933,12 +2946,6 @@ impl HandleTDocStdModified {
         }
     }
 }
-
-// ── Skipped symbols for Modified (1 total) ──
-// SKIPPED: **Source:** `TDocStd_Modified.hxx`:83 - `TDocStd_Modified::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TDocStd_MultiTransactionManager.hxx
@@ -3388,6 +3395,19 @@ impl Owner {
         unsafe { crate::ffi::TDocStd_Owner_paste(self as *const Self, Into, RT) }
     }
 
+    /// **Source:** `TDocStd_Owner.hxx`:71 - `TDocStd_Owner::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDocStd_Owner_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TDocStd_Owner.hxx`:77 - `TDocStd_Owner::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDocStd_Owner_dynamic_type(self as *const Self)) }
@@ -3779,12 +3799,6 @@ impl HandleTDocStdOwner {
     }
 }
 
-// ── Skipped symbols for Owner (1 total) ──
-// SKIPPED: **Source:** `TDocStd_Owner.hxx`:71 - `TDocStd_Owner::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDocStd_PathParser.hxx
 // ========================
@@ -3985,6 +3999,20 @@ impl XLink {
         unsafe {
             crate::ffi::TDocStd_XLink_paste(self as *const Self, intoAttribute, aRelocationTable)
         }
+    }
+
+    /// **Source:** `TDocStd_XLink.hxx`:110 - `TDocStd_XLink::Dump()`
+    /// Dumps the attribute on <aStream>.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDocStd_XLink_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:115 - `TDocStd_XLink::DynamicType()`
@@ -4311,13 +4339,6 @@ impl HandleTDocStdXLink {
     }
 }
 
-// ── Skipped symbols for XLink (1 total) ──
-// SKIPPED: **Source:** `TDocStd_XLink.hxx`:110 - `TDocStd_XLink::Dump`
-//   method: Dumps the attribute on <aStream>.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDocStd_XLinkIterator.hxx
 // ========================
@@ -4443,6 +4464,20 @@ impl XLinkRoot {
                 aRelocationTable,
             )
         }
+    }
+
+    /// **Source:** `TDocStd_XLinkRoot.hxx`:72 - `TDocStd_XLinkRoot::Dump()`
+    /// Dumps the attribute on <aStream>.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDocStd_XLinkRoot_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:76 - `TDocStd_XLinkRoot::DynamicType()`
@@ -4822,12 +4857,7 @@ impl HandleTDocStdXLinkRoot {
     }
 }
 
-// ── Skipped symbols for XLinkRoot (3 total) ──
-// SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:72 - `TDocStd_XLinkRoot::Dump`
-//   method: Dumps the attribute on <aStream>.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
+// ── Skipped symbols for XLinkRoot (2 total) ──
 // SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:49 - `TDocStd_XLinkRoot::Insert`
 //   static_method: Inserts <anXLinkPtr> at the beginning of the XLink chain.
 //   Reason: param 'anXLinkPtr' uses unknown type 'const TDocStd_XLinkPtr&'

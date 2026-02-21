@@ -172,6 +172,19 @@ impl Axis {
         unsafe { &*(crate::ffi::TDataXtd_Axis_id(self as *const Self)) }
     }
 
+    /// **Source:** `TDataXtd_Axis.hxx`:57 - `TDataXtd_Axis::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataXtd_Axis_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TDataXtd_Axis.hxx`:59 - `TDataXtd_Axis::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDataXtd_Axis_dynamic_type(self as *const Self)) }
@@ -598,12 +611,6 @@ impl HandleTDataXtdAxis {
     }
 }
 
-// ── Skipped symbols for Axis (1 total) ──
-// SKIPPED: **Source:** `TDataXtd_Axis.hxx`:57 - `TDataXtd_Axis::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataXtd_Constraint.hxx
 // ========================
@@ -888,6 +895,19 @@ impl Constraint {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataXtd_Constraint_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataXtd_Constraint.hxx`:189 - `TDataXtd_Constraint::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataXtd_Constraint_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataXtd_Constraint.hxx`:191 - `TDataXtd_Constraint::References()`
@@ -1295,12 +1315,6 @@ impl HandleTDataXtdConstraint {
     }
 }
 
-// ── Skipped symbols for Constraint (1 total) ──
-// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:189 - `TDataXtd_Constraint::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataXtd_Geometry.hxx
 // ========================
@@ -1372,6 +1386,19 @@ impl Geometry {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataXtd_Geometry_paste(self as *const Self, into, RT) }
+    }
+
+    /// **Source:** `TDataXtd_Geometry.hxx`:138 - `TDataXtd_Geometry::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataXtd_Geometry_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:140 - `TDataXtd_Geometry::DynamicType()`
@@ -1894,12 +1921,6 @@ impl HandleTDataXtdGeometry {
         }
     }
 }
-
-// ── Skipped symbols for Geometry (1 total) ──
-// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:138 - `TDataXtd_Geometry::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TDataXtd_HArray1OfTrsf.hxx
@@ -2752,6 +2773,19 @@ impl PatternStd {
         unsafe { crate::ffi::TDataXtd_PatternStd_references(self as *const Self, aDataSet) }
     }
 
+    /// **Source:** `TDataXtd_PatternStd.hxx`:108 - `TDataXtd_PatternStd::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataXtd_PatternStd_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TDataXtd_PatternStd.hxx`:110 - `TDataXtd_PatternStd::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDataXtd_PatternStd_dynamic_type(self as *const Self)) }
@@ -3164,12 +3198,6 @@ impl HandleTDataXtdPatternStd {
     }
 }
 
-// ── Skipped symbols for PatternStd (1 total) ──
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:108 - `TDataXtd_PatternStd::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataXtd_Placement.hxx
 // ========================
@@ -3192,6 +3220,19 @@ impl Placement {
     /// **Source:** `TDataXtd_Placement.hxx`:41 - `TDataXtd_Placement::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Placement_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataXtd_Placement.hxx`:43 - `TDataXtd_Placement::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataXtd_Placement_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataXtd_Placement.hxx`:45 - `TDataXtd_Placement::DynamicType()`
@@ -3629,12 +3670,6 @@ impl HandleTDataXtdPlacement {
     }
 }
 
-// ── Skipped symbols for Placement (1 total) ──
-// SKIPPED: **Source:** `TDataXtd_Placement.hxx`:43 - `TDataXtd_Placement::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataXtd_Plane.hxx
 // ========================
@@ -3660,6 +3695,19 @@ impl Plane {
     /// **Source:** `TDataXtd_Plane.hxx`:54 - `TDataXtd_Plane::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Plane_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataXtd_Plane.hxx`:56 - `TDataXtd_Plane::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataXtd_Plane_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataXtd_Plane.hxx`:58 - `TDataXtd_Plane::DynamicType()`
@@ -4092,12 +4140,6 @@ impl HandleTDataXtdPlane {
     }
 }
 
-// ── Skipped symbols for Plane (1 total) ──
-// SKIPPED: **Source:** `TDataXtd_Plane.hxx`:56 - `TDataXtd_Plane::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataXtd_Point.hxx
 // ========================
@@ -4126,6 +4168,19 @@ impl Point {
     /// **Source:** `TDataXtd_Point.hxx`:54 - `TDataXtd_Point::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Point_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataXtd_Point.hxx`:56 - `TDataXtd_Point::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataXtd_Point_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataXtd_Point.hxx`:58 - `TDataXtd_Point::DynamicType()`
@@ -4554,12 +4609,6 @@ impl HandleTDataXtdPoint {
         }
     }
 }
-
-// ── Skipped symbols for Point (1 total) ──
-// SKIPPED: **Source:** `TDataXtd_Point.hxx`:56 - `TDataXtd_Point::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TDataXtd_Position.hxx
@@ -5753,6 +5802,19 @@ impl Shape {
         unsafe { crate::ffi::TDataXtd_Shape_references(self as *const Self, DS) }
     }
 
+    /// **Source:** `TDataXtd_Shape.hxx`:62 - `TDataXtd_Shape::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataXtd_Shape_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TDataXtd_Shape.hxx`:64 - `TDataXtd_Shape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDataXtd_Shape_dynamic_type(self as *const Self)) }
@@ -6188,12 +6250,6 @@ impl HandleTDataXtdShape {
     }
 }
 
-// ── Skipped symbols for Shape (1 total) ──
-// SKIPPED: **Source:** `TDataXtd_Shape.hxx`:62 - `TDataXtd_Shape::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataXtd_Triangulation.hxx
 // ========================
@@ -6395,6 +6451,19 @@ impl Triangulation {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataXtd_Triangulation_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataXtd_Triangulation.hxx`:147 - `TDataXtd_Triangulation::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataXtd_Triangulation_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataXtd_Triangulation.hxx`:149 - `TDataXtd_Triangulation::DynamicType()`
@@ -6821,12 +6890,6 @@ impl HandleTDataXtdTriangulation {
         }
     }
 }
-
-// ── Skipped symbols for Triangulation (1 total) ──
-// SKIPPED: **Source:** `TDataXtd_Triangulation.hxx`:147 - `TDataXtd_Triangulation::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // Additional type re-exports

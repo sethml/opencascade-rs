@@ -4497,6 +4497,16 @@ impl PackedMapOfInteger {
         Self::new_int(1)
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:289 - `TColStd_PackedMapOfInteger::Assign()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn assign(&mut self, arg0: &PackedMapOfInteger) -> &mut PackedMapOfInteger {
+        unsafe { &mut *(crate::ffi::TColStd_PackedMapOfInteger_assign(self as *mut Self, arg0)) }
+    }
+
     /// **Source:** `TColStd_PackedMapOfInteger.hxx`:290 - `TColStd_PackedMapOfInteger::ReSize()`
     pub fn re_size(&mut self, NbBuckets: i32) {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_re_size(self as *mut Self, NbBuckets) }
@@ -4683,12 +4693,6 @@ impl PackedMapOfInteger {
         }
     }
 }
-
-// ── Skipped symbols for PackedMapOfInteger (1 total) ──
-// SKIPPED: **Source:** `TColStd_PackedMapOfInteger.hxx`:289 - `TColStd_PackedMapOfInteger::Assign`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn assign(&mut self, arg0: &PackedMapOfInteger) -> &mut PackedMapOfInteger;
-//
 
 /// **Source:** `TColStd_PackedMapOfInteger.hxx`:155 - `TColStd_PackedMapOfInteger_Iterator`
 /// Iterator of class TColStd_PackedMapOfInteger.

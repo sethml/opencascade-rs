@@ -266,6 +266,31 @@ impl ArrayOfNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfNodes.hxx`:79 - `Poly_ArrayOfNodes::Assign()`
+    /// Copies data of theOther array to this.
+    /// The arrays should have the same length,
+    /// but may have different precision / number of components (data conversion will be applied in
+    /// the latter case).
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn assign(&mut self, theOther: &ArrayOfNodes) -> &mut ArrayOfNodes {
+        unsafe { &mut *(crate::ffi::Poly_ArrayOfNodes_assign(self as *mut Self, theOther)) }
+    }
+
+    /// **Source:** `Poly_ArrayOfNodes.hxx`:82 - `Poly_ArrayOfNodes::Move()`
+    /// Move assignment.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn move_(&mut self, theOther: &mut ArrayOfNodes) -> &mut ArrayOfNodes {
+        unsafe { &mut *(crate::ffi::Poly_ArrayOfNodes_move_(self as *mut Self, theOther)) }
+    }
+
     /// **Source:** `Poly_ArrayOfNodes.hxx`:106 - `Poly_ArrayOfNodes::Value()`
     /// A generalized accessor to point.
     pub fn value(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
@@ -290,20 +315,6 @@ impl ArrayOfNodes {
         }
     }
 }
-
-// ── Skipped symbols for ArrayOfNodes (2 total) ──
-// SKIPPED: **Source:** `Poly_ArrayOfNodes.hxx`:79 - `Poly_ArrayOfNodes::Assign`
-//   method: Copies data of theOther array to this.
-//   method: The arrays should have the same length,
-//   method: but may have different precision / number of components (data conversion will be applied in
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn assign(&mut self, theOther: &ArrayOfNodes) -> &mut ArrayOfNodes;
-//
-// SKIPPED: **Source:** `Poly_ArrayOfNodes.hxx`:82 - `Poly_ArrayOfNodes::Move`
-//   method: Move assignment.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn move_(&mut self, theOther: &mut ArrayOfNodes) -> &mut ArrayOfNodes;
-//
 
 // ========================
 // From Poly_ArrayOfUVNodes.hxx
@@ -367,6 +378,31 @@ impl ArrayOfUVNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:79 - `Poly_ArrayOfUVNodes::Assign()`
+    /// Copies data of theOther array to this.
+    /// The arrays should have the same length,
+    /// but may have different precision / number of components (data conversion will be applied in
+    /// the latter case).
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn assign(&mut self, theOther: &ArrayOfUVNodes) -> &mut ArrayOfUVNodes {
+        unsafe { &mut *(crate::ffi::Poly_ArrayOfUVNodes_assign(self as *mut Self, theOther)) }
+    }
+
+    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:82 - `Poly_ArrayOfUVNodes::Move()`
+    /// Move assignment.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn move_(&mut self, theOther: &mut ArrayOfUVNodes) -> &mut ArrayOfUVNodes {
+        unsafe { &mut *(crate::ffi::Poly_ArrayOfUVNodes_move_(self as *mut Self, theOther)) }
+    }
+
     /// **Source:** `Poly_ArrayOfUVNodes.hxx`:106 - `Poly_ArrayOfUVNodes::Value()`
     /// A generalized accessor to point.
     pub fn value(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
@@ -391,20 +427,6 @@ impl ArrayOfUVNodes {
         }
     }
 }
-
-// ── Skipped symbols for ArrayOfUVNodes (2 total) ──
-// SKIPPED: **Source:** `Poly_ArrayOfUVNodes.hxx`:79 - `Poly_ArrayOfUVNodes::Assign`
-//   method: Copies data of theOther array to this.
-//   method: The arrays should have the same length,
-//   method: but may have different precision / number of components (data conversion will be applied in
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn assign(&mut self, theOther: &ArrayOfUVNodes) -> &mut ArrayOfUVNodes;
-//
-// SKIPPED: **Source:** `Poly_ArrayOfUVNodes.hxx`:82 - `Poly_ArrayOfUVNodes::Move`
-//   method: Move assignment.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn move_(&mut self, theOther: &mut ArrayOfUVNodes) -> &mut ArrayOfUVNodes;
-//
 
 // ========================
 // From Poly_CoherentLink.hxx

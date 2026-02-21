@@ -213,6 +213,19 @@ impl Area {
         unsafe { crate::ffi::XCAFDoc_Area_get(self as *const Self) }
     }
 
+    /// **Source:** `XCAFDoc_Area.hxx`:56 - `XCAFDoc_Area::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Area_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `XCAFDoc_Area.hxx`:62 - `XCAFDoc_Area::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XCAFDoc_Area_dynamic_type(self as *const Self)) }
@@ -623,12 +636,6 @@ impl HandleXCAFDocArea {
         }
     }
 }
-
-// ── Skipped symbols for Area (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_Area.hxx`:56 - `XCAFDoc_Area::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From XCAFDoc_AssemblyGraph.hxx
@@ -1222,6 +1229,19 @@ impl AssemblyItemRef {
         }
     }
 
+    /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:146 - `XCAFDoc_AssemblyItemRef::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        theOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::XCAFDoc_AssemblyItemRef_dump(self as *mut Self, theOS)) }
+    }
+
     /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:34 - `XCAFDoc_AssemblyItemRef::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
@@ -1689,12 +1709,6 @@ impl HandleXCAFDocAssemblyItemRef {
     }
 }
 
-// ── Skipped symbols for AssemblyItemRef (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_AssemblyItemRef.hxx`:146 - `XCAFDoc_AssemblyItemRef::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, theOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From XCAFDoc_AssemblyIterator.hxx
 // ========================
@@ -1825,6 +1839,19 @@ impl Centroid {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::XCAFDoc_Centroid_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `XCAFDoc_Centroid.hxx`:66 - `XCAFDoc_Centroid::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Centroid_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `XCAFDoc_Centroid.hxx`:72 - `XCAFDoc_Centroid::DynamicType()`
@@ -2209,12 +2236,6 @@ impl HandleXCAFDocCentroid {
         }
     }
 }
-
-// ── Skipped symbols for Centroid (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_Centroid.hxx`:66 - `XCAFDoc_Centroid::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From XCAFDoc_ClippingPlaneTool.hxx
@@ -8515,6 +8536,19 @@ impl GraphNode {
         unsafe { crate::ffi::XCAFDoc_GraphNode_references(self as *const Self, aDataSet) }
     }
 
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:136 - `XCAFDoc_GraphNode::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::XCAFDoc_GraphNode_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `XCAFDoc_GraphNode.hxx`:138 - `XCAFDoc_GraphNode::BeforeForget()`
     pub fn before_forget(&mut self) {
         unsafe { crate::ffi::XCAFDoc_GraphNode_before_forget(self as *mut Self) }
@@ -8924,12 +8958,6 @@ impl HandleXCAFDocGraphNode {
         }
     }
 }
-
-// ── Skipped symbols for GraphNode (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:136 - `XCAFDoc_GraphNode::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From XCAFDoc_LayerTool.hxx
@@ -9901,6 +9929,19 @@ impl LengthUnit {
         unsafe { crate::ffi::XCAFDoc_LengthUnit_paste(self as *const Self, theInto, theRT) }
     }
 
+    /// **Source:** `XCAFDoc_LengthUnit.hxx`:87 - `XCAFDoc_LengthUnit::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::XCAFDoc_LengthUnit_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `XCAFDoc_LengthUnit.hxx`:93 - `XCAFDoc_LengthUnit::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XCAFDoc_LengthUnit_dynamic_type(self as *const Self)) }
@@ -10344,12 +10385,6 @@ impl HandleXCAFDocLengthUnit {
         }
     }
 }
-
-// ── Skipped symbols for LengthUnit (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_LengthUnit.hxx`:87 - `XCAFDoc_LengthUnit::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From XCAFDoc_Location.hxx
@@ -11934,6 +11969,19 @@ impl Note {
         unsafe { crate::ffi::XCAFDoc_Note_paste(self as *const Self, theAttrInto, theRT) }
     }
 
+    /// **Source:** `XCAFDoc_Note.hxx`:66 - `XCAFDoc_Note::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        theOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Note_dump(self as *mut Self, theOS)) }
+    }
+
     /// **Source:** `XCAFDoc_Note.hxx`:31 - `XCAFDoc_Note::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
@@ -12342,12 +12390,6 @@ impl HandleXCAFDocNote {
         }
     }
 }
-
-// ── Skipped symbols for Note (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_Note.hxx`:66 - `XCAFDoc_Note::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, theOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From XCAFDoc_NoteBalloon.hxx
@@ -13009,6 +13051,19 @@ impl NoteBinData {
         unsafe { crate::ffi::XCAFDoc_NoteBinData_paste(self as *const Self, theAttrInto, theRT) }
     }
 
+    /// **Source:** `XCAFDoc_NoteBinData.hxx`:115 - `XCAFDoc_NoteBinData::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        theOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::XCAFDoc_NoteBinData_dump(self as *mut Self, theOS)) }
+    }
+
     /// **Source:** `XCAFDoc_NoteBinData.hxx`:27 - `XCAFDoc_NoteBinData::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
@@ -13501,12 +13556,6 @@ impl HandleXCAFDocNoteBinData {
     }
 }
 
-// ── Skipped symbols for NoteBinData (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_NoteBinData.hxx`:115 - `XCAFDoc_NoteBinData::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, theOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From XCAFDoc_NoteComment.hxx
 // ========================
@@ -13572,6 +13621,19 @@ impl NoteComment {
         theRT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::XCAFDoc_NoteComment_paste(self as *const Self, theAttrInto, theRT) }
+    }
+
+    /// **Source:** `XCAFDoc_NoteComment.hxx`:59 - `XCAFDoc_NoteComment::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        theOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::XCAFDoc_NoteComment_dump(self as *mut Self, theOS)) }
     }
 
     /// **Source:** `XCAFDoc_NoteComment.hxx`:24 - `XCAFDoc_NoteComment::get_type_name()`
@@ -14052,12 +14114,6 @@ impl HandleXCAFDocNoteComment {
         }
     }
 }
-
-// ── Skipped symbols for NoteComment (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_NoteComment.hxx`:59 - `XCAFDoc_NoteComment::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, theOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From XCAFDoc_NotesTool.hxx
@@ -15003,6 +15059,19 @@ impl NotesTool {
         unsafe { &*(crate::ffi::XCAFDoc_NotesTool_id(self as *const Self)) }
     }
 
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:512 - `XCAFDoc_NotesTool::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        theOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::XCAFDoc_NotesTool_dump(self as *mut Self, theOS)) }
+    }
+
     /// **Source:** `XCAFDoc_NotesTool.hxx`:78 - `XCAFDoc_NotesTool::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
@@ -15421,12 +15490,6 @@ impl HandleXCAFDocNotesTool {
         }
     }
 }
-
-// ── Skipped symbols for NotesTool (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:512 - `XCAFDoc_NotesTool::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, theOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From XCAFDoc_ShapeMapTool.hxx
@@ -16316,6 +16379,39 @@ impl ShapeTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:361 - `XCAFDoc_ShapeTool::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump_ostream_bool(
+        &mut self,
+        theDumpLog: &mut crate::ffi::Standard_OStream,
+        deep: bool,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_ShapeTool_dump_ostream_bool(
+                self as *mut Self,
+                theDumpLog,
+                deep,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:364 - `XCAFDoc_ShapeTool::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump_ostream(
+        &mut self,
+        theDumpLog: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::XCAFDoc_ShapeTool_dump_ostream(self as *mut Self, theDumpLog)) }
+    }
+
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:375 - `XCAFDoc_ShapeTool::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ShapeTool_id(self as *const Self)) }
@@ -17187,16 +17283,6 @@ impl HandleXCAFDocShapeTool {
         }
     }
 }
-
-// ── Skipped symbols for ShapeTool (2 total) ──
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:361 - `XCAFDoc_ShapeTool::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, theDumpLog: &mut OStream, deep: bool) -> &mut OStream;
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:364 - `XCAFDoc_ShapeTool::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, theDumpLog: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From XCAFDoc_View.hxx
@@ -19811,6 +19897,19 @@ impl Volume {
         unsafe { crate::ffi::XCAFDoc_Volume_get(self as *const Self) }
     }
 
+    /// **Source:** `XCAFDoc_Volume.hxx`:56 - `XCAFDoc_Volume::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Volume_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `XCAFDoc_Volume.hxx`:62 - `XCAFDoc_Volume::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XCAFDoc_Volume_dynamic_type(self as *const Self)) }
@@ -20229,12 +20328,6 @@ impl HandleXCAFDocVolume {
         }
     }
 }
-
-// ── Skipped symbols for Volume (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_Volume.hxx`:56 - `XCAFDoc_Volume::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // Additional type re-exports

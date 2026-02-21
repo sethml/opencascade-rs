@@ -177,6 +177,58 @@ impl Data {
         unsafe { crate::ffi::HLRTopoBRep_Data_add_old_s(self as *mut Self, NewS, OldS) }
     }
 
+    /// **Source:** `HLRTopoBRep_Data.hxx`:97 - `HLRTopoBRep_Data::AddSplE()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn add_spl_e(
+        &mut self,
+        E: &crate::topo_ds::Edge,
+    ) -> &mut crate::ffi::TopTools_ListOfShape {
+        unsafe { &mut *(crate::ffi::HLRTopoBRep_Data_add_spl_e(self as *mut Self, E)) }
+    }
+
+    /// **Source:** `HLRTopoBRep_Data.hxx`:99 - `HLRTopoBRep_Data::AddIntL()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn add_int_l(
+        &mut self,
+        F: &crate::topo_ds::Face,
+    ) -> &mut crate::ffi::TopTools_ListOfShape {
+        unsafe { &mut *(crate::ffi::HLRTopoBRep_Data_add_int_l(self as *mut Self, F)) }
+    }
+
+    /// **Source:** `HLRTopoBRep_Data.hxx`:101 - `HLRTopoBRep_Data::AddOutL()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn add_out_l(
+        &mut self,
+        F: &crate::topo_ds::Face,
+    ) -> &mut crate::ffi::TopTools_ListOfShape {
+        unsafe { &mut *(crate::ffi::HLRTopoBRep_Data_add_out_l(self as *mut Self, F)) }
+    }
+
+    /// **Source:** `HLRTopoBRep_Data.hxx`:103 - `HLRTopoBRep_Data::AddIsoL()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn add_iso_l(
+        &mut self,
+        F: &crate::topo_ds::Face,
+    ) -> &mut crate::ffi::TopTools_ListOfShape {
+        unsafe { &mut *(crate::ffi::HLRTopoBRep_Data_add_iso_l(self as *mut Self, F)) }
+    }
+
     /// **Source:** `HLRTopoBRep_Data.hxx`:105 - `HLRTopoBRep_Data::AddOutV()`
     pub fn add_out_v(&mut self, V: &crate::topo_ds::Vertex) {
         unsafe { crate::ffi::HLRTopoBRep_Data_add_out_v(self as *mut Self, V) }
@@ -244,24 +296,6 @@ impl Data {
         unsafe { crate::ffi::HLRTopoBRep_Data_append(self as *mut Self, V, P) }
     }
 }
-
-// ── Skipped symbols for Data (4 total) ──
-// SKIPPED: **Source:** `HLRTopoBRep_Data.hxx`:97 - `HLRTopoBRep_Data::AddSplE`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn add_spl_e(&mut self, E: &Edge) -> &mut ListOfShape;
-//
-// SKIPPED: **Source:** `HLRTopoBRep_Data.hxx`:99 - `HLRTopoBRep_Data::AddIntL`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn add_int_l(&mut self, F: &Face) -> &mut ListOfShape;
-//
-// SKIPPED: **Source:** `HLRTopoBRep_Data.hxx`:101 - `HLRTopoBRep_Data::AddOutL`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn add_out_l(&mut self, F: &Face) -> &mut ListOfShape;
-//
-// SKIPPED: **Source:** `HLRTopoBRep_Data.hxx`:103 - `HLRTopoBRep_Data::AddIsoL`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn add_iso_l(&mut self, F: &Face) -> &mut ListOfShape;
-//
 
 // ========================
 // From HLRTopoBRep_FaceData.hxx

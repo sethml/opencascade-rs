@@ -6163,6 +6163,34 @@ impl PolyAlgo {
         unsafe { crate::ffi::HLRBRep_PolyAlgo_next_hide(self as *mut Self) }
     }
 
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:157 - `HLRBRep_PolyAlgo::Hide()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn hide(
+        &mut self,
+        status: &mut crate::hlr_algo::EdgeStatus,
+        S: &mut crate::topo_ds::Shape,
+        reg1: &mut bool,
+        regn: &mut bool,
+        outl: &mut bool,
+        intl: &mut bool,
+    ) -> &mut crate::hlr_algo::BiPoint_PointsT {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_PolyAlgo_hide(
+                self as *mut Self,
+                status,
+                S,
+                reg1,
+                regn,
+                outl,
+                intl,
+            ))
+        }
+    }
+
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:164 - `HLRBRep_PolyAlgo::InitShow()`
     pub fn init_show(&mut self) {
         unsafe { crate::ffi::HLRBRep_PolyAlgo_init_show(self as *mut Self) }
@@ -6176,6 +6204,25 @@ impl PolyAlgo {
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:168 - `HLRBRep_PolyAlgo::NextShow()`
     pub fn next_show(&mut self) {
         unsafe { crate::ffi::HLRBRep_PolyAlgo_next_show(self as *mut Self) }
+    }
+
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:170 - `HLRBRep_PolyAlgo::Show()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn show(
+        &mut self,
+        S: &mut crate::topo_ds::Shape,
+        reg1: &mut bool,
+        regn: &mut bool,
+        outl: &mut bool,
+        intl: &mut bool,
+    ) -> &mut crate::hlr_algo::BiPoint_PointsT {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_PolyAlgo_show(self as *mut Self, S, reg1, regn, outl, intl))
+        }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:178 - `HLRBRep_PolyAlgo::OutLinedShape()`
@@ -6310,16 +6357,6 @@ impl HandleHLRBRepPolyAlgo {
         }
     }
 }
-
-// ── Skipped symbols for PolyAlgo (2 total) ──
-// SKIPPED: **Source:** `HLRBRep_PolyAlgo.hxx`:157 - `HLRBRep_PolyAlgo::Hide`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn hide(&mut self, status: &mut EdgeStatus, S: &mut Shape, reg1: &mut bool, regn: &mut bool, outl: &mut bool, intl: &mut bool) -> &mut BiPoint_PointsT;
-//
-// SKIPPED: **Source:** `HLRBRep_PolyAlgo.hxx`:170 - `HLRBRep_PolyAlgo::Show`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn show(&mut self, S: &mut Shape, reg1: &mut bool, regn: &mut bool, outl: &mut bool, intl: &mut bool) -> &mut BiPoint_PointsT;
-//
 
 // ========================
 // From HLRBRep_PolyHLRToShape.hxx

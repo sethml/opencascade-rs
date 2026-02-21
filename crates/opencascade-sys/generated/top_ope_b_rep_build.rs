@@ -1322,6 +1322,29 @@ impl Builder {
         unsafe { crate::ffi::TopOpeBRepBuild_Builder_make_shells(self as *mut Self, B, L) }
     }
 
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:235 - `TopOpeBRepBuild_Builder::ChangeSplit()`
+    /// Returns a ref.on the list of shapes connected to <S> as
+    /// <TB> split parts of <S>.
+    /// Mark <S> as split in <TB> parts.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn change_split(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+        TB: crate::top_abs::State,
+    ) -> &mut crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepBuild_Builder_change_split(
+                self as *mut Self,
+                S,
+                TB.into(),
+            ))
+        }
+    }
+
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:237 - `TopOpeBRepBuild_Builder::Opec12()`
     pub fn opec12(&self) -> bool {
         unsafe { crate::ffi::TopOpeBRepBuild_Builder_opec12(self as *const Self) }
@@ -2908,15 +2931,6 @@ impl Builder {
         unsafe { crate::ffi::TopOpeBRepBuild_Builder_gcheck_nbounds(E) }
     }
 }
-
-// ── Skipped symbols for Builder (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:235 - `TopOpeBRepBuild_Builder::ChangeSplit`
-//   method: Returns a ref.on the list of shapes connected to <S> as
-//   method: <TB> split parts of <S>.
-//   method: Mark <S> as split in <TB> parts.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn change_split(&mut self, S: &Shape, TB: State) -> &mut ListOfShape;
-//
 
 // ========================
 // From TopOpeBRepBuild_Builder1.hxx

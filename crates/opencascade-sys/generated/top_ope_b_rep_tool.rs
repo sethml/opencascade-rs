@@ -1909,6 +1909,22 @@ impl ShapeExplorer {
         unsafe { crate::ffi::TopOpeBRepTool_ShapeExplorer_index(self as *const Self) }
     }
 
+    /// **Source:** `TopOpeBRepTool_ShapeExplorer.hxx`:72 - `TopOpeBRepTool_ShapeExplorer::DumpCurrent()`
+    /// Dump info on current shape to stream
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump_current(
+        &mut self,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepTool_ShapeExplorer_dump_current(self as *mut Self, OS))
+        }
+    }
+
     /// Upcast to TopExp_Explorer
     pub fn as_top_exp_explorer(&self) -> &crate::top_exp::Explorer {
         unsafe {
@@ -1966,13 +1982,6 @@ impl ShapeExplorer {
         unsafe { crate::ffi::TopOpeBRepTool_ShapeExplorer_inherited_Clear(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for ShapeExplorer (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepTool_ShapeExplorer.hxx`:72 - `TopOpeBRepTool_ShapeExplorer::DumpCurrent`
-//   method: Dump info on current shape to stream
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump_current(&self, OS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TopOpeBRepTool_ShapeTool.hxx

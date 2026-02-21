@@ -764,6 +764,19 @@ impl SolidExplorer {
         unsafe { &*(crate::ffi::BRepClass3d_SolidExplorer_get_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:179 - `BRepClass3d_SolidExplorer::Intersector()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn intersector(
+        &mut self,
+        F: &crate::topo_ds::Face,
+    ) -> &mut crate::int_curves_face::Intersector {
+        unsafe { &mut *(crate::ffi::BRepClass3d_SolidExplorer_intersector(self as *mut Self, F)) }
+    }
+
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:182 - `BRepClass3d_SolidExplorer::GetTree()`
     /// Return UB-tree instance which is used for edge / vertex checks.
     pub fn get_tree(&mut self) -> &crate::ffi::BRepClass3d_BndBoxTree {
@@ -862,12 +875,6 @@ impl SolidExplorer {
         }
     }
 }
-
-// ── Skipped symbols for SolidExplorer (1 total) ──
-// SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:179 - `BRepClass3d_SolidExplorer::Intersector`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn intersector(&self, F: &Face) -> &mut Intersector;
-//
 
 // ========================
 // From BRepClass3d_SolidPassiveClassifier.hxx

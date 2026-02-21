@@ -479,6 +479,19 @@ impl AsciiText {
         unsafe { crate::ffi::Vrml_AsciiText_width(self as *const Self) }
     }
 
+    /// **Source:** `Vrml_AsciiText.hxx`:68 - `Vrml_AsciiText::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_AsciiText_print(self as *mut Self, anOStream)) }
+    }
+
     /// **Source:** `Vrml_AsciiText.hxx`:70 - `Vrml_AsciiText::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Vrml_AsciiText_dynamic_type(self as *const Self)) }
@@ -587,12 +600,6 @@ impl HandleVrmlAsciiText {
     }
 }
 
-// ── Skipped symbols for AsciiText (1 total) ──
-// SKIPPED: **Source:** `Vrml_AsciiText.hxx`:68 - `Vrml_AsciiText::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From Vrml_Cone.hxx
 // ========================
@@ -674,13 +681,20 @@ impl Cone {
     pub fn height(&self) -> f64 {
         unsafe { crate::ffi::Vrml_Cone_height(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for Cone (1 total) ──
-// SKIPPED: **Source:** `Vrml_Cone.hxx`:56 - `Vrml_Cone::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Cone.hxx`:56 - `Vrml_Cone::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Cone_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_Coordinate3.hxx
@@ -728,6 +742,19 @@ impl Coordinate3 {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Vrml_Coordinate3_point(self as *const Self))
         }
+    }
+
+    /// **Source:** `Vrml_Coordinate3.hxx`:48 - `Vrml_Coordinate3::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Coordinate3_print(self as *mut Self, anOStream)) }
     }
 
     /// **Source:** `Vrml_Coordinate3.hxx`:50 - `Vrml_Coordinate3::DynamicType()`
@@ -838,12 +865,6 @@ impl HandleVrmlCoordinate3 {
     }
 }
 
-// ── Skipped symbols for Coordinate3 (1 total) ──
-// SKIPPED: **Source:** `Vrml_Coordinate3.hxx`:48 - `Vrml_Coordinate3::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From Vrml_Cube.hxx
 // ========================
@@ -916,13 +937,20 @@ impl Cube {
     pub fn depth(&self) -> f64 {
         unsafe { crate::ffi::Vrml_Cube_depth(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for Cube (1 total) ──
-// SKIPPED: **Source:** `Vrml_Cube.hxx`:55 - `Vrml_Cube::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Cube.hxx`:55 - `Vrml_Cube::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Cube_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_Cylinder.hxx
@@ -1006,13 +1034,20 @@ impl Cylinder {
     pub fn height(&self) -> f64 {
         unsafe { crate::ffi::Vrml_Cylinder_height(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for Cylinder (1 total) ──
-// SKIPPED: **Source:** `Vrml_Cylinder.hxx`:55 - `Vrml_Cylinder::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Cylinder.hxx`:55 - `Vrml_Cylinder::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Cylinder_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_DirectionalLight.hxx
@@ -1098,13 +1133,20 @@ impl DirectionalLight {
             ))
         }
     }
-}
 
-// ── Skipped symbols for DirectionalLight (1 total) ──
-// SKIPPED: **Source:** `Vrml_DirectionalLight.hxx`:62 - `Vrml_DirectionalLight::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_DirectionalLight.hxx`:62 - `Vrml_DirectionalLight::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_DirectionalLight_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_FontStyle.hxx
@@ -1181,13 +1223,20 @@ impl FontStyle {
             .unwrap()
         }
     }
-}
 
-// ── Skipped symbols for FontStyle (1 total) ──
-// SKIPPED: **Source:** `Vrml_FontStyle.hxx`:55 - `Vrml_FontStyle::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_FontStyle.hxx`:55 - `Vrml_FontStyle::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_FontStyle_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_Group.hxx
@@ -1214,13 +1263,20 @@ impl Group {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Vrml_Group_ctor()) }
     }
-}
 
-// ── Skipped symbols for Group (1 total) ──
-// SKIPPED: **Source:** `Vrml_Group.hxx`:41 - `Vrml_Group::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&mut self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Group.hxx`:41 - `Vrml_Group::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Group_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_IndexedFaceSet.hxx
@@ -1334,6 +1390,19 @@ impl IndexedFaceSet {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:63 - `Vrml_IndexedFaceSet::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_IndexedFaceSet_print(self as *mut Self, anOStream)) }
     }
 
     /// **Source:** `Vrml_IndexedFaceSet.hxx`:65 - `Vrml_IndexedFaceSet::DynamicType()`
@@ -1452,12 +1521,6 @@ impl HandleVrmlIndexedFaceSet {
         }
     }
 }
-
-// ── Skipped symbols for IndexedFaceSet (1 total) ──
-// SKIPPED: **Source:** `Vrml_IndexedFaceSet.hxx`:63 - `Vrml_IndexedFaceSet::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From Vrml_IndexedLineSet.hxx
@@ -1581,6 +1644,19 @@ impl IndexedLineSet {
         }
     }
 
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:71 - `Vrml_IndexedLineSet::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_IndexedLineSet_print(self as *mut Self, anOStream)) }
+    }
+
     /// **Source:** `Vrml_IndexedLineSet.hxx`:73 - `Vrml_IndexedLineSet::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Vrml_IndexedLineSet_dynamic_type(self as *const Self)) }
@@ -1698,12 +1774,6 @@ impl HandleVrmlIndexedLineSet {
     }
 }
 
-// ── Skipped symbols for IndexedLineSet (1 total) ──
-// SKIPPED: **Source:** `Vrml_IndexedLineSet.hxx`:71 - `Vrml_IndexedLineSet::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From Vrml_Info.hxx
 // ========================
@@ -1737,13 +1807,20 @@ impl Info {
     pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Vrml_Info_string(self as *const Self)) }
     }
-}
 
-// ── Skipped symbols for Info (1 total) ──
-// SKIPPED: **Source:** `Vrml_Info.hxx`:43 - `Vrml_Info::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Info.hxx`:43 - `Vrml_Info::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Info_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_Instancing.hxx
@@ -1774,18 +1851,34 @@ impl Instancing {
     pub fn new_asciistring(aString: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Vrml_Instancing_ctor_asciistring(aString)) }
     }
-}
 
-// ── Skipped symbols for Instancing (2 total) ──
-// SKIPPED: **Source:** `Vrml_Instancing.hxx`:46 - `Vrml_Instancing::DEF`
-//   method: Adds "USE  <myName>" in  anOStream (VRML  file).
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn def(&self, anOStream: &mut OStream) -> &mut OStream;
-//
-// SKIPPED: **Source:** `Vrml_Instancing.hxx`:48 - `Vrml_Instancing::USE`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn use_(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Instancing.hxx`:46 - `Vrml_Instancing::DEF()`
+    /// Adds "USE  <myName>" in  anOStream (VRML  file).
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn def(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Instancing_def(self as *mut Self, anOStream)) }
+    }
+
+    /// **Source:** `Vrml_Instancing.hxx`:48 - `Vrml_Instancing::USE()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn use_(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Instancing_use_(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_LOD.hxx
@@ -1857,6 +1950,19 @@ impl LOD {
     /// **Source:** `Vrml_LOD.hxx`:66 - `Vrml_LOD::Center()`
     pub fn center(&self) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Vrml_LOD_center(self as *const Self)) }
+    }
+
+    /// **Source:** `Vrml_LOD.hxx`:68 - `Vrml_LOD::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_LOD_print(self as *mut Self, anOStream)) }
     }
 
     /// **Source:** `Vrml_LOD.hxx`:70 - `Vrml_LOD::DynamicType()`
@@ -1964,12 +2070,6 @@ impl HandleVrmlLOD {
         }
     }
 }
-
-// ── Skipped symbols for LOD (1 total) ──
-// SKIPPED: **Source:** `Vrml_LOD.hxx`:68 - `Vrml_LOD::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From Vrml_Material.hxx
@@ -2088,6 +2188,19 @@ impl Material {
         }
     }
 
+    /// **Source:** `Vrml_Material.hxx`:74 - `Vrml_Material::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Material_print(self as *mut Self, anOStream)) }
+    }
+
     /// **Source:** `Vrml_Material.hxx`:76 - `Vrml_Material::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Vrml_Material_dynamic_type(self as *const Self)) }
@@ -2196,12 +2309,6 @@ impl HandleVrmlMaterial {
     }
 }
 
-// ── Skipped symbols for Material (1 total) ──
-// SKIPPED: **Source:** `Vrml_Material.hxx`:74 - `Vrml_Material::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From Vrml_MaterialBinding.hxx
 // ========================
@@ -2256,13 +2363,20 @@ impl MaterialBinding {
             .unwrap()
         }
     }
-}
 
-// ── Skipped symbols for MaterialBinding (1 total) ──
-// SKIPPED: **Source:** `Vrml_MaterialBinding.hxx`:48 - `Vrml_MaterialBinding::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_MaterialBinding.hxx`:48 - `Vrml_MaterialBinding::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_MaterialBinding_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_MatrixTransform.hxx
@@ -2311,13 +2425,20 @@ impl MatrixTransform {
             crate::OwnedPtr::from_raw(crate::ffi::Vrml_MatrixTransform_matrix(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for MatrixTransform (1 total) ──
-// SKIPPED: **Source:** `Vrml_MatrixTransform.hxx`:51 - `Vrml_MatrixTransform::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_MatrixTransform.hxx`:51 - `Vrml_MatrixTransform::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_MatrixTransform_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_Normal.hxx
@@ -2364,6 +2485,19 @@ impl Normal {
     /// **Source:** `Vrml_Normal.hxx`:47 - `Vrml_Normal::Vector()`
     pub fn vector(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfVec> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Vrml_Normal_vector(self as *const Self)) }
+    }
+
+    /// **Source:** `Vrml_Normal.hxx`:49 - `Vrml_Normal::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Normal_print(self as *mut Self, anOStream)) }
     }
 
     /// **Source:** `Vrml_Normal.hxx`:51 - `Vrml_Normal::DynamicType()`
@@ -2472,12 +2606,6 @@ impl HandleVrmlNormal {
     }
 }
 
-// ── Skipped symbols for Normal (1 total) ──
-// SKIPPED: **Source:** `Vrml_Normal.hxx`:49 - `Vrml_Normal::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From Vrml_NormalBinding.hxx
 // ========================
@@ -2530,13 +2658,20 @@ impl NormalBinding {
             .unwrap()
         }
     }
-}
 
-// ── Skipped symbols for NormalBinding (1 total) ──
-// SKIPPED: **Source:** `Vrml_NormalBinding.hxx`:48 - `Vrml_NormalBinding::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_NormalBinding.hxx`:48 - `Vrml_NormalBinding::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_NormalBinding_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_OrthographicCamera.hxx
@@ -2634,13 +2769,20 @@ impl OrthographicCamera {
     pub fn height(&self) -> f64 {
         unsafe { crate::ffi::Vrml_OrthographicCamera_height(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for OrthographicCamera (1 total) ──
-// SKIPPED: **Source:** `Vrml_OrthographicCamera.hxx`:60 - `Vrml_OrthographicCamera::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_OrthographicCamera.hxx`:60 - `Vrml_OrthographicCamera::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_OrthographicCamera_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_PerspectiveCamera.hxx
@@ -2732,13 +2874,20 @@ impl PerspectiveCamera {
     pub fn angle(&self) -> f64 {
         unsafe { crate::ffi::Vrml_PerspectiveCamera_angle(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for PerspectiveCamera (1 total) ──
-// SKIPPED: **Source:** `Vrml_PerspectiveCamera.hxx`:59 - `Vrml_PerspectiveCamera::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_PerspectiveCamera.hxx`:59 - `Vrml_PerspectiveCamera::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_PerspectiveCamera_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_PointLight.hxx
@@ -2821,13 +2970,20 @@ impl PointLight {
             crate::OwnedPtr::from_raw(crate::ffi::Vrml_PointLight_location(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for PointLight (1 total) ──
-// SKIPPED: **Source:** `Vrml_PointLight.hxx`:63 - `Vrml_PointLight::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_PointLight.hxx`:63 - `Vrml_PointLight::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_PointLight_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_PointSet.hxx
@@ -2880,13 +3036,20 @@ impl PointSet {
     pub fn num_points(&self) -> i32 {
         unsafe { crate::ffi::Vrml_PointSet_num_points(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for PointSet (1 total) ──
-// SKIPPED: **Source:** `Vrml_PointSet.hxx`:43 - `Vrml_PointSet::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_PointSet.hxx`:43 - `Vrml_PointSet::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_PointSet_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_Rotation.hxx
@@ -2926,13 +3089,20 @@ impl Rotation {
             crate::OwnedPtr::from_raw(crate::ffi::Vrml_Rotation_rotation(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for Rotation (1 total) ──
-// SKIPPED: **Source:** `Vrml_Rotation.hxx`:43 - `Vrml_Rotation::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Rotation.hxx`:43 - `Vrml_Rotation::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Rotation_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_SFImage.hxx
@@ -3246,13 +3416,20 @@ impl Scale {
             crate::OwnedPtr::from_raw(crate::ffi::Vrml_Scale_scale_factor(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for Scale (1 total) ──
-// SKIPPED: **Source:** `Vrml_Scale.hxx`:45 - `Vrml_Scale::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Scale.hxx`:45 - `Vrml_Scale::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Scale_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_Separator.hxx
@@ -3310,13 +3487,20 @@ impl Separator {
             .unwrap()
         }
     }
-}
 
-// ── Skipped symbols for Separator (1 total) ──
-// SKIPPED: **Source:** `Vrml_Separator.hxx`:51 - `Vrml_Separator::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&mut self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Separator.hxx`:51 - `Vrml_Separator::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Separator_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_ShapeHints.hxx
@@ -3444,13 +3628,20 @@ impl ShapeHints {
     pub fn angle(&self) -> f64 {
         unsafe { crate::ffi::Vrml_ShapeHints_angle(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for ShapeHints (1 total) ──
-// SKIPPED: **Source:** `Vrml_ShapeHints.hxx`:76 - `Vrml_ShapeHints::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_ShapeHints.hxx`:76 - `Vrml_ShapeHints::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_ShapeHints_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_Sphere.hxx
@@ -3488,13 +3679,20 @@ impl Sphere {
     pub fn radius(&self) -> f64 {
         unsafe { crate::ffi::Vrml_Sphere_radius(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for Sphere (1 total) ──
-// SKIPPED: **Source:** `Vrml_Sphere.hxx`:41 - `Vrml_Sphere::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Sphere.hxx`:41 - `Vrml_Sphere::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Sphere_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_SpotLight.hxx
@@ -3623,13 +3821,20 @@ impl SpotLight {
     pub fn cut_off_angle(&self) -> f64 {
         unsafe { crate::ffi::Vrml_SpotLight_cut_off_angle(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for SpotLight (1 total) ──
-// SKIPPED: **Source:** `Vrml_SpotLight.hxx`:83 - `Vrml_SpotLight::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_SpotLight.hxx`:83 - `Vrml_SpotLight::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_SpotLight_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_Switch.hxx
@@ -3673,13 +3878,20 @@ impl Switch {
     pub fn which_child(&self) -> i32 {
         unsafe { crate::ffi::Vrml_Switch_which_child(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for Switch (1 total) ──
-// SKIPPED: **Source:** `Vrml_Switch.hxx`:46 - `Vrml_Switch::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Switch.hxx`:46 - `Vrml_Switch::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Switch_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_Texture2.hxx
@@ -3782,13 +3994,20 @@ impl Texture2 {
             .unwrap()
         }
     }
-}
 
-// ── Skipped symbols for Texture2 (1 total) ──
-// SKIPPED: **Source:** `Vrml_Texture2.hxx`:69 - `Vrml_Texture2::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Texture2.hxx`:69 - `Vrml_Texture2::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Texture2_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_Texture2Transform.hxx
@@ -3895,13 +4114,20 @@ impl Texture2Transform {
             ))
         }
     }
-}
 
-// ── Skipped symbols for Texture2Transform (1 total) ──
-// SKIPPED: **Source:** `Vrml_Texture2Transform.hxx`:69 - `Vrml_Texture2Transform::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Texture2Transform.hxx`:69 - `Vrml_Texture2Transform::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Texture2Transform_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_TextureCoordinate2.hxx
@@ -3956,6 +4182,19 @@ impl TextureCoordinate2 {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:53 - `Vrml_TextureCoordinate2::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_TextureCoordinate2_print(self as *mut Self, anOStream)) }
     }
 
     /// **Source:** `Vrml_TextureCoordinate2.hxx`:55 - `Vrml_TextureCoordinate2::DynamicType()`
@@ -4083,12 +4322,6 @@ impl HandleVrmlTextureCoordinate2 {
     }
 }
 
-// ── Skipped symbols for TextureCoordinate2 (1 total) ──
-// SKIPPED: **Source:** `Vrml_TextureCoordinate2.hxx`:53 - `Vrml_TextureCoordinate2::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From Vrml_Transform.hxx
 // ========================
@@ -4201,13 +4434,20 @@ impl Transform {
     pub fn center(&self) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Vrml_Transform_center(self as *const Self)) }
     }
-}
 
-// ── Skipped symbols for Transform (1 total) ──
-// SKIPPED: **Source:** `Vrml_Transform.hxx`:72 - `Vrml_Transform::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Transform.hxx`:72 - `Vrml_Transform::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Transform_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_TransformSeparator.hxx
@@ -4232,13 +4472,20 @@ impl TransformSeparator {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Vrml_TransformSeparator_ctor()) }
     }
-}
 
-// ── Skipped symbols for TransformSeparator (1 total) ──
-// SKIPPED: **Source:** `Vrml_TransformSeparator.hxx`:39 - `Vrml_TransformSeparator::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&mut self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_TransformSeparator.hxx`:39 - `Vrml_TransformSeparator::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_TransformSeparator_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_Translation.hxx
@@ -4280,13 +4527,20 @@ impl Translation {
             crate::OwnedPtr::from_raw(crate::ffi::Vrml_Translation_translation(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for Translation (1 total) ──
-// SKIPPED: **Source:** `Vrml_Translation.hxx`:45 - `Vrml_Translation::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_Translation.hxx`:45 - `Vrml_Translation::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_Translation_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_WWWAnchor.hxx
@@ -4359,13 +4613,20 @@ impl WWWAnchor {
                 .unwrap()
         }
     }
-}
 
-// ── Skipped symbols for WWWAnchor (1 total) ──
-// SKIPPED: **Source:** `Vrml_WWWAnchor.hxx`:57 - `Vrml_WWWAnchor::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_WWWAnchor.hxx`:57 - `Vrml_WWWAnchor::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_WWWAnchor_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ========================
 // From Vrml_WWWInline.hxx
@@ -4447,13 +4708,20 @@ impl WWWInline {
             crate::OwnedPtr::from_raw(crate::ffi::Vrml_WWWInline_bbox_center(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for WWWInline (1 total) ──
-// SKIPPED: **Source:** `Vrml_WWWInline.hxx`:63 - `Vrml_WWWInline::Print`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;
-//
+    /// **Source:** `Vrml_WWWInline.hxx`:63 - `Vrml_WWWInline::Print()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn print(
+        &mut self,
+        anOStream: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::Vrml_WWWInline_print(self as *mut Self, anOStream)) }
+    }
+}
 
 // ── Skipped free functions (1 total) ──
 // SKIPPED: **Source:** `Vrml.hxx`:45 - `Vrml::CommentWriter`

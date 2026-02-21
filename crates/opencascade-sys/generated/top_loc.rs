@@ -653,6 +653,18 @@ impl SListOfItemLocation {
         }
     }
 
+    /// **Source:** `TopLoc_SListOfItemLocation.hxx`:63 - `TopLoc_SListOfItemLocation::Assign()`
+    /// Sets  a list  from  an  other  one. The  lists are
+    /// shared. The list itself is returned.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn assign(&mut self, Other: &SListOfItemLocation) -> &mut SListOfItemLocation {
+        unsafe { &mut *(crate::ffi::TopLoc_SListOfItemLocation_assign(self as *mut Self, Other)) }
+    }
+
     /// **Source:** `TopLoc_SListOfItemLocation.hxx`:85 - `TopLoc_SListOfItemLocation::IsEmpty()`
     /// Return true if this list is empty
     pub fn is_empty(&self) -> bool {
@@ -715,11 +727,3 @@ impl SListOfItemLocation {
         }
     }
 }
-
-// ── Skipped symbols for SListOfItemLocation (1 total) ──
-// SKIPPED: **Source:** `TopLoc_SListOfItemLocation.hxx`:63 - `TopLoc_SListOfItemLocation::Assign`
-//   method: Sets  a list  from  an  other  one. The  lists are
-//   method: shared. The list itself is returned.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn assign(&mut self, Other: &SListOfItemLocation) -> &mut SListOfItemLocation;
-//

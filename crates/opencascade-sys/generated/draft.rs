@@ -733,10 +733,14 @@ impl VertexInfo {
     pub fn change_geometry(&mut self) -> &mut crate::gp::Pnt {
         unsafe { &mut *(crate::ffi::Draft_VertexInfo_change_geometry(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for VertexInfo (1 total) ──
-// SKIPPED: **Source:** `Draft_VertexInfo.hxx`:53 - `Draft_VertexInfo::ChangeParameter`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn change_parameter(&mut self, E: &Edge) -> &mut f64;
-//
+    /// **Source:** `Draft_VertexInfo.hxx`:53 - `Draft_VertexInfo::ChangeParameter()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn change_parameter(&mut self, E: &crate::topo_ds::Edge) -> &mut f64 {
+        unsafe { &mut *(crate::ffi::Draft_VertexInfo_change_parameter(self as *mut Self, E)) }
+    }
+}

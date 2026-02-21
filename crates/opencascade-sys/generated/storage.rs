@@ -774,6 +774,79 @@ impl BaseDriver {
         unsafe { &mut *(crate::ffi::Storage_BaseDriver_put_short_real(self as *mut Self, aValue)) }
     }
 
+    /// **Source:** `Storage_BaseDriver.hxx`:232 - `Storage_BaseDriver::GetReference()`
+    /// @name Input methods
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_reference(&mut self, aValue: &mut i32) -> &mut BaseDriver {
+        unsafe { &mut *(crate::ffi::Storage_BaseDriver_get_reference(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `Storage_BaseDriver.hxx`:234 - `Storage_BaseDriver::GetCharacter()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_character(&mut self, aValue: &mut std::ffi::c_char) -> &mut BaseDriver {
+        unsafe { &mut *(crate::ffi::Storage_BaseDriver_get_character(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `Storage_BaseDriver.hxx`:238 - `Storage_BaseDriver::GetExtCharacter()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_ext_character(&mut self, aValue: &mut u16) -> &mut BaseDriver {
+        unsafe {
+            &mut *(crate::ffi::Storage_BaseDriver_get_ext_character(self as *mut Self, aValue))
+        }
+    }
+
+    /// **Source:** `Storage_BaseDriver.hxx`:242 - `Storage_BaseDriver::GetInteger()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_integer(&mut self, aValue: &mut i32) -> &mut BaseDriver {
+        unsafe { &mut *(crate::ffi::Storage_BaseDriver_get_integer(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `Storage_BaseDriver.hxx`:246 - `Storage_BaseDriver::GetBoolean()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_boolean(&mut self, aValue: &mut bool) -> &mut BaseDriver {
+        unsafe { &mut *(crate::ffi::Storage_BaseDriver_get_boolean(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `Storage_BaseDriver.hxx`:250 - `Storage_BaseDriver::GetReal()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_real(&mut self, aValue: &mut f64) -> &mut BaseDriver {
+        unsafe { &mut *(crate::ffi::Storage_BaseDriver_get_real(self as *mut Self, aValue)) }
+    }
+
+    /// **Source:** `Storage_BaseDriver.hxx`:254 - `Storage_BaseDriver::GetShortReal()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn get_short_real(&mut self, aValue: &mut f32) -> &mut BaseDriver {
+        unsafe { &mut *(crate::ffi::Storage_BaseDriver_get_short_real(self as *mut Self, aValue)) }
+    }
+
     /// **Source:** `Storage_BaseDriver.hxx`:39 - `Storage_BaseDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
@@ -924,37 +997,6 @@ impl HandleStorageBaseDriver {
         }
     }
 }
-
-// ── Skipped symbols for BaseDriver (7 total) ──
-// SKIPPED: **Source:** `Storage_BaseDriver.hxx`:232 - `Storage_BaseDriver::GetReference`
-//   method: @name Input methods
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_reference(&mut self, aValue: &mut i32) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `Storage_BaseDriver.hxx`:234 - `Storage_BaseDriver::GetCharacter`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_character(&mut self, aValue: &mut char) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `Storage_BaseDriver.hxx`:238 - `Storage_BaseDriver::GetExtCharacter`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_ext_character(&mut self, aValue: &mut u16) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `Storage_BaseDriver.hxx`:242 - `Storage_BaseDriver::GetInteger`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_integer(&mut self, aValue: &mut i32) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `Storage_BaseDriver.hxx`:246 - `Storage_BaseDriver::GetBoolean`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_boolean(&mut self, aValue: &mut bool) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `Storage_BaseDriver.hxx`:250 - `Storage_BaseDriver::GetReal`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_real(&mut self, aValue: &mut f64) -> &mut BaseDriver;
-//
-// SKIPPED: **Source:** `Storage_BaseDriver.hxx`:254 - `Storage_BaseDriver::GetShortReal`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn get_short_real(&mut self, aValue: &mut f32) -> &mut BaseDriver;
-//
 
 // ========================
 // From Storage_BucketOfPersistent.hxx

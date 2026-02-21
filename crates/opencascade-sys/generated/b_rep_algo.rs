@@ -173,6 +173,20 @@ impl AsDes {
         unsafe { &*(crate::ffi::BRepAlgo_AsDes_descendant(self as *const Self, S)) }
     }
 
+    /// **Source:** `BRepAlgo_AsDes.hxx`:57 - `BRepAlgo_AsDes::ChangeDescendant()`
+    /// Returns futur subhapes of <S>.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn change_descendant(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &mut crate::ffi::TopTools_ListOfShape {
+        unsafe { &mut *(crate::ffi::BRepAlgo_AsDes_change_descendant(self as *mut Self, S)) }
+    }
+
     /// **Source:** `BRepAlgo_AsDes.hxx`:61 - `BRepAlgo_AsDes::Replace()`
     /// Replace theOldS by theNewS.
     /// theOldS disappear from this.
@@ -305,13 +319,6 @@ impl HandleBRepAlgoAsDes {
         }
     }
 }
-
-// ── Skipped symbols for AsDes (1 total) ──
-// SKIPPED: **Source:** `BRepAlgo_AsDes.hxx`:57 - `BRepAlgo_AsDes::ChangeDescendant`
-//   method: Returns futur subhapes of <S>.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn change_descendant(&mut self, S: &Shape) -> &mut ListOfShape;
-//
 
 // ========================
 // From BRepAlgo_FaceRestrictor.hxx

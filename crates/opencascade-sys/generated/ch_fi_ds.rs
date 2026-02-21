@@ -1700,6 +1700,20 @@ impl FilSpine {
         }
     }
 
+    /// **Source:** `ChFiDS_FilSpine.hxx`:93 - `ChFiDS_FilSpine::ChangeLaw()`
+    /// returns the elementary law
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn change_law(
+        &mut self,
+        E: &crate::topo_ds::Edge,
+    ) -> &mut crate::ffi::HandleLawFunction {
+        unsafe { &mut *(crate::ffi::ChFiDS_FilSpine_change_law(self as *mut Self, E)) }
+    }
+
     /// **Source:** `ChFiDS_FilSpine.hxx`:96 - `ChFiDS_FilSpine::MaxRadFromSeqAndLaws()`
     /// returns the maximum radius if the fillet is non-constant
     pub fn max_rad_from_seq_and_laws(&self) -> f64 {
@@ -2213,13 +2227,6 @@ impl HandleChFiDSFilSpine {
         }
     }
 }
-
-// ── Skipped symbols for FilSpine (1 total) ──
-// SKIPPED: **Source:** `ChFiDS_FilSpine.hxx`:93 - `ChFiDS_FilSpine::ChangeLaw`
-//   method: returns the elementary law
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn change_law(&mut self, E: &Edge) -> &mut HandleFunction;
-//
 
 // ========================
 // From ChFiDS_HData.hxx

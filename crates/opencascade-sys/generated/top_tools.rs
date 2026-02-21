@@ -1574,11 +1574,26 @@ impl ShapeSet {
         unsafe { &mut *(crate::ffi::TopTools_ShapeSet_change_locations(self as *mut Self)) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:75 - `TopTools_ShapeSet::DumpExtent()`
+    /// Dumps the number of objects in me on the stream <OS>.
+    /// (Number of shapes of each type)
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump_extent_ostream(
+        &mut self,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TopTools_ShapeSet_dump_extent_ostream(self as *mut Self, OS)) }
+    }
+
     /// **Source:** `TopTools_ShapeSet.hxx`:79 - `TopTools_ShapeSet::DumpExtent()`
     /// Dumps the number of objects in me in the string S
     /// (Number of shapes of each type)
-    pub fn dump_extent(&self, S: &mut crate::t_collection::AsciiString) {
-        unsafe { crate::ffi::TopTools_ShapeSet_dump_extent(self as *const Self, S) }
+    pub fn dump_extent_asciistring(&self, S: &mut crate::t_collection::AsciiString) {
+        unsafe { crate::ffi::TopTools_ShapeSet_dump_extent_asciistring(self as *const Self, S) }
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:91 - `TopTools_ShapeSet::Dump()`
@@ -1797,14 +1812,6 @@ impl ShapeSet {
         unsafe { crate::ffi::TopTools_ShapeSet_nb_shapes(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for ShapeSet (1 total) ──
-// SKIPPED: **Source:** `TopTools_ShapeSet.hxx`:75 - `TopTools_ShapeSet::DumpExtent`
-//   method: Dumps the number of objects in me on the stream <OS>.
-//   method: (Number of shapes of each type)
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump_extent(&self, OS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // Additional type re-exports

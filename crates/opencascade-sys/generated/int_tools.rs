@@ -344,6 +344,16 @@ impl CommonPrt {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_CommonPrt_ctor()) }
     }
 
+    /// **Source:** `IntTools_CommonPrt.hxx`:42 - `IntTools_CommonPrt::Assign()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn assign(&mut self, Other: &CommonPrt) -> &mut CommonPrt {
+        unsafe { &mut *(crate::ffi::IntTools_CommonPrt_assign(self as *mut Self, Other)) }
+    }
+
     /// **Source:** `IntTools_CommonPrt.hxx`:47 - `IntTools_CommonPrt::SetEdge1()`
     /// Sets the first edge.
     pub fn set_edge1(&mut self, anE: &crate::topo_ds::Edge) {
@@ -496,12 +506,6 @@ impl CommonPrt {
     }
 }
 
-// ── Skipped symbols for CommonPrt (1 total) ──
-// SKIPPED: **Source:** `IntTools_CommonPrt.hxx`:42 - `IntTools_CommonPrt::Assign`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn assign(&mut self, Other: &CommonPrt) -> &mut CommonPrt;
-//
-
 // ========================
 // From IntTools_Context.hxx
 // ========================
@@ -533,6 +537,140 @@ impl Context {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IntTools_Context_ctor_handlencollectionbaseallocator(theAllocator),
             )
+        }
+    }
+
+    /// **Source:** `IntTools_Context.hxx`:60 - `IntTools_Context::FClass2d()`
+    /// Returns a reference to point classifier
+    /// for given face
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn f_class2d(&mut self, aF: &crate::topo_ds::Face) -> &mut FClass2d {
+        unsafe { &mut *(crate::ffi::IntTools_Context_f_class2d(self as *mut Self, aF)) }
+    }
+
+    /// **Source:** `IntTools_Context.hxx`:64 - `IntTools_Context::ProjPS()`
+    /// Returns a reference to point projector
+    /// for given face
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn proj_ps(
+        &mut self,
+        aF: &crate::topo_ds::Face,
+    ) -> &mut crate::geom_api::ProjectPointOnSurf {
+        unsafe { &mut *(crate::ffi::IntTools_Context_proj_ps(self as *mut Self, aF)) }
+    }
+
+    /// **Source:** `IntTools_Context.hxx`:68 - `IntTools_Context::ProjPC()`
+    /// Returns a reference to point projector
+    /// for given edge
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn proj_pc(
+        &mut self,
+        aE: &crate::topo_ds::Edge,
+    ) -> &mut crate::geom_api::ProjectPointOnCurve {
+        unsafe { &mut *(crate::ffi::IntTools_Context_proj_pc(self as *mut Self, aE)) }
+    }
+
+    /// **Source:** `IntTools_Context.hxx`:72 - `IntTools_Context::ProjPT()`
+    /// Returns a reference to point projector
+    /// for given curve
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn proj_pt(
+        &mut self,
+        aC: &crate::ffi::HandleGeomCurve,
+    ) -> &mut crate::geom_api::ProjectPointOnCurve {
+        unsafe { &mut *(crate::ffi::IntTools_Context_proj_pt(self as *mut Self, aC)) }
+    }
+
+    /// **Source:** `IntTools_Context.hxx`:76 - `IntTools_Context::SurfaceData()`
+    /// Returns a reference to surface localization data
+    /// for given face
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn surface_data(
+        &mut self,
+        aF: &crate::topo_ds::Face,
+    ) -> &mut SurfaceRangeLocalizeData {
+        unsafe { &mut *(crate::ffi::IntTools_Context_surface_data(self as *mut Self, aF)) }
+    }
+
+    /// **Source:** `IntTools_Context.hxx`:80 - `IntTools_Context::SolidClassifier()`
+    /// Returns a reference to solid classifier
+    /// for given solid
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn solid_classifier(
+        &mut self,
+        aSolid: &crate::topo_ds::Solid,
+    ) -> &mut crate::b_rep_class3d::SolidClassifier {
+        unsafe { &mut *(crate::ffi::IntTools_Context_solid_classifier(self as *mut Self, aSolid)) }
+    }
+
+    /// **Source:** `IntTools_Context.hxx`:84 - `IntTools_Context::Hatcher()`
+    /// Returns a reference to 2D hatcher
+    /// for given face
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn hatcher(
+        &mut self,
+        aF: &crate::topo_ds::Face,
+    ) -> &mut crate::geom2d_hatch::Hatcher {
+        unsafe { &mut *(crate::ffi::IntTools_Context_hatcher(self as *mut Self, aF)) }
+    }
+
+    /// **Source:** `IntTools_Context.hxx`:87 - `IntTools_Context::SurfaceAdaptor()`
+    /// Returns a reference to surface adaptor for given face
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn surface_adaptor(
+        &mut self,
+        theFace: &crate::topo_ds::Face,
+    ) -> &mut crate::b_rep_adaptor::Surface {
+        unsafe { &mut *(crate::ffi::IntTools_Context_surface_adaptor(self as *mut Self, theFace)) }
+    }
+
+    /// **Source:** `IntTools_Context.hxx`:91 - `IntTools_Context::OBB()`
+    /// Builds and stores an Oriented Bounding Box for the shape.
+    /// Returns a reference to OBB.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn obb(
+        &mut self,
+        theShape: &crate::topo_ds::Shape,
+        theFuzzyValue: f64,
+    ) -> &mut crate::bnd::OBB {
+        unsafe {
+            &mut *(crate::ffi::IntTools_Context_obb(self as *mut Self, theShape, theFuzzyValue))
         }
     }
 
@@ -866,6 +1004,16 @@ impl Context {
         unsafe { crate::ffi::IntTools_Context_project_point_on_edge(self as *mut Self, aP, aE, aT) }
     }
 
+    /// **Source:** `IntTools_Context.hxx`:232 - `IntTools_Context::BndBox()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn bnd_box(&mut self, theS: &crate::topo_ds::Shape) -> &mut crate::bnd::Box {
+        unsafe { &mut *(crate::ffi::IntTools_Context_bnd_box(self as *mut Self, theS)) }
+    }
+
     /// **Source:** `IntTools_Context.hxx`:236 - `IntTools_Context::IsInfiniteFace()`
     /// Returns true if the solid <theFace> has
     /// infinite bounds
@@ -993,65 +1141,6 @@ impl HandleIntToolsContext {
         }
     }
 }
-
-// ── Skipped symbols for Context (10 total) ──
-// SKIPPED: **Source:** `IntTools_Context.hxx`:60 - `IntTools_Context::FClass2d`
-//   method: Returns a reference to point classifier
-//   method: for given face
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn f_class2d(&mut self, aF: &Face) -> &mut FClass2d;
-//
-// SKIPPED: **Source:** `IntTools_Context.hxx`:64 - `IntTools_Context::ProjPS`
-//   method: Returns a reference to point projector
-//   method: for given face
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn proj_ps(&mut self, aF: &Face) -> &mut ProjectPointOnSurf;
-//
-// SKIPPED: **Source:** `IntTools_Context.hxx`:68 - `IntTools_Context::ProjPC`
-//   method: Returns a reference to point projector
-//   method: for given edge
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn proj_pc(&mut self, aE: &Edge) -> &mut ProjectPointOnCurve;
-//
-// SKIPPED: **Source:** `IntTools_Context.hxx`:72 - `IntTools_Context::ProjPT`
-//   method: Returns a reference to point projector
-//   method: for given curve
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn proj_pt(&mut self, aC: &HandleCurve) -> &mut ProjectPointOnCurve;
-//
-// SKIPPED: **Source:** `IntTools_Context.hxx`:76 - `IntTools_Context::SurfaceData`
-//   method: Returns a reference to surface localization data
-//   method: for given face
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn surface_data(&mut self, aF: &Face) -> &mut SurfaceRangeLocalizeData;
-//
-// SKIPPED: **Source:** `IntTools_Context.hxx`:80 - `IntTools_Context::SolidClassifier`
-//   method: Returns a reference to solid classifier
-//   method: for given solid
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn solid_classifier(&mut self, aSolid: &Solid) -> &mut SolidClassifier;
-//
-// SKIPPED: **Source:** `IntTools_Context.hxx`:84 - `IntTools_Context::Hatcher`
-//   method: Returns a reference to 2D hatcher
-//   method: for given face
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn hatcher(&mut self, aF: &Face) -> &mut Hatcher;
-//
-// SKIPPED: **Source:** `IntTools_Context.hxx`:87 - `IntTools_Context::SurfaceAdaptor`
-//   method: Returns a reference to surface adaptor for given face
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn surface_adaptor(&mut self, theFace: &Face) -> &mut Surface;
-//
-// SKIPPED: **Source:** `IntTools_Context.hxx`:91 - `IntTools_Context::OBB`
-//   method: Builds and stores an Oriented Bounding Box for the shape.
-//   method: Returns a reference to OBB.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn obb(&mut self, theShape: &Shape, theFuzzyValue: f64) -> &mut OBB;
-//
-// SKIPPED: **Source:** `IntTools_Context.hxx`:232 - `IntTools_Context::BndBox`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn bnd_box(&mut self, theS: &Shape) -> &mut Box;
-//
 
 // ========================
 // From IntTools_Curve.hxx
@@ -2689,6 +2778,21 @@ impl SurfaceRangeLocalizeData {
         }
     }
 
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:47 - `IntTools_SurfaceRangeLocalizeData::Assign()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn assign(
+        &mut self,
+        Other: &SurfaceRangeLocalizeData,
+    ) -> &mut SurfaceRangeLocalizeData {
+        unsafe {
+            &mut *(crate::ffi::IntTools_SurfaceRangeLocalizeData_assign(self as *mut Self, Other))
+        }
+    }
+
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:55 - `IntTools_SurfaceRangeLocalizeData::GetNbSampleU()`
     pub fn get_nb_sample_u(&self) -> i32 {
         unsafe {
@@ -2981,12 +3085,6 @@ impl SurfaceRangeLocalizeData {
     }
 }
 
-// ── Skipped symbols for SurfaceRangeLocalizeData (1 total) ──
-// SKIPPED: **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:47 - `IntTools_SurfaceRangeLocalizeData::Assign`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn assign(&mut self, Other: &SurfaceRangeLocalizeData) -> &mut SurfaceRangeLocalizeData;
-//
-
 // ========================
 // From IntTools_SurfaceRangeSample.hxx
 // ========================
@@ -3033,6 +3131,16 @@ impl SurfaceRangeSample {
                 ),
             )
         }
+    }
+
+    /// **Source:** `IntTools_SurfaceRangeSample.hxx`:44 - `IntTools_SurfaceRangeSample::Assign()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn assign(&mut self, Other: &SurfaceRangeSample) -> &mut SurfaceRangeSample {
+        unsafe { &mut *(crate::ffi::IntTools_SurfaceRangeSample_assign(self as *mut Self, Other)) }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:51 - `IntTools_SurfaceRangeSample::SetRanges()`
@@ -3232,12 +3340,6 @@ impl SurfaceRangeSample {
         }
     }
 }
-
-// ── Skipped symbols for SurfaceRangeSample (1 total) ──
-// SKIPPED: **Source:** `IntTools_SurfaceRangeSample.hxx`:44 - `IntTools_SurfaceRangeSample::Assign`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn assign(&mut self, Other: &SurfaceRangeSample) -> &mut SurfaceRangeSample;
-//
 
 // ========================
 // From IntTools_Tools.hxx

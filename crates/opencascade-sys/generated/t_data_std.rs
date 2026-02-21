@@ -132,6 +132,19 @@ impl AsciiString {
         unsafe { crate::ffi::TDataStd_AsciiString_paste(self as *const Self, into, RT) }
     }
 
+    /// **Source:** `TDataStd_AsciiString.hxx`:78 - `TDataStd_AsciiString::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_AsciiString_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TDataStd_AsciiString.hxx`:84 - `TDataStd_AsciiString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDataStd_AsciiString_dynamic_type(self as *const Self)) }
@@ -550,12 +563,6 @@ impl HandleTDataStdAsciiString {
     }
 }
 
-// ── Skipped symbols for AsciiString (1 total) ──
-// SKIPPED: **Source:** `TDataStd_AsciiString.hxx`:78 - `TDataStd_AsciiString::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_BooleanArray.hxx
 // ========================
@@ -662,6 +669,19 @@ impl BooleanArray {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_BooleanArray_paste(self as *const Self, into, RT) }
+    }
+
+    /// **Source:** `TDataStd_BooleanArray.hxx`:96 - `TDataStd_BooleanArray::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_BooleanArray_dump(self as *mut Self, OS)) }
     }
 
     /// **Source:** `TDataStd_BooleanArray.hxx`:102 - `TDataStd_BooleanArray::DynamicType()`
@@ -1086,12 +1106,6 @@ impl HandleTDataStdBooleanArray {
     }
 }
 
-// ── Skipped symbols for BooleanArray (1 total) ──
-// SKIPPED: **Source:** `TDataStd_BooleanArray.hxx`:96 - `TDataStd_BooleanArray::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, OS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_BooleanList.hxx
 // ========================
@@ -1216,6 +1230,19 @@ impl BooleanList {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_BooleanList_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_BooleanList.hxx`:98 - `TDataStd_BooleanList::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_BooleanList_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_BooleanList.hxx`:104 - `TDataStd_BooleanList::DynamicType()`
@@ -1626,12 +1653,6 @@ impl HandleTDataStdBooleanList {
     }
 }
 
-// ── Skipped symbols for BooleanList (1 total) ──
-// SKIPPED: **Source:** `TDataStd_BooleanList.hxx`:98 - `TDataStd_BooleanList::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_ByteArray.hxx
 // ========================
@@ -1764,6 +1785,19 @@ impl ByteArray {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_ByteArray_paste(self as *const Self, into, RT) }
+    }
+
+    /// **Source:** `TDataStd_ByteArray.hxx`:120 - `TDataStd_ByteArray::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        OS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_ByteArray_dump(self as *mut Self, OS)) }
     }
 
     /// **Source:** `TDataStd_ByteArray.hxx`:124 - `TDataStd_ByteArray::DeltaOnModification()`
@@ -2175,12 +2209,6 @@ impl HandleTDataStdByteArray {
     }
 }
 
-// ── Skipped symbols for ByteArray (1 total) ──
-// SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:120 - `TDataStd_ByteArray::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, OS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_ChildNodeIterator.hxx
 // ========================
@@ -2313,6 +2341,19 @@ impl Comment {
     /// Sets default GUID for the attribute.
     pub fn set_id(&mut self) {
         unsafe { crate::ffi::TDataStd_Comment_set_id(self as *mut Self) }
+    }
+
+    /// **Source:** `TDataStd_Comment.hxx`:57 - `TDataStd_Comment::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_Comment_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_Comment.hxx`:59 - `TDataStd_Comment::DynamicType()`
@@ -2760,12 +2801,6 @@ impl HandleTDataStdComment {
     }
 }
 
-// ── Skipped symbols for Comment (1 total) ──
-// SKIPPED: **Source:** `TDataStd_Comment.hxx`:57 - `TDataStd_Comment::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_Current.hxx
 // ========================
@@ -2823,6 +2858,19 @@ impl Current {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_Current_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_Current.hxx`:69 - `TDataStd_Current::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_Current_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_Current.hxx`:75 - `TDataStd_Current::DynamicType()`
@@ -3211,12 +3259,6 @@ impl HandleTDataStdCurrent {
         }
     }
 }
-
-// ── Skipped symbols for Current (1 total) ──
-// SKIPPED: **Source:** `TDataStd_Current.hxx`:69 - `TDataStd_Current::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TDataStd_DeltaOnModificationOfByteArray.hxx
@@ -4663,6 +4705,19 @@ impl Directory {
         unsafe { &*(crate::ffi::TDataStd_Directory_id(self as *const Self)) }
     }
 
+    /// **Source:** `TDataStd_Directory.hxx`:70 - `TDataStd_Directory::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_Directory_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TDataStd_Directory.hxx`:72 - `TDataStd_Directory::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDataStd_Directory_dynamic_type(self as *const Self)) }
@@ -5127,12 +5182,6 @@ impl HandleTDataStdDirectory {
     }
 }
 
-// ── Skipped symbols for Directory (1 total) ──
-// SKIPPED: **Source:** `TDataStd_Directory.hxx`:70 - `TDataStd_Directory::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_Expression.hxx
 // ========================
@@ -5209,6 +5258,19 @@ impl Expression {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_Expression_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_Expression.hxx`:74 - `TDataStd_Expression::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_Expression_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_Expression.hxx`:80 - `TDataStd_Expression::DynamicType()`
@@ -5626,12 +5688,6 @@ impl HandleTDataStdExpression {
     }
 }
 
-// ── Skipped symbols for Expression (1 total) ──
-// SKIPPED: **Source:** `TDataStd_Expression.hxx`:74 - `TDataStd_Expression::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_ExtStringArray.hxx
 // ========================
@@ -5771,6 +5827,19 @@ impl ExtStringArray {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_ExtStringArray_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_ExtStringArray.hxx`:127 - `TDataStd_ExtStringArray::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_ExtStringArray_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_ExtStringArray.hxx`:131 - `TDataStd_ExtStringArray::DeltaOnModification()`
@@ -6209,12 +6278,6 @@ impl HandleTDataStdExtStringArray {
     }
 }
 
-// ── Skipped symbols for ExtStringArray (1 total) ──
-// SKIPPED: **Source:** `TDataStd_ExtStringArray.hxx`:127 - `TDataStd_ExtStringArray::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_ExtStringList.hxx
 // ========================
@@ -6393,6 +6456,19 @@ impl ExtStringList {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_ExtStringList_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_ExtStringList.hxx`:108 - `TDataStd_ExtStringList::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_ExtStringList_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_ExtStringList.hxx`:114 - `TDataStd_ExtStringList::DynamicType()`
@@ -6812,12 +6888,6 @@ impl HandleTDataStdExtStringList {
         }
     }
 }
-
-// ── Skipped symbols for ExtStringList (1 total) ──
-// SKIPPED: **Source:** `TDataStd_ExtStringList.hxx`:108 - `TDataStd_ExtStringList::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TDataStd_GenericEmpty.hxx
@@ -9618,6 +9688,19 @@ impl IntPackedMap {
         unsafe { crate::ffi::TDataStd_IntPackedMap_paste(self as *const Self, into, RT) }
     }
 
+    /// **Source:** `TDataStd_IntPackedMap.hxx`:93 - `TDataStd_IntPackedMap::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_IntPackedMap_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TDataStd_IntPackedMap.hxx`:97 - `TDataStd_IntPackedMap::DeltaOnModification()`
     /// Makes a DeltaOnModification between <me> and
     /// <anOldAttribute>.
@@ -10026,12 +10109,6 @@ impl HandleTDataStdIntPackedMap {
     }
 }
 
-// ── Skipped symbols for IntPackedMap (1 total) ──
-// SKIPPED: **Source:** `TDataStd_IntPackedMap.hxx`:93 - `TDataStd_IntPackedMap::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_Integer.hxx
 // ========================
@@ -10107,6 +10184,19 @@ impl Integer {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_Integer_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_Integer.hxx`:79 - `TDataStd_Integer::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_Integer_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_Integer.hxx`:87 - `TDataStd_Integer::DynamicType()`
@@ -10498,12 +10588,6 @@ impl HandleTDataStdInteger {
     }
 }
 
-// ── Skipped symbols for Integer (1 total) ──
-// SKIPPED: **Source:** `TDataStd_Integer.hxx`:79 - `TDataStd_Integer::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_IntegerArray.hxx
 // ========================
@@ -10645,6 +10729,19 @@ impl IntegerArray {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_IntegerArray_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_IntegerArray.hxx`:125 - `TDataStd_IntegerArray::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_IntegerArray_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_IntegerArray.hxx`:129 - `TDataStd_IntegerArray::DeltaOnModification()`
@@ -11072,12 +11169,6 @@ impl HandleTDataStdIntegerArray {
     }
 }
 
-// ── Skipped symbols for IntegerArray (1 total) ──
-// SKIPPED: **Source:** `TDataStd_IntegerArray.hxx`:125 - `TDataStd_IntegerArray::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_IntegerList.hxx
 // ========================
@@ -11230,6 +11321,19 @@ impl IntegerList {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_IntegerList_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_IntegerList.hxx`:107 - `TDataStd_IntegerList::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_IntegerList_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_IntegerList.hxx`:113 - `TDataStd_IntegerList::DynamicType()`
@@ -11640,12 +11744,6 @@ impl HandleTDataStdIntegerList {
     }
 }
 
-// ── Skipped symbols for IntegerList (1 total) ──
-// SKIPPED: **Source:** `TDataStd_IntegerList.hxx`:107 - `TDataStd_IntegerList::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_Name.hxx
 // ========================
@@ -11682,6 +11780,19 @@ impl Name {
     /// Sets default GUID for the attribute.
     pub fn set_id(&mut self) {
         unsafe { crate::ffi::TDataStd_Name_set_id(self as *mut Self) }
+    }
+
+    /// **Source:** `TDataStd_Name.hxx`:81 - `TDataStd_Name::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_Name_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_Name.hxx`:83 - `TDataStd_Name::DynamicType()`
@@ -12144,12 +12255,6 @@ impl HandleTDataStdName {
         }
     }
 }
-
-// ── Skipped symbols for Name (1 total) ──
-// SKIPPED: **Source:** `TDataStd_Name.hxx`:81 - `TDataStd_Name::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // From TDataStd_NamedData.hxx
@@ -12635,6 +12740,19 @@ impl NamedData {
         unsafe { crate::ffi::TDataStd_NamedData_paste(self as *const Self, Into, RT) }
     }
 
+    /// **Source:** `TDataStd_NamedData.hxx`:296 - `TDataStd_NamedData::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_NamedData_dump(self as *mut Self, anOS)) }
+    }
+
     /// **Source:** `TDataStd_NamedData.hxx`:302 - `TDataStd_NamedData::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDataStd_NamedData_dynamic_type(self as *const Self)) }
@@ -13020,12 +13138,6 @@ impl HandleTDataStdNamedData {
     }
 }
 
-// ── Skipped symbols for NamedData (1 total) ──
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:296 - `TDataStd_NamedData::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_NoteBook.hxx
 // ========================
@@ -13085,6 +13197,19 @@ impl NoteBook {
     /// **Source:** `TDataStd_NoteBook.hxx`:72 - `TDataStd_NoteBook::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_NoteBook_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_NoteBook.hxx`:74 - `TDataStd_NoteBook::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_NoteBook_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_NoteBook.hxx`:76 - `TDataStd_NoteBook::DynamicType()`
@@ -13530,12 +13655,6 @@ impl HandleTDataStdNoteBook {
     }
 }
 
-// ── Skipped symbols for NoteBook (1 total) ──
-// SKIPPED: **Source:** `TDataStd_NoteBook.hxx`:74 - `TDataStd_NoteBook::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_Real.hxx
 // ========================
@@ -13610,6 +13729,19 @@ impl Real {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_Real_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_Real.hxx`:98 - `TDataStd_Real::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_Real_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_Real.hxx`:104 - `TDataStd_Real::DynamicType()`
@@ -14026,12 +14158,6 @@ impl HandleTDataStdReal {
     }
 }
 
-// ── Skipped symbols for Real (1 total) ──
-// SKIPPED: **Source:** `TDataStd_Real.hxx`:98 - `TDataStd_Real::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_RealArray.hxx
 // ========================
@@ -14167,6 +14293,19 @@ impl RealArray {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_RealArray_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_RealArray.hxx`:126 - `TDataStd_RealArray::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_RealArray_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_RealArray.hxx`:130 - `TDataStd_RealArray::DeltaOnModification()`
@@ -14579,12 +14718,6 @@ impl HandleTDataStdRealArray {
     }
 }
 
-// ── Skipped symbols for RealArray (1 total) ──
-// SKIPPED: **Source:** `TDataStd_RealArray.hxx`:126 - `TDataStd_RealArray::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_RealList.hxx
 // ========================
@@ -14733,6 +14866,19 @@ impl RealList {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe { crate::ffi::TDataStd_RealList_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_RealList.hxx`:108 - `TDataStd_RealList::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_RealList_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_RealList.hxx`:114 - `TDataStd_RealList::DynamicType()`
@@ -15128,12 +15274,6 @@ impl HandleTDataStdRealList {
     }
 }
 
-// ── Skipped symbols for RealList (1 total) ──
-// SKIPPED: **Source:** `TDataStd_RealList.hxx`:108 - `TDataStd_RealList::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_ReferenceArray.hxx
 // ========================
@@ -15260,6 +15400,19 @@ impl ReferenceArray {
     /// **Source:** `TDataStd_ReferenceArray.hxx`:100 - `TDataStd_ReferenceArray::References()`
     pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_ReferenceArray_references(self as *const Self, DS) }
+    }
+
+    /// **Source:** `TDataStd_ReferenceArray.hxx`:102 - `TDataStd_ReferenceArray::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_ReferenceArray_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_ReferenceArray.hxx`:108 - `TDataStd_ReferenceArray::DynamicType()`
@@ -15689,12 +15842,6 @@ impl HandleTDataStdReferenceArray {
     }
 }
 
-// ── Skipped symbols for ReferenceArray (1 total) ──
-// SKIPPED: **Source:** `TDataStd_ReferenceArray.hxx`:102 - `TDataStd_ReferenceArray::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_ReferenceList.hxx
 // ========================
@@ -15872,6 +16019,19 @@ impl ReferenceList {
     /// **Source:** `TDataStd_ReferenceList.hxx`:109 - `TDataStd_ReferenceList::References()`
     pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_ReferenceList_references(self as *const Self, DS) }
+    }
+
+    /// **Source:** `TDataStd_ReferenceList.hxx`:111 - `TDataStd_ReferenceList::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_ReferenceList_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_ReferenceList.hxx`:117 - `TDataStd_ReferenceList::DynamicType()`
@@ -16286,12 +16446,6 @@ impl HandleTDataStdReferenceList {
     }
 }
 
-// ── Skipped symbols for ReferenceList (1 total) ──
-// SKIPPED: **Source:** `TDataStd_ReferenceList.hxx`:111 - `TDataStd_ReferenceList::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_Relation.hxx
 // ========================
@@ -16332,6 +16486,19 @@ impl Relation {
     /// **Source:** `TDataStd_Relation.hxx`:52 - `TDataStd_Relation::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Relation_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_Relation.hxx`:54 - `TDataStd_Relation::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_Relation_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_Relation.hxx`:60 - `TDataStd_Relation::DynamicType()`
@@ -16786,12 +16953,6 @@ impl HandleTDataStdRelation {
     }
 }
 
-// ── Skipped symbols for Relation (1 total) ──
-// SKIPPED: **Source:** `TDataStd_Relation.hxx`:54 - `TDataStd_Relation::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_Tick.hxx
 // ========================
@@ -16817,6 +16978,19 @@ impl Tick {
     /// **Source:** `TDataStd_Tick.hxx`:45 - `TDataStd_Tick::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Tick_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_Tick.hxx`:47 - `TDataStd_Tick::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_Tick_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_Tick.hxx`:49 - `TDataStd_Tick::DynamicType()`
@@ -17229,12 +17403,6 @@ impl HandleTDataStdTick {
     }
 }
 
-// ── Skipped symbols for Tick (1 total) ──
-// SKIPPED: **Source:** `TDataStd_Tick.hxx`:47 - `TDataStd_Tick::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_TreeNode.hxx
 // ========================
@@ -17539,6 +17707,19 @@ impl TreeNode {
     /// **Source:** `TDataStd_TreeNode.hxx`:211 - `TDataStd_TreeNode::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_TreeNode_references(self as *const Self, aDataSet) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:214 - `TDataStd_TreeNode::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_TreeNode_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_TreeNode.hxx`:222 - `TDataStd_TreeNode::DynamicType()`
@@ -17906,12 +18087,6 @@ impl HandleTDataStdTreeNode {
     }
 }
 
-// ── Skipped symbols for TreeNode (1 total) ──
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:214 - `TDataStd_TreeNode::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_UAttribute.hxx
 // ========================
@@ -17967,6 +18142,19 @@ impl UAttribute {
     /// **Source:** `TDataStd_UAttribute.hxx`:58 - `TDataStd_UAttribute::References()`
     pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_UAttribute_references(self as *const Self, DS) }
+    }
+
+    /// **Source:** `TDataStd_UAttribute.hxx`:60 - `TDataStd_UAttribute::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_UAttribute_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_UAttribute.hxx`:66 - `TDataStd_UAttribute::DynamicType()`
@@ -18353,12 +18541,6 @@ impl HandleTDataStdUAttribute {
     }
 }
 
-// ── Skipped symbols for UAttribute (1 total) ──
-// SKIPPED: **Source:** `TDataStd_UAttribute.hxx`:60 - `TDataStd_UAttribute::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
-
 // ========================
 // From TDataStd_Variable.hxx
 // ========================
@@ -18525,6 +18707,19 @@ impl Variable {
     /// to export reference to the associated Name attribute.
     pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_Variable_references(self as *const Self, DS) }
+    }
+
+    /// **Source:** `TDataStd_Variable.hxx`:137 - `TDataStd_Variable::Dump()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn dump(
+        &mut self,
+        anOS: &mut crate::ffi::Standard_OStream,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe { &mut *(crate::ffi::TDataStd_Variable_dump(self as *mut Self, anOS)) }
     }
 
     /// **Source:** `TDataStd_Variable.hxx`:143 - `TDataStd_Variable::DynamicType()`
@@ -18909,12 +19104,6 @@ impl HandleTDataStdVariable {
         }
     }
 }
-
-// ── Skipped symbols for Variable (1 total) ──
-// SKIPPED: **Source:** `TDataStd_Variable.hxx`:137 - `TDataStd_Variable::Dump`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn dump(&self, anOS: &mut OStream) -> &mut OStream;
-//
 
 // ========================
 // Additional type re-exports

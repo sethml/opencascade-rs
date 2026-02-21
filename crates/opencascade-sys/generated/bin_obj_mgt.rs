@@ -76,6 +76,78 @@ impl Persistent {
         }
     }
 
+    /// **Source:** `BinObjMgt_Persistent.hxx`:93 - `BinObjMgt_Persistent::PutCString()`
+    /// Offset in output buffer is not aligned
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn put_c_string(&mut self, theValue: &str) -> &mut Persistent {
+        let c_theValue = std::ffi::CString::new(theValue).unwrap();
+        unsafe {
+            &mut *(crate::ffi::BinObjMgt_Persistent_put_c_string(
+                self as *mut Self,
+                c_theValue.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:98 - `BinObjMgt_Persistent::PutAsciiString()`
+    /// Offset in output buffer is word-aligned
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn put_ascii_string(
+        &mut self,
+        theValue: &crate::t_collection::AsciiString,
+    ) -> &mut Persistent {
+        unsafe {
+            &mut *(crate::ffi::BinObjMgt_Persistent_put_ascii_string(self as *mut Self, theValue))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:106 - `BinObjMgt_Persistent::PutExtendedString()`
+    /// Offset in output buffer is word-aligned
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn put_extended_string(
+        &mut self,
+        theValue: &crate::t_collection::ExtendedString,
+    ) -> &mut Persistent {
+        unsafe {
+            &mut *(crate::ffi::BinObjMgt_Persistent_put_extended_string(
+                self as *mut Self,
+                theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:114 - `BinObjMgt_Persistent::PutLabel()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn put_label(&mut self, theValue: &crate::tdf::Label) -> &mut Persistent {
+        unsafe { &mut *(crate::ffi::BinObjMgt_Persistent_put_label(self as *mut Self, theValue)) }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:118 - `BinObjMgt_Persistent::PutGUID()`
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn put_guid(&mut self, theValue: &crate::standard::GUID) -> &mut Persistent {
+        unsafe { &mut *(crate::ffi::BinObjMgt_Persistent_put_guid(self as *mut Self, theValue)) }
+    }
+
     /// **Source:** `BinObjMgt_Persistent.hxx`:146 - `BinObjMgt_Persistent::GetCharacter()`
     pub fn get_character(&self, theValue: &mut std::ffi::c_char) -> &Persistent {
         unsafe { &*(crate::ffi::BinObjMgt_Persistent_get_character(self as *const Self, theValue)) }
@@ -217,6 +289,46 @@ impl Persistent {
         unsafe { crate::ffi::BinObjMgt_Persistent_length(self as *const Self) }
     }
 
+    /// **Source:** `BinObjMgt_Persistent.hxx`:304 - `BinObjMgt_Persistent::Write()`
+    /// Stores <me> to the stream.
+    /// inline Standard_OStream& operator<< (Standard_OStream&,
+    /// BinObjMgt_Persistent&) is also available.
+    /// If theDirectStream is true, after this data the direct stream data is stored.
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn write(
+        &mut self,
+        theOS: &mut crate::ffi::Standard_OStream,
+        theDirectStream: bool,
+    ) -> &mut crate::ffi::Standard_OStream {
+        unsafe {
+            &mut *(crate::ffi::BinObjMgt_Persistent_write(
+                self as *mut Self,
+                theOS,
+                theDirectStream,
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:310 - `BinObjMgt_Persistent::Read()`
+    /// Retrieves <me> from the stream.
+    /// inline Standard_IStream& operator>> (Standard_IStream&,
+    /// BinObjMgt_Persistent&) is also available
+    ///
+    /// # Safety
+    ///
+    /// The returned reference borrows from `self`. The caller must ensure that
+    /// any reference parameters do not need to outlive the returned reference.
+    pub unsafe fn read(
+        &mut self,
+        theIS: &mut crate::ffi::Standard_IStream,
+    ) -> &mut crate::ffi::Standard_IStream {
+        unsafe { &mut *(crate::ffi::BinObjMgt_Persistent_read(self as *mut Self, theIS)) }
+    }
+
     /// **Source:** `BinObjMgt_Persistent.hxx`:314 - `BinObjMgt_Persistent::Destroy()`
     /// Frees the allocated memory;
     /// This object can be reused after call to Init
@@ -279,30 +391,7 @@ impl Persistent {
     }
 }
 
-// ── Skipped symbols for Persistent (19 total) ──
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:93 - `BinObjMgt_Persistent::PutCString`
-//   method: Offset in output buffer is not aligned
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn put_c_string(&mut self, theValue: *const char) -> &mut Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:98 - `BinObjMgt_Persistent::PutAsciiString`
-//   method: Offset in output buffer is word-aligned
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn put_ascii_string(&mut self, theValue: &AsciiString) -> &mut Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:106 - `BinObjMgt_Persistent::PutExtendedString`
-//   method: Offset in output buffer is word-aligned
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn put_extended_string(&mut self, theValue: &ExtendedString) -> &mut Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:114 - `BinObjMgt_Persistent::PutLabel`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn put_label(&mut self, theValue: &Label) -> &mut Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:118 - `BinObjMgt_Persistent::PutGUID`
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn put_guid(&mut self, theValue: &GUID) -> &mut Persistent;
-//
+// ── Skipped symbols for Persistent (12 total) ──
 // SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:123 - `BinObjMgt_Persistent::PutCharArray`
 //   method: Put C array of char, theLength is the number of elements
 //   Reason: param 'theArray' uses unknown type 'BinObjMgt_PChar'
@@ -374,20 +463,6 @@ impl Persistent {
 //   method: space enough to place theLength elements
 //   Reason: param 'theArray' uses unknown type 'BinObjMgt_PShortReal'
 //   // pub fn get_short_real_array(&self, theArray: PShortReal, theLength: i32) -> &Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:304 - `BinObjMgt_Persistent::Write`
-//   method: Stores <me> to the stream.
-//   method: inline Standard_OStream& operator<< (Standard_OStream&,
-//   method: BinObjMgt_Persistent&) is also available.
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn write(&mut self, theOS: &mut OStream, theDirectStream: bool) -> &mut OStream;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:310 - `BinObjMgt_Persistent::Read`
-//   method: Retrieves <me> from the stream.
-//   method: inline Standard_IStream& operator>> (Standard_IStream&,
-//   method: BinObjMgt_Persistent&) is also available
-//   Reason: returns &mut with reference params (ambiguous lifetimes)
-//   // pub fn read(&mut self, theIS: &mut IStream) -> &mut IStream;
 //
 
 // ========================
