@@ -1454,7 +1454,18 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // Strip const prefix before checking
     let clean_spelling = spelling.trim_start_matches("const ").trim();
     if clean_spelling.starts_with("opencascade::handle<") || clean_spelling.starts_with("Handle(") {
-        let inner = extract_template_arg(clean_spelling);
+        // Prefer the canonical type spelling for the inner type name, because
+        // clang's display name may use unqualified names for nested classes
+        // (e.g., "Curve" instead of "ShapePersistent_BRep::Curve") when the
+        // Handle appears in a method within the parent class scope.
+        let canonical = clang_type.get_canonical_type();
+        let canonical_spelling = canonical.get_display_name();
+        let clean_canonical = canonical_spelling.trim_start_matches("const ").trim();
+        let inner = if clean_canonical.starts_with("opencascade::handle<") {
+            extract_template_arg(clean_canonical)
+        } else {
+            extract_template_arg(clean_spelling)
+        };
         return Type::Handle(inner);
     }
 

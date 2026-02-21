@@ -644,8 +644,8 @@ fn return_type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeConte
         }
         Type::Handle(name) => {
             format!(
-                "crate::OwnedPtr<crate::ffi::Handle{}>",
-                name.replace("_", "")
+                "crate::OwnedPtr<crate::ffi::{}>",
+                type_mapping::handle_type_name(name)
             )
         }
         Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
@@ -2449,6 +2449,48 @@ fn compute_upcast_bindings(
         .collect()
 }
 
+// ── Method name deduplication ──────────────────────────────────────────────────
+
+/// Deduplicate method names. Each entry has (short_name, full_name).
+/// Prefers short names when unique, upgrades to full names on collision,
+/// and appends numeric suffixes if full names also collide.
+fn deduplicate_method_names(candidates: &[(String, String)]) -> Vec<String> {
+    use std::collections::HashMap;
+
+    // Phase 1: count short name occurrences
+    let mut short_counts: HashMap<&str, usize> = HashMap::new();
+    for (short, _) in candidates {
+        *short_counts.entry(short.as_str()).or_insert(0) += 1;
+    }
+
+    // Phase 2: pick short if unique, full otherwise
+    let mut names: Vec<String> = candidates.iter().map(|(short, full)| {
+        if short_counts.get(short.as_str()).copied().unwrap_or(0) > 1 {
+            full.clone()
+        } else {
+            short.clone()
+        }
+    }).collect();
+
+    // Phase 3: fix any remaining duplicates by appending numeric suffix
+    let mut counts: HashMap<String, usize> = HashMap::new();
+    for name in &names {
+        *counts.entry(name.clone()).or_insert(0) += 1;
+    }
+    let mut seen: HashMap<String, usize> = HashMap::new();
+    for name in names.iter_mut() {
+        if counts.get(name.as_str()).copied().unwrap_or(0) > 1 {
+            let idx = *seen.entry(name.clone()).or_insert(0);
+            *seen.get_mut(name.as_str()).unwrap() += 1;
+            if idx > 0 {
+                *name = format!("{}_{}", name, idx);
+            }
+        }
+    }
+
+    names
+}
+
 // ── Handle upcast bindings ──────────────────────────────────────────────────
 
 fn compute_handle_upcast_bindings(
@@ -2474,10 +2516,12 @@ fn compute_handle_upcast_bindings(
             let base_handle_name = type_mapping::handle_type_name(base_class);
             let ffi_fn_name =
                 format!("{}_to_{}", handle_type_name, base_handle_name);
-            let base_module = if let Some(underscore_pos) = base_class.find('_') {
-                base_class[..underscore_pos].to_string()
+            // Flatten nested class names for module extraction heuristic.
+            let flattened = base_class.replace("::", "_");
+            let base_module = if let Some(underscore_pos) = flattened.find('_') {
+                flattened[..underscore_pos].to_string()
             } else {
-                base_class.clone()
+                flattened.clone()
             };
 
             HandleUpcastBinding {
@@ -2521,10 +2565,13 @@ fn compute_handle_downcast_bindings(
             let derived_handle_name = type_mapping::handle_type_name(derived_class);
             let ffi_fn_name =
                 format!("{}_downcast_to_{}", handle_type_name, derived_handle_name);
-            let derived_module = if let Some(underscore_pos) = derived_class.find('_') {
-                derived_class[..underscore_pos].to_string()
+            // Flatten nested class names (e.g., "Parent::Nested" -> "Parent_Nested")
+            // for module extraction heuristic.
+            let flattened = derived_class.replace("::", "_");
+            let derived_module = if let Some(underscore_pos) = flattened.find('_') {
+                flattened[..underscore_pos].to_string()
             } else {
-                derived_class.clone()
+                flattened.clone()
             };
 
             HandleDowncastBinding {
@@ -5159,50 +5206,40 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             "    /// Dereference this Handle to mutably access the underlying {}\n    pub fn get_mut(&mut self) -> &mut crate::ffi::{} {{\n        unsafe {{ &mut *(crate::ffi::{}_get_mut(self as *mut Self)) }}\n    }}\n",
             cn, cn, handle_type_name
         ));
-        // Build upcast method names, detecting collisions and using full names for disambiguation
-        let upcast_short_names: Vec<String> = bindings.handle_upcasts.iter().map(|hu| {
-            crate::type_mapping::short_name_for_module(&hu.base_class, &hu.base_module).to_snake_case()
-        }).collect();
-        let mut upcast_name_counts: HashMap<&str, usize> = HashMap::new();
-        for name in &upcast_short_names {
-            *upcast_name_counts.entry(name.as_str()).or_insert(0) += 1;
-        }
+        // Build upcast method names with robust deduplication.
+        let upcast_method_names = deduplicate_method_names(
+            &bindings.handle_upcasts.iter().map(|hu| {
+                let flattened = hu.base_class.replace("::", "_");
+                let short = crate::type_mapping::short_name_for_module(&flattened, &hu.base_module).to_snake_case();
+                let full = flattened.to_snake_case();
+                (format!("to_handle_{}", short), format!("to_handle_{}", full))
+            }).collect::<Vec<_>>()
+        );
         for (i, hu) in bindings.handle_upcasts.iter().enumerate() {
-            let method_name = if upcast_name_counts.get(upcast_short_names[i].as_str()).copied().unwrap_or(0) > 1 {
-                // Collision: use full C++ class name
-                format!("to_handle_{}", hu.base_class.to_snake_case())
-            } else {
-                format!("to_handle_{}", upcast_short_names[i])
-            };
             output.push_str(&format!(
                 "    /// Upcast Handle<{cn}> to Handle<{base}>\n    pub fn {method}(&self) -> crate::OwnedPtr<crate::ffi::{base_handle}> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{ffi_fn}(self as *const Self)) }}\n    }}\n",
                 cn = cn,
                 base = hu.base_class,
-                method = method_name,
+                method = upcast_method_names[i],
                 base_handle = hu.base_handle_name,
                 ffi_fn = hu.ffi_fn_name,
             ));
         }
-        // Build downcast method names, detecting collisions and using full names for disambiguation
-        let downcast_short_names: Vec<String> = bindings.handle_downcasts.iter().map(|hd| {
-            crate::type_mapping::short_name_for_module(&hd.derived_class, &hd.derived_module).to_snake_case()
-        }).collect();
-        let mut downcast_name_counts: HashMap<&str, usize> = HashMap::new();
-        for name in &downcast_short_names {
-            *downcast_name_counts.entry(name.as_str()).or_insert(0) += 1;
-        }
+        // Build downcast method names with robust deduplication.
+        let downcast_method_names = deduplicate_method_names(
+            &bindings.handle_downcasts.iter().map(|hd| {
+                let flattened = hd.derived_class.replace("::", "_");
+                let short = crate::type_mapping::short_name_for_module(&flattened, &hd.derived_module).to_snake_case();
+                let full = flattened.to_snake_case();
+                (format!("downcast_to_{}", short), format!("downcast_to_{}", full))
+            }).collect::<Vec<_>>()
+        );
         for (i, hd) in bindings.handle_downcasts.iter().enumerate() {
-            let method_name = if downcast_name_counts.get(downcast_short_names[i].as_str()).copied().unwrap_or(0) > 1 {
-                // Collision: use full C++ class name
-                format!("downcast_to_{}", hd.derived_class.to_snake_case())
-            } else {
-                format!("downcast_to_{}", downcast_short_names[i])
-            };
             output.push_str(&format!(
                 "    /// Downcast Handle<{cn}> to Handle<{derived}>\n    ///\n    /// Returns `None` if the handle does not point to a `{derived}` (or subclass).\n    pub fn {method}(&self) -> Option<crate::OwnedPtr<crate::ffi::{derived_handle}>> {{\n        let ptr = unsafe {{ crate::ffi::{ffi_fn}(self as *const Self) }};\n        if ptr.is_null() {{ None }} else {{ Some(unsafe {{ crate::OwnedPtr::from_raw(ptr) }}) }}\n    }}\n",
                 cn = cn,
                 derived = hd.derived_class,
-                method = method_name,
+                method = downcast_method_names[i],
                 derived_handle = hd.derived_handle_name,
                 ffi_fn = hd.ffi_fn_name,
             ));

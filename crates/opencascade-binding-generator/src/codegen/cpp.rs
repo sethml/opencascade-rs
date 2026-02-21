@@ -48,8 +48,9 @@ fn collect_handle_types(classes: &[&ParsedClass], handle_able_classes: &HashSet<
     let mut result: Vec<_> = handles
         .into_iter()
         .filter(|inner_class| {
-            // Skip namespace-scoped types (e.g., IMeshData::ListOfPnt2d) and pointer types
-            !inner_class.contains("::") && !inner_class.contains('*') && !inner_class.contains('&')
+            // Skip pointer/reference types leaked into names, and template types
+            // whose instantiated names aren't valid C++ identifiers
+            !inner_class.contains('*') && !inner_class.contains('&') && !inner_class.contains('<')
         })
         .map(|inner_class| {
             // Use full class name to match Rust side (e.g., HandleGeom2dCurve not HandleCurve)

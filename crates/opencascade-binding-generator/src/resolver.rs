@@ -782,8 +782,9 @@ pub fn build_symbol_table(
     fn collect_handle_types(ty: &crate::model::Type, set: &mut HashSet<String>) {
         match ty {
             crate::model::Type::Handle(name) => {
-                // Only add clean OCCT type names (not template forms)
-                if !name.contains('<') && !name.contains("::") {
+                // Only add clean OCCT type names (not template forms like NCollection_Shared<...>)
+                // Nested class types (Parent::Child) are OK.
+                if !name.contains('<') {
                     set.insert(name.clone());
                 }
             }
@@ -945,7 +946,10 @@ fn resolve_class(
 ) {
     let class_id = SymbolId::new(format!("class::{}", class.name));
     let rust_module = crate::module_graph::module_to_rust_name(&class.module);
-    let short_name = crate::type_mapping::short_name_for_module(&class.name, &class.module);
+    // Flatten nested class names (e.g., "Parent::Nested" -> "Parent_Nested")
+    // before computing the short name, so the result is a valid Rust identifier.
+    let flattened_name = class.name.replace("::", "_");
+    let short_name = crate::type_mapping::short_name_for_module(&flattened_name, &class.module);
     let rust_ffi_name = safe_short_name(&short_name);
     
     // Determine class binding status

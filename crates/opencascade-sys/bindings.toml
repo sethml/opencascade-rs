@@ -67,13 +67,6 @@ exclude_modules = [
     # === Internal mesh data (protected operator new, not heap-allocatable) ===
     "BRepMeshData",        # Protected new/delete inherited from NCollection allocator
 
-    # === Nested C++ classes not yet supported by binding generator ===
-    # These modules define nested classes (e.g., ShapePersistent_BRep::Curve3D)
-    # whose unqualified names cannot be resolved in generated C++ typedefs.
-    "ShapePersistent",     # Nested classes: ShapePersistent_BRep::*, ShapePersistent_Poly::*, etc.
-    "StdPersistent",       # Nested classes: StdPersistent_TopLoc::*, StdPersistent_Naming::*, etc.
-    "StdLPersistent",      # Nested classes: StdLPersistent_*::* (same issue as StdPersistent)
-
     # === EXPRESS schema parser (internal codegen tool, not user-facing) ===
     "Express",             # EXPRESS schema parser (String type conflicts with Rust String)
 ]

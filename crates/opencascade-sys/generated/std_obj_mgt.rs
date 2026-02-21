@@ -7,7 +7,12 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi::{
+    HandleShapePersistentBRepCurveRepresentation, HandleShapePersistentBRepPointRepresentation,
+    HandleShapePersistentGeomGeometry, HandleShapePersistentTopoDSHShape, HandleStandardTransient,
+    HandleStdLPersistentData, HandleStdLPersistentDocument, HandleStdPersistentNamingName,
+    HandleStdPersistentTopLocItemLocation,
+};
 
 // ========================
 // From StdObjMgt_Persistent.hxx
@@ -246,6 +251,146 @@ impl HandleStdObjMgtPersistent {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// Downcast Handle<StdObjMgt_Persistent> to Handle<ShapePersistent_BRep::CurveRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapePersistent_BRep::CurveRepresentation` (or subclass).
+    pub fn downcast_to_b_rep_curve_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStdObjMgtPersistent_downcast_to_HandleShapePersistentBRepCurveRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StdObjMgt_Persistent> to Handle<ShapePersistent_BRep::PointRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapePersistent_BRep::PointRepresentation` (or subclass).
+    pub fn downcast_to_b_rep_point_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStdObjMgtPersistent_downcast_to_HandleShapePersistentBRepPointRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StdObjMgt_Persistent> to Handle<ShapePersistent_Geom::Geometry>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapePersistent_Geom::Geometry` (or subclass).
+    pub fn downcast_to_geom_geometry(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomGeometry>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStdObjMgtPersistent_downcast_to_HandleShapePersistentGeomGeometry(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StdObjMgt_Persistent> to Handle<ShapePersistent_TopoDS::HShape>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapePersistent_TopoDS::HShape` (or subclass).
+    pub fn downcast_to_topo_ds_h_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapePersistentTopoDSHShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStdObjMgtPersistent_downcast_to_HandleShapePersistentTopoDSHShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StdObjMgt_Persistent> to Handle<StdLPersistent_Data>
+    ///
+    /// Returns `None` if the handle does not point to a `StdLPersistent_Data` (or subclass).
+    pub fn downcast_to_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdLPersistentData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStdObjMgtPersistent_downcast_to_HandleStdLPersistentData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StdObjMgt_Persistent> to Handle<StdLPersistent_Document>
+    ///
+    /// Returns `None` if the handle does not point to a `StdLPersistent_Document` (or subclass).
+    pub fn downcast_to_document(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdLPersistentDocument>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStdObjMgtPersistent_downcast_to_HandleStdLPersistentDocument(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StdObjMgt_Persistent> to Handle<StdPersistent_Naming::Name>
+    ///
+    /// Returns `None` if the handle does not point to a `StdPersistent_Naming::Name` (or subclass).
+    pub fn downcast_to_naming_name(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdPersistentNamingName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStdObjMgtPersistent_downcast_to_HandleStdPersistentNamingName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StdObjMgt_Persistent> to Handle<StdPersistent_TopLoc::ItemLocation>
+    ///
+    /// Returns `None` if the handle does not point to a `StdPersistent_TopLoc::ItemLocation` (or subclass).
+    pub fn downcast_to_top_loc_item_location(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdPersistentTopLocItemLocation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStdObjMgtPersistent_downcast_to_HandleStdPersistentTopLocItemLocation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }

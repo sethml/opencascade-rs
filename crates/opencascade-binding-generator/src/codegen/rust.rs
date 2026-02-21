@@ -83,15 +83,20 @@ fn collect_types_from_type(ty: &Type, collected: &mut CollectedTypes) {
 
     match ty {
         Type::Class(name) => {
-            // Skip primitive types that may come from canonical type resolution
-            if !is_primitive_type(name) {
+            // Skip primitive types and template instantiations (e.g., NCollection_Shared<...>)
+            // that may come from canonical type resolution
+            if !is_primitive_type(name) && !name.contains('<') {
                 collected.classes.insert(name.clone());
             }
         }
         Type::Handle(name) => {
             // Record the Handle type AND the inner class
-            collected.handles.insert(name.clone());
-            collected.classes.insert(name.clone());
+            // Skip template instantiations (e.g., NCollection_Shared<...>) which
+            // aren't valid as standalone Rust/C++ type names.
+            if !name.contains('<') {
+                collected.handles.insert(name.clone());
+                collected.classes.insert(name.clone());
+            }
         }
         Type::ConstRef(inner)
         | Type::MutRef(inner)
@@ -504,9 +509,10 @@ fn generate_opaque_declarations(
         } else {
             type_name.clone()
         };
-        // Skip types with pointer/ref qualifiers leaked into the name
-        // (e.g., "IMeshData_Edge *const" from typedef resolution)
-        if safe_name.contains('*') || safe_name.contains('&') {
+        // Skip types with pointer/ref qualifiers or template arguments leaked into the name
+        // (e.g., "IMeshData_Edge *const" from typedef resolution,
+        //  or "ShapePersistent_Geom::geometryBase<Geom_Curve>" from template nested types)
+        if safe_name.contains('*') || safe_name.contains('&') || safe_name.contains('<') {
             continue;
         }
         // Avoid duplicate opaque declarations (flattened nested name might collide

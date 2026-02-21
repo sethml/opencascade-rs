@@ -165,6 +165,10 @@ pub struct ParsedClass {
 
 impl ParsedClass {
     /// Get the class name without the module prefix (e.g., "Pnt" from "gp_Pnt")
+    /// For nested classes (e.g., "Poly_CoherentTriangulation::TwoIntegers"),
+    /// returns the name after the first underscore, which may contain "::". 
+    /// Callers that need correct short names for nested types should use
+    /// type_mapping::short_name_for_module() on the flattened name instead.
     pub fn short_name(&self) -> &str {
         if let Some(underscore_pos) = self.name.find('_') {
             &self.name[underscore_pos + 1..]
@@ -813,11 +817,13 @@ impl Type {
                 format!("*mut {}", inner_str)
             }
             Type::Handle(name) => {
+                // Use handle_type_name to properly flatten both :: and _ from names
+                let flat_name = name.replace("::", "_");
                 // Extract short name from full OCCT name
-                let short = if let Some(underscore_pos) = name.find('_') {
-                    &name[underscore_pos + 1..]
+                let short = if let Some(underscore_pos) = flat_name.find('_') {
+                    &flat_name[underscore_pos + 1..]
                 } else {
-                    name.as_str()
+                    flat_name.as_str()
                 };
                 format!("Handle{}", short)
             }
@@ -885,11 +891,12 @@ impl Type {
                 format!("*mut {}", inner_str)
             }
             Type::Handle(name) => {
-                // Extract short name and prefix with ffi::
-                let short = if let Some(underscore_pos) = name.find('_') {
-                    &name[underscore_pos + 1..]
+                // Flatten :: for nested classes before extracting short name
+                let flat_name = name.replace("::", "_");
+                let short = if let Some(underscore_pos) = flat_name.find('_') {
+                    &flat_name[underscore_pos + 1..]
                 } else {
-                    name.as_str()
+                    flat_name.as_str()
                 };
                 format!("ffi::Handle{}", short)
             }
