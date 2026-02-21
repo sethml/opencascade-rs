@@ -1654,9 +1654,8 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // has canonical "opencascade::handle<StdObjMgt_Persistent> (*)()". These are
     // detected by checking that the canonical ends with '>' (a pure handle type).
     let clean_spelling = spelling.trim_start_matches("const ").trim();
-    let canonical_clean_for_handle = canonical_spelling.trim_start_matches("const ").trim();
-    let canonical_is_pure_handle = canonical_clean_for_handle.starts_with("opencascade::handle<")
-        && canonical_clean_for_handle.ends_with('>');
+    let canonical_is_pure_handle = canonical_clean.starts_with("opencascade::handle<")
+        && canonical_clean.ends_with('>');
     if clean_spelling.starts_with("opencascade::handle<") || clean_spelling.starts_with("Handle(")
         || canonical_is_pure_handle
     {
@@ -1665,7 +1664,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         // (e.g., "Curve" instead of "ShapePersistent_BRep::Curve") when the
         // Handle appears in a method within the parent class scope.
         let inner = if canonical_is_pure_handle {
-            extract_template_arg(canonical_clean_for_handle)
+            extract_template_arg(canonical_clean)
         } else {
             extract_template_arg(clean_spelling)
         };
@@ -1686,16 +1685,16 @@ fn parse_type(clang_type: &clang::Type) -> Type {
                 return Type::Class(typedef_name);
             }
         }
-        let canonical_clean = strip_type_decorators(&canonical_spelling);
+        let canonical_base = strip_type_decorators(&canonical_spelling);
         
         // Only use canonical if it's simpler (no :: or <) AND still looks like a class name.
         // If canonical is a primitive like "int", that would produce Type::Class("int")
         // which is nonsensical. By keeping the template/namespaced spelling,
         // type_uses_unknown_type() will properly filter methods with unresolvable types.
-        let canonical_looks_like_class = canonical_clean
+        let canonical_looks_like_class = canonical_base
             .starts_with(|c: char| c.is_ascii_uppercase());
-        if !canonical_clean.contains("::") && !canonical_clean.contains('<') && !canonical_clean.is_empty() && canonical_looks_like_class {
-            return Type::Class(canonical_clean.to_string());
+        if !canonical_base.contains("::") && !canonical_base.contains('<') && !canonical_base.is_empty() && canonical_looks_like_class {
+            return Type::Class(canonical_base.to_string());
         }
     }
     
