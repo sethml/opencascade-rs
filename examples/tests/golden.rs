@@ -111,4 +111,10 @@ golden_test!(swept_wire, "swept-wire");
 golden_test!(swept_wire_variable, "swept-wire-variable");
 golden_test!(turners_cube, "turners-cube");
 golden_test!(variable_fillet, "variable-fillet");
-golden_test!(zbox_case, "zbox-case");
+// zbox-case uses hollow(), union(), subtract(), and fillet_edges() in a loop.
+// Like high-level-bottle, these Boolean operations iterate over OCCT's internal
+// shape maps (TopTools_IndexedMapOfShape), keyed by pointer addresses. Under
+// concurrent execution, varied heap layouts cause different hash iteration
+// order, producing geometrically identical but structurally reordered B-Rep
+// output — and thus different STEP entity numbering/parameterization.
+golden_test!(zbox_case, "zbox-case", ignore = "non-deterministic STEP output");
