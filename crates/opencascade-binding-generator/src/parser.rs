@@ -63,8 +63,10 @@ fn collect_ncollection_typedefs(root: &Entity, included_modules: &HashSet<String
 
                 if let Some(underlying) = entity.get_typedef_underlying_type() {
                     let display = underlying.get_display_name();
-                    // Record typedefs that resolve to template specializations.
-                    if display.contains('<') {
+                    // Record typedefs that resolve to template specializations,
+                    // but skip typedefs to std:: types (e.g. std::pair, std::vector)
+                    // since those are STL types that can't be wrapped as opaque OCCT classes.
+                    if display.contains('<') && !display.starts_with("std::") {
                         let display_key = normalize_template_spelling(&display);
                         map.entry(display_key.clone()).or_default().push(name.clone());
 

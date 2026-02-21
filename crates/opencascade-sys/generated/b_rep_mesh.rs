@@ -927,8 +927,8 @@ impl ConeRangeSplitter {
 //   method: Returns split intervals along U and V direction.
 //   method: @param theParameters meshing parameters.
 //   method: @param[out] theStepsNb number of steps along corresponding direction.
-//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Real, Standard_Real>)
-//   // pub fn get_split_steps(&self, theParameters: &Parameters, theStepsNb: &mut NodePair) -> OwnedPtr<std::pair<Standard_Real, Standard_Real>>;
+//   Reason: has unbindable types: param 'theStepsNb': unresolved template type (std::pair<Standard_Integer, Standard_Integer>&); return: unresolved template type (std::pair<Standard_Real, Standard_Real>)
+//   // pub fn get_split_steps(&self, theParameters: &Parameters, theStepsNb: /* std::pair<Standard_Integer, Standard_Integer>& */) -> OwnedPtr<std::pair<Standard_Real, Standard_Real>>;
 //
 // SKIPPED: **Source:** `BRepMesh_ConeRangeSplitter.hxx`:40 - `BRepMesh_ConeRangeSplitter::GenerateSurfaceNodes`
 //   method: Returns list of nodes generated using surface data and specified parameters.
@@ -5348,8 +5348,8 @@ impl GeomTool {
 //   // pub fn int_lin_lin(theStartPnt1: &XY, theEndPnt1: &XY, theStartPnt2: &XY, theEndPnt2: &XY, theIntPnt: &mut XY, theParamOnSegment: /* Standard_Real[2]& */) -> OwnedPtr<BRepMesh_GeomTool::IntFlag>;
 //
 // SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:206 - `BRepMesh_GeomTool::CellsCount`
-//   Reason: excluded by bindings.toml
-//   // pub fn cells_count(theSurface: &HandleSurface, theVerticesNb: i32, theDeflection: f64, theRangeSplitter: *const DefaultRangeSplitter) -> OwnedPtr<MeshVS_NodePair>;
+//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Integer, Standard_Integer>)
+//   // pub fn cells_count(theSurface: &HandleSurface, theVerticesNb: i32, theDeflection: f64, theRangeSplitter: *const DefaultRangeSplitter) -> OwnedPtr<std::pair<Standard_Integer, Standard_Integer>>;
 //
 
 // ========================

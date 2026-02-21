@@ -41,11 +41,13 @@ pub struct BindingConfig {
     #[serde(default)]
     pub exclude_methods: Vec<String>,
 
-    /// Exclude specific classes/types from binding generation.
-    /// These classes will not get any bindings (no struct, no methods, no destructor).
+    /// Non-allocatable classes: suppress constructors and destructors (including
+    /// CppDeletable/ToOwned), but keep the opaque struct and all methods.
+    /// Use for classes with protected/hidden operator new/delete that can still
+    /// be used via pointers obtained from other APIs.
     /// For nested types, use the C++ qualified name: "Parent::Nested".
     #[serde(default)]
-    pub exclude_classes: Vec<String>,
+    pub non_allocatable_classes: Vec<String>,
 
     /// Opaque types defined in manual/ files but referenced by auto-generated bindings.
     /// The generator adds these to the known class set so methods using them

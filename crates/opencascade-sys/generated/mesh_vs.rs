@@ -9262,5 +9262,5 @@ pub use crate::ffi::{
     MeshVS_DataMapOfIntegerOwner as DataMapOfIntegerOwner,
     MeshVS_DataMapOfIntegerTwoColors as DataMapOfIntegerTwoColors,
     MeshVS_DataMapOfIntegerVector as DataMapOfIntegerVector,
-    MeshVS_DisplayModeFlags as DisplayModeFlags, MeshVS_NodePair as NodePair,
+    MeshVS_DisplayModeFlags as DisplayModeFlags,
 };

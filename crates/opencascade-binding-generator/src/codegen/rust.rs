@@ -145,12 +145,12 @@ pub fn generate_ffi(
     function_bindings: &[super::bindings::FunctionBinding],
     handle_able_classes: &HashSet<String>,
     extra_typedef_names: &HashSet<String>,
-    exclude_classes: &HashSet<String>,
+    non_allocatable_classes: &HashSet<String>,
 ) -> (String, Vec<NestedTypeInfo>) {
-    // Get all classes with protected destructors, and merge in excluded classes
-    // (excluded classes should not get destructors/CppDeletable either)
+    // Get all classes with protected destructors, and merge in non-allocatable classes
+    // (non-allocatable classes should not get destructors/CppDeletable either)
     let mut protected_destructor_class_names = symbol_table.protected_destructor_class_names();
-    for cls in exclude_classes {
+    for cls in non_allocatable_classes {
         protected_destructor_class_names.insert(cls.clone());
     }
 

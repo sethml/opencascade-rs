@@ -87,24 +87,19 @@ exclude_methods = [
     # `const char**` (double pointer) mapped as `&mut &str` but FFI needs raw pointer
     "XmlObjMgt::GetInteger",
     "XmlObjMgt::GetReal",
-
-    # Returns MeshVS_NodePair (typedef for std::pair<int,int>) which the generator
-    # misresolves as an opaque class type.
-    "BRepMesh_GeomTool::CellsCount",
-
     # Protected/hidden operator new — skip constructors but keep methods accessible.
     "Message_LazyProgressScope::Message_LazyProgressScope",
     "Poly_CoherentTriPtr::Poly_CoherentTriPtr",
 ]
 
-# Exclude specific classes/types from destructor generation.
-exclude_classes = [
+# Non-allocatable classes: suppress constructors and destructors (including
+# CppDeletable/ToOwned) but keep the opaque struct and all methods.
+# Use for classes with protected/hidden operator new/delete, forward-declared
+# nested types, or typedefs that aren't real classes.
+non_allocatable_classes = [
     "Message_ProgressScope::NullString",  # Forward-declared only, no full definition
-    "MeshVS_NodePair",                    # Typedef for std::pair<int,int>, not a real class
-
-    # Protected/hidden operator delete — skip destructors but keep methods accessible.
-    "Message_LazyProgressScope",
-    "Poly_CoherentTriPtr",
+    "Message_LazyProgressScope",           # Protected operator new/delete (protected inheritance)
+    "Poly_CoherentTriPtr",                 # Hidden operator new/delete (DEFINE_NCOLLECTION_ALLOC)
 ]
 
 [general]

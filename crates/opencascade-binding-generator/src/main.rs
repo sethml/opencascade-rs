@@ -93,7 +93,7 @@ fn main() -> Result<()> {
     }
 
     // Determine explicit headers from config file or CLI arguments
-    let (explicit_headers, resolve_deps, exclude_set, exclude_modules, exclude_methods, exclude_classes, manual_type_names) = if let Some(ref config_path) = args.config {
+    let (explicit_headers, resolve_deps, exclude_set, exclude_modules, exclude_methods, non_allocatable_classes, manual_type_names) = if let Some(ref config_path) = args.config {
         let cfg = config::load_config(config_path)?;
         let resolve = cfg.general.resolve_deps;
 
@@ -136,9 +136,9 @@ fn main() -> Result<()> {
 
         let excludes: std::collections::HashSet<String> = cfg.exclude_headers.into_iter().collect();
         let exclude_mods: Vec<String> = cfg.exclude_modules;
-        let exclude_cls: HashSet<String> = cfg.exclude_classes.into_iter().collect();
+        let non_alloc_cls: HashSet<String> = cfg.non_allocatable_classes.into_iter().collect();
         let manual_names: HashSet<String> = cfg.manual_types.keys().cloned().collect();
-        (headers, resolve, excludes, exclude_mods, method_exclusions, exclude_cls, manual_names)
+        (headers, resolve, excludes, exclude_mods, method_exclusions, non_alloc_cls, manual_names)
     } else if !args.headers.is_empty() {
         (args.headers.clone(), args.resolve_deps, std::collections::HashSet::new(), Vec::new(), HashSet::new(), HashSet::new(), HashSet::new())
     } else {
@@ -373,7 +373,7 @@ fn main() -> Result<()> {
     }
 
     // Generate FFI output
-    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &exclude_classes, &handle_able_classes, &manual_type_names)
+    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &non_allocatable_classes, &handle_able_classes, &manual_type_names)
 }
 
 /// Detect "utility namespace classes" and convert their static methods to free functions.
@@ -593,7 +593,7 @@ fn generate_output(
     symbol_table: &resolver::SymbolTable,
     known_headers: &HashSet<String>,
     exclude_methods: &HashSet<(String, String)>,
-    exclude_classes: &HashSet<String>,
+    non_allocatable_classes: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
     manual_type_names: &HashSet<String>,
 ) -> Result<()> {
@@ -621,10 +621,11 @@ fn generate_output(
     let mut all_bindings =
         codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names, exclude_methods, manual_type_names);
 
-    // Mark exclude_classes as having protected destructors so both the C++ wrappers
-    // (which check has_protected_destructor) and the Rust FFI side skip new/delete.
+    // Mark non-allocatable classes as having protected destructors so both the
+    // C++ wrappers (which check has_protected_destructor) and the Rust FFI side
+    // skip constructors, destructors, CppDeletable, and ToOwned.
     for b in &mut all_bindings {
-        if exclude_classes.contains(&b.cpp_name) {
+        if non_allocatable_classes.contains(&b.cpp_name) {
             b.has_protected_destructor = true;
         }
     }
@@ -648,7 +649,7 @@ fn generate_output(
         &all_function_bindings,
         &handle_able_classes,
         &extra_typedef_names,
-        exclude_classes,
+        non_allocatable_classes,
     );
     let ffi_path = args.output.join("ffi.rs");
     std::fs::write(&ffi_path, ffi_code)?;

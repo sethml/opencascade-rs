@@ -25394,12 +25394,6 @@ impl Layer {
         unsafe { crate::ffi::Graphic3d_Layer_append(self as *mut Self, theOther) }
     }
 
-    /// **Source:** `Graphic3d_Layer.hxx`:97 - `Graphic3d_Layer::ArrayOfStructures()`
-    /// Returns array of structures.
-    pub fn array_of_structures(&self) -> &crate::ffi::Graphic3d_ArrayOfIndexedMapOfStructure {
-        unsafe { &*(crate::ffi::Graphic3d_Layer_array_of_structures(self as *const Self)) }
-    }
-
     /// **Source:** `Graphic3d_Layer.hxx`:100 - `Graphic3d_Layer::Structures()`
     /// Returns structures for specified priority.
     pub fn structures(
@@ -25629,7 +25623,7 @@ impl HandleGraphic3dLayer {
     }
 }
 
-// ── Skipped symbols for Layer (4 total) ──
+// ── Skipped symbols for Layer (5 total) ──
 // SKIPPED: **Source:** `Graphic3d_Layer.hxx`:43 - `Graphic3d_Layer::Graphic3d_Layer`
 //   constructor: Initializes associated priority list and layer properties
 //   Reason: param 'theBuilder' uses unknown Handle type
@@ -25649,6 +25643,11 @@ impl HandleGraphic3dLayer {
 //   method: Assigns BVH tree builder for frustum culling.
 //   Reason: param 'theBuilder' uses unknown type 'const Handle(BVH_Builder<double, 3>)&'
 //   // pub fn set_frustum_culling_bvh_builder(&mut self, theBuilder: &HandleBuilder<double, 3>);
+//
+// SKIPPED: **Source:** `Graphic3d_Layer.hxx`:97 - `Graphic3d_Layer::ArrayOfStructures`
+//   method: Returns array of structures.
+//   Reason: return type 'const Graphic3d_ArrayOfIndexedMapOfStructure&' is unknown
+//   // pub fn array_of_structures(&self) -> &ArrayOfIndexedMapOfStructure;
 //
 
 // ========================
