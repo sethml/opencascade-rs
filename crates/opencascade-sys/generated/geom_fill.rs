@@ -1328,7 +1328,7 @@ impl BoundWithSurf {
     }
 
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:103 - `GeomFill_BoundWithSurf::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_BoundWithSurf_get_type_name())
                 .to_string_lossy()
@@ -1600,7 +1600,7 @@ impl Boundary {
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:75 - `GeomFill_Boundary::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_Boundary_get_type_name())
                 .to_string_lossy()
@@ -2042,7 +2042,7 @@ impl CircularBlendFunc {
     }
 
     /// **Source:** `GeomFill_CircularBlendFunc.hxx`:162 - `GeomFill_CircularBlendFunc::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_CircularBlendFunc_get_type_name())
                 .to_string_lossy()
@@ -2386,7 +2386,7 @@ impl ConstantBiNormal {
     }
 
     /// **Source:** `GeomFill_ConstantBiNormal.hxx`:105 - `GeomFill_ConstantBiNormal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_ConstantBiNormal_get_type_name())
                 .to_string_lossy()
@@ -3004,7 +3004,7 @@ impl CoonsAlgPatch {
     }
 
     /// **Source:** `GeomFill_CoonsAlgPatch.hxx`:78 - `GeomFill_CoonsAlgPatch::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_CoonsAlgPatch_get_type_name())
                 .to_string_lossy()
@@ -3397,7 +3397,7 @@ impl CorrectedFrenet {
     }
 
     /// **Source:** `GeomFill_CorrectedFrenet.hxx`:125 - `GeomFill_CorrectedFrenet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_CorrectedFrenet_get_type_name())
                 .to_string_lossy()
@@ -3816,7 +3816,7 @@ impl CurveAndTrihedron {
     }
 
     /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:148 - `GeomFill_CurveAndTrihedron::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_CurveAndTrihedron_get_type_name())
                 .to_string_lossy()
@@ -4359,7 +4359,7 @@ impl Darboux {
     }
 
     /// **Source:** `GeomFill_Darboux.hxx`:98 - `GeomFill_Darboux::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_Darboux_get_type_name())
                 .to_string_lossy()
@@ -4605,7 +4605,7 @@ impl DegeneratedBound {
     }
 
     /// **Source:** `GeomFill_DegeneratedBound.hxx`:61 - `GeomFill_DegeneratedBound::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_DegeneratedBound_get_type_name())
                 .to_string_lossy()
@@ -4988,7 +4988,7 @@ impl DiscreteTrihedron {
     }
 
     /// **Source:** `GeomFill_DiscreteTrihedron.hxx`:114 - `GeomFill_DiscreteTrihedron::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_DiscreteTrihedron_get_type_name())
                 .to_string_lossy()
@@ -5347,7 +5347,7 @@ impl DraftTrihedron {
     }
 
     /// **Source:** `GeomFill_DraftTrihedron.hxx`:97 - `GeomFill_DraftTrihedron::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_DraftTrihedron_get_type_name())
                 .to_string_lossy()
@@ -5802,7 +5802,7 @@ impl EvolvedSection {
     }
 
     /// **Source:** `GeomFill_EvolvedSection.hxx`:166 - `GeomFill_EvolvedSection::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_EvolvedSection_get_type_name())
                 .to_string_lossy()
@@ -6172,7 +6172,7 @@ impl Fixed {
     }
 
     /// **Source:** `GeomFill_Fixed.hxx`:94 - `GeomFill_Fixed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_Fixed_get_type_name())
                 .to_string_lossy()
@@ -6495,7 +6495,7 @@ impl Frenet {
     }
 
     /// **Source:** `GeomFill_Frenet.hxx`:106 - `GeomFill_Frenet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_Frenet_get_type_name())
                 .to_string_lossy()
@@ -7307,7 +7307,7 @@ impl GuideTrihedronAC {
     }
 
     /// **Source:** `GeomFill_GuideTrihedronAC.hxx`:113 - `GeomFill_GuideTrihedronAC::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_GuideTrihedronAC_get_type_name())
                 .to_string_lossy()
@@ -7741,7 +7741,7 @@ impl GuideTrihedronPlan {
     }
 
     /// **Source:** `GeomFill_GuideTrihedronPlan.hxx`:120 - `GeomFill_GuideTrihedronPlan::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_GuideTrihedronPlan_get_type_name())
                 .to_string_lossy()
@@ -8040,7 +8040,7 @@ impl HArray1OfLocationLaw {
     }
 
     /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_HArray1OfLocationLaw_get_type_name())
                 .to_string_lossy()
@@ -8255,7 +8255,7 @@ impl HArray1OfSectionLaw {
     }
 
     /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_HArray1OfSectionLaw_get_type_name())
                 .to_string_lossy()
@@ -8446,7 +8446,7 @@ impl HSequenceOfAx2 {
     }
 
     /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_HSequenceOfAx2_get_type_name())
                 .to_string_lossy()
@@ -8606,7 +8606,7 @@ impl Line {
     }
 
     /// **Source:** `GeomFill_Line.hxx`:42 - `GeomFill_Line::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_Line_get_type_name())
                 .to_string_lossy()
@@ -9068,7 +9068,7 @@ impl LocationDraft {
     }
 
     /// **Source:** `GeomFill_LocationDraft.hxx`:176 - `GeomFill_LocationDraft::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_LocationDraft_get_type_name())
                 .to_string_lossy()
@@ -9588,7 +9588,7 @@ impl LocationGuide {
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:199 - `GeomFill_LocationGuide::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_LocationGuide_get_type_name())
                 .to_string_lossy()
@@ -10013,7 +10013,7 @@ impl LocationLaw {
     }
 
     /// **Source:** `GeomFill_LocationLaw.hxx`:168 - `GeomFill_LocationLaw::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_LocationLaw_get_type_name())
                 .to_string_lossy()
@@ -10535,7 +10535,7 @@ impl NSections {
     }
 
     /// **Source:** `GeomFill_NSections.hxx`:218 - `GeomFill_NSections::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_NSections_get_type_name())
                 .to_string_lossy()
@@ -12050,7 +12050,7 @@ impl SectionLaw {
     }
 
     /// **Source:** `GeomFill_SectionLaw.hxx`:169 - `GeomFill_SectionLaw::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_SectionLaw_get_type_name())
                 .to_string_lossy()
@@ -12458,7 +12458,7 @@ impl SimpleBound {
     }
 
     /// **Source:** `GeomFill_SimpleBound.hxx`:92 - `GeomFill_SimpleBound::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_SimpleBound_get_type_name())
                 .to_string_lossy()
@@ -13644,7 +13644,7 @@ impl SweepFunction {
     }
 
     /// **Source:** `GeomFill_SweepFunction.hxx`:167 - `GeomFill_SweepFunction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_SweepFunction_get_type_name())
                 .to_string_lossy()
@@ -14170,7 +14170,7 @@ impl TgtField {
     }
 
     /// **Source:** `GeomFill_TgtField.hxx`:53 - `GeomFill_TgtField::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_TgtField_get_type_name())
                 .to_string_lossy()
@@ -14347,7 +14347,7 @@ impl TgtOnCoons {
     }
 
     /// **Source:** `GeomFill_TgtOnCoons.hxx`:52 - `GeomFill_TgtOnCoons::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_TgtOnCoons_get_type_name())
                 .to_string_lossy()
@@ -14685,7 +14685,7 @@ impl TrihedronLaw {
     }
 
     /// **Source:** `GeomFill_TrihedronLaw.hxx`:112 - `GeomFill_TrihedronLaw::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_TrihedronLaw_get_type_name())
                 .to_string_lossy()
@@ -14997,7 +14997,7 @@ impl TrihedronWithGuide {
     }
 
     /// **Source:** `GeomFill_TrihedronWithGuide.hxx`:41 - `GeomFill_TrihedronWithGuide::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_TrihedronWithGuide_get_type_name())
                 .to_string_lossy()
@@ -15644,7 +15644,7 @@ impl UniformSection {
     }
 
     /// **Source:** `GeomFill_UniformSection.hxx`:167 - `GeomFill_UniformSection::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomFill_UniformSection_get_type_name())
                 .to_string_lossy()

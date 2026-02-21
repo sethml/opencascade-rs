@@ -323,7 +323,7 @@ impl Action {
     }
 
     /// **Source:** `StepBasic_Action.hxx`:66 - `StepBasic_Action::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_Action_get_type_name())
                 .to_string_lossy()
@@ -479,7 +479,7 @@ impl ActionAssignment {
     }
 
     /// **Source:** `StepBasic_ActionAssignment.hxx`:46 - `StepBasic_ActionAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ActionAssignment_get_type_name())
                 .to_string_lossy()
@@ -761,7 +761,7 @@ impl ActionMethod {
     }
 
     /// **Source:** `StepBasic_ActionMethod.hxx`:72 - `StepBasic_ActionMethod::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ActionMethod_get_type_name())
                 .to_string_lossy()
@@ -947,7 +947,7 @@ impl ActionRequestAssignment {
     }
 
     /// **Source:** `StepBasic_ActionRequestAssignment.hxx`:47 - `StepBasic_ActionRequestAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ActionRequestAssignment_get_type_name())
                 .to_string_lossy()
@@ -1194,7 +1194,7 @@ impl ActionRequestSolution {
     }
 
     /// **Source:** `StepBasic_ActionRequestSolution.hxx`:54 - `StepBasic_ActionRequestSolution::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ActionRequestSolution_get_type_name())
                 .to_string_lossy()
@@ -1725,7 +1725,7 @@ impl Address {
     }
 
     /// **Source:** `StepBasic_Address.hxx`:160 - `StepBasic_Address::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_Address_get_type_name())
                 .to_string_lossy()
@@ -1917,7 +1917,7 @@ impl ApplicationContext {
     }
 
     /// **Source:** `StepBasic_ApplicationContext.hxx`:42 - `StepBasic_ApplicationContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ApplicationContext_get_type_name())
                 .to_string_lossy()
@@ -2135,7 +2135,7 @@ impl ApplicationContextElement {
     }
 
     /// **Source:** `StepBasic_ApplicationContextElement.hxx`:49 - `StepBasic_ApplicationContextElement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ApplicationContextElement_get_type_name()).to_string_lossy().into_owned()
         }
@@ -2489,7 +2489,7 @@ impl ApplicationProtocolDefinition {
     }
 
     /// **Source:** `StepBasic_ApplicationProtocolDefinition.hxx`:66 - `StepBasic_ApplicationProtocolDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ApplicationProtocolDefinition_get_type_name(),
@@ -2702,7 +2702,7 @@ impl Approval {
     }
 
     /// **Source:** `StepBasic_Approval.hxx`:53 - `StepBasic_Approval::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_Approval_get_type_name())
                 .to_string_lossy()
@@ -2863,7 +2863,7 @@ impl ApprovalAssignment {
     }
 
     /// **Source:** `StepBasic_ApprovalAssignment.hxx`:39 - `StepBasic_ApprovalAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ApprovalAssignment_get_type_name())
                 .to_string_lossy()
@@ -3120,7 +3120,7 @@ impl ApprovalDateTime {
     }
 
     /// **Source:** `StepBasic_ApprovalDateTime.hxx`:48 - `StepBasic_ApprovalDateTime::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ApprovalDateTime_get_type_name())
                 .to_string_lossy()
@@ -3355,7 +3355,7 @@ impl ApprovalPersonOrganization {
     }
 
     /// **Source:** `StepBasic_ApprovalPersonOrganization.hxx`:55 - `StepBasic_ApprovalPersonOrganization::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ApprovalPersonOrganization_get_type_name(),
@@ -3622,7 +3622,7 @@ impl ApprovalRelationship {
     }
 
     /// **Source:** `StepBasic_ApprovalRelationship.hxx`:58 - `StepBasic_ApprovalRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ApprovalRelationship_get_type_name())
                 .to_string_lossy()
@@ -3805,7 +3805,7 @@ impl ApprovalRole {
     }
 
     /// **Source:** `StepBasic_ApprovalRole.hxx`:42 - `StepBasic_ApprovalRole::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ApprovalRole_get_type_name())
                 .to_string_lossy()
@@ -3965,7 +3965,7 @@ impl ApprovalStatus {
     }
 
     /// **Source:** `StepBasic_ApprovalStatus.hxx`:42 - `StepBasic_ApprovalStatus::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ApprovalStatus_get_type_name())
                 .to_string_lossy()
@@ -4113,7 +4113,7 @@ impl AreaUnit {
     }
 
     /// **Source:** `StepBasic_AreaUnit.hxx`:34 - `StepBasic_AreaUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_AreaUnit_get_type_name())
                 .to_string_lossy()
@@ -4331,7 +4331,7 @@ impl CalendarDate {
     }
 
     /// **Source:** `StepBasic_CalendarDate.hxx`:48 - `StepBasic_CalendarDate::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_CalendarDate_get_type_name())
                 .to_string_lossy()
@@ -4566,7 +4566,7 @@ impl Certification {
     }
 
     /// **Source:** `StepBasic_Certification.hxx`:61 - `StepBasic_Certification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_Certification_get_type_name())
                 .to_string_lossy()
@@ -4753,7 +4753,7 @@ impl CertificationAssignment {
     }
 
     /// **Source:** `StepBasic_CertificationAssignment.hxx`:47 - `StepBasic_CertificationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_CertificationAssignment_get_type_name())
                 .to_string_lossy()
@@ -4962,7 +4962,7 @@ impl CertificationType {
     }
 
     /// **Source:** `StepBasic_CertificationType.hxx`:46 - `StepBasic_CertificationType::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_CertificationType_get_type_name())
                 .to_string_lossy()
@@ -5179,7 +5179,7 @@ impl CharacterizedObject {
     }
 
     /// **Source:** `StepBasic_CharacterizedObject.hxx`:57 - `StepBasic_CharacterizedObject::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_CharacterizedObject_get_type_name())
                 .to_string_lossy()
@@ -5392,7 +5392,7 @@ impl Contract {
     }
 
     /// **Source:** `StepBasic_Contract.hxx`:61 - `StepBasic_Contract::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_Contract_get_type_name())
                 .to_string_lossy()
@@ -5557,7 +5557,7 @@ impl ContractAssignment {
     }
 
     /// **Source:** `StepBasic_ContractAssignment.hxx`:46 - `StepBasic_ContractAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ContractAssignment_get_type_name())
                 .to_string_lossy()
@@ -5757,7 +5757,7 @@ impl ContractType {
     }
 
     /// **Source:** `StepBasic_ContractType.hxx`:46 - `StepBasic_ContractType::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ContractType_get_type_name())
                 .to_string_lossy()
@@ -5951,7 +5951,7 @@ impl ConversionBasedUnit {
     }
 
     /// **Source:** `StepBasic_ConversionBasedUnit.hxx`:51 - `StepBasic_ConversionBasedUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ConversionBasedUnit_get_type_name())
                 .to_string_lossy()
@@ -6316,7 +6316,7 @@ impl ConversionBasedUnitAndAreaUnit {
     }
 
     /// **Source:** `StepBasic_ConversionBasedUnitAndAreaUnit.hxx`:40 - `StepBasic_ConversionBasedUnitAndAreaUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ConversionBasedUnitAndAreaUnit_get_type_name(),
@@ -6670,7 +6670,7 @@ impl ConversionBasedUnitAndLengthUnit {
     }
 
     /// **Source:** `StepBasic_ConversionBasedUnitAndLengthUnit.hxx`:47 - `StepBasic_ConversionBasedUnitAndLengthUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ConversionBasedUnitAndLengthUnit_get_type_name(),
@@ -7003,7 +7003,7 @@ impl ConversionBasedUnitAndMassUnit {
     }
 
     /// **Source:** `StepBasic_ConversionBasedUnitAndMassUnit.hxx`:46 - `StepBasic_ConversionBasedUnitAndMassUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ConversionBasedUnitAndMassUnit_get_type_name(),
@@ -7345,7 +7345,7 @@ impl ConversionBasedUnitAndPlaneAngleUnit {
     }
 
     /// **Source:** `StepBasic_ConversionBasedUnitAndPlaneAngleUnit.hxx`:48 - `StepBasic_ConversionBasedUnitAndPlaneAngleUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ConversionBasedUnitAndPlaneAngleUnit_get_type_name(),
@@ -7680,7 +7680,7 @@ impl ConversionBasedUnitAndRatioUnit {
     }
 
     /// **Source:** `StepBasic_ConversionBasedUnitAndRatioUnit.hxx`:47 - `StepBasic_ConversionBasedUnitAndRatioUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ConversionBasedUnitAndRatioUnit_get_type_name(),
@@ -8022,7 +8022,7 @@ impl ConversionBasedUnitAndSolidAngleUnit {
     }
 
     /// **Source:** `StepBasic_ConversionBasedUnitAndSolidAngleUnit.hxx`:48 - `StepBasic_ConversionBasedUnitAndSolidAngleUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ConversionBasedUnitAndSolidAngleUnit_get_type_name(),
@@ -8355,7 +8355,7 @@ impl ConversionBasedUnitAndTimeUnit {
     }
 
     /// **Source:** `StepBasic_ConversionBasedUnitAndTimeUnit.hxx`:47 - `StepBasic_ConversionBasedUnitAndTimeUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ConversionBasedUnitAndTimeUnit_get_type_name(),
@@ -8675,7 +8675,7 @@ impl ConversionBasedUnitAndVolumeUnit {
     }
 
     /// **Source:** `StepBasic_ConversionBasedUnitAndVolumeUnit.hxx`:40 - `StepBasic_ConversionBasedUnitAndVolumeUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ConversionBasedUnitAndVolumeUnit_get_type_name(),
@@ -9080,7 +9080,7 @@ impl CoordinatedUniversalTimeOffset {
     }
 
     /// **Source:** `StepBasic_CoordinatedUniversalTimeOffset.hxx`:58 - `StepBasic_CoordinatedUniversalTimeOffset::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_CoordinatedUniversalTimeOffset_get_type_name(),
@@ -9271,7 +9271,7 @@ impl Date {
     }
 
     /// **Source:** `StepBasic_Date.hxx`:42 - `StepBasic_Date::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_Date_get_type_name())
                 .to_string_lossy()
@@ -9500,7 +9500,7 @@ impl DateAndTime {
     }
 
     /// **Source:** `StepBasic_DateAndTime.hxx`:48 - `StepBasic_DateAndTime::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DateAndTime_get_type_name())
                 .to_string_lossy()
@@ -9696,7 +9696,7 @@ impl DateAndTimeAssignment {
     }
 
     /// **Source:** `StepBasic_DateAndTimeAssignment.hxx`:46 - `StepBasic_DateAndTimeAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DateAndTimeAssignment_get_type_name())
                 .to_string_lossy()
@@ -9969,7 +9969,7 @@ impl DateAssignment {
     }
 
     /// **Source:** `StepBasic_DateAssignment.hxx`:45 - `StepBasic_DateAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DateAssignment_get_type_name())
                 .to_string_lossy()
@@ -10183,7 +10183,7 @@ impl DateRole {
     }
 
     /// **Source:** `StepBasic_DateRole.hxx`:42 - `StepBasic_DateRole::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DateRole_get_type_name())
                 .to_string_lossy()
@@ -10332,7 +10332,7 @@ impl DateTimeRole {
     }
 
     /// **Source:** `StepBasic_DateTimeRole.hxx`:42 - `StepBasic_DateTimeRole::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DateTimeRole_get_type_name())
                 .to_string_lossy()
@@ -10703,7 +10703,7 @@ impl DerivedUnit {
     }
 
     /// **Source:** `StepBasic_DerivedUnit.hxx`:49 - `StepBasic_DerivedUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DerivedUnit_get_type_name())
                 .to_string_lossy()
@@ -10877,7 +10877,7 @@ impl DerivedUnitElement {
     }
 
     /// **Source:** `StepBasic_DerivedUnitElement.hxx`:47 - `StepBasic_DerivedUnitElement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DerivedUnitElement_get_type_name())
                 .to_string_lossy()
@@ -11036,7 +11036,7 @@ impl DesignContext {
     }
 
     /// **Source:** `StepBasic_DesignContext.hxx`:35 - `StepBasic_DesignContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DesignContext_get_type_name())
                 .to_string_lossy()
@@ -11315,7 +11315,7 @@ impl DigitalDocument {
     }
 
     /// **Source:** `StepBasic_DigitalDocument.hxx`:34 - `StepBasic_DigitalDocument::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DigitalDocument_get_type_name())
                 .to_string_lossy()
@@ -11730,7 +11730,7 @@ impl DimensionalExponents {
     }
 
     /// **Source:** `StepBasic_DimensionalExponents.hxx`:72 - `StepBasic_DimensionalExponents::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DimensionalExponents_get_type_name())
                 .to_string_lossy()
@@ -11981,7 +11981,7 @@ impl Document {
     }
 
     /// **Source:** `StepBasic_Document.hxx`:72 - `StepBasic_Document::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_Document_get_type_name())
                 .to_string_lossy()
@@ -12204,7 +12204,7 @@ impl DocumentFile {
     }
 
     /// **Source:** `StepBasic_DocumentFile.hxx`:56 - `StepBasic_DocumentFile::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DocumentFile_get_type_name())
                 .to_string_lossy()
@@ -12557,7 +12557,7 @@ impl DocumentProductAssociation {
     }
 
     /// **Source:** `StepBasic_DocumentProductAssociation.hxx`:73 - `StepBasic_DocumentProductAssociation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_DocumentProductAssociation_get_type_name(),
@@ -12752,7 +12752,7 @@ impl DocumentProductEquivalence {
     }
 
     /// **Source:** `StepBasic_DocumentProductEquivalence.hxx`:34 - `StepBasic_DocumentProductEquivalence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_DocumentProductEquivalence_get_type_name(),
@@ -13117,7 +13117,7 @@ impl DocumentReference {
     }
 
     /// **Source:** `StepBasic_DocumentReference.hxx`:45 - `StepBasic_DocumentReference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DocumentReference_get_type_name())
                 .to_string_lossy()
@@ -13409,7 +13409,7 @@ impl DocumentRelationship {
     }
 
     /// **Source:** `StepBasic_DocumentRelationship.hxx`:57 - `StepBasic_DocumentRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DocumentRelationship_get_type_name())
                 .to_string_lossy()
@@ -13640,7 +13640,7 @@ impl DocumentRepresentationType {
     }
 
     /// **Source:** `StepBasic_DocumentRepresentationType.hxx`:54 - `StepBasic_DocumentRepresentationType::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_DocumentRepresentationType_get_type_name(),
@@ -13832,7 +13832,7 @@ impl DocumentType {
     }
 
     /// **Source:** `StepBasic_DocumentType.hxx`:41 - `StepBasic_DocumentType::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DocumentType_get_type_name())
                 .to_string_lossy()
@@ -14049,7 +14049,7 @@ impl DocumentUsageConstraint {
     }
 
     /// **Source:** `StepBasic_DocumentUsageConstraint.hxx`:52 - `StepBasic_DocumentUsageConstraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_DocumentUsageConstraint_get_type_name())
                 .to_string_lossy()
@@ -14233,7 +14233,7 @@ impl Effectivity {
     }
 
     /// **Source:** `StepBasic_Effectivity.hxx`:41 - `StepBasic_Effectivity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_Effectivity_get_type_name())
                 .to_string_lossy()
@@ -14444,7 +14444,7 @@ impl EffectivityAssignment {
     }
 
     /// **Source:** `StepBasic_EffectivityAssignment.hxx`:46 - `StepBasic_EffectivityAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_EffectivityAssignment_get_type_name())
                 .to_string_lossy()
@@ -14631,7 +14631,7 @@ impl EulerAngles {
     }
 
     /// **Source:** `StepBasic_EulerAngles.hxx`:45 - `StepBasic_EulerAngles::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_EulerAngles_get_type_name())
                 .to_string_lossy()
@@ -14818,7 +14818,7 @@ impl ExternalIdentificationAssignment {
     }
 
     /// **Source:** `StepBasic_ExternalIdentificationAssignment.hxx`:51 - `StepBasic_ExternalIdentificationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ExternalIdentificationAssignment_get_type_name(),
@@ -15099,7 +15099,7 @@ impl ExternalSource {
     }
 
     /// **Source:** `StepBasic_ExternalSource.hxx`:44 - `StepBasic_ExternalSource::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ExternalSource_get_type_name())
                 .to_string_lossy()
@@ -15295,7 +15295,7 @@ impl ExternallyDefinedItem {
     }
 
     /// **Source:** `StepBasic_ExternallyDefinedItem.hxx`:52 - `StepBasic_ExternallyDefinedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ExternallyDefinedItem_get_type_name())
                 .to_string_lossy()
@@ -15568,7 +15568,7 @@ impl GeneralProperty {
     }
 
     /// **Source:** `StepBasic_GeneralProperty.hxx`:64 - `StepBasic_GeneralProperty::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_GeneralProperty_get_type_name())
                 .to_string_lossy()
@@ -15852,7 +15852,7 @@ impl GeneralPropertyAssociation {
     }
 
     /// **Source:** `StepBasic_GeneralPropertyAssociation.hxx`:67 - `StepBasic_GeneralPropertyAssociation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_GeneralPropertyAssociation_get_type_name(),
@@ -16156,7 +16156,7 @@ impl GeneralPropertyRelationship {
     }
 
     /// **Source:** `StepBasic_GeneralPropertyRelationship.hxx`:71 - `StepBasic_GeneralPropertyRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_GeneralPropertyRelationship_get_type_name(),
@@ -16380,7 +16380,7 @@ impl Group {
     }
 
     /// **Source:** `StepBasic_Group.hxx`:57 - `StepBasic_Group::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_Group_get_type_name())
                 .to_string_lossy()
@@ -16636,7 +16636,7 @@ impl GroupAssignment {
     }
 
     /// **Source:** `StepBasic_GroupAssignment.hxx`:45 - `StepBasic_GroupAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_GroupAssignment_get_type_name())
                 .to_string_lossy()
@@ -16923,7 +16923,7 @@ impl GroupRelationship {
     }
 
     /// **Source:** `StepBasic_GroupRelationship.hxx`:71 - `StepBasic_GroupRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_GroupRelationship_get_type_name())
                 .to_string_lossy()
@@ -17134,7 +17134,7 @@ impl HArray1OfApproval {
     }
 
     /// **Source:** `StepBasic_HArray1OfApproval.hxx`:23 - `StepBasic_HArray1OfApproval::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_HArray1OfApproval_get_type_name())
                 .to_string_lossy()
@@ -17359,7 +17359,7 @@ impl HArray1OfDerivedUnitElement {
     }
 
     /// **Source:** `StepBasic_HArray1OfDerivedUnitElement.hxx`:23 - `StepBasic_HArray1OfDerivedUnitElement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_HArray1OfDerivedUnitElement_get_type_name(),
@@ -17593,7 +17593,7 @@ impl HArray1OfDocument {
     }
 
     /// **Source:** `StepBasic_HArray1OfDocument.hxx`:23 - `StepBasic_HArray1OfDocument::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_HArray1OfDocument_get_type_name())
                 .to_string_lossy()
@@ -17804,7 +17804,7 @@ impl HArray1OfNamedUnit {
     }
 
     /// **Source:** `StepBasic_HArray1OfNamedUnit.hxx`:23 - `StepBasic_HArray1OfNamedUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_HArray1OfNamedUnit_get_type_name())
                 .to_string_lossy()
@@ -18023,7 +18023,7 @@ impl HArray1OfOrganization {
     }
 
     /// **Source:** `StepBasic_HArray1OfOrganization.hxx`:23 - `StepBasic_HArray1OfOrganization::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_HArray1OfOrganization_get_type_name())
                 .to_string_lossy()
@@ -18245,7 +18245,7 @@ impl HArray1OfPerson {
     }
 
     /// **Source:** `StepBasic_HArray1OfPerson.hxx`:23 - `StepBasic_HArray1OfPerson::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_HArray1OfPerson_get_type_name())
                 .to_string_lossy()
@@ -18451,7 +18451,7 @@ impl HArray1OfProduct {
     }
 
     /// **Source:** `StepBasic_HArray1OfProduct.hxx`:23 - `StepBasic_HArray1OfProduct::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_HArray1OfProduct_get_type_name())
                 .to_string_lossy()
@@ -18666,7 +18666,7 @@ impl HArray1OfProductContext {
     }
 
     /// **Source:** `StepBasic_HArray1OfProductContext.hxx`:23 - `StepBasic_HArray1OfProductContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_HArray1OfProductContext_get_type_name())
                 .to_string_lossy()
@@ -18904,7 +18904,7 @@ impl HArray1OfProductDefinition {
     }
 
     /// **Source:** `StepBasic_HArray1OfProductDefinition.hxx`:24 - `StepBasic_HArray1OfProductDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_HArray1OfProductDefinition_get_type_name(),
@@ -19156,7 +19156,7 @@ impl HArray1OfUncertaintyMeasureWithUnit {
     }
 
     /// **Source:** `StepBasic_HArray1OfUncertaintyMeasureWithUnit.hxx`:23 - `StepBasic_HArray1OfUncertaintyMeasureWithUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_HArray1OfUncertaintyMeasureWithUnit_get_type_name(),
@@ -19390,7 +19390,7 @@ impl IdentificationAssignment {
     }
 
     /// **Source:** `StepBasic_IdentificationAssignment.hxx`:53 - `StepBasic_IdentificationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_IdentificationAssignment_get_type_name())
                 .to_string_lossy()
@@ -19652,7 +19652,7 @@ impl IdentificationRole {
     }
 
     /// **Source:** `StepBasic_IdentificationRole.hxx`:57 - `StepBasic_IdentificationRole::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_IdentificationRole_get_type_name())
                 .to_string_lossy()
@@ -19811,7 +19811,7 @@ impl LengthMeasureWithUnit {
     }
 
     /// **Source:** `StepBasic_LengthMeasureWithUnit.hxx`:34 - `StepBasic_LengthMeasureWithUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_LengthMeasureWithUnit_get_type_name())
                 .to_string_lossy()
@@ -20089,7 +20089,7 @@ impl LengthUnit {
     }
 
     /// **Source:** `StepBasic_LengthUnit.hxx`:35 - `StepBasic_LengthUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_LengthUnit_get_type_name())
                 .to_string_lossy()
@@ -20372,7 +20372,7 @@ impl LocalTime {
     }
 
     /// **Source:** `StepBasic_LocalTime.hxx`:68 - `StepBasic_LocalTime::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_LocalTime_get_type_name())
                 .to_string_lossy()
@@ -20509,7 +20509,7 @@ impl MassMeasureWithUnit {
     }
 
     /// **Source:** `StepBasic_MassMeasureWithUnit.hxx`:33 - `StepBasic_MassMeasureWithUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_MassMeasureWithUnit_get_type_name())
                 .to_string_lossy()
@@ -20779,7 +20779,7 @@ impl MassUnit {
     }
 
     /// **Source:** `StepBasic_MassUnit.hxx`:35 - `StepBasic_MassUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_MassUnit_get_type_name())
                 .to_string_lossy()
@@ -20963,7 +20963,7 @@ impl MeasureValueMember {
     }
 
     /// **Source:** `StepBasic_MeasureValueMember.hxx`:43 - `StepBasic_MeasureValueMember::Name()`
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_MeasureValueMember_name(
                 self as *const Self,
@@ -20987,7 +20987,7 @@ impl MeasureValueMember {
     }
 
     /// **Source:** `StepBasic_MeasureValueMember.hxx`:47 - `StepBasic_MeasureValueMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_MeasureValueMember_get_type_name())
                 .to_string_lossy()
@@ -21367,7 +21367,7 @@ impl MeasureWithUnit {
     }
 
     /// **Source:** `StepBasic_MeasureWithUnit.hxx`:52 - `StepBasic_MeasureWithUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_MeasureWithUnit_get_type_name())
                 .to_string_lossy()
@@ -21629,7 +21629,7 @@ impl MechanicalContext {
     }
 
     /// **Source:** `StepBasic_MechanicalContext.hxx`:35 - `StepBasic_MechanicalContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_MechanicalContext_get_type_name())
                 .to_string_lossy()
@@ -21948,7 +21948,7 @@ impl NameAssignment {
     }
 
     /// **Source:** `StepBasic_NameAssignment.hxx`:45 - `StepBasic_NameAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_NameAssignment_get_type_name())
                 .to_string_lossy()
@@ -22119,7 +22119,7 @@ impl NamedUnit {
     }
 
     /// **Source:** `StepBasic_NamedUnit.hxx`:43 - `StepBasic_NamedUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_NamedUnit_get_type_name())
                 .to_string_lossy()
@@ -22798,7 +22798,7 @@ impl ObjectRole {
     }
 
     /// **Source:** `StepBasic_ObjectRole.hxx`:57 - `StepBasic_ObjectRole::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ObjectRole_get_type_name())
                 .to_string_lossy()
@@ -22954,7 +22954,7 @@ impl OrdinalDate {
     }
 
     /// **Source:** `StepBasic_OrdinalDate.hxx`:43 - `StepBasic_OrdinalDate::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_OrdinalDate_get_type_name())
                 .to_string_lossy()
@@ -23200,7 +23200,7 @@ impl Organization {
     }
 
     /// **Source:** `StepBasic_Organization.hxx`:58 - `StepBasic_Organization::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_Organization_get_type_name())
                 .to_string_lossy()
@@ -23398,7 +23398,7 @@ impl OrganizationAssignment {
     }
 
     /// **Source:** `StepBasic_OrganizationAssignment.hxx`:46 - `StepBasic_OrganizationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_OrganizationAssignment_get_type_name())
                 .to_string_lossy()
@@ -23617,7 +23617,7 @@ impl OrganizationRole {
     }
 
     /// **Source:** `StepBasic_OrganizationRole.hxx`:42 - `StepBasic_OrganizationRole::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_OrganizationRole_get_type_name())
                 .to_string_lossy()
@@ -23896,7 +23896,7 @@ impl OrganizationalAddress {
     }
 
     /// **Source:** `StepBasic_OrganizationalAddress.hxx`:81 - `StepBasic_OrganizationalAddress::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_OrganizationalAddress_get_type_name())
                 .to_string_lossy()
@@ -24766,7 +24766,7 @@ impl Person {
     }
 
     /// **Source:** `StepBasic_Person.hxx`:111 - `StepBasic_Person::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_Person_get_type_name())
                 .to_string_lossy()
@@ -24950,7 +24950,7 @@ impl PersonAndOrganization {
     }
 
     /// **Source:** `StepBasic_PersonAndOrganization.hxx`:48 - `StepBasic_PersonAndOrganization::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_PersonAndOrganization_get_type_name())
                 .to_string_lossy()
@@ -25172,7 +25172,7 @@ impl PersonAndOrganizationAssignment {
     }
 
     /// **Source:** `StepBasic_PersonAndOrganizationAssignment.hxx`:47 - `StepBasic_PersonAndOrganizationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_PersonAndOrganizationAssignment_get_type_name(),
@@ -25438,7 +25438,7 @@ impl PersonAndOrganizationRole {
     }
 
     /// **Source:** `StepBasic_PersonAndOrganizationRole.hxx`:42 - `StepBasic_PersonAndOrganizationRole::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_PersonAndOrganizationRole_get_type_name()).to_string_lossy().into_owned()
         }
@@ -25949,7 +25949,7 @@ impl PersonalAddress {
     }
 
     /// **Source:** `StepBasic_PersonalAddress.hxx`:78 - `StepBasic_PersonalAddress::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_PersonalAddress_get_type_name())
                 .to_string_lossy()
@@ -26521,7 +26521,7 @@ impl PhysicallyModeledProductDefinition {
     }
 
     /// **Source:** `StepBasic_PhysicallyModeledProductDefinition.hxx`:34 - `StepBasic_PhysicallyModeledProductDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_PhysicallyModeledProductDefinition_get_type_name(),
@@ -26837,7 +26837,7 @@ impl PlaneAngleMeasureWithUnit {
     }
 
     /// **Source:** `StepBasic_PlaneAngleMeasureWithUnit.hxx`:34 - `StepBasic_PlaneAngleMeasureWithUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_PlaneAngleMeasureWithUnit_get_type_name()).to_string_lossy().into_owned()
         }
@@ -27113,7 +27113,7 @@ impl PlaneAngleUnit {
     }
 
     /// **Source:** `StepBasic_PlaneAngleUnit.hxx`:35 - `StepBasic_PlaneAngleUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_PlaneAngleUnit_get_type_name())
                 .to_string_lossy()
@@ -27415,7 +27415,7 @@ impl Product {
     }
 
     /// **Source:** `StepBasic_Product.hxx`:66 - `StepBasic_Product::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_Product_get_type_name())
                 .to_string_lossy()
@@ -27604,7 +27604,7 @@ impl ProductCategory {
     }
 
     /// **Source:** `StepBasic_ProductCategory.hxx`:53 - `StepBasic_ProductCategory::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ProductCategory_get_type_name())
                 .to_string_lossy()
@@ -27904,7 +27904,7 @@ impl ProductCategoryRelationship {
     }
 
     /// **Source:** `StepBasic_ProductCategoryRelationship.hxx`:72 - `StepBasic_ProductCategoryRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ProductCategoryRelationship_get_type_name(),
@@ -28129,7 +28129,7 @@ impl ProductConceptContext {
     }
 
     /// **Source:** `StepBasic_ProductConceptContext.hxx`:51 - `StepBasic_ProductConceptContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ProductConceptContext_get_type_name())
                 .to_string_lossy()
@@ -28401,7 +28401,7 @@ impl ProductContext {
     }
 
     /// **Source:** `StepBasic_ProductContext.hxx`:45 - `StepBasic_ProductContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ProductContext_get_type_name())
                 .to_string_lossy()
@@ -28729,7 +28729,7 @@ impl ProductDefinition {
     }
 
     /// **Source:** `StepBasic_ProductDefinition.hxx`:60 - `StepBasic_ProductDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ProductDefinition_get_type_name())
                 .to_string_lossy()
@@ -28981,7 +28981,7 @@ impl ProductDefinitionContext {
     }
 
     /// **Source:** `StepBasic_ProductDefinitionContext.hxx`:45 - `StepBasic_ProductDefinitionContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ProductDefinitionContext_get_type_name())
                 .to_string_lossy()
@@ -29267,7 +29267,7 @@ impl ProductDefinitionEffectivity {
     }
 
     /// **Source:** `StepBasic_ProductDefinitionEffectivity.hxx`:43 - `StepBasic_ProductDefinitionEffectivity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ProductDefinitionEffectivity_get_type_name(),
@@ -29580,7 +29580,7 @@ impl ProductDefinitionFormation {
     }
 
     /// **Source:** `StepBasic_ProductDefinitionFormation.hxx`:53 - `StepBasic_ProductDefinitionFormation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ProductDefinitionFormation_get_type_name(),
@@ -29914,7 +29914,7 @@ impl ProductDefinitionFormationRelationship {
     }
 
     /// **Source:** `StepBasic_ProductDefinitionFormationRelationship.hxx`:79 - `StepBasic_ProductDefinitionFormationRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ProductDefinitionFormationRelationship_get_type_name(),
@@ -30139,7 +30139,7 @@ impl ProductDefinitionFormationWithSpecifiedSource {
     }
 
     /// **Source:** `StepBasic_ProductDefinitionFormationWithSpecifiedSource.hxx`:49 - `StepBasic_ProductDefinitionFormationWithSpecifiedSource::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ProductDefinitionFormationWithSpecifiedSource_get_type_name(),
@@ -30817,7 +30817,7 @@ impl ProductDefinitionReference {
     }
 
     /// **Source:** `StepBasic_ProductDefinitionReference.hxx`:110 - `StepBasic_ProductDefinitionReference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ProductDefinitionReference_get_type_name(),
@@ -31043,7 +31043,7 @@ impl ProductDefinitionReferenceWithLocalRepresentation {
     }
 
     /// **Source:** `StepBasic_ProductDefinitionReferenceWithLocalRepresentation.hxx`:49 - `StepBasic_ProductDefinitionReferenceWithLocalRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ProductDefinitionReferenceWithLocalRepresentation_get_type_name()).to_string_lossy().into_owned()
         }
@@ -31499,7 +31499,7 @@ impl ProductDefinitionRelationship {
     }
 
     /// **Source:** `StepBasic_ProductDefinitionRelationship.hxx`:104 - `StepBasic_ProductDefinitionRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ProductDefinitionRelationship_get_type_name(),
@@ -31888,7 +31888,7 @@ impl ProductDefinitionWithAssociatedDocuments {
     }
 
     /// **Source:** `StepBasic_ProductDefinitionWithAssociatedDocuments.hxx`:58 - `StepBasic_ProductDefinitionWithAssociatedDocuments::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ProductDefinitionWithAssociatedDocuments_get_type_name(),
@@ -32500,7 +32500,7 @@ impl ProductRelatedProductCategory {
     }
 
     /// **Source:** `StepBasic_ProductRelatedProductCategory.hxx`:53 - `StepBasic_ProductRelatedProductCategory::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ProductRelatedProductCategory_get_type_name(),
@@ -32781,7 +32781,7 @@ impl ProductType {
     }
 
     /// **Source:** `StepBasic_ProductType.hxx`:35 - `StepBasic_ProductType::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ProductType_get_type_name())
                 .to_string_lossy()
@@ -33073,7 +33073,7 @@ impl RatioMeasureWithUnit {
     }
 
     /// **Source:** `StepBasic_RatioMeasureWithUnit.hxx`:34 - `StepBasic_RatioMeasureWithUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_RatioMeasureWithUnit_get_type_name())
                 .to_string_lossy()
@@ -33349,7 +33349,7 @@ impl RatioUnit {
     }
 
     /// **Source:** `StepBasic_RatioUnit.hxx`:35 - `StepBasic_RatioUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_RatioUnit_get_type_name())
                 .to_string_lossy()
@@ -33583,7 +33583,7 @@ impl RoleAssociation {
     }
 
     /// **Source:** `StepBasic_RoleAssociation.hxx`:53 - `StepBasic_RoleAssociation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_RoleAssociation_get_type_name())
                 .to_string_lossy()
@@ -34099,7 +34099,7 @@ impl SecurityClassification {
     }
 
     /// **Source:** `StepBasic_SecurityClassification.hxx`:54 - `StepBasic_SecurityClassification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SecurityClassification_get_type_name())
                 .to_string_lossy()
@@ -34305,7 +34305,7 @@ impl SecurityClassificationAssignment {
     }
 
     /// **Source:** `StepBasic_SecurityClassificationAssignment.hxx`:41 - `StepBasic_SecurityClassificationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_SecurityClassificationAssignment_get_type_name(),
@@ -34557,7 +34557,7 @@ impl SecurityClassificationLevel {
     }
 
     /// **Source:** `StepBasic_SecurityClassificationLevel.hxx`:42 - `StepBasic_SecurityClassificationLevel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_SecurityClassificationLevel_get_type_name(),
@@ -34807,7 +34807,7 @@ impl SiUnit {
     }
 
     /// **Source:** `StepBasic_SiUnit.hxx`:60 - `StepBasic_SiUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SiUnit_get_type_name())
                 .to_string_lossy()
@@ -35133,7 +35133,7 @@ impl SiUnitAndAreaUnit {
     }
 
     /// **Source:** `StepBasic_SiUnitAndAreaUnit.hxx`:40 - `StepBasic_SiUnitAndAreaUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SiUnitAndAreaUnit_get_type_name())
                 .to_string_lossy()
@@ -35467,7 +35467,7 @@ impl SiUnitAndLengthUnit {
     }
 
     /// **Source:** `StepBasic_SiUnitAndLengthUnit.hxx`:46 - `StepBasic_SiUnitAndLengthUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SiUnitAndLengthUnit_get_type_name())
                 .to_string_lossy()
@@ -35791,7 +35791,7 @@ impl SiUnitAndMassUnit {
     }
 
     /// **Source:** `StepBasic_SiUnitAndMassUnit.hxx`:45 - `StepBasic_SiUnitAndMassUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SiUnitAndMassUnit_get_type_name())
                 .to_string_lossy()
@@ -36113,7 +36113,7 @@ impl SiUnitAndPlaneAngleUnit {
     }
 
     /// **Source:** `StepBasic_SiUnitAndPlaneAngleUnit.hxx`:46 - `StepBasic_SiUnitAndPlaneAngleUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SiUnitAndPlaneAngleUnit_get_type_name())
                 .to_string_lossy()
@@ -36450,7 +36450,7 @@ impl SiUnitAndRatioUnit {
     }
 
     /// **Source:** `StepBasic_SiUnitAndRatioUnit.hxx`:46 - `StepBasic_SiUnitAndRatioUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SiUnitAndRatioUnit_get_type_name())
                 .to_string_lossy()
@@ -36776,7 +36776,7 @@ impl SiUnitAndSolidAngleUnit {
     }
 
     /// **Source:** `StepBasic_SiUnitAndSolidAngleUnit.hxx`:46 - `StepBasic_SiUnitAndSolidAngleUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SiUnitAndSolidAngleUnit_get_type_name())
                 .to_string_lossy()
@@ -37124,7 +37124,7 @@ impl SiUnitAndThermodynamicTemperatureUnit {
     }
 
     /// **Source:** `StepBasic_SiUnitAndThermodynamicTemperatureUnit.hxx`:47 - `StepBasic_SiUnitAndThermodynamicTemperatureUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_SiUnitAndThermodynamicTemperatureUnit_get_type_name(),
@@ -37465,7 +37465,7 @@ impl SiUnitAndTimeUnit {
     }
 
     /// **Source:** `StepBasic_SiUnitAndTimeUnit.hxx`:46 - `StepBasic_SiUnitAndTimeUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SiUnitAndTimeUnit_get_type_name())
                 .to_string_lossy()
@@ -37765,7 +37765,7 @@ impl SiUnitAndVolumeUnit {
     }
 
     /// **Source:** `StepBasic_SiUnitAndVolumeUnit.hxx`:40 - `StepBasic_SiUnitAndVolumeUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SiUnitAndVolumeUnit_get_type_name())
                 .to_string_lossy()
@@ -38074,7 +38074,7 @@ impl SizeMember {
     }
 
     /// **Source:** `StepBasic_SizeMember.hxx`:38 - `StepBasic_SizeMember::Name()`
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SizeMember_name(self as *const Self))
                 .to_string_lossy()
@@ -38094,7 +38094,7 @@ impl SizeMember {
     }
 
     /// **Source:** `StepBasic_SizeMember.hxx`:42 - `StepBasic_SizeMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SizeMember_get_type_name())
                 .to_string_lossy()
@@ -38532,7 +38532,7 @@ impl SolidAngleMeasureWithUnit {
     }
 
     /// **Source:** `StepBasic_SolidAngleMeasureWithUnit.hxx`:34 - `StepBasic_SolidAngleMeasureWithUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SolidAngleMeasureWithUnit_get_type_name()).to_string_lossy().into_owned()
         }
@@ -38808,7 +38808,7 @@ impl SolidAngleUnit {
     }
 
     /// **Source:** `StepBasic_SolidAngleUnit.hxx`:35 - `StepBasic_SolidAngleUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_SolidAngleUnit_get_type_name())
                 .to_string_lossy()
@@ -39181,7 +39181,7 @@ impl ThermodynamicTemperatureUnit {
     }
 
     /// **Source:** `StepBasic_ThermodynamicTemperatureUnit.hxx`:35 - `StepBasic_ThermodynamicTemperatureUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_ThermodynamicTemperatureUnit_get_type_name(),
@@ -39422,7 +39422,7 @@ impl TimeMeasureWithUnit {
     }
 
     /// **Source:** `StepBasic_TimeMeasureWithUnit.hxx`:34 - `StepBasic_TimeMeasureWithUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_TimeMeasureWithUnit_get_type_name())
                 .to_string_lossy()
@@ -39691,7 +39691,7 @@ impl TimeUnit {
     }
 
     /// **Source:** `StepBasic_TimeUnit.hxx`:35 - `StepBasic_TimeUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_TimeUnit_get_type_name())
                 .to_string_lossy()
@@ -39928,7 +39928,7 @@ impl UncertaintyMeasureWithUnit {
     }
 
     /// **Source:** `StepBasic_UncertaintyMeasureWithUnit.hxx`:51 - `StepBasic_UncertaintyMeasureWithUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepBasic_UncertaintyMeasureWithUnit_get_type_name(),
@@ -40464,7 +40464,7 @@ impl VersionedActionRequest {
     }
 
     /// **Source:** `StepBasic_VersionedActionRequest.hxx`:72 - `StepBasic_VersionedActionRequest::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_VersionedActionRequest_get_type_name())
                 .to_string_lossy()
@@ -40631,7 +40631,7 @@ impl VolumeUnit {
     }
 
     /// **Source:** `StepBasic_VolumeUnit.hxx`:34 - `StepBasic_VolumeUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_VolumeUnit_get_type_name())
                 .to_string_lossy()
@@ -40876,7 +40876,7 @@ impl WeekOfYearAndDayDate {
     }
 
     /// **Source:** `StepBasic_WeekOfYearAndDayDate.hxx`:53 - `StepBasic_WeekOfYearAndDayDate::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepBasic_WeekOfYearAndDayDate_get_type_name())
                 .to_string_lossy()

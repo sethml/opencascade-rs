@@ -154,7 +154,7 @@ impl AlgoContainer {
     }
 
     /// **Source:** `XSAlgo_AlgoContainer.hxx`:89 - `XSAlgo_AlgoContainer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSAlgo_AlgoContainer_get_type_name())
                 .to_string_lossy()

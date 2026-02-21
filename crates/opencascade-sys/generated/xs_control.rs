@@ -131,7 +131,7 @@ impl ConnectedShapes {
     }
 
     /// **Source:** `XSControl_ConnectedShapes.hxx`:76 - `XSControl_ConnectedShapes::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_ConnectedShapes_get_type_name())
                 .to_string_lossy()
@@ -510,7 +510,7 @@ impl Controller {
     /// Returns a name, as given when initializing :
     /// rsc = False (D) : True Name attached to the Norm (long name)
     /// rsc = True : Name of the resource set (i.e. short name)
-    pub fn name(&self, rsc: bool) -> String {
+    pub fn name(&self, rsc: bool) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_Controller_name(
                 self as *const Self,
@@ -629,7 +629,7 @@ impl Controller {
     /// **Source:** `XSControl_Controller.hxx`:147 - `XSControl_Controller::ModeWriteHelp()`
     /// Returns the help line recorded for a value of modetrans
     /// empty if help not defined or not within bounds or if values are free
-    pub fn mode_write_help(&self, modetrans: i32, shape: bool) -> String {
+    pub fn mode_write_help(&self, modetrans: i32, shape: bool) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_Controller_mode_write_help(
                 self as *const Self,
@@ -806,7 +806,7 @@ impl Controller {
     }
 
     /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_Controller_get_type_name())
                 .to_string_lossy()
@@ -1735,7 +1735,7 @@ impl SelectForTransfer {
     }
 
     /// **Source:** `XSControl_SelectForTransfer.hxx`:86 - `XSControl_SelectForTransfer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_SelectForTransfer_get_type_name())
                 .to_string_lossy()
@@ -2200,7 +2200,7 @@ impl SignTransferStatus {
         &self,
         ent: &crate::ffi::HandleStandardTransient,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> String {
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_SignTransferStatus_value(
                 self as *const Self,
@@ -2218,7 +2218,7 @@ impl SignTransferStatus {
     }
 
     /// **Source:** `XSControl_SignTransferStatus.hxx`:79 - `XSControl_SignTransferStatus::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_SignTransferStatus_get_type_name())
                 .to_string_lossy()
@@ -2668,7 +2668,7 @@ impl TransferReader {
 
     /// **Source:** `XSControl_TransferReader.hxx`:114 - `XSControl_TransferReader::FileName()`
     /// Returns actual value of file name
-    pub fn file_name(&self) -> String {
+    pub fn file_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_TransferReader_file_name(
                 self as *const Self,
@@ -2781,7 +2781,10 @@ impl TransferReader {
     /// **Source:** `XSControl_TransferReader.hxx`:172 - `XSControl_TransferReader::FinalEntityLabel()`
     /// Returns the label attached to an entity recorded for final,
     /// or an empty string if not recorded
-    pub fn final_entity_label(&self, theEnt: &crate::ffi::HandleStandardTransient) -> String {
+    pub fn final_entity_label(
+        &self,
+        theEnt: &crate::ffi::HandleStandardTransient,
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_TransferReader_final_entity_label(
                 self as *const Self,
@@ -3207,7 +3210,7 @@ impl TransferReader {
     }
 
     /// **Source:** `XSControl_TransferReader.hxx`:375 - `XSControl_TransferReader::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_TransferReader_get_type_name())
                 .to_string_lossy()
@@ -3516,7 +3519,7 @@ impl TransferWriter {
     }
 
     /// **Source:** `XSControl_TransferWriter.hxx`:126 - `XSControl_TransferWriter::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_TransferWriter_get_type_name())
                 .to_string_lossy()
@@ -3704,7 +3707,11 @@ impl Utils {
     /// If it is Null, an empty string
     /// If <nopk> is False (D), gives complete name
     /// If <nopk> is True, returns class name without package
-    pub fn type_name(&self, item: &crate::ffi::HandleStandardTransient, nopk: bool) -> String {
+    pub fn type_name(
+        &self,
+        item: &crate::ffi::HandleStandardTransient,
+        nopk: bool,
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_Utils_type_name(
                 self as *const Self,
@@ -3748,7 +3755,15 @@ impl Utils {
     }
 
     /// **Source:** `XSControl_Utils.hxx`:90 - `XSControl_Utils::DateString()`
-    pub fn date_string(&self, yy: i32, mm: i32, dd: i32, hh: i32, mn: i32, ss: i32) -> String {
+    pub fn date_string(
+        &self,
+        yy: i32,
+        mm: i32,
+        dd: i32,
+        hh: i32,
+        mn: i32,
+        ss: i32,
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_Utils_date_string(
                 self as *const Self,
@@ -3794,7 +3809,7 @@ impl Utils {
     pub fn to_c_string_handletcollectionhasciistring(
         &self,
         strval: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> String {
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::XSControl_Utils_to_c_string_handletcollectionhasciistring(
@@ -3808,7 +3823,10 @@ impl Utils {
     }
 
     /// **Source:** `XSControl_Utils.hxx`:107 - `XSControl_Utils::ToCString()`
-    pub fn to_c_string_asciistring(&self, strval: &crate::t_collection::AsciiString) -> String {
+    pub fn to_c_string_asciistring(
+        &self,
+        strval: &crate::t_collection::AsciiString,
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_Utils_to_c_string_asciistring(
                 self as *const Self,
@@ -3907,7 +3925,7 @@ impl Utils {
     }
 
     /// **Source:** `XSControl_Utils.hxx`:127 - `XSControl_Utils::ExtendedToAscii()`
-    pub unsafe fn extended_to_ascii(&self, str: *const u16) -> String {
+    pub unsafe fn extended_to_ascii(&self, str: *const u16) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_Utils_extended_to_ascii(
                 self as *const Self,
@@ -3919,7 +3937,11 @@ impl Utils {
     }
 
     /// **Source:** `XSControl_Utils.hxx`:129 - `XSControl_Utils::CStrValue()`
-    pub fn c_str_value(&self, list: &crate::ffi::HandleStandardTransient, num: i32) -> String {
+    pub fn c_str_value(
+        &self,
+        list: &crate::ffi::HandleStandardTransient,
+        num: i32,
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_Utils_c_str_value(
                 self as *const Self,
@@ -4215,7 +4237,7 @@ impl Vars {
     }
 
     /// **Source:** `XSControl_Vars.hxx`:78 - `XSControl_Vars::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_Vars_get_type_name())
                 .to_string_lossy()
@@ -4412,7 +4434,7 @@ impl WorkSession {
     /// defined, returns an empty string
     /// By default, returns the complete name of the norm
     /// If <rsc> is True, returns the short name used for resource
-    pub fn selected_norm(&self, theRsc: bool) -> String {
+    pub fn selected_norm(&self, theRsc: bool) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_WorkSession_selected_norm(
                 self as *const Self,
@@ -4650,7 +4672,7 @@ impl WorkSession {
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:193 - `XSControl_WorkSession::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_WorkSession_get_type_name())
                 .to_string_lossy()

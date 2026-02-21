@@ -69,7 +69,9 @@ pub fn decode_poly_loop_error(
     }
 }
 /// **Source:** `StepToTopoDS.hxx`:64 - `StepToTopoDS::DecodeGeometricToolError`
-pub fn decode_geometric_tool_error(Error: crate::step_to_topo_ds::GeometricToolError) -> String {
+pub fn decode_geometric_tool_error(
+    Error: crate::step_to_topo_ds::GeometricToolError,
+) -> std::string::String {
     unsafe {
         std::ffi::CStr::from_ptr(crate::ffi::StepToTopoDS_decode_geometric_tool_error(Error.into()))
             .to_string_lossy()

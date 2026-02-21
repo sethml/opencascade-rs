@@ -95,7 +95,7 @@ impl HArray1OfBSplineCurve {
     }
 
     /// **Source:** `TColGeom_HArray1OfBSplineCurve.hxx`:23 - `TColGeom_HArray1OfBSplineCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HArray1OfBSplineCurve_get_type_name())
                 .to_string_lossy()
@@ -321,7 +321,7 @@ impl HArray1OfBezierCurve {
     }
 
     /// **Source:** `TColGeom_HArray1OfBezierCurve.hxx`:24 - `TColGeom_HArray1OfBezierCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HArray1OfBezierCurve_get_type_name())
                 .to_string_lossy()
@@ -536,7 +536,7 @@ impl HArray1OfCurve {
     }
 
     /// **Source:** `TColGeom_HArray1OfCurve.hxx`:23 - `TColGeom_HArray1OfCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HArray1OfCurve_get_type_name())
                 .to_string_lossy()
@@ -737,7 +737,7 @@ impl HArray1OfSurface {
     }
 
     /// **Source:** `TColGeom_HArray1OfSurface.hxx`:23 - `TColGeom_HArray1OfSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HArray1OfSurface_get_type_name())
                 .to_string_lossy()
@@ -931,7 +931,7 @@ impl HArray2OfSurface {
     }
 
     /// **Source:** `TColGeom_HArray2OfSurface.hxx`:23 - `TColGeom_HArray2OfSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HArray2OfSurface_get_type_name())
                 .to_string_lossy()
@@ -1128,7 +1128,7 @@ impl HSequenceOfBoundedCurve {
     }
 
     /// **Source:** `TColGeom_HSequenceOfBoundedCurve.hxx`:24 - `TColGeom_HSequenceOfBoundedCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HSequenceOfBoundedCurve_get_type_name())
                 .to_string_lossy()
@@ -1334,7 +1334,7 @@ impl HSequenceOfCurve {
     }
 
     /// **Source:** `TColGeom_HSequenceOfCurve.hxx`:23 - `TColGeom_HSequenceOfCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HSequenceOfCurve_get_type_name())
                 .to_string_lossy()

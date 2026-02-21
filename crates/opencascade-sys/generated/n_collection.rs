@@ -36,7 +36,11 @@ impl TryFrom<i32> for CellFilter_Action {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi::{
+    HandleGraphic3dAttribBuffer, HandleGraphic3dBoundBuffer, HandleGraphic3dBuffer,
+    HandleGraphic3dIndexBuffer, HandleGraphic3dMutableIndexBuffer, HandleSelect3DBVHIndexBuffer,
+    HandleStandardTransient,
+};
 
 // ========================
 // From NCollection_AccAllocator.hxx
@@ -84,7 +88,7 @@ impl AccAllocator {
     }
 
     /// **Source:** `NCollection_AccAllocator.hxx`:205 - `NCollection_AccAllocator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NCollection_AccAllocator_get_type_name())
                 .to_string_lossy()
@@ -289,7 +293,7 @@ impl AlignedAllocator {
     }
 
     /// **Source:** `NCollection_AlignedAllocator.hxx`:48 - `NCollection_AlignedAllocator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NCollection_AlignedAllocator_get_type_name())
                 .to_string_lossy()
@@ -510,7 +514,7 @@ impl BaseAllocator {
     }
 
     /// **Source:** `NCollection_BaseAllocator.hxx`:69 - `NCollection_BaseAllocator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NCollection_BaseAllocator_get_type_name())
                 .to_string_lossy()
@@ -1151,7 +1155,7 @@ impl Buffer {
     }
 
     /// **Source:** `NCollection_Buffer.hxx`:120 - `NCollection_Buffer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NCollection_Buffer_get_type_name())
                 .to_string_lossy()
@@ -1255,6 +1259,112 @@ impl HandleNCollectionBuffer {
             )
         }
     }
+
+    /// Downcast Handle<NCollection_Buffer> to Handle<Graphic3d_AttribBuffer>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_AttribBuffer` (or subclass).
+    pub fn downcast_to_attrib_buffer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dAttribBuffer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleGraphic3dAttribBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NCollection_Buffer> to Handle<Graphic3d_BoundBuffer>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_BoundBuffer` (or subclass).
+    pub fn downcast_to_bound_buffer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dBoundBuffer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleGraphic3dBoundBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NCollection_Buffer> to Handle<Graphic3d_Buffer>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Buffer` (or subclass).
+    pub fn downcast_to_buffer(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dBuffer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleGraphic3dBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NCollection_Buffer> to Handle<Graphic3d_IndexBuffer>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_IndexBuffer` (or subclass).
+    pub fn downcast_to_index_buffer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dIndexBuffer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleGraphic3dIndexBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NCollection_Buffer> to Handle<Graphic3d_MutableIndexBuffer>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_MutableIndexBuffer` (or subclass).
+    pub fn downcast_to_mutable_index_buffer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dMutableIndexBuffer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleGraphic3dMutableIndexBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NCollection_Buffer> to Handle<Select3D_BVHIndexBuffer>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_BVHIndexBuffer` (or subclass).
+    pub fn downcast_to_bvh_index_buffer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DBVHIndexBuffer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleSelect3DBVHIndexBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -1284,7 +1394,7 @@ impl HeapAllocator {
     }
 
     /// **Source:** `NCollection_HeapAllocator.hxx`:47 - `NCollection_HeapAllocator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NCollection_HeapAllocator_get_type_name())
                 .to_string_lossy()
@@ -1532,7 +1642,7 @@ impl IncAllocator {
     }
 
     /// **Source:** `NCollection_IncAllocator.hxx`:144 - `NCollection_IncAllocator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NCollection_IncAllocator_get_type_name())
                 .to_string_lossy()
@@ -1838,7 +1948,7 @@ impl WinHeapAllocator {
     }
 
     /// **Source:** `NCollection_WinHeapAllocator.hxx`:53 - `NCollection_WinHeapAllocator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NCollection_WinHeapAllocator_get_type_name())
                 .to_string_lossy()
@@ -2018,3 +2128,9 @@ impl HandleNCollectionWinHeapAllocator {
 //   Reason: param 'theAddress' uses unknown type 'void*'
 //   // pub fn free(&mut self, theAddress: *mut void);
 //
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::NCollection_String as String;

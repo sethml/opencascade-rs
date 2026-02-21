@@ -978,7 +978,7 @@ impl AsciiString {
     /// Returns pointer to AsciiString (char *).
     /// This is useful for some casual manipulations.
     /// Warning: Because this "char *" is 'const', you can't modify its contents.
-    pub fn to_c_string(&self) -> String {
+    pub fn to_c_string(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TCollection_AsciiString_to_c_string(
                 self as *const Self,
@@ -2449,7 +2449,7 @@ impl HAsciiString {
     /// Returns pointer to string (char *)
     /// This is useful for some casual manipulations
     /// Because this "char *" is 'const', you can't modify its contents.
-    pub fn to_c_string(&self) -> String {
+    pub fn to_c_string(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TCollection_HAsciiString_to_c_string(
                 self as *const Self,
@@ -2527,7 +2527,7 @@ impl HAsciiString {
     }
 
     /// **Source:** `TCollection_HAsciiString.hxx`:488 - `TCollection_HAsciiString::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TCollection_HAsciiString_get_type_name())
                 .to_string_lossy()
@@ -3037,7 +3037,7 @@ impl HExtendedString {
     }
 
     /// **Source:** `TCollection_HExtendedString.hxx`:210 - `TCollection_HExtendedString::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TCollection_HExtendedString_get_type_name())
                 .to_string_lossy()

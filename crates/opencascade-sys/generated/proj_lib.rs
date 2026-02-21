@@ -619,7 +619,7 @@ impl CompProjectedCurve {
     }
 
     /// **Source:** `ProjLib_CompProjectedCurve.hxx`:41 - `ProjLib_CompProjectedCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ProjLib_CompProjectedCurve_get_type_name())
                 .to_string_lossy()
@@ -1751,7 +1751,7 @@ impl HSequenceOfHSequenceOfPnt {
     }
 
     /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_get_type_name())
                 .to_string_lossy()
@@ -3293,7 +3293,7 @@ impl ProjectedCurve {
     }
 
     /// **Source:** `ProjLib_ProjectedCurve.hxx`:51 - `ProjLib_ProjectedCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ProjLib_ProjectedCurve_get_type_name())
                 .to_string_lossy()

@@ -295,7 +295,7 @@ impl AngularityTolerance {
     }
 
     /// **Source:** `StepDimTol_AngularityTolerance.hxx`:35 - `StepDimTol_AngularityTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_AngularityTolerance_get_type_name())
                 .to_string_lossy()
@@ -658,7 +658,7 @@ impl CircularRunoutTolerance {
     }
 
     /// **Source:** `StepDimTol_CircularRunoutTolerance.hxx`:35 - `StepDimTol_CircularRunoutTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_CircularRunoutTolerance_get_type_name())
                 .to_string_lossy()
@@ -1026,7 +1026,7 @@ impl CoaxialityTolerance {
     }
 
     /// **Source:** `StepDimTol_CoaxialityTolerance.hxx`:35 - `StepDimTol_CoaxialityTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_CoaxialityTolerance_get_type_name())
                 .to_string_lossy()
@@ -1431,7 +1431,7 @@ impl CommonDatum {
     }
 
     /// **Source:** `StepDimTol_CommonDatum.hxx`:56 - `StepDimTol_CommonDatum::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_CommonDatum_get_type_name())
                 .to_string_lossy()
@@ -1706,7 +1706,7 @@ impl ConcentricityTolerance {
     }
 
     /// **Source:** `StepDimTol_ConcentricityTolerance.hxx`:35 - `StepDimTol_ConcentricityTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_ConcentricityTolerance_get_type_name())
                 .to_string_lossy()
@@ -2074,7 +2074,7 @@ impl CylindricityTolerance {
     }
 
     /// **Source:** `StepDimTol_CylindricityTolerance.hxx`:34 - `StepDimTol_CylindricityTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_CylindricityTolerance_get_type_name())
                 .to_string_lossy()
@@ -2415,7 +2415,7 @@ impl Datum {
     }
 
     /// **Source:** `StepDimTol_Datum.hxx`:51 - `StepDimTol_Datum::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_Datum_get_type_name())
                 .to_string_lossy()
@@ -2629,7 +2629,7 @@ impl DatumFeature {
     }
 
     /// **Source:** `StepDimTol_DatumFeature.hxx`:35 - `StepDimTol_DatumFeature::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_DatumFeature_get_type_name())
                 .to_string_lossy()
@@ -3140,7 +3140,7 @@ impl DatumReference {
     }
 
     /// **Source:** `StepDimTol_DatumReference.hxx`:53 - `StepDimTol_DatumReference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_DatumReference_get_type_name())
                 .to_string_lossy()
@@ -3295,7 +3295,7 @@ impl DatumReferenceCompartment {
     }
 
     /// **Source:** `StepDimTol_DatumReferenceCompartment.hxx`:34 - `StepDimTol_DatumReferenceCompartment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_DatumReferenceCompartment_get_type_name(),
@@ -3711,7 +3711,7 @@ impl DatumReferenceElement {
     }
 
     /// **Source:** `StepDimTol_DatumReferenceElement.hxx`:35 - `StepDimTol_DatumReferenceElement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_DatumReferenceElement_get_type_name())
                 .to_string_lossy()
@@ -4400,7 +4400,7 @@ impl DatumReferenceModifierWithValue {
     }
 
     /// **Source:** `StepDimTol_DatumReferenceModifierWithValue.hxx`:60 - `StepDimTol_DatumReferenceModifierWithValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_DatumReferenceModifierWithValue_get_type_name(),
@@ -4654,7 +4654,7 @@ impl DatumSystem {
     }
 
     /// **Source:** `StepDimTol_DatumSystem.hxx`:76 - `StepDimTol_DatumSystem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_DatumSystem_get_type_name())
                 .to_string_lossy()
@@ -5145,7 +5145,7 @@ impl DatumTarget {
     }
 
     /// **Source:** `StepDimTol_DatumTarget.hxx`:51 - `StepDimTol_DatumTarget::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_DatumTarget_get_type_name())
                 .to_string_lossy()
@@ -5401,7 +5401,7 @@ impl FlatnessTolerance {
     }
 
     /// **Source:** `StepDimTol_FlatnessTolerance.hxx`:34 - `StepDimTol_FlatnessTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_FlatnessTolerance_get_type_name())
                 .to_string_lossy()
@@ -5800,7 +5800,7 @@ impl GeneralDatumReference {
     }
 
     /// **Source:** `StepDimTol_GeneralDatumReference.hxx`:86 - `StepDimTol_GeneralDatumReference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_GeneralDatumReference_get_type_name())
                 .to_string_lossy()
@@ -6182,7 +6182,7 @@ impl GeoTolAndGeoTolWthDatRef {
     }
 
     /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRef.hxx`:72 - `StepDimTol_GeoTolAndGeoTolWthDatRef::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRef_get_type_name()).to_string_lossy().into_owned()
         }
@@ -6544,7 +6544,7 @@ impl GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
     }
 
     /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.hxx`:67 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol_get_type_name(),
@@ -6994,7 +6994,7 @@ impl GeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
     }
 
     /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.hxx`:88 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod_get_type_name(),
@@ -7380,7 +7380,7 @@ impl GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
     }
 
     /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.hxx`:72 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol_get_type_name(
@@ -7698,7 +7698,7 @@ impl GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
     }
 
     /// **Source:** `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.hxx`:69 - `StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol_get_type_name(),
@@ -8092,7 +8092,7 @@ impl GeoTolAndGeoTolWthMaxTol {
     }
 
     /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMaxTol.hxx`:63 - `StepDimTol_GeoTolAndGeoTolWthMaxTol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMaxTol_get_type_name()).to_string_lossy().into_owned()
         }
@@ -8521,7 +8521,7 @@ impl GeoTolAndGeoTolWthMod {
     }
 
     /// **Source:** `StepDimTol_GeoTolAndGeoTolWthMod.hxx`:72 - `StepDimTol_GeoTolAndGeoTolWthMod::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_GeoTolAndGeoTolWthMod_get_type_name())
                 .to_string_lossy()
@@ -8934,7 +8934,7 @@ impl GeometricTolerance {
     }
 
     /// **Source:** `StepDimTol_GeometricTolerance.hxx`:81 - `StepDimTol_GeometricTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_GeometricTolerance_get_type_name())
                 .to_string_lossy()
@@ -9695,7 +9695,7 @@ impl GeometricToleranceRelationship {
     }
 
     /// **Source:** `StepDimTol_GeometricToleranceRelationship.hxx`:70 - `StepDimTol_GeometricToleranceRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_GeometricToleranceRelationship_get_type_name(),
@@ -10220,7 +10220,7 @@ impl GeometricToleranceWithDatumReference {
     }
 
     /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:72 - `StepDimTol_GeometricToleranceWithDatumReference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_GeometricToleranceWithDatumReference_get_type_name(),
@@ -10726,7 +10726,7 @@ impl GeometricToleranceWithDefinedAreaUnit {
     }
 
     /// **Source:** `StepDimTol_GeometricToleranceWithDefinedAreaUnit.hxx`:71 - `StepDimTol_GeometricToleranceWithDefinedAreaUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_GeometricToleranceWithDefinedAreaUnit_get_type_name(),
@@ -11119,7 +11119,7 @@ impl GeometricToleranceWithDefinedUnit {
     }
 
     /// **Source:** `StepDimTol_GeometricToleranceWithDefinedUnit.hxx`:63 - `StepDimTol_GeometricToleranceWithDefinedUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_GeometricToleranceWithDefinedUnit_get_type_name(),
@@ -11471,7 +11471,7 @@ impl GeometricToleranceWithMaximumTolerance {
     }
 
     /// **Source:** `StepDimTol_GeometricToleranceWithMaximumTolerance.hxx`:64 - `StepDimTol_GeometricToleranceWithMaximumTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_GeometricToleranceWithMaximumTolerance_get_type_name(),
@@ -11929,7 +11929,7 @@ impl GeometricToleranceWithModifiers {
     }
 
     /// **Source:** `StepDimTol_GeometricToleranceWithModifiers.hxx`:79 - `StepDimTol_GeometricToleranceWithModifiers::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_GeometricToleranceWithModifiers_get_type_name(),
@@ -12291,7 +12291,7 @@ impl HArray1OfDatumReference {
     }
 
     /// **Source:** `StepDimTol_HArray1OfDatumReference.hxx`:22 - `StepDimTol_HArray1OfDatumReference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_HArray1OfDatumReference_get_type_name())
                 .to_string_lossy()
@@ -12539,7 +12539,7 @@ impl HArray1OfDatumReferenceCompartment {
     }
 
     /// **Source:** `StepDimTol_HArray1OfDatumReferenceCompartment.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceCompartment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_HArray1OfDatumReferenceCompartment_get_type_name(),
@@ -12787,7 +12787,7 @@ impl HArray1OfDatumReferenceElement {
     }
 
     /// **Source:** `StepDimTol_HArray1OfDatumReferenceElement.hxx`:22 - `StepDimTol_HArray1OfDatumReferenceElement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_HArray1OfDatumReferenceElement_get_type_name(),
@@ -13027,7 +13027,7 @@ impl HArray1OfDatumReferenceModifier {
     }
 
     /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_get_type_name(),
@@ -13267,7 +13267,7 @@ impl HArray1OfDatumSystemOrReference {
     }
 
     /// **Source:** `StepDimTol_HArray1OfDatumSystemOrReference.hxx`:22 - `StepDimTol_HArray1OfDatumSystemOrReference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_get_type_name(),
@@ -13513,7 +13513,7 @@ impl HArray1OfGeometricToleranceModifier {
     }
 
     /// **Source:** `StepDimTol_HArray1OfGeometricToleranceModifier.hxx`:22 - `StepDimTol_HArray1OfGeometricToleranceModifier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_HArray1OfGeometricToleranceModifier_get_type_name(),
@@ -13759,7 +13759,7 @@ impl HArray1OfToleranceZoneTarget {
     }
 
     /// **Source:** `StepDimTol_HArray1OfToleranceZoneTarget.hxx`:22 - `StepDimTol_HArray1OfToleranceZoneTarget::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_HArray1OfToleranceZoneTarget_get_type_name(),
@@ -13940,7 +13940,7 @@ impl LineProfileTolerance {
     }
 
     /// **Source:** `StepDimTol_LineProfileTolerance.hxx`:34 - `StepDimTol_LineProfileTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_LineProfileTolerance_get_type_name())
                 .to_string_lossy()
@@ -14294,7 +14294,7 @@ impl ModifiedGeometricTolerance {
     }
 
     /// **Source:** `StepDimTol_ModifiedGeometricTolerance.hxx`:62 - `StepDimTol_ModifiedGeometricTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_ModifiedGeometricTolerance_get_type_name(),
@@ -14587,7 +14587,7 @@ impl NonUniformZoneDefinition {
     }
 
     /// **Source:** `StepDimTol_NonUniformZoneDefinition.hxx`:34 - `StepDimTol_NonUniformZoneDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_NonUniformZoneDefinition_get_type_name()).to_string_lossy().into_owned()
         }
@@ -14876,7 +14876,7 @@ impl ParallelismTolerance {
     }
 
     /// **Source:** `StepDimTol_ParallelismTolerance.hxx`:35 - `StepDimTol_ParallelismTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_ParallelismTolerance_get_type_name())
                 .to_string_lossy()
@@ -15246,7 +15246,7 @@ impl PerpendicularityTolerance {
     }
 
     /// **Source:** `StepDimTol_PerpendicularityTolerance.hxx`:35 - `StepDimTol_PerpendicularityTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_PerpendicularityTolerance_get_type_name(),
@@ -15622,7 +15622,7 @@ impl PlacedDatumTargetFeature {
     }
 
     /// **Source:** `StepDimTol_PlacedDatumTargetFeature.hxx`:35 - `StepDimTol_PlacedDatumTargetFeature::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_PlacedDatumTargetFeature_get_type_name()).to_string_lossy().into_owned()
         }
@@ -15976,7 +15976,7 @@ impl PositionTolerance {
     }
 
     /// **Source:** `StepDimTol_PositionTolerance.hxx`:34 - `StepDimTol_PositionTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_PositionTolerance_get_type_name())
                 .to_string_lossy()
@@ -16333,7 +16333,7 @@ impl ProjectedZoneDefinition {
     }
 
     /// **Source:** `StepDimTol_ProjectedZoneDefinition.hxx`:62 - `StepDimTol_ProjectedZoneDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_ProjectedZoneDefinition_get_type_name())
                 .to_string_lossy()
@@ -16611,7 +16611,7 @@ impl RoundnessTolerance {
     }
 
     /// **Source:** `StepDimTol_RoundnessTolerance.hxx`:34 - `StepDimTol_RoundnessTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_RoundnessTolerance_get_type_name())
                 .to_string_lossy()
@@ -16941,7 +16941,7 @@ impl RunoutZoneDefinition {
     }
 
     /// **Source:** `StepDimTol_RunoutZoneDefinition.hxx`:52 - `StepDimTol_RunoutZoneDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_RunoutZoneDefinition_get_type_name())
                 .to_string_lossy()
@@ -17240,7 +17240,7 @@ impl RunoutZoneOrientation {
     }
 
     /// **Source:** `StepDimTol_RunoutZoneOrientation.hxx`:47 - `StepDimTol_RunoutZoneOrientation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_RunoutZoneOrientation_get_type_name())
                 .to_string_lossy()
@@ -17625,7 +17625,7 @@ impl SimpleDatumReferenceModifierMember {
     }
 
     /// **Source:** `StepDimTol_SimpleDatumReferenceModifierMember.hxx`:41 - `StepDimTol_SimpleDatumReferenceModifierMember::Name()`
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_name(self as *const Self),
@@ -17654,7 +17654,7 @@ impl SimpleDatumReferenceModifierMember {
     }
 
     /// **Source:** `StepDimTol_SimpleDatumReferenceModifierMember.hxx`:53 - `StepDimTol_SimpleDatumReferenceModifierMember::EnumText()`
-    pub fn enum_text(&self) -> String {
+    pub fn enum_text(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_enum_text(
@@ -17710,7 +17710,7 @@ impl SimpleDatumReferenceModifierMember {
     }
 
     /// **Source:** `StepDimTol_SimpleDatumReferenceModifierMember.hxx`:62 - `StepDimTol_SimpleDatumReferenceModifierMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_get_type_name(),
@@ -18068,7 +18068,7 @@ impl StraightnessTolerance {
     }
 
     /// **Source:** `StepDimTol_StraightnessTolerance.hxx`:34 - `StepDimTol_StraightnessTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_StraightnessTolerance_get_type_name())
                 .to_string_lossy()
@@ -18368,7 +18368,7 @@ impl SurfaceProfileTolerance {
     }
 
     /// **Source:** `StepDimTol_SurfaceProfileTolerance.hxx`:34 - `StepDimTol_SurfaceProfileTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_SurfaceProfileTolerance_get_type_name())
                 .to_string_lossy()
@@ -18668,7 +18668,7 @@ impl SymmetryTolerance {
     }
 
     /// **Source:** `StepDimTol_SymmetryTolerance.hxx`:35 - `StepDimTol_SymmetryTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_SymmetryTolerance_get_type_name())
                 .to_string_lossy()
@@ -19117,7 +19117,7 @@ impl ToleranceZone {
     }
 
     /// **Source:** `StepDimTol_ToleranceZone.hxx`:92 - `StepDimTol_ToleranceZone::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_ToleranceZone_get_type_name())
                 .to_string_lossy()
@@ -19463,7 +19463,7 @@ impl ToleranceZoneDefinition {
     }
 
     /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:76 - `StepDimTol_ToleranceZoneDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_ToleranceZoneDefinition_get_type_name())
                 .to_string_lossy()
@@ -19703,7 +19703,7 @@ impl ToleranceZoneForm {
     }
 
     /// **Source:** `StepDimTol_ToleranceZoneForm.hxx`:46 - `StepDimTol_ToleranceZoneForm::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_ToleranceZoneForm_get_type_name())
                 .to_string_lossy()
@@ -20090,7 +20090,7 @@ impl TotalRunoutTolerance {
     }
 
     /// **Source:** `StepDimTol_TotalRunoutTolerance.hxx`:35 - `StepDimTol_TotalRunoutTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_TotalRunoutTolerance_get_type_name())
                 .to_string_lossy()
@@ -20514,7 +20514,7 @@ impl UnequallyDisposedGeometricTolerance {
     }
 
     /// **Source:** `StepDimTol_UnequallyDisposedGeometricTolerance.hxx`:56 - `StepDimTol_UnequallyDisposedGeometricTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepDimTol_UnequallyDisposedGeometricTolerance_get_type_name(),

@@ -212,7 +212,7 @@ impl HArray1OfConstraintCouple {
     }
 
     /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::AppParCurves_HArray1OfConstraintCouple_get_type_name(),
@@ -456,7 +456,7 @@ impl HArray1OfMultiBSpCurve {
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_get_type_name()).to_string_lossy().into_owned()
         }
@@ -688,7 +688,7 @@ impl HArray1OfMultiCurve {
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::AppParCurves_HArray1OfMultiCurve_get_type_name())
                 .to_string_lossy()
@@ -920,7 +920,7 @@ impl HArray1OfMultiPoint {
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::AppParCurves_HArray1OfMultiPoint_get_type_name())
                 .to_string_lossy()

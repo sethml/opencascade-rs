@@ -159,7 +159,7 @@ impl ConfigurationNode {
     }
 
     /// **Source:** `DESTEP_ConfigurationNode.hxx`:35 - `DESTEP_ConfigurationNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DESTEP_ConfigurationNode_get_type_name())
                 .to_string_lossy()
@@ -673,7 +673,7 @@ impl Provider {
     }
 
     /// **Source:** `DESTEP_Provider.hxx`:32 - `DESTEP_Provider::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DESTEP_Provider_get_type_name())
                 .to_string_lossy()

@@ -455,7 +455,7 @@ impl BisecAna {
     }
 
     /// **Source:** `Bisector_BisecAna.hxx`:176 - `Bisector_BisecAna::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Bisector_BisecAna_get_type_name())
                 .to_string_lossy()
@@ -1104,7 +1104,7 @@ impl BisecCC {
     }
 
     /// **Source:** `Bisector_BisecCC.hxx`:187 - `Bisector_BisecCC::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Bisector_BisecCC_get_type_name())
                 .to_string_lossy()
@@ -1689,7 +1689,7 @@ impl BisecPC {
     }
 
     /// **Source:** `Bisector_BisecPC.hxx`:174 - `Bisector_BisecPC::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Bisector_BisecPC_get_type_name())
                 .to_string_lossy()
@@ -2032,7 +2032,7 @@ impl Curve {
     }
 
     /// **Source:** `Bisector_Curve.hxx`:54 - `Bisector_Curve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Bisector_Curve_get_type_name())
                 .to_string_lossy()

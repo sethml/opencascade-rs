@@ -98,7 +98,7 @@ impl XLinkDriver {
     }
 
     /// **Source:** `XmlMDocStd_XLinkDriver.hxx`:50 - `XmlMDocStd_XLinkDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDocStd_XLinkDriver_get_type_name())
                 .to_string_lossy()

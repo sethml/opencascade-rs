@@ -142,7 +142,7 @@ impl ConfigurationNode {
     }
 
     /// **Source:** `DEOBJ_ConfigurationNode.hxx`:32 - `DEOBJ_ConfigurationNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DEOBJ_ConfigurationNode_get_type_name())
                 .to_string_lossy()
@@ -592,7 +592,7 @@ impl Provider {
     }
 
     /// **Source:** `DEOBJ_Provider.hxx`:31 - `DEOBJ_Provider::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DEOBJ_Provider_get_type_name())
                 .to_string_lossy()

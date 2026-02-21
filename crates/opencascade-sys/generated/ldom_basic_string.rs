@@ -83,7 +83,7 @@ impl LDOMBasicString {
     }
 
     /// **Source:** `LDOMBasicString.hxx`:56 - `LDOMBasicString::GetString()`
-    pub fn get_string(&self) -> String {
+    pub fn get_string(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::LDOMBasicString_get_string(self as *const Self))
                 .to_string_lossy()

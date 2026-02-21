@@ -775,7 +775,7 @@ impl BaseDriver {
     }
 
     /// **Source:** `Storage_BaseDriver.hxx`:39 - `Storage_BaseDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_BaseDriver_get_type_name())
                 .to_string_lossy()
@@ -1147,7 +1147,7 @@ impl CallBack {
     }
 
     /// **Source:** `Storage_CallBack.hxx`:47 - `Storage_CallBack::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_CallBack_get_type_name())
                 .to_string_lossy()
@@ -1628,7 +1628,7 @@ impl Data {
     }
 
     /// **Source:** `Storage_Data.hxx`:219 - `Storage_Data::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_Data_get_type_name())
                 .to_string_lossy()
@@ -1796,7 +1796,7 @@ impl DefaultCallBack {
     }
 
     /// **Source:** `Storage_DefaultCallBack.hxx`:49 - `Storage_DefaultCallBack::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_DefaultCallBack_get_type_name())
                 .to_string_lossy()
@@ -2026,7 +2026,7 @@ impl HArrayOfCallBack {
     }
 
     /// **Source:** `Storage_HArrayOfCallBack.hxx`:23 - `Storage_HArrayOfCallBack::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_HArrayOfCallBack_get_type_name())
                 .to_string_lossy()
@@ -2231,7 +2231,7 @@ impl HArrayOfSchema {
     }
 
     /// **Source:** `Storage_HArrayOfSchema.hxx`:23 - `Storage_HArrayOfSchema::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_HArrayOfSchema_get_type_name())
                 .to_string_lossy()
@@ -2420,7 +2420,7 @@ impl HPArray {
     }
 
     /// **Source:** `Storage_HPArray.hxx`:23 - `Storage_HPArray::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_HPArray_get_type_name())
                 .to_string_lossy()
@@ -2574,7 +2574,7 @@ impl HSeqOfRoot {
     }
 
     /// **Source:** `Storage_HSeqOfRoot.hxx`:23 - `Storage_HSeqOfRoot::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_HSeqOfRoot_get_type_name())
                 .to_string_lossy()
@@ -2893,7 +2893,7 @@ impl HeaderData {
     }
 
     /// **Source:** `Storage_HeaderData.hxx`:96 - `Storage_HeaderData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_HeaderData_get_type_name())
                 .to_string_lossy()
@@ -3034,7 +3034,7 @@ impl InternalData {
     }
 
     /// **Source:** `Storage_InternalData.hxx`:43 - `Storage_InternalData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_InternalData_get_type_name())
                 .to_string_lossy()
@@ -3266,7 +3266,7 @@ impl Root {
     }
 
     /// **Source:** `Storage_Root.hxx`:91 - `Storage_Root::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_Root_get_type_name())
                 .to_string_lossy()
@@ -3472,7 +3472,7 @@ impl RootData {
     }
 
     /// **Source:** `Storage_RootData.hxx`:73 - `Storage_RootData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_RootData_get_type_name())
                 .to_string_lossy()
@@ -3834,7 +3834,7 @@ impl Schema {
     }
 
     /// **Source:** `Storage_Schema.hxx`:166 - `Storage_Schema::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_Schema_get_type_name())
                 .to_string_lossy()
@@ -4027,7 +4027,7 @@ impl StreamExtCharParityError {
     }
 
     /// **Source:** `Storage_StreamExtCharParityError.hxx`:36 - `Storage_StreamExtCharParityError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_StreamExtCharParityError_get_type_name())
                 .to_string_lossy()
@@ -4334,7 +4334,7 @@ impl StreamFormatError {
     }
 
     /// **Source:** `Storage_StreamFormatError.hxx`:36 - `Storage_StreamFormatError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_StreamFormatError_get_type_name())
                 .to_string_lossy()
@@ -4585,7 +4585,7 @@ impl StreamModeError {
     }
 
     /// **Source:** `Storage_StreamModeError.hxx`:36 - `Storage_StreamModeError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_StreamModeError_get_type_name())
                 .to_string_lossy()
@@ -4829,7 +4829,7 @@ impl StreamReadError {
     }
 
     /// **Source:** `Storage_StreamReadError.hxx`:36 - `Storage_StreamReadError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_StreamReadError_get_type_name())
                 .to_string_lossy()
@@ -5127,7 +5127,7 @@ impl StreamTypeMismatchError {
     }
 
     /// **Source:** `Storage_StreamTypeMismatchError.hxx`:36 - `Storage_StreamTypeMismatchError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_StreamTypeMismatchError_get_type_name())
                 .to_string_lossy()
@@ -5434,7 +5434,7 @@ impl StreamUnknownTypeError {
     }
 
     /// **Source:** `Storage_StreamUnknownTypeError.hxx`:35 - `Storage_StreamUnknownTypeError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_StreamUnknownTypeError_get_type_name())
                 .to_string_lossy()
@@ -5737,7 +5737,7 @@ impl StreamWriteError {
     }
 
     /// **Source:** `Storage_StreamWriteError.hxx`:36 - `Storage_StreamWriteError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_StreamWriteError_get_type_name())
                 .to_string_lossy()
@@ -5999,7 +5999,7 @@ impl TypeData {
     }
 
     /// **Source:** `Storage_TypeData.hxx`:68 - `Storage_TypeData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_TypeData_get_type_name())
                 .to_string_lossy()
@@ -6176,7 +6176,7 @@ impl TypedCallBack {
     }
 
     /// **Source:** `Storage_TypedCallBack.hxx`:52 - `Storage_TypedCallBack::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Storage_TypedCallBack_get_type_name())
                 .to_string_lossy()

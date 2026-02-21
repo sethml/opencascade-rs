@@ -2560,7 +2560,7 @@ impl HArray1OfMultiPointConstraint {
     }
 
     /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::AppDef_HArray1OfMultiPointConstraint_get_type_name(),
@@ -2906,7 +2906,7 @@ impl LinearCriteria {
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:103 - `AppDef_LinearCriteria::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::AppDef_LinearCriteria_get_type_name())
                 .to_string_lossy()
@@ -6442,7 +6442,7 @@ impl SmoothCriterion {
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:96 - `AppDef_SmoothCriterion::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::AppDef_SmoothCriterion_get_type_name())
                 .to_string_lossy()

@@ -64,12 +64,12 @@ pub use crate::ffi::{
     HandleTFunctionLogbook, HandleTFunctionScope, HandleTNamingDeltaOnModification,
     HandleTNamingDeltaOnRemoval, HandleTNamingNamedShape, HandleTNamingNaming,
     HandleTNamingUsedShapes, HandleTObjTIntSparseArray, HandleTObjTModel, HandleTObjTNameContainer,
-    HandleTObjTObject, HandleTObjTReference, HandleTObjTXYZ, HandleXCAFDocArea,
-    HandleXCAFDocAssemblyItemRef, HandleXCAFDocCentroid, HandleXCAFDocClippingPlaneTool,
-    HandleXCAFDocColor, HandleXCAFDocColorTool, HandleXCAFDocDatum, HandleXCAFDocDimTol,
-    HandleXCAFDocDimTolTool, HandleXCAFDocDimension, HandleXCAFDocDocumentTool,
-    HandleXCAFDocGeomTolerance, HandleXCAFDocGraphNode, HandleXCAFDocLayerTool,
-    HandleXCAFDocLengthUnit, HandleXCAFDocLocation, HandleXCAFDocMaterial,
+    HandleTObjTObject, HandleTObjTReference, HandleTObjTXYZ, HandleTPrsStdAISPresentation,
+    HandleTPrsStdAISViewer, HandleXCAFDocArea, HandleXCAFDocAssemblyItemRef, HandleXCAFDocCentroid,
+    HandleXCAFDocClippingPlaneTool, HandleXCAFDocColor, HandleXCAFDocColorTool, HandleXCAFDocDatum,
+    HandleXCAFDocDimTol, HandleXCAFDocDimTolTool, HandleXCAFDocDimension,
+    HandleXCAFDocDocumentTool, HandleXCAFDocGeomTolerance, HandleXCAFDocGraphNode,
+    HandleXCAFDocLayerTool, HandleXCAFDocLengthUnit, HandleXCAFDocLocation, HandleXCAFDocMaterial,
     HandleXCAFDocMaterialTool, HandleXCAFDocNote, HandleXCAFDocNoteBalloon,
     HandleXCAFDocNoteBinData, HandleXCAFDocNoteComment, HandleXCAFDocNotesTool,
     HandleXCAFDocShapeMapTool, HandleXCAFDocShapeTool, HandleXCAFDocView, HandleXCAFDocViewTool,
@@ -575,7 +575,7 @@ impl Attribute {
     }
 
     /// **Source:** `TDF_Attribute.hxx`:386 - `TDF_Attribute::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_Attribute_get_type_name())
                 .to_string_lossy()
@@ -1613,6 +1613,40 @@ impl HandleTDFAttribute {
         }
     }
 
+    /// Downcast Handle<TDF_Attribute> to Handle<TPrsStd_AISPresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `TPrsStd_AISPresentation` (or subclass).
+    pub fn downcast_to_ais_presentation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdAISPresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTPrsStdAISPresentation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TPrsStd_AISViewer>
+    ///
+    /// Returns `None` if the handle does not point to a `TPrsStd_AISViewer` (or subclass).
+    pub fn downcast_to_ais_viewer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdAISViewer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTPrsStdAISViewer(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_Area>
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_Area` (or subclass).
@@ -2162,7 +2196,7 @@ impl AttributeDelta {
     }
 
     /// **Source:** `TDF_AttributeDelta.hxx`:67 - `TDF_AttributeDelta::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_AttributeDelta_get_type_name())
                 .to_string_lossy()
@@ -3441,7 +3475,7 @@ impl Data {
     }
 
     /// **Source:** `TDF_Data.hxx`:155 - `TDF_Data::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_Data_get_type_name())
                 .to_string_lossy()
@@ -3638,7 +3672,7 @@ impl DataSet {
     }
 
     /// **Source:** `TDF_DataSet.hxx`:80 - `TDF_DataSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_DataSet_get_type_name())
                 .to_string_lossy()
@@ -3787,7 +3821,7 @@ impl DefaultDeltaOnModification {
     }
 
     /// **Source:** `TDF_DefaultDeltaOnModification.hxx`:41 - `TDF_DefaultDeltaOnModification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_DefaultDeltaOnModification_get_type_name())
                 .to_string_lossy()
@@ -4056,7 +4090,7 @@ impl DefaultDeltaOnRemoval {
     }
 
     /// **Source:** `TDF_DefaultDeltaOnRemoval.hxx`:39 - `TDF_DefaultDeltaOnRemoval::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_DefaultDeltaOnRemoval_get_type_name())
                 .to_string_lossy()
@@ -4351,7 +4385,7 @@ impl Delta {
     }
 
     /// **Source:** `TDF_Delta.hxx`:78 - `TDF_Delta::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_Delta_get_type_name())
                 .to_string_lossy()
@@ -4508,7 +4542,7 @@ impl DeltaOnAddition {
     }
 
     /// **Source:** `TDF_DeltaOnAddition.hxx`:43 - `TDF_DeltaOnAddition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_DeltaOnAddition_get_type_name())
                 .to_string_lossy()
@@ -4710,7 +4744,7 @@ impl DeltaOnForget {
     }
 
     /// **Source:** `TDF_DeltaOnForget.hxx`:42 - `TDF_DeltaOnForget::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_DeltaOnForget_get_type_name())
                 .to_string_lossy()
@@ -4897,7 +4931,7 @@ impl DeltaOnModification {
     }
 
     /// **Source:** `TDF_DeltaOnModification.hxx`:39 - `TDF_DeltaOnModification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_DeltaOnModification_get_type_name())
                 .to_string_lossy()
@@ -5212,7 +5246,7 @@ impl DeltaOnRemoval {
     }
 
     /// **Source:** `TDF_DeltaOnRemoval.hxx`:36 - `TDF_DeltaOnRemoval::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_DeltaOnRemoval_get_type_name())
                 .to_string_lossy()
@@ -5439,7 +5473,7 @@ impl DeltaOnResume {
     }
 
     /// **Source:** `TDF_DeltaOnResume.hxx`:46 - `TDF_DeltaOnResume::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_DeltaOnResume_get_type_name())
                 .to_string_lossy()
@@ -5743,7 +5777,7 @@ impl HAttributeArray1 {
     }
 
     /// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_HAttributeArray1_get_type_name())
                 .to_string_lossy()
@@ -6449,7 +6483,7 @@ impl Reference {
     }
 
     /// **Source:** `TDF_Reference.hxx`:64 - `TDF_Reference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_Reference_get_type_name())
                 .to_string_lossy()
@@ -7039,7 +7073,7 @@ impl RelocationTable {
     }
 
     /// **Source:** `TDF_RelocationTable.hxx`:156 - `TDF_RelocationTable::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_RelocationTable_get_type_name())
                 .to_string_lossy()
@@ -7255,7 +7289,7 @@ impl TagSource {
     }
 
     /// **Source:** `TDF_TagSource.hxx`:77 - `TDF_TagSource::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDF_TagSource_get_type_name())
                 .to_string_lossy()

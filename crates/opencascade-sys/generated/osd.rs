@@ -615,7 +615,7 @@ impl CachedFileSystem {
     }
 
     /// **Source:** `OSD_CachedFileSystem.hxx`:27 - `OSD_CachedFileSystem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_CachedFileSystem_get_type_name())
                 .to_string_lossy()
@@ -1515,7 +1515,7 @@ impl Exception {
     }
 
     /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_get_type_name())
                 .to_string_lossy()
@@ -1938,7 +1938,7 @@ impl Exception_ACCESS_VIOLATION {
     }
 
     /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_ACCESS_VIOLATION_get_type_name())
                 .to_string_lossy()
@@ -2245,7 +2245,7 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
     }
 
     /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_get_type_name()).to_string_lossy().into_owned()
         }
@@ -2552,7 +2552,7 @@ impl Exception_CTRL_BREAK {
     }
 
     /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_CTRL_BREAK_get_type_name())
                 .to_string_lossy()
@@ -2829,7 +2829,7 @@ impl Exception_ILLEGAL_INSTRUCTION {
     }
 
     /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_get_type_name())
                 .to_string_lossy()
@@ -3134,7 +3134,7 @@ impl Exception_INT_OVERFLOW {
     }
 
     /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_INT_OVERFLOW_get_type_name())
                 .to_string_lossy()
@@ -3421,7 +3421,7 @@ impl Exception_INVALID_DISPOSITION {
     }
 
     /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_INVALID_DISPOSITION_get_type_name())
                 .to_string_lossy()
@@ -3728,7 +3728,7 @@ impl Exception_IN_PAGE_ERROR {
     }
 
     /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_IN_PAGE_ERROR_get_type_name())
                 .to_string_lossy()
@@ -4023,7 +4023,7 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
     }
 
     /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_get_type_name(),
@@ -4344,7 +4344,7 @@ impl Exception_PRIV_INSTRUCTION {
     }
 
     /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_PRIV_INSTRUCTION_get_type_name())
                 .to_string_lossy()
@@ -4645,7 +4645,7 @@ impl Exception_STACK_OVERFLOW {
     }
 
     /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_STACK_OVERFLOW_get_type_name())
                 .to_string_lossy()
@@ -4936,7 +4936,7 @@ impl Exception_STATUS_NO_MEMORY {
     }
 
     /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_STATUS_NO_MEMORY_get_type_name())
                 .to_string_lossy()
@@ -5719,7 +5719,7 @@ impl FileSystem {
     }
 
     /// **Source:** `OSD_FileSystem.hxx`:25 - `OSD_FileSystem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_FileSystem_get_type_name())
                 .to_string_lossy()
@@ -5994,7 +5994,7 @@ impl FileSystemSelector {
     }
 
     /// **Source:** `OSD_FileSystemSelector.hxx`:24 - `OSD_FileSystemSelector::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_FileSystemSelector_get_type_name())
                 .to_string_lossy()
@@ -6281,7 +6281,7 @@ impl LocalFileSystem {
     }
 
     /// **Source:** `OSD_LocalFileSystem.hxx`:22 - `OSD_LocalFileSystem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_LocalFileSystem_get_type_name())
                 .to_string_lossy()
@@ -6892,7 +6892,7 @@ impl OSDError {
     }
 
     /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_OSDError_get_type_name())
                 .to_string_lossy()
@@ -8072,7 +8072,7 @@ impl SIGBUS {
     }
 
     /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGBUS_get_type_name())
                 .to_string_lossy()
@@ -8306,7 +8306,7 @@ impl SIGHUP {
     }
 
     /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGHUP_get_type_name())
                 .to_string_lossy()
@@ -8540,7 +8540,7 @@ impl SIGILL {
     }
 
     /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGILL_get_type_name())
                 .to_string_lossy()
@@ -8774,7 +8774,7 @@ impl SIGINT {
     }
 
     /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGINT_get_type_name())
                 .to_string_lossy()
@@ -9008,7 +9008,7 @@ impl SIGKILL {
     }
 
     /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGKILL_get_type_name())
                 .to_string_lossy()
@@ -9242,7 +9242,7 @@ impl SIGQUIT {
     }
 
     /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGQUIT_get_type_name())
                 .to_string_lossy()
@@ -9476,7 +9476,7 @@ impl SIGSEGV {
     }
 
     /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGSEGV_get_type_name())
                 .to_string_lossy()
@@ -9710,7 +9710,7 @@ impl SIGSYS {
     }
 
     /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGSYS_get_type_name())
                 .to_string_lossy()
@@ -9906,7 +9906,7 @@ impl SharedLibrary {
 
     /// **Source:** `OSD_SharedLibrary.hxx`:45 - `OSD_SharedLibrary::Name()`
     /// Returns the name associated to the shared object.
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_SharedLibrary_name(self as *const Self))
                 .to_string_lossy()
@@ -9954,7 +9954,7 @@ impl SharedLibrary {
     /// The dlerror function returns a string describing
     /// the last error that occurred from
     /// a call to DlOpen, DlClose or DlSym.
-    pub fn dl_error(&self) -> String {
+    pub fn dl_error(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_SharedLibrary_dl_error(self as *const Self))
                 .to_string_lossy()
@@ -10059,7 +10059,7 @@ impl Signal {
     }
 
     /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_Signal_get_type_name())
                 .to_string_lossy()
@@ -10531,7 +10531,7 @@ impl ThreadPool {
     }
 
     /// **Source:** `OSD_ThreadPool.hxx`:55 - `OSD_ThreadPool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::OSD_ThreadPool_get_type_name())
                 .to_string_lossy()

@@ -230,7 +230,7 @@ impl AlignedCurve3dElementCoordinateSystem {
     }
 
     /// **Source:** `StepFEA_AlignedCurve3dElementCoordinateSystem.hxx`:48 - `StepFEA_AlignedCurve3dElementCoordinateSystem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_AlignedCurve3dElementCoordinateSystem_get_type_name(),
@@ -530,7 +530,7 @@ impl AlignedSurface3dElementCoordinateSystem {
     }
 
     /// **Source:** `StepFEA_AlignedSurface3dElementCoordinateSystem.hxx`:49 - `StepFEA_AlignedSurface3dElementCoordinateSystem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_AlignedSurface3dElementCoordinateSystem_get_type_name(),
@@ -828,7 +828,7 @@ impl ArbitraryVolume3dElementCoordinateSystem {
     }
 
     /// **Source:** `StepFEA_ArbitraryVolume3dElementCoordinateSystem.hxx`:49 - `StepFEA_ArbitraryVolume3dElementCoordinateSystem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_ArbitraryVolume3dElementCoordinateSystem_get_type_name(),
@@ -1138,7 +1138,7 @@ impl ConstantSurface3dElementCoordinateSystem {
     }
 
     /// **Source:** `StepFEA_ConstantSurface3dElementCoordinateSystem.hxx`:56 - `StepFEA_ConstantSurface3dElementCoordinateSystem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_ConstantSurface3dElementCoordinateSystem_get_type_name(),
@@ -1528,7 +1528,7 @@ impl Curve3dElementProperty {
     }
 
     /// **Source:** `StepFEA_Curve3dElementProperty.hxx`:79 - `StepFEA_Curve3dElementProperty::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_Curve3dElementProperty_get_type_name())
                 .to_string_lossy()
@@ -1818,7 +1818,7 @@ impl Curve3dElementRepresentation {
     }
 
     /// **Source:** `StepFEA_Curve3dElementRepresentation.hxx`:79 - `StepFEA_Curve3dElementRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_Curve3dElementRepresentation_get_type_name(),
@@ -2478,7 +2478,7 @@ impl CurveElementEndOffset {
     }
 
     /// **Source:** `StepFEA_CurveElementEndOffset.hxx`:53 - `StepFEA_CurveElementEndOffset::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_CurveElementEndOffset_get_type_name())
                 .to_string_lossy()
@@ -2698,7 +2698,7 @@ impl CurveElementEndRelease {
     }
 
     /// **Source:** `StepFEA_CurveElementEndRelease.hxx`:55 - `StepFEA_CurveElementEndRelease::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_CurveElementEndRelease_get_type_name())
                 .to_string_lossy()
@@ -2925,7 +2925,7 @@ impl CurveElementInterval {
     }
 
     /// **Source:** `StepFEA_CurveElementInterval.hxx`:54 - `StepFEA_CurveElementInterval::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_CurveElementInterval_get_type_name())
                 .to_string_lossy()
@@ -3162,7 +3162,7 @@ impl CurveElementIntervalConstant {
     }
 
     /// **Source:** `StepFEA_CurveElementIntervalConstant.hxx`:50 - `StepFEA_CurveElementIntervalConstant::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_CurveElementIntervalConstant_get_type_name(),
@@ -3461,7 +3461,7 @@ impl CurveElementIntervalLinearlyVarying {
     }
 
     /// **Source:** `StepFEA_CurveElementIntervalLinearlyVarying.hxx`:51 - `StepFEA_CurveElementIntervalLinearlyVarying::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_CurveElementIntervalLinearlyVarying_get_type_name(),
@@ -3732,7 +3732,7 @@ impl CurveElementLocation {
     }
 
     /// **Source:** `StepFEA_CurveElementLocation.hxx`:45 - `StepFEA_CurveElementLocation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_CurveElementLocation_get_type_name())
                 .to_string_lossy()
@@ -4110,7 +4110,7 @@ impl DegreeOfFreedomMember {
 
     /// **Source:** `StepFEA_DegreeOfFreedomMember.hxx`:40 - `StepFEA_DegreeOfFreedomMember::Name()`
     /// Returns set name
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_DegreeOfFreedomMember_name(
                 self as *const Self,
@@ -4144,7 +4144,7 @@ impl DegreeOfFreedomMember {
     }
 
     /// **Source:** `StepFEA_DegreeOfFreedomMember.hxx`:49 - `StepFEA_DegreeOfFreedomMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_DegreeOfFreedomMember_get_type_name())
                 .to_string_lossy()
@@ -4473,7 +4473,7 @@ impl DummyNode {
     }
 
     /// **Source:** `StepFEA_DummyNode.hxx`:35 - `StepFEA_DummyNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_DummyNode_get_type_name())
                 .to_string_lossy()
@@ -4847,7 +4847,7 @@ impl ElementGeometricRelationship {
     }
 
     /// **Source:** `StepFEA_ElementGeometricRelationship.hxx`:61 - `StepFEA_ElementGeometricRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_ElementGeometricRelationship_get_type_name(),
@@ -5063,7 +5063,7 @@ impl ElementGroup {
     }
 
     /// **Source:** `StepFEA_ElementGroup.hxx`:50 - `StepFEA_ElementGroup::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_ElementGroup_get_type_name())
                 .to_string_lossy()
@@ -5540,7 +5540,7 @@ impl ElementRepresentation {
     }
 
     /// **Source:** `StepFEA_ElementRepresentation.hxx`:52 - `StepFEA_ElementRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_ElementRepresentation_get_type_name())
                 .to_string_lossy()
@@ -5887,7 +5887,7 @@ impl FeaAreaDensity {
     }
 
     /// **Source:** `StepFEA_FeaAreaDensity.hxx`:47 - `StepFEA_FeaAreaDensity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaAreaDensity_get_type_name())
                 .to_string_lossy()
@@ -6173,7 +6173,7 @@ impl FeaAxis2Placement3d {
     }
 
     /// **Source:** `StepFEA_FeaAxis2Placement3d.hxx`:62 - `StepFEA_FeaAxis2Placement3d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaAxis2Placement3d_get_type_name())
                 .to_string_lossy()
@@ -6623,7 +6623,7 @@ impl FeaCurveSectionGeometricRelationship {
     }
 
     /// **Source:** `StepFEA_FeaCurveSectionGeometricRelationship.hxx`:54 - `StepFEA_FeaCurveSectionGeometricRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_FeaCurveSectionGeometricRelationship_get_type_name(),
@@ -6834,7 +6834,7 @@ impl FeaGroup {
     }
 
     /// **Source:** `StepFEA_FeaGroup.hxx`:48 - `StepFEA_FeaGroup::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaGroup_get_type_name())
                 .to_string_lossy()
@@ -7090,7 +7090,7 @@ impl FeaLinearElasticity {
     }
 
     /// **Source:** `StepFEA_FeaLinearElasticity.hxx`:46 - `StepFEA_FeaLinearElasticity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaLinearElasticity_get_type_name())
                 .to_string_lossy()
@@ -7352,7 +7352,7 @@ impl FeaMassDensity {
     }
 
     /// **Source:** `StepFEA_FeaMassDensity.hxx`:47 - `StepFEA_FeaMassDensity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaMassDensity_get_type_name())
                 .to_string_lossy()
@@ -7576,7 +7576,7 @@ impl FeaMaterialPropertyRepresentation {
     }
 
     /// **Source:** `StepFEA_FeaMaterialPropertyRepresentation.hxx`:35 - `StepFEA_FeaMaterialPropertyRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_FeaMaterialPropertyRepresentation_get_type_name(),
@@ -7899,7 +7899,7 @@ impl FeaMaterialPropertyRepresentationItem {
     }
 
     /// **Source:** `StepFEA_FeaMaterialPropertyRepresentationItem.hxx`:35 - `StepFEA_FeaMaterialPropertyRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_FeaMaterialPropertyRepresentationItem_get_type_name(),
@@ -8402,7 +8402,7 @@ impl FeaModel {
     }
 
     /// **Source:** `StepFEA_FeaModel.hxx`:74 - `StepFEA_FeaModel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaModel_get_type_name())
                 .to_string_lossy()
@@ -8644,7 +8644,7 @@ impl FeaModel3d {
     }
 
     /// **Source:** `StepFEA_FeaModel3d.hxx`:34 - `StepFEA_FeaModel3d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaModel3d_get_type_name())
                 .to_string_lossy()
@@ -8999,7 +8999,7 @@ impl FeaModelDefinition {
     }
 
     /// **Source:** `StepFEA_FeaModelDefinition.hxx`:35 - `StepFEA_FeaModelDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaModelDefinition_get_type_name())
                 .to_string_lossy()
@@ -9309,7 +9309,7 @@ impl FeaMoistureAbsorption {
     }
 
     /// **Source:** `StepFEA_FeaMoistureAbsorption.hxx`:46 - `StepFEA_FeaMoistureAbsorption::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaMoistureAbsorption_get_type_name())
                 .to_string_lossy()
@@ -9579,7 +9579,7 @@ impl FeaParametricPoint {
     }
 
     /// **Source:** `StepFEA_FeaParametricPoint.hxx`:47 - `StepFEA_FeaParametricPoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaParametricPoint_get_type_name())
                 .to_string_lossy()
@@ -9834,7 +9834,7 @@ impl FeaRepresentationItem {
     }
 
     /// **Source:** `StepFEA_FeaRepresentationItem.hxx`:35 - `StepFEA_FeaRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaRepresentationItem_get_type_name())
                 .to_string_lossy()
@@ -10236,7 +10236,7 @@ impl FeaSecantCoefficientOfLinearThermalExpansion {
     }
 
     /// **Source:** `StepFEA_FeaSecantCoefficientOfLinearThermalExpansion.hxx`:56 - `StepFEA_FeaSecantCoefficientOfLinearThermalExpansion::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_FeaSecantCoefficientOfLinearThermalExpansion_get_type_name(),
@@ -10527,7 +10527,7 @@ impl FeaShellBendingStiffness {
     }
 
     /// **Source:** `StepFEA_FeaShellBendingStiffness.hxx`:47 - `StepFEA_FeaShellBendingStiffness::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaShellBendingStiffness_get_type_name())
                 .to_string_lossy()
@@ -10815,7 +10815,7 @@ impl FeaShellMembraneBendingCouplingStiffness {
     }
 
     /// **Source:** `StepFEA_FeaShellMembraneBendingCouplingStiffness.hxx`:48 - `StepFEA_FeaShellMembraneBendingCouplingStiffness::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_FeaShellMembraneBendingCouplingStiffness_get_type_name(),
@@ -11104,7 +11104,7 @@ impl FeaShellMembraneStiffness {
     }
 
     /// **Source:** `StepFEA_FeaShellMembraneStiffness.hxx`:47 - `StepFEA_FeaShellMembraneStiffness::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaShellMembraneStiffness_get_type_name())
                 .to_string_lossy()
@@ -11385,7 +11385,7 @@ impl FeaShellShearStiffness {
     }
 
     /// **Source:** `StepFEA_FeaShellShearStiffness.hxx`:47 - `StepFEA_FeaShellShearStiffness::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FeaShellShearStiffness_get_type_name())
                 .to_string_lossy()
@@ -11703,7 +11703,7 @@ impl FeaSurfaceSectionGeometricRelationship {
     }
 
     /// **Source:** `StepFEA_FeaSurfaceSectionGeometricRelationship.hxx`:53 - `StepFEA_FeaSurfaceSectionGeometricRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_FeaSurfaceSectionGeometricRelationship_get_type_name(),
@@ -11931,7 +11931,7 @@ impl FeaTangentialCoefficientOfLinearThermalExpansion {
     }
 
     /// **Source:** `StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion.hxx`:48 - `StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion_get_type_name(
@@ -12218,7 +12218,7 @@ impl FreedomAndCoefficient {
     }
 
     /// **Source:** `StepFEA_FreedomAndCoefficient.hxx`:52 - `StepFEA_FreedomAndCoefficient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FreedomAndCoefficient_get_type_name())
                 .to_string_lossy()
@@ -12400,7 +12400,7 @@ impl FreedomsList {
     }
 
     /// **Source:** `StepFEA_FreedomsList.hxx`:44 - `StepFEA_FreedomsList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_FreedomsList_get_type_name())
                 .to_string_lossy()
@@ -12538,7 +12538,7 @@ impl GeometricNode {
     }
 
     /// **Source:** `StepFEA_GeometricNode.hxx`:35 - `StepFEA_GeometricNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_GeometricNode_get_type_name())
                 .to_string_lossy()
@@ -12910,7 +12910,7 @@ impl HArray1OfCurveElementEndOffset {
     }
 
     /// **Source:** `StepFEA_HArray1OfCurveElementEndOffset.hxx`:20 - `StepFEA_HArray1OfCurveElementEndOffset::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_HArray1OfCurveElementEndOffset_get_type_name(),
@@ -13158,7 +13158,7 @@ impl HArray1OfCurveElementEndRelease {
     }
 
     /// **Source:** `StepFEA_HArray1OfCurveElementEndRelease.hxx`:20 - `StepFEA_HArray1OfCurveElementEndRelease::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_HArray1OfCurveElementEndRelease_get_type_name(),
@@ -13408,7 +13408,7 @@ impl HArray1OfCurveElementInterval {
     }
 
     /// **Source:** `StepFEA_HArray1OfCurveElementInterval.hxx`:21 - `StepFEA_HArray1OfCurveElementInterval::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_HArray1OfCurveElementInterval_get_type_name(),
@@ -13650,7 +13650,7 @@ impl HArray1OfDegreeOfFreedom {
     }
 
     /// **Source:** `StepFEA_HArray1OfDegreeOfFreedom.hxx`:20 - `StepFEA_HArray1OfDegreeOfFreedom::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_HArray1OfDegreeOfFreedom_get_type_name())
                 .to_string_lossy()
@@ -13886,7 +13886,7 @@ impl HArray1OfElementRepresentation {
     }
 
     /// **Source:** `StepFEA_HArray1OfElementRepresentation.hxx`:21 - `StepFEA_HArray1OfElementRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_HArray1OfElementRepresentation_get_type_name(),
@@ -14130,7 +14130,7 @@ impl HArray1OfNodeRepresentation {
     }
 
     /// **Source:** `StepFEA_HArray1OfNodeRepresentation.hxx`:20 - `StepFEA_HArray1OfNodeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_HArray1OfNodeRepresentation_get_type_name()).to_string_lossy().into_owned()
         }
@@ -14351,7 +14351,7 @@ impl HSequenceOfCurve3dElementProperty {
     }
 
     /// **Source:** `StepFEA_HSequenceOfCurve3dElementProperty.hxx`:21 - `StepFEA_HSequenceOfCurve3dElementProperty::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_HSequenceOfCurve3dElementProperty_get_type_name(),
@@ -14586,7 +14586,7 @@ impl HSequenceOfElementGeometricRelationship {
     }
 
     /// **Source:** `StepFEA_HSequenceOfElementGeometricRelationship.hxx`:20 - `StepFEA_HSequenceOfElementGeometricRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_HSequenceOfElementGeometricRelationship_get_type_name(),
@@ -14815,7 +14815,7 @@ impl HSequenceOfElementRepresentation {
     }
 
     /// **Source:** `StepFEA_HSequenceOfElementRepresentation.hxx`:20 - `StepFEA_HSequenceOfElementRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_HSequenceOfElementRepresentation_get_type_name(),
@@ -15049,7 +15049,7 @@ impl HSequenceOfNodeRepresentation {
     }
 
     /// **Source:** `StepFEA_HSequenceOfNodeRepresentation.hxx`:21 - `StepFEA_HSequenceOfNodeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_HSequenceOfNodeRepresentation_get_type_name(),
@@ -15228,7 +15228,7 @@ impl Node {
     }
 
     /// **Source:** `StepFEA_Node.hxx`:35 - `StepFEA_Node::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_Node_get_type_name())
                 .to_string_lossy()
@@ -15535,7 +15535,7 @@ impl NodeDefinition {
     }
 
     /// **Source:** `StepFEA_NodeDefinition.hxx`:35 - `StepFEA_NodeDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_NodeDefinition_get_type_name())
                 .to_string_lossy()
@@ -15828,7 +15828,7 @@ impl NodeGroup {
     }
 
     /// **Source:** `StepFEA_NodeGroup.hxx`:50 - `StepFEA_NodeGroup::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_NodeGroup_get_type_name())
                 .to_string_lossy()
@@ -16084,7 +16084,7 @@ impl NodeRepresentation {
     }
 
     /// **Source:** `StepFEA_NodeRepresentation.hxx`:52 - `StepFEA_NodeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_NodeRepresentation_get_type_name())
                 .to_string_lossy()
@@ -16455,7 +16455,7 @@ impl NodeSet {
     }
 
     /// **Source:** `StepFEA_NodeSet.hxx`:47 - `StepFEA_NodeSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_NodeSet_get_type_name())
                 .to_string_lossy()
@@ -16670,7 +16670,7 @@ impl NodeWithSolutionCoordinateSystem {
     }
 
     /// **Source:** `StepFEA_NodeWithSolutionCoordinateSystem.hxx`:35 - `StepFEA_NodeWithSolutionCoordinateSystem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_NodeWithSolutionCoordinateSystem_get_type_name(),
@@ -17058,7 +17058,7 @@ impl NodeWithVector {
     }
 
     /// **Source:** `StepFEA_NodeWithVector.hxx`:35 - `StepFEA_NodeWithVector::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_NodeWithVector_get_type_name())
                 .to_string_lossy()
@@ -17431,7 +17431,7 @@ impl ParametricCurve3dElementCoordinateDirection {
     }
 
     /// **Source:** `StepFEA_ParametricCurve3dElementCoordinateDirection.hxx`:48 - `StepFEA_ParametricCurve3dElementCoordinateDirection::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_ParametricCurve3dElementCoordinateDirection_get_type_name(),
@@ -17730,7 +17730,7 @@ impl ParametricCurve3dElementCoordinateSystem {
     }
 
     /// **Source:** `StepFEA_ParametricCurve3dElementCoordinateSystem.hxx`:50 - `StepFEA_ParametricCurve3dElementCoordinateSystem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_ParametricCurve3dElementCoordinateSystem_get_type_name(),
@@ -18042,7 +18042,7 @@ impl ParametricSurface3dElementCoordinateSystem {
     }
 
     /// **Source:** `StepFEA_ParametricSurface3dElementCoordinateSystem.hxx`:56 - `StepFEA_ParametricSurface3dElementCoordinateSystem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_ParametricSurface3dElementCoordinateSystem_get_type_name(),
@@ -18413,7 +18413,7 @@ impl Surface3dElementRepresentation {
     }
 
     /// **Source:** `StepFEA_Surface3dElementRepresentation.hxx`:79 - `StepFEA_Surface3dElementRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_Surface3dElementRepresentation_get_type_name(),
@@ -19178,7 +19178,7 @@ impl SymmetricTensor23dMember {
 
     /// **Source:** `StepFEA_SymmetricTensor23dMember.hxx`:41 - `StepFEA_SymmetricTensor23dMember::Name()`
     /// Returns set name
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_SymmetricTensor23dMember_name(
                 self as *const Self,
@@ -19220,7 +19220,7 @@ impl SymmetricTensor23dMember {
     }
 
     /// **Source:** `StepFEA_SymmetricTensor23dMember.hxx`:50 - `StepFEA_SymmetricTensor23dMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_SymmetricTensor23dMember_get_type_name())
                 .to_string_lossy()
@@ -20051,7 +20051,7 @@ impl SymmetricTensor43dMember {
 
     /// **Source:** `StepFEA_SymmetricTensor43dMember.hxx`:41 - `StepFEA_SymmetricTensor43dMember::Name()`
     /// Returns set name
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_SymmetricTensor43dMember_name(
                 self as *const Self,
@@ -20093,7 +20093,7 @@ impl SymmetricTensor43dMember {
     }
 
     /// **Source:** `StepFEA_SymmetricTensor43dMember.hxx`:50 - `StepFEA_SymmetricTensor43dMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFEA_SymmetricTensor43dMember_get_type_name())
                 .to_string_lossy()
@@ -20593,7 +20593,7 @@ impl Volume3dElementRepresentation {
     }
 
     /// **Source:** `StepFEA_Volume3dElementRepresentation.hxx`:71 - `StepFEA_Volume3dElementRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepFEA_Volume3dElementRepresentation_get_type_name(),

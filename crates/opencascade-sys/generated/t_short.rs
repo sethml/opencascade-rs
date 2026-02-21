@@ -91,7 +91,7 @@ impl HArray1OfShortReal {
     }
 
     /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TShort_HArray1OfShortReal_get_type_name())
                 .to_string_lossy()
@@ -285,7 +285,7 @@ impl HArray2OfShortReal {
     }
 
     /// **Source:** `TShort_HArray2OfShortReal.hxx`:22 - `TShort_HArray2OfShortReal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TShort_HArray2OfShortReal_get_type_name())
                 .to_string_lossy()
@@ -475,7 +475,7 @@ impl HSequenceOfShortReal {
     }
 
     /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TShort_HSequenceOfShortReal_get_type_name())
                 .to_string_lossy()

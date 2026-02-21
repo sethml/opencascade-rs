@@ -474,7 +474,7 @@ impl UndefinedTypeHandler {
     }
 
     /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:64 - `GeomTools_UndefinedTypeHandler::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomTools_UndefinedTypeHandler_get_type_name())
                 .to_string_lossy()

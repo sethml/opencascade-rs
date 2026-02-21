@@ -165,7 +165,7 @@ impl HVertex {
     }
 
     /// **Source:** `BRepTopAdaptor_HVertex.hxx`:57 - `BRepTopAdaptor_HVertex::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepTopAdaptor_HVertex_get_type_name())
                 .to_string_lossy()
@@ -663,7 +663,7 @@ impl TopolTool {
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:132 - `BRepTopAdaptor_TopolTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepTopAdaptor_TopolTool_get_type_name())
                 .to_string_lossy()

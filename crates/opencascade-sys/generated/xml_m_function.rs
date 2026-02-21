@@ -90,7 +90,7 @@ impl FunctionDriver {
     }
 
     /// **Source:** `XmlMFunction_FunctionDriver.hxx`:50 - `XmlMFunction_FunctionDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMFunction_FunctionDriver_get_type_name())
                 .to_string_lossy()
@@ -348,7 +348,7 @@ impl GraphNodeDriver {
     }
 
     /// **Source:** `XmlMFunction_GraphNodeDriver.hxx`:50 - `XmlMFunction_GraphNodeDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMFunction_GraphNodeDriver_get_type_name())
                 .to_string_lossy()
@@ -612,7 +612,7 @@ impl ScopeDriver {
     }
 
     /// **Source:** `XmlMFunction_ScopeDriver.hxx`:50 - `XmlMFunction_ScopeDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMFunction_ScopeDriver_get_type_name())
                 .to_string_lossy()

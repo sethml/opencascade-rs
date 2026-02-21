@@ -170,7 +170,7 @@ impl DefaultGeneral {
     }
 
     /// **Source:** `StepData_DefaultGeneral.hxx`:67 - `StepData_DefaultGeneral::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_DefaultGeneral_get_type_name())
                 .to_string_lossy()
@@ -615,7 +615,7 @@ impl Described {
     }
 
     /// **Source:** `StepData_Described.hxx`:70 - `StepData_Described::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_Described_get_type_name())
                 .to_string_lossy()
@@ -827,7 +827,7 @@ impl ECDescr {
     }
 
     /// **Source:** `StepData_ECDescr.hxx`:65 - `StepData_ECDescr::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_ECDescr_get_type_name())
                 .to_string_lossy()
@@ -991,7 +991,7 @@ impl EDescr {
     }
 
     /// **Source:** `StepData_EDescr.hxx`:44 - `StepData_EDescr::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_EDescr_get_type_name())
                 .to_string_lossy()
@@ -1177,7 +1177,7 @@ impl ESDescr {
 
     /// **Source:** `StepData_ESDescr.hxx`:65 - `StepData_ESDescr::TypeName()`
     /// Returns the type name given at creation time
-    pub fn type_name(&self) -> String {
+    pub fn type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_ESDescr_type_name(self as *const Self))
                 .to_string_lossy()
@@ -1226,7 +1226,7 @@ impl ESDescr {
 
     /// **Source:** `StepData_ESDescr.hxx`:86 - `StepData_ESDescr::Name()`
     /// Returns the name of a field from its rank. empty if outofrange
-    pub fn name(&self, num: i32) -> String {
+    pub fn name(&self, num: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_ESDescr_name(self as *const Self, num))
                 .to_string_lossy()
@@ -1281,7 +1281,7 @@ impl ESDescr {
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:103 - `StepData_ESDescr::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_ESDescr_get_type_name())
                 .to_string_lossy()
@@ -2035,7 +2035,7 @@ impl Field {
     }
 
     /// **Source:** `StepData_Field.hxx`:188 - `StepData_Field::String()`
-    pub fn string(&self, n1: i32, n2: i32) -> String {
+    pub fn string(&self, n1: i32, n2: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_Field_string(self as *const Self, n1, n2))
                 .to_string_lossy()
@@ -2049,7 +2049,7 @@ impl Field {
     }
 
     /// **Source:** `StepData_Field.hxx`:194 - `StepData_Field::EnumText()`
-    pub fn enum_text(&self, n1: i32, n2: i32) -> String {
+    pub fn enum_text(&self, n1: i32, n2: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_Field_enum_text(
                 self as *const Self,
@@ -2395,7 +2395,10 @@ impl FileProtocol {
     /// To be redefined by each sub-class
     /// Here, SchemaName returns "" (empty String)
     /// was C++ : return const
-    pub fn schema_name(&self, theModel: &crate::ffi::HandleInterfaceInterfaceModel) -> String {
+    pub fn schema_name(
+        &self,
+        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_FileProtocol_schema_name(
                 self as *const Self,
@@ -2412,7 +2415,7 @@ impl FileProtocol {
     }
 
     /// **Source:** `StepData_FileProtocol.hxx`:77 - `StepData_FileProtocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_FileProtocol_get_type_name())
                 .to_string_lossy()
@@ -2751,7 +2754,7 @@ impl FileRecognizer {
     }
 
     /// **Source:** `StepData_FileRecognizer.hxx`:53 - `StepData_FileRecognizer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_FileRecognizer_get_type_name())
                 .to_string_lossy()
@@ -2899,7 +2902,7 @@ impl FreeFormEntity {
     /// **Source:** `StepData_FreeFormEntity.hxx`:51 - `StepData_FreeFormEntity::StepType()`
     /// Returns the recorded StepType
     /// For a complex one, the type of this member
-    pub fn step_type(&self) -> String {
+    pub fn step_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_FreeFormEntity_step_type(
                 self as *const Self,
@@ -3000,7 +3003,7 @@ impl FreeFormEntity {
     }
 
     /// **Source:** `StepData_FreeFormEntity.hxx`:94 - `StepData_FreeFormEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_FreeFormEntity_get_type_name())
                 .to_string_lossy()
@@ -3205,7 +3208,7 @@ impl GeneralModule {
     }
 
     /// **Source:** `StepData_GeneralModule.hxx`:64 - `StepData_GeneralModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_GeneralModule_get_type_name())
                 .to_string_lossy()
@@ -3624,7 +3627,7 @@ impl GlobalNodeOfWriterLib {
     }
 
     /// **Source:** `StepData_GlobalNodeOfWriterLib.hxx`:57 - `StepData_GlobalNodeOfWriterLib::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_GlobalNodeOfWriterLib_get_type_name())
                 .to_string_lossy()
@@ -3842,7 +3845,7 @@ impl HArray1OfField {
     }
 
     /// **Source:** `StepData_HArray1OfField.hxx`:23 - `StepData_HArray1OfField::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_HArray1OfField_get_type_name())
                 .to_string_lossy()
@@ -4013,7 +4016,7 @@ impl NodeOfWriterLib {
     }
 
     /// **Source:** `StepData_NodeOfWriterLib.hxx`:54 - `StepData_NodeOfWriterLib::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_NodeOfWriterLib_get_type_name())
                 .to_string_lossy()
@@ -4167,7 +4170,7 @@ impl PDescr {
     }
 
     /// **Source:** `StepData_PDescr.hxx`:48 - `StepData_PDescr::Name()`
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_PDescr_name(self as *const Self))
                 .to_string_lossy()
@@ -4382,7 +4385,7 @@ impl PDescr {
     /// **Source:** `StepData_PDescr.hxx`:159 - `StepData_PDescr::EnumText()`
     /// Returns the text which corresponds to a numeric value,
     /// between 0 and EnumMax. It is limited by dots
-    pub fn enum_text(&self, val: i32) -> String {
+    pub fn enum_text(&self, val: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_PDescr_enum_text(
                 self as *const Self,
@@ -4424,7 +4427,7 @@ impl PDescr {
     /// **Source:** `StepData_PDescr.hxx`:179 - `StepData_PDescr::DescrName()`
     /// Returns the description (type name) to match, for a Described
     /// (else, empty string)
-    pub fn descr_name(&self) -> String {
+    pub fn descr_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_PDescr_descr_name(self as *const Self))
                 .to_string_lossy()
@@ -4469,7 +4472,7 @@ impl PDescr {
     }
 
     /// **Source:** `StepData_PDescr.hxx`:200 - `StepData_PDescr::FieldName()`
-    pub fn field_name(&self) -> String {
+    pub fn field_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_PDescr_field_name(self as *const Self))
                 .to_string_lossy()
@@ -4495,7 +4498,7 @@ impl PDescr {
     }
 
     /// **Source:** `StepData_PDescr.hxx`:209 - `StepData_PDescr::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_PDescr_get_type_name())
                 .to_string_lossy()
@@ -4722,7 +4725,7 @@ impl Plex {
     }
 
     /// **Source:** `StepData_Plex.hxx`:91 - `StepData_Plex::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_Plex_get_type_name())
                 .to_string_lossy()
@@ -4921,7 +4924,10 @@ impl Protocol {
     /// To be redefined by each sub-class
     /// Here, SchemaName returns "(DEFAULT)"
     /// was C++ : return const
-    pub fn schema_name(&self, theModel: &crate::ffi::HandleInterfaceInterfaceModel) -> String {
+    pub fn schema_name(
+        &self,
+        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_Protocol_schema_name(
                 self as *const Self,
@@ -5108,7 +5114,7 @@ impl Protocol {
     }
 
     /// **Source:** `StepData_Protocol.hxx`:145 - `StepData_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_Protocol_get_type_name())
                 .to_string_lossy()
@@ -5487,7 +5493,7 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `StepData_ReadWriteModule.hxx`:117 - `StepData_ReadWriteModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_ReadWriteModule_get_type_name())
                 .to_string_lossy()
@@ -5709,7 +5715,7 @@ impl SelectArrReal {
     }
 
     /// **Source:** `StepData_SelectArrReal.hxx`:40 - `StepData_SelectArrReal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectArrReal_get_type_name())
                 .to_string_lossy()
@@ -6053,7 +6059,7 @@ impl SelectInt {
     }
 
     /// **Source:** `StepData_SelectInt.hxx`:47 - `StepData_SelectInt::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectInt_get_type_name())
                 .to_string_lossy()
@@ -6347,7 +6353,7 @@ impl SelectMember {
 
     /// **Source:** `StepData_SelectMember.hxx`:57 - `StepData_SelectMember::Name()`
     /// Returns the name of a SelectMember. Default is empty
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectMember_name(self as *const Self))
                 .to_string_lossy()
@@ -6455,7 +6461,7 @@ impl SelectMember {
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:101 - `StepData_SelectMember::String()`
-    pub fn string(&self) -> String {
+    pub fn string(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectMember_string(self as *const Self))
                 .to_string_lossy()
@@ -6475,7 +6481,7 @@ impl SelectMember {
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:107 - `StepData_SelectMember::EnumText()`
-    pub fn enum_text(&self) -> String {
+    pub fn enum_text(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectMember_enum_text(
                 self as *const Self,
@@ -6507,7 +6513,7 @@ impl SelectMember {
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:113 - `StepData_SelectMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectMember_get_type_name())
                 .to_string_lossy()
@@ -6981,7 +6987,7 @@ impl SelectNamed {
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:43 - `StepData_SelectNamed::Name()`
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectNamed_name(self as *const Self))
                 .to_string_lossy()
@@ -7040,7 +7046,7 @@ impl SelectNamed {
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:67 - `StepData_SelectNamed::String()`
-    pub fn string(&self) -> String {
+    pub fn string(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectNamed_string(self as *const Self))
                 .to_string_lossy()
@@ -7060,7 +7066,7 @@ impl SelectNamed {
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:71 - `StepData_SelectNamed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectNamed_get_type_name())
                 .to_string_lossy()
@@ -7464,7 +7470,7 @@ impl SelectReal {
     }
 
     /// **Source:** `StepData_SelectReal.hxx`:45 - `StepData_SelectReal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectReal_get_type_name())
                 .to_string_lossy()
@@ -7878,7 +7884,7 @@ impl SelectType {
     /// Returns the type name of SelectMember. If no SelectMember or
     /// with no type name, returns an empty string
     /// To change it, pass through the SelectMember itself
-    pub fn select_name(&self) -> String {
+    pub fn select_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectType_select_name(
                 self as *const Self,
@@ -8002,7 +8008,7 @@ impl Simple {
 
     /// **Source:** `StepData_Simple.hxx`:48 - `StepData_Simple::StepType()`
     /// Returns the recorded StepType (TypeName of its ESDescr)
-    pub fn step_type(&self) -> String {
+    pub fn step_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_Simple_step_type(self as *const Self))
                 .to_string_lossy()
@@ -8101,7 +8107,7 @@ impl Simple {
     }
 
     /// **Source:** `StepData_Simple.hxx`:94 - `StepData_Simple::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_Simple_get_type_name())
                 .to_string_lossy()
@@ -8563,7 +8569,7 @@ impl StepModel {
     }
 
     /// **Source:** `StepData_StepModel.hxx`:132 - `StepData_StepModel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_StepModel_get_type_name())
                 .to_string_lossy()
@@ -9122,7 +9128,7 @@ impl StepReaderData {
     /// **Source:** `StepData_StepReaderData.hxx`:84 - `StepData_StepReaderData::CType()`
     /// Returns Record Type as a CString
     /// was C++ : return const
-    pub fn c_type(&self, num: i32) -> String {
+    pub fn c_type(&self, num: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_StepReaderData_c_type(
                 self as *const Self,
@@ -9867,7 +9873,7 @@ impl StepReaderData {
     }
 
     /// **Source:** `StepData_StepReaderData.hxx`:454 - `StepData_StepReaderData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_StepReaderData_get_type_name())
                 .to_string_lossy()
@@ -10956,7 +10962,7 @@ impl UndefinedEntity {
     /// For a Complex Type Entity, gives the first Type read, each
     /// "Next" gives its "partial" type
     /// was C++ : return const
-    pub fn step_type(&self) -> String {
+    pub fn step_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_UndefinedEntity_step_type(
                 self as *const Self,
@@ -11008,7 +11014,7 @@ impl UndefinedEntity {
     }
 
     /// **Source:** `StepData_UndefinedEntity.hxx`:91 - `StepData_UndefinedEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepData_UndefinedEntity_get_type_name())
                 .to_string_lossy()

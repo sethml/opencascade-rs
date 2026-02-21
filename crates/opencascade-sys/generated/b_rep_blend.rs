@@ -63,7 +63,7 @@ impl AppFunc {
     }
 
     /// **Source:** `BRepBlend_AppFunc.hxx`:51 - `BRepBlend_AppFunc::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepBlend_AppFunc_get_type_name())
                 .to_string_lossy()
@@ -690,7 +690,7 @@ impl AppFuncRoot {
     }
 
     /// **Source:** `BRepBlend_AppFuncRoot.hxx`:164 - `BRepBlend_AppFuncRoot::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepBlend_AppFuncRoot_get_type_name())
                 .to_string_lossy()
@@ -932,7 +932,7 @@ impl AppFuncRst {
     }
 
     /// **Source:** `BRepBlend_AppFuncRst.hxx`:50 - `BRepBlend_AppFuncRst::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepBlend_AppFuncRst_get_type_name())
                 .to_string_lossy()
@@ -1353,7 +1353,7 @@ impl AppFuncRstRst {
     }
 
     /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:50 - `BRepBlend_AppFuncRstRst::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepBlend_AppFuncRstRst_get_type_name())
                 .to_string_lossy()
@@ -3562,7 +3562,7 @@ impl Line {
     }
 
     /// **Source:** `BRepBlend_Line.hxx`:107 - `BRepBlend_Line::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepBlend_Line_get_type_name())
                 .to_string_lossy()

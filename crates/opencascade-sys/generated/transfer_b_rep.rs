@@ -278,7 +278,7 @@ impl BinderOfShape {
 
     /// **Source:** `TransferBRep_BinderOfShape.hxx`:58 - `TransferBRep_BinderOfShape::ResultTypeName()`
     /// Returns the Type Name computed for the Result (dynamic)
-    pub fn result_type_name(&self) -> String {
+    pub fn result_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TransferBRep_BinderOfShape_result_type_name(
                 self as *const Self,
@@ -315,7 +315,7 @@ impl BinderOfShape {
     }
 
     /// **Source:** `TransferBRep_BinderOfShape.hxx`:72 - `TransferBRep_BinderOfShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TransferBRep_BinderOfShape_get_type_name())
                 .to_string_lossy()
@@ -652,7 +652,7 @@ impl HSequenceOfTransferResultInfo {
     }
 
     /// **Source:** `TransferBRep_HSequenceOfTransferResultInfo.hxx`:23 - `TransferBRep_HSequenceOfTransferResultInfo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_get_type_name(),
@@ -1224,7 +1224,7 @@ impl ShapeBinder {
     }
 
     /// **Source:** `TransferBRep_ShapeBinder.hxx`:69 - `TransferBRep_ShapeBinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TransferBRep_ShapeBinder_get_type_name())
                 .to_string_lossy()
@@ -1539,7 +1539,7 @@ impl ShapeInfo {
     /// **Source:** `TransferBRep_ShapeInfo.hxx`:40 - `TransferBRep_ShapeInfo::TypeName()`
     /// Returns Type Name (string)
     /// Here, the true name of the Type of a Shape
-    pub fn type_name(ent: &crate::topo_ds::Shape) -> String {
+    pub fn type_name(ent: &crate::topo_ds::Shape) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TransferBRep_ShapeInfo_type_name(ent))
                 .to_string_lossy()
@@ -1597,7 +1597,7 @@ impl ShapeListBinder {
     }
 
     /// **Source:** `TransferBRep_ShapeListBinder.hxx`:56 - `TransferBRep_ShapeListBinder::ResultTypeName()`
-    pub fn result_type_name(&self) -> String {
+    pub fn result_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TransferBRep_ShapeListBinder_result_type_name(
                 self as *const Self,
@@ -1734,7 +1734,7 @@ impl ShapeListBinder {
     }
 
     /// **Source:** `TransferBRep_ShapeListBinder.hxx`:88 - `TransferBRep_ShapeListBinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TransferBRep_ShapeListBinder_get_type_name())
                 .to_string_lossy()
@@ -2020,7 +2020,7 @@ impl ShapeMapper {
     /// **Source:** `TransferBRep_ShapeMapper.hxx`:57 - `TransferBRep_ShapeMapper::ValueTypeName()`
     /// Returns the name of the Type of the Value. Default is name
     /// of ValueType, unless it is for a non-handled object
-    pub fn value_type_name(&self) -> String {
+    pub fn value_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TransferBRep_ShapeMapper_value_type_name(
                 self as *const Self,
@@ -2036,7 +2036,7 @@ impl ShapeMapper {
     }
 
     /// **Source:** `TransferBRep_ShapeMapper.hxx`:59 - `TransferBRep_ShapeMapper::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TransferBRep_ShapeMapper_get_type_name())
                 .to_string_lossy()
@@ -2299,7 +2299,7 @@ impl TransferResultInfo {
     }
 
     /// **Source:** `TransferBRep_TransferResultInfo.hxx`:65 - `TransferBRep_TransferResultInfo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TransferBRep_TransferResultInfo_get_type_name())
                 .to_string_lossy()

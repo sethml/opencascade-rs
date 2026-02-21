@@ -259,7 +259,7 @@ impl Curve {
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:82 - `FEmTool_Curve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FEmTool_Curve_get_type_name())
                 .to_string_lossy()
@@ -440,7 +440,7 @@ impl ElementaryCriterion {
     }
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:65 - `FEmTool_ElementaryCriterion::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FEmTool_ElementaryCriterion_get_type_name())
                 .to_string_lossy()
@@ -771,7 +771,7 @@ impl HAssemblyTable {
     }
 
     /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FEmTool_HAssemblyTable_get_type_name())
                 .to_string_lossy()
@@ -946,7 +946,7 @@ impl LinearFlexion {
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:53 - `FEmTool_LinearFlexion::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FEmTool_LinearFlexion_get_type_name())
                 .to_string_lossy()
@@ -1157,7 +1157,7 @@ impl LinearJerk {
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:53 - `FEmTool_LinearJerk::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FEmTool_LinearJerk_get_type_name())
                 .to_string_lossy()
@@ -1357,7 +1357,7 @@ impl LinearTension {
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:53 - `FEmTool_LinearTension::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FEmTool_LinearTension_get_type_name())
                 .to_string_lossy()
@@ -1627,7 +1627,7 @@ impl ProfileMatrix {
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:81 - `FEmTool_ProfileMatrix::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FEmTool_ProfileMatrix_get_type_name())
                 .to_string_lossy()
@@ -1861,7 +1861,7 @@ impl SparseMatrix {
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:67 - `FEmTool_SparseMatrix::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FEmTool_SparseMatrix_get_type_name())
                 .to_string_lossy()

@@ -101,7 +101,7 @@ impl NamedShapeDriver {
     }
 
     /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:70 - `XmlMNaming_NamedShapeDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMNaming_NamedShapeDriver_get_type_name())
                 .to_string_lossy()
@@ -378,7 +378,7 @@ impl NamingDriver {
     }
 
     /// **Source:** `XmlMNaming_NamingDriver.hxx`:47 - `XmlMNaming_NamingDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMNaming_NamingDriver_get_type_name())
                 .to_string_lossy()

@@ -1873,7 +1873,7 @@ impl SimpleOffset {
     }
 
     /// **Source:** `BRepOffset_SimpleOffset.hxx`:47 - `BRepOffset_SimpleOffset::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepOffset_SimpleOffset_get_type_name())
                 .to_string_lossy()

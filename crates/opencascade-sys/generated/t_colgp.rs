@@ -1484,7 +1484,7 @@ impl HArray1OfCirc2d {
     }
 
     /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfCirc2d_get_type_name())
                 .to_string_lossy()
@@ -1691,7 +1691,7 @@ impl HArray1OfDir {
     }
 
     /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfDir_get_type_name())
                 .to_string_lossy()
@@ -1894,7 +1894,7 @@ impl HArray1OfDir2d {
     }
 
     /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfDir2d_get_type_name())
                 .to_string_lossy()
@@ -2103,7 +2103,7 @@ impl HArray1OfLin2d {
     }
 
     /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfLin2d_get_type_name())
                 .to_string_lossy()
@@ -2308,7 +2308,7 @@ impl HArray1OfPnt {
     }
 
     /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfPnt_get_type_name())
                 .to_string_lossy()
@@ -2511,7 +2511,7 @@ impl HArray1OfPnt2d {
     }
 
     /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfPnt2d_get_type_name())
                 .to_string_lossy()
@@ -2716,7 +2716,7 @@ impl HArray1OfVec {
     }
 
     /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfVec_get_type_name())
                 .to_string_lossy()
@@ -2919,7 +2919,7 @@ impl HArray1OfVec2d {
     }
 
     /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfVec2d_get_type_name())
                 .to_string_lossy()
@@ -3124,7 +3124,7 @@ impl HArray1OfXY {
     }
 
     /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfXY_get_type_name())
                 .to_string_lossy()
@@ -3318,7 +3318,7 @@ impl HArray1OfXYZ {
     }
 
     /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfXYZ_get_type_name())
                 .to_string_lossy()
@@ -3511,7 +3511,7 @@ impl HArray2OfCirc2d {
     }
 
     /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfCirc2d_get_type_name())
                 .to_string_lossy()
@@ -3708,7 +3708,7 @@ impl HArray2OfDir {
     }
 
     /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfDir_get_type_name())
                 .to_string_lossy()
@@ -3899,7 +3899,7 @@ impl HArray2OfDir2d {
     }
 
     /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfDir2d_get_type_name())
                 .to_string_lossy()
@@ -4096,7 +4096,7 @@ impl HArray2OfLin2d {
     }
 
     /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfLin2d_get_type_name())
                 .to_string_lossy()
@@ -4291,7 +4291,7 @@ impl HArray2OfPnt {
     }
 
     /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfPnt_get_type_name())
                 .to_string_lossy()
@@ -4482,7 +4482,7 @@ impl HArray2OfPnt2d {
     }
 
     /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfPnt2d_get_type_name())
                 .to_string_lossy()
@@ -4677,7 +4677,7 @@ impl HArray2OfVec {
     }
 
     /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfVec_get_type_name())
                 .to_string_lossy()
@@ -4868,7 +4868,7 @@ impl HArray2OfVec2d {
     }
 
     /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfVec2d_get_type_name())
                 .to_string_lossy()
@@ -5063,7 +5063,7 @@ impl HArray2OfXY {
     }
 
     /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfXY_get_type_name())
                 .to_string_lossy()
@@ -5247,7 +5247,7 @@ impl HArray2OfXYZ {
     }
 
     /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfXYZ_get_type_name())
                 .to_string_lossy()
@@ -5426,7 +5426,7 @@ impl HSequenceOfDir {
     }
 
     /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfDir_get_type_name())
                 .to_string_lossy()
@@ -5602,7 +5602,7 @@ impl HSequenceOfDir2d {
     }
 
     /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfDir2d_get_type_name())
                 .to_string_lossy()
@@ -5777,7 +5777,7 @@ impl HSequenceOfPnt {
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfPnt_get_type_name())
                 .to_string_lossy()
@@ -5953,7 +5953,7 @@ impl HSequenceOfPnt2d {
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfPnt2d_get_type_name())
                 .to_string_lossy()
@@ -6128,7 +6128,7 @@ impl HSequenceOfVec {
     }
 
     /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfVec_get_type_name())
                 .to_string_lossy()
@@ -6304,7 +6304,7 @@ impl HSequenceOfVec2d {
     }
 
     /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfVec2d_get_type_name())
                 .to_string_lossy()
@@ -6477,7 +6477,7 @@ impl HSequenceOfXY {
     }
 
     /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfXY_get_type_name())
                 .to_string_lossy()
@@ -6644,7 +6644,7 @@ impl HSequenceOfXYZ {
     }
 
     /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfXYZ_get_type_name())
                 .to_string_lossy()

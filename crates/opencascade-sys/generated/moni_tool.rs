@@ -248,7 +248,7 @@ impl AttrList {
 
     /// **Source:** `MoniTool_AttrList.hxx`:112 - `MoniTool_AttrList::StringAttribute()`
     /// Returns a String attribute from its name. "" if not recorded
-    pub fn string_attribute(&self, name: &str) -> String {
+    pub fn string_attribute(&self, name: &str) -> std::string::String {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_AttrList_string_attribute(
@@ -392,7 +392,7 @@ impl CaseData {
 
     /// **Source:** `MoniTool_CaseData.hxx`:85 - `MoniTool_CaseData::CaseId()`
     /// Returns the CaseId
-    pub fn case_id(&self) -> String {
+    pub fn case_id(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_CaseData_case_id(self as *const Self))
                 .to_string_lossy()
@@ -402,7 +402,7 @@ impl CaseData {
 
     /// **Source:** `MoniTool_CaseData.hxx`:88 - `MoniTool_CaseData::Name()`
     /// Returns the Name
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_CaseData_name(self as *const Self))
                 .to_string_lossy()
@@ -778,7 +778,7 @@ impl CaseData {
     /// **Source:** `MoniTool_CaseData.hxx`:293 - `MoniTool_CaseData::DefMsg()`
     /// Returns the message definition for a case code
     /// Empty if no message attached
-    pub fn def_msg(casecode: &str) -> String {
+    pub fn def_msg(casecode: &str) -> std::string::String {
         let c_casecode = std::ffi::CString::new(casecode).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_CaseData_def_msg(c_casecode.as_ptr()))
@@ -788,7 +788,7 @@ impl CaseData {
     }
 
     /// **Source:** `MoniTool_CaseData.hxx`:295 - `MoniTool_CaseData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_CaseData_get_type_name())
                 .to_string_lossy()
@@ -936,7 +936,7 @@ impl DataInfo {
     /// **Source:** `MoniTool_DataInfo.hxx`:41 - `MoniTool_DataInfo::TypeName()`
     /// Returns Type Name (string)
     /// Allows to name type of non-handled objects
-    pub fn type_name(ent: &crate::ffi::HandleStandardTransient) -> String {
+    pub fn type_name(ent: &crate::ffi::HandleStandardTransient) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_DataInfo_type_name(ent))
                 .to_string_lossy()
@@ -992,7 +992,7 @@ impl Element {
     /// **Source:** `MoniTool_Element.hxx`:58 - `MoniTool_Element::ValueTypeName()`
     /// Returns the name of the Type of the Value. Default is name
     /// of ValueType, unless it is for a non-handled object
-    pub fn value_type_name(&self) -> String {
+    pub fn value_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_Element_value_type_name(
                 self as *const Self,
@@ -1020,7 +1020,7 @@ impl Element {
     }
 
     /// **Source:** `MoniTool_Element.hxx`:66 - `MoniTool_Element::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_Element_get_type_name())
                 .to_string_lossy()
@@ -1206,7 +1206,7 @@ impl HSequenceOfElement {
     }
 
     /// **Source:** `MoniTool_HSequenceOfElement.hxx`:24 - `MoniTool_HSequenceOfElement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_HSequenceOfElement_get_type_name())
                 .to_string_lossy()
@@ -1376,7 +1376,7 @@ impl IntVal {
     }
 
     /// **Source:** `MoniTool_IntVal.hxx`:40 - `MoniTool_IntVal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_IntVal_get_type_name())
                 .to_string_lossy()
@@ -1519,7 +1519,7 @@ impl RealVal {
     }
 
     /// **Source:** `MoniTool_RealVal.hxx`:40 - `MoniTool_RealVal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_RealVal_get_type_name())
                 .to_string_lossy()
@@ -1644,7 +1644,7 @@ impl SignShape {
 
     /// **Source:** `MoniTool_SignShape.hxx`:39 - `MoniTool_SignShape::Name()`
     /// Returns "SHAPE"
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_SignShape_name(self as *const Self))
                 .to_string_lossy()
@@ -1675,7 +1675,7 @@ impl SignShape {
     }
 
     /// **Source:** `MoniTool_SignShape.hxx`:47 - `MoniTool_SignShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_SignShape_get_type_name())
                 .to_string_lossy()
@@ -1837,7 +1837,7 @@ impl SignText {
     /// **Source:** `MoniTool_SignText.hxx`:40 - `MoniTool_SignText::Name()`
     /// Returns an identification of the Signature (a word), given at
     /// initialization time
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_SignText_name(self as *const Self))
                 .to_string_lossy()
@@ -1887,7 +1887,7 @@ impl SignText {
     }
 
     /// **Source:** `MoniTool_SignText.hxx`:57 - `MoniTool_SignText::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_SignText_get_type_name())
                 .to_string_lossy()
@@ -2545,7 +2545,7 @@ impl Timer {
     }
 
     /// **Source:** `MoniTool_Timer.hxx`:105 - `MoniTool_Timer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_Timer_get_type_name())
                 .to_string_lossy()
@@ -2768,7 +2768,7 @@ impl TransientElem {
     /// **Source:** `MoniTool_TransientElem.hxx`:61 - `MoniTool_TransientElem::ValueTypeName()`
     /// Returns the name of the Type of the Value. Default is name
     /// of ValueType, unless it is for a non-handled object
-    pub fn value_type_name(&self) -> String {
+    pub fn value_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_TransientElem_value_type_name(
                 self as *const Self,
@@ -2784,7 +2784,7 @@ impl TransientElem {
     }
 
     /// **Source:** `MoniTool_TransientElem.hxx`:63 - `MoniTool_TransientElem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_TransientElem_get_type_name())
                 .to_string_lossy()
@@ -3007,7 +3007,7 @@ impl TypedValue {
 
     /// **Source:** `MoniTool_TypedValue.hxx`:77 - `MoniTool_TypedValue::Name()`
     /// Returns the name
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_TypedValue_name(self as *const Self))
                 .to_string_lossy()
@@ -3088,7 +3088,7 @@ impl TypedValue {
 
     /// **Source:** `MoniTool_TypedValue.hxx`:116 - `MoniTool_TypedValue::Label()`
     /// Returns the label, if set; else returns an empty string
-    pub fn label(&self) -> String {
+    pub fn label(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_TypedValue_label(self as *const Self))
                 .to_string_lossy()
@@ -3149,7 +3149,7 @@ impl TypedValue {
 
     /// **Source:** `MoniTool_TypedValue.hxx`:149 - `MoniTool_TypedValue::UnitDef()`
     /// Returns the recorded unit definition, empty if not set
-    pub fn unit_def(&self) -> String {
+    pub fn unit_def(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_TypedValue_unit_def(self as *const Self))
                 .to_string_lossy()
@@ -3238,7 +3238,7 @@ impl TypedValue {
     /// **Source:** `MoniTool_TypedValue.hxx`:185 - `MoniTool_TypedValue::EnumVal()`
     /// Returns the value of an enumerative definition, from its rank
     /// Empty string if out of range or not an Enum
-    pub fn enum_val(&self, num: i32) -> String {
+    pub fn enum_val(&self, num: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_TypedValue_enum_val(
                 self as *const Self,
@@ -3303,7 +3303,7 @@ impl TypedValue {
 
     /// **Source:** `MoniTool_TypedValue.hxx`:215 - `MoniTool_TypedValue::SatisfiesName()`
     /// Returns name of specific satisfy, empty string if none
-    pub fn satisfies_name(&self) -> String {
+    pub fn satisfies_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_TypedValue_satisfies_name(
                 self as *const Self,
@@ -3321,7 +3321,7 @@ impl TypedValue {
 
     /// **Source:** `MoniTool_TypedValue.hxx`:221 - `MoniTool_TypedValue::CStringValue()`
     /// Returns the value, as a cstring. Empty if not set.
-    pub fn c_string_value(&self) -> String {
+    pub fn c_string_value(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_TypedValue_c_string_value(
                 self as *const Self,
@@ -3466,7 +3466,7 @@ impl TypedValue {
     /// **Source:** `MoniTool_TypedValue.hxx`:301 - `MoniTool_TypedValue::ObjectTypeName()`
     /// Returns the type name of the ObjectValue, or an empty string
     /// if not set
-    pub fn object_type_name(&self) -> String {
+    pub fn object_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_TypedValue_object_type_name(
                 self as *const Self,
@@ -3534,7 +3534,7 @@ impl TypedValue {
     }
 
     /// **Source:** `MoniTool_TypedValue.hxx`:333 - `MoniTool_TypedValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_TypedValue_get_type_name())
                 .to_string_lossy()

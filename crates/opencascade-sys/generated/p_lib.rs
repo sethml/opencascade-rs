@@ -566,7 +566,7 @@ impl Base {
     }
 
     /// **Source:** `PLib_Base.hxx`:81 - `PLib_Base::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PLib_Base_get_type_name())
                 .to_string_lossy()
@@ -1123,7 +1123,7 @@ impl HermitJacobi {
     }
 
     /// **Source:** `PLib_HermitJacobi.hxx`:136 - `PLib_HermitJacobi::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PLib_HermitJacobi_get_type_name())
                 .to_string_lossy()
@@ -1500,7 +1500,7 @@ impl JacobiPolynomial {
     }
 
     /// **Source:** `PLib_JacobiPolynomial.hxx`:161 - `PLib_JacobiPolynomial::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PLib_JacobiPolynomial_get_type_name())
                 .to_string_lossy()

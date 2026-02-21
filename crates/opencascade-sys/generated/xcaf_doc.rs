@@ -247,7 +247,7 @@ impl Area {
     }
 
     /// **Source:** `XCAFDoc_Area.hxx`:62 - `XCAFDoc_Area::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_Area_get_type_name())
                 .to_string_lossy()
@@ -1223,7 +1223,7 @@ impl AssemblyItemRef {
     }
 
     /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:34 - `XCAFDoc_AssemblyItemRef::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_AssemblyItemRef_get_type_name())
                 .to_string_lossy()
@@ -1857,7 +1857,7 @@ impl Centroid {
     }
 
     /// **Source:** `XCAFDoc_Centroid.hxx`:72 - `XCAFDoc_Centroid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_Centroid_get_type_name())
                 .to_string_lossy()
@@ -2480,7 +2480,7 @@ impl ClippingPlaneTool {
     }
 
     /// **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:119 - `XCAFDoc_ClippingPlaneTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_ClippingPlaneTool_get_type_name())
                 .to_string_lossy()
@@ -3092,7 +3092,7 @@ impl Color {
     }
 
     /// **Source:** `XCAFDoc_Color.hxx`:91 - `XCAFDoc_Color::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_Color_get_type_name())
                 .to_string_lossy()
@@ -4080,7 +4080,7 @@ impl ColorTool {
     }
 
     /// **Source:** `XCAFDoc_ColorTool.hxx`:283 - `XCAFDoc_ColorTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_ColorTool_get_type_name())
                 .to_string_lossy()
@@ -4619,7 +4619,7 @@ impl Datum {
     }
 
     /// **Source:** `XCAFDoc_Datum.hxx`:84 - `XCAFDoc_Datum::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_Datum_get_type_name())
                 .to_string_lossy()
@@ -5077,7 +5077,7 @@ impl DimTol {
     }
 
     /// **Source:** `XCAFDoc_DimTol.hxx`:75 - `XCAFDoc_DimTol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_DimTol_get_type_name())
                 .to_string_lossy()
@@ -5993,7 +5993,7 @@ impl DimTolTool {
     }
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:258 - `XCAFDoc_DimTolTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_DimTolTool_get_type_name())
                 .to_string_lossy()
@@ -6485,7 +6485,7 @@ impl Dimension {
     }
 
     /// **Source:** `XCAFDoc_Dimension.hxx`:62 - `XCAFDoc_Dimension::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_Dimension_get_type_name())
                 .to_string_lossy()
@@ -7236,7 +7236,7 @@ impl DocumentTool {
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:192 - `XCAFDoc_DocumentTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_DocumentTool_get_type_name())
                 .to_string_lossy()
@@ -7917,7 +7917,7 @@ impl GeomTolerance {
     }
 
     /// **Source:** `XCAFDoc_GeomTolerance.hxx`:62 - `XCAFDoc_GeomTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_GeomTolerance_get_type_name())
                 .to_string_lossy()
@@ -8570,7 +8570,7 @@ impl GraphNode {
     }
 
     /// **Source:** `XCAFDoc_GraphNode.hxx`:144 - `XCAFDoc_GraphNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_GraphNode_get_type_name())
                 .to_string_lossy()
@@ -9433,7 +9433,7 @@ impl LayerTool {
     }
 
     /// **Source:** `XCAFDoc_LayerTool.hxx`:218 - `XCAFDoc_LayerTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_LayerTool_get_type_name())
                 .to_string_lossy()
@@ -9978,7 +9978,7 @@ impl LengthUnit {
     }
 
     /// **Source:** `XCAFDoc_LengthUnit.hxx`:93 - `XCAFDoc_LengthUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_LengthUnit_get_type_name())
                 .to_string_lossy()
@@ -10435,7 +10435,7 @@ impl Location {
     }
 
     /// **Source:** `XCAFDoc_Location.hxx`:66 - `XCAFDoc_Location::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_Location_get_type_name())
                 .to_string_lossy()
@@ -10919,7 +10919,7 @@ impl Material {
     }
 
     /// **Source:** `XCAFDoc_Material.hxx`:78 - `XCAFDoc_Material::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_Material_get_type_name())
                 .to_string_lossy()
@@ -11434,7 +11434,7 @@ impl MaterialTool {
     }
 
     /// **Source:** `XCAFDoc_MaterialTool.hxx`:103 - `XCAFDoc_MaterialTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_MaterialTool_get_type_name())
                 .to_string_lossy()
@@ -11935,7 +11935,7 @@ impl Note {
     }
 
     /// **Source:** `XCAFDoc_Note.hxx`:31 - `XCAFDoc_Note::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_Note_get_type_name())
                 .to_string_lossy()
@@ -12391,7 +12391,7 @@ impl NoteBalloon {
     }
 
     /// **Source:** `XCAFDoc_NoteBalloon.hxx`:24 - `XCAFDoc_NoteBalloon::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_NoteBalloon_get_type_name())
                 .to_string_lossy()
@@ -13010,7 +13010,7 @@ impl NoteBinData {
     }
 
     /// **Source:** `XCAFDoc_NoteBinData.hxx`:27 - `XCAFDoc_NoteBinData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_NoteBinData_get_type_name())
                 .to_string_lossy()
@@ -13575,7 +13575,7 @@ impl NoteComment {
     }
 
     /// **Source:** `XCAFDoc_NoteComment.hxx`:24 - `XCAFDoc_NoteComment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_NoteComment_get_type_name())
                 .to_string_lossy()
@@ -15004,7 +15004,7 @@ impl NotesTool {
     }
 
     /// **Source:** `XCAFDoc_NotesTool.hxx`:78 - `XCAFDoc_NotesTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_NotesTool_get_type_name())
                 .to_string_lossy()
@@ -15512,7 +15512,7 @@ impl ShapeMapTool {
     }
 
     /// **Source:** `XCAFDoc_ShapeMapTool.hxx`:67 - `XCAFDoc_ShapeMapTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_ShapeMapTool_get_type_name())
                 .to_string_lossy()
@@ -16784,7 +16784,7 @@ impl ShapeTool {
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:495 - `XCAFDoc_ShapeTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_ShapeTool_get_type_name())
                 .to_string_lossy()
@@ -17261,7 +17261,7 @@ impl View {
     }
 
     /// **Source:** `XCAFDoc_View.hxx`:55 - `XCAFDoc_View::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_View_get_type_name())
                 .to_string_lossy()
@@ -17986,7 +17986,7 @@ impl ViewTool {
     }
 
     /// **Source:** `XCAFDoc_ViewTool.hxx`:147 - `XCAFDoc_ViewTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_ViewTool_get_type_name())
                 .to_string_lossy()
@@ -18438,6 +18438,20 @@ impl VisMaterial {
         unsafe { crate::ffi::XCAFDoc_VisMaterial_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `XCAFDoc_VisMaterial.hxx`:71 - `XCAFDoc_VisMaterial::FillMaterialAspect()`
+    /// Fill in material aspect.
+    pub fn fill_material_aspect(&self, theAspect: &mut crate::graphic3d::MaterialAspect) {
+        unsafe {
+            crate::ffi::XCAFDoc_VisMaterial_fill_material_aspect(self as *const Self, theAspect)
+        }
+    }
+
+    /// **Source:** `XCAFDoc_VisMaterial.hxx`:74 - `XCAFDoc_VisMaterial::FillAspect()`
+    /// Fill in graphic aspects.
+    pub fn fill_aspect(&self, theAspect: &crate::ffi::HandleGraphic3dAspects) {
+        unsafe { crate::ffi::XCAFDoc_VisMaterial_fill_aspect(self as *const Self, theAspect) }
+    }
+
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:77 - `XCAFDoc_VisMaterial::HasPbrMaterial()`
     /// Return TRUE if metal-roughness PBR material is defined; FALSE by default.
     pub fn has_pbr_material(&self) -> bool {
@@ -18502,10 +18516,56 @@ impl VisMaterial {
         }
     }
 
+    /// **Source:** `XCAFDoc_VisMaterial.hxx`:118 - `XCAFDoc_VisMaterial::AlphaMode()`
+    /// Return alpha mode; Graphic3d_AlphaMode_BlendAuto by default.
+    pub fn alpha_mode(&self) -> crate::graphic3d::AlphaMode {
+        unsafe {
+            crate::graphic3d::AlphaMode::try_from(crate::ffi::XCAFDoc_VisMaterial_alpha_mode(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:121 - `XCAFDoc_VisMaterial::AlphaCutOff()`
     /// Return alpha cutoff value; 0.5 by default.
     pub fn alpha_cut_off(&self) -> f32 {
         unsafe { crate::ffi::XCAFDoc_VisMaterial_alpha_cut_off(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFDoc_VisMaterial.hxx`:124 - `XCAFDoc_VisMaterial::SetAlphaMode()`
+    /// Set alpha mode.
+    pub fn set_alpha_mode(&mut self, theMode: crate::graphic3d::AlphaMode, theCutOff: f32) {
+        unsafe {
+            crate::ffi::XCAFDoc_VisMaterial_set_alpha_mode(
+                self as *mut Self,
+                theMode.into(),
+                theCutOff,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_VisMaterial.hxx`:129 - `XCAFDoc_VisMaterial::FaceCulling()`
+    /// Returns if the material is double or single sided; Graphic3d_TypeOfBackfacingModel_Auto by
+    /// default.
+    pub fn face_culling(&self) -> crate::graphic3d::TypeOfBackfacingModel {
+        unsafe {
+            crate::graphic3d::TypeOfBackfacingModel::try_from(
+                crate::ffi::XCAFDoc_VisMaterial_face_culling(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `XCAFDoc_VisMaterial.hxx`:132 - `XCAFDoc_VisMaterial::SetFaceCulling()`
+    /// Specifies whether the material is double or single sided.
+    pub fn set_face_culling(&mut self, theFaceCulling: crate::graphic3d::TypeOfBackfacingModel) {
+        unsafe {
+            crate::ffi::XCAFDoc_VisMaterial_set_face_culling(
+                self as *mut Self,
+                theFaceCulling.into(),
+            )
+        }
     }
 
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:151 - `XCAFDoc_VisMaterial::RawName()`
@@ -18584,7 +18644,7 @@ impl VisMaterial {
     }
 
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:58 - `XCAFDoc_VisMaterial::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_VisMaterial_get_type_name())
                 .to_string_lossy()
@@ -18966,39 +19026,6 @@ impl HandleXCAFDocVisMaterial {
     }
 }
 
-// ── Skipped symbols for VisMaterial (6 total) ──
-// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:71 - `XCAFDoc_VisMaterial::FillMaterialAspect`
-//   method: Fill in material aspect.
-//   Reason: param 'theAspect' uses unknown type 'Graphic3d_MaterialAspect&'
-//   // pub fn fill_material_aspect(&self, theAspect: &mut MaterialAspect);
-//
-// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:74 - `XCAFDoc_VisMaterial::FillAspect`
-//   method: Fill in graphic aspects.
-//   Reason: param 'theAspect' uses unknown type 'const Handle(Graphic3d_Aspects)&'
-//   // pub fn fill_aspect(&self, theAspect: &HandleAspects);
-//
-// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:118 - `XCAFDoc_VisMaterial::AlphaMode`
-//   method: Return alpha mode; Graphic3d_AlphaMode_BlendAuto by default.
-//   Reason: return type 'Graphic3d_AlphaMode' is unknown
-//   // pub fn alpha_mode(&self) -> OwnedPtr<Graphic3d_AlphaMode>;
-//
-// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:124 - `XCAFDoc_VisMaterial::SetAlphaMode`
-//   method: Set alpha mode.
-//   Reason: param 'theMode' uses unknown type 'Graphic3d_AlphaMode'
-//   // pub fn set_alpha_mode(&mut self, theMode: AlphaMode, theCutOff: f32);
-//
-// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:129 - `XCAFDoc_VisMaterial::FaceCulling`
-//   method: Returns if the material is double or single sided; Graphic3d_TypeOfBackfacingModel_Auto by
-//   method: default.
-//   Reason: return type 'Graphic3d_TypeOfBackfacingModel' is unknown
-//   // pub fn face_culling(&self) -> OwnedPtr<Graphic3d_TypeOfBackfacingModel>;
-//
-// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:132 - `XCAFDoc_VisMaterial::SetFaceCulling`
-//   method: Specifies whether the material is double or single sided.
-//   Reason: param 'theFaceCulling' uses unknown type 'Graphic3d_TypeOfBackfacingModel'
-//   // pub fn set_face_culling(&mut self, theFaceCulling: TypeOfBackfacingModel);
-//
-
 // ========================
 // From XCAFDoc_VisMaterialCommon.hxx
 // ========================
@@ -19301,7 +19328,7 @@ impl VisMaterialTool {
     }
 
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:39 - `XCAFDoc_VisMaterialTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_VisMaterialTool_get_type_name())
                 .to_string_lossy()
@@ -19818,7 +19845,7 @@ impl Volume {
     }
 
     /// **Source:** `XCAFDoc_Volume.hxx`:62 - `XCAFDoc_Volume::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_Volume_get_type_name())
                 .to_string_lossy()

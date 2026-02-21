@@ -1767,7 +1767,7 @@ impl FreeBoundData {
     }
 
     /// **Source:** `ShapeAnalysis_FreeBoundData.hxx`:112 - `ShapeAnalysis_FreeBoundData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeAnalysis_FreeBoundData_get_type_name())
                 .to_string_lossy()
@@ -2668,7 +2668,7 @@ impl HSequenceOfFreeBounds {
     }
 
     /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_get_type_name()).to_string_lossy().into_owned()
         }
@@ -3862,7 +3862,7 @@ impl Surface {
     }
 
     /// **Source:** `ShapeAnalysis_Surface.hxx`:309 - `ShapeAnalysis_Surface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeAnalysis_Surface_get_type_name())
                 .to_string_lossy()
@@ -4105,7 +4105,7 @@ impl TransferParameters {
     }
 
     /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:85 - `ShapeAnalysis_TransferParameters::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeAnalysis_TransferParameters_get_type_name())
                 .to_string_lossy()
@@ -4419,7 +4419,7 @@ impl TransferParametersProj {
     }
 
     /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:93 - `ShapeAnalysis_TransferParametersProj::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::ShapeAnalysis_TransferParametersProj_get_type_name(),
@@ -5549,7 +5549,7 @@ impl Wire {
     }
 
     /// **Source:** `ShapeAnalysis_Wire.hxx`:573 - `ShapeAnalysis_Wire::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeAnalysis_Wire_get_type_name())
                 .to_string_lossy()

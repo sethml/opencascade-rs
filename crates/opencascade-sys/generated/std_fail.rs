@@ -94,7 +94,7 @@ impl InfiniteSolutions {
     }
 
     /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdFail_InfiniteSolutions_get_type_name())
                 .to_string_lossy()
@@ -345,7 +345,7 @@ impl NotDone {
     }
 
     /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdFail_NotDone_get_type_name())
                 .to_string_lossy()
@@ -566,7 +566,7 @@ impl Undefined {
     }
 
     /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdFail_Undefined_get_type_name())
                 .to_string_lossy()
@@ -793,7 +793,7 @@ impl UndefinedDerivative {
     }
 
     /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdFail_UndefinedDerivative_get_type_name())
                 .to_string_lossy()
@@ -1078,7 +1078,7 @@ impl UndefinedValue {
     }
 
     /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdFail_UndefinedValue_get_type_name())
                 .to_string_lossy()

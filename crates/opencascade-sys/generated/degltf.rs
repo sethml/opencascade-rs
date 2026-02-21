@@ -146,7 +146,7 @@ impl ConfigurationNode {
     }
 
     /// **Source:** `DEGLTF_ConfigurationNode.hxx`:34 - `DEGLTF_ConfigurationNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DEGLTF_ConfigurationNode_get_type_name())
                 .to_string_lossy()
@@ -603,7 +603,7 @@ impl Provider {
     }
 
     /// **Source:** `DEGLTF_Provider.hxx`:33 - `DEGLTF_Provider::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DEGLTF_Provider_get_type_name())
                 .to_string_lossy()

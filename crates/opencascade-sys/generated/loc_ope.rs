@@ -858,7 +858,7 @@ impl GeneratedShape {
     }
 
     /// **Source:** `LocOpe_GeneratedShape.hxx`:49 - `LocOpe_GeneratedShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::LocOpe_GeneratedShape_get_type_name())
                 .to_string_lossy()
@@ -1131,7 +1131,7 @@ impl GluedShape {
     }
 
     /// **Source:** `LocOpe_GluedShape.hxx`:59 - `LocOpe_GluedShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::LocOpe_GluedShape_get_type_name())
                 .to_string_lossy()
@@ -2373,7 +2373,7 @@ impl WiresOnShape {
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:108 - `LocOpe_WiresOnShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::LocOpe_WiresOnShape_get_type_name())
                 .to_string_lossy()

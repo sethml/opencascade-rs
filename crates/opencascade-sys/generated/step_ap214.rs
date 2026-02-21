@@ -98,7 +98,7 @@ impl AppliedApprovalAssignment {
     }
 
     /// **Source:** `StepAP214_AppliedApprovalAssignment.hxx`:49 - `StepAP214_AppliedApprovalAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_AppliedApprovalAssignment_get_type_name()).to_string_lossy().into_owned()
         }
@@ -371,7 +371,7 @@ impl AppliedDateAndTimeAssignment {
     }
 
     /// **Source:** `StepAP214_AppliedDateAndTimeAssignment.hxx`:51 - `StepAP214_AppliedDateAndTimeAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AppliedDateAndTimeAssignment_get_type_name(),
@@ -669,7 +669,7 @@ impl AppliedDateAssignment {
     }
 
     /// **Source:** `StepAP214_AppliedDateAssignment.hxx`:51 - `StepAP214_AppliedDateAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_AppliedDateAssignment_get_type_name())
                 .to_string_lossy()
@@ -957,7 +957,7 @@ impl AppliedDocumentReference {
     }
 
     /// **Source:** `StepAP214_AppliedDocumentReference.hxx`:50 - `StepAP214_AppliedDocumentReference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_AppliedDocumentReference_get_type_name())
                 .to_string_lossy()
@@ -1271,7 +1271,7 @@ impl AppliedExternalIdentificationAssignment {
     }
 
     /// **Source:** `StepAP214_AppliedExternalIdentificationAssignment.hxx`:53 - `StepAP214_AppliedExternalIdentificationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AppliedExternalIdentificationAssignment_get_type_name(),
@@ -1601,7 +1601,7 @@ impl AppliedGroupAssignment {
     }
 
     /// **Source:** `StepAP214_AppliedGroupAssignment.hxx`:46 - `StepAP214_AppliedGroupAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_AppliedGroupAssignment_get_type_name())
                 .to_string_lossy()
@@ -1879,7 +1879,7 @@ impl AppliedOrganizationAssignment {
     }
 
     /// **Source:** `StepAP214_AppliedOrganizationAssignment.hxx`:51 - `StepAP214_AppliedOrganizationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AppliedOrganizationAssignment_get_type_name(),
@@ -2205,7 +2205,7 @@ impl AppliedPersonAndOrganizationAssignment {
     }
 
     /// **Source:** `StepAP214_AppliedPersonAndOrganizationAssignment.hxx`:54 - `StepAP214_AppliedPersonAndOrganizationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AppliedPersonAndOrganizationAssignment_get_type_name(),
@@ -2484,7 +2484,7 @@ impl AppliedPresentedItem {
     }
 
     /// **Source:** `StepAP214_AppliedPresentedItem.hxx`:47 - `StepAP214_AppliedPresentedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_AppliedPresentedItem_get_type_name())
                 .to_string_lossy()
@@ -2749,7 +2749,7 @@ impl AppliedSecurityClassificationAssignment {
     }
 
     /// **Source:** `StepAP214_AppliedSecurityClassificationAssignment.hxx`:54 - `StepAP214_AppliedSecurityClassificationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AppliedSecurityClassificationAssignment_get_type_name(),
@@ -3461,7 +3461,7 @@ impl AutoDesignActualDateAndTimeAssignment {
     }
 
     /// **Source:** `StepAP214_AutoDesignActualDateAndTimeAssignment.hxx`:52 - `StepAP214_AutoDesignActualDateAndTimeAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AutoDesignActualDateAndTimeAssignment_get_type_name(),
@@ -3767,7 +3767,7 @@ impl AutoDesignActualDateAssignment {
     }
 
     /// **Source:** `StepAP214_AutoDesignActualDateAssignment.hxx`:51 - `StepAP214_AutoDesignActualDateAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AutoDesignActualDateAssignment_get_type_name(),
@@ -4067,7 +4067,7 @@ impl AutoDesignApprovalAssignment {
     }
 
     /// **Source:** `StepAP214_AutoDesignApprovalAssignment.hxx`:49 - `StepAP214_AutoDesignApprovalAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AutoDesignApprovalAssignment_get_type_name(),
@@ -4362,7 +4362,7 @@ impl AutoDesignDateAndPersonAssignment {
     }
 
     /// **Source:** `StepAP214_AutoDesignDateAndPersonAssignment.hxx`:55 - `StepAP214_AutoDesignDateAndPersonAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AutoDesignDateAndPersonAssignment_get_type_name(),
@@ -5452,7 +5452,7 @@ impl AutoDesignDocumentReference {
     }
 
     /// **Source:** `StepAP214_AutoDesignDocumentReference.hxx`:50 - `StepAP214_AutoDesignDocumentReference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AutoDesignDocumentReference_get_type_name(),
@@ -6075,7 +6075,7 @@ impl AutoDesignGroupAssignment {
     }
 
     /// **Source:** `StepAP214_AutoDesignGroupAssignment.hxx`:49 - `StepAP214_AutoDesignGroupAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_AutoDesignGroupAssignment_get_type_name()).to_string_lossy().into_owned()
         }
@@ -6693,7 +6693,7 @@ impl AutoDesignNominalDateAndTimeAssignment {
     }
 
     /// **Source:** `StepAP214_AutoDesignNominalDateAndTimeAssignment.hxx`:52 - `StepAP214_AutoDesignNominalDateAndTimeAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AutoDesignNominalDateAndTimeAssignment_get_type_name(),
@@ -6999,7 +6999,7 @@ impl AutoDesignNominalDateAssignment {
     }
 
     /// **Source:** `StepAP214_AutoDesignNominalDateAssignment.hxx`:51 - `StepAP214_AutoDesignNominalDateAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AutoDesignNominalDateAssignment_get_type_name(),
@@ -7308,7 +7308,7 @@ impl AutoDesignOrganizationAssignment {
     }
 
     /// **Source:** `StepAP214_AutoDesignOrganizationAssignment.hxx`:51 - `StepAP214_AutoDesignOrganizationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AutoDesignOrganizationAssignment_get_type_name(),
@@ -7950,7 +7950,7 @@ impl AutoDesignPersonAndOrganizationAssignment {
     }
 
     /// **Source:** `StepAP214_AutoDesignPersonAndOrganizationAssignment.hxx`:54 - `StepAP214_AutoDesignPersonAndOrganizationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AutoDesignPersonAndOrganizationAssignment_get_type_name(),
@@ -8240,7 +8240,7 @@ impl AutoDesignPresentedItem {
     }
 
     /// **Source:** `StepAP214_AutoDesignPresentedItem.hxx`:49 - `StepAP214_AutoDesignPresentedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_AutoDesignPresentedItem_get_type_name())
                 .to_string_lossy()
@@ -9197,7 +9197,7 @@ impl AutoDesignSecurityClassificationAssignment {
     }
 
     /// **Source:** `StepAP214_AutoDesignSecurityClassificationAssignment.hxx`:53 - `StepAP214_AutoDesignSecurityClassificationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_AutoDesignSecurityClassificationAssignment_get_type_name(),
@@ -9422,7 +9422,7 @@ impl Class {
     }
 
     /// **Source:** `StepAP214_Class.hxx`:35 - `StepAP214_Class::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_Class_get_type_name())
                 .to_string_lossy()
@@ -11462,7 +11462,7 @@ impl ExternallyDefinedClass {
     }
 
     /// **Source:** `StepAP214_ExternallyDefinedClass.hxx`:54 - `StepAP214_ExternallyDefinedClass::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_ExternallyDefinedClass_get_type_name())
                 .to_string_lossy()
@@ -11789,7 +11789,7 @@ impl ExternallyDefinedGeneralProperty {
     }
 
     /// **Source:** `StepAP214_ExternallyDefinedGeneralProperty.hxx`:55 - `StepAP214_ExternallyDefinedGeneralProperty::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_ExternallyDefinedGeneralProperty_get_type_name(),
@@ -12460,7 +12460,7 @@ impl HArray1OfApprovalItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfApprovalItem.hxx`:23 - `StepAP214_HArray1OfApprovalItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_HArray1OfApprovalItem_get_type_name())
                 .to_string_lossy()
@@ -12696,7 +12696,7 @@ impl HArray1OfAutoDesignDateAndPersonItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfAutoDesignDateAndPersonItem.hxx`:23 - `StepAP214_HArray1OfAutoDesignDateAndPersonItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_HArray1OfAutoDesignDateAndPersonItem_get_type_name(),
@@ -12944,7 +12944,7 @@ impl HArray1OfAutoDesignDateAndTimeItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfAutoDesignDateAndTimeItem.hxx`:23 - `StepAP214_HArray1OfAutoDesignDateAndTimeItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_HArray1OfAutoDesignDateAndTimeItem_get_type_name(),
@@ -13190,7 +13190,7 @@ impl HArray1OfAutoDesignDatedItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfAutoDesignDatedItem.hxx`:23 - `StepAP214_HArray1OfAutoDesignDatedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_HArray1OfAutoDesignDatedItem_get_type_name(),
@@ -13432,7 +13432,7 @@ impl HArray1OfAutoDesignGeneralOrgItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfAutoDesignGeneralOrgItem.hxx`:23 - `StepAP214_HArray1OfAutoDesignGeneralOrgItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_HArray1OfAutoDesignGeneralOrgItem_get_type_name(),
@@ -13670,7 +13670,7 @@ impl HArray1OfAutoDesignGroupedItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfAutoDesignGroupedItem.hxx`:23 - `StepAP214_HArray1OfAutoDesignGroupedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_HArray1OfAutoDesignGroupedItem_get_type_name(),
@@ -13916,7 +13916,7 @@ impl HArray1OfAutoDesignPresentedItemSelect {
     }
 
     /// **Source:** `StepAP214_HArray1OfAutoDesignPresentedItemSelect.hxx`:23 - `StepAP214_HArray1OfAutoDesignPresentedItemSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_HArray1OfAutoDesignPresentedItemSelect_get_type_name(),
@@ -14160,7 +14160,7 @@ impl HArray1OfAutoDesignReferencingItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfAutoDesignReferencingItem.hxx`:23 - `StepAP214_HArray1OfAutoDesignReferencingItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_HArray1OfAutoDesignReferencingItem_get_type_name(),
@@ -14404,7 +14404,7 @@ impl HArray1OfDateAndTimeItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfDateAndTimeItem.hxx`:23 - `StepAP214_HArray1OfDateAndTimeItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_HArray1OfDateAndTimeItem_get_type_name())
                 .to_string_lossy()
@@ -14632,7 +14632,7 @@ impl HArray1OfDateItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfDateItem.hxx`:23 - `StepAP214_HArray1OfDateItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_HArray1OfDateItem_get_type_name())
                 .to_string_lossy()
@@ -14849,7 +14849,7 @@ impl HArray1OfDocumentReferenceItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfDocumentReferenceItem.hxx`:23 - `StepAP214_HArray1OfDocumentReferenceItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_HArray1OfDocumentReferenceItem_get_type_name(),
@@ -15095,7 +15095,7 @@ impl HArray1OfExternalIdentificationItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfExternalIdentificationItem.hxx`:23 - `StepAP214_HArray1OfExternalIdentificationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_HArray1OfExternalIdentificationItem_get_type_name(),
@@ -15331,7 +15331,7 @@ impl HArray1OfGroupItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfGroupItem.hxx`:23 - `StepAP214_HArray1OfGroupItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_HArray1OfGroupItem_get_type_name())
                 .to_string_lossy()
@@ -15556,7 +15556,7 @@ impl HArray1OfOrganizationItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfOrganizationItem.hxx`:23 - `StepAP214_HArray1OfOrganizationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_HArray1OfOrganizationItem_get_type_name()).to_string_lossy().into_owned()
         }
@@ -15792,7 +15792,7 @@ impl HArray1OfPersonAndOrganizationItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfPersonAndOrganizationItem.hxx`:23 - `StepAP214_HArray1OfPersonAndOrganizationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_HArray1OfPersonAndOrganizationItem_get_type_name(),
@@ -16038,7 +16038,7 @@ impl HArray1OfPresentedItemSelect {
     }
 
     /// **Source:** `StepAP214_HArray1OfPresentedItemSelect.hxx`:23 - `StepAP214_HArray1OfPresentedItemSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_HArray1OfPresentedItemSelect_get_type_name(),
@@ -16286,7 +16286,7 @@ impl HArray1OfSecurityClassificationItem {
     }
 
     /// **Source:** `StepAP214_HArray1OfSecurityClassificationItem.hxx`:23 - `StepAP214_HArray1OfSecurityClassificationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP214_HArray1OfSecurityClassificationItem_get_type_name(),
@@ -17634,7 +17634,10 @@ impl Protocol {
     }
 
     /// **Source:** `StepAP214_Protocol.hxx`:43 - `StepAP214_Protocol::SchemaName()`
-    pub fn schema_name(&self, theModel: &crate::ffi::HandleInterfaceInterfaceModel) -> String {
+    pub fn schema_name(
+        &self,
+        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_Protocol_schema_name(
                 self as *const Self,
@@ -17668,7 +17671,7 @@ impl Protocol {
     }
 
     /// **Source:** `StepAP214_Protocol.hxx`:53 - `StepAP214_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_Protocol_get_type_name())
                 .to_string_lossy()
@@ -18016,7 +18019,7 @@ impl RepItemGroup {
     }
 
     /// **Source:** `StepAP214_RepItemGroup.hxx`:51 - `StepAP214_RepItemGroup::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP214_RepItemGroup_get_type_name())
                 .to_string_lossy()

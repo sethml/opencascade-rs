@@ -50,7 +50,7 @@ impl Persistent {
 
     /// **Source:** `StdObjMgt_Persistent.hxx`:61 - `StdObjMgt_Persistent::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdObjMgt_Persistent_p_name(self as *const Self))
                 .to_string_lossy()

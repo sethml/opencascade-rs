@@ -333,7 +333,7 @@ impl Document {
     }
 
     /// **Source:** `PCDM_Document.hxx`:32 - `PCDM_Document::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PCDM_Document_get_type_name())
                 .to_string_lossy()
@@ -544,7 +544,7 @@ impl DriverError {
     }
 
     /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PCDM_DriverError_get_type_name())
                 .to_string_lossy()
@@ -885,7 +885,7 @@ impl ReadWriter {
     }
 
     /// **Source:** `PCDM_ReadWriter.hxx`:103 - `PCDM_ReadWriter::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PCDM_ReadWriter_get_type_name())
                 .to_string_lossy()
@@ -1147,7 +1147,7 @@ impl ReadWriter_1 {
     }
 
     /// **Source:** `PCDM_ReadWriter_1.hxx`:79 - `PCDM_ReadWriter_1::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PCDM_ReadWriter_1_get_type_name())
                 .to_string_lossy()
@@ -1332,7 +1332,7 @@ impl Reader {
     }
 
     /// **Source:** `PCDM_Reader.hxx`:59 - `PCDM_Reader::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PCDM_Reader_get_type_name())
                 .to_string_lossy()
@@ -1823,7 +1823,7 @@ impl ReaderFilter {
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:128 - `PCDM_ReaderFilter::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PCDM_ReaderFilter_get_type_name())
                 .to_string_lossy()
@@ -2037,7 +2037,7 @@ impl ReferenceIterator {
     }
 
     /// **Source:** `PCDM_ReferenceIterator.hxx`:48 - `PCDM_ReferenceIterator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PCDM_ReferenceIterator_get_type_name())
                 .to_string_lossy()
@@ -2202,7 +2202,7 @@ impl RetrievalDriver {
     }
 
     /// **Source:** `PCDM_RetrievalDriver.hxx`:50 - `PCDM_RetrievalDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PCDM_RetrievalDriver_get_type_name())
                 .to_string_lossy()
@@ -2670,7 +2670,7 @@ impl StorageDriver {
     }
 
     /// **Source:** `PCDM_StorageDriver.hxx`:88 - `PCDM_StorageDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PCDM_StorageDriver_get_type_name())
                 .to_string_lossy()
@@ -2986,7 +2986,7 @@ impl Writer {
     }
 
     /// **Source:** `PCDM_Writer.hxx`:47 - `PCDM_Writer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::PCDM_Writer_get_type_name())
                 .to_string_lossy()

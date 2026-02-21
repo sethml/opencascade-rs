@@ -312,6 +312,28 @@ impl Drawer {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlConverter_Drawer_ctor()) }
     }
 
+    /// **Source:** `VrmlConverter_Drawer.hxx`:45 - `VrmlConverter_Drawer::SetTypeOfDeflection()`
+    /// by default: TOD_Relative; however, except for the shapes,
+    /// the drawing  will be made using the absolute deviation.
+    pub fn set_type_of_deflection(&mut self, aTypeOfDeflection: crate::aspect::TypeOfDeflection) {
+        unsafe {
+            crate::ffi::VrmlConverter_Drawer_set_type_of_deflection(
+                self as *mut Self,
+                aTypeOfDeflection.into(),
+            )
+        }
+    }
+
+    /// **Source:** `VrmlConverter_Drawer.hxx`:47 - `VrmlConverter_Drawer::TypeOfDeflection()`
+    pub fn type_of_deflection(&self) -> crate::aspect::TypeOfDeflection {
+        unsafe {
+            crate::aspect::TypeOfDeflection::try_from(
+                crate::ffi::VrmlConverter_Drawer_type_of_deflection(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
     /// **Source:** `VrmlConverter_Drawer.hxx`:57 - `VrmlConverter_Drawer::SetMaximalChordialDeviation()`
     /// Defines the maximal chordial deviation when drawing any curve;
     /// If this  value is  one  of  the  obvious  parameters  of  methods,
@@ -672,7 +694,7 @@ impl Drawer {
     }
 
     /// **Source:** `VrmlConverter_Drawer.hxx`:205 - `VrmlConverter_Drawer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlConverter_Drawer_get_type_name())
                 .to_string_lossy()
@@ -783,18 +805,6 @@ impl HandleVrmlConverterDrawer {
     }
 }
 
-// ── Skipped symbols for Drawer (2 total) ──
-// SKIPPED: **Source:** `VrmlConverter_Drawer.hxx`:45 - `VrmlConverter_Drawer::SetTypeOfDeflection`
-//   method: by default: TOD_Relative; however, except for the shapes,
-//   method: the drawing  will be made using the absolute deviation.
-//   Reason: param 'aTypeOfDeflection' uses unknown type 'Aspect_TypeOfDeflection'
-//   // pub fn set_type_of_deflection(&mut self, aTypeOfDeflection: TypeOfDeflection);
-//
-// SKIPPED: **Source:** `VrmlConverter_Drawer.hxx`:47 - `VrmlConverter_Drawer::TypeOfDeflection`
-//   Reason: return type 'Aspect_TypeOfDeflection' is unknown
-//   // pub fn type_of_deflection(&self) -> OwnedPtr<Aspect_TypeOfDeflection>;
-//
-
 // ========================
 // From VrmlConverter_HLRShape.hxx
 // ========================
@@ -896,7 +906,7 @@ impl IsoAspect {
     }
 
     /// **Source:** `VrmlConverter_IsoAspect.hxx`:50 - `VrmlConverter_IsoAspect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlConverter_IsoAspect_get_type_name())
                 .to_string_lossy()
@@ -1141,7 +1151,7 @@ impl LineAspect {
     }
 
     /// **Source:** `VrmlConverter_LineAspect.hxx`:54 - `VrmlConverter_LineAspect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlConverter_LineAspect_get_type_name())
                 .to_string_lossy()
@@ -1353,7 +1363,7 @@ impl PointAspect {
     }
 
     /// **Source:** `VrmlConverter_PointAspect.hxx`:54 - `VrmlConverter_PointAspect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlConverter_PointAspect_get_type_name())
                 .to_string_lossy()
@@ -1571,7 +1581,7 @@ impl Projector {
     }
 
     /// **Source:** `VrmlConverter_Projector.hxx`:79 - `VrmlConverter_Projector::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlConverter_Projector_get_type_name())
                 .to_string_lossy()
@@ -1830,7 +1840,7 @@ impl ShadingAspect {
     }
 
     /// **Source:** `VrmlConverter_ShadingAspect.hxx`:67 - `VrmlConverter_ShadingAspect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlConverter_ShadingAspect_get_type_name())
                 .to_string_lossy()

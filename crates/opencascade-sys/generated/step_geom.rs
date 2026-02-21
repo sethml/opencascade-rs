@@ -338,7 +338,7 @@ impl Axis1Placement {
     }
 
     /// **Source:** `StepGeom_Axis1Placement.hxx`:52 - `StepGeom_Axis1Placement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Axis1Placement_get_type_name())
                 .to_string_lossy()
@@ -823,7 +823,7 @@ impl Axis2Placement2d {
     }
 
     /// **Source:** `StepGeom_Axis2Placement2d.hxx`:52 - `StepGeom_Axis2Placement2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Axis2Placement2d_get_type_name())
                 .to_string_lossy()
@@ -1167,7 +1167,7 @@ impl Axis2Placement3d {
     }
 
     /// **Source:** `StepGeom_Axis2Placement3d.hxx`:62 - `StepGeom_Axis2Placement3d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Axis2Placement3d_get_type_name())
                 .to_string_lossy()
@@ -1585,7 +1585,7 @@ impl BSplineCurve {
     }
 
     /// **Source:** `StepGeom_BSplineCurve.hxx`:74 - `StepGeom_BSplineCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_BSplineCurve_get_type_name())
                 .to_string_lossy()
@@ -2126,7 +2126,7 @@ impl BSplineCurveWithKnots {
     }
 
     /// **Source:** `StepGeom_BSplineCurveWithKnots.hxx`:74 - `StepGeom_BSplineCurveWithKnots::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_BSplineCurveWithKnots_get_type_name())
                 .to_string_lossy()
@@ -2803,7 +2803,7 @@ impl BSplineCurveWithKnotsAndRationalBSplineCurve {
     }
 
     /// **Source:** `StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve.hxx`:104 - `StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_get_type_name(),
@@ -3390,7 +3390,7 @@ impl BSplineSurface {
     }
 
     /// **Source:** `StepGeom_BSplineSurface.hxx`:87 - `StepGeom_BSplineSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_BSplineSurface_get_type_name())
                 .to_string_lossy()
@@ -4010,7 +4010,7 @@ impl BSplineSurfaceWithKnots {
     }
 
     /// **Source:** `StepGeom_BSplineSurfaceWithKnots.hxx`:93 - `StepGeom_BSplineSurfaceWithKnots::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_BSplineSurfaceWithKnots_get_type_name())
                 .to_string_lossy()
@@ -4820,7 +4820,7 @@ impl BSplineSurfaceWithKnotsAndRationalBSplineSurface {
     }
 
     /// **Source:** `StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface.hxx`:131 - `StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_get_type_name(
@@ -5255,7 +5255,7 @@ impl BezierCurve {
     }
 
     /// **Source:** `StepGeom_BezierCurve.hxx`:35 - `StepGeom_BezierCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_BezierCurve_get_type_name())
                 .to_string_lossy()
@@ -5806,7 +5806,7 @@ impl BezierCurveAndRationalBSplineCurve {
     }
 
     /// **Source:** `StepGeom_BezierCurveAndRationalBSplineCurve.hxx`:77 - `StepGeom_BezierCurveAndRationalBSplineCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_BezierCurveAndRationalBSplineCurve_get_type_name(),
@@ -6260,7 +6260,7 @@ impl BezierSurface {
     }
 
     /// **Source:** `StepGeom_BezierSurface.hxx`:35 - `StepGeom_BezierSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_BezierSurface_get_type_name())
                 .to_string_lossy()
@@ -6877,7 +6877,7 @@ impl BezierSurfaceAndRationalBSplineSurface {
     }
 
     /// **Source:** `StepGeom_BezierSurfaceAndRationalBSplineSurface.hxx`:84 - `StepGeom_BezierSurfaceAndRationalBSplineSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_BezierSurfaceAndRationalBSplineSurface_get_type_name(),
@@ -7361,7 +7361,7 @@ impl BoundaryCurve {
     }
 
     /// **Source:** `StepGeom_BoundaryCurve.hxx`:35 - `StepGeom_BoundaryCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_BoundaryCurve_get_type_name())
                 .to_string_lossy()
@@ -7780,7 +7780,7 @@ impl BoundedCurve {
     }
 
     /// **Source:** `StepGeom_BoundedCurve.hxx`:35 - `StepGeom_BoundedCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_BoundedCurve_get_type_name())
                 .to_string_lossy()
@@ -8309,7 +8309,7 @@ impl BoundedSurface {
     }
 
     /// **Source:** `StepGeom_BoundedSurface.hxx`:35 - `StepGeom_BoundedSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_BoundedSurface_get_type_name())
                 .to_string_lossy()
@@ -8831,7 +8831,7 @@ impl CartesianPoint {
     }
 
     /// **Source:** `StepGeom_CartesianPoint.hxx`:58 - `StepGeom_CartesianPoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_CartesianPoint_get_type_name())
                 .to_string_lossy()
@@ -9222,7 +9222,7 @@ impl CartesianTransformationOperator {
     }
 
     /// **Source:** `StepGeom_CartesianTransformationOperator.hxx`:76 - `StepGeom_CartesianTransformationOperator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_CartesianTransformationOperator_get_type_name(),
@@ -9507,7 +9507,7 @@ impl CartesianTransformationOperator2d {
     }
 
     /// **Source:** `StepGeom_CartesianTransformationOperator2d.hxx`:36 - `StepGeom_CartesianTransformationOperator2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_CartesianTransformationOperator2d_get_type_name(),
@@ -10010,7 +10010,7 @@ impl CartesianTransformationOperator3d {
     }
 
     /// **Source:** `StepGeom_CartesianTransformationOperator3d.hxx`:58 - `StepGeom_CartesianTransformationOperator3d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_CartesianTransformationOperator3d_get_type_name(),
@@ -10436,7 +10436,7 @@ impl Circle {
     }
 
     /// **Source:** `StepGeom_Circle.hxx`:45 - `StepGeom_Circle::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Circle_get_type_name())
                 .to_string_lossy()
@@ -10766,7 +10766,7 @@ impl CompositeCurve {
     }
 
     /// **Source:** `StepGeom_CompositeCurve.hxx`:58 - `StepGeom_CompositeCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_CompositeCurve_get_type_name())
                 .to_string_lossy()
@@ -11091,7 +11091,7 @@ impl CompositeCurveOnSurface {
     }
 
     /// **Source:** `StepGeom_CompositeCurveOnSurface.hxx`:35 - `StepGeom_CompositeCurveOnSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_CompositeCurveOnSurface_get_type_name())
                 .to_string_lossy()
@@ -11605,7 +11605,7 @@ impl CompositeCurveSegment {
     }
 
     /// **Source:** `StepGeom_CompositeCurveSegment.hxx`:53 - `StepGeom_CompositeCurveSegment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_CompositeCurveSegment_get_type_name())
                 .to_string_lossy()
@@ -11809,7 +11809,7 @@ impl Conic {
     }
 
     /// **Source:** `StepGeom_Conic.hxx`:43 - `StepGeom_Conic::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Conic_get_type_name())
                 .to_string_lossy()
@@ -12131,7 +12131,7 @@ impl ConicalSurface {
     }
 
     /// **Source:** `StepGeom_ConicalSurface.hxx`:50 - `StepGeom_ConicalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_ConicalSurface_get_type_name())
                 .to_string_lossy()
@@ -12420,7 +12420,7 @@ impl Curve {
     }
 
     /// **Source:** `StepGeom_Curve.hxx`:35 - `StepGeom_Curve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Curve_get_type_name())
                 .to_string_lossy()
@@ -13219,7 +13219,7 @@ impl CurveBoundedSurface {
     }
 
     /// **Source:** `StepGeom_CurveBoundedSurface.hxx`:63 - `StepGeom_CurveBoundedSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_CurveBoundedSurface_get_type_name())
                 .to_string_lossy()
@@ -13754,7 +13754,7 @@ impl CurveReplica {
     }
 
     /// **Source:** `StepGeom_CurveReplica.hxx`:51 - `StepGeom_CurveReplica::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_CurveReplica_get_type_name())
                 .to_string_lossy()
@@ -14021,7 +14021,7 @@ impl CylindricalSurface {
     }
 
     /// **Source:** `StepGeom_CylindricalSurface.hxx`:45 - `StepGeom_CylindricalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_CylindricalSurface_get_type_name())
                 .to_string_lossy()
@@ -14387,7 +14387,7 @@ impl DegeneratePcurve {
     }
 
     /// **Source:** `StepGeom_DegeneratePcurve.hxx`:51 - `StepGeom_DegeneratePcurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_DegeneratePcurve_get_type_name())
                 .to_string_lossy()
@@ -14686,7 +14686,7 @@ impl DegenerateToroidalSurface {
     }
 
     /// **Source:** `StepGeom_DegenerateToroidalSurface.hxx`:47 - `StepGeom_DegenerateToroidalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_DegenerateToroidalSurface_get_type_name())
                 .to_string_lossy()
@@ -15105,7 +15105,7 @@ impl Direction {
     }
 
     /// **Source:** `StepGeom_Direction.hxx`:50 - `StepGeom_Direction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Direction_get_type_name())
                 .to_string_lossy()
@@ -15336,7 +15336,7 @@ impl ElementarySurface {
     }
 
     /// **Source:** `StepGeom_ElementarySurface.hxx`:44 - `StepGeom_ElementarySurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_ElementarySurface_get_type_name())
                 .to_string_lossy()
@@ -15733,7 +15733,7 @@ impl Ellipse {
     }
 
     /// **Source:** `StepGeom_Ellipse.hxx`:50 - `StepGeom_Ellipse::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Ellipse_get_type_name())
                 .to_string_lossy()
@@ -16034,7 +16034,7 @@ impl EvaluatedDegeneratePcurve {
     }
 
     /// **Source:** `StepGeom_EvaluatedDegeneratePcurve.hxx`:48 - `StepGeom_EvaluatedDegeneratePcurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_EvaluatedDegeneratePcurve_get_type_name())
                 .to_string_lossy()
@@ -16555,7 +16555,7 @@ impl GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
     }
 
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:99 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_get_type_name()).to_string_lossy().into_owned()
         }
@@ -16811,7 +16811,7 @@ impl GeometricRepresentationContext {
     }
 
     /// **Source:** `StepGeom_GeometricRepresentationContext.hxx`:46 - `StepGeom_GeometricRepresentationContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_GeometricRepresentationContext_get_type_name(),
@@ -17175,7 +17175,7 @@ impl GeometricRepresentationContextAndGlobalUnitAssignedContext {
     }
 
     /// **Source:** `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext.hxx`:78 - `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_get_type_name()).to_string_lossy().into_owned()
         }
@@ -17472,7 +17472,7 @@ impl GeometricRepresentationContextAndParametricRepresentationContext {
     }
 
     /// **Source:** `StepGeom_GeometricRepresentationContextAndParametricRepresentationContext.hxx`:68 - `StepGeom_GeometricRepresentationContextAndParametricRepresentationContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_GeometricRepresentationContextAndParametricRepresentationContext_get_type_name()).to_string_lossy().into_owned()
         }
@@ -17692,7 +17692,7 @@ impl GeometricRepresentationItem {
     }
 
     /// **Source:** `StepGeom_GeometricRepresentationItem.hxx`:35 - `StepGeom_GeometricRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_GeometricRepresentationItem_get_type_name(),
@@ -21293,7 +21293,7 @@ impl HArray1OfBoundaryCurve {
     }
 
     /// **Source:** `StepGeom_HArray1OfBoundaryCurve.hxx`:24 - `StepGeom_HArray1OfBoundaryCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_HArray1OfBoundaryCurve_get_type_name())
                 .to_string_lossy()
@@ -21521,7 +21521,7 @@ impl HArray1OfCartesianPoint {
     }
 
     /// **Source:** `StepGeom_HArray1OfCartesianPoint.hxx`:23 - `StepGeom_HArray1OfCartesianPoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_HArray1OfCartesianPoint_get_type_name())
                 .to_string_lossy()
@@ -21759,7 +21759,7 @@ impl HArray1OfCompositeCurveSegment {
     }
 
     /// **Source:** `StepGeom_HArray1OfCompositeCurveSegment.hxx`:23 - `StepGeom_HArray1OfCompositeCurveSegment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_HArray1OfCompositeCurveSegment_get_type_name(),
@@ -21995,7 +21995,7 @@ impl HArray1OfCurve {
     }
 
     /// **Source:** `StepGeom_HArray1OfCurve.hxx`:24 - `StepGeom_HArray1OfCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_HArray1OfCurve_get_type_name())
                 .to_string_lossy()
@@ -22206,7 +22206,7 @@ impl HArray1OfPcurveOrSurface {
     }
 
     /// **Source:** `StepGeom_HArray1OfPcurveOrSurface.hxx`:23 - `StepGeom_HArray1OfPcurveOrSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_HArray1OfPcurveOrSurface_get_type_name())
                 .to_string_lossy()
@@ -22440,7 +22440,7 @@ impl HArray1OfSurfaceBoundary {
     }
 
     /// **Source:** `StepGeom_HArray1OfSurfaceBoundary.hxx`:23 - `StepGeom_HArray1OfSurfaceBoundary::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_HArray1OfSurfaceBoundary_get_type_name())
                 .to_string_lossy()
@@ -22672,7 +22672,7 @@ impl HArray1OfTrimmingSelect {
     }
 
     /// **Source:** `StepGeom_HArray1OfTrimmingSelect.hxx`:23 - `StepGeom_HArray1OfTrimmingSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_HArray1OfTrimmingSelect_get_type_name())
                 .to_string_lossy()
@@ -22888,7 +22888,7 @@ impl HArray2OfCartesianPoint {
     }
 
     /// **Source:** `StepGeom_HArray2OfCartesianPoint.hxx`:23 - `StepGeom_HArray2OfCartesianPoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_HArray2OfCartesianPoint_get_type_name())
                 .to_string_lossy()
@@ -23102,7 +23102,7 @@ impl HArray2OfSurfacePatch {
     }
 
     /// **Source:** `StepGeom_HArray2OfSurfacePatch.hxx`:23 - `StepGeom_HArray2OfSurfacePatch::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_HArray2OfSurfacePatch_get_type_name())
                 .to_string_lossy()
@@ -23309,7 +23309,7 @@ impl Hyperbola {
     }
 
     /// **Source:** `StepGeom_Hyperbola.hxx`:50 - `StepGeom_Hyperbola::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Hyperbola_get_type_name())
                 .to_string_lossy()
@@ -23571,7 +23571,7 @@ impl IntersectionCurve {
     }
 
     /// **Source:** `StepGeom_IntersectionCurve.hxx`:34 - `StepGeom_IntersectionCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_IntersectionCurve_get_type_name())
                 .to_string_lossy()
@@ -23987,7 +23987,7 @@ impl Line {
     }
 
     /// **Source:** `StepGeom_Line.hxx`:50 - `StepGeom_Line::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Line_get_type_name())
                 .to_string_lossy()
@@ -24287,7 +24287,7 @@ impl OffsetCurve3d {
     }
 
     /// **Source:** `StepGeom_OffsetCurve3d.hxx`:60 - `StepGeom_OffsetCurve3d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_OffsetCurve3d_get_type_name())
                 .to_string_lossy()
@@ -24588,7 +24588,7 @@ impl OffsetSurface {
     }
 
     /// **Source:** `StepGeom_OffsetSurface.hxx`:55 - `StepGeom_OffsetSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_OffsetSurface_get_type_name())
                 .to_string_lossy()
@@ -24857,7 +24857,7 @@ impl OrientedSurface {
     }
 
     /// **Source:** `StepGeom_OrientedSurface.hxx`:47 - `StepGeom_OrientedSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_OrientedSurface_get_type_name())
                 .to_string_lossy()
@@ -25103,7 +25103,7 @@ impl OuterBoundaryCurve {
     }
 
     /// **Source:** `StepGeom_OuterBoundaryCurve.hxx`:35 - `StepGeom_OuterBoundaryCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_OuterBoundaryCurve_get_type_name())
                 .to_string_lossy()
@@ -25582,7 +25582,7 @@ impl Parabola {
     }
 
     /// **Source:** `StepGeom_Parabola.hxx`:45 - `StepGeom_Parabola::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Parabola_get_type_name())
                 .to_string_lossy()
@@ -25894,7 +25894,7 @@ impl Pcurve {
     }
 
     /// **Source:** `StepGeom_Pcurve.hxx`:51 - `StepGeom_Pcurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Pcurve_get_type_name())
                 .to_string_lossy()
@@ -26315,7 +26315,7 @@ impl Placement {
     }
 
     /// **Source:** `StepGeom_Placement.hxx`:44 - `StepGeom_Placement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Placement_get_type_name())
                 .to_string_lossy()
@@ -26595,7 +26595,7 @@ impl Plane {
     }
 
     /// **Source:** `StepGeom_Plane.hxx`:35 - `StepGeom_Plane::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Plane_get_type_name())
                 .to_string_lossy()
@@ -26864,7 +26864,7 @@ impl Point {
     }
 
     /// **Source:** `StepGeom_Point.hxx`:35 - `StepGeom_Point::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Point_get_type_name())
                 .to_string_lossy()
@@ -27243,7 +27243,7 @@ impl PointOnCurve {
     }
 
     /// **Source:** `StepGeom_PointOnCurve.hxx`:49 - `StepGeom_PointOnCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_PointOnCurve_get_type_name())
                 .to_string_lossy()
@@ -27548,7 +27548,7 @@ impl PointOnSurface {
     }
 
     /// **Source:** `StepGeom_PointOnSurface.hxx`:55 - `StepGeom_PointOnSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_PointOnSurface_get_type_name())
                 .to_string_lossy()
@@ -27842,7 +27842,7 @@ impl PointReplica {
     }
 
     /// **Source:** `StepGeom_PointReplica.hxx`:51 - `StepGeom_PointReplica::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_PointReplica_get_type_name())
                 .to_string_lossy()
@@ -28121,7 +28121,7 @@ impl Polyline {
     }
 
     /// **Source:** `StepGeom_Polyline.hxx`:50 - `StepGeom_Polyline::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Polyline_get_type_name())
                 .to_string_lossy()
@@ -28373,7 +28373,7 @@ impl QuasiUniformCurve {
     }
 
     /// **Source:** `StepGeom_QuasiUniformCurve.hxx`:35 - `StepGeom_QuasiUniformCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_QuasiUniformCurve_get_type_name())
                 .to_string_lossy()
@@ -28952,7 +28952,7 @@ impl QuasiUniformCurveAndRationalBSplineCurve {
     }
 
     /// **Source:** `StepGeom_QuasiUniformCurveAndRationalBSplineCurve.hxx`:78 - `StepGeom_QuasiUniformCurveAndRationalBSplineCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_QuasiUniformCurveAndRationalBSplineCurve_get_type_name(),
@@ -29384,7 +29384,7 @@ impl QuasiUniformSurface {
     }
 
     /// **Source:** `StepGeom_QuasiUniformSurface.hxx`:35 - `StepGeom_QuasiUniformSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_QuasiUniformSurface_get_type_name())
                 .to_string_lossy()
@@ -30039,7 +30039,7 @@ impl QuasiUniformSurfaceAndRationalBSplineSurface {
     }
 
     /// **Source:** `StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface.hxx`:86 - `StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_get_type_name(),
@@ -30562,7 +30562,7 @@ impl RationalBSplineCurve {
     }
 
     /// **Source:** `StepGeom_RationalBSplineCurve.hxx`:57 - `StepGeom_RationalBSplineCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_RationalBSplineCurve_get_type_name())
                 .to_string_lossy()
@@ -31086,7 +31086,7 @@ impl RationalBSplineSurface {
     }
 
     /// **Source:** `StepGeom_RationalBSplineSurface.hxx`:63 - `StepGeom_RationalBSplineSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_RationalBSplineSurface_get_type_name())
                 .to_string_lossy()
@@ -31659,7 +31659,7 @@ impl RectangularCompositeSurface {
     }
 
     /// **Source:** `StepGeom_RectangularCompositeSurface.hxx`:53 - `StepGeom_RectangularCompositeSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_RectangularCompositeSurface_get_type_name(),
@@ -32072,7 +32072,7 @@ impl RectangularTrimmedSurface {
     }
 
     /// **Source:** `StepGeom_RectangularTrimmedSurface.hxx`:76 - `StepGeom_RectangularTrimmedSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_RectangularTrimmedSurface_get_type_name())
                 .to_string_lossy()
@@ -32417,7 +32417,7 @@ impl ReparametrisedCompositeCurveSegment {
     }
 
     /// **Source:** `StepGeom_ReparametrisedCompositeCurveSegment.hxx`:46 - `StepGeom_ReparametrisedCompositeCurveSegment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_ReparametrisedCompositeCurveSegment_get_type_name(),
@@ -32680,7 +32680,7 @@ impl SeamCurve {
     }
 
     /// **Source:** `StepGeom_SeamCurve.hxx`:34 - `StepGeom_SeamCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_SeamCurve_get_type_name())
                 .to_string_lossy()
@@ -33053,7 +33053,7 @@ impl SphericalSurface {
     }
 
     /// **Source:** `StepGeom_SphericalSurface.hxx`:45 - `StepGeom_SphericalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_SphericalSurface_get_type_name())
                 .to_string_lossy()
@@ -33449,7 +33449,7 @@ impl SuParameters {
     }
 
     /// **Source:** `StepGeom_SuParameters.hxx`:73 - `StepGeom_SuParameters::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_SuParameters_get_type_name())
                 .to_string_lossy()
@@ -33668,7 +33668,7 @@ impl Surface {
     }
 
     /// **Source:** `StepGeom_Surface.hxx`:35 - `StepGeom_Surface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Surface_get_type_name())
                 .to_string_lossy()
@@ -34630,7 +34630,7 @@ impl SurfaceCurve {
     }
 
     /// **Source:** `StepGeom_SurfaceCurve.hxx`:64 - `StepGeom_SurfaceCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_SurfaceCurve_get_type_name())
                 .to_string_lossy()
@@ -34938,7 +34938,7 @@ impl SurfaceCurveAndBoundedCurve {
     }
 
     /// **Source:** `StepGeom_SurfaceCurveAndBoundedCurve.hxx`:41 - `StepGeom_SurfaceCurveAndBoundedCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_SurfaceCurveAndBoundedCurve_get_type_name(),
@@ -35393,7 +35393,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// **Source:** `StepGeom_SurfaceOfLinearExtrusion.hxx`:46 - `StepGeom_SurfaceOfLinearExtrusion::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_SurfaceOfLinearExtrusion_get_type_name())
                 .to_string_lossy()
@@ -35749,7 +35749,7 @@ impl SurfaceOfRevolution {
     }
 
     /// **Source:** `StepGeom_SurfaceOfRevolution.hxx`:46 - `StepGeom_SurfaceOfRevolution::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_SurfaceOfRevolution_get_type_name())
                 .to_string_lossy()
@@ -36159,7 +36159,7 @@ impl SurfacePatch {
     }
 
     /// **Source:** `StepGeom_SurfacePatch.hxx`:63 - `StepGeom_SurfacePatch::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_SurfacePatch_get_type_name())
                 .to_string_lossy()
@@ -36360,7 +36360,7 @@ impl SurfaceReplica {
     }
 
     /// **Source:** `StepGeom_SurfaceReplica.hxx`:51 - `StepGeom_SurfaceReplica::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_SurfaceReplica_get_type_name())
                 .to_string_lossy()
@@ -36625,7 +36625,7 @@ impl SweptSurface {
     }
 
     /// **Source:** `StepGeom_SweptSurface.hxx`:44 - `StepGeom_SweptSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_SweptSurface_get_type_name())
                 .to_string_lossy()
@@ -36944,7 +36944,7 @@ impl ToroidalSurface {
     }
 
     /// **Source:** `StepGeom_ToroidalSurface.hxx`:50 - `StepGeom_ToroidalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_ToroidalSurface_get_type_name())
                 .to_string_lossy()
@@ -37382,7 +37382,7 @@ impl TrimmedCurve {
     }
 
     /// **Source:** `StepGeom_TrimmedCurve.hxx`:77 - `StepGeom_TrimmedCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_TrimmedCurve_get_type_name())
                 .to_string_lossy()
@@ -37652,7 +37652,7 @@ impl TrimmingMember {
     }
 
     /// **Source:** `StepGeom_TrimmingMember.hxx`:38 - `StepGeom_TrimmingMember::Name()`
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_TrimmingMember_name(self as *const Self))
                 .to_string_lossy()
@@ -37672,7 +37672,7 @@ impl TrimmingMember {
     }
 
     /// **Source:** `StepGeom_TrimmingMember.hxx`:42 - `StepGeom_TrimmingMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_TrimmingMember_get_type_name())
                 .to_string_lossy()
@@ -38142,7 +38142,7 @@ impl UniformCurve {
     }
 
     /// **Source:** `StepGeom_UniformCurve.hxx`:35 - `StepGeom_UniformCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_UniformCurve_get_type_name())
                 .to_string_lossy()
@@ -38707,7 +38707,7 @@ impl UniformCurveAndRationalBSplineCurve {
     }
 
     /// **Source:** `StepGeom_UniformCurveAndRationalBSplineCurve.hxx`:77 - `StepGeom_UniformCurveAndRationalBSplineCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_UniformCurveAndRationalBSplineCurve_get_type_name(),
@@ -39155,7 +39155,7 @@ impl UniformSurface {
     }
 
     /// **Source:** `StepGeom_UniformSurface.hxx`:35 - `StepGeom_UniformSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_UniformSurface_get_type_name())
                 .to_string_lossy()
@@ -39781,7 +39781,7 @@ impl UniformSurfaceAndRationalBSplineSurface {
     }
 
     /// **Source:** `StepGeom_UniformSurfaceAndRationalBSplineSurface.hxx`:84 - `StepGeom_UniformSurfaceAndRationalBSplineSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepGeom_UniformSurfaceAndRationalBSplineSurface_get_type_name(),
@@ -40294,7 +40294,7 @@ impl Vector {
     }
 
     /// **Source:** `StepGeom_Vector.hxx`:49 - `StepGeom_Vector::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepGeom_Vector_get_type_name())
                 .to_string_lossy()

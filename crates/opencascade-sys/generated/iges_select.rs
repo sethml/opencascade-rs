@@ -81,7 +81,7 @@ impl Activator {
 
     /// **Source:** `IGESSelect_Activator.hxx`:44 - `IGESSelect_Activator::Help()`
     /// Sends a short help message for IGESSelect commands
-    pub fn help(&self, number: i32) -> String {
+    pub fn help(&self, number: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_Activator_help(
                 self as *const Self,
@@ -98,7 +98,7 @@ impl Activator {
     }
 
     /// **Source:** `IGESSelect_Activator.hxx`:46 - `IGESSelect_Activator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_Activator_get_type_name())
                 .to_string_lossy()
@@ -287,7 +287,7 @@ impl AddFileComment {
 
     /// **Source:** `IGESSelect_AddFileComment.hxx`:59 - `IGESSelect_AddFileComment::Line()`
     /// Returns a stored line given its rank
-    pub fn line(&self, num: i32) -> String {
+    pub fn line(&self, num: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_AddFileComment_line(
                 self as *const Self,
@@ -335,7 +335,7 @@ impl AddFileComment {
     }
 
     /// **Source:** `IGESSelect_AddFileComment.hxx`:72 - `IGESSelect_AddFileComment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_AddFileComment_get_type_name())
                 .to_string_lossy()
@@ -625,7 +625,7 @@ impl AddGroup {
     }
 
     /// **Source:** `IGESSelect_AddGroup.hxx`:50 - `IGESSelect_AddGroup::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_AddGroup_get_type_name())
                 .to_string_lossy()
@@ -972,7 +972,7 @@ impl AutoCorrect {
     }
 
     /// **Source:** `IGESSelect_AutoCorrect.hxx`:71 - `IGESSelect_AutoCorrect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_AutoCorrect_get_type_name())
                 .to_string_lossy()
@@ -1374,7 +1374,7 @@ impl ChangeLevelList {
     }
 
     /// **Source:** `IGESSelect_ChangeLevelList.hxx`:93 - `IGESSelect_ChangeLevelList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_ChangeLevelList_get_type_name())
                 .to_string_lossy()
@@ -1801,7 +1801,7 @@ impl ChangeLevelNumber {
     }
 
     /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:84 - `IGESSelect_ChangeLevelNumber::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_ChangeLevelNumber_get_type_name())
                 .to_string_lossy()
@@ -2181,7 +2181,7 @@ impl ComputeStatus {
     }
 
     /// **Source:** `IGESSelect_ComputeStatus.hxx`:58 - `IGESSelect_ComputeStatus::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_ComputeStatus_get_type_name())
                 .to_string_lossy()
@@ -2619,7 +2619,7 @@ impl CounterOfLevelNumber {
     }
 
     /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:87 - `IGESSelect_CounterOfLevelNumber::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_CounterOfLevelNumber_get_type_name())
                 .to_string_lossy()
@@ -3084,7 +3084,7 @@ impl DispPerDrawing {
     }
 
     /// **Source:** `IGESSelect_DispPerDrawing.hxx`:62 - `IGESSelect_DispPerDrawing::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_DispPerDrawing_get_type_name())
                 .to_string_lossy()
@@ -3391,7 +3391,7 @@ impl DispPerSingleView {
     }
 
     /// **Source:** `IGESSelect_DispPerSingleView.hxx`:62 - `IGESSelect_DispPerSingleView::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_DispPerSingleView_get_type_name())
                 .to_string_lossy()
@@ -3693,7 +3693,7 @@ impl Dumper {
     }
 
     /// **Source:** `IGESSelect_Dumper.hxx`:54 - `IGESSelect_Dumper::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_Dumper_get_type_name())
                 .to_string_lossy()
@@ -3926,7 +3926,7 @@ impl EditDirPart {
     }
 
     /// **Source:** `IGESSelect_EditDirPart.hxx`:67 - `IGESSelect_EditDirPart::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_EditDirPart_get_type_name())
                 .to_string_lossy()
@@ -4275,7 +4275,7 @@ impl EditHeader {
     }
 
     /// **Source:** `IGESSelect_EditHeader.hxx`:67 - `IGESSelect_EditHeader::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_EditHeader_get_type_name())
                 .to_string_lossy()
@@ -4566,7 +4566,7 @@ impl FileModifier {
     }
 
     /// **Source:** `IGESSelect_FileModifier.hxx`:45 - `IGESSelect_FileModifier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_FileModifier_get_type_name())
                 .to_string_lossy()
@@ -4931,7 +4931,7 @@ impl FloatFormat {
     }
 
     /// **Source:** `IGESSelect_FloatFormat.hxx`:94 - `IGESSelect_FloatFormat::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_FloatFormat_get_type_name())
                 .to_string_lossy()
@@ -5184,7 +5184,7 @@ impl IGESName {
         &self,
         ent: &crate::ffi::HandleStandardTransient,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> String {
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_IGESName_value(
                 self as *const Self,
@@ -5202,7 +5202,7 @@ impl IGESName {
     }
 
     /// **Source:** `IGESSelect_IGESName.hxx`:49 - `IGESSelect_IGESName::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_IGESName_get_type_name())
                 .to_string_lossy()
@@ -5525,7 +5525,7 @@ impl IGESTypeForm {
         &self,
         ent: &crate::ffi::HandleStandardTransient,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> String {
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_IGESTypeForm_value(
                 self as *const Self,
@@ -5543,7 +5543,7 @@ impl IGESTypeForm {
     }
 
     /// **Source:** `IGESSelect_IGESTypeForm.hxx`:58 - `IGESSelect_IGESTypeForm::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_IGESTypeForm_get_type_name())
                 .to_string_lossy()
@@ -5913,7 +5913,7 @@ impl ModelModifier {
     }
 
     /// **Source:** `IGESSelect_ModelModifier.hxx`:63 - `IGESSelect_ModelModifier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_ModelModifier_get_type_name())
                 .to_string_lossy()
@@ -6456,7 +6456,7 @@ impl RebuildDrawings {
     }
 
     /// **Source:** `IGESSelect_RebuildDrawings.hxx`:58 - `IGESSelect_RebuildDrawings::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_RebuildDrawings_get_type_name())
                 .to_string_lossy()
@@ -6830,7 +6830,7 @@ impl RebuildGroups {
     }
 
     /// **Source:** `IGESSelect_RebuildGroups.hxx`:58 - `IGESSelect_RebuildGroups::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_RebuildGroups_get_type_name())
                 .to_string_lossy()
@@ -7186,7 +7186,7 @@ impl RemoveCurves {
     }
 
     /// **Source:** `IGESSelect_RemoveCurves.hxx`:52 - `IGESSelect_RemoveCurves::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_RemoveCurves_get_type_name())
                 .to_string_lossy()
@@ -7570,7 +7570,7 @@ impl SelectBasicGeom {
     }
 
     /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:81 - `IGESSelect_SelectBasicGeom::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectBasicGeom_get_type_name())
                 .to_string_lossy()
@@ -7969,7 +7969,7 @@ impl SelectBypassGroup {
     }
 
     /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:60 - `IGESSelect_SelectBypassGroup::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectBypassGroup_get_type_name())
                 .to_string_lossy()
@@ -8393,7 +8393,7 @@ impl SelectBypassSubfigure {
     }
 
     /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:66 - `IGESSelect_SelectBypassSubfigure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectBypassSubfigure_get_type_name())
                 .to_string_lossy()
@@ -8803,7 +8803,7 @@ impl SelectDrawingFrom {
     }
 
     /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:49 - `IGESSelect_SelectDrawingFrom::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectDrawingFrom_get_type_name())
                 .to_string_lossy()
@@ -9144,7 +9144,7 @@ impl SelectFaces {
     }
 
     /// **Source:** `IGESSelect_SelectFaces.hxx`:60 - `IGESSelect_SelectFaces::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectFaces_get_type_name())
                 .to_string_lossy()
@@ -9497,7 +9497,7 @@ impl SelectFromDrawing {
     }
 
     /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:50 - `IGESSelect_SelectFromDrawing::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectFromDrawing_get_type_name())
                 .to_string_lossy()
@@ -9833,7 +9833,7 @@ impl SelectFromSingleView {
     }
 
     /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:50 - `IGESSelect_SelectFromSingleView::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectFromSingleView_get_type_name())
                 .to_string_lossy()
@@ -10208,7 +10208,7 @@ impl SelectLevelNumber {
     }
 
     /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:69 - `IGESSelect_SelectLevelNumber::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectLevelNumber_get_type_name())
                 .to_string_lossy()
@@ -10642,7 +10642,7 @@ impl SelectName {
     }
 
     /// **Source:** `IGESSelect_SelectName.hxx`:63 - `IGESSelect_SelectName::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectName_get_type_name())
                 .to_string_lossy()
@@ -11026,7 +11026,7 @@ impl SelectPCurves {
     }
 
     /// **Source:** `IGESSelect_SelectPCurves.hxx`:58 - `IGESSelect_SelectPCurves::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectPCurves_get_type_name())
                 .to_string_lossy()
@@ -11394,7 +11394,7 @@ impl SelectSingleViewFrom {
     }
 
     /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:49 - `IGESSelect_SelectSingleViewFrom::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectSingleViewFrom_get_type_name())
                 .to_string_lossy()
@@ -11758,7 +11758,7 @@ impl SelectSubordinate {
     }
 
     /// **Source:** `IGESSelect_SelectSubordinate.hxx`:69 - `IGESSelect_SelectSubordinate::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectSubordinate_get_type_name())
                 .to_string_lossy()
@@ -12175,7 +12175,7 @@ impl SelectVisibleStatus {
     }
 
     /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:51 - `IGESSelect_SelectVisibleStatus::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SelectVisibleStatus_get_type_name())
                 .to_string_lossy()
@@ -12651,7 +12651,7 @@ impl SetGlobalParameter {
     }
 
     /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:73 - `IGESSelect_SetGlobalParameter::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SetGlobalParameter_get_type_name())
                 .to_string_lossy()
@@ -13027,7 +13027,7 @@ impl SetLabel {
     }
 
     /// **Source:** `IGESSelect_SetLabel.hxx`:57 - `IGESSelect_SetLabel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SetLabel_get_type_name())
                 .to_string_lossy()
@@ -13359,7 +13359,7 @@ impl SetVersion5 {
     }
 
     /// **Source:** `IGESSelect_SetVersion5.hxx`:56 - `IGESSelect_SetVersion5::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SetVersion5_get_type_name())
                 .to_string_lossy()
@@ -13681,7 +13681,7 @@ impl SignColor {
         &self,
         ent: &crate::ffi::HandleStandardTransient,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> String {
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SignColor_value(
                 self as *const Self,
@@ -13699,7 +13699,7 @@ impl SignColor {
     }
 
     /// **Source:** `IGESSelect_SignColor.hxx`:57 - `IGESSelect_SignColor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SignColor_get_type_name())
                 .to_string_lossy()
@@ -14013,7 +14013,7 @@ impl SignLevelNumber {
         &self,
         ent: &crate::ffi::HandleStandardTransient,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> String {
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SignLevelNumber_value(
                 self as *const Self,
@@ -14031,7 +14031,7 @@ impl SignLevelNumber {
     }
 
     /// **Source:** `IGESSelect_SignLevelNumber.hxx`:52 - `IGESSelect_SignLevelNumber::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SignLevelNumber_get_type_name())
                 .to_string_lossy()
@@ -14375,7 +14375,7 @@ impl SignStatus {
         &self,
         ent: &crate::ffi::HandleStandardTransient,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> String {
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SignStatus_value(
                 self as *const Self,
@@ -14407,7 +14407,7 @@ impl SignStatus {
     }
 
     /// **Source:** `IGESSelect_SignStatus.hxx`:64 - `IGESSelect_SignStatus::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SignStatus_get_type_name())
                 .to_string_lossy()
@@ -14768,7 +14768,7 @@ impl SplineToBSpline {
     }
 
     /// **Source:** `IGESSelect_SplineToBSpline.hxx`:83 - `IGESSelect_SplineToBSpline::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_SplineToBSpline_get_type_name())
                 .to_string_lossy()
@@ -14993,7 +14993,7 @@ impl UpdateCreationDate {
     }
 
     /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:54 - `IGESSelect_UpdateCreationDate::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_UpdateCreationDate_get_type_name())
                 .to_string_lossy()
@@ -15371,7 +15371,7 @@ impl UpdateFileName {
     }
 
     /// **Source:** `IGESSelect_UpdateFileName.hxx`:56 - `IGESSelect_UpdateFileName::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_UpdateFileName_get_type_name())
                 .to_string_lossy()
@@ -15737,7 +15737,7 @@ impl UpdateLastChange {
     }
 
     /// **Source:** `IGESSelect_UpdateLastChange.hxx`:57 - `IGESSelect_UpdateLastChange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_UpdateLastChange_get_type_name())
                 .to_string_lossy()
@@ -16204,7 +16204,7 @@ impl ViewSorter {
     }
 
     /// **Source:** `IGESSelect_ViewSorter.hxx`:117 - `IGESSelect_ViewSorter::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_ViewSorter_get_type_name())
                 .to_string_lossy()
@@ -16412,7 +16412,7 @@ impl WorkLibrary {
     }
 
     /// **Source:** `IGESSelect_WorkLibrary.hxx`:67 - `IGESSelect_WorkLibrary::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSelect_WorkLibrary_get_type_name())
                 .to_string_lossy()

@@ -98,7 +98,7 @@ impl ConstraintDriver {
     }
 
     /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:50 - `XmlMDataXtd_ConstraintDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataXtd_ConstraintDriver_get_type_name())
                 .to_string_lossy()
@@ -364,7 +364,7 @@ impl GeometryDriver {
     }
 
     /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:50 - `XmlMDataXtd_GeometryDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataXtd_GeometryDriver_get_type_name())
                 .to_string_lossy()
@@ -618,7 +618,7 @@ impl PatternStdDriver {
     }
 
     /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:50 - `XmlMDataXtd_PatternStdDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataXtd_PatternStdDriver_get_type_name())
                 .to_string_lossy()
@@ -884,7 +884,7 @@ impl PositionDriver {
     }
 
     /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:49 - `XmlMDataXtd_PositionDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataXtd_PositionDriver_get_type_name())
                 .to_string_lossy()
@@ -1138,7 +1138,7 @@ impl PresentationDriver {
     }
 
     /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:49 - `XmlMDataXtd_PresentationDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataXtd_PresentationDriver_get_type_name())
                 .to_string_lossy()
@@ -1413,7 +1413,7 @@ impl TriangulationDriver {
     }
 
     /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:49 - `XmlMDataXtd_TriangulationDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataXtd_TriangulationDriver_get_type_name())
                 .to_string_lossy()

@@ -286,7 +286,7 @@ impl Association {
     }
 
     /// **Source:** `TopOpeBRepDS_Association.hxx`:51 - `TopOpeBRepDS_Association::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_Association_get_type_name())
                 .to_string_lossy()
@@ -988,7 +988,7 @@ impl Check {
     }
 
     /// **Source:** `TopOpeBRepDS_Check.hxx`:88 - `TopOpeBRepDS_Check::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_Check_get_type_name())
                 .to_string_lossy()
@@ -1657,7 +1657,7 @@ impl CurvePointInterference {
     }
 
     /// **Source:** `TopOpeBRepDS_CurvePointInterference.hxx`:48 - `TopOpeBRepDS_CurvePointInterference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_CurvePointInterference_get_type_name()).to_string_lossy().into_owned()
         }
@@ -3147,7 +3147,7 @@ impl EdgeVertexInterference {
     }
 
     /// **Source:** `TopOpeBRepDS_EdgeVertexInterference.hxx`:78 - `TopOpeBRepDS_EdgeVertexInterference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_EdgeVertexInterference_get_type_name()).to_string_lossy().into_owned()
         }
@@ -3643,7 +3643,7 @@ impl FaceEdgeInterference {
     }
 
     /// **Source:** `TopOpeBRepDS_FaceEdgeInterference.hxx`:44 - `TopOpeBRepDS_FaceEdgeInterference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_FaceEdgeInterference_get_type_name())
                 .to_string_lossy()
@@ -4388,7 +4388,7 @@ impl GapTool {
     }
 
     /// **Source:** `TopOpeBRepDS_GapTool.hxx`:78 - `TopOpeBRepDS_GapTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_GapTool_get_type_name())
                 .to_string_lossy()
@@ -4655,7 +4655,7 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
     }
 
     /// **Source:** `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx`:23 - `TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_get_type_name(
@@ -5307,7 +5307,7 @@ impl HDataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:221 - `TopOpeBRepDS_HDataStructure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_HDataStructure_get_type_name())
                 .to_string_lossy()
@@ -5628,7 +5628,7 @@ impl Interference {
     }
 
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:103 - `TopOpeBRepDS_Interference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_Interference_get_type_name())
                 .to_string_lossy()
@@ -6250,7 +6250,7 @@ impl Marker {
     }
 
     /// **Source:** `TopOpeBRepDS_Marker.hxx`:48 - `TopOpeBRepDS_Marker::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_Marker_get_type_name())
                 .to_string_lossy()
@@ -6922,7 +6922,7 @@ impl ShapeShapeInterference {
     }
 
     /// **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:74 - `TopOpeBRepDS_ShapeShapeInterference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepDS_ShapeShapeInterference_get_type_name()).to_string_lossy().into_owned()
         }
@@ -7335,7 +7335,7 @@ impl SolidSurfaceInterference {
     }
 
     /// **Source:** `TopOpeBRepDS_SolidSurfaceInterference.hxx`:42 - `TopOpeBRepDS_SolidSurfaceInterference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_get_type_name(),
@@ -7743,7 +7743,7 @@ impl SurfaceCurveInterference {
     }
 
     /// **Source:** `TopOpeBRepDS_SurfaceCurveInterference.hxx`:52 - `TopOpeBRepDS_SurfaceCurveInterference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_get_type_name(),

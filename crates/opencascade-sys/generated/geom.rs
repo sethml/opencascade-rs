@@ -98,7 +98,7 @@ impl Axis1Placement {
     }
 
     /// **Source:** `Geom_Axis1Placement.hxx`:74 - `Geom_Axis1Placement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Axis1Placement_get_type_name())
                 .to_string_lossy()
@@ -523,7 +523,7 @@ impl Axis2Placement {
     }
 
     /// **Source:** `Geom_Axis2Placement.hxx`:120 - `Geom_Axis2Placement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Axis2Placement_get_type_name())
                 .to_string_lossy()
@@ -911,7 +911,7 @@ impl AxisPlacement {
     }
 
     /// **Source:** `Geom_AxisPlacement.hxx`:101 - `Geom_AxisPlacement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_AxisPlacement_get_type_name())
                 .to_string_lossy()
@@ -2424,7 +2424,7 @@ impl BSplineCurve {
     }
 
     /// **Source:** `Geom_BSplineCurve.hxx`:833 - `Geom_BSplineCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_BSplineCurve_get_type_name())
                 .to_string_lossy()
@@ -4866,7 +4866,7 @@ impl BSplineSurface {
     }
 
     /// **Source:** `Geom_BSplineSurface.hxx`:1299 - `Geom_BSplineSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_BSplineSurface_get_type_name())
                 .to_string_lossy()
@@ -5662,7 +5662,7 @@ impl BezierCurve {
     }
 
     /// **Source:** `Geom_BezierCurve.hxx`:333 - `Geom_BezierCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_BezierCurve_get_type_name())
                 .to_string_lossy()
@@ -6901,7 +6901,7 @@ impl BezierSurface {
     }
 
     /// **Source:** `Geom_BezierSurface.hxx`:622 - `Geom_BezierSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_BezierSurface_get_type_name())
                 .to_string_lossy()
@@ -7275,7 +7275,7 @@ impl BoundedCurve {
     }
 
     /// **Source:** `Geom_BoundedCurve.hxx`:58 - `Geom_BoundedCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_BoundedCurve_get_type_name())
                 .to_string_lossy()
@@ -7736,7 +7736,7 @@ impl BoundedSurface {
     }
 
     /// **Source:** `Geom_BoundedSurface.hxx`:57 - `Geom_BoundedSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_BoundedSurface_get_type_name())
                 .to_string_lossy()
@@ -8393,7 +8393,7 @@ impl CartesianPoint {
     }
 
     /// **Source:** `Geom_CartesianPoint.hxx`:87 - `Geom_CartesianPoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_CartesianPoint_get_type_name())
                 .to_string_lossy()
@@ -8839,7 +8839,7 @@ impl Circle {
     }
 
     /// **Source:** `Geom_Circle.hxx`:160 - `Geom_Circle::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Circle_get_type_name())
                 .to_string_lossy()
@@ -9331,7 +9331,7 @@ impl Conic {
     }
 
     /// **Source:** `Geom_Conic.hxx`:121 - `Geom_Conic::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Conic_get_type_name())
                 .to_string_lossy()
@@ -10166,7 +10166,7 @@ impl ConicalSurface {
     }
 
     /// **Source:** `Geom_ConicalSurface.hxx`:312 - `Geom_ConicalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_ConicalSurface_get_type_name())
                 .to_string_lossy()
@@ -10789,7 +10789,7 @@ impl Curve {
     }
 
     /// **Source:** `Geom_Curve.hxx`:227 - `Geom_Curve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Curve_get_type_name())
                 .to_string_lossy()
@@ -11520,7 +11520,7 @@ impl CylindricalSurface {
     }
 
     /// **Source:** `Geom_CylindricalSurface.hxx`:253 - `Geom_CylindricalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_CylindricalSurface_get_type_name())
                 .to_string_lossy()
@@ -12063,7 +12063,7 @@ impl Direction {
     }
 
     /// **Source:** `Geom_Direction.hxx`:117 - `Geom_Direction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Direction_get_type_name())
                 .to_string_lossy()
@@ -12513,7 +12513,7 @@ impl ElementarySurface {
     }
 
     /// **Source:** `Geom_ElementarySurface.hxx`:126 - `Geom_ElementarySurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_ElementarySurface_get_type_name())
                 .to_string_lossy()
@@ -13346,7 +13346,7 @@ impl Ellipse {
     }
 
     /// **Source:** `Geom_Ellipse.hxx`:220 - `Geom_Ellipse::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Ellipse_get_type_name())
                 .to_string_lossy()
@@ -13896,7 +13896,7 @@ impl Geometry {
     }
 
     /// **Source:** `Geom_Geometry.hxx`:116 - `Geom_Geometry::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Geometry_get_type_name())
                 .to_string_lossy()
@@ -14529,7 +14529,7 @@ impl HSequenceOfBSplineSurface {
     }
 
     /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_HSequenceOfBSplineSurface_get_type_name())
                 .to_string_lossy()
@@ -15043,7 +15043,7 @@ impl Hyperbola {
     }
 
     /// **Source:** `Geom_Hyperbola.hxx`:269 - `Geom_Hyperbola::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Hyperbola_get_type_name())
                 .to_string_lossy()
@@ -15631,7 +15631,7 @@ impl Line {
     }
 
     /// **Source:** `Geom_Line.hxx`:179 - `Geom_Line::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Line_get_type_name())
                 .to_string_lossy()
@@ -16267,7 +16267,7 @@ impl OffsetCurve {
     }
 
     /// **Source:** `Geom_OffsetCurve.hxx`:288 - `Geom_OffsetCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_OffsetCurve_get_type_name())
                 .to_string_lossy()
@@ -17098,7 +17098,7 @@ impl OffsetSurface {
     }
 
     /// **Source:** `Geom_OffsetSurface.hxx`:384 - `Geom_OffsetSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_OffsetSurface_get_type_name())
                 .to_string_lossy()
@@ -17443,7 +17443,7 @@ impl OsculatingSurface {
     }
 
     /// **Source:** `Geom_OsculatingSurface.hxx`:74 - `Geom_OsculatingSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_OsculatingSurface_get_type_name())
                 .to_string_lossy()
@@ -17843,7 +17843,7 @@ impl Parabola {
     }
 
     /// **Source:** `Geom_Parabola.hxx`:226 - `Geom_Parabola::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Parabola_get_type_name())
                 .to_string_lossy()
@@ -18507,7 +18507,7 @@ impl Plane {
     }
 
     /// **Source:** `Geom_Plane.hxx`:254 - `Geom_Plane::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Plane_get_type_name())
                 .to_string_lossy()
@@ -18907,7 +18907,7 @@ impl Point {
     }
 
     /// **Source:** `Geom_Point.hxx`:61 - `Geom_Point::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Point_get_type_name())
                 .to_string_lossy()
@@ -19746,7 +19746,7 @@ impl RectangularTrimmedSurface {
     }
 
     /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:344 - `Geom_RectangularTrimmedSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_RectangularTrimmedSurface_get_type_name())
                 .to_string_lossy()
@@ -20472,7 +20472,7 @@ impl SphericalSurface {
     }
 
     /// **Source:** `Geom_SphericalSurface.hxx`:253 - `Geom_SphericalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_SphericalSurface_get_type_name())
                 .to_string_lossy()
@@ -21258,7 +21258,7 @@ impl Surface {
     }
 
     /// **Source:** `Geom_Surface.hxx`:284 - `Geom_Surface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Surface_get_type_name())
                 .to_string_lossy()
@@ -22127,7 +22127,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:277 - `Geom_SurfaceOfLinearExtrusion::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_SurfaceOfLinearExtrusion_get_type_name())
                 .to_string_lossy()
@@ -22968,7 +22968,7 @@ impl SurfaceOfRevolution {
     }
 
     /// **Source:** `Geom_SurfaceOfRevolution.hxx`:330 - `Geom_SurfaceOfRevolution::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_SurfaceOfRevolution_get_type_name())
                 .to_string_lossy()
@@ -23373,7 +23373,7 @@ impl SweptSurface {
     }
 
     /// **Source:** `Geom_SweptSurface.hxx`:65 - `Geom_SweptSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_SweptSurface_get_type_name())
                 .to_string_lossy()
@@ -24267,7 +24267,7 @@ impl ToroidalSurface {
     }
 
     /// **Source:** `Geom_ToroidalSurface.hxx`:267 - `Geom_ToroidalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_ToroidalSurface_get_type_name())
                 .to_string_lossy()
@@ -24947,7 +24947,7 @@ impl Transformation {
     }
 
     /// **Source:** `Geom_Transformation.hxx`:65 - `Geom_Transformation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Transformation_get_type_name())
                 .to_string_lossy()
@@ -25492,7 +25492,7 @@ impl TrimmedCurve {
     }
 
     /// **Source:** `Geom_TrimmedCurve.hxx`:261 - `Geom_TrimmedCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_TrimmedCurve_get_type_name())
                 .to_string_lossy()
@@ -25845,7 +25845,7 @@ impl UndefinedDerivative {
     }
 
     /// **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_UndefinedDerivative_get_type_name())
                 .to_string_lossy()
@@ -26120,7 +26120,7 @@ impl UndefinedValue {
     }
 
     /// **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_UndefinedValue_get_type_name())
                 .to_string_lossy()
@@ -26478,7 +26478,7 @@ impl Vector {
     }
 
     /// **Source:** `Geom_Vector.hxx`:127 - `Geom_Vector::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_Vector_get_type_name())
                 .to_string_lossy()
@@ -26977,7 +26977,7 @@ impl VectorWithMagnitude {
     }
 
     /// **Source:** `Geom_VectorWithMagnitude.hxx`:139 - `Geom_VectorWithMagnitude::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom_VectorWithMagnitude_get_type_name())
                 .to_string_lossy()

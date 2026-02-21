@@ -892,7 +892,7 @@ impl Context {
     }
 
     /// **Source:** `IntTools_Context.hxx`:243 - `IntTools_Context::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IntTools_Context_get_type_name())
                 .to_string_lossy()
@@ -3616,7 +3616,7 @@ impl TopolTool {
     }
 
     /// **Source:** `IntTools_TopolTool.hxx`:79 - `IntTools_TopolTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IntTools_TopolTool_get_type_name())
                 .to_string_lossy()

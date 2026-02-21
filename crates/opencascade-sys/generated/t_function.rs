@@ -129,7 +129,7 @@ impl Driver {
     }
 
     /// **Source:** `TFunction_Driver.hxx`:80 - `TFunction_Driver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TFunction_Driver_get_type_name())
                 .to_string_lossy()
@@ -304,7 +304,7 @@ impl DriverTable {
     }
 
     /// **Source:** `TFunction_DriverTable.hxx`:73 - `TFunction_DriverTable::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TFunction_DriverTable_get_type_name())
                 .to_string_lossy()
@@ -552,7 +552,7 @@ impl Function {
     }
 
     /// **Source:** `TFunction_Function.hxx`:99 - `TFunction_Function::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TFunction_Function_get_type_name())
                 .to_string_lossy()
@@ -1086,7 +1086,7 @@ impl GraphNode {
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:112 - `TFunction_GraphNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TFunction_GraphNode_get_type_name())
                 .to_string_lossy()
@@ -1559,7 +1559,7 @@ impl HArray1OfDataMapOfGUIDDriver {
     }
 
     /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_get_type_name(),
@@ -2642,7 +2642,7 @@ impl Scope {
     }
 
     /// **Source:** `TFunction_Scope.hxx`:105 - `TFunction_Scope::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TFunction_Scope_get_type_name())
                 .to_string_lossy()

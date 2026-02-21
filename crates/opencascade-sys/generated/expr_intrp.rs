@@ -200,7 +200,7 @@ impl GenExp {
     }
 
     /// **Source:** `ExprIntrp_GenExp.hxx`:51 - `ExprIntrp_GenExp::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ExprIntrp_GenExp_get_type_name())
                 .to_string_lossy()
@@ -389,7 +389,7 @@ impl GenFct {
     }
 
     /// **Source:** `ExprIntrp_GenFct.hxx`:41 - `ExprIntrp_GenFct::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ExprIntrp_GenFct_get_type_name())
                 .to_string_lossy()
@@ -589,7 +589,7 @@ impl GenRel {
     }
 
     /// **Source:** `ExprIntrp_GenRel.hxx`:49 - `ExprIntrp_GenRel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ExprIntrp_GenRel_get_type_name())
                 .to_string_lossy()
@@ -818,7 +818,7 @@ impl Generator {
     }
 
     /// **Source:** `ExprIntrp_Generator.hxx`:56 - `ExprIntrp_Generator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ExprIntrp_Generator_get_type_name())
                 .to_string_lossy()
@@ -1068,7 +1068,7 @@ impl SyntaxError {
     }
 
     /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ExprIntrp_SyntaxError_get_type_name())
                 .to_string_lossy()

@@ -452,7 +452,7 @@ impl DeltaOnModification {
     }
 
     /// **Source:** `TNaming_DeltaOnModification.hxx`:45 - `TNaming_DeltaOnModification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TNaming_DeltaOnModification_get_type_name())
                 .to_string_lossy()
@@ -706,7 +706,7 @@ impl DeltaOnRemoval {
     }
 
     /// **Source:** `TNaming_DeltaOnRemoval.hxx`:40 - `TNaming_DeltaOnRemoval::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TNaming_DeltaOnRemoval_get_type_name())
                 .to_string_lossy()
@@ -1717,7 +1717,7 @@ impl NamedShape {
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:146 - `TNaming_NamedShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TNaming_NamedShape_get_type_name())
                 .to_string_lossy()
@@ -2166,7 +2166,7 @@ impl Naming {
     }
 
     /// **Source:** `TNaming_Naming.hxx`:113 - `TNaming_Naming::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TNaming_Naming_get_type_name())
                 .to_string_lossy()
@@ -3558,7 +3558,7 @@ impl TranslateTool {
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:70 - `TNaming_TranslateTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TNaming_TranslateTool_get_type_name())
                 .to_string_lossy()
@@ -3878,7 +3878,7 @@ impl UsedShapes {
     }
 
     /// **Source:** `TNaming_UsedShapes.hxx`:113 - `TNaming_UsedShapes::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TNaming_UsedShapes_get_type_name())
                 .to_string_lossy()

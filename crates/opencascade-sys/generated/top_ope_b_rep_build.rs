@@ -6534,7 +6534,7 @@ impl HBuilder {
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:175 - `TopOpeBRepBuild_HBuilder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepBuild_HBuilder_get_type_name())
                 .to_string_lossy()
@@ -6712,7 +6712,7 @@ impl Loop {
     }
 
     /// **Source:** `TopOpeBRepBuild_Loop.hxx`:49 - `TopOpeBRepBuild_Loop::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepBuild_Loop_get_type_name())
                 .to_string_lossy()
@@ -7016,7 +7016,7 @@ impl Pave {
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:65 - `TopOpeBRepBuild_Pave::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepBuild_Pave_get_type_name())
                 .to_string_lossy()

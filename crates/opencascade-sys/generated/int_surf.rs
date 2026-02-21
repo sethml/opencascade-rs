@@ -391,7 +391,7 @@ impl LineOn2S {
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:86 - `IntSurf_LineOn2S::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IntSurf_LineOn2S_get_type_name())
                 .to_string_lossy()

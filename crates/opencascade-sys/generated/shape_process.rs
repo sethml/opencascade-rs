@@ -198,7 +198,7 @@ impl Context {
     /// Get value of parameter as being of specific type
     /// If parameter is not defined or does not have expected
     /// type, returns default value as specified
-    pub fn string_val(&self, param: &str, def: &str) -> String {
+    pub fn string_val(&self, param: &str, def: &str) -> std::string::String {
         let c_param = std::ffi::CString::new(param).unwrap();
         let c_def = std::ffi::CString::new(def).unwrap();
         unsafe {
@@ -251,7 +251,7 @@ impl Context {
     }
 
     /// **Source:** `ShapeProcess_Context.hxx`:119 - `ShapeProcess_Context::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeProcess_Context_get_type_name())
                 .to_string_lossy()
@@ -485,7 +485,7 @@ impl Operator {
     }
 
     /// **Source:** `ShapeProcess_Operator.hxx`:41 - `ShapeProcess_Operator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeProcess_Operator_get_type_name())
                 .to_string_lossy()
@@ -873,7 +873,7 @@ impl ShapeContext {
     }
 
     /// **Source:** `ShapeProcess_ShapeContext.hxx`:140 - `ShapeProcess_ShapeContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeProcess_ShapeContext_get_type_name())
                 .to_string_lossy()
@@ -1112,7 +1112,7 @@ impl UOperator {
     }
 
     /// **Source:** `ShapeProcess_UOperator.hxx`:44 - `ShapeProcess_UOperator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeProcess_UOperator_get_type_name())
                 .to_string_lossy()

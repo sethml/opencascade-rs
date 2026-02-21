@@ -83,7 +83,7 @@ impl DocumentRetrievalDriver {
     }
 
     /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:48 - `XmlDrivers_DocumentRetrievalDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlDrivers_DocumentRetrievalDriver_get_type_name())
                 .to_string_lossy()
@@ -436,7 +436,7 @@ impl DocumentStorageDriver {
     }
 
     /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:44 - `XmlDrivers_DocumentStorageDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlDrivers_DocumentStorageDriver_get_type_name())
                 .to_string_lossy()

@@ -99,7 +99,7 @@ pub fn default_report(theToCreate: bool) -> crate::OwnedPtr<crate::ffi::HandleMe
 /// Returns the string name for a given metric type.
 /// @param theType metric type
 /// @return string identifier from the list of Message_MetricType
-pub fn metric_to_string(theType: crate::message::MetricType) -> String {
+pub fn metric_to_string(theType: crate::message::MetricType) -> std::string::String {
     unsafe {
         std::ffi::CStr::from_ptr(crate::ffi::Message_metric_to_string(theType.into()))
             .to_string_lossy()
@@ -787,7 +787,7 @@ impl Alert {
     /// The messages are generated with help of Message_Msg class, in
     /// Message_Report::Dump().
     /// Base implementation returns dynamic type name of the instance.
-    pub fn get_message_key(&self) -> String {
+    pub fn get_message_key(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_Alert_get_message_key(self as *const Self))
                 .to_string_lossy()
@@ -817,7 +817,7 @@ impl Alert {
     }
 
     /// **Source:** `Message_Alert.hxx`:59 - `Message_Alert::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_Alert_get_type_name())
                 .to_string_lossy()
@@ -1718,7 +1718,7 @@ impl AlertExtended {
     /// Return a C string to be used as a key for generating text user messages describing this alert.
     /// The messages are generated with help of Message_Msg class, in Message_Report::Dump().
     /// Base implementation returns dynamic type name of the instance.
-    pub fn get_message_key(&self) -> String {
+    pub fn get_message_key(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_AlertExtended_get_message_key(
                 self as *const Self,
@@ -1801,7 +1801,7 @@ impl AlertExtended {
     }
 
     /// **Source:** `Message_AlertExtended.hxx`:85 - `Message_AlertExtended::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_AlertExtended_get_type_name())
                 .to_string_lossy()
@@ -2318,7 +2318,7 @@ impl Algorithm {
     }
 
     /// **Source:** `Message_Algorithm.hxx`:217 - `Message_Algorithm::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_Algorithm_get_type_name())
                 .to_string_lossy()
@@ -2509,7 +2509,7 @@ impl Attribute {
     /// Return a C string to be used as a key for generating text user messages describing this alert.
     /// The messages are generated with help of Message_Msg class, in Message_Report::Dump().
     /// Base implementation returns dynamic type name of the instance.
-    pub fn get_message_key(&self) -> String {
+    pub fn get_message_key(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_Attribute_get_message_key(
                 self as *const Self,
@@ -2534,7 +2534,7 @@ impl Attribute {
     }
 
     /// **Source:** `Message_Attribute.hxx`:27 - `Message_Attribute::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_Attribute_get_type_name())
                 .to_string_lossy()
@@ -2844,7 +2844,7 @@ impl AttributeMeter {
     }
 
     /// **Source:** `Message_AttributeMeter.hxx`:94 - `Message_AttributeMeter::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_AttributeMeter_get_type_name())
                 .to_string_lossy()
@@ -3042,7 +3042,7 @@ impl AttributeObject {
     }
 
     /// **Source:** `Message_AttributeObject.hxx`:23 - `Message_AttributeObject::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_AttributeObject_get_type_name())
                 .to_string_lossy()
@@ -3240,7 +3240,7 @@ impl AttributeStream {
     }
 
     /// **Source:** `Message_AttributeStream.hxx`:24 - `Message_AttributeStream::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_AttributeStream_get_type_name())
                 .to_string_lossy()
@@ -3542,7 +3542,7 @@ impl CompositeAlerts {
     }
 
     /// **Source:** `Message_CompositeAlerts.hxx`:25 - `Message_CompositeAlerts::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_CompositeAlerts_get_type_name())
                 .to_string_lossy()
@@ -4178,7 +4178,7 @@ impl Messenger {
     }
 
     /// **Source:** `Message_Messenger.hxx`:55 - `Message_Messenger::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_Messenger_get_type_name())
                 .to_string_lossy()
@@ -4745,7 +4745,7 @@ impl Printer {
     }
 
     /// **Source:** `Message_Printer.hxx`:38 - `Message_Printer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_Printer_get_type_name())
                 .to_string_lossy()
@@ -4976,7 +4976,7 @@ impl PrinterOStream {
     }
 
     /// **Source:** `Message_PrinterOStream.hxx`:31 - `Message_PrinterOStream::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_PrinterOStream_get_type_name())
                 .to_string_lossy()
@@ -5244,7 +5244,7 @@ impl PrinterSystemLog {
     }
 
     /// **Source:** `Message_PrinterSystemLog.hxx`:29 - `Message_PrinterSystemLog::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_PrinterSystemLog_get_type_name())
                 .to_string_lossy()
@@ -5534,7 +5534,7 @@ impl PrinterToReport {
     }
 
     /// **Source:** `Message_PrinterToReport.hxx`:27 - `Message_PrinterToReport::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_PrinterToReport_get_type_name())
                 .to_string_lossy()
@@ -5782,7 +5782,7 @@ impl ProgressIndicator {
     }
 
     /// **Source:** `Message_ProgressIndicator.hxx`:60 - `Message_ProgressIndicator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_ProgressIndicator_get_type_name())
                 .to_string_lossy()
@@ -6266,7 +6266,7 @@ impl ProgressScope {
     /// Returns the name of the scope (may be null).
     /// Scopes with null name (e.g. root scope) should
     /// be bypassed when reporting progress to the user.
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_ProgressScope_name(self as *const Self))
                 .to_string_lossy()
@@ -6626,7 +6626,7 @@ impl Report {
     }
 
     /// **Source:** `Message_Report.hxx`:158 - `Message_Report::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Message_Report_get_type_name())
                 .to_string_lossy()

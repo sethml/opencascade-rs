@@ -84,7 +84,7 @@ impl AssemblyItemRefDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:49 - `BinMXCAFDoc_AssemblyItemRefDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_get_type_name())
                 .to_string_lossy()
@@ -343,7 +343,7 @@ impl CentroidDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:49 - `BinMXCAFDoc_CentroidDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_CentroidDriver_get_type_name())
                 .to_string_lossy()
@@ -577,7 +577,7 @@ impl ColorDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:49 - `BinMXCAFDoc_ColorDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_ColorDriver_get_type_name())
                 .to_string_lossy()
@@ -799,7 +799,7 @@ impl DatumDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:49 - `BinMXCAFDoc_DatumDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_DatumDriver_get_type_name())
                 .to_string_lossy()
@@ -1021,7 +1021,7 @@ impl DimTolDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:49 - `BinMXCAFDoc_DimTolDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_DimTolDriver_get_type_name())
                 .to_string_lossy()
@@ -1249,7 +1249,7 @@ impl GraphNodeDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:49 - `BinMXCAFDoc_GraphNodeDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_GraphNodeDriver_get_type_name())
                 .to_string_lossy()
@@ -1488,7 +1488,7 @@ impl LengthUnitDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:48 - `BinMXCAFDoc_LengthUnitDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_LengthUnitDriver_get_type_name())
                 .to_string_lossy()
@@ -1758,7 +1758,7 @@ impl LocationDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:66 - `BinMXCAFDoc_LocationDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_LocationDriver_get_type_name())
                 .to_string_lossy()
@@ -1997,7 +1997,7 @@ impl MaterialDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:49 - `BinMXCAFDoc_MaterialDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_MaterialDriver_get_type_name())
                 .to_string_lossy()
@@ -2231,7 +2231,7 @@ impl NoteBinDataDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:40 - `BinMXCAFDoc_NoteBinDataDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_NoteBinDataDriver_get_type_name())
                 .to_string_lossy()
@@ -2508,7 +2508,7 @@ impl NoteCommentDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:40 - `BinMXCAFDoc_NoteCommentDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_NoteCommentDriver_get_type_name())
                 .to_string_lossy()
@@ -2765,7 +2765,7 @@ impl NoteDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:45 - `BinMXCAFDoc_NoteDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_NoteDriver_get_type_name())
                 .to_string_lossy()
@@ -3021,7 +3021,7 @@ impl VisMaterialDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:27 - `BinMXCAFDoc_VisMaterialDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_VisMaterialDriver_get_type_name())
                 .to_string_lossy()
@@ -3276,7 +3276,7 @@ impl VisMaterialToolDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:24 - `BinMXCAFDoc_VisMaterialToolDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_get_type_name())
                 .to_string_lossy()

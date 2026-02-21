@@ -91,7 +91,7 @@ impl ConstraintDriver {
     }
 
     /// **Source:** `BinMDataXtd_ConstraintDriver.hxx`:49 - `BinMDataXtd_ConstraintDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataXtd_ConstraintDriver_get_type_name())
                 .to_string_lossy()
@@ -340,7 +340,7 @@ impl GeometryDriver {
     }
 
     /// **Source:** `BinMDataXtd_GeometryDriver.hxx`:49 - `BinMDataXtd_GeometryDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataXtd_GeometryDriver_get_type_name())
                 .to_string_lossy()
@@ -577,7 +577,7 @@ impl PatternStdDriver {
     }
 
     /// **Source:** `BinMDataXtd_PatternStdDriver.hxx`:49 - `BinMDataXtd_PatternStdDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataXtd_PatternStdDriver_get_type_name())
                 .to_string_lossy()
@@ -826,7 +826,7 @@ impl PositionDriver {
     }
 
     /// **Source:** `BinMDataXtd_PositionDriver.hxx`:49 - `BinMDataXtd_PositionDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataXtd_PositionDriver_get_type_name())
                 .to_string_lossy()
@@ -1063,7 +1063,7 @@ impl PresentationDriver {
     }
 
     /// **Source:** `BinMDataXtd_PresentationDriver.hxx`:49 - `BinMDataXtd_PresentationDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataXtd_PresentationDriver_get_type_name())
                 .to_string_lossy()
@@ -1319,7 +1319,7 @@ impl TriangulationDriver {
     }
 
     /// **Source:** `BinMDataXtd_TriangulationDriver.hxx`:50 - `BinMDataXtd_TriangulationDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataXtd_TriangulationDriver_get_type_name())
                 .to_string_lossy()

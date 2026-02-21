@@ -120,7 +120,7 @@ impl BuildThread {
     }
 
     /// **Source:** `BVH_BuildThread.hxx`:66 - `BVH_BuildThread::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BVH_BuildThread_get_type_name())
                 .to_string_lossy()
@@ -268,7 +268,7 @@ impl BuilderTransient {
     }
 
     /// **Source:** `BVH_Builder.hxx`:26 - `BVH_BuilderTransient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BVH_BuilderTransient_get_type_name())
                 .to_string_lossy()
@@ -425,7 +425,7 @@ impl ObjectTransient {
     }
 
     /// **Source:** `BVH_Object.hxx`:26 - `BVH_ObjectTransient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BVH_ObjectTransient_get_type_name())
                 .to_string_lossy()
@@ -557,7 +557,7 @@ impl Properties {
     }
 
     /// **Source:** `BVH_Properties.hxx`:26 - `BVH_Properties::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BVH_Properties_get_type_name())
                 .to_string_lossy()
@@ -674,7 +674,7 @@ impl TreeBaseTransient {
     }
 
     /// **Source:** `BVH_Tree.hxx`:28 - `BVH_TreeBaseTransient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BVH_TreeBaseTransient_get_type_name())
                 .to_string_lossy()
@@ -793,4 +793,7 @@ impl HandleBVHTreeBaseTransient {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{BVH_Array3d as Array3d, BVH_Vec3d as Vec3d, BVH_Vec4f as Vec4f};
+pub use crate::ffi::{
+    BVH_Array3d as Array3d, BVH_Mat4d as Mat4d, BVH_Vec2i as Vec2i, BVH_Vec3d as Vec3d,
+    BVH_Vec4f as Vec4f,
+};

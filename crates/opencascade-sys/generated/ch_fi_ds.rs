@@ -267,7 +267,7 @@ impl ChamfSpine {
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:59 - `ChFiDS_ChamfSpine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_ChamfSpine_get_type_name())
                 .to_string_lossy()
@@ -1284,7 +1284,7 @@ impl ElSpine {
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_ElSpine_get_type_name())
                 .to_string_lossy()
@@ -1712,7 +1712,7 @@ impl FilSpine {
     }
 
     /// **Source:** `ChFiDS_FilSpine.hxx`:98 - `ChFiDS_FilSpine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_FilSpine_get_type_name())
                 .to_string_lossy()
@@ -2280,7 +2280,7 @@ impl HData {
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_HData_get_type_name())
                 .to_string_lossy()
@@ -2564,7 +2564,7 @@ impl SecHArray1 {
     }
 
     /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_SecHArray1_get_type_name())
                 .to_string_lossy()
@@ -3177,7 +3177,7 @@ impl Spine {
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:254 - `ChFiDS_Spine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_Spine_get_type_name())
                 .to_string_lossy()
@@ -3665,7 +3665,7 @@ impl Stripe {
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_Stripe_get_type_name())
                 .to_string_lossy()
@@ -4141,7 +4141,7 @@ impl SurfData {
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_SurfData_get_type_name())
                 .to_string_lossy()

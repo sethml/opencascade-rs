@@ -507,7 +507,7 @@ impl Modification {
     }
 
     /// **Source:** `Draft_Modification.hxx`:182 - `Draft_Modification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Draft_Modification_get_type_name())
                 .to_string_lossy()

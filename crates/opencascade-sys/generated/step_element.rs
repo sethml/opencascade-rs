@@ -435,7 +435,7 @@ impl AnalysisItemWithinRepresentation {
     }
 
     /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:68 - `StepElement_AnalysisItemWithinRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_AnalysisItemWithinRepresentation_get_type_name(),
@@ -660,7 +660,7 @@ impl Curve3dElementDescriptor {
     }
 
     /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:50 - `StepElement_Curve3dElementDescriptor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_Curve3dElementDescriptor_get_type_name(),
@@ -965,7 +965,7 @@ impl CurveElementEndReleasePacket {
     }
 
     /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:52 - `StepElement_CurveElementEndReleasePacket::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_CurveElementEndReleasePacket_get_type_name(),
@@ -1384,7 +1384,7 @@ impl CurveElementFreedomMember {
 
     /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:40 - `StepElement_CurveElementFreedomMember::Name()`
     /// Returns set name
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_CurveElementFreedomMember_name(
                 self as *const Self,
@@ -1426,7 +1426,7 @@ impl CurveElementFreedomMember {
     }
 
     /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:49 - `StepElement_CurveElementFreedomMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_CurveElementFreedomMember_get_type_name(),
@@ -2047,7 +2047,7 @@ impl CurveElementPurposeMember {
 
     /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:40 - `StepElement_CurveElementPurposeMember::Name()`
     /// Returns set name
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_CurveElementPurposeMember_name(
                 self as *const Self,
@@ -2089,7 +2089,7 @@ impl CurveElementPurposeMember {
     }
 
     /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:49 - `StepElement_CurveElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_CurveElementPurposeMember_get_type_name(),
@@ -2532,7 +2532,7 @@ impl CurveElementSectionDefinition {
     }
 
     /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:53 - `StepElement_CurveElementSectionDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_CurveElementSectionDefinition_get_type_name(),
@@ -3005,7 +3005,7 @@ impl CurveElementSectionDerivedDefinitions {
     }
 
     /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:125 - `StepElement_CurveElementSectionDerivedDefinitions::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_CurveElementSectionDerivedDefinitions_get_type_name(),
@@ -3554,7 +3554,7 @@ impl ElementAspectMember {
 
     /// **Source:** `StepElement_ElementAspectMember.hxx`:40 - `StepElement_ElementAspectMember::Name()`
     /// Returns set name
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_ElementAspectMember_name(
                 self as *const Self,
@@ -3591,7 +3591,7 @@ impl ElementAspectMember {
     }
 
     /// **Source:** `StepElement_ElementAspectMember.hxx`:49 - `StepElement_ElementAspectMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_ElementAspectMember_get_type_name())
                 .to_string_lossy()
@@ -3992,7 +3992,7 @@ impl ElementDescriptor {
     }
 
     /// **Source:** `StepElement_ElementDescriptor.hxx`:53 - `StepElement_ElementDescriptor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_ElementDescriptor_get_type_name())
                 .to_string_lossy()
@@ -4277,7 +4277,7 @@ impl ElementMaterial {
     }
 
     /// **Source:** `StepElement_ElementMaterial.hxx`:61 - `StepElement_ElementMaterial::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_ElementMaterial_get_type_name())
                 .to_string_lossy()
@@ -4510,7 +4510,7 @@ impl HArray1OfCurveElementEndReleasePacket {
     }
 
     /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HArray1OfCurveElementEndReleasePacket_get_type_name(),
@@ -4766,7 +4766,7 @@ impl HArray1OfCurveElementSectionDefinition {
     }
 
     /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HArray1OfCurveElementSectionDefinition_get_type_name(),
@@ -5012,7 +5012,7 @@ impl HArray1OfHSequenceOfCurveElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_get_type_name(
@@ -5253,7 +5253,7 @@ impl HArray1OfHSequenceOfSurfaceElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_get_type_name()).to_string_lossy().into_owned()
         }
@@ -5491,7 +5491,7 @@ impl HArray1OfMeasureOrUnspecifiedValue {
     }
 
     /// **Source:** `StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx`:20 - `StepElement_HArray1OfMeasureOrUnspecifiedValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HArray1OfMeasureOrUnspecifiedValue_get_type_name(),
@@ -5737,7 +5737,7 @@ impl HArray1OfSurfaceSection {
     }
 
     /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_HArray1OfSurfaceSection_get_type_name()).to_string_lossy().into_owned()
         }
@@ -5967,7 +5967,7 @@ impl HArray1OfVolumeElementPurpose {
     }
 
     /// **Source:** `StepElement_HArray1OfVolumeElementPurpose.hxx`:21 - `StepElement_HArray1OfVolumeElementPurpose::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HArray1OfVolumeElementPurpose_get_type_name(),
@@ -6221,7 +6221,7 @@ impl HArray1OfVolumeElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HArray1OfVolumeElementPurposeMember_get_type_name(),
@@ -6457,7 +6457,7 @@ impl HArray2OfCurveElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HArray2OfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray2OfCurveElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HArray2OfCurveElementPurposeMember_get_type_name(),
@@ -6689,7 +6689,7 @@ impl HArray2OfSurfaceElementPurpose {
     }
 
     /// **Source:** `StepElement_HArray2OfSurfaceElementPurpose.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurpose::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HArray2OfSurfaceElementPurpose_get_type_name(),
@@ -6925,7 +6925,7 @@ impl HArray2OfSurfaceElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HArray2OfSurfaceElementPurposeMember.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HArray2OfSurfaceElementPurposeMember_get_type_name(),
@@ -7160,7 +7160,7 @@ impl HSequenceOfCurveElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HSequenceOfCurveElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HSequenceOfCurveElementPurposeMember_get_type_name(),
@@ -7395,7 +7395,7 @@ impl HSequenceOfCurveElementSectionDefinition {
     }
 
     /// **Source:** `StepElement_HSequenceOfCurveElementSectionDefinition.hxx`:20 - `StepElement_HSequenceOfCurveElementSectionDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HSequenceOfCurveElementSectionDefinition_get_type_name(),
@@ -7631,7 +7631,7 @@ impl HSequenceOfElementMaterial {
     }
 
     /// **Source:** `StepElement_HSequenceOfElementMaterial.hxx`:20 - `StepElement_HSequenceOfElementMaterial::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HSequenceOfElementMaterial_get_type_name(),
@@ -7868,7 +7868,7 @@ impl HSequenceOfSurfaceElementPurposeMember {
     }
 
     /// **Source:** `StepElement_HSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HSequenceOfSurfaceElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_HSequenceOfSurfaceElementPurposeMember_get_type_name(),
@@ -8314,7 +8314,7 @@ impl MeasureOrUnspecifiedValueMember {
 
     /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:40 - `StepElement_MeasureOrUnspecifiedValueMember::Name()`
     /// Returns set name
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_MeasureOrUnspecifiedValueMember_name(
                 self as *const Self,
@@ -8358,7 +8358,7 @@ impl MeasureOrUnspecifiedValueMember {
     }
 
     /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:49 - `StepElement_MeasureOrUnspecifiedValueMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_MeasureOrUnspecifiedValueMember_get_type_name(),
@@ -8812,7 +8812,7 @@ impl Surface3dElementDescriptor {
     }
 
     /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:59 - `StepElement_Surface3dElementDescriptor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_Surface3dElementDescriptor_get_type_name(),
@@ -9139,7 +9139,7 @@ impl SurfaceElementProperty {
     }
 
     /// **Source:** `StepElement_SurfaceElementProperty.hxx`:60 - `StepElement_SurfaceElementProperty::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_SurfaceElementProperty_get_type_name())
                 .to_string_lossy()
@@ -9561,7 +9561,7 @@ impl SurfaceElementPurposeMember {
 
     /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:40 - `StepElement_SurfaceElementPurposeMember::Name()`
     /// Returns set name
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_SurfaceElementPurposeMember_name(
                 self as *const Self,
@@ -9605,7 +9605,7 @@ impl SurfaceElementPurposeMember {
     }
 
     /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:49 - `StepElement_SurfaceElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_SurfaceElementPurposeMember_get_type_name(),
@@ -10067,7 +10067,7 @@ impl SurfaceSection {
     }
 
     /// **Source:** `StepElement_SurfaceSection.hxx`:60 - `StepElement_SurfaceSection::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_SurfaceSection_get_type_name())
                 .to_string_lossy()
@@ -10237,7 +10237,7 @@ impl SurfaceSectionField {
     }
 
     /// **Source:** `StepElement_SurfaceSectionField.hxx`:35 - `StepElement_SurfaceSectionField::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_SurfaceSectionField_get_type_name())
                 .to_string_lossy()
@@ -10471,7 +10471,7 @@ impl SurfaceSectionFieldConstant {
     }
 
     /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:45 - `StepElement_SurfaceSectionFieldConstant::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_SurfaceSectionFieldConstant_get_type_name(),
@@ -10742,7 +10742,7 @@ impl SurfaceSectionFieldVarying {
     }
 
     /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:53 - `StepElement_SurfaceSectionFieldVarying::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_SurfaceSectionFieldVarying_get_type_name(),
@@ -11031,7 +11031,7 @@ impl UniformSurfaceSection {
     }
 
     /// **Source:** `StepElement_UniformSurfaceSection.hxx`:64 - `StepElement_UniformSurfaceSection::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_UniformSurfaceSection_get_type_name())
                 .to_string_lossy()
@@ -11363,7 +11363,7 @@ impl Volume3dElementDescriptor {
     }
 
     /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:57 - `StepElement_Volume3dElementDescriptor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_Volume3dElementDescriptor_get_type_name(),
@@ -11854,7 +11854,7 @@ impl VolumeElementPurposeMember {
 
     /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:40 - `StepElement_VolumeElementPurposeMember::Name()`
     /// Returns set name
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepElement_VolumeElementPurposeMember_name(
                 self as *const Self,
@@ -11896,7 +11896,7 @@ impl VolumeElementPurposeMember {
     }
 
     /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:49 - `StepElement_VolumeElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepElement_VolumeElementPurposeMember_get_type_name(),

@@ -515,7 +515,7 @@ impl CafReader {
     }
 
     /// **Source:** `RWGltf_CafReader.hxx`:27 - `RWGltf_CafReader::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::RWGltf_CafReader_get_type_name())
                 .to_string_lossy()
@@ -1128,7 +1128,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:32 - `RWGltf_GltfLatePrimitiveArray::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::RWGltf_GltfLatePrimitiveArray_get_type_name())
                 .to_string_lossy()
@@ -1880,7 +1880,7 @@ impl GltfMaterialMap {
     }
 
     /// **Source:** `RWGltf_GltfMaterialMap.hxx`:25 - `RWGltf_GltfMaterialMap::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::RWGltf_GltfMaterialMap_get_type_name())
                 .to_string_lossy()
@@ -1923,6 +1923,36 @@ impl GltfMaterialMap {
     ) -> crate::OwnedPtr<crate::ffi::HandleRWGltfGltfMaterialMap> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWGltf_GltfMaterialMap_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
+    pub fn default_style(&self) -> &crate::xcaf_prs::Style {
+        unsafe {
+            &*(crate::ffi::RWGltf_GltfMaterialMap_inherited_DefaultStyle(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:38 - `RWMesh_MaterialMap::SetDefaultStyle()`
+    pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
+        unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_inherited_SetDefaultStyle(
+                self as *mut Self,
+                theStyle,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:41 - `RWMesh_MaterialMap::FindMaterial()`
+    pub fn find_material(
+        &self,
+        theStyle: &crate::xcaf_prs::Style,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::RWGltf_GltfMaterialMap_inherited_FindMaterial(
+                self as *const Self,
+                theStyle,
+            ))
         }
     }
 
@@ -2459,7 +2489,7 @@ impl TriangulationReader {
     }
 
     /// **Source:** `RWGltf_TriangulationReader.hxx`:28 - `RWGltf_TriangulationReader::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::RWGltf_TriangulationReader_get_type_name())
                 .to_string_lossy()

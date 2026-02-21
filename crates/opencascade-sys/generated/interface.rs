@@ -284,7 +284,7 @@ impl BitMap {
 
     /// **Source:** `Interface_BitMap.hxx`:107 - `Interface_BitMap::FlagName()`
     /// Returns the name recorded for a flag, or an empty string
-    pub fn flag_name(&self, num: i32) -> String {
+    pub fn flag_name(&self, num: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_BitMap_flag_name(
                 self as *const Self,
@@ -488,7 +488,7 @@ impl Category {
 
     /// **Source:** `Interface_Category.hxx`:114 - `Interface_Category::Name()`
     /// Returns the name of a category, according to its number
-    pub fn name(theNum: i32) -> String {
+    pub fn name(theNum: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_Category_name(theNum))
                 .to_string_lossy()
@@ -635,7 +635,7 @@ impl Check {
     /// **Source:** `Interface_Check.hxx`:91 - `Interface_Check::CFail()`
     /// Same as above, but returns a CString (to be printed ...)
     /// Final form by default, Original form if <final> is False
-    pub fn c_fail(&self, num: i32, final_: bool) -> String {
+    pub fn c_fail(&self, num: i32, final_: bool) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_Check_c_fail(
                 self as *const Self,
@@ -743,7 +743,7 @@ impl Check {
     /// **Source:** `Interface_Check.hxx`:132 - `Interface_Check::CWarning()`
     /// Same as above, but returns a CString (to be printed ...)
     /// Final form by default, Original form if <final> is False
-    pub fn c_warning(&self, num: i32, final_: bool) -> String {
+    pub fn c_warning(&self, num: i32, final_: bool) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_Check_c_warning(
                 self as *const Self,
@@ -793,7 +793,7 @@ impl Check {
     /// **Source:** `Interface_Check.hxx`:155 - `Interface_Check::CInfoMsg()`
     /// Same as above, but returns a CString (to be printed ...)
     /// Final form by default, Original form if <final> is False
-    pub fn c_info_msg(&self, num: i32, final_: bool) -> String {
+    pub fn c_info_msg(&self, num: i32, final_: bool) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_Check_c_info_msg(
                 self as *const Self,
@@ -993,7 +993,7 @@ impl Check {
     }
 
     /// **Source:** `Interface_Check.hxx`:263 - `Interface_Check::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_Check_get_type_name())
                 .to_string_lossy()
@@ -1180,7 +1180,7 @@ impl CheckFailure {
     }
 
     /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_CheckFailure_get_type_name())
                 .to_string_lossy()
@@ -1406,7 +1406,7 @@ impl CheckIterator {
 
     /// **Source:** `Interface_CheckIterator.hxx`:58 - `Interface_CheckIterator::Name()`
     /// Returns the recorded name (can be empty)
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_CheckIterator_name(self as *const Self))
                 .to_string_lossy()
@@ -1956,7 +1956,7 @@ impl CopyControl {
     }
 
     /// **Source:** `Interface_CopyControl.hxx`:53 - `Interface_CopyControl::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_CopyControl_get_type_name())
                 .to_string_lossy()
@@ -2172,7 +2172,7 @@ impl CopyMap {
     }
 
     /// **Source:** `Interface_CopyMap.hxx`:60 - `Interface_CopyMap::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_CopyMap_get_type_name())
                 .to_string_lossy()
@@ -2700,7 +2700,7 @@ impl EntityCluster {
     }
 
     /// **Source:** `Interface_EntityCluster.hxx`:94 - `Interface_EntityCluster::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_EntityCluster_get_type_name())
                 .to_string_lossy()
@@ -3137,7 +3137,7 @@ impl FileParameter {
     /// **Source:** `Interface_FileParameter.hxx`:52 - `Interface_FileParameter::CValue()`
     /// Same as above, but as a CString (for immediate exploitation)
     /// was C++ : return const
-    pub fn c_value(&self) -> String {
+    pub fn c_value(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_FileParameter_c_value(
                 self as *const Self,
@@ -3364,7 +3364,7 @@ impl FileReaderData {
     /// **Source:** `Interface_FileReaderData.hxx`:129 - `Interface_FileReaderData::ParamCValue()`
     /// Same as above, but as a CString
     /// was C++ : return const
-    pub fn param_c_value(&self, num: i32, nump: i32) -> String {
+    pub fn param_c_value(&self, num: i32, nump: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_FileReaderData_param_c_value(
                 self as *const Self,
@@ -3469,7 +3469,7 @@ impl FileReaderData {
     }
 
     /// **Source:** `Interface_FileReaderData.hxx`:187 - `Interface_FileReaderData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_FileReaderData_get_type_name())
                 .to_string_lossy()
@@ -4013,7 +4013,7 @@ impl FloatWriter {
     /// **Source:** `Interface_FloatWriter.hxx`:85 - `Interface_FloatWriter::MainFormat()`
     /// Returns the main format
     /// was C++ : return const
-    pub fn main_format(&self) -> String {
+    pub fn main_format(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_FloatWriter_main_format(
                 self as *const Self,
@@ -4027,7 +4027,7 @@ impl FloatWriter {
     /// Returns the format for range, if set
     /// Meaningful only if <range> from Options is True
     /// was C++ : return const
-    pub fn format_for_range(&self) -> String {
+    pub fn format_for_range(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_FloatWriter_format_for_range(
                 self as *const Self,
@@ -4151,7 +4151,7 @@ impl GTool {
         &self,
         ent: &crate::ffi::HandleStandardTransient,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> String {
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_GTool_sign_value(
                 self as *const Self,
@@ -4165,7 +4165,7 @@ impl GTool {
 
     /// **Source:** `Interface_GTool.hxx`:67 - `Interface_GTool::SignName()`
     /// Returns the Name of the SignType, or "Class Name"
-    pub fn sign_name(&self) -> String {
+    pub fn sign_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_GTool_sign_name(self as *const Self))
                 .to_string_lossy()
@@ -4232,7 +4232,7 @@ impl GTool {
     }
 
     /// **Source:** `Interface_GTool.hxx`:101 - `Interface_GTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_GTool_get_type_name())
                 .to_string_lossy()
@@ -4809,7 +4809,7 @@ impl GeneralModule {
     }
 
     /// **Source:** `Interface_GeneralModule.hxx`:214 - `Interface_GeneralModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_GeneralModule_get_type_name())
                 .to_string_lossy()
@@ -5179,7 +5179,7 @@ impl GlobalNodeOfGeneralLib {
     }
 
     /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:57 - `Interface_GlobalNodeOfGeneralLib::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_GlobalNodeOfGeneralLib_get_type_name())
                 .to_string_lossy()
@@ -5381,7 +5381,7 @@ impl GlobalNodeOfReaderLib {
     }
 
     /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:57 - `Interface_GlobalNodeOfReaderLib::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_GlobalNodeOfReaderLib_get_type_name())
                 .to_string_lossy()
@@ -6290,7 +6290,7 @@ impl HArray1OfHAsciiString {
     }
 
     /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_HArray1OfHAsciiString_get_type_name())
                 .to_string_lossy()
@@ -6573,7 +6573,7 @@ impl HGraph {
     }
 
     /// **Source:** `Interface_HGraph.hxx`:75 - `Interface_HGraph::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_HGraph_get_type_name())
                 .to_string_lossy()
@@ -6739,7 +6739,7 @@ impl HSequenceOfCheck {
     }
 
     /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_HSequenceOfCheck_get_type_name())
                 .to_string_lossy()
@@ -7087,7 +7087,7 @@ impl IntVal {
     }
 
     /// **Source:** `Interface_IntVal.hxx`:40 - `Interface_IntVal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_IntVal_get_type_name())
                 .to_string_lossy()
@@ -7274,7 +7274,7 @@ impl InterfaceError {
     }
 
     /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_InterfaceError_get_type_name())
                 .to_string_lossy()
@@ -7596,7 +7596,7 @@ impl InterfaceMismatch {
     }
 
     /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_InterfaceMismatch_get_type_name())
                 .to_string_lossy()
@@ -7984,7 +7984,11 @@ impl InterfaceModel {
     /// <complete> True (D) gives the complete type, else packages are
     /// removed
     /// WARNING : buffered, to be immediately copied or printed
-    pub fn type_name(&self, ent: &crate::ffi::HandleStandardTransient, complete: bool) -> String {
+    pub fn type_name(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        complete: bool,
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_InterfaceModel_type_name(
                 self as *const Self,
@@ -8466,7 +8470,7 @@ impl InterfaceModel {
     /// **Source:** `Interface_InterfaceModel.hxx`:155 - `Interface_InterfaceModel::ClassName()`
     /// From a CDL Type Name, returns the Class part (package dropped)
     /// WARNING : buffered, to be immediately copied or printed
-    pub fn class_name(typnam: &str) -> String {
+    pub fn class_name(typnam: &str) -> std::string::String {
         let c_typnam = std::ffi::CString::new(typnam).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_InterfaceModel_class_name(
@@ -8512,7 +8516,7 @@ impl InterfaceModel {
     }
 
     /// **Source:** `Interface_InterfaceModel.hxx`:424 - `Interface_InterfaceModel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_InterfaceModel_get_type_name())
                 .to_string_lossy()
@@ -8725,7 +8729,7 @@ impl LineBuffer {
 
     /// **Source:** `Interface_LineBuffer.hxx`:56 - `Interface_LineBuffer::Content()`
     /// Returns the Content of the LineBuffer
-    pub fn content(&self) -> String {
+    pub fn content(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_LineBuffer_content(self as *const Self))
                 .to_string_lossy()
@@ -8974,7 +8978,7 @@ impl MSG {
     /// Returns the translated message, in a functional form with
     /// operator ()
     /// was C++ : return const
-    pub fn value(&self) -> String {
+    pub fn value(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_MSG_value(self as *const Self))
                 .to_string_lossy()
@@ -9019,7 +9023,7 @@ impl MSG {
     /// Returns the key itself if :
     /// - it is not recorded (then, the trace system is activated)
     /// - MSG has been required to be hung on
-    pub fn translated(key: &str) -> String {
+    pub fn translated(key: &str) -> std::string::String {
         let c_key = std::ffi::CString::new(key).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_MSG_translated(c_key.as_ptr()))
@@ -9140,7 +9144,7 @@ impl MSG {
     /// the printing of a numeric value <val>, i.e. :
     /// If val < 10 , max-1 blanks
     /// If val between 10 and 99, max-2 blanks  ...   etc...
-    pub fn blanks_int2(val: i32, max: i32) -> String {
+    pub fn blanks_int2(val: i32, max: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_MSG_blanks_int2(val, max))
                 .to_string_lossy()
@@ -9153,7 +9157,7 @@ impl MSG {
     /// <max> characters :
     /// If strlen(val) is 0, max blanks
     /// If strlen(val) is 5, max-5 blanks    etc...
-    pub fn blanks_charptr_int(val: &str, max: i32) -> String {
+    pub fn blanks_charptr_int(val: &str, max: i32) -> std::string::String {
         let c_val = std::ffi::CString::new(val).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_MSG_blanks_charptr_int(
@@ -9167,7 +9171,7 @@ impl MSG {
 
     /// **Source:** `Interface_MSG.hxx`:232 - `Interface_MSG::Blanks()`
     /// Returns a blank string of <count> blanks (mini 0, maxi 76)
-    pub fn blanks_int(count: i32) -> String {
+    pub fn blanks_int(count: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_MSG_blanks_int(count))
                 .to_string_lossy()
@@ -9239,7 +9243,7 @@ impl NodeOfGeneralLib {
     }
 
     /// **Source:** `Interface_NodeOfGeneralLib.hxx`:54 - `Interface_NodeOfGeneralLib::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_NodeOfGeneralLib_get_type_name())
                 .to_string_lossy()
@@ -9418,7 +9422,7 @@ impl NodeOfReaderLib {
     }
 
     /// **Source:** `Interface_NodeOfReaderLib.hxx`:54 - `Interface_NodeOfReaderLib::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_NodeOfReaderLib_get_type_name())
                 .to_string_lossy()
@@ -9619,7 +9623,7 @@ impl ParamList {
     }
 
     /// **Source:** `Interface_ParamList.hxx`:67 - `Interface_ParamList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_ParamList_get_type_name())
                 .to_string_lossy()
@@ -9854,7 +9858,7 @@ impl ParamSet {
     }
 
     /// **Source:** `Interface_ParamSet.hxx`:86 - `Interface_ParamSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_ParamSet_get_type_name())
                 .to_string_lossy()
@@ -10120,7 +10124,7 @@ impl Protocol {
     }
 
     /// **Source:** `Interface_Protocol.hxx`:115 - `Interface_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_Protocol_get_type_name())
                 .to_string_lossy()
@@ -10678,7 +10682,7 @@ impl ReaderModule {
     }
 
     /// **Source:** `Interface_ReaderModule.hxx`:75 - `Interface_ReaderModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_ReaderModule_get_type_name())
                 .to_string_lossy()
@@ -11087,7 +11091,7 @@ impl ReportEntity {
     }
 
     /// **Source:** `Interface_ReportEntity.hxx`:103 - `Interface_ReportEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_ReportEntity_get_type_name())
                 .to_string_lossy()
@@ -11410,7 +11414,7 @@ impl STAT {
     /// Returns an identification of the STAT :
     /// <phase> True (D) : the name of the current phase
     /// <phase> False : the title of the current STAT
-    pub fn where_(phase: bool) -> String {
+    pub fn where_(phase: bool) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_STAT_where_(phase))
                 .to_string_lossy()
@@ -11803,7 +11807,7 @@ impl SignLabel {
 
     /// **Source:** `Interface_SignLabel.hxx`:38 - `Interface_SignLabel::Name()`
     /// Returns "Entity Label"
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_SignLabel_name(self as *const Self))
                 .to_string_lossy()
@@ -11834,7 +11838,7 @@ impl SignLabel {
     }
 
     /// **Source:** `Interface_SignLabel.hxx`:46 - `Interface_SignLabel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_SignLabel_get_type_name())
                 .to_string_lossy()
@@ -12023,7 +12027,7 @@ impl SignType {
         &self,
         ent: &crate::ffi::HandleStandardTransient,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> String {
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_SignType_value(
                 self as *const Self,
@@ -12043,7 +12047,7 @@ impl SignType {
     /// **Source:** `Interface_SignType.hxx`:55 - `Interface_SignType::ClassName()`
     /// From a CDL Type Name, returns the Class part (package dropped)
     /// WARNING : buffered, to be immediately copied or printed
-    pub fn class_name(typnam: &str) -> String {
+    pub fn class_name(typnam: &str) -> std::string::String {
         let c_typnam = std::ffi::CString::new(typnam).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_SignType_class_name(c_typnam.as_ptr()))
@@ -12053,7 +12057,7 @@ impl SignType {
     }
 
     /// **Source:** `Interface_SignType.hxx`:57 - `Interface_SignType::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_SignType_get_type_name())
                 .to_string_lossy()
@@ -12542,7 +12546,7 @@ impl Static {
     /// Returns the family. It can be : a resource name for applis,
     /// an internal name between : $e (environment variables),
     /// $l (other, purely local)
-    pub fn family(&self) -> String {
+    pub fn family(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_Static_family(self as *const Self))
                 .to_string_lossy()
@@ -12664,7 +12668,7 @@ impl Static {
     /// imax : maximum integer value
     /// enum nn (nn : value of an integer) : enum value for nn
     /// unit : unit definition for a real
-    pub fn c_def(name: &str, part: &str) -> String {
+    pub fn c_def(name: &str, part: &str) -> std::string::String {
         let c_name = std::ffi::CString::new(name).unwrap();
         let c_part = std::ffi::CString::new(part).unwrap();
         unsafe {
@@ -12716,7 +12720,7 @@ impl Static {
     /// Interface_Static::CVal("write.step.schema");
     /// which could return:
     /// "AP214"
-    pub fn c_val(name: &str) -> String {
+    pub fn c_val(name: &str) -> std::string::String {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_Static_c_val(c_name.as_ptr()))
@@ -12843,7 +12847,7 @@ impl Static {
     }
 
     /// **Source:** `Interface_Static.hxx`:269 - `Interface_Static::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_Static_get_type_name())
                 .to_string_lossy()
@@ -13293,7 +13297,7 @@ impl TypedValue {
     }
 
     /// **Source:** `Interface_TypedValue.hxx`:74 - `Interface_TypedValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_TypedValue_get_type_name())
                 .to_string_lossy()
@@ -13888,7 +13892,7 @@ impl UndefinedContent {
     }
 
     /// **Source:** `Interface_UndefinedContent.hxx`:133 - `Interface_UndefinedContent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Interface_UndefinedContent_get_type_name())
                 .to_string_lossy()

@@ -105,7 +105,7 @@ impl AdvancedBrepShapeRepresentation {
     }
 
     /// **Source:** `StepShape_AdvancedBrepShapeRepresentation.hxx`:35 - `StepShape_AdvancedBrepShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_AdvancedBrepShapeRepresentation_get_type_name(),
@@ -438,7 +438,7 @@ impl AdvancedFace {
     }
 
     /// **Source:** `StepShape_AdvancedFace.hxx`:35 - `StepShape_AdvancedFace::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_AdvancedFace_get_type_name())
                 .to_string_lossy()
@@ -829,7 +829,7 @@ impl AngularLocation {
     }
 
     /// **Source:** `StepShape_AngularLocation.hxx`:53 - `StepShape_AngularLocation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_AngularLocation_get_type_name())
                 .to_string_lossy()
@@ -1174,7 +1174,7 @@ impl AngularSize {
     }
 
     /// **Source:** `StepShape_AngularSize.hxx`:49 - `StepShape_AngularSize::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_AngularSize_get_type_name())
                 .to_string_lossy()
@@ -1428,7 +1428,7 @@ impl Block {
     }
 
     /// **Source:** `StepShape_Block.hxx`:59 - `StepShape_Block::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_Block_get_type_name())
                 .to_string_lossy()
@@ -1828,7 +1828,7 @@ impl BooleanResult {
     }
 
     /// **Source:** `StepShape_BooleanResult.hxx`:54 - `StepShape_BooleanResult::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_BooleanResult_get_type_name())
                 .to_string_lossy()
@@ -2112,7 +2112,7 @@ impl BoxDomain {
     }
 
     /// **Source:** `StepShape_BoxDomain.hxx`:57 - `StepShape_BoxDomain::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_BoxDomain_get_type_name())
                 .to_string_lossy()
@@ -2282,7 +2282,7 @@ impl BoxedHalfSpace {
     }
 
     /// **Source:** `StepShape_BoxedHalfSpace.hxx`:47 - `StepShape_BoxedHalfSpace::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_BoxedHalfSpace_get_type_name())
                 .to_string_lossy()
@@ -2620,7 +2620,7 @@ impl BrepWithVoids {
     }
 
     /// **Source:** `StepShape_BrepWithVoids.hxx`:53 - `StepShape_BrepWithVoids::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_BrepWithVoids_get_type_name())
                 .to_string_lossy()
@@ -2915,7 +2915,7 @@ impl ClosedShell {
     }
 
     /// **Source:** `StepShape_ClosedShell.hxx`:35 - `StepShape_ClosedShell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_ClosedShell_get_type_name())
                 .to_string_lossy()
@@ -3224,7 +3224,7 @@ impl CompoundShapeRepresentation {
     }
 
     /// **Source:** `StepShape_CompoundShapeRepresentation.hxx`:35 - `StepShape_CompoundShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_CompoundShapeRepresentation_get_type_name(),
@@ -3594,7 +3594,7 @@ impl ConnectedEdgeSet {
     }
 
     /// **Source:** `StepShape_ConnectedEdgeSet.hxx`:47 - `StepShape_ConnectedEdgeSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_ConnectedEdgeSet_get_type_name())
                 .to_string_lossy()
@@ -3861,7 +3861,7 @@ impl ConnectedFaceSet {
     }
 
     /// **Source:** `StepShape_ConnectedFaceSet.hxx`:50 - `StepShape_ConnectedFaceSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_ConnectedFaceSet_get_type_name())
                 .to_string_lossy()
@@ -4181,7 +4181,7 @@ impl ConnectedFaceShapeRepresentation {
     }
 
     /// **Source:** `StepShape_ConnectedFaceShapeRepresentation.hxx`:35 - `StepShape_ConnectedFaceShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_ConnectedFaceShapeRepresentation_get_type_name(),
@@ -4534,7 +4534,7 @@ impl ConnectedFaceSubSet {
     }
 
     /// **Source:** `StepShape_ConnectedFaceSubSet.hxx`:48 - `StepShape_ConnectedFaceSubSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_ConnectedFaceSubSet_get_type_name())
                 .to_string_lossy()
@@ -4903,7 +4903,7 @@ impl ContextDependentShapeRepresentation {
     }
 
     /// **Source:** `StepShape_ContextDependentShapeRepresentation.hxx`:49 - `StepShape_ContextDependentShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_ContextDependentShapeRepresentation_get_type_name(),
@@ -5374,7 +5374,7 @@ impl CsgShapeRepresentation {
     }
 
     /// **Source:** `StepShape_CsgShapeRepresentation.hxx`:35 - `StepShape_CsgShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_CsgShapeRepresentation_get_type_name())
                 .to_string_lossy()
@@ -5728,7 +5728,7 @@ impl CsgSolid {
     }
 
     /// **Source:** `StepShape_CsgSolid.hxx`:43 - `StepShape_CsgSolid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_CsgSolid_get_type_name())
                 .to_string_lossy()
@@ -5972,7 +5972,7 @@ impl DefinitionalRepresentationAndShapeRepresentation {
     }
 
     /// **Source:** `StepShape_DefinitionalRepresentationAndShapeRepresentation.hxx`:37 - `StepShape_DefinitionalRepresentationAndShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_DefinitionalRepresentationAndShapeRepresentation_get_type_name()).to_string_lossy().into_owned()
         }
@@ -6585,7 +6585,7 @@ impl DimensionalCharacteristicRepresentation {
     }
 
     /// **Source:** `StepShape_DimensionalCharacteristicRepresentation.hxx`:53 - `StepShape_DimensionalCharacteristicRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_DimensionalCharacteristicRepresentation_get_type_name(),
@@ -6764,7 +6764,7 @@ impl DimensionalLocation {
     }
 
     /// **Source:** `StepShape_DimensionalLocation.hxx`:35 - `StepShape_DimensionalLocation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_DimensionalLocation_get_type_name())
                 .to_string_lossy()
@@ -7160,7 +7160,7 @@ impl DimensionalLocationWithPath {
     }
 
     /// **Source:** `StepShape_DimensionalLocationWithPath.hxx`:52 - `StepShape_DimensionalLocationWithPath::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_DimensionalLocationWithPath_get_type_name(),
@@ -7534,7 +7534,7 @@ impl DimensionalSize {
     }
 
     /// **Source:** `StepShape_DimensionalSize.hxx`:53 - `StepShape_DimensionalSize::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_DimensionalSize_get_type_name())
                 .to_string_lossy()
@@ -7755,7 +7755,7 @@ impl DimensionalSizeWithPath {
     }
 
     /// **Source:** `StepShape_DimensionalSizeWithPath.hxx`:48 - `StepShape_DimensionalSizeWithPath::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_DimensionalSizeWithPath_get_type_name())
                 .to_string_lossy()
@@ -7992,7 +7992,7 @@ impl DirectedDimensionalLocation {
     }
 
     /// **Source:** `StepShape_DirectedDimensionalLocation.hxx`:35 - `StepShape_DirectedDimensionalLocation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_DirectedDimensionalLocation_get_type_name(),
@@ -8376,7 +8376,7 @@ impl Edge {
     }
 
     /// **Source:** `StepShape_Edge.hxx`:49 - `StepShape_Edge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_Edge_get_type_name())
                 .to_string_lossy()
@@ -8727,7 +8727,7 @@ impl EdgeBasedWireframeModel {
     }
 
     /// **Source:** `StepShape_EdgeBasedWireframeModel.hxx`:48 - `StepShape_EdgeBasedWireframeModel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_EdgeBasedWireframeModel_get_type_name())
                 .to_string_lossy()
@@ -8979,7 +8979,7 @@ impl EdgeBasedWireframeShapeRepresentation {
     }
 
     /// **Source:** `StepShape_EdgeBasedWireframeShapeRepresentation.hxx`:36 - `StepShape_EdgeBasedWireframeShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_EdgeBasedWireframeShapeRepresentation_get_type_name(),
@@ -9353,7 +9353,7 @@ impl EdgeCurve {
     }
 
     /// **Source:** `StepShape_EdgeCurve.hxx`:52 - `StepShape_EdgeCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_EdgeCurve_get_type_name())
                 .to_string_lossy()
@@ -9650,7 +9650,7 @@ impl EdgeLoop {
     }
 
     /// **Source:** `StepShape_EdgeLoop.hxx`:50 - `StepShape_EdgeLoop::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_EdgeLoop_get_type_name())
                 .to_string_lossy()
@@ -9928,7 +9928,7 @@ impl ExtrudedAreaSolid {
     }
 
     /// **Source:** `StepShape_ExtrudedAreaSolid.hxx`:51 - `StepShape_ExtrudedAreaSolid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_ExtrudedAreaSolid_get_type_name())
                 .to_string_lossy()
@@ -10289,7 +10289,7 @@ impl ExtrudedFaceSolid {
     }
 
     /// **Source:** `StepShape_ExtrudedFaceSolid.hxx`:51 - `StepShape_ExtrudedFaceSolid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_ExtrudedFaceSolid_get_type_name())
                 .to_string_lossy()
@@ -10633,7 +10633,7 @@ impl Face {
     }
 
     /// **Source:** `StepShape_Face.hxx`:50 - `StepShape_Face::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_Face_get_type_name())
                 .to_string_lossy()
@@ -10945,7 +10945,7 @@ impl FaceBasedSurfaceModel {
     }
 
     /// **Source:** `StepShape_FaceBasedSurfaceModel.hxx`:47 - `StepShape_FaceBasedSurfaceModel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_FaceBasedSurfaceModel_get_type_name())
                 .to_string_lossy()
@@ -11219,7 +11219,7 @@ impl FaceBound {
     }
 
     /// **Source:** `StepShape_FaceBound.hxx`:50 - `StepShape_FaceBound::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_FaceBound_get_type_name())
                 .to_string_lossy()
@@ -11446,7 +11446,7 @@ impl FaceOuterBound {
     }
 
     /// **Source:** `StepShape_FaceOuterBound.hxx`:35 - `StepShape_FaceOuterBound::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_FaceOuterBound_get_type_name())
                 .to_string_lossy()
@@ -11787,7 +11787,7 @@ impl FaceSurface {
     }
 
     /// **Source:** `StepShape_FaceSurface.hxx`:51 - `StepShape_FaceSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_FaceSurface_get_type_name())
                 .to_string_lossy()
@@ -12070,7 +12070,7 @@ impl FacetedBrep {
     }
 
     /// **Source:** `StepShape_FacetedBrep.hxx`:35 - `StepShape_FacetedBrep::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_FacetedBrep_get_type_name())
                 .to_string_lossy()
@@ -12484,7 +12484,7 @@ impl FacetedBrepAndBrepWithVoids {
     }
 
     /// **Source:** `StepShape_FacetedBrepAndBrepWithVoids.hxx`:68 - `StepShape_FacetedBrepAndBrepWithVoids::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_FacetedBrepAndBrepWithVoids_get_type_name(),
@@ -12818,7 +12818,7 @@ impl FacetedBrepShapeRepresentation {
     }
 
     /// **Source:** `StepShape_FacetedBrepShapeRepresentation.hxx`:35 - `StepShape_FacetedBrepShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_FacetedBrepShapeRepresentation_get_type_name(),
@@ -13151,7 +13151,7 @@ impl GeometricCurveSet {
     }
 
     /// **Source:** `StepShape_GeometricCurveSet.hxx`:34 - `StepShape_GeometricCurveSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_GeometricCurveSet_get_type_name())
                 .to_string_lossy()
@@ -13530,7 +13530,7 @@ impl GeometricSet {
     }
 
     /// **Source:** `StepShape_GeometricSet.hxx`:49 - `StepShape_GeometricSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_GeometricSet_get_type_name())
                 .to_string_lossy()
@@ -13991,7 +13991,7 @@ impl GeometricallyBoundedSurfaceShapeRepresentation {
     }
 
     /// **Source:** `StepShape_GeometricallyBoundedSurfaceShapeRepresentation.hxx`:37 - `StepShape_GeometricallyBoundedSurfaceShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_GeometricallyBoundedSurfaceShapeRepresentation_get_type_name(
@@ -14309,7 +14309,7 @@ impl GeometricallyBoundedWireframeShapeRepresentation {
     }
 
     /// **Source:** `StepShape_GeometricallyBoundedWireframeShapeRepresentation.hxx`:37 - `StepShape_GeometricallyBoundedWireframeShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_GeometricallyBoundedWireframeShapeRepresentation_get_type_name()).to_string_lossy().into_owned()
         }
@@ -14673,7 +14673,7 @@ impl HArray1OfConnectedEdgeSet {
     }
 
     /// **Source:** `StepShape_HArray1OfConnectedEdgeSet.hxx`:23 - `StepShape_HArray1OfConnectedEdgeSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_HArray1OfConnectedEdgeSet_get_type_name()).to_string_lossy().into_owned()
         }
@@ -14907,7 +14907,7 @@ impl HArray1OfConnectedFaceSet {
     }
 
     /// **Source:** `StepShape_HArray1OfConnectedFaceSet.hxx`:23 - `StepShape_HArray1OfConnectedFaceSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_HArray1OfConnectedFaceSet_get_type_name()).to_string_lossy().into_owned()
         }
@@ -15131,7 +15131,7 @@ impl HArray1OfEdge {
     }
 
     /// **Source:** `StepShape_HArray1OfEdge.hxx`:23 - `StepShape_HArray1OfEdge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_HArray1OfEdge_get_type_name())
                 .to_string_lossy()
@@ -15332,7 +15332,7 @@ impl HArray1OfFace {
     }
 
     /// **Source:** `StepShape_HArray1OfFace.hxx`:23 - `StepShape_HArray1OfFace::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_HArray1OfFace_get_type_name())
                 .to_string_lossy()
@@ -15533,7 +15533,7 @@ impl HArray1OfFaceBound {
     }
 
     /// **Source:** `StepShape_HArray1OfFaceBound.hxx`:23 - `StepShape_HArray1OfFaceBound::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_HArray1OfFaceBound_get_type_name())
                 .to_string_lossy()
@@ -15762,7 +15762,7 @@ impl HArray1OfGeometricSetSelect {
     }
 
     /// **Source:** `StepShape_HArray1OfGeometricSetSelect.hxx`:24 - `StepShape_HArray1OfGeometricSetSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_HArray1OfGeometricSetSelect_get_type_name(),
@@ -16012,7 +16012,7 @@ impl HArray1OfOrientedClosedShell {
     }
 
     /// **Source:** `StepShape_HArray1OfOrientedClosedShell.hxx`:23 - `StepShape_HArray1OfOrientedClosedShell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_HArray1OfOrientedClosedShell_get_type_name(),
@@ -16250,7 +16250,7 @@ impl HArray1OfOrientedEdge {
     }
 
     /// **Source:** `StepShape_HArray1OfOrientedEdge.hxx`:23 - `StepShape_HArray1OfOrientedEdge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_HArray1OfOrientedEdge_get_type_name())
                 .to_string_lossy()
@@ -16486,7 +16486,7 @@ impl HArray1OfShapeDimensionRepresentationItem {
     }
 
     /// **Source:** `StepShape_HArray1OfShapeDimensionRepresentationItem.hxx`:22 - `StepShape_HArray1OfShapeDimensionRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_HArray1OfShapeDimensionRepresentationItem_get_type_name(),
@@ -16715,7 +16715,7 @@ impl HArray1OfShell {
     }
 
     /// **Source:** `StepShape_HArray1OfShell.hxx`:24 - `StepShape_HArray1OfShell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_HArray1OfShell_get_type_name())
                 .to_string_lossy()
@@ -16928,7 +16928,7 @@ impl HArray1OfValueQualifier {
     }
 
     /// **Source:** `StepShape_HArray1OfValueQualifier.hxx`:23 - `StepShape_HArray1OfValueQualifier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_HArray1OfValueQualifier_get_type_name())
                 .to_string_lossy()
@@ -17144,7 +17144,7 @@ impl HalfSpaceSolid {
     }
 
     /// **Source:** `StepShape_HalfSpaceSolid.hxx`:49 - `StepShape_HalfSpaceSolid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_HalfSpaceSolid_get_type_name())
                 .to_string_lossy()
@@ -17468,7 +17468,7 @@ impl LimitsAndFits {
     }
 
     /// **Source:** `StepShape_LimitsAndFits.hxx`:56 - `StepShape_LimitsAndFits::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_LimitsAndFits_get_type_name())
                 .to_string_lossy()
@@ -17613,7 +17613,7 @@ impl Loop {
     }
 
     /// **Source:** `StepShape_Loop.hxx`:35 - `StepShape_Loop::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_Loop_get_type_name())
                 .to_string_lossy()
@@ -17949,7 +17949,7 @@ impl LoopAndPath {
     }
 
     /// **Source:** `StepShape_LoopAndPath.hxx`:64 - `StepShape_LoopAndPath::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_LoopAndPath_get_type_name())
                 .to_string_lossy()
@@ -18200,7 +18200,7 @@ impl ManifoldSolidBrep {
     }
 
     /// **Source:** `StepShape_ManifoldSolidBrep.hxx`:48 - `StepShape_ManifoldSolidBrep::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_ManifoldSolidBrep_get_type_name())
                 .to_string_lossy()
@@ -18520,7 +18520,7 @@ impl ManifoldSurfaceShapeRepresentation {
     }
 
     /// **Source:** `StepShape_ManifoldSurfaceShapeRepresentation.hxx`:35 - `StepShape_ManifoldSurfaceShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_ManifoldSurfaceShapeRepresentation_get_type_name(),
@@ -18976,7 +18976,7 @@ impl MeasureQualification {
     }
 
     /// **Source:** `StepShape_MeasureQualification.hxx`:68 - `StepShape_MeasureQualification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_MeasureQualification_get_type_name())
                 .to_string_lossy()
@@ -19226,7 +19226,7 @@ impl MeasureRepresentationItemAndQualifiedRepresentationItem {
     }
 
     /// **Source:** `StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem.hxx`:65 - `StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem_get_type_name()).to_string_lossy().into_owned()
         }
@@ -19432,7 +19432,7 @@ impl NonManifoldSurfaceShapeRepresentation {
     }
 
     /// **Source:** `StepShape_NonManifoldSurfaceShapeRepresentation.hxx`:36 - `StepShape_NonManifoldSurfaceShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_NonManifoldSurfaceShapeRepresentation_get_type_name(),
@@ -19759,7 +19759,7 @@ impl OpenShell {
     }
 
     /// **Source:** `StepShape_OpenShell.hxx`:35 - `StepShape_OpenShell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_OpenShell_get_type_name())
                 .to_string_lossy()
@@ -20142,7 +20142,7 @@ impl OrientedClosedShell {
     }
 
     /// **Source:** `StepShape_OrientedClosedShell.hxx`:63 - `StepShape_OrientedClosedShell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_OrientedClosedShell_get_type_name())
                 .to_string_lossy()
@@ -20510,7 +20510,7 @@ impl OrientedEdge {
     }
 
     /// **Source:** `StepShape_OrientedEdge.hxx`:60 - `StepShape_OrientedEdge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_OrientedEdge_get_type_name())
                 .to_string_lossy()
@@ -20854,7 +20854,7 @@ impl OrientedFace {
     }
 
     /// **Source:** `StepShape_OrientedFace.hxx`:62 - `StepShape_OrientedFace::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_OrientedFace_get_type_name())
                 .to_string_lossy()
@@ -21170,7 +21170,7 @@ impl OrientedOpenShell {
     }
 
     /// **Source:** `StepShape_OrientedOpenShell.hxx`:62 - `StepShape_OrientedOpenShell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_OrientedOpenShell_get_type_name())
                 .to_string_lossy()
@@ -21534,7 +21534,7 @@ impl OrientedPath {
     }
 
     /// **Source:** `StepShape_OrientedPath.hxx`:63 - `StepShape_OrientedPath::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_OrientedPath_get_type_name())
                 .to_string_lossy()
@@ -21807,7 +21807,7 @@ impl Path {
     }
 
     /// **Source:** `StepShape_Path.hxx`:52 - `StepShape_Path::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_Path_get_type_name())
                 .to_string_lossy()
@@ -22075,7 +22075,7 @@ impl PlusMinusTolerance {
     }
 
     /// **Source:** `StepShape_PlusMinusTolerance.hxx`:47 - `StepShape_PlusMinusTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_PlusMinusTolerance_get_type_name())
                 .to_string_lossy()
@@ -22235,7 +22235,7 @@ impl PointRepresentation {
     }
 
     /// **Source:** `StepShape_PointRepresentation.hxx`:35 - `StepShape_PointRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_PointRepresentation_get_type_name())
                 .to_string_lossy()
@@ -22586,7 +22586,7 @@ impl PolyLoop {
     }
 
     /// **Source:** `StepShape_PolyLoop.hxx`:50 - `StepShape_PolyLoop::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_PolyLoop_get_type_name())
                 .to_string_lossy()
@@ -22833,7 +22833,7 @@ impl PrecisionQualifier {
     }
 
     /// **Source:** `StepShape_PrecisionQualifier.hxx`:41 - `StepShape_PrecisionQualifier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_PrecisionQualifier_get_type_name())
                 .to_string_lossy()
@@ -23065,7 +23065,7 @@ impl QualifiedRepresentationItem {
     }
 
     /// **Source:** `StepShape_QualifiedRepresentationItem.hxx`:51 - `StepShape_QualifiedRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_QualifiedRepresentationItem_get_type_name(),
@@ -23581,7 +23581,7 @@ impl RevolvedAreaSolid {
     }
 
     /// **Source:** `StepShape_RevolvedAreaSolid.hxx`:51 - `StepShape_RevolvedAreaSolid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_RevolvedAreaSolid_get_type_name())
                 .to_string_lossy()
@@ -23939,7 +23939,7 @@ impl RevolvedFaceSolid {
     }
 
     /// **Source:** `StepShape_RevolvedFaceSolid.hxx`:54 - `StepShape_RevolvedFaceSolid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_RevolvedFaceSolid_get_type_name())
                 .to_string_lossy()
@@ -24328,7 +24328,7 @@ impl RightAngularWedge {
     }
 
     /// **Source:** `StepShape_RightAngularWedge.hxx`:64 - `StepShape_RightAngularWedge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_RightAngularWedge_get_type_name())
                 .to_string_lossy()
@@ -24630,7 +24630,7 @@ impl RightCircularCone {
     }
 
     /// **Source:** `StepShape_RightCircularCone.hxx`:59 - `StepShape_RightCircularCone::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_RightCircularCone_get_type_name())
                 .to_string_lossy()
@@ -24922,7 +24922,7 @@ impl RightCircularCylinder {
     }
 
     /// **Source:** `StepShape_RightCircularCylinder.hxx`:54 - `StepShape_RightCircularCylinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_RightCircularCylinder_get_type_name())
                 .to_string_lossy()
@@ -25201,7 +25201,7 @@ impl SeamEdge {
     }
 
     /// **Source:** `StepShape_SeamEdge.hxx`:50 - `StepShape_SeamEdge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_SeamEdge_get_type_name())
                 .to_string_lossy()
@@ -25518,7 +25518,7 @@ impl ShapeDefinitionRepresentation {
     }
 
     /// **Source:** `StepShape_ShapeDefinitionRepresentation.hxx`:36 - `StepShape_ShapeDefinitionRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_ShapeDefinitionRepresentation_get_type_name(),
@@ -25840,7 +25840,7 @@ impl ShapeDimensionRepresentation {
     }
 
     /// **Source:** `StepShape_ShapeDimensionRepresentation.hxx`:51 - `StepShape_ShapeDimensionRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_ShapeDimensionRepresentation_get_type_name(),
@@ -26442,7 +26442,7 @@ impl ShapeRepresentation {
     }
 
     /// **Source:** `StepShape_ShapeRepresentation.hxx`:35 - `StepShape_ShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_ShapeRepresentation_get_type_name())
                 .to_string_lossy()
@@ -26987,7 +26987,7 @@ impl ShapeRepresentationWithParameters {
     }
 
     /// **Source:** `StepShape_ShapeRepresentationWithParameters.hxx`:35 - `StepShape_ShapeRepresentationWithParameters::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_ShapeRepresentationWithParameters_get_type_name(),
@@ -27542,7 +27542,7 @@ impl ShellBasedSurfaceModel {
     }
 
     /// **Source:** `StepShape_ShellBasedSurfaceModel.hxx`:49 - `StepShape_ShellBasedSurfaceModel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_ShellBasedSurfaceModel_get_type_name())
                 .to_string_lossy()
@@ -27784,7 +27784,7 @@ impl SolidModel {
     }
 
     /// **Source:** `StepShape_SolidModel.hxx`:35 - `StepShape_SolidModel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_SolidModel_get_type_name())
                 .to_string_lossy()
@@ -28277,7 +28277,7 @@ impl SolidReplica {
     }
 
     /// **Source:** `StepShape_SolidReplica.hxx`:51 - `StepShape_SolidReplica::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_SolidReplica_get_type_name())
                 .to_string_lossy()
@@ -28555,7 +28555,7 @@ impl Sphere {
     }
 
     /// **Source:** `StepShape_Sphere.hxx`:49 - `StepShape_Sphere::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_Sphere_get_type_name())
                 .to_string_lossy()
@@ -28800,7 +28800,7 @@ impl Subedge {
     }
 
     /// **Source:** `StepShape_Subedge.hxx`:49 - `StepShape_Subedge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_Subedge_get_type_name())
                 .to_string_lossy()
@@ -29092,7 +29092,7 @@ impl Subface {
     }
 
     /// **Source:** `StepShape_Subface.hxx`:48 - `StepShape_Subface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_Subface_get_type_name())
                 .to_string_lossy()
@@ -29540,7 +29540,7 @@ impl SweptAreaSolid {
     }
 
     /// **Source:** `StepShape_SweptAreaSolid.hxx`:44 - `StepShape_SweptAreaSolid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_SweptAreaSolid_get_type_name())
                 .to_string_lossy()
@@ -29855,7 +29855,7 @@ impl SweptFaceSolid {
     }
 
     /// **Source:** `StepShape_SweptFaceSolid.hxx`:44 - `StepShape_SweptFaceSolid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_SweptFaceSolid_get_type_name())
                 .to_string_lossy()
@@ -30419,7 +30419,7 @@ impl ToleranceValue {
     }
 
     /// **Source:** `StepShape_ToleranceValue.hxx`:45 - `StepShape_ToleranceValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_ToleranceValue_get_type_name())
                 .to_string_lossy()
@@ -30574,7 +30574,7 @@ impl TopologicalRepresentationItem {
     }
 
     /// **Source:** `StepShape_TopologicalRepresentationItem.hxx`:35 - `StepShape_TopologicalRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_TopologicalRepresentationItem_get_type_name(),
@@ -31357,7 +31357,7 @@ impl Torus {
     }
 
     /// **Source:** `StepShape_Torus.hxx`:54 - `StepShape_Torus::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_Torus_get_type_name())
                 .to_string_lossy()
@@ -31571,7 +31571,7 @@ impl TransitionalShapeRepresentation {
     }
 
     /// **Source:** `StepShape_TransitionalShapeRepresentation.hxx`:35 - `StepShape_TransitionalShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepShape_TransitionalShapeRepresentation_get_type_name(),
@@ -31921,7 +31921,7 @@ impl TypeQualifier {
     }
 
     /// **Source:** `StepShape_TypeQualifier.hxx`:41 - `StepShape_TypeQualifier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_TypeQualifier_get_type_name())
                 .to_string_lossy()
@@ -32097,7 +32097,7 @@ impl ValueFormatTypeQualifier {
     }
 
     /// **Source:** `StepShape_ValueFormatTypeQualifier.hxx`:49 - `StepShape_ValueFormatTypeQualifier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_ValueFormatTypeQualifier_get_type_name())
                 .to_string_lossy()
@@ -32461,7 +32461,7 @@ impl Vertex {
     }
 
     /// **Source:** `StepShape_Vertex.hxx`:35 - `StepShape_Vertex::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_Vertex_get_type_name())
                 .to_string_lossy()
@@ -32729,7 +32729,7 @@ impl VertexLoop {
     }
 
     /// **Source:** `StepShape_VertexLoop.hxx`:44 - `StepShape_VertexLoop::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_VertexLoop_get_type_name())
                 .to_string_lossy()
@@ -32985,7 +32985,7 @@ impl VertexPoint {
     }
 
     /// **Source:** `StepShape_VertexPoint.hxx`:44 - `StepShape_VertexPoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepShape_VertexPoint_get_type_name())
                 .to_string_lossy()

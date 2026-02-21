@@ -86,7 +86,7 @@ impl BCirc {
     }
 
     /// **Source:** `GccInt_BCirc.hxx`:44 - `GccInt_BCirc::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GccInt_BCirc_get_type_name())
                 .to_string_lossy()
@@ -289,7 +289,7 @@ impl BElips {
     }
 
     /// **Source:** `GccInt_BElips.hxx`:44 - `GccInt_BElips::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GccInt_BElips_get_type_name())
                 .to_string_lossy()
@@ -498,7 +498,7 @@ impl BHyper {
     }
 
     /// **Source:** `GccInt_BHyper.hxx`:44 - `GccInt_BHyper::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GccInt_BHyper_get_type_name())
                 .to_string_lossy()
@@ -705,7 +705,7 @@ impl BLine {
     }
 
     /// **Source:** `GccInt_BLine.hxx`:44 - `GccInt_BLine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GccInt_BLine_get_type_name())
                 .to_string_lossy()
@@ -912,7 +912,7 @@ impl BParab {
     }
 
     /// **Source:** `GccInt_BParab.hxx`:44 - `GccInt_BParab::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GccInt_BParab_get_type_name())
                 .to_string_lossy()
@@ -1118,7 +1118,7 @@ impl BPoint {
     }
 
     /// **Source:** `GccInt_BPoint.hxx`:43 - `GccInt_BPoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GccInt_BPoint_get_type_name())
                 .to_string_lossy()
@@ -1375,7 +1375,7 @@ impl Bisec {
     }
 
     /// **Source:** `GccInt_Bisec.hxx`:86 - `GccInt_Bisec::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GccInt_Bisec_get_type_name())
                 .to_string_lossy()

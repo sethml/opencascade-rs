@@ -182,7 +182,7 @@ impl AlertUserBreak {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:22 - `BOPAlgo_AlertUserBreak::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertUserBreak_get_type_name())
                 .to_string_lossy()
@@ -351,7 +351,7 @@ impl AlertBOPNotAllowed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:25 - `BOPAlgo_AlertBOPNotAllowed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertBOPNotAllowed_get_type_name())
                 .to_string_lossy()
@@ -538,7 +538,7 @@ impl AlertBOPNotSet {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:28 - `BOPAlgo_AlertBOPNotSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertBOPNotSet_get_type_name())
                 .to_string_lossy()
@@ -707,7 +707,7 @@ impl AlertBuilderFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:31 - `BOPAlgo_AlertBuilderFailed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertBuilderFailed_get_type_name())
                 .to_string_lossy()
@@ -894,7 +894,7 @@ impl AlertIntersectionFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:34 - `BOPAlgo_AlertIntersectionFailed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertIntersectionFailed_get_type_name())
                 .to_string_lossy()
@@ -1101,7 +1101,7 @@ impl AlertMultipleArguments {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:37 - `BOPAlgo_AlertMultipleArguments::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertMultipleArguments_get_type_name())
                 .to_string_lossy()
@@ -1305,7 +1305,7 @@ impl AlertNoFiller {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:40 - `BOPAlgo_AlertNoFiller::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertNoFiller_get_type_name())
                 .to_string_lossy()
@@ -1472,7 +1472,7 @@ impl AlertNullInputShapes {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:43 - `BOPAlgo_AlertNullInputShapes::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertNullInputShapes_get_type_name())
                 .to_string_lossy()
@@ -1667,7 +1667,7 @@ impl AlertPostTreatFF {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:46 - `BOPAlgo_AlertPostTreatFF::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertPostTreatFF_get_type_name())
                 .to_string_lossy()
@@ -1848,7 +1848,7 @@ impl AlertSolidBuilderFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:49 - `BOPAlgo_AlertSolidBuilderFailed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertSolidBuilderFailed_get_type_name())
                 .to_string_lossy()
@@ -2055,7 +2055,7 @@ impl AlertTooFewArguments {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:52 - `BOPAlgo_AlertTooFewArguments::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertTooFewArguments_get_type_name())
                 .to_string_lossy()
@@ -2252,7 +2252,7 @@ impl AlertBadPositioning {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:55 - `BOPAlgo_AlertBadPositioning::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertBadPositioning_get_type_name())
                 .to_string_lossy()
@@ -2488,7 +2488,7 @@ impl AlertEmptyShape {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:58 - `BOPAlgo_AlertEmptyShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertEmptyShape_get_type_name())
                 .to_string_lossy()
@@ -2706,7 +2706,7 @@ impl AlertNotSplittableEdge {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:61 - `BOPAlgo_AlertNotSplittableEdge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertNotSplittableEdge_get_type_name())
                 .to_string_lossy()
@@ -2964,7 +2964,7 @@ impl AlertRemovalOfIBForEdgesFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:64 - `BOPAlgo_AlertRemovalOfIBForEdgesFailed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_get_type_name(),
@@ -3239,7 +3239,7 @@ impl AlertRemovalOfIBForFacesFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:67 - `BOPAlgo_AlertRemovalOfIBForFacesFailed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_get_type_name(),
@@ -3514,7 +3514,7 @@ impl AlertRemovalOfIBForMDimShapes {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:70 - `BOPAlgo_AlertRemovalOfIBForMDimShapes::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_get_type_name(),
@@ -3791,7 +3791,7 @@ impl AlertRemovalOfIBForSolidsFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:73 - `BOPAlgo_AlertRemovalOfIBForSolidsFailed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_get_type_name(),
@@ -4068,7 +4068,7 @@ impl AlertSelfInterferingShape {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:76 - `BOPAlgo_AlertSelfInterferingShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertSelfInterferingShape_get_type_name())
                 .to_string_lossy()
@@ -4335,7 +4335,7 @@ impl AlertShellSplitterFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:79 - `BOPAlgo_AlertShellSplitterFailed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertShellSplitterFailed_get_type_name())
                 .to_string_lossy()
@@ -4596,7 +4596,7 @@ impl AlertTooSmallEdge {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:82 - `BOPAlgo_AlertTooSmallEdge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertTooSmallEdge_get_type_name())
                 .to_string_lossy()
@@ -4829,7 +4829,7 @@ impl AlertIntersectionOfPairOfShapesFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:85 - `BOPAlgo_AlertIntersectionOfPairOfShapesFailed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_get_type_name(),
@@ -5098,7 +5098,7 @@ impl AlertBuildingPCurveFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:88 - `BOPAlgo_AlertBuildingPCurveFailed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_get_type_name())
                 .to_string_lossy()
@@ -5367,7 +5367,7 @@ impl AlertAcquiredSelfIntersection {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:92 - `BOPAlgo_AlertAcquiredSelfIntersection::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_get_type_name(),
@@ -5638,7 +5638,7 @@ impl AlertUnsupportedType {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:95 - `BOPAlgo_AlertUnsupportedType::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertUnsupportedType_get_type_name())
                 .to_string_lossy()
@@ -5878,7 +5878,7 @@ impl AlertNoFacesToRemove {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:98 - `BOPAlgo_AlertNoFacesToRemove::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertNoFacesToRemove_get_type_name())
                 .to_string_lossy()
@@ -6079,7 +6079,7 @@ impl AlertUnableToRemoveTheFeature {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:101 - `BOPAlgo_AlertUnableToRemoveTheFeature::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_get_type_name(),
@@ -6350,7 +6350,7 @@ impl AlertRemoveFeaturesFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:104 - `BOPAlgo_AlertRemoveFeaturesFailed::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed_get_type_name())
                 .to_string_lossy()
@@ -6569,7 +6569,7 @@ impl AlertSolidBuilderUnusedFaces {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:108 - `BOPAlgo_AlertSolidBuilderUnusedFaces::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_get_type_name(),
@@ -6846,7 +6846,7 @@ impl AlertFaceBuilderUnusedEdges {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:112 - `BOPAlgo_AlertFaceBuilderUnusedEdges::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_get_type_name()).to_string_lossy().into_owned()
         }
@@ -7115,7 +7115,7 @@ impl AlertUnableToOrientTheShape {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:115 - `BOPAlgo_AlertUnableToOrientTheShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_get_type_name()).to_string_lossy().into_owned()
         }
@@ -7380,7 +7380,7 @@ impl AlertUnknownShape {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:118 - `BOPAlgo_AlertUnknownShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertUnknownShape_get_type_name())
                 .to_string_lossy()
@@ -7607,7 +7607,7 @@ impl AlertNoPeriodicityRequired {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:121 - `BOPAlgo_AlertNoPeriodicityRequired::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertNoPeriodicityRequired_get_type_name())
                 .to_string_lossy()
@@ -7822,7 +7822,7 @@ impl AlertUnableToTrim {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:124 - `BOPAlgo_AlertUnableToTrim::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertUnableToTrim_get_type_name())
                 .to_string_lossy()
@@ -8053,7 +8053,7 @@ impl AlertUnableToMakeIdentical {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:127 - `BOPAlgo_AlertUnableToMakeIdentical::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_get_type_name())
                 .to_string_lossy()
@@ -8318,7 +8318,7 @@ impl AlertUnableToRepeat {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:130 - `BOPAlgo_AlertUnableToRepeat::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertUnableToRepeat_get_type_name())
                 .to_string_lossy()
@@ -8556,7 +8556,7 @@ impl AlertMultiDimensionalArguments {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:133 - `BOPAlgo_AlertMultiDimensionalArguments::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BOPAlgo_AlertMultiDimensionalArguments_get_type_name(),
@@ -8785,7 +8785,7 @@ impl AlertUnableToMakePeriodic {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:136 - `BOPAlgo_AlertUnableToMakePeriodic::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_get_type_name())
                 .to_string_lossy()
@@ -9048,7 +9048,7 @@ impl AlertUnableToGlue {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:139 - `BOPAlgo_AlertUnableToGlue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertUnableToGlue_get_type_name())
                 .to_string_lossy()
@@ -9277,7 +9277,7 @@ impl AlertShapeIsNotPeriodic {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:142 - `BOPAlgo_AlertShapeIsNotPeriodic::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_get_type_name())
                 .to_string_lossy()
@@ -9540,7 +9540,7 @@ impl AlertUnableToMakeClosedEdgeOnFace {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:145 - `BOPAlgo_AlertUnableToMakeClosedEdgeOnFace::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_get_type_name(),

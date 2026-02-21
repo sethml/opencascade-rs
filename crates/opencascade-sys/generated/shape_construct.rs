@@ -677,7 +677,7 @@ impl ProjectCurveOnSurface {
     }
 
     /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:136 - `ShapeConstruct_ProjectCurveOnSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::ShapeConstruct_ProjectCurveOnSurface_get_type_name(),

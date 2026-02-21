@@ -97,7 +97,7 @@ impl HArray1OfBSplineCurve {
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_get_type_name())
                 .to_string_lossy()
@@ -325,7 +325,7 @@ impl HArray1OfBezierCurve {
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColGeom2d_HArray1OfBezierCurve_get_type_name())
                 .to_string_lossy()
@@ -547,7 +547,7 @@ impl HArray1OfCurve {
     }
 
     /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColGeom2d_HArray1OfCurve_get_type_name())
                 .to_string_lossy()
@@ -748,7 +748,7 @@ impl HSequenceOfBoundedCurve {
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_get_type_name())
                 .to_string_lossy()
@@ -958,7 +958,7 @@ impl HSequenceOfCurve {
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColGeom2d_HSequenceOfCurve_get_type_name())
                 .to_string_lossy()

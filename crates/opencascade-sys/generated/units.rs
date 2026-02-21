@@ -36,7 +36,7 @@ pub fn quantity(aquantity: &str) -> crate::OwnedPtr<crate::ffi::HandleUnitsQuant
 }
 /// **Source:** `Units.hxx`:60 - `Units::FirstQuantity`
 /// Returns the first quantity string founded from the unit <aUnit>.
-pub fn first_quantity(aunit: &str) -> String {
+pub fn first_quantity(aunit: &str) -> std::string::String {
     let c_aunit = std::ffi::CString::new(aunit).unwrap();
     unsafe {
         std::ffi::CStr::from_ptr(crate::ffi::Units_first_quantity(c_aunit.as_ptr()))
@@ -228,7 +228,7 @@ impl Dimensions {
 
     /// **Source:** `Units_Dimensions.hxx`:88 - `Units_Dimensions::Quantity()`
     /// Returns the quantity string of the dimension
-    pub fn quantity(&self) -> String {
+    pub fn quantity(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_Dimensions_quantity(self as *const Self))
                 .to_string_lossy()
@@ -358,7 +358,7 @@ impl Dimensions {
     }
 
     /// **Source:** `Units_Dimensions.hxx`:137 - `Units_Dimensions::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_Dimensions_get_type_name())
                 .to_string_lossy()
@@ -733,7 +733,7 @@ impl Lexicon {
     }
 
     /// **Source:** `Units_Lexicon.hxx`:62 - `Units_Lexicon::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_Lexicon_get_type_name())
                 .to_string_lossy()
@@ -1200,7 +1200,7 @@ impl NoSuchType {
     }
 
     /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_NoSuchType_get_type_name())
                 .to_string_lossy()
@@ -1467,7 +1467,7 @@ impl NoSuchUnit {
     }
 
     /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_NoSuchUnit_get_type_name())
                 .to_string_lossy()
@@ -1705,7 +1705,7 @@ impl QuantitiesSequence {
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_QuantitiesSequence_get_type_name())
                 .to_string_lossy()
@@ -1905,7 +1905,7 @@ impl Quantity {
     }
 
     /// **Source:** `Units_Quantity.hxx`:66 - `Units_Quantity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_Quantity_get_type_name())
                 .to_string_lossy()
@@ -2186,7 +2186,7 @@ impl ShiftedToken {
     }
 
     /// **Source:** `Units_ShiftedToken.hxx`:80 - `Units_ShiftedToken::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_ShiftedToken_get_type_name())
                 .to_string_lossy()
@@ -2524,7 +2524,7 @@ impl ShiftedUnit {
     }
 
     /// **Source:** `Units_ShiftedUnit.hxx`:76 - `Units_ShiftedUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_ShiftedUnit_get_type_name())
                 .to_string_lossy()
@@ -3049,7 +3049,7 @@ impl Token {
     }
 
     /// **Source:** `Units_Token.hxx`:191 - `Units_Token::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_Token_get_type_name())
                 .to_string_lossy()
@@ -3219,7 +3219,7 @@ impl TokensSequence {
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_TokensSequence_get_type_name())
                 .to_string_lossy()
@@ -3469,7 +3469,7 @@ impl Unit {
     }
 
     /// **Source:** `Units_Unit.hxx`:92 - `Units_Unit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_Unit_get_type_name())
                 .to_string_lossy()
@@ -3779,7 +3779,7 @@ impl UnitsDictionary {
     }
 
     /// **Source:** `Units_UnitsDictionary.hxx`:58 - `Units_UnitsDictionary::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_UnitsDictionary_get_type_name())
                 .to_string_lossy()
@@ -3938,7 +3938,7 @@ impl UnitsLexicon {
     }
 
     /// **Source:** `Units_UnitsLexicon.hxx`:50 - `Units_UnitsLexicon::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_UnitsLexicon_get_type_name())
                 .to_string_lossy()
@@ -4126,7 +4126,7 @@ impl UnitsSequence {
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_UnitsSequence_get_type_name())
                 .to_string_lossy()
@@ -4448,7 +4448,7 @@ impl UnitsSystem {
     }
 
     /// **Source:** `Units_UnitsSystem.hxx`:101 - `Units_UnitsSystem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Units_UnitsSystem_get_type_name())
                 .to_string_lossy()

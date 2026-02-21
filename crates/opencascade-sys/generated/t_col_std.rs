@@ -95,7 +95,7 @@ impl HArray1OfAsciiString {
     }
 
     /// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray1OfAsciiString_get_type_name())
                 .to_string_lossy()
@@ -310,7 +310,7 @@ impl HArray1OfBoolean {
     }
 
     /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray1OfBoolean_get_type_name())
                 .to_string_lossy()
@@ -511,7 +511,7 @@ impl HArray1OfByte {
     }
 
     /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray1OfByte_get_type_name())
                 .to_string_lossy()
@@ -708,7 +708,7 @@ impl HArray1OfCharacter {
     }
 
     /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray1OfCharacter_get_type_name())
                 .to_string_lossy()
@@ -923,7 +923,7 @@ impl HArray1OfExtendedString {
     }
 
     /// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray1OfExtendedString_get_type_name())
                 .to_string_lossy()
@@ -1145,7 +1145,7 @@ impl HArray1OfInteger {
     }
 
     /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray1OfInteger_get_type_name())
                 .to_string_lossy()
@@ -1354,7 +1354,7 @@ impl HArray1OfListOfInteger {
     }
 
     /// **Source:** `TColStd_HArray1OfListOfInteger.hxx`:21 - `TColStd_HArray1OfListOfInteger::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray1OfListOfInteger_get_type_name())
                 .to_string_lossy()
@@ -1572,7 +1572,7 @@ impl HArray1OfReal {
     }
 
     /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray1OfReal_get_type_name())
                 .to_string_lossy()
@@ -1769,7 +1769,7 @@ impl HArray1OfTransient {
     }
 
     /// **Source:** `TColStd_HArray1OfTransient.hxx`:22 - `TColStd_HArray1OfTransient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray1OfTransient_get_type_name())
                 .to_string_lossy()
@@ -1966,7 +1966,7 @@ impl HArray2OfBoolean {
     }
 
     /// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray2OfBoolean_get_type_name())
                 .to_string_lossy()
@@ -2159,7 +2159,7 @@ impl HArray2OfCharacter {
     }
 
     /// **Source:** `TColStd_HArray2OfCharacter.hxx`:22 - `TColStd_HArray2OfCharacter::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray2OfCharacter_get_type_name())
                 .to_string_lossy()
@@ -2356,7 +2356,7 @@ impl HArray2OfInteger {
     }
 
     /// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray2OfInteger_get_type_name())
                 .to_string_lossy()
@@ -2545,7 +2545,7 @@ impl HArray2OfReal {
     }
 
     /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray2OfReal_get_type_name())
                 .to_string_lossy()
@@ -2730,7 +2730,7 @@ impl HArray2OfTransient {
     }
 
     /// **Source:** `TColStd_HArray2OfTransient.hxx`:22 - `TColStd_HArray2OfTransient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HArray2OfTransient_get_type_name())
                 .to_string_lossy()
@@ -2911,7 +2911,7 @@ impl HPackedMapOfInteger {
     }
 
     /// **Source:** `TColStd_HPackedMapOfInteger.hxx`:41 - `TColStd_HPackedMapOfInteger::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HPackedMapOfInteger_get_type_name())
                 .to_string_lossy()
@@ -3111,7 +3111,7 @@ impl HSequenceOfAsciiString {
     }
 
     /// **Source:** `TColStd_HSequenceOfAsciiString.hxx`:22 - `TColStd_HSequenceOfAsciiString::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HSequenceOfAsciiString_get_type_name())
                 .to_string_lossy()
@@ -3326,7 +3326,7 @@ impl HSequenceOfExtendedString {
     }
 
     /// **Source:** `TColStd_HSequenceOfExtendedString.hxx`:22 - `TColStd_HSequenceOfExtendedString::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HSequenceOfExtendedString_get_type_name())
                 .to_string_lossy()
@@ -3536,7 +3536,7 @@ impl HSequenceOfHAsciiString {
     }
 
     /// **Source:** `TColStd_HSequenceOfHAsciiString.hxx`:21 - `TColStd_HSequenceOfHAsciiString::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HSequenceOfHAsciiString_get_type_name())
                 .to_string_lossy()
@@ -3753,7 +3753,7 @@ impl HSequenceOfHExtendedString {
     }
 
     /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HSequenceOfHExtendedString_get_type_name())
                 .to_string_lossy()
@@ -3961,7 +3961,7 @@ impl HSequenceOfInteger {
     }
 
     /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HSequenceOfInteger_get_type_name())
                 .to_string_lossy()
@@ -4149,7 +4149,7 @@ impl HSequenceOfReal {
     }
 
     /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HSequenceOfReal_get_type_name())
                 .to_string_lossy()
@@ -4334,7 +4334,7 @@ impl HSequenceOfTransient {
     }
 
     /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TColStd_HSequenceOfTransient_get_type_name())
                 .to_string_lossy()
@@ -4765,6 +4765,7 @@ pub use crate::ffi::{
     TColStd_Array2OfReal as Array2OfReal, TColStd_Array2OfTransient as Array2OfTransient,
     TColStd_DataMapOfAsciiStringInteger as DataMapOfAsciiStringInteger,
     TColStd_DataMapOfIntegerInteger as DataMapOfIntegerInteger,
+    TColStd_DataMapOfIntegerReal as DataMapOfIntegerReal,
     TColStd_DataMapOfStringInteger as DataMapOfStringInteger,
     TColStd_DataMapOfTransientTransient as DataMapOfTransientTransient,
     TColStd_IndexedDataMapOfStringString as IndexedDataMapOfStringString,
@@ -4772,8 +4773,9 @@ pub use crate::ffi::{
     TColStd_IndexedMapOfTransient as IndexedMapOfTransient,
     TColStd_ListIteratorOfListOfInteger as ListIteratorOfListOfInteger,
     TColStd_ListOfAsciiString as ListOfAsciiString, TColStd_ListOfInteger as ListOfInteger,
-    TColStd_ListOfReal as ListOfReal, TColStd_MapOfAsciiString as MapOfAsciiString,
-    TColStd_MapOfInteger as MapOfInteger, TColStd_SequenceOfAsciiString as SequenceOfAsciiString,
+    TColStd_ListOfReal as ListOfReal, TColStd_ListOfTransient as ListOfTransient,
+    TColStd_MapOfAsciiString as MapOfAsciiString, TColStd_MapOfInteger as MapOfInteger,
+    TColStd_SequenceOfAsciiString as SequenceOfAsciiString,
     TColStd_SequenceOfBoolean as SequenceOfBoolean,
     TColStd_SequenceOfExtendedString as SequenceOfExtendedString,
     TColStd_SequenceOfHAsciiString as SequenceOfHAsciiString,

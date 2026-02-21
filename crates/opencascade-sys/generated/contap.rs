@@ -1523,7 +1523,7 @@ impl TheHSequenceOfPoint {
     }
 
     /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Contap_TheHSequenceOfPoint_get_type_name())
                 .to_string_lossy()
@@ -1926,7 +1926,7 @@ impl TheIWLineOfTheIWalking {
     }
 
     /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:148 - `Contap_TheIWLineOfTheIWalking::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Contap_TheIWLineOfTheIWalking_get_type_name())
                 .to_string_lossy()

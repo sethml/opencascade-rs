@@ -185,7 +185,7 @@ impl CircArraySubfigure {
     }
 
     /// **Source:** `IGESDraw_CircArraySubfigure.hxx`:105 - `IGESDraw_CircArraySubfigure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_CircArraySubfigure_get_type_name())
                 .to_string_lossy()
@@ -1152,7 +1152,7 @@ impl ConnectPoint {
     }
 
     /// **Source:** `IGESDraw_ConnectPoint.hxx`:151 - `IGESDraw_ConnectPoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_ConnectPoint_get_type_name())
                 .to_string_lossy()
@@ -1944,7 +1944,7 @@ impl Drawing {
     }
 
     /// **Source:** `IGESDraw_Drawing.hxx`:96 - `IGESDraw_Drawing::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_Drawing_get_type_name())
                 .to_string_lossy()
@@ -2698,7 +2698,7 @@ impl DrawingWithRotation {
     }
 
     /// **Source:** `IGESDraw_DrawingWithRotation.hxx`:100 - `IGESDraw_DrawingWithRotation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_DrawingWithRotation_get_type_name())
                 .to_string_lossy()
@@ -3609,7 +3609,7 @@ impl GeneralModule {
     }
 
     /// **Source:** `IGESDraw_GeneralModule.hxx`:104 - `IGESDraw_GeneralModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_GeneralModule_get_type_name())
                 .to_string_lossy()
@@ -4087,7 +4087,7 @@ impl HArray1OfConnectPoint {
     }
 
     /// **Source:** `IGESDraw_HArray1OfConnectPoint.hxx`:23 - `IGESDraw_HArray1OfConnectPoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_HArray1OfConnectPoint_get_type_name())
                 .to_string_lossy()
@@ -4315,7 +4315,7 @@ impl HArray1OfViewKindEntity {
     }
 
     /// **Source:** `IGESDraw_HArray1OfViewKindEntity.hxx`:23 - `IGESDraw_HArray1OfViewKindEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_HArray1OfViewKindEntity_get_type_name())
                 .to_string_lossy()
@@ -4603,7 +4603,7 @@ impl LabelDisplay {
     }
 
     /// **Source:** `IGESDraw_LabelDisplay.hxx`:97 - `IGESDraw_LabelDisplay::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_LabelDisplay_get_type_name())
                 .to_string_lossy()
@@ -5458,7 +5458,7 @@ impl NetworkSubfigure {
     }
 
     /// **Source:** `IGESDraw_NetworkSubfigure.hxx`:104 - `IGESDraw_NetworkSubfigure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_NetworkSubfigure_get_type_name())
                 .to_string_lossy()
@@ -6335,7 +6335,7 @@ impl NetworkSubfigureDef {
     }
 
     /// **Source:** `IGESDraw_NetworkSubfigureDef.hxx`:118 - `IGESDraw_NetworkSubfigureDef::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_NetworkSubfigureDef_get_type_name())
                 .to_string_lossy()
@@ -7316,7 +7316,7 @@ impl PerspectiveView {
     }
 
     /// **Source:** `IGESDraw_PerspectiveView.hxx`:141 - `IGESDraw_PerspectiveView::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_PerspectiveView_get_type_name())
                 .to_string_lossy()
@@ -8126,7 +8126,7 @@ impl Planar {
     }
 
     /// **Source:** `IGESDraw_Planar.hxx`:69 - `IGESDraw_Planar::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_Planar_get_type_name())
                 .to_string_lossy()
@@ -8777,7 +8777,7 @@ impl Protocol {
     }
 
     /// **Source:** `IGESDraw_Protocol.hxx`:53 - `IGESDraw_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_Protocol_get_type_name())
                 .to_string_lossy()
@@ -9066,7 +9066,7 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `IGESDraw_ReadWriteModule.hxx`:58 - `IGESDraw_ReadWriteModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_ReadWriteModule_get_type_name())
                 .to_string_lossy()
@@ -9474,7 +9474,7 @@ impl RectArraySubfigure {
     }
 
     /// **Source:** `IGESDraw_RectArraySubfigure.hxx`:113 - `IGESDraw_RectArraySubfigure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_RectArraySubfigure_get_type_name())
                 .to_string_lossy()
@@ -10423,7 +10423,7 @@ impl SegmentedViewsVisible {
     }
 
     /// **Source:** `IGESDraw_SegmentedViewsVisible.hxx`:135 - `IGESDraw_SegmentedViewsVisible::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_SegmentedViewsVisible_get_type_name())
                 .to_string_lossy()
@@ -11289,7 +11289,7 @@ impl SpecificModule {
     }
 
     /// **Source:** `IGESDraw_SpecificModule.hxx`:53 - `IGESDraw_SpecificModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_SpecificModule_get_type_name())
                 .to_string_lossy()
@@ -13549,7 +13549,7 @@ impl View {
     }
 
     /// **Source:** `IGESDraw_View.hxx`:123 - `IGESDraw_View::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_View_get_type_name())
                 .to_string_lossy()
@@ -14267,7 +14267,7 @@ impl ViewsVisible {
     }
 
     /// **Source:** `IGESDraw_ViewsVisible.hxx`:73 - `IGESDraw_ViewsVisible::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_ViewsVisible_get_type_name())
                 .to_string_lossy()
@@ -15157,7 +15157,7 @@ impl ViewsVisibleWithAttr {
     }
 
     /// **Source:** `IGESDraw_ViewsVisibleWithAttr.hxx`:124 - `IGESDraw_ViewsVisibleWithAttr::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDraw_ViewsVisibleWithAttr_get_type_name())
                 .to_string_lossy()

@@ -10,4 +10,7 @@
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::Image_Texture as Texture;
+pub use crate::ffi::{
+    Image_CompressedPixMap as CompressedPixMap, Image_PixMap as PixMap,
+    Image_SupportedFormats as SupportedFormats, Image_Texture as Texture,
+};

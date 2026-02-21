@@ -4370,7 +4370,7 @@ impl IsParallel {
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom2dGcc_IsParallel_get_type_name())
                 .to_string_lossy()

@@ -895,7 +895,7 @@ impl ExternRefs {
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:72 - `STEPConstruct_ExternRefs::FileName()`
     /// Returns filename for numth extern reference
     /// Returns Null if FileName is not defined or bad
-    pub fn file_name(&self, num: i32) -> String {
+    pub fn file_name(&self, num: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPConstruct_ExternRefs_file_name(
                 self as *const Self,
@@ -1990,7 +1990,7 @@ impl UnitContext {
     /// **Source:** `STEPConstruct_UnitContext.hxx`:114 - `STEPConstruct_UnitContext::StatusMessage()`
     /// Returns a message for a given status (0 - empty)
     /// This message can then be added as warning for transfer
-    pub fn status_message(&self, status: i32) -> String {
+    pub fn status_message(&self, status: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPConstruct_UnitContext_status_message(
                 self as *const Self,

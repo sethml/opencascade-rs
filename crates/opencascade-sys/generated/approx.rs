@@ -641,7 +641,7 @@ impl CurvlinFunc {
     }
 
     /// **Source:** `Approx_CurvlinFunc.hxx`:104 - `Approx_CurvlinFunc::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Approx_CurvlinFunc_get_type_name())
                 .to_string_lossy()
@@ -1203,7 +1203,7 @@ impl HArray1OfAdHSurface {
     }
 
     /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Approx_HArray1OfAdHSurface_get_type_name())
                 .to_string_lossy()
@@ -1412,7 +1412,7 @@ impl HArray1OfGTrsf2d {
     }
 
     /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Approx_HArray1OfGTrsf2d_get_type_name())
                 .to_string_lossy()
@@ -2242,7 +2242,7 @@ impl SweepFunction {
     }
 
     /// **Source:** `Approx_SweepFunction.hxx`:153 - `Approx_SweepFunction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Approx_SweepFunction_get_type_name())
                 .to_string_lossy()

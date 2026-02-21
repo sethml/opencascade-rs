@@ -698,7 +698,7 @@ fn emit_free_function_wrapper(
         } else if rt.needs_unique_ptr {
             format!("crate::OwnedPtr::from_raw({})", call_expr)
         } else if let Some(rtype) = reexport_rt {
-            if rtype == "String" {
+            if rtype == "std::string::String" {
                 format!("std::ffi::CStr::from_ptr({}).to_string_lossy().into_owned()", call_expr)
             } else if rtype.starts_with("&mut ") {
                 format!("&mut *({})", call_expr)

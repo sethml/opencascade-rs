@@ -182,7 +182,7 @@ impl Curve {
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:51 - `Geom2dEvaluator_Curve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom2dEvaluator_Curve_get_type_name())
                 .to_string_lossy()
@@ -448,7 +448,7 @@ impl OffsetCurve {
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:58 - `Geom2dEvaluator_OffsetCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_name())
                 .to_string_lossy()

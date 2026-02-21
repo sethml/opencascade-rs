@@ -156,7 +156,7 @@ impl ConfigurationNode {
     }
 
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:33 - `DEXCAF_ConfigurationNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DEXCAF_ConfigurationNode_get_type_name())
                 .to_string_lossy()
@@ -603,7 +603,7 @@ impl Provider {
     }
 
     /// **Source:** `DEXCAF_Provider.hxx`:31 - `DEXCAF_Provider::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DEXCAF_Provider_get_type_name())
                 .to_string_lossy()

@@ -41,7 +41,7 @@ impl DraughtingModelItemAssociation {
     }
 
     /// **Source:** `StepAP242_DraughtingModelItemAssociation.hxx`:34 - `StepAP242_DraughtingModelItemAssociation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP242_DraughtingModelItemAssociation_get_type_name(),
@@ -419,7 +419,7 @@ impl GeometricItemSpecificUsage {
     }
 
     /// **Source:** `StepAP242_GeometricItemSpecificUsage.hxx`:34 - `StepAP242_GeometricItemSpecificUsage::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_get_type_name(),
@@ -851,7 +851,7 @@ impl IdAttribute {
     }
 
     /// **Source:** `StepAP242_IdAttribute.hxx`:57 - `StepAP242_IdAttribute::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP242_IdAttribute_get_type_name())
                 .to_string_lossy()
@@ -1476,7 +1476,7 @@ impl ItemIdentifiedRepresentationUsage {
     }
 
     /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:117 - `StepAP242_ItemIdentifiedRepresentationUsage::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_get_type_name(),

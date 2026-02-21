@@ -612,7 +612,7 @@ impl BSplineRestriction {
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:245 - `ShapeCustom_BSplineRestriction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_BSplineRestriction_get_type_name())
                 .to_string_lossy()
@@ -1110,7 +1110,7 @@ impl ConvertToBSpline {
     }
 
     /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:134 - `ShapeCustom_ConvertToBSpline::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_ConvertToBSpline_get_type_name())
                 .to_string_lossy()
@@ -1573,7 +1573,7 @@ impl ConvertToRevolution {
     }
 
     /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:119 - `ShapeCustom_ConvertToRevolution::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_ConvertToRevolution_get_type_name())
                 .to_string_lossy()
@@ -2167,7 +2167,7 @@ impl DirectModification {
     }
 
     /// **Source:** `ShapeCustom_DirectModification.hxx`:119 - `ShapeCustom_DirectModification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_DirectModification_get_type_name())
                 .to_string_lossy()
@@ -2519,7 +2519,7 @@ impl Modification {
     }
 
     /// **Source:** `ShapeCustom_Modification.hxx`:48 - `ShapeCustom_Modification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_Modification_get_type_name())
                 .to_string_lossy()
@@ -3092,7 +3092,7 @@ impl RestrictionParameters {
     }
 
     /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:98 - `ShapeCustom_RestrictionParameters::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_RestrictionParameters_get_type_name())
                 .to_string_lossy()
@@ -3495,7 +3495,7 @@ impl SweptToElementary {
     }
 
     /// **Source:** `ShapeCustom_SweptToElementary.hxx`:118 - `ShapeCustom_SweptToElementary::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_SweptToElementary_get_type_name())
                 .to_string_lossy()
@@ -3904,7 +3904,7 @@ impl TrsfModification {
     }
 
     /// **Source:** `ShapeCustom_TrsfModification.hxx`:92 - `ShapeCustom_TrsfModification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_TrsfModification_get_type_name())
                 .to_string_lossy()

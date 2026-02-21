@@ -123,7 +123,7 @@ impl DrilledHole {
     }
 
     /// **Source:** `IGESAppli_DrilledHole.hxx`:75 - `IGESAppli_DrilledHole::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_DrilledHole_get_type_name())
                 .to_string_lossy()
@@ -1021,7 +1021,7 @@ impl ElementResults {
     }
 
     /// **Source:** `IGESAppli_ElementResults.hxx`:153 - `IGESAppli_ElementResults::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_ElementResults_get_type_name())
                 .to_string_lossy()
@@ -1780,7 +1780,7 @@ impl FiniteElement {
     }
 
     /// **Source:** `IGESAppli_FiniteElement.hxx`:63 - `IGESAppli_FiniteElement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_FiniteElement_get_type_name())
                 .to_string_lossy()
@@ -2662,7 +2662,7 @@ impl Flow {
     }
 
     /// **Source:** `IGESAppli_Flow.hxx`:126 - `IGESAppli_Flow::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_Flow_get_type_name())
                 .to_string_lossy()
@@ -3322,7 +3322,7 @@ impl FlowLineSpec {
     }
 
     /// **Source:** `IGESAppli_FlowLineSpec.hxx`:55 - `IGESAppli_FlowLineSpec::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_FlowLineSpec_get_type_name())
                 .to_string_lossy()
@@ -4100,7 +4100,7 @@ impl GeneralModule {
     }
 
     /// **Source:** `IGESAppli_GeneralModule.hxx`:83 - `IGESAppli_GeneralModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_GeneralModule_get_type_name())
                 .to_string_lossy()
@@ -4631,7 +4631,7 @@ impl HArray1OfFiniteElement {
     }
 
     /// **Source:** `IGESAppli_HArray1OfFiniteElement.hxx`:23 - `IGESAppli_HArray1OfFiniteElement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_HArray1OfFiniteElement_get_type_name())
                 .to_string_lossy()
@@ -4855,7 +4855,7 @@ impl HArray1OfFlow {
     }
 
     /// **Source:** `IGESAppli_HArray1OfFlow.hxx`:24 - `IGESAppli_HArray1OfFlow::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_HArray1OfFlow_get_type_name())
                 .to_string_lossy()
@@ -5056,7 +5056,7 @@ impl HArray1OfNode {
     }
 
     /// **Source:** `IGESAppli_HArray1OfNode.hxx`:23 - `IGESAppli_HArray1OfNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_HArray1OfNode_get_type_name())
                 .to_string_lossy()
@@ -5251,7 +5251,7 @@ impl LevelFunction {
     }
 
     /// **Source:** `IGESAppli_LevelFunction.hxx`:60 - `IGESAppli_LevelFunction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_LevelFunction_get_type_name())
                 .to_string_lossy()
@@ -6045,7 +6045,7 @@ impl LevelToPWBLayerMap {
     }
 
     /// **Source:** `IGESAppli_LevelToPWBLayerMap.hxx`:79 - `IGESAppli_LevelToPWBLayerMap::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_LevelToPWBLayerMap_get_type_name())
                 .to_string_lossy()
@@ -6904,7 +6904,7 @@ impl LineWidening {
     }
 
     /// **Source:** `IGESAppli_LineWidening.hxx`:89 - `IGESAppli_LineWidening::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_LineWidening_get_type_name())
                 .to_string_lossy()
@@ -7641,7 +7641,7 @@ impl NodalConstraint {
     }
 
     /// **Source:** `IGESAppli_NodalConstraint.hxx`:66 - `IGESAppli_NodalConstraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_NodalConstraint_get_type_name())
                 .to_string_lossy()
@@ -8478,7 +8478,7 @@ impl NodalDisplAndRot {
     }
 
     /// **Source:** `IGESAppli_NodalDisplAndRot.hxx`:95 - `IGESAppli_NodalDisplAndRot::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_NodalDisplAndRot_get_type_name())
                 .to_string_lossy()
@@ -9314,7 +9314,7 @@ impl NodalResults {
     }
 
     /// **Source:** `IGESAppli_NodalResults.hxx`:97 - `IGESAppli_NodalResults::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_NodalResults_get_type_name())
                 .to_string_lossy()
@@ -10038,7 +10038,7 @@ impl Node {
     }
 
     /// **Source:** `IGESAppli_Node.hxx`:65 - `IGESAppli_Node::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_Node_get_type_name())
                 .to_string_lossy()
@@ -10714,7 +10714,7 @@ impl PWBArtworkStackup {
     }
 
     /// **Source:** `IGESAppli_PWBArtworkStackup.hxx`:66 - `IGESAppli_PWBArtworkStackup::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_PWBArtworkStackup_get_type_name())
                 .to_string_lossy()
@@ -11508,7 +11508,7 @@ impl PWBDrilledHole {
     }
 
     /// **Source:** `IGESAppli_PWBDrilledHole.hxx`:63 - `IGESAppli_PWBDrilledHole::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_PWBDrilledHole_get_type_name())
                 .to_string_lossy()
@@ -12293,7 +12293,7 @@ impl PartNumber {
     }
 
     /// **Source:** `IGESAppli_PartNumber.hxx`:68 - `IGESAppli_PartNumber::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_PartNumber_get_type_name())
                 .to_string_lossy()
@@ -12981,7 +12981,7 @@ impl PinNumber {
     }
 
     /// **Source:** `IGESAppli_PinNumber.hxx`:54 - `IGESAppli_PinNumber::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_PinNumber_get_type_name())
                 .to_string_lossy()
@@ -13813,7 +13813,7 @@ impl PipingFlow {
     }
 
     /// **Source:** `IGESAppli_PipingFlow.hxx`:118 - `IGESAppli_PipingFlow::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_PipingFlow_get_type_name())
                 .to_string_lossy()
@@ -14499,7 +14499,7 @@ impl Protocol {
     }
 
     /// **Source:** `IGESAppli_Protocol.hxx`:53 - `IGESAppli_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_Protocol_get_type_name())
                 .to_string_lossy()
@@ -14792,7 +14792,7 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `IGESAppli_ReadWriteModule.hxx`:58 - `IGESAppli_ReadWriteModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_ReadWriteModule_get_type_name())
                 .to_string_lossy()
@@ -15085,7 +15085,7 @@ impl ReferenceDesignator {
     }
 
     /// **Source:** `IGESAppli_ReferenceDesignator.hxx`:54 - `IGESAppli_ReferenceDesignator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_ReferenceDesignator_get_type_name())
                 .to_string_lossy()
@@ -15924,7 +15924,7 @@ impl RegionRestriction {
     }
 
     /// **Source:** `IGESAppli_RegionRestriction.hxx`:64 - `IGESAppli_RegionRestriction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_RegionRestriction_get_type_name())
                 .to_string_lossy()
@@ -16701,7 +16701,7 @@ impl SpecificModule {
     }
 
     /// **Source:** `IGESAppli_SpecificModule.hxx`:52 - `IGESAppli_SpecificModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESAppli_SpecificModule_get_type_name())
                 .to_string_lossy()

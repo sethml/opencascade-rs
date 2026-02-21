@@ -134,7 +134,7 @@ impl Application {
     }
 
     /// **Source:** `CDM_Application.hxx`:75 - `CDM_Application::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::CDM_Application_get_type_name())
                 .to_string_lossy()
@@ -952,7 +952,7 @@ impl Document {
     }
 
     /// **Source:** `CDM_Document.hxx`:349 - `CDM_Document::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::CDM_Document_get_type_name())
                 .to_string_lossy()
@@ -1179,7 +1179,7 @@ impl MetaData {
     }
 
     /// **Source:** `CDM_MetaData.hxx`:103 - `CDM_MetaData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::CDM_MetaData_get_type_name())
                 .to_string_lossy()
@@ -1334,7 +1334,7 @@ impl Reference {
     }
 
     /// **Source:** `CDM_Reference.hxx`:52 - `CDM_Reference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::CDM_Reference_get_type_name())
                 .to_string_lossy()

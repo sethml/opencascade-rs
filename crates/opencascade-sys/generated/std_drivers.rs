@@ -56,7 +56,7 @@ impl DocumentRetrievalDriver {
     }
 
     /// **Source:** `StdDrivers_DocumentRetrievalDriver.hxx`:23 - `StdDrivers_DocumentRetrievalDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdDrivers_DocumentRetrievalDriver_get_type_name())
                 .to_string_lossy()

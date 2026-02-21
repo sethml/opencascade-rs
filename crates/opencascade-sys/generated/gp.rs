@@ -11978,7 +11978,7 @@ impl VectorWithNullMagnitude {
     }
 
     /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::gp_VectorWithNullMagnitude_get_type_name())
                 .to_string_lossy()

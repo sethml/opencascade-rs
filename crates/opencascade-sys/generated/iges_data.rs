@@ -418,7 +418,7 @@ impl BasicEditor {
 
     /// **Source:** `IGESData_BasicEditor.hxx`:119 - `IGESData_BasicEditor::UnitFlagName()`
     /// From the flag of unit, determines its name, "" if incorrect
-    pub fn unit_flag_name(flag: i32) -> String {
+    pub fn unit_flag_name(flag: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_BasicEditor_unit_flag_name(flag))
                 .to_string_lossy()
@@ -428,7 +428,7 @@ impl BasicEditor {
 
     /// **Source:** `IGESData_BasicEditor.hxx`:122 - `IGESData_BasicEditor::IGESVersionName()`
     /// From the flag of IGES version, returns name, "" if incorrect
-    pub fn iges_version_name(flag: i32) -> String {
+    pub fn iges_version_name(flag: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_BasicEditor_iges_version_name(flag))
                 .to_string_lossy()
@@ -444,7 +444,7 @@ impl BasicEditor {
 
     /// **Source:** `IGESData_BasicEditor.hxx`:128 - `IGESData_BasicEditor::DraftingName()`
     /// From the flag of drafting standard, returns name, "" if incorrect
-    pub fn drafting_name(flag: i32) -> String {
+    pub fn drafting_name(flag: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_BasicEditor_drafting_name(flag))
                 .to_string_lossy()
@@ -494,7 +494,7 @@ impl ColorEntity {
     }
 
     /// **Source:** `IGESData_ColorEntity.hxx`:33 - `IGESData_ColorEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_ColorEntity_get_type_name())
                 .to_string_lossy()
@@ -1310,7 +1310,7 @@ impl DefaultGeneral {
     }
 
     /// **Source:** `IGESData_DefaultGeneral.hxx`:74 - `IGESData_DefaultGeneral::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_DefaultGeneral_get_type_name())
                 .to_string_lossy()
@@ -1821,7 +1821,7 @@ impl DefaultSpecific {
     }
 
     /// **Source:** `IGESData_DefaultSpecific.hxx`:47 - `IGESData_DefaultSpecific::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_DefaultSpecific_get_type_name())
                 .to_string_lossy()
@@ -2400,7 +2400,7 @@ impl FileProtocol {
     }
 
     /// **Source:** `IGESData_FileProtocol.hxx`:51 - `IGESData_FileProtocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_FileProtocol_get_type_name())
                 .to_string_lossy()
@@ -2701,7 +2701,7 @@ impl FileRecognizer {
     }
 
     /// **Source:** `IGESData_FileRecognizer.hxx`:53 - `IGESData_FileRecognizer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_FileRecognizer_get_type_name())
                 .to_string_lossy()
@@ -3045,7 +3045,7 @@ impl FreeFormatEntity {
     }
 
     /// **Source:** `IGESData_FreeFormatEntity.hxx`:133 - `IGESData_FreeFormatEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_FreeFormatEntity_get_type_name())
                 .to_string_lossy()
@@ -4124,7 +4124,7 @@ impl GeneralModule {
     }
 
     /// **Source:** `IGESData_GeneralModule.hxx`:159 - `IGESData_GeneralModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_GeneralModule_get_type_name())
                 .to_string_lossy()
@@ -4587,7 +4587,7 @@ impl GlobalNodeOfSpecificLib {
     }
 
     /// **Source:** `IGESData_GlobalNodeOfSpecificLib.hxx`:57 - `IGESData_GlobalNodeOfSpecificLib::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_GlobalNodeOfSpecificLib_get_type_name())
                 .to_string_lossy()
@@ -4789,7 +4789,7 @@ impl GlobalNodeOfWriterLib {
     }
 
     /// **Source:** `IGESData_GlobalNodeOfWriterLib.hxx`:57 - `IGESData_GlobalNodeOfWriterLib::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_GlobalNodeOfWriterLib_get_type_name())
                 .to_string_lossy()
@@ -5521,7 +5521,7 @@ impl HArray1OfIGESEntity {
     }
 
     /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_HArray1OfIGESEntity_get_type_name())
                 .to_string_lossy()
@@ -6364,7 +6364,7 @@ impl IGESEntity {
     }
 
     /// **Source:** `IGESData_IGESEntity.hxx`:333 - `IGESData_IGESEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_IGESEntity_get_type_name())
                 .to_string_lossy()
@@ -9114,7 +9114,7 @@ impl IGESModel {
     /// Start section by specifying its number. An empty string is
     /// returned if the number given is out of range, the range being
     /// from 1 to NbStartLines.
-    pub fn start_line(&self, num: i32) -> String {
+    pub fn start_line(&self, num: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_IGESModel_start_line(
                 self as *const Self,
@@ -9303,7 +9303,7 @@ impl IGESModel {
     }
 
     /// **Source:** `IGESData_IGESModel.hxx`:157 - `IGESData_IGESModel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_IGESModel_get_type_name())
                 .to_string_lossy()
@@ -9977,7 +9977,7 @@ impl IGESReaderData {
     }
 
     /// **Source:** `IGESData_IGESReaderData.hxx`:152 - `IGESData_IGESReaderData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_IGESReaderData_get_type_name())
                 .to_string_lossy()
@@ -10918,7 +10918,7 @@ impl LabelDisplayEntity {
     }
 
     /// **Source:** `IGESData_LabelDisplayEntity.hxx`:33 - `IGESData_LabelDisplayEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_LabelDisplayEntity_get_type_name())
                 .to_string_lossy()
@@ -11698,7 +11698,7 @@ impl LevelListEntity {
     }
 
     /// **Source:** `IGESData_LevelListEntity.hxx`:44 - `IGESData_LevelListEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_LevelListEntity_get_type_name())
                 .to_string_lossy()
@@ -12414,7 +12414,7 @@ impl LineFontEntity {
     }
 
     /// **Source:** `IGESData_LineFontEntity.hxx`:33 - `IGESData_LineFontEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_LineFontEntity_get_type_name())
                 .to_string_lossy()
@@ -13146,7 +13146,7 @@ impl NameEntity {
     }
 
     /// **Source:** `IGESData_NameEntity.hxx`:38 - `IGESData_NameEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_NameEntity_get_type_name())
                 .to_string_lossy()
@@ -13827,7 +13827,7 @@ impl NodeOfSpecificLib {
     }
 
     /// **Source:** `IGESData_NodeOfSpecificLib.hxx`:54 - `IGESData_NodeOfSpecificLib::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_NodeOfSpecificLib_get_type_name())
                 .to_string_lossy()
@@ -14006,7 +14006,7 @@ impl NodeOfWriterLib {
     }
 
     /// **Source:** `IGESData_NodeOfWriterLib.hxx`:54 - `IGESData_NodeOfWriterLib::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_NodeOfWriterLib_get_type_name())
                 .to_string_lossy()
@@ -14453,7 +14453,7 @@ impl ParamReader {
 
     /// **Source:** `IGESData_ParamReader.hxx`:112 - `IGESData_ParamReader::ParamValue()`
     /// returns literal value of a parameter, as it was in file
-    pub fn param_value(&self, num: i32) -> String {
+    pub fn param_value(&self, num: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_ParamReader_param_value(
                 self as *const Self,
@@ -15262,7 +15262,7 @@ impl Protocol {
     }
 
     /// **Source:** `IGESData_Protocol.hxx`:67 - `IGESData_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_Protocol_get_type_name())
                 .to_string_lossy()
@@ -15706,7 +15706,7 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `IGESData_ReadWriteModule.hxx`:100 - `IGESData_ReadWriteModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_ReadWriteModule_get_type_name())
                 .to_string_lossy()
@@ -16062,7 +16062,7 @@ impl SingleParentEntity {
     }
 
     /// **Source:** `IGESData_SingleParentEntity.hxx`:44 - `IGESData_SingleParentEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_SingleParentEntity_get_type_name())
                 .to_string_lossy()
@@ -16977,7 +16977,7 @@ impl SpecificModule {
     }
 
     /// **Source:** `IGESData_SpecificModule.hxx`:68 - `IGESData_SpecificModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_SpecificModule_get_type_name())
                 .to_string_lossy()
@@ -17491,7 +17491,7 @@ impl ToolLocation {
     }
 
     /// **Source:** `IGESData_ToolLocation.hxx`:155 - `IGESData_ToolLocation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_ToolLocation_get_type_name())
                 .to_string_lossy()
@@ -17640,7 +17640,7 @@ impl TransfEntity {
     }
 
     /// **Source:** `IGESData_TransfEntity.hxx`:42 - `IGESData_TransfEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_TransfEntity_get_type_name())
                 .to_string_lossy()
@@ -18463,7 +18463,7 @@ impl UndefinedEntity {
     }
 
     /// **Source:** `IGESData_UndefinedEntity.hxx`:105 - `IGESData_UndefinedEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_UndefinedEntity_get_type_name())
                 .to_string_lossy()
@@ -19165,7 +19165,7 @@ impl ViewKindEntity {
     }
 
     /// **Source:** `IGESData_ViewKindEntity.hxx`:49 - `IGESData_ViewKindEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESData_ViewKindEntity_get_type_name())
                 .to_string_lossy()

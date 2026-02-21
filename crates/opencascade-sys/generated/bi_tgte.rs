@@ -589,7 +589,7 @@ impl CurveOnEdge {
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:47 - `BiTgte_CurveOnEdge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BiTgte_CurveOnEdge_get_type_name())
                 .to_string_lossy()
@@ -1006,7 +1006,7 @@ impl CurveOnVertex {
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:47 - `BiTgte_CurveOnVertex::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BiTgte_CurveOnVertex_get_type_name())
                 .to_string_lossy()

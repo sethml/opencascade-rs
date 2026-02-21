@@ -157,7 +157,7 @@ impl ActuatedKinPairAndOrderKinPair {
     }
 
     /// **Source:** `StepKinematics_ActuatedKinPairAndOrderKinPair.hxx`:67 - `StepKinematics_ActuatedKinPairAndOrderKinPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_ActuatedKinPairAndOrderKinPair_get_type_name(),
@@ -676,7 +676,7 @@ impl ActuatedKinematicPair {
     }
 
     /// **Source:** `StepKinematics_ActuatedKinematicPair.hxx`:101 - `StepKinematics_ActuatedKinematicPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_ActuatedKinematicPair_get_type_name(),
@@ -1062,7 +1062,7 @@ impl ContextDependentKinematicLinkRepresentation {
     }
 
     /// **Source:** `StepKinematics_ContextDependentKinematicLinkRepresentation.hxx`:57 - `StepKinematics_ContextDependentKinematicLinkRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_ContextDependentKinematicLinkRepresentation_get_type_name()).to_string_lossy().into_owned()
         }
@@ -1229,7 +1229,7 @@ impl CylindricalPair {
     }
 
     /// **Source:** `StepKinematics_CylindricalPair.hxx`:34 - `StepKinematics_CylindricalPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_CylindricalPair_get_type_name())
                 .to_string_lossy()
@@ -1756,7 +1756,7 @@ impl CylindricalPairValue {
     }
 
     /// **Source:** `StepKinematics_CylindricalPairValue.hxx`:51 - `StepKinematics_CylindricalPairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_CylindricalPairValue_get_type_name()).to_string_lossy().into_owned()
         }
@@ -2235,7 +2235,7 @@ impl CylindricalPairWithRange {
     }
 
     /// **Source:** `StepKinematics_CylindricalPairWithRange.hxx`:90 - `StepKinematics_CylindricalPairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_CylindricalPairWithRange_get_type_name(),
@@ -2706,7 +2706,7 @@ impl FullyConstrainedPair {
     }
 
     /// **Source:** `StepKinematics_FullyConstrainedPair.hxx`:34 - `StepKinematics_FullyConstrainedPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_FullyConstrainedPair_get_type_name()).to_string_lossy().into_owned()
         }
@@ -3283,7 +3283,7 @@ impl GearPair {
     }
 
     /// **Source:** `StepKinematics_GearPair.hxx`:77 - `StepKinematics_GearPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_GearPair_get_type_name())
                 .to_string_lossy()
@@ -3659,7 +3659,7 @@ impl GearPairValue {
     }
 
     /// **Source:** `StepKinematics_GearPairValue.hxx`:45 - `StepKinematics_GearPairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_GearPairValue_get_type_name())
                 .to_string_lossy()
@@ -4062,7 +4062,7 @@ impl GearPairWithRange {
     }
 
     /// **Source:** `StepKinematics_GearPairWithRange.hxx`:71 - `StepKinematics_GearPairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_GearPairWithRange_get_type_name())
                 .to_string_lossy()
@@ -4525,7 +4525,7 @@ impl HighOrderKinematicPair {
     }
 
     /// **Source:** `StepKinematics_HighOrderKinematicPair.hxx`:34 - `StepKinematics_HighOrderKinematicPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_HighOrderKinematicPair_get_type_name(),
@@ -5082,7 +5082,7 @@ impl HomokineticPair {
     }
 
     /// **Source:** `StepKinematics_HomokineticPair.hxx`:34 - `StepKinematics_HomokineticPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_HomokineticPair_get_type_name())
                 .to_string_lossy()
@@ -5590,7 +5590,7 @@ impl KinematicJoint {
     }
 
     /// **Source:** `StepKinematics_KinematicJoint.hxx`:34 - `StepKinematics_KinematicJoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_KinematicJoint_get_type_name())
                 .to_string_lossy()
@@ -5910,7 +5910,7 @@ impl KinematicLink {
     }
 
     /// **Source:** `StepKinematics_KinematicLink.hxx`:34 - `StepKinematics_KinematicLink::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_KinematicLink_get_type_name())
                 .to_string_lossy()
@@ -6234,7 +6234,7 @@ impl KinematicLinkRepresentation {
     }
 
     /// **Source:** `StepKinematics_KinematicLinkRepresentation.hxx`:49 - `StepKinematics_KinematicLinkRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_KinematicLinkRepresentation_get_type_name(),
@@ -6569,7 +6569,7 @@ impl KinematicLinkRepresentationAssociation {
     }
 
     /// **Source:** `StepKinematics_KinematicLinkRepresentationAssociation.hxx`:37 - `StepKinematics_KinematicLinkRepresentationAssociation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_KinematicLinkRepresentationAssociation_get_type_name(),
@@ -6947,7 +6947,7 @@ impl KinematicPair {
     }
 
     /// **Source:** `StepKinematics_KinematicPair.hxx`:57 - `StepKinematics_KinematicPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_KinematicPair_get_type_name())
                 .to_string_lossy()
@@ -7893,7 +7893,7 @@ impl KinematicPropertyDefinitionRepresentation {
     }
 
     /// **Source:** `StepKinematics_KinematicPropertyDefinitionRepresentation.hxx`:37 - `StepKinematics_KinematicPropertyDefinitionRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_KinematicPropertyDefinitionRepresentation_get_type_name(
@@ -8210,7 +8210,7 @@ impl KinematicPropertyMechanismRepresentation {
     }
 
     /// **Source:** `StepKinematics_KinematicPropertyMechanismRepresentation.hxx`:49 - `StepKinematics_KinematicPropertyMechanismRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_KinematicPropertyMechanismRepresentation_get_type_name(),
@@ -8528,7 +8528,7 @@ impl KinematicTopologyDirectedStructure {
     }
 
     /// **Source:** `StepKinematics_KinematicTopologyDirectedStructure.hxx`:47 - `StepKinematics_KinematicTopologyDirectedStructure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_KinematicTopologyDirectedStructure_get_type_name(),
@@ -8871,7 +8871,7 @@ impl KinematicTopologyNetworkStructure {
     }
 
     /// **Source:** `StepKinematics_KinematicTopologyNetworkStructure.hxx`:47 - `StepKinematics_KinematicTopologyNetworkStructure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_KinematicTopologyNetworkStructure_get_type_name(),
@@ -9418,7 +9418,7 @@ impl KinematicTopologyStructure {
     }
 
     /// **Source:** `StepKinematics_KinematicTopologyStructure.hxx`:35 - `StepKinematics_KinematicTopologyStructure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_KinematicTopologyStructure_get_type_name(),
@@ -9784,7 +9784,7 @@ impl LinearFlexibleAndPinionPair {
     }
 
     /// **Source:** `StepKinematics_LinearFlexibleAndPinionPair.hxx`:54 - `StepKinematics_LinearFlexibleAndPinionPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_LinearFlexibleAndPinionPair_get_type_name(),
@@ -10207,7 +10207,7 @@ impl LinearFlexibleAndPlanarCurvePair {
     }
 
     /// **Source:** `StepKinematics_LinearFlexibleAndPlanarCurvePair.hxx`:60 - `StepKinematics_LinearFlexibleAndPlanarCurvePair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_LinearFlexibleAndPlanarCurvePair_get_type_name(),
@@ -10551,7 +10551,7 @@ impl LinearFlexibleLinkRepresentation {
     }
 
     /// **Source:** `StepKinematics_LinearFlexibleLinkRepresentation.hxx`:37 - `StepKinematics_LinearFlexibleLinkRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_LinearFlexibleLinkRepresentation_get_type_name(),
@@ -11017,7 +11017,7 @@ impl LowOrderKinematicPair {
     }
 
     /// **Source:** `StepKinematics_LowOrderKinematicPair.hxx`:82 - `StepKinematics_LowOrderKinematicPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_LowOrderKinematicPair_get_type_name(),
@@ -11784,7 +11784,7 @@ impl LowOrderKinematicPairValue {
     }
 
     /// **Source:** `StepKinematics_LowOrderKinematicPairValue.hxx`:75 - `StepKinematics_LowOrderKinematicPairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_LowOrderKinematicPairValue_get_type_name(),
@@ -12095,7 +12095,7 @@ impl LowOrderKinematicPairWithMotionCoupling {
     }
 
     /// **Source:** `StepKinematics_LowOrderKinematicPairWithMotionCoupling.hxx`:35 - `StepKinematics_LowOrderKinematicPairWithMotionCoupling::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_LowOrderKinematicPairWithMotionCoupling_get_type_name(),
@@ -12940,7 +12940,7 @@ impl LowOrderKinematicPairWithRange {
     }
 
     /// **Source:** `StepKinematics_LowOrderKinematicPairWithRange.hxx`:173 - `StepKinematics_LowOrderKinematicPairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_LowOrderKinematicPairWithRange_get_type_name(),
@@ -13442,7 +13442,7 @@ impl MechanismRepresentation {
     }
 
     /// **Source:** `StepKinematics_MechanismRepresentation.hxx`:50 - `StepKinematics_MechanismRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_MechanismRepresentation_get_type_name(),
@@ -13788,7 +13788,7 @@ impl MechanismStateRepresentation {
     }
 
     /// **Source:** `StepKinematics_MechanismStateRepresentation.hxx`:48 - `StepKinematics_MechanismStateRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_MechanismStateRepresentation_get_type_name(),
@@ -14082,7 +14082,7 @@ impl OrientedJoint {
     }
 
     /// **Source:** `StepKinematics_OrientedJoint.hxx`:34 - `StepKinematics_OrientedJoint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_OrientedJoint_get_type_name())
                 .to_string_lossy()
@@ -14525,7 +14525,7 @@ impl PairRepresentationRelationship {
     }
 
     /// **Source:** `StepKinematics_PairRepresentationRelationship.hxx`:56 - `StepKinematics_PairRepresentationRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_PairRepresentationRelationship_get_type_name(),
@@ -14819,7 +14819,7 @@ impl PairValue {
     }
 
     /// **Source:** `StepKinematics_PairValue.hxx`:43 - `StepKinematics_PairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_PairValue_get_type_name())
                 .to_string_lossy()
@@ -15408,7 +15408,7 @@ impl PlanarCurvePair {
     }
 
     /// **Source:** `StepKinematics_PlanarCurvePair.hxx`:65 - `StepKinematics_PlanarCurvePair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_PlanarCurvePair_get_type_name())
                 .to_string_lossy()
@@ -15888,7 +15888,7 @@ impl PlanarCurvePairRange {
     }
 
     /// **Source:** `StepKinematics_PlanarCurvePairRange.hxx`:63 - `StepKinematics_PlanarCurvePairRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_PlanarCurvePairRange_get_type_name()).to_string_lossy().into_owned()
         }
@@ -16311,7 +16311,7 @@ impl PlanarPair {
     }
 
     /// **Source:** `StepKinematics_PlanarPair.hxx`:34 - `StepKinematics_PlanarPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_PlanarPair_get_type_name())
                 .to_string_lossy()
@@ -16826,7 +16826,7 @@ impl PlanarPairValue {
     }
 
     /// **Source:** `StepKinematics_PlanarPairValue.hxx`:57 - `StepKinematics_PlanarPairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_PlanarPairValue_get_type_name())
                 .to_string_lossy()
@@ -17378,7 +17378,7 @@ impl PlanarPairWithRange {
     }
 
     /// **Source:** `StepKinematics_PlanarPairWithRange.hxx`:110 - `StepKinematics_PlanarPairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_PlanarPairWithRange_get_type_name())
                 .to_string_lossy()
@@ -17888,7 +17888,7 @@ impl PointOnPlanarCurvePair {
     }
 
     /// **Source:** `StepKinematics_PointOnPlanarCurvePair.hxx`:59 - `StepKinematics_PointOnPlanarCurvePair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_PointOnPlanarCurvePair_get_type_name(),
@@ -18325,7 +18325,7 @@ impl PointOnPlanarCurvePairValue {
     }
 
     /// **Source:** `StepKinematics_PointOnPlanarCurvePairValue.hxx`:55 - `StepKinematics_PointOnPlanarCurvePairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_PointOnPlanarCurvePairValue_get_type_name(),
@@ -18902,7 +18902,7 @@ impl PointOnPlanarCurvePairWithRange {
     }
 
     /// **Source:** `StepKinematics_PointOnPlanarCurvePairWithRange.hxx`:112 - `StepKinematics_PointOnPlanarCurvePairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_PointOnPlanarCurvePairWithRange_get_type_name(),
@@ -19356,7 +19356,7 @@ impl PointOnSurfacePair {
     }
 
     /// **Source:** `StepKinematics_PointOnSurfacePair.hxx`:53 - `StepKinematics_PointOnSurfacePair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_PointOnSurfacePair_get_type_name())
                 .to_string_lossy()
@@ -19784,7 +19784,7 @@ impl PointOnSurfacePairValue {
     }
 
     /// **Source:** `StepKinematics_PointOnSurfacePairValue.hxx`:55 - `StepKinematics_PointOnSurfacePairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_PointOnSurfacePairValue_get_type_name(),
@@ -20363,7 +20363,7 @@ impl PointOnSurfacePairWithRange {
     }
 
     /// **Source:** `StepKinematics_PointOnSurfacePairWithRange.hxx`:111 - `StepKinematics_PointOnSurfacePairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_PointOnSurfacePairWithRange_get_type_name(),
@@ -20743,7 +20743,7 @@ impl PrismaticPair {
     }
 
     /// **Source:** `StepKinematics_PrismaticPair.hxx`:34 - `StepKinematics_PrismaticPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_PrismaticPair_get_type_name())
                 .to_string_lossy()
@@ -21243,7 +21243,7 @@ impl PrismaticPairValue {
     }
 
     /// **Source:** `StepKinematics_PrismaticPairValue.hxx`:45 - `StepKinematics_PrismaticPairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_PrismaticPairValue_get_type_name())
                 .to_string_lossy()
@@ -21656,7 +21656,7 @@ impl PrismaticPairWithRange {
     }
 
     /// **Source:** `StepKinematics_PrismaticPairWithRange.hxx`:72 - `StepKinematics_PrismaticPairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_PrismaticPairWithRange_get_type_name(),
@@ -22134,7 +22134,7 @@ impl ProductDefinitionKinematics {
     }
 
     /// **Source:** `StepKinematics_ProductDefinitionKinematics.hxx`:35 - `StepKinematics_ProductDefinitionKinematics::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_ProductDefinitionKinematics_get_type_name(),
@@ -22435,7 +22435,7 @@ impl ProductDefinitionRelationshipKinematics {
     }
 
     /// **Source:** `StepKinematics_ProductDefinitionRelationshipKinematics.hxx`:36 - `StepKinematics_ProductDefinitionRelationshipKinematics::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_ProductDefinitionRelationshipKinematics_get_type_name(),
@@ -22760,7 +22760,7 @@ impl RackAndPinionPair {
     }
 
     /// **Source:** `StepKinematics_RackAndPinionPair.hxx`:54 - `StepKinematics_RackAndPinionPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_RackAndPinionPair_get_type_name())
                 .to_string_lossy()
@@ -23162,7 +23162,7 @@ impl RackAndPinionPairValue {
     }
 
     /// **Source:** `StepKinematics_RackAndPinionPairValue.hxx`:45 - `StepKinematics_RackAndPinionPairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_RackAndPinionPairValue_get_type_name(),
@@ -23571,7 +23571,7 @@ impl RackAndPinionPairWithRange {
     }
 
     /// **Source:** `StepKinematics_RackAndPinionPairWithRange.hxx`:67 - `StepKinematics_RackAndPinionPairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_RackAndPinionPairWithRange_get_type_name(),
@@ -23956,7 +23956,7 @@ impl RevolutePair {
     }
 
     /// **Source:** `StepKinematics_RevolutePair.hxx`:34 - `StepKinematics_RevolutePair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_RevolutePair_get_type_name())
                 .to_string_lossy()
@@ -24438,7 +24438,7 @@ impl RevolutePairValue {
     }
 
     /// **Source:** `StepKinematics_RevolutePairValue.hxx`:45 - `StepKinematics_RevolutePairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_RevolutePairValue_get_type_name())
                 .to_string_lossy()
@@ -24850,7 +24850,7 @@ impl RevolutePairWithRange {
     }
 
     /// **Source:** `StepKinematics_RevolutePairWithRange.hxx`:70 - `StepKinematics_RevolutePairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_RevolutePairWithRange_get_type_name(),
@@ -25322,7 +25322,7 @@ impl RigidLinkRepresentation {
     }
 
     /// **Source:** `StepKinematics_RigidLinkRepresentation.hxx`:36 - `StepKinematics_RigidLinkRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_RigidLinkRepresentation_get_type_name(),
@@ -25881,7 +25881,7 @@ impl RollingCurvePair {
     }
 
     /// **Source:** `StepKinematics_RollingCurvePair.hxx`:35 - `StepKinematics_RollingCurvePair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_RollingCurvePair_get_type_name())
                 .to_string_lossy()
@@ -26380,7 +26380,7 @@ impl RollingCurvePairValue {
     }
 
     /// **Source:** `StepKinematics_RollingCurvePairValue.hxx`:47 - `StepKinematics_RollingCurvePairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_RollingCurvePairValue_get_type_name(),
@@ -26685,7 +26685,7 @@ impl RollingSurfacePair {
     }
 
     /// **Source:** `StepKinematics_RollingSurfacePair.hxx`:34 - `StepKinematics_RollingSurfacePair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_RollingSurfacePair_get_type_name())
                 .to_string_lossy()
@@ -27210,7 +27210,7 @@ impl RollingSurfacePairValue {
     }
 
     /// **Source:** `StepKinematics_RollingSurfacePairValue.hxx`:53 - `StepKinematics_RollingSurfacePairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_RollingSurfacePairValue_get_type_name(),
@@ -27582,7 +27582,7 @@ impl RotationAboutDirection {
     }
 
     /// **Source:** `StepKinematics_RotationAboutDirection.hxx`:49 - `StepKinematics_RotationAboutDirection::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_RotationAboutDirection_get_type_name(),
@@ -27876,7 +27876,7 @@ impl ScrewPair {
     }
 
     /// **Source:** `StepKinematics_ScrewPair.hxx`:53 - `StepKinematics_ScrewPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_ScrewPair_get_type_name())
                 .to_string_lossy()
@@ -28256,7 +28256,7 @@ impl ScrewPairValue {
     }
 
     /// **Source:** `StepKinematics_ScrewPairValue.hxx`:45 - `StepKinematics_ScrewPairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_ScrewPairValue_get_type_name())
                 .to_string_lossy()
@@ -28651,7 +28651,7 @@ impl ScrewPairWithRange {
     }
 
     /// **Source:** `StepKinematics_ScrewPairWithRange.hxx`:65 - `StepKinematics_ScrewPairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_ScrewPairWithRange_get_type_name())
                 .to_string_lossy()
@@ -29041,7 +29041,7 @@ impl SlidingCurvePair {
     }
 
     /// **Source:** `StepKinematics_SlidingCurvePair.hxx`:35 - `StepKinematics_SlidingCurvePair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_SlidingCurvePair_get_type_name())
                 .to_string_lossy()
@@ -29570,7 +29570,7 @@ impl SlidingCurvePairValue {
     }
 
     /// **Source:** `StepKinematics_SlidingCurvePairValue.hxx`:54 - `StepKinematics_SlidingCurvePairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_SlidingCurvePairValue_get_type_name(),
@@ -29875,7 +29875,7 @@ impl SlidingSurfacePair {
     }
 
     /// **Source:** `StepKinematics_SlidingSurfacePair.hxx`:34 - `StepKinematics_SlidingSurfacePair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_SlidingSurfacePair_get_type_name())
                 .to_string_lossy()
@@ -30430,7 +30430,7 @@ impl SlidingSurfacePairValue {
     }
 
     /// **Source:** `StepKinematics_SlidingSurfacePairValue.hxx`:60 - `StepKinematics_SlidingSurfacePairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_SlidingSurfacePairValue_get_type_name(),
@@ -30934,7 +30934,7 @@ impl SphericalPair {
     }
 
     /// **Source:** `StepKinematics_SphericalPair.hxx`:34 - `StepKinematics_SphericalPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_SphericalPair_get_type_name())
                 .to_string_lossy()
@@ -31662,7 +31662,7 @@ impl SphericalPairValue {
     }
 
     /// **Source:** `StepKinematics_SphericalPairValue.hxx`:47 - `StepKinematics_SphericalPairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_SphericalPairValue_get_type_name())
                 .to_string_lossy()
@@ -31965,7 +31965,7 @@ impl SphericalPairWithPin {
     }
 
     /// **Source:** `StepKinematics_SphericalPairWithPin.hxx`:34 - `StepKinematics_SphericalPairWithPin::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_SphericalPairWithPin_get_type_name()).to_string_lossy().into_owned()
         }
@@ -32629,7 +32629,7 @@ impl SphericalPairWithPinAndRange {
     }
 
     /// **Source:** `StepKinematics_SphericalPairWithPinAndRange.hxx`:89 - `StepKinematics_SphericalPairWithPinAndRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_SphericalPairWithPinAndRange_get_type_name(),
@@ -33342,7 +33342,7 @@ impl SphericalPairWithRange {
     }
 
     /// **Source:** `StepKinematics_SphericalPairWithRange.hxx`:106 - `StepKinematics_SphericalPairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_SphericalPairWithRange_get_type_name(),
@@ -33899,7 +33899,7 @@ impl SurfacePair {
     }
 
     /// **Source:** `StepKinematics_SurfacePair.hxx`:65 - `StepKinematics_SurfacePair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_SurfacePair_get_type_name())
                 .to_string_lossy()
@@ -34441,7 +34441,7 @@ impl SurfacePairWithRange {
     }
 
     /// **Source:** `StepKinematics_SurfacePairWithRange.hxx`:83 - `StepKinematics_SurfacePairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_SurfacePairWithRange_get_type_name()).to_string_lossy().into_owned()
         }
@@ -34866,7 +34866,7 @@ impl UnconstrainedPair {
     }
 
     /// **Source:** `StepKinematics_UnconstrainedPair.hxx`:34 - `StepKinematics_UnconstrainedPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_UnconstrainedPair_get_type_name())
                 .to_string_lossy()
@@ -35363,7 +35363,7 @@ impl UnconstrainedPairValue {
     }
 
     /// **Source:** `StepKinematics_UnconstrainedPairValue.hxx`:47 - `StepKinematics_UnconstrainedPairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_UnconstrainedPairValue_get_type_name(),
@@ -35735,7 +35735,7 @@ impl UniversalPair {
     }
 
     /// **Source:** `StepKinematics_UniversalPair.hxx`:61 - `StepKinematics_UniversalPair::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_UniversalPair_get_type_name())
                 .to_string_lossy()
@@ -36235,7 +36235,7 @@ impl UniversalPairValue {
     }
 
     /// **Source:** `StepKinematics_UniversalPairValue.hxx`:51 - `StepKinematics_UniversalPairValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepKinematics_UniversalPairValue_get_type_name())
                 .to_string_lossy()
@@ -36722,7 +36722,7 @@ impl UniversalPairWithRange {
     }
 
     /// **Source:** `StepKinematics_UniversalPairWithRange.hxx`:90 - `StepKinematics_UniversalPairWithRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepKinematics_UniversalPairWithRange_get_type_name(),

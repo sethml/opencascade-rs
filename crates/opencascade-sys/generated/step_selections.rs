@@ -83,7 +83,7 @@ impl AssemblyComponent {
     }
 
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:48 - `STEPSelections_AssemblyComponent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPSelections_AssemblyComponent_get_type_name())
                 .to_string_lossy()
@@ -399,7 +399,7 @@ impl AssemblyLink {
     }
 
     /// **Source:** `STEPSelections_AssemblyLink.hxx`:53 - `STEPSelections_AssemblyLink::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPSelections_AssemblyLink_get_type_name())
                 .to_string_lossy()
@@ -706,7 +706,7 @@ impl HSequenceOfAssemblyLink {
     }
 
     /// **Source:** `STEPSelections_HSequenceOfAssemblyLink.hxx`:23 - `STEPSelections_HSequenceOfAssemblyLink::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::STEPSelections_HSequenceOfAssemblyLink_get_type_name(),
@@ -914,7 +914,7 @@ impl SelectAssembly {
     }
 
     /// **Source:** `STEPSelections_SelectAssembly.hxx`:50 - `STEPSelections_SelectAssembly::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPSelections_SelectAssembly_get_type_name())
                 .to_string_lossy()
@@ -1299,7 +1299,7 @@ impl SelectDerived {
     }
 
     /// **Source:** `STEPSelections_SelectDerived.hxx`:43 - `STEPSelections_SelectDerived::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPSelections_SelectDerived_get_type_name())
                 .to_string_lossy()
@@ -1682,7 +1682,7 @@ impl SelectFaces {
     }
 
     /// **Source:** `STEPSelections_SelectFaces.hxx`:51 - `STEPSelections_SelectFaces::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPSelections_SelectFaces_get_type_name())
                 .to_string_lossy()
@@ -2057,7 +2057,7 @@ impl SelectForTransfer {
     }
 
     /// **Source:** `STEPSelections_SelectForTransfer.hxx`:41 - `STEPSelections_SelectForTransfer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPSelections_SelectForTransfer_get_type_name())
                 .to_string_lossy()
@@ -2571,7 +2571,7 @@ impl SelectGSCurves {
     }
 
     /// **Source:** `STEPSelections_SelectGSCurves.hxx`:49 - `STEPSelections_SelectGSCurves::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPSelections_SelectGSCurves_get_type_name())
                 .to_string_lossy()
@@ -2979,7 +2979,7 @@ impl SelectInstances {
     }
 
     /// **Source:** `STEPSelections_SelectInstances.hxx`:51 - `STEPSelections_SelectInstances::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPSelections_SelectInstances_get_type_name())
                 .to_string_lossy()

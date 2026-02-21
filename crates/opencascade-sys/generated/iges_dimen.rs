@@ -181,7 +181,7 @@ impl AngularDimension {
     }
 
     /// **Source:** `IGESDimen_AngularDimension.hxx`:92 - `IGESDimen_AngularDimension::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_AngularDimension_get_type_name())
                 .to_string_lossy()
@@ -982,7 +982,7 @@ impl BasicDimension {
     }
 
     /// **Source:** `IGESDimen_BasicDimension.hxx`:62 - `IGESDimen_BasicDimension::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_BasicDimension_get_type_name())
                 .to_string_lossy()
@@ -1763,7 +1763,7 @@ impl CenterLine {
     }
 
     /// **Source:** `IGESDimen_CenterLine.hxx`:73 - `IGESDimen_CenterLine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_CenterLine_get_type_name())
                 .to_string_lossy()
@@ -2550,7 +2550,7 @@ impl CurveDimension {
     }
 
     /// **Source:** `IGESDimen_CurveDimension.hxx`:91 - `IGESDimen_CurveDimension::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_CurveDimension_get_type_name())
                 .to_string_lossy()
@@ -3341,7 +3341,7 @@ impl DiameterDimension {
     }
 
     /// **Source:** `IGESDimen_DiameterDimension.hxx`:71 - `IGESDimen_DiameterDimension::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_DiameterDimension_get_type_name())
                 .to_string_lossy()
@@ -4251,7 +4251,7 @@ impl DimensionDisplayData {
     }
 
     /// **Source:** `IGESDimen_DimensionDisplayData.hxx`:109 - `IGESDimen_DimensionDisplayData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_DimensionDisplayData_get_type_name())
                 .to_string_lossy()
@@ -5179,7 +5179,7 @@ impl DimensionTolerance {
     }
 
     /// **Source:** `IGESDimen_DimensionTolerance.hxx`:108 - `IGESDimen_DimensionTolerance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_DimensionTolerance_get_type_name())
                 .to_string_lossy()
@@ -6051,7 +6051,7 @@ impl DimensionUnits {
     }
 
     /// **Source:** `IGESDimen_DimensionUnits.hxx`:90 - `IGESDimen_DimensionUnits::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_DimensionUnits_get_type_name())
                 .to_string_lossy()
@@ -6818,7 +6818,7 @@ impl DimensionedGeometry {
     }
 
     /// **Source:** `IGESDimen_DimensionedGeometry.hxx`:57 - `IGESDimen_DimensionedGeometry::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_DimensionedGeometry_get_type_name())
                 .to_string_lossy()
@@ -7714,7 +7714,7 @@ impl FlagNote {
     }
 
     /// **Source:** `IGESDimen_FlagNote.hxx`:93 - `IGESDimen_FlagNote::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_FlagNote_get_type_name())
                 .to_string_lossy()
@@ -8398,7 +8398,7 @@ impl GeneralLabel {
     }
 
     /// **Source:** `IGESDimen_GeneralLabel.hxx`:57 - `IGESDimen_GeneralLabel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_GeneralLabel_get_type_name())
                 .to_string_lossy()
@@ -9174,7 +9174,7 @@ impl GeneralModule {
     }
 
     /// **Source:** `IGESDimen_GeneralModule.hxx`:81 - `IGESDimen_GeneralModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_GeneralModule_get_type_name())
                 .to_string_lossy()
@@ -9835,7 +9835,7 @@ impl GeneralNote {
     }
 
     /// **Source:** `IGESDimen_GeneralNote.hxx`:143 - `IGESDimen_GeneralNote::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_GeneralNote_get_type_name())
                 .to_string_lossy()
@@ -10589,7 +10589,7 @@ impl GeneralSymbol {
     }
 
     /// **Source:** `IGESDimen_GeneralSymbol.hxx`:77 - `IGESDimen_GeneralSymbol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_GeneralSymbol_get_type_name())
                 .to_string_lossy()
@@ -11340,7 +11340,7 @@ impl HArray1OfGeneralNote {
     }
 
     /// **Source:** `IGESDimen_HArray1OfGeneralNote.hxx`:23 - `IGESDimen_HArray1OfGeneralNote::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_HArray1OfGeneralNote_get_type_name())
                 .to_string_lossy()
@@ -11566,7 +11566,7 @@ impl HArray1OfLeaderArrow {
     }
 
     /// **Source:** `IGESDimen_HArray1OfLeaderArrow.hxx`:23 - `IGESDimen_HArray1OfLeaderArrow::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_HArray1OfLeaderArrow_get_type_name())
                 .to_string_lossy()
@@ -11839,7 +11839,7 @@ impl LeaderArrow {
     }
 
     /// **Source:** `IGESDimen_LeaderArrow.hxx`:87 - `IGESDimen_LeaderArrow::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_LeaderArrow_get_type_name())
                 .to_string_lossy()
@@ -12614,7 +12614,7 @@ impl LinearDimension {
     }
 
     /// **Source:** `IGESDimen_LinearDimension.hxx`:82 - `IGESDimen_LinearDimension::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_LinearDimension_get_type_name())
                 .to_string_lossy()
@@ -13466,7 +13466,7 @@ impl NewDimensionedGeometry {
     }
 
     /// **Source:** `IGESDimen_NewDimensionedGeometry.hxx`:95 - `IGESDimen_NewDimensionedGeometry::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_NewDimensionedGeometry_get_type_name())
                 .to_string_lossy()
@@ -14720,7 +14720,7 @@ impl NewGeneralNote {
     }
 
     /// **Source:** `IGESDimen_NewGeneralNote.hxx`:257 - `IGESDimen_NewGeneralNote::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_NewGeneralNote_get_type_name())
                 .to_string_lossy()
@@ -15493,7 +15493,7 @@ impl OrdinateDimension {
     }
 
     /// **Source:** `IGESDimen_OrdinateDimension.hxx`:63 - `IGESDimen_OrdinateDimension::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_OrdinateDimension_get_type_name())
                 .to_string_lossy()
@@ -16317,7 +16317,7 @@ impl PointDimension {
     }
 
     /// **Source:** `IGESDimen_PointDimension.hxx`:71 - `IGESDimen_PointDimension::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_PointDimension_get_type_name())
                 .to_string_lossy()
@@ -17052,7 +17052,7 @@ impl Protocol {
     }
 
     /// **Source:** `IGESDimen_Protocol.hxx`:53 - `IGESDimen_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_Protocol_get_type_name())
                 .to_string_lossy()
@@ -17389,7 +17389,7 @@ impl RadiusDimension {
     }
 
     /// **Source:** `IGESDimen_RadiusDimension.hxx`:74 - `IGESDimen_RadiusDimension::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_RadiusDimension_get_type_name())
                 .to_string_lossy()
@@ -18151,7 +18151,7 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `IGESDimen_ReadWriteModule.hxx`:58 - `IGESDimen_ReadWriteModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_ReadWriteModule_get_type_name())
                 .to_string_lossy()
@@ -18478,7 +18478,7 @@ impl Section {
     }
 
     /// **Source:** `IGESDimen_Section.hxx`:70 - `IGESDimen_Section::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_Section_get_type_name())
                 .to_string_lossy()
@@ -19235,7 +19235,7 @@ impl SectionedArea {
     }
 
     /// **Source:** `IGESDimen_SectionedArea.hxx`:93 - `IGESDimen_SectionedArea::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_SectionedArea_get_type_name())
                 .to_string_lossy()
@@ -19959,7 +19959,7 @@ impl SpecificModule {
     }
 
     /// **Source:** `IGESDimen_SpecificModule.hxx`:55 - `IGESDimen_SpecificModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_SpecificModule_get_type_name())
                 .to_string_lossy()
@@ -23290,7 +23290,7 @@ impl WitnessLine {
     }
 
     /// **Source:** `IGESDimen_WitnessLine.hxx`:67 - `IGESDimen_WitnessLine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDimen_WitnessLine_get_type_name())
                 .to_string_lossy()

@@ -195,7 +195,7 @@ impl NamedShapeDriver {
     }
 
     /// **Source:** `BinMNaming_NamedShapeDriver.hxx`:94 - `BinMNaming_NamedShapeDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMNaming_NamedShapeDriver_get_type_name())
                 .to_string_lossy()
@@ -434,7 +434,7 @@ impl NamingDriver {
     }
 
     /// **Source:** `BinMNaming_NamingDriver.hxx`:50 - `BinMNaming_NamingDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMNaming_NamingDriver_get_type_name())
                 .to_string_lossy()

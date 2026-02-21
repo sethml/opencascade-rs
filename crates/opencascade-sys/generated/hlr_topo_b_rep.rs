@@ -447,7 +447,7 @@ impl OutLiner {
     }
 
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:58 - `HLRTopoBRep_OutLiner::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRTopoBRep_OutLiner_get_type_name())
                 .to_string_lossy()

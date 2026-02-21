@@ -213,7 +213,7 @@ impl ActorDispatch {
     }
 
     /// **Source:** `Transfer_ActorDispatch.hxx`:79 - `Transfer_ActorDispatch::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorDispatch_get_type_name())
                 .to_string_lossy()
@@ -647,7 +647,7 @@ impl ActorOfFinderProcess {
     }
 
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:101 - `Transfer_ActorOfFinderProcess::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorOfFinderProcess_get_type_name())
                 .to_string_lossy()
@@ -1059,7 +1059,7 @@ impl ActorOfProcessForFinder {
     }
 
     /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:95 - `Transfer_ActorOfProcessForFinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorOfProcessForFinder_get_type_name())
                 .to_string_lossy()
@@ -1395,7 +1395,7 @@ impl ActorOfProcessForTransient {
     }
 
     /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:94 - `Transfer_ActorOfProcessForTransient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorOfProcessForTransient_get_type_name()).to_string_lossy().into_owned()
         }
@@ -1738,7 +1738,7 @@ impl ActorOfTransientProcess {
     }
 
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:95 - `Transfer_ActorOfTransientProcess::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorOfTransientProcess_get_type_name())
                 .to_string_lossy()
@@ -2099,7 +2099,7 @@ impl Binder {
     /// **Source:** `Transfer_Binder.hxx`:77 - `Transfer_Binder::ResultTypeName()`
     /// Returns the Name of the Type which characterizes the Result
     /// Can be returned even if ResultType itself is unknown
-    pub fn result_type_name(&self) -> String {
+    pub fn result_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_Binder_result_type_name(
                 self as *const Self,
@@ -2228,7 +2228,7 @@ impl Binder {
     }
 
     /// **Source:** `Transfer_Binder.hxx`:134 - `Transfer_Binder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_Binder_get_type_name())
                 .to_string_lossy()
@@ -2516,7 +2516,7 @@ impl BinderOfTransientInteger {
     }
 
     /// **Source:** `Transfer_BinderOfTransientInteger.hxx`:49 - `Transfer_BinderOfTransientInteger::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_BinderOfTransientInteger_get_type_name())
                 .to_string_lossy()
@@ -2876,7 +2876,7 @@ impl DataInfo {
     /// **Source:** `Transfer_DataInfo.hxx`:41 - `Transfer_DataInfo::TypeName()`
     /// Returns Type Name (string)
     /// Allows to name type of non-handled objects
-    pub fn type_name(ent: &crate::ffi::HandleStandardTransient) -> String {
+    pub fn type_name(ent: &crate::ffi::HandleStandardTransient) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_DataInfo_type_name(ent))
                 .to_string_lossy()
@@ -2961,7 +2961,7 @@ impl DispatchControl {
     }
 
     /// **Source:** `Transfer_DispatchControl.hxx`:63 - `Transfer_DispatchControl::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_DispatchControl_get_type_name())
                 .to_string_lossy()
@@ -3160,7 +3160,7 @@ impl Finder {
     /// **Source:** `Transfer_Finder.hxx`:57 - `Transfer_Finder::ValueTypeName()`
     /// Returns the name of the Type of the Value. Default is name
     /// of ValueType, unless it is for a non-handled object
-    pub fn value_type_name(&self) -> String {
+    pub fn value_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_Finder_value_type_name(
                 self as *const Self,
@@ -3324,7 +3324,7 @@ impl Finder {
 
     /// **Source:** `Transfer_Finder.hxx`:122 - `Transfer_Finder::StringAttribute()`
     /// Returns a String attribute from its name. "" if not recorded
-    pub fn string_attribute(&self, name: &str) -> String {
+    pub fn string_attribute(&self, name: &str) -> std::string::String {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_Finder_string_attribute(
@@ -3386,7 +3386,7 @@ impl Finder {
     }
 
     /// **Source:** `Transfer_Finder.hxx`:149 - `Transfer_Finder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_Finder_get_type_name())
                 .to_string_lossy()
@@ -3634,7 +3634,7 @@ impl FinderProcess {
     }
 
     /// **Source:** `Transfer_FinderProcess.hxx`:77 - `Transfer_FinderProcess::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_FinderProcess_get_type_name())
                 .to_string_lossy()
@@ -4351,7 +4351,7 @@ impl HSequenceOfBinder {
     }
 
     /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_HSequenceOfBinder_get_type_name())
                 .to_string_lossy()
@@ -4542,7 +4542,7 @@ impl HSequenceOfFinder {
     }
 
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_HSequenceOfFinder_get_type_name())
                 .to_string_lossy()
@@ -5253,7 +5253,7 @@ impl MapContainer {
     }
 
     /// **Source:** `Transfer_MapContainer.hxx`:40 - `Transfer_MapContainer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_MapContainer_get_type_name())
                 .to_string_lossy()
@@ -5426,7 +5426,7 @@ impl MultipleBinder {
     /// **Source:** `Transfer_MultipleBinder.hxx`:65 - `Transfer_MultipleBinder::ResultTypeName()`
     /// Returns the Name of the Type which characterizes the Result
     /// Here, returns "(list)"
-    pub fn result_type_name(&self) -> String {
+    pub fn result_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_MultipleBinder_result_type_name(
                 self as *const Self,
@@ -5487,7 +5487,7 @@ impl MultipleBinder {
     }
 
     /// **Source:** `Transfer_MultipleBinder.hxx`:84 - `Transfer_MultipleBinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_MultipleBinder_get_type_name())
                 .to_string_lossy()
@@ -6550,7 +6550,7 @@ impl ProcessForFinder {
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:446 - `Transfer_ProcessForFinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_ProcessForFinder_get_type_name())
                 .to_string_lossy()
@@ -7566,7 +7566,7 @@ impl ProcessForTransient {
     }
 
     /// **Source:** `Transfer_ProcessForTransient.hxx`:430 - `Transfer_ProcessForTransient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_ProcessForTransient_get_type_name())
                 .to_string_lossy()
@@ -7782,7 +7782,7 @@ impl ResultFromModel {
 
     /// **Source:** `Transfer_ResultFromModel.hxx`:68 - `Transfer_ResultFromModel::FileName()`
     /// Returns starting File Name (empty if not set)
-    pub fn file_name(&self) -> String {
+    pub fn file_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_ResultFromModel_file_name(
                 self as *const Self,
@@ -7852,7 +7852,7 @@ impl ResultFromModel {
     /// **Source:** `Transfer_ResultFromModel.hxx`:104 - `Transfer_ResultFromModel::MainLabel()`
     /// Returns the label in starting model attached to main entity
     /// (updated by Fill or SetMainResult, if Model is known)
-    pub fn main_label(&self) -> String {
+    pub fn main_label(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_ResultFromModel_main_label(
                 self as *const Self,
@@ -7996,7 +7996,7 @@ impl ResultFromModel {
     }
 
     /// **Source:** `Transfer_ResultFromModel.hxx`:158 - `Transfer_ResultFromModel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_ResultFromModel_get_type_name())
                 .to_string_lossy()
@@ -8292,7 +8292,7 @@ impl ResultFromTransient {
     }
 
     /// **Source:** `Transfer_ResultFromTransient.hxx`:109 - `Transfer_ResultFromTransient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_ResultFromTransient_get_type_name())
                 .to_string_lossy()
@@ -8465,7 +8465,7 @@ impl SimpleBinderOfTransient {
     /// **Source:** `Transfer_SimpleBinderOfTransient.hxx`:47 - `Transfer_SimpleBinderOfTransient::ResultTypeName()`
     /// Returns the Effective Name of (Dynamic) Type of the Result
     /// (void) if no result is defined
-    pub fn result_type_name(&self) -> String {
+    pub fn result_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_SimpleBinderOfTransient_result_type_name(
                 self as *const Self,
@@ -8512,7 +8512,7 @@ impl SimpleBinderOfTransient {
     }
 
     /// **Source:** `Transfer_SimpleBinderOfTransient.hxx`:67 - `Transfer_SimpleBinderOfTransient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_SimpleBinderOfTransient_get_type_name())
                 .to_string_lossy()
@@ -8881,7 +8881,7 @@ impl TransferDeadLoop {
     }
 
     /// **Source:** `Transfer_TransferDeadLoop.hxx`:35 - `Transfer_TransferDeadLoop::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_TransferDeadLoop_get_type_name())
                 .to_string_lossy()
@@ -9445,7 +9445,7 @@ impl TransferFailure {
     }
 
     /// **Source:** `Transfer_TransferFailure.hxx`:36 - `Transfer_TransferFailure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_TransferFailure_get_type_name())
                 .to_string_lossy()
@@ -10174,7 +10174,7 @@ impl TransientListBinder {
     }
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:47 - `Transfer_TransientListBinder::ResultTypeName()`
-    pub fn result_type_name(&self) -> String {
+    pub fn result_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_TransientListBinder_result_type_name(
                 self as *const Self,
@@ -10221,7 +10221,7 @@ impl TransientListBinder {
     }
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:61 - `Transfer_TransientListBinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_TransientListBinder_get_type_name())
                 .to_string_lossy()
@@ -10513,7 +10513,7 @@ impl TransientMapper {
     /// **Source:** `Transfer_TransientMapper.hxx`:55 - `Transfer_TransientMapper::ValueTypeName()`
     /// Returns the name of the Type of the Value. Default is name
     /// of ValueType, unless it is for a non-handled object
-    pub fn value_type_name(&self) -> String {
+    pub fn value_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_TransientMapper_value_type_name(
                 self as *const Self,
@@ -10529,7 +10529,7 @@ impl TransientMapper {
     }
 
     /// **Source:** `Transfer_TransientMapper.hxx`:57 - `Transfer_TransientMapper::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_TransientMapper_get_type_name())
                 .to_string_lossy()
@@ -10888,7 +10888,7 @@ impl TransientProcess {
     }
 
     /// **Source:** `Transfer_TransientProcess.hxx`:118 - `Transfer_TransientProcess::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_TransientProcess_get_type_name())
                 .to_string_lossy()
@@ -11623,7 +11623,7 @@ impl VoidBinder {
 
     /// **Source:** `Transfer_VoidBinder.hxx`:46 - `Transfer_VoidBinder::ResultTypeName()`
     /// Returns "(void)"
-    pub fn result_type_name(&self) -> String {
+    pub fn result_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_VoidBinder_result_type_name(
                 self as *const Self,
@@ -11639,7 +11639,7 @@ impl VoidBinder {
     }
 
     /// **Source:** `Transfer_VoidBinder.hxx`:48 - `Transfer_VoidBinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Transfer_VoidBinder_get_type_name())
                 .to_string_lossy()

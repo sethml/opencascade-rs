@@ -305,7 +305,7 @@ impl Manager {
     /// **Source:** `Resource_Manager.hxx`:89 - `Resource_Manager::Value()`
     /// Gets the value of a CString resource according to its instance
     /// and its type.
-    pub fn value(&self, aResourceName: &str) -> String {
+    pub fn value(&self, aResourceName: &str) -> std::string::String {
         let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Resource_Manager_value(
@@ -404,7 +404,7 @@ impl Manager {
     }
 
     /// **Source:** `Resource_Manager.hxx`:38 - `Resource_Manager::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Resource_Manager_get_type_name())
                 .to_string_lossy()
@@ -606,7 +606,7 @@ impl NoSuchResource {
     }
 
     /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Resource_NoSuchResource_get_type_name())
                 .to_string_lossy()

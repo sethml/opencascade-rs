@@ -53,7 +53,7 @@ impl Activator {
 
     /// **Source:** `StepSelect_Activator.hxx`:44 - `StepSelect_Activator::Help()`
     /// Sends a short help message for StepSelect commands
-    pub fn help(&self, number: i32) -> String {
+    pub fn help(&self, number: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepSelect_Activator_help(
                 self as *const Self,
@@ -70,7 +70,7 @@ impl Activator {
     }
 
     /// **Source:** `StepSelect_Activator.hxx`:46 - `StepSelect_Activator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepSelect_Activator_get_type_name())
                 .to_string_lossy()
@@ -241,7 +241,7 @@ impl FileModifier {
     }
 
     /// **Source:** `StepSelect_FileModifier.hxx`:45 - `StepSelect_FileModifier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepSelect_FileModifier_get_type_name())
                 .to_string_lossy()
@@ -588,7 +588,7 @@ impl FloatFormat {
     }
 
     /// **Source:** `StepSelect_FloatFormat.hxx`:94 - `StepSelect_FloatFormat::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepSelect_FloatFormat_get_type_name())
                 .to_string_lossy()
@@ -890,7 +890,7 @@ impl ModelModifier {
     }
 
     /// **Source:** `StepSelect_ModelModifier.hxx`:64 - `StepSelect_ModelModifier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepSelect_ModelModifier_get_type_name())
                 .to_string_lossy()
@@ -1166,7 +1166,7 @@ impl StepType {
         &self,
         ent: &crate::ffi::HandleStandardTransient,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> String {
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepSelect_StepType_value(
                 self as *const Self,
@@ -1184,7 +1184,7 @@ impl StepType {
     }
 
     /// **Source:** `StepSelect_StepType.hxx`:62 - `StepSelect_StepType::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepSelect_StepType_get_type_name())
                 .to_string_lossy()
@@ -1600,7 +1600,7 @@ impl WorkLibrary {
     }
 
     /// **Source:** `StepSelect_WorkLibrary.hxx`:93 - `StepSelect_WorkLibrary::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepSelect_WorkLibrary_get_type_name())
                 .to_string_lossy()

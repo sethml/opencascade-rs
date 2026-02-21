@@ -216,7 +216,7 @@ impl Axis {
     }
 
     /// **Source:** `TDataXtd_Axis.hxx`:59 - `TDataXtd_Axis::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_Axis_get_type_name())
                 .to_string_lossy()
@@ -926,7 +926,7 @@ impl Constraint {
     }
 
     /// **Source:** `TDataXtd_Constraint.hxx`:193 - `TDataXtd_Constraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_Constraint_get_type_name())
                 .to_string_lossy()
@@ -1530,7 +1530,7 @@ impl Geometry {
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:140 - `TDataXtd_Geometry::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_Geometry_get_type_name())
                 .to_string_lossy()
@@ -1981,7 +1981,7 @@ impl HArray1OfTrsf {
     }
 
     /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_HArray1OfTrsf_get_type_name())
                 .to_string_lossy()
@@ -2146,7 +2146,7 @@ impl Pattern {
     }
 
     /// **Source:** `TDataXtd_Pattern.hxx`:49 - `TDataXtd_Pattern::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_Pattern_get_type_name())
                 .to_string_lossy()
@@ -2769,7 +2769,7 @@ impl PatternStd {
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:110 - `TDataXtd_PatternStd::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_PatternStd_get_type_name())
                 .to_string_lossy()
@@ -3223,7 +3223,7 @@ impl Placement {
     }
 
     /// **Source:** `TDataXtd_Placement.hxx`:45 - `TDataXtd_Placement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_Placement_get_type_name())
                 .to_string_lossy()
@@ -3708,7 +3708,7 @@ impl Plane {
     }
 
     /// **Source:** `TDataXtd_Plane.hxx`:58 - `TDataXtd_Plane::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_Plane_get_type_name())
                 .to_string_lossy()
@@ -4171,7 +4171,7 @@ impl Point {
     }
 
     /// **Source:** `TDataXtd_Point.hxx`:58 - `TDataXtd_Point::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_Point_get_type_name())
                 .to_string_lossy()
@@ -4669,7 +4669,7 @@ impl Position {
     }
 
     /// **Source:** `TDataXtd_Position.hxx`:78 - `TDataXtd_Position::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_Position_get_type_name())
                 .to_string_lossy()
@@ -5328,7 +5328,7 @@ impl Presentation {
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:78 - `TDataXtd_Presentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_Presentation_get_type_name())
                 .to_string_lossy()
@@ -5809,7 +5809,7 @@ impl Shape {
     }
 
     /// **Source:** `TDataXtd_Shape.hxx`:64 - `TDataXtd_Shape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_Shape_get_type_name())
                 .to_string_lossy()
@@ -6434,7 +6434,7 @@ impl Triangulation {
     }
 
     /// **Source:** `TDataXtd_Triangulation.hxx`:149 - `TDataXtd_Triangulation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_Triangulation_get_type_name())
                 .to_string_lossy()

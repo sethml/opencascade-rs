@@ -29,7 +29,7 @@ impl Application {
     /// **Source:** `XCAFApp_Application.hxx`:35 - `XCAFApp_Application::ResourcesName()`
     /// methods from TDocStd_Application
     /// ================================
-    pub fn resources_name(&mut self) -> String {
+    pub fn resources_name(&mut self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFApp_Application_resources_name(
                 self as *mut Self,
@@ -61,7 +61,7 @@ impl Application {
     }
 
     /// **Source:** `XCAFApp_Application.hxx`:51 - `XCAFApp_Application::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFApp_Application_get_type_name())
                 .to_string_lossy()

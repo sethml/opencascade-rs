@@ -634,6 +634,34 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
                     is_abstract = true;
                 }
             }
+            EntityKind::UsingDeclaration => {
+                // `using Base::Method;` in a non-public section narrows the
+                // inherited method's access, hiding it from derived classes.
+                // Record the name so the inheritance logic treats it as overridden.
+                if !is_public(&child) {
+                    if let Some(ref using_name) = child.get_name() {
+                        all_method_names.insert(using_name.clone());
+                    }
+                }
+            }
+            EntityKind::EnumDecl => {
+                // A public enum with the same name as an inherited method
+                // shadows that method in C++ (e.g. AIS_PointCloud::DisplayMode
+                // enum hides PrsMgr_PresentableObject::DisplayMode() method).
+                if let Some(ref enum_name) = child.get_name() {
+                    if !enum_name.is_empty() {
+                        all_method_names.insert(enum_name.clone());
+                    }
+                }
+            }
+            EntityKind::FunctionTemplate => {
+                // Template methods hide base class methods with the same name
+                // (C++ name-hiding rule). Record the name so the inheritance
+                // logic blocks the parent's non-template overloads.
+                if let Some(ref tmpl_name) = child.get_name() {
+                    all_method_names.insert(tmpl_name.clone());
+                }
+            }
             _ => {}
         }
         EntityVisitResult::Continue

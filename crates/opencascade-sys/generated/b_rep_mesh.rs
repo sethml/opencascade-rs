@@ -102,7 +102,7 @@ impl BaseMeshAlgo {
     }
 
     /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_BaseMeshAlgo_get_type_name())
                 .to_string_lossy()
@@ -712,7 +712,7 @@ impl Classifier {
     }
 
     /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_Classifier_get_type_name())
                 .to_string_lossy()
@@ -927,8 +927,8 @@ impl ConeRangeSplitter {
 //   method: Returns split intervals along U and V direction.
 //   method: @param theParameters meshing parameters.
 //   method: @param[out] theStepsNb number of steps along corresponding direction.
-//   Reason: has unbindable types: param 'theStepsNb': unresolved template type (std::pair<Standard_Integer, Standard_Integer>&); return: unresolved template type (std::pair<Standard_Real, Standard_Real>)
-//   // pub fn get_split_steps(&self, theParameters: &Parameters, theStepsNb: /* std::pair<Standard_Integer, Standard_Integer>& */) -> OwnedPtr<std::pair<Standard_Real, Standard_Real>>;
+//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Real, Standard_Real>)
+//   // pub fn get_split_steps(&self, theParameters: &Parameters, theStepsNb: &mut NodePair) -> OwnedPtr<std::pair<Standard_Real, Standard_Real>>;
 //
 // SKIPPED: **Source:** `BRepMesh_ConeRangeSplitter.hxx`:40 - `BRepMesh_ConeRangeSplitter::GenerateSurfaceNodes`
 //   method: Returns list of nodes generated using surface data and specified parameters.
@@ -960,7 +960,7 @@ impl ConstrainedBaseMeshAlgo {
     }
 
     /// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:34 - `BRepMesh_ConstrainedBaseMeshAlgo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_name())
                 .to_string_lossy()
@@ -1224,7 +1224,7 @@ impl Context {
     }
 
     /// **Source:** `BRepMesh_Context.hxx`:33 - `BRepMesh_Context::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_Context_get_type_name())
                 .to_string_lossy()
@@ -1555,7 +1555,7 @@ impl CurveTessellator {
     }
 
     /// **Source:** `BRepMesh_CurveTessellator.hxx`:61 - `BRepMesh_CurveTessellator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_CurveTessellator_get_type_name())
                 .to_string_lossy()
@@ -1746,7 +1746,7 @@ impl CustomBaseMeshAlgo {
     }
 
     /// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:36 - `BRepMesh_CustomBaseMeshAlgo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_name())
                 .to_string_lossy()
@@ -2379,7 +2379,7 @@ impl DataStructureOfDelaun {
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:203 - `BRepMesh_DataStructureOfDelaun::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_name())
                 .to_string_lossy()
@@ -2735,7 +2735,7 @@ impl Deflection {
     }
 
     /// **Source:** `BRepMesh_Deflection.hxx`:66 - `BRepMesh_Deflection::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_Deflection_get_type_name())
                 .to_string_lossy()
@@ -2891,7 +2891,7 @@ impl DelabellaBaseMeshAlgo {
     }
 
     /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:32 - `BRepMesh_DelabellaBaseMeshAlgo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_name())
                 .to_string_lossy()
@@ -3193,7 +3193,7 @@ impl DelabellaMeshAlgoFactory {
     }
 
     /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:38 - `BRepMesh_DelabellaMeshAlgoFactory::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_name())
                 .to_string_lossy()
@@ -3572,7 +3572,7 @@ impl DelaunayBaseMeshAlgo {
     }
 
     /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:32 - `BRepMesh_DelaunayBaseMeshAlgo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_name())
                 .to_string_lossy()
@@ -3936,7 +3936,7 @@ impl DiscretRoot {
     }
 
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DiscretRoot_get_type_name())
                 .to_string_lossy()
@@ -4178,7 +4178,7 @@ impl EdgeDiscret {
     }
 
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_EdgeDiscret_get_type_name())
                 .to_string_lossy()
@@ -4408,7 +4408,7 @@ impl EdgeTessellationExtractor {
     }
 
     /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:49 - `BRepMesh_EdgeTessellationExtractor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_name())
                 .to_string_lossy()
@@ -4749,7 +4749,7 @@ impl FaceChecker {
     }
 
     /// **Source:** `BRepMesh_FaceChecker.hxx`:80 - `BRepMesh_FaceChecker::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_FaceChecker_get_type_name())
                 .to_string_lossy()
@@ -4934,7 +4934,7 @@ impl FaceDiscret {
     }
 
     /// **Source:** `BRepMesh_FaceDiscret.hxx`:36 - `BRepMesh_FaceDiscret::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_FaceDiscret_get_type_name())
                 .to_string_lossy()
@@ -5348,8 +5348,8 @@ impl GeomTool {
 //   // pub fn int_lin_lin(theStartPnt1: &XY, theEndPnt1: &XY, theStartPnt2: &XY, theEndPnt2: &XY, theIntPnt: &mut XY, theParamOnSegment: /* Standard_Real[2]& */) -> OwnedPtr<BRepMesh_GeomTool::IntFlag>;
 //
 // SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:206 - `BRepMesh_GeomTool::CellsCount`
-//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Integer, Standard_Integer>)
-//   // pub fn cells_count(theSurface: &HandleSurface, theVerticesNb: i32, theDeflection: f64, theRangeSplitter: *const DefaultRangeSplitter) -> OwnedPtr<std::pair<Standard_Integer, Standard_Integer>>;
+//   Reason: excluded by bindings.toml
+//   // pub fn cells_count(theSurface: &HandleSurface, theVerticesNb: i32, theDeflection: f64, theRangeSplitter: *const DefaultRangeSplitter) -> OwnedPtr<MeshVS_NodePair>;
 //
 
 // ========================
@@ -5579,7 +5579,7 @@ impl IncrementalMesh {
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_IncrementalMesh_get_type_name())
                 .to_string_lossy()
@@ -5790,7 +5790,7 @@ impl MeshAlgoFactory {
     }
 
     /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:38 - `BRepMesh_MeshAlgoFactory::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_MeshAlgoFactory_get_type_name())
                 .to_string_lossy()
@@ -6050,7 +6050,7 @@ impl MeshTool {
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_MeshTool_get_type_name())
                 .to_string_lossy()
@@ -6251,7 +6251,7 @@ impl ModelBuilder {
     }
 
     /// **Source:** `BRepMesh_ModelBuilder.hxx`:38 - `BRepMesh_ModelBuilder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ModelBuilder_get_type_name())
                 .to_string_lossy()
@@ -6576,7 +6576,7 @@ impl ModelHealer {
     }
 
     /// **Source:** `BRepMesh_ModelHealer.hxx`:51 - `BRepMesh_ModelHealer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ModelHealer_get_type_name())
                 .to_string_lossy()
@@ -6755,7 +6755,7 @@ impl ModelPostProcessor {
     }
 
     /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:33 - `BRepMesh_ModelPostProcessor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ModelPostProcessor_get_type_name())
                 .to_string_lossy()
@@ -6957,7 +6957,7 @@ impl ModelPreProcessor {
     }
 
     /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:34 - `BRepMesh_ModelPreProcessor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ModelPreProcessor_get_type_name())
                 .to_string_lossy()
@@ -7539,7 +7539,7 @@ impl SelectorOfDataStructureOfDelaun {
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_name(),
@@ -7929,7 +7929,7 @@ impl ShapeTool {
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:140 - `BRepMesh_ShapeTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ShapeTool_get_type_name())
                 .to_string_lossy()
@@ -8092,7 +8092,7 @@ impl ShapeVisitor {
     }
 
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:49 - `BRepMesh_ShapeVisitor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ShapeVisitor_get_type_name())
                 .to_string_lossy()
@@ -9099,7 +9099,7 @@ impl VertexTool {
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_VertexTool_get_type_name())
                 .to_string_lossy()

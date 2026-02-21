@@ -87,7 +87,7 @@ impl EditHeader {
     }
 
     /// **Source:** `APIHeaderSection_EditHeader.hxx`:58 - `APIHeaderSection_EditHeader::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::APIHeaderSection_EditHeader_get_type_name())
                 .to_string_lossy()

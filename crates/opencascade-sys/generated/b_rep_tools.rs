@@ -746,7 +746,7 @@ impl CopyModification {
     }
 
     /// **Source:** `BRepTools_CopyModification.hxx`:124 - `BRepTools_CopyModification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepTools_CopyModification_get_type_name())
                 .to_string_lossy()
@@ -1151,7 +1151,7 @@ impl GTrsfModification {
     }
 
     /// **Source:** `BRepTools_GTrsfModification.hxx`:145 - `BRepTools_GTrsfModification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepTools_GTrsfModification_get_type_name())
                 .to_string_lossy()
@@ -1548,7 +1548,7 @@ impl History {
 
     /// **Source:** `BRepTools_History.hxx`:229 - `BRepTools_History::get_type_name()`
     /// Define the OCCT RTTI for the type.
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepTools_History_get_type_name())
                 .to_string_lossy()
@@ -1870,7 +1870,7 @@ impl Modification {
     }
 
     /// **Source:** `BRepTools_Modification.hxx`:150 - `BRepTools_Modification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepTools_Modification_get_type_name())
                 .to_string_lossy()
@@ -2559,7 +2559,7 @@ impl NurbsConvertModification {
     }
 
     /// **Source:** `BRepTools_NurbsConvertModification.hxx`:146 - `BRepTools_NurbsConvertModification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepTools_NurbsConvertModification_get_type_name())
                 .to_string_lossy()
@@ -3082,7 +3082,7 @@ impl ReShape {
     }
 
     /// **Source:** `BRepTools_ReShape.hxx`:153 - `BRepTools_ReShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepTools_ReShape_get_type_name())
                 .to_string_lossy()
@@ -3940,7 +3940,7 @@ impl TrsfModification {
     }
 
     /// **Source:** `BRepTools_TrsfModification.hxx`:149 - `BRepTools_TrsfModification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepTools_TrsfModification_get_type_name())
                 .to_string_lossy()

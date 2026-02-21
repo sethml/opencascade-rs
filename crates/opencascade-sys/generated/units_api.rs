@@ -167,7 +167,7 @@ pub fn set_current_unit(aQuantity: &str, aUnit: &str) {
 }
 /// **Source:** `UnitsAPI.hxx`:163 - `UnitsAPI::CurrentUnit`
 /// Returns the current unit dimension <aUnit> from the unit quantity <aQuantity>.
-pub fn current_unit(aQuantity: &str) -> String {
+pub fn current_unit(aQuantity: &str) -> std::string::String {
     let c_aQuantity = std::ffi::CString::new(aQuantity).unwrap();
     unsafe {
         std::ffi::CStr::from_ptr(crate::ffi::UnitsAPI_current_unit(c_aQuantity.as_ptr()))

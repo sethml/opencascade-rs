@@ -175,7 +175,7 @@ impl Block {
     }
 
     /// **Source:** `IGESSolid_Block.hxx`:95 - `IGESSolid_Block::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_Block_get_type_name())
                 .to_string_lossy()
@@ -850,7 +850,7 @@ impl BooleanTree {
     }
 
     /// **Source:** `IGESSolid_BooleanTree.hxx`:66 - `IGESSolid_BooleanTree::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_BooleanTree_get_type_name())
                 .to_string_lossy()
@@ -1608,7 +1608,7 @@ impl ConeFrustum {
     }
 
     /// **Source:** `IGESSolid_ConeFrustum.hxx`:80 - `IGESSolid_ConeFrustum::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_ConeFrustum_get_type_name())
                 .to_string_lossy()
@@ -2365,7 +2365,7 @@ impl ConicalSurface {
     }
 
     /// **Source:** `IGESSolid_ConicalSurface.hxx`:76 - `IGESSolid_ConicalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_ConicalSurface_get_type_name())
                 .to_string_lossy()
@@ -3150,7 +3150,7 @@ impl Cylinder {
     }
 
     /// **Source:** `IGESSolid_Cylinder.hxx`:70 - `IGESSolid_Cylinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_Cylinder_get_type_name())
                 .to_string_lossy()
@@ -3863,7 +3863,7 @@ impl CylindricalSurface {
     }
 
     /// **Source:** `IGESSolid_CylindricalSurface.hxx`:66 - `IGESSolid_CylindricalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_CylindricalSurface_get_type_name())
                 .to_string_lossy()
@@ -4736,7 +4736,7 @@ impl EdgeList {
     }
 
     /// **Source:** `IGESSolid_EdgeList.hxx`:86 - `IGESSolid_EdgeList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_EdgeList_get_type_name())
                 .to_string_lossy()
@@ -5516,7 +5516,7 @@ impl Ellipsoid {
     }
 
     /// **Source:** `IGESSolid_Ellipsoid.hxx`:99 - `IGESSolid_Ellipsoid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_Ellipsoid_get_type_name())
                 .to_string_lossy()
@@ -6211,7 +6211,7 @@ impl Face {
     }
 
     /// **Source:** `IGESSolid_Face.hxx`:60 - `IGESSolid_Face::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_Face_get_type_name())
                 .to_string_lossy()
@@ -6928,7 +6928,7 @@ impl GeneralModule {
     }
 
     /// **Source:** `IGESSolid_GeneralModule.hxx`:81 - `IGESSolid_GeneralModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_GeneralModule_get_type_name())
                 .to_string_lossy()
@@ -7453,7 +7453,7 @@ impl HArray1OfFace {
     }
 
     /// **Source:** `IGESSolid_HArray1OfFace.hxx`:23 - `IGESSolid_HArray1OfFace::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_HArray1OfFace_get_type_name())
                 .to_string_lossy()
@@ -7654,7 +7654,7 @@ impl HArray1OfLoop {
     }
 
     /// **Source:** `IGESSolid_HArray1OfLoop.hxx`:23 - `IGESSolid_HArray1OfLoop::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_HArray1OfLoop_get_type_name())
                 .to_string_lossy()
@@ -7855,7 +7855,7 @@ impl HArray1OfShell {
     }
 
     /// **Source:** `IGESSolid_HArray1OfShell.hxx`:23 - `IGESSolid_HArray1OfShell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_HArray1OfShell_get_type_name())
                 .to_string_lossy()
@@ -8064,7 +8064,7 @@ impl HArray1OfVertexList {
     }
 
     /// **Source:** `IGESSolid_HArray1OfVertexList.hxx`:23 - `IGESSolid_HArray1OfVertexList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_HArray1OfVertexList_get_type_name())
                 .to_string_lossy()
@@ -8351,7 +8351,7 @@ impl Loop {
     }
 
     /// **Source:** `IGESSolid_Loop.hxx`:110 - `IGESSolid_Loop::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_Loop_get_type_name())
                 .to_string_lossy()
@@ -9042,7 +9042,7 @@ impl ManifoldSolid {
     }
 
     /// **Source:** `IGESSolid_ManifoldSolid.hxx`:71 - `IGESSolid_ManifoldSolid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_ManifoldSolid_get_type_name())
                 .to_string_lossy()
@@ -9791,7 +9791,7 @@ impl PlaneSurface {
     }
 
     /// **Source:** `IGESSolid_PlaneSurface.hxx`:63 - `IGESSolid_PlaneSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_PlaneSurface_get_type_name())
                 .to_string_lossy()
@@ -10496,7 +10496,7 @@ impl Protocol {
     }
 
     /// **Source:** `IGESSolid_Protocol.hxx`:53 - `IGESSolid_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_Protocol_get_type_name())
                 .to_string_lossy()
@@ -10789,7 +10789,7 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `IGESSolid_ReadWriteModule.hxx`:58 - `IGESSolid_ReadWriteModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_ReadWriteModule_get_type_name())
                 .to_string_lossy()
@@ -11200,7 +11200,7 @@ impl RightAngularWedge {
     }
 
     /// **Source:** `IGESSolid_RightAngularWedge.hxx`:100 - `IGESSolid_RightAngularWedge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_RightAngularWedge_get_type_name())
                 .to_string_lossy()
@@ -11998,7 +11998,7 @@ impl SelectedComponent {
     }
 
     /// **Source:** `IGESSolid_SelectedComponent.hxx`:57 - `IGESSolid_SelectedComponent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_SelectedComponent_get_type_name())
                 .to_string_lossy()
@@ -12800,7 +12800,7 @@ impl Shell {
     }
 
     /// **Source:** `IGESSolid_Shell.hxx`:70 - `IGESSolid_Shell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_Shell_get_type_name())
                 .to_string_lossy()
@@ -13494,7 +13494,7 @@ impl SolidAssembly {
     }
 
     /// **Source:** `IGESSolid_SolidAssembly.hxx`:74 - `IGESSolid_SolidAssembly::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_SolidAssembly_get_type_name())
                 .to_string_lossy()
@@ -14222,7 +14222,7 @@ impl SolidInstance {
     }
 
     /// **Source:** `IGESSolid_SolidInstance.hxx`:55 - `IGESSolid_SolidInstance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_SolidInstance_get_type_name())
                 .to_string_lossy()
@@ -14983,7 +14983,7 @@ impl SolidOfLinearExtrusion {
     }
 
     /// **Source:** `IGESSolid_SolidOfLinearExtrusion.hxx`:62 - `IGESSolid_SolidOfLinearExtrusion::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_SolidOfLinearExtrusion_get_type_name())
                 .to_string_lossy()
@@ -15926,7 +15926,7 @@ impl SolidOfRevolution {
     }
 
     /// **Source:** `IGESSolid_SolidOfRevolution.hxx`:82 - `IGESSolid_SolidOfRevolution::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_SolidOfRevolution_get_type_name())
                 .to_string_lossy()
@@ -16696,7 +16696,7 @@ impl SpecificModule {
     }
 
     /// **Source:** `IGESSolid_SpecificModule.hxx`:46 - `IGESSolid_SpecificModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_SpecificModule_get_type_name())
                 .to_string_lossy()
@@ -16916,7 +16916,7 @@ impl Sphere {
     }
 
     /// **Source:** `IGESSolid_Sphere.hxx`:54 - `IGESSolid_Sphere::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_Sphere_get_type_name())
                 .to_string_lossy()
@@ -17630,7 +17630,7 @@ impl SphericalSurface {
     }
 
     /// **Source:** `IGESSolid_SphericalSurface.hxx`:76 - `IGESSolid_SphericalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_SphericalSurface_get_type_name())
                 .to_string_lossy()
@@ -21646,7 +21646,7 @@ impl ToroidalSurface {
     }
 
     /// **Source:** `IGESSolid_ToroidalSurface.hxx`:79 - `IGESSolid_ToroidalSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_ToroidalSurface_get_type_name())
                 .to_string_lossy()
@@ -22425,7 +22425,7 @@ impl Torus {
     }
 
     /// **Source:** `IGESSolid_Torus.hxx`:71 - `IGESSolid_Torus::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_Torus_get_type_name())
                 .to_string_lossy()
@@ -23078,7 +23078,7 @@ impl VertexList {
     }
 
     /// **Source:** `IGESSolid_VertexList.hxx`:54 - `IGESSolid_VertexList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESSolid_VertexList_get_type_name())
                 .to_string_lossy()

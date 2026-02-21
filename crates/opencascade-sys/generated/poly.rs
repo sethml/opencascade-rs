@@ -1423,7 +1423,7 @@ impl CoherentTriangulation {
     }
 
     /// **Source:** `Poly_CoherentTriangulation.hxx`:374 - `Poly_CoherentTriangulation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Poly_CoherentTriangulation_get_type_name())
                 .to_string_lossy()
@@ -1900,7 +1900,7 @@ impl HArray1OfTriangle {
     }
 
     /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Poly_HArray1OfTriangle_get_type_name())
                 .to_string_lossy()
@@ -2867,7 +2867,7 @@ impl MergeNodesTool {
     }
 
     /// **Source:** `Poly_MergeNodesTool.hxx`:26 - `Poly_MergeNodesTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Poly_MergeNodesTool_get_type_name())
                 .to_string_lossy()
@@ -3111,7 +3111,7 @@ impl Polygon2D {
     }
 
     /// **Source:** `Poly_Polygon2D.hxx`:80 - `Poly_Polygon2D::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Poly_Polygon2D_get_type_name())
                 .to_string_lossy()
@@ -3337,7 +3337,7 @@ impl Polygon3D {
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:91 - `Poly_Polygon3D::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Poly_Polygon3D_get_type_name())
                 .to_string_lossy()
@@ -3617,7 +3617,7 @@ impl PolygonOnTriangulation {
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:42 - `Poly_PolygonOnTriangulation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Poly_PolygonOnTriangulation_get_type_name())
                 .to_string_lossy()
@@ -4404,7 +4404,7 @@ impl Triangulation {
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:61 - `Poly_Triangulation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Poly_Triangulation_get_type_name())
                 .to_string_lossy()
@@ -4657,7 +4657,7 @@ impl TriangulationParameters {
     }
 
     /// **Source:** `Poly_TriangulationParameters.hxx`:61 - `Poly_TriangulationParameters::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Poly_TriangulationParameters_get_type_name())
                 .to_string_lossy()

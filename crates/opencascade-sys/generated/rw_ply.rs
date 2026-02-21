@@ -68,6 +68,18 @@ impl CafWriter {
         }
     }
 
+    /// **Source:** `RWPly_CafWriter.hxx`:58 - `RWPly_CafWriter::DefaultStyle()`
+    /// Return default material definition to be used for nodes with only color defined.
+    pub fn default_style(&self) -> &crate::xcaf_prs::Style {
+        unsafe { &*(crate::ffi::RWPly_CafWriter_default_style(self as *const Self)) }
+    }
+
+    /// **Source:** `RWPly_CafWriter.hxx`:61 - `RWPly_CafWriter::SetDefaultStyle()`
+    /// Set default material definition to be used for nodes with only color defined.
+    pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
+        unsafe { crate::ffi::RWPly_CafWriter_set_default_style(self as *mut Self, theStyle) }
+    }
+
     /// **Source:** `RWPly_CafWriter.hxx`:66 - `RWPly_CafWriter::IsDoublePrecision()`
     /// Return TRUE if vertex position should be stored with double floating point precision; FALSE by
     /// default.
@@ -189,7 +201,7 @@ impl CafWriter {
     }
 
     /// **Source:** `RWPly_CafWriter.hxx`:36 - `RWPly_CafWriter::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::RWPly_CafWriter_get_type_name())
                 .to_string_lossy()
@@ -290,18 +302,6 @@ impl HandleRWPlyCafWriter {
         }
     }
 }
-
-// ── Skipped symbols for CafWriter (2 total) ──
-// SKIPPED: **Source:** `RWPly_CafWriter.hxx`:58 - `RWPly_CafWriter::DefaultStyle`
-//   method: Return default material definition to be used for nodes with only color defined.
-//   Reason: return type 'const XCAFPrs_Style&' is unknown
-//   // pub fn default_style(&self) -> &Style;
-//
-// SKIPPED: **Source:** `RWPly_CafWriter.hxx`:61 - `RWPly_CafWriter::SetDefaultStyle`
-//   method: Set default material definition to be used for nodes with only color defined.
-//   Reason: param 'theStyle' uses unknown type 'const XCAFPrs_Style&'
-//   // pub fn set_default_style(&mut self, theStyle: &Style);
-//
 
 // ========================
 // From RWPly_PlyWriterContext.hxx

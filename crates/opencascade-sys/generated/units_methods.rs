@@ -68,7 +68,7 @@ pub fn get_length_unit_by_factor_value(
 pub fn dump_length_unit_real_lengthunit(
     theScaleFactor: f64,
     theBaseUnit: crate::units_methods::LengthUnit,
-) -> String {
+) -> std::string::String {
     unsafe {
         std::ffi::CStr::from_ptr(crate::ffi::UnitsMethods_dump_length_unit_real_lengthunit(
             theScaleFactor,
@@ -80,7 +80,9 @@ pub fn dump_length_unit_real_lengthunit(
 }
 /// **Source:** `UnitsMethods.hxx`:63 - `UnitsMethods::DumpLengthUnit`
 /// Returns string for the given value of LengthUnit
-pub fn dump_length_unit_lengthunit(theUnit: crate::units_methods::LengthUnit) -> String {
+pub fn dump_length_unit_lengthunit(
+    theUnit: crate::units_methods::LengthUnit,
+) -> std::string::String {
     unsafe {
         std::ffi::CStr::from_ptr(crate::ffi::UnitsMethods_dump_length_unit_lengthunit(
             theUnit.into(),

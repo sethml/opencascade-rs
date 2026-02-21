@@ -114,7 +114,7 @@ impl GeneralModule {
     }
 
     /// **Source:** `RWHeaderSection_GeneralModule.hxx`:68 - `RWHeaderSection_GeneralModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::RWHeaderSection_GeneralModule_get_type_name())
                 .to_string_lossy()
@@ -748,7 +748,7 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `RWHeaderSection_ReadWriteModule.hxx`:71 - `RWHeaderSection_ReadWriteModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::RWHeaderSection_ReadWriteModule_get_type_name())
                 .to_string_lossy()

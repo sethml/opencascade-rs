@@ -228,7 +228,7 @@ impl Context {
     }
 
     /// **Source:** `IMeshTools_Context.hxx`:194 - `IMeshTools_Context::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IMeshTools_Context_get_type_name())
                 .to_string_lossy()
@@ -430,7 +430,7 @@ impl CurveTessellator {
     }
 
     /// **Source:** `IMeshTools_CurveTessellator.hxx`:43 - `IMeshTools_CurveTessellator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IMeshTools_CurveTessellator_get_type_name())
                 .to_string_lossy()
@@ -603,7 +603,7 @@ impl MeshAlgo {
     }
 
     /// **Source:** `IMeshTools_MeshAlgo.hxx`:37 - `IMeshTools_MeshAlgo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IMeshTools_MeshAlgo_get_type_name())
                 .to_string_lossy()
@@ -804,7 +804,7 @@ impl MeshAlgoFactory {
     }
 
     /// **Source:** `IMeshTools_MeshAlgoFactory.hxx`:38 - `IMeshTools_MeshAlgoFactory::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IMeshTools_MeshAlgoFactory_get_type_name())
                 .to_string_lossy()
@@ -1026,7 +1026,7 @@ impl MeshBuilder {
     }
 
     /// **Source:** `IMeshTools_MeshBuilder.hxx`:60 - `IMeshTools_MeshBuilder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IMeshTools_MeshBuilder_get_type_name())
                 .to_string_lossy()
@@ -1311,7 +1311,7 @@ impl ModelAlgo {
     }
 
     /// **Source:** `IMeshTools_ModelAlgo.hxx`:49 - `IMeshTools_ModelAlgo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IMeshTools_ModelAlgo_get_type_name())
                 .to_string_lossy()
@@ -1546,7 +1546,7 @@ impl ModelBuilder {
     }
 
     /// **Source:** `IMeshTools_ModelBuilder.hxx`:59 - `IMeshTools_ModelBuilder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IMeshTools_ModelBuilder_get_type_name())
                 .to_string_lossy()
@@ -1869,7 +1869,7 @@ impl ShapeExplorer {
     }
 
     /// **Source:** `IMeshTools_ShapeExplorer.hxx`:37 - `IMeshTools_ShapeExplorer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IMeshTools_ShapeExplorer_get_type_name())
                 .to_string_lossy()
@@ -2060,7 +2060,7 @@ impl ShapeVisitor {
     }
 
     /// **Source:** `IMeshTools_ShapeVisitor.hxx`:38 - `IMeshTools_ShapeVisitor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IMeshTools_ShapeVisitor_get_type_name())
                 .to_string_lossy()

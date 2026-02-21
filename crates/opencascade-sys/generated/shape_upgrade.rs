@@ -66,7 +66,7 @@ impl ClosedEdgeDivide {
     }
 
     /// **Source:** `ShapeUpgrade_ClosedEdgeDivide.hxx`:37 - `ShapeUpgrade_ClosedEdgeDivide::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_ClosedEdgeDivide_get_type_name())
                 .to_string_lossy()
@@ -497,7 +497,7 @@ impl ClosedFaceDivide {
     }
 
     /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:55 - `ShapeUpgrade_ClosedFaceDivide::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_ClosedFaceDivide_get_type_name())
                 .to_string_lossy()
@@ -926,7 +926,7 @@ impl ConvertCurve2dToBezier {
     }
 
     /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:48 - `ShapeUpgrade_ConvertCurve2dToBezier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_get_type_name()).to_string_lossy().into_owned()
         }
@@ -1278,7 +1278,7 @@ impl ConvertCurve3dToBezier {
     }
 
     /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:66 - `ShapeUpgrade_ConvertCurve3dToBezier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_type_name()).to_string_lossy().into_owned()
         }
@@ -1677,7 +1677,7 @@ impl ConvertSurfaceToBezierBasis {
     }
 
     /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:77 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_type_name(),
@@ -2051,7 +2051,7 @@ impl EdgeDivide {
     }
 
     /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:68 - `ShapeUpgrade_EdgeDivide::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_EdgeDivide_get_type_name())
                 .to_string_lossy()
@@ -2441,7 +2441,7 @@ impl FaceDivide {
     }
 
     /// **Source:** `ShapeUpgrade_FaceDivide.hxx`:116 - `ShapeUpgrade_FaceDivide::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_FaceDivide_get_type_name())
                 .to_string_lossy()
@@ -2761,7 +2761,7 @@ impl FaceDivideArea {
     }
 
     /// **Source:** `ShapeUpgrade_FaceDivideArea.hxx`:59 - `ShapeUpgrade_FaceDivideArea::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_FaceDivideArea_get_type_name())
                 .to_string_lossy()
@@ -3174,7 +3174,7 @@ impl FixSmallBezierCurves {
     }
 
     /// **Source:** `ShapeUpgrade_FixSmallBezierCurves.hxx`:41 - `ShapeUpgrade_FixSmallBezierCurves::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_FixSmallBezierCurves_get_type_name())
                 .to_string_lossy()
@@ -3603,7 +3603,7 @@ impl FixSmallCurves {
     }
 
     /// **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:69 - `ShapeUpgrade_FixSmallCurves::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_FixSmallCurves_get_type_name())
                 .to_string_lossy()
@@ -3977,7 +3977,7 @@ impl RemoveInternalWires {
     }
 
     /// **Source:** `ShapeUpgrade_RemoveInternalWires.hxx`:85 - `ShapeUpgrade_RemoveInternalWires::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_RemoveInternalWires_get_type_name())
                 .to_string_lossy()
@@ -4328,7 +4328,7 @@ impl RemoveLocations {
     }
 
     /// **Source:** `ShapeUpgrade_RemoveLocations.hxx`:60 - `ShapeUpgrade_RemoveLocations::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_RemoveLocations_get_type_name())
                 .to_string_lossy()
@@ -6342,7 +6342,7 @@ impl SplitCurve {
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve.hxx`:75 - `ShapeUpgrade_SplitCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_SplitCurve_get_type_name())
                 .to_string_lossy()
@@ -6628,7 +6628,7 @@ impl SplitCurve2d {
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:54 - `ShapeUpgrade_SplitCurve2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_SplitCurve2d_get_type_name())
                 .to_string_lossy()
@@ -6911,7 +6911,7 @@ impl SplitCurve2dContinuity {
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve2dContinuity.hxx`:50 - `ShapeUpgrade_SplitCurve2dContinuity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_get_type_name()).to_string_lossy().into_owned()
         }
@@ -7237,7 +7237,7 @@ impl SplitCurve3d {
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:54 - `ShapeUpgrade_SplitCurve3d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_SplitCurve3d_get_type_name())
                 .to_string_lossy()
@@ -7527,7 +7527,7 @@ impl SplitCurve3dContinuity {
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:53 - `ShapeUpgrade_SplitCurve3dContinuity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_get_type_name()).to_string_lossy().into_owned()
         }
@@ -7921,7 +7921,7 @@ impl SplitSurface {
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurface.hxx`:100 - `ShapeUpgrade_SplitSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_SplitSurface_get_type_name())
                 .to_string_lossy()
@@ -8163,7 +8163,7 @@ impl SplitSurfaceAngle {
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceAngle.hxx`:48 - `ShapeUpgrade_SplitSurfaceAngle::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_SplitSurfaceAngle_get_type_name())
                 .to_string_lossy()
@@ -8476,7 +8476,7 @@ impl SplitSurfaceArea {
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceArea.hxx`:53 - `ShapeUpgrade_SplitSurfaceArea::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_SplitSurfaceArea_get_type_name())
                 .to_string_lossy()
@@ -8773,7 +8773,7 @@ impl SplitSurfaceContinuity {
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceContinuity.hxx`:50 - `ShapeUpgrade_SplitSurfaceContinuity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_get_type_name()).to_string_lossy().into_owned()
         }
@@ -9118,7 +9118,7 @@ impl Tool {
     }
 
     /// **Source:** `ShapeUpgrade_Tool.hxx`:70 - `ShapeUpgrade_Tool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_Tool_get_type_name())
                 .to_string_lossy()
@@ -9606,7 +9606,7 @@ impl UnifySameDomain {
     }
 
     /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:142 - `ShapeUpgrade_UnifySameDomain::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_UnifySameDomain_get_type_name())
                 .to_string_lossy()
@@ -9980,7 +9980,7 @@ impl WireDivide {
     }
 
     /// **Source:** `ShapeUpgrade_WireDivide.hxx`:138 - `ShapeUpgrade_WireDivide::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_WireDivide_get_type_name())
                 .to_string_lossy()

@@ -618,7 +618,7 @@ impl HArray1OfListOfShape {
     }
 
     /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopTools_HArray1OfListOfShape_get_type_name())
                 .to_string_lossy()
@@ -833,7 +833,7 @@ impl HArray1OfShape {
     }
 
     /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopTools_HArray1OfShape_get_type_name())
                 .to_string_lossy()
@@ -1022,7 +1022,7 @@ impl HArray2OfShape {
     }
 
     /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopTools_HArray2OfShape_get_type_name())
                 .to_string_lossy()
@@ -1205,7 +1205,7 @@ impl HSequenceOfShape {
     }
 
     /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopTools_HSequenceOfShape_get_type_name())
                 .to_string_lossy()

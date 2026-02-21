@@ -459,7 +459,7 @@ impl HSequenceOfRoots {
     }
 
     /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdStorage_HSequenceOfRoots_get_type_name())
                 .to_string_lossy()
@@ -800,7 +800,7 @@ impl HeaderData {
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:38 - `StdStorage_HeaderData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdStorage_HeaderData_get_type_name())
                 .to_string_lossy()
@@ -1001,7 +1001,7 @@ impl Root {
     }
 
     /// **Source:** `StdStorage_Root.hxx`:33 - `StdStorage_Root::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdStorage_Root_get_type_name())
                 .to_string_lossy()
@@ -1222,7 +1222,7 @@ impl RootData {
     }
 
     /// **Source:** `StdStorage_RootData.hxx`:38 - `StdStorage_RootData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdStorage_RootData_get_type_name())
                 .to_string_lossy()
@@ -1487,7 +1487,7 @@ impl TypeData {
     }
 
     /// **Source:** `StdStorage_TypeData.hxx`:39 - `StdStorage_TypeData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdStorage_TypeData_get_type_name())
                 .to_string_lossy()

@@ -91,20 +91,39 @@ impl TryFrom<i32> for HandlerStatus {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
-    HandleAPIHeaderSectionEditHeader, HandleAdaptor2dCurve2d, HandleAdaptor2dLine2d,
-    HandleAdaptor2dOffsetCurve, HandleAdaptor3dCurve, HandleAdaptor3dCurveOnSurface,
-    HandleAdaptor3dHVertex, HandleAdaptor3dIsoCurve, HandleAdaptor3dSurface,
-    HandleAdaptor3dTopolTool, HandleAdvApp2VarIso, HandleAdvApp2VarNode, HandleAdvApp2VarPatch,
-    HandleAppDefHArray1OfMultiPointConstraint, HandleAppDefLinearCriteria,
+    HandleAISAnimation, HandleAISAnimationAxisRotation, HandleAISAnimationCamera,
+    HandleAISAnimationObject, HandleAISAttributeFilter, HandleAISAxis, HandleAISBadEdgeFilter,
+    HandleAISBaseAnimationObject, HandleAISC0RegularityFilter, HandleAISCameraFrustum,
+    HandleAISCircle, HandleAISColorScale, HandleAISColoredDrawer, HandleAISColoredShape,
+    HandleAISConnectedInteractive, HandleAISExclusionFilter, HandleAISGlobalStatus,
+    HandleAISInteractiveContext, HandleAISInteractiveObject, HandleAISLightSource,
+    HandleAISLightSourceOwner, HandleAISLine, HandleAISManipulator,
+    HandleAISManipulatorObjectSequence, HandleAISManipulatorOwner, HandleAISMediaPlayer,
+    HandleAISMultipleConnectedInteractive, HandleAISPlane, HandleAISPlaneTrihedron, HandleAISPoint,
+    HandleAISPointCloud, HandleAISPointCloudOwner, HandleAISRubberBand, HandleAISSelection,
+    HandleAISShape, HandleAISSignatureFilter, HandleAISTextLabel, HandleAISTexturedShape,
+    HandleAISTriangulation, HandleAISTrihedron, HandleAISTrihedronOwner, HandleAISTypeFilter,
+    HandleAISViewCube, HandleAISViewCubeOwner, HandleAISViewCubeSensitive,
+    HandleAISXRTrackedDevice, HandleAPIHeaderSectionEditHeader, HandleAdaptor2dCurve2d,
+    HandleAdaptor2dLine2d, HandleAdaptor2dOffsetCurve, HandleAdaptor3dCurve,
+    HandleAdaptor3dCurveOnSurface, HandleAdaptor3dHVertex, HandleAdaptor3dIsoCurve,
+    HandleAdaptor3dSurface, HandleAdaptor3dTopolTool, HandleAdvApp2VarIso, HandleAdvApp2VarNode,
+    HandleAdvApp2VarPatch, HandleAppDefHArray1OfMultiPointConstraint, HandleAppDefLinearCriteria,
     HandleAppParCurvesHArray1OfConstraintCouple, HandleAppParCurvesHArray1OfMultiBSpCurve,
     HandleAppParCurvesHArray1OfMultiCurve, HandleAppParCurvesHArray1OfMultiPoint,
     HandleAppStdApplication, HandleAppStdLApplication, HandleApproxCurvlinFunc,
     HandleApproxHArray1OfAdHSurface, HandleApproxHArray1OfGTrsf2d,
-    HandleBOPAlgoAlertAcquiredSelfIntersection, HandleBOPAlgoAlertBOPNotAllowed,
-    HandleBOPAlgoAlertBOPNotSet, HandleBOPAlgoAlertBadPositioning, HandleBOPAlgoAlertBuilderFailed,
-    HandleBOPAlgoAlertBuildingPCurveFailed, HandleBOPAlgoAlertEmptyShape,
-    HandleBOPAlgoAlertFaceBuilderUnusedEdges, HandleBOPAlgoAlertIntersectionFailed,
-    HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
+    HandleAspectAspectFillAreaDefinitionError, HandleAspectAspectLineDefinitionError,
+    HandleAspectAspectMarkerDefinitionError, HandleAspectCircularGrid,
+    HandleAspectDisplayConnection, HandleAspectDisplayConnectionDefinitionError,
+    HandleAspectGraphicDeviceDefinitionError, HandleAspectIdentDefinitionError,
+    HandleAspectNeutralWindow, HandleAspectOpenVRSession, HandleAspectRectangularGrid,
+    HandleAspectVKeySet, HandleAspectWindowDefinitionError, HandleAspectWindowError,
+    HandleAspectXRAction, HandleAspectXRActionSet, HandleBOPAlgoAlertAcquiredSelfIntersection,
+    HandleBOPAlgoAlertBOPNotAllowed, HandleBOPAlgoAlertBOPNotSet, HandleBOPAlgoAlertBadPositioning,
+    HandleBOPAlgoAlertBuilderFailed, HandleBOPAlgoAlertBuildingPCurveFailed,
+    HandleBOPAlgoAlertEmptyShape, HandleBOPAlgoAlertFaceBuilderUnusedEdges,
+    HandleBOPAlgoAlertIntersectionFailed, HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
     HandleBOPAlgoAlertMultiDimensionalArguments, HandleBOPAlgoAlertMultipleArguments,
     HandleBOPAlgoAlertNoFacesToRemove, HandleBOPAlgoAlertNoFiller,
     HandleBOPAlgoAlertNoPeriodicityRequired, HandleBOPAlgoAlertNotSplittableEdge,
@@ -247,7 +266,30 @@ pub use crate::ffi::{
     HandleGeomSphericalSurface, HandleGeomSurfaceOfLinearExtrusion, HandleGeomSurfaceOfRevolution,
     HandleGeomSweptSurface, HandleGeomToolsUndefinedTypeHandler, HandleGeomToroidalSurface,
     HandleGeomTransformation, HandleGeomTrimmedCurve, HandleGeomUndefinedDerivative,
-    HandleGeomUndefinedValue, HandleGeomVectorWithMagnitude, HandleHLRAlgoEdgesBlock,
+    HandleGeomUndefinedValue, HandleGeomVectorWithMagnitude, HandleGraphic3dArrayOfPoints,
+    HandleGraphic3dArrayOfPolygons, HandleGraphic3dArrayOfPolylines,
+    HandleGraphic3dArrayOfPrimitives, HandleGraphic3dArrayOfQuadrangleStrips,
+    HandleGraphic3dArrayOfQuadrangles, HandleGraphic3dArrayOfSegments,
+    HandleGraphic3dArrayOfTriangleFans, HandleGraphic3dArrayOfTriangleStrips,
+    HandleGraphic3dArrayOfTriangles, HandleGraphic3dAspectFillArea3d, HandleGraphic3dAspectLine3d,
+    HandleGraphic3dAspectMarker3d, HandleGraphic3dAspectText3d, HandleGraphic3dAspects,
+    HandleGraphic3dAttribBuffer, HandleGraphic3dBoundBuffer, HandleGraphic3dBuffer,
+    HandleGraphic3dCLight, HandleGraphic3dCamera, HandleGraphic3dClipPlane,
+    HandleGraphic3dCubeMapPacked, HandleGraphic3dCubeMapSeparate,
+    HandleGraphic3dGroupDefinitionError, HandleGraphic3dHatchStyle, HandleGraphic3dIndexBuffer,
+    HandleGraphic3dLayer, HandleGraphic3dLightSet, HandleGraphic3dMarkerImage,
+    HandleGraphic3dMaterialDefinitionError, HandleGraphic3dMediaTexture,
+    HandleGraphic3dMediaTextureSet, HandleGraphic3dMutableIndexBuffer,
+    HandleGraphic3dPresentationAttributes, HandleGraphic3dPriorityDefinitionError,
+    HandleGraphic3dSequenceOfHClipPlane, HandleGraphic3dShaderAttribute,
+    HandleGraphic3dShaderManager, HandleGraphic3dShaderObject, HandleGraphic3dShaderProgram,
+    HandleGraphic3dShaderVariable, HandleGraphic3dStructure,
+    HandleGraphic3dStructureDefinitionError, HandleGraphic3dStructureManager, HandleGraphic3dText,
+    HandleGraphic3dTexture1D, HandleGraphic3dTexture1Dmanual, HandleGraphic3dTexture1Dsegment,
+    HandleGraphic3dTexture2D, HandleGraphic3dTexture2Dplane, HandleGraphic3dTexture3D,
+    HandleGraphic3dTextureEnv, HandleGraphic3dTextureMap, HandleGraphic3dTextureParams,
+    HandleGraphic3dTextureRoot, HandleGraphic3dTextureSet, HandleGraphic3dTransformPers,
+    HandleGraphic3dTransformPersScaledAbove, HandleGraphic3dViewAffinity, HandleHLRAlgoEdgesBlock,
     HandleHLRAlgoHArray1OfPHDat, HandleHLRAlgoHArray1OfPINod, HandleHLRAlgoHArray1OfPISeg,
     HandleHLRAlgoHArray1OfTData, HandleHLRAlgoPolyAlgo, HandleHLRAlgoPolyData,
     HandleHLRAlgoPolyInternalData, HandleHLRAlgoPolyInternalNode, HandleHLRAlgoPolyShellData,
@@ -395,50 +437,80 @@ pub use crate::ffi::{
     HandleMAT2dConnexion, HandleMATArc, HandleMATBasicElt, HandleMATBisector, HandleMATEdge,
     HandleMATGraph, HandleMATListOfBisector, HandleMATListOfEdge, HandleMATNode,
     HandleMATTListNodeOfListOfBisector, HandleMATTListNodeOfListOfEdge, HandleMATZone,
-    HandleMessageAlert, HandleMessageAlertExtended, HandleMessageAlgorithm, HandleMessageAttribute,
-    HandleMessageAttributeMeter, HandleMessageAttributeObject, HandleMessageAttributeStream,
-    HandleMessageCompositeAlerts, HandleMessageMessenger, HandleMessagePrinterOStream,
-    HandleMessagePrinterSystemLog, HandleMessagePrinterToReport, HandleMessageReport,
-    HandleMoniToolCaseData, HandleMoniToolHSequenceOfElement, HandleMoniToolIntVal,
-    HandleMoniToolRealVal, HandleMoniToolSignShape, HandleMoniToolTimer,
-    HandleMoniToolTransientElem, HandleMoniToolTypedValue, HandleNCollectionAccAllocator,
-    HandleNCollectionAlignedAllocator, HandleNCollectionBaseAllocator, HandleNCollectionBuffer,
-    HandleNCollectionHeapAllocator, HandleNCollectionIncAllocator,
-    HandleNCollectionWinHeapAllocator, HandleNLPlateHPG0Constraint, HandleNLPlateHPG0G1Constraint,
-    HandleNLPlateHPG0G2Constraint, HandleNLPlateHPG0G3Constraint, HandleNLPlateHPG1Constraint,
-    HandleNLPlateHPG2Constraint, HandleNLPlateHPG3Constraint, HandleOSDCachedFileSystem,
-    HandleOSDException, HandleOSDExceptionACCESSVIOLATION, HandleOSDExceptionARRAYBOUNDSEXCEEDED,
-    HandleOSDExceptionCTRLBREAK, HandleOSDExceptionILLEGALINSTRUCTION,
-    HandleOSDExceptionINPAGEERROR, HandleOSDExceptionINTOVERFLOW,
-    HandleOSDExceptionINVALIDDISPOSITION, HandleOSDExceptionNONCONTINUABLEEXCEPTION,
-    HandleOSDExceptionPRIVINSTRUCTION, HandleOSDExceptionSTACKOVERFLOW,
-    HandleOSDExceptionSTATUSNOMEMORY, HandleOSDFileSystemSelector, HandleOSDLocalFileSystem,
-    HandleOSDOSDError, HandleOSDSIGBUS, HandleOSDSIGHUP, HandleOSDSIGILL, HandleOSDSIGINT,
-    HandleOSDSIGKILL, HandleOSDSIGQUIT, HandleOSDSIGSEGV, HandleOSDSIGSYS, HandleOSDSignal,
-    HandleOSDThreadPool, HandlePCDMDocument, HandlePCDMDriverError, HandlePCDMReadWriter1,
-    HandlePCDMReaderFilter, HandlePCDMReferenceIterator, HandlePCDMRetrievalDriver,
-    HandlePCDMStorageDriver, HandlePLibHermitJacobi, HandlePLibJacobiPolynomial,
-    HandlePlateHArray1OfPinpointConstraint, HandlePluginFailure, HandlePolyCoherentTriangulation,
-    HandlePolyHArray1OfTriangle, HandlePolyMergeNodesTool, HandlePolyPolygon2D,
-    HandlePolyPolygon3D, HandlePolyPolygonOnTriangulation, HandlePolyTriangulation,
-    HandlePolyTriangulationParameters, HandleProjLibCompProjectedCurve,
+    HandleMeshVSCommonSensitiveEntity, HandleMeshVSDataSource3D, HandleMeshVSDeformedDataSource,
+    HandleMeshVSDrawer, HandleMeshVSDummySensitiveEntity, HandleMeshVSElementalColorPrsBuilder,
+    HandleMeshVSHArray1OfSequenceOfInteger, HandleMeshVSMesh, HandleMeshVSMeshEntityOwner,
+    HandleMeshVSMeshOwner, HandleMeshVSMeshPrsBuilder, HandleMeshVSNodalColorPrsBuilder,
+    HandleMeshVSSensitiveFace, HandleMeshVSSensitiveMesh, HandleMeshVSSensitivePolyhedron,
+    HandleMeshVSSensitiveQuad, HandleMeshVSSensitiveSegment, HandleMeshVSTextPrsBuilder,
+    HandleMeshVSVectorPrsBuilder, HandleMessageAlert, HandleMessageAlertExtended,
+    HandleMessageAlgorithm, HandleMessageAttribute, HandleMessageAttributeMeter,
+    HandleMessageAttributeObject, HandleMessageAttributeStream, HandleMessageCompositeAlerts,
+    HandleMessageMessenger, HandleMessagePrinterOStream, HandleMessagePrinterSystemLog,
+    HandleMessagePrinterToReport, HandleMessageReport, HandleMoniToolCaseData,
+    HandleMoniToolHSequenceOfElement, HandleMoniToolIntVal, HandleMoniToolRealVal,
+    HandleMoniToolSignShape, HandleMoniToolTimer, HandleMoniToolTransientElem,
+    HandleMoniToolTypedValue, HandleNCollectionAccAllocator, HandleNCollectionAlignedAllocator,
+    HandleNCollectionBaseAllocator, HandleNCollectionBuffer, HandleNCollectionHeapAllocator,
+    HandleNCollectionIncAllocator, HandleNCollectionWinHeapAllocator, HandleNLPlateHPG0Constraint,
+    HandleNLPlateHPG0G1Constraint, HandleNLPlateHPG0G2Constraint, HandleNLPlateHPG0G3Constraint,
+    HandleNLPlateHPG1Constraint, HandleNLPlateHPG2Constraint, HandleNLPlateHPG3Constraint,
+    HandleOSDCachedFileSystem, HandleOSDException, HandleOSDExceptionACCESSVIOLATION,
+    HandleOSDExceptionARRAYBOUNDSEXCEEDED, HandleOSDExceptionCTRLBREAK,
+    HandleOSDExceptionILLEGALINSTRUCTION, HandleOSDExceptionINPAGEERROR,
+    HandleOSDExceptionINTOVERFLOW, HandleOSDExceptionINVALIDDISPOSITION,
+    HandleOSDExceptionNONCONTINUABLEEXCEPTION, HandleOSDExceptionPRIVINSTRUCTION,
+    HandleOSDExceptionSTACKOVERFLOW, HandleOSDExceptionSTATUSNOMEMORY, HandleOSDFileSystemSelector,
+    HandleOSDLocalFileSystem, HandleOSDOSDError, HandleOSDSIGBUS, HandleOSDSIGHUP, HandleOSDSIGILL,
+    HandleOSDSIGINT, HandleOSDSIGKILL, HandleOSDSIGQUIT, HandleOSDSIGSEGV, HandleOSDSIGSYS,
+    HandleOSDSignal, HandleOSDThreadPool, HandlePCDMDocument, HandlePCDMDriverError,
+    HandlePCDMReadWriter1, HandlePCDMReaderFilter, HandlePCDMReferenceIterator,
+    HandlePCDMRetrievalDriver, HandlePCDMStorageDriver, HandlePLibHermitJacobi,
+    HandlePLibJacobiPolynomial, HandlePlateHArray1OfPinpointConstraint, HandlePluginFailure,
+    HandlePolyCoherentTriangulation, HandlePolyHArray1OfTriangle, HandlePolyMergeNodesTool,
+    HandlePolyPolygon2D, HandlePolyPolygon3D, HandlePolyPolygonOnTriangulation,
+    HandlePolyTriangulation, HandlePolyTriangulationParameters, HandleProjLibCompProjectedCurve,
     HandleProjLibHSequenceOfHSequenceOfPnt, HandleProjLibProjectOnPlane,
-    HandleProjLibProjectedCurve, HandleQuantityDateDefinitionError, HandleQuantityHArray1OfColor,
-    HandleQuantityPeriodDefinitionError, HandleRWGltfCafReader, HandleRWGltfGltfFace,
-    HandleRWGltfGltfLatePrimitiveArray, HandleRWGltfGltfMaterialMap, HandleRWGltfMaterialCommon,
-    HandleRWGltfMaterialMetallicRoughness, HandleRWGltfTriangulationReader,
-    HandleRWHeaderSectionGeneralModule, HandleRWHeaderSectionReadWriteModule,
-    HandleRWMeshTriangulationSource, HandleRWObjCafReader, HandleRWObjCafWriter,
-    HandleRWObjObjMaterialMap, HandleRWObjTriangulationReader, HandleRWPlyCafWriter,
-    HandleResourceManager, HandleResourceNoSuchResource, HandleSTEPCAFControlActorWrite,
-    HandleSTEPCAFControlController, HandleSTEPCAFControlExternFile, HandleSTEPControlActorRead,
-    HandleSTEPControlActorWrite, HandleSTEPControlController, HandleSTEPEditEditContext,
-    HandleSTEPEditEditSDR, HandleSTEPSelectionsAssemblyComponent, HandleSTEPSelectionsAssemblyLink,
-    HandleSTEPSelectionsHSequenceOfAssemblyLink, HandleSTEPSelectionsSelectAssembly,
-    HandleSTEPSelectionsSelectDerived, HandleSTEPSelectionsSelectFaces,
-    HandleSTEPSelectionsSelectForTransfer, HandleSTEPSelectionsSelectGSCurves,
-    HandleSTEPSelectionsSelectInstances, HandleShapeAlgoAlgoContainer,
-    HandleShapeAlgoToolContainer, HandleShapeAnalysisFreeBoundData,
+    HandleProjLibProjectedCurve, HandlePrs3dArrowAspect, HandlePrs3dDatumAspect,
+    HandlePrs3dDimensionAspect, HandlePrs3dDrawer, HandlePrs3dInvalidAngle, HandlePrs3dIsoAspect,
+    HandlePrs3dLineAspect, HandlePrs3dPlaneAspect, HandlePrs3dPointAspect,
+    HandlePrs3dPresentationShadow, HandlePrs3dShadingAspect, HandlePrs3dTextAspect,
+    HandlePrsDimAngleDimension, HandlePrsDimChamf2dDimension, HandlePrsDimChamf3dDimension,
+    HandlePrsDimConcentricRelation, HandlePrsDimDiameterDimension, HandlePrsDimDimension,
+    HandlePrsDimDimensionOwner, HandlePrsDimEllipseRadiusDimension,
+    HandlePrsDimEqualDistanceRelation, HandlePrsDimEqualRadiusRelation, HandlePrsDimFixRelation,
+    HandlePrsDimIdenticRelation, HandlePrsDimLengthDimension, HandlePrsDimMaxRadiusDimension,
+    HandlePrsDimMidPointRelation, HandlePrsDimMinRadiusDimension, HandlePrsDimOffsetDimension,
+    HandlePrsDimParallelRelation, HandlePrsDimPerpendicularRelation, HandlePrsDimRadiusDimension,
+    HandlePrsDimRelation, HandlePrsDimSymmetricRelation, HandlePrsDimTangentRelation,
+    HandlePrsMgrPresentation, HandlePrsMgrPresentationManager, HandleQuantityDateDefinitionError,
+    HandleQuantityHArray1OfColor, HandleQuantityPeriodDefinitionError, HandleRWGltfCafReader,
+    HandleRWGltfGltfFace, HandleRWGltfGltfLatePrimitiveArray, HandleRWGltfGltfMaterialMap,
+    HandleRWGltfMaterialCommon, HandleRWGltfMaterialMetallicRoughness,
+    HandleRWGltfTriangulationReader, HandleRWHeaderSectionGeneralModule,
+    HandleRWHeaderSectionReadWriteModule, HandleRWMeshTriangulationSource, HandleRWObjCafReader,
+    HandleRWObjCafWriter, HandleRWObjObjMaterialMap, HandleRWObjTriangulationReader,
+    HandleRWPlyCafWriter, HandleResourceManager, HandleResourceNoSuchResource,
+    HandleSTEPCAFControlActorWrite, HandleSTEPCAFControlController, HandleSTEPCAFControlExternFile,
+    HandleSTEPControlActorRead, HandleSTEPControlActorWrite, HandleSTEPControlController,
+    HandleSTEPEditEditContext, HandleSTEPEditEditSDR, HandleSTEPSelectionsAssemblyComponent,
+    HandleSTEPSelectionsAssemblyLink, HandleSTEPSelectionsHSequenceOfAssemblyLink,
+    HandleSTEPSelectionsSelectAssembly, HandleSTEPSelectionsSelectDerived,
+    HandleSTEPSelectionsSelectFaces, HandleSTEPSelectionsSelectForTransfer,
+    HandleSTEPSelectionsSelectGSCurves, HandleSTEPSelectionsSelectInstances,
+    HandleSelect3DBVHIndexBuffer, HandleSelect3DInteriorSensitivePointSet,
+    HandleSelect3DSensitiveBox, HandleSelect3DSensitiveCircle, HandleSelect3DSensitiveCurve,
+    HandleSelect3DSensitiveCylinder, HandleSelect3DSensitiveFace, HandleSelect3DSensitiveGroup,
+    HandleSelect3DSensitivePoint, HandleSelect3DSensitivePoly,
+    HandleSelect3DSensitivePrimitiveArray, HandleSelect3DSensitiveSegment,
+    HandleSelect3DSensitiveSphere, HandleSelect3DSensitiveTriangle,
+    HandleSelect3DSensitiveTriangulation, HandleSelect3DSensitiveWire, HandleSelectMgrAndFilter,
+    HandleSelectMgrAndOrFilter, HandleSelectMgrAxisIntersector, HandleSelectMgrBVHThreadPool,
+    HandleSelectMgrBaseFrustum, HandleSelectMgrCompositionFilter, HandleSelectMgrEntityOwner,
+    HandleSelectMgrFrustumBuilder, HandleSelectMgrOrFilter, HandleSelectMgrSelection,
+    HandleSelectMgrSelectionManager, HandleSelectMgrSensitiveEntity,
+    HandleSelectMgrTriangularFrustumSet, HandleSelectMgrViewerSelector,
+    HandleShapeAlgoAlgoContainer, HandleShapeAlgoToolContainer, HandleShapeAnalysisFreeBoundData,
     HandleShapeAnalysisHSequenceOfFreeBounds, HandleShapeAnalysisSurface,
     HandleShapeAnalysisTransferParameters, HandleShapeAnalysisTransferParametersProj,
     HandleShapeAnalysisWire, HandleShapeBuildReShape, HandleShapeConstructProjectCurveOnSurface,
@@ -471,9 +543,12 @@ pub use crate::ffi::{
     HandleStdLDriversDocumentRetrievalDriver, HandleStdLPersistentData,
     HandleStdLPersistentDocument, HandleStdLPersistentHArray1OfPersistent,
     HandleStdLPersistentHArray2OfPersistent, HandleStdPersistentHArray1OfShape1,
-    HandleStdPersistentNamingName, HandleStdPersistentTopLocItemLocation, HandleStdStorageData,
-    HandleStdStorageHSequenceOfRoots, HandleStdStorageHeaderData, HandleStdStorageRoot,
-    HandleStdStorageRootData, HandleStdStorageTypeData, HandleStepAP203CcDesignApproval,
+    HandleStdPersistentNamingName, HandleStdPersistentTopLocItemLocation, HandleStdPrsBRepFont,
+    HandleStdPrsHLRPolyShape, HandleStdPrsHLRShape, HandleStdSelectBRepOwner,
+    HandleStdSelectEdgeFilter, HandleStdSelectFaceFilter, HandleStdSelectShape,
+    HandleStdSelectShapeTypeFilter, HandleStdStorageData, HandleStdStorageHSequenceOfRoots,
+    HandleStdStorageHeaderData, HandleStdStorageRoot, HandleStdStorageRootData,
+    HandleStdStorageTypeData, HandleStepAP203CcDesignApproval,
     HandleStepAP203CcDesignCertification, HandleStepAP203CcDesignContract,
     HandleStepAP203CcDesignDateAndTimeAssignment,
     HandleStepAP203CcDesignPersonAndOrganizationAssignment,
@@ -1012,6 +1087,9 @@ pub use crate::ffi::{
     HandleTObjOcafObjectIterator, HandleTObjPartition, HandleTObjReferenceIterator,
     HandleTObjSequenceIterator, HandleTObjTIntSparseArray, HandleTObjTModel,
     HandleTObjTNameContainer, HandleTObjTObject, HandleTObjTReference, HandleTObjTXYZ,
+    HandleTPrsStdAISPresentation, HandleTPrsStdAISViewer, HandleTPrsStdAxisDriver,
+    HandleTPrsStdConstraintDriver, HandleTPrsStdDriverTable, HandleTPrsStdGeometryDriver,
+    HandleTPrsStdNamedShapeDriver, HandleTPrsStdPlaneDriver, HandleTPrsStdPointDriver,
     HandleTShortHArray1OfShortReal, HandleTShortHArray2OfShortReal,
     HandleTShortHSequenceOfShortReal, HandleTopLocDatum3D, HandleTopLocSListNodeOfItemLocation,
     HandleTopOpeBRepBuildHBuilder, HandleTopOpeBRepBuildLoop, HandleTopOpeBRepBuildPave,
@@ -1046,14 +1124,17 @@ pub use crate::ffi::{
     HandleUnitsQuantitiesSequence, HandleUnitsQuantity, HandleUnitsShiftedToken,
     HandleUnitsShiftedUnit, HandleUnitsToken, HandleUnitsTokensSequence, HandleUnitsUnit,
     HandleUnitsUnitsDictionary, HandleUnitsUnitsLexicon, HandleUnitsUnitsSequence,
-    HandleUnitsUnitsSystem, HandleVrmlAPICafReader, HandleVrmlAsciiText, HandleVrmlConverterDrawer,
-    HandleVrmlConverterIsoAspect, HandleVrmlConverterLineAspect, HandleVrmlConverterPointAspect,
-    HandleVrmlConverterProjector, HandleVrmlConverterShadingAspect, HandleVrmlCoordinate3,
-    HandleVrmlDataAppearance, HandleVrmlDataArrayVec3d, HandleVrmlDataBox, HandleVrmlDataColor,
-    HandleVrmlDataCone, HandleVrmlDataCoordinate, HandleVrmlDataCylinder, HandleVrmlDataFaceted,
-    HandleVrmlDataGroup, HandleVrmlDataImageTexture, HandleVrmlDataIndexedFaceSet,
-    HandleVrmlDataIndexedLineSet, HandleVrmlDataMaterial, HandleVrmlDataNormal,
-    HandleVrmlDataShapeNode, HandleVrmlDataSphere, HandleVrmlDataTexture,
+    HandleUnitsUnitsSystem, HandleV3dAmbientLight, HandleV3dBadValue, HandleV3dCircularGrid,
+    HandleV3dDirectionalLight, HandleV3dPlane, HandleV3dPositionLight, HandleV3dPositionalLight,
+    HandleV3dRectangularGrid, HandleV3dSpotLight, HandleV3dTrihedron, HandleV3dUnMapped,
+    HandleV3dView, HandleV3dViewer, HandleVrmlAPICafReader, HandleVrmlAsciiText,
+    HandleVrmlConverterDrawer, HandleVrmlConverterIsoAspect, HandleVrmlConverterLineAspect,
+    HandleVrmlConverterPointAspect, HandleVrmlConverterProjector, HandleVrmlConverterShadingAspect,
+    HandleVrmlCoordinate3, HandleVrmlDataAppearance, HandleVrmlDataArrayVec3d, HandleVrmlDataBox,
+    HandleVrmlDataColor, HandleVrmlDataCone, HandleVrmlDataCoordinate, HandleVrmlDataCylinder,
+    HandleVrmlDataFaceted, HandleVrmlDataGroup, HandleVrmlDataImageTexture,
+    HandleVrmlDataIndexedFaceSet, HandleVrmlDataIndexedLineSet, HandleVrmlDataMaterial,
+    HandleVrmlDataNormal, HandleVrmlDataShapeNode, HandleVrmlDataSphere, HandleVrmlDataTexture,
     HandleVrmlDataTextureCoordinate, HandleVrmlDataTextureTransform, HandleVrmlDataUnknownNode,
     HandleVrmlDataWorldInfo, HandleVrmlIndexedFaceSet, HandleVrmlIndexedLineSet, HandleVrmlLOD,
     HandleVrmlMaterial, HandleVrmlNormal, HandleVrmlSFImage, HandleVrmlTextureCoordinate2,
@@ -1068,7 +1149,8 @@ pub use crate::ffi::{
     HandleXCAFDocNoteBinData, HandleXCAFDocNoteComment, HandleXCAFDocNotesTool,
     HandleXCAFDocShapeMapTool, HandleXCAFDocShapeTool, HandleXCAFDocView, HandleXCAFDocViewTool,
     HandleXCAFDocVisMaterial, HandleXCAFDocVisMaterialTool, HandleXCAFDocVolume,
-    HandleXCAFNoteObjectsNoteObject, HandleXCAFViewObject, HandleXSAlgoAlgoContainer,
+    HandleXCAFNoteObjectsNoteObject, HandleXCAFPrsAISObject, HandleXCAFPrsDriver,
+    HandleXCAFPrsTexture, HandleXCAFViewObject, HandleXSAlgoAlgoContainer,
     HandleXSControlConnectedShapes, HandleXSControlSelectForTransfer,
     HandleXSControlSignTransferStatus, HandleXSControlTransferReader,
     HandleXSControlTransferWriter, HandleXSControlVars, HandleXSControlWorkSession,
@@ -1195,7 +1277,7 @@ impl AbortiveTransaction {
     }
 
     /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_AbortiveTransaction_get_type_name())
                 .to_string_lossy()
@@ -1637,7 +1719,7 @@ impl ConstructionError {
     }
 
     /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_ConstructionError_get_type_name())
                 .to_string_lossy()
@@ -1920,7 +2002,7 @@ impl DimensionError {
     }
 
     /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_DimensionError_get_type_name())
                 .to_string_lossy()
@@ -2227,7 +2309,7 @@ impl DimensionMismatch {
     }
 
     /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_DimensionMismatch_get_type_name())
                 .to_string_lossy()
@@ -2541,7 +2623,7 @@ impl DivideByZero {
     }
 
     /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_DivideByZero_get_type_name())
                 .to_string_lossy()
@@ -2808,7 +2890,7 @@ impl DomainError {
     }
 
     /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_DomainError_get_type_name())
                 .to_string_lossy()
@@ -2954,6 +3036,142 @@ impl HandleStandardDomainError {
         }
     }
 
+    /// Downcast Handle<Standard_DomainError> to Handle<Aspect_AspectFillAreaDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectFillAreaDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_fill_area_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectFillAreaDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleAspectAspectFillAreaDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<Aspect_AspectLineDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectLineDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_line_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectLineDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleAspectAspectLineDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<Aspect_AspectMarkerDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectMarkerDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_marker_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectMarkerDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleAspectAspectMarkerDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<Aspect_DisplayConnectionDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_DisplayConnectionDefinitionError` (or subclass).
+    pub fn downcast_to_display_connection_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectDisplayConnectionDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleAspectDisplayConnectionDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<Aspect_GraphicDeviceDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_GraphicDeviceDefinitionError` (or subclass).
+    pub fn downcast_to_graphic_device_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectGraphicDeviceDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleAspectGraphicDeviceDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<Aspect_IdentDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_IdentDefinitionError` (or subclass).
+    pub fn downcast_to_ident_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectIdentDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleAspectIdentDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<Aspect_WindowDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_WindowDefinitionError` (or subclass).
+    pub fn downcast_to_window_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectWindowDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleAspectWindowDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<Aspect_WindowError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_WindowError` (or subclass).
+    pub fn downcast_to_window_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectWindowError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleAspectWindowError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_DomainError> to Handle<BRepExtrema_UnCompatibleShape>
     ///
     /// Returns `None` if the handle does not point to a `BRepExtrema_UnCompatibleShape` (or subclass).
@@ -3088,6 +3306,94 @@ impl HandleStandardDomainError {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomUndefinedValue>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardDomainError_downcast_to_HandleGeomUndefinedValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<Graphic3d_GroupDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_GroupDefinitionError` (or subclass).
+    pub fn downcast_to_group_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dGroupDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleGraphic3dGroupDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<Graphic3d_MaterialDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_MaterialDefinitionError` (or subclass).
+    pub fn downcast_to_material_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dMaterialDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleGraphic3dMaterialDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<Graphic3d_PriorityDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_PriorityDefinitionError` (or subclass).
+    pub fn downcast_to_priority_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dPriorityDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleGraphic3dPriorityDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<Graphic3d_StructureDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_StructureDefinitionError` (or subclass).
+    pub fn downcast_to_structure_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dStructureDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleGraphic3dStructureDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<Prs3d_InvalidAngle>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_InvalidAngle` (or subclass).
+    pub fn downcast_to_invalid_angle(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dInvalidAngle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandlePrs3dInvalidAngle(
                 self as *const Self,
             )
         };
@@ -3512,6 +3818,34 @@ impl HandleStandardDomainError {
         }
     }
 
+    /// Downcast Handle<Standard_DomainError> to Handle<V3d_BadValue>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_BadValue` (or subclass).
+    pub fn downcast_to_bad_value(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dBadValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleV3dBadValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_DomainError> to Handle<V3d_UnMapped>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_UnMapped` (or subclass).
+    pub fn downcast_to_un_mapped(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dUnMapped>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardDomainError_downcast_to_HandleV3dUnMapped(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_DomainError> to Handle<gp_VectorWithNullMagnitude>
     ///
     /// Returns `None` if the handle does not point to a `gp_VectorWithNullMagnitude` (or subclass).
@@ -3650,7 +3984,7 @@ impl Dump {
 
     /// **Source:** `Standard_Dump.hxx`:374 - `Standard_Dump::JsonKeyToString()`
     /// Returns key value for enum type
-    pub fn json_key_to_string(theKey: crate::standard::JsonKey) -> String {
+    pub fn json_key_to_string(theKey: crate::standard::JsonKey) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_Dump_json_key_to_string(theKey.into()))
                 .to_string_lossy()
@@ -3981,7 +4315,7 @@ impl Failure {
 
     /// **Source:** `Standard_Failure.hxx`:61 - `Standard_Failure::GetMessageString()`
     /// Returns error message
-    pub fn get_message_string(&self) -> String {
+    pub fn get_message_string(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_Failure_get_message_string(
                 self as *const Self,
@@ -4005,7 +4339,7 @@ impl Failure {
 
     /// **Source:** `Standard_Failure.hxx`:67 - `Standard_Failure::GetStackString()`
     /// Returns the stack trace string
-    pub fn get_stack_string(&self) -> String {
+    pub fn get_stack_string(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_Failure_get_stack_string(
                 self as *const Self,
@@ -4120,7 +4454,7 @@ impl Failure {
     }
 
     /// **Source:** `Standard_Failure.hxx`:114 - `Standard_Failure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_Failure_get_type_name())
                 .to_string_lossy()
@@ -4218,6 +4552,148 @@ impl HandleStandardFailure {
             crate::OwnedPtr::from_raw(crate::ffi::HandleStandardFailure_to_HandleStandardTransient(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Aspect_AspectFillAreaDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectFillAreaDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_fill_area_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectFillAreaDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleAspectAspectFillAreaDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Aspect_AspectLineDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectLineDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_line_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectLineDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleAspectAspectLineDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Aspect_AspectMarkerDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectMarkerDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_marker_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectMarkerDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleAspectAspectMarkerDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Aspect_DisplayConnectionDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_DisplayConnectionDefinitionError` (or subclass).
+    pub fn downcast_to_display_connection_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectDisplayConnectionDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleAspectDisplayConnectionDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Aspect_GraphicDeviceDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_GraphicDeviceDefinitionError` (or subclass).
+    pub fn downcast_to_graphic_device_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectGraphicDeviceDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleAspectGraphicDeviceDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Aspect_IdentDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_IdentDefinitionError` (or subclass).
+    pub fn downcast_to_ident_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectIdentDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleAspectIdentDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Aspect_WindowDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_WindowDefinitionError` (or subclass).
+    pub fn downcast_to_window_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectWindowDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleAspectWindowDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Aspect_WindowError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_WindowError` (or subclass).
+    pub fn downcast_to_window_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectWindowError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleAspectWindowError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 
@@ -4495,6 +4971,78 @@ impl HandleStandardFailure {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomUndefinedValue>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardFailure_downcast_to_HandleGeomUndefinedValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Graphic3d_GroupDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_GroupDefinitionError` (or subclass).
+    pub fn downcast_to_group_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dGroupDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleGraphic3dGroupDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Graphic3d_MaterialDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_MaterialDefinitionError` (or subclass).
+    pub fn downcast_to_material_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dMaterialDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleGraphic3dMaterialDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Graphic3d_PriorityDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_PriorityDefinitionError` (or subclass).
+    pub fn downcast_to_priority_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dPriorityDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleGraphic3dPriorityDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Graphic3d_StructureDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_StructureDefinitionError` (or subclass).
+    pub fn downcast_to_structure_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dStructureDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleGraphic3dStructureDefinitionError(
                 self as *const Self,
             )
         };
@@ -4967,6 +5515,24 @@ impl HandleStandardFailure {
     pub fn downcast_to_failure(&self) -> Option<crate::OwnedPtr<crate::ffi::HandlePluginFailure>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardFailure_downcast_to_HandlePluginFailure(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Prs3d_InvalidAngle>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_InvalidAngle` (or subclass).
+    pub fn downcast_to_invalid_angle(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dInvalidAngle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandlePrs3dInvalidAngle(
+                self as *const Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -5797,6 +6363,34 @@ impl HandleStandardFailure {
         }
     }
 
+    /// Downcast Handle<Standard_Failure> to Handle<V3d_BadValue>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_BadValue` (or subclass).
+    pub fn downcast_to_bad_value(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dBadValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleV3dBadValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<V3d_UnMapped>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_UnMapped` (or subclass).
+    pub fn downcast_to_un_mapped(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dUnMapped>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleV3dUnMapped(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Failure> to Handle<gp_VectorWithNullMagnitude>
     ///
     /// Returns `None` if the handle does not point to a `gp_VectorWithNullMagnitude` (or subclass).
@@ -6065,7 +6659,7 @@ impl ImmutableObject {
     }
 
     /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_ImmutableObject_get_type_name())
                 .to_string_lossy()
@@ -6340,7 +6934,7 @@ impl LicenseError {
     }
 
     /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_LicenseError_get_type_name())
                 .to_string_lossy()
@@ -6596,7 +7190,7 @@ impl LicenseNotFound {
     }
 
     /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_LicenseNotFound_get_type_name())
                 .to_string_lossy()
@@ -7092,7 +7686,7 @@ impl MultiplyDefined {
     }
 
     /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_MultiplyDefined_get_type_name())
                 .to_string_lossy()
@@ -7505,7 +8099,7 @@ impl NegativeValue {
     }
 
     /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_NegativeValue_get_type_name())
                 .to_string_lossy()
@@ -7797,7 +8391,7 @@ impl NoMoreObject {
     }
 
     /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_NoMoreObject_get_type_name())
                 .to_string_lossy()
@@ -8060,7 +8654,7 @@ impl NoSuchObject {
     }
 
     /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_NoSuchObject_get_type_name())
                 .to_string_lossy()
@@ -8377,7 +8971,7 @@ impl NotImplemented {
     }
 
     /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_NotImplemented_get_type_name())
                 .to_string_lossy()
@@ -8650,7 +9244,7 @@ impl NullObject {
     }
 
     /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_NullObject_get_type_name())
                 .to_string_lossy()
@@ -8905,7 +9499,7 @@ impl NullValue {
     }
 
     /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_NullValue_get_type_name())
                 .to_string_lossy()
@@ -9176,7 +9770,7 @@ impl NumericError {
     }
 
     /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_NumericError_get_type_name())
                 .to_string_lossy()
@@ -9423,7 +10017,7 @@ impl OutOfMemory {
 
     /// **Source:** `Standard_OutOfMemory.hxx`:57 - `Standard_OutOfMemory::GetMessageString()`
     /// Returns error message
-    pub fn get_message_string(&self) -> String {
+    pub fn get_message_string(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_OutOfMemory_get_message_string(
                 self as *const Self,
@@ -9493,7 +10087,7 @@ impl OutOfMemory {
     }
 
     /// **Source:** `Standard_OutOfMemory.hxx`:75 - `Standard_OutOfMemory::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_OutOfMemory_get_type_name())
                 .to_string_lossy()
@@ -9752,7 +10346,7 @@ impl OutOfRange {
     }
 
     /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_OutOfRange_get_type_name())
                 .to_string_lossy()
@@ -9943,6 +10537,230 @@ impl HandleStandardOutOfRange {
             )
         }
     }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<Aspect_AspectFillAreaDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectFillAreaDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_fill_area_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectFillAreaDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleAspectAspectFillAreaDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<Aspect_AspectLineDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectLineDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_line_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectLineDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleAspectAspectLineDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<Aspect_AspectMarkerDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectMarkerDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_marker_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectMarkerDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleAspectAspectMarkerDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<Aspect_DisplayConnectionDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_DisplayConnectionDefinitionError` (or subclass).
+    pub fn downcast_to_display_connection_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectDisplayConnectionDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleAspectDisplayConnectionDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<Aspect_GraphicDeviceDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_GraphicDeviceDefinitionError` (or subclass).
+    pub fn downcast_to_graphic_device_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectGraphicDeviceDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleAspectGraphicDeviceDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<Aspect_IdentDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_IdentDefinitionError` (or subclass).
+    pub fn downcast_to_ident_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectIdentDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleAspectIdentDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<Aspect_WindowDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_WindowDefinitionError` (or subclass).
+    pub fn downcast_to_window_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectWindowDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleAspectWindowDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<Aspect_WindowError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_WindowError` (or subclass).
+    pub fn downcast_to_window_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectWindowError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleAspectWindowError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<Graphic3d_GroupDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_GroupDefinitionError` (or subclass).
+    pub fn downcast_to_group_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dGroupDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleGraphic3dGroupDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<Graphic3d_MaterialDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_MaterialDefinitionError` (or subclass).
+    pub fn downcast_to_material_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dMaterialDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleGraphic3dMaterialDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<Graphic3d_PriorityDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_PriorityDefinitionError` (or subclass).
+    pub fn downcast_to_priority_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dPriorityDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleGraphic3dPriorityDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<Graphic3d_StructureDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_StructureDefinitionError` (or subclass).
+    pub fn downcast_to_structure_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dStructureDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleGraphic3dStructureDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_OutOfRange> to Handle<V3d_BadValue>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_BadValue` (or subclass).
+    pub fn downcast_to_bad_value(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dBadValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardOutOfRange_downcast_to_HandleV3dBadValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -10030,7 +10848,7 @@ impl Overflow {
     }
 
     /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_Overflow_get_type_name())
                 .to_string_lossy()
@@ -10227,7 +11045,7 @@ impl Persistent {
     }
 
     /// **Source:** `Standard_Persistent.hxx`:33 - `Standard_Persistent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_Persistent_get_type_name())
                 .to_string_lossy()
@@ -10437,7 +11255,7 @@ impl ProgramError {
     }
 
     /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_ProgramError_get_type_name())
                 .to_string_lossy()
@@ -10711,7 +11529,7 @@ impl RangeError {
     }
 
     /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_RangeError_get_type_name())
                 .to_string_lossy()
@@ -10880,6 +11698,234 @@ impl HandleStandardRangeError {
         }
     }
 
+    /// Downcast Handle<Standard_RangeError> to Handle<Aspect_AspectFillAreaDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectFillAreaDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_fill_area_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectFillAreaDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleAspectAspectFillAreaDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<Aspect_AspectLineDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectLineDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_line_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectLineDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleAspectAspectLineDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<Aspect_AspectMarkerDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectMarkerDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_marker_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectMarkerDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleAspectAspectMarkerDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<Aspect_DisplayConnectionDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_DisplayConnectionDefinitionError` (or subclass).
+    pub fn downcast_to_display_connection_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectDisplayConnectionDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleAspectDisplayConnectionDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<Aspect_GraphicDeviceDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_GraphicDeviceDefinitionError` (or subclass).
+    pub fn downcast_to_graphic_device_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectGraphicDeviceDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleAspectGraphicDeviceDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<Aspect_IdentDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_IdentDefinitionError` (or subclass).
+    pub fn downcast_to_ident_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectIdentDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleAspectIdentDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<Aspect_WindowDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_WindowDefinitionError` (or subclass).
+    pub fn downcast_to_window_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectWindowDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleAspectWindowDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<Aspect_WindowError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_WindowError` (or subclass).
+    pub fn downcast_to_window_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectWindowError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleAspectWindowError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<Graphic3d_GroupDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_GroupDefinitionError` (or subclass).
+    pub fn downcast_to_group_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dGroupDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleGraphic3dGroupDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<Graphic3d_MaterialDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_MaterialDefinitionError` (or subclass).
+    pub fn downcast_to_material_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dMaterialDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleGraphic3dMaterialDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<Graphic3d_PriorityDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_PriorityDefinitionError` (or subclass).
+    pub fn downcast_to_priority_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dPriorityDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleGraphic3dPriorityDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<Graphic3d_StructureDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_StructureDefinitionError` (or subclass).
+    pub fn downcast_to_structure_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dStructureDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleGraphic3dStructureDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<Prs3d_InvalidAngle>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_InvalidAngle` (or subclass).
+    pub fn downcast_to_invalid_angle(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dInvalidAngle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandlePrs3dInvalidAngle(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_RangeError> to Handle<Standard_NegativeValue>
     ///
     /// Returns `None` if the handle does not point to a `Standard_NegativeValue` (or subclass).
@@ -10926,6 +11972,20 @@ impl HandleStandardRangeError {
             crate::ffi::HandleStandardRangeError_downcast_to_HandleStandardOutOfRange(
                 self as *const Self,
             )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_RangeError> to Handle<V3d_BadValue>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_BadValue` (or subclass).
+    pub fn downcast_to_bad_value(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dBadValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardRangeError_downcast_to_HandleV3dBadValue(self as *const Self)
         };
         if ptr.is_null() {
             None
@@ -11186,7 +12246,7 @@ impl Transient {
     }
 
     /// **Source:** `Standard_Transient.hxx`:65 - `Standard_Transient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_Transient_get_type_name())
                 .to_string_lossy()
@@ -11227,6 +12287,788 @@ impl HandleStandardTransient {
     /// Dereference this Handle to mutably access the underlying Standard_Transient
     pub fn get_mut(&mut self) -> &mut crate::ffi::Standard_Transient {
         unsafe { &mut *(crate::ffi::HandleStandardTransient_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_Animation>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_Animation` (or subclass).
+    pub fn downcast_to_animation(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISAnimation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISAnimation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_AnimationAxisRotation>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_AnimationAxisRotation` (or subclass).
+    pub fn downcast_to_animation_axis_rotation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISAnimationAxisRotation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISAnimationAxisRotation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_AnimationCamera>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_AnimationCamera` (or subclass).
+    pub fn downcast_to_animation_camera(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISAnimationCamera>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISAnimationCamera(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_AnimationObject>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_AnimationObject` (or subclass).
+    pub fn downcast_to_animation_object(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISAnimationObject>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISAnimationObject(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_AttributeFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_AttributeFilter` (or subclass).
+    pub fn downcast_to_attribute_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISAttributeFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISAttributeFilter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_Axis>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_Axis` (or subclass).
+    pub fn downcast_to_ais_axis(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISAxis>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISAxis(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_BadEdgeFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_BadEdgeFilter` (or subclass).
+    pub fn downcast_to_bad_edge_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISBadEdgeFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISBadEdgeFilter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_BaseAnimationObject>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_BaseAnimationObject` (or subclass).
+    pub fn downcast_to_base_animation_object(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISBaseAnimationObject>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISBaseAnimationObject(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_C0RegularityFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_C0RegularityFilter` (or subclass).
+    pub fn downcast_to_c0_regularity_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISC0RegularityFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISC0RegularityFilter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_CameraFrustum>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_CameraFrustum` (or subclass).
+    pub fn downcast_to_camera_frustum(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISCameraFrustum>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISCameraFrustum(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_Circle>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_Circle` (or subclass).
+    pub fn downcast_to_ais_circle(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISCircle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISCircle(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_ColorScale>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_ColorScale` (or subclass).
+    pub fn downcast_to_color_scale(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISColorScale>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISColorScale(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_ColoredDrawer>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_ColoredDrawer` (or subclass).
+    pub fn downcast_to_colored_drawer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISColoredDrawer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISColoredDrawer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_ColoredShape>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_ColoredShape` (or subclass).
+    pub fn downcast_to_colored_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISColoredShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISColoredShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_ConnectedInteractive>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_ConnectedInteractive` (or subclass).
+    pub fn downcast_to_connected_interactive(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISConnectedInteractive>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISConnectedInteractive(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_ExclusionFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_ExclusionFilter` (or subclass).
+    pub fn downcast_to_exclusion_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISExclusionFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISExclusionFilter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_GlobalStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_GlobalStatus` (or subclass).
+    pub fn downcast_to_global_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISGlobalStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISGlobalStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_InteractiveContext>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_InteractiveContext` (or subclass).
+    pub fn downcast_to_interactive_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISInteractiveContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISInteractiveContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_InteractiveObject>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_InteractiveObject` (or subclass).
+    pub fn downcast_to_interactive_object(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISInteractiveObject>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISInteractiveObject(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_LightSource>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_LightSource` (or subclass).
+    pub fn downcast_to_light_source(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISLightSource>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISLightSource(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_LightSourceOwner>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_LightSourceOwner` (or subclass).
+    pub fn downcast_to_light_source_owner(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISLightSourceOwner>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISLightSourceOwner(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_Line>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_Line` (or subclass).
+    pub fn downcast_to_ais_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_Manipulator>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_Manipulator` (or subclass).
+    pub fn downcast_to_manipulator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISManipulator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISManipulator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_ManipulatorObjectSequence>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_ManipulatorObjectSequence` (or subclass).
+    pub fn downcast_to_manipulator_object_sequence(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISManipulatorObjectSequence>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISManipulatorObjectSequence(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_ManipulatorOwner>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_ManipulatorOwner` (or subclass).
+    pub fn downcast_to_manipulator_owner(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISManipulatorOwner>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISManipulatorOwner(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_MediaPlayer>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_MediaPlayer` (or subclass).
+    pub fn downcast_to_media_player(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISMediaPlayer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISMediaPlayer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_MultipleConnectedInteractive>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_MultipleConnectedInteractive` (or subclass).
+    pub fn downcast_to_multiple_connected_interactive(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISMultipleConnectedInteractive>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISMultipleConnectedInteractive(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_Plane>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_Plane` (or subclass).
+    pub fn downcast_to_ais_plane(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISPlane>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISPlane(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_PlaneTrihedron>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_PlaneTrihedron` (or subclass).
+    pub fn downcast_to_plane_trihedron(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISPlaneTrihedron>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISPlaneTrihedron(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_Point>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_Point` (or subclass).
+    pub fn downcast_to_ais_point(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISPoint(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_PointCloud>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_PointCloud` (or subclass).
+    pub fn downcast_to_point_cloud(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISPointCloud>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISPointCloud(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_PointCloudOwner>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_PointCloudOwner` (or subclass).
+    pub fn downcast_to_point_cloud_owner(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISPointCloudOwner>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISPointCloudOwner(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_RubberBand>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_RubberBand` (or subclass).
+    pub fn downcast_to_rubber_band(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISRubberBand>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISRubberBand(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_Selection>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_Selection` (or subclass).
+    pub fn downcast_to_ais_selection(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISSelection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISSelection(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_Shape>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_Shape` (or subclass).
+    pub fn downcast_to_ais_shape(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISShape(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_SignatureFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_SignatureFilter` (or subclass).
+    pub fn downcast_to_signature_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISSignatureFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISSignatureFilter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_TextLabel>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_TextLabel` (or subclass).
+    pub fn downcast_to_text_label(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISTextLabel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISTextLabel(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_TexturedShape>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_TexturedShape` (or subclass).
+    pub fn downcast_to_textured_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISTexturedShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISTexturedShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_Triangulation>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_Triangulation` (or subclass).
+    pub fn downcast_to_ais_triangulation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISTriangulation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISTriangulation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_Trihedron>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_Trihedron` (or subclass).
+    pub fn downcast_to_ais_trihedron(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISTrihedron>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISTrihedron(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_TrihedronOwner>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_TrihedronOwner` (or subclass).
+    pub fn downcast_to_trihedron_owner(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISTrihedronOwner>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISTrihedronOwner(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_TypeFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_TypeFilter` (or subclass).
+    pub fn downcast_to_type_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISTypeFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISTypeFilter(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_ViewCube>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_ViewCube` (or subclass).
+    pub fn downcast_to_view_cube(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISViewCube>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISViewCube(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_ViewCubeOwner>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_ViewCubeOwner` (or subclass).
+    pub fn downcast_to_view_cube_owner(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISViewCubeOwner>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISViewCubeOwner(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_ViewCubeSensitive>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_ViewCubeSensitive` (or subclass).
+    pub fn downcast_to_view_cube_sensitive(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISViewCubeSensitive>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISViewCubeSensitive(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AIS_XRTrackedDevice>
+    ///
+    /// Returns `None` if the handle does not point to a `AIS_XRTrackedDevice` (or subclass).
+    pub fn downcast_to_xr_tracked_device(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISXRTrackedDevice>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAISXRTrackedDevice(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 
     /// Downcast Handle<Standard_Transient> to Handle<APIHeaderSection_EditHeader>
@@ -11639,6 +13481,288 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleApproxHArray1OfGTrsf2d>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleApproxHArray1OfGTrsf2d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_AspectFillAreaDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectFillAreaDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_fill_area_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectFillAreaDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectAspectFillAreaDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_AspectLineDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectLineDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_line_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectLineDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectAspectLineDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_AspectMarkerDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_AspectMarkerDefinitionError` (or subclass).
+    pub fn downcast_to_aspect_marker_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectAspectMarkerDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectAspectMarkerDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_CircularGrid>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_CircularGrid` (or subclass).
+    pub fn downcast_to_aspect_circular_grid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectCircularGrid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectCircularGrid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_DisplayConnection>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_DisplayConnection` (or subclass).
+    pub fn downcast_to_display_connection(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectDisplayConnection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectDisplayConnection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_DisplayConnectionDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_DisplayConnectionDefinitionError` (or subclass).
+    pub fn downcast_to_display_connection_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectDisplayConnectionDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectDisplayConnectionDefinitionError(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_GraphicDeviceDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_GraphicDeviceDefinitionError` (or subclass).
+    pub fn downcast_to_graphic_device_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectGraphicDeviceDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectGraphicDeviceDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_IdentDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_IdentDefinitionError` (or subclass).
+    pub fn downcast_to_ident_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectIdentDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectIdentDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_NeutralWindow>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_NeutralWindow` (or subclass).
+    pub fn downcast_to_neutral_window(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectNeutralWindow>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectNeutralWindow(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_OpenVRSession>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_OpenVRSession` (or subclass).
+    pub fn downcast_to_open_vr_session(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectOpenVRSession>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectOpenVRSession(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_RectangularGrid>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_RectangularGrid` (or subclass).
+    pub fn downcast_to_aspect_rectangular_grid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectRectangularGrid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectRectangularGrid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_VKeySet>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_VKeySet` (or subclass).
+    pub fn downcast_to_v_key_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectVKeySet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectVKeySet(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_WindowDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_WindowDefinitionError` (or subclass).
+    pub fn downcast_to_window_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectWindowDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectWindowDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_WindowError>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_WindowError` (or subclass).
+    pub fn downcast_to_window_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectWindowError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectWindowError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_XRAction>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_XRAction` (or subclass).
+    pub fn downcast_to_xr_action(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectXRAction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectXRAction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Aspect_XRActionSet>
+    ///
+    /// Returns `None` if the handle does not point to a `Aspect_XRActionSet` (or subclass).
+    pub fn downcast_to_xr_action_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectXRActionSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAspectXRActionSet(
                 self as *const Self,
             )
         };
@@ -18878,6 +21002,1060 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ArrayOfPoints>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ArrayOfPoints` (or subclass).
+    pub fn downcast_to_array_of_points(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfPoints>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dArrayOfPoints(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ArrayOfPolygons>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ArrayOfPolygons` (or subclass).
+    pub fn downcast_to_array_of_polygons(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfPolygons>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dArrayOfPolygons(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ArrayOfPolylines>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ArrayOfPolylines` (or subclass).
+    pub fn downcast_to_array_of_polylines(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfPolylines>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dArrayOfPolylines(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ArrayOfPrimitives>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ArrayOfPrimitives` (or subclass).
+    pub fn downcast_to_array_of_primitives(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfPrimitives>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dArrayOfPrimitives(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ArrayOfQuadrangleStrips>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ArrayOfQuadrangleStrips` (or subclass).
+    pub fn downcast_to_array_of_quadrangle_strips(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfQuadrangleStrips>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dArrayOfQuadrangleStrips(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ArrayOfQuadrangles>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ArrayOfQuadrangles` (or subclass).
+    pub fn downcast_to_array_of_quadrangles(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfQuadrangles>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dArrayOfQuadrangles(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ArrayOfSegments>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ArrayOfSegments` (or subclass).
+    pub fn downcast_to_array_of_segments(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfSegments>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dArrayOfSegments(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ArrayOfTriangleFans>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ArrayOfTriangleFans` (or subclass).
+    pub fn downcast_to_array_of_triangle_fans(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfTriangleFans>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dArrayOfTriangleFans(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ArrayOfTriangleStrips>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ArrayOfTriangleStrips` (or subclass).
+    pub fn downcast_to_array_of_triangle_strips(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfTriangleStrips>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dArrayOfTriangleStrips(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ArrayOfTriangles>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ArrayOfTriangles` (or subclass).
+    pub fn downcast_to_array_of_triangles(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfTriangles>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dArrayOfTriangles(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_AspectFillArea3d>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_AspectFillArea3d` (or subclass).
+    pub fn downcast_to_aspect_fill_area3d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dAspectFillArea3d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dAspectFillArea3d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_AspectLine3d>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_AspectLine3d` (or subclass).
+    pub fn downcast_to_aspect_line3d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dAspectLine3d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dAspectLine3d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_AspectMarker3d>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_AspectMarker3d` (or subclass).
+    pub fn downcast_to_aspect_marker3d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dAspectMarker3d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dAspectMarker3d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_AspectText3d>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_AspectText3d` (or subclass).
+    pub fn downcast_to_aspect_text3d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dAspectText3d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dAspectText3d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_Aspects>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Aspects` (or subclass).
+    pub fn downcast_to_aspects(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dAspects>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dAspects(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_AttribBuffer>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_AttribBuffer` (or subclass).
+    pub fn downcast_to_attrib_buffer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dAttribBuffer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dAttribBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_BoundBuffer>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_BoundBuffer` (or subclass).
+    pub fn downcast_to_bound_buffer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dBoundBuffer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dBoundBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_Buffer>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Buffer` (or subclass).
+    pub fn downcast_to_graphic3d_buffer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dBuffer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_CLight>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_CLight` (or subclass).
+    pub fn downcast_to_c_light(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dCLight>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dCLight(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_Camera>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Camera` (or subclass).
+    pub fn downcast_to_camera(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dCamera>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dCamera(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ClipPlane>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ClipPlane` (or subclass).
+    pub fn downcast_to_clip_plane(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dClipPlane>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dClipPlane(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_CubeMapPacked>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_CubeMapPacked` (or subclass).
+    pub fn downcast_to_cube_map_packed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dCubeMapPacked>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dCubeMapPacked(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_CubeMapSeparate>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_CubeMapSeparate` (or subclass).
+    pub fn downcast_to_cube_map_separate(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dCubeMapSeparate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dCubeMapSeparate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_GroupDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_GroupDefinitionError` (or subclass).
+    pub fn downcast_to_group_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dGroupDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dGroupDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_HatchStyle>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_HatchStyle` (or subclass).
+    pub fn downcast_to_hatch_style(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dHatchStyle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dHatchStyle(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_IndexBuffer>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_IndexBuffer` (or subclass).
+    pub fn downcast_to_index_buffer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dIndexBuffer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dIndexBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_Layer>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Layer` (or subclass).
+    pub fn downcast_to_layer(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dLayer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dLayer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_LightSet>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_LightSet` (or subclass).
+    pub fn downcast_to_light_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dLightSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dLightSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_MarkerImage>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_MarkerImage` (or subclass).
+    pub fn downcast_to_marker_image(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dMarkerImage>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dMarkerImage(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_MaterialDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_MaterialDefinitionError` (or subclass).
+    pub fn downcast_to_material_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dMaterialDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dMaterialDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_MediaTexture>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_MediaTexture` (or subclass).
+    pub fn downcast_to_media_texture(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dMediaTexture>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dMediaTexture(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_MediaTextureSet>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_MediaTextureSet` (or subclass).
+    pub fn downcast_to_media_texture_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dMediaTextureSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dMediaTextureSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_MutableIndexBuffer>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_MutableIndexBuffer` (or subclass).
+    pub fn downcast_to_mutable_index_buffer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dMutableIndexBuffer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dMutableIndexBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_PresentationAttributes>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_PresentationAttributes` (or subclass).
+    pub fn downcast_to_presentation_attributes(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dPresentationAttributes>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dPresentationAttributes(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_PriorityDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_PriorityDefinitionError` (or subclass).
+    pub fn downcast_to_priority_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dPriorityDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dPriorityDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_SequenceOfHClipPlane>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_SequenceOfHClipPlane` (or subclass).
+    pub fn downcast_to_sequence_of_h_clip_plane(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dSequenceOfHClipPlane>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dSequenceOfHClipPlane(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ShaderAttribute>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ShaderAttribute` (or subclass).
+    pub fn downcast_to_shader_attribute(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dShaderAttribute>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dShaderAttribute(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ShaderManager>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ShaderManager` (or subclass).
+    pub fn downcast_to_shader_manager(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dShaderManager>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dShaderManager(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ShaderObject>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ShaderObject` (or subclass).
+    pub fn downcast_to_shader_object(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dShaderObject>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dShaderObject(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ShaderProgram>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ShaderProgram` (or subclass).
+    pub fn downcast_to_shader_program(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dShaderProgram>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dShaderProgram(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ShaderVariable>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ShaderVariable` (or subclass).
+    pub fn downcast_to_shader_variable(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dShaderVariable>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dShaderVariable(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_Structure>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Structure` (or subclass).
+    pub fn downcast_to_structure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dStructure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_StructureDefinitionError>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_StructureDefinitionError` (or subclass).
+    pub fn downcast_to_structure_definition_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dStructureDefinitionError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dStructureDefinitionError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_StructureManager>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_StructureManager` (or subclass).
+    pub fn downcast_to_structure_manager(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dStructureManager>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dStructureManager(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_Text>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Text` (or subclass).
+    pub fn downcast_to_text(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dText>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dText(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_Texture1D>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Texture1D` (or subclass).
+    pub fn downcast_to_texture1_d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTexture1D>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTexture1D(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_Texture1Dmanual>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Texture1Dmanual` (or subclass).
+    pub fn downcast_to_texture1_dmanual(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTexture1Dmanual>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTexture1Dmanual(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_Texture1Dsegment>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Texture1Dsegment` (or subclass).
+    pub fn downcast_to_texture1_dsegment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTexture1Dsegment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTexture1Dsegment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_Texture2D>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Texture2D` (or subclass).
+    pub fn downcast_to_texture2_d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTexture2D>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTexture2D(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_Texture2Dplane>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Texture2Dplane` (or subclass).
+    pub fn downcast_to_texture2_dplane(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTexture2Dplane>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTexture2Dplane(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_Texture3D>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_Texture3D` (or subclass).
+    pub fn downcast_to_texture3_d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTexture3D>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTexture3D(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_TextureEnv>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_TextureEnv` (or subclass).
+    pub fn downcast_to_texture_env(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTextureEnv>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTextureEnv(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_TextureMap>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_TextureMap` (or subclass).
+    pub fn downcast_to_texture_map(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTextureMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTextureMap(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_TextureParams>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_TextureParams` (or subclass).
+    pub fn downcast_to_texture_params(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTextureParams>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTextureParams(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_TextureRoot>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_TextureRoot` (or subclass).
+    pub fn downcast_to_texture_root(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTextureRoot>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTextureRoot(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_TextureSet>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_TextureSet` (or subclass).
+    pub fn downcast_to_texture_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTextureSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTextureSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_TransformPers>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_TransformPers` (or subclass).
+    pub fn downcast_to_transform_pers(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTransformPers>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTransformPers(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_TransformPersScaledAbove>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_TransformPersScaledAbove` (or subclass).
+    pub fn downcast_to_transform_pers_scaled_above(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dTransformPersScaledAbove>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dTransformPersScaledAbove(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Graphic3d_ViewAffinity>
+    ///
+    /// Returns `None` if the handle does not point to a `Graphic3d_ViewAffinity` (or subclass).
+    pub fn downcast_to_view_affinity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dViewAffinity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleGraphic3dViewAffinity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<HLRAlgo_EdgesBlock>
     ///
     /// Returns `None` if the handle does not point to a `HLRAlgo_EdgesBlock` (or subclass).
@@ -21938,7 +25116,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_DiameterDimension>
     ///
     /// Returns `None` if the handle does not point to a `IGESDimen_DiameterDimension` (or subclass).
-    pub fn downcast_to_diameter_dimension(
+    pub fn downcast_to_iges_dimen_diameter_dimension(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenDiameterDimension>> {
         let ptr = unsafe {
@@ -22280,7 +25458,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<IGESDimen_RadiusDimension>
     ///
     /// Returns `None` if the handle does not point to a `IGESDimen_RadiusDimension` (or subclass).
-    pub fn downcast_to_radius_dimension(
+    pub fn downcast_to_iges_dimen_radius_dimension(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESDimenRadiusDimension>> {
         let ptr = unsafe {
@@ -26107,6 +29285,342 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_CommonSensitiveEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_CommonSensitiveEntity` (or subclass).
+    pub fn downcast_to_common_sensitive_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSCommonSensitiveEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSCommonSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_DataSource3D>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_DataSource3D` (or subclass).
+    pub fn downcast_to_data_source3_d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSDataSource3D>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSDataSource3D(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_DeformedDataSource>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_DeformedDataSource` (or subclass).
+    pub fn downcast_to_deformed_data_source(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSDeformedDataSource>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSDeformedDataSource(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_Drawer>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_Drawer` (or subclass).
+    pub fn downcast_to_mesh_vs_drawer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSDrawer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSDrawer(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_DummySensitiveEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_DummySensitiveEntity` (or subclass).
+    pub fn downcast_to_dummy_sensitive_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSDummySensitiveEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSDummySensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_ElementalColorPrsBuilder>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_ElementalColorPrsBuilder` (or subclass).
+    pub fn downcast_to_elemental_color_prs_builder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSElementalColorPrsBuilder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSElementalColorPrsBuilder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_HArray1OfSequenceOfInteger>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_HArray1OfSequenceOfInteger` (or subclass).
+    pub fn downcast_to_h_array1_of_sequence_of_integer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSHArray1OfSequenceOfInteger>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSHArray1OfSequenceOfInteger(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_Mesh>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_Mesh` (or subclass).
+    pub fn downcast_to_mesh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSMesh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSMesh(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_MeshEntityOwner>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_MeshEntityOwner` (or subclass).
+    pub fn downcast_to_mesh_entity_owner(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSMeshEntityOwner>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSMeshEntityOwner(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_MeshOwner>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_MeshOwner` (or subclass).
+    pub fn downcast_to_mesh_owner(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSMeshOwner>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSMeshOwner(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_MeshPrsBuilder>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_MeshPrsBuilder` (or subclass).
+    pub fn downcast_to_mesh_prs_builder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSMeshPrsBuilder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSMeshPrsBuilder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_NodalColorPrsBuilder>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_NodalColorPrsBuilder` (or subclass).
+    pub fn downcast_to_nodal_color_prs_builder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSNodalColorPrsBuilder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSNodalColorPrsBuilder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_SensitiveFace>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_SensitiveFace` (or subclass).
+    pub fn downcast_to_mesh_vs_sensitive_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSSensitiveFace(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_SensitiveMesh>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_SensitiveMesh` (or subclass).
+    pub fn downcast_to_sensitive_mesh(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveMesh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSSensitiveMesh(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_SensitivePolyhedron>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_SensitivePolyhedron` (or subclass).
+    pub fn downcast_to_sensitive_polyhedron(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitivePolyhedron>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSSensitivePolyhedron(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_SensitiveQuad>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_SensitiveQuad` (or subclass).
+    pub fn downcast_to_sensitive_quad(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveQuad>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSSensitiveQuad(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_SensitiveSegment>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_SensitiveSegment` (or subclass).
+    pub fn downcast_to_mesh_vs_sensitive_segment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveSegment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSSensitiveSegment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_TextPrsBuilder>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_TextPrsBuilder` (or subclass).
+    pub fn downcast_to_text_prs_builder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSTextPrsBuilder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSTextPrsBuilder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MeshVS_VectorPrsBuilder>
+    ///
+    /// Returns `None` if the handle does not point to a `MeshVS_VectorPrsBuilder` (or subclass).
+    pub fn downcast_to_vector_prs_builder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSVectorPrsBuilder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMeshVSVectorPrsBuilder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<Message_Alert>
     ///
     /// Returns `None` if the handle does not point to a `Message_Alert` (or subclass).
@@ -26530,7 +30044,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<NCollection_Buffer>
     ///
     /// Returns `None` if the handle does not point to a `NCollection_Buffer` (or subclass).
-    pub fn downcast_to_buffer(
+    pub fn downcast_to_n_collection_buffer(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleNCollectionBuffer>> {
         let ptr = unsafe {
@@ -27551,6 +31065,670 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<Prs3d_ArrowAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_ArrowAspect` (or subclass).
+    pub fn downcast_to_arrow_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dArrowAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrs3dArrowAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Prs3d_DatumAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_DatumAspect` (or subclass).
+    pub fn downcast_to_datum_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dDatumAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrs3dDatumAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Prs3d_DimensionAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_DimensionAspect` (or subclass).
+    pub fn downcast_to_dimension_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dDimensionAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrs3dDimensionAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Prs3d_Drawer>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_Drawer` (or subclass).
+    pub fn downcast_to_prs3d_drawer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dDrawer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrs3dDrawer(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Prs3d_InvalidAngle>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_InvalidAngle` (or subclass).
+    pub fn downcast_to_invalid_angle(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dInvalidAngle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrs3dInvalidAngle(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Prs3d_IsoAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_IsoAspect` (or subclass).
+    pub fn downcast_to_prs3d_iso_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dIsoAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrs3dIsoAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Prs3d_LineAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_LineAspect` (or subclass).
+    pub fn downcast_to_prs3d_line_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dLineAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrs3dLineAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Prs3d_PlaneAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_PlaneAspect` (or subclass).
+    pub fn downcast_to_plane_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dPlaneAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrs3dPlaneAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Prs3d_PointAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_PointAspect` (or subclass).
+    pub fn downcast_to_prs3d_point_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dPointAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrs3dPointAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Prs3d_PresentationShadow>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_PresentationShadow` (or subclass).
+    pub fn downcast_to_presentation_shadow(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dPresentationShadow>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrs3dPresentationShadow(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Prs3d_ShadingAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_ShadingAspect` (or subclass).
+    pub fn downcast_to_prs3d_shading_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dShadingAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrs3dShadingAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Prs3d_TextAspect>
+    ///
+    /// Returns `None` if the handle does not point to a `Prs3d_TextAspect` (or subclass).
+    pub fn downcast_to_text_aspect(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dTextAspect>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrs3dTextAspect(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_AngleDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_AngleDimension` (or subclass).
+    pub fn downcast_to_angle_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimAngleDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimAngleDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_Chamf2dDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_Chamf2dDimension` (or subclass).
+    pub fn downcast_to_chamf2d_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimChamf2dDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimChamf2dDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_Chamf3dDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_Chamf3dDimension` (or subclass).
+    pub fn downcast_to_chamf3d_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimChamf3dDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimChamf3dDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_ConcentricRelation>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_ConcentricRelation` (or subclass).
+    pub fn downcast_to_concentric_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimConcentricRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimConcentricRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_DiameterDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_DiameterDimension` (or subclass).
+    pub fn downcast_to_prs_dim_diameter_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimDiameterDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimDiameterDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_Dimension>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_Dimension` (or subclass).
+    pub fn downcast_to_prs_dim_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_DimensionOwner>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_DimensionOwner` (or subclass).
+    pub fn downcast_to_dimension_owner(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimDimensionOwner>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimDimensionOwner(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_EllipseRadiusDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_EllipseRadiusDimension` (or subclass).
+    pub fn downcast_to_ellipse_radius_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimEllipseRadiusDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimEllipseRadiusDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_EqualDistanceRelation>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_EqualDistanceRelation` (or subclass).
+    pub fn downcast_to_equal_distance_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimEqualDistanceRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimEqualDistanceRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_EqualRadiusRelation>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_EqualRadiusRelation` (or subclass).
+    pub fn downcast_to_equal_radius_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimEqualRadiusRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimEqualRadiusRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_FixRelation>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_FixRelation` (or subclass).
+    pub fn downcast_to_fix_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimFixRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimFixRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_IdenticRelation>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_IdenticRelation` (or subclass).
+    pub fn downcast_to_identic_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimIdenticRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimIdenticRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_LengthDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_LengthDimension` (or subclass).
+    pub fn downcast_to_length_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimLengthDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimLengthDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_MaxRadiusDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_MaxRadiusDimension` (or subclass).
+    pub fn downcast_to_max_radius_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimMaxRadiusDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimMaxRadiusDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_MidPointRelation>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_MidPointRelation` (or subclass).
+    pub fn downcast_to_mid_point_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimMidPointRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimMidPointRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_MinRadiusDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_MinRadiusDimension` (or subclass).
+    pub fn downcast_to_min_radius_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimMinRadiusDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimMinRadiusDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_OffsetDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_OffsetDimension` (or subclass).
+    pub fn downcast_to_offset_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimOffsetDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimOffsetDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_ParallelRelation>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_ParallelRelation` (or subclass).
+    pub fn downcast_to_parallel_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimParallelRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimParallelRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_PerpendicularRelation>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_PerpendicularRelation` (or subclass).
+    pub fn downcast_to_perpendicular_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimPerpendicularRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimPerpendicularRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_RadiusDimension>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_RadiusDimension` (or subclass).
+    pub fn downcast_to_prs_dim_radius_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimRadiusDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimRadiusDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_Relation>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_Relation` (or subclass).
+    pub fn downcast_to_prs_dim_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_SymmetricRelation>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_SymmetricRelation` (or subclass).
+    pub fn downcast_to_symmetric_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimSymmetricRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimSymmetricRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsDim_TangentRelation>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsDim_TangentRelation` (or subclass).
+    pub fn downcast_to_tangent_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimTangentRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsDimTangentRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsMgr_Presentation>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsMgr_Presentation` (or subclass).
+    pub fn downcast_to_prs_mgr_presentation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsMgrPresentation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<PrsMgr_PresentationManager>
+    ///
+    /// Returns `None` if the handle does not point to a `PrsMgr_PresentationManager` (or subclass).
+    pub fn downcast_to_presentation_manager(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentationManager>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandlePrsMgrPresentationManager(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<Quantity_DateDefinitionError>
     ///
     /// Returns `None` if the handle does not point to a `Quantity_DateDefinitionError` (or subclass).
@@ -28205,6 +32383,546 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectInstances>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleSTEPSelectionsSelectInstances(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_BVHIndexBuffer>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_BVHIndexBuffer` (or subclass).
+    pub fn downcast_to_bvh_index_buffer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DBVHIndexBuffer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DBVHIndexBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_InteriorSensitivePointSet>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_InteriorSensitivePointSet` (or subclass).
+    pub fn downcast_to_interior_sensitive_point_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DInteriorSensitivePointSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DInteriorSensitivePointSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitiveBox>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitiveBox` (or subclass).
+    pub fn downcast_to_sensitive_box(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveBox>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitiveBox(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitiveCircle>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitiveCircle` (or subclass).
+    pub fn downcast_to_sensitive_circle(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCircle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitiveCircle(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitiveCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitiveCurve` (or subclass).
+    pub fn downcast_to_sensitive_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitiveCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitiveCylinder>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitiveCylinder` (or subclass).
+    pub fn downcast_to_sensitive_cylinder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCylinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitiveCylinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitiveFace>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitiveFace` (or subclass).
+    pub fn downcast_to_select3_d_sensitive_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitiveFace(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitiveGroup>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitiveGroup` (or subclass).
+    pub fn downcast_to_sensitive_group(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveGroup>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitiveGroup(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitivePoint>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitivePoint` (or subclass).
+    pub fn downcast_to_sensitive_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitivePoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitivePoly>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitivePoly` (or subclass).
+    pub fn downcast_to_sensitive_poly(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoly>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitivePoly(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitivePrimitiveArray>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitivePrimitiveArray` (or subclass).
+    pub fn downcast_to_sensitive_primitive_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePrimitiveArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitivePrimitiveArray(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitiveSegment>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitiveSegment` (or subclass).
+    pub fn downcast_to_select3_d_sensitive_segment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSegment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitiveSegment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitiveSphere>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitiveSphere` (or subclass).
+    pub fn downcast_to_sensitive_sphere(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSphere>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitiveSphere(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitiveTriangle>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitiveTriangle` (or subclass).
+    pub fn downcast_to_sensitive_triangle(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveTriangle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitiveTriangle(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitiveTriangulation>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitiveTriangulation` (or subclass).
+    pub fn downcast_to_sensitive_triangulation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveTriangulation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitiveTriangulation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Select3D_SensitiveWire>
+    ///
+    /// Returns `None` if the handle does not point to a `Select3D_SensitiveWire` (or subclass).
+    pub fn downcast_to_sensitive_wire(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveWire>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelect3DSensitiveWire(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_AndFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_AndFilter` (or subclass).
+    pub fn downcast_to_and_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrAndFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrAndFilter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_AndOrFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_AndOrFilter` (or subclass).
+    pub fn downcast_to_and_or_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrAndOrFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrAndOrFilter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_AxisIntersector>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_AxisIntersector` (or subclass).
+    pub fn downcast_to_axis_intersector(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrAxisIntersector>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrAxisIntersector(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_BVHThreadPool>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_BVHThreadPool` (or subclass).
+    pub fn downcast_to_bvh_thread_pool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrBVHThreadPool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrBVHThreadPool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_BaseFrustum>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_BaseFrustum` (or subclass).
+    pub fn downcast_to_base_frustum(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseFrustum>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrBaseFrustum(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_CompositionFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_CompositionFilter` (or subclass).
+    pub fn downcast_to_composition_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrCompositionFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrCompositionFilter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_EntityOwner>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_EntityOwner` (or subclass).
+    pub fn downcast_to_entity_owner(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrEntityOwner(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_FrustumBuilder>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_FrustumBuilder` (or subclass).
+    pub fn downcast_to_frustum_builder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrFrustumBuilder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrFrustumBuilder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_OrFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_OrFilter` (or subclass).
+    pub fn downcast_to_or_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrOrFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrOrFilter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_Selection>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_Selection` (or subclass).
+    pub fn downcast_to_select_mgr_selection(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrSelection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrSelection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_SelectionManager>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_SelectionManager` (or subclass).
+    pub fn downcast_to_selection_manager(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectionManager>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrSelectionManager(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_SensitiveEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_SensitiveEntity` (or subclass).
+    pub fn downcast_to_sensitive_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrSensitiveEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_TriangularFrustumSet>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_TriangularFrustumSet` (or subclass).
+    pub fn downcast_to_triangular_frustum_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrTriangularFrustumSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrTriangularFrustumSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<SelectMgr_ViewerSelector>
+    ///
+    /// Returns `None` if the handle does not point to a `SelectMgr_ViewerSelector` (or subclass).
+    pub fn downcast_to_viewer_selector(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrViewerSelector>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleSelectMgrViewerSelector(
                 self as *const Self,
             )
         };
@@ -30101,6 +34819,150 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdPersistentTopLocItemLocation>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleStdPersistentTopLocItemLocation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdPrs_BRepFont>
+    ///
+    /// Returns `None` if the handle does not point to a `StdPrs_BRepFont` (or subclass).
+    pub fn downcast_to_b_rep_font(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdPrsBRepFont>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdPrsBRepFont(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdPrs_HLRPolyShape>
+    ///
+    /// Returns `None` if the handle does not point to a `StdPrs_HLRPolyShape` (or subclass).
+    pub fn downcast_to_hlr_poly_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdPrsHLRPolyShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdPrsHLRPolyShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdPrs_HLRShape>
+    ///
+    /// Returns `None` if the handle does not point to a `StdPrs_HLRShape` (or subclass).
+    pub fn downcast_to_hlr_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdPrsHLRShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdPrsHLRShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdSelect_BRepOwner>
+    ///
+    /// Returns `None` if the handle does not point to a `StdSelect_BRepOwner` (or subclass).
+    pub fn downcast_to_b_rep_owner(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdSelectBRepOwner>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdSelectBRepOwner(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdSelect_EdgeFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `StdSelect_EdgeFilter` (or subclass).
+    pub fn downcast_to_edge_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdSelectEdgeFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdSelectEdgeFilter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdSelect_FaceFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `StdSelect_FaceFilter` (or subclass).
+    pub fn downcast_to_face_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdSelectFaceFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdSelectFaceFilter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdSelect_Shape>
+    ///
+    /// Returns `None` if the handle does not point to a `StdSelect_Shape` (or subclass).
+    pub fn downcast_to_std_select_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdSelectShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdSelectShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<StdSelect_ShapeTypeFilter>
+    ///
+    /// Returns `None` if the handle does not point to a `StdSelect_ShapeTypeFilter` (or subclass).
+    pub fn downcast_to_shape_type_filter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdSelectShapeTypeFilter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleStdSelectShapeTypeFilter(
                 self as *const Self,
             )
         };
@@ -48040,7 +52902,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TDataStd_Relation>
     ///
     /// Returns `None` if the handle does not point to a `TDataStd_Relation` (or subclass).
-    pub fn downcast_to_relation(
+    pub fn downcast_to_t_data_std_relation(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdRelation>> {
         let ptr = unsafe {
@@ -48126,7 +52988,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TDataXtd_Axis>
     ///
     /// Returns `None` if the handle does not point to a `TDataXtd_Axis` (or subclass).
-    pub fn downcast_to_axis(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdAxis>> {
+    pub fn downcast_to_t_data_xtd_axis(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdAxis>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTDataXtdAxis(self as *const Self)
         };
@@ -48280,7 +53144,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TDataXtd_Presentation>
     ///
     /// Returns `None` if the handle does not point to a `TDataXtd_Presentation` (or subclass).
-    pub fn downcast_to_presentation(
+    pub fn downcast_to_t_data_xtd_presentation(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPresentation>> {
         let ptr = unsafe {
@@ -48486,7 +53350,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<TFunction_DriverTable>
     ///
     /// Returns `None` if the handle does not point to a `TFunction_DriverTable` (or subclass).
-    pub fn downcast_to_driver_table(
+    pub fn downcast_to_t_function_driver_table(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTFunctionDriverTable>> {
         let ptr = unsafe {
@@ -48973,6 +53837,168 @@ impl HandleStandardTransient {
     pub fn downcast_to_txyz(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTXYZ>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTObjTXYZ(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TPrsStd_AISPresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `TPrsStd_AISPresentation` (or subclass).
+    pub fn downcast_to_ais_presentation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdAISPresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTPrsStdAISPresentation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TPrsStd_AISViewer>
+    ///
+    /// Returns `None` if the handle does not point to a `TPrsStd_AISViewer` (or subclass).
+    pub fn downcast_to_ais_viewer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdAISViewer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTPrsStdAISViewer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TPrsStd_AxisDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `TPrsStd_AxisDriver` (or subclass).
+    pub fn downcast_to_axis_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdAxisDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTPrsStdAxisDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TPrsStd_ConstraintDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `TPrsStd_ConstraintDriver` (or subclass).
+    pub fn downcast_to_t_prs_std_constraint_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdConstraintDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTPrsStdConstraintDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TPrsStd_DriverTable>
+    ///
+    /// Returns `None` if the handle does not point to a `TPrsStd_DriverTable` (or subclass).
+    pub fn downcast_to_t_prs_std_driver_table(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdDriverTable>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTPrsStdDriverTable(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TPrsStd_GeometryDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `TPrsStd_GeometryDriver` (or subclass).
+    pub fn downcast_to_t_prs_std_geometry_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdGeometryDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTPrsStdGeometryDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TPrsStd_NamedShapeDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `TPrsStd_NamedShapeDriver` (or subclass).
+    pub fn downcast_to_t_prs_std_named_shape_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdNamedShapeDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTPrsStdNamedShapeDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TPrsStd_PlaneDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `TPrsStd_PlaneDriver` (or subclass).
+    pub fn downcast_to_plane_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdPlaneDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTPrsStdPlaneDriver(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TPrsStd_PointDriver>
+    ///
+    /// Returns `None` if the handle does not point to a `TPrsStd_PointDriver` (or subclass).
+    pub fn downcast_to_point_driver(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdPointDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTPrsStdPointDriver(
+                self as *const Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -50535,6 +55561,216 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_AmbientLight>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_AmbientLight` (or subclass).
+    pub fn downcast_to_ambient_light(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dAmbientLight>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dAmbientLight(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_BadValue>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_BadValue` (or subclass).
+    pub fn downcast_to_bad_value(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dBadValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dBadValue(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_CircularGrid>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_CircularGrid` (or subclass).
+    pub fn downcast_to_v3d_circular_grid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dCircularGrid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dCircularGrid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_DirectionalLight>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_DirectionalLight` (or subclass).
+    pub fn downcast_to_directional_light(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dDirectionalLight>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dDirectionalLight(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_Plane>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_Plane` (or subclass).
+    pub fn downcast_to_v3d_plane(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dPlane>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dPlane(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_PositionLight>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_PositionLight` (or subclass).
+    pub fn downcast_to_position_light(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dPositionLight>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dPositionLight(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_PositionalLight>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_PositionalLight` (or subclass).
+    pub fn downcast_to_positional_light(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dPositionalLight>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dPositionalLight(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_RectangularGrid>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_RectangularGrid` (or subclass).
+    pub fn downcast_to_v3d_rectangular_grid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dRectangularGrid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dRectangularGrid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_SpotLight>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_SpotLight` (or subclass).
+    pub fn downcast_to_spot_light(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dSpotLight>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dSpotLight(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_Trihedron>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_Trihedron` (or subclass).
+    pub fn downcast_to_v3d_trihedron(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dTrihedron>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dTrihedron(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_UnMapped>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_UnMapped` (or subclass).
+    pub fn downcast_to_un_mapped(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dUnMapped>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dUnMapped(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_View>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_View` (or subclass).
+    pub fn downcast_to_v3d_view(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dView(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<V3d_Viewer>
+    ///
+    /// Returns `None` if the handle does not point to a `V3d_Viewer` (or subclass).
+    pub fn downcast_to_viewer(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dViewer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleV3dViewer(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<VrmlAPI_CafReader>
     ///
     /// Returns `None` if the handle does not point to a `VrmlAPI_CafReader` (or subclass).
@@ -50556,7 +55792,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<VrmlConverter_Drawer>
     ///
     /// Returns `None` if the handle does not point to a `VrmlConverter_Drawer` (or subclass).
-    pub fn downcast_to_drawer(
+    pub fn downcast_to_vrml_converter_drawer(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlConverterDrawer>> {
         let ptr = unsafe {
@@ -50574,7 +55810,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<VrmlConverter_IsoAspect>
     ///
     /// Returns `None` if the handle does not point to a `VrmlConverter_IsoAspect` (or subclass).
-    pub fn downcast_to_iso_aspect(
+    pub fn downcast_to_vrml_converter_iso_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlConverterIsoAspect>> {
         let ptr = unsafe {
@@ -50592,7 +55828,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<VrmlConverter_LineAspect>
     ///
     /// Returns `None` if the handle does not point to a `VrmlConverter_LineAspect` (or subclass).
-    pub fn downcast_to_line_aspect(
+    pub fn downcast_to_vrml_converter_line_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlConverterLineAspect>> {
         let ptr = unsafe {
@@ -50610,7 +55846,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<VrmlConverter_PointAspect>
     ///
     /// Returns `None` if the handle does not point to a `VrmlConverter_PointAspect` (or subclass).
-    pub fn downcast_to_point_aspect(
+    pub fn downcast_to_vrml_converter_point_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlConverterPointAspect>> {
         let ptr = unsafe {
@@ -50646,7 +55882,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<VrmlConverter_ShadingAspect>
     ///
     /// Returns `None` if the handle does not point to a `VrmlConverter_ShadingAspect` (or subclass).
-    pub fn downcast_to_shading_aspect(
+    pub fn downcast_to_vrml_converter_shading_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlConverterShadingAspect>> {
         let ptr = unsafe {
@@ -50940,7 +56176,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<VrmlData_Texture>
     ///
     /// Returns `None` if the handle does not point to a `VrmlData_Texture` (or subclass).
-    pub fn downcast_to_texture(
+    pub fn downcast_to_vrml_data_texture(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataTexture>> {
         let ptr = unsafe {
@@ -51414,7 +56650,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<XCAFDoc_Dimension>
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_Dimension` (or subclass).
-    pub fn downcast_to_dimension(
+    pub fn downcast_to_xcaf_doc_dimension(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDimension>> {
         let ptr = unsafe {
@@ -51787,6 +57023,56 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFNoteObjectsNoteObject>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleXCAFNoteObjectsNoteObject(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XCAFPrs_AISObject>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFPrs_AISObject` (or subclass).
+    pub fn downcast_to_ais_object(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFPrsAISObject>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXCAFPrsAISObject(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XCAFPrs_Driver>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFPrs_Driver` (or subclass).
+    pub fn downcast_to_driver(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFPrsDriver>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXCAFPrsDriver(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XCAFPrs_Texture>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFPrs_Texture` (or subclass).
+    pub fn downcast_to_xcaf_prs_texture(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFPrsTexture>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXCAFPrsTexture(
                 self as *const Self,
             )
         };
@@ -53208,7 +58494,7 @@ unsafe impl crate::CppDeletable for Type {
 impl Type {
     /// **Source:** `Standard_Type.hxx`:124 - `Standard_Type::SystemName()`
     /// Returns the system type name of the class (typeinfo.name)
-    pub fn system_name(&self) -> String {
+    pub fn system_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_Type_system_name(self as *const Self))
                 .to_string_lossy()
@@ -53218,7 +58504,7 @@ impl Type {
 
     /// **Source:** `Standard_Type.hxx`:127 - `Standard_Type::Name()`
     /// Returns the given name of the class type (get_type_name)
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_Type_name(self as *const Self))
                 .to_string_lossy()
@@ -53269,7 +58555,7 @@ impl Type {
     }
 
     /// **Source:** `Standard_Type.hxx`:174 - `Standard_Type::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_Type_get_type_name())
                 .to_string_lossy()
@@ -53464,7 +58750,7 @@ impl TypeMismatch {
     }
 
     /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_TypeMismatch_get_type_name())
                 .to_string_lossy()
@@ -53740,7 +59026,7 @@ impl Underflow {
     }
 
     /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Standard_Underflow_get_type_name())
                 .to_string_lossy()
@@ -53913,7 +59199,8 @@ pub use crate::ffi::{
     Standard_Address as Address, Standard_IStream as IStream, Standard_JmpBuf as JmpBuf,
     Standard_OStream as OStream, Standard_PCharacter as PCharacter,
     Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream,
-    Standard_ThreadId as ThreadId, Standard_Utf16Char as Utf16Char, Standard_WideChar as WideChar,
+    Standard_ThreadId as ThreadId, Standard_Utf16Char as Utf16Char,
+    Standard_Utf32Char as Utf32Char, Standard_WideChar as WideChar,
 };
 
 // Manual bindings:

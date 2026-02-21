@@ -6,8 +6,2263 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `XCAFPrs.hxx`:47 - `XCAFPrs::SetViewNameMode`
+/// Set ViewNameMode for indicate display names or not.
+pub fn set_view_name_mode(viewNameMode: bool) {
+    unsafe { crate::ffi::XCAFPrs_set_view_name_mode(viewNameMode) }
+}
+/// **Source:** `XCAFPrs.hxx`:49 - `XCAFPrs::GetViewNameMode`
+pub fn get_view_name_mode() -> bool {
+    unsafe { crate::ffi::XCAFPrs_get_view_name_mode() }
+}
+
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleAISColoredShape, HandleAISInteractiveObject, HandleAISShape, HandleGraphic3dTexture2D,
+    HandleGraphic3dTextureMap, HandleGraphic3dTextureRoot, HandlePrsMgrPresentableObject,
+    HandleSelectMgrSelectableObject, HandleStandardTransient, HandleTPrsStdDriver,
+};
+
+// ========================
+// From XCAFPrs_AISObject.hxx
+// ========================
+
+/// **Source:** `XCAFPrs_AISObject.hxx`:24 - `XCAFPrs_AISObject`
+/// Implements AIS_InteractiveObject functionality for shape in DECAF document.
+pub use crate::ffi::XCAFPrs_AISObject as AISObject;
+
+unsafe impl crate::CppDeletable for AISObject {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XCAFPrs_AISObject_destructor(ptr);
+    }
+}
+
+impl AISObject {
+    /// **Source:** `XCAFPrs_AISObject.hxx`:28 - `XCAFPrs_AISObject::XCAFPrs_AISObject()`
+    /// Creates an object to visualise the shape label.
+    pub fn new_label(theLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_AISObject_ctor_label(theLabel)) }
+    }
+
+    /// **Source:** `XCAFPrs_AISObject.hxx`:31 - `XCAFPrs_AISObject::GetLabel()`
+    /// Returns the label which was visualised by this presentation
+    pub fn get_label(&self) -> &crate::tdf::Label {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_get_label(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_AISObject.hxx`:35 - `XCAFPrs_AISObject::SetLabel()`
+    /// Assign the label to this presentation
+    /// (but does not mark it outdated with SetToUpdate()).
+    pub fn set_label(&mut self, theLabel: &crate::tdf::Label) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_set_label(self as *mut Self, theLabel) }
+    }
+
+    /// **Source:** `XCAFPrs_AISObject.hxx`:42 - `XCAFPrs_AISObject::DispatchStyles()`
+    /// Fetch the Shape from associated Label and fill the map of sub-shapes styles.
+    /// By default, this method is called implicitly within first ::Compute().
+    /// Application might call this method explicitly to manipulate styles afterwards.
+    /// @param theToSyncStyles flag indicating if method ::Compute() should call this method again
+    /// on first compute or re-compute
+    pub fn dispatch_styles(&mut self, theToSyncStyles: bool) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_dispatch_styles(self as *mut Self, theToSyncStyles) }
+    }
+
+    /// **Source:** `XCAFPrs_AISObject.hxx`:48 - `XCAFPrs_AISObject::SetMaterial()`
+    /// Sets the material aspect.
+    /// This method assigns the new default material without overriding XDE styles.
+    /// Re-computation of existing presentation is not required after calling this method.
+    pub fn set_material(&mut self, theMaterial: &crate::graphic3d::MaterialAspect) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_set_material(self as *mut Self, theMaterial) }
+    }
+
+    /// **Source:** `XCAFPrs_AISObject.hxx`:76 - `XCAFPrs_AISObject::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_AISObject.hxx`:76 - `XCAFPrs_AISObject::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XCAFPrs_AISObject_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `XCAFPrs_AISObject.hxx`:76 - `XCAFPrs_AISObject::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_get_type_descriptor()) }
+    }
+
+    /// Upcast to AIS_ColoredShape
+    pub fn as_ais_colored_shape(&self) -> &crate::ais::ColoredShape {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_as_AIS_ColoredShape(self as *const Self)) }
+    }
+
+    /// Upcast to AIS_ColoredShape (mutable)
+    pub fn as_ais_colored_shape_mut(&mut self) -> &mut crate::ais::ColoredShape {
+        unsafe { &mut *(crate::ffi::XCAFPrs_AISObject_as_AIS_ColoredShape_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to AIS_Shape
+    pub fn as_ais_shape(&self) -> &crate::ais::Shape {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_as_AIS_Shape(self as *const Self)) }
+    }
+
+    /// Upcast to AIS_Shape (mutable)
+    pub fn as_ais_shape_mut(&mut self) -> &mut crate::ais::Shape {
+        unsafe { &mut *(crate::ffi::XCAFPrs_AISObject_as_AIS_Shape_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to AIS_InteractiveObject
+    pub fn as_ais_interactive_object(&self) -> &crate::ais::InteractiveObject {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_as_AIS_InteractiveObject(self as *const Self)) }
+    }
+
+    /// Upcast to AIS_InteractiveObject (mutable)
+    pub fn as_ais_interactive_object_mut(&mut self) -> &mut crate::ais::InteractiveObject {
+        unsafe {
+            &mut *(crate::ffi::XCAFPrs_AISObject_as_AIS_InteractiveObject_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to SelectMgr_SelectableObject
+    pub fn as_select_mgr_selectable_object(&self) -> &crate::select_mgr::SelectableObject {
+        unsafe {
+            &*(crate::ffi::XCAFPrs_AISObject_as_SelectMgr_SelectableObject(self as *const Self))
+        }
+    }
+
+    /// Upcast to SelectMgr_SelectableObject (mutable)
+    pub fn as_select_mgr_selectable_object_mut(
+        &mut self,
+    ) -> &mut crate::select_mgr::SelectableObject {
+        unsafe {
+            &mut *(crate::ffi::XCAFPrs_AISObject_as_SelectMgr_SelectableObject_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to PrsMgr_PresentableObject
+    pub fn as_prs_mgr_presentable_object(&self) -> &crate::prs_mgr::PresentableObject {
+        unsafe {
+            &*(crate::ffi::XCAFPrs_AISObject_as_PrsMgr_PresentableObject(self as *const Self))
+        }
+    }
+
+    /// Upcast to PrsMgr_PresentableObject (mutable)
+    pub fn as_prs_mgr_presentable_object_mut(&mut self) -> &mut crate::prs_mgr::PresentableObject {
+        unsafe {
+            &mut *(crate::ffi::XCAFPrs_AISObject_as_PrsMgr_PresentableObject_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::XCAFPrs_AISObject_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFPrsAISObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_AISObject_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:41 - `AIS_ColoredShape::CustomAspects()`
+    pub fn custom_aspects(
+        &mut self,
+        theShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAISColoredDrawer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_AISObject_inherited_CustomAspects(
+                self as *mut Self,
+                theShape,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:44 - `AIS_ColoredShape::ClearCustomAspects()`
+    pub fn clear_custom_aspects(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_ClearCustomAspects(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:48 - `AIS_ColoredShape::UnsetCustomAspects()`
+    pub fn unset_custom_aspects(
+        &mut self,
+        theShape: &crate::topo_ds::Shape,
+        theToUnregister: bool,
+    ) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_UnsetCustomAspects(
+                self as *mut Self,
+                theShape,
+                theToUnregister,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:52 - `AIS_ColoredShape::SetCustomColor()`
+    pub fn set_custom_color(
+        &mut self,
+        theShape: &crate::topo_ds::Shape,
+        theColor: &crate::quantity::Color,
+    ) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetCustomColor(
+                self as *mut Self,
+                theShape,
+                theColor,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:55 - `AIS_ColoredShape::SetCustomTransparency()`
+    pub fn set_custom_transparency(
+        &mut self,
+        theShape: &crate::topo_ds::Shape,
+        theTransparency: f64,
+    ) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetCustomTransparency(
+                self as *mut Self,
+                theShape,
+                theTransparency,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:59 - `AIS_ColoredShape::SetCustomWidth()`
+    pub fn set_custom_width(&mut self, theShape: &crate::topo_ds::Shape, theLineWidth: f64) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetCustomWidth(
+                self as *mut Self,
+                theShape,
+                theLineWidth,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:63 - `AIS_ColoredShape::CustomAspectsMap()`
+    pub fn custom_aspects_map(&self) -> &crate::ffi::AIS_DataMapOfShapeDrawer {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_CustomAspectsMap(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:66 - `AIS_ColoredShape::ChangeCustomAspectsMap()`
+    pub fn change_custom_aspects_map(&mut self) -> &mut crate::ffi::AIS_DataMapOfShapeDrawer {
+        unsafe {
+            &mut *(crate::ffi::XCAFPrs_AISObject_inherited_ChangeCustomAspectsMap(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:70 - `AIS_ColoredShape::SetColor()`
+    pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_SetColor(self as *mut Self, theColor) }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:73 - `AIS_ColoredShape::SetWidth()`
+    pub fn set_width(&mut self, theLineWidth: f64) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_SetWidth(self as *mut Self, theLineWidth) }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:76 - `AIS_ColoredShape::SetTransparency()`
+    pub fn set_transparency(&mut self, theValue: f64) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetTransparency(self as *mut Self, theValue)
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:84 - `AIS_ColoredShape::UnsetTransparency()`
+    pub fn unset_transparency(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetTransparency(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_ColoredShape.hxx`:87 - `AIS_ColoredShape::UnsetWidth()`
+    pub fn unset_width(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetWidth(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:71 - `AIS_Shape::Signature()`
+    pub fn signature(&self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Signature(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:74 - `AIS_Shape::Type()`
+    pub fn type_(&self) -> crate::ais::KindOfInteractive {
+        unsafe {
+            crate::ais::KindOfInteractive::try_from(crate::ffi::XCAFPrs_AISObject_inherited_Type(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:80 - `AIS_Shape::AcceptShapeDecomposition()`
+    pub fn accept_shape_decomposition(&self) -> bool {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_AcceptShapeDecomposition(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:86 - `AIS_Shape::AcceptDisplayMode()`
+    pub fn accept_display_mode(&self, theMode: i32) -> bool {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_AcceptDisplayMode(self as *const Self, theMode)
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:92 - `AIS_Shape::Shape()`
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_Shape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:95 - `AIS_Shape::SetShape()`
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_SetShape(self as *mut Self, theShape) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:102 - `AIS_Shape::Set()`
+    pub fn set(&mut self, theShape: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Set(self as *mut Self, theShape) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:105 - `AIS_Shape::SetOwnDeviationCoefficient()`
+    pub fn set_own_deviation_coefficient(&mut self) -> bool {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetOwnDeviationCoefficient(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:108 - `AIS_Shape::SetOwnDeviationAngle()`
+    pub fn set_own_deviation_angle(&mut self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_SetOwnDeviationAngle(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:115 - `AIS_Shape::SetAngleAndDeviation()`
+    pub fn set_angle_and_deviation(&mut self, anAngle: f64) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetAngleAndDeviation(self as *mut Self, anAngle)
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:118 - `AIS_Shape::UserAngle()`
+    pub fn user_angle(&self) -> f64 {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UserAngle(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:128 - `AIS_Shape::OwnDeviationCoefficient()`
+    pub fn own_deviation_coefficient(
+        &self,
+        aCoefficient: &mut f64,
+        aPreviousCoefficient: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_OwnDeviationCoefficient(
+                self as *const Self,
+                aCoefficient,
+                aPreviousCoefficient,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:133 - `AIS_Shape::OwnDeviationAngle()`
+    pub fn own_deviation_angle(&self, anAngle: &mut f64, aPreviousAngle: &mut f64) -> bool {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_OwnDeviationAngle(
+                self as *const Self,
+                anAngle,
+                aPreviousAngle,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:137 - `AIS_Shape::SetTypeOfHLR()`
+    pub fn set_type_of_hlr(&mut self, theTypeOfHLR: crate::prs3d::TypeOfHLR) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetTypeOfHLR(
+                self as *mut Self,
+                theTypeOfHLR.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:140 - `AIS_Shape::TypeOfHLR()`
+    pub fn type_of_hlr(&self) -> crate::prs3d::TypeOfHLR {
+        unsafe {
+            crate::prs3d::TypeOfHLR::try_from(crate::ffi::XCAFPrs_AISObject_inherited_TypeOfHLR(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:158 - `AIS_Shape::UnsetColor()`
+    pub fn unset_color(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetColor(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:172 - `AIS_Shape::UnsetMaterial()`
+    pub fn unset_material(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetMaterial(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:182 - `AIS_Shape::BoundingBox()`
+    pub fn bounding_box(&mut self) -> &crate::bnd::Box {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_BoundingBox(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:190 - `AIS_Shape::Color()`
+    pub fn color(&self, aColor: &mut crate::quantity::Color) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Color(self as *const Self, aColor) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:194 - `AIS_Shape::Material()`
+    pub fn material(&self) -> crate::graphic3d::NameOfMaterial {
+        unsafe {
+            crate::graphic3d::NameOfMaterial::try_from(
+                crate::ffi::XCAFPrs_AISObject_inherited_Material(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:198 - `AIS_Shape::Transparency()`
+    pub fn transparency(&self) -> f64 {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Transparency(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:256 - `AIS_Shape::TextureRepeatUV()`
+    pub fn texture_repeat_uv(&self) -> &crate::gp::Pnt2d {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_TextureRepeatUV(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:261 - `AIS_Shape::SetTextureRepeatUV()`
+    pub fn set_texture_repeat_uv(&mut self, theRepeatUV: &crate::gp::Pnt2d) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetTextureRepeatUV(
+                self as *mut Self,
+                theRepeatUV,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:264 - `AIS_Shape::TextureOriginUV()`
+    pub fn texture_origin_uv(&self) -> &crate::gp::Pnt2d {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_TextureOriginUV(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:268 - `AIS_Shape::SetTextureOriginUV()`
+    pub fn set_texture_origin_uv(&mut self, theOriginUV: &crate::gp::Pnt2d) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetTextureOriginUV(
+                self as *mut Self,
+                theOriginUV,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:271 - `AIS_Shape::TextureScaleUV()`
+    pub fn texture_scale_uv(&self) -> &crate::gp::Pnt2d {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_TextureScaleUV(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `AIS_Shape.hxx`:277 - `AIS_Shape::SetTextureScaleUV()`
+    pub fn set_texture_scale_uv(&mut self, theScaleUV: &crate::gp::Pnt2d) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetTextureScaleUV(self as *mut Self, theScaleUV)
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:71 - `AIS_InteractiveObject::Redisplay()`
+    pub fn redisplay(&mut self, AllModes: bool) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Redisplay(self as *mut Self, AllModes) }
+    }
+
+    /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:74 - `AIS_InteractiveObject::HasInteractiveContext()`
+    pub fn has_interactive_context(&self) -> bool {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_HasInteractiveContext(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:77 - `AIS_InteractiveObject::InteractiveContext()`
+    pub fn interactive_context(&self) -> Option<&crate::ais::InteractiveContext> {
+        {
+            let ptr = unsafe {
+                crate::ffi::XCAFPrs_AISObject_inherited_InteractiveContext(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:81 - `AIS_InteractiveObject::SetContext()`
+    pub fn set_context(&mut self, aCtx: &crate::ffi::HandleAISInteractiveContext) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_SetContext(self as *mut Self, aCtx) }
+    }
+
+    /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:86 - `AIS_InteractiveObject::HasOwner()`
+    pub fn has_owner(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasOwner(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:97 - `AIS_InteractiveObject::GetOwner()`
+    pub fn get_owner(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_GetOwner(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:103 - `AIS_InteractiveObject::SetOwner()`
+    pub fn set_owner(&mut self, theApplicativeEntity: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetOwner(
+                self as *mut Self,
+                theApplicativeEntity,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:110 - `AIS_InteractiveObject::ClearOwner()`
+    pub fn clear_owner(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_ClearOwner(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:120 - `AIS_InteractiveObject::ProcessDragging()`
+    pub fn process_dragging(
+        &mut self,
+        theCtx: &crate::ffi::HandleAISInteractiveContext,
+        theView: &crate::ffi::HandleV3dView,
+        theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
+        theDragFrom: &crate::ffi::Graphic3d_Vec2i,
+        theDragTo: &crate::ffi::Graphic3d_Vec2i,
+        theAction: crate::ais::DragAction,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_ProcessDragging(
+                self as *mut Self,
+                theCtx,
+                theView,
+                theOwner,
+                theDragFrom,
+                theDragTo,
+                theAction.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:130 - `AIS_InteractiveObject::GetContext()`
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleAISInteractiveContext> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_AISObject_inherited_GetContext(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:133 - `AIS_InteractiveObject::HasPresentation()`
+    pub fn has_presentation(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasPresentation(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:136 - `AIS_InteractiveObject::Presentation()`
+    pub fn presentation(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_AISObject_inherited_Presentation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:69 - `SelectMgr_SelectableObject::RecomputePrimitives()`
+    pub fn recompute_primitives(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_RecomputePrimitives(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:80 - `SelectMgr_SelectableObject::AddSelection()`
+    pub fn add_selection(&mut self, aSelection: &crate::ffi::HandleSelectMgrSelection, aMode: i32) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_AddSelection(
+                self as *mut Self,
+                aSelection,
+                aMode,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:89 - `SelectMgr_SelectableObject::ClearSelections()`
+    pub fn clear_selections(&mut self, update: bool) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_ClearSelections(self as *mut Self, update)
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:92 - `SelectMgr_SelectableObject::Selection()`
+    pub fn selection(&self, theMode: i32) -> &crate::ffi::HandleSelectMgrSelection {
+        unsafe {
+            &*(crate::ffi::XCAFPrs_AISObject_inherited_Selection(self as *const Self, theMode))
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:97 - `SelectMgr_SelectableObject::HasSelection()`
+    pub fn has_selection(&self, theMode: i32) -> bool {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_HasSelection(self as *const Self, theMode)
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:103 - `SelectMgr_SelectableObject::Selections()`
+    pub fn selections(&self) -> &crate::ffi::SelectMgr_SequenceOfSelection {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_Selections(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:105 - `SelectMgr_SelectableObject::ResetTransformation()`
+    pub fn reset_transformation(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_ResetTransformation(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:108 - `SelectMgr_SelectableObject::UpdateTransformation()`
+    pub fn update_transformation(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UpdateTransformation(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:112 - `SelectMgr_SelectableObject::UpdateTransformations()`
+    pub fn update_transformations(&mut self, aSelection: &crate::ffi::HandleSelectMgrSelection) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_UpdateTransformations(
+                self as *mut Self,
+                aSelection,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:115 - `SelectMgr_SelectableObject::HilightSelected()`
+    pub fn hilight_selected(
+        &mut self,
+        thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
+        theSeq: &crate::ffi::SelectMgr_SequenceOfOwner,
+    ) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_HilightSelected(
+                self as *mut Self,
+                thePrsMgr,
+                theSeq,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:120 - `SelectMgr_SelectableObject::ClearSelected()`
+    pub fn clear_selected(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_ClearSelected(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:127 - `SelectMgr_SelectableObject::ClearDynamicHighlight()`
+    pub fn clear_dynamic_highlight(
+        &mut self,
+        theMgr: &crate::ffi::HandlePrsMgrPresentationManager,
+    ) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_ClearDynamicHighlight(self as *mut Self, theMgr)
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:132 - `SelectMgr_SelectableObject::HilightOwnerWithColor()`
+    pub fn hilight_owner_with_color(
+        &mut self,
+        thePM: &crate::ffi::HandlePrsMgrPresentationManager,
+        theStyle: &crate::ffi::HandlePrs3dDrawer,
+        theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
+    ) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_HilightOwnerWithColor(
+                self as *mut Self,
+                thePM,
+                theStyle,
+                theOwner,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:140 - `SelectMgr_SelectableObject::IsAutoHilight()`
+    pub fn is_auto_hilight(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_IsAutoHilight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:143 - `SelectMgr_SelectableObject::SetAutoHilight()`
+    pub fn set_auto_hilight(&mut self, theAutoHilight: bool) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetAutoHilight(
+                self as *mut Self,
+                theAutoHilight,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:151 - `SelectMgr_SelectableObject::GetHilightPresentation()`
+    pub fn get_hilight_presentation(
+        &mut self,
+        thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFPrs_AISObject_inherited_GetHilightPresentation(
+                    self as *mut Self,
+                    thePrsMgr,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:157 - `SelectMgr_SelectableObject::GetSelectPresentation()`
+    pub fn get_select_presentation(
+        &mut self,
+        thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFPrs_AISObject_inherited_GetSelectPresentation(
+                    self as *mut Self,
+                    thePrsMgr,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:161 - `SelectMgr_SelectableObject::ErasePresentations()`
+    pub fn erase_presentations(&mut self, theToRemove: bool) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_ErasePresentations(
+                self as *mut Self,
+                theToRemove,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
+    pub fn update_selection(&mut self, theMode: i32) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_UpdateSelection(self as *mut Self, theMode)
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:173 - `SelectMgr_SelectableObject::SetAssemblyOwner()`
+    pub fn set_assembly_owner(
+        &mut self,
+        theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
+        theMode: i32,
+    ) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetAssemblyOwner(
+                self as *mut Self,
+                theOwner,
+                theMode,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
+    pub fn global_selection_mode(&self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_GlobalSelectionMode(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:184 - `SelectMgr_SelectableObject::GlobalSelOwner()`
+    pub fn global_sel_owner(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_AISObject_inherited_GlobalSelOwner(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:187 - `SelectMgr_SelectableObject::GetAssemblyOwner()`
+    pub fn get_assembly_owner(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_GetAssemblyOwner(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
+    pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
+        unsafe { &mut *(crate::ffi::XCAFPrs_AISObject_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
+    pub fn is_mutable(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_IsMutable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:75 - `PrsMgr_PresentableObject::SetMutable()`
+    pub fn set_mutable(&mut self, theIsMutable: bool) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetMutable(self as *mut Self, theIsMutable)
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:78 - `PrsMgr_PresentableObject::ViewAffinity()`
+    pub fn view_affinity(&self) -> &crate::ffi::HandleGraphic3dViewAffinity {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_ViewAffinity(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:82 - `PrsMgr_PresentableObject::HasDisplayMode()`
+    pub fn has_display_mode(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasDisplayMode(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:88 - `PrsMgr_PresentableObject::DisplayMode()`
+    pub fn display_mode(&self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_DisplayMode(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:94 - `PrsMgr_PresentableObject::SetDisplayMode()`
+    pub fn set_display_mode(&mut self, theMode: i32) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetDisplayMode(self as *mut Self, theMode)
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:103 - `PrsMgr_PresentableObject::UnsetDisplayMode()`
+    pub fn unset_display_mode(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetDisplayMode(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:107 - `PrsMgr_PresentableObject::HasHilightMode()`
+    pub fn has_hilight_mode(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasHilightMode(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:116 - `PrsMgr_PresentableObject::HilightMode()`
+    pub fn hilight_mode(&self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HilightMode(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:125 - `PrsMgr_PresentableObject::SetHilightMode()`
+    pub fn set_hilight_mode(&mut self, theMode: i32) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetHilightMode(self as *mut Self, theMode)
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:129 - `PrsMgr_PresentableObject::UnsetHilightMode()`
+    pub fn unset_hilight_mode(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetHilightMode(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:156 - `PrsMgr_PresentableObject::DefaultDisplayMode()`
+    pub fn default_display_mode(&self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_DefaultDisplayMode(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:161 - `PrsMgr_PresentableObject::ToBeUpdated()`
+    pub fn to_be_updated(&self, theToIncludeHidden: bool) -> bool {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_ToBeUpdated(
+                self as *const Self,
+                theToIncludeHidden,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:165 - `PrsMgr_PresentableObject::SetToUpdate()`
+    pub fn set_to_update(&mut self, theMode: i32) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_SetToUpdate(self as *mut Self, theMode) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:175 - `PrsMgr_PresentableObject::IsInfinite()`
+    pub fn is_infinite(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_IsInfinite(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:178 - `PrsMgr_PresentableObject::SetInfiniteState()`
+    pub fn set_infinite_state(&mut self, theFlag: bool) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetInfiniteState(self as *mut Self, theFlag)
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:181 - `PrsMgr_PresentableObject::TypeOfPresentation3d()`
+    pub fn type_of_presentation3d(&self) -> crate::prs_mgr::TypeOfPresentation3d {
+        unsafe {
+            crate::prs_mgr::TypeOfPresentation3d::try_from(
+                crate::ffi::XCAFPrs_AISObject_inherited_TypeOfPresentation3d(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:184 - `PrsMgr_PresentableObject::SetTypeOfPresentation()`
+    pub fn set_type_of_presentation(&mut self, theType: crate::prs_mgr::TypeOfPresentation3d) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetTypeOfPresentation(
+                self as *mut Self,
+                theType.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:187 - `PrsMgr_PresentableObject::DisplayStatus()`
+    pub fn display_status(&self) -> crate::prs_mgr::DisplayStatus {
+        unsafe {
+            crate::prs_mgr::DisplayStatus::try_from(
+                crate::ffi::XCAFPrs_AISObject_inherited_DisplayStatus(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:191 - `PrsMgr_PresentableObject::Attributes()`
+    pub fn attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_Attributes(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:194 - `PrsMgr_PresentableObject::SetAttributes()`
+    pub fn set_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetAttributes(self as *mut Self, theDrawer)
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:200 - `PrsMgr_PresentableObject::HilightAttributes()`
+    pub fn hilight_attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
+        unsafe {
+            &*(crate::ffi::XCAFPrs_AISObject_inherited_HilightAttributes(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:203 - `PrsMgr_PresentableObject::SetHilightAttributes()`
+    pub fn set_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetHilightAttributes(
+                self as *mut Self,
+                theDrawer,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:212 - `PrsMgr_PresentableObject::DynamicHilightAttributes()`
+    pub fn dynamic_hilight_attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
+        unsafe {
+            &*(crate::ffi::XCAFPrs_AISObject_inherited_DynamicHilightAttributes(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:215 - `PrsMgr_PresentableObject::SetDynamicHilightAttributes()`
+    pub fn set_dynamic_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetDynamicHilightAttributes(
+                self as *mut Self,
+                theDrawer,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:221 - `PrsMgr_PresentableObject::UnsetHilightAttributes()`
+    pub fn unset_hilight_attributes(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetHilightAttributes(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:228 - `PrsMgr_PresentableObject::SynchronizeAspects()`
+    pub fn synchronize_aspects(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_SynchronizeAspects(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:236 - `PrsMgr_PresentableObject::TransformPersistence()`
+    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+        unsafe {
+            &*(crate::ffi::XCAFPrs_AISObject_inherited_TransformPersistence(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:246 - `PrsMgr_PresentableObject::SetTransformPersistence()`
+    pub fn set_transform_persistence(
+        &mut self,
+        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+    ) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetTransformPersistence(
+                self as *mut Self,
+                theTrsfPers,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:252 - `PrsMgr_PresentableObject::LocalTransformationGeom()`
+    pub fn local_transformation_geom(&self) -> &crate::ffi::HandleTopLocDatum3D {
+        unsafe {
+            &*(crate::ffi::XCAFPrs_AISObject_inherited_LocalTransformationGeom(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:257 - `PrsMgr_PresentableObject::SetLocalTransformation()`
+    pub fn set_local_transformation(&mut self, theTrsf: &crate::gp::Trsf) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetLocalTransformation(
+                self as *mut Self,
+                theTrsf,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:271 - `PrsMgr_PresentableObject::HasTransformation()`
+    pub fn has_transformation(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasTransformation(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:279 - `PrsMgr_PresentableObject::TransformationGeom()`
+    pub fn transformation_geom(&self) -> &crate::ffi::HandleTopLocDatum3D {
+        unsafe {
+            &*(crate::ffi::XCAFPrs_AISObject_inherited_TransformationGeom(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:284 - `PrsMgr_PresentableObject::LocalTransformation()`
+    pub fn local_transformation(&self) -> &crate::gp::Trsf {
+        unsafe {
+            &*(crate::ffi::XCAFPrs_AISObject_inherited_LocalTransformation(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:292 - `PrsMgr_PresentableObject::Transformation()`
+    pub fn transformation(&self) -> &crate::gp::Trsf {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_Transformation(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:298 - `PrsMgr_PresentableObject::InversedTransformation()`
+    pub fn inversed_transformation(&self) -> &crate::gp::GTrsf {
+        unsafe {
+            &*(crate::ffi::XCAFPrs_AISObject_inherited_InversedTransformation(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:301 - `PrsMgr_PresentableObject::CombinedParentTransformation()`
+    pub fn combined_parent_transformation(&self) -> &crate::ffi::HandleTopLocDatum3D {
+        unsafe {
+            &*(crate::ffi::XCAFPrs_AISObject_inherited_CombinedParentTransformation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:316 - `PrsMgr_PresentableObject::RecomputeTransformation()`
+    pub fn recompute_transformation(&mut self, theProjector: &crate::ffi::HandleGraphic3dCamera) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_RecomputeTransformation(
+                self as *mut Self,
+                theProjector,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:324 - `PrsMgr_PresentableObject::ClipPlanes()`
+    pub fn clip_planes(&self) -> &crate::ffi::HandleGraphic3dSequenceOfHClipPlane {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_ClipPlanes(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:333 - `PrsMgr_PresentableObject::SetClipPlanes()`
+    pub fn set_clip_planes(&mut self, thePlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetClipPlanes(self as *mut Self, thePlanes)
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:344 - `PrsMgr_PresentableObject::AddClipPlane()`
+    pub fn add_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_AddClipPlane(self as *mut Self, thePlane) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:348 - `PrsMgr_PresentableObject::RemoveClipPlane()`
+    pub fn remove_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_RemoveClipPlane(self as *mut Self, thePlane)
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:352 - `PrsMgr_PresentableObject::Parent()`
+    pub fn parent(&self) -> Option<&crate::prs_mgr::PresentableObject> {
+        {
+            let ptr =
+                unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Parent(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:355 - `PrsMgr_PresentableObject::Children()`
+    pub fn children(&self) -> &crate::ffi::PrsMgr_ListOfPresentableObjects {
+        unsafe { &*(crate::ffi::XCAFPrs_AISObject_inherited_Children(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:358 - `PrsMgr_PresentableObject::AddChild()`
+    pub fn add_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_AddChild(self as *mut Self, theObject) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:362 - `PrsMgr_PresentableObject::AddChildWithCurrentTransformation()`
+    pub fn add_child_with_current_transformation(
+        &mut self,
+        theObject: &crate::ffi::HandlePrsMgrPresentableObject,
+    ) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_AddChildWithCurrentTransformation(
+                self as *mut Self,
+                theObject,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:366 - `PrsMgr_PresentableObject::RemoveChild()`
+    pub fn remove_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_RemoveChild(self as *mut Self, theObject) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:370 - `PrsMgr_PresentableObject::RemoveChildWithRestoreTransformation()`
+    pub fn remove_child_with_restore_transformation(
+        &mut self,
+        theObject: &crate::ffi::HandlePrsMgrPresentableObject,
+    ) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_RemoveChildWithRestoreTransformation(
+                self as *mut Self,
+                theObject,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:374 - `PrsMgr_PresentableObject::HasOwnPresentations()`
+    pub fn has_own_presentations(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasOwnPresentations(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:457 - `PrsMgr_PresentableObject::SetIsoOnTriangulation()`
+    pub fn set_iso_on_triangulation(&mut self, theIsEnabled: bool) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetIsoOnTriangulation(
+                self as *mut Self,
+                theIsEnabled,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:463 - `PrsMgr_PresentableObject::CurrentFacingModel()`
+    pub fn current_facing_model(&self) -> crate::aspect::TypeOfFacingModel {
+        unsafe {
+            crate::aspect::TypeOfFacingModel::try_from(
+                crate::ffi::XCAFPrs_AISObject_inherited_CurrentFacingModel(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:468 - `PrsMgr_PresentableObject::SetCurrentFacingModel()`
+    pub fn set_current_facing_model(&mut self, theModel: crate::aspect::TypeOfFacingModel) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetCurrentFacingModel(
+                self as *mut Self,
+                theModel.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:474 - `PrsMgr_PresentableObject::HasColor()`
+    pub fn has_color(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasColor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:497 - `PrsMgr_PresentableObject::HasWidth()`
+    pub fn has_width(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasWidth(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:500 - `PrsMgr_PresentableObject::Width()`
+    pub fn width(&self) -> f64 {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Width(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:510 - `PrsMgr_PresentableObject::HasMaterial()`
+    pub fn has_material(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasMaterial(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:525 - `PrsMgr_PresentableObject::IsTransparent()`
+    pub fn is_transparent(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_IsTransparent(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:545 - `PrsMgr_PresentableObject::HasPolygonOffsets()`
+    pub fn has_polygon_offsets(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasPolygonOffsets(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:548 - `PrsMgr_PresentableObject::PolygonOffsets()`
+    pub fn polygon_offsets(&self, aMode: &mut i32, aFactor: &mut f32, aUnits: &mut f32) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_PolygonOffsets(
+                self as *const Self,
+                aMode,
+                aFactor,
+                aUnits,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:554 - `PrsMgr_PresentableObject::SetPolygonOffsets()`
+    pub fn set_polygon_offsets(&mut self, aMode: i32, aFactor: f32, aUnits: f32) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetPolygonOffsets(
+                self as *mut Self,
+                aMode,
+                aFactor,
+                aUnits,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:559 - `PrsMgr_PresentableObject::UnsetAttributes()`
+    pub fn unset_attributes(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetAttributes(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:573 - `PrsMgr_PresentableObject::ToPropagateVisualState()`
+    pub fn to_propagate_visual_state(&self) -> bool {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_ToPropagateVisualState(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:576 - `PrsMgr_PresentableObject::SetPropagateVisualState()`
+    pub fn set_propagate_visual_state(&mut self, theFlag: bool) {
+        unsafe {
+            crate::ffi::XCAFPrs_AISObject_inherited_SetPropagateVisualState(
+                self as *mut Self,
+                theFlag,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFPrs_AISObject_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleXCAFPrsAISObject;
+
+unsafe impl crate::CppDeletable for HandleXCAFPrsAISObject {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFPrsAISObject_destructor(ptr);
+    }
+}
+
+impl HandleXCAFPrsAISObject {
+    /// Dereference this Handle to access the underlying XCAFPrs_AISObject
+    pub fn get(&self) -> &crate::ffi::XCAFPrs_AISObject {
+        unsafe { &*(crate::ffi::HandleXCAFPrsAISObject_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFPrs_AISObject
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFPrs_AISObject {
+        unsafe { &mut *(crate::ffi::HandleXCAFPrsAISObject_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFPrs_AISObject> to Handle<AIS_ColoredShape>
+    pub fn to_handle_colored_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleAISColoredShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFPrsAISObject_to_HandleAISColoredShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFPrs_AISObject> to Handle<AIS_Shape>
+    pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleAISShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFPrsAISObject_to_HandleAISShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFPrs_AISObject> to Handle<AIS_InteractiveObject>
+    pub fn to_handle_interactive_object(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAISInteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFPrsAISObject_to_HandleAISInteractiveObject(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFPrs_AISObject> to Handle<SelectMgr_SelectableObject>
+    pub fn to_handle_selectable_object(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectableObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFPrsAISObject_to_HandleSelectMgrSelectableObject(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFPrs_AISObject> to Handle<PrsMgr_PresentableObject>
+    pub fn to_handle_presentable_object(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentableObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFPrsAISObject_to_HandlePrsMgrPresentableObject(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFPrs_AISObject> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFPrsAISObject_to_HandleStandardTransient(self as *const Self),
+            )
+        }
+    }
+}
+
+// ========================
+// From XCAFPrs_DocumentExplorer.hxx
+// ========================
+
+/// **Source:** `XCAFPrs_DocumentExplorer.hxx`:39 - `XCAFPrs_DocumentExplorer`
+/// Document iterator through shape nodes.
+pub use crate::ffi::XCAFPrs_DocumentExplorer as DocumentExplorer;
+
+unsafe impl crate::CppDeletable for DocumentExplorer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XCAFPrs_DocumentExplorer_destructor(ptr);
+    }
+}
+
+impl DocumentExplorer {
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:84 - `XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentExplorer_ctor()) }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:125 - `XCAFPrs_DocumentExplorer::More()`
+    /// Return TRUE if iterator points to the valid node.
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_DocumentExplorer_more(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:128 - `XCAFPrs_DocumentExplorer::Current()`
+    /// Return current position.
+    pub fn current(&self) -> &DocumentNode {
+        unsafe { &*(crate::ffi::XCAFPrs_DocumentExplorer_current(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:131 - `XCAFPrs_DocumentExplorer::ChangeCurrent()`
+    /// Return current position.
+    pub fn change_current(&mut self) -> &mut DocumentNode {
+        unsafe { &mut *(crate::ffi::XCAFPrs_DocumentExplorer_change_current(self as *mut Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:134 - `XCAFPrs_DocumentExplorer::Current()`
+    /// Return current position within specified assembly depth.
+    pub fn current_int(&self, theDepth: i32) -> &DocumentNode {
+        unsafe {
+            &*(crate::ffi::XCAFPrs_DocumentExplorer_current_int(self as *const Self, theDepth))
+        }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:149 - `XCAFPrs_DocumentExplorer::CurrentDepth()`
+    /// Return depth of the current node in hierarchy, starting from 0.
+    /// Zero means Root label.
+    pub fn current_depth(&self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_DocumentExplorer_current_depth(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:152 - `XCAFPrs_DocumentExplorer::Next()`
+    /// Go to the next node.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_DocumentExplorer_next(self as *mut Self) }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:155 - `XCAFPrs_DocumentExplorer::ColorTool()`
+    /// Return color tool.
+    pub fn color_tool(&self) -> &crate::ffi::HandleXCAFDocColorTool {
+        unsafe { &*(crate::ffi::XCAFPrs_DocumentExplorer_color_tool(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:158 - `XCAFPrs_DocumentExplorer::VisMaterialTool()`
+    /// Return material tool.
+    pub fn vis_material_tool(&self) -> &crate::ffi::HandleXCAFDocVisMaterialTool {
+        unsafe { &*(crate::ffi::XCAFPrs_DocumentExplorer_vis_material_tool(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:52 - `XCAFPrs_DocumentExplorer::DefineChildId()`
+    /// @name string identification tools
+    /// Construct a unique string identifier for the given label.
+    /// The identifier is a concatenation of label entries (TDF_Tool::Entry() with tailing '.') of
+    /// hierarchy from parent to child joined via '/' and looking like this:
+    /// @code
+    /// 0:1:1:1./0:1:1:1:9./0:1:1:5:7.
+    /// @endcode
+    /// This generation scheme also allows finding originating labels using TDF_Tool::Label().
+    /// The tailing dot simplifies parent equality check.
+    /// @param theLabel child label to define id
+    /// @param theParentId parent string identifier defined by this method
+    pub fn define_child_id(
+        theLabel: &crate::tdf::Label,
+        theParentId: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentExplorer_define_child_id(
+                theLabel,
+                theParentId,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:59 - `XCAFPrs_DocumentExplorer::FindLabelFromPathId()`
+    /// Find a shape entity based on a text identifier constructed from OCAF labels defining full
+    /// path.
+    /// @sa DefineChildId()
+    pub fn find_label_from_path_id_handletdocstddocument_asciistring_location2(
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theId: &crate::t_collection::AsciiString,
+        theParentLocation: &mut crate::top_loc::Location,
+        theLocation: &mut crate::top_loc::Location,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentExplorer_find_label_from_path_id_handletdocstddocument_asciistring_location2(theDocument, theId, theParentLocation, theLocation))
+        }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:67 - `XCAFPrs_DocumentExplorer::FindLabelFromPathId()`
+    /// Find a shape entity based on a text identifier constructed from OCAF labels defining full
+    /// path.
+    /// @sa DefineChildId()
+    pub fn find_label_from_path_id_handletdocstddocument_asciistring_location(
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theId: &crate::t_collection::AsciiString,
+        theLocation: &mut crate::top_loc::Location,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentExplorer_find_label_from_path_id_handletdocstddocument_asciistring_location(theDocument, theId, theLocation))
+        }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:78 - `XCAFPrs_DocumentExplorer::FindShapeFromPathId()`
+    /// Find a shape entity based on a text identifier constructed from OCAF labels defining full
+    /// path.
+    /// @sa DefineChildId()
+    pub fn find_shape_from_path_id(
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theId: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentExplorer_find_shape_from_path_id(
+                theDocument,
+                theId,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for DocumentExplorer (4 total) ──
+// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:90 - `XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer`
+//   constructor: Constructor for exploring the whole document.
+//   constructor: @param theDocument document to explore
+//   constructor: @param theFlags    iteration flags
+//   Reason: param 'theFlags' uses unknown type 'XCAFPrs_DocumentExplorerFlags'
+//   // pub fn new_handletdocstddocument_documentexplorerflags_style(theDocument: &HandleDocument, theFlags: DocumentExplorerFlags, theDefStyle: &Style) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:99 - `XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer`
+//   constructor: Constructor for exploring specified list of root shapes in the document.
+//   constructor: @param theDocument  document to explore
+//   constructor: @param theRoots     root labels to explore within specified document
+//   Reason: param 'theFlags' uses unknown type 'XCAFPrs_DocumentExplorerFlags'
+//   // pub fn new_handletdocstddocument_labelsequence_documentexplorerflags_style(theDocument: &HandleDocument, theRoots: &LabelSequence, theFlags: DocumentExplorerFlags, theDefStyle: &Style) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:109 - `XCAFPrs_DocumentExplorer::Init`
+//   method: Initialize the iterator from a single root shape in the document.
+//   method: @param theDocument  document to explore
+//   method: @param theRoot      single root label to explore within specified document
+//   Reason: param 'theFlags' uses unknown type 'XCAFPrs_DocumentExplorerFlags'
+//   // pub fn init(&mut self, theDocument: &HandleDocument, theRoot: &Label, theFlags: DocumentExplorerFlags, theDefStyle: &Style);
+//
+// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:119 - `XCAFPrs_DocumentExplorer::Init`
+//   method: Initialize the iterator from the list of root shapes in the document.
+//   method: @param theDocument  document to explore
+//   method: @param theRoots     root labels to explore within specified document
+//   Reason: param 'theFlags' uses unknown type 'XCAFPrs_DocumentExplorerFlags'
+//   // pub fn init(&mut self, theDocument: &HandleDocument, theRoots: &LabelSequence, theFlags: DocumentExplorerFlags, theDefStyle: &Style);
+//
+
+// ========================
+// From XCAFPrs_DocumentIdIterator.hxx
+// ========================
+
+/// **Source:** `XCAFPrs_DocumentIdIterator.hxx`:21 - `XCAFPrs_DocumentIdIterator`
+/// Auxiliary tool for iterating through Path identification string.
+pub use crate::ffi::XCAFPrs_DocumentIdIterator as DocumentIdIterator;
+
+unsafe impl crate::CppDeletable for DocumentIdIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XCAFPrs_DocumentIdIterator_destructor(ptr);
+    }
+}
+
+impl DocumentIdIterator {
+    /// **Source:** `XCAFPrs_DocumentIdIterator.hxx`:25 - `XCAFPrs_DocumentIdIterator::XCAFPrs_DocumentIdIterator()`
+    /// Main constructor.
+    pub fn new_asciistring(thePath: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentIdIterator_ctor_asciistring(
+                thePath,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentIdIterator.hxx`:33 - `XCAFPrs_DocumentIdIterator::More()`
+    /// Return TRUE if iterator points to a value.
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_DocumentIdIterator_more(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentIdIterator.hxx`:36 - `XCAFPrs_DocumentIdIterator::Value()`
+    /// Return current value.
+    pub fn value(&self) -> &crate::t_collection::AsciiString {
+        unsafe { &*(crate::ffi::XCAFPrs_DocumentIdIterator_value(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentIdIterator.hxx`:39 - `XCAFPrs_DocumentIdIterator::Next()`
+    /// Find the next value.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_DocumentIdIterator_next(self as *mut Self) }
+    }
+}
+
+// ========================
+// From XCAFPrs_DocumentNode.hxx
+// ========================
+
+/// **Source:** `XCAFPrs_DocumentNode.hxx`:25 - `XCAFPrs_DocumentNode`
+/// Structure defining document node.
+pub use crate::ffi::XCAFPrs_DocumentNode as DocumentNode;
+
+unsafe impl crate::CppDeletable for DocumentNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XCAFPrs_DocumentNode_destructor(ptr);
+    }
+}
+
+impl DocumentNode {
+    /// **Source:** `XCAFPrs_DocumentNode.hxx`:36 - `XCAFPrs_DocumentNode::XCAFPrs_DocumentNode()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentNode_ctor()) }
+    }
+}
+
+// ========================
+// From XCAFPrs_Driver.hxx
+// ========================
+
+/// **Source:** `XCAFPrs_Driver.hxx`:33 - `XCAFPrs_Driver`
+/// Implements a driver for presentation of shapes in DECAF
+/// document. Its the only purpose is to initialize and return
+/// XCAFPrs_AISObject object on request
+pub use crate::ffi::XCAFPrs_Driver as Driver;
+
+unsafe impl crate::CppDeletable for Driver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XCAFPrs_Driver_destructor(ptr);
+    }
+}
+
+impl Driver {
+    /// **Source:** `XCAFPrs_Driver.hxx` - `XCAFPrs_Driver::XCAFPrs_Driver()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_Driver_ctor()) }
+    }
+
+    /// **Source:** `XCAFPrs_Driver.hxx`:37 - `XCAFPrs_Driver::Update()`
+    pub fn update(
+        &mut self,
+        L: &crate::tdf::Label,
+        ais: &mut crate::ffi::HandleAISInteractiveObject,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Driver_update(self as *mut Self, L, ais) }
+    }
+
+    /// **Source:** `XCAFPrs_Driver.hxx`:44 - `XCAFPrs_Driver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XCAFPrs_Driver_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_Driver.hxx`:42 - `XCAFPrs_Driver::GetID()`
+    /// returns GUID of the driver
+    pub fn get_id() -> &'static crate::standard::GUID {
+        unsafe { &*(crate::ffi::XCAFPrs_Driver_get_id()) }
+    }
+
+    /// **Source:** `XCAFPrs_Driver.hxx`:44 - `XCAFPrs_Driver::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XCAFPrs_Driver_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `XCAFPrs_Driver.hxx`:44 - `XCAFPrs_Driver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XCAFPrs_Driver_get_type_descriptor()) }
+    }
+
+    /// Upcast to TPrsStd_Driver
+    pub fn as_t_prs_std_driver(&self) -> &crate::t_prs_std::Driver {
+        unsafe { &*(crate::ffi::XCAFPrs_Driver_as_TPrsStd_Driver(self as *const Self)) }
+    }
+
+    /// Upcast to TPrsStd_Driver (mutable)
+    pub fn as_t_prs_std_driver_mut(&mut self) -> &mut crate::t_prs_std::Driver {
+        unsafe { &mut *(crate::ffi::XCAFPrs_Driver_as_TPrsStd_Driver_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFPrs_Driver_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFPrs_Driver_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFPrsDriver> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_Driver_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Driver_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Driver_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFPrs_Driver_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_Driver_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_Driver_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_Driver_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFPrs_Driver_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleXCAFPrsDriver;
+
+unsafe impl crate::CppDeletable for HandleXCAFPrsDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFPrsDriver_destructor(ptr);
+    }
+}
+
+impl HandleXCAFPrsDriver {
+    /// Dereference this Handle to access the underlying XCAFPrs_Driver
+    pub fn get(&self) -> &crate::ffi::XCAFPrs_Driver {
+        unsafe { &*(crate::ffi::HandleXCAFPrsDriver_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFPrs_Driver
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFPrs_Driver {
+        unsafe { &mut *(crate::ffi::HandleXCAFPrsDriver_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFPrs_Driver> to Handle<TPrsStd_Driver>
+    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdDriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFPrsDriver_to_HandleTPrsStdDriver(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFPrs_Driver> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFPrsDriver_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From XCAFPrs_Style.hxx
+// ========================
+
+/// **Source:** `XCAFPrs_Style.hxx`:26 - `XCAFPrs_Style`
+/// Represents a set of styling settings applicable to a (sub)shape
+pub use crate::ffi::XCAFPrs_Style as Style;
+
+unsafe impl crate::CppDeletable for Style {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XCAFPrs_Style_destructor(ptr);
+    }
+}
+
+impl Style {
+    /// **Source:** `XCAFPrs_Style.hxx`:32 - `XCAFPrs_Style::XCAFPrs_Style()`
+    /// Empty constructor - colors are unset, visibility is TRUE.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_Style_ctor()) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:35 - `XCAFPrs_Style::IsEmpty()`
+    /// Return TRUE if style is empty - does not override any properties.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Style_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:41 - `XCAFPrs_Style::Material()`
+    /// Return material.
+    pub fn material(&self) -> &crate::ffi::HandleXCAFDocVisMaterial {
+        unsafe { &*(crate::ffi::XCAFPrs_Style_material(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:44 - `XCAFPrs_Style::SetMaterial()`
+    /// Set material.
+    pub fn set_material(&mut self, theMaterial: &crate::ffi::HandleXCAFDocVisMaterial) {
+        unsafe { crate::ffi::XCAFPrs_Style_set_material(self as *mut Self, theMaterial) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:47 - `XCAFPrs_Style::IsSetColorSurf()`
+    /// Return TRUE if surface color has been defined.
+    pub fn is_set_color_surf(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Style_is_set_color_surf(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:50 - `XCAFPrs_Style::GetColorSurf()`
+    /// Return surface color.
+    pub fn get_color_surf(&self) -> &crate::quantity::Color {
+        unsafe { &*(crate::ffi::XCAFPrs_Style_get_color_surf(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:53 - `XCAFPrs_Style::SetColorSurf()`
+    /// Set surface color.
+    pub fn set_color_surf_color(&mut self, theColor: &crate::quantity::Color) {
+        unsafe { crate::ffi::XCAFPrs_Style_set_color_surf_color(self as *mut Self, theColor) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:56 - `XCAFPrs_Style::GetColorSurfRGBA()`
+    /// Return surface color.
+    pub fn get_color_surf_rgba(&self) -> &crate::quantity::ColorRGBA {
+        unsafe { &*(crate::ffi::XCAFPrs_Style_get_color_surf_rgba(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:59 - `XCAFPrs_Style::SetColorSurf()`
+    /// Set surface color.
+    pub fn set_color_surf_colorrgba(&mut self, theColor: &crate::quantity::ColorRGBA) {
+        unsafe { crate::ffi::XCAFPrs_Style_set_color_surf_colorrgba(self as *mut Self, theColor) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:62 - `XCAFPrs_Style::UnSetColorSurf()`
+    /// Manage surface color setting
+    pub fn un_set_color_surf(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_Style_un_set_color_surf(self as *mut Self) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:65 - `XCAFPrs_Style::IsSetColorCurv()`
+    /// Return TRUE if curve color has been defined.
+    pub fn is_set_color_curv(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Style_is_set_color_curv(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:68 - `XCAFPrs_Style::GetColorCurv()`
+    /// Return curve color.
+    pub fn get_color_curv(&self) -> &crate::quantity::Color {
+        unsafe { &*(crate::ffi::XCAFPrs_Style_get_color_curv(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:71 - `XCAFPrs_Style::SetColorCurv()`
+    /// Set curve color.
+    pub fn set_color_curv(&mut self, col: &crate::quantity::Color) {
+        unsafe { crate::ffi::XCAFPrs_Style_set_color_curv(self as *mut Self, col) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:74 - `XCAFPrs_Style::UnSetColorCurv()`
+    /// Manage curve color setting
+    pub fn un_set_color_curv(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_Style_un_set_color_curv(self as *mut Self) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:77 - `XCAFPrs_Style::SetVisibility()`
+    /// Assign visibility.
+    pub fn set_visibility(&mut self, theVisibility: bool) {
+        unsafe { crate::ffi::XCAFPrs_Style_set_visibility(self as *mut Self, theVisibility) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:80 - `XCAFPrs_Style::IsVisible()`
+    /// Manage visibility.
+    pub fn is_visible(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Style_is_visible(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:104 - `XCAFPrs_Style::IsEqual()`
+    /// Returns True if styles are the same
+    /// Methods for using Style as key in maps
+    pub fn is_equal(&self, theOther: &Style) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Style_is_equal(self as *const Self, theOther) }
+    }
+}
+
+// ── Skipped symbols for Style (1 total) ──
+// SKIPPED: **Source:** `XCAFPrs_Style.hxx`:83 - `XCAFPrs_Style::BaseColorTexture`
+//   method: Return base color texture.
+//   Reason: return type 'const Handle(Image_Texture)&' is unknown
+//   // pub fn base_color_texture(&self) -> &HandleTexture;
+//
+
+// ========================
+// From XCAFPrs_Texture.hxx
+// ========================
+
+/// **Source:** `XCAFPrs_Texture.hxx`:24 - `XCAFPrs_Texture`
+/// Texture holder.
+pub use crate::ffi::XCAFPrs_Texture as Texture;
+
+unsafe impl crate::CppDeletable for Texture {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XCAFPrs_Texture_destructor(ptr);
+    }
+}
+
+impl Texture {
+    /// **Source:** `XCAFPrs_Texture.hxx`:26 - `XCAFPrs_Texture::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XCAFPrs_Texture_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_Texture.hxx`:26 - `XCAFPrs_Texture::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XCAFPrs_Texture_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `XCAFPrs_Texture.hxx`:26 - `XCAFPrs_Texture::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XCAFPrs_Texture_get_type_descriptor()) }
+    }
+
+    /// Upcast to Graphic3d_Texture2D
+    pub fn as_graphic3d_texture2_d(&self) -> &crate::graphic3d::Texture2D {
+        unsafe { &*(crate::ffi::XCAFPrs_Texture_as_Graphic3d_Texture2D(self as *const Self)) }
+    }
+
+    /// Upcast to Graphic3d_Texture2D (mutable)
+    pub fn as_graphic3d_texture2_d_mut(&mut self) -> &mut crate::graphic3d::Texture2D {
+        unsafe { &mut *(crate::ffi::XCAFPrs_Texture_as_Graphic3d_Texture2D_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Graphic3d_TextureMap
+    pub fn as_graphic3d_texture_map(&self) -> &crate::graphic3d::TextureMap {
+        unsafe { &*(crate::ffi::XCAFPrs_Texture_as_Graphic3d_TextureMap(self as *const Self)) }
+    }
+
+    /// Upcast to Graphic3d_TextureMap (mutable)
+    pub fn as_graphic3d_texture_map_mut(&mut self) -> &mut crate::graphic3d::TextureMap {
+        unsafe {
+            &mut *(crate::ffi::XCAFPrs_Texture_as_Graphic3d_TextureMap_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Graphic3d_TextureRoot
+    pub fn as_graphic3d_texture_root(&self) -> &crate::graphic3d::TextureRoot {
+        unsafe { &*(crate::ffi::XCAFPrs_Texture_as_Graphic3d_TextureRoot(self as *const Self)) }
+    }
+
+    /// Upcast to Graphic3d_TextureRoot (mutable)
+    pub fn as_graphic3d_texture_root_mut(&mut self) -> &mut crate::graphic3d::TextureRoot {
+        unsafe {
+            &mut *(crate::ffi::XCAFPrs_Texture_as_Graphic3d_TextureRoot_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XCAFPrs_Texture_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XCAFPrs_Texture_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFPrsTexture> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_Texture_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_Texture2D.hxx`:49 - `Graphic3d_Texture2D::Name()`
+    pub fn name(&self) -> crate::graphic3d::NameOfTexture2D {
+        unsafe {
+            crate::graphic3d::NameOfTexture2D::try_from(crate::ffi::XCAFPrs_Texture_inherited_Name(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:31 - `Graphic3d_TextureMap::EnableSmooth()`
+    pub fn enable_smooth(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_EnableSmooth(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:34 - `Graphic3d_TextureMap::IsSmoothed()`
+    pub fn is_smoothed(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsSmoothed(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:37 - `Graphic3d_TextureMap::DisableSmooth()`
+    pub fn disable_smooth(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_DisableSmooth(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:41 - `Graphic3d_TextureMap::EnableModulate()`
+    pub fn enable_modulate(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_EnableModulate(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:45 - `Graphic3d_TextureMap::DisableModulate()`
+    pub fn disable_modulate(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_DisableModulate(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:48 - `Graphic3d_TextureMap::IsModulate()`
+    pub fn is_modulate(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsModulate(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:52 - `Graphic3d_TextureMap::EnableRepeat()`
+    pub fn enable_repeat(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_EnableRepeat(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:56 - `Graphic3d_TextureMap::DisableRepeat()`
+    pub fn disable_repeat(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_DisableRepeat(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:59 - `Graphic3d_TextureMap::IsRepeat()`
+    pub fn is_repeat(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsRepeat(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:63 - `Graphic3d_TextureMap::AnisoFilter()`
+    pub fn aniso_filter(&self) -> crate::graphic3d::LevelOfTextureAnisotropy {
+        unsafe {
+            crate::graphic3d::LevelOfTextureAnisotropy::try_from(
+                crate::ffi::XCAFPrs_Texture_inherited_AnisoFilter(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:66 - `Graphic3d_TextureMap::SetAnisoFilter()`
+    pub fn set_aniso_filter(&mut self, theLevel: crate::graphic3d::LevelOfTextureAnisotropy) {
+        unsafe {
+            crate::ffi::XCAFPrs_Texture_inherited_SetAnisoFilter(self as *mut Self, theLevel.into())
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:49 - `Graphic3d_TextureRoot::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:53 - `Graphic3d_TextureRoot::Path()`
+    pub fn path(&self) -> &crate::osd::Path {
+        unsafe { &*(crate::ffi::XCAFPrs_Texture_inherited_Path(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:56 - `Graphic3d_TextureRoot::Type()`
+    pub fn type_(&self) -> crate::graphic3d::TypeOfTexture {
+        unsafe {
+            crate::graphic3d::TypeOfTexture::try_from(crate::ffi::XCAFPrs_Texture_inherited_Type(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:74 - `Graphic3d_TextureRoot::GetId()`
+    pub fn get_id(&self) -> &crate::t_collection::AsciiString {
+        unsafe { &*(crate::ffi::XCAFPrs_Texture_inherited_GetId(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:77 - `Graphic3d_TextureRoot::Revision()`
+    pub fn revision(&self) -> usize {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_Revision(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:82 - `Graphic3d_TextureRoot::UpdateRevision()`
+    pub fn update_revision(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_UpdateRevision(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
+    pub fn get_params(&self) -> &crate::ffi::HandleGraphic3dTextureParams {
+        unsafe { &*(crate::ffi::XCAFPrs_Texture_inherited_GetParams(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:116 - `Graphic3d_TextureRoot::IsColorMap()`
+    pub fn is_color_map(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsColorMap(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:119 - `Graphic3d_TextureRoot::SetColorMap()`
+    pub fn set_color_map(&mut self, theIsColor: bool) {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_SetColorMap(self as *mut Self, theIsColor) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:122 - `Graphic3d_TextureRoot::HasMipmaps()`
+    pub fn has_mipmaps(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_HasMipmaps(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:125 - `Graphic3d_TextureRoot::SetMipmapsGeneration()`
+    pub fn set_mipmaps_generation(&mut self, theToGenerateMipmaps: bool) {
+        unsafe {
+            crate::ffi::XCAFPrs_Texture_inherited_SetMipmapsGeneration(
+                self as *mut Self,
+                theToGenerateMipmaps,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:131 - `Graphic3d_TextureRoot::IsTopDown()`
+    pub fn is_top_down(&self) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsTopDown(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFPrs_Texture_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleXCAFPrsTexture;
+
+unsafe impl crate::CppDeletable for HandleXCAFPrsTexture {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFPrsTexture_destructor(ptr);
+    }
+}
+
+impl HandleXCAFPrsTexture {
+    /// Dereference this Handle to access the underlying XCAFPrs_Texture
+    pub fn get(&self) -> &crate::ffi::XCAFPrs_Texture {
+        unsafe { &*(crate::ffi::HandleXCAFPrsTexture_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFPrs_Texture
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFPrs_Texture {
+        unsafe { &mut *(crate::ffi::HandleXCAFPrsTexture_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFPrs_Texture> to Handle<Graphic3d_Texture2D>
+    pub fn to_handle_texture2_d(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dTexture2D> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFPrsTexture_to_HandleGraphic3dTexture2D(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFPrs_Texture> to Handle<Graphic3d_TextureMap>
+    pub fn to_handle_texture_map(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dTextureMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFPrsTexture_to_HandleGraphic3dTextureMap(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFPrs_Texture> to Handle<Graphic3d_TextureRoot>
+    pub fn to_handle_texture_root(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dTextureRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFPrsTexture_to_HandleGraphic3dTextureRoot(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFPrs_Texture> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFPrsTexture_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Texture (4 total) ──
+// SKIPPED: **Source:** `XCAFPrs_Texture.hxx`:29 - `XCAFPrs_Texture::XCAFPrs_Texture`
+//   constructor: Constructor.
+//   Reason: param 'theImageSource' uses unknown Handle type
+//   // pub fn new_handleimagetexture_textureunit(theImageSource: &HandleTexture, theUnit: TextureUnit) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `XCAFPrs_Texture.hxx`:33 - `XCAFPrs_Texture::GetCompressedImage`
+//   method: Image reader.
+//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
+//   // pub fn get_compressed_image(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_CompressedPixMap>>;
+//
+// SKIPPED: **Source:** `XCAFPrs_Texture.hxx`:37 - `XCAFPrs_Texture::GetImage`
+//   method: Image reader.
+//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
+//   // pub fn get_image(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_PixMap>>;
+//
+// SKIPPED: **Source:** `XCAFPrs_Texture.hxx`:41 - `XCAFPrs_Texture::GetImageSource`
+//   method: Return image source.
+//   Reason: return type 'const Handle(Image_Texture)&' is unknown
+//   // pub fn get_image_source(&self) -> &HandleTexture;
+//
+
 // ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::XCAFPrs_Style as Style;
+pub use crate::ffi::XCAFPrs_DocumentExplorerFlags as DocumentExplorerFlags;

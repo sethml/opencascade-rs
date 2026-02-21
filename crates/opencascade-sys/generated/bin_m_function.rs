@@ -83,7 +83,7 @@ impl FunctionDriver {
     }
 
     /// **Source:** `BinMFunction_FunctionDriver.hxx`:51 - `BinMFunction_FunctionDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMFunction_FunctionDriver_get_type_name())
                 .to_string_lossy()
@@ -324,7 +324,7 @@ impl GraphNodeDriver {
     }
 
     /// **Source:** `BinMFunction_GraphNodeDriver.hxx`:51 - `BinMFunction_GraphNodeDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMFunction_GraphNodeDriver_get_type_name())
                 .to_string_lossy()
@@ -571,7 +571,7 @@ impl ScopeDriver {
     }
 
     /// **Source:** `BinMFunction_ScopeDriver.hxx`:51 - `BinMFunction_ScopeDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMFunction_ScopeDriver_get_type_name())
                 .to_string_lossy()

@@ -145,7 +145,7 @@ impl AssociativityDef {
     }
 
     /// **Source:** `IGESDefs_AssociativityDef.hxx`:88 - `IGESDefs_AssociativityDef::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDefs_AssociativityDef_get_type_name())
                 .to_string_lossy()
@@ -1062,7 +1062,7 @@ impl AttributeDef {
     }
 
     /// **Source:** `IGESDefs_AttributeDef.hxx`:124 - `IGESDefs_AttributeDef::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDefs_AttributeDef_get_type_name())
                 .to_string_lossy()
@@ -1890,7 +1890,7 @@ impl AttributeTable {
     }
 
     /// **Source:** `IGESDefs_AttributeTable.hxx`:110 - `IGESDefs_AttributeTable::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDefs_AttributeTable_get_type_name())
                 .to_string_lossy()
@@ -2675,7 +2675,7 @@ impl GeneralModule {
     }
 
     /// **Source:** `IGESDefs_GeneralModule.hxx`:81 - `IGESDefs_GeneralModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDefs_GeneralModule_get_type_name())
                 .to_string_lossy()
@@ -3259,7 +3259,7 @@ impl GenericData {
     }
 
     /// **Source:** `IGESDefs_GenericData.hxx`:97 - `IGESDefs_GenericData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDefs_GenericData_get_type_name())
                 .to_string_lossy()
@@ -3975,7 +3975,7 @@ impl HArray1OfHArray1OfTextDisplayTemplate {
     }
 
     /// **Source:** `IGESDefs_HArray1OfHArray1OfTextDisplayTemplate.hxx`:50 - `IGESDefs_HArray1OfHArray1OfTextDisplayTemplate::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_get_type_name(),
@@ -4215,7 +4215,7 @@ impl HArray1OfTabularData {
     }
 
     /// **Source:** `IGESDefs_HArray1OfTabularData.hxx`:23 - `IGESDefs_HArray1OfTabularData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDefs_HArray1OfTabularData_get_type_name())
                 .to_string_lossy()
@@ -4444,7 +4444,7 @@ impl MacroDef {
     }
 
     /// **Source:** `IGESDefs_MacroDef.hxx`:67 - `IGESDefs_MacroDef::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDefs_MacroDef_get_type_name())
                 .to_string_lossy()
@@ -5106,7 +5106,7 @@ impl Protocol {
     }
 
     /// **Source:** `IGESDefs_Protocol.hxx`:53 - `IGESDefs_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDefs_Protocol_get_type_name())
                 .to_string_lossy()
@@ -5395,7 +5395,7 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `IGESDefs_ReadWriteModule.hxx`:58 - `IGESDefs_ReadWriteModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDefs_ReadWriteModule_get_type_name())
                 .to_string_lossy()
@@ -5676,7 +5676,7 @@ impl SpecificModule {
     }
 
     /// **Source:** `IGESDefs_SpecificModule.hxx`:46 - `IGESDefs_SpecificModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDefs_SpecificModule_get_type_name())
                 .to_string_lossy()
@@ -5978,7 +5978,7 @@ impl TabularData {
     }
 
     /// **Source:** `IGESDefs_TabularData.hxx`:93 - `IGESDefs_TabularData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDefs_TabularData_get_type_name())
                 .to_string_lossy()
@@ -7541,7 +7541,7 @@ impl UnitsData {
     }
 
     /// **Source:** `IGESDefs_UnitsData.hxx`:68 - `IGESDefs_UnitsData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESDefs_UnitsData_get_type_name())
                 .to_string_lossy()

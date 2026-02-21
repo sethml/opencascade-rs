@@ -183,7 +183,7 @@ impl Application {
 
     /// **Source:** `TObj_Application.hxx`:95 - `TObj_Application::ResourcesName()`
     /// Return name of resource (i.e. "TObj")
-    pub fn resources_name(&mut self) -> String {
+    pub fn resources_name(&mut self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_Application_resources_name(self as *mut Self))
                 .to_string_lossy()
@@ -205,7 +205,7 @@ impl Application {
 
     /// **Source:** `TObj_Application.hxx`:123 - `TObj_Application::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_Application_get_type_name())
                 .to_string_lossy()
@@ -882,7 +882,7 @@ impl CheckModel {
 
     /// **Source:** `TObj_CheckModel.hxx`:74 - `TObj_CheckModel::get_type_name()`
     /// Declaration of CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_CheckModel_get_type_name())
                 .to_string_lossy()
@@ -1135,7 +1135,7 @@ impl HiddenPartition {
 
     /// **Source:** `TObj_HiddenPartition.hxx`:41 - `TObj_HiddenPartition::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_HiddenPartition_get_type_name())
                 .to_string_lossy()
@@ -1766,7 +1766,7 @@ impl LabelIterator {
 
     /// **Source:** `TObj_LabelIterator.hxx`:98 - `TObj_LabelIterator::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_LabelIterator_get_type_name())
                 .to_string_lossy()
@@ -2279,7 +2279,7 @@ impl Model {
 
     /// **Source:** `TObj_Model.hxx`:353 - `TObj_Model::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_Model_get_type_name())
                 .to_string_lossy()
@@ -2389,7 +2389,7 @@ impl ModelIterator {
 
     /// **Source:** `TObj_ModelIterator.hxx`:69 - `TObj_ModelIterator::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_ModelIterator_get_type_name())
                 .to_string_lossy()
@@ -3037,7 +3037,7 @@ impl Object {
 
     /// **Source:** `TObj_Object.hxx`:608 - `TObj_Object::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_Object_get_type_name())
                 .to_string_lossy()
@@ -3225,7 +3225,7 @@ impl ObjectIterator {
 
     /// **Source:** `TObj_ObjectIterator.hxx`:53 - `TObj_ObjectIterator::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_ObjectIterator_get_type_name())
                 .to_string_lossy()
@@ -3488,7 +3488,7 @@ impl OcafObjectIterator {
 
     /// **Source:** `TObj_OcafObjectIterator.hxx`:55 - `TObj_OcafObjectIterator::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_OcafObjectIterator_get_type_name())
                 .to_string_lossy()
@@ -3802,7 +3802,7 @@ impl Partition {
 
     /// **Source:** `TObj_Partition.hxx`:144 - `TObj_Partition::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_Partition_get_type_name())
                 .to_string_lossy()
@@ -4399,7 +4399,7 @@ impl ReferenceIterator {
 
     /// **Source:** `TObj_ReferenceIterator.hxx`:53 - `TObj_ReferenceIterator::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_ReferenceIterator_get_type_name())
                 .to_string_lossy()
@@ -4644,7 +4644,7 @@ impl SequenceIterator {
 
     /// **Source:** `TObj_SequenceIterator.hxx`:72 - `TObj_SequenceIterator::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_SequenceIterator_get_type_name())
                 .to_string_lossy()
@@ -4846,7 +4846,7 @@ impl HSequenceOfObject {
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_HSequenceOfObject_get_type_name())
                 .to_string_lossy()
@@ -5137,7 +5137,7 @@ impl TIntSparseArray {
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:137 - `TObj_TIntSparseArray::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_TIntSparseArray_get_type_name())
                 .to_string_lossy()
@@ -5551,7 +5551,7 @@ impl TModel {
 
     /// **Source:** `TObj_TModel.hxx`:78 - `TObj_TModel::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_TModel_get_type_name())
                 .to_string_lossy()
@@ -6006,7 +6006,7 @@ impl TNameContainer {
 
     /// **Source:** `TObj_TNameContainer.hxx`:97 - `TObj_TNameContainer::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_TNameContainer_get_type_name())
                 .to_string_lossy()
@@ -6498,7 +6498,7 @@ impl TObject {
 
     /// **Source:** `TObj_TObject.hxx`:96 - `TObj_TObject::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_TObject_get_type_name())
                 .to_string_lossy()
@@ -6998,7 +6998,7 @@ impl TReference {
 
     /// **Source:** `TObj_TReference.hxx`:121 - `TObj_TReference::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_TReference_get_type_name())
                 .to_string_lossy()
@@ -7396,7 +7396,7 @@ impl TXYZ {
 
     /// **Source:** `TObj_TXYZ.hxx`:85 - `TObj_TXYZ::get_type_name()`
     /// CASCADE RTTI
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TObj_TXYZ_get_type_name())
                 .to_string_lossy()

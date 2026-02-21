@@ -197,7 +197,7 @@ impl BadContinuity {
     }
 
     /// **Source:** `LProp_BadContinuity.hxx`:36 - `LProp_BadContinuity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::LProp_BadContinuity_get_type_name())
                 .to_string_lossy()
@@ -504,7 +504,7 @@ impl NotDefined {
     }
 
     /// **Source:** `LProp_NotDefined.hxx`:36 - `LProp_NotDefined::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::LProp_NotDefined_get_type_name())
                 .to_string_lossy()

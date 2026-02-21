@@ -18,7 +18,7 @@ pub fn print_position_ostream(
 /// Returns the string name for a given position.
 /// @param thePosition position type
 /// @return string identifier from the list UNQUALIFIED ENCLOSING ENCLOSED OUTSIDE NOQUALIFIER
-pub fn position_to_string(thePosition: crate::gcc_ent::Position) -> String {
+pub fn position_to_string(thePosition: crate::gcc_ent::Position) -> std::string::String {
     unsafe {
         std::ffi::CStr::from_ptr(crate::ffi::GccEnt_position_to_string(thePosition.into()))
             .to_string_lossy()
@@ -228,7 +228,7 @@ impl BadQualifier {
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GccEnt_BadQualifier_get_type_name())
                 .to_string_lossy()

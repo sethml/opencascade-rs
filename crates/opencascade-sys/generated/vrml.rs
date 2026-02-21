@@ -485,7 +485,7 @@ impl AsciiText {
     }
 
     /// **Source:** `Vrml_AsciiText.hxx`:70 - `Vrml_AsciiText::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Vrml_AsciiText_get_type_name())
                 .to_string_lossy()
@@ -736,7 +736,7 @@ impl Coordinate3 {
     }
 
     /// **Source:** `Vrml_Coordinate3.hxx`:50 - `Vrml_Coordinate3::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Vrml_Coordinate3_get_type_name())
                 .to_string_lossy()
@@ -1342,7 +1342,7 @@ impl IndexedFaceSet {
     }
 
     /// **Source:** `Vrml_IndexedFaceSet.hxx`:65 - `Vrml_IndexedFaceSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Vrml_IndexedFaceSet_get_type_name())
                 .to_string_lossy()
@@ -1587,7 +1587,7 @@ impl IndexedLineSet {
     }
 
     /// **Source:** `Vrml_IndexedLineSet.hxx`:73 - `Vrml_IndexedLineSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Vrml_IndexedLineSet_get_type_name())
                 .to_string_lossy()
@@ -1865,7 +1865,7 @@ impl LOD {
     }
 
     /// **Source:** `Vrml_LOD.hxx`:70 - `Vrml_LOD::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Vrml_LOD_get_type_name())
                 .to_string_lossy()
@@ -2094,7 +2094,7 @@ impl Material {
     }
 
     /// **Source:** `Vrml_Material.hxx`:76 - `Vrml_Material::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Vrml_Material_get_type_name())
                 .to_string_lossy()
@@ -2372,7 +2372,7 @@ impl Normal {
     }
 
     /// **Source:** `Vrml_Normal.hxx`:51 - `Vrml_Normal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Vrml_Normal_get_type_name())
                 .to_string_lossy()
@@ -3029,7 +3029,7 @@ impl SFImage {
     }
 
     /// **Source:** `Vrml_SFImage.hxx`:61 - `Vrml_SFImage::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Vrml_SFImage_get_type_name())
                 .to_string_lossy()
@@ -3964,7 +3964,7 @@ impl TextureCoordinate2 {
     }
 
     /// **Source:** `Vrml_TextureCoordinate2.hxx`:55 - `Vrml_TextureCoordinate2::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Vrml_TextureCoordinate2_get_type_name())
                 .to_string_lossy()

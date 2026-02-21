@@ -205,7 +205,7 @@ impl BRep_PointRepresentation {
 
     /// **Source:** `ShapePersistent_BRep.hxx`:58 - `ShapePersistent_BRep_PointRepresentation::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_PointRepresentation_p_name(
                 self as *const Self,
@@ -536,7 +536,7 @@ impl BRep_PointOnCurve {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:83 - `ShapePersistent_BRep_PointOnCurve::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_PointOnCurve_p_name(
                 self as *const Self,
@@ -605,7 +605,7 @@ impl BRep_PointsOnSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:100 - `ShapePersistent_BRep_PointsOnSurface::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_PointsOnSurface_p_name(
                 self as *const Self,
@@ -668,7 +668,7 @@ impl BRep_PointOnCurveOnSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:115 - `ShapePersistent_BRep_PointOnCurveOnSurface::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface_p_name(
                 self as *const Self,
@@ -718,7 +718,7 @@ impl BRep_PointOnSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:136 - `ShapePersistent_BRep_PointOnSurface::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_PointOnSurface_p_name(
                 self as *const Self,
@@ -794,7 +794,7 @@ impl BRep_CurveRepresentation {
 
     /// **Source:** `ShapePersistent_BRep.hxx`:157 - `ShapePersistent_BRep_CurveRepresentation::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_CurveRepresentation_p_name(
                 self as *const Self,
@@ -1107,7 +1107,7 @@ impl BRep_GCurve {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:186 - `ShapePersistent_BRep_GCurve::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_GCurve_p_name(
                 self as *const Self,
@@ -1155,7 +1155,7 @@ impl BRep_Curve3D {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:202 - `ShapePersistent_BRep_Curve3D::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_Curve3D_p_name(
                 self as *const Self,
@@ -1219,7 +1219,7 @@ impl BRep_CurveOnSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:219 - `ShapePersistent_BRep_CurveOnSurface::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_CurveOnSurface_p_name(
                 self as *const Self,
@@ -1290,7 +1290,7 @@ impl BRep_CurveOnClosedSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:244 - `ShapePersistent_BRep_CurveOnClosedSurface::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface_p_name(
                 self as *const Self,
@@ -1349,7 +1349,7 @@ impl BRep_Polygon3D {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:264 - `ShapePersistent_BRep_Polygon3D::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_Polygon3D_p_name(
                 self as *const Self,
@@ -1421,7 +1421,7 @@ impl BRep_PolygonOnTriangulation {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:281 - `ShapePersistent_BRep_PolygonOnTriangulation::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation_p_name(self as *const Self),
@@ -1495,7 +1495,7 @@ impl BRep_PolygonOnClosedTriangulation {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:299 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation_p_name(
@@ -1568,7 +1568,7 @@ impl BRep_PolygonOnSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:316 - `ShapePersistent_BRep_PolygonOnSurface::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_PolygonOnSurface_p_name(
                 self as *const Self,
@@ -1640,7 +1640,7 @@ impl BRep_PolygonOnClosedSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:334 - `ShapePersistent_BRep_PolygonOnClosedSurface::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface_p_name(self as *const Self),
@@ -1708,7 +1708,7 @@ impl BRep_CurveOn2Surfaces {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:356 - `ShapePersistent_BRep_CurveOn2Surfaces::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces_p_name(
                 self as *const Self,
@@ -1804,7 +1804,7 @@ impl Geom_Geometry {
 
     /// **Source:** `ShapePersistent_Geom.hxx`:49 - `ShapePersistent_Geom_Geometry::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_Geom_Geometry_p_name(
                 self as *const Self,
@@ -2466,7 +2466,7 @@ impl TopoDS_HShape {
 
     /// **Source:** `ShapePersistent_TopoDS.hxx`:44 - `ShapePersistent_TopoDS_HShape::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapePersistent_TopoDS_HShape_p_name(
                 self as *const Self,

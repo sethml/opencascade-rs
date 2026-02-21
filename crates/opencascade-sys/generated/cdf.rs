@@ -434,7 +434,7 @@ impl Application {
     }
 
     /// **Source:** `CDF_Application.hxx`:189 - `CDF_Application::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::CDF_Application_get_type_name())
                 .to_string_lossy()
@@ -767,7 +767,7 @@ impl Directory {
     }
 
     /// **Source:** `CDF_Directory.hxx`:61 - `CDF_Directory::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::CDF_Directory_get_type_name())
                 .to_string_lossy()
@@ -1025,7 +1025,7 @@ impl FWOSDriver {
     }
 
     /// **Source:** `CDF_FWOSDriver.hxx`:64 - `CDF_FWOSDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::CDF_FWOSDriver_get_type_name())
                 .to_string_lossy()
@@ -1489,7 +1489,7 @@ impl MetaDataDriver {
     }
 
     /// **Source:** `CDF_MetaDataDriver.hxx`:126 - `CDF_MetaDataDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::CDF_MetaDataDriver_get_type_name())
                 .to_string_lossy()
@@ -1631,7 +1631,7 @@ impl MetaDataDriverFactory {
     }
 
     /// **Source:** `CDF_MetaDataDriverFactory.hxx`:35 - `CDF_MetaDataDriverFactory::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::CDF_MetaDataDriverFactory_get_type_name())
                 .to_string_lossy()
@@ -2027,7 +2027,7 @@ impl StoreList {
     }
 
     /// **Source:** `CDF_StoreList.hxx`:58 - `CDF_StoreList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::CDF_StoreList_get_type_name())
                 .to_string_lossy()

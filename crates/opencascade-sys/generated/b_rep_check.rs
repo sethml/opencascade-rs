@@ -459,7 +459,7 @@ impl Edge {
     }
 
     /// **Source:** `BRepCheck_Edge.hxx`:66 - `BRepCheck_Edge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Edge_get_type_name())
                 .to_string_lossy()
@@ -743,7 +743,7 @@ impl Face {
     }
 
     /// **Source:** `BRepCheck_Face.hxx`:62 - `BRepCheck_Face::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Face_get_type_name())
                 .to_string_lossy()
@@ -1033,7 +1033,7 @@ impl Result {
     }
 
     /// **Source:** `BRepCheck_Result.hxx`:73 - `BRepCheck_Result::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Result_get_type_name())
                 .to_string_lossy()
@@ -1297,7 +1297,7 @@ impl Shell {
     }
 
     /// **Source:** `BRepCheck_Shell.hxx`:62 - `BRepCheck_Shell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Shell_get_type_name())
                 .to_string_lossy()
@@ -1546,7 +1546,7 @@ impl Solid {
     }
 
     /// **Source:** `BRepCheck_Solid.hxx`:64 - `BRepCheck_Solid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Solid_get_type_name())
                 .to_string_lossy()
@@ -1776,7 +1776,7 @@ impl Vertex {
     }
 
     /// **Source:** `BRepCheck_Vertex.hxx`:44 - `BRepCheck_Vertex::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Vertex_get_type_name())
                 .to_string_lossy()
@@ -2128,7 +2128,7 @@ impl Wire {
     }
 
     /// **Source:** `BRepCheck_Wire.hxx`:114 - `BRepCheck_Wire::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Wire_get_type_name())
                 .to_string_lossy()

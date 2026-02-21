@@ -387,7 +387,7 @@ impl CompCurve {
     }
 
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:60 - `BRepAdaptor_CompCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepAdaptor_CompCurve_get_type_name())
                 .to_string_lossy()
@@ -906,7 +906,7 @@ impl Curve {
     }
 
     /// **Source:** `BRepAdaptor_Curve.hxx`:60 - `BRepAdaptor_Curve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepAdaptor_Curve_get_type_name())
                 .to_string_lossy()
@@ -1104,7 +1104,7 @@ impl Curve2d {
     }
 
     /// **Source:** `BRepAdaptor_Curve2d.hxx`:40 - `BRepAdaptor_Curve2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepAdaptor_Curve2d_get_type_name())
                 .to_string_lossy()
@@ -1577,7 +1577,7 @@ impl HArray1OfCurve {
     }
 
     /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_name())
                 .to_string_lossy()
@@ -2238,7 +2238,7 @@ impl Surface {
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:55 - `BRepAdaptor_Surface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepAdaptor_Surface_get_type_name())
                 .to_string_lossy()

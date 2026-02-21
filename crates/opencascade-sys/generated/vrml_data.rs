@@ -204,7 +204,7 @@ impl Appearance {
     }
 
     /// **Source:** `VrmlData_Appearance.hxx`:111 - `VrmlData_Appearance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Appearance_get_type_name())
                 .to_string_lossy()
@@ -478,7 +478,7 @@ impl ArrayVec3d {
     }
 
     /// **Source:** `VrmlData_ArrayVec3d.hxx`:124 - `VrmlData_ArrayVec3d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_ArrayVec3d_get_type_name())
                 .to_string_lossy()
@@ -866,7 +866,7 @@ impl Box {
     }
 
     /// **Source:** `VrmlData_Box.hxx`:98 - `VrmlData_Box::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Box_get_type_name())
                 .to_string_lossy()
@@ -1157,7 +1157,7 @@ impl Color {
     }
 
     /// **Source:** `VrmlData_Color.hxx`:91 - `VrmlData_Color::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Color_get_type_name())
                 .to_string_lossy()
@@ -1538,7 +1538,7 @@ impl Cone {
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:142 - `VrmlData_Cone::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Cone_get_type_name())
                 .to_string_lossy()
@@ -1822,7 +1822,7 @@ impl Coordinate {
     }
 
     /// **Source:** `VrmlData_Coordinate.hxx`:77 - `VrmlData_Coordinate::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Coordinate_get_type_name())
                 .to_string_lossy()
@@ -2228,7 +2228,7 @@ impl Cylinder {
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:150 - `VrmlData_Cylinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Cylinder_get_type_name())
                 .to_string_lossy()
@@ -2491,7 +2491,7 @@ impl Faceted {
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:112 - `VrmlData_Faceted::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Faceted_get_type_name())
                 .to_string_lossy()
@@ -2754,7 +2754,7 @@ impl Geometry {
     }
 
     /// **Source:** `VrmlData_Geometry.hxx`:76 - `VrmlData_Geometry::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Geometry_get_type_name())
                 .to_string_lossy()
@@ -3273,7 +3273,7 @@ impl Group {
     }
 
     /// **Source:** `VrmlData_Group.hxx`:161 - `VrmlData_Group::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Group_get_type_name())
                 .to_string_lossy()
@@ -3565,7 +3565,7 @@ impl ImageTexture {
     }
 
     /// **Source:** `VrmlData_ImageTexture.hxx`:76 - `VrmlData_ImageTexture::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_ImageTexture_get_type_name())
                 .to_string_lossy()
@@ -4222,7 +4222,7 @@ impl IndexedFaceSet {
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:347 - `VrmlData_IndexedFaceSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_IndexedFaceSet_get_type_name())
                 .to_string_lossy()
@@ -4728,7 +4728,7 @@ impl IndexedLineSet {
     }
 
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:204 - `VrmlData_IndexedLineSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_IndexedLineSet_get_type_name())
                 .to_string_lossy()
@@ -5163,7 +5163,7 @@ impl Material {
     }
 
     /// **Source:** `VrmlData_Material.hxx`:159 - `VrmlData_Material::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Material_get_type_name())
                 .to_string_lossy()
@@ -5349,7 +5349,7 @@ impl Node {
     /// **Source:** `VrmlData_Node.hxx`:58 - `VrmlData_Node::Name()`
     ///
     /// Query the name
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Node_name(self as *const Self))
                 .to_string_lossy()
@@ -5537,7 +5537,7 @@ impl Node {
     }
 
     /// **Source:** `VrmlData_Node.hxx`:183 - `VrmlData_Node::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Node_get_type_name())
                 .to_string_lossy()
@@ -6079,7 +6079,7 @@ impl Normal {
     }
 
     /// **Source:** `VrmlData_Normal.hxx`:77 - `VrmlData_Normal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Normal_get_type_name())
                 .to_string_lossy()
@@ -6973,7 +6973,7 @@ impl ShapeNode {
     }
 
     /// **Source:** `VrmlData_ShapeNode.hxx`:103 - `VrmlData_ShapeNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_ShapeNode_get_type_name())
                 .to_string_lossy()
@@ -7253,7 +7253,7 @@ impl Sphere {
     }
 
     /// **Source:** `VrmlData_Sphere.hxx`:93 - `VrmlData_Sphere::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Sphere_get_type_name())
                 .to_string_lossy()
@@ -7481,7 +7481,7 @@ impl Texture {
     }
 
     /// **Source:** `VrmlData_Texture.hxx`:82 - `VrmlData_Texture::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Texture_get_type_name())
                 .to_string_lossy()
@@ -7815,7 +7815,7 @@ impl TextureCoordinate {
     }
 
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:99 - `VrmlData_TextureCoordinate::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_TextureCoordinate_get_type_name())
                 .to_string_lossy()
@@ -8082,7 +8082,7 @@ impl TextureTransform {
     }
 
     /// **Source:** `VrmlData_TextureTransform.hxx`:99 - `VrmlData_TextureTransform::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_TextureTransform_get_type_name())
                 .to_string_lossy()
@@ -8369,7 +8369,7 @@ impl UnknownNode {
     }
 
     /// **Source:** `VrmlData_UnknownNode.hxx`:71 - `VrmlData_UnknownNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_UnknownNode_get_type_name())
                 .to_string_lossy()
@@ -8608,7 +8608,7 @@ impl WorldInfo {
     /// **Source:** `VrmlData_WorldInfo.hxx`:58 - `VrmlData_WorldInfo::Title()`
     ///
     /// Query the title string.
-    pub fn title(&self) -> String {
+    pub fn title(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_WorldInfo_title(self as *const Self))
                 .to_string_lossy()
@@ -8673,7 +8673,7 @@ impl WorldInfo {
     }
 
     /// **Source:** `VrmlData_WorldInfo.hxx`:96 - `VrmlData_WorldInfo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::VrmlData_WorldInfo_get_type_name())
                 .to_string_lossy()

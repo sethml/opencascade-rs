@@ -163,7 +163,7 @@ impl BasicAttribute {
     }
 
     /// **Source:** `LDOM_BasicAttribute.hxx`:44 - `LDOM_BasicAttribute::GetName()`
-    pub fn get_name(&self) -> String {
+    pub fn get_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::LDOM_BasicAttribute_get_name(self as *const Self))
                 .to_string_lossy()
@@ -244,7 +244,7 @@ impl BasicElement {
     }
 
     /// **Source:** `LDOM_BasicElement.hxx`:60 - `LDOM_BasicElement::GetTagName()`
-    pub fn get_tag_name(&self) -> String {
+    pub fn get_tag_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::LDOM_BasicElement_get_tag_name(
                 self as *const Self,
@@ -1351,7 +1351,7 @@ impl MemManager {
         aString: &str,
         theLen: i32,
         theHash: &mut i32,
-    ) -> String {
+    ) -> std::string::String {
         let c_aString = std::ffi::CString::new(aString).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::LDOM_MemManager_hashed_allocate_charptr_int2(
@@ -1425,7 +1425,7 @@ impl MemManager {
     }
 
     /// **Source:** `LDOM_MemManager.hxx`:135 - `LDOM_MemManager::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::LDOM_MemManager_get_type_name())
                 .to_string_lossy()
@@ -1700,7 +1700,7 @@ impl SBuffer {
     /// with operator new.
     /// Caller of this function is responsible
     /// for memory release after the string usage.
-    pub fn str(&self) -> String {
+    pub fn str(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::LDOM_SBuffer_str(self as *const Self))
                 .to_string_lossy()
@@ -1761,7 +1761,7 @@ impl OSStream {
     }
 
     /// **Source:** `LDOM_OSStream.hxx`:105 - `LDOM_OSStream::str()`
-    pub fn str(&self) -> String {
+    pub fn str(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::LDOM_OSStream_str(self as *const Self))
                 .to_string_lossy()

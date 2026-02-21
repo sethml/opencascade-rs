@@ -180,7 +180,7 @@ impl ACRLaw {
     }
 
     /// **Source:** `BRepFill_ACRLaw.hxx`:41 - `BRepFill_ACRLaw::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepFill_ACRLaw_get_type_name())
                 .to_string_lossy()
@@ -1021,7 +1021,7 @@ impl CurveConstraint {
     }
 
     /// **Source:** `BRepFill_CurveConstraint.hxx`:56 - `BRepFill_CurveConstraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepFill_CurveConstraint_get_type_name())
                 .to_string_lossy()
@@ -1503,7 +1503,7 @@ impl DraftLaw {
     }
 
     /// **Source:** `BRepFill_DraftLaw.hxx`:41 - `BRepFill_DraftLaw::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepFill_DraftLaw_get_type_name())
                 .to_string_lossy()
@@ -1828,7 +1828,7 @@ impl Edge3DLaw {
     }
 
     /// **Source:** `BRepFill_Edge3DLaw.hxx`:38 - `BRepFill_Edge3DLaw::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepFill_Edge3DLaw_get_type_name())
                 .to_string_lossy()
@@ -2195,7 +2195,7 @@ impl EdgeOnSurfLaw {
     }
 
     /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:41 - `BRepFill_EdgeOnSurfLaw::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepFill_EdgeOnSurfLaw_get_type_name())
                 .to_string_lossy()
@@ -3483,7 +3483,7 @@ impl LocationLaw {
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:124 - `BRepFill_LocationLaw::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepFill_LocationLaw_get_type_name())
                 .to_string_lossy()
@@ -4006,7 +4006,7 @@ impl NSections {
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:77 - `BRepFill_NSections::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepFill_NSections_get_type_name())
                 .to_string_lossy()
@@ -4894,7 +4894,7 @@ impl PipeShell {
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepFill_PipeShell_get_type_name())
                 .to_string_lossy()
@@ -5209,7 +5209,7 @@ impl SectionLaw {
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:77 - `BRepFill_SectionLaw::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepFill_SectionLaw_get_type_name())
                 .to_string_lossy()
@@ -5585,7 +5585,7 @@ impl ShapeLaw {
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:79 - `BRepFill_ShapeLaw::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepFill_ShapeLaw_get_type_name())
                 .to_string_lossy()

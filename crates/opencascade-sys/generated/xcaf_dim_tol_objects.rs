@@ -1146,7 +1146,7 @@ impl DatumObject {
     }
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:187 - `XCAFDimTolObjects_DatumObject::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDimTolObjects_DatumObject_get_type_name())
                 .to_string_lossy()
@@ -1926,7 +1926,7 @@ impl DimensionObject {
     }
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:298 - `XCAFDimTolObjects_DimensionObject::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XCAFDimTolObjects_DimensionObject_get_type_name())
                 .to_string_lossy()
@@ -2535,7 +2535,7 @@ impl GeomToleranceObject {
     }
 
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:201 - `XCAFDimTolObjects_GeomToleranceObject::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::XCAFDimTolObjects_GeomToleranceObject_get_type_name(),

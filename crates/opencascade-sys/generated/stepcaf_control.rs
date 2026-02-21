@@ -74,7 +74,7 @@ impl ActorWrite {
     }
 
     /// **Source:** `STEPCAFControl_ActorWrite.hxx`:54 - `STEPCAFControl_ActorWrite::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPCAFControl_ActorWrite_get_type_name())
                 .to_string_lossy()
@@ -594,7 +594,7 @@ impl Controller {
     }
 
     /// **Source:** `STEPCAFControl_Controller.hxx`:43 - `STEPCAFControl_Controller::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPCAFControl_Controller_get_type_name())
                 .to_string_lossy()
@@ -1061,7 +1061,7 @@ impl ExternFile {
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:64 - `STEPCAFControl_ExternFile::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPCAFControl_ExternFile_get_type_name())
                 .to_string_lossy()

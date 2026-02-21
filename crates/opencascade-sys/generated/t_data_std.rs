@@ -177,7 +177,7 @@ impl AsciiString {
     }
 
     /// **Source:** `TDataStd_AsciiString.hxx`:84 - `TDataStd_AsciiString::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_AsciiString_get_type_name())
                 .to_string_lossy()
@@ -707,7 +707,7 @@ impl BooleanArray {
     }
 
     /// **Source:** `TDataStd_BooleanArray.hxx`:102 - `TDataStd_BooleanArray::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_BooleanArray_get_type_name())
                 .to_string_lossy()
@@ -1253,7 +1253,7 @@ impl BooleanList {
     }
 
     /// **Source:** `TDataStd_BooleanList.hxx`:104 - `TDataStd_BooleanList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_BooleanList_get_type_name())
                 .to_string_lossy()
@@ -1782,7 +1782,7 @@ impl ByteArray {
     }
 
     /// **Source:** `TDataStd_ByteArray.hxx`:38 - `TDataStd_ByteArray::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_ByteArray_get_type_name())
                 .to_string_lossy()
@@ -2361,7 +2361,7 @@ impl Comment {
     }
 
     /// **Source:** `TDataStd_Comment.hxx`:59 - `TDataStd_Comment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_Comment_get_type_name())
                 .to_string_lossy()
@@ -2859,7 +2859,7 @@ impl Current {
     }
 
     /// **Source:** `TDataStd_Current.hxx`:75 - `TDataStd_Current::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_Current_get_type_name())
                 .to_string_lossy()
@@ -3264,7 +3264,7 @@ impl DeltaOnModificationOfByteArray {
     }
 
     /// **Source:** `TDataStd_DeltaOnModificationOfByteArray.hxx`:42 - `TDataStd_DeltaOnModificationOfByteArray::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::TDataStd_DeltaOnModificationOfByteArray_get_type_name(),
@@ -3549,7 +3549,7 @@ impl DeltaOnModificationOfExtStringArray {
     }
 
     /// **Source:** `TDataStd_DeltaOnModificationOfExtStringArray.hxx`:43 - `TDataStd_DeltaOnModificationOfExtStringArray::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::TDataStd_DeltaOnModificationOfExtStringArray_get_type_name(),
@@ -3828,7 +3828,7 @@ impl DeltaOnModificationOfIntArray {
     }
 
     /// **Source:** `TDataStd_DeltaOnModificationOfIntArray.hxx`:41 - `TDataStd_DeltaOnModificationOfIntArray::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::TDataStd_DeltaOnModificationOfIntArray_get_type_name(),
@@ -4111,7 +4111,7 @@ impl DeltaOnModificationOfIntPackedMap {
     }
 
     /// **Source:** `TDataStd_DeltaOnModificationOfIntPackedMap.hxx`:41 - `TDataStd_DeltaOnModificationOfIntPackedMap::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::TDataStd_DeltaOnModificationOfIntPackedMap_get_type_name(),
@@ -4392,7 +4392,7 @@ impl DeltaOnModificationOfRealArray {
     }
 
     /// **Source:** `TDataStd_DeltaOnModificationOfRealArray.hxx`:42 - `TDataStd_DeltaOnModificationOfRealArray::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::TDataStd_DeltaOnModificationOfRealArray_get_type_name(),
@@ -4721,7 +4721,7 @@ impl Directory {
     }
 
     /// **Source:** `TDataStd_Directory.hxx`:72 - `TDataStd_Directory::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_Directory_get_type_name())
                 .to_string_lossy()
@@ -5232,7 +5232,7 @@ impl Expression {
     }
 
     /// **Source:** `TDataStd_Expression.hxx`:80 - `TDataStd_Expression::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_Expression_get_type_name())
                 .to_string_lossy()
@@ -5789,7 +5789,7 @@ impl ExtStringArray {
     }
 
     /// **Source:** `TDataStd_ExtStringArray.hxx`:40 - `TDataStd_ExtStringArray::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_ExtStringArray_get_type_name())
                 .to_string_lossy()
@@ -6430,7 +6430,7 @@ impl ExtStringList {
     }
 
     /// **Source:** `TDataStd_ExtStringList.hxx`:114 - `TDataStd_ExtStringList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_ExtStringList_get_type_name())
                 .to_string_lossy()
@@ -6855,7 +6855,7 @@ impl GenericEmpty {
     }
 
     /// **Source:** `TDataStd_GenericEmpty.hxx`:44 - `TDataStd_GenericEmpty::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_GenericEmpty_get_type_name())
                 .to_string_lossy()
@@ -7654,7 +7654,7 @@ impl GenericExtString {
     }
 
     /// **Source:** `TDataStd_GenericExtString.hxx`:55 - `TDataStd_GenericExtString::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_GenericExtString_get_type_name())
                 .to_string_lossy()
@@ -8148,7 +8148,7 @@ impl HDataMapOfStringByte {
     }
 
     /// **Source:** `TDataStd_HDataMapOfStringByte.hxx`:29 - `TDataStd_HDataMapOfStringByte::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_HDataMapOfStringByte_get_type_name())
                 .to_string_lossy()
@@ -8346,7 +8346,7 @@ impl HDataMapOfStringHArray1OfInteger {
     }
 
     /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:29 - `TDataStd_HDataMapOfStringHArray1OfInteger::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger_get_type_name(),
@@ -8555,7 +8555,7 @@ impl HDataMapOfStringHArray1OfReal {
     }
 
     /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:29 - `TDataStd_HDataMapOfStringHArray1OfReal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal_get_type_name(),
@@ -8768,7 +8768,7 @@ impl HDataMapOfStringInteger {
     }
 
     /// **Source:** `TDataStd_HDataMapOfStringInteger.hxx`:29 - `TDataStd_HDataMapOfStringInteger::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_HDataMapOfStringInteger_get_type_name())
                 .to_string_lossy()
@@ -8965,7 +8965,7 @@ impl HDataMapOfStringReal {
     }
 
     /// **Source:** `TDataStd_HDataMapOfStringReal.hxx`:29 - `TDataStd_HDataMapOfStringReal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_HDataMapOfStringReal_get_type_name())
                 .to_string_lossy()
@@ -9155,7 +9155,7 @@ impl HDataMapOfStringString {
     }
 
     /// **Source:** `TDataStd_HDataMapOfStringString.hxx`:29 - `TDataStd_HDataMapOfStringString::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_HDataMapOfStringString_get_type_name())
                 .to_string_lossy()
@@ -9373,7 +9373,7 @@ impl HLabelArray1 {
     }
 
     /// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_HLabelArray1_get_type_name())
                 .to_string_lossy()
@@ -9634,7 +9634,7 @@ impl IntPackedMap {
     }
 
     /// **Source:** `TDataStd_IntPackedMap.hxx`:39 - `TDataStd_IntPackedMap::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_IntPackedMap_get_type_name())
                 .to_string_lossy()
@@ -10150,7 +10150,7 @@ impl Integer {
     }
 
     /// **Source:** `TDataStd_Integer.hxx`:87 - `TDataStd_Integer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_Integer_get_type_name())
                 .to_string_lossy()
@@ -10663,7 +10663,7 @@ impl IntegerArray {
     }
 
     /// **Source:** `TDataStd_IntegerArray.hxx`:39 - `TDataStd_IntegerArray::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_IntegerArray_get_type_name())
                 .to_string_lossy()
@@ -11267,7 +11267,7 @@ impl IntegerList {
     }
 
     /// **Source:** `TDataStd_IntegerList.hxx`:113 - `TDataStd_IntegerList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_IntegerList_get_type_name())
                 .to_string_lossy()
@@ -11754,7 +11754,7 @@ impl Name {
     }
 
     /// **Source:** `TDataStd_Name.hxx`:83 - `TDataStd_Name::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_Name_get_type_name())
                 .to_string_lossy()
@@ -12653,7 +12653,7 @@ impl NamedData {
     }
 
     /// **Source:** `TDataStd_NamedData.hxx`:302 - `TDataStd_NamedData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_NamedData_get_type_name())
                 .to_string_lossy()
@@ -13126,7 +13126,7 @@ impl NoteBook {
     }
 
     /// **Source:** `TDataStd_NoteBook.hxx`:76 - `TDataStd_NoteBook::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_NoteBook_get_type_name())
                 .to_string_lossy()
@@ -13656,7 +13656,7 @@ impl Real {
     }
 
     /// **Source:** `TDataStd_Real.hxx`:104 - `TDataStd_Real::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_Real_get_type_name())
                 .to_string_lossy()
@@ -14185,7 +14185,7 @@ impl RealArray {
     }
 
     /// **Source:** `TDataStd_RealArray.hxx`:40 - `TDataStd_RealArray::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_RealArray_get_type_name())
                 .to_string_lossy()
@@ -14768,7 +14768,7 @@ impl RealList {
     }
 
     /// **Source:** `TDataStd_RealList.hxx`:114 - `TDataStd_RealList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_RealList_get_type_name())
                 .to_string_lossy()
@@ -15306,7 +15306,7 @@ impl ReferenceArray {
     }
 
     /// **Source:** `TDataStd_ReferenceArray.hxx`:108 - `TDataStd_ReferenceArray::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_ReferenceArray_get_type_name())
                 .to_string_lossy()
@@ -15910,7 +15910,7 @@ impl ReferenceList {
     }
 
     /// **Source:** `TDataStd_ReferenceList.hxx`:117 - `TDataStd_ReferenceList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_ReferenceList_get_type_name())
                 .to_string_lossy()
@@ -16362,7 +16362,7 @@ impl Relation {
     }
 
     /// **Source:** `TDataStd_Relation.hxx`:60 - `TDataStd_Relation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_Relation_get_type_name())
                 .to_string_lossy()
@@ -16847,7 +16847,7 @@ impl Tick {
     }
 
     /// **Source:** `TDataStd_Tick.hxx`:49 - `TDataStd_Tick::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_Tick_get_type_name())
                 .to_string_lossy()
@@ -17591,7 +17591,7 @@ impl TreeNode {
     }
 
     /// **Source:** `TDataStd_TreeNode.hxx`:222 - `TDataStd_TreeNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_TreeNode_get_type_name())
                 .to_string_lossy()
@@ -17989,7 +17989,7 @@ impl UAttribute {
     }
 
     /// **Source:** `TDataStd_UAttribute.hxx`:66 - `TDataStd_UAttribute::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_UAttribute_get_type_name())
                 .to_string_lossy()
@@ -18550,7 +18550,7 @@ impl Variable {
     }
 
     /// **Source:** `TDataStd_Variable.hxx`:143 - `TDataStd_Variable::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDataStd_Variable_get_type_name())
                 .to_string_lossy()

@@ -77,7 +77,7 @@ impl DocumentRetrievalDriver {
     }
 
     /// **Source:** `BinXCAFDrivers_DocumentRetrievalDriver.hxx`:39 - `BinXCAFDrivers_DocumentRetrievalDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BinXCAFDrivers_DocumentRetrievalDriver_get_type_name(),
@@ -494,7 +494,7 @@ impl DocumentStorageDriver {
     }
 
     /// **Source:** `BinXCAFDrivers_DocumentStorageDriver.hxx`:39 - `BinXCAFDrivers_DocumentStorageDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::BinXCAFDrivers_DocumentStorageDriver_get_type_name(),

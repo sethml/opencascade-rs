@@ -218,7 +218,7 @@ impl ApproxLine {
     }
 
     /// **Source:** `BRepApprox_ApproxLine.hxx`:50 - `BRepApprox_ApproxLine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepApprox_ApproxLine_get_type_name())
                 .to_string_lossy()

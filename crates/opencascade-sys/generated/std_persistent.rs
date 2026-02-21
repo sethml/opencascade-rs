@@ -126,7 +126,7 @@ impl DataXtd_Constraint {
 
     /// **Source:** `StdPersistent_DataXtd_Constraint.hxx`:48 - `StdPersistent_DataXtd_Constraint::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdPersistent_DataXtd_Constraint_p_name(
                 self as *const Self,
@@ -195,7 +195,7 @@ impl DataXtd_PatternStd {
 
     /// **Source:** `StdPersistent_DataXtd_PatternStd.hxx`:51 - `StdPersistent_DataXtd_PatternStd::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdPersistent_DataXtd_PatternStd_p_name(
                 self as *const Self,
@@ -277,7 +277,7 @@ impl HArray1OfShape1 {
     }
 
     /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdPersistent_HArray1OfShape1_get_type_name())
                 .to_string_lossy()
@@ -488,7 +488,7 @@ impl Naming_NamedShape {
 
     /// **Source:** `StdPersistent_Naming.hxx`:55 - `StdPersistent_Naming_NamedShape::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdPersistent_Naming_NamedShape_p_name(
                 self as *const Self,
@@ -548,7 +548,7 @@ impl Naming_Name {
 
     /// **Source:** `StdPersistent_Naming.hxx`:85 - `StdPersistent_Naming_Name::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdPersistent_Naming_Name_p_name(
                 self as *const Self,
@@ -823,7 +823,7 @@ impl Naming_Name_1 {
 
     /// **Source:** `StdPersistent_Naming.hxx`:115 - `StdPersistent_Naming_Name_1::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdPersistent_Naming_Name_1_p_name(
                 self as *const Self,
@@ -883,7 +883,7 @@ impl Naming_Name_2 {
 
     /// **Source:** `StdPersistent_Naming.hxx`:139 - `StdPersistent_Naming_Name_2::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdPersistent_Naming_Name_2_p_name(
                 self as *const Self,
@@ -1022,7 +1022,7 @@ impl PPrsStd_AISPresentation {
 
     /// **Source:** `StdPersistent_PPrsStd.hxx`:49 - `StdPersistent_PPrsStd_AISPresentation::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdPersistent_PPrsStd_AISPresentation_p_name(
                 self as *const Self,
@@ -1083,7 +1083,7 @@ impl PPrsStd_AISPresentation_1 {
 
     /// **Source:** `StdPersistent_PPrsStd.hxx`:81 - `StdPersistent_PPrsStd_AISPresentation_1::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdPersistent_PPrsStd_AISPresentation_1_p_name(
                 self as *const Self,
@@ -1178,7 +1178,7 @@ impl TopLoc_Datum3D {
 
     /// **Source:** `StdPersistent_TopLoc.hxx`:40 - `StdPersistent_TopLoc_Datum3D::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdPersistent_TopLoc_Datum3D_p_name(
                 self as *const Self,
@@ -1237,7 +1237,7 @@ impl TopLoc_ItemLocation {
 
     /// **Source:** `StdPersistent_TopLoc.hxx`:56 - `StdPersistent_TopLoc_ItemLocation::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdPersistent_TopLoc_ItemLocation_p_name(
                 self as *const Self,

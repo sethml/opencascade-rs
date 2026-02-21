@@ -149,7 +149,7 @@ impl HGPPConstraint {
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:90 - `NLPlate_HGPPConstraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HGPPConstraint_get_type_name())
                 .to_string_lossy()
@@ -453,7 +453,7 @@ impl HPG0Constraint {
     }
 
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:53 - `NLPlate_HPG0Constraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG0Constraint_get_type_name())
                 .to_string_lossy()
@@ -801,7 +801,7 @@ impl HPG0G1Constraint {
     }
 
     /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:49 - `NLPlate_HPG0G1Constraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG0G1Constraint_get_type_name())
                 .to_string_lossy()
@@ -1192,7 +1192,7 @@ impl HPG0G2Constraint {
     }
 
     /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:47 - `NLPlate_HPG0G2Constraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG0G2Constraint_get_type_name())
                 .to_string_lossy()
@@ -1609,7 +1609,7 @@ impl HPG0G3Constraint {
     }
 
     /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:49 - `NLPlate_HPG0G3Constraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG0G3Constraint_get_type_name())
                 .to_string_lossy()
@@ -2056,7 +2056,7 @@ impl HPG1Constraint {
     }
 
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:53 - `NLPlate_HPG1Constraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG1Constraint_get_type_name())
                 .to_string_lossy()
@@ -2376,7 +2376,7 @@ impl HPG2Constraint {
     }
 
     /// **Source:** `NLPlate_HPG2Constraint.hxx`:43 - `NLPlate_HPG2Constraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG2Constraint_get_type_name())
                 .to_string_lossy()
@@ -2742,7 +2742,7 @@ impl HPG3Constraint {
     }
 
     /// **Source:** `NLPlate_HPG3Constraint.hxx`:47 - `NLPlate_HPG3Constraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG3Constraint_get_type_name())
                 .to_string_lossy()

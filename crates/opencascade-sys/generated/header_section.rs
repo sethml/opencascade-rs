@@ -120,7 +120,7 @@ impl FileDescription {
     }
 
     /// **Source:** `HeaderSection_FileDescription.hxx`:54 - `HeaderSection_FileDescription::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HeaderSection_FileDescription_get_type_name())
                 .to_string_lossy()
@@ -466,7 +466,7 @@ impl FileName {
     }
 
     /// **Source:** `HeaderSection_FileName.hxx`:85 - `HeaderSection_FileName::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HeaderSection_FileName_get_type_name())
                 .to_string_lossy()
@@ -656,7 +656,7 @@ impl FileSchema {
     }
 
     /// **Source:** `HeaderSection_FileSchema.hxx`:49 - `HeaderSection_FileSchema::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HeaderSection_FileSchema_get_type_name())
                 .to_string_lossy()
@@ -807,7 +807,10 @@ impl Protocol {
     }
 
     /// **Source:** `HeaderSection_Protocol.hxx`:41 - `HeaderSection_Protocol::SchemaName()`
-    pub fn schema_name(&self, arg0: &crate::ffi::HandleInterfaceInterfaceModel) -> String {
+    pub fn schema_name(
+        &self,
+        arg0: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HeaderSection_Protocol_schema_name(
                 self as *const Self,
@@ -824,7 +827,7 @@ impl Protocol {
     }
 
     /// **Source:** `HeaderSection_Protocol.hxx`:44 - `HeaderSection_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HeaderSection_Protocol_get_type_name())
                 .to_string_lossy()

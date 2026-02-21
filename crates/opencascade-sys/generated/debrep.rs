@@ -156,7 +156,7 @@ impl ConfigurationNode {
     }
 
     /// **Source:** `DEBREP_ConfigurationNode.hxx`:34 - `DEBREP_ConfigurationNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DEBREP_ConfigurationNode_get_type_name())
                 .to_string_lossy()
@@ -603,7 +603,7 @@ impl Provider {
     }
 
     /// **Source:** `DEBREP_Provider.hxx`:31 - `DEBREP_Provider::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DEBREP_Provider_get_type_name())
                 .to_string_lossy()

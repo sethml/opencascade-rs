@@ -1647,7 +1647,7 @@ impl Iso {
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:37 - `AdvApp2Var_Iso::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::AdvApp2Var_Iso_get_type_name())
                 .to_string_lossy()
@@ -2467,7 +2467,7 @@ impl Node {
     }
 
     /// **Source:** `AdvApp2Var_Node.hxx`:29 - `AdvApp2Var_Node::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::AdvApp2Var_Node_get_type_name())
                 .to_string_lossy()
@@ -2804,7 +2804,7 @@ impl Patch {
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:37 - `AdvApp2Var_Patch::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::AdvApp2Var_Patch_get_type_name())
                 .to_string_lossy()

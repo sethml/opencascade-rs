@@ -204,7 +204,7 @@ impl AsDes {
     }
 
     /// **Source:** `BRepAlgo_AsDes.hxx`:72 - `BRepAlgo_AsDes::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepAlgo_AsDes_get_type_name())
                 .to_string_lossy()

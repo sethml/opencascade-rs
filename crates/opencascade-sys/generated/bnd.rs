@@ -1750,7 +1750,7 @@ impl HArray1OfBox {
     }
 
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Bnd_HArray1OfBox_get_type_name())
                 .to_string_lossy()
@@ -1924,7 +1924,7 @@ impl HArray1OfBox2d {
     }
 
     /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Bnd_HArray1OfBox2d_get_type_name())
                 .to_string_lossy()
@@ -2106,7 +2106,7 @@ impl HArray1OfSphere {
     }
 
     /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Bnd_HArray1OfSphere_get_type_name())
                 .to_string_lossy()
@@ -2822,7 +2822,7 @@ impl Tools {
 
     /// **Source:** `Bnd_Tools.hxx`:36 - `Bnd_Tools::Bnd2BVH()`
     /// Converts the given Bnd_Box to BVH_Box
-    pub fn bnd2_bvh(theBox: &Box) -> crate::OwnedPtr<crate::ffi::Graphic3d_BndBox3d> {
+    pub fn bnd2_bvh(theBox: &Box) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Tools_bnd2_bvh(theBox)) }
     }
 

@@ -104,7 +104,7 @@ pub fn integer_value(anExtendedString: &crate::t_collection::ExtendedString) -> 
     unsafe { crate::ffi::UTL_integer_value(anExtendedString) }
 }
 /// **Source:** `UTL.hxx`:84 - `UTL::CString`
-pub fn c_string(anExtendedString: &crate::t_collection::ExtendedString) -> String {
+pub fn c_string(anExtendedString: &crate::t_collection::ExtendedString) -> std::string::String {
     unsafe {
         std::ffi::CStr::from_ptr(crate::ffi::UTL_c_string(anExtendedString))
             .to_string_lossy()

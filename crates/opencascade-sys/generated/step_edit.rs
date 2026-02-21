@@ -126,7 +126,7 @@ impl EditContext {
     }
 
     /// **Source:** `STEPEdit_EditContext.hxx`:64 - `STEPEdit_EditContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPEdit_EditContext_get_type_name())
                 .to_string_lossy()
@@ -469,7 +469,7 @@ impl EditSDR {
     }
 
     /// **Source:** `STEPEdit_EditSDR.hxx`:61 - `STEPEdit_EditSDR::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::STEPEdit_EditSDR_get_type_name())
                 .to_string_lossy()

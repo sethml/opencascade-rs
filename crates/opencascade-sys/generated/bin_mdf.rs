@@ -112,7 +112,7 @@ impl ADriver {
     }
 
     /// **Source:** `BinMDF_ADriver.hxx`:63 - `BinMDF_ADriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDF_ADriver_get_type_name())
                 .to_string_lossy()
@@ -1356,7 +1356,7 @@ impl ADriverTable {
     }
 
     /// **Source:** `BinMDF_ADriverTable.hxx`:75 - `BinMDF_ADriverTable::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDF_ADriverTable_get_type_name())
                 .to_string_lossy()
@@ -1536,7 +1536,7 @@ impl DerivedDriver {
     }
 
     /// **Source:** `BinMDF_DerivedDriver.hxx`:23 - `BinMDF_DerivedDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDF_DerivedDriver_get_type_name())
                 .to_string_lossy()
@@ -1746,7 +1746,7 @@ impl ReferenceDriver {
     }
 
     /// **Source:** `BinMDF_ReferenceDriver.hxx`:50 - `BinMDF_ReferenceDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDF_ReferenceDriver_get_type_name())
                 .to_string_lossy()
@@ -1963,7 +1963,7 @@ impl TagSourceDriver {
     }
 
     /// **Source:** `BinMDF_TagSourceDriver.hxx`:49 - `BinMDF_TagSourceDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDF_TagSourceDriver_get_type_name())
                 .to_string_lossy()

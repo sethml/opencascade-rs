@@ -224,7 +224,7 @@ impl BSplineCurve {
     }
 
     /// **Source:** `IGESGeom_BSplineCurve.hxx`:131 - `IGESGeom_BSplineCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_BSplineCurve_get_type_name())
                 .to_string_lossy()
@@ -1137,7 +1137,7 @@ impl BSplineSurface {
     }
 
     /// **Source:** `IGESGeom_BSplineSurface.hxx`:169 - `IGESGeom_BSplineSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_BSplineSurface_get_type_name())
                 .to_string_lossy()
@@ -1966,7 +1966,7 @@ impl Boundary {
     }
 
     /// **Source:** `IGESGeom_Boundary.hxx`:109 - `IGESGeom_Boundary::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Boundary_get_type_name())
                 .to_string_lossy()
@@ -2658,7 +2658,7 @@ impl BoundedSurface {
     }
 
     /// **Source:** `IGESGeom_BoundedSurface.hxx`:66 - `IGESGeom_BoundedSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_BoundedSurface_get_type_name())
                 .to_string_lossy()
@@ -3476,7 +3476,7 @@ impl CircularArc {
     }
 
     /// **Source:** `IGESGeom_CircularArc.hxx`:94 - `IGESGeom_CircularArc::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_CircularArc_get_type_name())
                 .to_string_lossy()
@@ -4164,7 +4164,7 @@ impl CompositeCurve {
     }
 
     /// **Source:** `IGESGeom_CompositeCurve.hxx`:52 - `IGESGeom_CompositeCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_CompositeCurve_get_type_name())
                 .to_string_lossy()
@@ -5092,7 +5092,7 @@ impl ConicArc {
     }
 
     /// **Source:** `IGESGeom_ConicArc.hxx`:149 - `IGESGeom_ConicArc::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_ConicArc_get_type_name())
                 .to_string_lossy()
@@ -5858,7 +5858,7 @@ impl CopiousData {
     }
 
     /// **Source:** `IGESGeom_CopiousData.hxx`:105 - `IGESGeom_CopiousData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_CopiousData_get_type_name())
                 .to_string_lossy()
@@ -6602,7 +6602,7 @@ impl CurveOnSurface {
     }
 
     /// **Source:** `IGESGeom_CurveOnSurface.hxx`:79 - `IGESGeom_CurveOnSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_CurveOnSurface_get_type_name())
                 .to_string_lossy()
@@ -7323,7 +7323,7 @@ impl Direction {
     }
 
     /// **Source:** `IGESGeom_Direction.hxx`:52 - `IGESGeom_Direction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Direction_get_type_name())
                 .to_string_lossy()
@@ -8066,7 +8066,7 @@ impl Flash {
     }
 
     /// **Source:** `IGESGeom_Flash.hxx`:88 - `IGESGeom_Flash::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Flash_get_type_name())
                 .to_string_lossy()
@@ -8779,7 +8779,7 @@ impl GeneralModule {
     }
 
     /// **Source:** `IGESGeom_GeneralModule.hxx`:82 - `IGESGeom_GeneralModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_GeneralModule_get_type_name())
                 .to_string_lossy()
@@ -9296,7 +9296,7 @@ impl HArray1OfBoundary {
     }
 
     /// **Source:** `IGESGeom_HArray1OfBoundary.hxx`:23 - `IGESGeom_HArray1OfBoundary::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_HArray1OfBoundary_get_type_name())
                 .to_string_lossy()
@@ -9511,7 +9511,7 @@ impl HArray1OfCurveOnSurface {
     }
 
     /// **Source:** `IGESGeom_HArray1OfCurveOnSurface.hxx`:23 - `IGESGeom_HArray1OfCurveOnSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_HArray1OfCurveOnSurface_get_type_name())
                 .to_string_lossy()
@@ -9747,7 +9747,7 @@ impl HArray1OfTransformationMatrix {
     }
 
     /// **Source:** `IGESGeom_HArray1OfTransformationMatrix.hxx`:23 - `IGESGeom_HArray1OfTransformationMatrix::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::IGESGeom_HArray1OfTransformationMatrix_get_type_name(),
@@ -9991,7 +9991,7 @@ impl Line {
     }
 
     /// **Source:** `IGESGeom_Line.hxx`:71 - `IGESGeom_Line::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Line_get_type_name())
                 .to_string_lossy()
@@ -10790,7 +10790,7 @@ impl OffsetCurve {
     }
 
     /// **Source:** `IGESGeom_OffsetCurve.hxx`:142 - `IGESGeom_OffsetCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_OffsetCurve_get_type_name())
                 .to_string_lossy()
@@ -11517,7 +11517,7 @@ impl OffsetSurface {
     }
 
     /// **Source:** `IGESGeom_OffsetSurface.hxx`:67 - `IGESGeom_OffsetSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_OffsetSurface_get_type_name())
                 .to_string_lossy()
@@ -12290,7 +12290,7 @@ impl Plane {
     }
 
     /// **Source:** `IGESGeom_Plane.hxx`:92 - `IGESGeom_Plane::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Plane_get_type_name())
                 .to_string_lossy()
@@ -12954,7 +12954,7 @@ impl Point {
     }
 
     /// **Source:** `IGESGeom_Point.hxx`:57 - `IGESGeom_Point::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Point_get_type_name())
                 .to_string_lossy()
@@ -13600,7 +13600,7 @@ impl Protocol {
     }
 
     /// **Source:** `IGESGeom_Protocol.hxx`:53 - `IGESGeom_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_Protocol_get_type_name())
                 .to_string_lossy()
@@ -13889,7 +13889,7 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `IGESGeom_ReadWriteModule.hxx`:58 - `IGESGeom_ReadWriteModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_ReadWriteModule_get_type_name())
                 .to_string_lossy()
@@ -14231,7 +14231,7 @@ impl RuledSurface {
     }
 
     /// **Source:** `IGESGeom_RuledSurface.hxx`:79 - `IGESGeom_RuledSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_RuledSurface_get_type_name())
                 .to_string_lossy()
@@ -14935,7 +14935,7 @@ impl SpecificModule {
     }
 
     /// **Source:** `IGESGeom_SpecificModule.hxx`:53 - `IGESGeom_SpecificModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_SpecificModule_get_type_name())
                 .to_string_lossy()
@@ -15305,7 +15305,7 @@ impl SplineCurve {
     }
 
     /// **Source:** `IGESGeom_SplineCurve.hxx`:148 - `IGESGeom_SplineCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_SplineCurve_get_type_name())
                 .to_string_lossy()
@@ -16121,7 +16121,7 @@ impl SplineSurface {
     }
 
     /// **Source:** `IGESGeom_SplineSurface.hxx`:116 - `IGESGeom_SplineSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_SplineSurface_get_type_name())
                 .to_string_lossy()
@@ -16859,7 +16859,7 @@ impl SurfaceOfRevolution {
     }
 
     /// **Source:** `IGESGeom_SurfaceOfRevolution.hxx`:63 - `IGESGeom_SurfaceOfRevolution::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_SurfaceOfRevolution_get_type_name())
                 .to_string_lossy()
@@ -17684,7 +17684,7 @@ impl TabulatedCylinder {
     }
 
     /// **Source:** `IGESGeom_TabulatedCylinder.hxx`:62 - `IGESGeom_TabulatedCylinder::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_TabulatedCylinder_get_type_name())
                 .to_string_lossy()
@@ -21262,7 +21262,7 @@ impl TransformationMatrix {
     }
 
     /// **Source:** `IGESGeom_TransformationMatrix.hxx`:64 - `IGESGeom_TransformationMatrix::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_TransformationMatrix_get_type_name())
                 .to_string_lossy()
@@ -22169,7 +22169,7 @@ impl TrimmedSurface {
     }
 
     /// **Source:** `IGESGeom_TrimmedSurface.hxx`:83 - `IGESGeom_TrimmedSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGeom_TrimmedSurface_get_type_name())
                 .to_string_lossy()

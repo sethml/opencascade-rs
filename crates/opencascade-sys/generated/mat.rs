@@ -210,7 +210,7 @@ impl Arc {
     }
 
     /// **Source:** `MAT_Arc.hxx`:99 - `MAT_Arc::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT_Arc_get_type_name())
                 .to_string_lossy()
@@ -386,7 +386,7 @@ impl BasicElt {
     }
 
     /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT_BasicElt_get_type_name())
                 .to_string_lossy()
@@ -664,7 +664,7 @@ impl Bisector {
     }
 
     /// **Source:** `MAT_Bisector.hxx`:96 - `MAT_Bisector::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT_Bisector_get_type_name())
                 .to_string_lossy()
@@ -852,7 +852,7 @@ impl Edge {
     }
 
     /// **Source:** `MAT_Edge.hxx`:58 - `MAT_Edge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT_Edge_get_type_name())
                 .to_string_lossy()
@@ -1121,7 +1121,7 @@ impl Graph {
     }
 
     /// **Source:** `MAT_Graph.hxx`:111 - `MAT_Graph::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT_Graph_get_type_name())
                 .to_string_lossy()
@@ -1387,7 +1387,7 @@ impl ListOfBisector {
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:89 - `MAT_ListOfBisector::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT_ListOfBisector_get_type_name())
                 .to_string_lossy()
@@ -1653,7 +1653,7 @@ impl ListOfEdge {
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:89 - `MAT_ListOfEdge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT_ListOfEdge_get_type_name())
                 .to_string_lossy()
@@ -1850,7 +1850,7 @@ impl Node {
     }
 
     /// **Source:** `MAT_Node.hxx`:73 - `MAT_Node::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT_Node_get_type_name())
                 .to_string_lossy()
@@ -2047,7 +2047,7 @@ impl TListNodeOfListOfBisector {
     }
 
     /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:52 - `MAT_TListNodeOfListOfBisector::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT_TListNodeOfListOfBisector_get_type_name())
                 .to_string_lossy()
@@ -2277,7 +2277,7 @@ impl TListNodeOfListOfEdge {
     }
 
     /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:52 - `MAT_TListNodeOfListOfEdge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT_TListNodeOfListOfEdge_get_type_name())
                 .to_string_lossy()
@@ -2474,7 +2474,7 @@ impl Zone {
     }
 
     /// **Source:** `MAT_Zone.hxx`:63 - `MAT_Zone::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT_Zone_get_type_name())
                 .to_string_lossy()

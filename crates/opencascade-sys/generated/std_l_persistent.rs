@@ -52,7 +52,7 @@ impl Data {
 
     /// **Source:** `StdLPersistent_Data.hxx`:43 - `StdLPersistent_Data::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_Data_p_name(self as *const Self))
                 .to_string_lossy()
@@ -305,7 +305,7 @@ impl Document {
 
     /// **Source:** `StdLPersistent_Document.hxx`:33 - `StdLPersistent_Document::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_Document_p_name(
                 self as *const Self,
@@ -564,7 +564,7 @@ impl Function {
 
     /// **Source:** `StdLPersistent_Function.hxx`:44 - `StdLPersistent_Function::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_Function_p_name(
                 self as *const Self,
@@ -617,7 +617,7 @@ impl HArray1OfPersistent {
     }
 
     /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_HArray1OfPersistent_get_type_name())
                 .to_string_lossy()
@@ -819,7 +819,7 @@ impl HArray2OfPersistent {
     }
 
     /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_HArray2OfPersistent_get_type_name())
                 .to_string_lossy()
@@ -1029,7 +1029,7 @@ impl HString_Ascii {
     }
 
     /// **Source:** `StdLPersistent_HString.hxx`:53 - `StdLPersistent_HString_Ascii::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_HString_Ascii_p_name(
                 self as *const Self,
@@ -1067,7 +1067,7 @@ impl HString_Extended {
     }
 
     /// **Source:** `StdLPersistent_HString.hxx`:62 - `StdLPersistent_HString_Extended::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_HString_Extended_p_name(
                 self as *const Self,
@@ -1118,7 +1118,7 @@ impl NamedData {
 
     /// **Source:** `StdLPersistent_NamedData.hxx`:85 - `StdLPersistent_NamedData::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_NamedData_p_name(
                 self as *const Self,
@@ -1175,7 +1175,7 @@ impl Real {
 
     /// **Source:** `StdLPersistent_Real.hxx`:44 - `StdLPersistent_Real::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_Real_p_name(self as *const Self))
                 .to_string_lossy()
@@ -1230,7 +1230,7 @@ impl TreeNode {
 
     /// **Source:** `StdLPersistent_TreeNode.hxx`:35 - `StdLPersistent_TreeNode::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_TreeNode_p_name(
                 self as *const Self,
@@ -1295,7 +1295,7 @@ impl Value_TagSource {
     }
 
     /// **Source:** `StdLPersistent_Value.hxx`:50 - `StdLPersistent_Value_TagSource::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_Value_TagSource_p_name(
                 self as *const Self,
@@ -1323,7 +1323,7 @@ impl Value_Reference {
     }
 
     /// **Source:** `StdLPersistent_Value.hxx`:56 - `StdLPersistent_Value_Reference::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_Value_Reference_p_name(
                 self as *const Self,
@@ -1351,7 +1351,7 @@ impl Value_Comment {
     }
 
     /// **Source:** `StdLPersistent_Value.hxx`:62 - `StdLPersistent_Value_Comment::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_Value_Comment_p_name(
                 self as *const Self,
@@ -1389,7 +1389,7 @@ impl Value_UAttribute {
     }
 
     /// **Source:** `StdLPersistent_Value.hxx`:71 - `StdLPersistent_Value_UAttribute::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_Value_UAttribute_p_name(
                 self as *const Self,
@@ -1427,7 +1427,7 @@ impl Value_Integer {
     }
 
     /// **Source:** `StdLPersistent_Value.hxx`:80 - `StdLPersistent_Value_Integer::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_Value_Integer_p_name(
                 self as *const Self,
@@ -1465,7 +1465,7 @@ impl Value_Name {
     }
 
     /// **Source:** `StdLPersistent_Value.hxx`:89 - `StdLPersistent_Value_Name::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_Value_Name_p_name(
                 self as *const Self,
@@ -1503,7 +1503,7 @@ impl Value_AsciiString {
     }
 
     /// **Source:** `StdLPersistent_Value.hxx`:98 - `StdLPersistent_Value_AsciiString::PName()`
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_Value_AsciiString_p_name(
                 self as *const Self,
@@ -1557,7 +1557,7 @@ impl Variable {
 
     /// **Source:** `StdLPersistent_Variable.hxx`:47 - `StdLPersistent_Variable::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_Variable_p_name(
                 self as *const Self,
@@ -1617,7 +1617,7 @@ impl XLink {
 
     /// **Source:** `StdLPersistent_XLink.hxx`:42 - `StdLPersistent_XLink::PName()`
     /// Returns persistent type name
-    pub fn p_name(&self) -> String {
+    pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StdLPersistent_XLink_p_name(self as *const Self))
                 .to_string_lossy()

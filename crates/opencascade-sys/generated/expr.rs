@@ -124,7 +124,7 @@ impl Absolute {
     }
 
     /// **Source:** `Expr_Absolute.hxx`:68 - `Expr_Absolute::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Absolute_get_type_name())
                 .to_string_lossy()
@@ -435,7 +435,7 @@ impl ArcCosine {
     }
 
     /// **Source:** `Expr_ArcCosine.hxx`:68 - `Expr_ArcCosine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_ArcCosine_get_type_name())
                 .to_string_lossy()
@@ -746,7 +746,7 @@ impl ArcSine {
     }
 
     /// **Source:** `Expr_ArcSine.hxx`:68 - `Expr_ArcSine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_ArcSine_get_type_name())
                 .to_string_lossy()
@@ -1058,7 +1058,7 @@ impl ArcTangent {
     }
 
     /// **Source:** `Expr_ArcTangent.hxx`:68 - `Expr_ArcTangent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_ArcTangent_get_type_name())
                 .to_string_lossy()
@@ -1373,7 +1373,7 @@ impl ArgCosh {
     }
 
     /// **Source:** `Expr_ArgCosh.hxx`:68 - `Expr_ArgCosh::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_ArgCosh_get_type_name())
                 .to_string_lossy()
@@ -1680,7 +1680,7 @@ impl ArgSinh {
     }
 
     /// **Source:** `Expr_ArgSinh.hxx`:68 - `Expr_ArgSinh::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_ArgSinh_get_type_name())
                 .to_string_lossy()
@@ -1987,7 +1987,7 @@ impl ArgTanh {
     }
 
     /// **Source:** `Expr_ArgTanh.hxx`:68 - `Expr_ArgTanh::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_ArgTanh_get_type_name())
                 .to_string_lossy()
@@ -2297,7 +2297,7 @@ impl BinaryExpression {
     }
 
     /// **Source:** `Expr_BinaryExpression.hxx`:74 - `Expr_BinaryExpression::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_BinaryExpression_get_type_name())
                 .to_string_lossy()
@@ -2700,7 +2700,7 @@ impl BinaryFunction {
     }
 
     /// **Source:** `Expr_BinaryFunction.hxx`:78 - `Expr_BinaryFunction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_BinaryFunction_get_type_name())
                 .to_string_lossy()
@@ -3038,7 +3038,7 @@ impl Cosh {
     }
 
     /// **Source:** `Expr_Cosh.hxx`:69 - `Expr_Cosh::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Cosh_get_type_name())
                 .to_string_lossy()
@@ -3343,7 +3343,7 @@ impl Cosine {
     }
 
     /// **Source:** `Expr_Cosine.hxx`:69 - `Expr_Cosine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Cosine_get_type_name())
                 .to_string_lossy()
@@ -3673,7 +3673,7 @@ impl Difference {
     }
 
     /// **Source:** `Expr_Difference.hxx`:76 - `Expr_Difference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Difference_get_type_name())
                 .to_string_lossy()
@@ -3959,7 +3959,7 @@ impl Different {
     }
 
     /// **Source:** `Expr_Different.hxx`:56 - `Expr_Different::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Different_get_type_name())
                 .to_string_lossy()
@@ -4266,7 +4266,7 @@ impl Division {
     }
 
     /// **Source:** `Expr_Division.hxx`:70 - `Expr_Division::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Division_get_type_name())
                 .to_string_lossy()
@@ -4560,7 +4560,7 @@ impl Equal {
     }
 
     /// **Source:** `Expr_Equal.hxx`:55 - `Expr_Equal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Equal_get_type_name())
                 .to_string_lossy()
@@ -4869,7 +4869,7 @@ impl Exponential {
     }
 
     /// **Source:** `Expr_Exponential.hxx`:68 - `Expr_Exponential::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Exponential_get_type_name())
                 .to_string_lossy()
@@ -5192,7 +5192,7 @@ impl Exponentiate {
     }
 
     /// **Source:** `Expr_Exponentiate.hxx`:70 - `Expr_Exponentiate::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Exponentiate_get_type_name())
                 .to_string_lossy()
@@ -5516,7 +5516,7 @@ impl ExprFailure {
     }
 
     /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_ExprFailure_get_type_name())
                 .to_string_lossy()
@@ -5912,7 +5912,7 @@ impl FunctionDerivative {
     }
 
     /// **Source:** `Expr_FunctionDerivative.hxx`:101 - `Expr_FunctionDerivative::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_FunctionDerivative_get_type_name())
                 .to_string_lossy()
@@ -6239,7 +6239,7 @@ impl GeneralExpression {
     }
 
     /// **Source:** `Expr_GeneralExpression.hxx`:117 - `Expr_GeneralExpression::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_GeneralExpression_get_type_name())
                 .to_string_lossy()
@@ -7045,7 +7045,7 @@ impl GeneralFunction {
     }
 
     /// **Source:** `Expr_GeneralFunction.hxx`:77 - `Expr_GeneralFunction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_GeneralFunction_get_type_name())
                 .to_string_lossy()
@@ -7297,7 +7297,7 @@ impl GeneralRelation {
     }
 
     /// **Source:** `Expr_GeneralRelation.hxx`:80 - `Expr_GeneralRelation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_GeneralRelation_get_type_name())
                 .to_string_lossy()
@@ -7606,7 +7606,7 @@ impl GreaterThan {
     }
 
     /// **Source:** `Expr_GreaterThan.hxx`:56 - `Expr_GreaterThan::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_GreaterThan_get_type_name())
                 .to_string_lossy()
@@ -7899,7 +7899,7 @@ impl GreaterThanOrEqual {
     }
 
     /// **Source:** `Expr_GreaterThanOrEqual.hxx`:56 - `Expr_GreaterThanOrEqual::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_GreaterThanOrEqual_get_type_name())
                 .to_string_lossy()
@@ -8241,7 +8241,7 @@ impl InvalidAssignment {
     }
 
     /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_InvalidAssignment_get_type_name())
                 .to_string_lossy()
@@ -8504,7 +8504,7 @@ impl InvalidFunction {
     }
 
     /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_InvalidFunction_get_type_name())
                 .to_string_lossy()
@@ -8757,7 +8757,7 @@ impl InvalidOperand {
     }
 
     /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_InvalidOperand_get_type_name())
                 .to_string_lossy()
@@ -8992,7 +8992,7 @@ impl LessThan {
     }
 
     /// **Source:** `Expr_LessThan.hxx`:56 - `Expr_LessThan::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_LessThan_get_type_name())
                 .to_string_lossy()
@@ -9279,7 +9279,7 @@ impl LessThanOrEqual {
     }
 
     /// **Source:** `Expr_LessThanOrEqual.hxx`:56 - `Expr_LessThanOrEqual::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_LessThanOrEqual_get_type_name())
                 .to_string_lossy()
@@ -9606,7 +9606,7 @@ impl LogOf10 {
     }
 
     /// **Source:** `Expr_LogOf10.hxx`:69 - `Expr_LogOf10::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_LogOf10_get_type_name())
                 .to_string_lossy()
@@ -9911,7 +9911,7 @@ impl LogOfe {
     }
 
     /// **Source:** `Expr_LogOfe.hxx`:69 - `Expr_LogOfe::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_LogOfe_get_type_name())
                 .to_string_lossy()
@@ -10281,7 +10281,7 @@ impl NamedConstant {
     }
 
     /// **Source:** `Expr_NamedConstant.hxx`:96 - `Expr_NamedConstant::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_NamedConstant_get_type_name())
                 .to_string_lossy()
@@ -10529,7 +10529,7 @@ impl NamedExpression {
     }
 
     /// **Source:** `Expr_NamedExpression.hxx`:54 - `Expr_NamedExpression::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_NamedExpression_get_type_name())
                 .to_string_lossy()
@@ -10963,7 +10963,7 @@ impl NamedFunction {
     }
 
     /// **Source:** `Expr_NamedFunction.hxx`:97 - `Expr_NamedFunction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_NamedFunction_get_type_name())
                 .to_string_lossy()
@@ -11245,7 +11245,7 @@ impl NamedUnknown {
     }
 
     /// **Source:** `Expr_NamedUnknown.hxx`:101 - `Expr_NamedUnknown::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_NamedUnknown_get_type_name())
                 .to_string_lossy()
@@ -11535,7 +11535,7 @@ impl NotAssigned {
     }
 
     /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_NotAssigned_get_type_name())
                 .to_string_lossy()
@@ -11775,7 +11775,7 @@ impl NotEvaluable {
     }
 
     /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_NotEvaluable_get_type_name())
                 .to_string_lossy()
@@ -12099,7 +12099,7 @@ impl NumericValue {
     }
 
     /// **Source:** `Expr_NumericValue.hxx`:103 - `Expr_NumericValue::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_NumericValue_get_type_name())
                 .to_string_lossy()
@@ -12330,7 +12330,7 @@ impl PolyExpression {
     }
 
     /// **Source:** `Expr_PolyExpression.hxx`:74 - `Expr_PolyExpression::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_PolyExpression_get_type_name())
                 .to_string_lossy()
@@ -12699,7 +12699,7 @@ impl PolyFunction {
     }
 
     /// **Source:** `Expr_PolyFunction.hxx`:77 - `Expr_PolyFunction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_PolyFunction_get_type_name())
                 .to_string_lossy()
@@ -13036,7 +13036,7 @@ impl Product {
     }
 
     /// **Source:** `Expr_Product.hxx`:74 - `Expr_Product::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Product_get_type_name())
                 .to_string_lossy()
@@ -13439,7 +13439,7 @@ impl Sign {
     }
 
     /// **Source:** `Expr_Sign.hxx`:69 - `Expr_Sign::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Sign_get_type_name())
                 .to_string_lossy()
@@ -13742,7 +13742,7 @@ impl Sine {
     }
 
     /// **Source:** `Expr_Sine.hxx`:69 - `Expr_Sine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Sine_get_type_name())
                 .to_string_lossy()
@@ -14059,7 +14059,7 @@ impl SingleRelation {
     }
 
     /// **Source:** `Expr_SingleRelation.hxx`:70 - `Expr_SingleRelation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_SingleRelation_get_type_name())
                 .to_string_lossy()
@@ -14411,7 +14411,7 @@ impl Sinh {
     }
 
     /// **Source:** `Expr_Sinh.hxx`:69 - `Expr_Sinh::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Sinh_get_type_name())
                 .to_string_lossy()
@@ -14716,7 +14716,7 @@ impl Square {
     }
 
     /// **Source:** `Expr_Square.hxx`:69 - `Expr_Square::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Square_get_type_name())
                 .to_string_lossy()
@@ -15028,7 +15028,7 @@ impl SquareRoot {
     }
 
     /// **Source:** `Expr_SquareRoot.hxx`:69 - `Expr_SquareRoot::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_SquareRoot_get_type_name())
                 .to_string_lossy()
@@ -15365,7 +15365,7 @@ impl Sum {
     }
 
     /// **Source:** `Expr_Sum.hxx`:81 - `Expr_Sum::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Sum_get_type_name())
                 .to_string_lossy()
@@ -15703,7 +15703,7 @@ impl SystemRelation {
     }
 
     /// **Source:** `Expr_SystemRelation.hxx`:85 - `Expr_SystemRelation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_SystemRelation_get_type_name())
                 .to_string_lossy()
@@ -15931,7 +15931,7 @@ impl Tangent {
     }
 
     /// **Source:** `Expr_Tangent.hxx`:69 - `Expr_Tangent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Tangent_get_type_name())
                 .to_string_lossy()
@@ -16234,7 +16234,7 @@ impl Tanh {
     }
 
     /// **Source:** `Expr_Tanh.hxx`:69 - `Expr_Tanh::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_Tanh_get_type_name())
                 .to_string_lossy()
@@ -16531,7 +16531,7 @@ impl UnaryExpression {
     }
 
     /// **Source:** `Expr_UnaryExpression.hxx`:67 - `Expr_UnaryExpression::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_UnaryExpression_get_type_name())
                 .to_string_lossy()
@@ -17179,7 +17179,7 @@ impl UnaryFunction {
     }
 
     /// **Source:** `Expr_UnaryFunction.hxx`:77 - `Expr_UnaryFunction::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_UnaryFunction_get_type_name())
                 .to_string_lossy()
@@ -17524,7 +17524,7 @@ impl UnaryMinus {
     }
 
     /// **Source:** `Expr_UnaryMinus.hxx`:76 - `Expr_UnaryMinus::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Expr_UnaryMinus_get_type_name())
                 .to_string_lossy()

@@ -2043,7 +2043,7 @@ impl TriangleSet {
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:46 - `BRepExtrema_TriangleSet::Box()`
     /// Returns AABB of the given triangle.
-    pub fn box_(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::Graphic3d_BndBox3d> {
+    pub fn box_(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_TriangleSet_box_(
                 self as *const Self,
@@ -2158,7 +2158,7 @@ impl TriangleSet {
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepExtrema_TriangleSet_get_type_name())
                 .to_string_lossy()
@@ -2290,7 +2290,7 @@ impl UnCompatibleShape {
     }
 
     /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BRepExtrema_UnCompatibleShape_get_type_name())
                 .to_string_lossy()

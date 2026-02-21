@@ -215,7 +215,7 @@ impl AllAroundShapeAspect {
     }
 
     /// **Source:** `StepRepr_AllAroundShapeAspect.hxx`:34 - `StepRepr_AllAroundShapeAspect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_AllAroundShapeAspect_get_type_name())
                 .to_string_lossy()
@@ -554,7 +554,7 @@ impl Apex {
     }
 
     /// **Source:** `StepRepr_Apex.hxx`:34 - `StepRepr_Apex::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_Apex_get_type_name())
                 .to_string_lossy()
@@ -882,7 +882,7 @@ impl AssemblyComponentUsage {
     }
 
     /// **Source:** `StepRepr_AssemblyComponentUsage.hxx`:73 - `StepRepr_AssemblyComponentUsage::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_AssemblyComponentUsage_get_type_name())
                 .to_string_lossy()
@@ -1401,7 +1401,7 @@ impl AssemblyComponentUsageSubstitute {
     }
 
     /// **Source:** `StepRepr_AssemblyComponentUsageSubstitute.hxx`:57 - `StepRepr_AssemblyComponentUsageSubstitute::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_AssemblyComponentUsageSubstitute_get_type_name(),
@@ -1577,7 +1577,7 @@ impl BetweenShapeAspect {
     }
 
     /// **Source:** `StepRepr_BetweenShapeAspect.hxx`:34 - `StepRepr_BetweenShapeAspect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_BetweenShapeAspect_get_type_name())
                 .to_string_lossy()
@@ -1941,7 +1941,7 @@ impl BooleanRepresentationItem {
     }
 
     /// **Source:** `StepRepr_BooleanRepresentationItem.hxx`:39 - `StepRepr_BooleanRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_BooleanRepresentationItem_get_type_name())
                 .to_string_lossy()
@@ -2155,7 +2155,7 @@ impl CentreOfSymmetry {
     }
 
     /// **Source:** `StepRepr_CentreOfSymmetry.hxx`:34 - `StepRepr_CentreOfSymmetry::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_CentreOfSymmetry_get_type_name())
                 .to_string_lossy()
@@ -2774,7 +2774,7 @@ impl CharacterizedRepresentation {
     }
 
     /// **Source:** `StepRepr_CharacterizedRepresentation.hxx`:48 - `StepRepr_CharacterizedRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_CharacterizedRepresentation_get_type_name(),
@@ -3073,7 +3073,7 @@ impl CompGroupShAspAndCompShAspAndDatumFeatAndShAsp {
     }
 
     /// **Source:** `StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp.hxx`:36 - `StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp_get_type_name(),
@@ -3383,7 +3383,7 @@ impl CompShAspAndDatumFeatAndShAsp {
     }
 
     /// **Source:** `StepRepr_CompShAspAndDatumFeatAndShAsp.hxx`:34 - `StepRepr_CompShAspAndDatumFeatAndShAsp::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_CompShAspAndDatumFeatAndShAsp_get_type_name(),
@@ -3710,7 +3710,7 @@ impl CompositeGroupShapeAspect {
     }
 
     /// **Source:** `StepRepr_CompositeGroupShapeAspect.hxx`:34 - `StepRepr_CompositeGroupShapeAspect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_CompositeGroupShapeAspect_get_type_name())
                 .to_string_lossy()
@@ -4036,7 +4036,7 @@ impl CompositeShapeAspect {
     }
 
     /// **Source:** `StepRepr_CompositeShapeAspect.hxx`:34 - `StepRepr_CompositeShapeAspect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_CompositeShapeAspect_get_type_name())
                 .to_string_lossy()
@@ -4481,7 +4481,7 @@ impl CompoundRepresentationItem {
     }
 
     /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:53 - `StepRepr_CompoundRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_CompoundRepresentationItem_get_type_name()).to_string_lossy().into_owned()
         }
@@ -4766,7 +4766,7 @@ impl ConfigurationDesign {
     }
 
     /// **Source:** `StepRepr_ConfigurationDesign.hxx`:53 - `StepRepr_ConfigurationDesign::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ConfigurationDesign_get_type_name())
                 .to_string_lossy()
@@ -5182,7 +5182,7 @@ impl ConfigurationEffectivity {
     }
 
     /// **Source:** `StepRepr_ConfigurationEffectivity.hxx`:51 - `StepRepr_ConfigurationEffectivity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ConfigurationEffectivity_get_type_name())
                 .to_string_lossy()
@@ -5566,7 +5566,7 @@ impl ConfigurationItem {
     }
 
     /// **Source:** `StepRepr_ConfigurationItem.hxx`:84 - `StepRepr_ConfigurationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ConfigurationItem_get_type_name())
                 .to_string_lossy()
@@ -5725,7 +5725,7 @@ impl ConstructiveGeometryRepresentation {
     }
 
     /// **Source:** `StepRepr_ConstructiveGeometryRepresentation.hxx`:33 - `StepRepr_ConstructiveGeometryRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_ConstructiveGeometryRepresentation_get_type_name(),
@@ -6042,7 +6042,7 @@ impl ConstructiveGeometryRepresentationRelationship {
     }
 
     /// **Source:** `StepRepr_ConstructiveGeometryRepresentationRelationship.hxx`:34 - `StepRepr_ConstructiveGeometryRepresentationRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_ConstructiveGeometryRepresentationRelationship_get_type_name(),
@@ -6343,7 +6343,7 @@ impl ContinuosShapeAspect {
     }
 
     /// **Source:** `StepRepr_ContinuosShapeAspect.hxx`:34 - `StepRepr_ContinuosShapeAspect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ContinuosShapeAspect_get_type_name())
                 .to_string_lossy()
@@ -6761,7 +6761,7 @@ impl DataEnvironment {
     }
 
     /// **Source:** `StepRepr_DataEnvironment.hxx`:61 - `StepRepr_DataEnvironment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_DataEnvironment_get_type_name())
                 .to_string_lossy()
@@ -6912,7 +6912,7 @@ impl DefinitionalRepresentation {
     }
 
     /// **Source:** `StepRepr_DefinitionalRepresentation.hxx`:35 - `StepRepr_DefinitionalRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_DefinitionalRepresentation_get_type_name()).to_string_lossy().into_owned()
         }
@@ -7232,7 +7232,7 @@ impl DerivedShapeAspect {
     }
 
     /// **Source:** `StepRepr_DerivedShapeAspect.hxx`:34 - `StepRepr_DerivedShapeAspect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_DerivedShapeAspect_get_type_name())
                 .to_string_lossy()
@@ -7669,7 +7669,7 @@ impl DescriptiveRepresentationItem {
     }
 
     /// **Source:** `StepRepr_DescriptiveRepresentationItem.hxx`:43 - `StepRepr_DescriptiveRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_DescriptiveRepresentationItem_get_type_name(),
@@ -7893,7 +7893,7 @@ impl Extension {
     }
 
     /// **Source:** `StepRepr_Extension.hxx`:34 - `StepRepr_Extension::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_Extension_get_type_name())
                 .to_string_lossy()
@@ -8165,7 +8165,7 @@ impl ExternallyDefinedRepresentation {
     }
 
     /// **Source:** `StepRepr_ExternallyDefinedRepresentation.hxx`:34 - `StepRepr_ExternallyDefinedRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_ExternallyDefinedRepresentation_get_type_name(),
@@ -8482,7 +8482,7 @@ impl FeatureForDatumTargetRelationship {
     }
 
     /// **Source:** `StepRepr_FeatureForDatumTargetRelationship.hxx`:35 - `StepRepr_FeatureForDatumTargetRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_FeatureForDatumTargetRelationship_get_type_name(),
@@ -8858,7 +8858,7 @@ impl FunctionallyDefinedTransformation {
     }
 
     /// **Source:** `StepRepr_FunctionallyDefinedTransformation.hxx`:47 - `StepRepr_FunctionallyDefinedTransformation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_FunctionallyDefinedTransformation_get_type_name(),
@@ -9034,7 +9034,7 @@ impl GeometricAlignment {
     }
 
     /// **Source:** `StepRepr_GeometricAlignment.hxx`:33 - `StepRepr_GeometricAlignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_GeometricAlignment_get_type_name())
                 .to_string_lossy()
@@ -9415,7 +9415,7 @@ impl GlobalUncertaintyAssignedContext {
     }
 
     /// **Source:** `StepRepr_GlobalUncertaintyAssignedContext.hxx`:53 - `StepRepr_GlobalUncertaintyAssignedContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_GlobalUncertaintyAssignedContext_get_type_name(),
@@ -9709,7 +9709,7 @@ impl GlobalUnitAssignedContext {
     }
 
     /// **Source:** `StepRepr_GlobalUnitAssignedContext.hxx`:51 - `StepRepr_GlobalUnitAssignedContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_GlobalUnitAssignedContext_get_type_name())
                 .to_string_lossy()
@@ -10027,7 +10027,7 @@ impl HArray1OfMaterialPropertyRepresentation {
     }
 
     /// **Source:** `StepRepr_HArray1OfMaterialPropertyRepresentation.hxx`:23 - `StepRepr_HArray1OfMaterialPropertyRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_HArray1OfMaterialPropertyRepresentation_get_type_name(),
@@ -10281,7 +10281,7 @@ impl HArray1OfPropertyDefinitionRepresentation {
     }
 
     /// **Source:** `StepRepr_HArray1OfPropertyDefinitionRepresentation.hxx`:23 - `StepRepr_HArray1OfPropertyDefinitionRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_HArray1OfPropertyDefinitionRepresentation_get_type_name(),
@@ -10529,7 +10529,7 @@ impl HArray1OfRepresentationItem {
     }
 
     /// **Source:** `StepRepr_HArray1OfRepresentationItem.hxx`:23 - `StepRepr_HArray1OfRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_HArray1OfRepresentationItem_get_type_name(),
@@ -10763,7 +10763,7 @@ impl HArray1OfShapeAspect {
     }
 
     /// **Source:** `StepRepr_HArray1OfShapeAspect.hxx`:22 - `StepRepr_HArray1OfShapeAspect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_HArray1OfShapeAspect_get_type_name())
                 .to_string_lossy()
@@ -10981,7 +10981,7 @@ impl HSequenceOfMaterialPropertyRepresentation {
     }
 
     /// **Source:** `StepRepr_HSequenceOfMaterialPropertyRepresentation.hxx`:24 - `StepRepr_HSequenceOfMaterialPropertyRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_HSequenceOfMaterialPropertyRepresentation_get_type_name(),
@@ -11213,7 +11213,7 @@ impl HSequenceOfRepresentationItem {
     }
 
     /// **Source:** `StepRepr_HSequenceOfRepresentationItem.hxx`:24 - `StepRepr_HSequenceOfRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_HSequenceOfRepresentationItem_get_type_name(),
@@ -11416,7 +11416,7 @@ impl IntegerRepresentationItem {
     }
 
     /// **Source:** `StepRepr_IntegerRepresentationItem.hxx`:42 - `StepRepr_IntegerRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_IntegerRepresentationItem_get_type_name())
                 .to_string_lossy()
@@ -11729,7 +11729,7 @@ impl ItemDefinedTransformation {
     }
 
     /// **Source:** `StepRepr_ItemDefinedTransformation.hxx`:60 - `StepRepr_ItemDefinedTransformation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ItemDefinedTransformation_get_type_name())
                 .to_string_lossy()
@@ -11992,7 +11992,7 @@ impl MakeFromUsageOption {
     }
 
     /// **Source:** `StepRepr_MakeFromUsageOption.hxx`:86 - `StepRepr_MakeFromUsageOption::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_MakeFromUsageOption_get_type_name())
                 .to_string_lossy()
@@ -12396,7 +12396,7 @@ impl MappedItem {
     }
 
     /// **Source:** `StepRepr_MappedItem.hxx`:49 - `StepRepr_MappedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_MappedItem_get_type_name())
                 .to_string_lossy()
@@ -12709,7 +12709,7 @@ impl MaterialDesignation {
     }
 
     /// **Source:** `StepRepr_MaterialDesignation.hxx`:46 - `StepRepr_MaterialDesignation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_MaterialDesignation_get_type_name())
                 .to_string_lossy()
@@ -12869,7 +12869,7 @@ impl MaterialProperty {
     }
 
     /// **Source:** `StepRepr_MaterialProperty.hxx`:34 - `StepRepr_MaterialProperty::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_MaterialProperty_get_type_name())
                 .to_string_lossy()
@@ -13181,7 +13181,7 @@ impl MaterialPropertyRepresentation {
     }
 
     /// **Source:** `StepRepr_MaterialPropertyRepresentation.hxx`:52 - `StepRepr_MaterialPropertyRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_MaterialPropertyRepresentation_get_type_name(),
@@ -13486,7 +13486,7 @@ impl MeasureRepresentationItem {
     }
 
     /// **Source:** `StepRepr_MeasureRepresentationItem.hxx`:51 - `StepRepr_MeasureRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_MeasureRepresentationItem_get_type_name())
                 .to_string_lossy()
@@ -13708,7 +13708,7 @@ impl MechanicalDesignAndDraughtingRelationship {
     }
 
     /// **Source:** `StepRepr_MechanicalDesignAndDraughtingRelationship.hxx`:33 - `StepRepr_MechanicalDesignAndDraughtingRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_MechanicalDesignAndDraughtingRelationship_get_type_name(),
@@ -14022,7 +14022,7 @@ impl NextAssemblyUsageOccurrence {
     }
 
     /// **Source:** `StepRepr_NextAssemblyUsageOccurrence.hxx`:34 - `StepRepr_NextAssemblyUsageOccurrence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_NextAssemblyUsageOccurrence_get_type_name(),
@@ -14506,7 +14506,7 @@ impl ParallelOffset {
     }
 
     /// **Source:** `StepRepr_ParallelOffset.hxx`:51 - `StepRepr_ParallelOffset::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ParallelOffset_get_type_name())
                 .to_string_lossy()
@@ -14786,7 +14786,7 @@ impl ParametricRepresentationContext {
     }
 
     /// **Source:** `StepRepr_ParametricRepresentationContext.hxx`:35 - `StepRepr_ParametricRepresentationContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_ParametricRepresentationContext_get_type_name(),
@@ -15045,7 +15045,7 @@ impl PerpendicularTo {
     }
 
     /// **Source:** `StepRepr_PerpendicularTo.hxx`:33 - `StepRepr_PerpendicularTo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_PerpendicularTo_get_type_name())
                 .to_string_lossy()
@@ -15440,7 +15440,7 @@ impl ProductConcept {
     }
 
     /// **Source:** `StepRepr_ProductConcept.hxx`:73 - `StepRepr_ProductConcept::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ProductConcept_get_type_name())
                 .to_string_lossy()
@@ -15586,7 +15586,7 @@ impl ProductDefinitionShape {
     }
 
     /// **Source:** `StepRepr_ProductDefinitionShape.hxx`:34 - `StepRepr_ProductDefinitionShape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ProductDefinitionShape_get_type_name())
                 .to_string_lossy()
@@ -15866,7 +15866,7 @@ impl ProductDefinitionUsage {
     }
 
     /// **Source:** `StepRepr_ProductDefinitionUsage.hxx`:34 - `StepRepr_ProductDefinitionUsage::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ProductDefinitionUsage_get_type_name())
                 .to_string_lossy()
@@ -16315,7 +16315,7 @@ impl PromissoryUsageOccurrence {
     }
 
     /// **Source:** `StepRepr_PromissoryUsageOccurrence.hxx`:33 - `StepRepr_PromissoryUsageOccurrence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_PromissoryUsageOccurrence_get_type_name())
                 .to_string_lossy()
@@ -16838,7 +16838,7 @@ impl PropertyDefinition {
     }
 
     /// **Source:** `StepRepr_PropertyDefinition.hxx`:64 - `StepRepr_PropertyDefinition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_PropertyDefinition_get_type_name())
                 .to_string_lossy()
@@ -17201,7 +17201,7 @@ impl PropertyDefinitionRelationship {
     }
 
     /// **Source:** `StepRepr_PropertyDefinitionRelationship.hxx`:69 - `StepRepr_PropertyDefinitionRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_PropertyDefinitionRelationship_get_type_name(),
@@ -17453,7 +17453,7 @@ impl PropertyDefinitionRepresentation {
     }
 
     /// **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:53 - `StepRepr_PropertyDefinitionRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_PropertyDefinitionRepresentation_get_type_name(),
@@ -17799,7 +17799,7 @@ impl QuantifiedAssemblyComponentUsage {
     }
 
     /// **Source:** `StepRepr_QuantifiedAssemblyComponentUsage.hxx`:72 - `StepRepr_QuantifiedAssemblyComponentUsage::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_QuantifiedAssemblyComponentUsage_get_type_name(),
@@ -18230,7 +18230,7 @@ impl RealRepresentationItem {
     }
 
     /// **Source:** `StepRepr_RealRepresentationItem.hxx`:40 - `StepRepr_RealRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_RealRepresentationItem_get_type_name())
                 .to_string_lossy()
@@ -18470,7 +18470,7 @@ impl ReprItemAndLengthMeasureWithUnit {
     }
 
     /// **Source:** `StepRepr_ReprItemAndLengthMeasureWithUnit.hxx`:40 - `StepRepr_ReprItemAndLengthMeasureWithUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_ReprItemAndLengthMeasureWithUnit_get_type_name(),
@@ -18800,7 +18800,7 @@ impl ReprItemAndLengthMeasureWithUnitAndQRI {
     }
 
     /// **Source:** `StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI.hxx`:41 - `StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI_get_type_name(),
@@ -19204,7 +19204,7 @@ impl ReprItemAndMeasureWithUnit {
     }
 
     /// **Source:** `StepRepr_ReprItemAndMeasureWithUnit.hxx`:48 - `StepRepr_ReprItemAndMeasureWithUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ReprItemAndMeasureWithUnit_get_type_name()).to_string_lossy().into_owned()
         }
@@ -19546,7 +19546,7 @@ impl ReprItemAndMeasureWithUnitAndQRI {
     }
 
     /// **Source:** `StepRepr_ReprItemAndMeasureWithUnitAndQRI.hxx`:48 - `StepRepr_ReprItemAndMeasureWithUnitAndQRI::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_ReprItemAndMeasureWithUnitAndQRI_get_type_name(),
@@ -19892,7 +19892,7 @@ impl ReprItemAndPlaneAngleMeasureWithUnit {
     }
 
     /// **Source:** `StepRepr_ReprItemAndPlaneAngleMeasureWithUnit.hxx`:40 - `StepRepr_ReprItemAndPlaneAngleMeasureWithUnit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_ReprItemAndPlaneAngleMeasureWithUnit_get_type_name(),
@@ -20215,7 +20215,7 @@ impl ReprItemAndPlaneAngleMeasureWithUnitAndQRI {
     }
 
     /// **Source:** `StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI.hxx`:41 - `StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI_get_type_name(),
@@ -20639,7 +20639,7 @@ impl Representation {
     }
 
     /// **Source:** `StepRepr_Representation.hxx`:61 - `StepRepr_Representation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_Representation_get_type_name())
                 .to_string_lossy()
@@ -21696,7 +21696,7 @@ impl RepresentationContext {
     }
 
     /// **Source:** `StepRepr_RepresentationContext.hxx`:48 - `StepRepr_RepresentationContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_RepresentationContext_get_type_name())
                 .to_string_lossy()
@@ -22024,7 +22024,7 @@ impl RepresentationContextReference {
     }
 
     /// **Source:** `StepRepr_RepresentationContextReference.hxx`:43 - `StepRepr_RepresentationContextReference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_RepresentationContextReference_get_type_name(),
@@ -22223,7 +22223,7 @@ impl RepresentationItem {
     }
 
     /// **Source:** `StepRepr_RepresentationItem.hxx`:42 - `StepRepr_RepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_RepresentationItem_get_type_name())
                 .to_string_lossy()
@@ -27318,7 +27318,7 @@ impl RepresentationMap {
     }
 
     /// **Source:** `StepRepr_RepresentationMap.hxx`:49 - `StepRepr_RepresentationMap::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_RepresentationMap_get_type_name())
                 .to_string_lossy()
@@ -27804,7 +27804,7 @@ impl RepresentationReference {
     }
 
     /// **Source:** `StepRepr_RepresentationReference.hxx`:50 - `StepRepr_RepresentationReference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_RepresentationReference_get_type_name())
                 .to_string_lossy()
@@ -28067,7 +28067,7 @@ impl RepresentationRelationship {
     }
 
     /// **Source:** `StepRepr_RepresentationRelationship.hxx`:60 - `StepRepr_RepresentationRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_RepresentationRelationship_get_type_name()).to_string_lossy().into_owned()
         }
@@ -28384,7 +28384,7 @@ impl RepresentationRelationshipWithTransformation {
     }
 
     /// **Source:** `StepRepr_RepresentationRelationshipWithTransformation.hxx`:49 - `StepRepr_RepresentationRelationshipWithTransformation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_RepresentationRelationshipWithTransformation_get_type_name(),
@@ -29031,7 +29031,7 @@ impl ShapeAspect {
     }
 
     /// **Source:** `StepRepr_ShapeAspect.hxx`:59 - `StepRepr_ShapeAspect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ShapeAspect_get_type_name())
                 .to_string_lossy()
@@ -29648,7 +29648,7 @@ impl ShapeAspectDerivingRelationship {
     }
 
     /// **Source:** `StepRepr_ShapeAspectDerivingRelationship.hxx`:34 - `StepRepr_ShapeAspectDerivingRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_ShapeAspectDerivingRelationship_get_type_name(),
@@ -30087,7 +30087,7 @@ impl ShapeAspectRelationship {
     }
 
     /// **Source:** `StepRepr_ShapeAspectRelationship.hxx`:73 - `StepRepr_ShapeAspectRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ShapeAspectRelationship_get_type_name())
                 .to_string_lossy()
@@ -30368,7 +30368,7 @@ impl ShapeAspectTransition {
     }
 
     /// **Source:** `StepRepr_ShapeAspectTransition.hxx`:35 - `StepRepr_ShapeAspectTransition::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ShapeAspectTransition_get_type_name())
                 .to_string_lossy()
@@ -30869,7 +30869,7 @@ impl ShapeRepresentationRelationship {
     }
 
     /// **Source:** `StepRepr_ShapeRepresentationRelationship.hxx`:35 - `StepRepr_ShapeRepresentationRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_ShapeRepresentationRelationship_get_type_name(),
@@ -31225,7 +31225,7 @@ impl ShapeRepresentationRelationshipWithTransformation {
     }
 
     /// **Source:** `StepRepr_ShapeRepresentationRelationshipWithTransformation.hxx`:35 - `StepRepr_ShapeRepresentationRelationshipWithTransformation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ShapeRepresentationRelationshipWithTransformation_get_type_name()).to_string_lossy().into_owned()
         }
@@ -31673,7 +31673,7 @@ impl SpecifiedHigherUsageOccurrence {
     }
 
     /// **Source:** `StepRepr_SpecifiedHigherUsageOccurrence.hxx`:80 - `StepRepr_SpecifiedHigherUsageOccurrence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepRepr_SpecifiedHigherUsageOccurrence_get_type_name(),
@@ -32092,7 +32092,7 @@ impl StructuralResponseProperty {
     }
 
     /// **Source:** `StepRepr_StructuralResponseProperty.hxx`:34 - `StepRepr_StructuralResponseProperty::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_StructuralResponseProperty_get_type_name()).to_string_lossy().into_owned()
         }
@@ -32383,7 +32383,7 @@ impl StructuralResponsePropertyDefinitionRepresentation {
     }
 
     /// **Source:** `StepRepr_StructuralResponsePropertyDefinitionRepresentation.hxx`:36 - `StepRepr_StructuralResponsePropertyDefinitionRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_StructuralResponsePropertyDefinitionRepresentation_get_type_name()).to_string_lossy().into_owned()
         }
@@ -32623,7 +32623,7 @@ impl SuppliedPartRelationship {
     }
 
     /// **Source:** `StepRepr_SuppliedPartRelationship.hxx`:33 - `StepRepr_SuppliedPartRelationship::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_SuppliedPartRelationship_get_type_name())
                 .to_string_lossy()
@@ -32973,7 +32973,7 @@ impl Tangent {
     }
 
     /// **Source:** `StepRepr_Tangent.hxx`:34 - `StepRepr_Tangent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_Tangent_get_type_name())
                 .to_string_lossy()
@@ -33419,7 +33419,7 @@ impl ValueRange {
     }
 
     /// **Source:** `StepRepr_ValueRange.hxx`:34 - `StepRepr_ValueRange::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ValueRange_get_type_name())
                 .to_string_lossy()
@@ -33741,7 +33741,7 @@ impl ValueRepresentationItem {
     }
 
     /// **Source:** `StepRepr_ValueRepresentationItem.hxx`:50 - `StepRepr_ValueRepresentationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepRepr_ValueRepresentationItem_get_type_name())
                 .to_string_lossy()

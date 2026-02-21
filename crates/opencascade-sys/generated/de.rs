@@ -300,7 +300,7 @@ impl ConfigurationContext {
     }
 
     /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DE_ConfigurationContext_get_type_name())
                 .to_string_lossy()
@@ -632,7 +632,7 @@ impl ConfigurationNode {
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DE_ConfigurationNode_get_type_name())
                 .to_string_lossy()
@@ -1181,7 +1181,7 @@ impl Provider {
     }
 
     /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DE_Provider_get_type_name())
                 .to_string_lossy()
@@ -1474,7 +1474,7 @@ impl ShapeFixConfigurationNode {
     }
 
     /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DE_ShapeFixConfigurationNode_get_type_name())
                 .to_string_lossy()
@@ -2263,7 +2263,7 @@ impl Wrapper {
     }
 
     /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DE_Wrapper_get_type_name())
                 .to_string_lossy()

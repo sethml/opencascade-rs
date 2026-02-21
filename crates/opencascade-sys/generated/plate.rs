@@ -535,7 +535,7 @@ impl HArray1OfPinpointConstraint {
     }
 
     /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_name())
                 .to_string_lossy()

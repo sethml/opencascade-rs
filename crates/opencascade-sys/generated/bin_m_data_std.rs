@@ -84,7 +84,7 @@ impl AsciiStringDriver {
     }
 
     /// **Source:** `BinMDataStd_AsciiStringDriver.hxx`:51 - `BinMDataStd_AsciiStringDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_AsciiStringDriver_get_type_name())
                 .to_string_lossy()
@@ -333,7 +333,7 @@ impl BooleanArrayDriver {
     }
 
     /// **Source:** `BinMDataStd_BooleanArrayDriver.hxx`:49 - `BinMDataStd_BooleanArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_BooleanArrayDriver_get_type_name())
                 .to_string_lossy()
@@ -588,7 +588,7 @@ impl BooleanListDriver {
     }
 
     /// **Source:** `BinMDataStd_BooleanListDriver.hxx`:49 - `BinMDataStd_BooleanListDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_BooleanListDriver_get_type_name())
                 .to_string_lossy()
@@ -836,7 +836,7 @@ impl ByteArrayDriver {
     }
 
     /// **Source:** `BinMDataStd_ByteArrayDriver.hxx`:50 - `BinMDataStd_ByteArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_ByteArrayDriver_get_type_name())
                 .to_string_lossy()
@@ -1077,7 +1077,7 @@ impl ExpressionDriver {
     }
 
     /// **Source:** `BinMDataStd_ExpressionDriver.hxx`:49 - `BinMDataStd_ExpressionDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_ExpressionDriver_get_type_name())
                 .to_string_lossy()
@@ -1328,7 +1328,7 @@ impl ExtStringArrayDriver {
     }
 
     /// **Source:** `BinMDataStd_ExtStringArrayDriver.hxx`:52 - `BinMDataStd_ExtStringArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_ExtStringArrayDriver_get_type_name())
                 .to_string_lossy()
@@ -1587,7 +1587,7 @@ impl ExtStringListDriver {
     }
 
     /// **Source:** `BinMDataStd_ExtStringListDriver.hxx`:50 - `BinMDataStd_ExtStringListDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_ExtStringListDriver_get_type_name())
                 .to_string_lossy()
@@ -1850,7 +1850,7 @@ impl GenericEmptyDriver {
     }
 
     /// **Source:** `BinMDataStd_GenericEmptyDriver.hxx`:50 - `BinMDataStd_GenericEmptyDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_GenericEmptyDriver_get_type_name())
                 .to_string_lossy()
@@ -2109,7 +2109,7 @@ impl GenericExtStringDriver {
     }
 
     /// **Source:** `BinMDataStd_GenericExtStringDriver.hxx`:52 - `BinMDataStd_GenericExtStringDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_GenericExtStringDriver_get_type_name())
                 .to_string_lossy()
@@ -2368,7 +2368,7 @@ impl IntPackedMapDriver {
     }
 
     /// **Source:** `BinMDataStd_IntPackedMapDriver.hxx`:52 - `BinMDataStd_IntPackedMapDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_IntPackedMapDriver_get_type_name())
                 .to_string_lossy()
@@ -2625,7 +2625,7 @@ impl IntegerArrayDriver {
     }
 
     /// **Source:** `BinMDataStd_IntegerArrayDriver.hxx`:51 - `BinMDataStd_IntegerArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_IntegerArrayDriver_get_type_name())
                 .to_string_lossy()
@@ -2879,7 +2879,7 @@ impl IntegerDriver {
     }
 
     /// **Source:** `BinMDataStd_IntegerDriver.hxx`:50 - `BinMDataStd_IntegerDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_IntegerDriver_get_type_name())
                 .to_string_lossy()
@@ -3110,7 +3110,7 @@ impl IntegerListDriver {
     }
 
     /// **Source:** `BinMDataStd_IntegerListDriver.hxx`:49 - `BinMDataStd_IntegerListDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_IntegerListDriver_get_type_name())
                 .to_string_lossy()
@@ -3358,7 +3358,7 @@ impl NamedDataDriver {
     }
 
     /// **Source:** `BinMDataStd_NamedDataDriver.hxx`:49 - `BinMDataStd_NamedDataDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_NamedDataDriver_get_type_name())
                 .to_string_lossy()
@@ -3599,7 +3599,7 @@ impl RealArrayDriver {
     }
 
     /// **Source:** `BinMDataStd_RealArrayDriver.hxx`:51 - `BinMDataStd_RealArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_RealArrayDriver_get_type_name())
                 .to_string_lossy()
@@ -3838,7 +3838,7 @@ impl RealDriver {
     }
 
     /// **Source:** `BinMDataStd_RealDriver.hxx`:50 - `BinMDataStd_RealDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_RealDriver_get_type_name())
                 .to_string_lossy()
@@ -4056,7 +4056,7 @@ impl RealListDriver {
     }
 
     /// **Source:** `BinMDataStd_RealListDriver.hxx`:49 - `BinMDataStd_RealListDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_RealListDriver_get_type_name())
                 .to_string_lossy()
@@ -4294,7 +4294,7 @@ impl ReferenceArrayDriver {
     }
 
     /// **Source:** `BinMDataStd_ReferenceArrayDriver.hxx`:50 - `BinMDataStd_ReferenceArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_ReferenceArrayDriver_get_type_name())
                 .to_string_lossy()
@@ -4553,7 +4553,7 @@ impl ReferenceListDriver {
     }
 
     /// **Source:** `BinMDataStd_ReferenceListDriver.hxx`:50 - `BinMDataStd_ReferenceListDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_ReferenceListDriver_get_type_name())
                 .to_string_lossy()
@@ -4811,7 +4811,7 @@ impl TreeNodeDriver {
     }
 
     /// **Source:** `BinMDataStd_TreeNodeDriver.hxx`:49 - `BinMDataStd_TreeNodeDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_TreeNodeDriver_get_type_name())
                 .to_string_lossy()
@@ -5048,7 +5048,7 @@ impl UAttributeDriver {
     }
 
     /// **Source:** `BinMDataStd_UAttributeDriver.hxx`:49 - `BinMDataStd_UAttributeDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_UAttributeDriver_get_type_name())
                 .to_string_lossy()
@@ -5297,7 +5297,7 @@ impl VariableDriver {
     }
 
     /// **Source:** `BinMDataStd_VariableDriver.hxx`:49 - `BinMDataStd_VariableDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinMDataStd_VariableDriver_get_type_name())
                 .to_string_lossy()

@@ -113,7 +113,7 @@ impl Color {
     }
 
     /// **Source:** `IGESGraph_Color.hxx`:72 - `IGESGraph_Color::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_Color_get_type_name())
                 .to_string_lossy()
@@ -791,7 +791,7 @@ impl DefinitionLevel {
     }
 
     /// **Source:** `IGESGraph_DefinitionLevel.hxx`:57 - `IGESGraph_DefinitionLevel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_DefinitionLevel_get_type_name())
                 .to_string_lossy()
@@ -1585,7 +1585,7 @@ impl DrawingSize {
     }
 
     /// **Source:** `IGESGraph_DrawingSize.hxx`:59 - `IGESGraph_DrawingSize::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_DrawingSize_get_type_name())
                 .to_string_lossy()
@@ -2304,7 +2304,7 @@ impl DrawingUnits {
     }
 
     /// **Source:** `IGESGraph_DrawingUnits.hxx`:63 - `IGESGraph_DrawingUnits::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_DrawingUnits_get_type_name())
                 .to_string_lossy()
@@ -3080,7 +3080,7 @@ impl GeneralModule {
     }
 
     /// **Source:** `IGESGraph_GeneralModule.hxx`:81 - `IGESGraph_GeneralModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_GeneralModule_get_type_name())
                 .to_string_lossy()
@@ -3605,7 +3605,7 @@ impl HArray1OfColor {
     }
 
     /// **Source:** `IGESGraph_HArray1OfColor.hxx`:23 - `IGESGraph_HArray1OfColor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_HArray1OfColor_get_type_name())
                 .to_string_lossy()
@@ -3826,7 +3826,7 @@ impl HArray1OfTextDisplayTemplate {
     }
 
     /// **Source:** `IGESGraph_HArray1OfTextDisplayTemplate.hxx`:23 - `IGESGraph_HArray1OfTextDisplayTemplate::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_get_type_name(),
@@ -4064,7 +4064,7 @@ impl HArray1OfTextFontDef {
     }
 
     /// **Source:** `IGESGraph_HArray1OfTextFontDef.hxx`:23 - `IGESGraph_HArray1OfTextFontDef::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_HArray1OfTextFontDef_get_type_name())
                 .to_string_lossy()
@@ -4264,7 +4264,7 @@ impl HighLight {
     }
 
     /// **Source:** `IGESGraph_HighLight.hxx`:56 - `IGESGraph_HighLight::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_HighLight_get_type_name())
                 .to_string_lossy()
@@ -4942,7 +4942,7 @@ impl IntercharacterSpacing {
     }
 
     /// **Source:** `IGESGraph_IntercharacterSpacing.hxx`:53 - `IGESGraph_IntercharacterSpacing::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_IntercharacterSpacing_get_type_name())
                 .to_string_lossy()
@@ -5822,7 +5822,7 @@ impl LineFontDefPattern {
     }
 
     /// **Source:** `IGESGraph_LineFontDefPattern.hxx`:74 - `IGESGraph_LineFontDefPattern::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_LineFontDefPattern_get_type_name())
                 .to_string_lossy()
@@ -6696,7 +6696,7 @@ impl LineFontDefTemplate {
     }
 
     /// **Source:** `IGESGraph_LineFontDefTemplate.hxx`:78 - `IGESGraph_LineFontDefTemplate::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_LineFontDefTemplate_get_type_name())
                 .to_string_lossy()
@@ -7543,7 +7543,7 @@ impl LineFontPredefined {
     }
 
     /// **Source:** `IGESGraph_LineFontPredefined.hxx`:53 - `IGESGraph_LineFontPredefined::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_LineFontPredefined_get_type_name())
                 .to_string_lossy()
@@ -8383,7 +8383,7 @@ impl NominalSize {
     }
 
     /// **Source:** `IGESGraph_NominalSize.hxx`:68 - `IGESGraph_NominalSize::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_NominalSize_get_type_name())
                 .to_string_lossy()
@@ -9088,7 +9088,7 @@ impl Pick {
     }
 
     /// **Source:** `IGESGraph_Pick.hxx`:55 - `IGESGraph_Pick::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_Pick_get_type_name())
                 .to_string_lossy()
@@ -9734,7 +9734,7 @@ impl Protocol {
     }
 
     /// **Source:** `IGESGraph_Protocol.hxx`:53 - `IGESGraph_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_Protocol_get_type_name())
                 .to_string_lossy()
@@ -10027,7 +10027,7 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `IGESGraph_ReadWriteModule.hxx`:58 - `IGESGraph_ReadWriteModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_ReadWriteModule_get_type_name())
                 .to_string_lossy()
@@ -10318,7 +10318,7 @@ impl SpecificModule {
     }
 
     /// **Source:** `IGESGraph_SpecificModule.hxx`:54 - `IGESGraph_SpecificModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_SpecificModule_get_type_name())
                 .to_string_lossy()
@@ -10653,7 +10653,7 @@ impl TextDisplayTemplate {
     }
 
     /// **Source:** `IGESGraph_TextDisplayTemplate.hxx`:122 - `IGESGraph_TextDisplayTemplate::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_TextDisplayTemplate_get_type_name())
                 .to_string_lossy()
@@ -11594,7 +11594,7 @@ impl TextFontDef {
     }
 
     /// **Source:** `IGESGraph_TextFontDef.hxx`:124 - `IGESGraph_TextFontDef::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_TextFontDef_get_type_name())
                 .to_string_lossy()
@@ -14201,7 +14201,7 @@ impl UniformRectGrid {
     }
 
     /// **Source:** `IGESGraph_UniformRectGrid.hxx`:94 - `IGESGraph_UniformRectGrid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESGraph_UniformRectGrid_get_type_name())
                 .to_string_lossy()

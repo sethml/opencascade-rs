@@ -214,7 +214,7 @@ impl ReadData {
 
     /// **Source:** `StepFile_ReadData.hxx`:217 - `StepFile_ReadData::GetLastError()`
     /// Returns the message of the last error
-    pub fn get_last_error(&self) -> String {
+    pub fn get_last_error(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepFile_ReadData_get_last_error(
                 self as *const Self,

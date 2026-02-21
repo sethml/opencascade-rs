@@ -132,7 +132,7 @@ impl DocumentRetrievalDriver {
     }
 
     /// **Source:** `BinLDrivers_DocumentRetrievalDriver.hxx`:68 - `BinLDrivers_DocumentRetrievalDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinLDrivers_DocumentRetrievalDriver_get_type_name()).to_string_lossy().into_owned()
         }
@@ -633,7 +633,7 @@ impl DocumentStorageDriver {
     }
 
     /// **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:72 - `BinLDrivers_DocumentStorageDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinLDrivers_DocumentStorageDriver_get_type_name())
                 .to_string_lossy()

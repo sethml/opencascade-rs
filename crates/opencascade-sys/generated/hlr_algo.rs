@@ -844,7 +844,7 @@ impl EdgesBlock {
     }
 
     /// **Source:** `HLRAlgo_EdgesBlock.hxx`:161 - `HLRAlgo_EdgesBlock::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_EdgesBlock_get_type_name())
                 .to_string_lossy()
@@ -1043,7 +1043,7 @@ impl HArray1OfPHDat {
     }
 
     /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_HArray1OfPHDat_get_type_name())
                 .to_string_lossy()
@@ -1240,7 +1240,7 @@ impl HArray1OfPINod {
     }
 
     /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_HArray1OfPINod_get_type_name())
                 .to_string_lossy()
@@ -1441,7 +1441,7 @@ impl HArray1OfPISeg {
     }
 
     /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_HArray1OfPISeg_get_type_name())
                 .to_string_lossy()
@@ -1640,7 +1640,7 @@ impl HArray1OfTData {
     }
 
     /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_HArray1OfTData_get_type_name())
                 .to_string_lossy()
@@ -2082,7 +2082,7 @@ impl PolyAlgo {
     }
 
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:82 - `HLRAlgo_PolyAlgo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_PolyAlgo_get_type_name())
                 .to_string_lossy()
@@ -2307,7 +2307,7 @@ impl PolyData {
     }
 
     /// **Source:** `HLRAlgo_PolyData.hxx`:123 - `HLRAlgo_PolyData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_PolyData_get_type_name())
                 .to_string_lossy()
@@ -2704,7 +2704,7 @@ impl PolyInternalData {
     }
 
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:97 - `HLRAlgo_PolyInternalData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_PolyInternalData_get_type_name())
                 .to_string_lossy()
@@ -2863,7 +2863,7 @@ impl PolyInternalNode {
     }
 
     /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:66 - `HLRAlgo_PolyInternalNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_PolyInternalNode_get_type_name())
                 .to_string_lossy()
@@ -3078,7 +3078,7 @@ impl PolyShellData {
     }
 
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:54 - `HLRAlgo_PolyShellData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_PolyShellData_get_type_name())
                 .to_string_lossy()
@@ -3466,7 +3466,7 @@ impl WiresBlock {
     }
 
     /// **Source:** `HLRAlgo_WiresBlock.hxx`:63 - `HLRAlgo_WiresBlock::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_WiresBlock_get_type_name())
                 .to_string_lossy()

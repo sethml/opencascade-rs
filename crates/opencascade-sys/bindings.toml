@@ -24,35 +24,10 @@ exclude_modules = [
     "Wasm",                # WebAssembly bindings
     "Xw",                  # X Window system bindings
 
-    # === Visualization / Rendering ===
-    "AIS",                 # Application Interactive Services (3D viewer)
-    "Aspect",              # Window/display aspect management
-    "D3DHost",             # Direct3D host
-    "DsgPrs",              # Dimension/constraint presentation
-    "Graphic3d",           # 3D graphics primitives
-    "MeshVS",              # Mesh visualization
-    "OpenGl",              # OpenGL rendering
-    "Prs3d",               # 3D presentation
-    "PrsDim",              # Dimension presentation
-    "PrsMgr",              # Presentation manager
-    "Select3D",            # 3D selection primitives
-    "SelectBasics",        # Selection basics
-    "SelectMgr",           # Selection manager
-    "StdPrs",              # Standard presentations
-    "StdSelect",           # Standard selection
-    "TPrsStd",             # Standard presentation attributes
-    "V3d",                 # 3D viewer
-    "XCAFPrs",             # XCAF presentation
-
     # === Font / Image handling ===
     "Font",                # Font management
     "Image",               # Image processing
     "Media",               # Media playback
-
-
-    # === Draw test harness ===
-    # (no Draw* modules in OCCT include)
-
 
     # === Precompiled header stubs (not real modules) ===
     "TKBRep",              # PCH stub
@@ -116,12 +91,17 @@ exclude_methods = [
     # `const char**` (double pointer) mapped as `&mut &str` but FFI needs raw pointer
     "XmlObjMgt::GetInteger",
     "XmlObjMgt::GetReal",
+
+    # Returns MeshVS_NodePair (typedef for std::pair<int,int>) which the generator
+    # misresolves as an opaque class type.
+    "BRepMesh_GeomTool::CellsCount",
 ]
 
 # Exclude specific classes/types from destructor generation.
 # Forward-declared-only nested types cannot be safely deleted.
 exclude_classes = [
     "Message_ProgressScope::NullString",  # Forward-declared only, no full definition
+    "MeshVS_NodePair",                    # Typedef for std::pair<int,int>, not a real class
 ]
 
 [general]

@@ -81,7 +81,7 @@ impl DocumentRetrievalDriver {
     }
 
     /// **Source:** `XmlTObjDrivers_DocumentRetrievalDriver.hxx`:40 - `XmlTObjDrivers_DocumentRetrievalDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::XmlTObjDrivers_DocumentRetrievalDriver_get_type_name(),
@@ -418,7 +418,7 @@ impl DocumentStorageDriver {
     }
 
     /// **Source:** `XmlTObjDrivers_DocumentStorageDriver.hxx`:41 - `XmlTObjDrivers_DocumentStorageDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::XmlTObjDrivers_DocumentStorageDriver_get_type_name(),
@@ -809,7 +809,7 @@ impl IntSparseArrayDriver {
     }
 
     /// **Source:** `XmlTObjDrivers_IntSparseArrayDriver.hxx`:49 - `XmlTObjDrivers_IntSparseArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlTObjDrivers_IntSparseArrayDriver_get_type_name()).to_string_lossy().into_owned()
         }
@@ -1093,7 +1093,7 @@ impl ModelDriver {
     }
 
     /// **Source:** `XmlTObjDrivers_ModelDriver.hxx`:53 - `XmlTObjDrivers_ModelDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlTObjDrivers_ModelDriver_get_type_name())
                 .to_string_lossy()
@@ -1346,7 +1346,7 @@ impl ObjectDriver {
     }
 
     /// **Source:** `XmlTObjDrivers_ObjectDriver.hxx`:53 - `XmlTObjDrivers_ObjectDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlTObjDrivers_ObjectDriver_get_type_name())
                 .to_string_lossy()
@@ -1603,7 +1603,7 @@ impl ReferenceDriver {
     }
 
     /// **Source:** `XmlTObjDrivers_ReferenceDriver.hxx`:53 - `XmlTObjDrivers_ReferenceDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlTObjDrivers_ReferenceDriver_get_type_name())
                 .to_string_lossy()
@@ -1875,7 +1875,7 @@ impl XYZDriver {
     }
 
     /// **Source:** `XmlTObjDrivers_XYZDriver.hxx`:53 - `XmlTObjDrivers_XYZDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlTObjDrivers_XYZDriver_get_type_name())
                 .to_string_lossy()

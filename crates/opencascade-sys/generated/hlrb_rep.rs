@@ -170,7 +170,7 @@ impl Algo {
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:94 - `HLRBRep_Algo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRBRep_Algo_get_type_name())
                 .to_string_lossy()
@@ -543,7 +543,7 @@ impl AreaLimit {
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:78 - `HLRBRep_AreaLimit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRBRep_AreaLimit_get_type_name())
                 .to_string_lossy()
@@ -2690,7 +2690,7 @@ impl Data {
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:203 - `HLRBRep_Data::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRBRep_Data_get_type_name())
                 .to_string_lossy()
@@ -4687,7 +4687,7 @@ impl InternalAlgo {
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:124 - `HLRBRep_InternalAlgo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRBRep_InternalAlgo_get_type_name())
                 .to_string_lossy()
@@ -5686,7 +5686,7 @@ impl PolyAlgo {
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:184 - `HLRBRep_PolyAlgo::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::HLRBRep_PolyAlgo_get_type_name())
                 .to_string_lossy()

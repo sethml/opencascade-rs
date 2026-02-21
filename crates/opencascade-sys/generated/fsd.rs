@@ -737,7 +737,7 @@ impl BinaryFile {
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:52 - `FSD_BinaryFile::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FSD_BinaryFile_get_type_name())
                 .to_string_lossy()
@@ -963,7 +963,7 @@ impl BinaryFile {
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:338 - `FSD_BinaryFile::MagicNumber()`
-    pub fn magic_number() -> String {
+    pub fn magic_number() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FSD_BinaryFile_magic_number())
                 .to_string_lossy()
@@ -1248,7 +1248,7 @@ impl CmpFile {
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:33 - `FSD_CmpFile::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FSD_CmpFile_get_type_name())
                 .to_string_lossy()
@@ -1270,7 +1270,7 @@ impl CmpFile {
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:73 - `FSD_CmpFile::MagicNumber()`
-    pub fn magic_number() -> String {
+    pub fn magic_number() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FSD_CmpFile_magic_number())
                 .to_string_lossy()
@@ -2468,7 +2468,7 @@ impl File {
     }
 
     /// **Source:** `FSD_File.hxx`:33 - `FSD_File::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FSD_File_get_type_name())
                 .to_string_lossy()
@@ -2489,7 +2489,7 @@ impl File {
     }
 
     /// **Source:** `FSD_File.hxx`:246 - `FSD_File::MagicNumber()`
-    pub fn magic_number() -> String {
+    pub fn magic_number() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::FSD_File_magic_number())
                 .to_string_lossy()

@@ -102,7 +102,7 @@ pub fn print_state_ostream(
 /// @param theType shape type
 /// @return string identifier from the list COMPOUND, COMPSOLID, SOLID, SHELL, FACE, WIRE, EDGE,
 /// VERTEX, SHAPE
-pub fn shape_type_to_string(theType: crate::top_abs::ShapeEnum) -> String {
+pub fn shape_type_to_string(theType: crate::top_abs::ShapeEnum) -> std::string::String {
     unsafe {
         std::ffi::CStr::from_ptr(crate::ffi::TopAbs_shape_type_to_string(theType.into()))
             .to_string_lossy()
@@ -126,7 +126,9 @@ pub fn shape_type_from_string(theTypeString: &str) -> crate::top_abs::ShapeEnum 
 /// Returns the string name for a given shape orientation.
 /// @param theOrientation shape orientation
 /// @return string identifier from the list FORWARD, REVERSED, INTERNAL, EXTERNAL
-pub fn shape_orientation_to_string(theOrientation: crate::top_abs::Orientation) -> String {
+pub fn shape_orientation_to_string(
+    theOrientation: crate::top_abs::Orientation,
+) -> std::string::String {
     unsafe {
         std::ffi::CStr::from_ptr(crate::ffi::TopAbs_shape_orientation_to_string(
             theOrientation.into(),

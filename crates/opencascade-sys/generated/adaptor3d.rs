@@ -296,7 +296,7 @@ impl Curve {
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Adaptor3d_Curve_get_type_name())
                 .to_string_lossy()
@@ -934,7 +934,7 @@ impl CurveOnSurface {
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:36 - `Adaptor3d_CurveOnSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Adaptor3d_CurveOnSurface_get_type_name())
                 .to_string_lossy()
@@ -1535,7 +1535,7 @@ impl HVertex {
     }
 
     /// **Source:** `Adaptor3d_HVertex.hxx`:48 - `Adaptor3d_HVertex::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Adaptor3d_HVertex_get_type_name())
                 .to_string_lossy()
@@ -2133,7 +2133,7 @@ impl IsoCurve {
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:31 - `Adaptor3d_IsoCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Adaptor3d_IsoCurve_get_type_name())
                 .to_string_lossy()
@@ -2732,7 +2732,7 @@ impl Surface {
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:60 - `Adaptor3d_Surface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Adaptor3d_Surface_get_type_name())
                 .to_string_lossy()
@@ -3240,7 +3240,7 @@ impl TopolTool {
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:165 - `Adaptor3d_TopolTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Adaptor3d_TopolTool_get_type_name())
                 .to_string_lossy()

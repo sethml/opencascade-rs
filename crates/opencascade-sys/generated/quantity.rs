@@ -1361,7 +1361,7 @@ impl Color {
 
     /// **Source:** `Quantity_Color.hxx`:189 - `Quantity_Color::StringName()`
     /// Returns the name of the color identified by the given Quantity_NameOfColor enumeration value.
-    pub fn string_name(theColor: crate::quantity::NameOfColor) -> String {
+    pub fn string_name(theColor: crate::quantity::NameOfColor) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Quantity_Color_string_name(theColor.into()))
                 .to_string_lossy()
@@ -2233,7 +2233,7 @@ impl DateDefinitionError {
     }
 
     /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Quantity_DateDefinitionError_get_type_name())
                 .to_string_lossy()
@@ -2517,7 +2517,7 @@ impl HArray1OfColor {
     }
 
     /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Quantity_HArray1OfColor_get_type_name())
                 .to_string_lossy()
@@ -2943,7 +2943,7 @@ impl PeriodDefinitionError {
     }
 
     /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Quantity_PeriodDefinitionError_get_type_name())
                 .to_string_lossy()

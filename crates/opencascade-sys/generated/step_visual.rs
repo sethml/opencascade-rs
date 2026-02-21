@@ -220,7 +220,7 @@ impl AnnotationCurveOccurrence {
     }
 
     /// **Source:** `StepVisual_AnnotationCurveOccurrence.hxx`:32 - `StepVisual_AnnotationCurveOccurrence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_AnnotationCurveOccurrence_get_type_name(),
@@ -610,7 +610,7 @@ impl AnnotationCurveOccurrenceAndGeomReprItem {
     }
 
     /// **Source:** `StepVisual_AnnotationCurveOccurrenceAndGeomReprItem.hxx`:37 - `StepVisual_AnnotationCurveOccurrenceAndGeomReprItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_get_type_name(),
@@ -988,7 +988,7 @@ impl AnnotationFillArea {
     }
 
     /// **Source:** `StepVisual_AnnotationFillArea.hxx`:34 - `StepVisual_AnnotationFillArea::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_AnnotationFillArea_get_type_name())
                 .to_string_lossy()
@@ -1404,7 +1404,7 @@ impl AnnotationFillAreaOccurrence {
     }
 
     /// **Source:** `StepVisual_AnnotationFillAreaOccurrence.hxx`:48 - `StepVisual_AnnotationFillAreaOccurrence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_AnnotationFillAreaOccurrence_get_type_name(),
@@ -1754,7 +1754,7 @@ impl AnnotationOccurrence {
     }
 
     /// **Source:** `StepVisual_AnnotationOccurrence.hxx`:34 - `StepVisual_AnnotationOccurrence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_AnnotationOccurrence_get_type_name())
                 .to_string_lossy()
@@ -2244,7 +2244,7 @@ impl AnnotationPlane {
     }
 
     /// **Source:** `StepVisual_AnnotationPlane.hxx`:67 - `StepVisual_AnnotationPlane::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_AnnotationPlane_get_type_name())
                 .to_string_lossy()
@@ -2775,7 +2775,7 @@ impl AnnotationText {
     }
 
     /// **Source:** `StepVisual_AnnotationText.hxx`:35 - `StepVisual_AnnotationText::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_AnnotationText_get_type_name())
                 .to_string_lossy()
@@ -3062,7 +3062,7 @@ impl AnnotationTextOccurrence {
     }
 
     /// **Source:** `StepVisual_AnnotationTextOccurrence.hxx`:34 - `StepVisual_AnnotationTextOccurrence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_AnnotationTextOccurrence_get_type_name()).to_string_lossy().into_owned()
         }
@@ -3450,7 +3450,7 @@ impl AreaInSet {
     }
 
     /// **Source:** `StepVisual_AreaInSet.hxx`:48 - `StepVisual_AreaInSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_AreaInSet_get_type_name())
                 .to_string_lossy()
@@ -3788,7 +3788,7 @@ impl BackgroundColour {
     }
 
     /// **Source:** `StepVisual_BackgroundColour.hxx`:41 - `StepVisual_BackgroundColour::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_BackgroundColour_get_type_name())
                 .to_string_lossy()
@@ -4019,7 +4019,7 @@ impl CameraImage {
     }
 
     /// **Source:** `StepVisual_CameraImage.hxx`:35 - `StepVisual_CameraImage::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CameraImage_get_type_name())
                 .to_string_lossy()
@@ -4326,7 +4326,7 @@ impl CameraImage2dWithScale {
     }
 
     /// **Source:** `StepVisual_CameraImage2dWithScale.hxx`:34 - `StepVisual_CameraImage2dWithScale::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CameraImage2dWithScale_get_type_name())
                 .to_string_lossy()
@@ -4668,7 +4668,7 @@ impl CameraImage3dWithScale {
     }
 
     /// **Source:** `StepVisual_CameraImage3dWithScale.hxx`:34 - `StepVisual_CameraImage3dWithScale::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CameraImage3dWithScale_get_type_name())
                 .to_string_lossy()
@@ -5009,7 +5009,7 @@ impl CameraModel {
     }
 
     /// **Source:** `StepVisual_CameraModel.hxx`:35 - `StepVisual_CameraModel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CameraModel_get_type_name())
                 .to_string_lossy()
@@ -5333,7 +5333,7 @@ impl CameraModelD2 {
     }
 
     /// **Source:** `StepVisual_CameraModelD2.hxx`:50 - `StepVisual_CameraModelD2::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CameraModelD2_get_type_name())
                 .to_string_lossy()
@@ -5652,7 +5652,7 @@ impl CameraModelD3 {
     }
 
     /// **Source:** `StepVisual_CameraModelD3.hxx`:52 - `StepVisual_CameraModelD3::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CameraModelD3_get_type_name())
                 .to_string_lossy()
@@ -5973,7 +5973,7 @@ impl CameraModelD3MultiClipping {
     }
 
     /// **Source:** `StepVisual_CameraModelD3MultiClipping.hxx`:53 - `StepVisual_CameraModelD3MultiClipping::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_CameraModelD3MultiClipping_get_type_name(),
@@ -6618,7 +6618,7 @@ impl CameraModelD3MultiClippingIntersection {
     }
 
     /// **Source:** `StepVisual_CameraModelD3MultiClippingIntersection.hxx`:51 - `StepVisual_CameraModelD3MultiClippingIntersection::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_CameraModelD3MultiClippingIntersection_get_type_name(),
@@ -6917,7 +6917,7 @@ impl CameraModelD3MultiClippingUnion {
     }
 
     /// **Source:** `StepVisual_CameraModelD3MultiClippingUnion.hxx`:49 - `StepVisual_CameraModelD3MultiClippingUnion::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_CameraModelD3MultiClippingUnion_get_type_name(),
@@ -7420,7 +7420,7 @@ impl CameraUsage {
     }
 
     /// **Source:** `StepVisual_CameraUsage.hxx`:35 - `StepVisual_CameraUsage::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CameraUsage_get_type_name())
                 .to_string_lossy()
@@ -7665,7 +7665,7 @@ impl CharacterizedObjAndRepresentationAndDraughtingModel {
     }
 
     /// **Source:** `StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel.hxx`:38 - `StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_get_type_name()).to_string_lossy().into_owned()
         }
@@ -7949,7 +7949,7 @@ impl Colour {
     }
 
     /// **Source:** `StepVisual_Colour.hxx`:35 - `StepVisual_Colour::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_Colour_get_type_name())
                 .to_string_lossy()
@@ -8212,7 +8212,7 @@ impl ColourRgb {
     }
 
     /// **Source:** `StepVisual_ColourRgb.hxx`:54 - `StepVisual_ColourRgb::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_ColourRgb_get_type_name())
                 .to_string_lossy()
@@ -8436,7 +8436,7 @@ impl ColourSpecification {
     }
 
     /// **Source:** `StepVisual_ColourSpecification.hxx`:42 - `StepVisual_ColourSpecification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_ColourSpecification_get_type_name())
                 .to_string_lossy()
@@ -8782,7 +8782,7 @@ impl ComplexTriangulatedFace {
     }
 
     /// **Source:** `StepVisual_ComplexTriangulatedFace.hxx`:80 - `StepVisual_ComplexTriangulatedFace::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_ComplexTriangulatedFace_get_type_name())
                 .to_string_lossy()
@@ -9346,7 +9346,7 @@ impl ComplexTriangulatedSurfaceSet {
     }
 
     /// **Source:** `StepVisual_ComplexTriangulatedSurfaceSet.hxx`:78 - `StepVisual_ComplexTriangulatedSurfaceSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_ComplexTriangulatedSurfaceSet_get_type_name(),
@@ -9768,7 +9768,7 @@ impl CompositeText {
     }
 
     /// **Source:** `StepVisual_CompositeText.hxx`:50 - `StepVisual_CompositeText::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CompositeText_get_type_name())
                 .to_string_lossy()
@@ -10046,7 +10046,7 @@ impl CompositeTextWithExtent {
     }
 
     /// **Source:** `StepVisual_CompositeTextWithExtent.hxx`:45 - `StepVisual_CompositeTextWithExtent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CompositeTextWithExtent_get_type_name())
                 .to_string_lossy()
@@ -10405,7 +10405,7 @@ impl ContextDependentInvisibility {
     }
 
     /// **Source:** `StepVisual_ContextDependentInvisibility.hxx`:44 - `StepVisual_ContextDependentInvisibility::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_ContextDependentInvisibility_get_type_name(),
@@ -10733,7 +10733,7 @@ impl ContextDependentOverRidingStyledItem {
     }
 
     /// **Source:** `StepVisual_ContextDependentOverRidingStyledItem.hxx`:56 - `StepVisual_ContextDependentOverRidingStyledItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_ContextDependentOverRidingStyledItem_get_type_name(),
@@ -11115,7 +11115,7 @@ impl CoordinatesList {
     }
 
     /// **Source:** `StepVisual_CoordinatesList.hxx`:39 - `StepVisual_CoordinatesList::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CoordinatesList_get_type_name())
                 .to_string_lossy()
@@ -11382,7 +11382,7 @@ impl CubicBezierTessellatedEdge {
     }
 
     /// **Source:** `StepVisual_CubicBezierTessellatedEdge.hxx`:34 - `StepVisual_CubicBezierTessellatedEdge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_CubicBezierTessellatedEdge_get_type_name(),
@@ -11883,7 +11883,7 @@ impl CubicBezierTriangulatedFace {
     }
 
     /// **Source:** `StepVisual_CubicBezierTriangulatedFace.hxx`:55 - `StepVisual_CubicBezierTriangulatedFace::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_CubicBezierTriangulatedFace_get_type_name(),
@@ -12385,7 +12385,7 @@ impl CurveStyle {
     }
 
     /// **Source:** `StepVisual_CurveStyle.hxx`:60 - `StepVisual_CurveStyle::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CurveStyle_get_type_name())
                 .to_string_lossy()
@@ -12590,7 +12590,7 @@ impl CurveStyleFont {
     }
 
     /// **Source:** `StepVisual_CurveStyleFont.hxx`:56 - `StepVisual_CurveStyleFont::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CurveStyleFont_get_type_name())
                 .to_string_lossy()
@@ -12789,7 +12789,7 @@ impl CurveStyleFontPattern {
     }
 
     /// **Source:** `StepVisual_CurveStyleFontPattern.hxx`:46 - `StepVisual_CurveStyleFontPattern::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_CurveStyleFontPattern_get_type_name())
                 .to_string_lossy()
@@ -13252,7 +13252,7 @@ impl DraughtingAnnotationOccurrence {
     }
 
     /// **Source:** `StepVisual_DraughtingAnnotationOccurrence.hxx`:34 - `StepVisual_DraughtingAnnotationOccurrence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_DraughtingAnnotationOccurrence_get_type_name(),
@@ -13677,7 +13677,7 @@ impl DraughtingCallout {
     }
 
     /// **Source:** `StepVisual_DraughtingCallout.hxx`:69 - `StepVisual_DraughtingCallout::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_DraughtingCallout_get_type_name())
                 .to_string_lossy()
@@ -14181,7 +14181,7 @@ impl DraughtingModel {
     }
 
     /// **Source:** `StepVisual_DraughtingModel.hxx`:35 - `StepVisual_DraughtingModel::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_DraughtingModel_get_type_name())
                 .to_string_lossy()
@@ -14482,7 +14482,7 @@ impl DraughtingPreDefinedColour {
     }
 
     /// **Source:** `StepVisual_DraughtingPreDefinedColour.hxx`:35 - `StepVisual_DraughtingPreDefinedColour::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_DraughtingPreDefinedColour_get_type_name(),
@@ -14739,7 +14739,7 @@ impl DraughtingPreDefinedCurveFont {
     }
 
     /// **Source:** `StepVisual_DraughtingPreDefinedCurveFont.hxx`:35 - `StepVisual_DraughtingPreDefinedCurveFont::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_DraughtingPreDefinedCurveFont_get_type_name(),
@@ -15170,7 +15170,7 @@ impl ExternallyDefinedCurveFont {
     }
 
     /// **Source:** `StepVisual_ExternallyDefinedCurveFont.hxx`:34 - `StepVisual_ExternallyDefinedCurveFont::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_ExternallyDefinedCurveFont_get_type_name(),
@@ -15439,7 +15439,7 @@ impl ExternallyDefinedTextFont {
     }
 
     /// **Source:** `StepVisual_ExternallyDefinedTextFont.hxx`:34 - `StepVisual_ExternallyDefinedTextFont::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_ExternallyDefinedTextFont_get_type_name(),
@@ -15935,7 +15935,7 @@ impl FillAreaStyle {
     }
 
     /// **Source:** `StepVisual_FillAreaStyle.hxx`:54 - `StepVisual_FillAreaStyle::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_FillAreaStyle_get_type_name())
                 .to_string_lossy()
@@ -16128,7 +16128,7 @@ impl FillAreaStyleColour {
     }
 
     /// **Source:** `StepVisual_FillAreaStyleColour.hxx`:48 - `StepVisual_FillAreaStyleColour::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_FillAreaStyleColour_get_type_name())
                 .to_string_lossy()
@@ -16711,7 +16711,7 @@ impl HArray1OfAnnotationPlaneElement {
     }
 
     /// **Source:** `StepVisual_HArray1OfAnnotationPlaneElement.hxx`:22 - `StepVisual_HArray1OfAnnotationPlaneElement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfAnnotationPlaneElement_get_type_name(),
@@ -16951,7 +16951,7 @@ impl HArray1OfBoxCharacteristicSelect {
     }
 
     /// **Source:** `StepVisual_HArray1OfBoxCharacteristicSelect.hxx`:23 - `StepVisual_HArray1OfBoxCharacteristicSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfBoxCharacteristicSelect_get_type_name(),
@@ -17191,7 +17191,7 @@ impl HArray1OfCameraModelD3MultiClippingInterectionSelect {
     }
 
     /// **Source:** `StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect.hxx`:22 - `StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect_get_type_name()).to_string_lossy().into_owned()
         }
@@ -17421,7 +17421,7 @@ impl HArray1OfCameraModelD3MultiClippingUnionSelect {
     }
 
     /// **Source:** `StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect.hxx`:22 - `StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect_get_type_name(
@@ -17662,7 +17662,7 @@ impl HArray1OfCurveStyleFontPattern {
     }
 
     /// **Source:** `StepVisual_HArray1OfCurveStyleFontPattern.hxx`:23 - `StepVisual_HArray1OfCurveStyleFontPattern::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfCurveStyleFontPattern_get_type_name(),
@@ -17904,7 +17904,7 @@ impl HArray1OfDirectionCountSelect {
     }
 
     /// **Source:** `StepVisual_HArray1OfDirectionCountSelect.hxx`:23 - `StepVisual_HArray1OfDirectionCountSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfDirectionCountSelect_get_type_name(),
@@ -18148,7 +18148,7 @@ impl HArray1OfDraughtingCalloutElement {
     }
 
     /// **Source:** `StepVisual_HArray1OfDraughtingCalloutElement.hxx`:22 - `StepVisual_HArray1OfDraughtingCalloutElement::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfDraughtingCalloutElement_get_type_name(),
@@ -18392,7 +18392,7 @@ impl HArray1OfFillStyleSelect {
     }
 
     /// **Source:** `StepVisual_HArray1OfFillStyleSelect.hxx`:23 - `StepVisual_HArray1OfFillStyleSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_HArray1OfFillStyleSelect_get_type_name()).to_string_lossy().into_owned()
         }
@@ -18624,7 +18624,7 @@ impl HArray1OfInvisibleItem {
     }
 
     /// **Source:** `StepVisual_HArray1OfInvisibleItem.hxx`:23 - `StepVisual_HArray1OfInvisibleItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_HArray1OfInvisibleItem_get_type_name())
                 .to_string_lossy()
@@ -18854,7 +18854,7 @@ impl HArray1OfLayeredItem {
     }
 
     /// **Source:** `StepVisual_HArray1OfLayeredItem.hxx`:23 - `StepVisual_HArray1OfLayeredItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_HArray1OfLayeredItem_get_type_name())
                 .to_string_lossy()
@@ -19098,7 +19098,7 @@ impl HArray1OfPresentationStyleAssignment {
     }
 
     /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_get_type_name(),
@@ -19338,7 +19338,7 @@ impl HArray1OfPresentationStyleSelect {
     }
 
     /// **Source:** `StepVisual_HArray1OfPresentationStyleSelect.hxx`:23 - `StepVisual_HArray1OfPresentationStyleSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_get_type_name(),
@@ -19584,7 +19584,7 @@ impl HArray1OfRenderingPropertiesSelect {
     }
 
     /// **Source:** `StepVisual_HArray1OfRenderingPropertiesSelect.hxx`:23 - `StepVisual_HArray1OfRenderingPropertiesSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfRenderingPropertiesSelect_get_type_name(),
@@ -19830,7 +19830,7 @@ impl HArray1OfStyleContextSelect {
     }
 
     /// **Source:** `StepVisual_HArray1OfStyleContextSelect.hxx`:23 - `StepVisual_HArray1OfStyleContextSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfStyleContextSelect_get_type_name(),
@@ -20078,7 +20078,7 @@ impl HArray1OfSurfaceStyleElementSelect {
     }
 
     /// **Source:** `StepVisual_HArray1OfSurfaceStyleElementSelect.hxx`:23 - `StepVisual_HArray1OfSurfaceStyleElementSelect::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfSurfaceStyleElementSelect_get_type_name(),
@@ -20320,7 +20320,7 @@ impl HArray1OfTessellatedEdgeOrVertex {
     }
 
     /// **Source:** `StepVisual_HArray1OfTessellatedEdgeOrVertex.hxx`:23 - `StepVisual_HArray1OfTessellatedEdgeOrVertex::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfTessellatedEdgeOrVertex_get_type_name(),
@@ -20574,7 +20574,7 @@ impl HArray1OfTessellatedStructuredItem {
     }
 
     /// **Source:** `StepVisual_HArray1OfTessellatedStructuredItem.hxx`:23 - `StepVisual_HArray1OfTessellatedStructuredItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_HArray1OfTessellatedStructuredItem_get_type_name(),
@@ -20818,7 +20818,7 @@ impl HArray1OfTextOrCharacter {
     }
 
     /// **Source:** `StepVisual_HArray1OfTextOrCharacter.hxx`:24 - `StepVisual_HArray1OfTextOrCharacter::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_HArray1OfTextOrCharacter_get_type_name()).to_string_lossy().into_owned()
         }
@@ -21030,7 +21030,7 @@ impl Invisibility {
     }
 
     /// **Source:** `StepVisual_Invisibility.hxx`:48 - `StepVisual_Invisibility::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_Invisibility_get_type_name())
                 .to_string_lossy()
@@ -21777,7 +21777,7 @@ impl MarkerMember {
     }
 
     /// **Source:** `StepVisual_MarkerMember.hxx`:40 - `StepVisual_MarkerMember::Name()`
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_MarkerMember_name(self as *const Self))
                 .to_string_lossy()
@@ -21792,7 +21792,7 @@ impl MarkerMember {
     }
 
     /// **Source:** `StepVisual_MarkerMember.hxx`:44 - `StepVisual_MarkerMember::EnumText()`
-    pub fn enum_text(&self) -> String {
+    pub fn enum_text(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_MarkerMember_enum_text(
                 self as *const Self,
@@ -21835,7 +21835,7 @@ impl MarkerMember {
     }
 
     /// **Source:** `StepVisual_MarkerMember.hxx`:53 - `StepVisual_MarkerMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_MarkerMember_get_type_name())
                 .to_string_lossy()
@@ -22291,7 +22291,7 @@ impl MechanicalDesignGeometricPresentationArea {
     }
 
     /// **Source:** `StepVisual_MechanicalDesignGeometricPresentationArea.hxx`:36 - `StepVisual_MechanicalDesignGeometricPresentationArea::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_MechanicalDesignGeometricPresentationArea_get_type_name(),
@@ -22641,7 +22641,7 @@ impl MechanicalDesignGeometricPresentationRepresentation {
     }
 
     /// **Source:** `StepVisual_MechanicalDesignGeometricPresentationRepresentation.hxx`:37 - `StepVisual_MechanicalDesignGeometricPresentationRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_MechanicalDesignGeometricPresentationRepresentation_get_type_name()).to_string_lossy().into_owned()
         }
@@ -22926,7 +22926,7 @@ impl NullStyleMember {
     }
 
     /// **Source:** `StepVisual_NullStyleMember.hxx`:41 - `StepVisual_NullStyleMember::Name()`
-    pub fn name(&self) -> String {
+    pub fn name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_NullStyleMember_name(
                 self as *const Self,
@@ -22950,7 +22950,7 @@ impl NullStyleMember {
     }
 
     /// **Source:** `StepVisual_NullStyleMember.hxx`:50 - `StepVisual_NullStyleMember::EnumText()`
-    pub fn enum_text(&self) -> String {
+    pub fn enum_text(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_NullStyleMember_enum_text(
                 self as *const Self,
@@ -22995,7 +22995,7 @@ impl NullStyleMember {
     }
 
     /// **Source:** `StepVisual_NullStyleMember.hxx`:59 - `StepVisual_NullStyleMember::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_NullStyleMember_get_type_name())
                 .to_string_lossy()
@@ -23329,7 +23329,7 @@ impl OverRidingStyledItem {
     }
 
     /// **Source:** `StepVisual_OverRidingStyledItem.hxx`:45 - `StepVisual_OverRidingStyledItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_OverRidingStyledItem_get_type_name())
                 .to_string_lossy()
@@ -23885,7 +23885,7 @@ impl PlanarBox {
     }
 
     /// **Source:** `StepVisual_PlanarBox.hxx`:46 - `StepVisual_PlanarBox::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PlanarBox_get_type_name())
                 .to_string_lossy()
@@ -24187,7 +24187,7 @@ impl PlanarExtent {
     }
 
     /// **Source:** `StepVisual_PlanarExtent.hxx`:49 - `StepVisual_PlanarExtent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PlanarExtent_get_type_name())
                 .to_string_lossy()
@@ -24501,7 +24501,7 @@ impl PointStyle {
     }
 
     /// **Source:** `StepVisual_PointStyle.hxx`:60 - `StepVisual_PointStyle::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PointStyle_get_type_name())
                 .to_string_lossy()
@@ -24658,7 +24658,7 @@ impl PreDefinedColour {
     }
 
     /// **Source:** `StepVisual_PreDefinedColour.hxx`:42 - `StepVisual_PreDefinedColour::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PreDefinedColour_get_type_name())
                 .to_string_lossy()
@@ -24856,7 +24856,7 @@ impl PreDefinedCurveFont {
     }
 
     /// **Source:** `StepVisual_PreDefinedCurveFont.hxx`:35 - `StepVisual_PreDefinedCurveFont::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PreDefinedCurveFont_get_type_name())
                 .to_string_lossy()
@@ -25111,7 +25111,7 @@ impl PreDefinedItem {
     }
 
     /// **Source:** `StepVisual_PreDefinedItem.hxx`:42 - `StepVisual_PreDefinedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PreDefinedItem_get_type_name())
                 .to_string_lossy()
@@ -25309,7 +25309,7 @@ impl PreDefinedTextFont {
     }
 
     /// **Source:** `StepVisual_PreDefinedTextFont.hxx`:35 - `StepVisual_PreDefinedTextFont::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PreDefinedTextFont_get_type_name())
                 .to_string_lossy()
@@ -25522,7 +25522,7 @@ impl PresentationArea {
     }
 
     /// **Source:** `StepVisual_PresentationArea.hxx`:35 - `StepVisual_PresentationArea::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PresentationArea_get_type_name())
                 .to_string_lossy()
@@ -25947,7 +25947,7 @@ impl PresentationLayerAssignment {
     }
 
     /// **Source:** `StepVisual_PresentationLayerAssignment.hxx`:60 - `StepVisual_PresentationLayerAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_PresentationLayerAssignment_get_type_name(),
@@ -26190,7 +26190,7 @@ impl PresentationLayerUsage {
     }
 
     /// **Source:** `StepVisual_PresentationLayerUsage.hxx`:50 - `StepVisual_PresentationLayerUsage::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PresentationLayerUsage_get_type_name())
                 .to_string_lossy()
@@ -26362,7 +26362,7 @@ impl PresentationRepresentation {
     }
 
     /// **Source:** `StepVisual_PresentationRepresentation.hxx`:35 - `StepVisual_PresentationRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_PresentationRepresentation_get_type_name(),
@@ -27000,7 +27000,7 @@ impl PresentationSet {
     }
 
     /// **Source:** `StepVisual_PresentationSet.hxx`:35 - `StepVisual_PresentationSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PresentationSet_get_type_name())
                 .to_string_lossy()
@@ -27190,7 +27190,7 @@ impl PresentationSize {
     }
 
     /// **Source:** `StepVisual_PresentationSize.hxx`:48 - `StepVisual_PresentationSize::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PresentationSize_get_type_name())
                 .to_string_lossy()
@@ -27668,7 +27668,7 @@ impl PresentationStyleAssignment {
     }
 
     /// **Source:** `StepVisual_PresentationStyleAssignment.hxx`:48 - `StepVisual_PresentationStyleAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_PresentationStyleAssignment_get_type_name(),
@@ -27902,7 +27902,7 @@ impl PresentationStyleByContext {
     }
 
     /// **Source:** `StepVisual_PresentationStyleByContext.hxx`:44 - `StepVisual_PresentationStyleByContext::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_PresentationStyleByContext_get_type_name(),
@@ -28399,7 +28399,7 @@ impl PresentationView {
     }
 
     /// **Source:** `StepVisual_PresentationView.hxx`:35 - `StepVisual_PresentationView::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PresentationView_get_type_name())
                 .to_string_lossy()
@@ -28703,7 +28703,7 @@ impl PresentedItem {
     }
 
     /// **Source:** `StepVisual_PresentedItem.hxx`:32 - `StepVisual_PresentedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_PresentedItem_get_type_name())
                 .to_string_lossy()
@@ -28940,7 +28940,7 @@ impl PresentedItemRepresentation {
     }
 
     /// **Source:** `StepVisual_PresentedItemRepresentation.hxx`:49 - `StepVisual_PresentedItemRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_PresentedItemRepresentation_get_type_name(),
@@ -29395,7 +29395,7 @@ impl RepositionedTessellatedGeometricSet {
     }
 
     /// **Source:** `StepVisual_RepositionedTessellatedGeometricSet.hxx`:30 - `StepVisual_RepositionedTessellatedGeometricSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_RepositionedTessellatedGeometricSet_get_type_name(),
@@ -29743,7 +29743,7 @@ impl RepositionedTessellatedItem {
     }
 
     /// **Source:** `StepVisual_RepositionedTessellatedItem.hxx`:27 - `StepVisual_RepositionedTessellatedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_RepositionedTessellatedItem_get_type_name(),
@@ -30299,7 +30299,7 @@ impl StyledItem {
     }
 
     /// **Source:** `StepVisual_StyledItem.hxx`:64 - `StepVisual_StyledItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_StyledItem_get_type_name())
                 .to_string_lossy()
@@ -30925,7 +30925,7 @@ impl SurfaceSideStyle {
     }
 
     /// **Source:** `StepVisual_SurfaceSideStyle.hxx`:55 - `StepVisual_SurfaceSideStyle::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_SurfaceSideStyle_get_type_name())
                 .to_string_lossy()
@@ -31109,7 +31109,7 @@ impl SurfaceStyleBoundary {
     }
 
     /// **Source:** `StepVisual_SurfaceStyleBoundary.hxx`:42 - `StepVisual_SurfaceStyleBoundary::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_SurfaceStyleBoundary_get_type_name())
                 .to_string_lossy()
@@ -31311,7 +31311,7 @@ impl SurfaceStyleControlGrid {
     }
 
     /// **Source:** `StepVisual_SurfaceStyleControlGrid.hxx`:43 - `StepVisual_SurfaceStyleControlGrid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_SurfaceStyleControlGrid_get_type_name())
                 .to_string_lossy()
@@ -31780,7 +31780,7 @@ impl SurfaceStyleFillArea {
     }
 
     /// **Source:** `StepVisual_SurfaceStyleFillArea.hxx`:42 - `StepVisual_SurfaceStyleFillArea::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_SurfaceStyleFillArea_get_type_name())
                 .to_string_lossy()
@@ -32038,7 +32038,7 @@ impl SurfaceStyleParameterLine {
     }
 
     /// **Source:** `StepVisual_SurfaceStyleParameterLine.hxx`:58 - `StepVisual_SurfaceStyleParameterLine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_SurfaceStyleParameterLine_get_type_name(),
@@ -32251,7 +32251,7 @@ impl SurfaceStyleReflectanceAmbient {
     }
 
     /// **Source:** `StepVisual_SurfaceStyleReflectanceAmbient.hxx`:42 - `StepVisual_SurfaceStyleReflectanceAmbient::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_SurfaceStyleReflectanceAmbient_get_type_name(),
@@ -32492,7 +32492,7 @@ impl SurfaceStyleRendering {
     }
 
     /// **Source:** `StepVisual_SurfaceStyleRendering.hxx`:51 - `StepVisual_SurfaceStyleRendering::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_SurfaceStyleRendering_get_type_name())
                 .to_string_lossy()
@@ -32732,7 +32732,7 @@ impl SurfaceStyleRenderingWithProperties {
     }
 
     /// **Source:** `StepVisual_SurfaceStyleRenderingWithProperties.hxx`:50 - `StepVisual_SurfaceStyleRenderingWithProperties::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_SurfaceStyleRenderingWithProperties_get_type_name(),
@@ -33018,7 +33018,7 @@ impl SurfaceStyleSegmentationCurve {
     }
 
     /// **Source:** `StepVisual_SurfaceStyleSegmentationCurve.hxx`:43 - `StepVisual_SurfaceStyleSegmentationCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_SurfaceStyleSegmentationCurve_get_type_name(),
@@ -33230,7 +33230,7 @@ impl SurfaceStyleSilhouette {
     }
 
     /// **Source:** `StepVisual_SurfaceStyleSilhouette.hxx`:43 - `StepVisual_SurfaceStyleSilhouette::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_SurfaceStyleSilhouette_get_type_name())
                 .to_string_lossy()
@@ -33426,7 +33426,7 @@ impl SurfaceStyleTransparent {
     }
 
     /// **Source:** `StepVisual_SurfaceStyleTransparent.hxx`:42 - `StepVisual_SurfaceStyleTransparent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_SurfaceStyleTransparent_get_type_name())
                 .to_string_lossy()
@@ -33638,7 +33638,7 @@ impl SurfaceStyleUsage {
     }
 
     /// **Source:** `StepVisual_SurfaceStyleUsage.hxx`:48 - `StepVisual_SurfaceStyleUsage::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_SurfaceStyleUsage_get_type_name())
                 .to_string_lossy()
@@ -33797,7 +33797,7 @@ impl Template {
     }
 
     /// **Source:** `StepVisual_Template.hxx`:35 - `StepVisual_Template::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_Template_get_type_name())
                 .to_string_lossy()
@@ -34050,7 +34050,7 @@ impl TemplateInstance {
     }
 
     /// **Source:** `StepVisual_TemplateInstance.hxx`:35 - `StepVisual_TemplateInstance::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TemplateInstance_get_type_name())
                 .to_string_lossy()
@@ -34352,7 +34352,7 @@ impl TessellatedAnnotationOccurrence {
     }
 
     /// **Source:** `StepVisual_TessellatedAnnotationOccurrence.hxx`:32 - `StepVisual_TessellatedAnnotationOccurrence::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_TessellatedAnnotationOccurrence_get_type_name(),
@@ -34877,7 +34877,7 @@ impl TessellatedConnectingEdge {
     }
 
     /// **Source:** `StepVisual_TessellatedConnectingEdge.hxx`:93 - `StepVisual_TessellatedConnectingEdge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_TessellatedConnectingEdge_get_type_name(),
@@ -35302,7 +35302,7 @@ impl TessellatedCurveSet {
     }
 
     /// **Source:** `StepVisual_TessellatedCurveSet.hxx`:55 - `StepVisual_TessellatedCurveSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TessellatedCurveSet_get_type_name())
                 .to_string_lossy()
@@ -35693,7 +35693,7 @@ impl TessellatedEdge {
     }
 
     /// **Source:** `StepVisual_TessellatedEdge.hxx`:72 - `StepVisual_TessellatedEdge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TessellatedEdge_get_type_name())
                 .to_string_lossy()
@@ -36348,7 +36348,7 @@ impl TessellatedFace {
     }
 
     /// **Source:** `StepVisual_TessellatedFace.hxx`:76 - `StepVisual_TessellatedFace::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TessellatedFace_get_type_name())
                 .to_string_lossy()
@@ -36687,7 +36687,7 @@ impl TessellatedGeometricSet {
     }
 
     /// **Source:** `StepVisual_TessellatedGeometricSet.hxx`:48 - `StepVisual_TessellatedGeometricSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TessellatedGeometricSet_get_type_name())
                 .to_string_lossy()
@@ -36984,7 +36984,7 @@ impl TessellatedItem {
     }
 
     /// **Source:** `StepVisual_TessellatedItem.hxx`:34 - `StepVisual_TessellatedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TessellatedItem_get_type_name())
                 .to_string_lossy()
@@ -37649,7 +37649,7 @@ impl TessellatedPointSet {
     }
 
     /// **Source:** `StepVisual_TessellatedPointSet.hxx`:60 - `StepVisual_TessellatedPointSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TessellatedPointSet_get_type_name())
                 .to_string_lossy()
@@ -37931,7 +37931,7 @@ impl TessellatedShapeRepresentation {
     }
 
     /// **Source:** `StepVisual_TessellatedShapeRepresentation.hxx`:34 - `StepVisual_TessellatedShapeRepresentation::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_TessellatedShapeRepresentation_get_type_name(),
@@ -38350,7 +38350,7 @@ impl TessellatedShapeRepresentationWithAccuracyParameters {
     }
 
     /// **Source:** `StepVisual_TessellatedShapeRepresentationWithAccuracyParameters.hxx`:58 - `StepVisual_TessellatedShapeRepresentationWithAccuracyParameters::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_get_type_name()).to_string_lossy().into_owned()
         }
@@ -38741,7 +38741,7 @@ impl TessellatedShell {
     }
 
     /// **Source:** `StepVisual_TessellatedShell.hxx`:67 - `StepVisual_TessellatedShell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TessellatedShell_get_type_name())
                 .to_string_lossy()
@@ -39097,7 +39097,7 @@ impl TessellatedSolid {
     }
 
     /// **Source:** `StepVisual_TessellatedSolid.hxx`:67 - `StepVisual_TessellatedSolid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TessellatedSolid_get_type_name())
                 .to_string_lossy()
@@ -39366,7 +39366,7 @@ impl TessellatedStructuredItem {
     }
 
     /// **Source:** `StepVisual_TessellatedStructuredItem.hxx`:34 - `StepVisual_TessellatedStructuredItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_TessellatedStructuredItem_get_type_name(),
@@ -39863,7 +39863,7 @@ impl TessellatedSurfaceSet {
     }
 
     /// **Source:** `StepVisual_TessellatedSurfaceSet.hxx`:64 - `StepVisual_TessellatedSurfaceSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TessellatedSurfaceSet_get_type_name())
                 .to_string_lossy()
@@ -40260,7 +40260,7 @@ impl TessellatedVertex {
     }
 
     /// **Source:** `StepVisual_TessellatedVertex.hxx`:65 - `StepVisual_TessellatedVertex::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TessellatedVertex_get_type_name())
                 .to_string_lossy()
@@ -40638,7 +40638,7 @@ impl TessellatedWire {
     }
 
     /// **Source:** `StepVisual_TessellatedWire.hxx`:67 - `StepVisual_TessellatedWire::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TessellatedWire_get_type_name())
                 .to_string_lossy()
@@ -40992,7 +40992,7 @@ impl TextLiteral {
     }
 
     /// **Source:** `StepVisual_TextLiteral.hxx`:65 - `StepVisual_TextLiteral::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TextLiteral_get_type_name())
                 .to_string_lossy()
@@ -41450,7 +41450,7 @@ impl TextStyle {
     }
 
     /// **Source:** `StepVisual_TextStyle.hxx`:49 - `StepVisual_TextStyle::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TextStyle_get_type_name())
                 .to_string_lossy()
@@ -41631,7 +41631,7 @@ impl TextStyleForDefinedFont {
     }
 
     /// **Source:** `StepVisual_TextStyleForDefinedFont.hxx`:42 - `StepVisual_TextStyleForDefinedFont::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TextStyleForDefinedFont_get_type_name())
                 .to_string_lossy()
@@ -41871,7 +41871,7 @@ impl TextStyleWithBoxCharacteristics {
     }
 
     /// **Source:** `StepVisual_TextStyleWithBoxCharacteristics.hxx`:55 - `StepVisual_TextStyleWithBoxCharacteristics::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepVisual_TextStyleWithBoxCharacteristics_get_type_name(),
@@ -42198,7 +42198,7 @@ impl TriangulatedFace {
     }
 
     /// **Source:** `StepVisual_TriangulatedFace.hxx`:69 - `StepVisual_TriangulatedFace::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TriangulatedFace_get_type_name())
                 .to_string_lossy()
@@ -42690,7 +42690,7 @@ impl TriangulatedSurfaceSet {
     }
 
     /// **Source:** `StepVisual_TriangulatedSurfaceSet.hxx`:62 - `StepVisual_TriangulatedSurfaceSet::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_TriangulatedSurfaceSet_get_type_name())
                 .to_string_lossy()
@@ -43229,7 +43229,7 @@ impl ViewVolume {
     }
 
     /// **Source:** `StepVisual_ViewVolume.hxx`:84 - `StepVisual_ViewVolume::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepVisual_ViewVolume_get_type_name())
                 .to_string_lossy()

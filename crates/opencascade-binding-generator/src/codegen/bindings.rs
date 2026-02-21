@@ -649,7 +649,7 @@ fn return_type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeConte
             )
         }
         Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
-            "String".to_string()
+            "std::string::String".to_string()
         }
         // Class pointer returns -> Option<&T> / Option<&mut T>
         Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(_)) => {
@@ -4765,7 +4765,7 @@ fn build_reexport_body(raw_call: &str, reexport_type: Option<&str>, is_enum: Opt
     } else if needs_owned_ptr {
         format!("unsafe {{ crate::OwnedPtr::from_raw({}) }}", raw_call)
     } else if let Some(rt) = reexport_type {
-        if rt == "String" {
+        if rt == "std::string::String" {
             format!("unsafe {{ std::ffi::CStr::from_ptr({}).to_string_lossy().into_owned() }}", raw_call)
         } else if rt.starts_with("&mut ") {
             format!("unsafe {{ &mut *({}) }}", raw_call)

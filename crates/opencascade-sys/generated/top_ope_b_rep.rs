@@ -665,7 +665,7 @@ impl FFDumper {
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:62 - `TopOpeBRep_FFDumper::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRep_FFDumper_get_type_name())
                 .to_string_lossy()
@@ -1910,7 +1910,7 @@ impl HArray1OfLineInter {
     }
 
     /// **Source:** `TopOpeBRep_HArray1OfLineInter.hxx`:23 - `TopOpeBRep_HArray1OfLineInter::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRep_HArray1OfLineInter_get_type_name())
                 .to_string_lossy()
@@ -2131,7 +2131,7 @@ impl HArray1OfVPointInter {
     }
 
     /// **Source:** `TopOpeBRep_HArray1OfVPointInter.hxx`:23 - `TopOpeBRep_HArray1OfVPointInter::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRep_HArray1OfVPointInter_get_type_name())
                 .to_string_lossy()
@@ -2322,7 +2322,7 @@ impl Hctxee2d {
     }
 
     /// **Source:** `TopOpeBRep_Hctxee2d.hxx`:51 - `TopOpeBRep_Hctxee2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRep_Hctxee2d_get_type_name())
                 .to_string_lossy()
@@ -2519,7 +2519,7 @@ impl Hctxff2d {
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:53 - `TopOpeBRep_Hctxff2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRep_Hctxff2d_get_type_name())
                 .to_string_lossy()

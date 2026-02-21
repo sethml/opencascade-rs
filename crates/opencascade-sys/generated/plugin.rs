@@ -102,7 +102,7 @@ impl Failure {
     }
 
     /// **Source:** `Plugin_Failure.hxx`:36 - `Plugin_Failure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Plugin_Failure_get_type_name())
                 .to_string_lossy()

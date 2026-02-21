@@ -44,7 +44,7 @@ impl SITopolTool {
     }
 
     /// **Source:** `IntStart_SITopolTool.hxx`:40 - `IntStart_SITopolTool::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IntStart_SITopolTool_get_type_name())
                 .to_string_lossy()

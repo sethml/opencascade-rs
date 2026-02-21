@@ -286,7 +286,7 @@ impl ALine {
     }
 
     /// **Source:** `IntPatch_ALine.hxx`:135 - `IntPatch_ALine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IntPatch_ALine_get_type_name())
                 .to_string_lossy()
@@ -1355,7 +1355,7 @@ impl GLine {
     }
 
     /// **Source:** `IntPatch_GLine.hxx`:194 - `IntPatch_GLine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IntPatch_GLine_get_type_name())
                 .to_string_lossy()
@@ -2862,7 +2862,7 @@ impl Line {
     }
 
     /// **Source:** `IntPatch_Line.hxx`:111 - `IntPatch_Line::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IntPatch_Line_get_type_name())
                 .to_string_lossy()
@@ -3494,7 +3494,7 @@ impl PointLine {
     }
 
     /// **Source:** `IntPatch_PointLine.hxx`:88 - `IntPatch_PointLine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IntPatch_PointLine_get_type_name())
                 .to_string_lossy()
@@ -5163,7 +5163,7 @@ impl RLine {
     }
 
     /// **Source:** `IntPatch_RLine.hxx`:183 - `IntPatch_RLine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IntPatch_RLine_get_type_name())
                 .to_string_lossy()
@@ -5873,7 +5873,7 @@ impl TheIWLineOfTheIWalking {
     }
 
     /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:147 - `IntPatch_TheIWLineOfTheIWalking::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IntPatch_TheIWLineOfTheIWalking_get_type_name())
                 .to_string_lossy()
@@ -7009,7 +7009,7 @@ impl WLine {
     }
 
     /// **Source:** `IntPatch_WLine.hxx`:209 - `IntPatch_WLine::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IntPatch_WLine_get_type_name())
                 .to_string_lossy()

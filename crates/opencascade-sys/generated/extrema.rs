@@ -4553,7 +4553,7 @@ impl ExtPExtS {
     }
 
     /// **Source:** `Extrema_ExtPExtS.hxx`:79 - `Extrema_ExtPExtS::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Extrema_ExtPExtS_get_type_name())
                 .to_string_lossy()
@@ -4777,7 +4777,7 @@ impl ExtPRevS {
     }
 
     /// **Source:** `Extrema_ExtPRevS.hxx`:76 - `Extrema_ExtPRevS::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Extrema_ExtPRevS_get_type_name())
                 .to_string_lossy()
@@ -7423,7 +7423,7 @@ impl HArray1OfPOnCurv {
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Extrema_HArray1OfPOnCurv_get_type_name())
                 .to_string_lossy()
@@ -7630,7 +7630,7 @@ impl HArray1OfPOnCurv2d {
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Extrema_HArray1OfPOnCurv2d_get_type_name())
                 .to_string_lossy()
@@ -7839,7 +7839,7 @@ impl HArray1OfPOnSurf {
     }
 
     /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Extrema_HArray1OfPOnSurf_get_type_name())
                 .to_string_lossy()
@@ -8032,7 +8032,7 @@ impl HArray2OfPOnCurv {
     }
 
     /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Extrema_HArray2OfPOnCurv_get_type_name())
                 .to_string_lossy()
@@ -8225,7 +8225,7 @@ impl HArray2OfPOnCurv2d {
     }
 
     /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Extrema_HArray2OfPOnCurv2d_get_type_name())
                 .to_string_lossy()
@@ -8422,7 +8422,7 @@ impl HArray2OfPOnSurf {
     }
 
     /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::Extrema_HArray2OfPOnSurf_get_type_name())
                 .to_string_lossy()

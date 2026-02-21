@@ -236,7 +236,7 @@ impl ComposeShell {
     }
 
     /// **Source:** `ShapeFix_ComposeShell.hxx`:151 - `ShapeFix_ComposeShell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_ComposeShell_get_type_name())
                 .to_string_lossy()
@@ -867,7 +867,7 @@ impl Edge {
     }
 
     /// **Source:** `ShapeFix_Edge.hxx`:247 - `ShapeFix_Edge::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_Edge_get_type_name())
                 .to_string_lossy()
@@ -1091,7 +1091,7 @@ impl EdgeProjAux {
     }
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:55 - `ShapeFix_EdgeProjAux::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_EdgeProjAux_get_type_name())
                 .to_string_lossy()
@@ -1570,7 +1570,7 @@ impl Face {
     }
 
     /// **Source:** `ShapeFix_Face.hxx`:249 - `ShapeFix_Face::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_Face_get_type_name())
                 .to_string_lossy()
@@ -2005,7 +2005,7 @@ impl FixSmallFace {
     }
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:88 - `ShapeFix_FixSmallFace::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_FixSmallFace_get_type_name())
                 .to_string_lossy()
@@ -2350,7 +2350,7 @@ impl FixSmallSolid {
     }
 
     /// **Source:** `ShapeFix_FixSmallSolid.hxx`:58 - `ShapeFix_FixSmallSolid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_FixSmallSolid_get_type_name())
                 .to_string_lossy()
@@ -3036,7 +3036,7 @@ impl Root {
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:110 - `ShapeFix_Root::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_Root_get_type_name())
                 .to_string_lossy()
@@ -3480,7 +3480,7 @@ impl Shape {
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:132 - `ShapeFix_Shape::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_Shape_get_type_name())
                 .to_string_lossy()
@@ -3928,7 +3928,7 @@ impl Shell {
     }
 
     /// **Source:** `ShapeFix_Shell.hxx`:123 - `ShapeFix_Shell::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_Shell_get_type_name())
                 .to_string_lossy()
@@ -4273,7 +4273,7 @@ impl Solid {
     }
 
     /// **Source:** `ShapeFix_Solid.hxx`:106 - `ShapeFix_Solid::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_Solid_get_type_name())
                 .to_string_lossy()
@@ -4522,7 +4522,7 @@ impl SplitCommonVertex {
     }
 
     /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:44 - `ShapeFix_SplitCommonVertex::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_SplitCommonVertex_get_type_name())
                 .to_string_lossy()
@@ -5683,7 +5683,7 @@ impl Wire {
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:460 - `ShapeFix_Wire::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_Wire_get_type_name())
                 .to_string_lossy()
@@ -6430,7 +6430,7 @@ impl Wireframe {
     }
 
     /// **Source:** `ShapeFix_Wireframe.hxx`:105 - `ShapeFix_Wireframe::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeFix_Wireframe_get_type_name())
                 .to_string_lossy()

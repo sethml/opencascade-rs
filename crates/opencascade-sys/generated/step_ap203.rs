@@ -362,7 +362,7 @@ impl CcDesignApproval {
     }
 
     /// **Source:** `StepAP203_CcDesignApproval.hxx`:47 - `StepAP203_CcDesignApproval::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_CcDesignApproval_get_type_name())
                 .to_string_lossy()
@@ -605,7 +605,7 @@ impl CcDesignCertification {
     }
 
     /// **Source:** `StepAP203_CcDesignCertification.hxx`:48 - `StepAP203_CcDesignCertification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_CcDesignCertification_get_type_name())
                 .to_string_lossy()
@@ -859,7 +859,7 @@ impl CcDesignContract {
     }
 
     /// **Source:** `StepAP203_CcDesignContract.hxx`:47 - `StepAP203_CcDesignContract::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_CcDesignContract_get_type_name())
                 .to_string_lossy()
@@ -1112,7 +1112,7 @@ impl CcDesignDateAndTimeAssignment {
     }
 
     /// **Source:** `StepAP203_CcDesignDateAndTimeAssignment.hxx`:50 - `StepAP203_CcDesignDateAndTimeAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_get_type_name(),
@@ -1421,7 +1421,7 @@ impl CcDesignPersonAndOrganizationAssignment {
     }
 
     /// **Source:** `StepAP203_CcDesignPersonAndOrganizationAssignment.hxx`:53 - `StepAP203_CcDesignPersonAndOrganizationAssignment::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_get_type_name(),
@@ -1707,7 +1707,7 @@ impl CcDesignSecurityClassification {
     }
 
     /// **Source:** `StepAP203_CcDesignSecurityClassification.hxx`:49 - `StepAP203_CcDesignSecurityClassification::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP203_CcDesignSecurityClassification_get_type_name(),
@@ -1972,7 +1972,7 @@ impl CcDesignSpecificationReference {
     }
 
     /// **Source:** `StepAP203_CcDesignSpecificationReference.hxx`:49 - `StepAP203_CcDesignSpecificationReference::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP203_CcDesignSpecificationReference_get_type_name(),
@@ -2435,7 +2435,7 @@ impl Change {
     }
 
     /// **Source:** `StepAP203_Change.hxx`:47 - `StepAP203_Change::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_Change_get_type_name())
                 .to_string_lossy()
@@ -2646,7 +2646,7 @@ impl ChangeRequest {
     }
 
     /// **Source:** `StepAP203_ChangeRequest.hxx`:48 - `StepAP203_ChangeRequest::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_ChangeRequest_get_type_name())
                 .to_string_lossy()
@@ -3707,7 +3707,7 @@ impl HArray1OfApprovedItem {
     }
 
     /// **Source:** `StepAP203_HArray1OfApprovedItem.hxx`:23 - `StepAP203_HArray1OfApprovedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_HArray1OfApprovedItem_get_type_name())
                 .to_string_lossy()
@@ -3937,7 +3937,7 @@ impl HArray1OfCertifiedItem {
     }
 
     /// **Source:** `StepAP203_HArray1OfCertifiedItem.hxx`:23 - `StepAP203_HArray1OfCertifiedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_HArray1OfCertifiedItem_get_type_name())
                 .to_string_lossy()
@@ -4175,7 +4175,7 @@ impl HArray1OfChangeRequestItem {
     }
 
     /// **Source:** `StepAP203_HArray1OfChangeRequestItem.hxx`:23 - `StepAP203_HArray1OfChangeRequestItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP203_HArray1OfChangeRequestItem_get_type_name(),
@@ -4413,7 +4413,7 @@ impl HArray1OfClassifiedItem {
     }
 
     /// **Source:** `StepAP203_HArray1OfClassifiedItem.hxx`:23 - `StepAP203_HArray1OfClassifiedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_HArray1OfClassifiedItem_get_type_name())
                 .to_string_lossy()
@@ -4645,7 +4645,7 @@ impl HArray1OfContractedItem {
     }
 
     /// **Source:** `StepAP203_HArray1OfContractedItem.hxx`:23 - `StepAP203_HArray1OfContractedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_HArray1OfContractedItem_get_type_name())
                 .to_string_lossy()
@@ -4875,7 +4875,7 @@ impl HArray1OfDateTimeItem {
     }
 
     /// **Source:** `StepAP203_HArray1OfDateTimeItem.hxx`:23 - `StepAP203_HArray1OfDateTimeItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_HArray1OfDateTimeItem_get_type_name())
                 .to_string_lossy()
@@ -5103,7 +5103,7 @@ impl HArray1OfPersonOrganizationItem {
     }
 
     /// **Source:** `StepAP203_HArray1OfPersonOrganizationItem.hxx`:23 - `StepAP203_HArray1OfPersonOrganizationItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_get_type_name(),
@@ -5343,7 +5343,7 @@ impl HArray1OfSpecifiedItem {
     }
 
     /// **Source:** `StepAP203_HArray1OfSpecifiedItem.hxx`:23 - `StepAP203_HArray1OfSpecifiedItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_HArray1OfSpecifiedItem_get_type_name())
                 .to_string_lossy()
@@ -5577,7 +5577,7 @@ impl HArray1OfStartRequestItem {
     }
 
     /// **Source:** `StepAP203_HArray1OfStartRequestItem.hxx`:23 - `StepAP203_HArray1OfStartRequestItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_HArray1OfStartRequestItem_get_type_name()).to_string_lossy().into_owned()
         }
@@ -5803,7 +5803,7 @@ impl HArray1OfWorkItem {
     }
 
     /// **Source:** `StepAP203_HArray1OfWorkItem.hxx`:23 - `StepAP203_HArray1OfWorkItem::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_HArray1OfWorkItem_get_type_name())
                 .to_string_lossy()
@@ -6477,7 +6477,7 @@ impl StartRequest {
     }
 
     /// **Source:** `StepAP203_StartRequest.hxx`:48 - `StepAP203_StartRequest::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_StartRequest_get_type_name())
                 .to_string_lossy()
@@ -6885,7 +6885,7 @@ impl StartWork {
     }
 
     /// **Source:** `StepAP203_StartWork.hxx`:47 - `StepAP203_StartWork::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::StepAP203_StartWork_get_type_name())
                 .to_string_lossy()

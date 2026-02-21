@@ -173,7 +173,7 @@ impl Actor {
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:68 - `IGESToBRep_Actor::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESToBRep_Actor_get_type_name())
                 .to_string_lossy()
@@ -494,7 +494,7 @@ impl AlgoContainer {
     }
 
     /// **Source:** `IGESToBRep_AlgoContainer.hxx`:41 - `IGESToBRep_AlgoContainer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESToBRep_AlgoContainer_get_type_name())
                 .to_string_lossy()
@@ -2793,7 +2793,7 @@ impl IGESBoundary {
     }
 
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:133 - `IGESToBRep_IGESBoundary::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESToBRep_IGESBoundary_get_type_name())
                 .to_string_lossy()
@@ -3184,7 +3184,7 @@ impl ToolContainer {
     }
 
     /// **Source:** `IGESToBRep_ToolContainer.hxx`:38 - `IGESToBRep_ToolContainer::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESToBRep_ToolContainer_get_type_name())
                 .to_string_lossy()

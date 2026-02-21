@@ -400,7 +400,7 @@ impl Curve {
     }
 
     /// **Source:** `GeomAdaptor_Curve.hxx`:40 - `GeomAdaptor_Curve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomAdaptor_Curve_get_type_name())
                 .to_string_lossy()
@@ -1105,7 +1105,7 @@ impl Surface {
     }
 
     /// **Source:** `GeomAdaptor_Surface.hxx`:40 - `GeomAdaptor_Surface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomAdaptor_Surface_get_type_name())
                 .to_string_lossy()
@@ -1683,7 +1683,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:42 - `GeomAdaptor_SurfaceOfLinearExtrusion::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_get_type_name(),
@@ -2477,7 +2477,7 @@ impl SurfaceOfRevolution {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:50 - `GeomAdaptor_SurfaceOfRevolution::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::GeomAdaptor_SurfaceOfRevolution_get_type_name())
                 .to_string_lossy()

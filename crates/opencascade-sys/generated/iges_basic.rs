@@ -93,7 +93,7 @@ impl AssocGroupType {
     }
 
     /// **Source:** `IGESBasic_AssocGroupType.hxx`:57 - `IGESBasic_AssocGroupType::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_AssocGroupType_get_type_name())
                 .to_string_lossy()
@@ -820,7 +820,7 @@ impl ExternalRefFile {
     }
 
     /// **Source:** `IGESBasic_ExternalRefFile.hxx`:45 - `IGESBasic_ExternalRefFile::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_ExternalRefFile_get_type_name())
                 .to_string_lossy()
@@ -1593,7 +1593,7 @@ impl ExternalRefFileIndex {
     }
 
     /// **Source:** `IGESBasic_ExternalRefFileIndex.hxx`:62 - `IGESBasic_ExternalRefFileIndex::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_ExternalRefFileIndex_get_type_name())
                 .to_string_lossy()
@@ -2443,7 +2443,7 @@ impl ExternalRefFileName {
     }
 
     /// **Source:** `IGESBasic_ExternalRefFileName.hxx`:56 - `IGESBasic_ExternalRefFileName::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_ExternalRefFileName_get_type_name())
                 .to_string_lossy()
@@ -3265,7 +3265,7 @@ impl ExternalRefLibName {
     }
 
     /// **Source:** `IGESBasic_ExternalRefLibName.hxx`:53 - `IGESBasic_ExternalRefLibName::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_ExternalRefLibName_get_type_name())
                 .to_string_lossy()
@@ -4058,7 +4058,7 @@ impl ExternalRefName {
     }
 
     /// **Source:** `IGESBasic_ExternalRefName.hxx`:46 - `IGESBasic_ExternalRefName::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_ExternalRefName_get_type_name())
                 .to_string_lossy()
@@ -4804,7 +4804,7 @@ impl ExternalReferenceFile {
     }
 
     /// **Source:** `IGESBasic_ExternalReferenceFile.hxx`:51 - `IGESBasic_ExternalReferenceFile::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_ExternalReferenceFile_get_type_name())
                 .to_string_lossy()
@@ -5725,7 +5725,7 @@ impl GeneralModule {
     }
 
     /// **Source:** `IGESBasic_GeneralModule.hxx`:83 - `IGESBasic_GeneralModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_GeneralModule_get_type_name())
                 .to_string_lossy()
@@ -6290,7 +6290,7 @@ impl Group {
     }
 
     /// **Source:** `IGESBasic_Group.hxx`:91 - `IGESBasic_Group::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_Group_get_type_name())
                 .to_string_lossy()
@@ -6971,7 +6971,7 @@ impl GroupWithoutBackP {
     }
 
     /// **Source:** `IGESBasic_GroupWithoutBackP.hxx`:38 - `IGESBasic_GroupWithoutBackP::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_GroupWithoutBackP_get_type_name())
                 .to_string_lossy()
@@ -7877,7 +7877,7 @@ impl HArray1OfHArray1OfIGESEntity {
     }
 
     /// **Source:** `IGESBasic_HArray1OfHArray1OfIGESEntity.hxx`:49 - `IGESBasic_HArray1OfHArray1OfIGESEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(
                 crate::ffi::IGESBasic_HArray1OfHArray1OfIGESEntity_get_type_name(),
@@ -8092,7 +8092,7 @@ impl HArray1OfHArray1OfInteger {
     }
 
     /// **Source:** `IGESBasic_HArray1OfHArray1OfInteger.hxx`:49 - `IGESBasic_HArray1OfHArray1OfInteger::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_HArray1OfHArray1OfInteger_get_type_name()).to_string_lossy().into_owned()
         }
@@ -8297,7 +8297,7 @@ impl HArray1OfHArray1OfReal {
     }
 
     /// **Source:** `IGESBasic_HArray1OfHArray1OfReal.hxx`:49 - `IGESBasic_HArray1OfHArray1OfReal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_HArray1OfHArray1OfReal_get_type_name())
                 .to_string_lossy()
@@ -8496,7 +8496,7 @@ impl HArray1OfHArray1OfXY {
     }
 
     /// **Source:** `IGESBasic_HArray1OfHArray1OfXY.hxx`:47 - `IGESBasic_HArray1OfHArray1OfXY::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_HArray1OfHArray1OfXY_get_type_name())
                 .to_string_lossy()
@@ -8697,7 +8697,7 @@ impl HArray1OfHArray1OfXYZ {
     }
 
     /// **Source:** `IGESBasic_HArray1OfHArray1OfXYZ.hxx`:48 - `IGESBasic_HArray1OfHArray1OfXYZ::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_HArray1OfHArray1OfXYZ_get_type_name())
                 .to_string_lossy()
@@ -8925,7 +8925,7 @@ impl HArray1OfLineFontEntity {
     }
 
     /// **Source:** `IGESBasic_HArray1OfLineFontEntity.hxx`:24 - `IGESBasic_HArray1OfLineFontEntity::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_HArray1OfLineFontEntity_get_type_name())
                 .to_string_lossy()
@@ -9141,7 +9141,7 @@ impl HArray2OfHArray1OfReal {
     }
 
     /// **Source:** `IGESBasic_HArray2OfHArray1OfReal.hxx`:23 - `IGESBasic_HArray2OfHArray1OfReal::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_HArray2OfHArray1OfReal_get_type_name())
                 .to_string_lossy()
@@ -9394,7 +9394,7 @@ impl Hierarchy {
     }
 
     /// **Source:** `IGESBasic_Hierarchy.hxx`:82 - `IGESBasic_Hierarchy::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_Hierarchy_get_type_name())
                 .to_string_lossy()
@@ -10064,7 +10064,7 @@ impl Name {
     }
 
     /// **Source:** `IGESBasic_Name.hxx`:50 - `IGESBasic_Name::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_Name_get_type_name())
                 .to_string_lossy()
@@ -10707,7 +10707,7 @@ impl OrderedGroup {
     }
 
     /// **Source:** `IGESBasic_OrderedGroup.hxx`:40 - `IGESBasic_OrderedGroup::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_OrderedGroup_get_type_name())
                 .to_string_lossy()
@@ -11485,7 +11485,7 @@ impl OrderedGroupWithoutBackP {
     }
 
     /// **Source:** `IGESBasic_OrderedGroupWithoutBackP.hxx`:39 - `IGESBasic_OrderedGroupWithoutBackP::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_OrderedGroupWithoutBackP_get_type_name())
                 .to_string_lossy()
@@ -12508,7 +12508,7 @@ impl Protocol {
     }
 
     /// **Source:** `IGESBasic_Protocol.hxx`:53 - `IGESBasic_Protocol::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_Protocol_get_type_name())
                 .to_string_lossy()
@@ -12801,7 +12801,7 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `IGESBasic_ReadWriteModule.hxx`:58 - `IGESBasic_ReadWriteModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_ReadWriteModule_get_type_name())
                 .to_string_lossy()
@@ -13120,7 +13120,7 @@ impl SingleParent {
     }
 
     /// **Source:** `IGESBasic_SingleParent.hxx`:64 - `IGESBasic_SingleParent::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_SingleParent_get_type_name())
                 .to_string_lossy()
@@ -13904,7 +13904,7 @@ impl SingularSubfigure {
     }
 
     /// **Source:** `IGESBasic_SingularSubfigure.hxx`:68 - `IGESBasic_SingularSubfigure::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_SingularSubfigure_get_type_name())
                 .to_string_lossy()
@@ -14682,7 +14682,7 @@ impl SpecificModule {
     }
 
     /// **Source:** `IGESBasic_SpecificModule.hxx`:53 - `IGESBasic_SpecificModule::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_SpecificModule_get_type_name())
                 .to_string_lossy()
@@ -14934,7 +14934,7 @@ impl SubfigureDef {
     }
 
     /// **Source:** `IGESBasic_SubfigureDef.hxx`:69 - `IGESBasic_SubfigureDef::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::IGESBasic_SubfigureDef_get_type_name())
                 .to_string_lossy()

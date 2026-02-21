@@ -211,7 +211,7 @@ impl CommonBlock {
     }
 
     /// **Source:** `BOPDS_CommonBlock.hxx`:140 - `BOPDS_CommonBlock::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPDS_CommonBlock_get_type_name())
                 .to_string_lossy()
@@ -3599,7 +3599,7 @@ impl PaveBlock {
     }
 
     /// **Source:** `BOPDS_PaveBlock.hxx`:182 - `BOPDS_PaveBlock::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BOPDS_PaveBlock_get_type_name())
                 .to_string_lossy()

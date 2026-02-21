@@ -92,7 +92,7 @@ impl AsciiStringDriver {
     }
 
     /// **Source:** `XmlMDataStd_AsciiStringDriver.hxx`:52 - `XmlMDataStd_AsciiStringDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_AsciiStringDriver_get_type_name())
                 .to_string_lossy()
@@ -357,7 +357,7 @@ impl BooleanArrayDriver {
     }
 
     /// **Source:** `XmlMDataStd_BooleanArrayDriver.hxx`:49 - `XmlMDataStd_BooleanArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_BooleanArrayDriver_get_type_name())
                 .to_string_lossy()
@@ -631,7 +631,7 @@ impl BooleanListDriver {
     }
 
     /// **Source:** `XmlMDataStd_BooleanListDriver.hxx`:49 - `XmlMDataStd_BooleanListDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_BooleanListDriver_get_type_name())
                 .to_string_lossy()
@@ -896,7 +896,7 @@ impl ByteArrayDriver {
     }
 
     /// **Source:** `XmlMDataStd_ByteArrayDriver.hxx`:49 - `XmlMDataStd_ByteArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_ByteArrayDriver_get_type_name())
                 .to_string_lossy()
@@ -1154,7 +1154,7 @@ impl ExpressionDriver {
     }
 
     /// **Source:** `XmlMDataStd_ExpressionDriver.hxx`:50 - `XmlMDataStd_ExpressionDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_ExpressionDriver_get_type_name())
                 .to_string_lossy()
@@ -1422,7 +1422,7 @@ impl ExtStringArrayDriver {
     }
 
     /// **Source:** `XmlMDataStd_ExtStringArrayDriver.hxx`:51 - `XmlMDataStd_ExtStringArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_ExtStringArrayDriver_get_type_name())
                 .to_string_lossy()
@@ -1702,7 +1702,7 @@ impl ExtStringListDriver {
     }
 
     /// **Source:** `XmlMDataStd_ExtStringListDriver.hxx`:50 - `XmlMDataStd_ExtStringListDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_ExtStringListDriver_get_type_name())
                 .to_string_lossy()
@@ -1985,7 +1985,7 @@ impl GenericEmptyDriver {
     }
 
     /// **Source:** `XmlMDataStd_GenericEmptyDriver.hxx`:49 - `XmlMDataStd_GenericEmptyDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_GenericEmptyDriver_get_type_name())
                 .to_string_lossy()
@@ -2260,7 +2260,7 @@ impl GenericExtStringDriver {
     }
 
     /// **Source:** `XmlMDataStd_GenericExtStringDriver.hxx`:50 - `XmlMDataStd_GenericExtStringDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_GenericExtStringDriver_get_type_name())
                 .to_string_lossy()
@@ -2538,7 +2538,7 @@ impl IntPackedMapDriver {
     }
 
     /// **Source:** `XmlMDataStd_IntPackedMapDriver.hxx`:52 - `XmlMDataStd_IntPackedMapDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_IntPackedMapDriver_get_type_name())
                 .to_string_lossy()
@@ -2813,7 +2813,7 @@ impl IntegerArrayDriver {
     }
 
     /// **Source:** `XmlMDataStd_IntegerArrayDriver.hxx`:50 - `XmlMDataStd_IntegerArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_IntegerArrayDriver_get_type_name())
                 .to_string_lossy()
@@ -3086,7 +3086,7 @@ impl IntegerDriver {
     }
 
     /// **Source:** `XmlMDataStd_IntegerDriver.hxx`:50 - `XmlMDataStd_IntegerDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_IntegerDriver_get_type_name())
                 .to_string_lossy()
@@ -3334,7 +3334,7 @@ impl IntegerListDriver {
     }
 
     /// **Source:** `XmlMDataStd_IntegerListDriver.hxx`:49 - `XmlMDataStd_IntegerListDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_IntegerListDriver_get_type_name())
                 .to_string_lossy()
@@ -3599,7 +3599,7 @@ impl NamedDataDriver {
     }
 
     /// **Source:** `XmlMDataStd_NamedDataDriver.hxx`:49 - `XmlMDataStd_NamedDataDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_NamedDataDriver_get_type_name())
                 .to_string_lossy()
@@ -3857,7 +3857,7 @@ impl RealArrayDriver {
     }
 
     /// **Source:** `XmlMDataStd_RealArrayDriver.hxx`:50 - `XmlMDataStd_RealArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_RealArrayDriver_get_type_name())
                 .to_string_lossy()
@@ -4123,7 +4123,7 @@ impl RealDriver {
     }
 
     /// **Source:** `XmlMDataStd_RealDriver.hxx`:50 - `XmlMDataStd_RealDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_RealDriver_get_type_name())
                 .to_string_lossy()
@@ -4356,7 +4356,7 @@ impl RealListDriver {
     }
 
     /// **Source:** `XmlMDataStd_RealListDriver.hxx`:49 - `XmlMDataStd_RealListDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_RealListDriver_get_type_name())
                 .to_string_lossy()
@@ -4611,7 +4611,7 @@ impl ReferenceArrayDriver {
     }
 
     /// **Source:** `XmlMDataStd_ReferenceArrayDriver.hxx`:50 - `XmlMDataStd_ReferenceArrayDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_ReferenceArrayDriver_get_type_name())
                 .to_string_lossy()
@@ -4891,7 +4891,7 @@ impl ReferenceListDriver {
     }
 
     /// **Source:** `XmlMDataStd_ReferenceListDriver.hxx`:50 - `XmlMDataStd_ReferenceListDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_ReferenceListDriver_get_type_name())
                 .to_string_lossy()
@@ -5166,7 +5166,7 @@ impl TreeNodeDriver {
     }
 
     /// **Source:** `XmlMDataStd_TreeNodeDriver.hxx`:50 - `XmlMDataStd_TreeNodeDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_TreeNodeDriver_get_type_name())
                 .to_string_lossy()
@@ -5420,7 +5420,7 @@ impl UAttributeDriver {
     }
 
     /// **Source:** `XmlMDataStd_UAttributeDriver.hxx`:50 - `XmlMDataStd_UAttributeDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_UAttributeDriver_get_type_name())
                 .to_string_lossy()
@@ -5686,7 +5686,7 @@ impl VariableDriver {
     }
 
     /// **Source:** `XmlMDataStd_VariableDriver.hxx`:50 - `XmlMDataStd_VariableDriver::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XmlMDataStd_VariableDriver_get_type_name())
                 .to_string_lossy()

@@ -430,7 +430,7 @@ impl Position {
     }
 
     /// **Source:** `BinObjMgt_Position.hxx`:38 - `BinObjMgt_Position::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::BinObjMgt_Position_get_type_name())
                 .to_string_lossy()

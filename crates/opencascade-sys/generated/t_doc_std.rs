@@ -221,7 +221,7 @@ impl Application {
     /// inherited from the superclass CDM_Application.
     ///
     /// Default implementation returns empty string.
-    pub fn resources_name(&mut self) -> String {
+    pub fn resources_name(&mut self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDocStd_Application_resources_name(
                 self as *mut Self,
@@ -593,7 +593,7 @@ impl Application {
     }
 
     /// **Source:** `TDocStd_Application.hxx`:332 - `TDocStd_Application::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDocStd_Application_get_type_name())
                 .to_string_lossy()
@@ -1050,7 +1050,7 @@ impl ApplicationDelta {
     }
 
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:43 - `TDocStd_ApplicationDelta::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDocStd_ApplicationDelta_get_type_name())
                 .to_string_lossy()
@@ -1205,7 +1205,7 @@ impl CompoundDelta {
     }
 
     /// **Source:** `TDocStd_CompoundDelta.hxx`:40 - `TDocStd_CompoundDelta::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDocStd_CompoundDelta_get_type_name())
                 .to_string_lossy()
@@ -1835,7 +1835,7 @@ impl Document {
     }
 
     /// **Source:** `TDocStd_Document.hxx`:259 - `TDocStd_Document::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDocStd_Document_get_type_name())
                 .to_string_lossy()
@@ -2549,7 +2549,7 @@ impl Modified {
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:85 - `TDocStd_Modified::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDocStd_Modified_get_type_name())
                 .to_string_lossy()
@@ -3137,7 +3137,7 @@ impl MultiTransactionManager {
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:140 - `TDocStd_MultiTransactionManager::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDocStd_MultiTransactionManager_get_type_name())
                 .to_string_lossy()
@@ -3400,7 +3400,7 @@ impl Owner {
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:77 - `TDocStd_Owner::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDocStd_Owner_get_type_name())
                 .to_string_lossy()
@@ -3973,7 +3973,7 @@ impl XLink {
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:115 - `TDocStd_XLink::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDocStd_XLink_get_type_name())
                 .to_string_lossy()
@@ -4434,7 +4434,7 @@ impl XLinkRoot {
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:76 - `TDocStd_XLinkRoot::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::TDocStd_XLinkRoot_get_type_name())
                 .to_string_lossy()

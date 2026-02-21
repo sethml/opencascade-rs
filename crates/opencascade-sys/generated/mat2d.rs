@@ -165,7 +165,7 @@ impl Circuit {
     }
 
     /// **Source:** `MAT2d_Circuit.hxx`:77 - `MAT2d_Circuit::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT2d_Circuit_get_type_name())
                 .to_string_lossy()
@@ -460,7 +460,7 @@ impl Connexion {
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:112 - `MAT2d_Connexion::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::MAT2d_Connexion_get_type_name())
                 .to_string_lossy()

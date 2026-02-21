@@ -159,7 +159,7 @@ impl ConfigurationNode {
     }
 
     /// **Source:** `DEIGES_ConfigurationNode.hxx`:33 - `DEIGES_ConfigurationNode::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DEIGES_ConfigurationNode_get_type_name())
                 .to_string_lossy()
@@ -660,7 +660,7 @@ impl Provider {
     }
 
     /// **Source:** `DEIGES_Provider.hxx`:32 - `DEIGES_Provider::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::DEIGES_Provider_get_type_name())
                 .to_string_lossy()

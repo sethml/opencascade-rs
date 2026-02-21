@@ -247,7 +247,7 @@ impl BasicMsgRegistrator {
     }
 
     /// **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:60 - `ShapeExtend_BasicMsgRegistrator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeExtend_BasicMsgRegistrator_get_type_name())
                 .to_string_lossy()
@@ -567,7 +567,7 @@ impl ComplexCurve {
     }
 
     /// **Source:** `ShapeExtend_ComplexCurve.hxx`:108 - `ShapeExtend_ComplexCurve::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeExtend_ComplexCurve_get_type_name())
                 .to_string_lossy()
@@ -1490,7 +1490,7 @@ impl CompositeSurface {
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:346 - `ShapeExtend_CompositeSurface::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeExtend_CompositeSurface_get_type_name())
                 .to_string_lossy()
@@ -2086,7 +2086,7 @@ impl MsgRegistrator {
     }
 
     /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:68 - `ShapeExtend_MsgRegistrator::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeExtend_MsgRegistrator_get_type_name())
                 .to_string_lossy()
@@ -2606,7 +2606,7 @@ impl WireData {
     }
 
     /// **Source:** `ShapeExtend_WireData.hxx`:221 - `ShapeExtend_WireData::get_type_name()`
-    pub fn get_type_name() -> String {
+    pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::ShapeExtend_WireData_get_type_name())
                 .to_string_lossy()
