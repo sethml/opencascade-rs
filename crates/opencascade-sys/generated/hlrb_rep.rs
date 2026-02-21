@@ -1480,6 +1480,238 @@ impl CInter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CInter_ctor()) }
     }
 
+    /// **Source:** `HLRBRep_CInter.hxx`:52 - `HLRBRep_CInter::HLRBRep_CInter()`
+    /// Self Intersection of a curve
+    pub unsafe fn new_address_real2(
+        C: &*mut std::ffi::c_void,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CInter_ctor_address_real2(
+                C, TolConf, Tol,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRBRep_CInter.hxx`:55 - `HLRBRep_CInter::HLRBRep_CInter()`
+    /// Self Intersection of a curve with a domain.
+    pub unsafe fn new_address_domain_real2(
+        C: &*mut std::ffi::c_void,
+        D: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CInter_ctor_address_domain_real2(
+                C, D, TolConf, Tol,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRBRep_CInter.hxx`:61 - `HLRBRep_CInter::HLRBRep_CInter()`
+    /// Intersection between 2 curves.
+    pub unsafe fn new_address2_real2(
+        C1: &*mut std::ffi::c_void,
+        C2: &*mut std::ffi::c_void,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CInter_ctor_address2_real2(
+                C1, C2, TolConf, Tol,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRBRep_CInter.hxx`:67 - `HLRBRep_CInter::HLRBRep_CInter()`
+    /// Intersection between 2 curves.
+    pub unsafe fn new_address_domain_address_real2(
+        C1: &*mut std::ffi::c_void,
+        D1: &crate::int_res2d::Domain,
+        C2: &*mut std::ffi::c_void,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CInter_ctor_address_domain_address_real2(
+                C1, D1, C2, TolConf, Tol,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRBRep_CInter.hxx`:74 - `HLRBRep_CInter::HLRBRep_CInter()`
+    /// Intersection between 2 curves.
+    pub unsafe fn new_address2_domain_real2(
+        C1: &*mut std::ffi::c_void,
+        C2: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CInter_ctor_address2_domain_real2(
+                C1, C2, D2, TolConf, Tol,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRBRep_CInter.hxx`:81 - `HLRBRep_CInter::HLRBRep_CInter()`
+    /// Intersection between 2 curves.
+    pub unsafe fn new_address_domain_address_domain_real2(
+        C1: &*mut std::ffi::c_void,
+        D1: &crate::int_res2d::Domain,
+        C2: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_CInter_ctor_address_domain_address_domain_real2(
+                    C1, D1, C2, D2, TolConf, Tol,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_CInter.hxx`:89 - `HLRBRep_CInter::Perform()`
+    /// Intersection between 2 curves.
+    pub unsafe fn perform_address_domain_address_domain_real2(
+        &mut self,
+        C1: &*mut std::ffi::c_void,
+        D1: &crate::int_res2d::Domain,
+        C2: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_CInter_perform_address_domain_address_domain_real2(
+                self as *mut Self,
+                C1,
+                D1,
+                C2,
+                D2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_CInter.hxx`:97 - `HLRBRep_CInter::Perform()`
+    /// Intersection between 2 curves.
+    pub unsafe fn perform_address2_real2(
+        &mut self,
+        C1: &*mut std::ffi::c_void,
+        C2: &*mut std::ffi::c_void,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_CInter_perform_address2_real2(
+                self as *mut Self,
+                C1,
+                C2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_CInter.hxx`:103 - `HLRBRep_CInter::Perform()`
+    /// Intersection between 2 curves.
+    pub unsafe fn perform_address_domain_real2(
+        &mut self,
+        C1: &*mut std::ffi::c_void,
+        D1: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_CInter_perform_address_domain_real2(
+                self as *mut Self,
+                C1,
+                D1,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_CInter.hxx`:109 - `HLRBRep_CInter::Perform()`
+    /// Intersection between 2 curves.
+    pub unsafe fn perform_address_real2(
+        &mut self,
+        C1: &*mut std::ffi::c_void,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_CInter_perform_address_real2(self as *mut Self, C1, TolConf, Tol)
+        }
+    }
+
+    /// **Source:** `HLRBRep_CInter.hxx`:114 - `HLRBRep_CInter::Perform()`
+    /// Intersection between 2 curves.
+    pub unsafe fn perform_address_domain_address_real2(
+        &mut self,
+        C1: &*mut std::ffi::c_void,
+        D1: &crate::int_res2d::Domain,
+        C2: &*mut std::ffi::c_void,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_CInter_perform_address_domain_address_real2(
+                self as *mut Self,
+                C1,
+                D1,
+                C2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_CInter.hxx`:121 - `HLRBRep_CInter::Perform()`
+    /// Intersection between 2 curves.
+    pub unsafe fn perform_address2_domain_real2(
+        &mut self,
+        C1: &*mut std::ffi::c_void,
+        C2: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_CInter_perform_address2_domain_real2(
+                self as *mut Self,
+                C1,
+                C2,
+                D2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_CInter.hxx`:128 - `HLRBRep_CInter::ComputeDomain()`
+    /// Create a domain from a curve
+    pub unsafe fn compute_domain(
+        &self,
+        C1: &*mut std::ffi::c_void,
+        TolDomain: f64,
+    ) -> crate::OwnedPtr<crate::int_res2d::Domain> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CInter_compute_domain(
+                self as *const Self,
+                C1,
+                TolDomain,
+            ))
+        }
+    }
+
     /// **Source:** `HLRBRep_CInter.hxx`:132 - `HLRBRep_CInter::SetMinNbSamples()`
     /// Set / get minimum number of points in polygon intersection.
     pub fn set_min_nb_samples(&mut self, theMinNbSamples: i32) {
@@ -1543,73 +1775,6 @@ impl CInter {
         }
     }
 }
-
-// ── Skipped symbols for CInter (13 total) ──
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:52 - `HLRBRep_CInter::HLRBRep_CInter`
-//   constructor: Self Intersection of a curve
-//   Reason: param 'C' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address_real2(C: &Address, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:55 - `HLRBRep_CInter::HLRBRep_CInter`
-//   constructor: Self Intersection of a curve with a domain.
-//   Reason: param 'C' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address_domain_real2(C: &Address, D: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:61 - `HLRBRep_CInter::HLRBRep_CInter`
-//   constructor: Intersection between 2 curves.
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address2_real2(C1: &Address, C2: &Address, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:67 - `HLRBRep_CInter::HLRBRep_CInter`
-//   constructor: Intersection between 2 curves.
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address_domain_address_real2(C1: &Address, D1: &Domain, C2: &Address, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:74 - `HLRBRep_CInter::HLRBRep_CInter`
-//   constructor: Intersection between 2 curves.
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address2_domain_real2(C1: &Address, C2: &Address, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:81 - `HLRBRep_CInter::HLRBRep_CInter`
-//   constructor: Intersection between 2 curves.
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address_domain_address_domain_real2(C1: &Address, D1: &Domain, C2: &Address, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:89 - `HLRBRep_CInter::Perform`
-//   method: Intersection between 2 curves.
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, C1: &Address, D1: &Domain, C2: &Address, D2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:97 - `HLRBRep_CInter::Perform`
-//   method: Intersection between 2 curves.
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, C1: &Address, C2: &Address, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:103 - `HLRBRep_CInter::Perform`
-//   method: Intersection between 2 curves.
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, C1: &Address, D1: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:109 - `HLRBRep_CInter::Perform`
-//   method: Intersection between 2 curves.
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, C1: &Address, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:114 - `HLRBRep_CInter::Perform`
-//   method: Intersection between 2 curves.
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, C1: &Address, D1: &Domain, C2: &Address, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:121 - `HLRBRep_CInter::Perform`
-//   method: Intersection between 2 curves.
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, C1: &Address, C2: &Address, D2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_CInter.hxx`:128 - `HLRBRep_CInter::ComputeDomain`
-//   method: Create a domain from a curve
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn compute_domain(&self, C1: &Address, TolDomain: f64) -> OwnedPtr<IntRes2d_Domain>;
-//
 
 // ========================
 // From HLRBRep_CLProps.hxx
@@ -2212,153 +2377,226 @@ impl CurveTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CurveTool_ctor()) }
     }
-}
 
-// ── Skipped symbols for CurveTool (29 total) ──
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:45 - `HLRBRep_CurveTool::FirstParameter`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn first_parameter(C: Address) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:47 - `HLRBRep_CurveTool::LastParameter`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn last_parameter(C: Address) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:49 - `HLRBRep_CurveTool::Continuity`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn continuity(C: Address) -> OwnedPtr<GeomAbs_Shape>;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:53 - `HLRBRep_CurveTool::NbIntervals`
-//   static_method: Returns  the number  of  intervals for  continuity
-//   static_method: <S>. May be one if Continuity(myclass) >= <S>
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn nb_intervals(C: Address) -> i32;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:60 - `HLRBRep_CurveTool::Intervals`
-//   static_method: Stores in <T> the  parameters bounding the intervals
-//   static_method: of continuity <S>.
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn intervals(C: Address, T: &mut Array1OfReal);
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:64 - `HLRBRep_CurveTool::GetInterval`
-//   static_method: output the bounds of interval of index <Index>
-//   static_method: used if Type == Composite.
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn get_interval(C: Address, Index: i32, Tab: &Array1OfReal, U1: &mut f64, U2: &mut f64);
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:70 - `HLRBRep_CurveTool::IsClosed`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn is_closed(C: Address) -> bool;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:72 - `HLRBRep_CurveTool::IsPeriodic`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn is_periodic(C: Address) -> bool;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:74 - `HLRBRep_CurveTool::Period`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn period(C: Address) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:77 - `HLRBRep_CurveTool::Value`
-//   static_method: Computes the point of parameter U on the curve.
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn value(C: Address, U: f64) -> OwnedPtr<gp_Pnt2d>;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:80 - `HLRBRep_CurveTool::D0`
-//   static_method: Computes the point of parameter U on the curve.
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn d0(C: Address, U: f64, P: &mut Pnt2d);
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:86 - `HLRBRep_CurveTool::D1`
-//   static_method: Computes the point  of parameter U on the curve
-//   static_method: with its first derivative.
-//   static_method: Raised if the continuity of the current interval
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn d1(C: Address, U: f64, P: &mut Pnt2d, V: &mut Vec2d);
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:92 - `HLRBRep_CurveTool::D2`
-//   static_method: Returns the point P of parameter U, the first and second
-//   static_method: derivatives V1 and V2.
-//   static_method: Raised if the continuity of the current interval
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn d2(C: Address, U: f64, P: &mut Pnt2d, V1: &mut Vec2d, V2: &mut Vec2d);
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:102 - `HLRBRep_CurveTool::D3`
-//   static_method: Returns the point P of parameter U, the first, the second
-//   static_method: and the third derivative.
-//   static_method: Raised if the continuity of the current interval
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn d3(C: Address, U: f64, P: &mut Pnt2d, V1: &mut Vec2d, V2: &mut Vec2d, V3: &mut Vec2d);
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:114 - `HLRBRep_CurveTool::DN`
-//   static_method: The returned vector gives the value of the derivative for the
-//   static_method: order of derivation N.
-//   static_method: Raised if the continuity of the current interval
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn dn(C: Address, U: f64, N: i32) -> OwnedPtr<gp_Vec2d>;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:118 - `HLRBRep_CurveTool::Resolution`
-//   static_method: Returns the parametric  resolution corresponding
-//   static_method: to the real space resolution <R3d>.
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn resolution(C: Address, R3d: f64) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:123 - `HLRBRep_CurveTool::GetType`
-//   static_method: Returns  the  type of the   curve  in the  current
-//   static_method: interval :   Line,   Circle,   Ellipse, Hyperbola,
-//   static_method: Parabola, BezierCurve, BSplineCurve, OtherCurve.
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn get_type(C: Address) -> OwnedPtr<GeomAbs_CurveType>;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:128 - `HLRBRep_CurveTool::TheType`
-//   static_method: Returns  the  type of the   curve  in the  current
-//   static_method: interval :   Line,   Circle,   Ellipse, Hyperbola,
-//   static_method: Parabola, BezierCurve, BSplineCurve, OtherCurve.
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn the_type(C: Address) -> OwnedPtr<GeomAbs_CurveType>;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:130 - `HLRBRep_CurveTool::Line`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn line(C: Address) -> OwnedPtr<gp_Lin2d>;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:132 - `HLRBRep_CurveTool::Circle`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn circle(C: Address) -> OwnedPtr<gp_Circ2d>;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:134 - `HLRBRep_CurveTool::Ellipse`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn ellipse(C: Address) -> OwnedPtr<gp_Elips2d>;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:136 - `HLRBRep_CurveTool::Hyperbola`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn hyperbola(C: Address) -> OwnedPtr<gp_Hypr2d>;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:138 - `HLRBRep_CurveTool::Parabola`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn parabola(C: Address) -> OwnedPtr<gp_Parab2d>;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:140 - `HLRBRep_CurveTool::Bezier`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn bezier(C: Address) -> OwnedPtr<Handle<Geom2d_BezierCurve>>;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:142 - `HLRBRep_CurveTool::BSpline`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn b_spline(C: Address) -> OwnedPtr<Handle<Geom2d_BSplineCurve>>;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:144 - `HLRBRep_CurveTool::EpsX`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn eps_x(C: Address) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:146 - `HLRBRep_CurveTool::NbSamples`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn nb_samples(C: Address, U0: f64, U1: f64) -> i32;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:150 - `HLRBRep_CurveTool::NbSamples`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn nb_samples(C: Address) -> i32;
-//
-// SKIPPED: **Source:** `HLRBRep_CurveTool.hxx`:152 - `HLRBRep_CurveTool::Degree`
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn degree(C: Address) -> i32;
-//
+    /// **Source:** `HLRBRep_CurveTool.hxx`:45 - `HLRBRep_CurveTool::FirstParameter()`
+    pub unsafe fn first_parameter(C: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::HLRBRep_CurveTool_first_parameter(C) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:47 - `HLRBRep_CurveTool::LastParameter()`
+    pub unsafe fn last_parameter(C: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::HLRBRep_CurveTool_last_parameter(C) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:49 - `HLRBRep_CurveTool::Continuity()`
+    pub unsafe fn continuity(C: *mut std::ffi::c_void) -> crate::geom_abs::Shape {
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::HLRBRep_CurveTool_continuity(C)).unwrap()
+        }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:53 - `HLRBRep_CurveTool::NbIntervals()`
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(myclass) >= <S>
+    pub unsafe fn nb_intervals(C: *mut std::ffi::c_void) -> i32 {
+        unsafe { crate::ffi::HLRBRep_CurveTool_nb_intervals(C) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:60 - `HLRBRep_CurveTool::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub unsafe fn intervals(C: *mut std::ffi::c_void, T: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::HLRBRep_CurveTool_intervals(C, T) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:64 - `HLRBRep_CurveTool::GetInterval()`
+    /// output the bounds of interval of index <Index>
+    /// used if Type == Composite.
+    pub unsafe fn get_interval(
+        C: *mut std::ffi::c_void,
+        Index: i32,
+        Tab: &crate::ffi::TColStd_Array1OfReal,
+        U1: &mut f64,
+        U2: &mut f64,
+    ) {
+        unsafe { crate::ffi::HLRBRep_CurveTool_get_interval(C, Index, Tab, U1, U2) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:70 - `HLRBRep_CurveTool::IsClosed()`
+    pub unsafe fn is_closed(C: *mut std::ffi::c_void) -> bool {
+        unsafe { crate::ffi::HLRBRep_CurveTool_is_closed(C) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:72 - `HLRBRep_CurveTool::IsPeriodic()`
+    pub unsafe fn is_periodic(C: *mut std::ffi::c_void) -> bool {
+        unsafe { crate::ffi::HLRBRep_CurveTool_is_periodic(C) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:74 - `HLRBRep_CurveTool::Period()`
+    pub unsafe fn period(C: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::HLRBRep_CurveTool_period(C) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:77 - `HLRBRep_CurveTool::Value()`
+    /// Computes the point of parameter U on the curve.
+    pub unsafe fn value(C: *mut std::ffi::c_void, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CurveTool_value(C, U)) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:80 - `HLRBRep_CurveTool::D0()`
+    /// Computes the point of parameter U on the curve.
+    pub unsafe fn d0(C: *mut std::ffi::c_void, U: f64, P: &mut crate::gp::Pnt2d) {
+        unsafe { crate::ffi::HLRBRep_CurveTool_d0(C, U, P) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:86 - `HLRBRep_CurveTool::D1()`
+    /// Computes the point  of parameter U on the curve
+    /// with its first derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C1.
+    pub unsafe fn d1(
+        C: *mut std::ffi::c_void,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V: &mut crate::gp::Vec2d,
+    ) {
+        unsafe { crate::ffi::HLRBRep_CurveTool_d1(C, U, P, V) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:92 - `HLRBRep_CurveTool::D2()`
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the current interval
+    /// is not C2.
+    pub unsafe fn d2(
+        C: *mut std::ffi::c_void,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+    ) {
+        unsafe { crate::ffi::HLRBRep_CurveTool_d2(C, U, P, V1, V2) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:102 - `HLRBRep_CurveTool::D3()`
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C3.
+    pub unsafe fn d3(
+        C: *mut std::ffi::c_void,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+        V3: &mut crate::gp::Vec2d,
+    ) {
+        unsafe { crate::ffi::HLRBRep_CurveTool_d3(C, U, P, V1, V2, V3) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:114 - `HLRBRep_CurveTool::DN()`
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
+    pub unsafe fn dn(
+        C: *mut std::ffi::c_void,
+        U: f64,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CurveTool_dn(C, U, N)) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:118 - `HLRBRep_CurveTool::Resolution()`
+    /// Returns the parametric  resolution corresponding
+    /// to the real space resolution <R3d>.
+    pub unsafe fn resolution(C: *mut std::ffi::c_void, R3d: f64) -> f64 {
+        unsafe { crate::ffi::HLRBRep_CurveTool_resolution(C, R3d) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:123 - `HLRBRep_CurveTool::GetType()`
+    /// Returns  the  type of the   curve  in the  current
+    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+    pub unsafe fn get_type(C: *mut std::ffi::c_void) -> crate::geom_abs::CurveType {
+        unsafe {
+            crate::geom_abs::CurveType::try_from(crate::ffi::HLRBRep_CurveTool_get_type(C)).unwrap()
+        }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:128 - `HLRBRep_CurveTool::TheType()`
+    /// Returns  the  type of the   curve  in the  current
+    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+    pub unsafe fn the_type(C: *mut std::ffi::c_void) -> crate::geom_abs::CurveType {
+        unsafe {
+            crate::geom_abs::CurveType::try_from(crate::ffi::HLRBRep_CurveTool_the_type(C)).unwrap()
+        }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:130 - `HLRBRep_CurveTool::Line()`
+    pub unsafe fn line(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Lin2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CurveTool_line(C)) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:132 - `HLRBRep_CurveTool::Circle()`
+    pub unsafe fn circle(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Circ2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CurveTool_circle(C)) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:134 - `HLRBRep_CurveTool::Ellipse()`
+    pub unsafe fn ellipse(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Elips2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CurveTool_ellipse(C)) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:136 - `HLRBRep_CurveTool::Hyperbola()`
+    pub unsafe fn hyperbola(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Hypr2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CurveTool_hyperbola(C)) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:138 - `HLRBRep_CurveTool::Parabola()`
+    pub unsafe fn parabola(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Parab2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CurveTool_parabola(C)) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:140 - `HLRBRep_CurveTool::Bezier()`
+    pub unsafe fn bezier(
+        C: *mut std::ffi::c_void,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CurveTool_bezier(C)) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:142 - `HLRBRep_CurveTool::BSpline()`
+    pub unsafe fn b_spline(
+        C: *mut std::ffi::c_void,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_CurveTool_b_spline(C)) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:144 - `HLRBRep_CurveTool::EpsX()`
+    pub unsafe fn eps_x(C: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::HLRBRep_CurveTool_eps_x(C) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:146 - `HLRBRep_CurveTool::NbSamples()`
+    pub unsafe fn nb_samples_address_real2(C: *mut std::ffi::c_void, U0: f64, U1: f64) -> i32 {
+        unsafe { crate::ffi::HLRBRep_CurveTool_nb_samples_address_real2(C, U0, U1) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:150 - `HLRBRep_CurveTool::NbSamples()`
+    pub unsafe fn nb_samples_address(C: *mut std::ffi::c_void) -> i32 {
+        unsafe { crate::ffi::HLRBRep_CurveTool_nb_samples_address(C) }
+    }
+
+    /// **Source:** `HLRBRep_CurveTool.hxx`:152 - `HLRBRep_CurveTool::Degree()`
+    pub unsafe fn degree(C: *mut std::ffi::c_void) -> i32 {
+        unsafe { crate::ffi::HLRBRep_CurveTool_degree(C) }
+    }
+}
 
 // ========================
 // From HLRBRep_Data.hxx
@@ -3236,18 +3474,29 @@ impl EdgeFaceTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_EdgeFaceTool_ctor()) }
     }
-}
 
-// ── Skipped symbols for EdgeFaceTool (2 total) ──
-// SKIPPED: **Source:** `HLRBRep_EdgeFaceTool.hxx`:34 - `HLRBRep_EdgeFaceTool::CurvatureValue`
-//   Reason: param 'F' uses unknown type 'Standard_Address'
-//   // pub fn curvature_value(F: Address, U: f64, V: f64, Tg: &Dir) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_EdgeFaceTool.hxx`:40 - `HLRBRep_EdgeFaceTool::UVPoint`
-//   static_method: return True if U and V are found.
-//   Reason: param 'E' uses unknown type 'Standard_Address'
-//   // pub fn uv_point(Par: f64, E: Address, F: Address, U: &mut f64, V: &mut f64) -> bool;
-//
+    /// **Source:** `HLRBRep_EdgeFaceTool.hxx`:34 - `HLRBRep_EdgeFaceTool::CurvatureValue()`
+    pub unsafe fn curvature_value(
+        F: *mut std::ffi::c_void,
+        U: f64,
+        V: f64,
+        Tg: &crate::gp::Dir,
+    ) -> f64 {
+        unsafe { crate::ffi::HLRBRep_EdgeFaceTool_curvature_value(F, U, V, Tg) }
+    }
+
+    /// **Source:** `HLRBRep_EdgeFaceTool.hxx`:40 - `HLRBRep_EdgeFaceTool::UVPoint()`
+    /// return True if U and V are found.
+    pub unsafe fn uv_point(
+        Par: f64,
+        E: *mut std::ffi::c_void,
+        F: *mut std::ffi::c_void,
+        U: &mut f64,
+        V: &mut f64,
+    ) -> bool {
+        unsafe { crate::ffi::HLRBRep_EdgeFaceTool_uv_point(Par, E, F, U, V) }
+    }
+}
 
 // ========================
 // From HLRBRep_EdgeIList.hxx
@@ -3454,6 +3703,17 @@ unsafe impl crate::CppDeletable for ExactIntersectionPointOfTheIntPCurvePCurveOf
 }
 
 impl ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
+    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:38 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter()`
+    pub unsafe fn new_address2_real(
+        C1: &*mut std::ffi::c_void,
+        C2: &*mut std::ffi::c_void,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_ctor_address2_real(C1, C2, Tol))
+        }
+    }
+
     /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:43 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform()`
     pub fn perform_thepolygon2doftheintpcurvepcurveofcinter2_int2_real2(
         &mut self,
@@ -3513,12 +3773,6 @@ impl ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
         }
     }
 }
-
-// ── Skipped symbols for ExactIntersectionPointOfTheIntPCurvePCurveOfCInter (1 total) ──
-// SKIPPED: **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:38 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter`
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address2_real(C1: &Address, C2: &Address, Tol: f64) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From HLRBRep_FaceData.hxx
@@ -4242,6 +4496,223 @@ impl IntConicCurveOfCInter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor()) }
     }
 
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:48 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
+    /// Intersection between a line and a parametric curve.
+    pub unsafe fn new_lin2d_domain_address_domain_real2(
+        L: &crate::gp::Lin2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_lin2d_domain_address_domain_real2(
+                    L, D1, PCurve, D2, TolConf, Tol,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:56 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
+    /// Intersection between a line and a parametric curve.
+    pub unsafe fn new_circ2d_domain_address_domain_real2(
+        C: &crate::gp::Circ2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(
+                    C, D1, PCurve, D2, TolConf, Tol,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:64 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
+    /// Intersection between an ellipse and a parametric curve.
+    pub unsafe fn new_elips2d_domain_address_domain_real2(
+        E: &crate::gp::Elips2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(
+                    E, D1, PCurve, D2, TolConf, Tol,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:72 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
+    /// Intersection between a parabola and a parametric curve.
+    pub unsafe fn new_parab2d_domain_address_domain_real2(
+        Prb: &crate::gp::Parab2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(
+                    Prb, D1, PCurve, D2, TolConf, Tol,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:81 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
+    /// Intersection between the main branch of an hyperbola
+    /// and a parametric curve.
+    pub unsafe fn new_hypr2d_domain_address_domain_real2(
+        H: &crate::gp::Hypr2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(
+                    H, D1, PCurve, D2, TolConf, Tol,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:89 - `HLRBRep_IntConicCurveOfCInter::Perform()`
+    /// Intersection between a line and a parametric curve.
+    pub unsafe fn perform_lin2d_domain_address_domain_real2(
+        &mut self,
+        L: &crate::gp::Lin2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(
+                self as *mut Self,
+                L,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:97 - `HLRBRep_IntConicCurveOfCInter::Perform()`
+    /// Intersection between a line and a parametric curve.
+    pub unsafe fn perform_circ2d_domain_address_domain_real2(
+        &mut self,
+        C: &crate::gp::Circ2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(
+                self as *mut Self,
+                C,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:105 - `HLRBRep_IntConicCurveOfCInter::Perform()`
+    /// Intersection between an ellipse and a parametric curve.
+    pub unsafe fn perform_elips2d_domain_address_domain_real2(
+        &mut self,
+        E: &crate::gp::Elips2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(
+                self as *mut Self,
+                E,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:113 - `HLRBRep_IntConicCurveOfCInter::Perform()`
+    /// Intersection between a parabola and a parametric curve.
+    pub unsafe fn perform_parab2d_domain_address_domain_real2(
+        &mut self,
+        Prb: &crate::gp::Parab2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(
+                self as *mut Self,
+                Prb,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:122 - `HLRBRep_IntConicCurveOfCInter::Perform()`
+    /// Intersection between the main branch of an hyperbola
+    /// and a parametric curve.
+    pub unsafe fn perform_hypr2d_domain_address_domain_real2(
+        &mut self,
+        H: &crate::gp::Hypr2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(
+                self as *mut Self,
+                H,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
         unsafe {
@@ -4307,60 +4778,6 @@ impl IntConicCurveOfCInter {
     }
 }
 
-// ── Skipped symbols for IntConicCurveOfCInter (10 total) ──
-// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:48 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter`
-//   constructor: Intersection between a line and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn new_lin2d_domain_address_domain_real2(L: &Lin2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:56 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter`
-//   constructor: Intersection between a line and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn new_circ2d_domain_address_domain_real2(C: &Circ2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:64 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter`
-//   constructor: Intersection between an ellipse and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn new_elips2d_domain_address_domain_real2(E: &Elips2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:72 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter`
-//   constructor: Intersection between a parabola and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn new_parab2d_domain_address_domain_real2(Prb: &Parab2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:81 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter`
-//   constructor: Intersection between the main branch of an hyperbola
-//   constructor: and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn new_hypr2d_domain_address_domain_real2(H: &Hypr2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:89 - `HLRBRep_IntConicCurveOfCInter::Perform`
-//   method: Intersection between a line and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, L: &Lin2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:97 - `HLRBRep_IntConicCurveOfCInter::Perform`
-//   method: Intersection between a line and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, C: &Circ2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:105 - `HLRBRep_IntConicCurveOfCInter::Perform`
-//   method: Intersection between an ellipse and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, E: &Elips2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:113 - `HLRBRep_IntConicCurveOfCInter::Perform`
-//   method: Intersection between a parabola and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, Prb: &Parab2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:122 - `HLRBRep_IntConicCurveOfCInter::Perform`
-//   method: Intersection between the main branch of an hyperbola
-//   method: and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, H: &Hypr2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64);
-//
-
 // ========================
 // From HLRBRep_InterCSurf.hxx
 // ========================
@@ -4379,6 +4796,94 @@ impl InterCSurf {
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_InterCSurf_ctor()) }
+    }
+
+    /// **Source:** `HLRBRep_InterCSurf.hxx`:56 - `HLRBRep_InterCSurf::Perform()`
+    /// Compute the Intersection between the curve and the
+    /// surface
+    pub unsafe fn perform_lin_address(
+        &mut self,
+        Curve: &crate::gp::Lin,
+        Surface: &*mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_InterCSurf_perform_lin_address(self as *mut Self, Curve, Surface)
+        }
+    }
+
+    /// **Source:** `HLRBRep_InterCSurf.hxx`:61 - `HLRBRep_InterCSurf::Perform()`
+    /// Compute the Intersection  between the curve  and
+    /// the surface. The   Curve is already  sampled and
+    /// its polygon : <Polygon> is given.
+    pub unsafe fn perform_lin_thepolygonofintercsurf_address(
+        &mut self,
+        Curve: &crate::gp::Lin,
+        Polygon: &ThePolygonOfInterCSurf,
+        Surface: &*mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address(
+                self as *mut Self,
+                Curve,
+                Polygon,
+                Surface,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_InterCSurf.hxx`:69 - `HLRBRep_InterCSurf::Perform()`
+    /// Compute the Intersection  between the curve  and
+    /// the surface. The   Curve is already  sampled and
+    /// its polygon : <Polygon> is given. The Surface is
+    /// also sampled and <Polyhedron> is given.
+    pub unsafe fn perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf(
+        &mut self,
+        Curve: &crate::gp::Lin,
+        ThePolygon: &ThePolygonOfInterCSurf,
+        Surface: &*mut std::ffi::c_void,
+        Polyhedron: &ThePolyhedronOfInterCSurf,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron)
+        }
+    }
+
+    /// **Source:** `HLRBRep_InterCSurf.hxx`:78 - `HLRBRep_InterCSurf::Perform()`
+    /// Compute the Intersection  between the curve  and
+    /// the surface. The   Curve is already  sampled and
+    /// its polygon : <Polygon> is given. The Surface is
+    /// also sampled and <Polyhedron> is given.
+    pub unsafe fn perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf_boundsortbox(
+        &mut self,
+        Curve: &crate::gp::Lin,
+        ThePolygon: &ThePolygonOfInterCSurf,
+        Surface: &*mut std::ffi::c_void,
+        Polyhedron: &ThePolyhedronOfInterCSurf,
+        BndBSB: &mut crate::bnd::BoundSortBox,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron, BndBSB)
+        }
+    }
+
+    /// **Source:** `HLRBRep_InterCSurf.hxx`:87 - `HLRBRep_InterCSurf::Perform()`
+    /// Compute the Intersection  between the curve  and
+    /// the surface. The Surface is already  sampled and
+    /// its polyhedron : <Polyhedron> is given.
+    pub unsafe fn perform_lin_address_thepolyhedronofintercsurf(
+        &mut self,
+        Curve: &crate::gp::Lin,
+        Surface: &*mut std::ffi::c_void,
+        Polyhedron: &ThePolyhedronOfInterCSurf,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_InterCSurf_perform_lin_address_thepolyhedronofintercsurf(
+                self as *mut Self,
+                Curve,
+                Surface,
+                Polyhedron,
+            )
+        }
     }
 
     /// Upcast to IntCurveSurface_Intersection
@@ -4434,42 +4939,6 @@ impl InterCSurf {
         unsafe { crate::ffi::HLRBRep_InterCSurf_inherited_Dump(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for InterCSurf (5 total) ──
-// SKIPPED: **Source:** `HLRBRep_InterCSurf.hxx`:56 - `HLRBRep_InterCSurf::Perform`
-//   method: Compute the Intersection between the curve and the
-//   method: surface
-//   Reason: param 'Surface' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, Curve: &Lin, Surface: &Address);
-//
-// SKIPPED: **Source:** `HLRBRep_InterCSurf.hxx`:61 - `HLRBRep_InterCSurf::Perform`
-//   method: Compute the Intersection  between the curve  and
-//   method: the surface. The   Curve is already  sampled and
-//   method: its polygon : <Polygon> is given.
-//   Reason: param 'Surface' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, Curve: &Lin, Polygon: &ThePolygonOfInterCSurf, Surface: &Address);
-//
-// SKIPPED: **Source:** `HLRBRep_InterCSurf.hxx`:69 - `HLRBRep_InterCSurf::Perform`
-//   method: Compute the Intersection  between the curve  and
-//   method: the surface. The   Curve is already  sampled and
-//   method: its polygon : <Polygon> is given. The Surface is
-//   Reason: param 'Surface' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, Curve: &Lin, ThePolygon: &ThePolygonOfInterCSurf, Surface: &Address, Polyhedron: &ThePolyhedronOfInterCSurf);
-//
-// SKIPPED: **Source:** `HLRBRep_InterCSurf.hxx`:78 - `HLRBRep_InterCSurf::Perform`
-//   method: Compute the Intersection  between the curve  and
-//   method: the surface. The   Curve is already  sampled and
-//   method: its polygon : <Polygon> is given. The Surface is
-//   Reason: param 'Surface' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, Curve: &Lin, ThePolygon: &ThePolygonOfInterCSurf, Surface: &Address, Polyhedron: &ThePolyhedronOfInterCSurf, BndBSB: &mut BoundSortBox);
-//
-// SKIPPED: **Source:** `HLRBRep_InterCSurf.hxx`:87 - `HLRBRep_InterCSurf::Perform`
-//   method: Compute the Intersection  between the curve  and
-//   method: the surface. The Surface is already  sampled and
-//   method: its polyhedron : <Polyhedron> is given.
-//   Reason: param 'Surface' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, Curve: &Lin, Surface: &Address, Polyhedron: &ThePolyhedronOfInterCSurf);
-//
 
 // ========================
 // From HLRBRep_InternalAlgo.hxx
@@ -4833,9 +5302,69 @@ impl Intersector {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_Intersector_ctor()) }
     }
 
+    /// **Source:** `HLRBRep_Intersector.hxx`:42 - `HLRBRep_Intersector::Perform()`
+    /// Performs the auto intersection of an edge.
+    /// The edge domain is cut at start with da1*(b-a) and at end with db1*(b-a).
+    pub unsafe fn perform_address_real2(&mut self, A1: *mut std::ffi::c_void, da1: f64, db1: f64) {
+        unsafe {
+            crate::ffi::HLRBRep_Intersector_perform_address_real2(self as *mut Self, A1, da1, db1)
+        }
+    }
+
+    /// **Source:** `HLRBRep_Intersector.hxx`:48 - `HLRBRep_Intersector::Perform()`
+    /// Performs the intersection between the two edges.
+    /// The edges domains are cut at start with da*(b-a) and at end with db*(b-a).
+    pub unsafe fn perform_int_address_real2_int_address_real2_bool(
+        &mut self,
+        nA: i32,
+        A1: *mut std::ffi::c_void,
+        da1: f64,
+        db1: f64,
+        nB: i32,
+        A2: *mut std::ffi::c_void,
+        da2: f64,
+        db2: f64,
+        NoBound: bool,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_Intersector_perform_int_address_real2_int_address_real2_bool(
+                self as *mut Self,
+                nA,
+                A1,
+                da1,
+                db1,
+                nB,
+                A2,
+                da2,
+                db2,
+                NoBound,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_Intersector.hxx`:60 - `HLRBRep_Intersector::SimulateOnePoint()`
+    /// Create a single IntersectionPoint (U on A1) (V on A2)
+    /// The point is middle on both curves.
+    pub unsafe fn simulate_one_point(
+        &mut self,
+        A1: *mut std::ffi::c_void,
+        U: f64,
+        A2: *mut std::ffi::c_void,
+        V: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_Intersector_simulate_one_point(self as *mut Self, A1, U, A2, V)
+        }
+    }
+
+    /// **Source:** `HLRBRep_Intersector.hxx`:65 - `HLRBRep_Intersector::Load()`
+    pub unsafe fn load(&mut self, A: &mut *mut std::ffi::c_void) {
+        unsafe { crate::ffi::HLRBRep_Intersector_load(self as *mut Self, A) }
+    }
+
     /// **Source:** `HLRBRep_Intersector.hxx`:67 - `HLRBRep_Intersector::Perform()`
-    pub fn perform(&mut self, L: &crate::gp::Lin, P: f64) {
-        unsafe { crate::ffi::HLRBRep_Intersector_perform(self as *mut Self, L, P) }
+    pub fn perform_lin_real(&mut self, L: &crate::gp::Lin, P: f64) {
+        unsafe { crate::ffi::HLRBRep_Intersector_perform_lin_real(self as *mut Self, L, P) }
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:69 - `HLRBRep_Intersector::IsDone()`
@@ -4878,30 +5407,6 @@ impl Intersector {
         unsafe { crate::ffi::HLRBRep_Intersector_destroy(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for Intersector (4 total) ──
-// SKIPPED: **Source:** `HLRBRep_Intersector.hxx`:42 - `HLRBRep_Intersector::Perform`
-//   method: Performs the auto intersection of an edge.
-//   method: The edge domain is cut at start with da1*(b-a) and at end with db1*(b-a).
-//   Reason: param 'A1' uses unknown type 'Standard_Address'
-//   // pub fn perform(&mut self, A1: Address, da1: f64, db1: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_Intersector.hxx`:48 - `HLRBRep_Intersector::Perform`
-//   method: Performs the intersection between the two edges.
-//   method: The edges domains are cut at start with da*(b-a) and at end with db*(b-a).
-//   Reason: param 'A1' uses unknown type 'Standard_Address'
-//   // pub fn perform(&mut self, nA: i32, A1: Address, da1: f64, db1: f64, nB: i32, A2: Address, da2: f64, db2: f64, NoBound: bool);
-//
-// SKIPPED: **Source:** `HLRBRep_Intersector.hxx`:60 - `HLRBRep_Intersector::SimulateOnePoint`
-//   method: Create a single IntersectionPoint (U on A1) (V on A2)
-//   method: The point is middle on both curves.
-//   Reason: param 'A1' uses unknown type 'Standard_Address'
-//   // pub fn simulate_one_point(&mut self, A1: Address, U: f64, A2: Address, V: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_Intersector.hxx`:65 - `HLRBRep_Intersector::Load`
-//   Reason: param 'A' uses unknown type 'Standard_Address&'
-//   // pub fn load(&mut self, A: &mut Address);
-//
 
 // ========================
 // From HLRBRep_LineTool.hxx
@@ -5186,6 +5691,17 @@ unsafe impl crate::CppDeletable for MyImpParToolOfTheIntersectorOfTheIntConicCur
 }
 
 impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
+    /// **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:37 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter()`
+    /// Constructor of the class.
+    pub unsafe fn new_iconictool_address(
+        IT: &crate::int_curve::IConicTool,
+        PC: &*mut std::ffi::c_void,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_address(IT, PC))
+        }
+    }
+
     /// **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:44 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::Value()`
     /// Computes the value of the signed distance between
     /// the implicit curve and the point at parameter Param
@@ -5264,13 +5780,6 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
     }
 }
 
-// ── Skipped symbols for MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter (1 total) ──
-// SKIPPED: **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:37 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter`
-//   constructor: Constructor of the class.
-//   Reason: param 'PC' uses unknown type 'const Standard_Address&'
-//   // pub fn new_iconictool_address(IT: &IConicTool, PC: &Address) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx
 // ========================
@@ -5290,6 +5799,31 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:44 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter()`
+    pub unsafe fn new_pnt2d_address(
+        P: &crate::gp::Pnt2d,
+        C: &*mut std::ffi::c_void,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address(
+                    P, C,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:48 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Initialize()`
+    /// sets the field mycurve of the function.
+    pub unsafe fn initialize(&mut self, C: &*mut std::ffi::c_void) {
+        unsafe {
+            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_initialize(
+                self as *mut Self,
+                C,
             )
         }
     }
@@ -5450,17 +5984,6 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
         }
     }
 }
-
-// ── Skipped symbols for PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter (2 total) ──
-// SKIPPED: **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:44 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter`
-//   Reason: param 'C' uses unknown type 'const Standard_Address&'
-//   // pub fn new_pnt2d_address(P: &Pnt2d, C: &Address) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:48 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Initialize`
-//   method: sets the field mycurve of the function.
-//   Reason: param 'C' uses unknown type 'const Standard_Address&'
-//   // pub fn initialize(&mut self, C: &Address);
-//
 
 // ========================
 // From HLRBRep_PolyAlgo.hxx
@@ -6059,6 +6582,46 @@ unsafe impl crate::CppDeletable for SLProps {
 }
 
 impl SLProps {
+    /// **Source:** `HLRBRep_SLProps.hxx`:52 - `HLRBRep_SLProps::HLRBRep_SLProps()`
+    /// Initializes the local properties of the surface <S>
+    /// for the parameter values (<U>, <V>).
+    /// The current point and the derivatives are
+    /// computed at the same time, which allows an
+    /// optimization of the computation time.
+    /// <N> indicates the maximum number of derivations to
+    /// be done (0, 1, or 2). For example, to compute
+    /// only the tangent, N should be equal to 1.
+    /// <Resolution> is the linear tolerance (it is used to test
+    /// if a vector is null).
+    pub unsafe fn new_address_real2_int_real(
+        S: &*mut std::ffi::c_void,
+        U: f64,
+        V: f64,
+        N: i32,
+        Resolution: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SLProps_ctor_address_real2_int_real(
+                S, U, V, N, Resolution,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRBRep_SLProps.hxx`:60 - `HLRBRep_SLProps::HLRBRep_SLProps()`
+    /// idem as previous constructor but without setting the value
+    /// of parameters <U> and <V>.
+    pub unsafe fn new_address_int_real(
+        S: &*mut std::ffi::c_void,
+        N: i32,
+        Resolution: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SLProps_ctor_address_int_real(
+                S, N, Resolution,
+            ))
+        }
+    }
+
     /// **Source:** `HLRBRep_SLProps.hxx`:67 - `HLRBRep_SLProps::HLRBRep_SLProps()`
     /// idem as previous constructor but without setting the value
     /// of parameters <U> and <V> and the surface.
@@ -6067,6 +6630,13 @@ impl SLProps {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SLProps_ctor_int_real(N, Resolution))
         }
+    }
+
+    /// **Source:** `HLRBRep_SLProps.hxx`:71 - `HLRBRep_SLProps::SetSurface()`
+    /// Initializes the local properties of the surface S
+    /// for the new surface.
+    pub unsafe fn set_surface(&mut self, S: &*mut std::ffi::c_void) {
+        unsafe { crate::ffi::HLRBRep_SLProps_set_surface(self as *mut Self, S) }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:75 - `HLRBRep_SLProps::SetParameters()`
@@ -6202,27 +6772,6 @@ impl SLProps {
     }
 }
 
-// ── Skipped symbols for SLProps (3 total) ──
-// SKIPPED: **Source:** `HLRBRep_SLProps.hxx`:52 - `HLRBRep_SLProps::HLRBRep_SLProps`
-//   constructor: Initializes the local properties of the surface <S>
-//   constructor: for the parameter values (<U>, <V>).
-//   constructor: The current point and the derivatives are
-//   Reason: param 'S' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address_real2_int_real(S: &Address, U: f64, V: f64, N: i32, Resolution: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_SLProps.hxx`:60 - `HLRBRep_SLProps::HLRBRep_SLProps`
-//   constructor: idem as previous constructor but without setting the value
-//   constructor: of parameters <U> and <V>.
-//   Reason: param 'S' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address_int_real(S: &Address, N: i32, Resolution: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_SLProps.hxx`:71 - `HLRBRep_SLProps::SetSurface`
-//   method: Initializes the local properties of the surface S
-//   method: for the new surface.
-//   Reason: param 'S' uses unknown type 'const Standard_Address&'
-//   // pub fn set_surface(&mut self, S: &Address);
-//
-
 // ========================
 // From HLRBRep_SLPropsATool.hxx
 // ========================
@@ -6242,44 +6791,78 @@ impl SLPropsATool {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SLPropsATool_ctor()) }
     }
-}
 
-// ── Skipped symbols for SLPropsATool (6 total) ──
-// SKIPPED: **Source:** `HLRBRep_SLPropsATool.hxx`:35 - `HLRBRep_SLPropsATool::Value`
-//   static_method: Computes the point  <P> of 	parameter <U> and <V>
-//   static_method: on the Surface <A>.
-//   Reason: param 'A' uses unknown type 'Standard_Address'
-//   // pub fn value(A: Address, U: f64, V: f64, P: &mut Pnt);
-//
-// SKIPPED: **Source:** `HLRBRep_SLPropsATool.hxx`:42 - `HLRBRep_SLPropsATool::D1`
-//   static_method: Computes the point <P>  and first derivative <D1*>
-//   static_method: of parameter <U> and <V> on the Surface <A>.
-//   Reason: param 'A' uses unknown type 'Standard_Address'
-//   // pub fn d1(A: Address, U: f64, V: f64, P: &mut Pnt, D1U: &mut Vec, D1V: &mut Vec);
-//
-// SKIPPED: **Source:** `HLRBRep_SLPropsATool.hxx`:52 - `HLRBRep_SLPropsATool::D2`
-//   static_method: Computes the point <P>, the first derivative <D1*>
-//   static_method: and second  derivative <D2*> of parameter  <U> and
-//   static_method: <V> on the Surface <A>.
-//   Reason: param 'A' uses unknown type 'Standard_Address'
-//   // pub fn d2(A: Address, U: f64, V: f64, P: &mut Pnt, D1U: &mut Vec, D1V: &mut Vec, D2U: &mut Vec, D2V: &mut Vec, DUV: &mut Vec);
-//
-// SKIPPED: **Source:** `HLRBRep_SLPropsATool.hxx`:62 - `HLRBRep_SLPropsATool::DN`
-//   Reason: param 'A' uses unknown type 'Standard_Address'
-//   // pub fn dn(A: Address, U: f64, V: f64, Nu: i32, Nv: i32) -> OwnedPtr<gp_Vec>;
-//
-// SKIPPED: **Source:** `HLRBRep_SLPropsATool.hxx`:72 - `HLRBRep_SLPropsATool::Continuity`
-//   static_method: returns the order of   continuity of the   Surface
-//   static_method: <A>.  returns  1   :  first  derivative    only is
-//   static_method: computable returns 2 : first and second derivative
-//   Reason: param 'A' uses unknown type 'Standard_Address'
-//   // pub fn continuity(A: Address) -> i32;
-//
-// SKIPPED: **Source:** `HLRBRep_SLPropsATool.hxx`:75 - `HLRBRep_SLPropsATool::Bounds`
-//   static_method: returns the bounds of the Surface.
-//   Reason: param 'A' uses unknown type 'Standard_Address'
-//   // pub fn bounds(A: Address, U1: &mut f64, V1: &mut f64, U2: &mut f64, V2: &mut f64);
-//
+    /// **Source:** `HLRBRep_SLPropsATool.hxx`:35 - `HLRBRep_SLPropsATool::Value()`
+    /// Computes the point  <P> of 	parameter <U> and <V>
+    /// on the Surface <A>.
+    pub unsafe fn value(A: *mut std::ffi::c_void, U: f64, V: f64, P: &mut crate::gp::Pnt) {
+        unsafe { crate::ffi::HLRBRep_SLPropsATool_value(A, U, V, P) }
+    }
+
+    /// **Source:** `HLRBRep_SLPropsATool.hxx`:42 - `HLRBRep_SLPropsATool::D1()`
+    /// Computes the point <P>  and first derivative <D1*>
+    /// of parameter <U> and <V> on the Surface <A>.
+    pub unsafe fn d1(
+        A: *mut std::ffi::c_void,
+        U: f64,
+        V: f64,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+    ) {
+        unsafe { crate::ffi::HLRBRep_SLPropsATool_d1(A, U, V, P, D1U, D1V) }
+    }
+
+    /// **Source:** `HLRBRep_SLPropsATool.hxx`:52 - `HLRBRep_SLPropsATool::D2()`
+    /// Computes the point <P>, the first derivative <D1*>
+    /// and second  derivative <D2*> of parameter  <U> and
+    /// <V> on the Surface <A>.
+    pub unsafe fn d2(
+        A: *mut std::ffi::c_void,
+        U: f64,
+        V: f64,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        DUV: &mut crate::gp::Vec,
+    ) {
+        unsafe { crate::ffi::HLRBRep_SLPropsATool_d2(A, U, V, P, D1U, D1V, D2U, D2V, DUV) }
+    }
+
+    /// **Source:** `HLRBRep_SLPropsATool.hxx`:62 - `HLRBRep_SLPropsATool::DN()`
+    pub unsafe fn dn(
+        A: *mut std::ffi::c_void,
+        U: f64,
+        V: f64,
+        Nu: i32,
+        Nv: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SLPropsATool_dn(A, U, V, Nu, Nv)) }
+    }
+
+    /// **Source:** `HLRBRep_SLPropsATool.hxx`:72 - `HLRBRep_SLPropsATool::Continuity()`
+    /// returns the order of   continuity of the   Surface
+    /// <A>.  returns  1   :  first  derivative    only is
+    /// computable returns 2 : first and second derivative
+    /// only are computable.
+    pub unsafe fn continuity(A: *mut std::ffi::c_void) -> i32 {
+        unsafe { crate::ffi::HLRBRep_SLPropsATool_continuity(A) }
+    }
+
+    /// **Source:** `HLRBRep_SLPropsATool.hxx`:75 - `HLRBRep_SLPropsATool::Bounds()`
+    /// returns the bounds of the Surface.
+    pub unsafe fn bounds(
+        A: *mut std::ffi::c_void,
+        U1: &mut f64,
+        V1: &mut f64,
+        U2: &mut f64,
+        V2: &mut f64,
+    ) {
+        unsafe { crate::ffi::HLRBRep_SLPropsATool_bounds(A, U1, V1, U2, V2) }
+    }
+}
 
 // ========================
 // From HLRBRep_ShapeBounds.hxx
@@ -6811,175 +7394,292 @@ impl SurfaceTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_ctor()) }
     }
-}
 
-// ── Skipped symbols for SurfaceTool (41 total) ──
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:45 - `HLRBRep_SurfaceTool::FirstUParameter`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn first_u_parameter(S: Address) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:47 - `HLRBRep_SurfaceTool::FirstVParameter`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn first_v_parameter(S: Address) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:49 - `HLRBRep_SurfaceTool::LastUParameter`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn last_u_parameter(S: Address) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:51 - `HLRBRep_SurfaceTool::LastVParameter`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn last_v_parameter(S: Address) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:53 - `HLRBRep_SurfaceTool::NbUIntervals`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn nb_u_intervals(S: Address, Sh: Shape) -> i32;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:55 - `HLRBRep_SurfaceTool::NbVIntervals`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn nb_v_intervals(S: Address, Sh: Shape) -> i32;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:57 - `HLRBRep_SurfaceTool::UIntervals`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn u_intervals(S: Address, T: &mut Array1OfReal, Sh: Shape);
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:59 - `HLRBRep_SurfaceTool::VIntervals`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn v_intervals(S: Address, T: &mut Array1OfReal, Sh: Shape);
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:62 - `HLRBRep_SurfaceTool::UTrim`
-//   static_method: If <First> >= <Last>
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn u_trim(S: Address, First: f64, Last: f64, Tol: f64) -> OwnedPtr<Handle<Adaptor3d_Surface>>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:68 - `HLRBRep_SurfaceTool::VTrim`
-//   static_method: If <First> >= <Last>
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn v_trim(S: Address, First: f64, Last: f64, Tol: f64) -> OwnedPtr<Handle<Adaptor3d_Surface>>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:73 - `HLRBRep_SurfaceTool::IsUClosed`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn is_u_closed(S: Address) -> bool;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:75 - `HLRBRep_SurfaceTool::IsVClosed`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn is_v_closed(S: Address) -> bool;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:77 - `HLRBRep_SurfaceTool::IsUPeriodic`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn is_u_periodic(S: Address) -> bool;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:79 - `HLRBRep_SurfaceTool::UPeriod`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn u_period(S: Address) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:81 - `HLRBRep_SurfaceTool::IsVPeriodic`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn is_v_periodic(S: Address) -> bool;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:83 - `HLRBRep_SurfaceTool::VPeriod`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn v_period(S: Address) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:85 - `HLRBRep_SurfaceTool::Value`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn value(S: Address, u: f64, v: f64) -> OwnedPtr<gp_Pnt>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:87 - `HLRBRep_SurfaceTool::D0`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn d0(S: Address, u: f64, v: f64, P: &mut Pnt);
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:89 - `HLRBRep_SurfaceTool::D1`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn d1(S: Address, u: f64, v: f64, P: &mut Pnt, D1u: &mut Vec, D1v: &mut Vec);
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:96 - `HLRBRep_SurfaceTool::D2`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn d2(S: Address, u: f64, v: f64, P: &mut Pnt, D1U: &mut Vec, D1V: &mut Vec, D2U: &mut Vec, D2V: &mut Vec, D2UV: &mut Vec);
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:106 - `HLRBRep_SurfaceTool::D3`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn d3(S: Address, u: f64, v: f64, P: &mut Pnt, D1U: &mut Vec, D1V: &mut Vec, D2U: &mut Vec, D2V: &mut Vec, D2UV: &mut Vec, D3U: &mut Vec, D3V: &mut Vec, D3UUV: &mut Vec, D3UVV: &mut Vec);
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:120 - `HLRBRep_SurfaceTool::DN`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn dn(S: Address, u: f64, v: f64, Nu: i32, Nv: i32) -> OwnedPtr<gp_Vec>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:126 - `HLRBRep_SurfaceTool::UResolution`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn u_resolution(S: Address, R3d: f64) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:128 - `HLRBRep_SurfaceTool::VResolution`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn v_resolution(S: Address, R3d: f64) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:130 - `HLRBRep_SurfaceTool::GetType`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn get_type(S: Address) -> OwnedPtr<GeomAbs_SurfaceType>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:132 - `HLRBRep_SurfaceTool::Plane`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn plane(S: Address) -> OwnedPtr<gp_Pln>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:134 - `HLRBRep_SurfaceTool::Cylinder`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn cylinder(S: Address) -> OwnedPtr<gp_Cylinder>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:136 - `HLRBRep_SurfaceTool::Cone`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn cone(S: Address) -> OwnedPtr<gp_Cone>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:138 - `HLRBRep_SurfaceTool::Torus`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn torus(S: Address) -> OwnedPtr<gp_Torus>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:140 - `HLRBRep_SurfaceTool::Sphere`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn sphere(S: Address) -> OwnedPtr<gp_Sphere>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:142 - `HLRBRep_SurfaceTool::Bezier`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn bezier(S: Address) -> OwnedPtr<Handle<Geom_BezierSurface>>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:144 - `HLRBRep_SurfaceTool::BSpline`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn b_spline(S: Address) -> OwnedPtr<Handle<Geom_BSplineSurface>>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:146 - `HLRBRep_SurfaceTool::AxeOfRevolution`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn axe_of_revolution(S: Address) -> OwnedPtr<gp_Ax1>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:148 - `HLRBRep_SurfaceTool::Direction`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn direction(S: Address) -> OwnedPtr<gp_Dir>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:150 - `HLRBRep_SurfaceTool::BasisCurve`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn basis_curve(S: Address) -> OwnedPtr<Handle<Adaptor3d_Curve>>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:152 - `HLRBRep_SurfaceTool::BasisSurface`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn basis_surface(S: Address) -> OwnedPtr<Handle<Adaptor3d_Surface>>;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:154 - `HLRBRep_SurfaceTool::OffsetValue`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn offset_value(S: Address) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:156 - `HLRBRep_SurfaceTool::NbSamplesU`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn nb_samples_u(S: Address) -> i32;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:158 - `HLRBRep_SurfaceTool::NbSamplesV`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn nb_samples_v(S: Address) -> i32;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:160 - `HLRBRep_SurfaceTool::NbSamplesU`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn nb_samples_u(S: Address, u1: f64, u2: f64) -> i32;
-//
-// SKIPPED: **Source:** `HLRBRep_SurfaceTool.hxx`:164 - `HLRBRep_SurfaceTool::NbSamplesV`
-//   Reason: param 'S' uses unknown type 'Standard_Address'
-//   // pub fn nb_samples_v(S: Address, v1: f64, v2: f64) -> i32;
-//
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:45 - `HLRBRep_SurfaceTool::FirstUParameter()`
+    pub unsafe fn first_u_parameter(S: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_first_u_parameter(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:47 - `HLRBRep_SurfaceTool::FirstVParameter()`
+    pub unsafe fn first_v_parameter(S: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_first_v_parameter(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:49 - `HLRBRep_SurfaceTool::LastUParameter()`
+    pub unsafe fn last_u_parameter(S: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_last_u_parameter(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:51 - `HLRBRep_SurfaceTool::LastVParameter()`
+    pub unsafe fn last_v_parameter(S: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_last_v_parameter(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:53 - `HLRBRep_SurfaceTool::NbUIntervals()`
+    pub unsafe fn nb_u_intervals(S: *mut std::ffi::c_void, Sh: crate::geom_abs::Shape) -> i32 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_u_intervals(S, Sh.into()) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:55 - `HLRBRep_SurfaceTool::NbVIntervals()`
+    pub unsafe fn nb_v_intervals(S: *mut std::ffi::c_void, Sh: crate::geom_abs::Shape) -> i32 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_v_intervals(S, Sh.into()) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:57 - `HLRBRep_SurfaceTool::UIntervals()`
+    pub unsafe fn u_intervals(
+        S: *mut std::ffi::c_void,
+        T: &mut crate::ffi::TColStd_Array1OfReal,
+        Sh: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_u_intervals(S, T, Sh.into()) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:59 - `HLRBRep_SurfaceTool::VIntervals()`
+    pub unsafe fn v_intervals(
+        S: *mut std::ffi::c_void,
+        T: &mut crate::ffi::TColStd_Array1OfReal,
+        Sh: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_v_intervals(S, T, Sh.into()) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:62 - `HLRBRep_SurfaceTool::UTrim()`
+    /// If <First> >= <Last>
+    pub unsafe fn u_trim(
+        S: *mut std::ffi::c_void,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_u_trim(S, First, Last, Tol))
+        }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:68 - `HLRBRep_SurfaceTool::VTrim()`
+    /// If <First> >= <Last>
+    pub unsafe fn v_trim(
+        S: *mut std::ffi::c_void,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_v_trim(S, First, Last, Tol))
+        }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:73 - `HLRBRep_SurfaceTool::IsUClosed()`
+    pub unsafe fn is_u_closed(S: *mut std::ffi::c_void) -> bool {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_is_u_closed(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:75 - `HLRBRep_SurfaceTool::IsVClosed()`
+    pub unsafe fn is_v_closed(S: *mut std::ffi::c_void) -> bool {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_is_v_closed(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:77 - `HLRBRep_SurfaceTool::IsUPeriodic()`
+    pub unsafe fn is_u_periodic(S: *mut std::ffi::c_void) -> bool {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_is_u_periodic(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:79 - `HLRBRep_SurfaceTool::UPeriod()`
+    pub unsafe fn u_period(S: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_u_period(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:81 - `HLRBRep_SurfaceTool::IsVPeriodic()`
+    pub unsafe fn is_v_periodic(S: *mut std::ffi::c_void) -> bool {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_is_v_periodic(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:83 - `HLRBRep_SurfaceTool::VPeriod()`
+    pub unsafe fn v_period(S: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_v_period(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:85 - `HLRBRep_SurfaceTool::Value()`
+    pub unsafe fn value(
+        S: *mut std::ffi::c_void,
+        u: f64,
+        v: f64,
+    ) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_value(S, u, v)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:87 - `HLRBRep_SurfaceTool::D0()`
+    pub unsafe fn d0(S: *mut std::ffi::c_void, u: f64, v: f64, P: &mut crate::gp::Pnt) {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_d0(S, u, v, P) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:89 - `HLRBRep_SurfaceTool::D1()`
+    pub unsafe fn d1(
+        S: *mut std::ffi::c_void,
+        u: f64,
+        v: f64,
+        P: &mut crate::gp::Pnt,
+        D1u: &mut crate::gp::Vec,
+        D1v: &mut crate::gp::Vec,
+    ) {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_d1(S, u, v, P, D1u, D1v) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:96 - `HLRBRep_SurfaceTool::D2()`
+    pub unsafe fn d2(
+        S: *mut std::ffi::c_void,
+        u: f64,
+        v: f64,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        D2UV: &mut crate::gp::Vec,
+    ) {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:106 - `HLRBRep_SurfaceTool::D3()`
+    pub unsafe fn d3(
+        S: *mut std::ffi::c_void,
+        u: f64,
+        v: f64,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        D2UV: &mut crate::gp::Vec,
+        D3U: &mut crate::gp::Vec,
+        D3V: &mut crate::gp::Vec,
+        D3UUV: &mut crate::gp::Vec,
+        D3UVV: &mut crate::gp::Vec,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_SurfaceTool_d3(
+                S, u, v, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:120 - `HLRBRep_SurfaceTool::DN()`
+    pub unsafe fn dn(
+        S: *mut std::ffi::c_void,
+        u: f64,
+        v: f64,
+        Nu: i32,
+        Nv: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_dn(S, u, v, Nu, Nv)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:126 - `HLRBRep_SurfaceTool::UResolution()`
+    pub unsafe fn u_resolution(S: *mut std::ffi::c_void, R3d: f64) -> f64 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_u_resolution(S, R3d) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:128 - `HLRBRep_SurfaceTool::VResolution()`
+    pub unsafe fn v_resolution(S: *mut std::ffi::c_void, R3d: f64) -> f64 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_v_resolution(S, R3d) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:130 - `HLRBRep_SurfaceTool::GetType()`
+    pub unsafe fn get_type(S: *mut std::ffi::c_void) -> crate::geom_abs::SurfaceType {
+        unsafe {
+            crate::geom_abs::SurfaceType::try_from(crate::ffi::HLRBRep_SurfaceTool_get_type(S))
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:132 - `HLRBRep_SurfaceTool::Plane()`
+    pub unsafe fn plane(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Pln> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_plane(S)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:134 - `HLRBRep_SurfaceTool::Cylinder()`
+    pub unsafe fn cylinder(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Cylinder> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_cylinder(S)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:136 - `HLRBRep_SurfaceTool::Cone()`
+    pub unsafe fn cone(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Cone> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_cone(S)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:138 - `HLRBRep_SurfaceTool::Torus()`
+    pub unsafe fn torus(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Torus> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_torus(S)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:140 - `HLRBRep_SurfaceTool::Sphere()`
+    pub unsafe fn sphere(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Sphere> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_sphere(S)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:142 - `HLRBRep_SurfaceTool::Bezier()`
+    pub unsafe fn bezier(
+        S: *mut std::ffi::c_void,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_bezier(S)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:144 - `HLRBRep_SurfaceTool::BSpline()`
+    pub unsafe fn b_spline(
+        S: *mut std::ffi::c_void,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_b_spline(S)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:146 - `HLRBRep_SurfaceTool::AxeOfRevolution()`
+    pub unsafe fn axe_of_revolution(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Ax1> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_axe_of_revolution(S)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:148 - `HLRBRep_SurfaceTool::Direction()`
+    pub unsafe fn direction(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Dir> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_direction(S)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:150 - `HLRBRep_SurfaceTool::BasisCurve()`
+    pub unsafe fn basis_curve(
+        S: *mut std::ffi::c_void,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_basis_curve(S)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:152 - `HLRBRep_SurfaceTool::BasisSurface()`
+    pub unsafe fn basis_surface(
+        S: *mut std::ffi::c_void,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_SurfaceTool_basis_surface(S)) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:154 - `HLRBRep_SurfaceTool::OffsetValue()`
+    pub unsafe fn offset_value(S: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_offset_value(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:156 - `HLRBRep_SurfaceTool::NbSamplesU()`
+    pub unsafe fn nb_samples_u_address(S: *mut std::ffi::c_void) -> i32 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_samples_u_address(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:158 - `HLRBRep_SurfaceTool::NbSamplesV()`
+    pub unsafe fn nb_samples_v_address(S: *mut std::ffi::c_void) -> i32 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_samples_v_address(S) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:160 - `HLRBRep_SurfaceTool::NbSamplesU()`
+    pub unsafe fn nb_samples_u_address_real2(S: *mut std::ffi::c_void, u1: f64, u2: f64) -> i32 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_samples_u_address_real2(S, u1, u2) }
+    }
+
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:164 - `HLRBRep_SurfaceTool::NbSamplesV()`
+    pub unsafe fn nb_samples_v_address_real2(S: *mut std::ffi::c_void, v1: f64, v2: f64) -> i32 {
+        unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_samples_v_address_real2(S, v1, v2) }
+    }
+}
 
 // ========================
 // From HLRBRep_TheCSFunctionOfInterCSurf.hxx
@@ -6995,6 +7695,18 @@ unsafe impl crate::CppDeletable for TheCSFunctionOfInterCSurf {
 }
 
 impl TheCSFunctionOfInterCSurf {
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:40 - `HLRBRep_TheCSFunctionOfInterCSurf::HLRBRep_TheCSFunctionOfInterCSurf()`
+    pub unsafe fn new_address_lin(
+        S: &*mut std::ffi::c_void,
+        C: &crate::gp::Lin,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_ctor_address_lin(S, C),
+            )
+        }
+    }
+
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:42 - `HLRBRep_TheCSFunctionOfInterCSurf::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_nb_variables(self as *const Self) }
@@ -7039,6 +7751,13 @@ impl TheCSFunctionOfInterCSurf {
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:54 - `HLRBRep_TheCSFunctionOfInterCSurf::Root()`
     pub fn root(&self) -> f64 {
         unsafe { crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_root(self as *const Self) }
+    }
+
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:56 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarSurface()`
+    pub unsafe fn auxillar_surface(&self) -> &*mut std::ffi::c_void {
+        unsafe {
+            &*(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_auxillar_surface(self as *const Self))
+        }
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:58 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarCurve()`
@@ -7096,16 +7815,6 @@ impl TheCSFunctionOfInterCSurf {
     }
 }
 
-// ── Skipped symbols for TheCSFunctionOfInterCSurf (2 total) ──
-// SKIPPED: **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:40 - `HLRBRep_TheCSFunctionOfInterCSurf::HLRBRep_TheCSFunctionOfInterCSurf`
-//   Reason: param 'S' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address_lin(S: &Address, C: &Lin) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:56 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarSurface`
-//   Reason: return type 'const Standard_Address&' is unknown
-//   // pub fn auxillar_surface(&self) -> &Address;
-//
-
 // ========================
 // From HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx
 // ========================
@@ -7129,30 +7838,60 @@ impl TheCurveLocatorOfTheProjPCurOfCInter {
             )
         }
     }
-}
 
-// ── Skipped symbols for TheCurveLocatorOfTheProjPCurOfCInter (3 total) ──
-// SKIPPED: **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:37 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate`
-//   static_method: Among a set of points {C(ui),i=1,NbU}, locate the point
-//   static_method: P=C(uj) such that:
-//   static_method: distance(P,C) = Min{distance(P,C(ui))}
-//   Reason: param 'C' uses unknown type 'const Standard_Address&'
-//   // pub fn locate(P: &Pnt2d, C: &Address, NbU: i32, Papp: &mut POnCurv2d);
-//
-// SKIPPED: **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:46 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate`
-//   static_method: Among a set of points {C(ui),i=1,NbU}, locate the point
-//   static_method: P=C(uj) such that:
-//   static_method: distance(P,C) = Min{distance(P,C(ui))}
-//   Reason: param 'C' uses unknown type 'const Standard_Address&'
-//   // pub fn locate(P: &Pnt2d, C: &Address, NbU: i32, Umin: f64, Usup: f64, Papp: &mut POnCurv2d);
-//
-// SKIPPED: **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:57 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate`
-//   static_method: Among two sets of points {C1(ui),i=1,NbU} and
-//   static_method: {C2(vj),j=1,NbV}, locate the two points P1=C1(uk) and
-//   static_method: P2=C2(vl) such that:
-//   Reason: param 'C1' uses unknown type 'const Standard_Address&'
-//   // pub fn locate(C1: &Address, C2: &Address, NbU: i32, NbV: i32, Papp1: &mut POnCurv2d, Papp2: &mut POnCurv2d);
-//
+    /// **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:37 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate()`
+    /// Among a set of points {C(ui),i=1,NbU}, locate the point
+    /// P=C(uj) such that:
+    /// distance(P,C) = Min{distance(P,C(ui))}
+    pub unsafe fn locate_pnt2d_address_int_poncurv2d(
+        P: &crate::gp::Pnt2d,
+        C: &*mut std::ffi::c_void,
+        NbU: i32,
+        Papp: &mut crate::extrema::POnCurv2d,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_poncurv2d(P, C, NbU, Papp)
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:46 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate()`
+    /// Among a set of points {C(ui),i=1,NbU}, locate the point
+    /// P=C(uj) such that:
+    /// distance(P,C) = Min{distance(P,C(ui))}
+    /// The research is done between umin and usup.
+    pub unsafe fn locate_pnt2d_address_int_real2_poncurv2d(
+        P: &crate::gp::Pnt2d,
+        C: &*mut std::ffi::c_void,
+        NbU: i32,
+        Umin: f64,
+        Usup: f64,
+        Papp: &mut crate::extrema::POnCurv2d,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_real2_poncurv2d(P, C, NbU, Umin, Usup, Papp)
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:57 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate()`
+    /// Among two sets of points {C1(ui),i=1,NbU} and
+    /// {C2(vj),j=1,NbV}, locate the two points P1=C1(uk) and
+    /// P2=C2(vl) such that:
+    /// distance(P1,P2) = Min {distance(C1(ui),C2(vj))}.
+    pub unsafe fn locate_address2_int2_poncurv2d2(
+        C1: &*mut std::ffi::c_void,
+        C2: &*mut std::ffi::c_void,
+        NbU: i32,
+        NbV: i32,
+        Papp1: &mut crate::extrema::POnCurv2d,
+        Papp2: &mut crate::extrema::POnCurv2d,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_address2_int2_poncurv2d2(
+                C1, C2, NbU, NbV, Papp1, Papp2,
+            )
+        }
+    }
+}
 
 // ========================
 // From HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx
@@ -7168,6 +7907,20 @@ unsafe impl crate::CppDeletable for TheDistBetweenPCurvesOfTheIntPCurvePCurveOfC
 }
 
 impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
+    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:36 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter()`
+    pub unsafe fn new_address2(
+        curve1: &*mut std::ffi::c_void,
+        curve2: &*mut std::ffi::c_void,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_ctor_address2(
+                    curve1, curve2,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:41 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::NbVariables()`
     /// returns 2.
     pub fn nb_variables(&self) -> i32 {
@@ -7282,12 +8035,6 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
         }
     }
 }
-
-// ── Skipped symbols for TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter (1 total) ──
-// SKIPPED: **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:36 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter`
-//   Reason: param 'curve1' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address2(curve1: &Address, curve2: &Address) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From HLRBRep_TheExactInterCSurf.hxx
@@ -7471,6 +8218,207 @@ impl TheIntConicCurveOfCInter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor()) }
     }
 
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:45 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
+    /// Intersection between a line and a parametric curve.
+    pub unsafe fn new_lin2d_domain_address_domain_real2(
+        L: &crate::gp::Lin2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_lin2d_domain_address_domain_real2(
+                    L, D1, PCurve, D2, TolConf, Tol,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:53 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
+    /// Intersection between a line and a parametric curve.
+    pub unsafe fn new_circ2d_domain_address_domain_real2(
+        C: &crate::gp::Circ2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(C, D1, PCurve, D2, TolConf, Tol))
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:61 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
+    /// Intersection between an ellipse and a parametric curve.
+    pub unsafe fn new_elips2d_domain_address_domain_real2(
+        E: &crate::gp::Elips2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(E, D1, PCurve, D2, TolConf, Tol))
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:69 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
+    /// Intersection between a parabola and a parametric curve.
+    pub unsafe fn new_parab2d_domain_address_domain_real2(
+        Prb: &crate::gp::Parab2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(Prb, D1, PCurve, D2, TolConf, Tol))
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:78 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
+    /// Intersection between the main branch of an hyperbola
+    /// and a parametric curve.
+    pub unsafe fn new_hypr2d_domain_address_domain_real2(
+        H: &crate::gp::Hypr2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(H, D1, PCurve, D2, TolConf, Tol))
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:86 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
+    /// Intersection between a line and a parametric curve.
+    pub unsafe fn perform_lin2d_domain_address_domain_real2(
+        &mut self,
+        L: &crate::gp::Lin2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(
+                self as *mut Self,
+                L,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:94 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
+    /// Intersection between a line and a parametric curve.
+    pub unsafe fn perform_circ2d_domain_address_domain_real2(
+        &mut self,
+        C: &crate::gp::Circ2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(
+                self as *mut Self,
+                C,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:102 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
+    /// Intersection between an ellipse and a parametric curve.
+    pub unsafe fn perform_elips2d_domain_address_domain_real2(
+        &mut self,
+        E: &crate::gp::Elips2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(
+                self as *mut Self,
+                E,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:110 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
+    /// Intersection between a parabola and a parametric curve.
+    pub unsafe fn perform_parab2d_domain_address_domain_real2(
+        &mut self,
+        Prb: &crate::gp::Parab2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(
+                self as *mut Self,
+                Prb,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:119 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
+    /// Intersection between the main branch of an hyperbola
+    /// and a parametric curve.
+    pub unsafe fn perform_hypr2d_domain_address_domain_real2(
+        &mut self,
+        H: &crate::gp::Hypr2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        D2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(
+                self as *mut Self,
+                H,
+                D1,
+                PCurve,
+                D2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
         unsafe {
@@ -7545,60 +8493,6 @@ impl TheIntConicCurveOfCInter {
     }
 }
 
-// ── Skipped symbols for TheIntConicCurveOfCInter (10 total) ──
-// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:45 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter`
-//   constructor: Intersection between a line and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn new_lin2d_domain_address_domain_real2(L: &Lin2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:53 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter`
-//   constructor: Intersection between a line and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn new_circ2d_domain_address_domain_real2(C: &Circ2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:61 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter`
-//   constructor: Intersection between an ellipse and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn new_elips2d_domain_address_domain_real2(E: &Elips2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:69 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter`
-//   constructor: Intersection between a parabola and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn new_parab2d_domain_address_domain_real2(Prb: &Parab2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:78 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter`
-//   constructor: Intersection between the main branch of an hyperbola
-//   constructor: and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn new_hypr2d_domain_address_domain_real2(H: &Hypr2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:86 - `HLRBRep_TheIntConicCurveOfCInter::Perform`
-//   method: Intersection between a line and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, L: &Lin2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:94 - `HLRBRep_TheIntConicCurveOfCInter::Perform`
-//   method: Intersection between a line and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, C: &Circ2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:102 - `HLRBRep_TheIntConicCurveOfCInter::Perform`
-//   method: Intersection between an ellipse and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, E: &Elips2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:110 - `HLRBRep_TheIntConicCurveOfCInter::Perform`
-//   method: Intersection between a parabola and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, Prb: &Parab2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:119 - `HLRBRep_TheIntConicCurveOfCInter::Perform`
-//   method: Intersection between the main branch of an hyperbola
-//   method: and a parametric curve.
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, H: &Hypr2d, D1: &Domain, PCurve: &Address, D2: &Domain, TolConf: f64, Tol: f64);
-//
-
 // ========================
 // From HLRBRep_TheIntPCurvePCurveOfCInter.hxx
 // ========================
@@ -7616,6 +8510,40 @@ impl TheIntPCurvePCurveOfCInter {
     /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:38 - `HLRBRep_TheIntPCurvePCurveOfCInter::HLRBRep_TheIntPCurvePCurveOfCInter()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_ctor()) }
+    }
+
+    /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:40 - `HLRBRep_TheIntPCurvePCurveOfCInter::Perform()`
+    pub unsafe fn perform_address_domain_address_domain_real2(
+        &mut self,
+        Curve1: &*mut std::ffi::c_void,
+        Domain1: &crate::int_res2d::Domain,
+        Curve2: &*mut std::ffi::c_void,
+        Domain2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_address_domain_real2(self as *mut Self, Curve1, Domain1, Curve2, Domain2, TolConf, Tol)
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:47 - `HLRBRep_TheIntPCurvePCurveOfCInter::Perform()`
+    pub unsafe fn perform_address_domain_real2(
+        &mut self,
+        Curve1: &*mut std::ffi::c_void,
+        Domain1: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_real2(
+                self as *mut Self,
+                Curve1,
+                Domain1,
+                TolConf,
+                Tol,
+            )
+        }
     }
 
     /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:53 - `HLRBRep_TheIntPCurvePCurveOfCInter::SetMinNbSamples()`
@@ -7712,16 +8640,6 @@ impl TheIntPCurvePCurveOfCInter {
         }
     }
 }
-
-// ── Skipped symbols for TheIntPCurvePCurveOfCInter (2 total) ──
-// SKIPPED: **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:40 - `HLRBRep_TheIntPCurvePCurveOfCInter::Perform`
-//   Reason: param 'Curve1' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, Curve1: &Address, Domain1: &Domain, Curve2: &Address, Domain2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:47 - `HLRBRep_TheIntPCurvePCurveOfCInter::Perform`
-//   Reason: param 'Curve1' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, Curve1: &Address, Domain1: &Domain, TolConf: f64, Tol: f64);
-//
 
 // ========================
 // From HLRBRep_TheInterferenceOfInterCSurf.hxx
@@ -8071,6 +8989,118 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
         }
     }
 
+    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:47 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter()`
+    /// Intersection between an implicit curve and
+    /// a parametrised curve.
+    /// The exception ConstructionError is raised if the domain
+    /// of the parametrised curve does not verify HasFirstPoint
+    /// and HasLastPoint return True.
+    pub unsafe fn new_iconictool_domain_address_domain_real2(
+        ITool: &crate::int_curve::IConicTool,
+        Dom1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        Dom2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_domain_address_domain_real2(ITool, Dom1, PCurve, Dom2, TolConf, Tol))
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:59 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::Perform()`
+    /// Intersection between an implicit curve and
+    /// a parametrised curve.
+    /// The exception ConstructionError is raised if the domain
+    /// of the parametrised curve does not verify HasFirstPoint
+    /// and HasLastPoint return True.
+    pub unsafe fn perform(
+        &mut self,
+        ITool: &crate::int_curve::IConicTool,
+        Dom1: &crate::int_res2d::Domain,
+        PCurve: &*mut std::ffi::c_void,
+        Dom2: &crate::int_res2d::Domain,
+        TolConf: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_perform(
+                self as *mut Self,
+                ITool,
+                Dom1,
+                PCurve,
+                Dom2,
+                TolConf,
+                Tol,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:66 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindU()`
+    pub unsafe fn find_u(
+        &self,
+        parameter: f64,
+        point: &mut crate::gp::Pnt2d,
+        TheParCurev: &*mut std::ffi::c_void,
+        IntCurve_IConicTool: &crate::int_curve::IConicTool,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_u(
+                self as *const Self,
+                parameter,
+                point,
+                TheParCurev,
+                IntCurve_IConicTool,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:71 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindV()`
+    pub unsafe fn find_v(
+        &self,
+        parameter: f64,
+        point: &mut crate::gp::Pnt2d,
+        IntCurve_IConicTool: &crate::int_curve::IConicTool,
+        ParCurve: &*mut std::ffi::c_void,
+        TheParCurveDomain: &crate::int_res2d::Domain,
+        V0: f64,
+        V1: f64,
+        Tolerance: f64,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_v(
+                self as *const Self,
+                parameter,
+                point,
+                IntCurve_IConicTool,
+                ParCurve,
+                TheParCurveDomain,
+                V0,
+                V1,
+                Tolerance,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:80 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::And_Domaine_Objet1_Intersections()`
+    pub unsafe fn and_domaine_objet1_intersections(
+        &self,
+        IntCurve_IConicTool: &crate::int_curve::IConicTool,
+        TheParCurve: &*mut std::ffi::c_void,
+        TheImpCurveDomain: &crate::int_res2d::Domain,
+        TheParCurveDomain: &crate::int_res2d::Domain,
+        NbResultats: &mut i32,
+        Inter2_And_Domain2: &mut crate::ffi::TColStd_Array1OfReal,
+        Inter1: &mut crate::ffi::TColStd_Array1OfReal,
+        Resultat1: &mut crate::ffi::TColStd_Array1OfReal,
+        Resultat2: &mut crate::ffi::TColStd_Array1OfReal,
+        EpsNul: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_and_domaine_objet1_intersections(self as *const Self, IntCurve_IConicTool, TheParCurve, TheImpCurveDomain, TheParCurveDomain, NbResultats, Inter2_And_Domain2, Inter1, Resultat1, Resultat2, EpsNul)
+        }
+    }
+
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
         unsafe {
@@ -8149,34 +9179,6 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
     }
 }
 
-// ── Skipped symbols for TheIntersectorOfTheIntConicCurveOfCInter (5 total) ──
-// SKIPPED: **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:47 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter`
-//   constructor: Intersection between an implicit curve and
-//   constructor: a parametrised curve.
-//   constructor: The exception ConstructionError is raised if the domain
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn new_iconictool_domain_address_domain_real2(ITool: &IConicTool, Dom1: &Domain, PCurve: &Address, Dom2: &Domain, TolConf: f64, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:59 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::Perform`
-//   method: Intersection between an implicit curve and
-//   method: a parametrised curve.
-//   method: The exception ConstructionError is raised if the domain
-//   Reason: param 'PCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn perform(&mut self, ITool: &IConicTool, Dom1: &Domain, PCurve: &Address, Dom2: &Domain, TolConf: f64, Tol: f64);
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:66 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindU`
-//   Reason: param 'TheParCurev' uses unknown type 'const Standard_Address&'
-//   // pub fn find_u(&self, parameter: f64, point: &mut Pnt2d, TheParCurev: &Address, IntCurve_IConicTool: &IConicTool) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:71 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindV`
-//   Reason: param 'ParCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn find_v(&self, parameter: f64, point: &mut Pnt2d, IntCurve_IConicTool: &IConicTool, ParCurve: &Address, TheParCurveDomain: &Domain, V0: f64, V1: f64, Tolerance: f64) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:80 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::And_Domaine_Objet1_Intersections`
-//   Reason: param 'TheParCurve' uses unknown type 'const Standard_Address&'
-//   // pub fn and_domaine_objet1_intersections(&self, IntCurve_IConicTool: &IConicTool, TheParCurve: &Address, TheImpCurveDomain: &Domain, TheParCurveDomain: &Domain, NbResultats: &mut i32, Inter2_And_Domain2: &mut Array1OfReal, Inter1: &mut Array1OfReal, Resultat1: &mut Array1OfReal, Resultat2: &mut Array1OfReal, EpsNul: f64);
-//
-
 // ========================
 // From HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx
 // ========================
@@ -8195,6 +9197,75 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor())
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:49 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter()`
+    /// Calculates the distance with a close point.
+    /// The close point is defined by the parameter value U0.
+    /// The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0.
+    /// The algorithm searches a zero near the close point.
+    /// TolU is used to decide to stop the iterations.
+    /// At the nth iteration, the criteria is:
+    /// abs(Un - Un-1) < TolU.
+    pub unsafe fn new_pnt2d_address_real2(
+        P: &crate::gp::Pnt2d,
+        C: &*mut std::ffi::c_void,
+        U0: f64,
+        TolU: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address_real2(
+                    P, C, U0, TolU,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:62 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter()`
+    /// Calculates the distance with a close point.
+    /// The close point is defined by the parameter value U0.
+    /// The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0.
+    /// The algorithm searches a zero near the close point.
+    /// Zeros are searched between Umin and Usup.
+    /// TolU is used to decide to stop the iterations.
+    /// At the nth iteration, the criteria is:
+    /// abs(Un - Un-1) < TolU.
+    pub unsafe fn new_pnt2d_address_real4(
+        P: &crate::gp::Pnt2d,
+        C: &*mut std::ffi::c_void,
+        U0: f64,
+        Umin: f64,
+        Usup: f64,
+        TolU: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address_real4(
+                    P, C, U0, Umin, Usup, TolU,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:70 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::Initialize()`
+    /// sets the fields of the algorithm.
+    pub unsafe fn initialize(
+        &mut self,
+        C: &*mut std::ffi::c_void,
+        Umin: f64,
+        Usup: f64,
+        TolU: f64,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_initialize(
+                self as *mut Self,
+                C,
+                Umin,
+                Usup,
+                TolU,
+            )
         }
     }
 
@@ -8247,27 +9318,6 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
     }
 }
 
-// ── Skipped symbols for TheLocateExtPCOfTheProjPCurOfCInter (3 total) ──
-// SKIPPED: **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:49 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter`
-//   constructor: Calculates the distance with a close point.
-//   constructor: The close point is defined by the parameter value U0.
-//   constructor: The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0.
-//   Reason: param 'C' uses unknown type 'const Standard_Address&'
-//   // pub fn new_pnt2d_address_real2(P: &Pnt2d, C: &Address, U0: f64, TolU: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:62 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter`
-//   constructor: Calculates the distance with a close point.
-//   constructor: The close point is defined by the parameter value U0.
-//   constructor: The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0.
-//   Reason: param 'C' uses unknown type 'const Standard_Address&'
-//   // pub fn new_pnt2d_address_real4(P: &Pnt2d, C: &Address, U0: f64, Umin: f64, Usup: f64, TolU: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:70 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::Initialize`
-//   method: sets the fields of the algorithm.
-//   Reason: param 'C' uses unknown type 'const Standard_Address&'
-//   // pub fn initialize(&mut self, C: &Address, Umin: f64, Usup: f64, TolU: f64);
-//
-
 // ========================
 // From HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx
 // ========================
@@ -8282,6 +9332,39 @@ unsafe impl crate::CppDeletable for ThePolygon2dOfTheIntPCurvePCurveOfCInter {
 }
 
 impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:41 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter()`
+    /// Compute a polygon on the domain of the curve.
+    pub unsafe fn new_address_int_domain_real(
+        Curve: &*mut std::ffi::c_void,
+        NbPnt: i32,
+        Domain: &crate::int_res2d::Domain,
+        Tol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_ctor_address_int_domain_real(Curve, NbPnt, Domain, Tol))
+        }
+    }
+
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:51 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::ComputeWithBox()`
+    /// The current polygon is modified if most
+    /// of the  points of the  polygon  are
+    /// outside  the  box  <OtherBox>.  In this
+    /// situation, bounds are computed to build
+    /// a polygon inside or near the OtherBox.
+    pub unsafe fn compute_with_box(
+        &mut self,
+        Curve: &*mut std::ffi::c_void,
+        OtherBox: &crate::bnd::Box2d,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_compute_with_box(
+                self as *mut Self,
+                Curve,
+                OtherBox,
+            )
+        }
+    }
+
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:53 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(&self) -> f64 {
         unsafe {
@@ -8433,20 +9516,6 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
         }
     }
 }
-
-// ── Skipped symbols for ThePolygon2dOfTheIntPCurvePCurveOfCInter (2 total) ──
-// SKIPPED: **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:41 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter`
-//   constructor: Compute a polygon on the domain of the curve.
-//   Reason: param 'Curve' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address_int_domain_real(Curve: &Address, NbPnt: i32, Domain: &Domain, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:51 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::ComputeWithBox`
-//   method: The current polygon is modified if most
-//   method: of the  points of the  polygon  are
-//   method: outside  the  box  <OtherBox>.  In this
-//   Reason: param 'Curve' uses unknown type 'const Standard_Address&'
-//   // pub fn compute_with_box(&mut self, Curve: &Address, OtherBox: &Box2d);
-//
 
 // ========================
 // From HLRBRep_ThePolygonOfInterCSurf.hxx
@@ -8670,6 +9739,40 @@ unsafe impl crate::CppDeletable for ThePolyhedronOfInterCSurf {
 }
 
 impl ThePolyhedronOfInterCSurf {
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:39 - `HLRBRep_ThePolyhedronOfInterCSurf::HLRBRep_ThePolyhedronOfInterCSurf()`
+    pub unsafe fn new_address_int2_real4(
+        Surface: &*mut std::ffi::c_void,
+        nbdU: i32,
+        nbdV: i32,
+        U1: f64,
+        V1: f64,
+        U2: f64,
+        V2: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_ctor_address_int2_real4(
+                    Surface, nbdU, nbdV, U1, V1, U2, V2,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:47 - `HLRBRep_ThePolyhedronOfInterCSurf::HLRBRep_ThePolyhedronOfInterCSurf()`
+    pub unsafe fn new_address_array1ofreal2(
+        Surface: &*mut std::ffi::c_void,
+        Upars: &crate::ffi::TColStd_Array1OfReal,
+        Vpars: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_ctor_address_array1ofreal2(
+                    Surface, Upars, Vpars,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:51 - `HLRBRep_ThePolyhedronOfInterCSurf::Destroy()`
     pub fn destroy(&mut self) {
         unsafe { crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_destroy(self as *mut Self) }
@@ -8681,6 +9784,21 @@ impl ThePolyhedronOfInterCSurf {
             crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_deflection_over_estimation_real(
                 self as *mut Self,
                 flec,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:57 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOnTriangle()`
+    pub unsafe fn deflection_on_triangle(
+        &self,
+        Surface: &*mut std::ffi::c_void,
+        Index: i32,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_deflection_on_triangle(
+                self as *const Self,
+                Surface,
+                Index,
             )
         }
     }
@@ -8964,20 +10082,6 @@ impl ThePolyhedronOfInterCSurf {
     }
 }
 
-// ── Skipped symbols for ThePolyhedronOfInterCSurf (3 total) ──
-// SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:39 - `HLRBRep_ThePolyhedronOfInterCSurf::HLRBRep_ThePolyhedronOfInterCSurf`
-//   Reason: param 'Surface' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address_int2_real4(Surface: &Address, nbdU: i32, nbdV: i32, U1: f64, V1: f64, U2: f64, V2: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:47 - `HLRBRep_ThePolyhedronOfInterCSurf::HLRBRep_ThePolyhedronOfInterCSurf`
-//   Reason: param 'Surface' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address_array1ofreal2(Surface: &Address, Upars: &Array1OfReal, Vpars: &Array1OfReal) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:57 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOnTriangle`
-//   Reason: param 'Surface' uses unknown type 'const Standard_Address&'
-//   // pub fn deflection_on_triangle(&self, Surface: &Address, Index: i32) -> f64;
-//
-
 // ========================
 // From HLRBRep_ThePolyhedronToolOfInterCSurf.hxx
 // ========================
@@ -9115,23 +10219,62 @@ impl TheProjPCurOfCInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheProjPCurOfCInter_ctor()) }
     }
-}
 
-// ── Skipped symbols for TheProjPCurOfCInter (2 total) ──
-// SKIPPED: **Source:** `HLRBRep_TheProjPCurOfCInter.hxx`:47 - `HLRBRep_TheProjPCurOfCInter::FindParameter`
-//   static_method: Returns the parameter V of the point on the
-//   static_method: parametric curve corresponding to the Point Pnt.
-//   static_method: The Correspondence between Pnt and the point P(V)
-//   Reason: param 'C' uses unknown type 'const Standard_Address&'
-//   // pub fn find_parameter(C: &Address, Pnt: &Pnt2d, Tol: f64) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_TheProjPCurOfCInter.hxx`:65 - `HLRBRep_TheProjPCurOfCInter::FindParameter`
-//   static_method: Returns the parameter V of the point on the
-//   static_method: parametric curve corresponding to the Point Pnt.
-//   static_method: The Correspondence between Pnt and the point P(V)
-//   Reason: param 'C' uses unknown type 'const Standard_Address&'
-//   // pub fn find_parameter(C: &Address, Pnt: &Pnt2d, LowParameter: f64, HighParameter: f64, Tol: f64) -> f64;
-//
+    /// **Source:** `HLRBRep_TheProjPCurOfCInter.hxx`:47 - `HLRBRep_TheProjPCurOfCInter::FindParameter()`
+    /// Returns the parameter V of the point on the
+    /// parametric curve corresponding to the Point Pnt.
+    /// The Correspondence between Pnt and the point P(V)
+    /// on the parametric curve must be coherent with the
+    /// way of determination of the signed distance
+    /// between a point and the implicit curve.
+    /// Tol is the tolerance on the distance between a point
+    /// and the parametrised curve.
+    /// In that case, no bounds are given. The research of
+    /// the right parameter has to be made on the natural
+    /// parametric domain of the curve.
+    pub unsafe fn find_parameter_address_pnt2d_real(
+        C: &*mut std::ffi::c_void,
+        Pnt: &crate::gp::Pnt2d,
+        Tol: f64,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real(C, Pnt, Tol)
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheProjPCurOfCInter.hxx`:65 - `HLRBRep_TheProjPCurOfCInter::FindParameter()`
+    /// Returns the parameter V of the point on the
+    /// parametric curve corresponding to the Point Pnt.
+    /// The Correspondence between Pnt and the point P(V)
+    /// on the parametric curve must be coherent with the
+    /// way of determination of the signed distance
+    /// between a point and the implicit curve.
+    /// Tol is the tolerance on the distance between a point
+    /// and the parametrised curve.
+    /// LowParameter and HighParameter give the
+    /// boundaries of the interval in which the parameter
+    /// certainly lies. These parameters are given to
+    /// implement a more efficient algorithm. So, it is not
+    /// necessary to check that the returned value verifies
+    /// LowParameter <= Value <= HighParameter.
+    pub unsafe fn find_parameter_address_pnt2d_real3(
+        C: &*mut std::ffi::c_void,
+        Pnt: &crate::gp::Pnt2d,
+        LowParameter: f64,
+        HighParameter: f64,
+        Tol: f64,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real3(
+                C,
+                Pnt,
+                LowParameter,
+                HighParameter,
+                Tol,
+            )
+        }
+    }
+}
 
 // ========================
 // From HLRBRep_TheQuadCurvExactInterCSurf.hxx
@@ -9147,6 +10290,20 @@ unsafe impl crate::CppDeletable for TheQuadCurvExactInterCSurf {
 }
 
 impl TheQuadCurvExactInterCSurf {
+    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:38 - `HLRBRep_TheQuadCurvExactInterCSurf::HLRBRep_TheQuadCurvExactInterCSurf()`
+    /// Provides the signed distance function : Q(w)
+    /// and its first derivative dQ(w)/dw
+    pub unsafe fn new_address_lin(
+        S: &*mut std::ffi::c_void,
+        C: &crate::gp::Lin,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_ctor_address_lin(S, C),
+            )
+        }
+    }
+
     /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:40 - `HLRBRep_TheQuadCurvExactInterCSurf::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_is_done(self as *const Self) }
@@ -9181,14 +10338,6 @@ impl TheQuadCurvExactInterCSurf {
         }
     }
 }
-
-// ── Skipped symbols for TheQuadCurvExactInterCSurf (1 total) ──
-// SKIPPED: **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:38 - `HLRBRep_TheQuadCurvExactInterCSurf::HLRBRep_TheQuadCurvExactInterCSurf`
-//   constructor: Provides the signed distance function : Q(w)
-//   constructor: and its first derivative dQ(w)/dw
-//   Reason: param 'S' uses unknown type 'const Standard_Address&'
-//   // pub fn new_address_lin(S: &Address, C: &Lin) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx

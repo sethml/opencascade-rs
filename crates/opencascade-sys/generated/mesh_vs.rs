@@ -765,6 +765,16 @@ impl DataSource {
         unsafe { crate::ffi::MeshVS_DataSource_get3_d_geom(self as *const Self, ID, NbNodes, Data) }
     }
 
+    /// **Source:** `MeshVS_DataSource.hxx`:85 - `MeshVS_DataSource::GetAddr()`
+    /// This method returns pointer which represents element or node data structure.
+    /// This address will be saved in MeshVS_MeshEntityOwner, so that you can access to data structure
+    /// fast by the method Owner(). In the redefined method you can return NULL. ID is the numerical
+    /// identificator of node or element IsElement indicates this ID describe node ( if Standard_False
+    /// ) or element ( if Standard_True )
+    pub unsafe fn get_addr(&self, ID: i32, IsElement: bool) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::MeshVS_DataSource_get_addr(self as *const Self, ID, IsElement) }
+    }
+
     /// **Source:** `MeshVS_DataSource.hxx`:94 - `MeshVS_DataSource::GetNodesByElement()`
     /// This method returns information about nodes this element consist of.
     /// ID is the numerical identificator of element.
@@ -886,6 +896,15 @@ impl DataSource {
         };
         *Type = crate::mesh_vs::EntityType::try_from(Type_i32_).unwrap();
         result_
+    }
+
+    /// **Source:** `MeshVS_DataSource.hxx`:153 - `MeshVS_DataSource::GetGroupAddr()`
+    /// This method returns pointer which represents group data structure.
+    /// This address will be saved in MeshVS_MeshOwner, so that you can access to data structure fast
+    /// by the method Owner(). In the redefined method you can return NULL.
+    /// ID is the numerical identificator of group
+    pub unsafe fn get_group_addr(&self, ID: i32) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::MeshVS_DataSource_get_group_addr(self as *const Self, ID) }
     }
 
     /// **Source:** `MeshVS_DataSource.hxx`:159 - `MeshVS_DataSource::IsAdvancedSelectionEnabled()`
@@ -1133,22 +1152,6 @@ impl HandleMeshVSDataSource {
         }
     }
 }
-
-// ── Skipped symbols for DataSource (2 total) ──
-// SKIPPED: **Source:** `MeshVS_DataSource.hxx`:85 - `MeshVS_DataSource::GetAddr`
-//   method: This method returns pointer which represents element or node data structure.
-//   method: This address will be saved in MeshVS_MeshEntityOwner, so that you can access to data structure
-//   method: fast by the method Owner(). In the redefined method you can return NULL. ID is the numerical
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn get_addr(&self, ID: i32, IsElement: bool) -> OwnedPtr<Standard_Address>;
-//
-// SKIPPED: **Source:** `MeshVS_DataSource.hxx`:153 - `MeshVS_DataSource::GetGroupAddr`
-//   method: This method returns pointer which represents group data structure.
-//   method: This address will be saved in MeshVS_MeshOwner, so that you can access to data structure fast
-//   method: by the method Owner(). In the redefined method you can return NULL.
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn get_group_addr(&self, ID: i32) -> OwnedPtr<Standard_Address>;
-//
 
 // ========================
 // From MeshVS_DataSource3D.hxx
@@ -1585,6 +1588,13 @@ impl DeformedDataSource {
         }
     }
 
+    /// **Source:** `MeshVS_DeformedDataSource.hxx`:65 - `MeshVS_DeformedDataSource::GetAddr()`
+    pub unsafe fn get_addr(&self, ID: i32, IsElement: bool) -> *mut std::ffi::c_void {
+        unsafe {
+            crate::ffi::MeshVS_DeformedDataSource_get_addr(self as *const Self, ID, IsElement)
+        }
+    }
+
     /// **Source:** `MeshVS_DeformedDataSource.hxx`:69 - `MeshVS_DeformedDataSource::GetNodesByElement()`
     pub fn get_nodes_by_element(
         &self,
@@ -1931,12 +1941,6 @@ impl HandleMeshVSDeformedDataSource {
         }
     }
 }
-
-// ── Skipped symbols for DeformedDataSource (1 total) ──
-// SKIPPED: **Source:** `MeshVS_DeformedDataSource.hxx`:65 - `MeshVS_DeformedDataSource::GetAddr`
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn get_addr(&self, ID: i32, IsElement: bool) -> OwnedPtr<Standard_Address>;
-//
 
 // ========================
 // From MeshVS_Drawer.hxx
@@ -4496,6 +4500,51 @@ unsafe impl crate::CppDeletable for MeshEntityOwner {
 }
 
 impl MeshEntityOwner {
+    /// **Source:** `MeshVS_MeshEntityOwner.hxx`:35 - `MeshVS_MeshEntityOwner::MeshVS_MeshEntityOwner()`
+    pub unsafe fn new_selectableobjectptr_int_address_entitytype_int_bool(
+        SelObj: &crate::select_mgr::SelectableObject,
+        ID: i32,
+        MeshEntity: *mut std::ffi::c_void,
+        Type: crate::mesh_vs::EntityType,
+        Priority: i32,
+        IsGroup: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::MeshVS_MeshEntityOwner_ctor_selectableobjectptr_int_address_entitytype_int_bool(SelObj as *const _, ID, MeshEntity, Type.into(), Priority, IsGroup))
+        }
+    }
+
+    /// **Source:** `MeshVS_MeshEntityOwner.hxx`:35 - `MeshVS_MeshEntityOwner::MeshVS_MeshEntityOwner()`
+    pub unsafe fn new_selectableobjectptr_int_address_entitytype_int(
+        SelObj: &crate::select_mgr::SelectableObject,
+        ID: i32,
+        MeshEntity: *mut std::ffi::c_void,
+        Type: crate::mesh_vs::EntityType,
+        Priority: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_selectableobjectptr_int_address_entitytype_int_bool(
+            SelObj, ID, MeshEntity, Type, Priority, false,
+        )
+    }
+
+    /// **Source:** `MeshVS_MeshEntityOwner.hxx`:35 - `MeshVS_MeshEntityOwner::MeshVS_MeshEntityOwner()`
+    pub unsafe fn new_selectableobjectptr_int_address_entitytype(
+        SelObj: &crate::select_mgr::SelectableObject,
+        ID: i32,
+        MeshEntity: *mut std::ffi::c_void,
+        Type: crate::mesh_vs::EntityType,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_selectableobjectptr_int_address_entitytype_int_bool(
+            SelObj, ID, MeshEntity, Type, 0, false,
+        )
+    }
+
+    /// **Source:** `MeshVS_MeshEntityOwner.hxx`:43 - `MeshVS_MeshEntityOwner::Owner()`
+    /// Returns an address of element or node data structure
+    pub unsafe fn owner(&self) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::MeshVS_MeshEntityOwner_owner(self as *const Self) }
+    }
+
     /// **Source:** `MeshVS_MeshEntityOwner.hxx`:46 - `MeshVS_MeshEntityOwner::Type()`
     /// Returns type of element or node data structure
     pub fn type_(&self) -> crate::mesh_vs::EntityType {
@@ -4868,17 +4917,6 @@ impl HandleMeshVSMeshEntityOwner {
         }
     }
 }
-
-// ── Skipped symbols for MeshEntityOwner (2 total) ──
-// SKIPPED: **Source:** `MeshVS_MeshEntityOwner.hxx`:35 - `MeshVS_MeshEntityOwner::MeshVS_MeshEntityOwner`
-//   Reason: param 'MeshEntity' uses unknown type 'Standard_Address'
-//   // pub fn new_selectableobjectptr_int_address_entitytype_int_bool(SelObj: *const SelectableObject, ID: i32, MeshEntity: Address, Type: &EntityType, Priority: i32, IsGroup: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `MeshVS_MeshEntityOwner.hxx`:43 - `MeshVS_MeshEntityOwner::Owner`
-//   method: Returns an address of element or node data structure
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn owner(&self) -> OwnedPtr<Standard_Address>;
-//
 
 // ========================
 // From MeshVS_MeshOwner.hxx

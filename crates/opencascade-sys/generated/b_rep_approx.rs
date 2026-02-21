@@ -5175,6 +5175,36 @@ impl TheMultiLineOfApprox {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_TheMultiLineOfApprox_ctor()) }
     }
 
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:48 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
+    /// The class SvSurfaces is used when the approximation algorithm
+    /// needs some extra points on the line <line>.
+    /// A New line  is then created which shares the same surfaces and functions.
+    /// SvSurfaces is a deferred class which allows several implementations of
+    /// this  algorithm with different surfaces (bi-parametric ones, or
+    /// implicit and biparametric ones)
+    pub unsafe fn new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(
+        line: &crate::ffi::HandleBRepApproxApproxLine,
+        PtrSvSurfaces: *mut std::ffi::c_void,
+        NbP3d: i32,
+        NbP2d: i32,
+        ApproxU1V1: bool,
+        ApproxU2V2: bool,
+        xo: f64,
+        yo: f64,
+        zo: f64,
+        u1o: f64,
+        v1o: f64,
+        u2o: f64,
+        v2o: f64,
+        P2DOnFirst: bool,
+        IndMin: i32,
+        IndMax: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_TheMultiLineOfApprox_ctor_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(line, PtrSvSurfaces, NbP3d, NbP2d, ApproxU1V1, ApproxU2V2, xo, yo, zo, u1o, v1o, u2o, v2o, P2DOnFirst, IndMin, IndMax))
+        }
+    }
+
     /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:66 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
     /// No Extra points will be added on the current line
     pub fn new_handlebrepapproxapproxline_int2_bool2_real7_bool_int2(
@@ -5197,6 +5227,93 @@ impl TheMultiLineOfApprox {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepApprox_TheMultiLineOfApprox_ctor_handlebrepapproxapproxline_int2_bool2_real7_bool_int2(line, NbP3d, NbP2d, ApproxU1V1, ApproxU2V2, xo, yo, zo, u1o, v1o, u2o, v2o, P2DOnFirst, IndMin, IndMax))
         }
+    }
+
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:48 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
+    /// The class SvSurfaces is used when the approximation algorithm
+    /// needs some extra points on the line <line>.
+    /// A New line  is then created which shares the same surfaces and functions.
+    /// SvSurfaces is a deferred class which allows several implementations of
+    /// this  algorithm with different surfaces (bi-parametric ones, or
+    /// implicit and biparametric ones)
+    pub unsafe fn new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int(
+        line: &crate::ffi::HandleBRepApproxApproxLine,
+        PtrSvSurfaces: *mut std::ffi::c_void,
+        NbP3d: i32,
+        NbP2d: i32,
+        ApproxU1V1: bool,
+        ApproxU2V2: bool,
+        xo: f64,
+        yo: f64,
+        zo: f64,
+        u1o: f64,
+        v1o: f64,
+        u2o: f64,
+        v2o: f64,
+        P2DOnFirst: bool,
+        IndMin: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(
+            line,
+            PtrSvSurfaces,
+            NbP3d,
+            NbP2d,
+            ApproxU1V1,
+            ApproxU2V2,
+            xo,
+            yo,
+            zo,
+            u1o,
+            v1o,
+            u2o,
+            v2o,
+            P2DOnFirst,
+            IndMin,
+            0,
+        )
+    }
+
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:48 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
+    /// The class SvSurfaces is used when the approximation algorithm
+    /// needs some extra points on the line <line>.
+    /// A New line  is then created which shares the same surfaces and functions.
+    /// SvSurfaces is a deferred class which allows several implementations of
+    /// this  algorithm with different surfaces (bi-parametric ones, or
+    /// implicit and biparametric ones)
+    pub unsafe fn new_handlebrepapproxapproxline_address_int2_bool2_real7_bool(
+        line: &crate::ffi::HandleBRepApproxApproxLine,
+        PtrSvSurfaces: *mut std::ffi::c_void,
+        NbP3d: i32,
+        NbP2d: i32,
+        ApproxU1V1: bool,
+        ApproxU2V2: bool,
+        xo: f64,
+        yo: f64,
+        zo: f64,
+        u1o: f64,
+        v1o: f64,
+        u2o: f64,
+        v2o: f64,
+        P2DOnFirst: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(
+            line,
+            PtrSvSurfaces,
+            NbP3d,
+            NbP2d,
+            ApproxU1V1,
+            ApproxU2V2,
+            xo,
+            yo,
+            zo,
+            u1o,
+            v1o,
+            u2o,
+            v2o,
+            P2DOnFirst,
+            0,
+            0,
+        )
     }
 
     /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:66 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
@@ -5424,15 +5541,6 @@ impl TheMultiLineOfApprox {
         unsafe { crate::ffi::BRepApprox_TheMultiLineOfApprox_dump(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for TheMultiLineOfApprox (1 total) ──
-// SKIPPED: **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:48 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox`
-//   constructor: The class SvSurfaces is used when the approximation algorithm
-//   constructor: needs some extra points on the line <line>.
-//   constructor: A New line  is then created which shares the same surfaces and functions.
-//   Reason: param 'PtrSvSurfaces' uses unknown type 'Standard_Address'
-//   // pub fn new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(line: &HandleApproxLine, PtrSvSurfaces: Address, NbP3d: i32, NbP2d: i32, ApproxU1V1: bool, ApproxU2V2: bool, xo: f64, yo: f64, zo: f64, u1o: f64, v1o: f64, u2o: f64, v2o: f64, P2DOnFirst: bool, IndMin: i32, IndMax: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From BRepApprox_TheMultiLineToolOfApprox.hxx

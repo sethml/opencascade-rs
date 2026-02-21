@@ -5268,6 +5268,33 @@ impl OpenVRSession {
         unsafe { crate::ffi::Aspect_OpenVRSession_process_events(self as *mut Self) }
     }
 
+    /// **Source:** `Aspect_OpenVRSession.hxx`:75 - `Aspect_OpenVRSession::SubmitEye()`
+    /// Submit texture eye to XR Composer.
+    /// @param[in] theTexture      texture handle
+    /// @param[in] theGraphicsLib  graphics library in which texture handle is defined
+    /// @param[in] theColorSpace   texture color space;
+    /// sRGB means no color conversion by composer;
+    /// Linear means to sRGB color conversion by composer
+    /// @param[in] theEye  eye to display
+    /// @return FALSE on error
+    pub unsafe fn submit_eye(
+        &mut self,
+        theTexture: *mut std::ffi::c_void,
+        theGraphicsLib: crate::aspect::GraphicsLibrary,
+        theColorSpace: crate::aspect::ColorSpace,
+        theEye: crate::aspect::Eye,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Aspect_OpenVRSession_submit_eye(
+                self as *mut Self,
+                theTexture,
+                theGraphicsLib.into(),
+                theColorSpace.into(),
+                theEye.into(),
+            )
+        }
+    }
+
     /// **Source:** `Aspect_OpenVRSession.hxx`:81 - `Aspect_OpenVRSession::GetString()`
     /// Query information.
     pub fn get_string(
@@ -5638,15 +5665,6 @@ impl HandleAspectOpenVRSession {
         }
     }
 }
-
-// ── Skipped symbols for OpenVRSession (1 total) ──
-// SKIPPED: **Source:** `Aspect_OpenVRSession.hxx`:75 - `Aspect_OpenVRSession::SubmitEye`
-//   method: Submit texture eye to XR Composer.
-//   method: @param[in] theTexture      texture handle
-//   method: @param[in] theGraphicsLib  graphics library in which texture handle is defined
-//   Reason: param 'theTexture' uses unknown type 'void*'
-//   // pub fn submit_eye(&mut self, theTexture: *mut void, theGraphicsLib: GraphicsLibrary, theColorSpace: ColorSpace, theEye: Eye) -> bool;
-//
 
 // ========================
 // From Aspect_RectangularGrid.hxx
@@ -8532,6 +8550,33 @@ impl XRSession {
         unsafe { crate::ffi::Aspect_XRSession_process_events(self as *mut Self) }
     }
 
+    /// **Source:** `Aspect_XRSession.hxx`:95 - `Aspect_XRSession::SubmitEye()`
+    /// Submit texture eye to XR Composer.
+    /// @param[in] theTexture      texture handle
+    /// @param[in] theGraphicsLib  graphics library in which texture handle is defined
+    /// @param[in] theColorSpace   texture color space;
+    /// sRGB means no color conversion by composer;
+    /// Linear means to sRGB color conversion by composer
+    /// @param[in] theEye  eye to display
+    /// @return FALSE on error
+    pub unsafe fn submit_eye(
+        &mut self,
+        theTexture: *mut std::ffi::c_void,
+        theGraphicsLib: crate::aspect::GraphicsLibrary,
+        theColorSpace: crate::aspect::ColorSpace,
+        theEye: crate::aspect::Eye,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Aspect_XRSession_submit_eye(
+                self as *mut Self,
+                theTexture,
+                theGraphicsLib.into(),
+                theColorSpace.into(),
+                theEye.into(),
+            )
+        }
+    }
+
     /// **Source:** `Aspect_XRSession.hxx`:101 - `Aspect_XRSession::UnitFactor()`
     /// Return unit scale factor defined as scale factor for m (meters); 1.0 by default.
     pub fn unit_factor(&self) -> f64 {
@@ -8901,14 +8946,7 @@ impl HandleAspectXRSession {
     }
 }
 
-// ── Skipped symbols for XRSession (2 total) ──
-// SKIPPED: **Source:** `Aspect_XRSession.hxx`:95 - `Aspect_XRSession::SubmitEye`
-//   method: Submit texture eye to XR Composer.
-//   method: @param[in] theTexture      texture handle
-//   method: @param[in] theGraphicsLib  graphics library in which texture handle is defined
-//   Reason: param 'theTexture' uses unknown type 'void*'
-//   // pub fn submit_eye(&mut self, theTexture: *mut void, theGraphicsLib: GraphicsLibrary, theColorSpace: ColorSpace, theEye: Eye) -> bool;
-//
+// ── Skipped symbols for XRSession (1 total) ──
 // SKIPPED: **Source:** `Aspect_XRSession.hxx`:121 - `Aspect_XRSession::ProjectionFrustum`
 //   method: Return projection frustum.
 //   method: @sa HasProjectionFrustums().

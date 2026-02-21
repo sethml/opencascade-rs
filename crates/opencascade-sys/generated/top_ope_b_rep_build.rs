@@ -102,6 +102,61 @@ impl Area1dBuilder {
         }
     }
 
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:53 - `TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub unsafe fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi::HandleTopOpeBRepBuildLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Area1dBuilder_add_loop_to_listof_loop(
+                self as *const Self,
+                L,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:58 - `TopOpeBRepBuild_Area1dBuilder::REM_Loop_FROM_LISTOFLoop()`
+    pub unsafe fn rem_loop_from_listof_loop(
+        &self,
+        ITLOL: &mut crate::ffi::TopOpeBRepBuild_ListIteratorOfListOfLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Area1dBuilder_rem_loop_from_listof_loop(
+                self as *const Self,
+                ITLOL,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:63 - `TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub unsafe fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        LOL2: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Area1dBuilder_add_listof_loop_to_listof_loop(
+                self as *const Self,
+                LOL1,
+                LOL2,
+                s,
+                s1,
+                s2,
+            )
+        }
+    }
+
     /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:70 - `TopOpeBRepBuild_Area1dBuilder::DumpList()`
     pub fn dump_list(L: &crate::ffi::TopOpeBRepBuild_ListOfLoop) {
         unsafe { crate::ffi::TopOpeBRepBuild_Area1dBuilder_dump_list(L) }
@@ -160,20 +215,6 @@ impl Area1dBuilder {
         unsafe { &*(crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_Loop(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for Area1dBuilder (3 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:53 - `TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop`
-//   Reason: param 's' uses unknown type 'Standard_Address'
-//   // pub fn add_loop_to_listof_loop(&self, L: &HandleLoop, LOL: &mut ListOfLoop, s: Address);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:58 - `TopOpeBRepBuild_Area1dBuilder::REM_Loop_FROM_LISTOFLoop`
-//   Reason: param 's' uses unknown type 'Standard_Address'
-//   // pub fn rem_loop_from_listof_loop(&self, ITLOL: &mut ListIteratorOfListOfLoop, LOL: &mut ListOfLoop, s: Address);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:63 - `TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop`
-//   Reason: param 's' uses unknown type 'Standard_Address'
-//   // pub fn add_listof_loop_to_listof_loop(&self, LOL1: &mut ListOfLoop, LOL2: &mut ListOfLoop, s: Address, s1: Address, s2: Address);
-//
 
 // ========================
 // From TopOpeBRepBuild_Area2dBuilder.hxx
@@ -299,6 +340,61 @@ impl Area2dBuilder {
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
     pub fn loop_(&self) -> &crate::ffi::HandleTopOpeBRepBuildLoop {
         unsafe { &*(crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_Loop(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub unsafe fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi::HandleTopOpeBRepBuildLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                self as *const Self,
+                L,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop()`
+    pub unsafe fn rem_loop_from_listof_loop(
+        &self,
+        ITLOL: &mut crate::ffi::TopOpeBRepBuild_ListIteratorOfListOfLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
+                self as *const Self,
+                ITLOL,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub unsafe fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        LOL2: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+                self as *const Self,
+                LOL1,
+                LOL2,
+                s,
+                s1,
+                s2,
+            )
+        }
     }
 }
 
@@ -427,6 +523,61 @@ impl Area3dBuilder {
     pub fn loop_(&self) -> &crate::ffi::HandleTopOpeBRepBuildLoop {
         unsafe { &*(crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_Loop(self as *const Self)) }
     }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub unsafe fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi::HandleTopOpeBRepBuildLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                self as *const Self,
+                L,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop()`
+    pub unsafe fn rem_loop_from_listof_loop(
+        &self,
+        ITLOL: &mut crate::ffi::TopOpeBRepBuild_ListIteratorOfListOfLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
+                self as *const Self,
+                ITLOL,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub unsafe fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        LOL2: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+                self as *const Self,
+                LOL1,
+                LOL2,
+                s,
+                s1,
+                s2,
+            )
+        }
+    }
 }
 
 // ========================
@@ -548,21 +699,62 @@ impl AreaBuilder {
     pub fn loop_(&self) -> &crate::ffi::HandleTopOpeBRepBuildLoop {
         unsafe { &*(crate::ffi::TopOpeBRepBuild_AreaBuilder_loop_(self as *const Self)) }
     }
-}
 
-// ── Skipped symbols for AreaBuilder (3 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop`
-//   Reason: param 's' uses unknown type 'Standard_Address'
-//   // pub fn add_loop_to_listof_loop(&self, L: &HandleLoop, LOL: &mut ListOfLoop, s: Address);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop`
-//   Reason: param 's' uses unknown type 'Standard_Address'
-//   // pub fn rem_loop_from_listof_loop(&self, ITLOL: &mut ListIteratorOfListOfLoop, LOL: &mut ListOfLoop, s: Address);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop`
-//   Reason: param 's' uses unknown type 'Standard_Address'
-//   // pub fn add_listof_loop_to_listof_loop(&self, LOL1: &mut ListOfLoop, LOL2: &mut ListOfLoop, s: Address, s1: Address, s2: Address);
-//
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub unsafe fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi::HandleTopOpeBRepBuildLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_AreaBuilder_add_loop_to_listof_loop(
+                self as *const Self,
+                L,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop()`
+    pub unsafe fn rem_loop_from_listof_loop(
+        &self,
+        ITLOL: &mut crate::ffi::TopOpeBRepBuild_ListIteratorOfListOfLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_AreaBuilder_rem_loop_from_listof_loop(
+                self as *const Self,
+                ITLOL,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub unsafe fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        LOL2: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_AreaBuilder_add_listof_loop_to_listof_loop(
+                self as *const Self,
+                LOL1,
+                LOL2,
+                s,
+                s1,
+                s2,
+            )
+        }
+    }
+}
 
 // ========================
 // From TopOpeBRepBuild_BlockBuilder.hxx
@@ -2423,6 +2615,21 @@ impl Builder {
         unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_ls(self as *const Self, L) }
     }
 
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:653 - `TopOpeBRepBuild_Builder::GdumpSHA()`
+    pub unsafe fn gdump_sha(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_sha(self as *const Self, S, str) }
+    }
+
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:655 - `TopOpeBRepBuild_Builder::GdumpSHAORI()`
+    pub unsafe fn gdump_shaori(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_shaori(self as *const Self, S, str) }
+    }
+
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:657 - `TopOpeBRepBuild_Builder::GdumpSHAORIGEO()`
+    pub unsafe fn gdump_shaorigeo(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_shaorigeo(self as *const Self, S, str) }
+    }
+
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:660 - `TopOpeBRepBuild_Builder::GdumpSHASTA()`
     pub fn gdump_shasta_int_state_asciistring2(
         &self,
@@ -2482,6 +2689,30 @@ impl Builder {
                 c,
             )
         }
+    }
+
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:677 - `TopOpeBRepBuild_Builder::GdumpEDG()`
+    pub unsafe fn gdump_edg(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_edg(self as *const Self, S, str) }
+    }
+
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:679 - `TopOpeBRepBuild_Builder::GdumpEDGVER()`
+    pub unsafe fn gdump_edgver(
+        &self,
+        E: &crate::topo_ds::Shape,
+        V: &crate::topo_ds::Shape,
+        str: *mut std::ffi::c_void,
+    ) {
+        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_edgver(self as *const Self, E, V, str) }
+    }
+
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:683 - `TopOpeBRepBuild_Builder::GdumpSAMDOM()`
+    pub unsafe fn gdump_samdom(
+        &self,
+        L: &crate::ffi::TopTools_ListOfShape,
+        str: *mut std::ffi::c_void,
+    ) {
+        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_samdom(self as *const Self, L, str) }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:686 - `TopOpeBRepBuild_Builder::GdumpEXP()`
@@ -2678,37 +2909,13 @@ impl Builder {
     }
 }
 
-// ── Skipped symbols for Builder (7 total) ──
+// ── Skipped symbols for Builder (1 total) ──
 // SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:235 - `TopOpeBRepBuild_Builder::ChangeSplit`
 //   method: Returns a ref.on the list of shapes connected to <S> as
 //   method: <TB> split parts of <S>.
 //   method: Mark <S> as split in <TB> parts.
 //   Reason: returns &mut with reference params (ambiguous lifetimes)
 //   // pub fn change_split(&mut self, S: &Shape, TB: State) -> &mut ListOfShape;
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:653 - `TopOpeBRepBuild_Builder::GdumpSHA`
-//   Reason: param 'str' uses unknown type 'Standard_Address'
-//   // pub fn gdump_sha(&self, S: &Shape, str: Address);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:655 - `TopOpeBRepBuild_Builder::GdumpSHAORI`
-//   Reason: param 'str' uses unknown type 'Standard_Address'
-//   // pub fn gdump_shaori(&self, S: &Shape, str: Address);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:657 - `TopOpeBRepBuild_Builder::GdumpSHAORIGEO`
-//   Reason: param 'str' uses unknown type 'Standard_Address'
-//   // pub fn gdump_shaorigeo(&self, S: &Shape, str: Address);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:677 - `TopOpeBRepBuild_Builder::GdumpEDG`
-//   Reason: param 'str' uses unknown type 'Standard_Address'
-//   // pub fn gdump_edg(&self, S: &Shape, str: Address);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:679 - `TopOpeBRepBuild_Builder::GdumpEDGVER`
-//   Reason: param 'str' uses unknown type 'Standard_Address'
-//   // pub fn gdump_edgver(&self, E: &Shape, V: &Shape, str: Address);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_Builder.hxx`:683 - `TopOpeBRepBuild_Builder::GdumpSAMDOM`
-//   Reason: param 'str' uses unknown type 'Standard_Address'
-//   // pub fn gdump_samdom(&self, L: &ListOfShape, str: Address);
 //
 
 // ========================
@@ -4646,6 +4853,31 @@ impl Builder1 {
         unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpLS(self as *const Self, L) }
     }
 
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:653 - `TopOpeBRepBuild_Builder::GdumpSHA()`
+    pub unsafe fn gdump_sha(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHA(self as *const Self, S, str)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:655 - `TopOpeBRepBuild_Builder::GdumpSHAORI()`
+    pub unsafe fn gdump_shaori(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHAORI(self as *const Self, S, str)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:657 - `TopOpeBRepBuild_Builder::GdumpSHAORIGEO()`
+    pub unsafe fn gdump_shaorigeo(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHAORIGEO(
+                self as *const Self,
+                S,
+                str,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:660 - `TopOpeBRepBuild_Builder::GdumpSHASTA()`
     pub fn gdump_shasta(
         &self,
@@ -4662,6 +4894,41 @@ impl Builder1 {
                 a,
                 b,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:677 - `TopOpeBRepBuild_Builder::GdumpEDG()`
+    pub unsafe fn gdump_edg(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpEDG(self as *const Self, S, str)
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:679 - `TopOpeBRepBuild_Builder::GdumpEDGVER()`
+    pub unsafe fn gdump_edgver(
+        &self,
+        E: &crate::topo_ds::Shape,
+        V: &crate::topo_ds::Shape,
+        str: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpEDGVER(
+                self as *const Self,
+                E,
+                V,
+                str,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:683 - `TopOpeBRepBuild_Builder::GdumpSAMDOM()`
+    pub unsafe fn gdump_samdom(
+        &self,
+        L: &crate::ffi::TopTools_ListOfShape,
+        str: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSAMDOM(self as *const Self, L, str)
         }
     }
 
@@ -5147,6 +5414,61 @@ impl EdgeBuilder {
         }
     }
 
+    /// Inherited: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:53 - `TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub unsafe fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi::HandleTopOpeBRepBuildLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                self as *const Self,
+                L,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:58 - `TopOpeBRepBuild_Area1dBuilder::REM_Loop_FROM_LISTOFLoop()`
+    pub unsafe fn rem_loop_from_listof_loop(
+        &self,
+        ITLOL: &mut crate::ffi::TopOpeBRepBuild_ListIteratorOfListOfLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
+                self as *const Self,
+                ITLOL,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:63 - `TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub unsafe fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        LOL2: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+                self as *const Self,
+                LOL1,
+                LOL2,
+                s,
+                s1,
+                s2,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
         unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_InitArea(self as *mut Self) }
@@ -5345,6 +5667,61 @@ impl FaceAreaBuilder {
     pub fn loop_(&self) -> &crate::ffi::HandleTopOpeBRepBuildLoop {
         unsafe {
             &*(crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_Loop(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub unsafe fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi::HandleTopOpeBRepBuildLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                self as *const Self,
+                L,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop()`
+    pub unsafe fn rem_loop_from_listof_loop(
+        &self,
+        ITLOL: &mut crate::ffi::TopOpeBRepBuild_ListIteratorOfListOfLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
+                self as *const Self,
+                ITLOL,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub unsafe fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        LOL2: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+                self as *const Self,
+                LOL1,
+                LOL2,
+                s,
+                s1,
+                s2,
+            )
         }
     }
 }
@@ -6098,6 +6475,11 @@ impl GTopo {
         unsafe { crate::ffi::TopOpeBRepBuild_GTopo_dump_type(self as *const Self, OS) }
     }
 
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:106 - `TopOpeBRepBuild_GTopo::Dump()`
+    pub unsafe fn dump(&self, OS: &mut crate::ffi::Standard_OStream, s: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_dump(self as *const Self, OS, s) }
+    }
+
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:108 - `TopOpeBRepBuild_GTopo::StatesON()`
     pub fn states_on(&self, s1: &mut crate::top_abs::State, s2: &mut crate::top_abs::State) {
         let mut s1_i32_: i32 = (*s1).into();
@@ -6152,12 +6534,6 @@ impl GTopo {
         unsafe { crate::ffi::TopOpeBRepBuild_GTopo_dump_ssb(OS, s1.into(), s2.into(), b) }
     }
 }
-
-// ── Skipped symbols for GTopo (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_GTopo.hxx`:106 - `TopOpeBRepBuild_GTopo::Dump`
-//   Reason: param 's' uses unknown type 'Standard_Address'
-//   // pub fn dump(&self, OS: &mut OStream, s: Address);
-//
 
 // ========================
 // From TopOpeBRepBuild_HBuilder.hxx
@@ -7956,8 +8332,15 @@ impl ShellFaceSet {
     /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:46 - `TopOpeBRepBuild_ShellFaceSet::TopOpeBRepBuild_ShellFaceSet()`
     /// Creates a ShellFaceSet to build blocks of faces
     /// connected by edges.
-    pub unsafe fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_ShellFaceSet_ctor_shape(S)) }
+    pub unsafe fn new_shape_address(
+        S: &crate::topo_ds::Shape,
+        Addr: *mut std::ffi::c_void,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_ShellFaceSet_ctor_shape_address(
+                S, Addr,
+            ))
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:49 - `TopOpeBRepBuild_ShellFaceSet::Solid()`
@@ -8271,14 +8654,6 @@ impl ShellFaceSet {
     }
 }
 
-// ── Skipped symbols for ShellFaceSet (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:46 - `TopOpeBRepBuild_ShellFaceSet::TopOpeBRepBuild_ShellFaceSet`
-//   constructor: Creates a ShellFaceSet to build blocks of faces
-//   constructor: connected by edges.
-//   Reason: param 'Addr' uses unknown type 'Standard_Address'
-//   // pub fn new_shape_address(S: &Shape, Addr: Address) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From TopOpeBRepBuild_ShellToSolid.hxx
 // ========================
@@ -8487,6 +8862,61 @@ impl SolidAreaBuilder {
     pub fn loop_(&self) -> &crate::ffi::HandleTopOpeBRepBuildLoop {
         unsafe {
             &*(crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_Loop(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub unsafe fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi::HandleTopOpeBRepBuildLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                self as *const Self,
+                L,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop()`
+    pub unsafe fn rem_loop_from_listof_loop(
+        &self,
+        ITLOL: &mut crate::ffi::TopOpeBRepBuild_ListIteratorOfListOfLoop,
+        LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
+                self as *const Self,
+                ITLOL,
+                LOL,
+                s,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub unsafe fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        LOL2: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+                self as *const Self,
+                LOL1,
+                LOL2,
+                s,
+                s1,
+                s2,
+            )
         }
     }
 }
@@ -9261,8 +9691,15 @@ impl WireEdgeSet {
     /// Creates a WireEdgeSet to build edges connected by vertices
     /// on face F. Edges of the WireEdgeSet must have a representation
     /// on surface of face F.
-    pub unsafe fn new_shape(F: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_WireEdgeSet_ctor_shape(F)) }
+    pub unsafe fn new_shape_address(
+        F: &crate::topo_ds::Shape,
+        Addr: *mut std::ffi::c_void,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_WireEdgeSet_ctor_shape_address(
+                F, Addr,
+            ))
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:52 - `TopOpeBRepBuild_WireEdgeSet::Face()`
@@ -9572,15 +10009,6 @@ impl WireEdgeSet {
         unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DEBNumber(self as *mut Self, I) }
     }
 }
-
-// ── Skipped symbols for WireEdgeSet (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:48 - `TopOpeBRepBuild_WireEdgeSet::TopOpeBRepBuild_WireEdgeSet`
-//   constructor: Creates a WireEdgeSet to build edges connected by vertices
-//   constructor: on face F. Edges of the WireEdgeSet must have a representation
-//   constructor: on surface of face F.
-//   Reason: param 'Addr' uses unknown type 'Standard_Address'
-//   // pub fn new_shape_address(F: &Shape, Addr: Address) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From TopOpeBRepBuild_WireToFace.hxx

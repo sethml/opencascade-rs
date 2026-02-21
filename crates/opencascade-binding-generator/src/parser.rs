@@ -1620,8 +1620,8 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "unsigned char" | "uint8_t" | "Standard_Byte" | "Standard_Utf8UChar" => Some(Type::U8),
         "signed char" | "int8_t" => Some(Type::I8),
         "bool" => Some(Type::Bool),
-        // Standard_Address is void* - can't be bound through the FFI, but we need to recognize it
-        // so methods using it can be filtered out. Using a special class name that is_void_ptr() checks for.
+        // Standard_Address is void* — bound as *mut c_void in unsafe functions.
+        // Represented as Type::Class("Standard_Address") so is_void_ptr() can detect it.
         "Standard_Address" => Some(Type::Class("Standard_Address".to_string())),
         // Stream types - these can't be bound through the FFI
         "Standard_OStream" => Some(Type::Class("Standard_OStream".to_string())),

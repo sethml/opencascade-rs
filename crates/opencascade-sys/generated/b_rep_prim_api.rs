@@ -344,6 +344,12 @@ impl MakeCone {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:104 - `BRepPrimAPI_MakeCone::OneAxis()`
+    /// Returns the algorithm.
+    pub unsafe fn one_axis(&mut self) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::BRepPrimAPI_MakeCone_one_axis(self as *mut Self) }
+    }
+
     /// **Source:** `BRepPrimAPI_MakeCone.hxx`:107 - `BRepPrimAPI_MakeCone::Cone()`
     /// Returns the algorithm.
     pub fn cone(&mut self) -> &mut crate::b_rep_prim::Cone {
@@ -451,13 +457,6 @@ impl MakeCone {
     }
 }
 
-// ── Skipped symbols for MakeCone (1 total) ──
-// SKIPPED: **Source:** `BRepPrimAPI_MakeCone.hxx`:104 - `BRepPrimAPI_MakeCone::OneAxis`
-//   method: Returns the algorithm.
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
-//
-
 // ========================
 // From BRepPrimAPI_MakeCylinder.hxx
 // ========================
@@ -547,6 +546,12 @@ impl MakeCylinder {
                 Axes, R, H, Angle,
             ))
         }
+    }
+
+    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:91 - `BRepPrimAPI_MakeCylinder::OneAxis()`
+    /// Returns the algorithm.
+    pub unsafe fn one_axis(&mut self) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::BRepPrimAPI_MakeCylinder_one_axis(self as *mut Self) }
     }
 
     /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:94 - `BRepPrimAPI_MakeCylinder::Cylinder()`
@@ -659,13 +664,6 @@ impl MakeCylinder {
         unsafe { crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Check(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeCylinder (1 total) ──
-// SKIPPED: **Source:** `BRepPrimAPI_MakeCylinder.hxx`:91 - `BRepPrimAPI_MakeCylinder::OneAxis`
-//   method: Returns the algorithm.
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
-//
 
 // ========================
 // From BRepPrimAPI_MakeHalfSpace.hxx
@@ -817,6 +815,13 @@ unsafe impl crate::CppDeletable for MakeOneAxis {
 }
 
 impl MakeOneAxis {
+    /// **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:37 - `BRepPrimAPI_MakeOneAxis::OneAxis()`
+    /// The inherited commands should provide the algorithm.
+    /// Returned as a pointer.
+    pub unsafe fn one_axis(&mut self) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::BRepPrimAPI_MakeOneAxis_one_axis(self as *mut Self) }
+    }
+
     /// **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:40 - `BRepPrimAPI_MakeOneAxis::Build()`
     /// Stores the solid in myShape.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
@@ -905,14 +910,6 @@ impl MakeOneAxis {
         unsafe { crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_Check(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeOneAxis (1 total) ──
-// SKIPPED: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:37 - `BRepPrimAPI_MakeOneAxis::OneAxis`
-//   method: The inherited commands should provide the algorithm.
-//   method: Returned as a pointer.
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
-//
 
 // ========================
 // From BRepPrimAPI_MakePrism.hxx
@@ -1596,6 +1593,12 @@ impl MakeRevolution {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:88 - `BRepPrimAPI_MakeRevolution::OneAxis()`
+    /// Returns the algorithm.
+    pub unsafe fn one_axis(&mut self) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::BRepPrimAPI_MakeRevolution_one_axis(self as *mut Self) }
+    }
+
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:91 - `BRepPrimAPI_MakeRevolution::Revolution()`
     /// Returns the algorithm.
     pub fn revolution(&mut self) -> &mut crate::b_rep_prim::Revolution {
@@ -1714,13 +1717,6 @@ impl MakeRevolution {
         unsafe { crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Check(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeRevolution (1 total) ──
-// SKIPPED: **Source:** `BRepPrimAPI_MakeRevolution.hxx`:88 - `BRepPrimAPI_MakeRevolution::OneAxis`
-//   method: Returns the algorithm.
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
-//
 
 // ========================
 // From BRepPrimAPI_MakeSphere.hxx
@@ -1915,6 +1911,12 @@ impl MakeSphere {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:140 - `BRepPrimAPI_MakeSphere::OneAxis()`
+    /// Returns the algorithm.
+    pub unsafe fn one_axis(&mut self) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::BRepPrimAPI_MakeSphere_one_axis(self as *mut Self) }
+    }
+
     /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:143 - `BRepPrimAPI_MakeSphere::Sphere()`
     /// Returns the algorithm.
     pub fn sphere(&mut self) -> &mut crate::b_rep_prim::Sphere {
@@ -2021,13 +2023,6 @@ impl MakeSphere {
         unsafe { crate::ffi::BRepPrimAPI_MakeSphere_inherited_Check(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeSphere (1 total) ──
-// SKIPPED: **Source:** `BRepPrimAPI_MakeSphere.hxx`:140 - `BRepPrimAPI_MakeSphere::OneAxis`
-//   method: Returns the algorithm.
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
-//
 
 // ========================
 // From BRepPrimAPI_MakeSweep.hxx
@@ -2311,6 +2306,12 @@ impl MakeTorus {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:131 - `BRepPrimAPI_MakeTorus::OneAxis()`
+    /// Returns the algorithm.
+    pub unsafe fn one_axis(&mut self) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::BRepPrimAPI_MakeTorus_one_axis(self as *mut Self) }
+    }
+
     /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:134 - `BRepPrimAPI_MakeTorus::Torus()`
     /// Returns the algorithm.
     pub fn torus(&mut self) -> &mut crate::b_rep_prim::Torus {
@@ -2417,13 +2418,6 @@ impl MakeTorus {
         unsafe { crate::ffi::BRepPrimAPI_MakeTorus_inherited_Check(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for MakeTorus (1 total) ──
-// SKIPPED: **Source:** `BRepPrimAPI_MakeTorus.hxx`:131 - `BRepPrimAPI_MakeTorus::OneAxis`
-//   method: Returns the algorithm.
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn one_axis(&mut self) -> OwnedPtr<Standard_Address>;
-//
 
 // ========================
 // From BRepPrimAPI_MakeWedge.hxx

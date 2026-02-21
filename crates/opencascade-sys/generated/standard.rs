@@ -6,12 +6,89 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `Standard.hxx`:45 - `Standard::Allocate`
+/// Allocates memory blocks
+/// theSize - bytes to  allocate
+pub unsafe fn allocate(theSize: usize) -> *mut std::ffi::c_void {
+    unsafe { crate::ffi::Standard_allocate(theSize) }
+}
+/// **Source:** `Standard.hxx`:49 - `Standard::AllocateOptimal`
+/// Allocates memory blocks
+/// theSize - bytes to  allocate
+pub unsafe fn allocate_optimal(theSize: usize) -> *mut std::ffi::c_void {
+    unsafe { crate::ffi::Standard_allocate_optimal(theSize) }
+}
+/// **Source:** `Standard.hxx`:53 - `Standard::Free`
+/// Deallocates memory blocks
+/// @param thePtr - previously allocated memory block to be freed
+pub unsafe fn free(thePtr: *mut std::ffi::c_void) {
+    unsafe { crate::ffi::Standard_free(thePtr) }
+}
+/// **Source:** `Standard.hxx`:67 - `Standard::Reallocate`
+/// Reallocates memory blocks
+/// theStorage - previously allocated memory block
+/// theNewSize - new size in bytes
+pub unsafe fn reallocate(
+    theStorage: *mut std::ffi::c_void,
+    theNewSize: usize,
+) -> *mut std::ffi::c_void {
+    unsafe { crate::ffi::Standard_reallocate(theStorage, theNewSize) }
+}
+/// **Source:** `Standard.hxx`:75 - `Standard::AllocateAligned`
+/// Allocates aligned memory blocks.
+/// Should be used with CPU instructions which require specific alignment.
+/// For example: SSE requires 16 bytes, AVX requires 32 bytes.
+/// @param theSize  bytes to allocate
+/// @param theAlign alignment in bytes
+pub unsafe fn allocate_aligned(theSize: usize, theAlign: usize) -> *mut std::ffi::c_void {
+    unsafe { crate::ffi::Standard_allocate_aligned(theSize, theAlign) }
+}
+/// **Source:** `Standard.hxx`:80 - `Standard::FreeAligned`
+/// Deallocates memory blocks
+/// @param thePtrAligned the memory block previously allocated with AllocateAligned()
+pub unsafe fn free_aligned(thePtrAligned: *mut std::ffi::c_void) {
+    unsafe { crate::ffi::Standard_free_aligned(thePtrAligned) }
+}
 /// **Source:** `Standard.hxx`:94 - `Standard::Purge`
 /// Deallocates the storage retained on the free list
 /// and clears the list.
 /// Returns non-zero if some memory has been actually freed.
 pub fn purge() -> i32 {
     unsafe { crate::ffi::Standard_purge() }
+}
+/// **Source:** `Standard.hxx`:112 - `Standard::StackTrace`
+/// Appends backtrace to a message buffer.
+/// Stack information might be incomplete in case of stripped binaries.
+/// Implementation details:
+/// - Not implemented for Android, iOS, QNX and UWP platforms.
+/// - On non-Windows platform, this function is a wrapper to backtrace() system call.
+/// - On Windows (Win32) platform, the function loads DbgHelp.dll dynamically,
+/// and no stack will be provided if this or companion libraries (SymSrv.dll, SrcSrv.dll, etc.)
+/// will not be found; .pdb symbols should be provided on Windows platform to retrieve a
+/// meaningful stack; only x86_64 CPU architecture is currently implemented.
+/// @param[in][out] theBuffer   message buffer to extend
+/// @param[in] theBufferSize  message buffer size
+/// @param[in] theNbTraces  maximum number of stack traces
+/// @param[in] theContext  optional platform-dependent frame context;
+/// in case of DbgHelp (Windows) should be a pointer to CONTEXT
+/// @param[in] theNbTopSkip  number of traces on top of the stack to skip
+/// @return TRUE on success
+pub unsafe fn stack_trace(
+    theBuffer: *mut std::ffi::c_char,
+    theBufferSize: i32,
+    theNbTraces: i32,
+    theContext: *mut std::ffi::c_void,
+    theNbTopSkip: i32,
+) -> bool {
+    unsafe {
+        crate::ffi::Standard_stack_trace(
+            theBuffer,
+            theBufferSize,
+            theNbTraces,
+            theContext,
+            theNbTopSkip,
+        )
+    }
 }
 
 /// Kind of key in Json string
@@ -4022,12 +4099,32 @@ impl Dump {
     /// @param thePointer a pointer
     /// @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped
     /// @return the string value
-    pub fn get_pointer_info(
+    pub fn get_pointer_info_handlestandardtransient_bool(
         thePointer: &crate::ffi::HandleStandardTransient,
         isShortInfo: bool,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_get_pointer_info(
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Standard_Dump_get_pointer_info_handlestandardtransient_bool(
+                    thePointer,
+                    isShortInfo,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Standard_Dump.hxx`:400 - `Standard_Dump::GetPointerInfo()`
+    /// Convert pointer to address of the pointer. If the handle is NULL, the result is an empty
+    /// string.
+    /// @param thePointer a pointer
+    /// @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped
+    /// @return the string value
+    pub unsafe fn get_pointer_info_voidptr_bool(
+        thePointer: *const std::ffi::c_void,
+        isShortInfo: bool,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_get_pointer_info_voidptr_bool(
                 thePointer,
                 isShortInfo,
             ))
@@ -4128,19 +4225,12 @@ impl Dump {
     }
 }
 
-// ── Skipped symbols for Dump (2 total) ──
+// ── Skipped symbols for Dump (1 total) ──
 // SKIPPED: **Source:** `Standard_Dump.hxx`:361 - `Standard_Dump::SplitJson`
 //   static_method: Converts stream into map of values.
 //   static_method: The one level stream example: 'key_1: value_1, key_2: value_2'
 //   Reason: has unbindable types: param 'theKeyToValues': unresolved template type (NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>&)
 //   // pub fn split_json(theStreamStr: &AsciiString, theKeyToValues: /* NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>& */) -> bool;
-//
-// SKIPPED: **Source:** `Standard_Dump.hxx`:400 - `Standard_Dump::GetPointerInfo`
-//   static_method: Convert pointer to address of the pointer. If the handle is NULL, the result is an empty
-//   static_method: string.
-//   static_method: @param thePointer a pointer
-//   Reason: param 'thePointer' uses unknown type 'const void*'
-//   // pub fn get_pointer_info(thePointer: *const void, isShortInfo: bool) -> OwnedPtr<TCollection_AsciiString>;
 //
 
 // ========================
@@ -7503,6 +7593,31 @@ impl MMgrOpt {
         Self::new_bool2_size_int_size(true, true, 200, 10000, 40000)
     }
 
+    /// **Source:** `Standard_MMgrOpt.hxx`:78 - `Standard_MMgrOpt::Allocate()`
+    /// Allocate aSize bytes; see class description above
+    pub unsafe fn allocate(&mut self, aSize: usize) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::Standard_MMgrOpt_allocate(self as *mut Self, aSize) }
+    }
+
+    /// **Source:** `Standard_MMgrOpt.hxx`:82 - `Standard_MMgrOpt::Reallocate()`
+    /// Reallocate previously allocated aPtr to a new size; new address is returned.
+    /// In case that aPtr is null, the function behaves exactly as Allocate.
+    pub unsafe fn reallocate(
+        &mut self,
+        thePtr: *mut std::ffi::c_void,
+        theSize: usize,
+    ) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::Standard_MMgrOpt_reallocate(self as *mut Self, thePtr, theSize) }
+    }
+
+    /// **Source:** `Standard_MMgrOpt.hxx`:88 - `Standard_MMgrOpt::Free()`
+    /// Free previously allocated block.
+    /// Note that block can not all blocks are released to the OS by this
+    /// method (see class description)
+    pub unsafe fn free(&mut self, thePtr: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::Standard_MMgrOpt_free(self as *mut Self, thePtr) }
+    }
+
     /// **Source:** `Standard_MMgrOpt.hxx`:92 - `Standard_MMgrOpt::Purge()`
     /// Release medium-sized blocks of memory in free lists to the system.
     /// Returns number of actually freed blocks
@@ -7529,26 +7644,6 @@ impl MMgrOpt {
     }
 }
 
-// ── Skipped symbols for MMgrOpt (3 total) ──
-// SKIPPED: **Source:** `Standard_MMgrOpt.hxx`:78 - `Standard_MMgrOpt::Allocate`
-//   method: Allocate aSize bytes; see class description above
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn allocate(&mut self, aSize: usize) -> OwnedPtr<Standard_Address>;
-//
-// SKIPPED: **Source:** `Standard_MMgrOpt.hxx`:82 - `Standard_MMgrOpt::Reallocate`
-//   method: Reallocate previously allocated aPtr to a new size; new address is returned.
-//   method: In case that aPtr is null, the function behaves exactly as Allocate.
-//   Reason: param 'thePtr' uses unknown type 'Standard_Address'
-//   // pub fn reallocate(&mut self, thePtr: Address, theSize: usize) -> OwnedPtr<Standard_Address>;
-//
-// SKIPPED: **Source:** `Standard_MMgrOpt.hxx`:88 - `Standard_MMgrOpt::Free`
-//   method: Free previously allocated block.
-//   method: Note that block can not all blocks are released to the OS by this
-//   method: method (see class description)
-//   Reason: param 'thePtr' uses unknown type 'Standard_Address'
-//   // pub fn free(&mut self, thePtr: Address);
-//
-
 // ========================
 // From Standard_MMgrRoot.hxx
 // ========================
@@ -7566,6 +7661,32 @@ unsafe impl crate::CppDeletable for MMgrRoot {
 }
 
 impl MMgrRoot {
+    /// **Source:** `Standard_MMgrRoot.hxx`:36 - `Standard_MMgrRoot::Allocate()`
+    /// Allocate specified number of bytes.
+    /// The actually allocated space should be rounded up to
+    /// double word size (4 bytes), as this is expected by implementation
+    /// of some classes in OCC (e.g. TCollection_AsciiString)
+    pub unsafe fn allocate(&mut self, theSize: usize) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::Standard_MMgrRoot_allocate(self as *mut Self, theSize) }
+    }
+
+    /// **Source:** `Standard_MMgrRoot.hxx`:40 - `Standard_MMgrRoot::Reallocate()`
+    /// Reallocate previously allocated memory to contain at least theSize bytes.
+    /// In case of success, new pointer is returned.
+    pub unsafe fn reallocate(
+        &mut self,
+        thePtr: *mut std::ffi::c_void,
+        theSize: usize,
+    ) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::Standard_MMgrRoot_reallocate(self as *mut Self, thePtr, theSize) }
+    }
+
+    /// **Source:** `Standard_MMgrRoot.hxx`:44 - `Standard_MMgrRoot::Free()`
+    /// Frees previously allocated memory at specified address.
+    pub unsafe fn free(&mut self, thePtr: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::Standard_MMgrRoot_free(self as *mut Self, thePtr) }
+    }
+
     /// **Source:** `Standard_MMgrRoot.hxx`:60 - `Standard_MMgrRoot::Purge()`
     /// Purge internally cached unused memory blocks (if any)
     /// by releasing them to the operating system.
@@ -7585,26 +7706,6 @@ impl MMgrRoot {
         unsafe { crate::ffi::Standard_MMgrRoot_purge(self as *mut Self, isDestroyed) }
     }
 }
-
-// ── Skipped symbols for MMgrRoot (3 total) ──
-// SKIPPED: **Source:** `Standard_MMgrRoot.hxx`:36 - `Standard_MMgrRoot::Allocate`
-//   method: Allocate specified number of bytes.
-//   method: The actually allocated space should be rounded up to
-//   method: double word size (4 bytes), as this is expected by implementation
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn allocate(&mut self, theSize: usize) -> OwnedPtr<Standard_Address>;
-//
-// SKIPPED: **Source:** `Standard_MMgrRoot.hxx`:40 - `Standard_MMgrRoot::Reallocate`
-//   method: Reallocate previously allocated memory to contain at least theSize bytes.
-//   method: In case of success, new pointer is returned.
-//   Reason: param 'thePtr' uses unknown type 'Standard_Address'
-//   // pub fn reallocate(&mut self, thePtr: Address, theSize: usize) -> OwnedPtr<Standard_Address>;
-//
-// SKIPPED: **Source:** `Standard_MMgrRoot.hxx`:44 - `Standard_MMgrRoot::Free`
-//   method: Frees previously allocated memory at specified address.
-//   Reason: param 'thePtr' uses unknown type 'Standard_Address'
-//   // pub fn free(&mut self, thePtr: Address);
-//
 
 // ========================
 // From Standard_MultiplyDefined.hxx

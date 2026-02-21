@@ -3184,6 +3184,11 @@ impl TopolTool {
         unsafe { crate::ffi::Adaptor3d_TopolTool_domain_is_infinite(self as *mut Self) }
     }
 
+    /// **Source:** `Adaptor3d_TopolTool.hxx`:133 - `Adaptor3d_TopolTool::Edge()`
+    pub unsafe fn edge(&self) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::Adaptor3d_TopolTool_edge(self as *const Self) }
+    }
+
     /// **Source:** `Adaptor3d_TopolTool.hxx`:141 - `Adaptor3d_TopolTool::SamplePnts()`
     /// Compute the sample-points for the intersections algorithms by adaptive algorithm for BSpline
     /// surfaces. For other surfaces algorithm is the same as in method ComputeSamplePoints(), but
@@ -3386,9 +3391,3 @@ impl HandleAdaptor3dTopolTool {
         }
     }
 }
-
-// ── Skipped symbols for TopolTool (1 total) ──
-// SKIPPED: **Source:** `Adaptor3d_TopolTool.hxx`:133 - `Adaptor3d_TopolTool::Edge`
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn edge(&self) -> OwnedPtr<Standard_Address>;
-//

@@ -1717,6 +1717,37 @@ impl Document {
         unsafe { crate::ffi::TDocStd_Document_recompute(self as *mut Self) }
     }
 
+    /// **Source:** `TDocStd_Document.hxx`:216 - `TDocStd_Document::Update()`
+    /// This method Update   will be called
+    /// to signal the end   of the modified references list.
+    /// The    document     should    be  recomputed     and
+    /// UpdateFromDocuments  should be called.  Update should
+    /// returns True in case  of success, false otherwise.  In
+    /// case of Failure, additional information can be given in
+    /// ErrorString.
+    /// Update the document by propagation
+    /// ==================================
+    /// Update   the    document    from   internal   stored
+    /// modifications.   If   you   want  to   undoing  this
+    /// operation, please call NewCommand before.
+    /// to change format (advanced programming)
+    /// ================
+    pub unsafe fn update(
+        &mut self,
+        aToDocument: &crate::ffi::HandleCDMDocument,
+        aReferenceIdentifier: i32,
+        aModifContext: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Document_update(
+                self as *mut Self,
+                aToDocument,
+                aReferenceIdentifier,
+                aModifContext,
+            )
+        }
+    }
+
     /// **Source:** `TDocStd_Document.hxx`:220 - `TDocStd_Document::StorageFormat()`
     pub fn storage_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
@@ -1965,6 +1996,16 @@ impl Document {
                 self as *const Self,
                 aReferenceIdentifier,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:148 - `CDM_Document::UpdateFromDocuments()`
+    pub unsafe fn update_from_documents(&self, aModifContext: *mut std::ffi::c_void) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_UpdateFromDocuments(
+                self as *const Self,
+                aModifContext,
+            )
         }
     }
 
@@ -2417,15 +2458,6 @@ impl HandleTDocStdDocument {
         }
     }
 }
-
-// ── Skipped symbols for Document (1 total) ──
-// SKIPPED: **Source:** `TDocStd_Document.hxx`:216 - `TDocStd_Document::Update`
-//   method: This method Update   will be called
-//   method: to signal the end   of the modified references list.
-//   method: The    document     should    be  recomputed     and
-//   Reason: param 'aModifContext' uses unknown type 'Standard_Address'
-//   // pub fn update(&mut self, aToDocument: &HandleDocument, aReferenceIdentifier: i32, aModifContext: Address);
-//
 
 // ========================
 // From TDocStd_Modified.hxx

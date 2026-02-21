@@ -1345,6 +1345,11 @@ impl MemManager {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOM_MemManager_ctor_int(aBlockSize)) }
     }
 
+    /// **Source:** `LDOM_MemManager.hxx`:43 - `LDOM_MemManager::Allocate()`
+    pub unsafe fn allocate(&mut self, aSize: i32) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::LDOM_MemManager_allocate(self as *mut Self, aSize) }
+    }
+
     /// **Source:** `LDOM_MemManager.hxx`:46 - `LDOM_MemManager::HashedAllocate()`
     pub fn hashed_allocate_charptr_int2(
         &mut self,
@@ -1526,12 +1531,6 @@ impl HandleLDOMMemManager {
         }
     }
 }
-
-// ── Skipped symbols for MemManager (1 total) ──
-// SKIPPED: **Source:** `LDOM_MemManager.hxx`:43 - `LDOM_MemManager::Allocate`
-//   Reason: return type 'void*' is unknown
-//   // pub fn allocate(&mut self, aSize: i32) -> *mut void;
-//
 
 // ========================
 // From LDOM_Node.hxx

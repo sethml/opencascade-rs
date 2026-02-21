@@ -1716,6 +1716,17 @@ impl BVHThreadPool_BVHThread {
         }
     }
 
+    /// Inherited: **Source:** `OSD_Thread.hxx`:70 - `OSD_Thread::Run()`
+    pub unsafe fn run(&mut self, data: *mut std::ffi::c_void, WNTStackSize: i32) -> bool {
+        unsafe {
+            crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_Run(
+                self as *mut Self,
+                data,
+                WNTStackSize,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `OSD_Thread.hxx`:80 - `OSD_Thread::Detach()`
     pub fn detach(&mut self) {
         unsafe { crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_Detach(self as *mut Self) }

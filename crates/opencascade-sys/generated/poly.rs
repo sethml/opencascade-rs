@@ -447,6 +447,20 @@ impl CoherentLink {
         unsafe { crate::ffi::Poly_CoherentLink_opposite_node(self as *const Self, ind) }
     }
 
+    /// **Source:** `Poly_CoherentLink.hxx`:93 - `Poly_CoherentLink::GetAttribute()`
+    ///
+    /// Query the attribute of the Link.
+    pub unsafe fn get_attribute(&self) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::Poly_CoherentLink_get_attribute(self as *const Self) }
+    }
+
+    /// **Source:** `Poly_CoherentLink.hxx`:98 - `Poly_CoherentLink::SetAttribute()`
+    ///
+    /// Set the attribute of the Link.
+    pub unsafe fn set_attribute(&mut self, theAtt: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::Poly_CoherentLink_set_attribute(self as *mut Self, theAtt) }
+    }
+
     /// **Source:** `Poly_CoherentLink.hxx`:104 - `Poly_CoherentLink::IsEmpty()`
     ///
     /// Query the status of the link - if it is an invalid one.
@@ -462,18 +476,6 @@ impl CoherentLink {
         unsafe { crate::ffi::Poly_CoherentLink_nullify(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for CoherentLink (2 total) ──
-// SKIPPED: **Source:** `Poly_CoherentLink.hxx`:93 - `Poly_CoherentLink::GetAttribute`
-//   method: Query the attribute of the Link.
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn get_attribute(&self) -> OwnedPtr<Standard_Address>;
-//
-// SKIPPED: **Source:** `Poly_CoherentLink.hxx`:98 - `Poly_CoherentLink::SetAttribute`
-//   method: Set the attribute of the Link.
-//   Reason: param 'theAtt' uses unknown type 'Standard_Address'
-//   // pub fn set_attribute(&mut self, theAtt: Address);
-//
 
 // ========================
 // From Poly_CoherentNode.hxx

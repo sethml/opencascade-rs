@@ -1076,6 +1076,21 @@ impl DoubleTab {
         }
     }
 
+    /// **Source:** `math_DoubleTab.hxx`:37 - `math_DoubleTab::math_DoubleTab()`
+    pub unsafe fn new_address_int4(
+        Tab: *mut std::ffi::c_void,
+        LowerRow: i32,
+        UpperRow: i32,
+        LowerCol: i32,
+        UpperCol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_DoubleTab_ctor_address_int4(
+                Tab, LowerRow, UpperRow, LowerCol, UpperCol,
+            ))
+        }
+    }
+
     /// **Source:** `math_DoubleTab.hxx`:43 - `math_DoubleTab::Init()`
     pub fn init(&mut self, InitValue: f64) {
         unsafe { crate::ffi::math_DoubleTab_init(self as *mut Self, InitValue) }
@@ -1113,12 +1128,6 @@ impl DoubleTab {
         }
     }
 }
-
-// ── Skipped symbols for DoubleTab (1 total) ──
-// SKIPPED: **Source:** `math_DoubleTab.hxx`:37 - `math_DoubleTab::math_DoubleTab`
-//   Reason: param 'Tab' uses unknown type 'Standard_Address'
-//   // pub fn new_address_int4(Tab: Address, LowerRow: i32, UpperRow: i32, LowerCol: i32, UpperCol: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From math_EigenValuesSearcher.hxx
@@ -3439,6 +3448,24 @@ impl Matrix {
         }
     }
 
+    /// **Source:** `math_Matrix.hxx`:105 - `math_Matrix::math_Matrix()`
+    /// constructs a matrix of range [LowerRow..UpperRow,
+    /// LowerCol..UpperCol]
+    /// Sharing data with a "C array" pointed by Tab.
+    pub unsafe fn new_address_int4(
+        Tab: *mut std::ffi::c_void,
+        LowerRow: i32,
+        UpperRow: i32,
+        LowerCol: i32,
+        UpperCol: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_ctor_address_int4(
+                Tab, LowerRow, UpperRow, LowerCol, UpperCol,
+            ))
+        }
+    }
+
     /// **Source:** `math_Matrix.hxx`:116 - `math_Matrix::Init()`
     /// Initialize all the elements of a matrix to InitialValue.
     pub fn init(&mut self, InitialValue: f64) {
@@ -3844,14 +3871,7 @@ impl Matrix {
     }
 }
 
-// ── Skipped symbols for Matrix (2 total) ──
-// SKIPPED: **Source:** `math_Matrix.hxx`:105 - `math_Matrix::math_Matrix`
-//   constructor: constructs a matrix of range [LowerRow..UpperRow,
-//   constructor: LowerCol..UpperCol]
-//   constructor: Sharing data with a "C array" pointed by Tab.
-//   Reason: param 'Tab' uses unknown type 'Standard_Address'
-//   // pub fn new_address_int4(Tab: Address, LowerRow: i32, UpperRow: i32, LowerCol: i32, UpperCol: i32) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for Matrix (1 total) ──
 // SKIPPED: **Source:** `math_Matrix.hxx`:365 - `math_Matrix::Initialized`
 //   method: Matrixes are copied through assignment.
 //   method: An exception is raised if the dimensions are different.

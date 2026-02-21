@@ -593,11 +593,11 @@ impl Type {
         }
     }
 
-    /// Check if this is a Standard_Address (void*) type
-    /// These can't be bound through the FFI
+    /// Check if this is a void pointer type (Standard_Address = void*, or literal void*)
+    /// Methods with these types are bound as `unsafe fn` with `*mut c_void` types.
     pub fn is_void_ptr(&self) -> bool {
         match self {
-            Type::Class(name) => name == "Standard_Address",
+            Type::Class(name) => name == "Standard_Address" || name == "void",
             Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
                 inner.is_void_ptr()
             }
@@ -640,7 +640,7 @@ impl Type {
         match self {
             Type::ConstPtr(inner) | Type::MutPtr(inner) => {
                 match inner.as_ref() {
-                    Type::Class(name) if name != "char" => Some(name.as_str()),
+                    Type::Class(name) if name != "char" && name != "Standard_Address" && name != "void" => Some(name.as_str()),
                     _ => None,
                 }
             }

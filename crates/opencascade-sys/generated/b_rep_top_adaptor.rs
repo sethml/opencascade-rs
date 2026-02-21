@@ -470,6 +470,11 @@ impl TopolTool {
         unsafe { crate::ffi::BRepTopAdaptor_TopolTool_next(self as *mut Self) }
     }
 
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:59 - `BRepTopAdaptor_TopolTool::Edge()`
+    pub unsafe fn edge(&self) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::BRepTopAdaptor_TopolTool_edge(self as *const Self) }
+    }
+
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:61 - `BRepTopAdaptor_TopolTool::InitVertexIterator()`
     pub fn init_vertex_iterator(&mut self) {
         unsafe { crate::ffi::BRepTopAdaptor_TopolTool_init_vertex_iterator(self as *mut Self) }
@@ -874,12 +879,6 @@ impl HandleBRepTopAdaptorTopolTool {
         }
     }
 }
-
-// ── Skipped symbols for TopolTool (1 total) ──
-// SKIPPED: **Source:** `BRepTopAdaptor_TopolTool.hxx`:59 - `BRepTopAdaptor_TopolTool::Edge`
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn edge(&self) -> OwnedPtr<Standard_Address>;
-//
 
 // ========================
 // Additional type re-exports

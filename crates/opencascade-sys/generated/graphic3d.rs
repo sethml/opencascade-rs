@@ -27435,6 +27435,22 @@ impl MediaTextureSet {
         unsafe { &*(crate::ffi::Graphic3d_MediaTextureSet_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Graphic3d_MediaTextureSet.hxx`:38 - `Graphic3d_MediaTextureSet::SetCallback()`
+    /// Setup callback to be called on queue progress (e.g. when new frame should be displayed).
+    pub unsafe fn set_callback(
+        &mut self,
+        theCallbackFunction: &crate::ffi::Graphic3d_MediaTextureSet_CallbackOnUpdate_t,
+        theCallbackUserPtr: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::Graphic3d_MediaTextureSet_set_callback(
+                self as *mut Self,
+                theCallbackFunction,
+                theCallbackUserPtr,
+            )
+        }
+    }
+
     /// **Source:** `Graphic3d_MediaTextureSet.hxx`:42 - `Graphic3d_MediaTextureSet::Notify()`
     /// Call callback.
     pub fn notify(&mut self) {
@@ -27729,13 +27745,6 @@ impl HandleGraphic3dMediaTextureSet {
         }
     }
 }
-
-// ── Skipped symbols for MediaTextureSet (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_MediaTextureSet.hxx`:38 - `Graphic3d_MediaTextureSet::SetCallback`
-//   method: Setup callback to be called on queue progress (e.g. when new frame should be displayed).
-//   Reason: param 'theCallbackUserPtr' uses unknown type 'void*'
-//   // pub fn set_callback(&mut self, theCallbackFunction: MediaTextureSet_CallbackOnUpdate_t, theCallbackUserPtr: *mut void);
-//
 
 // ========================
 // From Graphic3d_MutableIndexBuffer.hxx
@@ -31280,6 +31289,16 @@ impl Structure {
         unsafe { crate::ffi::Graphic3d_Structure_disconnect_all(self as *mut Self, AType.into()) }
     }
 
+    /// **Source:** `Graphic3d_Structure.hxx`:366 - `Graphic3d_Structure::SetOwner()`
+    pub unsafe fn set_owner(&mut self, theOwner: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::Graphic3d_Structure_set_owner(self as *mut Self, theOwner) }
+    }
+
+    /// **Source:** `Graphic3d_Structure.hxx`:368 - `Graphic3d_Structure::Owner()`
+    pub unsafe fn owner(&self) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::Graphic3d_Structure_owner(self as *const Self) }
+    }
+
     /// **Source:** `Graphic3d_Structure.hxx`:370 - `Graphic3d_Structure::SetHLRValidation()`
     pub fn set_hlr_validation(&mut self, theFlag: bool) {
         unsafe { crate::ffi::Graphic3d_Structure_set_hlr_validation(self as *mut Self, theFlag) }
@@ -31612,7 +31631,7 @@ impl HandleGraphic3dStructure {
     }
 }
 
-// ── Skipped symbols for Structure (5 total) ──
+// ── Skipped symbols for Structure (3 total) ──
 // SKIPPED: **Source:** `Graphic3d_Structure.hxx`:138 - `Graphic3d_Structure::SetZLayer`
 //   method: Set Z layer ID for the structure. The Z layer mechanism
 //   method: allows to display structures presented in higher layers in overlay
@@ -31625,14 +31644,6 @@ impl HandleGraphic3dStructure {
 //   method: The method returns -1 if the structure has no ID (deleted from graphic driver).
 //   Reason: return type 'Graphic3d_ZLayerId' is unknown
 //   // pub fn get_z_layer(&self) -> OwnedPtr<Graphic3d_ZLayerId>;
-//
-// SKIPPED: **Source:** `Graphic3d_Structure.hxx`:366 - `Graphic3d_Structure::SetOwner`
-//   Reason: param 'theOwner' uses unknown type 'Standard_Address'
-//   // pub fn set_owner(&mut self, theOwner: Address);
-//
-// SKIPPED: **Source:** `Graphic3d_Structure.hxx`:368 - `Graphic3d_Structure::Owner`
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn owner(&self) -> OwnedPtr<Standard_Address>;
 //
 // SKIPPED: **Source:** `Graphic3d_Structure.hxx`:362 - `Graphic3d_Structure::Network`
 //   static_method: Returns <ASet> the group of structures :

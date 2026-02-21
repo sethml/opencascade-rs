@@ -202,6 +202,15 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
                 source_module: None,
             }
         }
+        Type::Class(class_name) if class_name == "void" => {
+            // C++ void type (pointee of void*) — just c_void, pointer wrapping handled by outer type
+            RustTypeMapping {
+                rust_type: "std::ffi::c_void".to_string(),
+                needs_unique_ptr: false,
+                needs_pin: false,
+                source_module: None,
+            }
+        }
         Type::Class(class_name) if class_name == "char" => {
             // C++ char resolved from canonical types (e.g., Standard_Character)
             // FFI supports c_char but not Rust's char (which is 4-byte Unicode)
@@ -369,6 +378,10 @@ pub fn type_uses_unknown_class(ty: &Type, all_classes: &std::collections::HashSe
             if all_classes.contains(class_name) {
                 return false;
             }
+            // Void pointer types — Standard_Address (void*) and literal "void" — are known
+            if class_name == "Standard_Address" || class_name == "void" {
+                return false;
+            }
             // Primitive types mapped as Type::Class (e.g., "char" from Standard_Character)
             if crate::codegen::rust::is_primitive_type(class_name) {
                 return false;
@@ -400,6 +413,10 @@ pub fn type_uses_unknown_handle(
             if all_classes.contains(class_name) {
                 return false;
             }
+            // Void pointer types — Standard_Address (void*) and literal "void" — are known
+            if class_name == "Standard_Address" || class_name == "void" {
+                return false;
+            }
             // Primitive types mapped as Type::Class (e.g., "char" from Standard_Character)
             if crate::codegen::rust::is_primitive_type(class_name) {
                 return false;
@@ -426,6 +443,24 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
             // C++ char resolved from canonical types (e.g., Standard_Character)
             RustTypeMapping {
                 rust_type: "std::ffi::c_char".to_string(),
+                needs_unique_ptr: false,
+                needs_pin: false,
+                source_module: None,
+            }
+        }
+        Type::Class(class_name) if class_name == "Standard_Address" => {
+            // Standard_Address is a typedef for void* — map to raw c_void pointer
+            RustTypeMapping {
+                rust_type: "*mut std::ffi::c_void".to_string(),
+                needs_unique_ptr: false,
+                needs_pin: false,
+                source_module: None,
+            }
+        }
+        Type::Class(class_name) if class_name == "void" => {
+            // C++ void type (pointee of void*) — just c_void, pointer wrapping handled by outer type
+            RustTypeMapping {
+                rust_type: "std::ffi::c_void".to_string(),
                 needs_unique_ptr: false,
                 needs_pin: false,
                 source_module: None,

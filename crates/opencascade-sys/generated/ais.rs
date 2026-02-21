@@ -22265,6 +22265,22 @@ impl MediaPlayer {
         unsafe { &*(crate::ffi::AIS_MediaPlayer_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `AIS_MediaPlayer.hxx`:35 - `AIS_MediaPlayer::SetCallback()`
+    /// Setup callback to be called on queue progress (e.g. when new frame should be displayed).
+    pub unsafe fn set_callback(
+        &mut self,
+        theCallbackFunction: &crate::ffi::Graphic3d_MediaTextureSet_CallbackOnUpdate_t,
+        theCallbackUserPtr: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::AIS_MediaPlayer_set_callback(
+                self as *mut Self,
+                theCallbackFunction,
+                theCallbackUserPtr,
+            )
+        }
+    }
+
     /// **Source:** `AIS_MediaPlayer.hxx`:42 - `AIS_MediaPlayer::OpenInput()`
     /// Open specified file.
     pub fn open_input(&mut self, thePath: &crate::t_collection::AsciiString, theToWait: bool) {
@@ -23290,13 +23306,6 @@ impl HandleAISMediaPlayer {
         }
     }
 }
-
-// ── Skipped symbols for MediaPlayer (1 total) ──
-// SKIPPED: **Source:** `AIS_MediaPlayer.hxx`:35 - `AIS_MediaPlayer::SetCallback`
-//   method: Setup callback to be called on queue progress (e.g. when new frame should be displayed).
-//   Reason: param 'theCallbackUserPtr' uses unknown type 'void*'
-//   // pub fn set_callback(&mut self, theCallbackFunction: MediaTextureSet_CallbackOnUpdate_t, theCallbackUserPtr: *mut void);
-//
 
 // ========================
 // From AIS_MultipleConnectedInteractive.hxx

@@ -209,6 +209,13 @@ impl CCLocFOfLocECC {
         unsafe { crate::ffi::Extrema_CCLocFOfLocECC_points(self as *const Self, N, P1, P2) }
     }
 
+    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:87 - `Extrema_CCLocFOfLocECC::CurvePtr()`
+    /// Returns a pointer to the curve specified in the constructor
+    /// or in SetCurve() method.
+    pub unsafe fn curve_ptr(&self, theRank: i32) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_curve_ptr(self as *const Self, theRank) }
+    }
+
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:91 - `Extrema_CCLocFOfLocECC::Tolerance()`
     /// Returns a tolerance specified in the constructor
     /// or in SetTolerance() method.
@@ -230,6 +237,13 @@ impl CCLocFOfLocECC {
                 theUlast,
             )
         }
+    }
+
+    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:99 - `Extrema_CCLocFOfLocECC::SearchOfTolerance()`
+    /// Computes a Tol value. If 1st derivative of curve
+    /// |D1|<Tol, it is considered D1=0.
+    pub unsafe fn search_of_tolerance(&mut self, C: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_search_of_tolerance(self as *mut Self, C) }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
@@ -266,20 +280,6 @@ impl CCLocFOfLocECC {
         }
     }
 }
-
-// ── Skipped symbols for CCLocFOfLocECC (2 total) ──
-// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:87 - `Extrema_CCLocFOfLocECC::CurvePtr`
-//   method: Returns a pointer to the curve specified in the constructor
-//   method: or in SetCurve() method.
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn curve_ptr(&self, theRank: i32) -> OwnedPtr<Standard_Address>;
-//
-// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC.hxx`:99 - `Extrema_CCLocFOfLocECC::SearchOfTolerance`
-//   method: Computes a Tol value. If 1st derivative of curve
-//   method: |D1|<Tol, it is considered D1=0.
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn search_of_tolerance(&mut self, C: Address) -> f64;
-//
 
 // ========================
 // From Extrema_CCLocFOfLocECC2d.hxx
@@ -397,6 +397,13 @@ impl CCLocFOfLocECC2d {
         unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_points(self as *const Self, N, P1, P2) }
     }
 
+    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:87 - `Extrema_CCLocFOfLocECC2d::CurvePtr()`
+    /// Returns a pointer to the curve specified in the constructor
+    /// or in SetCurve() method.
+    pub unsafe fn curve_ptr(&self, theRank: i32) -> *mut std::ffi::c_void {
+        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_curve_ptr(self as *const Self, theRank) }
+    }
+
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:91 - `Extrema_CCLocFOfLocECC2d::Tolerance()`
     /// Returns a tolerance specified in the constructor
     /// or in SetTolerance() method.
@@ -418,6 +425,13 @@ impl CCLocFOfLocECC2d {
                 theUlast,
             )
         }
+    }
+
+    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:99 - `Extrema_CCLocFOfLocECC2d::SearchOfTolerance()`
+    /// Computes a Tol value. If 1st derivative of curve
+    /// |D1|<Tol, it is considered D1=0.
+    pub unsafe fn search_of_tolerance(&mut self, C: *mut std::ffi::c_void) -> f64 {
+        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_search_of_tolerance(self as *mut Self, C) }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
@@ -454,20 +468,6 @@ impl CCLocFOfLocECC2d {
         }
     }
 }
-
-// ── Skipped symbols for CCLocFOfLocECC2d (2 total) ──
-// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:87 - `Extrema_CCLocFOfLocECC2d::CurvePtr`
-//   method: Returns a pointer to the curve specified in the constructor
-//   method: or in SetCurve() method.
-//   Reason: return type 'Standard_Address' is unknown
-//   // pub fn curve_ptr(&self, theRank: i32) -> OwnedPtr<Standard_Address>;
-//
-// SKIPPED: **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:99 - `Extrema_CCLocFOfLocECC2d::SearchOfTolerance`
-//   method: Computes a Tol value. If 1st derivative of curve
-//   method: |D1|<Tol, it is considered D1=0.
-//   Reason: param 'C' uses unknown type 'Standard_Address'
-//   // pub fn search_of_tolerance(&mut self, C: Address) -> f64;
-//
 
 // ========================
 // From Extrema_Curve2dTool.hxx

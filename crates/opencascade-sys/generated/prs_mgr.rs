@@ -2150,6 +2150,11 @@ impl Presentation {
         }
     }
 
+    /// Inherited: **Source:** `Graphic3d_Structure.hxx`:366 - `Graphic3d_Structure::SetOwner()`
+    pub unsafe fn set_owner(&mut self, theOwner: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::PrsMgr_Presentation_inherited_SetOwner(self as *mut Self, theOwner) }
+    }
+
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:370 - `Graphic3d_Structure::SetHLRValidation()`
     pub fn set_hlr_validation(&mut self, theFlag: bool) {
         unsafe {

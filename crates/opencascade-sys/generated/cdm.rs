@@ -372,6 +372,26 @@ impl HandleCDMApplication {
 pub use crate::ffi::CDM_Document as Document;
 
 impl Document {
+    /// **Source:** `CDM_Document.hxx`:76 - `CDM_Document::Update()`
+    /// The Update  method  will be called  once  for each
+    /// reference, but it  should not perform any computation,
+    /// to avoid multiple computation of a same document.
+    pub unsafe fn update_handlecdmdocument_int_address(
+        &mut self,
+        aToDocument: &crate::ffi::HandleCDMDocument,
+        aReferenceIdentifier: i32,
+        aModifContext: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::CDM_Document_update_handlecdmdocument_int_address(
+                self as *mut Self,
+                aToDocument,
+                aReferenceIdentifier,
+                aModifContext,
+            )
+        }
+    }
+
     /// **Source:** `CDM_Document.hxx`:87 - `CDM_Document::Update()`
     /// This method Update   will be called
     /// to signal the end   of the modified references list.
@@ -500,6 +520,21 @@ impl Document {
                 self as *const Self,
                 aReferenceIdentifier,
             ))
+        }
+    }
+
+    /// **Source:** `CDM_Document.hxx`:148 - `CDM_Document::UpdateFromDocuments()`
+    /// call  virtual  method   Update  on  all   referencing
+    /// documents.   This method keeps  the list  of the --
+    /// documents  to process.It may  be the starting of an
+    /// update -- cycle. If  not,  the reentrant calls made by
+    /// Update  method (without argument)  will append the
+    /// referencing documents to the list and call the Update method
+    /// (with arguments). Only the first call to UpdateFromDocuments
+    /// generate call to Update().
+    pub unsafe fn update_from_documents(&self, aModifContext: *mut std::ffi::c_void) {
+        unsafe {
+            crate::ffi::CDM_Document_update_from_documents(self as *const Self, aModifContext)
         }
     }
 
@@ -1021,21 +1056,7 @@ impl HandleCDMDocument {
     }
 }
 
-// ── Skipped symbols for Document (3 total) ──
-// SKIPPED: **Source:** `CDM_Document.hxx`:76 - `CDM_Document::Update`
-//   method: The Update  method  will be called  once  for each
-//   method: reference, but it  should not perform any computation,
-//   method: to avoid multiple computation of a same document.
-//   Reason: param 'aModifContext' uses unknown type 'Standard_Address'
-//   // pub fn update(&mut self, aToDocument: &HandleDocument, aReferenceIdentifier: i32, aModifContext: Address);
-//
-// SKIPPED: **Source:** `CDM_Document.hxx`:148 - `CDM_Document::UpdateFromDocuments`
-//   method: call  virtual  method   Update  on  all   referencing
-//   method: documents.   This method keeps  the list  of the --
-//   method: documents  to process.It may  be the starting of an
-//   Reason: param 'aModifContext' uses unknown type 'Standard_Address'
-//   // pub fn update_from_documents(&self, aModifContext: Address);
-//
+// ── Skipped symbols for Document (1 total) ──
 // SKIPPED: **Source:** `CDM_Document.hxx`:282 - `CDM_Document::Print`
 //   Reason: returns &mut with reference params (ambiguous lifetimes)
 //   // pub fn print(&self, anOStream: &mut OStream) -> &mut OStream;

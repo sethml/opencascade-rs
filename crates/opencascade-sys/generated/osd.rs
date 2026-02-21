@@ -5211,8 +5211,12 @@ impl File {
     /// may be less than Nbyte if the number of bytes left in the file
     /// is less than Nbyte bytes. In this case only number of read
     /// bytes will be placed in the buffer.
-    pub fn read(&mut self, Buffer: &mut crate::t_collection::AsciiString, Nbyte: i32) {
-        unsafe { crate::ffi::OSD_File_read(self as *mut Self, Buffer, Nbyte) }
+    pub fn read_asciistring_int(
+        &mut self,
+        Buffer: &mut crate::t_collection::AsciiString,
+        Nbyte: i32,
+    ) {
+        unsafe { crate::ffi::OSD_File_read_asciistring_int(self as *mut Self, Buffer, Nbyte) }
     }
 
     /// **Source:** `OSD_File.hxx`:79 - `OSD_File::ReadLine()`
@@ -5258,10 +5262,42 @@ impl File {
         unsafe { crate::ffi::OSD_File_read_line_asciistring_int(self as *mut Self, Buffer, NByte) }
     }
 
+    /// **Source:** `OSD_File.hxx`:105 - `OSD_File::Read()`
+    /// Attempts to read Nbyte bytes from the files associated with
+    /// the object File.
+    /// Upon successful completion, Read returns the number of
+    /// bytes actually read and placed in the Buffer. This number
+    /// may be less than Nbyte if the number of bytes left in the file
+    /// is less than Nbyte bytes. For this reason the output
+    /// parameter Readbyte will contain the number of read bytes.
+    pub unsafe fn read_address_int2(
+        &mut self,
+        Buffer: *mut std::ffi::c_void,
+        Nbyte: i32,
+        Readbyte: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::OSD_File_read_address_int2(self as *mut Self, Buffer, Nbyte, Readbyte)
+        }
+    }
+
     /// **Source:** `OSD_File.hxx`:110 - `OSD_File::Write()`
     /// Attempts to write theNbBytes bytes from the AsciiString to the file.
-    pub fn write(&mut self, theBuffer: &crate::t_collection::AsciiString, theNbBytes: i32) {
-        unsafe { crate::ffi::OSD_File_write(self as *mut Self, theBuffer, theNbBytes) }
+    pub fn write_asciistring_int(
+        &mut self,
+        theBuffer: &crate::t_collection::AsciiString,
+        theNbBytes: i32,
+    ) {
+        unsafe {
+            crate::ffi::OSD_File_write_asciistring_int(self as *mut Self, theBuffer, theNbBytes)
+        }
+    }
+
+    /// **Source:** `OSD_File.hxx`:117 - `OSD_File::Write()`
+    /// Attempts to write theNbBytes bytes from the buffer pointed
+    /// to by theBuffer to the file associated to the object File.
+    pub unsafe fn write_address_int(&mut self, theBuffer: *mut std::ffi::c_void, theNbBytes: i32) {
+        unsafe { crate::ffi::OSD_File_write_address_int(self as *mut Self, theBuffer, theNbBytes) }
     }
 
     /// **Source:** `OSD_File.hxx`:120 - `OSD_File::Seek()`
@@ -5475,21 +5511,6 @@ impl File {
         unsafe { crate::ffi::OSD_File_inherited_Error(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for File (2 total) ──
-// SKIPPED: **Source:** `OSD_File.hxx`:105 - `OSD_File::Read`
-//   method: Attempts to read Nbyte bytes from the files associated with
-//   method: the object File.
-//   method: Upon successful completion, Read returns the number of
-//   Reason: param 'Buffer' uses unknown type 'Standard_Address'
-//   // pub fn read(&mut self, Buffer: Address, Nbyte: i32, Readbyte: &mut i32);
-//
-// SKIPPED: **Source:** `OSD_File.hxx`:117 - `OSD_File::Write`
-//   method: Attempts to write theNbBytes bytes from the buffer pointed
-//   method: to by theBuffer to the file associated to the object File.
-//   Reason: param 'theBuffer' uses unknown type 'Standard_Address'
-//   // pub fn write(&mut self, theBuffer: Address, theNbBytes: i32);
-//
 
 // ========================
 // From OSD_FileIterator.hxx
@@ -6533,15 +6554,33 @@ impl MAllocHook_Callback {
             )
         }
     }
-}
 
-// ── Skipped symbols for MAllocHook_Callback (1 total) ──
-// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:57 - `OSD_MAllocHook::Callback::FreeEvent`
-//   method: Freeing event handler
-//   method: It is called when the block is freed
-//   Reason: param 'theData' uses unknown type 'void*'
-//   // pub fn free_event(&mut self, theData: *mut void, theSize: usize, theRequestNum: std::ffi::c_long);
-//
+    /// **Source:** `OSD_MAllocHook.hxx`:57 - `OSD_MAllocHook_Callback::FreeEvent()`
+    /// Freeing event handler
+    ///
+    /// It is called when the block is freed
+    /// @param theData
+    /// the pointer to the user data section of the memory block
+    /// @param theSize
+    /// the size of the memory block in bytes
+    /// @param theRequestNum
+    /// the allocation order number of the memory block
+    pub unsafe fn free_event(
+        &mut self,
+        theData: *mut std::ffi::c_void,
+        theSize: usize,
+        theRequestNum: std::ffi::c_long,
+    ) {
+        unsafe {
+            crate::ffi::OSD_MAllocHook_Callback_free_event(
+                self as *mut Self,
+                theData,
+                theSize,
+                theRequestNum,
+            )
+        }
+    }
+}
 
 /// **Source:** `OSD_MAllocHook.hxx`:65 - `OSD_MAllocHook_LogFileHandler`
 ///
@@ -6589,6 +6628,23 @@ impl MAllocHook_LogFileHandler {
         }
     }
 
+    /// **Source:** `OSD_MAllocHook.hxx`:94 - `OSD_MAllocHook_LogFileHandler::FreeEvent()`
+    pub unsafe fn free_event(
+        &mut self,
+        arg0: *mut std::ffi::c_void,
+        arg1: usize,
+        arg2: std::ffi::c_long,
+    ) {
+        unsafe {
+            crate::ffi::OSD_MAllocHook_LogFileHandler_free_event(
+                self as *mut Self,
+                arg0,
+                arg1,
+                arg2,
+            )
+        }
+    }
+
     /// **Source:** `OSD_MAllocHook.hxx`:88 - `OSD_MAllocHook_LogFileHandler::MakeReport()`
     /// Make synthesized report on the given log file.
     ///
@@ -6608,12 +6664,6 @@ impl MAllocHook_LogFileHandler {
         }
     }
 }
-
-// ── Skipped symbols for MAllocHook_LogFileHandler (1 total) ──
-// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:94 - `OSD_MAllocHook::LogFileHandler::FreeEvent`
-//   Reason: param 'arg0' uses unknown type 'void*'
-//   // pub fn free_event(&mut self, arg0: *mut void, arg1: usize, arg2: std::ffi::c_long);
-//
 
 /// **Source:** `OSD_MAllocHook.hxx`:106 - `OSD_MAllocHook_CollectBySize`
 ///
@@ -6658,13 +6708,19 @@ impl MAllocHook_CollectBySize {
             crate::ffi::OSD_MAllocHook_CollectBySize_alloc_event(self as *mut Self, arg0, arg1)
         }
     }
-}
 
-// ── Skipped symbols for MAllocHook_CollectBySize (1 total) ──
-// SKIPPED: **Source:** `OSD_MAllocHook.hxx`:122 - `OSD_MAllocHook::CollectBySize::FreeEvent`
-//   Reason: param 'arg0' uses unknown type 'void*'
-//   // pub fn free_event(&mut self, arg0: *mut void, arg1: usize, arg2: std::ffi::c_long);
-//
+    /// **Source:** `OSD_MAllocHook.hxx`:122 - `OSD_MAllocHook_CollectBySize::FreeEvent()`
+    pub unsafe fn free_event(
+        &mut self,
+        arg0: *mut std::ffi::c_void,
+        arg1: usize,
+        arg2: std::ffi::c_long,
+    ) {
+        unsafe {
+            crate::ffi::OSD_MAllocHook_CollectBySize_free_event(self as *mut Self, arg0, arg1, arg2)
+        }
+    }
+}
 
 /// **Source:** `OSD_MAllocHook.hxx`:125 - `OSD_MAllocHook_CollectBySize_Numbers`
 pub use crate::ffi::OSD_MAllocHook_CollectBySize_Numbers as MAllocHook_CollectBySize_Numbers;
@@ -10333,6 +10389,17 @@ impl Thread {
         unsafe { crate::ffi::OSD_Thread_set_priority(self as *mut Self, thePriority) }
     }
 
+    /// **Source:** `OSD_Thread.hxx`:70 - `OSD_Thread::Run()`
+    /// Starts a thread with thread function given in constructor,
+    /// passing the specified input data (as void *) to it.
+    /// The parameter \a WNTStackSize (on Windows only)
+    /// specifies size of the stack to be allocated for the thread
+    /// (by default - the same as for the current executable).
+    /// Returns True if thread started successfully
+    pub unsafe fn run(&mut self, data: *mut std::ffi::c_void, WNTStackSize: i32) -> bool {
+        unsafe { crate::ffi::OSD_Thread_run(self as *mut Self, data, WNTStackSize) }
+    }
+
     /// **Source:** `OSD_Thread.hxx`:80 - `OSD_Thread::Detach()`
     /// Detaches the execution thread from this Thread object,
     /// so that it cannot be waited.
@@ -10351,13 +10418,39 @@ impl Thread {
         unsafe { crate::ffi::OSD_Thread_wait(self as *mut Self) }
     }
 
+    /// **Source:** `OSD_Thread.hxx`:98 - `OSD_Thread::Wait()`
+    /// Wait till the thread finishes execution.
+    /// Returns True if wait was successful, False in case of error.
+    ///
+    /// If successful and \a result argument is provided, saves the pointer
+    /// (void*) returned by the thread function in \a result.
+    ///
+    /// Note however that it is advisable not to rely upon returned result
+    /// value, as it is not always the value actually returned by the thread
+    /// function. In addition, on Windows it is converted via DWORD.
+    pub unsafe fn wait_address(&mut self, theResult: &mut *mut std::ffi::c_void) -> bool {
+        unsafe { crate::ffi::OSD_Thread_wait_address(self as *mut Self, theResult) }
+    }
+
+    /// **Source:** `OSD_Thread.hxx`:103 - `OSD_Thread::Wait()`
+    /// Waits for some time and if the thread is finished,
+    /// it returns the result.
+    /// The function returns false if the thread is not finished yet.
+    pub unsafe fn wait_int_address(
+        &mut self,
+        time: i32,
+        theResult: &mut *mut std::ffi::c_void,
+    ) -> bool {
+        unsafe { crate::ffi::OSD_Thread_wait_int_address(self as *mut Self, time, theResult) }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Thread_to_owned(self as *const Self)) }
     }
 }
 
-// ── Skipped symbols for Thread (7 total) ──
+// ── Skipped symbols for Thread (4 total) ──
 // SKIPPED: **Source:** `OSD_Thread.hxx`:42 - `OSD_Thread::OSD_Thread`
 //   constructor: Initialize the tool by the thread function
 //   constructor: Note: On Windows, you might have to take an address of the thread
@@ -10369,26 +10462,6 @@ impl Thread {
 //   method: If the current thread handle is not null, nullifies it.
 //   Reason: param 'func' uses unknown type 'const OSD_ThreadFunction&'
 //   // pub fn set_function(&mut self, func: &ThreadFunction);
-//
-// SKIPPED: **Source:** `OSD_Thread.hxx`:70 - `OSD_Thread::Run`
-//   method: Starts a thread with thread function given in constructor,
-//   method: passing the specified input data (as void *) to it.
-//   method: The parameter \a WNTStackSize (on Windows only)
-//   Reason: param 'data' uses unknown type 'Standard_Address'
-//   // pub fn run(&mut self, data: Address, WNTStackSize: i32) -> bool;
-//
-// SKIPPED: **Source:** `OSD_Thread.hxx`:98 - `OSD_Thread::Wait`
-//   method: Wait till the thread finishes execution.
-//   method: Returns True if wait was successful, False in case of error.
-//   Reason: param 'theResult' uses unknown type 'Standard_Address&'
-//   // pub fn wait(&mut self, theResult: &mut Address) -> bool;
-//
-// SKIPPED: **Source:** `OSD_Thread.hxx`:103 - `OSD_Thread::Wait`
-//   method: Waits for some time and if the thread is finished,
-//   method: it returns the result.
-//   method: The function returns false if the thread is not finished yet.
-//   Reason: param 'theResult' uses unknown type 'Standard_Address&'
-//   // pub fn wait(&mut self, time: i32, theResult: &mut Address) -> bool;
 //
 // SKIPPED: **Source:** `OSD_Thread.hxx`:107 - `OSD_Thread::GetId`
 //   method: Returns ID of the currently controlled thread ID,

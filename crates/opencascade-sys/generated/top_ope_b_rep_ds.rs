@@ -6230,8 +6230,13 @@ impl Marker {
     }
 
     /// **Source:** `TopOpeBRepDS_Marker.hxx`:38 - `TopOpeBRepDS_Marker::Set()`
-    pub fn set(&mut self, i: i32, b: bool) {
-        unsafe { crate::ffi::TopOpeBRepDS_Marker_set(self as *mut Self, i, b) }
+    pub fn set_int_bool(&mut self, i: i32, b: bool) {
+        unsafe { crate::ffi::TopOpeBRepDS_Marker_set_int_bool(self as *mut Self, i, b) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_Marker.hxx`:40 - `TopOpeBRepDS_Marker::Set()`
+    pub unsafe fn set_bool_int_address(&mut self, b: bool, n: i32, a: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::TopOpeBRepDS_Marker_set_bool_int_address(self as *mut Self, b, n, a) }
     }
 
     /// **Source:** `TopOpeBRepDS_Marker.hxx`:44 - `TopOpeBRepDS_Marker::GetI()`
@@ -6360,12 +6365,6 @@ impl HandleTopOpeBRepDSMarker {
         }
     }
 }
-
-// ── Skipped symbols for Marker (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_Marker.hxx`:40 - `TopOpeBRepDS_Marker::Set`
-//   Reason: param 'a' uses unknown type 'Standard_Address'
-//   // pub fn set(&mut self, b: bool, n: i32, a: Address);
-//
 
 // ========================
 // From TopOpeBRepDS_Point.hxx

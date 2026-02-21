@@ -2930,6 +2930,48 @@ impl SysBase {
         unsafe { crate::ffi::AdvApp2Var_SysBase_mainial(self as *mut Self) }
     }
 
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:32 - `AdvApp2Var_SysBase::mcrdelt_()`
+    pub unsafe fn mcrdelt(
+        &mut self,
+        iunit: *mut i32,
+        isize: *mut i32,
+        t: *mut std::ffi::c_void,
+        iofset: *mut std::ffi::c_long,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_SysBase_mcrdelt(
+                self as *mut Self,
+                iunit,
+                isize,
+                t,
+                iofset,
+                iercod,
+            )
+        }
+    }
+
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:40 - `AdvApp2Var_SysBase::mcrrqst_()`
+    pub unsafe fn mcrrqst(
+        &mut self,
+        iunit: *mut i32,
+        isize: *mut i32,
+        t: *mut std::ffi::c_void,
+        iofset: *mut std::ffi::c_long,
+        iercod: *mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::AdvApp2Var_SysBase_mcrrqst(
+                self as *mut Self,
+                iunit,
+                isize,
+                t,
+                iofset,
+                iercod,
+            )
+        }
+    }
+
     /// **Source:** `AdvApp2Var_SysBase.hxx`:49 - `AdvApp2Var_SysBase::macrai4_()`
     pub unsafe fn macrai4(
         &mut self,
@@ -3019,6 +3061,15 @@ impl SysBase {
         unsafe { crate::ffi::AdvApp2Var_SysBase_macinit(arg0, arg1) }
     }
 
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:38 - `AdvApp2Var_SysBase::mcrfill_()`
+    pub unsafe fn mcrfill(
+        size: *mut i32,
+        tin: *mut std::ffi::c_void,
+        tout: *mut std::ffi::c_void,
+    ) -> i32 {
+        unsafe { crate::ffi::AdvApp2Var_SysBase_mcrfill(size, tin, tout) }
+    }
+
     /// **Source:** `AdvApp2Var_SysBase.hxx`:45 - `AdvApp2Var_SysBase::mnfndeb_()`
     pub fn mnfndeb() -> i32 {
         unsafe { crate::ffi::AdvApp2Var_SysBase_mnfndeb() }
@@ -3062,6 +3113,11 @@ impl SysBase {
         unsafe { crate::ffi::AdvApp2Var_SysBase_mgsomsg(c_nomprg.as_ptr(), nomprg_len) }
     }
 
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:76 - `AdvApp2Var_SysBase::miraz_()`
+    pub unsafe fn miraz(taille: *mut i32, adt: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::AdvApp2Var_SysBase_miraz(taille, adt) }
+    }
+
     /// **Source:** `AdvApp2Var_SysBase.hxx`:77 - `AdvApp2Var_SysBase::msifill_()`
     pub unsafe fn msifill(nbintg: *mut i32, ivecin: *mut i32, ivecou: *mut i32) -> i32 {
         unsafe { crate::ffi::AdvApp2Var_SysBase_msifill(nbintg, ivecin, ivecou) }
@@ -3077,29 +3133,12 @@ impl SysBase {
         let c_ctexte = std::ffi::CString::new(ctexte).unwrap();
         unsafe { crate::ffi::AdvApp2Var_SysBase_mswrdbg(c_ctexte.as_ptr(), ctexte_len) }
     }
-}
 
-// ── Skipped symbols for SysBase (5 total) ──
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:32 - `AdvApp2Var_SysBase::mcrdelt_`
-//   Reason: param 't' uses unknown type 'void*'
-//   // pub fn mcrdelt(&mut self, iunit: *mut i32, isize: *mut i32, t: *mut void, iofset: *mut std::ffi::c_long, iercod: *mut i32) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:40 - `AdvApp2Var_SysBase::mcrrqst_`
-//   Reason: param 't' uses unknown type 'void*'
-//   // pub fn mcrrqst(&mut self, iunit: *mut i32, isize: *mut i32, t: *mut void, iofset: *mut std::ffi::c_long, iercod: *mut i32) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:38 - `AdvApp2Var_SysBase::mcrfill_`
-//   Reason: param 'tin' uses unknown type 'void*'
-//   // pub fn mcrfill(size: *mut i32, tin: *mut void, tout: *mut void) -> i32;
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:76 - `AdvApp2Var_SysBase::miraz_`
-//   Reason: param 'adt' uses unknown type 'void*'
-//   // pub fn miraz(taille: *mut i32, adt: *mut void);
-//
-// SKIPPED: **Source:** `AdvApp2Var_SysBase.hxx`:80 - `AdvApp2Var_SysBase::mvriraz_`
-//   Reason: param 'adt' uses unknown type 'void*'
-//   // pub fn mvriraz(taille: *mut i32, adt: *mut void);
-//
+    /// **Source:** `AdvApp2Var_SysBase.hxx`:80 - `AdvApp2Var_SysBase::mvriraz_()`
+    pub unsafe fn mvriraz(taille: *mut i32, adt: *mut std::ffi::c_void) {
+        unsafe { crate::ffi::AdvApp2Var_SysBase_mvriraz(taille, adt) }
+    }
+}
 
 // ========================
 // Additional type re-exports
