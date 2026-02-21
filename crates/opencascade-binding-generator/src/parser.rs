@@ -1564,23 +1564,8 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     };
     if !spelling_looks_like_class && !spelling_is_template_or_namespaced {
 
-        match canonical_clean {
-            "bool" => return Type::Bool,
-            "int" => return Type::I32,
-            "unsigned int" => return Type::U32,
-            "unsigned short" | "uint16_t" => return Type::U16,
-            "char16_t" => return Type::CHAR16,
-            "char32_t" => return Type::U32,
-            "unsigned char" | "uint8_t" => return Type::U8,
-            "signed char" | "int8_t" => return Type::I8,
-            "short" | "int16_t" => return Type::I16,
-            "long" => return Type::Long,
-            "unsigned long" => return Type::ULong,
-            "long long" => return Type::I64,
-            "unsigned long long" => return Type::U64,
-            "float" => return Type::F32,
-            "double" => return Type::F64,
-            _ => {}
+        if let Some(ty) = map_standard_type(canonical_clean) {
+            return ty;
         }
     }
 

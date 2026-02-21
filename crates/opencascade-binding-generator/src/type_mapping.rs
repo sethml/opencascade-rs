@@ -559,68 +559,6 @@ pub fn map_return_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMappi
     mapping
 }
 
-/// Map a C++ type string directly (for cases where we only have the string)
-pub fn map_cpp_type_string(cpp_type: &str) -> RustTypeMapping {
-    let cpp_type = cpp_type.trim();
-
-    // Handle primitives
-    match cpp_type {
-        "void" => return map_type_to_rust(&Type::Void),
-        "bool" | "Standard_Boolean" => return map_type_to_rust(&Type::Bool),
-        "int" | "Standard_Integer" => return map_type_to_rust(&Type::I32),
-        "unsigned int" => return map_type_to_rust(&Type::U32),
-        "unsigned short" | "uint16_t" => return map_type_to_rust(&Type::U16),
-        "char16_t" | "Standard_ExtCharacter" => return map_type_to_rust(&Type::CHAR16),
-        "char32_t" | "Standard_Utf32Char" => return map_type_to_rust(&Type::U32),
-        "unsigned char" | "uint8_t" | "Standard_Byte" | "Standard_Utf8UChar" => return map_type_to_rust(&Type::U8),
-        "signed char" | "int8_t" => return map_type_to_rust(&Type::I8),
-        "short" | "int16_t" => return map_type_to_rust(&Type::I16),
-        "long" => return map_type_to_rust(&Type::Long),
-        "unsigned long" => return map_type_to_rust(&Type::ULong),
-        "float" => return map_type_to_rust(&Type::F32),
-        "double" | "Standard_Real" => return map_type_to_rust(&Type::F64),
-        _ => {}
-    }
-
-    // Handle const references
-    if cpp_type.starts_with("const ") && cpp_type.ends_with('&') {
-        let inner = cpp_type[6..cpp_type.len() - 1].trim();
-        let inner_mapping = map_cpp_type_string(inner);
-        return RustTypeMapping {
-            rust_type: format!("*const {}", inner_mapping.rust_type),
-            needs_unique_ptr: false,
-            needs_pin: false,
-            source_module: inner_mapping.source_module,
-        };
-    }
-
-    // Handle mutable references
-    if let Some(inner) = cpp_type.strip_suffix('&') {
-        let inner = inner.trim();
-        let inner_mapping = map_cpp_type_string(inner);
-        return RustTypeMapping {
-            rust_type: format!("*mut {}", inner_mapping.rust_type),
-            needs_unique_ptr: false,
-            needs_pin: false,
-            source_module: inner_mapping.source_module,
-        };
-    }
-
-    // Handle Handle types
-    if cpp_type.starts_with("Handle(") && cpp_type.ends_with(')') {
-        let inner = &cpp_type[7..cpp_type.len() - 1];
-        return map_type_to_rust(&Type::Handle(inner.to_string()));
-    }
-
-    if cpp_type.starts_with("opencascade::handle<") && cpp_type.ends_with('>') {
-        let inner = &cpp_type[20..cpp_type.len() - 1];
-        return map_type_to_rust(&Type::Handle(inner.to_string()));
-    }
-
-    // Default: treat as C++ class type
-    map_type_to_rust(&Type::Class(cpp_type.to_string()))
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
