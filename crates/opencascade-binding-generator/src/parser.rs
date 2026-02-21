@@ -1570,6 +1570,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
             "unsigned int" => return Type::U32,
             "unsigned short" | "uint16_t" => return Type::U16,
             "char16_t" => return Type::CHAR16,
+            "char32_t" => return Type::U32,
             "unsigned char" | "uint8_t" => return Type::U8,
             "signed char" | "int8_t" => return Type::I8,
             "short" | "int16_t" => return Type::I16,
@@ -1770,6 +1771,7 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "Standard_Utf8Char" => Some(Type::Class("char".to_string())),
         "Standard_Character" => Some(Type::Class("char".to_string())),
         "Standard_ExtCharacter" => Some(Type::CHAR16),
+        "Standard_Utf32Char" => Some(Type::U32),
         "Standard_ExtString" => Some(Type::ConstPtr(Box::new(Type::CHAR16))),
         // C++ primitive types (may appear from canonical type resolution)
         "double" => Some(Type::F64),
@@ -1784,16 +1786,18 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "int16_t" => Some(Type::I16),
         "unsigned short" | "uint16_t" => Some(Type::U16),
         "char16_t" => Some(Type::CHAR16),
+        "char32_t" => Some(Type::U32),
         "unsigned char" | "uint8_t" | "Standard_Byte" | "Standard_Utf8UChar" => Some(Type::U8),
         "signed char" | "int8_t" => Some(Type::I8),
         "bool" => Some(Type::Bool),
         // Standard_Address is void* — bound as *mut c_void in unsafe functions.
         // Represented as Type::Class("Standard_Address") so is_void_ptr() can detect it.
         "Standard_Address" => Some(Type::Class("Standard_Address".to_string())),
-        // Stream types - these can't be bound through the FFI
-        "Standard_OStream" => Some(Type::Class("Standard_OStream".to_string())),
-        "Standard_IStream" => Some(Type::Class("Standard_IStream".to_string())),
-        "Standard_SStream" => Some(Type::Class("Standard_SStream".to_string())),
+        // Stream types - map both OCCT typedef names and bare C++ names to the
+        // same Type::Class so they're recognized as known manual_types.
+        "Standard_OStream" | "std::ostream" => Some(Type::Class("Standard_OStream".to_string())),
+        "Standard_IStream" | "std::istream" => Some(Type::Class("Standard_IStream".to_string())),
+        "Standard_SStream" | "std::stringstream" => Some(Type::Class("Standard_SStream".to_string())),
         _ => None,
     }
 }
@@ -1901,7 +1905,18 @@ mod tests {
         assert!(matches!(map_standard_type("Standard_Real"), Some(Type::F64)));
         assert!(matches!(map_standard_type("Standard_Integer"), Some(Type::I32)));
         assert!(matches!(map_standard_type("Standard_Boolean"), Some(Type::Bool)));
+        assert!(matches!(map_standard_type("Standard_Utf32Char"), Some(Type::U32)));
+        assert!(matches!(map_standard_type("char32_t"), Some(Type::U32)));
         assert!(map_standard_type("gp_Pnt").is_none());
+        // Bare C++ stream types map to Standard_* equivalents
+        match map_standard_type("std::istream") {
+            Some(Type::Class(name)) => assert_eq!(name, "Standard_IStream"),
+            other => panic!("Expected Standard_IStream, got {:?}", other),
+        }
+        match map_standard_type("std::ostream") {
+            Some(Type::Class(name)) => assert_eq!(name, "Standard_OStream"),
+            other => panic!("Expected Standard_OStream, got {:?}", other),
+        }
     }
 }
 

@@ -28465,6 +28465,32 @@ impl WorkLibrary {
         }
     }
 
+    /// **Source:** `IFSelect_WorkLibrary.hxx`:68 - `IFSelect_WorkLibrary::ReadStream()`
+    /// Interface to read a data from the specified stream.
+    /// @param model is the resulting Model, which has to be created by this method.
+    /// In case of error, model must be returned Null
+    /// Return value is a status: 0 - OK, 1 - read failure, -1 - stream failure.
+    ///
+    /// Default implementation returns 1 (error).
+    pub fn read_stream(
+        &self,
+        theName: &str,
+        theIStream: &mut crate::ffi::Standard_IStream,
+        model: &mut crate::ffi::HandleInterfaceInterfaceModel,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+    ) -> i32 {
+        let c_theName = std::ffi::CString::new(theName).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkLibrary_read_stream(
+                self as *const Self,
+                c_theName.as_ptr(),
+                theIStream,
+                model,
+                protocol,
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_WorkLibrary.hxx`:92 - `IFSelect_WorkLibrary::WriteFile()`
     /// Gives the way to Write a File from a Model.
     /// <ctx> contains all necessary information : the model, the
@@ -28733,15 +28759,6 @@ impl HandleIFSelectWorkLibrary {
     }
 }
 
-// ── Skipped symbols for WorkLibrary (1 total) ──
-// SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:68 - `IFSelect_WorkLibrary::ReadStream`
-//   method: Interface to read a data from the specified stream.
-//   method: @param model is the resulting Model, which has to be created by this method.
-//   method: In case of error, model must be returned Null
-//   Reason: param 'theIStream' uses unknown type 'std::istream&'
-//   // pub fn read_stream(&self, theName: *const char, theIStream: &mut istream, model: &mut HandleInterfaceModel, protocol: &HandleProtocol) -> i32;
-//
-
 // ========================
 // From IFSelect_WorkSession.hxx
 // ========================
@@ -28922,6 +28939,27 @@ impl WorkSession {
             crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_WorkSession_read_file(
                 self as *mut Self,
                 c_filename.as_ptr(),
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:157 - `IFSelect_WorkSession::ReadStream()`
+    /// Reads a file from stream with the WorkLibrary (sets Model and LoadedFile)
+    /// Returns a integer status which can be :
+    /// RetDone if OK,  RetVoid if no Protocol not defined,
+    /// RetError for file not found, RetFail if fail during read
+    pub fn read_stream(
+        &mut self,
+        theName: &str,
+        theIStream: &mut crate::ffi::Standard_IStream,
+    ) -> crate::if_select::ReturnStatus {
+        let c_theName = std::ffi::CString::new(theName).unwrap();
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_WorkSession_read_stream(
+                self as *mut Self,
+                c_theName.as_ptr(),
+                theIStream,
             ))
             .unwrap()
         }
@@ -31100,14 +31138,7 @@ impl HandleIFSelectWorkSession {
     }
 }
 
-// ── Skipped symbols for WorkSession (2 total) ──
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:157 - `IFSelect_WorkSession::ReadStream`
-//   method: Reads a file from stream with the WorkLibrary (sets Model and LoadedFile)
-//   method: Returns a integer status which can be :
-//   method: RetDone if OK,  RetVoid if no Protocol not defined,
-//   Reason: param 'theIStream' uses unknown type 'std::istream&'
-//   // pub fn read_stream(&mut self, theName: *const char, theIStream: &mut istream) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
+// ── Skipped symbols for WorkSession (1 total) ──
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1042 - `IFSelect_WorkSession::SetParams`
 //   method: Sets a list of Parameters, i.e. TypedValue, to be handled
 //   method: through an Editor

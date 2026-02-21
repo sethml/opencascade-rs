@@ -1105,12 +1105,38 @@ impl Reader {
     /// **Source:** `RWObj_Reader.hxx`:52 - `RWObj_Reader::Read()`
     /// Open stream and pass it to Read method
     /// Returns true if success, false on error.
-    pub fn read(
+    pub fn read_asciistring_progressrange(
         &mut self,
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe { crate::ffi::RWObj_Reader_read(self as *mut Self, theFile, theProgress) }
+        unsafe {
+            crate::ffi::RWObj_Reader_read_asciistring_progressrange(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:63 - `RWObj_Reader::Read()`
+    /// Reads data from OBJ file.
+    /// Unicode paths can be given in UTF-8 encoding.
+    /// Returns true if success, false on error or user break.
+    pub fn read_istream_asciistring_progressrange(
+        &mut self,
+        theStream: &mut crate::ffi::Standard_IStream,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWObj_Reader_read_istream_asciistring_progressrange(
+                self as *mut Self,
+                theStream,
+                theFile,
+                theProgress,
+            )
+        }
     }
 
     /// **Source:** `RWObj_Reader.hxx`:75 - `RWObj_Reader::Probe()`
@@ -1119,12 +1145,43 @@ impl Reader {
     /// @param theProgress progress indicator
     /// @return TRUE if success, FALSE on error or user break.
     /// @sa FileComments(), ExternalFiles(), NbProbeNodes(), NbProbeElems().
-    pub fn probe(
+    pub fn probe_asciistring_progressrange(
         &mut self,
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe { crate::ffi::RWObj_Reader_probe(self as *mut Self, theFile, theProgress) }
+        unsafe {
+            crate::ffi::RWObj_Reader_probe_asciistring_progressrange(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:91 - `RWObj_Reader::Probe()`
+    /// Probe data from OBJ file (comments, external references) without actually reading mesh data.
+    /// Although mesh data will not be collected, the full file content will be parsed, due to OBJ
+    /// format limitations.
+    /// @param theStream   input stream
+    /// @param theFile     path to the file
+    /// @param theProgress progress indicator
+    /// @return TRUE if success, FALSE on error or user break.
+    /// @sa FileComments(), ExternalFiles(), NbProbeNodes(), NbProbeElems().
+    pub fn probe_istream_asciistring_progressrange(
+        &mut self,
+        theStream: &mut crate::ffi::Standard_IStream,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWObj_Reader_probe_istream_asciistring_progressrange(
+                self as *mut Self,
+                theStream,
+                theFile,
+                theProgress,
+            )
+        }
     }
 
     /// **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::FileComments()`
@@ -1308,25 +1365,11 @@ impl HandleRWObjReader {
     }
 }
 
-// ── Skipped symbols for Reader (3 total) ──
+// ── Skipped symbols for Reader (1 total) ──
 // SKIPPED: **Source:** `RWObj_Reader.hxx`:48 - `RWObj_Reader::RWObj_Reader`
 //   constructor: Empty constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `RWObj_Reader.hxx`:63 - `RWObj_Reader::Read`
-//   method: Reads data from OBJ file.
-//   method: Unicode paths can be given in UTF-8 encoding.
-//   method: Returns true if success, false on error or user break.
-//   Reason: param 'theStream' uses unknown type 'std::istream&'
-//   // pub fn read(&mut self, theStream: &mut istream, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `RWObj_Reader.hxx`:91 - `RWObj_Reader::Probe`
-//   method: Probe data from OBJ file (comments, external references) without actually reading mesh data.
-//   method: Although mesh data will not be collected, the full file content will be parsed, due to OBJ
-//   method: format limitations.
-//   Reason: param 'theStream' uses unknown type 'std::istream&'
-//   // pub fn probe(&mut self, theStream: &mut istream, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
 //
 
 // ========================

@@ -363,12 +363,36 @@ impl CafReader {
     /// **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
     /// Open stream and pass it to Perform method.
     /// The Document instance should be set beforehand.
-    pub fn perform(
+    pub fn perform_asciistring_progressrange(
         &mut self,
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe { crate::ffi::RWMesh_CafReader_perform(self as *mut Self, theFile, theProgress) }
+        unsafe {
+            crate::ffi::RWMesh_CafReader_perform_asciistring_progressrange(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:202 - `RWMesh_CafReader::Perform()`
+    /// Read the data from specified file.
+    pub fn perform_istream_progressrange_asciistring(
+        &mut self,
+        theStream: &mut crate::ffi::Standard_IStream,
+        theProgress: &crate::message::ProgressRange,
+        theFile: &crate::t_collection::AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWMesh_CafReader_perform_istream_progressrange_asciistring(
+                self as *mut Self,
+                theStream,
+                theProgress,
+                theFile,
+            )
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:211 - `RWMesh_CafReader::ExtraStatus()`
@@ -402,13 +426,37 @@ impl CafReader {
 
     /// **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
     /// Open stream and pass it to ProbeHeader method.
-    pub fn probe_header(
+    pub fn probe_header_asciistring_progressrange(
         &mut self,
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
-            crate::ffi::RWMesh_CafReader_probe_header(self as *mut Self, theFile, theProgress)
+            crate::ffi::RWMesh_CafReader_probe_header_asciistring_progressrange(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:238 - `RWMesh_CafReader::ProbeHeader()`
+    /// Read the header data from specified file without reading entire model.
+    /// The main purpose is collecting metadata and external references - for copying model into a new
+    /// location, for example. Can be NOT implemented (unsupported by format / reader).
+    pub fn probe_header_istream_asciistring_progressrange(
+        &mut self,
+        theStream: &mut crate::ffi::Standard_IStream,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWMesh_CafReader_probe_header_istream_asciistring_progressrange(
+                self as *mut Self,
+                theStream,
+                theFile,
+                theProgress,
+            )
         }
     }
 
@@ -558,23 +606,11 @@ impl HandleRWMeshCafReader {
     }
 }
 
-// ── Skipped symbols for CafReader (3 total) ──
+// ── Skipped symbols for CafReader (1 total) ──
 // SKIPPED: **Source:** `RWMesh_CafReader.hxx`:66 - `RWMesh_CafReader::RWMesh_CafReader`
 //   constructor: Empty constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:202 - `RWMesh_CafReader::Perform`
-//   method: Read the data from specified file.
-//   Reason: param 'theStream' uses unknown type 'std::istream&'
-//   // pub fn perform(&mut self, theStream: &mut istream, theProgress: &ProgressRange, theFile: &AsciiString) -> bool;
-//
-// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:238 - `RWMesh_CafReader::ProbeHeader`
-//   method: Read the header data from specified file without reading entire model.
-//   method: The main purpose is collecting metadata and external references - for copying model into a new
-//   method: location, for example. Can be NOT implemented (unsupported by format / reader).
-//   Reason: param 'theStream' uses unknown type 'std::istream&'
-//   // pub fn probe_header(&mut self, theStream: &mut istream, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
 //
 
 /// **Source:** `RWMesh_CafReader.hxx`:55 - `RWMesh_CafReader_CafDocumentTools`

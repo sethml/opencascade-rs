@@ -1496,6 +1496,26 @@ impl Reader {
         }
     }
 
+    /// **Source:** `STEPControl_Reader.hxx`:92 - `STEPControl_Reader::ReadStream()`
+    /// Loads a file from stream and returns the read status
+    pub fn read_stream_charptr_istream(
+        &mut self,
+        theName: &str,
+        theIStream: &mut crate::ffi::Standard_IStream,
+    ) -> crate::if_select::ReturnStatus {
+        let c_theName = std::ffi::CString::new(theName).unwrap();
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::STEPControl_Reader_read_stream_charptr_istream(
+                    self as *mut Self,
+                    c_theName.as_ptr(),
+                    theIStream,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
     /// **Source:** `STEPControl_Reader.hxx`:98 - `STEPControl_Reader::ReadFile()`
     /// Loads a file and returns the read status
     /// Zero for a Model which compies with the Controller
@@ -1511,6 +1531,28 @@ impl Reader {
                     self as *mut Self,
                     c_filename.as_ptr(),
                     theParams,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `STEPControl_Reader.hxx`:102 - `STEPControl_Reader::ReadStream()`
+    /// Loads a file from stream and returns the read status
+    pub fn read_stream_charptr_parameters_istream(
+        &mut self,
+        theName: &str,
+        theParams: &crate::destep::Parameters,
+        theIStream: &mut crate::ffi::Standard_IStream,
+    ) -> crate::if_select::ReturnStatus {
+        let c_theName = std::ffi::CString::new(theName).unwrap();
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::STEPControl_Reader_read_stream_charptr_parameters_istream(
+                    self as *mut Self,
+                    c_theName.as_ptr(),
+                    theParams,
+                    theIStream,
                 ),
             )
             .unwrap()
@@ -1786,18 +1828,6 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (2 total) ──
-// SKIPPED: **Source:** `STEPControl_Reader.hxx`:92 - `STEPControl_Reader::ReadStream`
-//   method: Loads a file from stream and returns the read status
-//   Reason: param 'theIStream' uses unknown type 'std::istream&'
-//   // pub fn read_stream(&mut self, theName: *const char, theIStream: &mut istream) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
-// SKIPPED: **Source:** `STEPControl_Reader.hxx`:102 - `STEPControl_Reader::ReadStream`
-//   method: Loads a file from stream and returns the read status
-//   Reason: param 'theIStream' uses unknown type 'std::istream&'
-//   // pub fn read_stream(&mut self, theName: *const char, theParams: &Parameters, theIStream: &mut istream) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
-
 // ========================
 // From STEPControl_Writer.hxx
 // ========================
@@ -1948,6 +1978,21 @@ impl Writer {
         }
     }
 
+    /// **Source:** `STEPControl_Writer.hxx`:109 - `STEPControl_Writer::WriteStream()`
+    /// Writes a STEP model in the std::ostream.
+    pub fn write_stream(
+        &mut self,
+        theOStream: &mut crate::ffi::Standard_OStream,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::STEPControl_Writer_write_stream(
+                self as *mut Self,
+                theOStream,
+            ))
+            .unwrap()
+        }
+    }
+
     /// **Source:** `STEPControl_Writer.hxx`:131 - `STEPControl_Writer::PrintStatsTransfer()`
     /// Displays the statistics for the
     /// last translation. what defines the kind of statistics that are displayed:
@@ -2027,12 +2072,7 @@ impl Writer {
     }
 }
 
-// ── Skipped symbols for Writer (3 total) ──
-// SKIPPED: **Source:** `STEPControl_Writer.hxx`:109 - `STEPControl_Writer::WriteStream`
-//   method: Writes a STEP model in the std::ostream.
-//   Reason: param 'theOStream' uses unknown type 'std::ostream&'
-//   // pub fn write_stream(&mut self, theOStream: &mut ostream) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
+// ── Skipped symbols for Writer (2 total) ──
 // SKIPPED: **Source:** `STEPControl_Writer.hxx`:142 - `STEPControl_Writer::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.

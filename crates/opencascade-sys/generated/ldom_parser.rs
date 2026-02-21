@@ -31,9 +31,26 @@ impl LDOMParser {
     }
 
     /// **Source:** `LDOMParser.hxx`:50 - `LDOMParser::parse()`
-    pub fn parse(&mut self, aFileName: &str) -> bool {
+    pub fn parse_charptr(&mut self, aFileName: &str) -> bool {
         let c_aFileName = std::ffi::CString::new(aFileName).unwrap();
-        unsafe { crate::ffi::LDOMParser_parse(self as *mut Self, c_aFileName.as_ptr()) }
+        unsafe { crate::ffi::LDOMParser_parse_charptr(self as *mut Self, c_aFileName.as_ptr()) }
+    }
+
+    /// **Source:** `LDOMParser.hxx`:54 - `LDOMParser::parse()`
+    pub fn parse_istream_bool2(
+        &mut self,
+        anInput: &mut crate::ffi::Standard_IStream,
+        theTagPerStep: bool,
+        theWithoutRoot: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::LDOMParser_parse_istream_bool2(
+                self as *mut Self,
+                anInput,
+                theTagPerStep,
+                theWithoutRoot,
+            )
+        }
     }
 
     /// **Source:** `LDOMParser.hxx`:66 - `LDOMParser::GetError()`
@@ -55,9 +72,3 @@ impl LDOMParser {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOMParser_get_bom(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for LDOMParser (1 total) ──
-// SKIPPED: **Source:** `LDOMParser.hxx`:54 - `LDOMParser::parse`
-//   Reason: param 'anInput' uses unknown type 'std::istream&'
-//   // pub fn parse(&mut self, anInput: &mut istream, theTagPerStep: bool, theWithoutRoot: bool) -> bool;
-//

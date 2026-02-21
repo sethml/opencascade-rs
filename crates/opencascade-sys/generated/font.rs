@@ -346,6 +346,12 @@ impl FTFont {
         unsafe { crate::ffi::Font_FTFont_release(self as *mut Self) }
     }
 
+    /// **Source:** `Font_FTFont.hxx`:229 - `Font_FTFont::RenderGlyph()`
+    /// Render specified glyph into internal buffer (bitmap).
+    pub fn render_glyph(&mut self, theChar: u32) -> bool {
+        unsafe { crate::ffi::Font_FTFont_render_glyph(self as *mut Self, theChar) }
+    }
+
     /// **Source:** `Font_FTFont.hxx`:232 - `Font_FTFont::GlyphMaxSizeX()`
     /// @return maximal glyph width in pixels (rendered to bitmap).
     pub fn glyph_max_size_x(&self, theToIncludeFallback: bool) -> u32 {
@@ -397,6 +403,50 @@ impl FTFont {
     /// By default glyphs are not scaled (scaling factor = 1.0)
     pub fn set_width_scaling(&mut self, theScaleFactor: f32) {
         unsafe { crate::ffi::Font_FTFont_set_width_scaling(self as *mut Self, theScaleFactor) }
+    }
+
+    /// **Source:** `Font_FTFont.hxx`:257 - `Font_FTFont::HasSymbol()`
+    /// Return TRUE if font contains specified symbol (excluding fallback list).
+    pub fn has_symbol(&self, theUChar: u32) -> bool {
+        unsafe { crate::ffi::Font_FTFont_has_symbol(self as *const Self, theUChar) }
+    }
+
+    /// **Source:** `Font_FTFont.hxx`:262 - `Font_FTFont::AdvanceX()`
+    /// Compute horizontal advance to the next character with kerning applied when applicable.
+    /// Assuming text rendered horizontally.
+    /// @param theUCharNext the next character to compute advance from current one
+    pub fn advance_x_uint(&self, theUCharNext: u32) -> f32 {
+        unsafe { crate::ffi::Font_FTFont_advance_x_uint(self as *const Self, theUCharNext) }
+    }
+
+    /// **Source:** `Font_FTFont.hxx`:268 - `Font_FTFont::AdvanceX()`
+    /// Compute horizontal advance to the next character with kerning applied when applicable.
+    /// Assuming text rendered horizontally.
+    /// @param theUChar     the character to be loaded as current one
+    /// @param theUCharNext the next character to compute advance from current one
+    pub fn advance_x_uint2(&mut self, theUChar: u32, theUCharNext: u32) -> f32 {
+        unsafe {
+            crate::ffi::Font_FTFont_advance_x_uint2(self as *mut Self, theUChar, theUCharNext)
+        }
+    }
+
+    /// **Source:** `Font_FTFont.hxx`:273 - `Font_FTFont::AdvanceY()`
+    /// Compute vertical advance to the next character with kerning applied when applicable.
+    /// Assuming text rendered vertically.
+    /// @param theUCharNext the next character to compute advance from current one
+    pub fn advance_y_uint(&self, theUCharNext: u32) -> f32 {
+        unsafe { crate::ffi::Font_FTFont_advance_y_uint(self as *const Self, theUCharNext) }
+    }
+
+    /// **Source:** `Font_FTFont.hxx`:279 - `Font_FTFont::AdvanceY()`
+    /// Compute vertical advance to the next character with kerning applied when applicable.
+    /// Assuming text rendered vertically.
+    /// @param theUChar     the character to be loaded as current one
+    /// @param theUCharNext the next character to compute advance from current one
+    pub fn advance_y_uint2(&mut self, theUChar: u32, theUCharNext: u32) -> f32 {
+        unsafe {
+            crate::ffi::Font_FTFont_advance_y_uint2(self as *mut Self, theUChar, theUCharNext)
+        }
     }
 
     /// **Source:** `Font_FTFont.hxx`:283 - `Font_FTFont::GlyphsNumber()`
@@ -467,6 +517,51 @@ impl FTFont {
                 theParams,
                 theStrictLevel.into(),
             ))
+        }
+    }
+
+    /// **Source:** `Font_FTFont.hxx`:92 - `Font_FTFont::IsCharFromCJK()`
+    /// Return TRUE if specified character is within subset of modern CJK characters.
+    pub fn is_char_from_cjk(theUChar: u32) -> bool {
+        unsafe { crate::ffi::Font_FTFont_is_char_from_cjk(theUChar) }
+    }
+
+    /// **Source:** `Font_FTFont.hxx`:105 - `Font_FTFont::IsCharFromHiragana()`
+    /// Return TRUE if specified character is within subset of Hiragana (Japanese).
+    pub fn is_char_from_hiragana(theUChar: u32) -> bool {
+        unsafe { crate::ffi::Font_FTFont_is_char_from_hiragana(theUChar) }
+    }
+
+    /// **Source:** `Font_FTFont.hxx`:111 - `Font_FTFont::IsCharFromKatakana()`
+    /// Return TRUE if specified character is within subset of Katakana (Japanese).
+    pub fn is_char_from_katakana(theUChar: u32) -> bool {
+        unsafe { crate::ffi::Font_FTFont_is_char_from_katakana(theUChar) }
+    }
+
+    /// **Source:** `Font_FTFont.hxx`:117 - `Font_FTFont::IsCharFromKorean()`
+    /// Return TRUE if specified character is within subset of modern Korean characters (Hangul).
+    pub fn is_char_from_korean(theUChar: u32) -> bool {
+        unsafe { crate::ffi::Font_FTFont_is_char_from_korean(theUChar) }
+    }
+
+    /// **Source:** `Font_FTFont.hxx`:125 - `Font_FTFont::IsCharFromArabic()`
+    /// Return TRUE if specified character is within subset of Arabic characters.
+    pub fn is_char_from_arabic(theUChar: u32) -> bool {
+        unsafe { crate::ffi::Font_FTFont_is_char_from_arabic(theUChar) }
+    }
+
+    /// **Source:** `Font_FTFont.hxx`:131 - `Font_FTFont::IsCharRightToLeft()`
+    /// Return TRUE if specified character should be displayed in Right-to-Left order.
+    pub fn is_char_right_to_left(theUChar: u32) -> bool {
+        unsafe { crate::ffi::Font_FTFont_is_char_right_to_left(theUChar) }
+    }
+
+    /// **Source:** `Font_FTFont.hxx`:134 - `Font_FTFont::CharSubset()`
+    /// Determine Unicode subset for specified character
+    pub fn char_subset(theUChar: u32) -> crate::font::UnicodeSubset {
+        unsafe {
+            crate::font::UnicodeSubset::try_from(crate::ffi::Font_FTFont_char_subset(theUChar))
+                .unwrap()
         }
     }
 
@@ -557,86 +652,13 @@ impl HandleFontFTFont {
     }
 }
 
-// ── Skipped symbols for FTFont (14 total) ──
-// SKIPPED: **Source:** `Font_FTFont.hxx`:229 - `Font_FTFont::RenderGlyph`
-//   method: Render specified glyph into internal buffer (bitmap).
-//   Reason: param 'theChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn render_glyph(&mut self, theChar: Utf32Char) -> bool;
-//
-// SKIPPED: **Source:** `Font_FTFont.hxx`:257 - `Font_FTFont::HasSymbol`
-//   method: Return TRUE if font contains specified symbol (excluding fallback list).
-//   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn has_symbol(&self, theUChar: Utf32Char) -> bool;
-//
-// SKIPPED: **Source:** `Font_FTFont.hxx`:262 - `Font_FTFont::AdvanceX`
-//   method: Compute horizontal advance to the next character with kerning applied when applicable.
-//   method: Assuming text rendered horizontally.
-//   method: @param theUCharNext the next character to compute advance from current one
-//   Reason: param 'theUCharNext' uses unknown type 'Standard_Utf32Char'
-//   // pub fn advance_x(&self, theUCharNext: Utf32Char) -> f32;
-//
-// SKIPPED: **Source:** `Font_FTFont.hxx`:268 - `Font_FTFont::AdvanceX`
-//   method: Compute horizontal advance to the next character with kerning applied when applicable.
-//   method: Assuming text rendered horizontally.
-//   method: @param theUChar     the character to be loaded as current one
-//   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn advance_x(&mut self, theUChar: Utf32Char, theUCharNext: Utf32Char) -> f32;
-//
-// SKIPPED: **Source:** `Font_FTFont.hxx`:273 - `Font_FTFont::AdvanceY`
-//   method: Compute vertical advance to the next character with kerning applied when applicable.
-//   method: Assuming text rendered vertically.
-//   method: @param theUCharNext the next character to compute advance from current one
-//   Reason: param 'theUCharNext' uses unknown type 'Standard_Utf32Char'
-//   // pub fn advance_y(&self, theUCharNext: Utf32Char) -> f32;
-//
-// SKIPPED: **Source:** `Font_FTFont.hxx`:279 - `Font_FTFont::AdvanceY`
-//   method: Compute vertical advance to the next character with kerning applied when applicable.
-//   method: Assuming text rendered vertically.
-//   method: @param theUChar     the character to be loaded as current one
-//   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn advance_y(&mut self, theUChar: Utf32Char, theUCharNext: Utf32Char) -> f32;
-//
+// ── Skipped symbols for FTFont (1 total) ──
 // SKIPPED: **Source:** `Font_FTFont.hxx`:301 - `Font_FTFont::renderGlyphOutline`
 //   method: Computes outline contour for the symbol.
 //   method: @param[in] theUChar     the character to be loaded as current one
 //   method: @param[out] theOutline   outline contour
-//   Reason: param 'theChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn render_glyph_outline(&mut self, theChar: Utf32Char) -> *const Outline_;
-//
-// SKIPPED: **Source:** `Font_FTFont.hxx`:92 - `Font_FTFont::IsCharFromCJK`
-//   static_method: Return TRUE if specified character is within subset of modern CJK characters.
-//   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn is_char_from_cjk(theUChar: Utf32Char) -> bool;
-//
-// SKIPPED: **Source:** `Font_FTFont.hxx`:105 - `Font_FTFont::IsCharFromHiragana`
-//   static_method: Return TRUE if specified character is within subset of Hiragana (Japanese).
-//   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn is_char_from_hiragana(theUChar: Utf32Char) -> bool;
-//
-// SKIPPED: **Source:** `Font_FTFont.hxx`:111 - `Font_FTFont::IsCharFromKatakana`
-//   static_method: Return TRUE if specified character is within subset of Katakana (Japanese).
-//   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn is_char_from_katakana(theUChar: Utf32Char) -> bool;
-//
-// SKIPPED: **Source:** `Font_FTFont.hxx`:117 - `Font_FTFont::IsCharFromKorean`
-//   static_method: Return TRUE if specified character is within subset of modern Korean characters (Hangul).
-//   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn is_char_from_korean(theUChar: Utf32Char) -> bool;
-//
-// SKIPPED: **Source:** `Font_FTFont.hxx`:125 - `Font_FTFont::IsCharFromArabic`
-//   static_method: Return TRUE if specified character is within subset of Arabic characters.
-//   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn is_char_from_arabic(theUChar: Utf32Char) -> bool;
-//
-// SKIPPED: **Source:** `Font_FTFont.hxx`:131 - `Font_FTFont::IsCharRightToLeft`
-//   static_method: Return TRUE if specified character should be displayed in Right-to-Left order.
-//   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn is_char_right_to_left(theUChar: Utf32Char) -> bool;
-//
-// SKIPPED: **Source:** `Font_FTFont.hxx`:134 - `Font_FTFont::CharSubset`
-//   static_method: Determine Unicode subset for specified character
-//   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn char_subset(theUChar: Utf32Char) -> OwnedPtr<Font_UnicodeSubset>;
+//   Reason: return type 'const FT_Outline_*' is unknown
+//   // pub fn render_glyph_outline(&mut self, theChar: u32) -> *const Outline_;
 //
 
 // ========================
@@ -1693,6 +1715,18 @@ impl TextFormatter {
         unsafe { &*(crate::ffi::Font_TextFormatter_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Font_TextFormatter.hxx`:279 - `Font_TextFormatter::IsCommandSymbol()`
+    /// Returns true if the symbol is CR, BEL, FF, NP, BS or VT
+    pub fn is_command_symbol(theSymbol: &u32) -> bool {
+        unsafe { crate::ffi::Font_TextFormatter_is_command_symbol(theSymbol) }
+    }
+
+    /// **Source:** `Font_TextFormatter.hxx`:292 - `Font_TextFormatter::IsSeparatorSymbol()`
+    /// Returns true if the symbol separates words when wrapping is enabled
+    pub fn is_separator_symbol(theSymbol: &u32) -> bool {
+        unsafe { crate::ffi::Font_TextFormatter_is_separator_symbol(theSymbol) }
+    }
+
     /// **Source:** `Font_TextFormatter.hxx`:299 - `Font_TextFormatter::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
@@ -1800,7 +1834,7 @@ impl HandleFontTextFormatter {
     }
 }
 
-// ── Skipped symbols for TextFormatter (4 total) ──
+// ── Skipped symbols for TextFormatter (2 total) ──
 // SKIPPED: **Source:** `Font_TextFormatter.hxx`:270 - `Font_TextFormatter::Corners`
 //   method: Returns internal container of the top left corners of a formatted rectangles.
 //   Reason: has unbindable types: return: unresolved template type (const NCollection_Vector<NCollection_Vec2<Standard_ShortReal>>&)
@@ -1810,16 +1844,6 @@ impl HandleFontTextFormatter {
 //   method: Returns container of each line position at LF in formatted text
 //   Reason: has unbindable types: return: unresolved template type (const NCollection_Vector<Standard_ShortReal>&)
 //   // pub fn new_lines(&self) -> /* const NCollection_Vector<Standard_ShortReal>& */;
-//
-// SKIPPED: **Source:** `Font_TextFormatter.hxx`:279 - `Font_TextFormatter::IsCommandSymbol`
-//   static_method: Returns true if the symbol is CR, BEL, FF, NP, BS or VT
-//   Reason: param 'theSymbol' uses unknown type 'const Standard_Utf32Char&'
-//   // pub fn is_command_symbol(theSymbol: &Utf32Char) -> bool;
-//
-// SKIPPED: **Source:** `Font_TextFormatter.hxx`:292 - `Font_TextFormatter::IsSeparatorSymbol`
-//   static_method: Returns true if the symbol separates words when wrapping is enabled
-//   Reason: param 'theSymbol' uses unknown type 'const Standard_Utf32Char&'
-//   // pub fn is_separator_symbol(theSymbol: &Utf32Char) -> bool;
 //
 
 /// **Source:** `Font_TextFormatter.hxx`:66 - `Font_TextFormatter_Iterator`
@@ -1862,6 +1886,18 @@ impl TextFormatter_Iterator {
         unsafe { crate::ffi::Font_TextFormatter_Iterator_has_next(self as *const Self) }
     }
 
+    /// **Source:** `Font_TextFormatter.hxx`:88 - `Font_TextFormatter_Iterator::Symbol()`
+    /// Returns current symbol.
+    pub fn symbol(&self) -> u32 {
+        unsafe { crate::ffi::Font_TextFormatter_Iterator_symbol(self as *const Self) }
+    }
+
+    /// **Source:** `Font_TextFormatter.hxx`:91 - `Font_TextFormatter_Iterator::SymbolNext()`
+    /// Returns the next symbol if exists.
+    pub fn symbol_next(&self) -> u32 {
+        unsafe { crate::ffi::Font_TextFormatter_Iterator_symbol_next(self as *const Self) }
+    }
+
     /// **Source:** `Font_TextFormatter.hxx`:94 - `Font_TextFormatter_Iterator::SymbolPosition()`
     /// Returns current symbol position.
     pub fn symbol_position(&self) -> i32 {
@@ -1880,18 +1916,6 @@ impl TextFormatter_Iterator {
         unsafe { crate::ffi::Font_TextFormatter_Iterator_next(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for TextFormatter_Iterator (2 total) ──
-// SKIPPED: **Source:** `Font_TextFormatter.hxx`:88 - `Font_TextFormatter::Iterator::Symbol`
-//   method: Returns current symbol.
-//   Reason: return type 'Standard_Utf32Char' is unknown
-//   // pub fn symbol(&self) -> OwnedPtr<Standard_Utf32Char>;
-//
-// SKIPPED: **Source:** `Font_TextFormatter.hxx`:91 - `Font_TextFormatter::Iterator::SymbolNext`
-//   method: Returns the next symbol if exists.
-//   Reason: return type 'Standard_Utf32Char' is unknown
-//   // pub fn symbol_next(&self) -> OwnedPtr<Standard_Utf32Char>;
-//
 
 // ========================
 // Additional type re-exports

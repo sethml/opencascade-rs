@@ -59649,8 +59649,7 @@ pub use crate::ffi::{
     Standard_Address as Address, Standard_IStream as IStream, Standard_JmpBuf as JmpBuf,
     Standard_OStream as OStream, Standard_PCharacter as PCharacter,
     Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream,
-    Standard_Utf16Char as Utf16Char, Standard_Utf32Char as Utf32Char,
-    Standard_WideChar as WideChar,
+    Standard_Utf16Char as Utf16Char, Standard_WideChar as WideChar,
 };
 
 // Manual bindings:

@@ -1867,6 +1867,24 @@ impl GltfMaterialMap {
         unsafe { &*(crate::ffi::RWGltf_GltfMaterialMap_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `RWGltf_GltfMaterialMap.hxx`:38 - `RWGltf_GltfMaterialMap::AddGlbImages()`
+    /// Add material images into GLB stream.
+    /// @param[in][out] theBinFile   output file stream
+    /// @param[in] theStyle    material images to add
+    pub fn add_glb_images(
+        &mut self,
+        theBinFile: &mut crate::ffi::Standard_OStream,
+        theStyle: &crate::xcaf_prs::Style,
+    ) {
+        unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_add_glb_images(
+                self as *mut Self,
+                theBinFile,
+                theStyle,
+            )
+        }
+    }
+
     /// **Source:** `RWGltf_GltfMaterialMap.hxx`:66 - `RWGltf_GltfMaterialMap::NbImages()`
     /// Return extent of images map.
     pub fn nb_images(&self) -> i32 {
@@ -2085,14 +2103,7 @@ impl HandleRWGltfGltfMaterialMap {
     }
 }
 
-// ── Skipped symbols for GltfMaterialMap (6 total) ──
-// SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:38 - `RWGltf_GltfMaterialMap::AddGlbImages`
-//   method: Add material images into GLB stream.
-//   method: @param[in][out] theBinFile   output file stream
-//   method: @param[in] theStyle    material images to add
-//   Reason: param 'theBinFile' uses unknown type 'std::ostream&'
-//   // pub fn add_glb_images(&mut self, theBinFile: &mut ostream, theStyle: &Style);
-//
+// ── Skipped symbols for GltfMaterialMap (5 total) ──
 // SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:42 - `RWGltf_GltfMaterialMap::FlushGlbBufferViews`
 //   method: Add bufferView's into RWGltf_GltfRootElement_BufferViews section with images collected by
 //   method: AddImagesToGlb().

@@ -170,6 +170,22 @@ impl AlienPixMap {
         unsafe { crate::ffi::Image_AlienPixMap_load_asciistring(self as *mut Self, theFileName) }
     }
 
+    /// **Source:** `Image_AlienPixMap.hxx`:55 - `Image_AlienPixMap::Load()`
+    /// Read image data from stream.
+    pub fn load_istream_asciistring(
+        &mut self,
+        theStream: &mut crate::ffi::Standard_IStream,
+        theFileName: &crate::t_collection::AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Image_AlienPixMap_load_istream_asciistring(
+                self as *mut Self,
+                theStream,
+                theFileName,
+            )
+        }
+    }
+
     /// **Source:** `Image_AlienPixMap.hxx`:62 - `Image_AlienPixMap::Load()`
     /// Read image data from memory buffer.
     /// @param[in] theData     memory pointer to read from;
@@ -197,6 +213,24 @@ impl AlienPixMap {
     /// @param[in] theFileName file name to save
     pub fn save_asciistring(&mut self, theFileName: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::Image_AlienPixMap_save_asciistring(self as *mut Self, theFileName) }
+    }
+
+    /// **Source:** `Image_AlienPixMap.hxx`:73 - `Image_AlienPixMap::Save()`
+    /// Write image data to stream.
+    /// @param[out] theStream   stream where to write
+    /// @param[in] theExtension image format
+    pub fn save_ostream_asciistring(
+        &mut self,
+        theStream: &mut crate::ffi::Standard_OStream,
+        theExtension: &crate::t_collection::AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Image_AlienPixMap_save_ostream_asciistring(
+                self as *mut Self,
+                theStream,
+                theExtension,
+            )
+        }
     }
 
     /// **Source:** `Image_AlienPixMap.hxx`:81 - `Image_AlienPixMap::Save()`
@@ -560,20 +594,6 @@ impl HandleImageAlienPixMap {
         }
     }
 }
-
-// ── Skipped symbols for AlienPixMap (2 total) ──
-// SKIPPED: **Source:** `Image_AlienPixMap.hxx`:55 - `Image_AlienPixMap::Load`
-//   method: Read image data from stream.
-//   Reason: param 'theStream' uses unknown type 'std::istream&'
-//   // pub fn load(&mut self, theStream: &mut istream, theFileName: &AsciiString) -> bool;
-//
-// SKIPPED: **Source:** `Image_AlienPixMap.hxx`:73 - `Image_AlienPixMap::Save`
-//   method: Write image data to stream.
-//   method: @param[out] theStream   stream where to write
-//   method: @param[in] theExtension image format
-//   Reason: param 'theStream' uses unknown type 'std::ostream&'
-//   // pub fn save(&mut self, theStream: &mut ostream, theExtension: &AsciiString) -> bool;
-//
 
 // ========================
 // From Image_CompressedPixMap.hxx
@@ -2513,8 +2533,24 @@ impl Texture {
 
     /// **Source:** `Image_Texture.hxx`:74 - `Image_Texture::WriteImage()`
     /// Write image to specified file without decoding data.
-    pub fn write_image(&mut self, theFile: &crate::t_collection::AsciiString) -> bool {
-        unsafe { crate::ffi::Image_Texture_write_image(self as *mut Self, theFile) }
+    pub fn write_image_asciistring(&mut self, theFile: &crate::t_collection::AsciiString) -> bool {
+        unsafe { crate::ffi::Image_Texture_write_image_asciistring(self as *mut Self, theFile) }
+    }
+
+    /// **Source:** `Image_Texture.hxx`:77 - `Image_Texture::WriteImage()`
+    /// Write image to specified stream without decoding data.
+    pub fn write_image_ostream_asciistring(
+        &mut self,
+        theStream: &mut crate::ffi::Standard_OStream,
+        theFile: &crate::t_collection::AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Image_Texture_write_image_ostream_asciistring(
+                self as *mut Self,
+                theStream,
+                theFile,
+            )
+        }
     }
 
     /// **Source:** `Image_Texture.hxx`:30 - `Image_Texture::get_type_name()`
@@ -2619,13 +2655,6 @@ impl HandleImageTexture {
         }
     }
 }
-
-// ── Skipped symbols for Texture (1 total) ──
-// SKIPPED: **Source:** `Image_Texture.hxx`:77 - `Image_Texture::WriteImage`
-//   method: Write image to specified stream without decoding data.
-//   Reason: param 'theStream' uses unknown type 'std::ostream&'
-//   // pub fn write_image(&mut self, theStream: &mut ostream, theFile: &AsciiString) -> bool;
-//
 
 // ========================
 // From Image_VideoRecorder.hxx

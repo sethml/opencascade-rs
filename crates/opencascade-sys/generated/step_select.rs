@@ -1537,6 +1537,29 @@ impl WorkLibrary {
         }
     }
 
+    /// **Source:** `StepSelect_WorkLibrary.hxx`:62 - `StepSelect_WorkLibrary::ReadStream()`
+    /// Reads a STEP File from stream and returns a STEP Model (into <mod>),
+    /// or lets <mod> "Null" in case of Error
+    /// Returns 0 if OK, 1 if Read Error, -1 if File not opened
+    pub fn read_stream(
+        &self,
+        theName: &str,
+        theIStream: &mut crate::ffi::Standard_IStream,
+        model: &mut crate::ffi::HandleInterfaceInterfaceModel,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+    ) -> i32 {
+        let c_theName = std::ffi::CString::new(theName).unwrap();
+        unsafe {
+            crate::ffi::StepSelect_WorkLibrary_read_stream(
+                self as *const Self,
+                c_theName.as_ptr(),
+                theIStream,
+                model,
+                protocol,
+            )
+        }
+    }
+
     /// **Source:** `StepSelect_WorkLibrary.hxx`:70 - `StepSelect_WorkLibrary::WriteFile()`
     /// Writes a File from a STEP Model
     /// Returns False (and writes no file) if <ctx> does not bring a
@@ -1755,12 +1778,3 @@ impl HandleStepSelectWorkLibrary {
         }
     }
 }
-
-// ── Skipped symbols for WorkLibrary (1 total) ──
-// SKIPPED: **Source:** `StepSelect_WorkLibrary.hxx`:62 - `StepSelect_WorkLibrary::ReadStream`
-//   method: Reads a STEP File from stream and returns a STEP Model (into <mod>),
-//   method: or lets <mod> "Null" in case of Error
-//   method: Returns 0 if OK, 1 if Read Error, -1 if File not opened
-//   Reason: param 'theIStream' uses unknown type 'std::istream&'
-//   // pub fn read_stream(&self, theName: *const char, theIStream: &mut istream, model: &mut HandleInterfaceModel, protocol: &HandleProtocol) -> i32;
-//

@@ -1207,6 +1207,24 @@ impl Reader {
         }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:110 - `XSControl_Reader::ReadStream()`
+    /// Loads a file from stream and returns the read status
+    pub fn read_stream(
+        &mut self,
+        theName: &str,
+        theIStream: &mut crate::ffi::Standard_IStream,
+    ) -> crate::if_select::ReturnStatus {
+        let c_theName = std::ffi::CString::new(theName).unwrap();
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::XSControl_Reader_read_stream(
+                self as *mut Self,
+                c_theName.as_ptr(),
+                theIStream,
+            ))
+            .unwrap()
+        }
+    }
+
     /// **Source:** `XSControl_Reader.hxx`:114 - `XSControl_Reader::Model()`
     /// Returns the model. It can then be consulted (header, product)
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
@@ -1601,12 +1619,7 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (3 total) ──
-// SKIPPED: **Source:** `XSControl_Reader.hxx`:110 - `XSControl_Reader::ReadStream`
-//   method: Loads a file from stream and returns the read status
-//   Reason: param 'theIStream' uses unknown type 'std::istream&'
-//   // pub fn read_stream(&mut self, theName: *const char, theIStream: &mut istream) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
+// ── Skipped symbols for Reader (2 total) ──
 // SKIPPED: **Source:** `XSControl_Reader.hxx`:297 - `XSControl_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.

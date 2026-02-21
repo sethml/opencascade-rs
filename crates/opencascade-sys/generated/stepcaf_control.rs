@@ -1560,6 +1560,27 @@ impl Reader {
         }
     }
 
+    /// **Source:** `STEPCAFControl_Reader.hxx`:102 - `STEPCAFControl_Reader::ReadStream()`
+    /// Loads a file from stream and returns the read status.
+    /// @param[in] theName  auxiliary stream name
+    /// @param[in] theIStream  stream to read from
+    /// @return read status
+    pub fn read_stream(
+        &mut self,
+        theName: &str,
+        theIStream: &mut crate::ffi::Standard_IStream,
+    ) -> crate::if_select::ReturnStatus {
+        let c_theName = std::ffi::CString::new(theName).unwrap();
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::STEPCAFControl_Reader_read_stream(
+                self as *mut Self,
+                c_theName.as_ptr(),
+                theIStream,
+            ))
+            .unwrap()
+        }
+    }
+
     /// **Source:** `STEPCAFControl_Reader.hxx`:107 - `STEPCAFControl_Reader::NbRootsForTransfer()`
     /// Returns number of roots recognized for transfer
     /// Shortcut for Reader().NbRootsForTransfer()
@@ -1878,14 +1899,7 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (4 total) ──
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:102 - `STEPCAFControl_Reader::ReadStream`
-//   method: Loads a file from stream and returns the read status.
-//   method: @param[in] theName  auxiliary stream name
-//   method: @param[in] theIStream  stream to read from
-//   Reason: param 'theIStream' uses unknown type 'std::istream&'
-//   // pub fn read_stream(&mut self, theName: *const char, theIStream: &mut istream) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
+// ── Skipped symbols for Reader (3 total) ──
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:154 - `STEPCAFControl_Reader::ExternFiles`
 //   method: Returns data on external files
 //   method: Returns Null handle if no external files are read
@@ -1981,6 +1995,21 @@ impl Writer {
                 self as *mut Self,
                 c_theFileName.as_ptr(),
             ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:81 - `STEPCAFControl_Writer::WriteStream()`
+    /// Writes all the produced models into the stream.
+    /// Provided for use like single-file writer
+    pub fn write_stream(
+        &mut self,
+        theStream: &mut crate::ffi::Standard_OStream,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::STEPCAFControl_Writer_write_stream(self as *mut Self, theStream),
+            )
             .unwrap()
         }
     }
@@ -2334,13 +2363,7 @@ impl Writer {
     }
 }
 
-// ── Skipped symbols for Writer (4 total) ──
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:81 - `STEPCAFControl_Writer::WriteStream`
-//   method: Writes all the produced models into the stream.
-//   method: Provided for use like single-file writer
-//   Reason: param 'theStream' uses unknown type 'std::ostream&'
-//   // pub fn write_stream(&mut self, theStream: &mut ostream) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
+// ── Skipped symbols for Writer (3 total) ──
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:173 - `STEPCAFControl_Writer::ExternFiles`
 //   method: Returns data on external files
 //   method: Returns Null handle if no external files are read

@@ -191,6 +191,19 @@ impl BRepFont {
         unsafe { &*(crate::ffi::StdPrs_BRepFont_ft_font(self as *const Self)) }
     }
 
+    /// **Source:** `StdPrs_BRepFont.hxx`:110 - `StdPrs_BRepFont::RenderGlyph()`
+    /// Render single glyph as TopoDS_Shape.
+    /// @param theChar glyph identifier
+    /// @return rendered glyph within cache, might be NULL shape
+    pub fn render_glyph(&mut self, theChar: &u32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdPrs_BRepFont_render_glyph(
+                self as *mut Self,
+                theChar,
+            ))
+        }
+    }
+
     /// **Source:** `StdPrs_BRepFont.hxx`:118 - `StdPrs_BRepFont::SetCompositeCurveMode()`
     /// Setup glyph geometry construction mode.
     /// By default algorithm creates independent TopoDS_Edge
@@ -236,6 +249,38 @@ impl BRepFont {
     /// Configured point size
     pub fn point_size(&self) -> f64 {
         unsafe { crate::ffi::StdPrs_BRepFont_point_size(self as *const Self) }
+    }
+
+    /// **Source:** `StdPrs_BRepFont.hxx`:142 - `StdPrs_BRepFont::AdvanceX()`
+    /// Compute advance to the next character with kerning applied when applicable.
+    /// Assuming text rendered horizontally.
+    pub fn advance_x_uint(&mut self, theUCharNext: u32) -> f64 {
+        unsafe { crate::ffi::StdPrs_BRepFont_advance_x_uint(self as *mut Self, theUCharNext) }
+    }
+
+    /// **Source:** `StdPrs_BRepFont.hxx`:149 - `StdPrs_BRepFont::AdvanceX()`
+    /// Compute advance to the next character with kerning applied when applicable.
+    /// Assuming text rendered horizontally.
+    pub fn advance_x_uint2(&mut self, theUChar: u32, theUCharNext: u32) -> f64 {
+        unsafe {
+            crate::ffi::StdPrs_BRepFont_advance_x_uint2(self as *mut Self, theUChar, theUCharNext)
+        }
+    }
+
+    /// **Source:** `StdPrs_BRepFont.hxx`:156 - `StdPrs_BRepFont::AdvanceY()`
+    /// Compute advance to the next character with kerning applied when applicable.
+    /// Assuming text rendered vertically.
+    pub fn advance_y_uint(&mut self, theUCharNext: u32) -> f64 {
+        unsafe { crate::ffi::StdPrs_BRepFont_advance_y_uint(self as *mut Self, theUCharNext) }
+    }
+
+    /// **Source:** `StdPrs_BRepFont.hxx`:163 - `StdPrs_BRepFont::AdvanceY()`
+    /// Compute advance to the next character with kerning applied when applicable.
+    /// Assuming text rendered vertically.
+    pub fn advance_y_uint2(&mut self, theUChar: u32, theUCharNext: u32) -> f64 {
+        unsafe {
+            crate::ffi::StdPrs_BRepFont_advance_y_uint2(self as *mut Self, theUChar, theUCharNext)
+        }
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:169 - `StdPrs_BRepFont::Scale()`
@@ -394,39 +439,6 @@ impl HandleStdPrsBRepFont {
         }
     }
 }
-
-// ── Skipped symbols for BRepFont (5 total) ──
-// SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:110 - `StdPrs_BRepFont::RenderGlyph`
-//   method: Render single glyph as TopoDS_Shape.
-//   method: @param theChar glyph identifier
-//   method: @return rendered glyph within cache, might be NULL shape
-//   Reason: param 'theChar' uses unknown type 'const Standard_Utf32Char&'
-//   // pub fn render_glyph(&mut self, theChar: &Utf32Char) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:142 - `StdPrs_BRepFont::AdvanceX`
-//   method: Compute advance to the next character with kerning applied when applicable.
-//   method: Assuming text rendered horizontally.
-//   Reason: param 'theUCharNext' uses unknown type 'Standard_Utf32Char'
-//   // pub fn advance_x(&mut self, theUCharNext: Utf32Char) -> f64;
-//
-// SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:149 - `StdPrs_BRepFont::AdvanceX`
-//   method: Compute advance to the next character with kerning applied when applicable.
-//   method: Assuming text rendered horizontally.
-//   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn advance_x(&mut self, theUChar: Utf32Char, theUCharNext: Utf32Char) -> f64;
-//
-// SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:156 - `StdPrs_BRepFont::AdvanceY`
-//   method: Compute advance to the next character with kerning applied when applicable.
-//   method: Assuming text rendered vertically.
-//   Reason: param 'theUCharNext' uses unknown type 'Standard_Utf32Char'
-//   // pub fn advance_y(&mut self, theUCharNext: Utf32Char) -> f64;
-//
-// SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:163 - `StdPrs_BRepFont::AdvanceY`
-//   method: Compute advance to the next character with kerning applied when applicable.
-//   method: Assuming text rendered vertically.
-//   Reason: param 'theUChar' uses unknown type 'Standard_Utf32Char'
-//   // pub fn advance_y(&mut self, theUChar: Utf32Char, theUCharNext: Utf32Char) -> f64;
-//
 
 // ========================
 // From StdPrs_BRepTextBuilder.hxx
