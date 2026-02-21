@@ -131,10 +131,6 @@ exclude_headers = [
     "RWGltf_CafWriter.hxx",
     "RWGltf_GltfAccessor.hxx",
 
-    # BVH template classes: abstract base or complex template type params
-    # that the generator can't resolve correctly.
-    "BVH_Properties.hxx",
-
     # Internal-only class: all constructors/destructors are private, accessible only
     # to friend classes TDF_Data and TDF_Label. No public API returns TDF_LabelNode*;
     # it's entirely hidden behind the TDF_Label value-type facade.

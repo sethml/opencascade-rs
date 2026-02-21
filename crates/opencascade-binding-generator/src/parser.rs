@@ -625,6 +625,15 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
                     nested_classes.extend(parsed);
                 }
             }
+            EntityKind::Destructor => {
+                // A pure virtual destructor (`virtual ~Foo() = 0`) makes the
+                // class abstract even though no non-destructor pure virtuals
+                // exist. libclang reports this as Destructor (not Method), so
+                // we must check it separately.
+                if child.is_pure_virtual_method() {
+                    is_abstract = true;
+                }
+            }
             _ => {}
         }
         EntityVisitResult::Continue

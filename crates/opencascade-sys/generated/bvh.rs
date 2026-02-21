@@ -400,6 +400,18 @@ impl ObjectTransient {
         unsafe { &*(crate::ffi::BVH_ObjectTransient_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BVH_Object.hxx`:29 - `BVH_ObjectTransient::Properties()`
+    /// Returns properties of the geometric object.
+    pub fn properties(&self) -> &crate::ffi::HandleBVHProperties {
+        unsafe { &*(crate::ffi::BVH_ObjectTransient_properties(self as *const Self)) }
+    }
+
+    /// **Source:** `BVH_Object.hxx`:32 - `BVH_ObjectTransient::SetProperties()`
+    /// Sets properties of the geometric object.
+    pub fn set_properties(&mut self, theProperties: &crate::ffi::HandleBVHProperties) {
+        unsafe { crate::ffi::BVH_ObjectTransient_set_properties(self as *mut Self, theProperties) }
+    }
+
     /// **Source:** `BVH_Object.hxx`:38 - `BVH_ObjectTransient::IsDirty()`
     /// Returns TRUE if object state should be updated.
     pub fn is_dirty(&self) -> bool {
@@ -524,17 +536,121 @@ impl HandleBVHObjectTransient {
     }
 }
 
-// ── Skipped symbols for ObjectTransient (2 total) ──
-// SKIPPED: **Source:** `BVH_Object.hxx`:29 - `BVH_ObjectTransient::Properties`
-//   method: Returns properties of the geometric object.
-//   Reason: return type 'const Handle(BVH_Properties)&' is unknown
-//   // pub fn properties(&self) -> &HandleProperties;
-//
-// SKIPPED: **Source:** `BVH_Object.hxx`:32 - `BVH_ObjectTransient::SetProperties`
-//   method: Sets properties of the geometric object.
-//   Reason: param 'theProperties' uses unknown type 'const Handle(BVH_Properties)&'
-//   // pub fn set_properties(&mut self, theProperties: &HandleProperties);
-//
+// ========================
+// From BVH_Properties.hxx
+// ========================
+
+/// **Source:** `BVH_Properties.hxx`:24 - `BVH_Properties`
+/// Abstract properties of geometric object.
+pub use crate::ffi::BVH_Properties as Properties;
+
+unsafe impl crate::CppDeletable for Properties {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BVH_Properties_destructor(ptr);
+    }
+}
+
+impl Properties {
+    /// **Source:** `BVH_Properties.hxx`:26 - `BVH_Properties::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BVH_Properties_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BVH_Properties.hxx`:26 - `BVH_Properties::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BVH_Properties_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BVH_Properties.hxx`:26 - `BVH_Properties::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BVH_Properties_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::BVH_Properties_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::BVH_Properties_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BVH_Properties_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BVH_Properties_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::BVH_Properties_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::BVH_Properties_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::BVH_Properties_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::BVH_Properties_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::BVH_Properties_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleBVHProperties;
+
+unsafe impl crate::CppDeletable for HandleBVHProperties {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBVHProperties_destructor(ptr);
+    }
+}
+
+impl HandleBVHProperties {
+    /// Dereference this Handle to access the underlying BVH_Properties
+    pub fn get(&self) -> &crate::ffi::BVH_Properties {
+        unsafe { &*(crate::ffi::HandleBVHProperties_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BVH_Properties
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BVH_Properties {
+        unsafe { &mut *(crate::ffi::HandleBVHProperties_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BVH_Properties> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBVHProperties_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From BVH_Tree.hxx
@@ -677,6 +793,4 @@ impl HandleBVHTreeBaseTransient {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
-    BVH_Array3d as Array3d, BVH_Properties as Properties, BVH_Vec3d as Vec3d, BVH_Vec4f as Vec4f,
-};
+pub use crate::ffi::{BVH_Array3d as Array3d, BVH_Vec3d as Vec3d, BVH_Vec4f as Vec4f};
