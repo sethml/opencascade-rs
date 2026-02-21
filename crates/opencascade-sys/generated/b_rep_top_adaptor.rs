@@ -62,7 +62,13 @@ impl FClass2d {
     }
 
     /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:45 - `BRepTopAdaptor_FClass2d::Copy()`
-    pub fn copy(&self, Other: &FClass2d) -> &FClass2d {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn copy(&self, Other: &FClass2d) -> &FClass2d {
         unsafe { &*(crate::ffi::BRepTopAdaptor_FClass2d_copy(self as *const Self, Other)) }
     }
 

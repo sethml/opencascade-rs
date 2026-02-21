@@ -898,7 +898,13 @@ impl NMTool {
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:60 - `StepToTopoDS_NMTool::Find()`
-    pub fn find_handlestepreprrepresentationitem(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn find_handlestepreprrepresentationitem(
         &mut self,
         RI: &crate::ffi::HandleStepReprRepresentationItem,
     ) -> &crate::topo_ds::Shape {
@@ -911,7 +917,13 @@ impl NMTool {
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:62 - `StepToTopoDS_NMTool::Find()`
-    pub fn find_asciistring(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn find_asciistring(
         &mut self,
         RIName: &crate::t_collection::AsciiString,
     ) -> &crate::topo_ds::Shape {
@@ -1101,7 +1113,13 @@ impl Tool {
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:60 - `StepToTopoDS_Tool::Find()`
-    pub fn find(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn find(
         &mut self,
         TRI: &crate::ffi::HandleStepShapeTopologicalRepresentationItem,
     ) -> &crate::topo_ds::Shape {
@@ -1124,7 +1142,13 @@ impl Tool {
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:69 - `StepToTopoDS_Tool::FindEdge()`
-    pub fn find_edge(&mut self, PP: &PointPair) -> &crate::topo_ds::Edge {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn find_edge(&mut self, PP: &PointPair) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::StepToTopoDS_Tool_find_edge(self as *mut Self, PP)) }
     }
 
@@ -1148,7 +1172,13 @@ impl Tool {
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:77 - `StepToTopoDS_Tool::FindVertex()`
-    pub fn find_vertex(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn find_vertex(
         &mut self,
         P: &crate::ffi::HandleStepGeomCartesianPoint,
     ) -> &crate::topo_ds::Vertex {

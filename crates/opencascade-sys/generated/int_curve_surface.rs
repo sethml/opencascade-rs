@@ -1777,7 +1777,13 @@ impl ThePolyhedronOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:99 - `IntCurveSurface_ThePolyhedronOfHInter::Point()`
     /// Give the point of index i in the MaTriangle.
-    pub fn point_int_real2(&self, Index: i32, U: &mut f64, V: &mut f64) -> &crate::gp::Pnt {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn point_int_real2(&self, Index: i32, U: &mut f64, V: &mut f64) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_point_int_real2(
                 self as *const Self,

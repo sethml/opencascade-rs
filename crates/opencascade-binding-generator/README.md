@@ -198,6 +198,30 @@ use opencascade_sys::geom::BSplineCurve;
 let weights: Option<&_> = curve.weights();  // None if null, Some(&array) otherwise
 ```
 
+### Unsafe Reference Returns (Ambiguous Lifetimes)
+
+Some methods and free functions return a reference (`&T` or `&mut T`) while also taking reference parameters. In C++, the returned reference might borrow from `self`, from one of the parameters, or from neither (e.g., a global or class-static). Rust's lifetime elision rules assume the return borrows from `self` for methods, but this assumption may be incorrect — the return could actually borrow from a parameter, which might be dropped before `self`.
+
+The generator marks these methods as `unsafe fn` with a `# Safety` doc comment explaining the ambiguity. This applies to:
+
+- **Instance methods** returning `&T` or `&mut T` that also take reference parameters (other than `self`)
+- **Free functions** returning a reference with 2+ reference parameters (no `self` to disambiguate)
+
+For free functions, explicit lifetime annotations (`<'a>`) tie all reference parameters and the return type together, since Rust's elision rules cannot resolve the ambiguity without `self`.
+
+```rust
+use opencascade_sys::message::Msg;
+
+// Method: returns &mut Msg, takes &str — could borrow from self or theString
+let result: &mut Msg = unsafe { msg.arg_charptr("value") };
+
+// Free function: explicit lifetime <'a> ties parameters and return together
+use opencascade_sys::bin_tools;
+let stream: &mut OStream = unsafe { bin_tools::put_real(&mut os, &value) };
+```
+
+Methods that return references but take no reference parameters (other than `self`) are **safe** — Rust's lifetime elision correctly binds the return to `self`.
+
 ### Collection Iterators
 
 OCCT collection types (NCollection_List, NCollection_Sequence, NCollection_IndexedMap, etc.) get Rust iterator support. Each collection has a C++ iterator wrapper struct and Rust `Iterator` trait impl.
@@ -366,7 +390,7 @@ See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for exa
 
 ## Skipped Symbols
 
-The binding generator skips ~671 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator skips ~661 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -385,19 +409,18 @@ Example from `gp.rs`:
 
 | Count | % | Category | Description |
 |------:|----:|----------|-------------|
-| 332 | 49.5% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`BinObjMgt_SRelocationTable`, `Graphic3d_ZLayerId`, `XmlObjMgt_Element`, `IMeshData::IEdgeHandle`, etc.) |
-| 94 | 14.0% | **Unresolved template type** | Template instantiations that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `NCollection_Vec3<...>`, etc.) |
-| 88 | 13.1% | **Unknown Handle type** | Handle to a class not in the binding set (`Handle(ShapePersistent_Geom::...)`, `Handle(BVH_Builder<...>)`, etc.) |
-| 72 | 10.7% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
-| 19 | 2.8% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
-| 17 | 2.5% | **String ref param** | `const char*&` or `const char* const&` parameters — needs manual binding |
-| 15 | 2.2% | **Stream (shared_ptr)** | `std::shared_ptr<std::istream/ostream>` — smart-pointer-wrapped streams not yet bindable |
+| 332 | 50.2% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`BinObjMgt_SRelocationTable`, `Graphic3d_ZLayerId`, `XmlObjMgt_Element`, `IMeshData::IEdgeHandle`, etc.) |
+| 94 | 14.2% | **Unresolved template type** | Template instantiations that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `NCollection_Vec3<...>`, etc.) |
+| 88 | 13.3% | **Unknown Handle type** | Handle to a class not in the binding set (`Handle(ShapePersistent_Geom::...)`, `Handle(BVH_Builder<...>)`, etc.) |
+| 72 | 10.9% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
+| 19 | 2.9% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
+| 17 | 2.6% | **String ref param** | `const char*&` or `const char* const&` parameters — needs manual binding |
+| 15 | 2.3% | **Stream (shared_ptr)** | `std::shared_ptr<std::istream/ostream>` — smart-pointer-wrapped streams not yet bindable |
 | 12 | 1.8% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
-| 10 | 1.5% | **Ambiguous lifetimes** | Free functions returning `&mut` with 2+ reference params — Rust lifetime inference is ambiguous |
-| 5 | 0.7% | **Not CppDeletable** | Return type class has no destructor in the binding set |
+| 5 | 0.8% | **Not CppDeletable** | Return type class has no destructor in the binding set |
 | 4 | 0.6% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
 | 2 | 0.3% | **Excluded by bindings.toml** | Explicitly excluded in config (e.g., ambiguous overload workarounds) |
-| 1 | 0.1% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
+| 1 | 0.2% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
 
 ### Most Common Unknown Types
 
@@ -423,7 +446,7 @@ Most skipped symbols are in internal, low-use, or specialized modules. However, 
 
 **Data Exchange (33 symbols)** — `STEPControl_*` (5), `IGESControl_*` (3), `XSControl_*` (11), `RWGltf_*` (7), `RWObj_*` (4), `RWStl` (2), `RWPly` (1). Dominated by unknown types (17) and string ref params (8, mostly `const char*&` in `XSControl_Vars`), plus rvalue references (3) and abstract classes (2). The core `Read()`/`Write()` operations are fully bound.
 
-**Document Framework (4 symbols)** — `TDocStd_*` (3), `TDF_*` (1). All unknown types (`TDocStd_XLinkPtr`, `TDF_LabelNodePtr`). Previously-skipped `&mut` return methods are now bound as `unsafe fn`.
+**Document Framework (4 symbols)** — `TDocStd_*` (3), `TDF_*` (1). All unknown types (`TDocStd_XLinkPtr`, `TDF_LabelNodePtr`). Methods returning references with reference params are bound as `unsafe fn` (see "Unsafe Reference Returns" above).
 
 **Shape Meshing (90 symbols across 3 modules)** — `BRepMesh_*` (75), `IMeshData_*` (14), `IMeshTools_*` (1). Many BRepMesh methods reference internal mesh data types (`IMeshData::IEdgeHandle`, `IMeshData::IFaceHandle`, `IMeshData::MapOfInteger`) that are nested typedefs not yet resolvable. Also includes C-style array params and `std::pair` return types. The core `BRepMesh_IncrementalMesh` meshing API is fully bound.
 

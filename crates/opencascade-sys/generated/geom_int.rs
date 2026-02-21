@@ -3120,7 +3120,13 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox {
 
     /// **Source:** `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx`:74 - `GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::ConstraintDerivative()`
     /// Returns the derivative of the constraint matrix.
-    pub fn constraint_derivative(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &TheMultiLineOfWLApprox,
         Parameters: &crate::ffi::math_Vector,
@@ -3245,7 +3251,13 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox {
 
     /// **Source:** `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx`:74 - `GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::ConstraintDerivative()`
     /// Returns the derivative of the constraint matrix.
-    pub fn constraint_derivative(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &TheMultiLineOfWLApprox,
         Parameters: &crate::ffi::math_Vector,

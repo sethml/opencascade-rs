@@ -144,6 +144,21 @@ pub fn print_nametype_ostream(
 ) -> &mut crate::ffi::Standard_OStream {
     unsafe { &mut *(crate::ffi::TNaming_print_nametype_ostream(NAME.into(), S)) }
 }
+/// **Source:** `TNaming.hxx`:193 - `TNaming::Print`
+/// Prints the content of UsedShapes private  attribute as a String Table on
+/// the Stream <S> and returns <S>.
+///
+/// # Safety
+///
+/// It is not known which reference parameter the returned reference borrows from.
+/// The caller must ensure the returned reference does not outlive whichever source
+/// it actually borrows from.
+pub unsafe fn print_label_ostream<'a>(
+    ACCESS: &'a crate::tdf::Label,
+    S: &'a mut crate::ffi::Standard_OStream,
+) -> &'a mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::TNaming_print_label_ostream(ACCESS, S)) }
+}
 
 /// Defines the type of evolution in old shape - new shape pairs.
 /// The definitions - in the form of the terms of
@@ -1250,7 +1265,13 @@ impl Localizer {
     }
 
     /// **Source:** `TNaming_Localizer.hxx`:48 - `TNaming_Localizer::SubShapes()`
-    pub fn sub_shapes(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn sub_shapes(
         &mut self,
         S: &crate::topo_ds::Shape,
         Type: crate::top_abs::ShapeEnum,
@@ -1259,7 +1280,13 @@ impl Localizer {
     }
 
     /// **Source:** `TNaming_Localizer.hxx`:51 - `TNaming_Localizer::Ancestors()`
-    pub fn ancestors(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn ancestors(
         &mut self,
         S: &crate::topo_ds::Shape,
         Type: crate::top_abs::ShapeEnum,
@@ -1708,8 +1735,9 @@ impl NamedShape {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
         anOS: &mut crate::ffi::Standard_OStream,
@@ -2115,8 +2143,9 @@ impl Naming {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
         anOS: &mut crate::ffi::Standard_OStream,
@@ -3885,8 +3914,9 @@ impl UsedShapes {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
         anOS: &mut crate::ffi::Standard_OStream,
@@ -4228,11 +4258,3 @@ pub use crate::ffi::{
     TNaming_ListOfNamedShape as ListOfNamedShape, TNaming_MapOfNamedShape as MapOfNamedShape,
     TNaming_PtrNode as PtrNode,
 };
-
-// ── Skipped free functions (1 total) ──
-// SKIPPED: **Source:** `TNaming.hxx`:193 - `TNaming::Print`
-//   function: Prints the content of UsedShapes private  attribute as a String Table on
-//   function: the Stream <S> and returns <S>.
-//   Reason: returns &mut with reference params — ambiguous lifetime
-//   // pub fn print(ACCESS: &Label, S: &mut OStream) -> &mut OStream;
-//

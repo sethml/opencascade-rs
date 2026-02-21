@@ -4240,7 +4240,13 @@ impl Polyhedron {
 
     /// **Source:** `IntPatch_Polyhedron.hxx`:98 - `IntPatch_Polyhedron::Point()`
     /// Give the point of index i in the MaTriangle.
-    pub fn point_int_real2(&self, Index: i32, U: &mut f64, V: &mut f64) -> &crate::gp::Pnt {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn point_int_real2(&self, Index: i32, U: &mut f64, V: &mut f64) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::IntPatch_Polyhedron_point_int_real2(self as *const Self, Index, U, V))
         }
@@ -5844,7 +5850,13 @@ impl TheIWLineOfTheIWalking {
     }
 
     /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:141 - `IntPatch_TheIWLineOfTheIWalking::TangentVector()`
-    pub fn tangent_vector(&self, Index: &mut i32) -> &crate::gp::Vec {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn tangent_vector(&self, Index: &mut i32) -> &crate::gp::Vec {
         unsafe {
             &*(crate::ffi::IntPatch_TheIWLineOfTheIWalking_tangent_vector(
                 self as *const Self,
@@ -6827,7 +6839,13 @@ impl WLine {
     /// Returns the Point corresponding to the FirstPoint.
     /// Indfirst is the index of the first in the list
     /// of vertices.
-    pub fn first_point_int(&self, Indfirst: &mut i32) -> &Point {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn first_point_int(&self, Indfirst: &mut i32) -> &Point {
         unsafe { &*(crate::ffi::IntPatch_WLine_first_point_int(self as *const Self, Indfirst)) }
     }
 
@@ -6835,7 +6853,13 @@ impl WLine {
     /// Returns the Point corresponding to the LastPoint.
     /// Indlast is the index of the last in the list
     /// of vertices.
-    pub fn last_point_int(&self, Indlast: &mut i32) -> &Point {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn last_point_int(&self, Indlast: &mut i32) -> &Point {
         unsafe { &*(crate::ffi::IntPatch_WLine_last_point_int(self as *const Self, Indlast)) }
     }
 

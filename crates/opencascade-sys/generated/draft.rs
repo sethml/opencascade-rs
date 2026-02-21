@@ -348,7 +348,13 @@ impl Modification {
     /// **Source:** `Draft_Modification.hxx`:96 - `Draft_Modification::ConnectedFaces()`
     /// Returns all  the  faces   which  have been   added
     /// together with the face <F>.
-    pub fn connected_faces(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn connected_faces(
         &mut self,
         F: &crate::topo_ds::Face,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -738,8 +744,9 @@ impl VertexInfo {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn change_parameter(&mut self, E: &crate::topo_ds::Edge) -> &mut f64 {
         unsafe { &mut *(crate::ffi::Draft_VertexInfo_change_parameter(self as *mut Self, E)) }
     }

@@ -192,7 +192,16 @@ impl DraftAngle {
     /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:170 - `BRepOffsetAPI_DraftAngle::ConnectedFaces()`
     /// Returns all  the  faces   which  have been   added
     /// together with the face <F>.
-    pub fn connected_faces(&self, F: &crate::topo_ds::Face) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn connected_faces(
+        &self,
+        F: &crate::topo_ds::Face,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_DraftAngle_connected_faces(self as *const Self, F)) }
     }
 
@@ -217,14 +226,32 @@ impl DraftAngle {
     /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:184 - `BRepOffsetAPI_DraftAngle::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <S>.
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_DraftAngle_generated(self as *mut Self, S)) }
     }
 
     /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:189 - `BRepOffsetAPI_DraftAngle::Modified()`
     /// Returns the list  of shapes modified from the shape
     /// <S>.
-    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_DraftAngle_modified(self as *mut Self, S)) }
     }
 
@@ -497,7 +524,16 @@ impl FindContigousEdges {
     /// Standard_NoSuchObject if section is not coincident
     /// with a contiguous edge. Use the function
     /// ContigousEdgeCouple to obtain a valid section.
-    pub fn section_to_boundary(&self, section: &crate::topo_ds::Edge) -> &crate::topo_ds::Edge {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn section_to_boundary(
+        &self,
+        section: &crate::topo_ds::Edge,
+    ) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::ffi::BRepOffsetAPI_FindContigousEdges_section_to_boundary(
                 self as *const Self,
@@ -549,7 +585,13 @@ impl FindContigousEdges {
     /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:148 - `BRepOffsetAPI_FindContigousEdges::Modified()`
     /// Gives a modifieded shape
     /// Raises   NoSuchObject if shape has not been modified
-    pub fn modified(&self, shape: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(&self, shape: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BRepOffsetAPI_FindContigousEdges_modified(self as *const Self, shape))
         }
@@ -685,7 +727,16 @@ impl MakeDraft {
     /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:93 - `BRepOffsetAPI_MakeDraft::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <S>.
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakeDraft_generated(self as *mut Self, S)) }
     }
 
@@ -731,11 +782,6 @@ impl MakeDraft {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Modified(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
@@ -1019,7 +1065,13 @@ impl MakeEvolved {
     /// Returns   the  shapes  created  from   a  subshape
     /// <SpineShape>  of     the  spine   and   a subshape
     /// <ProfShape> on the profile.
-    pub fn generated_shapes(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated_shapes(
         &self,
         SpineShape: &crate::topo_ds::Shape,
         ProfShape: &crate::topo_ds::Shape,
@@ -1084,20 +1136,6 @@ impl MakeEvolved {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Generated(self as *mut Self, S))
-        }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Modified(self as *mut Self, S))
-        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
@@ -1742,7 +1780,16 @@ impl MakeFilling {
     /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:211 - `BRepOffsetAPI_MakeFilling::Generated()`
     /// Returns the list of shapes generated from the
     /// shape <S>.
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakeFilling_generated(self as *mut Self, S)) }
     }
 
@@ -1827,13 +1874,6 @@ impl MakeFilling {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Modified(self as *mut Self, S))
-        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
@@ -1992,7 +2032,16 @@ impl MakeOffset {
     /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:90 - `BRepOffsetAPI_MakeOffset::Generated()`
     /// returns a list of the created shapes
     /// from the shape <S>.
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakeOffset_generated(self as *mut Self, S)) }
     }
 
@@ -2050,11 +2099,6 @@ impl MakeOffset {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakeOffset_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeOffset_inherited_Modified(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
@@ -2210,13 +2254,31 @@ impl MakeOffsetShape {
 
     /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:125 - `BRepOffsetAPI_MakeOffsetShape::Generated()`
     /// Returns the list of shapes generated from the shape <S>.
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakeOffsetShape_generated(self as *mut Self, S)) }
     }
 
     /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:129 - `BRepOffsetAPI_MakeOffsetShape::Modified()`
     /// Returns the list of shapes Modified from the shape <S>.
-    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakeOffsetShape_modified(self as *mut Self, S)) }
     }
 
@@ -2407,7 +2469,13 @@ impl MakePipe {
     }
 
     /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:80 - `BRepOffsetAPI_MakePipe::Generated()`
-    pub fn generated_shape(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated_shape(
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -2487,11 +2555,6 @@ impl MakePipe {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakePipe_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepOffsetAPI_MakePipe_inherited_Modified(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
@@ -2928,7 +2991,16 @@ impl MakePipeShell {
     /// S by the shell-generating algorithm.
     /// This function is redefined from BRepOffsetAPI_MakeShape::Generated.
     /// S can be an edge or a vertex of a given Profile (see methods Add).
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakePipeShell_generated(self as *mut Self, S)) }
     }
 
@@ -3008,13 +3080,6 @@ impl MakePipeShell {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_Modified(self as *mut Self, S))
-        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
@@ -3167,7 +3232,16 @@ impl MakeThickSolid {
     /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:120 - `BRepOffsetAPI_MakeThickSolid::Modified()`
     /// Returns the list  of shapes modified from the shape
     /// <S>.
-    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MakeThickSolid_modified(self as *mut Self, S)) }
     }
 
@@ -3271,13 +3345,6 @@ impl MakeThickSolid {
     pub fn make_offset(&self) -> &crate::b_rep_offset::MakeOffset {
         unsafe {
             &*(crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_MakeOffset(self as *const Self))
-        }
-    }
-
-    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:125 - `BRepOffsetAPI_MakeOffsetShape::Generated()`
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_Generated(self as *mut Self, S))
         }
     }
 
@@ -3390,18 +3457,6 @@ impl MiddlePath {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Generated(self as *mut Self, S))
-        }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Modified(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
@@ -3561,14 +3616,29 @@ impl NormalProjection {
     /// StdFail_NotDone if no face was found.
     /// Standard_NoSuchObject if a face corresponding to
     /// E has already been found.
-    pub fn couple(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn couple(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_NormalProjection_couple(self as *const Self, E)) }
     }
 
     /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:116 - `BRepOffsetAPI_NormalProjection::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <S>.
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_NormalProjection_generated(self as *mut Self, S)) }
     }
 
@@ -3579,7 +3649,13 @@ impl NormalProjection {
     /// StdFail_NotDone if no edge was found.
     /// Standard_NoSuchObject if an edge corresponding to
     /// E has already been found.
-    pub fn ancestor(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn ancestor(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_NormalProjection_ancestor(self as *const Self, E)) }
     }
 
@@ -3631,13 +3707,6 @@ impl NormalProjection {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Modified(self as *mut Self, S))
-        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
@@ -3932,7 +4001,16 @@ impl ThruSections {
     /// S by the shell-generating algorithm.
     /// This function is redefined from BRepBuilderAPI_MakeShape::Generated.
     /// S can be an edge or a vertex of a given Profile (see methods AddWire and AddVertex).
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_ThruSections_generated(self as *mut Self, S)) }
     }
 
@@ -4000,13 +4078,6 @@ impl ThruSections {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepOffsetAPI_ThruSections_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepOffsetAPI_ThruSections_inherited_Modified(self as *mut Self, S))
-        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`

@@ -1469,7 +1469,13 @@ impl CheckIterator {
     /// If no Check was recorded for this Entity, returns an empty
     /// Check.
     /// Remark : Works apart from the iteration methods (no interference)
-    pub fn check_handlestandardtransient(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn check_handlestandardtransient(
         &self,
         ent: &crate::ffi::HandleStandardTransient,
     ) -> &crate::ffi::HandleInterfaceCheck {
@@ -1498,8 +1504,9 @@ impl CheckIterator {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn c_check_handlestandardtransient(
         &mut self,
         ent: &crate::ffi::HandleStandardTransient,

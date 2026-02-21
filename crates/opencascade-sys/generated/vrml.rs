@@ -14,6 +14,20 @@ pub fn vrml_header_writer(
 ) -> &mut crate::ffi::Standard_OStream {
     unsafe { &mut *(crate::ffi::Vrml_vrml_header_writer(anOStream)) }
 }
+/// **Source:** `Vrml.hxx`:45 - `Vrml::CommentWriter`
+///
+/// # Safety
+///
+/// It is not known which reference parameter the returned reference borrows from.
+/// The caller must ensure the returned reference does not outlive whichever source
+/// it actually borrows from.
+pub unsafe fn comment_writer<'a>(
+    aComment: &'a str,
+    anOStream: &'a mut crate::ffi::Standard_OStream,
+) -> &'a mut crate::ffi::Standard_OStream {
+    let c_aComment = std::ffi::CString::new(aComment).unwrap();
+    unsafe { &mut *(crate::ffi::Vrml_comment_writer(c_aComment.as_ptr(), anOStream)) }
+}
 
 /// C++ enum: `Vrml_AsciiTextJustification`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -483,8 +497,9 @@ impl AsciiText {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -686,8 +701,9 @@ impl Cone {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -748,8 +764,9 @@ impl Coordinate3 {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -942,8 +959,9 @@ impl Cube {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -1039,8 +1057,9 @@ impl Cylinder {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -1138,8 +1157,9 @@ impl DirectionalLight {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -1228,8 +1248,9 @@ impl FontStyle {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -1268,8 +1289,9 @@ impl Group {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -1396,8 +1418,9 @@ impl IndexedFaceSet {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -1648,8 +1671,9 @@ impl IndexedLineSet {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -1812,8 +1836,9 @@ impl Info {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -1857,8 +1882,9 @@ impl Instancing {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn def(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -1870,8 +1896,9 @@ impl Instancing {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn use_(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -1956,8 +1983,9 @@ impl LOD {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -2192,8 +2220,9 @@ impl Material {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -2368,8 +2397,9 @@ impl MaterialBinding {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -2430,8 +2460,9 @@ impl MatrixTransform {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -2491,8 +2522,9 @@ impl Normal {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -2663,8 +2695,9 @@ impl NormalBinding {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -2774,8 +2807,9 @@ impl OrthographicCamera {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -2879,8 +2913,9 @@ impl PerspectiveCamera {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -2975,8 +3010,9 @@ impl PointLight {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -3041,8 +3077,9 @@ impl PointSet {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -3094,8 +3131,9 @@ impl Rotation {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -3421,8 +3459,9 @@ impl Scale {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -3492,8 +3531,9 @@ impl Separator {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -3633,8 +3673,9 @@ impl ShapeHints {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -3684,8 +3725,9 @@ impl Sphere {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -3826,8 +3868,9 @@ impl SpotLight {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -3883,8 +3926,9 @@ impl Switch {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -3999,8 +4043,9 @@ impl Texture2 {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -4119,8 +4164,9 @@ impl Texture2Transform {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -4188,8 +4234,9 @@ impl TextureCoordinate2 {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -4439,8 +4486,9 @@ impl Transform {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -4477,8 +4525,9 @@ impl TransformSeparator {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -4532,8 +4581,9 @@ impl Translation {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -4618,8 +4668,9 @@ impl WWWAnchor {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -4713,8 +4764,9 @@ impl WWWInline {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         anOStream: &mut crate::ffi::Standard_OStream,
@@ -4722,9 +4774,3 @@ impl WWWInline {
         unsafe { &mut *(crate::ffi::Vrml_WWWInline_print(self as *mut Self, anOStream)) }
     }
 }
-
-// ── Skipped free functions (1 total) ──
-// SKIPPED: **Source:** `Vrml.hxx`:45 - `Vrml::CommentWriter`
-//   Reason: returns &mut with reference params — ambiguous lifetime
-//   // pub fn comment_writer(aComment: *const char, anOStream: &mut OStream) -> &mut OStream;
-//

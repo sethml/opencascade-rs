@@ -666,7 +666,13 @@ impl DPrism {
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:62 - `LocOpe_DPrism::Shapes()`
-    pub fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_DPrism_shapes(self as *const Self, S)) }
     }
 
@@ -1041,7 +1047,13 @@ impl Generator {
     /// belong to the original shape or to the "generated"
     /// shape.  The returned    face may be   a null shape
     /// (when <F> disappears).
-    pub fn descendant_face(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn descendant_face(
         &mut self,
         F: &crate::topo_ds::Face,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -1330,7 +1342,16 @@ impl Gluer {
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:56 - `LocOpe_Gluer::DescendantFaces()`
-    pub fn descendant_faces(&self, F: &crate::topo_ds::Face) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn descendant_faces(
+        &self,
+        F: &crate::topo_ds::Face,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_Gluer_descendant_faces(self as *const Self, F)) }
     }
 
@@ -1461,7 +1482,13 @@ impl LinearForm {
     }
 
     /// **Source:** `LocOpe_LinearForm.hxx`:66 - `LocOpe_LinearForm::Shapes()`
-    pub fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_LinearForm_shapes(self as *const Self, S)) }
     }
 }
@@ -1518,12 +1545,27 @@ impl Pipe {
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:52 - `LocOpe_Pipe::Shapes()`
-    pub fn shapes(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn shapes(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_Pipe_shapes(self as *mut Self, S)) }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:54 - `LocOpe_Pipe::Curves()`
-    pub fn curves(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn curves(
         &mut self,
         Spt: &crate::ffi::TColgp_SequenceOfPnt,
     ) -> &crate::ffi::TColGeom_SequenceOfCurve {
@@ -1690,7 +1732,13 @@ impl Prism {
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:54 - `LocOpe_Prism::Shapes()`
-    pub fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_Prism_shapes(self as *const Self, S)) }
     }
 
@@ -1802,7 +1850,13 @@ impl Revol {
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:64 - `LocOpe_Revol::Shapes()`
-    pub fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_Revol_shapes(self as *const Self, S)) }
     }
 
@@ -1874,7 +1928,13 @@ impl RevolutionForm {
     }
 
     /// **Source:** `LocOpe_RevolutionForm.hxx`:53 - `LocOpe_RevolutionForm::Shapes()`
-    pub fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_RevolutionForm_shapes(self as *const Self, S)) }
     }
 }
@@ -2010,7 +2070,13 @@ impl SplitDrafts {
 
     /// **Source:** `LocOpe_SplitDrafts.hxx`:103 - `LocOpe_SplitDrafts::ShapesFromShape()`
     /// Manages the descendant shapes.
-    pub fn shapes_from_shape(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn shapes_from_shape(
         &self,
         S: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -2096,7 +2162,13 @@ impl SplitShape {
 
     /// **Source:** `LocOpe_SplitShape.hxx`:67 - `LocOpe_SplitShape::DescendantShapes()`
     /// Returns the list of descendant shapes of <S>.
-    pub fn descendant_shapes(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn descendant_shapes(
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -2109,7 +2181,13 @@ impl SplitShape {
     /// fact  a list of faces. The  face <F> is considered
     /// with its topological  orientation  in the original
     /// shape.  <W> is considered with its orientation.
-    pub fn left_of(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn left_of(
         &mut self,
         W: &crate::topo_ds::Wire,
         F: &crate::topo_ds::Face,
@@ -2189,7 +2267,13 @@ impl Spliter {
 
     /// **Source:** `LocOpe_Spliter.hxx`:63 - `LocOpe_Spliter::DescendantShapes()`
     /// Returns the list of descendant shapes of <S>.
-    pub fn descendant_shapes(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn descendant_shapes(
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {

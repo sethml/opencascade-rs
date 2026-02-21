@@ -246,7 +246,16 @@ impl Analyse {
 
     /// **Source:** `BRepOffset_Analyse.hxx`:66 - `BRepOffset_Analyse::Type()`
     /// Returns the connectivity type of the edge
-    pub fn type_(&self, theE: &crate::topo_ds::Edge) -> &crate::ffi::BRepOffset_ListOfInterval {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn type_(
+        &self,
+        theE: &crate::topo_ds::Edge,
+    ) -> &crate::ffi::BRepOffset_ListOfInterval {
         unsafe { &*(crate::ffi::BRepOffset_Analyse_type_(self as *const Self, theE)) }
     }
 
@@ -315,7 +324,16 @@ impl Analyse {
 
     /// **Source:** `BRepOffset_Analyse.hxx`:93 - `BRepOffset_Analyse::Ancestors()`
     /// Returns ancestors for the shape
-    pub fn ancestors(&self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn ancestors(
+        &self,
+        theS: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffset_Analyse_ancestors(self as *const Self, theS)) }
     }
 
@@ -441,7 +459,13 @@ impl Analyse {
     /// **Source:** `BRepOffset_Analyse.hxx`:145 - `BRepOffset_Analyse::EdgeReplacement()`
     /// Returns the replacement of the edge in the face.
     /// If no replacement exists, returns the edge
-    pub fn edge_replacement(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn edge_replacement(
         &self,
         theFace: &crate::topo_ds::Face,
         theEdge: &crate::topo_ds::Edge,
@@ -1169,13 +1193,31 @@ impl MakeOffset {
     /// **Source:** `BRepOffset_MakeOffset.hxx`:129 - `BRepOffset_MakeOffset::Generated()`
     /// @name History methods
     /// Returns the  list of shapes generated from the shape <S>.
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        theS: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffset_MakeOffset_generated(self as *mut Self, theS)) }
     }
 
     /// **Source:** `BRepOffset_MakeOffset.hxx`:132 - `BRepOffset_MakeOffset::Modified()`
     /// Returns the list of shapes modified from the shape <S>.
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(
+        &mut self,
+        theS: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepOffset_MakeOffset_modified(self as *mut Self, theS)) }
     }
 

@@ -81,8 +81,9 @@ impl Persistent {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn put_c_string(&mut self, theValue: &str) -> &mut Persistent {
         let c_theValue = std::ffi::CString::new(theValue).unwrap();
         unsafe {
@@ -98,8 +99,9 @@ impl Persistent {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn put_ascii_string(
         &mut self,
         theValue: &crate::t_collection::AsciiString,
@@ -114,8 +116,9 @@ impl Persistent {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn put_extended_string(
         &mut self,
         theValue: &crate::t_collection::ExtendedString,
@@ -132,8 +135,9 @@ impl Persistent {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn put_label(&mut self, theValue: &crate::tdf::Label) -> &mut Persistent {
         unsafe { &mut *(crate::ffi::BinObjMgt_Persistent_put_label(self as *mut Self, theValue)) }
     }
@@ -142,60 +146,118 @@ impl Persistent {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn put_guid(&mut self, theValue: &crate::standard::GUID) -> &mut Persistent {
         unsafe { &mut *(crate::ffi::BinObjMgt_Persistent_put_guid(self as *mut Self, theValue)) }
     }
 
     /// **Source:** `BinObjMgt_Persistent.hxx`:146 - `BinObjMgt_Persistent::GetCharacter()`
-    pub fn get_character(&self, theValue: &mut std::ffi::c_char) -> &Persistent {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_character(&self, theValue: &mut std::ffi::c_char) -> &Persistent {
         unsafe { &*(crate::ffi::BinObjMgt_Persistent_get_character(self as *const Self, theValue)) }
     }
 
     /// **Source:** `BinObjMgt_Persistent.hxx`:153 - `BinObjMgt_Persistent::GetByte()`
-    pub fn get_byte(&self, theValue: &mut u8) -> &Persistent {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_byte(&self, theValue: &mut u8) -> &Persistent {
         unsafe { &*(crate::ffi::BinObjMgt_Persistent_get_byte(self as *const Self, theValue)) }
     }
 
     /// **Source:** `BinObjMgt_Persistent.hxx`:160 - `BinObjMgt_Persistent::GetExtCharacter()`
-    pub fn get_ext_character(&self, theValue: &mut u16) -> &Persistent {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_ext_character(&self, theValue: &mut u16) -> &Persistent {
         unsafe {
             &*(crate::ffi::BinObjMgt_Persistent_get_ext_character(self as *const Self, theValue))
         }
     }
 
     /// **Source:** `BinObjMgt_Persistent.hxx`:168 - `BinObjMgt_Persistent::GetInteger()`
-    pub fn get_integer(&self, theValue: &mut i32) -> &Persistent {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_integer(&self, theValue: &mut i32) -> &Persistent {
         unsafe { &*(crate::ffi::BinObjMgt_Persistent_get_integer(self as *const Self, theValue)) }
     }
 
     /// **Source:** `BinObjMgt_Persistent.hxx`:175 - `BinObjMgt_Persistent::GetBoolean()`
-    pub fn get_boolean(&self, theValue: &mut bool) -> &Persistent {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_boolean(&self, theValue: &mut bool) -> &Persistent {
         unsafe { &*(crate::ffi::BinObjMgt_Persistent_get_boolean(self as *const Self, theValue)) }
     }
 
     /// **Source:** `BinObjMgt_Persistent.hxx`:182 - `BinObjMgt_Persistent::GetReal()`
-    pub fn get_real(&self, theValue: &mut f64) -> &Persistent {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_real(&self, theValue: &mut f64) -> &Persistent {
         unsafe { &*(crate::ffi::BinObjMgt_Persistent_get_real(self as *const Self, theValue)) }
     }
 
     /// **Source:** `BinObjMgt_Persistent.hxx`:189 - `BinObjMgt_Persistent::GetShortReal()`
-    pub fn get_short_real(&self, theValue: &mut f32) -> &Persistent {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_short_real(&self, theValue: &mut f32) -> &Persistent {
         unsafe {
             &*(crate::ffi::BinObjMgt_Persistent_get_short_real(self as *const Self, theValue))
         }
     }
 
     /// **Source:** `BinObjMgt_Persistent.hxx`:196 - `BinObjMgt_Persistent::GetAsciiString()`
-    pub fn get_ascii_string(&self, theValue: &mut crate::t_collection::AsciiString) -> &Persistent {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_ascii_string(
+        &self,
+        theValue: &mut crate::t_collection::AsciiString,
+    ) -> &Persistent {
         unsafe {
             &*(crate::ffi::BinObjMgt_Persistent_get_ascii_string(self as *const Self, theValue))
         }
     }
 
     /// **Source:** `BinObjMgt_Persistent.hxx`:204 - `BinObjMgt_Persistent::GetExtendedString()`
-    pub fn get_extended_string(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_extended_string(
         &self,
         theValue: &mut crate::t_collection::ExtendedString,
     ) -> &Persistent {
@@ -205,7 +267,13 @@ impl Persistent {
     }
 
     /// **Source:** `BinObjMgt_Persistent.hxx`:212 - `BinObjMgt_Persistent::GetLabel()`
-    pub fn get_label(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_label(
         &self,
         theDS: &crate::ffi::HandleTDFData,
         theValue: &mut crate::tdf::Label,
@@ -216,7 +284,13 @@ impl Persistent {
     }
 
     /// **Source:** `BinObjMgt_Persistent.hxx`:215 - `BinObjMgt_Persistent::GetGUID()`
-    pub fn get_guid(&self, theValue: &mut crate::standard::GUID) -> &Persistent {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_guid(&self, theValue: &mut crate::standard::GUID) -> &Persistent {
         unsafe { &*(crate::ffi::BinObjMgt_Persistent_get_guid(self as *const Self, theValue)) }
     }
 
@@ -297,8 +371,9 @@ impl Persistent {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn write(
         &mut self,
         theOS: &mut crate::ffi::Standard_OStream,
@@ -320,8 +395,9 @@ impl Persistent {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn read(
         &mut self,
         theIS: &mut crate::ffi::Standard_IStream,

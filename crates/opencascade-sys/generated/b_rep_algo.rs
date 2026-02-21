@@ -163,13 +163,28 @@ impl AsDes {
 
     /// **Source:** `BRepAlgo_AsDes.hxx`:51 - `BRepAlgo_AsDes::Ascendant()`
     /// Returns the Shape containing <S>.
-    pub fn ascendant(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn ascendant(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgo_AsDes_ascendant(self as *const Self, S)) }
     }
 
     /// **Source:** `BRepAlgo_AsDes.hxx`:54 - `BRepAlgo_AsDes::Descendant()`
     /// Returns futur subhapes of <S>.
-    pub fn descendant(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn descendant(
+        &self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgo_AsDes_descendant(self as *const Self, S)) }
     }
 
@@ -178,8 +193,9 @@ impl AsDes {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn change_descendant(
         &mut self,
         S: &crate::topo_ds::Shape,
@@ -508,13 +524,25 @@ impl Image {
 
     /// **Source:** `BRepAlgo_Image.hxx`:72 - `BRepAlgo_Image::ImageFrom()`
     /// Returns the generator of <S>
-    pub fn image_from(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn image_from(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepAlgo_Image_image_from(self as *const Self, S)) }
     }
 
     /// **Source:** `BRepAlgo_Image.hxx`:75 - `BRepAlgo_Image::Root()`
     /// Returns the upper generator of <S>
-    pub fn root(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn root(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepAlgo_Image_root(self as *const Self, S)) }
     }
 
@@ -526,7 +554,13 @@ impl Image {
     /// **Source:** `BRepAlgo_Image.hxx`:81 - `BRepAlgo_Image::Image()`
     /// Returns the Image of <S>.
     /// Returns <S> in the list if HasImage(S) is false.
-    pub fn image(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn image(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgo_Image_image(self as *const Self, S)) }
     }
 
@@ -659,7 +693,13 @@ impl Loop {
     /// **Source:** `BRepAlgo_Loop.hxx`:81 - `BRepAlgo_Loop::NewEdges()`
     /// Returns the list of new edges built from an edge <E>
     /// it can be an empty list.
-    pub fn new_edges(&self, E: &crate::topo_ds::Edge) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn new_edges(&self, E: &crate::topo_ds::Edge) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgo_Loop_new_edges(self as *const Self, E)) }
     }
 
@@ -812,20 +852,41 @@ impl NormalProjection {
 
     /// **Source:** `BRepAlgo_NormalProjection.hxx`:87 - `BRepAlgo_NormalProjection::Ancestor()`
     /// For a resulting edge, returns the corresponding initial edge.
-    pub fn ancestor(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn ancestor(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepAlgo_NormalProjection_ancestor(self as *const Self, E)) }
     }
 
     /// **Source:** `BRepAlgo_NormalProjection.hxx`:90 - `BRepAlgo_NormalProjection::Couple()`
     /// For a projected edge, returns the corresponding initial face.
-    pub fn couple(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn couple(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepAlgo_NormalProjection_couple(self as *const Self, E)) }
     }
 
     /// **Source:** `BRepAlgo_NormalProjection.hxx`:94 - `BRepAlgo_NormalProjection::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <S>.
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgo_NormalProjection_generated(self as *mut Self, S)) }
     }
 

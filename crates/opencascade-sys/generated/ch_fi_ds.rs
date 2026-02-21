@@ -1705,8 +1705,9 @@ impl FilSpine {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn change_law(
         &mut self,
         E: &crate::topo_ds::Edge,
@@ -2426,7 +2427,16 @@ impl Map {
     }
 
     /// **Source:** `ChFiDS_Map.hxx`:47 - `ChFiDS_Map::FindFromKey()`
-    pub fn find_from_key(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn find_from_key(
+        &self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::ChFiDS_Map_find_from_key(self as *const Self, S)) }
     }
 
@@ -3805,7 +3815,16 @@ impl StripeMap {
     }
 
     /// **Source:** `ChFiDS_StripeMap.hxx`:42 - `ChFiDS_StripeMap::FindFromKey()`
-    pub fn find_from_key(&self, V: &crate::topo_ds::Vertex) -> &crate::ffi::ChFiDS_ListOfStripe {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn find_from_key(
+        &self,
+        V: &crate::topo_ds::Vertex,
+    ) -> &crate::ffi::ChFiDS_ListOfStripe {
         unsafe { &*(crate::ffi::ChFiDS_StripeMap_find_from_key(self as *const Self, V)) }
     }
 

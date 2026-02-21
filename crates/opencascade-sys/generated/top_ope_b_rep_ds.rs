@@ -51,6 +51,24 @@ pub fn print_kind_ostream(
 ) -> &mut crate::ffi::Standard_OStream {
     unsafe { &mut *(crate::ffi::TopOpeBRepDS_print_kind_ostream(K.into(), S)) }
 }
+/// **Source:** `TopOpeBRepDS.hxx`:56 - `TopOpeBRepDS::Print`
+///
+/// # Safety
+///
+/// It is not known which reference parameter the returned reference borrows from.
+/// The caller must ensure the returned reference does not outlive whichever source
+/// it actually borrows from.
+pub unsafe fn print_kind_int_ostream_asciistring2<'a>(
+    K: crate::top_ope_b_rep_ds::Kind,
+    I: i32,
+    S: &'a mut crate::ffi::Standard_OStream,
+    B: &'a crate::t_collection::AsciiString,
+    A: &'a crate::t_collection::AsciiString,
+) -> &'a mut crate::ffi::Standard_OStream {
+    unsafe {
+        &mut *(crate::ffi::TopOpeBRepDS_print_kind_int_ostream_asciistring2(K.into(), I, S, B, A))
+    }
+}
 /// **Source:** `TopOpeBRepDS.hxx`:62 - `TopOpeBRepDS::SPrint`
 pub fn s_print_shapeenum(
     T: crate::top_abs::ShapeEnum,
@@ -275,8 +293,9 @@ impl Association {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn associated(
         &mut self,
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
@@ -993,8 +1012,9 @@ impl Check {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print_intg(
         &mut self,
         S: &mut crate::ffi::Standard_OStream,
@@ -1007,8 +1027,9 @@ impl Check {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print(
         &mut self,
         stat: crate::top_ope_b_rep_ds::CheckStatus,
@@ -1022,8 +1043,9 @@ impl Check {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print_shape_shapeenum_ostream(
         &mut self,
         SE: crate::top_abs::ShapeEnum,
@@ -1043,8 +1065,9 @@ impl Check {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn print_shape_int_ostream(
         &mut self,
         index: i32,
@@ -2271,7 +2294,13 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:141 - `TopOpeBRepDS_DataStructure::ShapeInterferences()`
-    pub fn shape_interferences_shape_bool(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn shape_interferences_shape_bool(
         &self,
         S: &crate::topo_ds::Shape,
         FindKeep: bool,
@@ -2289,8 +2318,9 @@ impl DataStructure {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn change_shape_interferences_shape(
         &mut self,
         S: &crate::topo_ds::Shape,
@@ -2332,7 +2362,13 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:154 - `TopOpeBRepDS_DataStructure::ShapeSameDomain()`
-    pub fn shape_same_domain_shape(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn shape_same_domain_shape(
         &self,
         S: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -2348,8 +2384,9 @@ impl DataStructure {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn change_shape_same_domain_shape(
         &mut self,
         S: &crate::topo_ds::Shape,
@@ -2796,7 +2833,13 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:285 - `TopOpeBRepDS_DataStructure::NewSurface()`
-    pub fn new_surface(&self, F: &crate::topo_ds::Shape) -> &crate::ffi::HandleGeomSurface {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn new_surface(&self, F: &crate::topo_ds::Shape) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::TopOpeBRepDS_DataStructure_new_surface(self as *const Self, F)) }
     }
 
@@ -2836,8 +2879,9 @@ impl DataStructure {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn change_map_of_shape_with_state(
         &mut self,
         aShape: &crate::topo_ds::Shape,
@@ -2853,7 +2897,13 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:299 - `TopOpeBRepDS_DataStructure::GetShapeWithState()`
-    pub fn get_shape_with_state(&self, aShape: &crate::topo_ds::Shape) -> &ShapeWithState {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_shape_with_state(&self, aShape: &crate::topo_ds::Shape) -> &ShapeWithState {
         unsafe {
             &*(crate::ffi::TopOpeBRepDS_DataStructure_get_shape_with_state(
                 self as *const Self,
@@ -4423,7 +4473,13 @@ impl GapTool {
     }
 
     /// **Source:** `TopOpeBRepDS_GapTool.hxx`:49 - `TopOpeBRepDS_GapTool::SameInterferences()`
-    pub fn same_interferences(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn same_interferences(
         &self,
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
@@ -4434,8 +4490,9 @@ impl GapTool {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn change_same_interferences(
         &mut self,
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
@@ -8520,7 +8577,13 @@ impl TKI {
     }
 
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:72 - `TopOpeBRepDS_TKI::Value()`
-    pub fn value(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn value(
         &self,
         K: &mut crate::top_ope_b_rep_ds::Kind,
         G: &mut i32,
@@ -8536,8 +8599,9 @@ impl TKI {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn change_value(
         &mut self,
         K: &mut crate::top_ope_b_rep_ds::Kind,
@@ -8895,9 +8959,3 @@ pub use crate::ffi::{
     TopOpeBRepDS_ListOfInterference as ListOfInterference,
     TopOpeBRepDS_MapOfShapeData as MapOfShapeData, TopOpeBRepDS_PDataStructure as PDataStructure,
 };
-
-// ── Skipped free functions (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS.hxx`:56 - `TopOpeBRepDS::Print`
-//   Reason: returns &mut with reference params — ambiguous lifetime
-//   // pub fn print(K: Kind, I: i32, S: &mut OStream, B: &AsciiString, A: &AsciiString) -> &mut OStream;
-//

@@ -137,25 +137,49 @@ impl Data {
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:77 - `HLRTopoBRep_Data::EdgeSplE()`
     /// Returns the list of the edges.
-    pub fn edge_spl_e(&self, E: &crate::topo_ds::Edge) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn edge_spl_e(&self, E: &crate::topo_ds::Edge) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::HLRTopoBRep_Data_edge_spl_e(self as *const Self, E)) }
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:80 - `HLRTopoBRep_Data::FaceIntL()`
     /// Returns the list of the internal OutLines.
-    pub fn face_int_l(&self, F: &crate::topo_ds::Face) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn face_int_l(&self, F: &crate::topo_ds::Face) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::HLRTopoBRep_Data_face_int_l(self as *const Self, F)) }
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:83 - `HLRTopoBRep_Data::FaceOutL()`
     /// Returns the list of the OutLines on restriction.
-    pub fn face_out_l(&self, F: &crate::topo_ds::Face) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn face_out_l(&self, F: &crate::topo_ds::Face) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::HLRTopoBRep_Data_face_out_l(self as *const Self, F)) }
     }
 
     /// **Source:** `HLRTopoBRep_Data.hxx`:86 - `HLRTopoBRep_Data::FaceIsoL()`
     /// Returns the list of the IsoLines.
-    pub fn face_iso_l(&self, F: &crate::topo_ds::Face) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn face_iso_l(&self, F: &crate::topo_ds::Face) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::HLRTopoBRep_Data_face_iso_l(self as *const Self, F)) }
     }
 
@@ -181,8 +205,9 @@ impl Data {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn add_spl_e(
         &mut self,
         E: &crate::topo_ds::Edge,
@@ -194,8 +219,9 @@ impl Data {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn add_int_l(
         &mut self,
         F: &crate::topo_ds::Face,
@@ -207,8 +233,9 @@ impl Data {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn add_out_l(
         &mut self,
         F: &crate::topo_ds::Face,
@@ -220,8 +247,9 @@ impl Data {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn add_iso_l(
         &mut self,
         F: &crate::topo_ds::Face,

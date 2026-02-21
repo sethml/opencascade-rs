@@ -577,16 +577,6 @@ impl Builder {
         unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_Shape(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_Generated(self as *mut Self, theS)) }
-    }
-
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_Builder_inherited_IsDeleted(self as *mut Self, theS) }
@@ -757,14 +747,32 @@ unsafe impl crate::CppDeletable for Form {
 impl Form {
     /// **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
     /// returns the list of generated Faces.
-    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(
+        &mut self,
+        F: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_Form_modified(self as *mut Self, F)) }
     }
 
     /// **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
     /// returns a list of the created faces
     /// from the shape <S>.
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_Form_generated(self as *mut Self, S)) }
     }
 
@@ -1038,7 +1046,16 @@ impl Gluer {
 
     /// **Source:** `BRepFeat_Gluer.hxx`:98 - `BRepFeat_Gluer::Modified()`
     /// returns the list of generated Faces.
-    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(
+        &mut self,
+        F: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_Gluer_modified(self as *mut Self, F)) }
     }
 
@@ -1071,11 +1088,6 @@ impl Gluer {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_Gluer_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_Gluer_inherited_Generated(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
@@ -1600,23 +1612,6 @@ impl MakeCylindricalHole {
         unsafe { &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Shape(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Modified(self as *mut Self, theS))
-        }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Generated(
-                self as *mut Self,
-                theS,
-            ))
-        }
-    }
-
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe {
@@ -2038,16 +2033,6 @@ impl MakeDPrism {
         }
     }
 
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
-    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_inherited_Modified(self as *mut Self, F)) }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_inherited_Generated(self as *mut Self, S)) }
-    }
-
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_MakeDPrism_inherited_IsDeleted(self as *mut Self, S) }
@@ -2337,16 +2322,6 @@ impl MakeLinearForm {
         unsafe { crate::ffi::BRepFeat_MakeLinearForm_inherited_IsDeleted(self as *mut Self, F) }
     }
 
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:63 - `BRepFeat_RibSlot::Modified()`
-    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_inherited_Modified(self as *mut Self, F)) }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:67 - `BRepFeat_RibSlot::Generated()`
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_inherited_Generated(self as *mut Self, S)) }
-    }
-
     /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:72 - `BRepFeat_RibSlot::FirstShape()`
     pub fn first_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_inherited_FirstShape(self as *const Self)) }
@@ -2576,16 +2551,6 @@ impl MakePipe {
         unsafe {
             &mut *(crate::ffi::BRepFeat_MakePipe_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
-    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakePipe_inherited_Modified(self as *mut Self, F)) }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakePipe_inherited_Generated(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
@@ -2891,16 +2856,6 @@ impl MakePrism {
         }
     }
 
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
-    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakePrism_inherited_Modified(self as *mut Self, F)) }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakePrism_inherited_Generated(self as *mut Self, S)) }
-    }
-
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_MakePrism_inherited_IsDeleted(self as *mut Self, S) }
@@ -3152,16 +3107,6 @@ impl MakeRevol {
         unsafe {
             &mut *(crate::ffi::BRepFeat_MakeRevol_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
-    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeRevol_inherited_Modified(self as *mut Self, F)) }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeRevol_inherited_Generated(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
@@ -3442,20 +3387,6 @@ impl MakeRevolutionForm {
         unsafe { crate::ffi::BRepFeat_MakeRevolutionForm_inherited_IsDeleted(self as *mut Self, F) }
     }
 
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:63 - `BRepFeat_RibSlot::Modified()`
-    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Modified(self as *mut Self, F))
-        }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:67 - `BRepFeat_RibSlot::Generated()`
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Generated(self as *mut Self, S))
-        }
-    }
-
     /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:72 - `BRepFeat_RibSlot::FirstShape()`
     pub fn first_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
@@ -3559,13 +3490,31 @@ impl RibSlot {
 
     /// **Source:** `BRepFeat_RibSlot.hxx`:63 - `BRepFeat_RibSlot::Modified()`
     /// Returns the list of generated Faces F. This list may be empty.
-    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(
+        &mut self,
+        F: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_RibSlot_modified(self as *mut Self, F)) }
     }
 
     /// **Source:** `BRepFeat_RibSlot.hxx`:67 - `BRepFeat_RibSlot::Generated()`
     /// Returns a list TopTools_ListOfShape of the faces S created in the shape.
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_RibSlot_generated(self as *mut Self, S)) }
     }
 
@@ -3823,7 +3772,16 @@ impl SplitShape {
 
     /// **Source:** `BRepFeat_SplitShape.hxx`:112 - `BRepFeat_SplitShape::Modified()`
     /// Returns the list of generated Faces.
-    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(
+        &mut self,
+        F: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_SplitShape_modified(self as *mut Self, F)) }
     }
 
@@ -3862,11 +3820,6 @@ impl SplitShape {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_SplitShape_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_SplitShape_inherited_Generated(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`

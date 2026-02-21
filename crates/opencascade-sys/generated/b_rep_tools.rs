@@ -1466,7 +1466,13 @@ impl History {
     /// **Source:** `BRepTools_History.hxx`:181 - `BRepTools_History::Generated()`
     /// Methods to read the history.
     /// Returns all shapes generated from the shape.
-    pub fn generated(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
         &self,
         theInitial: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -1475,7 +1481,13 @@ impl History {
 
     /// **Source:** `BRepTools_History.hxx`:184 - `BRepTools_History::Modified()`
     /// Returns all shapes modified from the shape.
-    pub fn modified(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(
         &self,
         theInitial: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -2298,7 +2310,13 @@ impl Modifier {
 
     /// **Source:** `BRepTools_Modifier.hxx`:77 - `BRepTools_Modifier::ModifiedShape()`
     /// Returns the modified shape corresponding to <S>.
-    pub fn modified_shape(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified_shape(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepTools_Modifier_modified_shape(self as *const Self, S)) }
     }
 }
@@ -2895,7 +2913,13 @@ impl Quilt {
 
     /// **Source:** `BRepTools_Quilt.hxx`:83 - `BRepTools_Quilt::Copy()`
     /// Returns the shape substituted to <S> in the Quilt.
-    pub fn copy(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn copy(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepTools_Quilt_copy(self as *const Self, S)) }
     }
 
@@ -3706,7 +3730,13 @@ impl Substitution {
 
     /// **Source:** `BRepTools_Substitution.hxx`:68 - `BRepTools_Substitution::Copy()`
     /// Returns the set of shapes substituted to <S>.
-    pub fn copy(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn copy(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepTools_Substitution_copy(self as *const Self, S)) }
     }
 }

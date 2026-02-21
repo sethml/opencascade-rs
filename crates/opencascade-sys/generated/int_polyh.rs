@@ -1152,8 +1152,9 @@ impl SectionLine {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn copy(&mut self, Other: &SectionLine) -> &mut SectionLine {
         unsafe { &mut *(crate::ffi::IntPolyh_SectionLine_copy(self as *mut Self, Other)) }
     }
@@ -1827,7 +1828,13 @@ impl Triangle {
 
     /// **Source:** `IntPolyh_Triangle.hxx`:220 - `IntPolyh_Triangle::BoundingBox()`
     /// Returns the bounding box of the triangle.
-    pub fn bounding_box(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn bounding_box(
         &mut self,
         thePoints: &crate::ffi::IntPolyh_ArrayOfPoints,
     ) -> &crate::bnd::Box {

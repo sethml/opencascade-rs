@@ -3141,8 +3141,9 @@ impl Group {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn add_node(
         &mut self,
         theNode: &crate::ffi::HandleVrmlDataNode,
@@ -6399,7 +6400,13 @@ impl Scene {
     /// Add a Node. If theN belongs to another Scene, it is cloned.
     /// <p>VrmlData_WorldInfo cannot be added, in this case the method
     /// returns a NULL handle.
-    pub fn add_node(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn add_node(
         &mut self,
         theN: &crate::ffi::HandleVrmlDataNode,
         isTopLevel: bool,

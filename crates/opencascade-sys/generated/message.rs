@@ -4457,8 +4457,9 @@ impl Msg {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn arg_charptr(&mut self, theString: &str) -> &mut Msg {
         let c_theString = std::ffi::CString::new(theString).unwrap();
         unsafe {
@@ -4471,8 +4472,9 @@ impl Msg {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn arg_asciistring(
         &mut self,
         theString: &crate::t_collection::AsciiString,
@@ -4485,8 +4487,9 @@ impl Msg {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn arg_handletcollectionhasciistring(
         &mut self,
         theString: &crate::ffi::HandleTCollectionHAsciiString,
@@ -4504,8 +4507,9 @@ impl Msg {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn arg_extendedstring(
         &mut self,
         theString: &crate::t_collection::ExtendedString,
@@ -4518,8 +4522,9 @@ impl Msg {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn arg_handletcollectionhextendedstring(
         &mut self,
         theString: &crate::ffi::HandleTCollectionHExtendedString,

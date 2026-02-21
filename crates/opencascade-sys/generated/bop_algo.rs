@@ -10556,16 +10556,6 @@ impl BOP {
         unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Shape(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Generated(self as *mut Self, theS)) }
-    }
-
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_BOP_inherited_IsDeleted(self as *mut Self, theS) }
@@ -11002,16 +10992,6 @@ impl Builder {
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_Shape(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
@@ -11500,13 +11480,31 @@ impl BuilderShape {
     /// **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
     /// @name History methods
     /// Returns the list of shapes Modified from the shape theS.
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(
+        &mut self,
+        theS: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_modified(self as *mut Self, theS)) }
     }
 
     /// **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
     /// Returns the list of shapes Generated from the shape theS.
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        theS: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_generated(self as *mut Self, theS)) }
     }
 
@@ -12406,16 +12404,6 @@ impl CellsBuilder {
         unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_inherited_Shape(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_inherited_Generated(self as *mut Self, theS)) }
-    }
-
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_CellsBuilder_inherited_IsDeleted(self as *mut Self, theS) }
@@ -13134,7 +13122,13 @@ impl MakeConnected {
     /// Returns the original shapes which images contain the
     /// the given shape with FORWARD orientation.
     /// @param[in] theS  The shape for which the materials are necessary.
-    pub fn materials_on_positive_side(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn materials_on_positive_side(
         &mut self,
         theS: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -13150,7 +13144,13 @@ impl MakeConnected {
     /// Returns the original shapes which images contain the
     /// the given shape with REVERSED orientation.
     /// @param[in] theS  The shape for which the materials are necessary.
-    pub fn materials_on_negative_side(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn materials_on_negative_side(
         &mut self,
         theS: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -13172,7 +13172,13 @@ impl MakeConnected {
     /// **Source:** `BOPAlgo_MakeConnected.hxx`:206 - `BOPAlgo_MakeConnected::GetModified()`
     /// Returns the list of shapes modified from the given shape.
     /// @param[in] theS  The shape for which the modified shapes are necessary.
-    pub fn get_modified(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_modified(
         &mut self,
         theS: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -13182,7 +13188,13 @@ impl MakeConnected {
     /// **Source:** `BOPAlgo_MakeConnected.hxx`:213 - `BOPAlgo_MakeConnected::GetOrigins()`
     /// Returns the list of original shapes from which the current shape has been created.
     /// @param[in] theS  The shape for which the origins are necessary.
-    pub fn get_origins(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_origins(
         &mut self,
         theS: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -13813,7 +13825,16 @@ impl MakePeriodic {
     /// Returns empty list in case the shape has no twin.
     ///
     /// @param[in] theS  Shape to get the twins for.
-    pub fn get_twins(&self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_twins(
+        &self,
+        theS: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_MakePeriodic_get_twins(self as *const Self, theS)) }
     }
 
@@ -14288,16 +14309,6 @@ impl MakerVolume {
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_inherited_Shape(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
@@ -15119,20 +15130,6 @@ impl RemoveFeatures {
         unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_Shape(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_Modified(self as *mut Self, theS))
-        }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_Generated(self as *mut Self, theS))
-        }
-    }
-
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_IsDeleted(self as *mut Self, theS) }
@@ -15491,16 +15488,6 @@ impl Section {
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_Section_inherited_Shape(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_Section_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_Section_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
@@ -16167,16 +16154,6 @@ impl Splitter {
         unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_Shape(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_Generated(self as *mut Self, theS)) }
-    }
-
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_Splitter_inherited_IsDeleted(self as *mut Self, theS) }
@@ -16744,18 +16721,6 @@ impl ToolsProvider {
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Shape(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Generated(self as *mut Self, theS))
-        }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`

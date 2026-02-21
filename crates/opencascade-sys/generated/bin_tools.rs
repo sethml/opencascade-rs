@@ -6,6 +6,32 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `BinTools.hxx`:35 - `BinTools::PutReal`
+///
+/// # Safety
+///
+/// It is not known which reference parameter the returned reference borrows from.
+/// The caller must ensure the returned reference does not outlive whichever source
+/// it actually borrows from.
+pub unsafe fn put_real<'a>(
+    OS: &'a mut crate::ffi::Standard_OStream,
+    theValue: &'a f64,
+) -> &'a mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::BinTools_put_real(OS, theValue)) }
+}
+/// **Source:** `BinTools.hxx`:38 - `BinTools::PutShortReal`
+///
+/// # Safety
+///
+/// It is not known which reference parameter the returned reference borrows from.
+/// The caller must ensure the returned reference does not outlive whichever source
+/// it actually borrows from.
+pub unsafe fn put_short_real<'a>(
+    OS: &'a mut crate::ffi::Standard_OStream,
+    theValue: &'a f32,
+) -> &'a mut crate::ffi::Standard_OStream {
+    unsafe { &mut *(crate::ffi::BinTools_put_short_real(OS, theValue)) }
+}
 /// **Source:** `BinTools.hxx`:41 - `BinTools::PutInteger`
 pub fn put_integer(
     OS: &mut crate::ffi::Standard_OStream,
@@ -26,6 +52,71 @@ pub fn put_ext_char(
     theValue: u16,
 ) -> &mut crate::ffi::Standard_OStream {
     unsafe { &mut *(crate::ffi::BinTools_put_ext_char(OS, theValue)) }
+}
+/// **Source:** `BinTools.hxx`:50 - `BinTools::GetReal`
+///
+/// # Safety
+///
+/// It is not known which reference parameter the returned reference borrows from.
+/// The caller must ensure the returned reference does not outlive whichever source
+/// it actually borrows from.
+pub unsafe fn get_real_mut<'a>(
+    IS: &'a mut crate::ffi::Standard_IStream,
+    theValue: &'a mut f64,
+) -> &'a mut crate::ffi::Standard_IStream {
+    unsafe { &mut *(crate::ffi::BinTools_get_real_mut(IS, theValue)) }
+}
+/// **Source:** `BinTools.hxx`:52 - `BinTools::GetShortReal`
+///
+/// # Safety
+///
+/// It is not known which reference parameter the returned reference borrows from.
+/// The caller must ensure the returned reference does not outlive whichever source
+/// it actually borrows from.
+pub unsafe fn get_short_real<'a>(
+    IS: &'a mut crate::ffi::Standard_IStream,
+    theValue: &'a mut f32,
+) -> &'a mut crate::ffi::Standard_IStream {
+    unsafe { &mut *(crate::ffi::BinTools_get_short_real(IS, theValue)) }
+}
+/// **Source:** `BinTools.hxx`:55 - `BinTools::GetInteger`
+///
+/// # Safety
+///
+/// It is not known which reference parameter the returned reference borrows from.
+/// The caller must ensure the returned reference does not outlive whichever source
+/// it actually borrows from.
+pub unsafe fn get_integer<'a>(
+    IS: &'a mut crate::ffi::Standard_IStream,
+    theValue: &'a mut i32,
+) -> &'a mut crate::ffi::Standard_IStream {
+    unsafe { &mut *(crate::ffi::BinTools_get_integer(IS, theValue)) }
+}
+/// **Source:** `BinTools.hxx`:58 - `BinTools::GetBool`
+///
+/// # Safety
+///
+/// It is not known which reference parameter the returned reference borrows from.
+/// The caller must ensure the returned reference does not outlive whichever source
+/// it actually borrows from.
+pub unsafe fn get_bool<'a>(
+    IS: &'a mut crate::ffi::Standard_IStream,
+    theValue: &'a mut bool,
+) -> &'a mut crate::ffi::Standard_IStream {
+    unsafe { &mut *(crate::ffi::BinTools_get_bool(IS, theValue)) }
+}
+/// **Source:** `BinTools.hxx`:61 - `BinTools::GetExtChar`
+///
+/// # Safety
+///
+/// It is not known which reference parameter the returned reference borrows from.
+/// The caller must ensure the returned reference does not outlive whichever source
+/// it actually borrows from.
+pub unsafe fn get_ext_char<'a>(
+    IS: &'a mut crate::ffi::Standard_IStream,
+    theValue: &'a mut u16,
+) -> &'a mut crate::ffi::Standard_IStream {
+    unsafe { &mut *(crate::ffi::BinTools_get_ext_char(IS, theValue)) }
 }
 /// **Source:** `BinTools.hxx`:69 - `BinTools::Write`
 /// Writes the shape to the stream in binary format BinTools_FormatVersion_CURRENT.
@@ -1636,33 +1727,3 @@ impl SurfaceSet {
         unsafe { &mut *(crate::ffi::BinTools_SurfaceSet_read_surface(IS, S)) }
     }
 }
-
-// ── Skipped free functions (7 total) ──
-// SKIPPED: **Source:** `BinTools.hxx`:35 - `BinTools::PutReal`
-//   Reason: returns &mut with reference params — ambiguous lifetime
-//   // pub fn put_real(OS: &mut OStream, theValue: &f64) -> &mut OStream;
-//
-// SKIPPED: **Source:** `BinTools.hxx`:38 - `BinTools::PutShortReal`
-//   Reason: returns &mut with reference params — ambiguous lifetime
-//   // pub fn put_short_real(OS: &mut OStream, theValue: &f32) -> &mut OStream;
-//
-// SKIPPED: **Source:** `BinTools.hxx`:50 - `BinTools::GetReal`
-//   Reason: returns &mut with reference params — ambiguous lifetime
-//   // pub fn get_real(IS: &mut IStream, theValue: &mut f64) -> &mut IStream;
-//
-// SKIPPED: **Source:** `BinTools.hxx`:52 - `BinTools::GetShortReal`
-//   Reason: returns &mut with reference params — ambiguous lifetime
-//   // pub fn get_short_real(IS: &mut IStream, theValue: &mut f32) -> &mut IStream;
-//
-// SKIPPED: **Source:** `BinTools.hxx`:55 - `BinTools::GetInteger`
-//   Reason: returns &mut with reference params — ambiguous lifetime
-//   // pub fn get_integer(IS: &mut IStream, theValue: &mut i32) -> &mut IStream;
-//
-// SKIPPED: **Source:** `BinTools.hxx`:58 - `BinTools::GetBool`
-//   Reason: returns &mut with reference params — ambiguous lifetime
-//   // pub fn get_bool(IS: &mut IStream, theValue: &mut bool) -> &mut IStream;
-//
-// SKIPPED: **Source:** `BinTools.hxx`:61 - `BinTools::GetExtChar`
-//   Reason: returns &mut with reference params — ambiguous lifetime
-//   // pub fn get_ext_char(IS: &mut IStream, theValue: &mut u16) -> &mut IStream;
-//

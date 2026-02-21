@@ -611,6 +611,19 @@ fn emit_rust_enum(output: &mut String, resolved: &crate::resolver::ResolvedEnum)
     writeln!(output).unwrap();
 }
 
+/// Add lifetime `'a` to a reference type string.
+/// Transforms `&Foo` -> `&'a Foo`, `&mut Foo` -> `&'a mut Foo`.
+/// Non-reference types are returned unchanged.
+fn add_lifetime_to_ref_type(ty: &str) -> String {
+    if ty.starts_with("&mut ") {
+        format!("&'a mut {}", &ty[5..])
+    } else if ty.starts_with('&') {
+        format!("&'a {}", &ty[1..])
+    } else {
+        ty.to_string()
+    }
+}
+
 /// Emit a wrapper function for a free function in the public module.
 /// All free functions are real functions (not pub use re-exports) so that
 /// IDE "go to definition" lands in the public module, not ffi::.
@@ -631,10 +644,21 @@ fn emit_free_function_wrapper(
     if let Some(ref comment) = func.doc_comment {
         emit_doc_comment(output, comment, "");
     }
+    if func.unsafe_lifetime {
+        output.push_str(super::bindings::format_lifetime_safety_doc_free_fn());
+    }
 
-    // Build parameter list using pre-computed re-export types
+    // Build parameter list using pre-computed re-export types.
+    // For unsafe_lifetime free functions, add lifetime 'a to all reference params.
     let params: Vec<String> = func.params.iter()
-        .map(|p| format!("{}: {}", p.rust_name, p.rust_reexport_type))
+        .map(|p| {
+            if func.unsafe_lifetime {
+                let ty = add_lifetime_to_ref_type(&p.rust_reexport_type);
+                format!("{}: {}", p.rust_name, ty)
+            } else {
+                format!("{}: {}", p.rust_name, p.rust_reexport_type)
+            }
+        })
         .collect();
 
     // Build args with .into() for enum params, CString conversion for &str params,
@@ -667,9 +691,16 @@ fn emit_free_function_wrapper(
         })
         .collect();
 
-    // Build return type string
+    // Build return type string.
+    // For unsafe_lifetime free functions, add lifetime 'a to reference return types.
     let return_type_str = func.return_type.as_ref()
-        .map(|rt| format!(" -> {}", rt.rust_reexport_type))
+        .map(|rt| {
+            if func.unsafe_lifetime {
+                format!(" -> {}", add_lifetime_to_ref_type(&rt.rust_reexport_type))
+            } else {
+                format!(" -> {}", rt.rust_reexport_type)
+            }
+        })
         .unwrap_or_default();
 
     // Build call expression
@@ -711,7 +742,8 @@ fn emit_free_function_wrapper(
     let has_return = !return_type_str.is_empty();
 
     let unsafe_kw = if func.is_unsafe { "unsafe " } else { "" };
-    writeln!(output, "pub {}fn {}({}){} {{", unsafe_kw, func.rust_ffi_name, params.join(", "), return_type_str).unwrap();
+    let lifetime_param = if func.unsafe_lifetime { "<'a>" } else { "" };
+    writeln!(output, "pub {}fn {}{}({}){} {{", unsafe_kw, func.rust_ffi_name, lifetime_param, params.join(", "), return_type_str).unwrap();
     write!(output, "{}", prelude).unwrap();
 
     if postamble.is_empty() {

@@ -348,8 +348,9 @@ impl CommonPrt {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn assign(&mut self, Other: &CommonPrt) -> &mut CommonPrt {
         unsafe { &mut *(crate::ffi::IntTools_CommonPrt_assign(self as *mut Self, Other)) }
     }
@@ -546,8 +547,9 @@ impl Context {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn f_class2d(&mut self, aF: &crate::topo_ds::Face) -> &mut FClass2d {
         unsafe { &mut *(crate::ffi::IntTools_Context_f_class2d(self as *mut Self, aF)) }
     }
@@ -558,8 +560,9 @@ impl Context {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn proj_ps(
         &mut self,
         aF: &crate::topo_ds::Face,
@@ -573,8 +576,9 @@ impl Context {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn proj_pc(
         &mut self,
         aE: &crate::topo_ds::Edge,
@@ -588,8 +592,9 @@ impl Context {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn proj_pt(
         &mut self,
         aC: &crate::ffi::HandleGeomCurve,
@@ -603,8 +608,9 @@ impl Context {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn surface_data(
         &mut self,
         aF: &crate::topo_ds::Face,
@@ -618,8 +624,9 @@ impl Context {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn solid_classifier(
         &mut self,
         aSolid: &crate::topo_ds::Solid,
@@ -633,8 +640,9 @@ impl Context {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn hatcher(
         &mut self,
         aF: &crate::topo_ds::Face,
@@ -647,8 +655,9 @@ impl Context {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn surface_adaptor(
         &mut self,
         theFace: &crate::topo_ds::Face,
@@ -662,8 +671,9 @@ impl Context {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn obb(
         &mut self,
         theShape: &crate::topo_ds::Shape,
@@ -1008,8 +1018,9 @@ impl Context {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn bnd_box(&mut self, theS: &crate::topo_ds::Shape) -> &mut crate::bnd::Box {
         unsafe { &mut *(crate::ffi::IntTools_Context_bnd_box(self as *mut Self, theS)) }
     }
@@ -2782,8 +2793,9 @@ impl SurfaceRangeLocalizeData {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn assign(
         &mut self,
         Other: &SurfaceRangeLocalizeData,
@@ -3137,8 +3149,9 @@ impl SurfaceRangeSample {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn assign(&mut self, Other: &SurfaceRangeSample) -> &mut SurfaceRangeSample {
         unsafe { &mut *(crate::ffi::IntTools_SurfaceRangeSample_assign(self as *mut Self, Other)) }
     }

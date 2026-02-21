@@ -878,13 +878,6 @@ impl InternalBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
-    pub fn generated(&mut self, EouV: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::FilletSurf_InternalBuilder_inherited_Generated(self as *mut Self, EouV))
-        }
-    }
-
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:145 - `ChFi3d_Builder::NbFaultyContours()`
     pub fn nb_faulty_contours(&self) -> i32 {
         unsafe {

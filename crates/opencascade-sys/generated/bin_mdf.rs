@@ -1273,7 +1273,13 @@ impl ADriverTable {
     /// **Source:** `BinMDF_ADriverTable.hxx`:54 - `BinMDF_ADriverTable::AddDerivedDriver()`
     /// Adds a translation driver for the derived attribute. The base driver must be already added.
     /// @param theDerivedType is registered attribute type using IMPLEMENT_DERIVED_ATTRIBUTE macro
-    pub fn add_derived_driver_charptr(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn add_derived_driver_charptr(
         &mut self,
         theDerivedType: &str,
     ) -> &crate::ffi::HandleStandardType {

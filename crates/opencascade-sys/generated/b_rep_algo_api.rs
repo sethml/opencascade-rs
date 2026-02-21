@@ -316,23 +316,6 @@ impl BooleanOperation {
         }
     }
 
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Modified(self as *mut Self, theS))
-        }
-    }
-
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Generated(
-                self as *mut Self,
-                theS,
-            ))
-        }
-    }
-
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn is_deleted(&mut self, aS: &crate::topo_ds::Shape) -> bool {
         unsafe {
@@ -586,7 +569,16 @@ impl BuilderAlgo {
     /// Returns the shapes modified from the shape <theS>.
     /// If any, the list will contain only those splits of the
     /// given shape, contained in the result.
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(
+        &mut self,
+        theS: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_BuilderAlgo_modified(self as *mut Self, theS)) }
     }
 
@@ -597,7 +589,16 @@ impl BuilderAlgo {
     /// during intersection:
     /// - Edges can generate new vertices;
     /// - Faces can generate new edges and vertices.
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        theS: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_BuilderAlgo_generated(self as *mut Self, theS)) }
     }
 
@@ -1265,16 +1266,6 @@ impl Common {
         }
     }
 
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepAlgoAPI_Common_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepAlgoAPI_Common_inherited_Generated(self as *mut Self, theS)) }
-    }
-
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn is_deleted(&mut self, aS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_IsDeleted(self as *mut Self, aS) }
@@ -1582,16 +1573,6 @@ impl Cut {
         }
     }
 
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepAlgoAPI_Cut_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepAlgoAPI_Cut_inherited_Generated(self as *mut Self, theS)) }
-    }
-
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn is_deleted(&mut self, aS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_IsDeleted(self as *mut Self, aS) }
@@ -1813,13 +1794,31 @@ impl Defeaturing {
 
     /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:152 - `BRepAlgoAPI_Defeaturing::Modified()`
     /// Returns the list of shapes modified from the shape <theS> during the operation.
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn modified(
+        &mut self,
+        theS: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Defeaturing_modified(self as *mut Self, theS)) }
     }
 
     /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:156 - `BRepAlgoAPI_Defeaturing::Generated()`
     /// Returns the list of shapes generated from the shape <theS> during the operation.
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        theS: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Defeaturing_generated(self as *mut Self, theS)) }
     }
 
@@ -2160,16 +2159,6 @@ impl Fuse {
                 theAngularTol,
             )
         }
-    }
-
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepAlgoAPI_Fuse_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepAlgoAPI_Fuse_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
@@ -2784,16 +2773,6 @@ impl Section {
         }
     }
 
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepAlgoAPI_Section_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepAlgoAPI_Section_inherited_Generated(self as *mut Self, theS)) }
-    }
-
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn is_deleted(&mut self, aS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_IsDeleted(self as *mut Self, aS) }
@@ -3065,16 +3044,6 @@ impl Splitter {
                 theAngularTol,
             )
         }
-    }
-
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
-    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepAlgoAPI_Splitter_inherited_Modified(self as *mut Self, theS)) }
-    }
-
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
-    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepAlgoAPI_Splitter_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`

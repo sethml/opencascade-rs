@@ -37,7 +37,13 @@ impl LDOMParser {
     }
 
     /// **Source:** `LDOMParser.hxx`:66 - `LDOMParser::GetError()`
-    pub fn get_error(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_error(
         &self,
         aData: &mut crate::t_collection::AsciiString,
     ) -> &crate::t_collection::AsciiString {

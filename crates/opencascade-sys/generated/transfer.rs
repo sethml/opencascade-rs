@@ -3867,19 +3867,6 @@ impl FinderProcess {
         }
     }
 
-    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:223 - `Transfer_ProcessForFinder::FindTransient()`
-    pub fn find_transient(
-        &self,
-        start: &crate::ffi::HandleTransferFinder,
-    ) -> &crate::ffi::HandleStandardTransient {
-        unsafe {
-            &*(crate::ffi::Transfer_FinderProcess_inherited_FindTransient(
-                self as *const Self,
-                start,
-            ))
-        }
-    }
-
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:231 - `Transfer_ProcessForFinder::BindMultiple()`
     pub fn bind_multiple(&mut self, start: &crate::ffi::HandleTransferFinder) {
         unsafe {
@@ -6119,7 +6106,13 @@ impl ProcessForFinder {
     /// Returns a Null Handle if there is no Transient Result
     /// Considers a category number, by default 0
     /// Warning : Supposes that Binding is done with a SimpleBinderOfTransient
-    pub fn find_transient(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn find_transient(
         &self,
         start: &crate::ffi::HandleTransferFinder,
     ) -> &crate::ffi::HandleStandardTransient {
@@ -7128,7 +7121,13 @@ impl ProcessForTransient {
     /// Returns a Null Handle if there is no Transient Result
     /// Considers a category number, by default 0
     /// Warning : Supposes that Binding is done with a SimpleBinderOfTransient
-    pub fn find_transient(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn find_transient(
         &self,
         start: &crate::ffi::HandleStandardTransient,
     ) -> &crate::ffi::HandleStandardTransient {
@@ -11143,19 +11142,6 @@ impl TransientProcess {
                 start,
                 res,
             )
-        }
-    }
-
-    /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:227 - `Transfer_ProcessForTransient::FindTransient()`
-    pub fn find_transient(
-        &self,
-        start: &crate::ffi::HandleStandardTransient,
-    ) -> &crate::ffi::HandleStandardTransient {
-        unsafe {
-            &*(crate::ffi::Transfer_TransientProcess_inherited_FindTransient(
-                self as *const Self,
-                start,
-            ))
         }
     }
 

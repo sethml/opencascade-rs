@@ -274,8 +274,9 @@ impl ArrayOfNodes {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn assign(&mut self, theOther: &ArrayOfNodes) -> &mut ArrayOfNodes {
         unsafe { &mut *(crate::ffi::Poly_ArrayOfNodes_assign(self as *mut Self, theOther)) }
     }
@@ -285,8 +286,9 @@ impl ArrayOfNodes {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn move_(&mut self, theOther: &mut ArrayOfNodes) -> &mut ArrayOfNodes {
         unsafe { &mut *(crate::ffi::Poly_ArrayOfNodes_move_(self as *mut Self, theOther)) }
     }
@@ -386,8 +388,9 @@ impl ArrayOfUVNodes {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn assign(&mut self, theOther: &ArrayOfUVNodes) -> &mut ArrayOfUVNodes {
         unsafe { &mut *(crate::ffi::Poly_ArrayOfUVNodes_assign(self as *mut Self, theOther)) }
     }
@@ -397,8 +400,9 @@ impl ArrayOfUVNodes {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn move_(&mut self, theOther: &mut ArrayOfUVNodes) -> &mut ArrayOfUVNodes {
         unsafe { &mut *(crate::ffi::Poly_ArrayOfUVNodes_move_(self as *mut Self, theOther)) }
     }

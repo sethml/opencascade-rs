@@ -1128,7 +1128,13 @@ impl CompositeSurface {
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:191 - `ShapeExtend_CompositeSurface::Patch()`
     /// Returns one surface patch that contains given point
-    pub fn patch_pnt2d(&self, pnt: &crate::gp::Pnt2d) -> &crate::ffi::HandleGeomSurface {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn patch_pnt2d(&self, pnt: &crate::gp::Pnt2d) -> &crate::ffi::HandleGeomSurface {
         unsafe {
             &*(crate::ffi::ShapeExtend_CompositeSurface_patch_pnt2d(self as *const Self, pnt))
         }

@@ -5960,7 +5960,13 @@ impl ResConstraintOfMyGradientOfCompute {
 
     /// **Source:** `AppDef_ResConstraintOfMyGradientOfCompute.hxx`:74 - `AppDef_ResConstraintOfMyGradientOfCompute::ConstraintDerivative()`
     /// Returns the derivative of the constraint matrix.
-    pub fn constraint_derivative(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &MultiLine,
         Parameters: &crate::ffi::math_Vector,
@@ -6104,7 +6110,13 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
 
     /// **Source:** `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx`:74 - `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::ConstraintDerivative()`
     /// Returns the derivative of the constraint matrix.
-    pub fn constraint_derivative(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &MultiLine,
         Parameters: &crate::ffi::math_Vector,
@@ -6228,7 +6240,13 @@ impl ResConstraintOfTheGradient {
 
     /// **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:74 - `AppDef_ResConstraintOfTheGradient::ConstraintDerivative()`
     /// Returns the derivative of the constraint matrix.
-    pub fn constraint_derivative(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &MultiLine,
         Parameters: &crate::ffi::math_Vector,
@@ -7278,7 +7296,13 @@ impl TheResol {
 
     /// **Source:** `AppDef_TheResol.hxx`:73 - `AppDef_TheResol::ConstraintDerivative()`
     /// Returns the derivative of the constraint matrix.
-    pub fn constraint_derivative(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &MultiLine,
         Parameters: &crate::ffi::math_Vector,

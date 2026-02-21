@@ -359,7 +359,16 @@ impl Analyzer {
     }
 
     /// **Source:** `BRepCheck_Analyzer.hxx`:149 - `BRepCheck_Analyzer::Result()`
-    pub fn result(&self, theSubS: &crate::topo_ds::Shape) -> &crate::ffi::HandleBRepCheckResult {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn result(
+        &self,
+        theSubS: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::HandleBRepCheckResult {
         unsafe { &*(crate::ffi::BRepCheck_Analyzer_result(self as *const Self, theSubS)) }
     }
 }
@@ -1018,7 +1027,13 @@ impl Result {
     }
 
     /// **Source:** `BRepCheck_Result.hxx`:66 - `BRepCheck_Result::StatusOnShape()`
-    pub fn status_on_shape_shape(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn status_on_shape_shape(
         &self,
         theShape: &crate::topo_ds::Shape,
     ) -> &crate::ffi::BRepCheck_ListOfStatus {

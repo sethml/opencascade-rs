@@ -186,7 +186,13 @@ impl Blend {
     /// - a vertex : generate a sphere.
     /// Warning: returns a Null Shape if <CenterLine> generates
     /// no surface.
-    pub fn face_shape(&self, CenterLine: &crate::topo_ds::Shape) -> &crate::topo_ds::Face {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn face_shape(&self, CenterLine: &crate::topo_ds::Shape) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BiTgte_Blend_face_shape(self as *const Self, CenterLine)) }
     }
 

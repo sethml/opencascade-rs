@@ -6167,8 +6167,9 @@ impl PolyAlgo {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn hide(
         &mut self,
         status: &mut crate::hlr_algo::EdgeStatus,
@@ -6210,8 +6211,9 @@ impl PolyAlgo {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn show(
         &mut self,
         S: &mut crate::topo_ds::Shape,
@@ -9956,7 +9958,13 @@ impl ThePolyhedronOfInterCSurf {
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:106 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
     /// Give the point of index i in the MaTriangle.
-    pub fn point_int_real2(&self, Index: i32, U: &mut f64, V: &mut f64) -> &crate::gp::Pnt {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn point_int_real2(&self, Index: i32, U: &mut f64, V: &mut f64) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_int_real2(
                 self as *const Self,

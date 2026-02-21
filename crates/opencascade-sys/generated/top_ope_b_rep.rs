@@ -1482,7 +1482,13 @@ impl FacesFiller {
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:207 - `TopOpeBRep_FacesFiller::FaceFaceTransition()`
-    pub fn face_face_transition_lineinter_int(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn face_face_transition_lineinter_int(
         &self,
         L: &LineInter,
         I: i32,
@@ -2928,8 +2934,9 @@ impl LineInter {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump_line_transitions(
         &mut self,
         OS: &mut crate::ffi::Standard_OStream,
@@ -3638,8 +3645,9 @@ impl ShapeScanner {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump_current(
         &mut self,
         OS: &mut crate::ffi::Standard_OStream,
@@ -3964,8 +3972,9 @@ impl VPointInter {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump_int_face_ostream(
         &mut self,
         I: i32,
@@ -3986,8 +3995,9 @@ impl VPointInter {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump_face2_ostream(
         &mut self,
         F1: &crate::topo_ds::Face,

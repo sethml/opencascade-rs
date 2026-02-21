@@ -922,7 +922,13 @@ impl BoundSortBox {
     /// comparison algorithm, and returns the list of intersecting
     /// bounding boxes as a list of indexes on the array of
     /// bounding boxes used by this algorithm.
-    pub fn compare_box(&mut self, theBox: &Box) -> &crate::ffi::TColStd_ListOfInteger {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn compare_box(&mut self, theBox: &Box) -> &crate::ffi::TColStd_ListOfInteger {
         unsafe { &*(crate::ffi::Bnd_BoundSortBox_compare_box(self as *mut Self, theBox)) }
     }
 
@@ -932,7 +938,13 @@ impl BoundSortBox {
     /// comparison algorithm, and returns the list of intersecting
     /// bounding boxes as a list of indexes on the array of
     /// bounding boxes used by this algorithm.
-    pub fn compare_pln(&mut self, P: &crate::gp::Pln) -> &crate::ffi::TColStd_ListOfInteger {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn compare_pln(&mut self, P: &crate::gp::Pln) -> &crate::ffi::TColStd_ListOfInteger {
         unsafe { &*(crate::ffi::Bnd_BoundSortBox_compare_pln(self as *mut Self, P)) }
     }
 

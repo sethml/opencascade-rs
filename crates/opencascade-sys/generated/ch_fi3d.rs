@@ -268,7 +268,16 @@ impl Builder {
 
     /// **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
     /// Advanced  function for the history
-    pub fn generated(&mut self, EouV: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        EouV: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::ChFi3d_Builder_generated(self as *mut Self, EouV)) }
     }
 
@@ -987,11 +996,6 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
-    pub fn generated(&mut self, EouV: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::ChFi3d_ChBuilder_inherited_Generated(self as *mut Self, EouV)) }
-    }
-
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:145 - `ChFi3d_Builder::NbFaultyContours()`
     pub fn nb_faulty_contours(&self) -> i32 {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_NbFaultyContours(self as *const Self) }
@@ -1479,11 +1483,6 @@ impl FilBuilder {
                 self as *const Self,
             ))
         }
-    }
-
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
-    pub fn generated(&mut self, EouV: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::ChFi3d_FilBuilder_inherited_Generated(self as *mut Self, EouV)) }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:145 - `ChFi3d_Builder::NbFaultyContours()`

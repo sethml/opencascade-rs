@@ -2834,7 +2834,13 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
 
     /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::ConstraintDerivative()`
     /// Returns the derivative of the constraint matrix.
-    pub fn constraint_derivative(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &TheMultiLineOfApprox,
         Parameters: &crate::ffi::math_Vector,
@@ -2959,7 +2965,13 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
 
     /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:74 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::ConstraintDerivative()`
     /// Returns the derivative of the constraint matrix.
-    pub fn constraint_derivative(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &TheMultiLineOfApprox,
         Parameters: &crate::ffi::math_Vector,

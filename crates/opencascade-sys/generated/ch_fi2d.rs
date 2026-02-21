@@ -182,7 +182,13 @@ impl AnaFilletAlgo {
 
     /// **Source:** `ChFi2d_AnaFilletAlgo.hxx`:58 - `ChFi2d_AnaFilletAlgo::Result()`
     /// Retrieves a result (fillet and shrinked neighbours).
-    pub fn result(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn result(
         &mut self,
         e1: &mut crate::topo_ds::Edge,
         e2: &mut crate::topo_ds::Edge,
@@ -436,7 +442,13 @@ impl Builder {
     /// **Source:** `ChFi2d_Builder.hxx`:134 - `ChFi2d_Builder::DescendantEdge()`
     /// returns the modified edge if <E> has descendant or
     /// <E> in the other case.
-    pub fn descendant_edge(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Edge {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn descendant_edge(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::ChFi2d_Builder_descendant_edge(self as *const Self, E)) }
     }
 
@@ -444,7 +456,13 @@ impl Builder {
     /// Returns the parent edge of  <E>
     /// Warning: If <E>is a basis edge,  the returned edge would be
     /// equal to <E>
-    pub fn basis_edge(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Edge {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn basis_edge(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::ChFi2d_Builder_basis_edge(self as *const Self, E)) }
     }
 

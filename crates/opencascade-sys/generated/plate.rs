@@ -1057,8 +1057,9 @@ impl Plate {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn copy(&mut self, Ref: &Plate) -> &mut Plate {
         unsafe { &mut *(crate::ffi::Plate_Plate_copy(self as *mut Self, Ref)) }
     }

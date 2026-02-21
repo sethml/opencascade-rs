@@ -813,7 +813,13 @@ impl BlockBuilder {
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:52 - `TopOpeBRepBuild_BlockBuilder::Element()`
     /// Returns the current element of <BI>.
-    pub fn element_blockiterator(&self, BI: &BlockIterator) -> &crate::topo_ds::Shape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn element_blockiterator(&self, BI: &BlockIterator) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::TopOpeBRepBuild_BlockBuilder_element_blockiterator(
                 self as *const Self,
@@ -1175,7 +1181,13 @@ impl Builder {
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:169 - `TopOpeBRepBuild_Builder::Splits()`
     /// Returns the split parts <TB> of shape <S>.
-    pub fn splits(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn splits(
         &self,
         S: &crate::topo_ds::Shape,
         TB: crate::top_abs::State,
@@ -1191,7 +1203,13 @@ impl Builder {
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:176 - `TopOpeBRepBuild_Builder::Merged()`
     /// Returns the merged parts <TB> of shape <S>.
-    pub fn merged(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn merged(
         &self,
         S: &crate::topo_ds::Shape,
         TB: crate::top_abs::State,
@@ -1329,8 +1347,9 @@ impl Builder {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn change_split(
         &mut self,
         S: &crate::topo_ds::Shape,
@@ -3504,21 +3523,6 @@ impl Builder1 {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:169 - `TopOpeBRepBuild_Builder::Splits()`
-    pub fn splits(
-        &self,
-        S: &crate::topo_ds::Shape,
-        TB: crate::top_abs::State,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_Builder1_inherited_Splits(
-                self as *const Self,
-                S,
-                TB.into(),
-            ))
-        }
-    }
-
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:173 - `TopOpeBRepBuild_Builder::IsMerged()`
     pub fn is_merged(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
         unsafe {
@@ -3527,21 +3531,6 @@ impl Builder1 {
                 S,
                 TB.into(),
             )
-        }
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:176 - `TopOpeBRepBuild_Builder::Merged()`
-    pub fn merged(
-        &self,
-        S: &crate::topo_ds::Shape,
-        TB: crate::top_abs::State,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_Builder1_inherited_Merged(
-                self as *const Self,
-                S,
-                TB.into(),
-            ))
         }
     }
 
@@ -6697,7 +6686,13 @@ impl HBuilder {
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:95 - `TopOpeBRepBuild_HBuilder::Splits()`
     /// Returns the split parts <ToBuild> of shape <S>.
-    pub fn splits(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn splits(
         &self,
         S: &crate::topo_ds::Shape,
         ToBuild: crate::top_abs::State,
@@ -6717,7 +6712,13 @@ impl HBuilder {
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:103 - `TopOpeBRepBuild_HBuilder::Merged()`
     /// Returns the merged parts <ToBuild> of shape <S>.
-    pub fn merged(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn merged(
         &self,
         S: &crate::topo_ds::Shape,
         ToBuild: crate::top_abs::State,
@@ -7989,7 +7990,13 @@ impl ShapeSet {
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:114 - `TopOpeBRepBuild_ShapeSet::MakeNeighboursList()`
-    pub fn make_neighbours_list(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn make_neighbours_list(
         &mut self,
         E: &crate::topo_ds::Shape,
         V: &crate::topo_ds::Shape,
@@ -8578,21 +8585,6 @@ impl ShellFaceSet {
     pub fn find_neighbours(&mut self) {
         unsafe {
             crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_FindNeighbours(self as *mut Self)
-        }
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:114 - `TopOpeBRepBuild_ShapeSet::MakeNeighboursList()`
-    pub fn make_neighbours_list(
-        &mut self,
-        E: &crate::topo_ds::Shape,
-        V: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_MakeNeighboursList(
-                self as *mut Self,
-                E,
-                V,
-            ))
         }
     }
 
@@ -9750,7 +9742,13 @@ impl WireEdgeSet {
     }
 
     /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:66 - `TopOpeBRepBuild_WireEdgeSet::MakeNeighboursList()`
-    pub fn make_neighbours_list(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn make_neighbours_list(
         &mut self,
         E: &crate::topo_ds::Shape,
         V: &crate::topo_ds::Shape,

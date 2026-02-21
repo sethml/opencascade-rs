@@ -418,6 +418,8 @@ pub struct FunctionBinding {
     pub cpp_headers: Vec<String>,
     /// Whether this function should be marked `unsafe fn` (has raw pointer params/returns)
     pub is_unsafe: bool,
+    /// Whether this function has ambiguous lifetime (returns ref with 2+ ref params)
+    pub unsafe_lifetime: bool,
 }
 
 // ── Helper functions ────────────────────────────────────────────────────────
@@ -2984,10 +2986,10 @@ fn compute_inherited_method_bindings(
 
                 // Check if inherited method returns a reference with reference params (ambiguous lifetime)
                 let unsafe_lifetime = {
-                    let returns_mut_ref = resolved_method.return_type.as_ref()
-                        .map(|rt| matches!(&rt.original, Type::MutRef(_)))
+                    let returns_ref = resolved_method.return_type.as_ref()
+                        .map(|rt| matches!(&rt.original, Type::MutRef(_) | Type::ConstRef(_)))
                         .unwrap_or(false);
-                    returns_mut_ref && resolved_method.params.iter().any(|p| {
+                    returns_ref && resolved_method.params.iter().any(|p| {
                         matches!(&p.ty.original, Type::ConstRef(_) | Type::MutRef(_)) || p.ty.original.is_c_string()
                     })
                 };
@@ -3436,28 +3438,20 @@ pub fn compute_all_function_bindings(
         }
 
         // Ambiguous lifetime check for free functions:
-        // If the function returns &mut and has reference params, Rust can't infer
-        // which param the return borrows from.
-        if let Some(ref ret) = func.return_type {
-            if matches!(&ret.original, Type::MutRef(_)) {
+        // If the function returns a reference and has 2+ reference params, Rust can't infer
+        // which param the return borrows from. We mark it unsafe instead of skipping.
+        let unsafe_lifetime = if let Some(ref ret) = func.return_type {
+            if matches!(&ret.original, Type::MutRef(_) | Type::ConstRef(_)) {
                 let ref_param_count = func.params.iter().filter(|p| {
                     matches!(&p.ty.original, Type::ConstRef(_) | Type::MutRef(_)) || p.ty.original.is_c_string()
                 }).count();
-                if ref_param_count >= 2 {
-                    skipped.push(SkippedSymbol {
-                        kind: "function",
-                        module: func.rust_module.clone(),
-                        cpp_name: format!("{}::{}", func.namespace, func.short_name),
-                        source_header: func.source_header.clone(),
-                        source_line: func.source_line,
-                        doc_comment: func.doc_comment.clone(),
-                        skip_reason: "returns &mut with reference params \u{2014} ambiguous lifetime".to_string(),
-                        stub_rust_decl: generate_function_stub(func),
-                    });
-                    continue;
-                }
+                ref_param_count >= 2
+            } else {
+                false
             }
-        }
+        } else {
+            false
+        };
 
         let base_rust_name = &func.rust_name;
         let is_overloaded = name_groups.get(base_rust_name).copied().unwrap_or(0) > 1;
@@ -3564,7 +3558,9 @@ pub fn compute_all_function_bindings(
             doc_comment: func.doc_comment.clone(),
             cpp_headers,
             is_unsafe: func.params.iter().any(|p| p.ty.original.needs_unsafe_fn())
-                || func.return_type.as_ref().map_or(false, |rt| rt.original.needs_unsafe_fn()),
+                || func.return_type.as_ref().map_or(false, |rt| rt.original.needs_unsafe_fn())
+                || unsafe_lifetime,
+            unsafe_lifetime,
         });
     }
 
@@ -5378,7 +5374,12 @@ fn format_reexport_doc(source_attr: &str, doc: &Option<String>) -> String {
 
 /// Format a `# Safety` doc comment section for methods with ambiguous return lifetimes.
 fn format_lifetime_safety_doc() -> &'static str {
-    "    ///\n    /// # Safety\n    ///\n    /// The returned reference borrows from `self`. The caller must ensure that\n    /// any reference parameters do not need to outlive the returned reference.\n"
+    "    ///\n    /// # Safety\n    ///\n    /// It is not known whether the returned reference borrows from `self` or from one\n    /// of the reference parameters. The caller must ensure the returned reference does\n    /// not outlive whichever source it actually borrows from.\n"
+}
+
+/// Format a `# Safety` doc comment section for free functions with ambiguous return lifetimes.
+pub fn format_lifetime_safety_doc_free_fn() -> &'static str {
+    "///\n/// # Safety\n///\n/// It is not known which reference parameter the returned reference borrows from.\n/// The caller must ensure the returned reference does not outlive whichever source\n/// it actually borrows from.\n"
 }
 
 // ── FFI TokenStream emit ────────────────────────────────────────────────────

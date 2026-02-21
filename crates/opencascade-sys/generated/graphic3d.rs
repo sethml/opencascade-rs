@@ -21094,8 +21094,9 @@ impl CubeMapOrder {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn set_cubemaporder(&mut self, theOrder: &CubeMapOrder) -> &mut CubeMapOrder {
         unsafe {
             &mut *(crate::ffi::Graphic3d_CubeMapOrder_set_cubemaporder(self as *mut Self, theOrder))
@@ -21141,8 +21142,9 @@ impl CubeMapOrder {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn permute(&mut self, anOrder: &ValidatedCubeMapOrder) -> &mut CubeMapOrder {
         unsafe { &mut *(crate::ffi::Graphic3d_CubeMapOrder_permute(self as *mut Self, anOrder)) }
     }
@@ -32920,7 +32922,13 @@ impl StructureManager {
     }
 
     /// **Source:** `Graphic3d_StructureManager.hxx`:168 - `Graphic3d_StructureManager::ObjectAffinity()`
-    pub fn object_affinity(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn object_affinity(
         &self,
         theObject: &crate::ffi::HandleStandardTransient,
     ) -> &crate::ffi::HandleGraphic3dViewAffinity {

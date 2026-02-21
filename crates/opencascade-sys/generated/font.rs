@@ -1294,7 +1294,13 @@ impl SystemFont {
 
     /// **Source:** `Font_SystemFont.hxx`:67 - `Font_SystemFont::FontPathAny()`
     /// Returns any defined font file path.
-    pub fn font_path_any(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn font_path_any(
         &self,
         theAspect: crate::font::FontAspect,
         theToSynthesizeItalic: &mut bool,

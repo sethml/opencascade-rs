@@ -779,8 +779,9 @@ impl BaseDriver {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_reference(&mut self, aValue: &mut i32) -> &mut BaseDriver {
         unsafe { &mut *(crate::ffi::Storage_BaseDriver_get_reference(self as *mut Self, aValue)) }
     }
@@ -789,8 +790,9 @@ impl BaseDriver {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_character(&mut self, aValue: &mut std::ffi::c_char) -> &mut BaseDriver {
         unsafe { &mut *(crate::ffi::Storage_BaseDriver_get_character(self as *mut Self, aValue)) }
     }
@@ -799,8 +801,9 @@ impl BaseDriver {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_ext_character(&mut self, aValue: &mut u16) -> &mut BaseDriver {
         unsafe {
             &mut *(crate::ffi::Storage_BaseDriver_get_ext_character(self as *mut Self, aValue))
@@ -811,8 +814,9 @@ impl BaseDriver {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_integer(&mut self, aValue: &mut i32) -> &mut BaseDriver {
         unsafe { &mut *(crate::ffi::Storage_BaseDriver_get_integer(self as *mut Self, aValue)) }
     }
@@ -821,8 +825,9 @@ impl BaseDriver {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_boolean(&mut self, aValue: &mut bool) -> &mut BaseDriver {
         unsafe { &mut *(crate::ffi::Storage_BaseDriver_get_boolean(self as *mut Self, aValue)) }
     }
@@ -831,8 +836,9 @@ impl BaseDriver {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_real(&mut self, aValue: &mut f64) -> &mut BaseDriver {
         unsafe { &mut *(crate::ffi::Storage_BaseDriver_get_real(self as *mut Self, aValue)) }
     }
@@ -841,8 +847,9 @@ impl BaseDriver {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_short_real(&mut self, aValue: &mut f32) -> &mut BaseDriver {
         unsafe { &mut *(crate::ffi::Storage_BaseDriver_get_short_real(self as *mut Self, aValue)) }
     }

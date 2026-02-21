@@ -1637,14 +1637,6 @@ impl MakeEdge {
         unsafe { crate::ffi::BRepLib_MakeEdge_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
-    pub fn descendant_faces(
-        &mut self,
-        F: &crate::topo_ds::Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepLib_MakeEdge_inherited_DescendantFaces(self as *mut Self, F)) }
-    }
-
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeEdge_inherited_NbSurfaces(self as *const Self) }
@@ -1653,14 +1645,6 @@ impl MakeEdge {
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge_inherited_NewFaces(self as *mut Self, I)) }
-    }
-
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
-    pub fn faces_from_edges(
-        &mut self,
-        E: &crate::topo_ds::Edge,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepLib_MakeEdge_inherited_FacesFromEdges(self as *mut Self, E)) }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
@@ -2159,16 +2143,6 @@ impl MakeEdge2d {
         unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
-    pub fn descendant_faces(
-        &mut self,
-        F: &crate::topo_ds::Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepLib_MakeEdge2d_inherited_DescendantFaces(self as *mut Self, F))
-        }
-    }
-
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_NbSurfaces(self as *const Self) }
@@ -2177,14 +2151,6 @@ impl MakeEdge2d {
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge2d_inherited_NewFaces(self as *mut Self, I)) }
-    }
-
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
-    pub fn faces_from_edges(
-        &mut self,
-        E: &crate::topo_ds::Edge,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepLib_MakeEdge2d_inherited_FacesFromEdges(self as *mut Self, E)) }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
@@ -2682,14 +2648,6 @@ impl MakeFace {
         unsafe { crate::ffi::BRepLib_MakeFace_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
-    pub fn descendant_faces(
-        &mut self,
-        F: &crate::topo_ds::Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepLib_MakeFace_inherited_DescendantFaces(self as *mut Self, F)) }
-    }
-
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeFace_inherited_NbSurfaces(self as *const Self) }
@@ -2698,14 +2656,6 @@ impl MakeFace {
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeFace_inherited_NewFaces(self as *mut Self, I)) }
-    }
-
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
-    pub fn faces_from_edges(
-        &mut self,
-        E: &crate::topo_ds::Edge,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepLib_MakeFace_inherited_FacesFromEdges(self as *mut Self, E)) }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
@@ -2953,16 +2903,6 @@ impl MakePolygon {
         unsafe { crate::ffi::BRepLib_MakePolygon_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
-    pub fn descendant_faces(
-        &mut self,
-        F: &crate::topo_ds::Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepLib_MakePolygon_inherited_DescendantFaces(self as *mut Self, F))
-        }
-    }
-
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakePolygon_inherited_NbSurfaces(self as *const Self) }
@@ -2971,16 +2911,6 @@ impl MakePolygon {
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakePolygon_inherited_NewFaces(self as *mut Self, I)) }
-    }
-
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
-    pub fn faces_from_edges(
-        &mut self,
-        E: &crate::topo_ds::Edge,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepLib_MakePolygon_inherited_FacesFromEdges(self as *mut Self, E))
-        }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
@@ -3045,7 +2975,13 @@ impl MakeShape {
 
     /// **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
     /// returns the list of generated Faces.
-    pub fn descendant_faces(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn descendant_faces(
         &mut self,
         F: &crate::topo_ds::Face,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -3068,7 +3004,13 @@ impl MakeShape {
     /// **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
     /// returns a list of the created faces
     /// from the edge <E>.
-    pub fn faces_from_edges(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn faces_from_edges(
         &mut self,
         E: &crate::topo_ds::Edge,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -3253,14 +3195,6 @@ impl MakeShell {
         unsafe { crate::ffi::BRepLib_MakeShell_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
-    pub fn descendant_faces(
-        &mut self,
-        F: &crate::topo_ds::Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepLib_MakeShell_inherited_DescendantFaces(self as *mut Self, F)) }
-    }
-
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeShell_inherited_NbSurfaces(self as *const Self) }
@@ -3269,14 +3203,6 @@ impl MakeShell {
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeShell_inherited_NewFaces(self as *mut Self, I)) }
-    }
-
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
-    pub fn faces_from_edges(
-        &mut self,
-        E: &crate::topo_ds::Edge,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepLib_MakeShell_inherited_FacesFromEdges(self as *mut Self, E)) }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
@@ -3416,14 +3342,6 @@ impl MakeSolid {
         unsafe { crate::ffi::BRepLib_MakeSolid_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
-    pub fn descendant_faces(
-        &mut self,
-        F: &crate::topo_ds::Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepLib_MakeSolid_inherited_DescendantFaces(self as *mut Self, F)) }
-    }
-
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeSolid_inherited_NbSurfaces(self as *const Self) }
@@ -3432,14 +3350,6 @@ impl MakeSolid {
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeSolid_inherited_NewFaces(self as *mut Self, I)) }
-    }
-
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
-    pub fn faces_from_edges(
-        &mut self,
-        E: &crate::topo_ds::Edge,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepLib_MakeSolid_inherited_FacesFromEdges(self as *mut Self, E)) }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
@@ -3525,16 +3435,6 @@ impl MakeVertex {
         unsafe { crate::ffi::BRepLib_MakeVertex_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
-    pub fn descendant_faces(
-        &mut self,
-        F: &crate::topo_ds::Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepLib_MakeVertex_inherited_DescendantFaces(self as *mut Self, F))
-        }
-    }
-
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeVertex_inherited_NbSurfaces(self as *const Self) }
@@ -3543,14 +3443,6 @@ impl MakeVertex {
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeVertex_inherited_NewFaces(self as *mut Self, I)) }
-    }
-
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
-    pub fn faces_from_edges(
-        &mut self,
-        E: &crate::topo_ds::Edge,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepLib_MakeVertex_inherited_FacesFromEdges(self as *mut Self, E)) }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
@@ -3772,14 +3664,6 @@ impl MakeWire {
         unsafe { crate::ffi::BRepLib_MakeWire_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
-    pub fn descendant_faces(
-        &mut self,
-        F: &crate::topo_ds::Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepLib_MakeWire_inherited_DescendantFaces(self as *mut Self, F)) }
-    }
-
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeWire_inherited_NbSurfaces(self as *const Self) }
@@ -3788,14 +3672,6 @@ impl MakeWire {
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeWire_inherited_NewFaces(self as *mut Self, I)) }
-    }
-
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
-    pub fn faces_from_edges(
-        &mut self,
-        E: &crate::topo_ds::Edge,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepLib_MakeWire_inherited_FacesFromEdges(self as *mut Self, E)) }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`

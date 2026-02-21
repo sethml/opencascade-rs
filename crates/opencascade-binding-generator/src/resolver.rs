@@ -576,15 +576,15 @@ pub fn function_uses_enum(func: &ParsedFunction, all_enums: &HashSet<String>) ->
 }
 
 /// Check if a method needs explicit lifetimes (FFI limitation)
-/// Returns true if the method returns a mutable reference and has other reference parameters.
+/// Returns true if the method returns a reference and has other reference parameters.
 /// Rust can't infer lifetimes when there are multiple potential sources.
 pub fn method_needs_explicit_lifetimes(method: &Method) -> bool {
-    // Check if return type is a mutable reference (&mut Self or MutRef)
-    let returns_mut_ref = method.return_type.as_ref().map(|ty| {
-        matches!(ty, Type::MutRef(_))
+    // Check if return type is a reference (&Self, &mut Self, ConstRef, or MutRef)
+    let returns_ref = method.return_type.as_ref().map(|ty| {
+        matches!(ty, Type::MutRef(_) | Type::ConstRef(_))
     }).unwrap_or(false);
     
-    if !returns_mut_ref {
+    if !returns_ref {
         return false;
     }
     

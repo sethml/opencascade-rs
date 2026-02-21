@@ -1902,7 +1902,13 @@ impl TheIWLineOfTheIWalking {
     }
 
     /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:142 - `Contap_TheIWLineOfTheIWalking::TangentVector()`
-    pub fn tangent_vector(&self, Index: &mut i32) -> &crate::gp::Vec {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn tangent_vector(&self, Index: &mut i32) -> &crate::gp::Vec {
         unsafe {
             &*(crate::ffi::Contap_TheIWLineOfTheIWalking_tangent_vector(self as *const Self, Index))
         }

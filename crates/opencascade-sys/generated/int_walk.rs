@@ -242,7 +242,13 @@ impl PWalking {
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:136 - `IntWalk_PWalking::TangentAtLine()`
-    pub fn tangent_at_line(&self, Index: &mut i32) -> &crate::gp::Dir {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn tangent_at_line(&self, Index: &mut i32) -> &crate::gp::Dir {
         unsafe { &*(crate::ffi::IntWalk_PWalking_tangent_at_line(self as *const Self, Index)) }
     }
 

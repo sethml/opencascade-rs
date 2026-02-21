@@ -200,7 +200,13 @@ impl BoxSort {
     }
 
     /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:71 - `TopOpeBRepTool_BoxSort::Compare()`
-    pub fn compare(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn compare(
         &mut self,
         S: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TColStd_ListIteratorOfListOfInteger {
@@ -208,7 +214,13 @@ impl BoxSort {
     }
 
     /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:73 - `TopOpeBRepTool_BoxSort::TouchedShape()`
-    pub fn touched_shape(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn touched_shape(
         &self,
         I: &crate::ffi::TColStd_ListIteratorOfListOfInteger,
     ) -> &crate::topo_ds::Shape {
@@ -216,7 +228,13 @@ impl BoxSort {
     }
 
     /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:76 - `TopOpeBRepTool_BoxSort::Box()`
-    pub fn box_(&self, S: &crate::topo_ds::Shape) -> &crate::bnd::Box {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn box_(&self, S: &crate::topo_ds::Shape) -> &crate::bnd::Box {
         unsafe { &*(crate::ffi::TopOpeBRepTool_BoxSort_box_(self as *const Self, S)) }
     }
 
@@ -273,7 +291,13 @@ impl C2DF {
     }
 
     /// **Source:** `TopOpeBRepTool_C2DF.hxx`:47 - `TopOpeBRepTool_C2DF::PC()`
-    pub fn pc(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn pc(
         &self,
         f2d: &mut f64,
         l2d: &mut f64,
@@ -1096,7 +1120,13 @@ impl HBoxTool {
     }
 
     /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:53 - `TopOpeBRepTool_HBoxTool::Box()`
-    pub fn box_shape(&mut self, S: &crate::topo_ds::Shape) -> &crate::bnd::Box {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn box_shape(&mut self, S: &crate::topo_ds::Shape) -> &crate::bnd::Box {
         unsafe { &*(crate::ffi::TopOpeBRepTool_HBoxTool_box_shape(self as *mut Self, S)) }
     }
 
@@ -1914,8 +1944,9 @@ impl ShapeExplorer {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump_current(
         &mut self,
         OS: &mut crate::ffi::Standard_OStream,

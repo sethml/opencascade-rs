@@ -592,7 +592,13 @@ impl Described {
 
     /// **Source:** `StepData_Described.hxx`:59 - `StepData_Described::Field()`
     /// Returns a Field from its name; read-only
-    pub fn field(&self, name: &str) -> &Field {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn field(&self, name: &str) -> &Field {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe { &*(crate::ffi::StepData_Described_field(self as *const Self, c_name.as_ptr())) }
     }
@@ -602,8 +608,9 @@ impl Described {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn c_field(&mut self, name: &str) -> &mut Field {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
@@ -4687,7 +4694,13 @@ impl Plex {
 
     /// **Source:** `StepData_Plex.hxx`:71 - `StepData_Plex::Field()`
     /// Returns a Field from its name; read-only
-    pub fn field(&self, name: &str) -> &Field {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn field(&self, name: &str) -> &Field {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe { &*(crate::ffi::StepData_Plex_field(self as *const Self, c_name.as_ptr())) }
     }
@@ -4697,8 +4710,9 @@ impl Plex {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn c_field(&mut self, name: &str) -> &mut Field {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe { &mut *(crate::ffi::StepData_Plex_c_field(self as *mut Self, c_name.as_ptr())) }
@@ -8066,7 +8080,13 @@ impl Simple {
 
     /// **Source:** `StepData_Simple.hxx`:68 - `StepData_Simple::Field()`
     /// Returns a Field from its name; read-only
-    pub fn field(&self, name: &str) -> &Field {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn field(&self, name: &str) -> &Field {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe { &*(crate::ffi::StepData_Simple_field(self as *const Self, c_name.as_ptr())) }
     }
@@ -8076,8 +8096,9 @@ impl Simple {
     ///
     /// # Safety
     ///
-    /// The returned reference borrows from `self`. The caller must ensure that
-    /// any reference parameters do not need to outlive the returned reference.
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
     pub unsafe fn c_field(&mut self, name: &str) -> &mut Field {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe { &mut *(crate::ffi::StepData_Simple_c_field(self as *mut Self, c_name.as_ptr())) }

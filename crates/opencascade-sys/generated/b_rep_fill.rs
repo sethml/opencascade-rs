@@ -648,7 +648,13 @@ impl CompatibleWires {
     /// **Source:** `BRepFill_CompatibleWires.hxx`:58 - `BRepFill_CompatibleWires::GeneratedShapes()`
     /// Returns   the  shapes  created  from   a  subshape
     /// <SubSection> of a section.
-    pub fn generated_shapes(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated_shapes(
         &self,
         SubSection: &crate::topo_ds::Edge,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -1454,7 +1460,16 @@ impl Draft {
     /// **Source:** `BRepFill_Draft.hxx`:68 - `BRepFill_Draft::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <S>.
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFill_Draft_generated(self as *mut Self, S)) }
     }
 
@@ -2641,7 +2656,13 @@ impl Evolved {
     /// Returns   the  shapes  created  from   a  subshape
     /// <SpineShape>  of     the  spine   and   a subshape
     /// <ProfShape> on the profile.
-    pub fn generated_shapes(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated_shapes(
         &self,
         SpineShape: &crate::topo_ds::Shape,
         ProfShape: &crate::topo_ds::Shape,
@@ -3151,7 +3172,16 @@ impl Filling {
     /// **Source:** `BRepFill_Filling.hxx`:180 - `BRepFill_Filling::Generated()`
     /// Returns the list of shapes generated from the
     /// shape <S>.
-    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFill_Filling_generated(self as *mut Self, S)) }
     }
 
@@ -3234,7 +3264,13 @@ impl Generator {
     /// **Source:** `BRepFill_Generator.hxx`:56 - `BRepFill_Generator::GeneratedShapes()`
     /// Returns   the  shapes  created  from   a  subshape
     /// <SSection>  of a  section.
-    pub fn generated_shapes(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated_shapes(
         &self,
         SSection: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
@@ -4221,7 +4257,13 @@ impl OffsetAncestors {
     /// may return a Null Shape if S1 is not a subShape
     /// of <Paral>;
     /// if Perform is not done.
-    pub fn ancestor(&self, S1: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn ancestor(&self, S1: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_OffsetAncestors_ancestor(self as *const Self, S1)) }
     }
 }
@@ -4350,7 +4392,13 @@ impl OffsetWire {
     /// Returns   the  shapes  created  from   a  subshape
     /// <SpineShape> of the spine.
     /// Returns the last computed Offset.
-    pub fn generated_shapes(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn generated_shapes(
         &mut self,
         SpineShape: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {

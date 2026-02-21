@@ -279,7 +279,13 @@ impl BasicElement {
     }
 
     /// **Source:** `LDOM_BasicElement.hxx`:66 - `LDOM_BasicElement::GetAttribute()`
-    pub fn get_attribute(
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn get_attribute(
         &self,
         aName: &crate::ldom_basic_string::LDOMBasicString,
         aLastCh: &BasicNode,
