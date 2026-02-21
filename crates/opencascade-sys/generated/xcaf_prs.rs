@@ -1896,6 +1896,12 @@ impl Style {
         unsafe { crate::ffi::XCAFPrs_Style_is_visible(self as *const Self) }
     }
 
+    /// **Source:** `XCAFPrs_Style.hxx`:83 - `XCAFPrs_Style::BaseColorTexture()`
+    /// Return base color texture.
+    pub fn base_color_texture(&self) -> &crate::ffi::HandleImageTexture {
+        unsafe { &*(crate::ffi::XCAFPrs_Style_base_color_texture(self as *const Self)) }
+    }
+
     /// **Source:** `XCAFPrs_Style.hxx`:104 - `XCAFPrs_Style::IsEqual()`
     /// Returns True if styles are the same
     /// Methods for using Style as key in maps
@@ -1903,13 +1909,6 @@ impl Style {
         unsafe { crate::ffi::XCAFPrs_Style_is_equal(self as *const Self, theOther) }
     }
 }
-
-// ── Skipped symbols for Style (1 total) ──
-// SKIPPED: **Source:** `XCAFPrs_Style.hxx`:83 - `XCAFPrs_Style::BaseColorTexture`
-//   method: Return base color texture.
-//   Reason: return type 'const Handle(Image_Texture)&' is unknown
-//   // pub fn base_color_texture(&self) -> &HandleTexture;
-//
 
 // ========================
 // From XCAFPrs_Texture.hxx
@@ -1926,9 +1925,59 @@ unsafe impl crate::CppDeletable for Texture {
 }
 
 impl Texture {
+    /// **Source:** `XCAFPrs_Texture.hxx`:29 - `XCAFPrs_Texture::XCAFPrs_Texture()`
+    /// Constructor.
+    pub fn new_handleimagetexture_textureunit(
+        theImageSource: &crate::ffi::HandleImageTexture,
+        theUnit: crate::graphic3d::TextureUnit,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFPrs_Texture_ctor_handleimagetexture_textureunit(
+                    theImageSource,
+                    theUnit.into(),
+                ),
+            )
+        }
+    }
+
     /// **Source:** `XCAFPrs_Texture.hxx`:26 - `XCAFPrs_Texture::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XCAFPrs_Texture_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_Texture.hxx`:33 - `XCAFPrs_Texture::GetCompressedImage()`
+    /// Image reader.
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_Texture_get_compressed_image(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFPrs_Texture.hxx`:37 - `XCAFPrs_Texture::GetImage()`
+    /// Image reader.
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_Texture_get_image(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFPrs_Texture.hxx`:41 - `XCAFPrs_Texture::GetImageSource()`
+    /// Return image source.
+    pub fn get_image_source(&self) -> &crate::ffi::HandleImageTexture {
+        unsafe { &*(crate::ffi::XCAFPrs_Texture_get_image_source(self as *const Self)) }
     }
 
     /// **Source:** `XCAFPrs_Texture.hxx`:26 - `XCAFPrs_Texture::get_type_name()`
@@ -2004,6 +2053,11 @@ impl Texture {
             ))
             .unwrap()
         }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_Texture2D.hxx`:54 - `Graphic3d_Texture2D::SetImage()`
+    pub fn set_image(&mut self, thePixMap: &crate::ffi::HandleImagePixMap) {
+        unsafe { crate::ffi::XCAFPrs_Texture_inherited_SetImage(self as *mut Self, thePixMap) }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:31 - `Graphic3d_TextureMap::EnableSmooth()`
@@ -2238,28 +2292,6 @@ impl HandleXCAFPrsTexture {
         }
     }
 }
-
-// ── Skipped symbols for Texture (4 total) ──
-// SKIPPED: **Source:** `XCAFPrs_Texture.hxx`:29 - `XCAFPrs_Texture::XCAFPrs_Texture`
-//   constructor: Constructor.
-//   Reason: param 'theImageSource' uses unknown Handle type
-//   // pub fn new_handleimagetexture_textureunit(theImageSource: &HandleTexture, theUnit: TextureUnit) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XCAFPrs_Texture.hxx`:33 - `XCAFPrs_Texture::GetCompressedImage`
-//   method: Image reader.
-//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn get_compressed_image(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_CompressedPixMap>>;
-//
-// SKIPPED: **Source:** `XCAFPrs_Texture.hxx`:37 - `XCAFPrs_Texture::GetImage`
-//   method: Image reader.
-//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn get_image(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_PixMap>>;
-//
-// SKIPPED: **Source:** `XCAFPrs_Texture.hxx`:41 - `XCAFPrs_Texture::GetImageSource`
-//   method: Return image source.
-//   Reason: return type 'const Handle(Image_Texture)&' is unknown
-//   // pub fn get_image_source(&self) -> &HandleTexture;
-//
 
 // ========================
 // Additional type re-exports

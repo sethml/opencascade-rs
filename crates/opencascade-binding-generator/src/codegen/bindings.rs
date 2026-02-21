@@ -517,10 +517,10 @@ fn classify_wrapper_kind(method: &Method, all_enums: &HashSet<String>) -> Wrappe
         is_class_or_handle && !is_enum
     });
 
-    if returns_by_value {
-        WrapperKind::ByValueReturn
-    } else if has_mut_ref_enum_params(&method.params, all_enums) {
+    if has_mut_ref_enum_params(&method.params, all_enums) {
         WrapperKind::MutRefEnumParam
+    } else if returns_by_value {
+        WrapperKind::ByValueReturn
     } else if has_cstring_param {
         WrapperKind::CStringParam
     } else if returns_cstring {

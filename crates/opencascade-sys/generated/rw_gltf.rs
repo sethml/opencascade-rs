@@ -1893,6 +1893,14 @@ impl GltfMaterialMap {
         unsafe { &*(crate::ffi::RWGltf_GltfMaterialMap_get_type_descriptor()) }
     }
 
+    /// **Source:** `RWGltf_GltfMaterialMap.hxx`:73 - `RWGltf_GltfMaterialMap::baseColorTexture()`
+    /// Return base color texture.
+    pub fn base_color_texture(
+        theMat: &crate::ffi::HandleXCAFDocVisMaterial,
+    ) -> &'static crate::ffi::HandleImageTexture {
+        unsafe { &*(crate::ffi::RWGltf_GltfMaterialMap_base_color_texture(theMat)) }
+    }
+
     /// Upcast to RWMesh_MaterialMap
     pub fn as_rw_mesh_material_map(&self) -> &crate::rw_mesh::MaterialMap {
         unsafe { &*(crate::ffi::RWGltf_GltfMaterialMap_as_RWMesh_MaterialMap(self as *const Self)) }
@@ -1960,6 +1968,23 @@ impl GltfMaterialMap {
     pub fn create_texture_folder(&mut self) -> bool {
         unsafe {
             crate::ffi::RWGltf_GltfMaterialMap_inherited_CreateTextureFolder(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture()`
+    pub fn copy_texture(
+        &mut self,
+        theResTexture: &mut crate::t_collection::AsciiString,
+        theTexture: &crate::ffi::HandleImageTexture,
+        theKey: &crate::t_collection::AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWGltf_GltfMaterialMap_inherited_CopyTexture(
+                self as *mut Self,
+                theResTexture,
+                theTexture,
+                theKey,
+            )
         }
     }
 
@@ -2060,7 +2085,7 @@ impl HandleRWGltfGltfMaterialMap {
     }
 }
 
-// ── Skipped symbols for GltfMaterialMap (7 total) ──
+// ── Skipped symbols for GltfMaterialMap (6 total) ──
 // SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:38 - `RWGltf_GltfMaterialMap::AddGlbImages`
 //   method: Add material images into GLB stream.
 //   method: @param[in][out] theBinFile   output file stream
@@ -2094,11 +2119,6 @@ impl HandleRWGltfGltfMaterialMap {
 //   method: Add material textures.
 //   Reason: param 'theWriter' uses unknown type 'RWGltf_GltfOStreamWriter*'
 //   // pub fn add_textures(&mut self, theWriter: *mut GltfOStreamWriter, theStyle: &Style, theIsStarted: &mut bool);
-//
-// SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:73 - `RWGltf_GltfMaterialMap::baseColorTexture`
-//   static_method: Return base color texture.
-//   Reason: return type 'const Handle(Image_Texture)&' is unknown
-//   // pub fn base_color_texture(theMat: &HandleVisMaterial) -> &HandleTexture;
 //
 
 // ========================

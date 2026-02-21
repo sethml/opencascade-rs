@@ -5737,6 +5737,19 @@ impl View {
         }
     }
 
+    /// **Source:** `V3d_View.hxx`:976 - `V3d_View::ToPixMap()`
+    /// Dumps the full contents of the view to a pixmap with specified parameters.
+    /// Internally this method calls Redraw() with an offscreen render buffer of requested target size
+    /// (theWidth x theHeight), so that there is no need resizing a window control for making a dump
+    /// of different size.
+    pub fn to_pix_map(
+        &mut self,
+        theImage: &mut crate::image::PixMap,
+        theParams: &ImageDumpOptions,
+    ) -> bool {
+        unsafe { crate::ffi::V3d_View_to_pix_map(self as *mut Self, theImage, theParams) }
+    }
+
     /// **Source:** `V3d_View.hxx`:1013 - `V3d_View::SetBackFacingModel()`
     /// Manages display of the back faces
     pub fn set_back_facing_model(&mut self, theModel: crate::graphic3d::TypeOfBackfacingModel) {
@@ -6047,7 +6060,7 @@ impl HandleV3dView {
     }
 }
 
-// ── Skipped symbols for View (5 total) ──
+// ── Skipped symbols for View (4 total) ──
 // SKIPPED: **Source:** `V3d_View.hxx`:76 - `V3d_View::SetWindow`
 //   method: Activates the view in the specified Window
 //   method: If <aContext> is not NULL the graphic context is used
@@ -6060,18 +6073,11 @@ impl HandleV3dView {
 //   Reason: return type 'V3d_ListOfLightIterator' is unknown
 //   // pub fn active_light_iterator(&self) -> OwnedPtr<V3d_ListOfLightIterator>;
 //
-// SKIPPED: **Source:** `V3d_View.hxx`:976 - `V3d_View::ToPixMap`
-//   method: Dumps the full contents of the view to a pixmap with specified parameters.
-//   method: Internally this method calls Redraw() with an offscreen render buffer of requested target size
-//   method: (theWidth x theHeight), so that there is no need resizing a window control for making a dump
-//   Reason: param 'theImage' uses unknown type 'Image_PixMap&'
-//   // pub fn to_pix_map(&mut self, theImage: &mut PixMap, theParams: &ImageDumpOptions) -> bool;
-//
 // SKIPPED: **Source:** `V3d_View.hxx`:990 - `V3d_View::ToPixMap`
 //   method: Dumps the full contents of the view to a pixmap.
 //   method: Internally this method calls Redraw() with an offscreen render buffer of requested target size
 //   method: (theWidth x theHeight), so that there is no need resizing a window control for making a dump
-//   Reason: param 'theImage' uses unknown type 'Image_PixMap&'
+//   Reason: param 'theTargetZLayerId' uses unknown type 'Graphic3d_ZLayerId'
 //   // pub fn to_pix_map(&mut self, theImage: &mut PixMap, theWidth: i32, theHeight: i32, theBufferType: &BufferType, theToAdjustAspect: bool, theTargetZLayerId: ZLayerId, theIsSingleLayer: i32, theStereoOptions: StereoDumpOptions, theLightName: *const char) -> bool;
 //
 // SKIPPED: **Source:** `V3d_View.hxx`:1113 - `V3d_View::Subviews`

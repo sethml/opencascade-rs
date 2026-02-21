@@ -8619,6 +8619,22 @@ impl SelectionImageFiller {
         unsafe { crate::ffi::SelectMgr_SelectionImageFiller_flush(self as *mut Self) }
     }
 
+    /// **Source:** `SelectMgr_SelectionImageFiller.hxx`:30 - `SelectMgr_SelectionImageFiller::CreateFiller()`
+    /// Create filler of specified type.
+    pub fn create_filler(
+        thePixMap: &mut crate::image::PixMap,
+        theSelector: &mut ViewerSelector,
+        theType: crate::std_select::TypeOfSelectionImage,
+    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectionImageFiller> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SelectionImageFiller_create_filler(
+                thePixMap,
+                theSelector as *mut _,
+                theType.into(),
+            ))
+        }
+    }
+
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
@@ -8744,16 +8760,11 @@ impl HandleSelectMgrSelectionImageFiller {
     }
 }
 
-// ── Skipped symbols for SelectionImageFiller (2 total) ──
+// ── Skipped symbols for SelectionImageFiller (1 total) ──
 // SKIPPED: **Source:** `SelectMgr_SelectionImageFiller.hxx`:37 - `SelectMgr_SelectionImageFiller::SelectMgr_SelectionImageFiller`
 //   constructor: Main constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_pixmap_viewerselectorptr(thePixMap: &mut PixMap, theSelector: *mut ViewerSelector) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `SelectMgr_SelectionImageFiller.hxx`:30 - `SelectMgr_SelectionImageFiller::CreateFiller`
-//   static_method: Create filler of specified type.
-//   Reason: param 'thePixMap' uses unknown type 'Image_PixMap&'
-//   // pub fn create_filler(thePixMap: &mut PixMap, theSelector: *mut ViewerSelector, theType: TypeOfSelectionImage) -> OwnedPtr<Handle<SelectMgr_SelectionImageFiller>>;
 //
 
 // ========================
@@ -11447,6 +11458,32 @@ impl ViewerSelector {
         }
     }
 
+    /// **Source:** `SelectMgr_ViewerSelector.hxx`:299 - `SelectMgr_ViewerSelector::ToPixMap()`
+    /// Dump of detection results into image.
+    /// This method performs axis picking for each pixel in the image
+    /// and generates a color depending on picking results and selection image type.
+    /// @param theImage       result image, should be initialized
+    /// @param theView        3D view defining camera position
+    /// @param theType        type of image to define
+    /// @param thePickedIndex index of picked entity (1 means topmost)
+    pub fn to_pix_map(
+        &mut self,
+        theImage: &mut crate::image::PixMap,
+        theView: &crate::ffi::HandleV3dView,
+        theType: crate::std_select::TypeOfSelectionImage,
+        thePickedIndex: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::SelectMgr_ViewerSelector_to_pix_map(
+                self as *mut Self,
+                theImage,
+                theView,
+                theType.into(),
+                thePickedIndex,
+            )
+        }
+    }
+
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:306 - `SelectMgr_ViewerSelector::DisplaySensitive()`
     /// Displays sensitives in view <theView>.
     pub fn display_sensitive_handlev3dview(&mut self, theView: &crate::ffi::HandleV3dView) {
@@ -11632,7 +11669,7 @@ impl HandleSelectMgrViewerSelector {
     }
 }
 
-// ── Skipped symbols for ViewerSelector (3 total) ──
+// ── Skipped symbols for ViewerSelector (2 total) ──
 // SKIPPED: **Source:** `SelectMgr_ViewerSelector.hxx`:183 - `SelectMgr_ViewerSelector::EntitySetBuilder`
 //   method: Returns the default builder used to construct BVH of entity set.
 //   Reason: return type 'Handle(BVH_Builder<double, 3>)' is unknown
@@ -11644,13 +11681,6 @@ impl HandleSelectMgrViewerSelector {
 //   method: not be invalidated.
 //   Reason: param 'theBuilder' uses unknown type 'const Handle(BVH_Builder<double, 3>)&'
 //   // pub fn set_entity_set_builder(&mut self, theBuilder: &HandleBuilder<double, 3>);
-//
-// SKIPPED: **Source:** `SelectMgr_ViewerSelector.hxx`:299 - `SelectMgr_ViewerSelector::ToPixMap`
-//   method: Dump of detection results into image.
-//   method: This method performs axis picking for each pixel in the image
-//   method: and generates a color depending on picking results and selection image type.
-//   Reason: param 'theImage' uses unknown type 'Image_PixMap&'
-//   // pub fn to_pix_map(&mut self, theImage: &mut PixMap, theView: &HandleView, theType: TypeOfSelectionImage, thePickedIndex: i32) -> bool;
 //
 
 // ========================

@@ -38,8 +38,8 @@ impl TryFrom<i32> for CellFilter_Action {
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
     HandleGraphic3dAttribBuffer, HandleGraphic3dBoundBuffer, HandleGraphic3dBuffer,
-    HandleGraphic3dIndexBuffer, HandleGraphic3dMutableIndexBuffer, HandleSelect3DBVHIndexBuffer,
-    HandleStandardTransient,
+    HandleGraphic3dIndexBuffer, HandleGraphic3dMutableIndexBuffer, HandleImagePixMapData,
+    HandleSelect3DBVHIndexBuffer, HandleStandardTransient,
 };
 
 // ========================
@@ -1338,6 +1338,24 @@ impl HandleNCollectionBuffer {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dMutableIndexBuffer>> {
         let ptr = unsafe {
             crate::ffi::HandleNCollectionBuffer_downcast_to_HandleGraphic3dMutableIndexBuffer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NCollection_Buffer> to Handle<Image_PixMapData>
+    ///
+    /// Returns `None` if the handle does not point to a `Image_PixMapData` (or subclass).
+    pub fn downcast_to_pix_map_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleImagePixMapData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleImagePixMapData(
                 self as *const Self,
             )
         };

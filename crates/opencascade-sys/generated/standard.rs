@@ -232,11 +232,12 @@ pub use crate::ffi::{
     HandleExtremaHArray2OfPOnCurv2d, HandleExtremaHArray2OfPOnSurf, HandleFEmToolCurve,
     HandleFEmToolHAssemblyTable, HandleFEmToolLinearFlexion, HandleFEmToolLinearJerk,
     HandleFEmToolLinearTension, HandleFEmToolProfileMatrix, HandleFSDBinaryFile, HandleFSDCmpFile,
-    HandleFSDFile, HandleGPropUndefinedAxis, HandleGccAnaNoSolution, HandleGccEntBadQualifier,
-    HandleGccIntBCirc, HandleGccIntBElips, HandleGccIntBHyper, HandleGccIntBLine,
-    HandleGccIntBParab, HandleGccIntBPoint, HandleGeom2dAdaptorCurve, HandleGeom2dAxisPlacement,
-    HandleGeom2dBSplineCurve, HandleGeom2dBezierCurve, HandleGeom2dCartesianPoint,
-    HandleGeom2dCircle, HandleGeom2dDirection, HandleGeom2dEllipse,
+    HandleFSDFile, HandleFontFTFont, HandleFontFTLibrary, HandleFontFontMgr, HandleFontSystemFont,
+    HandleFontTextFormatter, HandleGPropUndefinedAxis, HandleGccAnaNoSolution,
+    HandleGccEntBadQualifier, HandleGccIntBCirc, HandleGccIntBElips, HandleGccIntBHyper,
+    HandleGccIntBLine, HandleGccIntBParab, HandleGccIntBPoint, HandleGeom2dAdaptorCurve,
+    HandleGeom2dAxisPlacement, HandleGeom2dBSplineCurve, HandleGeom2dBezierCurve,
+    HandleGeom2dCartesianPoint, HandleGeom2dCircle, HandleGeom2dDirection, HandleGeom2dEllipse,
     HandleGeom2dEvaluatorOffsetCurve, HandleGeom2dGccIsParallel, HandleGeom2dHyperbola,
     HandleGeom2dLine, HandleGeom2dOffsetCurve, HandleGeom2dParabola, HandleGeom2dTransformation,
     HandleGeom2dTrimmedCurve, HandleGeom2dUndefinedDerivative, HandleGeom2dUndefinedValue,
@@ -419,8 +420,10 @@ pub use crate::ffi::{
     HandleIGESSolidVertexList, HandleIGESToBRepActor, HandleIGESToBRepAlgoContainer,
     HandleIGESToBRepIGESBoundary, HandleIGESToBRepToolContainer, HandleIMeshDataShape,
     HandleIMeshDataTessellatedShape, HandleIMeshToolsContext, HandleIMeshToolsMeshBuilder,
-    HandleIMeshToolsShapeExplorer, HandleIntCurvesFaceIntersector, HandleIntPatchALine,
-    HandleIntPatchGLine, HandleIntPatchLine, HandleIntPatchRLine,
+    HandleIMeshToolsShapeExplorer, HandleImageAlienPixMap, HandleImageCompressedPixMap,
+    HandleImageDiff, HandleImagePixMap, HandleImagePixMapData, HandleImageSupportedFormats,
+    HandleImageTexture, HandleImageVideoRecorder, HandleIntCurvesFaceIntersector,
+    HandleIntPatchALine, HandleIntPatchGLine, HandleIntPatchLine, HandleIntPatchRLine,
     HandleIntPatchTheIWLineOfTheIWalking, HandleIntPatchWLine, HandleIntSurfLineOn2S,
     HandleIntToolsContext, HandleIntToolsTopolTool, HandleInterfaceCheck,
     HandleInterfaceCheckFailure, HandleInterfaceCopyMap, HandleInterfaceEntityCluster,
@@ -437,6 +440,8 @@ pub use crate::ffi::{
     HandleMAT2dConnexion, HandleMATArc, HandleMATBasicElt, HandleMATBisector, HandleMATEdge,
     HandleMATGraph, HandleMATListOfBisector, HandleMATListOfEdge, HandleMATNode,
     HandleMATTListNodeOfListOfBisector, HandleMATTListNodeOfListOfEdge, HandleMATZone,
+    HandleMediaBufferPool, HandleMediaCodecContext, HandleMediaFormatContext, HandleMediaFrame,
+    HandleMediaPacket, HandleMediaPlayerContext, HandleMediaScaler, HandleMediaTimer,
     HandleMeshVSCommonSensitiveEntity, HandleMeshVSDataSource3D, HandleMeshVSDeformedDataSource,
     HandleMeshVSDrawer, HandleMeshVSDummySensitiveEntity, HandleMeshVSElementalColorPrsBuilder,
     HandleMeshVSHArray1OfSequenceOfInteger, HandleMeshVSMesh, HandleMeshVSMeshEntityOwner,
@@ -19214,6 +19219,86 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<Font_FTFont>
+    ///
+    /// Returns `None` if the handle does not point to a `Font_FTFont` (or subclass).
+    pub fn downcast_to_ft_font(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleFontFTFont>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFontFTFont(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Font_FTLibrary>
+    ///
+    /// Returns `None` if the handle does not point to a `Font_FTLibrary` (or subclass).
+    pub fn downcast_to_ft_library(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFontFTLibrary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFontFTLibrary(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Font_FontMgr>
+    ///
+    /// Returns `None` if the handle does not point to a `Font_FontMgr` (or subclass).
+    pub fn downcast_to_font_mgr(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleFontFontMgr>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFontFontMgr(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Font_SystemFont>
+    ///
+    /// Returns `None` if the handle does not point to a `Font_SystemFont` (or subclass).
+    pub fn downcast_to_system_font(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFontSystemFont>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFontSystemFont(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Font_TextFormatter>
+    ///
+    /// Returns `None` if the handle does not point to a `Font_TextFormatter` (or subclass).
+    pub fn downcast_to_text_formatter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFontTextFormatter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleFontTextFormatter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<GProp_UndefinedAxis>
     ///
     /// Returns `None` if the handle does not point to a `GProp_UndefinedAxis` (or subclass).
@@ -28343,6 +28428,140 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<Image_AlienPixMap>
+    ///
+    /// Returns `None` if the handle does not point to a `Image_AlienPixMap` (or subclass).
+    pub fn downcast_to_alien_pix_map(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleImageAlienPixMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleImageAlienPixMap(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Image_CompressedPixMap>
+    ///
+    /// Returns `None` if the handle does not point to a `Image_CompressedPixMap` (or subclass).
+    pub fn downcast_to_compressed_pix_map(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleImageCompressedPixMap(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Image_Diff>
+    ///
+    /// Returns `None` if the handle does not point to a `Image_Diff` (or subclass).
+    pub fn downcast_to_diff(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleImageDiff>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleImageDiff(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Image_PixMap>
+    ///
+    /// Returns `None` if the handle does not point to a `Image_PixMap` (or subclass).
+    pub fn downcast_to_pix_map(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleImagePixMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleImagePixMap(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Image_PixMapData>
+    ///
+    /// Returns `None` if the handle does not point to a `Image_PixMapData` (or subclass).
+    pub fn downcast_to_pix_map_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleImagePixMapData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleImagePixMapData(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Image_SupportedFormats>
+    ///
+    /// Returns `None` if the handle does not point to a `Image_SupportedFormats` (or subclass).
+    pub fn downcast_to_supported_formats(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleImageSupportedFormats>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleImageSupportedFormats(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Image_Texture>
+    ///
+    /// Returns `None` if the handle does not point to a `Image_Texture` (or subclass).
+    pub fn downcast_to_image_texture(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleImageTexture>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleImageTexture(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Image_VideoRecorder>
+    ///
+    /// Returns `None` if the handle does not point to a `Image_VideoRecorder` (or subclass).
+    pub fn downcast_to_video_recorder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleImageVideoRecorder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleImageVideoRecorder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<IntCurvesFace_Intersector>
     ///
     /// Returns `None` if the handle does not point to a `IntCurvesFace_Intersector` (or subclass).
@@ -29285,6 +29504,134 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<Media_BufferPool>
+    ///
+    /// Returns `None` if the handle does not point to a `Media_BufferPool` (or subclass).
+    pub fn downcast_to_buffer_pool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMediaBufferPool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMediaBufferPool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Media_CodecContext>
+    ///
+    /// Returns `None` if the handle does not point to a `Media_CodecContext` (or subclass).
+    pub fn downcast_to_codec_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMediaCodecContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMediaCodecContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Media_FormatContext>
+    ///
+    /// Returns `None` if the handle does not point to a `Media_FormatContext` (or subclass).
+    pub fn downcast_to_format_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMediaFormatContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMediaFormatContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Media_Frame>
+    ///
+    /// Returns `None` if the handle does not point to a `Media_Frame` (or subclass).
+    pub fn downcast_to_frame(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleMediaFrame>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMediaFrame(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Media_Packet>
+    ///
+    /// Returns `None` if the handle does not point to a `Media_Packet` (or subclass).
+    pub fn downcast_to_packet(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleMediaPacket>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMediaPacket(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Media_PlayerContext>
+    ///
+    /// Returns `None` if the handle does not point to a `Media_PlayerContext` (or subclass).
+    pub fn downcast_to_player_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMediaPlayerContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMediaPlayerContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Media_Scaler>
+    ///
+    /// Returns `None` if the handle does not point to a `Media_Scaler` (or subclass).
+    pub fn downcast_to_scaler(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleMediaScaler>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMediaScaler(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Media_Timer>
+    ///
+    /// Returns `None` if the handle does not point to a `Media_Timer` (or subclass).
+    pub fn downcast_to_media_timer(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleMediaTimer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMediaTimer(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<MeshVS_CommonSensitiveEntity>
     ///
     /// Returns `None` if the handle does not point to a `MeshVS_CommonSensitiveEntity` (or subclass).
@@ -29940,7 +30287,9 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<MoniTool_Timer>
     ///
     /// Returns `None` if the handle does not point to a `MoniTool_Timer` (or subclass).
-    pub fn downcast_to_timer(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleMoniToolTimer>> {
+    pub fn downcast_to_moni_tool_timer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMoniToolTimer>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleMoniToolTimer(self as *const Self)
         };
@@ -56050,7 +56399,7 @@ impl HandleStandardTransient {
     /// Downcast Handle<Standard_Transient> to Handle<VrmlData_ImageTexture>
     ///
     /// Returns `None` if the handle does not point to a `VrmlData_ImageTexture` (or subclass).
-    pub fn downcast_to_image_texture(
+    pub fn downcast_to_image_texture_1(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleVrmlDataImageTexture>> {
         let ptr = unsafe {

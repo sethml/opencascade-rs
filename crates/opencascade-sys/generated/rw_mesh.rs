@@ -1363,6 +1363,27 @@ impl MaterialMap {
         unsafe { crate::ffi::RWMesh_MaterialMap_create_texture_folder(self as *mut Self) }
     }
 
+    /// **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture()`
+    /// Copy and rename texture file to the new location.
+    /// @param[out] theResTexture  result texture file path (relative to the model)
+    /// @param[in] theTexture  original texture
+    /// @param[in] theKey  material key
+    pub fn copy_texture(
+        &mut self,
+        theResTexture: &mut crate::t_collection::AsciiString,
+        theTexture: &crate::ffi::HandleImageTexture,
+        theKey: &crate::t_collection::AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWMesh_MaterialMap_copy_texture(
+                self as *mut Self,
+                theResTexture,
+                theTexture,
+                theKey,
+            )
+        }
+    }
+
     /// **Source:** `RWMesh_MaterialMap.hxx`:68 - `RWMesh_MaterialMap::DefineMaterial()`
     /// Virtual method actually defining the material (e.g. export to the file).
     pub fn define_material(
@@ -1521,18 +1542,11 @@ impl HandleRWMeshMaterialMap {
     }
 }
 
-// ── Skipped symbols for MaterialMap (2 total) ──
+// ── Skipped symbols for MaterialMap (1 total) ──
 // SKIPPED: **Source:** `RWMesh_MaterialMap.hxx`:29 - `RWMesh_MaterialMap::RWMesh_MaterialMap`
 //   constructor: Main constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_asciistring(theFile: &AsciiString) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture`
-//   method: Copy and rename texture file to the new location.
-//   method: @param[out] theResTexture  result texture file path (relative to the model)
-//   method: @param[in] theTexture  original texture
-//   Reason: param 'theTexture' uses unknown type 'const Handle(Image_Texture)&'
-//   // pub fn copy_texture(&mut self, theResTexture: &mut AsciiString, theTexture: &HandleTexture, theKey: &AsciiString) -> bool;
 //
 
 // ========================

@@ -10251,6 +10251,28 @@ impl AspectFillArea3d {
         }
     }
 
+    /// Inherited: **Source:** `Graphic3d_Aspects.hxx`:386 - `Graphic3d_Aspects::TextFontAspect()`
+    pub fn text_font_aspect(&self) -> crate::font::FontAspect {
+        unsafe {
+            crate::font::FontAspect::try_from(
+                crate::ffi::Graphic3d_AspectFillArea3d_inherited_TextFontAspect(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_Aspects.hxx`:389 - `Graphic3d_Aspects::SetTextFontAspect()`
+    pub fn set_text_font_aspect(&mut self, theFontAspect: crate::font::FontAspect) {
+        unsafe {
+            crate::ffi::Graphic3d_AspectFillArea3d_inherited_SetTextFontAspect(
+                self as *mut Self,
+                theFontAspect.into(),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Graphic3d_Aspects.hxx`:392 - `Graphic3d_Aspects::TextDisplayType()`
     pub fn text_display_type(&self) -> crate::aspect::TypeOfDisplayText {
         unsafe {
@@ -11201,6 +11223,26 @@ impl AspectLine3d {
         }
     }
 
+    /// Inherited: **Source:** `Graphic3d_Aspects.hxx`:386 - `Graphic3d_Aspects::TextFontAspect()`
+    pub fn text_font_aspect(&self) -> crate::font::FontAspect {
+        unsafe {
+            crate::font::FontAspect::try_from(
+                crate::ffi::Graphic3d_AspectLine3d_inherited_TextFontAspect(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_Aspects.hxx`:389 - `Graphic3d_Aspects::SetTextFontAspect()`
+    pub fn set_text_font_aspect(&mut self, theFontAspect: crate::font::FontAspect) {
+        unsafe {
+            crate::ffi::Graphic3d_AspectLine3d_inherited_SetTextFontAspect(
+                self as *mut Self,
+                theFontAspect.into(),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Graphic3d_Aspects.hxx`:392 - `Graphic3d_Aspects::TextDisplayType()`
     pub fn text_display_type(&self) -> crate::aspect::TypeOfDisplayText {
         unsafe {
@@ -11565,6 +11607,19 @@ impl AspectMarker3d {
                     theTextureBitmap,
                 ),
             )
+        }
+    }
+
+    /// **Source:** `Graphic3d_AspectMarker3d.hxx`:48 - `Graphic3d_AspectMarker3d::Graphic3d_AspectMarker3d()`
+    /// Creates a context table for marker primitives
+    /// defined with the specified values.
+    pub fn new_handleimagepixmap(
+        theTextureImage: &crate::ffi::HandleImagePixMap,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_AspectMarker3d_ctor_handleimagepixmap(
+                theTextureImage,
+            ))
         }
     }
 
@@ -12198,6 +12253,26 @@ impl AspectMarker3d {
         }
     }
 
+    /// Inherited: **Source:** `Graphic3d_Aspects.hxx`:386 - `Graphic3d_Aspects::TextFontAspect()`
+    pub fn text_font_aspect(&self) -> crate::font::FontAspect {
+        unsafe {
+            crate::font::FontAspect::try_from(
+                crate::ffi::Graphic3d_AspectMarker3d_inherited_TextFontAspect(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_Aspects.hxx`:389 - `Graphic3d_Aspects::SetTextFontAspect()`
+    pub fn set_text_font_aspect(&mut self, theFontAspect: crate::font::FontAspect) {
+        unsafe {
+            crate::ffi::Graphic3d_AspectMarker3d_inherited_SetTextFontAspect(
+                self as *mut Self,
+                theFontAspect.into(),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Graphic3d_Aspects.hxx`:392 - `Graphic3d_Aspects::TextDisplayType()`
     pub fn text_display_type(&self) -> crate::aspect::TypeOfDisplayText {
         unsafe {
@@ -12521,14 +12596,6 @@ impl HandleGraphic3dAspectMarker3d {
     }
 }
 
-// ── Skipped symbols for AspectMarker3d (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_AspectMarker3d.hxx`:48 - `Graphic3d_AspectMarker3d::Graphic3d_AspectMarker3d`
-//   constructor: Creates a context table for marker primitives
-//   constructor: defined with the specified values.
-//   Reason: param 'theTextureImage' uses unknown Handle type
-//   // pub fn new_handleimagepixmap(theTextureImage: &HandlePixMap) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Graphic3d_AspectText3d.hxx
 // ========================
@@ -12688,6 +12755,17 @@ impl AspectText3d {
     /// Turns usage of text rotated
     pub fn set_text_angle(&mut self, theAngle: f64) {
         unsafe { crate::ffi::Graphic3d_AspectText3d_set_text_angle(self as *mut Self, theAngle) }
+    }
+
+    /// **Source:** `Graphic3d_AspectText3d.hxx`:112 - `Graphic3d_AspectText3d::GetTextFontAspect()`
+    /// Returns text FontAspect
+    pub fn get_text_font_aspect(&self) -> crate::font::FontAspect {
+        unsafe {
+            crate::font::FontAspect::try_from(
+                crate::ffi::Graphic3d_AspectText3d_get_text_font_aspect(self as *const Self),
+            )
+            .unwrap()
+        }
     }
 
     /// **Source:** `Graphic3d_AspectText3d.hxx`:24 - `Graphic3d_AspectText3d::get_type_name()`
@@ -13192,6 +13270,26 @@ impl AspectText3d {
         }
     }
 
+    /// Inherited: **Source:** `Graphic3d_Aspects.hxx`:386 - `Graphic3d_Aspects::TextFontAspect()`
+    pub fn text_font_aspect(&self) -> crate::font::FontAspect {
+        unsafe {
+            crate::font::FontAspect::try_from(
+                crate::ffi::Graphic3d_AspectText3d_inherited_TextFontAspect(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_Aspects.hxx`:389 - `Graphic3d_Aspects::SetTextFontAspect()`
+    pub fn set_text_font_aspect(&mut self, theFontAspect: crate::font::FontAspect) {
+        unsafe {
+            crate::ffi::Graphic3d_AspectText3d_inherited_SetTextFontAspect(
+                self as *mut Self,
+                theFontAspect.into(),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Graphic3d_Aspects.hxx`:392 - `Graphic3d_Aspects::TextDisplayType()`
     pub fn text_display_type(&self) -> crate::aspect::TypeOfDisplayText {
         unsafe {
@@ -13486,13 +13584,6 @@ impl HandleGraphic3dAspectText3d {
         }
     }
 }
-
-// ── Skipped symbols for AspectText3d (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_AspectText3d.hxx`:112 - `Graphic3d_AspectText3d::GetTextFontAspect`
-//   method: Returns text FontAspect
-//   Reason: return type 'Font_FontAspect' is unknown
-//   // pub fn get_text_font_aspect(&self) -> OwnedPtr<Font_FontAspect>;
-//
 
 // ========================
 // From Graphic3d_Aspects.hxx
@@ -14001,6 +14092,28 @@ impl Aspects {
         unsafe { crate::ffi::Graphic3d_Aspects_set_text_font(self as *mut Self, theFont) }
     }
 
+    /// **Source:** `Graphic3d_Aspects.hxx`:386 - `Graphic3d_Aspects::TextFontAspect()`
+    /// Returns text FontAspect
+    pub fn text_font_aspect(&self) -> crate::font::FontAspect {
+        unsafe {
+            crate::font::FontAspect::try_from(crate::ffi::Graphic3d_Aspects_text_font_aspect(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `Graphic3d_Aspects.hxx`:389 - `Graphic3d_Aspects::SetTextFontAspect()`
+    /// Turns usage of Aspect text
+    pub fn set_text_font_aspect(&mut self, theFontAspect: crate::font::FontAspect) {
+        unsafe {
+            crate::ffi::Graphic3d_Aspects_set_text_font_aspect(
+                self as *mut Self,
+                theFontAspect.into(),
+            )
+        }
+    }
+
     /// **Source:** `Graphic3d_Aspects.hxx`:392 - `Graphic3d_Aspects::TextDisplayType()`
     /// Returns display type; Aspect_TODT_NORMAL by default.
     pub fn text_display_type(&self) -> crate::aspect::TypeOfDisplayText {
@@ -14438,18 +14551,6 @@ impl HandleGraphic3dAspects {
         }
     }
 }
-
-// ── Skipped symbols for Aspects (2 total) ──
-// SKIPPED: **Source:** `Graphic3d_Aspects.hxx`:386 - `Graphic3d_Aspects::TextFontAspect`
-//   method: Returns text FontAspect
-//   Reason: return type 'Font_FontAspect' is unknown
-//   // pub fn text_font_aspect(&self) -> OwnedPtr<Font_FontAspect>;
-//
-// SKIPPED: **Source:** `Graphic3d_Aspects.hxx`:389 - `Graphic3d_Aspects::SetTextFontAspect`
-//   method: Turns usage of Aspect text
-//   Reason: param 'theFontAspect' uses unknown type 'Font_FontAspect'
-//   // pub fn set_text_font_aspect(&mut self, theFontAspect: FontAspect);
-//
 
 // ========================
 // From Graphic3d_AttribBuffer.hxx
@@ -17376,6 +17477,36 @@ impl CView {
         unsafe { crate::ffi::Graphic3d_CView_is_defined(self as *const Self) }
     }
 
+    /// **Source:** `Graphic3d_CView.hxx`:294 - `Graphic3d_CView::BufferDump()`
+    /// Dump active rendering buffer into specified memory buffer.
+    pub fn buffer_dump(
+        &mut self,
+        theImage: &mut crate::image::PixMap,
+        theBufferType: crate::graphic3d::BufferType,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Graphic3d_CView_buffer_dump(
+                self as *mut Self,
+                theImage,
+                theBufferType.into(),
+            )
+        }
+    }
+
+    /// **Source:** `Graphic3d_CView.hxx`:300 - `Graphic3d_CView::ShadowMapDump()`
+    /// Dumps the graphical contents of a shadowmap framebuffer into an image.
+    /// @param theImage the image to store the shadow map.
+    /// @param[in] theLightName  name of the light used to generate the shadow map.
+    pub fn shadow_map_dump(
+        &mut self,
+        theImage: &mut crate::image::PixMap,
+        theLightName: &crate::t_collection::AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Graphic3d_CView_shadow_map_dump(self as *mut Self, theImage, theLightName)
+        }
+    }
+
     /// **Source:** `Graphic3d_CView.hxx`:327 - `Graphic3d_CView::ZLayerMax()`
     /// Returns the maximum Z layer ID.
     /// First layer ID is Graphic3d_ZLayerId_Default, last ID is ZLayerMax().
@@ -18179,7 +18310,7 @@ impl HandleGraphic3dCView {
     }
 }
 
-// ── Skipped symbols for CView (16 total) ──
+// ── Skipped symbols for CView (14 total) ──
 // SKIPPED: **Source:** `Graphic3d_CView.hxx`:61 - `Graphic3d_CView::Graphic3d_CView`
 //   constructor: Constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
@@ -18206,18 +18337,6 @@ impl HandleGraphic3dCView {
 //   method: @param[in] theWindow the window
 //   Reason: param 'theContext' uses unknown type 'Aspect_RenderingContext'
 //   // pub fn set_window(&mut self, theParentVIew: &HandleCView, theWindow: &HandleWindow, theContext: RenderingContext);
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:294 - `Graphic3d_CView::BufferDump`
-//   method: Dump active rendering buffer into specified memory buffer.
-//   Reason: param 'theImage' uses unknown type 'Image_PixMap&'
-//   // pub fn buffer_dump(&mut self, theImage: &mut PixMap, theBufferType: &BufferType) -> bool;
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:300 - `Graphic3d_CView::ShadowMapDump`
-//   method: Dumps the graphical contents of a shadowmap framebuffer into an image.
-//   method: @param theImage the image to store the shadow map.
-//   method: @param[in] theLightName  name of the light used to generate the shadow map.
-//   Reason: param 'theImage' uses unknown type 'Image_PixMap&'
-//   // pub fn shadow_map_dump(&mut self, theImage: &mut PixMap, theLightName: &AsciiString) -> bool;
 //
 // SKIPPED: **Source:** `Graphic3d_CView.hxx`:305 - `Graphic3d_CView::InvalidateBVHData`
 //   method: Marks BVH tree and the set of BVH primitives of correspondent priority list with id theLayerId
@@ -20032,6 +20151,37 @@ impl CubeMap {
         }
     }
 
+    /// **Source:** `Graphic3d_CubeMap.hxx`:73 - `Graphic3d_CubeMap::CompressedValue()`
+    /// Returns current cubemap side as compressed PixMap.
+    /// Returns null handle if current side is invalid or if image is not in supported compressed
+    /// format.
+    pub fn compressed_value(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_CubeMap_compressed_value(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
+    /// **Source:** `Graphic3d_CubeMap.hxx`:78 - `Graphic3d_CubeMap::Value()`
+    /// Returns PixMap containing current side of cubemap.
+    /// Returns null handle if current side is invalid.
+    pub fn value(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_CubeMap_value(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_CubeMap.hxx`:81 - `Graphic3d_CubeMap::Reset()`
     /// Sets iterator state to +X cubemap side.
     pub fn reset(&mut self) -> &mut CubeMap {
@@ -20188,6 +20338,32 @@ impl CubeMap {
         unsafe { crate::ffi::Graphic3d_CubeMap_inherited_UpdateRevision(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_CubeMap_inherited_GetCompressedImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:101 - `Graphic3d_TextureRoot::GetImage()`
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_CubeMap_inherited_GetImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
     pub fn get_params(&self) -> &crate::ffi::HandleGraphic3dTextureParams {
         unsafe { &*(crate::ffi::Graphic3d_CubeMap_inherited_GetParams(self as *const Self)) }
@@ -20342,7 +20518,7 @@ impl HandleGraphic3dCubeMap {
     }
 }
 
-// ── Skipped symbols for CubeMap (4 total) ──
+// ── Skipped symbols for CubeMap (2 total) ──
 // SKIPPED: **Source:** `Graphic3d_CubeMap.hxx`:28 - `Graphic3d_CubeMap::Graphic3d_CubeMap`
 //   constructor: Constructor defining loading cubemap from file.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
@@ -20352,19 +20528,6 @@ impl HandleGraphic3dCubeMap {
 //   constructor: Constructor defining direct cubemap initialization from PixMap.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_handleimagepixmap_bool(thePixmap: &HandlePixMap, theToGenerateMipmaps: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_CubeMap.hxx`:73 - `Graphic3d_CubeMap::CompressedValue`
-//   method: Returns current cubemap side as compressed PixMap.
-//   method: Returns null handle if current side is invalid or if image is not in supported compressed
-//   method: format.
-//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn compressed_value(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_CompressedPixMap>>;
-//
-// SKIPPED: **Source:** `Graphic3d_CubeMap.hxx`:78 - `Graphic3d_CubeMap::Value`
-//   method: Returns PixMap containing current side of cubemap.
-//   method: Returns null handle if current side is invalid.
-//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn value(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_PixMap>>;
 //
 
 // ========================
@@ -20620,9 +20783,58 @@ impl CubeMapPacked {
         }
     }
 
+    /// **Source:** `Graphic3d_CubeMapPacked.hxx`:39 - `Graphic3d_CubeMapPacked::Graphic3d_CubeMapPacked()`
+    /// Initialization to set cubemap directly by PixMap.
+    /// @thePixMap - origin PixMap
+    /// @theOrder - array containing six different indexes of cubemap sides which maps tile grid to
+    /// cubemap sides
+    pub fn new_handleimagepixmap_validatedcubemaporder(
+        theImage: &crate::ffi::HandleImagePixMap,
+        theOrder: &ValidatedCubeMapOrder,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_CubeMapPacked_ctor_handleimagepixmap_validatedcubemaporder(
+                    theImage, theOrder,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `Graphic3d_CubeMapPacked.hxx`:25 - `Graphic3d_CubeMapPacked::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Graphic3d_CubeMapPacked_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Graphic3d_CubeMapPacked.hxx`:44 - `Graphic3d_CubeMapPacked::CompressedValue()`
+    /// Returns current cubemap side as compressed PixMap.
+    pub fn compressed_value(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_CubeMapPacked_compressed_value(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
+    /// **Source:** `Graphic3d_CubeMapPacked.hxx`:51 - `Graphic3d_CubeMapPacked::Value()`
+    /// Returns current cubemap side as PixMap.
+    /// Resulting PixMap is memory wrapper over original image.
+    /// Returns null handle if current side or whole cubemap is invalid.
+    /// Origin image has to contain six quad tiles having one sizes without any gaps to be valid.
+    pub fn value(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_CubeMapPacked_value(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
     }
 
     /// **Source:** `Graphic3d_CubeMapPacked.hxx`:25 - `Graphic3d_CubeMapPacked::get_type_name()`
@@ -20861,6 +21073,34 @@ impl CubeMapPacked {
         unsafe { crate::ffi::Graphic3d_CubeMapPacked_inherited_UpdateRevision(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_CubeMapPacked_inherited_GetCompressedImage(
+                    self as *mut Self,
+                    theSupported,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:101 - `Graphic3d_TextureRoot::GetImage()`
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_CubeMapPacked_inherited_GetImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
     pub fn get_params(&self) -> &crate::ffi::HandleGraphic3dTextureParams {
         unsafe { &*(crate::ffi::Graphic3d_CubeMapPacked_inherited_GetParams(self as *const Self)) }
@@ -21001,27 +21241,6 @@ impl HandleGraphic3dCubeMapPacked {
     }
 }
 
-// ── Skipped symbols for CubeMapPacked (3 total) ──
-// SKIPPED: **Source:** `Graphic3d_CubeMapPacked.hxx`:39 - `Graphic3d_CubeMapPacked::Graphic3d_CubeMapPacked`
-//   constructor: Initialization to set cubemap directly by PixMap.
-//   constructor: @thePixMap - origin PixMap
-//   constructor: @theOrder - array containing six different indexes of cubemap sides which maps tile grid to
-//   Reason: param 'theImage' uses unknown Handle type
-//   // pub fn new_handleimagepixmap_validatedcubemaporder(theImage: &HandlePixMap, theOrder: &ValidatedCubeMapOrder) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_CubeMapPacked.hxx`:44 - `Graphic3d_CubeMapPacked::CompressedValue`
-//   method: Returns current cubemap side as compressed PixMap.
-//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn compressed_value(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_CompressedPixMap>>;
-//
-// SKIPPED: **Source:** `Graphic3d_CubeMapPacked.hxx`:51 - `Graphic3d_CubeMapPacked::Value`
-//   method: Returns current cubemap side as PixMap.
-//   method: Resulting PixMap is memory wrapper over original image.
-//   method: Returns null handle if current side or whole cubemap is invalid.
-//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn value(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_PixMap>>;
-//
-
 // ========================
 // From Graphic3d_CubeMapSeparate.hxx
 // ========================
@@ -21053,6 +21272,50 @@ impl CubeMapSeparate {
     /// **Source:** `Graphic3d_CubeMapSeparate.hxx`:25 - `Graphic3d_CubeMapSeparate::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Graphic3d_CubeMapSeparate_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Graphic3d_CubeMapSeparate.hxx`:38 - `Graphic3d_CubeMapSeparate::CompressedValue()`
+    /// Returns current cubemap side as compressed PixMap.
+    pub fn compressed_value(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_CubeMapSeparate_compressed_value(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
+    /// **Source:** `Graphic3d_CubeMapSeparate.hxx`:44 - `Graphic3d_CubeMapSeparate::Value()`
+    /// Returns current side of cubemap as PixMap.
+    /// Returns null handle if current side or whole cubemap is invalid.
+    /// All origin images have to have the same sizes, format and quad shapes to form valid cubemap.
+    pub fn value(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_CubeMapSeparate_value(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
+    /// **Source:** `Graphic3d_CubeMapSeparate.hxx`:48 - `Graphic3d_CubeMapSeparate::GetImage()`
+    /// Returns NULL.
+    pub fn get_image(
+        &mut self,
+        arg0: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_CubeMapSeparate_get_image(
+                self as *mut Self,
+                arg0,
+            ))
+        }
     }
 
     /// **Source:** `Graphic3d_CubeMapSeparate.hxx`:55 - `Graphic3d_CubeMapSeparate::IsDone()`
@@ -21303,6 +21566,21 @@ impl CubeMapSeparate {
         unsafe { crate::ffi::Graphic3d_CubeMapSeparate_inherited_UpdateRevision(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_CubeMapSeparate_inherited_GetCompressedImage(
+                    self as *mut Self,
+                    theSupported,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
     pub fn get_params(&self) -> &crate::ffi::HandleGraphic3dTextureParams {
         unsafe {
@@ -21449,29 +21727,12 @@ impl HandleGraphic3dCubeMapSeparate {
     }
 }
 
-// ── Skipped symbols for CubeMapSeparate (4 total) ──
+// ── Skipped symbols for CubeMapSeparate (1 total) ──
 // SKIPPED: **Source:** `Graphic3d_CubeMapSeparate.hxx`:34 - `Graphic3d_CubeMapSeparate::Graphic3d_CubeMapSeparate`
 //   constructor: Initializes cubemap to be set directly from PixMaps.
 //   constructor: @theImages - array if PixMaps (has to have size equal 6).
 //   Reason: has unbindable types: param 'theImages': unresolved template type (const NCollection_Array1<opencascade::handle<Image_PixMap>>&)
 //   // pub fn new_pixmap>>(theImages: /* const NCollection_Array1<opencascade::handle<Image_PixMap>>& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_CubeMapSeparate.hxx`:38 - `Graphic3d_CubeMapSeparate::CompressedValue`
-//   method: Returns current cubemap side as compressed PixMap.
-//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn compressed_value(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_CompressedPixMap>>;
-//
-// SKIPPED: **Source:** `Graphic3d_CubeMapSeparate.hxx`:44 - `Graphic3d_CubeMapSeparate::Value`
-//   method: Returns current side of cubemap as PixMap.
-//   method: Returns null handle if current side or whole cubemap is invalid.
-//   method: All origin images have to have the same sizes, format and quad shapes to form valid cubemap.
-//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn value(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_PixMap>>;
-//
-// SKIPPED: **Source:** `Graphic3d_CubeMapSeparate.hxx`:48 - `Graphic3d_CubeMapSeparate::GetImage`
-//   method: Returns NULL.
-//   Reason: param 'arg0' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn get_image(&mut self, arg0: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_PixMap>>;
 //
 
 // ========================
@@ -22548,14 +22809,76 @@ impl GraduatedTrihedron {
     /// **Source:** `Graphic3d_GraduatedTrihedron.hxx`:129 - `Graphic3d_GraduatedTrihedron::Graphic3d_GraduatedTrihedron()`
     /// Default constructor
     /// Constructs the default graduated trihedron with grid, X, Y, Z axes, and tickmarks
-    pub fn new_asciistring(
+    pub fn new_asciistring_fontaspect_int_asciistring_fontaspect_int_float_color_bool2(
         theNamesFont: &crate::t_collection::AsciiString,
+        theNamesStyle: crate::font::FontAspect,
+        theNamesSize: i32,
+        theValuesFont: &crate::t_collection::AsciiString,
+        theValuesStyle: crate::font::FontAspect,
+        theValuesSize: i32,
+        theArrowsLength: f32,
+        theGridColor: &crate::quantity::Color,
+        theToDrawGrid: bool,
+        theToDrawAxes: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_GraduatedTrihedron_ctor_asciistring(
-                theNamesFont,
-            ))
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_GraduatedTrihedron_ctor_asciistring_fontaspect_int_asciistring_fontaspect_int_float_color_bool2(theNamesFont, theNamesStyle.into(), theNamesSize, theValuesFont, theValuesStyle.into(), theValuesSize, theArrowsLength, theGridColor, theToDrawGrid, theToDrawAxes))
         }
+    }
+
+    /// **Source:** `Graphic3d_GraduatedTrihedron.hxx`:129 - `Graphic3d_GraduatedTrihedron::Graphic3d_GraduatedTrihedron()`
+    /// Default constructor
+    /// Constructs the default graduated trihedron with grid, X, Y, Z axes, and tickmarks
+    pub fn new_asciistring_fontaspect_int_asciistring_fontaspect_int_float_color_bool(
+        theNamesFont: &crate::t_collection::AsciiString,
+        theNamesStyle: crate::font::FontAspect,
+        theNamesSize: i32,
+        theValuesFont: &crate::t_collection::AsciiString,
+        theValuesStyle: crate::font::FontAspect,
+        theValuesSize: i32,
+        theArrowsLength: f32,
+        theGridColor: &crate::quantity::Color,
+        theToDrawGrid: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_asciistring_fontaspect_int_asciistring_fontaspect_int_float_color_bool2(
+            theNamesFont,
+            theNamesStyle,
+            theNamesSize,
+            theValuesFont,
+            theValuesStyle,
+            theValuesSize,
+            theArrowsLength,
+            theGridColor,
+            theToDrawGrid,
+            true,
+        )
+    }
+
+    /// **Source:** `Graphic3d_GraduatedTrihedron.hxx`:129 - `Graphic3d_GraduatedTrihedron::Graphic3d_GraduatedTrihedron()`
+    /// Default constructor
+    /// Constructs the default graduated trihedron with grid, X, Y, Z axes, and tickmarks
+    pub fn new_asciistring_fontaspect_int_asciistring_fontaspect_int_float_color(
+        theNamesFont: &crate::t_collection::AsciiString,
+        theNamesStyle: crate::font::FontAspect,
+        theNamesSize: i32,
+        theValuesFont: &crate::t_collection::AsciiString,
+        theValuesStyle: crate::font::FontAspect,
+        theValuesSize: i32,
+        theArrowsLength: f32,
+        theGridColor: &crate::quantity::Color,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_asciistring_fontaspect_int_asciistring_fontaspect_int_float_color_bool2(
+            theNamesFont,
+            theNamesStyle,
+            theNamesSize,
+            theValuesFont,
+            theValuesStyle,
+            theValuesSize,
+            theArrowsLength,
+            theGridColor,
+            true,
+            true,
+        )
     }
 
     /// **Source:** `Graphic3d_GraduatedTrihedron.hxx`:158 - `Graphic3d_GraduatedTrihedron::ChangeXAxisAspect()`
@@ -22674,6 +22997,26 @@ impl GraduatedTrihedron {
         }
     }
 
+    /// **Source:** `Graphic3d_GraduatedTrihedron.hxx`:206 - `Graphic3d_GraduatedTrihedron::NamesFontAspect()`
+    pub fn names_font_aspect(&self) -> crate::font::FontAspect {
+        unsafe {
+            crate::font::FontAspect::try_from(
+                crate::ffi::Graphic3d_GraduatedTrihedron_names_font_aspect(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `Graphic3d_GraduatedTrihedron.hxx`:208 - `Graphic3d_GraduatedTrihedron::SetNamesFontAspect()`
+    pub fn set_names_font_aspect(&mut self, theAspect: crate::font::FontAspect) {
+        unsafe {
+            crate::ffi::Graphic3d_GraduatedTrihedron_set_names_font_aspect(
+                self as *mut Self,
+                theAspect.into(),
+            )
+        }
+    }
+
     /// **Source:** `Graphic3d_GraduatedTrihedron.hxx`:210 - `Graphic3d_GraduatedTrihedron::NamesSize()`
     pub fn names_size(&self) -> i32 {
         unsafe { crate::ffi::Graphic3d_GraduatedTrihedron_names_size(self as *const Self) }
@@ -22695,6 +23038,26 @@ impl GraduatedTrihedron {
     pub fn set_values_font(&mut self, theFont: &crate::t_collection::AsciiString) {
         unsafe {
             crate::ffi::Graphic3d_GraduatedTrihedron_set_values_font(self as *mut Self, theFont)
+        }
+    }
+
+    /// **Source:** `Graphic3d_GraduatedTrihedron.hxx`:218 - `Graphic3d_GraduatedTrihedron::ValuesFontAspect()`
+    pub fn values_font_aspect(&self) -> crate::font::FontAspect {
+        unsafe {
+            crate::font::FontAspect::try_from(
+                crate::ffi::Graphic3d_GraduatedTrihedron_values_font_aspect(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `Graphic3d_GraduatedTrihedron.hxx`:220 - `Graphic3d_GraduatedTrihedron::SetValuesFontAspect()`
+    pub fn set_values_font_aspect(&mut self, theAspect: crate::font::FontAspect) {
+        unsafe {
+            crate::ffi::Graphic3d_GraduatedTrihedron_set_values_font_aspect(
+                self as *mut Self,
+                theAspect.into(),
+            )
         }
     }
 
@@ -22733,30 +23096,6 @@ impl GraduatedTrihedron {
         }
     }
 }
-
-// ── Skipped symbols for GraduatedTrihedron (5 total) ──
-// SKIPPED: **Source:** `Graphic3d_GraduatedTrihedron.hxx`:129 - `Graphic3d_GraduatedTrihedron::Graphic3d_GraduatedTrihedron`
-//   constructor: Default constructor
-//   constructor: Constructs the default graduated trihedron with grid, X, Y, Z axes, and tickmarks
-//   Reason: param 'theNamesStyle' uses unknown type 'const Font_FontAspect&'
-//   // pub fn new_asciistring_fontaspect_int_asciistring_fontaspect_int_float_color_bool2(theNamesFont: &AsciiString, theNamesStyle: &FontAspect, theNamesSize: i32, theValuesFont: &AsciiString, theValuesStyle: &FontAspect, theValuesSize: i32, theArrowsLength: f32, theGridColor: Color, theToDrawGrid: bool, theToDrawAxes: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_GraduatedTrihedron.hxx`:206 - `Graphic3d_GraduatedTrihedron::NamesFontAspect`
-//   Reason: return type 'Font_FontAspect' is unknown
-//   // pub fn names_font_aspect(&self) -> OwnedPtr<Font_FontAspect>;
-//
-// SKIPPED: **Source:** `Graphic3d_GraduatedTrihedron.hxx`:208 - `Graphic3d_GraduatedTrihedron::SetNamesFontAspect`
-//   Reason: param 'theAspect' uses unknown type 'Font_FontAspect'
-//   // pub fn set_names_font_aspect(&mut self, theAspect: FontAspect);
-//
-// SKIPPED: **Source:** `Graphic3d_GraduatedTrihedron.hxx`:218 - `Graphic3d_GraduatedTrihedron::ValuesFontAspect`
-//   Reason: return type 'Font_FontAspect' is unknown
-//   // pub fn values_font_aspect(&self) -> OwnedPtr<Font_FontAspect>;
-//
-// SKIPPED: **Source:** `Graphic3d_GraduatedTrihedron.hxx`:220 - `Graphic3d_GraduatedTrihedron::SetValuesFontAspect`
-//   Reason: param 'theAspect' uses unknown type 'Font_FontAspect'
-//   // pub fn set_values_font_aspect(&mut self, theAspect: FontAspect);
-//
 
 /// **Source:** `Graphic3d_GraduatedTrihedron.hxx`:37 - `Graphic3d_GraduatedTrihedron_AxisAspect`
 /// Class that stores style for one graduated trihedron axis such as colors, lengths and
@@ -24439,6 +24778,19 @@ unsafe impl crate::CppDeletable for HatchStyle {
 }
 
 impl HatchStyle {
+    /// **Source:** `Graphic3d_HatchStyle.hxx`:33 - `Graphic3d_HatchStyle::Graphic3d_HatchStyle()`
+    /// Creates a new custom hatch style with the given pattern and unique style id
+    /// @warning Raises a program error if given pattern image is not a valid 32*32 bitmap
+    pub fn new_handleimagepixmap(
+        thePattern: &crate::ffi::HandleImagePixMap,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_HatchStyle_ctor_handleimagepixmap(
+                thePattern,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_HatchStyle.hxx`:37 - `Graphic3d_HatchStyle::Graphic3d_HatchStyle()`
     /// Creates a new predefined hatch style with the given id in Aspect_HatchStyle enum.
     /// GPU memory for the pattern will not be allocated.
@@ -24580,14 +24932,6 @@ impl HandleGraphic3dHatchStyle {
         }
     }
 }
-
-// ── Skipped symbols for HatchStyle (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_HatchStyle.hxx`:33 - `Graphic3d_HatchStyle::Graphic3d_HatchStyle`
-//   constructor: Creates a new custom hatch style with the given pattern and unique style id
-//   constructor: @warning Raises a program error if given pattern image is not a valid 32*32 bitmap
-//   Reason: param 'thePattern' uses unknown Handle type
-//   // pub fn new_handleimagepixmap(thePattern: &HandlePixMap) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From Graphic3d_IndexBuffer.hxx
@@ -25640,6 +25984,22 @@ unsafe impl crate::CppDeletable for MarkerImage {
 }
 
 impl MarkerImage {
+    /// **Source:** `Graphic3d_MarkerImage.hxx`:42 - `Graphic3d_MarkerImage::Graphic3d_MarkerImage()`
+    /// Constructor from existing pixmap.
+    /// @param[in] theImage  source image
+    /// @param[in] theImageAlpha  colorless image
+    pub fn new_handleimagepixmap2(
+        theImage: &crate::ffi::HandleImagePixMap,
+        theImageAlpha: &crate::ffi::HandleImagePixMap,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_MarkerImage_ctor_handleimagepixmap2(
+                theImage,
+                theImageAlpha,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_MarkerImage.hxx`:51 - `Graphic3d_MarkerImage::Graphic3d_MarkerImage()`
     /// Creates marker image from array of bytes
     /// (method for compatibility with old markers definition).
@@ -25663,6 +26023,21 @@ impl MarkerImage {
     /// **Source:** `Graphic3d_MarkerImage.hxx`:30 - `Graphic3d_MarkerImage::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Graphic3d_MarkerImage_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Graphic3d_MarkerImage.hxx`:57 - `Graphic3d_MarkerImage::GetImage()`
+    /// Return marker image.
+    /// If an instance of the class has been initialized with a bitmap, it will be converted to image.
+    pub fn get_image(&mut self) -> &crate::ffi::HandleImagePixMap {
+        unsafe { &*(crate::ffi::Graphic3d_MarkerImage_get_image(self as *mut Self)) }
+    }
+
+    /// **Source:** `Graphic3d_MarkerImage.hxx`:62 - `Graphic3d_MarkerImage::GetImageAlpha()`
+    /// Return image alpha as grayscale image.
+    /// Note that if an instance of the class has been initialized with a bitmap
+    /// or with grayscale image this method will return exactly the same image as GetImage()
+    pub fn get_image_alpha(&mut self) -> &crate::ffi::HandleImagePixMap {
+        unsafe { &*(crate::ffi::Graphic3d_MarkerImage_get_image_alpha(self as *mut Self)) }
     }
 
     /// **Source:** `Graphic3d_MarkerImage.hxx`:66 - `Graphic3d_MarkerImage::GetImageId()`
@@ -25851,28 +26226,6 @@ impl HandleGraphic3dMarkerImage {
         }
     }
 }
-
-// ── Skipped symbols for MarkerImage (3 total) ──
-// SKIPPED: **Source:** `Graphic3d_MarkerImage.hxx`:42 - `Graphic3d_MarkerImage::Graphic3d_MarkerImage`
-//   constructor: Constructor from existing pixmap.
-//   constructor: @param[in] theImage  source image
-//   constructor: @param[in] theImageAlpha  colorless image
-//   Reason: param 'theImage' uses unknown Handle type
-//   // pub fn new_handleimagepixmap2(theImage: &HandlePixMap, theImageAlpha: &HandlePixMap) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_MarkerImage.hxx`:57 - `Graphic3d_MarkerImage::GetImage`
-//   method: Return marker image.
-//   method: If an instance of the class has been initialized with a bitmap, it will be converted to image.
-//   Reason: return type 'const Handle(Image_PixMap)&' is unknown
-//   // pub fn get_image(&mut self) -> &HandlePixMap;
-//
-// SKIPPED: **Source:** `Graphic3d_MarkerImage.hxx`:62 - `Graphic3d_MarkerImage::GetImageAlpha`
-//   method: Return image alpha as grayscale image.
-//   method: Note that if an instance of the class has been initialized with a bitmap
-//   method: or with grayscale image this method will return exactly the same image as GetImage()
-//   Reason: return type 'const Handle(Image_PixMap)&' is unknown
-//   // pub fn get_image_alpha(&mut self) -> &HandlePixMap;
-//
 
 // ========================
 // From Graphic3d_MaterialAspect.hxx
@@ -26652,6 +27005,32 @@ impl MediaTexture {
         unsafe { &*(crate::ffi::Graphic3d_MediaTexture_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Graphic3d_MediaTexture.hxx`:33 - `Graphic3d_MediaTexture::GetImage()`
+    /// Image reader.
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_MediaTexture_get_image(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
+    /// **Source:** `Graphic3d_MediaTexture.hxx`:37 - `Graphic3d_MediaTexture::Frame()`
+    /// Return the frame.
+    pub fn frame(&self) -> &crate::ffi::HandleMediaFrame {
+        unsafe { &*(crate::ffi::Graphic3d_MediaTexture_frame(self as *const Self)) }
+    }
+
+    /// **Source:** `Graphic3d_MediaTexture.hxx`:40 - `Graphic3d_MediaTexture::SetFrame()`
+    /// Set the frame.
+    pub fn set_frame(&mut self, theFrame: &crate::ffi::HandleMediaFrame) {
+        unsafe { crate::ffi::Graphic3d_MediaTexture_set_frame(self as *mut Self, theFrame) }
+    }
+
     /// **Source:** `Graphic3d_MediaTexture.hxx`:43 - `Graphic3d_MediaTexture::GenerateNewId()`
     /// Regenerate a new texture id
     pub fn generate_new_id(&mut self) {
@@ -26746,6 +27125,13 @@ impl MediaTexture {
                 crate::ffi::Graphic3d_MediaTexture_inherited_Name(self as *const Self),
             )
             .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_Texture2D.hxx`:54 - `Graphic3d_Texture2D::SetImage()`
+    pub fn set_image(&mut self, thePixMap: &crate::ffi::HandleImagePixMap) {
+        unsafe {
+            crate::ffi::Graphic3d_MediaTexture_inherited_SetImage(self as *mut Self, thePixMap)
         }
     }
 
@@ -26847,6 +27233,21 @@ impl MediaTexture {
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:82 - `Graphic3d_TextureRoot::UpdateRevision()`
     pub fn update_revision(&mut self) {
         unsafe { crate::ffi::Graphic3d_MediaTexture_inherited_UpdateRevision(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_MediaTexture_inherited_GetCompressedImage(
+                    self as *mut Self,
+                    theSupported,
+                ),
+            )
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
@@ -27002,26 +27403,11 @@ impl HandleGraphic3dMediaTexture {
     }
 }
 
-// ── Skipped symbols for MediaTexture (4 total) ──
+// ── Skipped symbols for MediaTexture (1 total) ──
 // SKIPPED: **Source:** `Graphic3d_MediaTexture.hxx`:29 - `Graphic3d_MediaTexture::Graphic3d_MediaTexture`
 //   constructor: Main constructor.
 //   Reason: param 'theMutex' uses unknown Handle type
 //   // pub fn new_handlencollectionshared<standardmutex>_int(theMutex: &HandleShared<Standard_Mutex>, thePlane: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_MediaTexture.hxx`:33 - `Graphic3d_MediaTexture::GetImage`
-//   method: Image reader.
-//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn get_image(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_PixMap>>;
-//
-// SKIPPED: **Source:** `Graphic3d_MediaTexture.hxx`:37 - `Graphic3d_MediaTexture::Frame`
-//   method: Return the frame.
-//   Reason: return type 'const Handle(Media_Frame)&' is unknown
-//   // pub fn frame(&self) -> &HandleFrame;
-//
-// SKIPPED: **Source:** `Graphic3d_MediaTexture.hxx`:40 - `Graphic3d_MediaTexture::SetFrame`
-//   method: Set the frame.
-//   Reason: param 'theFrame' uses unknown type 'const Handle(Media_Frame)&'
-//   // pub fn set_frame(&mut self, theFrame: &HandleFrame);
 //
 
 // ========================
@@ -27069,6 +27455,12 @@ impl MediaTextureSet {
         unsafe {
             crate::ffi::Graphic3d_MediaTextureSet_open_input(self as *mut Self, thePath, theToWait)
         }
+    }
+
+    /// **Source:** `Graphic3d_MediaTextureSet.hxx`:53 - `Graphic3d_MediaTextureSet::PlayerContext()`
+    /// Return player context; it can be NULL until first OpenInput().
+    pub fn player_context(&self) -> &crate::ffi::HandleMediaPlayerContext {
+        unsafe { &*(crate::ffi::Graphic3d_MediaTextureSet_player_context(self as *const Self)) }
     }
 
     /// **Source:** `Graphic3d_MediaTextureSet.hxx`:56 - `Graphic3d_MediaTextureSet::SwapFrames()`
@@ -27146,6 +27538,22 @@ impl MediaTextureSet {
     pub fn as_texture_set_mut(&mut self) -> &mut TextureSet {
         unsafe {
             &mut *(crate::ffi::Graphic3d_MediaTextureSet_as_Graphic3d_TextureSet_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Media_IFrameQueue
+    pub fn as_media_i_frame_queue(&self) -> &crate::media::IFrameQueue {
+        unsafe {
+            &*(crate::ffi::Graphic3d_MediaTextureSet_as_Media_IFrameQueue(self as *const Self))
+        }
+    }
+
+    /// Upcast to Media_IFrameQueue (mutable)
+    pub fn as_media_i_frame_queue_mut(&mut self) -> &mut crate::media::IFrameQueue {
+        unsafe {
+            &mut *(crate::ffi::Graphic3d_MediaTextureSet_as_Media_IFrameQueue_mut(
                 self as *mut Self,
             ))
         }
@@ -27323,16 +27731,11 @@ impl HandleGraphic3dMediaTextureSet {
     }
 }
 
-// ── Skipped symbols for MediaTextureSet (2 total) ──
+// ── Skipped symbols for MediaTextureSet (1 total) ──
 // SKIPPED: **Source:** `Graphic3d_MediaTextureSet.hxx`:38 - `Graphic3d_MediaTextureSet::SetCallback`
 //   method: Setup callback to be called on queue progress (e.g. when new frame should be displayed).
 //   Reason: param 'theCallbackUserPtr' uses unknown type 'void*'
 //   // pub fn set_callback(&mut self, theCallbackFunction: MediaTextureSet_CallbackOnUpdate_t, theCallbackUserPtr: *mut void);
-//
-// SKIPPED: **Source:** `Graphic3d_MediaTextureSet.hxx`:53 - `Graphic3d_MediaTextureSet::PlayerContext`
-//   method: Return player context; it can be NULL until first OpenInput().
-//   Reason: return type 'const Handle(Media_PlayerContext)&' is unknown
-//   // pub fn player_context(&self) -> &HandlePlayerContext;
 //
 
 // ========================
@@ -27922,6 +28325,16 @@ impl PBRMaterial {
         unsafe { crate::ffi::Graphic3d_PBRMaterial_roughness_float(theNormalizedRoughness) }
     }
 
+    /// **Source:** `Graphic3d_PBRMaterial.hxx`:110 - `Graphic3d_PBRMaterial::GenerateEnvLUT()`
+    /// Generates 2D look up table of scale and bias for fresnell zero coefficient.
+    /// It is needed for calculation reflectance part of environment lighting.
+    /// @param[out]  theLUT table storage (must be Image_Format_RGF).
+    /// @param[in]  theNbIntegralSamples number of importance samples in hemisphere integral
+    /// calculation for every table item.
+    pub fn generate_env_lut(theLUT: &crate::ffi::HandleImagePixMap, theNbIntegralSamples: u32) {
+        unsafe { crate::ffi::Graphic3d_PBRMaterial_generate_env_lut(theLUT, theNbIntegralSamples) }
+    }
+
     /// **Source:** `Graphic3d_PBRMaterial.hxx`:117 - `Graphic3d_PBRMaterial::RoughnessFromSpecular()`
     /// Compute material roughness from common material (specular color + shininess).
     /// @param[in] theSpecular  specular color
@@ -27974,15 +28387,6 @@ impl PBRMaterial {
         }
     }
 }
-
-// ── Skipped symbols for PBRMaterial (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_PBRMaterial.hxx`:110 - `Graphic3d_PBRMaterial::GenerateEnvLUT`
-//   static_method: Generates 2D look up table of scale and bias for fresnell zero coefficient.
-//   static_method: It is needed for calculation reflectance part of environment lighting.
-//   static_method: @param[out]  theLUT table storage (must be Image_Format_RGF).
-//   Reason: param 'theLUT' uses unknown type 'const Handle(Image_PixMap)&'
-//   // pub fn generate_env_lut(theLUT: &HandlePixMap, theNbIntegralSamples: u32);
-//
 
 // ========================
 // From Graphic3d_PolygonOffset.hxx
@@ -32137,6 +32541,18 @@ impl Text {
         }
     }
 
+    /// **Source:** `Graphic3d_Text.hxx`:59 - `Graphic3d_Text::TextFormatter()`
+    /// @return text formatter; NULL by default, which means standard text formatter will be used.
+    pub fn text_formatter(&self) -> &crate::ffi::HandleFontTextFormatter {
+        unsafe { &*(crate::ffi::Graphic3d_Text_text_formatter(self as *const Self)) }
+    }
+
+    /// **Source:** `Graphic3d_Text.hxx`:62 - `Graphic3d_Text::SetTextFormatter()`
+    /// Setup text default formatter for text within this context.
+    pub fn set_text_formatter(&mut self, theFormatter: &crate::ffi::HandleFontTextFormatter) {
+        unsafe { crate::ffi::Graphic3d_Text_set_text_formatter(self as *mut Self, theFormatter) }
+    }
+
     /// **Source:** `Graphic3d_Text.hxx`:69 - `Graphic3d_Text::Position()`
     /// The 3D point of attachment is projected.
     /// If the orientation is defined, the text is written in the plane of projection.
@@ -32353,7 +32769,7 @@ impl HandleGraphic3dText {
     }
 }
 
-// ── Skipped symbols for Text (4 total) ──
+// ── Skipped symbols for Text (2 total) ──
 // SKIPPED: **Source:** `Graphic3d_Text.hxx`:47 - `Graphic3d_Text::Text`
 //   method: Returns text value.
 //   Reason: return type 'const NCollection_String&' is unknown
@@ -32363,16 +32779,6 @@ impl HandleGraphic3dText {
 //   method: Sets text value.
 //   Reason: param 'theText' uses unknown type 'const NCollection_String&'
 //   // pub fn set_text(&mut self, theText: &String);
-//
-// SKIPPED: **Source:** `Graphic3d_Text.hxx`:59 - `Graphic3d_Text::TextFormatter`
-//   method: @return text formatter; NULL by default, which means standard text formatter will be used.
-//   Reason: return type 'const Handle(Font_TextFormatter)&' is unknown
-//   // pub fn text_formatter(&self) -> &HandleTextFormatter;
-//
-// SKIPPED: **Source:** `Graphic3d_Text.hxx`:62 - `Graphic3d_Text::SetTextFormatter`
-//   method: Setup text default formatter for text within this context.
-//   Reason: param 'theFormatter' uses unknown type 'const Handle(Font_TextFormatter)&'
-//   // pub fn set_text_formatter(&mut self, theFormatter: &HandleTextFormatter);
 //
 
 // ========================
@@ -32576,6 +32982,32 @@ impl Texture1D {
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:82 - `Graphic3d_TextureRoot::UpdateRevision()`
     pub fn update_revision(&mut self) {
         unsafe { crate::ffi::Graphic3d_Texture1D_inherited_UpdateRevision(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture1D_inherited_GetCompressedImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:101 - `Graphic3d_TextureRoot::GetImage()`
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture1D_inherited_GetImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
@@ -32790,6 +33222,18 @@ impl Texture1Dmanual {
         }
     }
 
+    /// **Source:** `Graphic3d_Texture1Dmanual.hxx`:38 - `Graphic3d_Texture1Dmanual::Graphic3d_Texture1Dmanual()`
+    /// Creates a texture from the pixmap.
+    pub fn new_handleimagepixmap(
+        thePixMap: &crate::ffi::HandleImagePixMap,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture1Dmanual_ctor_handleimagepixmap(
+                thePixMap,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_Texture1Dmanual.hxx`:29 - `Graphic3d_Texture1Dmanual::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Graphic3d_Texture1Dmanual_dynamic_type(self as *const Self)) }
@@ -32996,6 +33440,34 @@ impl Texture1Dmanual {
         unsafe { crate::ffi::Graphic3d_Texture1Dmanual_inherited_UpdateRevision(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_Texture1Dmanual_inherited_GetCompressedImage(
+                    self as *mut Self,
+                    theSupported,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:101 - `Graphic3d_TextureRoot::GetImage()`
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture1Dmanual_inherited_GetImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
     pub fn get_params(&self) -> &crate::ffi::HandleGraphic3dTextureParams {
         unsafe {
@@ -33157,13 +33629,6 @@ impl HandleGraphic3dTexture1Dmanual {
     }
 }
 
-// ── Skipped symbols for Texture1Dmanual (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_Texture1Dmanual.hxx`:38 - `Graphic3d_Texture1Dmanual::Graphic3d_Texture1Dmanual`
-//   constructor: Creates a texture from the pixmap.
-//   Reason: param 'thePixMap' uses unknown Handle type
-//   // pub fn new_handleimagepixmap(thePixMap: &HandlePixMap) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Graphic3d_Texture1Dsegment.hxx
 // ========================
@@ -33201,6 +33666,18 @@ impl Texture1Dsegment {
             crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture1Dsegment_ctor_nameoftexture1d(
                 theNOT.into(),
             ))
+        }
+    }
+
+    /// **Source:** `Graphic3d_Texture1Dsegment.hxx`:44 - `Graphic3d_Texture1Dsegment::Graphic3d_Texture1Dsegment()`
+    /// Creates a texture from the pixmap.
+    pub fn new_handleimagepixmap(
+        thePixMap: &crate::ffi::HandleImagePixMap,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_Texture1Dsegment_ctor_handleimagepixmap(thePixMap),
+            )
         }
     }
 
@@ -33464,6 +33941,34 @@ impl Texture1Dsegment {
         }
     }
 
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_Texture1Dsegment_inherited_GetCompressedImage(
+                    self as *mut Self,
+                    theSupported,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:101 - `Graphic3d_TextureRoot::GetImage()`
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture1Dsegment_inherited_GetImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
     pub fn get_params(&self) -> &crate::ffi::HandleGraphic3dTextureParams {
         unsafe {
@@ -33628,13 +34133,6 @@ impl HandleGraphic3dTexture1Dsegment {
     }
 }
 
-// ── Skipped symbols for Texture1Dsegment (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_Texture1Dsegment.hxx`:44 - `Graphic3d_Texture1Dsegment::Graphic3d_Texture1Dsegment`
-//   constructor: Creates a texture from the pixmap.
-//   Reason: param 'thePixMap' uses unknown Handle type
-//   // pub fn new_handleimagepixmap(thePixMap: &HandlePixMap) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Graphic3d_Texture2D.hxx
 // ========================
@@ -33672,6 +34170,19 @@ impl Texture2D {
         }
     }
 
+    /// **Source:** `Graphic3d_Texture2D.hxx`:45 - `Graphic3d_Texture2D::Graphic3d_Texture2D()`
+    /// Creates a texture from the pixmap.
+    /// MipMaps levels will be automatically generated if needed.
+    pub fn new_handleimagepixmap(
+        thePixMap: &crate::ffi::HandleImagePixMap,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture2D_ctor_handleimagepixmap(
+                thePixMap,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_Texture2D.hxx`:26 - `Graphic3d_Texture2D::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Graphic3d_Texture2D_dynamic_type(self as *const Self)) }
@@ -33687,6 +34198,14 @@ impl Texture2D {
             ))
             .unwrap()
         }
+    }
+
+    /// **Source:** `Graphic3d_Texture2D.hxx`:54 - `Graphic3d_Texture2D::SetImage()`
+    /// Assign new image to the texture.
+    /// Note that this method does not invalidate already uploaded resources - consider calling
+    /// ::UpdateRevision() if needed.
+    pub fn set_image(&mut self, thePixMap: &crate::ffi::HandleImagePixMap) {
+        unsafe { crate::ffi::Graphic3d_Texture2D_set_image(self as *mut Self, thePixMap) }
     }
 
     /// **Source:** `Graphic3d_Texture2D.hxx`:26 - `Graphic3d_Texture2D::get_type_name()`
@@ -33858,6 +34377,32 @@ impl Texture2D {
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:82 - `Graphic3d_TextureRoot::UpdateRevision()`
     pub fn update_revision(&mut self) {
         unsafe { crate::ffi::Graphic3d_Texture2D_inherited_UpdateRevision(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture2D_inherited_GetCompressedImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:101 - `Graphic3d_TextureRoot::GetImage()`
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture2D_inherited_GetImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
@@ -34050,21 +34595,6 @@ impl HandleGraphic3dTexture2D {
     }
 }
 
-// ── Skipped symbols for Texture2D (2 total) ──
-// SKIPPED: **Source:** `Graphic3d_Texture2D.hxx`:45 - `Graphic3d_Texture2D::Graphic3d_Texture2D`
-//   constructor: Creates a texture from the pixmap.
-//   constructor: MipMaps levels will be automatically generated if needed.
-//   Reason: param 'thePixMap' uses unknown Handle type
-//   // pub fn new_handleimagepixmap(thePixMap: &HandlePixMap) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_Texture2D.hxx`:54 - `Graphic3d_Texture2D::SetImage`
-//   method: Assign new image to the texture.
-//   method: Note that this method does not invalidate already uploaded resources - consider calling
-//   method: ::UpdateRevision() if needed.
-//   Reason: param 'thePixMap' uses unknown type 'const Handle(Image_PixMap)&'
-//   // pub fn set_image(&mut self, thePixMap: &HandlePixMap);
-//
-
 // ========================
 // From Graphic3d_Texture2Dplane.hxx
 // ========================
@@ -34099,6 +34629,18 @@ impl Texture2Dplane {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture2Dplane_ctor_nameoftexture2d(
                 theNOT.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `Graphic3d_Texture2Dplane.hxx`:43 - `Graphic3d_Texture2Dplane::Graphic3d_Texture2Dplane()`
+    /// Creates a texture from the pixmap.
+    pub fn new_handleimagepixmap(
+        thePixMap: &crate::ffi::HandleImagePixMap,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture2Dplane_ctor_handleimagepixmap(
+                thePixMap,
             ))
         }
     }
@@ -34332,6 +34874,13 @@ impl Texture2Dplane {
         }
     }
 
+    /// Inherited: **Source:** `Graphic3d_Texture2D.hxx`:54 - `Graphic3d_Texture2D::SetImage()`
+    pub fn set_image(&mut self, thePixMap: &crate::ffi::HandleImagePixMap) {
+        unsafe {
+            crate::ffi::Graphic3d_Texture2Dplane_inherited_SetImage(self as *mut Self, thePixMap)
+        }
+    }
+
     /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:31 - `Graphic3d_TextureMap::EnableSmooth()`
     pub fn enable_smooth(&mut self) {
         unsafe { crate::ffi::Graphic3d_Texture2Dplane_inherited_EnableSmooth(self as *mut Self) }
@@ -34430,6 +34979,34 @@ impl Texture2Dplane {
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:82 - `Graphic3d_TextureRoot::UpdateRevision()`
     pub fn update_revision(&mut self) {
         unsafe { crate::ffi::Graphic3d_Texture2Dplane_inherited_UpdateRevision(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_Texture2Dplane_inherited_GetCompressedImage(
+                    self as *mut Self,
+                    theSupported,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:101 - `Graphic3d_TextureRoot::GetImage()`
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture2Dplane_inherited_GetImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
@@ -34590,13 +35167,6 @@ impl HandleGraphic3dTexture2Dplane {
     }
 }
 
-// ── Skipped symbols for Texture2Dplane (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_Texture2Dplane.hxx`:43 - `Graphic3d_Texture2Dplane::Graphic3d_Texture2Dplane`
-//   constructor: Creates a texture from the pixmap.
-//   Reason: param 'thePixMap' uses unknown Handle type
-//   // pub fn new_handleimagepixmap(thePixMap: &HandlePixMap) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Graphic3d_Texture3D.hxx
 // ========================
@@ -34622,6 +35192,18 @@ impl Texture3D {
         }
     }
 
+    /// **Source:** `Graphic3d_Texture3D.hxx`:29 - `Graphic3d_Texture3D::Graphic3d_Texture3D()`
+    /// Creates a texture from the pixmap.
+    pub fn new_handleimagepixmap(
+        thePixMap: &crate::ffi::HandleImagePixMap,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture3D_ctor_handleimagepixmap(
+                thePixMap,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_Texture3D.hxx`:32 - `Graphic3d_Texture3D::Graphic3d_Texture3D()`
     /// Creates a texture from a file.
     pub fn new_array1ofasciistring(
@@ -34637,6 +35219,28 @@ impl Texture3D {
     /// **Source:** `Graphic3d_Texture3D.hxx`:23 - `Graphic3d_Texture3D::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Graphic3d_Texture3D_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Graphic3d_Texture3D.hxx`:40 - `Graphic3d_Texture3D::SetImage()`
+    /// Assign new image to the texture.
+    /// Note that this method does not invalidate already uploaded resources - consider calling
+    /// ::UpdateRevision() if needed.
+    pub fn set_image(&mut self, thePixMap: &crate::ffi::HandleImagePixMap) {
+        unsafe { crate::ffi::Graphic3d_Texture3D_set_image(self as *mut Self, thePixMap) }
+    }
+
+    /// **Source:** `Graphic3d_Texture3D.hxx`:43 - `Graphic3d_Texture3D::GetImage()`
+    /// Load and return image.
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture3D_get_image(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
     }
 
     /// **Source:** `Graphic3d_Texture3D.hxx`:23 - `Graphic3d_Texture3D::get_type_name()`
@@ -34798,6 +35402,19 @@ impl Texture3D {
         unsafe { crate::ffi::Graphic3d_Texture3D_inherited_UpdateRevision(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Texture3D_inherited_GetCompressedImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
     pub fn get_params(&self) -> &crate::ffi::HandleGraphic3dTextureParams {
         unsafe { &*(crate::ffi::Graphic3d_Texture3D_inherited_GetParams(self as *const Self)) }
@@ -34936,25 +35553,6 @@ impl HandleGraphic3dTexture3D {
     }
 }
 
-// ── Skipped symbols for Texture3D (3 total) ──
-// SKIPPED: **Source:** `Graphic3d_Texture3D.hxx`:29 - `Graphic3d_Texture3D::Graphic3d_Texture3D`
-//   constructor: Creates a texture from the pixmap.
-//   Reason: param 'thePixMap' uses unknown Handle type
-//   // pub fn new_handleimagepixmap(thePixMap: &HandlePixMap) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_Texture3D.hxx`:40 - `Graphic3d_Texture3D::SetImage`
-//   method: Assign new image to the texture.
-//   method: Note that this method does not invalidate already uploaded resources - consider calling
-//   method: ::UpdateRevision() if needed.
-//   Reason: param 'thePixMap' uses unknown type 'const Handle(Image_PixMap)&'
-//   // pub fn set_image(&mut self, thePixMap: &HandlePixMap);
-//
-// SKIPPED: **Source:** `Graphic3d_Texture3D.hxx`:43 - `Graphic3d_Texture3D::GetImage`
-//   method: Load and return image.
-//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn get_image(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_PixMap>>;
-//
-
 // ========================
 // From Graphic3d_TextureEnv.hxx
 // ========================
@@ -34990,6 +35588,18 @@ impl TextureEnv {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_TextureEnv_ctor_nameoftextureenv(
                 theName.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `Graphic3d_TextureEnv.hxx`:42 - `Graphic3d_TextureEnv::Graphic3d_TextureEnv()`
+    /// Creates an environment texture from the pixmap.
+    pub fn new_handleimagepixmap(
+        thePixMap: &crate::ffi::HandleImagePixMap,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_TextureEnv_ctor_handleimagepixmap(
+                thePixMap,
             ))
         }
     }
@@ -35105,6 +35715,34 @@ impl TextureEnv {
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:82 - `Graphic3d_TextureRoot::UpdateRevision()`
     pub fn update_revision(&mut self) {
         unsafe { crate::ffi::Graphic3d_TextureEnv_inherited_UpdateRevision(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_TextureEnv_inherited_GetCompressedImage(
+                    self as *mut Self,
+                    theSupported,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:101 - `Graphic3d_TextureRoot::GetImage()`
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_TextureEnv_inherited_GetImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
@@ -35233,13 +35871,6 @@ impl HandleGraphic3dTextureEnv {
         }
     }
 }
-
-// ── Skipped symbols for TextureEnv (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_TextureEnv.hxx`:42 - `Graphic3d_TextureEnv::Graphic3d_TextureEnv`
-//   constructor: Creates an environment texture from the pixmap.
-//   Reason: param 'thePixMap' uses unknown Handle type
-//   // pub fn new_handleimagepixmap(thePixMap: &HandlePixMap) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From Graphic3d_TextureMap.hxx
@@ -35421,6 +36052,34 @@ impl TextureMap {
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:82 - `Graphic3d_TextureRoot::UpdateRevision()`
     pub fn update_revision(&mut self) {
         unsafe { crate::ffi::Graphic3d_TextureMap_inherited_UpdateRevision(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_TextureMap_inherited_GetCompressedImage(
+                    self as *mut Self,
+                    theSupported,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:101 - `Graphic3d_TextureRoot::GetImage()`
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_TextureMap_inherited_GetImage(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
@@ -36159,6 +36818,46 @@ impl TextureRoot {
         unsafe { crate::ffi::Graphic3d_TextureRoot_update_revision(self as *mut Self) }
     }
 
+    /// **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage()`
+    /// This method will be called by graphic driver each time when texture resource should be
+    /// created. It is called in front of GetImage() for uploading compressed image formats natively
+    /// supported by GPU.
+    /// @param[in] theSupported  the list of supported compressed texture formats;
+    /// returning image in unsupported format will result in texture upload
+    /// failure
+    /// @return compressed pixmap or NULL if image is not in supported compressed format
+    pub fn get_compressed_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImageCompressedPixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_TextureRoot_get_compressed_image(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
+    /// **Source:** `Graphic3d_TextureRoot.hxx`:101 - `Graphic3d_TextureRoot::GetImage()`
+    /// This method will be called by graphic driver each time when texture resource should be
+    /// created. Default constructors allow defining the texture source as path to texture image or
+    /// directly as pixmap. If the source is defined as path, then the image will be dynamically
+    /// loaded when this method is called (and no copy will be preserved in this class instance).
+    /// Inheritors may dynamically generate the image.
+    /// Notice, image data should be in Bottom-Up order (see Image_PixMap::IsTopDown())!
+    /// @return the image for texture.
+    pub fn get_image(
+        &mut self,
+        theSupported: &crate::ffi::HandleImageSupportedFormats,
+    ) -> crate::OwnedPtr<crate::ffi::HandleImagePixMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_TextureRoot_get_image(
+                self as *mut Self,
+                theSupported,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_TextureRoot.hxx`:105 - `Graphic3d_TextureRoot::GetParams()`
     /// @return low-level texture parameters
     pub fn get_params(&self) -> &crate::ffi::HandleGraphic3dTextureParams {
@@ -36545,22 +37244,6 @@ impl HandleGraphic3dTextureRoot {
         }
     }
 }
-
-// ── Skipped symbols for TextureRoot (2 total) ──
-// SKIPPED: **Source:** `Graphic3d_TextureRoot.hxx`:91 - `Graphic3d_TextureRoot::GetCompressedImage`
-//   method: This method will be called by graphic driver each time when texture resource should be
-//   method: created. It is called in front of GetImage() for uploading compressed image formats natively
-//   method: supported by GPU.
-//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn get_compressed_image(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_CompressedPixMap>>;
-//
-// SKIPPED: **Source:** `Graphic3d_TextureRoot.hxx`:101 - `Graphic3d_TextureRoot::GetImage`
-//   method: This method will be called by graphic driver each time when texture resource should be
-//   method: created. Default constructors allow defining the texture source as path to texture image or
-//   method: directly as pixmap. If the source is defined as path, then the image will be dynamically
-//   Reason: param 'theSupported' uses unknown type 'const Handle(Image_SupportedFormats)&'
-//   // pub fn get_image(&mut self, theSupported: &HandleSupportedFormats) -> OwnedPtr<Handle<Image_PixMap>>;
-//
 
 // ========================
 // From Graphic3d_TextureSet.hxx

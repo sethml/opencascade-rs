@@ -999,6 +999,18 @@ impl Animation {
         unsafe { crate::ffi::AIS_Animation_elapsed_time(self as *const Self) }
     }
 
+    /// **Source:** `AIS_Animation.hxx`:163 - `AIS_Animation::Timer()`
+    /// Return playback timer.
+    pub fn timer(&self) -> &crate::ffi::HandleMediaTimer {
+        unsafe { &*(crate::ffi::AIS_Animation_timer(self as *const Self)) }
+    }
+
+    /// **Source:** `AIS_Animation.hxx`:166 - `AIS_Animation::SetTimer()`
+    /// Set playback timer.
+    pub fn set_timer(&mut self, theTimer: &crate::ffi::HandleMediaTimer) {
+        unsafe { crate::ffi::AIS_Animation_set_timer(self as *mut Self, theTimer) }
+    }
+
     /// **Source:** `AIS_Animation.hxx`:172 - `AIS_Animation::Start()`
     /// Start animation. This method changes status of the animation to Started.
     /// This status defines whether animation is to be performed in the timeline or not.
@@ -1206,21 +1218,11 @@ impl HandleAISAnimation {
     }
 }
 
-// ── Skipped symbols for Animation (3 total) ──
+// ── Skipped symbols for Animation (1 total) ──
 // SKIPPED: **Source:** `AIS_Animation.hxx`:134 - `AIS_Animation::Children`
 //   method: Return sequence of child animations.
 //   Reason: has unbindable types: return: unresolved template type (const NCollection_Sequence<opencascade::handle<AIS_Animation>>&)
 //   // pub fn children(&self) -> /* const NCollection_Sequence<opencascade::handle<AIS_Animation>>& */;
-//
-// SKIPPED: **Source:** `AIS_Animation.hxx`:163 - `AIS_Animation::Timer`
-//   method: Return playback timer.
-//   Reason: return type 'const Handle(Media_Timer)&' is unknown
-//   // pub fn timer(&self) -> &HandleTimer;
-//
-// SKIPPED: **Source:** `AIS_Animation.hxx`:166 - `AIS_Animation::SetTimer`
-//   method: Set playback timer.
-//   Reason: param 'theTimer' uses unknown type 'const Handle(Media_Timer)&'
-//   // pub fn set_timer(&mut self, theTimer: &HandleTimer);
 //
 
 // ========================
@@ -1470,6 +1472,18 @@ impl AnimationAxisRotation {
     /// Inherited: **Source:** `AIS_Animation.hxx`:160 - `AIS_Animation::ElapsedTime()`
     pub fn elapsed_time(&self) -> f64 {
         unsafe { crate::ffi::AIS_AnimationAxisRotation_inherited_ElapsedTime(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_Animation.hxx`:163 - `AIS_Animation::Timer()`
+    pub fn timer(&self) -> &crate::ffi::HandleMediaTimer {
+        unsafe { &*(crate::ffi::AIS_AnimationAxisRotation_inherited_Timer(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `AIS_Animation.hxx`:166 - `AIS_Animation::SetTimer()`
+    pub fn set_timer(&mut self, theTimer: &crate::ffi::HandleMediaTimer) {
+        unsafe {
+            crate::ffi::AIS_AnimationAxisRotation_inherited_SetTimer(self as *mut Self, theTimer)
+        }
     }
 
     /// Inherited: **Source:** `AIS_Animation.hxx`:172 - `AIS_Animation::Start()`
@@ -1847,6 +1861,16 @@ impl AnimationCamera {
         unsafe { crate::ffi::AIS_AnimationCamera_inherited_ElapsedTime(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `AIS_Animation.hxx`:163 - `AIS_Animation::Timer()`
+    pub fn timer(&self) -> &crate::ffi::HandleMediaTimer {
+        unsafe { &*(crate::ffi::AIS_AnimationCamera_inherited_Timer(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `AIS_Animation.hxx`:166 - `AIS_Animation::SetTimer()`
+    pub fn set_timer(&mut self, theTimer: &crate::ffi::HandleMediaTimer) {
+        unsafe { crate::ffi::AIS_AnimationCamera_inherited_SetTimer(self as *mut Self, theTimer) }
+    }
+
     /// Inherited: **Source:** `AIS_Animation.hxx`:172 - `AIS_Animation::Start()`
     pub fn start(&mut self, theToUpdate: bool) {
         unsafe { crate::ffi::AIS_AnimationCamera_inherited_Start(self as *mut Self, theToUpdate) }
@@ -2180,6 +2204,16 @@ impl AnimationObject {
     /// Inherited: **Source:** `AIS_Animation.hxx`:160 - `AIS_Animation::ElapsedTime()`
     pub fn elapsed_time(&self) -> f64 {
         unsafe { crate::ffi::AIS_AnimationObject_inherited_ElapsedTime(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_Animation.hxx`:163 - `AIS_Animation::Timer()`
+    pub fn timer(&self) -> &crate::ffi::HandleMediaTimer {
+        unsafe { &*(crate::ffi::AIS_AnimationObject_inherited_Timer(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `AIS_Animation.hxx`:166 - `AIS_Animation::SetTimer()`
+    pub fn set_timer(&mut self, theTimer: &crate::ffi::HandleMediaTimer) {
+        unsafe { crate::ffi::AIS_AnimationObject_inherited_SetTimer(self as *mut Self, theTimer) }
     }
 
     /// Inherited: **Source:** `AIS_Animation.hxx`:172 - `AIS_Animation::Start()`
@@ -3994,6 +4028,18 @@ impl BaseAnimationObject {
     /// Inherited: **Source:** `AIS_Animation.hxx`:160 - `AIS_Animation::ElapsedTime()`
     pub fn elapsed_time(&self) -> f64 {
         unsafe { crate::ffi::AIS_BaseAnimationObject_inherited_ElapsedTime(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `AIS_Animation.hxx`:163 - `AIS_Animation::Timer()`
+    pub fn timer(&self) -> &crate::ffi::HandleMediaTimer {
+        unsafe { &*(crate::ffi::AIS_BaseAnimationObject_inherited_Timer(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `AIS_Animation.hxx`:166 - `AIS_Animation::SetTimer()`
+    pub fn set_timer(&mut self, theTimer: &crate::ffi::HandleMediaTimer) {
+        unsafe {
+            crate::ffi::AIS_BaseAnimationObject_inherited_SetTimer(self as *mut Self, theTimer)
+        }
     }
 
     /// Inherited: **Source:** `AIS_Animation.hxx`:172 - `AIS_Animation::Start()`
@@ -22237,6 +22283,12 @@ impl MediaPlayer {
         }
     }
 
+    /// **Source:** `AIS_MediaPlayer.hxx`:50 - `AIS_MediaPlayer::PlayerContext()`
+    /// Return player context.
+    pub fn player_context(&self) -> &crate::ffi::HandleMediaPlayerContext {
+        unsafe { &*(crate::ffi::AIS_MediaPlayer_player_context(self as *const Self)) }
+    }
+
     /// **Source:** `AIS_MediaPlayer.hxx`:53 - `AIS_MediaPlayer::PlayPause()`
     /// Switch playback state.
     pub fn play_pause(&mut self) {
@@ -23239,16 +23291,11 @@ impl HandleAISMediaPlayer {
     }
 }
 
-// ── Skipped symbols for MediaPlayer (2 total) ──
+// ── Skipped symbols for MediaPlayer (1 total) ──
 // SKIPPED: **Source:** `AIS_MediaPlayer.hxx`:35 - `AIS_MediaPlayer::SetCallback`
 //   method: Setup callback to be called on queue progress (e.g. when new frame should be displayed).
 //   Reason: param 'theCallbackUserPtr' uses unknown type 'void*'
 //   // pub fn set_callback(&mut self, theCallbackFunction: MediaTextureSet_CallbackOnUpdate_t, theCallbackUserPtr: *mut void);
-//
-// SKIPPED: **Source:** `AIS_MediaPlayer.hxx`:50 - `AIS_MediaPlayer::PlayerContext`
-//   method: Return player context.
-//   Reason: return type 'const Handle(Media_PlayerContext)&' is unknown
-//   // pub fn player_context(&self) -> &HandlePlayerContext;
 //
 
 // ========================
@@ -32805,6 +32852,14 @@ impl TextLabel {
         unsafe { crate::ffi::AIS_TextLabel_set_height(self as *mut Self, theHeight) }
     }
 
+    /// **Source:** `AIS_TextLabel.hxx`:76 - `AIS_TextLabel::SetFontAspect()`
+    /// Setup font aspect.
+    pub fn set_font_aspect(&mut self, theFontAspect: crate::font::FontAspect) {
+        unsafe {
+            crate::ffi::AIS_TextLabel_set_font_aspect(self as *mut Self, theFontAspect.into())
+        }
+    }
+
     /// **Source:** `AIS_TextLabel.hxx`:79 - `AIS_TextLabel::SetFont()`
     /// Setup font.
     pub fn set_font(&mut self, theFont: &str) {
@@ -32840,6 +32895,17 @@ impl TextLabel {
     /// Returns the font of the label text.
     pub fn font_name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::AIS_TextLabel_font_name(self as *const Self)) }
+    }
+
+    /// **Source:** `AIS_TextLabel.hxx`:97 - `AIS_TextLabel::FontAspect()`
+    /// Returns the font aspect of the label text.
+    pub fn font_aspect(&self) -> crate::font::FontAspect {
+        unsafe {
+            crate::font::FontAspect::try_from(crate::ffi::AIS_TextLabel_font_aspect(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
     /// **Source:** `AIS_TextLabel.hxx`:100 - `AIS_TextLabel::Orientation3D()`
@@ -32897,6 +32963,19 @@ impl TextLabel {
     /// and the colour of backgroubd for the TODT_DEKALE TextDisplayType.
     pub fn set_color_sub_title(&mut self, theColor: &crate::quantity::Color) {
         unsafe { crate::ffi::AIS_TextLabel_set_color_sub_title(self as *mut Self, theColor) }
+    }
+
+    /// **Source:** `AIS_TextLabel.hxx`:133 - `AIS_TextLabel::TextFormatter()`
+    /// Returns text presentation formatter; NULL by default, which means standard text formatter will
+    /// be used.
+    pub fn text_formatter(&self) -> &crate::ffi::HandleFontTextFormatter {
+        unsafe { &*(crate::ffi::AIS_TextLabel_text_formatter(self as *const Self)) }
+    }
+
+    /// **Source:** `AIS_TextLabel.hxx`:136 - `AIS_TextLabel::SetTextFormatter()`
+    /// Setup text formatter for presentation. It's empty by default.
+    pub fn set_text_formatter(&mut self, theFormatter: &crate::ffi::HandleFontTextFormatter) {
+        unsafe { crate::ffi::AIS_TextLabel_set_text_formatter(self as *mut Self, theFormatter) }
     }
 
     /// **Source:** `AIS_TextLabel.hxx`:172 - `AIS_TextLabel::DynamicType()`
@@ -33848,29 +33927,6 @@ impl HandleAISTextLabel {
     }
 }
 
-// ── Skipped symbols for TextLabel (4 total) ──
-// SKIPPED: **Source:** `AIS_TextLabel.hxx`:76 - `AIS_TextLabel::SetFontAspect`
-//   method: Setup font aspect.
-//   Reason: param 'theFontAspect' uses unknown type 'Font_FontAspect'
-//   // pub fn set_font_aspect(&mut self, theFontAspect: FontAspect);
-//
-// SKIPPED: **Source:** `AIS_TextLabel.hxx`:97 - `AIS_TextLabel::FontAspect`
-//   method: Returns the font aspect of the label text.
-//   Reason: return type 'Font_FontAspect' is unknown
-//   // pub fn font_aspect(&self) -> OwnedPtr<Font_FontAspect>;
-//
-// SKIPPED: **Source:** `AIS_TextLabel.hxx`:133 - `AIS_TextLabel::TextFormatter`
-//   method: Returns text presentation formatter; NULL by default, which means standard text formatter will
-//   method: be used.
-//   Reason: return type 'const Handle(Font_TextFormatter)&' is unknown
-//   // pub fn text_formatter(&self) -> &HandleTextFormatter;
-//
-// SKIPPED: **Source:** `AIS_TextLabel.hxx`:136 - `AIS_TextLabel::SetTextFormatter`
-//   method: Setup text formatter for presentation. It's empty by default.
-//   Reason: param 'theFormatter' uses unknown type 'const Handle(Font_TextFormatter)&'
-//   // pub fn set_text_formatter(&mut self, theFormatter: &HandleTextFormatter);
-//
-
 // ========================
 // From AIS_TexturedShape.hxx
 // ========================
@@ -33923,6 +33979,17 @@ impl TexturedShape {
         }
     }
 
+    /// **Source:** `AIS_TexturedShape.hxx`:67 - `AIS_TexturedShape::SetTexturePixMap()`
+    /// Sets the texture source. <theTexturePixMap> specifies image data.
+    /// Please note that the data should be in Bottom-Up order, the flag of Image_PixMap::IsTopDown()
+    /// will be ignored by graphic driver. Setting texture source using this method resets the source
+    /// by filename (if was set previously).
+    pub fn set_texture_pix_map(&mut self, theTexturePixMap: &crate::ffi::HandleImagePixMap) {
+        unsafe {
+            crate::ffi::AIS_TexturedShape_set_texture_pix_map(self as *mut Self, theTexturePixMap)
+        }
+    }
+
     /// **Source:** `AIS_TexturedShape.hxx`:70 - `AIS_TexturedShape::TextureMapState()`
     /// @return flag to control texture mapping (for presentation mode 3)
     pub fn texture_map_state(&self) -> bool {
@@ -33951,6 +34018,12 @@ impl TexturedShape {
             .to_string_lossy()
             .into_owned()
         }
+    }
+
+    /// **Source:** `AIS_TexturedShape.hxx`:82 - `AIS_TexturedShape::TexturePixMap()`
+    /// @return the source pixmap for texture map
+    pub fn texture_pix_map(&self) -> &crate::ffi::HandleImagePixMap {
+        unsafe { &*(crate::ffi::AIS_TexturedShape_texture_pix_map(self as *const Self)) }
     }
 
     /// **Source:** `AIS_TexturedShape.hxx`:100 - `AIS_TexturedShape::UpdateAttributes()`
@@ -35324,20 +35397,6 @@ impl HandleAISTexturedShape {
         }
     }
 }
-
-// ── Skipped symbols for TexturedShape (2 total) ──
-// SKIPPED: **Source:** `AIS_TexturedShape.hxx`:67 - `AIS_TexturedShape::SetTexturePixMap`
-//   method: Sets the texture source. <theTexturePixMap> specifies image data.
-//   method: Please note that the data should be in Bottom-Up order, the flag of Image_PixMap::IsTopDown()
-//   method: will be ignored by graphic driver. Setting texture source using this method resets the source
-//   Reason: param 'theTexturePixMap' uses unknown type 'const Handle(Image_PixMap)&'
-//   // pub fn set_texture_pix_map(&mut self, theTexturePixMap: &HandlePixMap);
-//
-// SKIPPED: **Source:** `AIS_TexturedShape.hxx`:82 - `AIS_TexturedShape::TexturePixMap`
-//   method: @return the source pixmap for texture map
-//   Reason: return type 'const Handle(Image_PixMap)&' is unknown
-//   // pub fn texture_pix_map(&self) -> &HandlePixMap;
-//
 
 // ========================
 // From AIS_Triangulation.hxx
@@ -42496,6 +42555,17 @@ unsafe impl crate::CppDeletable for XRTrackedDevice {
 }
 
 impl XRTrackedDevice {
+    /// **Source:** `AIS_XRTrackedDevice.hxx`:29 - `AIS_XRTrackedDevice::AIS_XRTrackedDevice()`
+    /// Main constructor.
+    pub fn new_handlegraphic3darrayoftriangles_handleimagetexture(
+        theTris: &crate::ffi::HandleGraphic3dArrayOfTriangles,
+        theTexture: &crate::ffi::HandleImageTexture,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_XRTrackedDevice_ctor_handlegraphic3darrayoftriangles_handleimagetexture(theTris, theTexture))
+        }
+    }
+
     /// **Source:** `AIS_XRTrackedDevice.hxx`:33 - `AIS_XRTrackedDevice::AIS_XRTrackedDevice()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -43637,13 +43707,6 @@ impl HandleAISXRTrackedDevice {
         }
     }
 }
-
-// ── Skipped symbols for XRTrackedDevice (1 total) ──
-// SKIPPED: **Source:** `AIS_XRTrackedDevice.hxx`:29 - `AIS_XRTrackedDevice::AIS_XRTrackedDevice`
-//   constructor: Main constructor.
-//   Reason: param 'theTexture' uses unknown Handle type
-//   // pub fn new_handlegraphic3darrayoftriangles_handleimagetexture(theTris: &HandleArrayOfTriangles, theTexture: &HandleTexture) -> OwnedPtr<Self>;
-//
 
 // ========================
 // Additional type re-exports

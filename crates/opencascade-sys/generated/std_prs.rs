@@ -79,6 +79,41 @@ impl BRepFont {
         unsafe { crate::ffi::StdPrs_BRepFont_release(self as *mut Self) }
     }
 
+    /// **Source:** `StdPrs_BRepFont.hxx`:99 - `StdPrs_BRepFont::FindAndInit()`
+    /// Find (using Font_FontMgr) and initialize the font from the given name.
+    /// Please take into account that size is specified NOT in typography points (pt.).
+    /// If you need to specify size in points, value should be converted.
+    /// Formula for pt. -> m conversion:
+    /// aSizeMeters = 0.0254 * theSizePt / 72.0
+    /// @param theFontName   the font name
+    /// @param theFontAspect the font style
+    /// @param theSize       the face size in model units
+    /// @param theStrictLevel search strict level for using aliases and fallback
+    /// @return true on success
+    pub fn find_and_init(
+        &mut self,
+        theFontName: &crate::t_collection::AsciiString,
+        theFontAspect: crate::font::FontAspect,
+        theSize: f64,
+        theStrictLevel: crate::font::StrictLevel,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StdPrs_BRepFont_find_and_init(
+                self as *mut Self,
+                theFontName,
+                theFontAspect.into(),
+                theSize,
+                theStrictLevel.into(),
+            )
+        }
+    }
+
+    /// **Source:** `StdPrs_BRepFont.hxx`:105 - `StdPrs_BRepFont::FTFont()`
+    /// Return wrapper over FreeType font.
+    pub fn ft_font(&self) -> &crate::ffi::HandleFontFTFont {
+        unsafe { &*(crate::ffi::StdPrs_BRepFont_ft_font(self as *const Self)) }
+    }
+
     /// **Source:** `StdPrs_BRepFont.hxx`:118 - `StdPrs_BRepFont::SetCompositeCurveMode()`
     /// Setup glyph geometry construction mode.
     /// By default algorithm creates independent TopoDS_Edge
@@ -150,6 +185,29 @@ impl BRepFont {
     /// **Source:** `StdPrs_BRepFont.hxx`:42 - `StdPrs_BRepFont::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StdPrs_BRepFont_get_type_descriptor()) }
+    }
+
+    /// **Source:** `StdPrs_BRepFont.hxx`:50 - `StdPrs_BRepFont::FindAndCreate()`
+    /// Find the font Initialize the font.
+    /// @param theFontName    the font name
+    /// @param theFontAspect  the font style
+    /// @param theSize        the face size in model units
+    /// @param theStrictLevel search strict level for using aliases and fallback
+    /// @return true on success
+    pub fn find_and_create(
+        theFontName: &crate::t_collection::AsciiString,
+        theFontAspect: crate::font::FontAspect,
+        theSize: f64,
+        theStrictLevel: crate::font::StrictLevel,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdPrsBRepFont> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdPrs_BRepFont_find_and_create(
+                theFontName,
+                theFontAspect.into(),
+                theSize,
+                theStrictLevel.into(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
@@ -241,7 +299,7 @@ impl HandleStdPrsBRepFont {
     }
 }
 
-// ── Skipped symbols for BRepFont (12 total) ──
+// ── Skipped symbols for BRepFont (9 total) ──
 // SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:63 - `StdPrs_BRepFont::StdPrs_BRepFont`
 //   constructor: Constructor with initialization.
 //   constructor: @param theFontPath FULL path to the font
@@ -262,18 +320,6 @@ impl HandleStdPrsBRepFont {
 //   method: @param theSize     the face size in model units
 //   Reason: param 'theFontPath' uses unknown type 'const NCollection_String&'
 //   // pub fn init(&mut self, theFontPath: &String, theSize: f64, theFaceId: i32) -> bool;
-//
-// SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:99 - `StdPrs_BRepFont::FindAndInit`
-//   method: Find (using Font_FontMgr) and initialize the font from the given name.
-//   method: Please take into account that size is specified NOT in typography points (pt.).
-//   method: If you need to specify size in points, value should be converted.
-//   Reason: param 'theFontAspect' uses unknown type 'Font_FontAspect'
-//   // pub fn find_and_init(&mut self, theFontName: &AsciiString, theFontAspect: FontAspect, theSize: f64, theStrictLevel: StrictLevel) -> bool;
-//
-// SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:105 - `StdPrs_BRepFont::FTFont`
-//   method: Return wrapper over FreeType font.
-//   Reason: return type 'const Handle(Font_FTFont)&' is unknown
-//   // pub fn ft_font(&self) -> &HandleFTFont;
 //
 // SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:110 - `StdPrs_BRepFont::RenderGlyph`
 //   method: Render single glyph as TopoDS_Shape.
@@ -312,13 +358,6 @@ impl HandleStdPrsBRepFont {
 //   Reason: param 'theFontName' uses unknown type 'const NCollection_String&'
 //   // pub fn init(&mut self, theFontName: &String, theFontAspect: FontAspect, theSize: f64) -> bool;
 //
-// SKIPPED: **Source:** `StdPrs_BRepFont.hxx`:50 - `StdPrs_BRepFont::FindAndCreate`
-//   static_method: Find the font Initialize the font.
-//   static_method: @param theFontName    the font name
-//   static_method: @param theFontAspect  the font style
-//   Reason: param 'theFontAspect' uses unknown type 'Font_FontAspect'
-//   // pub fn find_and_create(theFontName: &AsciiString, theFontAspect: FontAspect, theSize: f64, theStrictLevel: StrictLevel) -> OwnedPtr<Handle<StdPrs_BRepFont>>;
-//
 
 // ========================
 // From StdPrs_BRepTextBuilder.hxx
@@ -340,16 +379,30 @@ impl BRepTextBuilder {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdPrs_BRepTextBuilder_ctor()) }
     }
+
+    /// **Source:** `StdPrs_BRepTextBuilder.hxx`:31 - `StdPrs_BRepTextBuilder::Perform()`
+    /// Render text as BRep shape.
+    /// @param theFormatter formatter which defines aligned text
+    /// @param thePenLoc start position and orientation on the baseline
+    /// @return result shape with pen transformation applied as shape location
+    pub fn perform(
+        &mut self,
+        theFont: &mut BRepFont,
+        theFormatter: &crate::ffi::HandleFontTextFormatter,
+        thePenLoc: &crate::gp::Ax3,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdPrs_BRepTextBuilder_perform(
+                self as *mut Self,
+                theFont,
+                theFormatter,
+                thePenLoc,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for BRepTextBuilder (2 total) ──
-// SKIPPED: **Source:** `StdPrs_BRepTextBuilder.hxx`:31 - `StdPrs_BRepTextBuilder::Perform`
-//   method: Render text as BRep shape.
-//   method: @param theFormatter formatter which defines aligned text
-//   method: @param thePenLoc start position and orientation on the baseline
-//   Reason: param 'theFormatter' uses unknown type 'const Handle(Font_TextFormatter)&'
-//   // pub fn perform(&mut self, theFont: &mut BRepFont, theFormatter: &HandleTextFormatter, thePenLoc: &Ax3) -> OwnedPtr<TopoDS_Shape>;
-//
+// ── Skipped symbols for BRepTextBuilder (1 total) ──
 // SKIPPED: **Source:** `StdPrs_BRepTextBuilder.hxx`:41 - `StdPrs_BRepTextBuilder::Perform`
 //   method: Render text as BRep shape.
 //   method: @param theString text in UTF-8 encoding

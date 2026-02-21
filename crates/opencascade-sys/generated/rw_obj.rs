@@ -825,6 +825,23 @@ impl ObjMaterialMap {
         unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_CreateTextureFolder(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture()`
+    pub fn copy_texture(
+        &mut self,
+        theResTexture: &mut crate::t_collection::AsciiString,
+        theTexture: &crate::ffi::HandleImageTexture,
+        theKey: &crate::t_collection::AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWObj_ObjMaterialMap_inherited_CopyTexture(
+                self as *mut Self,
+                theResTexture,
+                theTexture,
+                theKey,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:73 - `RWMesh_MaterialMap::IsFailed()`
     pub fn is_failed(&self) -> bool {
         unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_IsFailed(self as *const Self) }

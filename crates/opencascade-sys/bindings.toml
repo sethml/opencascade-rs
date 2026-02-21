@@ -24,11 +24,6 @@ exclude_modules = [
     "Wasm",                # WebAssembly bindings
     "Xw",                  # X Window system bindings
 
-    # === Font / Image handling ===
-    "Font",                # Font management
-    "Image",               # Image processing
-    "Media",               # Media playback
-
     # === Precompiled header stubs (not real modules) ===
     "TKBRep",              # PCH stub
     "TKDEIGES",            # PCH stub
@@ -39,9 +34,6 @@ exclude_modules = [
     "TKXSBase",            # PCH stub
     "TKernel",             # PCH stub
 
-    # === Internal mesh data (protected operator new, not heap-allocatable) ===
-    "BRepMeshData",        # Protected new/delete inherited from NCollection allocator
-
     # === EXPRESS schema parser (internal codegen tool, not user-facing) ===
     "Express",             # EXPRESS schema parser (String type conflicts with Rust String)
 ]
@@ -50,6 +42,16 @@ exclude_modules = [
 exclude_headers = [
     # Protected operator new/delete: class cannot be heap-allocated via std::make_unique.
     "Message_LazyProgressScope.hxx",  # Inherits protected new/delete from Message_ProgressScope
+    "Poly_CoherentTriPtr.hxx",         # No suitable operator delete
+
+    # DEFINE_INC_ALLOC macro hides global operator new — these classes can only be
+    # heap-allocated through NCollection_BaseAllocator placement new.
+    "BRepMeshData_Curve.hxx",
+    "BRepMeshData_Edge.hxx",
+    "BRepMeshData_Face.hxx",
+    "BRepMeshData_Model.hxx",
+    "BRepMeshData_PCurve.hxx",
+    "BRepMeshData_Wire.hxx",
     "Poly_CoherentTriPtr.hxx",         # No suitable operator delete
 
     # Internal-only class: all constructors/destructors are private, accessible only
@@ -73,6 +75,10 @@ exclude_headers = [
     # Windows-only: includes <windows.h> which causes a fatal error on non-Windows
     # and corrupts clang's type resolution for subsequent headers.
     "OSD_WNT.hxx",
+
+    # Packed color-component unions: clang exposes no fields, producing empty
+    # opaque structs that trigger Rust FFI-safety warnings.
+    "Image_Color.hxx",
 ]
 
 # Include specific individual headers (from modules not fully included above).

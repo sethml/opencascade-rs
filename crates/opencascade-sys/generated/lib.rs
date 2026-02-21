@@ -110,6 +110,7 @@ pub mod fair_curve;
 pub mod fillet_surf;
 pub mod font;
 pub mod fsd;
+pub mod ft;
 pub mod g_prop;
 pub mod gc;
 pub mod gc_pnts;

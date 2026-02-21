@@ -5487,6 +5487,21 @@ impl OpenVRSession {
         }
     }
 
+    /// Inherited: **Source:** `Aspect_XRSession.hxx`:163 - `Aspect_XRSession::LoadRenderModel()`
+    pub fn load_render_model(
+        &mut self,
+        theDevice: i32,
+        theTexture: &mut crate::ffi::HandleImageTexture,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfTriangles> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Aspect_OpenVRSession_inherited_LoadRenderModel(
+                self as *mut Self,
+                theDevice,
+                theTexture,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Aspect_XRSession.hxx`:198 - `Aspect_XRSession::TriggerHapticVibrationAction()`
     pub fn trigger_haptic_vibration_action(
         &mut self,
@@ -8604,6 +8619,51 @@ impl XRSession {
         }
     }
 
+    /// **Source:** `Aspect_XRSession.hxx`:163 - `Aspect_XRSession::LoadRenderModel()`
+    /// Load model for displaying device.
+    /// @param[in] theDevice   device index
+    /// @param[out] theTexture  texture source
+    /// @return model triangulation or NULL if not found
+    pub fn load_render_model_int_handleimagetexture(
+        &mut self,
+        theDevice: i32,
+        theTexture: &mut crate::ffi::HandleImageTexture,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfTriangles> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Aspect_XRSession_load_render_model_int_handleimagetexture(
+                    self as *mut Self,
+                    theDevice,
+                    theTexture,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Aspect_XRSession.hxx`:174 - `Aspect_XRSession::LoadRenderModel()`
+    /// Load model for displaying device.
+    /// @param[in] theDevice   device index
+    /// @param[in] theToApplyUnitFactor  flag to apply unit scale factor
+    /// @param[out] theTexture  texture source
+    /// @return model triangulation or NULL if not found
+    pub fn load_render_model_int_bool_handleimagetexture(
+        &mut self,
+        theDevice: i32,
+        theToApplyUnitFactor: bool,
+        theTexture: &mut crate::ffi::HandleImageTexture,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfTriangles> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Aspect_XRSession_load_render_model_int_bool_handleimagetexture(
+                    self as *mut Self,
+                    theDevice,
+                    theToApplyUnitFactor,
+                    theTexture,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `Aspect_XRSession.hxx`:183 - `Aspect_XRSession::GetDigitalActionData()`
     /// Fetch data for digital input action (like button).
     /// @param[in] theAction  action of Aspect_XRActionType_InputDigital type
@@ -8841,7 +8901,7 @@ impl HandleAspectXRSession {
     }
 }
 
-// ── Skipped symbols for XRSession (4 total) ──
+// ── Skipped symbols for XRSession (2 total) ──
 // SKIPPED: **Source:** `Aspect_XRSession.hxx`:95 - `Aspect_XRSession::SubmitEye`
 //   method: Submit texture eye to XR Composer.
 //   method: @param[in] theTexture      texture handle
@@ -8854,20 +8914,6 @@ impl HandleAspectXRSession {
 //   method: @sa HasProjectionFrustums().
 //   Reason: has unbindable types: return: unresolved template type (const Aspect_FrustumLRBT<double>&)
 //   // pub fn projection_frustum(&self, theEye: Eye) -> /* const Aspect_FrustumLRBT<double>& */;
-//
-// SKIPPED: **Source:** `Aspect_XRSession.hxx`:163 - `Aspect_XRSession::LoadRenderModel`
-//   method: Load model for displaying device.
-//   method: @param[in] theDevice   device index
-//   method: @param[out] theTexture  texture source
-//   Reason: param 'theTexture' uses unknown type 'Handle(Image_Texture)&'
-//   // pub fn load_render_model(&mut self, theDevice: i32, theTexture: &mut HandleTexture) -> OwnedPtr<Handle<Graphic3d_ArrayOfTriangles>>;
-//
-// SKIPPED: **Source:** `Aspect_XRSession.hxx`:174 - `Aspect_XRSession::LoadRenderModel`
-//   method: Load model for displaying device.
-//   method: @param[in] theDevice   device index
-//   method: @param[in] theToApplyUnitFactor  flag to apply unit scale factor
-//   Reason: param 'theTexture' uses unknown type 'Handle(Image_Texture)&'
-//   // pub fn load_render_model(&mut self, theDevice: i32, theToApplyUnitFactor: bool, theTexture: &mut HandleTexture) -> OwnedPtr<Handle<Graphic3d_ArrayOfTriangles>>;
 //
 
 // ========================
