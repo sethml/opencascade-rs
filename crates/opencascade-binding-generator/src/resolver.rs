@@ -870,13 +870,21 @@ pub fn build_symbol_table(
             rust_name: safe_short_name(&crate::type_mapping::short_name_for_module(&enum_decl.name, &enum_decl.module)),
             source_header: enum_decl.source_header.clone(),
             variants: enum_decl.variants.iter().map(|v| {
-                // Strip the module prefix from variant names, then convert to PascalCase.
-                // OCCT convention: variants are `{Module}_{VARIANT}` (e.g., `TopAbs_COMPOUND`).
-                // We strip `{Module}_` using the known module name rather than the old
-                // `split('_').skip(1)` heuristic which assumed a single-underscore prefix.
+                // Strip prefix from variant names, then convert to PascalCase.
+                // OCCT convention: variants are `{EnumName}_{VARIANT}` (e.g., `TopAbs_COMPOUND`)
+                // or sometimes `{Module}_{VARIANT}` for simple enums.
+                // Try stripping the full enum name first (e.g., "Graphic3d_ZLayerId_" from
+                // "Graphic3d_ZLayerId_UNKNOWN" → "UNKNOWN"), then fall back to the module prefix
+                // (e.g., "Graphic3d_" from "Graphic3d_TypeOfShadingModel_V3d" → "TypeOfShadingModel_V3d").
+                // Only use the full prefix if the result starts with a letter (avoids producing
+                // numeric identifiers like "0" from "Graphic3d_TextureUnit_0").
+                let full_prefix = format!("{}_", enum_decl.name);
                 let stripped = v.name
-                    .strip_prefix(&enum_decl.module)
-                    .and_then(|rest| rest.strip_prefix('_'))
+                    .strip_prefix(&full_prefix)
+                    .filter(|rest| rest.starts_with(|c: char| c.is_ascii_alphabetic() || c == '_'))
+                    .or_else(|| v.name
+                        .strip_prefix(&enum_decl.module)
+                        .and_then(|rest| rest.strip_prefix('_')))
                     .unwrap_or(&v.name);
                 let rust_name = stripped
                     .split('_')

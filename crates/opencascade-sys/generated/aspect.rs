@@ -12,9 +12,9 @@
 #[repr(i32)]
 pub enum ColorSpace {
     /// < non-linear sRGB color space
-    ColorspaceSrgb = 0,
+    Srgb = 0,
     /// < linear RGB color space
-    ColorspaceLinear = 1,
+    Linear = 1,
 }
 
 impl From<ColorSpace> for i32 {
@@ -28,8 +28,8 @@ impl TryFrom<i32> for ColorSpace {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(ColorSpace::ColorspaceSrgb),
-            1 => Ok(ColorSpace::ColorspaceLinear),
+            0 => Ok(ColorSpace::Srgb),
+            1 => Ok(ColorSpace::Linear),
             _ => Err(value),
         }
     }
@@ -40,8 +40,8 @@ impl TryFrom<i32> for ColorSpace {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum Eye {
-    EyeLeft = 0,
-    EyeRight = 1,
+    Left = 0,
+    Right = 1,
 }
 
 impl From<Eye> for i32 {
@@ -55,8 +55,8 @@ impl TryFrom<i32> for Eye {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(Eye::EyeLeft),
-            1 => Ok(Eye::EyeRight),
+            0 => Ok(Eye::Left),
+            1 => Ok(Eye::Right),
             _ => Err(value),
         }
     }
@@ -100,28 +100,28 @@ impl TryFrom<i32> for FillMethod {
 #[repr(i32)]
 pub enum GradientFillMethod {
     /// < fill method not specified
-    GradientfillmethodNone = 0,
+    None = 0,
     /// < gradient directed from left (Color1) to right (Color2)
-    GradientfillmethodHorizontal = 1,
+    Horizontal = 1,
     /// < gradient directed from top (Color1) to bottom (Color2)
-    GradientfillmethodVertical = 2,
+    Vertical = 2,
     /// < gradient directed from upper left corner (Color1) to
     /// < lower right (Color2)
-    GradientfillmethodDiagonal1 = 3,
+    Diagonal1 = 3,
     /// < gradient directed from upper right corner (Color1) to
     /// < lower left (Color2)
-    GradientfillmethodDiagonal2 = 4,
+    Diagonal2 = 4,
     /// < highlights upper left corner with Color1
-    GradientfillmethodCorner1 = 5,
+    Corner1 = 5,
     /// < highlights upper right corner with Color1
-    GradientfillmethodCorner2 = 6,
+    Corner2 = 6,
     /// < highlights lower right corner with Color1
-    GradientfillmethodCorner3 = 7,
+    Corner3 = 7,
     /// < highlights lower left corner with Color1
-    GradientfillmethodCorner4 = 8,
+    Corner4 = 8,
     /// < gradient directed from center (Color1) in all
     /// < directions forming an elliptic shape (Color2)
-    GradientfillmethodElliptical = 9,
+    Elliptical = 9,
 }
 
 impl From<GradientFillMethod> for i32 {
@@ -135,16 +135,16 @@ impl TryFrom<i32> for GradientFillMethod {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GradientFillMethod::GradientfillmethodNone),
-            1 => Ok(GradientFillMethod::GradientfillmethodHorizontal),
-            2 => Ok(GradientFillMethod::GradientfillmethodVertical),
-            3 => Ok(GradientFillMethod::GradientfillmethodDiagonal1),
-            4 => Ok(GradientFillMethod::GradientfillmethodDiagonal2),
-            5 => Ok(GradientFillMethod::GradientfillmethodCorner1),
-            6 => Ok(GradientFillMethod::GradientfillmethodCorner2),
-            7 => Ok(GradientFillMethod::GradientfillmethodCorner3),
-            8 => Ok(GradientFillMethod::GradientfillmethodCorner4),
-            9 => Ok(GradientFillMethod::GradientfillmethodElliptical),
+            0 => Ok(GradientFillMethod::None),
+            1 => Ok(GradientFillMethod::Horizontal),
+            2 => Ok(GradientFillMethod::Vertical),
+            3 => Ok(GradientFillMethod::Diagonal1),
+            4 => Ok(GradientFillMethod::Diagonal2),
+            5 => Ok(GradientFillMethod::Corner1),
+            6 => Ok(GradientFillMethod::Corner2),
+            7 => Ok(GradientFillMethod::Corner3),
+            8 => Ok(GradientFillMethod::Corner4),
+            9 => Ok(GradientFillMethod::Elliptical),
             _ => Err(value),
         }
     }
@@ -155,8 +155,8 @@ impl TryFrom<i32> for GradientFillMethod {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum GraphicsLibrary {
-    GraphicslibraryOpengl = 0,
-    GraphicslibraryOpengles = 1,
+    Opengl = 0,
+    Opengles = 1,
 }
 
 impl From<GraphicsLibrary> for i32 {
@@ -170,8 +170,8 @@ impl TryFrom<i32> for GraphicsLibrary {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GraphicsLibrary::GraphicslibraryOpengl),
-            1 => Ok(GraphicsLibrary::GraphicslibraryOpengles),
+            0 => Ok(GraphicsLibrary::Opengl),
+            1 => Ok(GraphicsLibrary::Opengles),
             _ => Err(value),
         }
     }
@@ -1162,6 +1162,122 @@ impl TryFrom<i32> for VKeyBasic {
     }
 }
 
+/// Auxiliary ranges.
+/// C++ enum: `Aspect_VKey`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum VKey {
+    Lower = 0,
+    Modifierslower = 118,
+    Modifiersupper = 122,
+    Navigationkeyslower = 123,
+    Navigationkeysupper = 142,
+    Nb = 143,
+    Max = 255,
+}
+
+impl From<VKey> for i32 {
+    fn from(value: VKey) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for VKey {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(VKey::Lower),
+            118 => Ok(VKey::Modifierslower),
+            122 => Ok(VKey::Modifiersupper),
+            123 => Ok(VKey::Navigationkeyslower),
+            142 => Ok(VKey::Navigationkeysupper),
+            143 => Ok(VKey::Nb),
+            255 => Ok(VKey::Max),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Key modifier, for combining with general key from Aspect_VKey.
+/// C++ enum: `Aspect_VKeyFlags`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum VKeyFlags {
+    None = 0,
+    /// < Aspect_VKey_Shift
+    Shift = 256,
+    /// < Aspect_VKey_Control
+    Ctrl = 512,
+    /// < Aspect_VKey_Alt
+    Alt = 1024,
+    /// < Aspect_VKey_Menu
+    Menu = 2048,
+    /// < Aspect_VKey_Meta
+    Meta = 4096,
+    All = 7936,
+}
+
+impl From<VKeyFlags> for i32 {
+    fn from(value: VKeyFlags) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for VKeyFlags {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(VKeyFlags::None),
+            256 => Ok(VKeyFlags::Shift),
+            512 => Ok(VKeyFlags::Ctrl),
+            1024 => Ok(VKeyFlags::Alt),
+            2048 => Ok(VKeyFlags::Menu),
+            4096 => Ok(VKeyFlags::Meta),
+            7936 => Ok(VKeyFlags::All),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Mouse button bitmask
+/// C++ enum: `Aspect_VKeyMouse`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum VKeyMouse {
+    /// < no buttons
+    None = 0,
+    /// < mouse left   button
+    Leftbutton = 8192,
+    /// < mouse middle button (scroll)
+    Middlebutton = 16384,
+    /// < mouse right  button
+    Rightbutton = 32768,
+    Mainbuttons = 57344,
+}
+
+impl From<VKeyMouse> for i32 {
+    fn from(value: VKeyMouse) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for VKeyMouse {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(VKeyMouse::None),
+            8192 => Ok(VKeyMouse::Leftbutton),
+            16384 => Ok(VKeyMouse::Middlebutton),
+            32768 => Ok(VKeyMouse::Rightbutton),
+            57344 => Ok(VKeyMouse::Mainbuttons),
+            _ => Err(value),
+        }
+    }
+}
+
 /// Definition of line types
 ///
 /// WOL_THIN            thin line (1 pixel width)
@@ -1234,15 +1350,15 @@ impl TryFrom<i32> for XAtom {
 #[repr(i32)]
 pub enum XRActionType {
     /// < boolean input (like button)
-    XractiontypeInputdigital = 0,
+    Inputdigital = 0,
     /// < analog input (1/2/3 axes)
-    XractiontypeInputanalog = 1,
+    Inputanalog = 1,
     /// < positional input
-    XractiontypeInputpose = 2,
+    Inputpose = 2,
     /// < skeletal input
-    XractiontypeInputskeletal = 3,
+    Inputskeletal = 3,
     /// < haptic output (vibration)
-    XractiontypeOutputhaptic = 4,
+    Outputhaptic = 4,
 }
 
 impl From<XRActionType> for i32 {
@@ -1256,11 +1372,11 @@ impl TryFrom<i32> for XRActionType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(XRActionType::XractiontypeInputdigital),
-            1 => Ok(XRActionType::XractiontypeInputanalog),
-            2 => Ok(XRActionType::XractiontypeInputpose),
-            3 => Ok(XRActionType::XractiontypeInputskeletal),
-            4 => Ok(XRActionType::XractiontypeOutputhaptic),
+            0 => Ok(XRActionType::Inputdigital),
+            1 => Ok(XRActionType::Inputanalog),
+            2 => Ok(XRActionType::Inputpose),
+            3 => Ok(XRActionType::Inputskeletal),
+            4 => Ok(XRActionType::Outputhaptic),
             _ => Err(value),
         }
     }
@@ -1272,40 +1388,40 @@ impl TryFrom<i32> for XRActionType {
 #[repr(i32)]
 pub enum XRGenericAction {
     /// < headset is on/off head
-    XrgenericactionIsheadseton = 0,
+    Isheadseton = 0,
     /// < application menu button pressed/released
-    XrgenericactionInputappmenu = 1,
+    Inputappmenu = 1,
     /// < system menu button pressed/released
-    XrgenericactionInputsysmenu = 2,
+    Inputsysmenu = 2,
     /// < trigger squeezing [0..1], 1 to click
-    XrgenericactionInputtriggerpull = 3,
+    Inputtriggerpull = 3,
     /// < trigger clicked/released
-    XrgenericactionInputtriggerclick = 4,
+    Inputtriggerclick = 4,
     /// < grip state on/off
-    XrgenericactionInputgripclick = 5,
+    Inputgripclick = 5,
     /// < trackpad 2D position [-1,+1] with X and Y axes
-    XrgenericactionInputtrackpadposition = 6,
+    Inputtrackpadposition = 6,
     /// < trackpad touched/untouched
-    XrgenericactionInputtrackpadtouch = 7,
+    Inputtrackpadtouch = 7,
     /// < trackpad clicked/released
-    XrgenericactionInputtrackpadclick = 8,
+    Inputtrackpadclick = 8,
     /// < thumbstick 2D position [-1,+1] with X and Y
     /// < axes
-    XrgenericactionInputthumbstickposition = 9,
+    Inputthumbstickposition = 9,
     /// < thumbstick touched/untouched
-    XrgenericactionInputthumbsticktouch = 10,
+    Inputthumbsticktouch = 10,
     /// < thumbstick clicked/released
-    XrgenericactionInputthumbstickclick = 11,
+    Inputthumbstickclick = 11,
     /// < base position of hand
-    XrgenericactionInputposebase = 12,
+    Inputposebase = 12,
     /// < front position of hand
-    XrgenericactionInputposefront = 13,
+    Inputposefront = 13,
     /// < position of main handgrip
-    XrgenericactionInputposehandgrip = 14,
+    Inputposehandgrip = 14,
     /// < position of main fingertip
-    XrgenericactionInputposefingertip = 15,
+    Inputposefingertip = 15,
     /// < haptic output (vibration)
-    XrgenericactionOutputhaptic = 16,
+    Outputhaptic = 16,
 }
 
 impl From<XRGenericAction> for i32 {
@@ -1319,23 +1435,23 @@ impl TryFrom<i32> for XRGenericAction {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(XRGenericAction::XrgenericactionIsheadseton),
-            1 => Ok(XRGenericAction::XrgenericactionInputappmenu),
-            2 => Ok(XRGenericAction::XrgenericactionInputsysmenu),
-            3 => Ok(XRGenericAction::XrgenericactionInputtriggerpull),
-            4 => Ok(XRGenericAction::XrgenericactionInputtriggerclick),
-            5 => Ok(XRGenericAction::XrgenericactionInputgripclick),
-            6 => Ok(XRGenericAction::XrgenericactionInputtrackpadposition),
-            7 => Ok(XRGenericAction::XrgenericactionInputtrackpadtouch),
-            8 => Ok(XRGenericAction::XrgenericactionInputtrackpadclick),
-            9 => Ok(XRGenericAction::XrgenericactionInputthumbstickposition),
-            10 => Ok(XRGenericAction::XrgenericactionInputthumbsticktouch),
-            11 => Ok(XRGenericAction::XrgenericactionInputthumbstickclick),
-            12 => Ok(XRGenericAction::XrgenericactionInputposebase),
-            13 => Ok(XRGenericAction::XrgenericactionInputposefront),
-            14 => Ok(XRGenericAction::XrgenericactionInputposehandgrip),
-            15 => Ok(XRGenericAction::XrgenericactionInputposefingertip),
-            16 => Ok(XRGenericAction::XrgenericactionOutputhaptic),
+            0 => Ok(XRGenericAction::Isheadseton),
+            1 => Ok(XRGenericAction::Inputappmenu),
+            2 => Ok(XRGenericAction::Inputsysmenu),
+            3 => Ok(XRGenericAction::Inputtriggerpull),
+            4 => Ok(XRGenericAction::Inputtriggerclick),
+            5 => Ok(XRGenericAction::Inputgripclick),
+            6 => Ok(XRGenericAction::Inputtrackpadposition),
+            7 => Ok(XRGenericAction::Inputtrackpadtouch),
+            8 => Ok(XRGenericAction::Inputtrackpadclick),
+            9 => Ok(XRGenericAction::Inputthumbstickposition),
+            10 => Ok(XRGenericAction::Inputthumbsticktouch),
+            11 => Ok(XRGenericAction::Inputthumbstickclick),
+            12 => Ok(XRGenericAction::Inputposebase),
+            13 => Ok(XRGenericAction::Inputposefront),
+            14 => Ok(XRGenericAction::Inputposehandgrip),
+            15 => Ok(XRGenericAction::Inputposefingertip),
+            16 => Ok(XRGenericAction::Outputhaptic),
             _ => Err(value),
         }
     }
@@ -1347,13 +1463,13 @@ impl TryFrom<i32> for XRGenericAction {
 #[repr(i32)]
 pub enum XRTrackedDeviceRole {
     /// < head
-    XrtrackeddeviceroleHead = 0,
+    Head = 0,
     /// < left hand
-    XrtrackeddeviceroleLefthand = 1,
+    Lefthand = 1,
     /// < right hand
-    XrtrackeddeviceroleRighthand = 2,
+    Righthand = 2,
     /// < other devices
-    XrtrackeddeviceroleOther = 3,
+    Other = 3,
 }
 
 impl From<XRTrackedDeviceRole> for i32 {
@@ -1367,10 +1483,10 @@ impl TryFrom<i32> for XRTrackedDeviceRole {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(XRTrackedDeviceRole::XrtrackeddeviceroleHead),
-            1 => Ok(XRTrackedDeviceRole::XrtrackeddeviceroleLefthand),
-            2 => Ok(XRTrackedDeviceRole::XrtrackeddeviceroleRighthand),
-            3 => Ok(XRTrackedDeviceRole::XrtrackeddeviceroleOther),
+            0 => Ok(XRTrackedDeviceRole::Head),
+            1 => Ok(XRTrackedDeviceRole::Lefthand),
+            2 => Ok(XRTrackedDeviceRole::Righthand),
+            3 => Ok(XRTrackedDeviceRole::Other),
             _ => Err(value),
         }
     }

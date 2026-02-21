@@ -46,20 +46,20 @@ pub fn axe(
 #[repr(i32)]
 pub enum ThruSectionErrorStatus {
     /// < Thrusection algorithm is done
-    ThrusectionerrorstatusDone = 0,
+    Done = 0,
     /// < Thrusection algorithm is not done
-    ThrusectionerrorstatusNotdone = 1,
+    Notdone = 1,
     /// < All profiles have not same topology (they
     /// < should be all closed or all opened)
-    ThrusectionerrorstatusNotsametopology = 2,
+    Notsametopology = 2,
     /// < Profiles are inconsistent
-    ThrusectionerrorstatusProfilesinconsistent = 3,
+    Profilesinconsistent = 3,
     /// < Wrong usage of punctual sections
-    ThrusectionerrorstatusWrongusage = 4,
+    Wrongusage = 4,
     /// < Null 3D curve in edge
-    ThrusectionerrorstatusNull3dcurve = 5,
+    Null3dcurve = 5,
     /// < Thrusection algorithm has failed
-    ThrusectionerrorstatusFailed = 6,
+    Failed = 6,
 }
 
 impl From<ThruSectionErrorStatus> for i32 {
@@ -73,13 +73,13 @@ impl TryFrom<i32> for ThruSectionErrorStatus {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusDone),
-            1 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusNotdone),
-            2 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusNotsametopology),
-            3 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusProfilesinconsistent),
-            4 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusWrongusage),
-            5 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusNull3dcurve),
-            6 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusFailed),
+            0 => Ok(ThruSectionErrorStatus::Done),
+            1 => Ok(ThruSectionErrorStatus::Notdone),
+            2 => Ok(ThruSectionErrorStatus::Notsametopology),
+            3 => Ok(ThruSectionErrorStatus::Profilesinconsistent),
+            4 => Ok(ThruSectionErrorStatus::Wrongusage),
+            5 => Ok(ThruSectionErrorStatus::Null3dcurve),
+            6 => Ok(ThruSectionErrorStatus::Failed),
             _ => Err(value),
         }
     }

@@ -42,15 +42,15 @@ impl TryFrom<i32> for DisplayMode {
 #[repr(i32)]
 pub enum DragAction {
     /// < (try) start dragging object
-    DragactionStart = 0,
+    Start = 0,
     /// < dragging interaction is confirmed.
-    DragactionConfirmed = 1,
+    Confirmed = 1,
     /// < perform dragging (update position)
-    DragactionUpdate = 2,
+    Update = 2,
     /// < stop dragging (save position)
-    DragactionStop = 3,
+    Stop = 3,
     /// < abort dragging (restore initial position)
-    DragactionAbort = 4,
+    Abort = 4,
 }
 
 impl From<DragAction> for i32 {
@@ -64,11 +64,11 @@ impl TryFrom<i32> for DragAction {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DragAction::DragactionStart),
-            1 => Ok(DragAction::DragactionConfirmed),
-            2 => Ok(DragAction::DragactionUpdate),
-            3 => Ok(DragAction::DragactionStop),
-            4 => Ok(DragAction::DragactionAbort),
+            0 => Ok(DragAction::Start),
+            1 => Ok(DragAction::Confirmed),
+            2 => Ok(DragAction::Update),
+            3 => Ok(DragAction::Stop),
+            4 => Ok(DragAction::Abort),
             _ => Err(value),
         }
     }
@@ -81,20 +81,20 @@ impl TryFrom<i32> for DragAction {
 #[repr(i32)]
 pub enum KindOfInteractive {
     /// < object of unknown type
-    KindofinteractiveNone = 0,
+    None = 0,
     /// < presentation of construction element (datum)
-    KindofinteractiveDatum = 1,
+    Datum = 1,
     /// < presentation of topological shape
-    KindofinteractiveShape = 2,
+    Shape = 2,
     /// < presentation of group of topological shapes
-    KindofinteractiveObject = 3,
+    Object = 3,
     /// < presentation of relation  (dimensions and constraints)
-    KindofinteractiveRelation = 4,
+    Relation = 4,
     /// < presentation of dimension (length, radius, diameter and
     /// < angle)
-    KindofinteractiveDimension = 5,
+    Dimension = 5,
     /// < presentation of light source
-    KindofinteractiveLightsource = 6,
+    Lightsource = 6,
 }
 
 impl From<KindOfInteractive> for i32 {
@@ -108,13 +108,13 @@ impl TryFrom<i32> for KindOfInteractive {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(KindOfInteractive::KindofinteractiveNone),
-            1 => Ok(KindOfInteractive::KindofinteractiveDatum),
-            2 => Ok(KindOfInteractive::KindofinteractiveShape),
-            3 => Ok(KindOfInteractive::KindofinteractiveObject),
-            4 => Ok(KindOfInteractive::KindofinteractiveRelation),
-            5 => Ok(KindOfInteractive::KindofinteractiveDimension),
-            6 => Ok(KindOfInteractive::KindofinteractiveLightsource),
+            0 => Ok(KindOfInteractive::None),
+            1 => Ok(KindOfInteractive::Datum),
+            2 => Ok(KindOfInteractive::Shape),
+            3 => Ok(KindOfInteractive::Object),
+            4 => Ok(KindOfInteractive::Relation),
+            5 => Ok(KindOfInteractive::Dimension),
+            6 => Ok(KindOfInteractive::Lightsource),
             _ => Err(value),
         }
     }
@@ -159,25 +159,25 @@ impl TryFrom<i32> for ManipulatorMode {
 #[repr(i32)]
 pub enum MouseGesture {
     /// < no active gesture
-    MousegestureNone = 0,
+    None = 0,
     /// < rectangular selection;
-    MousegestureSelectrectangle = 1,
+    Selectrectangle = 1,
     /// < polygonal selection;
-    MousegestureSelectlasso = 2,
+    Selectlasso = 2,
     /// < view zoom gesture;
-    MousegestureZoom = 3,
+    Zoom = 3,
     /// < view zoom gesture;
-    MousegestureZoomvertical = 4,
+    Zoomvertical = 4,
     /// < view zoom by window gesture;
-    MousegestureZoomwindow = 5,
+    Zoomwindow = 5,
     /// < view panning gesture
-    MousegesturePan = 6,
+    Pan = 6,
     /// < orbit rotation gesture
-    MousegestureRotateorbit = 7,
+    Rotateorbit = 7,
     /// < view  rotation gesture
-    MousegestureRotateview = 8,
+    Rotateview = 8,
     /// < object dragging;
-    MousegestureDrag = 9,
+    Drag = 9,
 }
 
 impl From<MouseGesture> for i32 {
@@ -191,16 +191,16 @@ impl TryFrom<i32> for MouseGesture {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(MouseGesture::MousegestureNone),
-            1 => Ok(MouseGesture::MousegestureSelectrectangle),
-            2 => Ok(MouseGesture::MousegestureSelectlasso),
-            3 => Ok(MouseGesture::MousegestureZoom),
-            4 => Ok(MouseGesture::MousegestureZoomvertical),
-            5 => Ok(MouseGesture::MousegestureZoomwindow),
-            6 => Ok(MouseGesture::MousegesturePan),
-            7 => Ok(MouseGesture::MousegestureRotateorbit),
-            8 => Ok(MouseGesture::MousegestureRotateview),
-            9 => Ok(MouseGesture::MousegestureDrag),
+            0 => Ok(MouseGesture::None),
+            1 => Ok(MouseGesture::Selectrectangle),
+            2 => Ok(MouseGesture::Selectlasso),
+            3 => Ok(MouseGesture::Zoom),
+            4 => Ok(MouseGesture::Zoomvertical),
+            5 => Ok(MouseGesture::Zoomwindow),
+            6 => Ok(MouseGesture::Pan),
+            7 => Ok(MouseGesture::Rotateorbit),
+            8 => Ok(MouseGesture::Rotateview),
+            9 => Ok(MouseGesture::Drag),
             _ => Err(value),
         }
     }
@@ -212,11 +212,11 @@ impl TryFrom<i32> for MouseGesture {
 #[repr(i32)]
 pub enum NavigationMode {
     /// < orbit rotation
-    NavigationmodeOrbit = 0,
+    Orbit = 0,
     /// < flight rotation (first person)
-    NavigationmodeFirstpersonflight = 1,
+    Firstpersonflight = 1,
     /// < walking mode (first person)
-    NavigationmodeFirstpersonwalk = 2,
+    Firstpersonwalk = 2,
 }
 
 impl From<NavigationMode> for i32 {
@@ -230,9 +230,9 @@ impl TryFrom<i32> for NavigationMode {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(NavigationMode::NavigationmodeOrbit),
-            1 => Ok(NavigationMode::NavigationmodeFirstpersonflight),
-            2 => Ok(NavigationMode::NavigationmodeFirstpersonwalk),
+            0 => Ok(NavigationMode::Orbit),
+            1 => Ok(NavigationMode::Firstpersonflight),
+            2 => Ok(NavigationMode::Firstpersonwalk),
             _ => Err(value),
         }
     }
@@ -244,15 +244,15 @@ impl TryFrom<i32> for NavigationMode {
 #[repr(i32)]
 pub enum RotationMode {
     /// < default OCCT rotation
-    RotationmodeBndboxactive = 0,
+    Bndboxactive = 0,
     /// < rotate around last picked point
-    RotationmodePicklast = 1,
+    Picklast = 1,
     /// < rotate around point at the center of window
-    RotationmodePickcenter = 2,
+    Pickcenter = 2,
     /// < rotate around camera center
-    RotationmodeCameraat = 3,
+    Cameraat = 3,
     /// < rotate around scene center
-    RotationmodeBndboxscene = 4,
+    Bndboxscene = 4,
 }
 
 impl From<RotationMode> for i32 {
@@ -266,11 +266,11 @@ impl TryFrom<i32> for RotationMode {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(RotationMode::RotationmodeBndboxactive),
-            1 => Ok(RotationMode::RotationmodePicklast),
-            2 => Ok(RotationMode::RotationmodePickcenter),
-            3 => Ok(RotationMode::RotationmodeCameraat),
-            4 => Ok(RotationMode::RotationmodeBndboxscene),
+            0 => Ok(RotationMode::Bndboxactive),
+            1 => Ok(RotationMode::Picklast),
+            2 => Ok(RotationMode::Pickcenter),
+            3 => Ok(RotationMode::Cameraat),
+            4 => Ok(RotationMode::Bndboxscene),
             _ => Err(value),
         }
     }
@@ -312,14 +312,14 @@ impl TryFrom<i32> for SelectStatus {
 pub enum SelectionModesConcurrency {
     /// < only one selection mode can be activated at the same
     /// < moment - previously activated should be deactivated
-    SelectionmodesconcurrencySingle = 0,
+    Single = 0,
     /// < either Global
     /// < (AIS_InteractiveObject::GlobalSelectionMode() or
     /// < Local (multiple) selection modes can be active
     /// < at the same moment
-    SelectionmodesconcurrencyGlobalorlocal = 1,
+    Globalorlocal = 1,
     /// < any combination of selection modes can be activated
-    SelectionmodesconcurrencyMultiple = 2,
+    Multiple = 2,
 }
 
 impl From<SelectionModesConcurrency> for i32 {
@@ -333,9 +333,9 @@ impl TryFrom<i32> for SelectionModesConcurrency {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(SelectionModesConcurrency::SelectionmodesconcurrencySingle),
-            1 => Ok(SelectionModesConcurrency::SelectionmodesconcurrencyGlobalorlocal),
-            2 => Ok(SelectionModesConcurrency::SelectionmodesconcurrencyMultiple),
+            0 => Ok(SelectionModesConcurrency::Single),
+            1 => Ok(SelectionModesConcurrency::Globalorlocal),
+            2 => Ok(SelectionModesConcurrency::Multiple),
             _ => Err(value),
         }
     }
@@ -347,21 +347,21 @@ impl TryFrom<i32> for SelectionModesConcurrency {
 #[repr(i32)]
 pub enum SelectionScheme {
     /// < undefined scheme
-    SelectionschemeUnknown = -1,
+    Unknown = -1,
     /// < clears current selection and select detected objects
-    SelectionschemeReplace = 0,
+    Replace = 0,
     /// < adds    detected object to current selection
-    SelectionschemeAdd = 1,
+    Add = 1,
     /// < removes detected object from the current selection
-    SelectionschemeRemove = 2,
+    Remove = 2,
     /// < performs XOR for detected objects, other selected not touched
-    SelectionschemeXor = 3,
+    Xor = 3,
     /// < clears current selection
-    SelectionschemeClear = 4,
+    Clear = 4,
     /// < replace with one difference: if result of replace is an
     /// < empty, and current selection contains detected element, it
     /// < will be selected
-    SelectionschemeReplaceextra = 5,
+    Replaceextra = 5,
 }
 
 impl From<SelectionScheme> for i32 {
@@ -375,13 +375,13 @@ impl TryFrom<i32> for SelectionScheme {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            -1 => Ok(SelectionScheme::SelectionschemeUnknown),
-            0 => Ok(SelectionScheme::SelectionschemeReplace),
-            1 => Ok(SelectionScheme::SelectionschemeAdd),
-            2 => Ok(SelectionScheme::SelectionschemeRemove),
-            3 => Ok(SelectionScheme::SelectionschemeXor),
-            4 => Ok(SelectionScheme::SelectionschemeClear),
-            5 => Ok(SelectionScheme::SelectionschemeReplaceextra),
+            -1 => Ok(SelectionScheme::Unknown),
+            0 => Ok(SelectionScheme::Replace),
+            1 => Ok(SelectionScheme::Add),
+            2 => Ok(SelectionScheme::Remove),
+            3 => Ok(SelectionScheme::Xor),
+            4 => Ok(SelectionScheme::Clear),
+            5 => Ok(SelectionScheme::Replaceextra),
             _ => Err(value),
         }
     }
@@ -461,13 +461,13 @@ impl TryFrom<i32> for StatusOfPick {
 #[repr(i32)]
 pub enum TrihedronSelectionMode {
     /// < select trihedron as whole
-    TrihedronselectionmodeEntireobject = 0,
+    Entireobject = 0,
     /// < origin
-    TrihedronselectionmodeOrigin = 1,
+    Origin = 1,
     /// < axes
-    TrihedronselectionmodeAxes = 2,
+    Axes = 2,
     /// < main planes
-    TrihedronselectionmodeMainplanes = 3,
+    Mainplanes = 3,
 }
 
 impl From<TrihedronSelectionMode> for i32 {
@@ -481,10 +481,10 @@ impl TryFrom<i32> for TrihedronSelectionMode {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(TrihedronSelectionMode::TrihedronselectionmodeEntireobject),
-            1 => Ok(TrihedronSelectionMode::TrihedronselectionmodeOrigin),
-            2 => Ok(TrihedronSelectionMode::TrihedronselectionmodeAxes),
-            3 => Ok(TrihedronSelectionMode::TrihedronselectionmodeMainplanes),
+            0 => Ok(TrihedronSelectionMode::Entireobject),
+            1 => Ok(TrihedronSelectionMode::Origin),
+            2 => Ok(TrihedronSelectionMode::Axes),
+            3 => Ok(TrihedronSelectionMode::Mainplanes),
             _ => Err(value),
         }
     }
@@ -641,13 +641,13 @@ impl TryFrom<i32> for TypeOfPlane {
 #[repr(i32)]
 pub enum ViewSelectionTool {
     /// < pick to select
-    ViewselectiontoolPicking = 0,
+    Picking = 0,
     /// < rubber-band to select
-    ViewselectiontoolRubberband = 1,
+    Rubberband = 1,
     /// < polyline to select
-    ViewselectiontoolPolygon = 2,
+    Polygon = 2,
     /// < zoom-in window (no selection)
-    ViewselectiontoolZoomwindow = 3,
+    Zoomwindow = 3,
 }
 
 impl From<ViewSelectionTool> for i32 {
@@ -661,10 +661,10 @@ impl TryFrom<i32> for ViewSelectionTool {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(ViewSelectionTool::ViewselectiontoolPicking),
-            1 => Ok(ViewSelectionTool::ViewselectiontoolRubberband),
-            2 => Ok(ViewSelectionTool::ViewselectiontoolPolygon),
-            3 => Ok(ViewSelectionTool::ViewselectiontoolZoomwindow),
+            0 => Ok(ViewSelectionTool::Picking),
+            1 => Ok(ViewSelectionTool::Rubberband),
+            2 => Ok(ViewSelectionTool::Polygon),
+            3 => Ok(ViewSelectionTool::Zoomwindow),
             _ => Err(value),
         }
     }
@@ -676,9 +676,9 @@ impl TryFrom<i32> for ViewSelectionTool {
 #[repr(i32)]
 pub enum ViewInputBufferType {
     /// < input buffer for filling from UI thread
-    ViewinputbuffertypeUi = 0,
+    Ui = 0,
     /// < input buffer accessible  from GL thread
-    ViewinputbuffertypeGl = 1,
+    Gl = 1,
 }
 
 impl From<ViewInputBufferType> for i32 {
@@ -692,8 +692,8 @@ impl TryFrom<i32> for ViewInputBufferType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(ViewInputBufferType::ViewinputbuffertypeUi),
-            1 => Ok(ViewInputBufferType::ViewinputbuffertypeGl),
+            0 => Ok(ViewInputBufferType::Ui),
+            1 => Ok(ViewInputBufferType::Gl),
             _ => Err(value),
         }
     }
@@ -705,11 +705,11 @@ impl TryFrom<i32> for ViewInputBufferType {
 #[repr(i32)]
 pub enum WalkTranslation {
     /// < translation delta, Forward walk
-    WalktranslationForward = 0,
+    Forward = 0,
     /// < translation delta, Side walk
-    WalktranslationSide = 1,
+    Side = 1,
     /// < translation delta, Up walk
-    WalktranslationUp = 2,
+    Up = 2,
 }
 
 impl From<WalkTranslation> for i32 {
@@ -723,9 +723,9 @@ impl TryFrom<i32> for WalkTranslation {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(WalkTranslation::WalktranslationForward),
-            1 => Ok(WalkTranslation::WalktranslationSide),
-            2 => Ok(WalkTranslation::WalktranslationUp),
+            0 => Ok(WalkTranslation::Forward),
+            1 => Ok(WalkTranslation::Side),
+            2 => Ok(WalkTranslation::Up),
             _ => Err(value),
         }
     }
@@ -737,11 +737,11 @@ impl TryFrom<i32> for WalkTranslation {
 #[repr(i32)]
 pub enum WalkRotation {
     /// < yaw   rotation angle
-    WalkrotationYaw = 0,
+    Yaw = 0,
     /// < pitch rotation angle
-    WalkrotationPitch = 1,
+    Pitch = 1,
     /// < roll  rotation angle
-    WalkrotationRoll = 2,
+    Roll = 2,
 }
 
 impl From<WalkRotation> for i32 {
@@ -755,9 +755,9 @@ impl TryFrom<i32> for WalkRotation {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(WalkRotation::WalkrotationYaw),
-            1 => Ok(WalkRotation::WalkrotationPitch),
-            2 => Ok(WalkRotation::WalkrotationRoll),
+            0 => Ok(WalkRotation::Yaw),
+            1 => Ok(WalkRotation::Pitch),
+            2 => Ok(WalkRotation::Roll),
             _ => Err(value),
         }
     }
@@ -3065,6 +3065,11 @@ impl Axis {
         unsafe { crate::ffi::AIS_Axis_inherited_ErasePresentations(self as *mut Self, theToRemove) }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_Axis_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_Axis_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -3103,6 +3108,11 @@ impl Axis {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_Axis_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_Axis_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -4794,6 +4804,11 @@ impl CameraFrustum {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_CameraFrustum_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -4838,6 +4853,11 @@ impl CameraFrustum {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_CameraFrustum_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_CameraFrustum_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -5907,6 +5927,11 @@ impl Circle {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_Circle_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_Circle_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -5945,6 +5970,11 @@ impl Circle {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_Circle_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_Circle_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -7489,6 +7519,11 @@ impl ColorScale {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_ColorScale_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_ColorScale_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -7531,6 +7566,11 @@ impl ColorScale {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_ColorScale_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_ColorScale_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -9438,6 +9478,16 @@ impl ColoredDrawer {
         }
     }
 
+    /// Inherited: **Source:** `Graphic3d_PresentationAttributes.hxx`:71 - `Graphic3d_PresentationAttributes::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_ColoredDrawer_inherited_ZLayer(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_PresentationAttributes.hxx`:74 - `Graphic3d_PresentationAttributes::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayer: i32) {
+        unsafe { crate::ffi::AIS_ColoredDrawer_inherited_SetZLayer(self as *mut Self, theLayer) }
+    }
+
     /// Inherited: **Source:** `Graphic3d_PresentationAttributes.hxx`:78 - `Graphic3d_PresentationAttributes::DisplayMode()`
     pub fn display_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_ColoredDrawer_inherited_DisplayMode(self as *const Self) }
@@ -10249,6 +10299,11 @@ impl ColoredShape {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_ColoredShape_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -10293,6 +10348,11 @@ impl ColoredShape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_ColoredShape_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_ColoredShape_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -11422,6 +11482,13 @@ impl ConnectedInteractive {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::AIS_ConnectedInteractive_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -11475,6 +11542,11 @@ impl ConnectedInteractive {
         unsafe {
             &mut *(crate::ffi::AIS_ConnectedInteractive_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_ConnectedInteractive_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -13458,6 +13530,26 @@ impl InteractiveContext {
                 theIObj,
                 thePriority.into(),
             )
+        }
+    }
+
+    /// **Source:** `AIS_InteractiveContext.hxx`:325 - `AIS_InteractiveContext::GetZLayer()`
+    /// Get Z layer id set for displayed interactive object.
+    pub fn get_z_layer(&self, theIObj: &crate::ffi::HandleAISInteractiveObject) -> i32 {
+        unsafe { crate::ffi::AIS_InteractiveContext_get_z_layer(self as *const Self, theIObj) }
+    }
+
+    /// **Source:** `AIS_InteractiveContext.hxx`:330 - `AIS_InteractiveContext::SetZLayer()`
+    /// Set Z layer id for interactive object.
+    /// The Z layers can be used to display temporarily presentations of some object in front of the
+    /// other objects in the scene. The ids for Z layers are generated by V3d_Viewer.
+    pub fn set_z_layer(
+        &mut self,
+        theIObj: &crate::ffi::HandleAISInteractiveObject,
+        theLayerId: i32,
+    ) {
+        unsafe {
+            crate::ffi::AIS_InteractiveContext_set_z_layer(self as *mut Self, theIObj, theLayerId)
         }
     }
 
@@ -15583,19 +15675,7 @@ impl HandleAISInteractiveContext {
     }
 }
 
-// ── Skipped symbols for InteractiveContext (3 total) ──
-// SKIPPED: **Source:** `AIS_InteractiveContext.hxx`:325 - `AIS_InteractiveContext::GetZLayer`
-//   method: Get Z layer id set for displayed interactive object.
-//   Reason: return type 'Graphic3d_ZLayerId' is unknown
-//   // pub fn get_z_layer(&self, theIObj: &HandleInteractiveObject) -> OwnedPtr<Graphic3d_ZLayerId>;
-//
-// SKIPPED: **Source:** `AIS_InteractiveContext.hxx`:330 - `AIS_InteractiveContext::SetZLayer`
-//   method: Set Z layer id for interactive object.
-//   method: The Z layers can be used to display temporarily presentations of some object in front of the
-//   method: other objects in the scene. The ids for Z layers are generated by V3d_Viewer.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn set_z_layer(&mut self, theIObj: &HandleInteractiveObject, theLayerId: ZLayerId);
-//
+// ── Skipped symbols for InteractiveContext (1 total) ──
 // SKIPPED: **Source:** `AIS_InteractiveContext.hxx`:830 - `AIS_InteractiveContext::EntityOwners`
 //   method: Returns a collection containing all entity owners created for the interactive object in
 //   method: specified selection mode (in all active modes if the Mode == -1)
@@ -16058,6 +16138,13 @@ impl InteractiveObject {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::AIS_InteractiveObject_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -16108,6 +16195,11 @@ impl InteractiveObject {
         unsafe {
             &mut *(crate::ffi::AIS_InteractiveObject_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_InteractiveObject_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -18120,6 +18212,11 @@ impl LightSource {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_LightSource_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_LightSource_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -18162,6 +18259,11 @@ impl LightSource {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_LightSource_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_LightSource_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -19030,6 +19132,13 @@ impl LightSourceOwner {
         unsafe { crate::ffi::AIS_LightSourceOwner_inherited_IsAutoHilight(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::AIS_LightSourceOwner_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:184 - `SelectMgr_EntityOwner::UpdateHighlightTrsf()`
     pub fn update_highlight_trsf(
         &mut self,
@@ -19571,6 +19680,11 @@ impl Line {
         unsafe { crate::ffi::AIS_Line_inherited_ErasePresentations(self as *mut Self, theToRemove) }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_Line_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_Line_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -19609,6 +19723,11 @@ impl Line {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_Line_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_Line_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -21189,6 +21308,11 @@ impl Manipulator {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_Manipulator_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_Manipulator_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -21231,6 +21355,11 @@ impl Manipulator {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_Manipulator_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_Manipulator_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -22102,6 +22231,13 @@ impl ManipulatorOwner {
         unsafe { crate::ffi::AIS_ManipulatorOwner_inherited_IsForcedHilight(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::AIS_ManipulatorOwner_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:184 - `SelectMgr_EntityOwner::UpdateHighlightTrsf()`
     pub fn update_highlight_trsf(
         &mut self,
@@ -22657,6 +22793,11 @@ impl MediaPlayer {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_MediaPlayer_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_MediaPlayer_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -22699,6 +22840,11 @@ impl MediaPlayer {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_MediaPlayer_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_MediaPlayer_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -23898,6 +24044,16 @@ impl MultipleConnectedInteractive {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::AIS_MultipleConnectedInteractive_inherited_SetZLayer(
+                self as *mut Self,
+                theLayerId,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -23938,6 +24094,13 @@ impl MultipleConnectedInteractive {
             &mut *(crate::ffi::AIS_MultipleConnectedInteractive_inherited_Presentations(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe {
+            crate::ffi::AIS_MultipleConnectedInteractive_inherited_ZLayer(self as *const Self)
         }
     }
 
@@ -25469,6 +25632,11 @@ impl Plane {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_Plane_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_Plane_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -25507,6 +25675,11 @@ impl Plane {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_Plane_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_Plane_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -26557,6 +26730,11 @@ impl PlaneTrihedron {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_PlaneTrihedron_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -26603,6 +26781,11 @@ impl PlaneTrihedron {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_PlaneTrihedron_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_PlaneTrihedron_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -27642,6 +27825,11 @@ impl Point {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_Point_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_Point_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -27680,6 +27868,11 @@ impl Point {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_Point_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_Point_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -28689,6 +28882,11 @@ impl PointCloud {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_PointCloud_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_PointCloud_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -28731,6 +28929,11 @@ impl PointCloud {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_PointCloud_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_PointCloud_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -29564,6 +29767,13 @@ impl PointCloudOwner {
         unsafe { crate::ffi::AIS_PointCloudOwner_inherited_IsAutoHilight(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::AIS_PointCloudOwner_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:184 - `SelectMgr_EntityOwner::UpdateHighlightTrsf()`
     pub fn update_highlight_trsf(
         &mut self,
@@ -30369,6 +30579,11 @@ impl RubberBand {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_RubberBand_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_RubberBand_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -30411,6 +30626,11 @@ impl RubberBand {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_RubberBand_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_RubberBand_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -31945,6 +32165,11 @@ impl Shape {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_Shape_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_Shape_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -31983,6 +32208,11 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_Shape_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_Shape_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -33320,6 +33550,11 @@ impl TextLabel {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_TextLabel_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_TextLabel_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -33362,6 +33597,11 @@ impl TextLabel {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_TextLabel_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_TextLabel_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -34784,6 +35024,11 @@ impl TexturedShape {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_TexturedShape_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -34828,6 +35073,11 @@ impl TexturedShape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_TexturedShape_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_TexturedShape_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -35861,6 +36111,11 @@ impl Triangulation {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_Triangulation_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -35905,6 +36160,11 @@ impl Triangulation {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_Triangulation_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_Triangulation_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -37168,6 +37428,11 @@ impl Trihedron {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_Trihedron_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_Trihedron_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -37210,6 +37475,11 @@ impl Trihedron {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_Trihedron_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_Trihedron_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -38042,6 +38312,11 @@ impl TrihedronOwner {
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:177 - `SelectMgr_EntityOwner::IsForcedHilight()`
     pub fn is_forced_hilight(&self) -> bool {
         unsafe { crate::ffi::AIS_TrihedronOwner_inherited_IsForcedHilight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_TrihedronOwner_inherited_SetZLayer(self as *mut Self, theLayerId) }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:184 - `SelectMgr_EntityOwner::UpdateHighlightTrsf()`
@@ -40827,6 +41102,11 @@ impl ViewCube {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_ViewCube_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::AIS_ViewCube_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -40860,6 +41140,11 @@ impl ViewCube {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::AIS_ViewCube_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_ViewCube_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -41674,6 +41959,11 @@ impl ViewCubeOwner {
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:170 - `SelectMgr_EntityOwner::IsAutoHilight()`
     pub fn is_auto_hilight(&self) -> bool {
         unsafe { crate::ffi::AIS_ViewCubeOwner_inherited_IsAutoHilight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::AIS_ViewCubeOwner_inherited_SetZLayer(self as *mut Self, theLayerId) }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:184 - `SelectMgr_EntityOwner::UpdateHighlightTrsf()`
@@ -43011,6 +43301,13 @@ impl XRTrackedDevice {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::AIS_XRTrackedDevice_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -43061,6 +43358,11 @@ impl XRTrackedDevice {
         unsafe {
             &mut *(crate::ffi::AIS_XRTrackedDevice_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::AIS_XRTrackedDevice_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`

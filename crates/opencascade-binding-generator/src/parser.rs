@@ -741,12 +741,14 @@ fn check_protected_destructor(entity: &Entity) -> bool {
 
 /// Parse an enum declaration
 fn parse_enum(entity: &Entity, source_header: &str, verbose: bool) -> Option<ParsedEnum> {
-    let name = entity.get_name()?;
-
-    // Skip anonymous enums (empty name or compiler-generated "(unnamed enum at ...)")
-    if name.is_empty() || name.starts_with("(unnamed") {
-        return None;
-    }
+    let raw_name = entity.get_name();
+    let name = match raw_name {
+        Some(ref n) if !n.is_empty() && !n.starts_with("(unnamed") => n.clone(),
+        _ => {
+            // Anonymous enum - try to derive a name from variant common prefix
+            return parse_anonymous_enum(entity, source_header, verbose);
+        }
+    };
 
     // Skip internal enums
     if name.starts_with('_') {
@@ -809,6 +811,117 @@ fn parse_enum(entity: &Entity, source_header: &str, verbose: bool) -> Option<Par
         source_header: source_header.to_string(),
         variants,
     })
+}
+
+/// Parse an anonymous enum by deriving a name from the common prefix of its variants.
+///
+/// OCCT uses a pattern where a `typedef Standard_Integer Foo` is followed by an anonymous
+/// enum whose variants are all prefixed with `Foo_`. For example:
+///
+/// ```cpp
+/// typedef Standard_Integer Graphic3d_ZLayerId;
+/// enum {
+///   Graphic3d_ZLayerId_UNKNOWN = -1,
+///   Graphic3d_ZLayerId_Default = 0,
+///   ...
+/// };
+/// ```
+///
+/// We detect this pattern and synthesize a named enum `Graphic3d_ZLayerId` from the
+/// anonymous enum's variants.
+fn parse_anonymous_enum(entity: &Entity, source_header: &str, verbose: bool) -> Option<ParsedEnum> {
+    // Collect all variant names first
+    let mut variant_names = Vec::new();
+    entity.visit_children(|child, _| {
+        if child.get_kind() == EntityKind::EnumConstantDecl {
+            if let Some(name) = child.get_name() {
+                variant_names.push(name);
+            }
+        }
+        EntityVisitResult::Continue
+    });
+
+    if variant_names.is_empty() {
+        return None;
+    }
+
+    // Find the longest common prefix of all variant names.
+    // The prefix must end with '_' and have at least one '_' (OCCT naming: Module_Name_VARIANT).
+    let common_prefix = longest_common_prefix(&variant_names);
+
+    // The common prefix should end with '_' and contain at least one '_' before the trailing one
+    // (i.e., it should look like "Module_Name_" not just "X_")
+    let trimmed_prefix = common_prefix.trim_end_matches('_');
+    if trimmed_prefix.is_empty() || !trimmed_prefix.contains('_') || !common_prefix.ends_with('_') {
+        if verbose {
+            println!("    Skipping anonymous enum (no suitable common prefix: {:?})", common_prefix);
+        }
+        return None;
+    }
+
+    // The enum name is the common prefix without the trailing '_'
+    let enum_name = trimmed_prefix.to_string();
+    let module = extract_module_from_header(source_header);
+
+    if verbose {
+        println!("  Parsing anonymous enum as: {} ({} variants)", enum_name, variant_names.len());
+    }
+
+    // Now collect full variant info
+    let mut variants = Vec::new();
+    entity.visit_children(|child, _| {
+        if child.get_kind() == EntityKind::EnumConstantDecl {
+            if let Some(variant_name) = child.get_name() {
+                let value = child.get_enum_constant_value().map(|(signed, _unsigned)| signed);
+                let comment = extract_doxygen_comment(&child);
+
+                if verbose {
+                    if let Some(v) = value {
+                        println!("    Variant: {} = {}", variant_name, v);
+                    } else {
+                        println!("    Variant: {}", variant_name);
+                    }
+                }
+
+                variants.push(EnumVariant {
+                    name: variant_name,
+                    value,
+                    comment,
+                });
+            }
+        }
+        EntityVisitResult::Continue
+    });
+
+    // Extract the doxygen comment from above the enum (if any)
+    let comment = extract_doxygen_comment(entity);
+
+    Some(ParsedEnum {
+        name: enum_name,
+        module,
+        comment,
+        source_header: source_header.to_string(),
+        variants,
+    })
+}
+
+/// Find the longest common prefix of a slice of strings.
+fn longest_common_prefix(strings: &[String]) -> String {
+    if strings.is_empty() {
+        return String::new();
+    }
+    let first = &strings[0];
+    let mut prefix_len = first.len();
+    for s in &strings[1..] {
+        prefix_len = prefix_len.min(s.len());
+        for (i, (a, b)) in first.chars().zip(s.chars()).enumerate() {
+            if a != b {
+                prefix_len = prefix_len.min(i);
+                break;
+            }
+        }
+    }
+    first[..prefix_len].to_string()
 }
 
 /// Parse a namespace-level function declaration
@@ -1341,6 +1454,8 @@ fn parse_type(clang_type: &clang::Type) -> Type {
             // Check if this is a typedef whose underlying type is a primitive.
             // If so, it's a genuine typedef-to-primitive (like Poly_MeshPurpose = unsigned int).
             // Note: clang wraps typedefs in Elaborated sugar, so check both Typedef and Elaborated kinds.
+            // The underlying type of a typedef chain (e.g., Graphic3d_ZLayerId -> Standard_Integer -> int)
+            // may appear as Elaborated rather than Typedef, so we accept both.
             let is_primitive_typedef = matches!(kind, TypeKind::Typedef | TypeKind::Elaborated)
                 && clang_type.get_declaration()
                     .filter(|d| d.get_kind() == clang::EntityKind::TypedefDecl)
@@ -1353,7 +1468,8 @@ fn parse_type(clang_type: &clang::Type) -> Type {
                         TypeKind::Long | TypeKind::ULong |
                         TypeKind::LongLong | TypeKind::ULongLong |
                         TypeKind::Float | TypeKind::Double | TypeKind::LongDouble |
-                        TypeKind::Typedef  // chain through another typedef (e.g., Standard_Integer)
+                        TypeKind::Typedef |   // chain through another typedef (e.g., Standard_Integer)
+                        TypeKind::Elaborated  // clang sugar around typedef (e.g., Standard_Integer via Elaborated)
                     ))
                     .unwrap_or(false);
             !is_primitive_typedef

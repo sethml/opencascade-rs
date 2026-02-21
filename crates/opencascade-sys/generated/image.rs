@@ -12,11 +12,11 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum CompressedFormat {
-    CompressedformatUnknown = 0,
-    CompressedformatRgbS3tcDxt1 = 20,
-    CompressedformatRgbaS3tcDxt1 = 21,
-    CompressedformatRgbaS3tcDxt3 = 22,
-    CompressedformatRgbaS3tcDxt5 = 23,
+    Unknown = 0,
+    RgbS3tcDxt1 = 20,
+    RgbaS3tcDxt1 = 21,
+    RgbaS3tcDxt3 = 22,
+    RgbaS3tcDxt5 = 23,
 }
 
 impl From<CompressedFormat> for i32 {
@@ -30,11 +30,11 @@ impl TryFrom<i32> for CompressedFormat {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(CompressedFormat::CompressedformatUnknown),
-            20 => Ok(CompressedFormat::CompressedformatRgbS3tcDxt1),
-            21 => Ok(CompressedFormat::CompressedformatRgbaS3tcDxt1),
-            22 => Ok(CompressedFormat::CompressedformatRgbaS3tcDxt3),
-            23 => Ok(CompressedFormat::CompressedformatRgbaS3tcDxt5),
+            0 => Ok(CompressedFormat::Unknown),
+            20 => Ok(CompressedFormat::RgbS3tcDxt1),
+            21 => Ok(CompressedFormat::RgbaS3tcDxt1),
+            22 => Ok(CompressedFormat::RgbaS3tcDxt3),
+            23 => Ok(CompressedFormat::RgbaS3tcDxt5),
             _ => Err(value),
         }
     }
@@ -46,46 +46,46 @@ impl TryFrom<i32> for CompressedFormat {
 #[repr(i32)]
 pub enum Format {
     /// < unsupported or unknown format
-    FormatUnknown = 0,
+    Unknown = 0,
     /// < 1 byte per pixel, intensity of the color
-    FormatGray = 1,
+    Gray = 1,
     /// < 1 byte per pixel, transparency
-    FormatAlpha = 2,
+    Alpha = 2,
     /// < 3 bytes packed RGB image plane
-    FormatRgb = 3,
+    Rgb = 3,
     /// < same as RGB but with different components order
-    FormatBgr = 4,
+    Bgr = 4,
     /// < 4 bytes packed RGB image plane (1 extra byte for alignment, may have
     /// < undefined value)
-    FormatRgb32 = 5,
+    Rgb32 = 5,
     /// < same as RGB but with different components order
-    FormatBgr32 = 6,
+    Bgr32 = 6,
     /// < 4 bytes packed RGBA image plane
-    FormatRgba = 7,
+    Rgba = 7,
     /// < same as RGBA but with different components order
-    FormatBgra = 8,
+    Bgra = 8,
     /// < 1 float  (4-bytes) per pixel (1-component plane), intensity of the color
-    FormatGrayf = 9,
+    Grayf = 9,
     /// < 1 float  (4-bytes) per pixel (1-component plane), transparency
-    FormatAlphaf = 10,
+    Alphaf = 10,
     /// < 2 floats (8-bytes) RG image plane
-    FormatRgf = 11,
+    Rgf = 11,
     /// < 3 floats (12-bytes) RGB image plane
-    FormatRgbf = 12,
+    Rgbf = 12,
     /// < same as RGBF but with different components order
-    FormatBgrf = 13,
+    Bgrf = 13,
     /// < 4 floats (16-bytes) RGBA image plane
-    FormatRgbaf = 14,
+    Rgbaf = 14,
     /// < same as RGBAF but with different components order
-    FormatBgraf = 15,
+    Bgraf = 15,
     /// < 1 half-float  (2-bytes) intensity of color
-    FormatGrayfHalf = 16,
+    GrayfHalf = 16,
     /// < 2 half-floats (4-bytes) RG   image plane
-    FormatRgfHalf = 17,
+    RgfHalf = 17,
     /// < 4 half-floats (8-bytes) RGBA image plane
-    FormatRgbafHalf = 18,
+    RgbafHalf = 18,
     /// < 2 bytes per pixel (unsigned short integer), intensity of the color
-    FormatGray16 = 19,
+    Gray16 = 19,
 }
 
 impl From<Format> for i32 {
@@ -99,26 +99,26 @@ impl TryFrom<i32> for Format {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(Format::FormatUnknown),
-            1 => Ok(Format::FormatGray),
-            2 => Ok(Format::FormatAlpha),
-            3 => Ok(Format::FormatRgb),
-            4 => Ok(Format::FormatBgr),
-            5 => Ok(Format::FormatRgb32),
-            6 => Ok(Format::FormatBgr32),
-            7 => Ok(Format::FormatRgba),
-            8 => Ok(Format::FormatBgra),
-            9 => Ok(Format::FormatGrayf),
-            10 => Ok(Format::FormatAlphaf),
-            11 => Ok(Format::FormatRgf),
-            12 => Ok(Format::FormatRgbf),
-            13 => Ok(Format::FormatBgrf),
-            14 => Ok(Format::FormatRgbaf),
-            15 => Ok(Format::FormatBgraf),
-            16 => Ok(Format::FormatGrayfHalf),
-            17 => Ok(Format::FormatRgfHalf),
-            18 => Ok(Format::FormatRgbafHalf),
-            19 => Ok(Format::FormatGray16),
+            0 => Ok(Format::Unknown),
+            1 => Ok(Format::Gray),
+            2 => Ok(Format::Alpha),
+            3 => Ok(Format::Rgb),
+            4 => Ok(Format::Bgr),
+            5 => Ok(Format::Rgb32),
+            6 => Ok(Format::Bgr32),
+            7 => Ok(Format::Rgba),
+            8 => Ok(Format::Bgra),
+            9 => Ok(Format::Grayf),
+            10 => Ok(Format::Alphaf),
+            11 => Ok(Format::Rgf),
+            12 => Ok(Format::Rgbf),
+            13 => Ok(Format::Bgrf),
+            14 => Ok(Format::Rgbaf),
+            15 => Ok(Format::Bgraf),
+            16 => Ok(Format::GrayfHalf),
+            17 => Ok(Format::RgfHalf),
+            18 => Ok(Format::RgbafHalf),
+            19 => Ok(Format::Gray16),
             _ => Err(value),
         }
     }

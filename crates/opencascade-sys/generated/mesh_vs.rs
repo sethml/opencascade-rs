@@ -6,6 +6,90 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// C++ enum: `MeshVS_BP`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum BP {
+    Mesh = 5,
+    Nodalcolor = 10,
+    Elemcolor = 15,
+    Text = 20,
+    Vector = 25,
+    User = 30,
+}
+
+impl From<BP> for i32 {
+    fn from(value: BP) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for BP {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            5 => Ok(BP::Mesh),
+            10 => Ok(BP::Nodalcolor),
+            15 => Ok(BP::Elemcolor),
+            20 => Ok(BP::Text),
+            25 => Ok(BP::Vector),
+            30 => Ok(BP::User),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `MeshVS_DMF`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum DMF {
+    Wireframe = 1,
+    Shading = 2,
+    Shrink = 3,
+    Vectordataprs = 4,
+    Nodalcolordataprs = 8,
+    Elementalcolordataprs = 16,
+    Textdataprs = 32,
+    Entitieswithdata = 64,
+    Deformedprswireframe = 128,
+    Deformedprsshading = 256,
+    Deformedprsshrink = 384,
+    Selectionprs = 512,
+    Hilightprs = 1024,
+    User = 2048,
+}
+
+impl From<DMF> for i32 {
+    fn from(value: DMF) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for DMF {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            1 => Ok(DMF::Wireframe),
+            2 => Ok(DMF::Shading),
+            3 => Ok(DMF::Shrink),
+            4 => Ok(DMF::Vectordataprs),
+            8 => Ok(DMF::Nodalcolordataprs),
+            16 => Ok(DMF::Elementalcolordataprs),
+            32 => Ok(DMF::Textdataprs),
+            64 => Ok(DMF::Entitieswithdata),
+            128 => Ok(DMF::Deformedprswireframe),
+            256 => Ok(DMF::Deformedprsshading),
+            384 => Ok(DMF::Deformedprsshrink),
+            512 => Ok(DMF::Selectionprs),
+            1024 => Ok(DMF::Hilightprs),
+            2048 => Ok(DMF::User),
+            _ => Err(value),
+        }
+    }
+}
+
 /// Is it allowed to draw beam and face's edge overlapping with this beam.
 /// Is mesh drawn with reflective material
 /// Is colored mesh data representation drawn with reflective material
@@ -3859,6 +3943,11 @@ impl Mesh {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::MeshVS_Mesh_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::MeshVS_Mesh_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -3897,6 +3986,11 @@ impl Mesh {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::MeshVS_Mesh_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::MeshVS_Mesh_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -4777,6 +4871,13 @@ impl MeshEntityOwner {
         unsafe { crate::ffi::MeshVS_MeshEntityOwner_inherited_IsForcedHilight(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::MeshVS_MeshEntityOwner_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:184 - `SelectMgr_EntityOwner::UpdateHighlightTrsf()`
     pub fn update_highlight_trsf(
         &mut self,
@@ -5220,6 +5321,11 @@ impl MeshOwner {
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:170 - `SelectMgr_EntityOwner::IsAutoHilight()`
     pub fn is_auto_hilight(&self) -> bool {
         unsafe { crate::ffi::MeshVS_MeshOwner_inherited_IsAutoHilight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::MeshVS_MeshOwner_inherited_SetZLayer(self as *mut Self, theLayerId) }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:184 - `SelectMgr_EntityOwner::UpdateHighlightTrsf()`

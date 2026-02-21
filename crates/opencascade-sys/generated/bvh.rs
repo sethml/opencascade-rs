@@ -6,6 +6,51 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// C++ enum: `BVH_Constants`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Constants {
+    /// The optimal tree depth.
+    /// Should be in sync with maximum stack size while traversing the tree - don't pass the trees of
+    /// greater depth to OCCT algorithms!
+    Maxtreedepth = 32,
+    /// Leaf node size optimal for complex nodes,
+    /// e.g. for upper-level BVH trees within multi-level structure (nodes point to another BVH
+    /// trees).
+    Leafnodesizesingle = 1,
+    /// Average leaf node size (4 primitive per leaf), optimal for average tree nodes.
+    Leafnodesizeaverage = 4,
+    /// Default leaf node size (5 primitives per leaf).
+    Leafnodesizedefault = 5,
+    /// Leaf node size (8 primitives per leaf), optimal for small tree nodes (e.g. triangles).
+    Leafnodesizesmall = 8,
+    /// The maximum number of bins for binned builder (giving the best traversal time at cost of
+    /// longer tree construction time).
+    Nbbinsbest = 48,
+}
+
+impl From<Constants> for i32 {
+    fn from(value: Constants) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Constants {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            32 => Ok(Constants::Maxtreedepth),
+            1 => Ok(Constants::Leafnodesizesingle),
+            4 => Ok(Constants::Leafnodesizeaverage),
+            5 => Ok(Constants::Leafnodesizedefault),
+            8 => Ok(Constants::Leafnodesizesmall),
+            48 => Ok(Constants::Nbbinsbest),
+            _ => Err(value),
+        }
+    }
+}
+
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::HandleStandardTransient;
 

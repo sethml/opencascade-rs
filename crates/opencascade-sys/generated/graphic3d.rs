@@ -12,16 +12,16 @@
 #[repr(i32)]
 pub enum AlphaMode {
     /// < rendered output is fully opaque and alpha value is ignored
-    AlphamodeOpaque = 0,
+    Opaque = 0,
     /// < rendered output is either fully opaque or fully transparent
     /// < depending on the alpha value and the alpha cutoff value
-    AlphamodeMask = 1,
+    Mask = 1,
     /// < rendered output is combined with the background
-    AlphamodeBlend = 2,
+    Blend = 2,
     /// < performs in-place blending (without implicit reordering of
     /// < opaque objects) with alpha-test
-    AlphamodeMaskblend = 3,
-    AlphamodeBlendauto = -1,
+    Maskblend = 3,
+    Blendauto = -1,
 }
 
 impl From<AlphaMode> for i32 {
@@ -35,11 +35,54 @@ impl TryFrom<i32> for AlphaMode {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(AlphaMode::AlphamodeOpaque),
-            1 => Ok(AlphaMode::AlphamodeMask),
-            2 => Ok(AlphaMode::AlphamodeBlend),
-            3 => Ok(AlphaMode::AlphamodeMaskblend),
-            -1 => Ok(AlphaMode::AlphamodeBlendauto),
+            0 => Ok(AlphaMode::Opaque),
+            1 => Ok(AlphaMode::Mask),
+            2 => Ok(AlphaMode::Blend),
+            3 => Ok(AlphaMode::Maskblend),
+            -1 => Ok(AlphaMode::Blendauto),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Graphic3d_ArrayFlags bitmask values.
+/// C++ enum: `Graphic3d_ArrayFlags`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ArrayFlags {
+    /// < no flags
+    None = 0,
+    /// < per-vertex normal attribute
+    Vertexnormal = 1,
+    /// < per-vertex color  attribute
+    Vertexcolor = 2,
+    /// < per-vertex texel coordinates (UV) attribute
+    Vertextexel = 4,
+    Boundcolor = 16,
+    Attribsmutable = 32,
+    Attribsdeinterleaved = 64,
+    Indexesmutable = 128,
+}
+
+impl From<ArrayFlags> for i32 {
+    fn from(value: ArrayFlags) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ArrayFlags {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(ArrayFlags::None),
+            1 => Ok(ArrayFlags::Vertexnormal),
+            2 => Ok(ArrayFlags::Vertexcolor),
+            4 => Ok(ArrayFlags::Vertextexel),
+            16 => Ok(ArrayFlags::Boundcolor),
+            32 => Ok(ArrayFlags::Attribsmutable),
+            64 => Ok(ArrayFlags::Attribsdeinterleaved),
+            128 => Ok(ArrayFlags::Indexesmutable),
             _ => Err(value),
         }
     }
@@ -205,14 +248,14 @@ impl TryFrom<i32> for BufferType {
 #[repr(i32)]
 pub enum CappingFlags {
     /// < no flags
-    CappingflagsNone = 0,
+    None = 0,
     /// < use object material
-    CappingflagsObjectmaterial = 1,
+    Objectmaterial = 1,
     /// < use object texture
-    CappingflagsObjecttexture = 2,
+    Objecttexture = 2,
     /// < use object GLSL program
-    CappingflagsObjectshader = 8,
-    CappingflagsObjectaspect = 11,
+    Objectshader = 8,
+    Objectaspect = 11,
 }
 
 impl From<CappingFlags> for i32 {
@@ -226,11 +269,11 @@ impl TryFrom<i32> for CappingFlags {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(CappingFlags::CappingflagsNone),
-            1 => Ok(CappingFlags::CappingflagsObjectmaterial),
-            2 => Ok(CappingFlags::CappingflagsObjecttexture),
-            8 => Ok(CappingFlags::CappingflagsObjectshader),
-            11 => Ok(CappingFlags::CappingflagsObjectaspect),
+            0 => Ok(CappingFlags::None),
+            1 => Ok(CappingFlags::Objectmaterial),
+            2 => Ok(CappingFlags::Objecttexture),
+            8 => Ok(CappingFlags::Objectshader),
+            11 => Ok(CappingFlags::Objectaspect),
             _ => Err(value),
         }
     }
@@ -242,11 +285,11 @@ impl TryFrom<i32> for CappingFlags {
 #[repr(i32)]
 pub enum ClipState {
     /// < fully outside (clipped) - should be discarded
-    ClipstateOut = 0,
+    Out = 0,
     /// < fully inside  (NOT clipped) - should NOT be discarded
-    ClipstateIn = 1,
+    In = 1,
     /// < on (not clipped / partially clipped) - should NOT be discarded
-    ClipstateOn = 2,
+    On = 2,
 }
 
 impl From<ClipState> for i32 {
@@ -260,9 +303,9 @@ impl TryFrom<i32> for ClipState {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(ClipState::ClipstateOut),
-            1 => Ok(ClipState::ClipstateIn),
-            2 => Ok(ClipState::ClipstateOn),
+            0 => Ok(ClipState::Out),
+            1 => Ok(ClipState::In),
+            2 => Ok(ClipState::On),
             _ => Err(value),
         }
     }
@@ -315,19 +358,19 @@ impl TryFrom<i32> for CubeMapSide {
 #[repr(i32)]
 pub enum DiagnosticInfo {
     /// < device / vendor / version information
-    DiagnosticinfoDevice = 1,
+    Device = 1,
     /// < framebuffer information
-    DiagnosticinfoFramebuffer = 2,
+    Framebuffer = 2,
     /// < hardware limits
-    DiagnosticinfoLimits = 4,
+    Limits = 4,
     /// < memory counters
-    DiagnosticinfoMemory = 8,
-    DiagnosticinfoNativeplatform = 16,
+    Memory = 8,
+    Nativeplatform = 16,
     /// < vendor extension list (usually very long)
-    DiagnosticinfoExtensions = 32,
-    DiagnosticinfoShort = 7,
-    DiagnosticinfoBasic = 31,
-    DiagnosticinfoComplete = 63,
+    Extensions = 32,
+    Short = 7,
+    Basic = 31,
+    Complete = 63,
 }
 
 impl From<DiagnosticInfo> for i32 {
@@ -341,15 +384,15 @@ impl TryFrom<i32> for DiagnosticInfo {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            1 => Ok(DiagnosticInfo::DiagnosticinfoDevice),
-            2 => Ok(DiagnosticInfo::DiagnosticinfoFramebuffer),
-            4 => Ok(DiagnosticInfo::DiagnosticinfoLimits),
-            8 => Ok(DiagnosticInfo::DiagnosticinfoMemory),
-            16 => Ok(DiagnosticInfo::DiagnosticinfoNativeplatform),
-            32 => Ok(DiagnosticInfo::DiagnosticinfoExtensions),
-            7 => Ok(DiagnosticInfo::DiagnosticinfoShort),
-            31 => Ok(DiagnosticInfo::DiagnosticinfoBasic),
-            63 => Ok(DiagnosticInfo::DiagnosticinfoComplete),
+            1 => Ok(DiagnosticInfo::Device),
+            2 => Ok(DiagnosticInfo::Framebuffer),
+            4 => Ok(DiagnosticInfo::Limits),
+            8 => Ok(DiagnosticInfo::Memory),
+            16 => Ok(DiagnosticInfo::Nativeplatform),
+            32 => Ok(DiagnosticInfo::Extensions),
+            7 => Ok(DiagnosticInfo::Short),
+            31 => Ok(DiagnosticInfo::Basic),
+            63 => Ok(DiagnosticInfo::Complete),
             _ => Err(value),
         }
     }
@@ -363,18 +406,18 @@ impl TryFrom<i32> for DiagnosticInfo {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DisplayPriority {
-    DisplaypriorityInvalid = -1,
-    DisplaypriorityBottom = 0,
-    DisplaypriorityAlmostbottom = 1,
-    DisplaypriorityBelow2 = 2,
-    DisplaypriorityBelow1 = 3,
-    DisplaypriorityBelow = 4,
-    DisplaypriorityNormal = 5,
-    DisplaypriorityAbove = 6,
-    DisplaypriorityAbove1 = 7,
-    DisplaypriorityAbove2 = 8,
-    DisplaypriorityHighlight = 9,
-    DisplaypriorityTopmost = 10,
+    Invalid = -1,
+    Bottom = 0,
+    Almostbottom = 1,
+    Below2 = 2,
+    Below1 = 3,
+    Below = 4,
+    Normal = 5,
+    Above = 6,
+    Above1 = 7,
+    Above2 = 8,
+    Highlight = 9,
+    Topmost = 10,
 }
 
 impl From<DisplayPriority> for i32 {
@@ -388,18 +431,18 @@ impl TryFrom<i32> for DisplayPriority {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            -1 => Ok(DisplayPriority::DisplaypriorityInvalid),
-            0 => Ok(DisplayPriority::DisplaypriorityBottom),
-            1 => Ok(DisplayPriority::DisplaypriorityAlmostbottom),
-            2 => Ok(DisplayPriority::DisplaypriorityBelow2),
-            3 => Ok(DisplayPriority::DisplaypriorityBelow1),
-            4 => Ok(DisplayPriority::DisplaypriorityBelow),
-            5 => Ok(DisplayPriority::DisplaypriorityNormal),
-            6 => Ok(DisplayPriority::DisplaypriorityAbove),
-            7 => Ok(DisplayPriority::DisplaypriorityAbove1),
-            8 => Ok(DisplayPriority::DisplaypriorityAbove2),
-            9 => Ok(DisplayPriority::DisplaypriorityHighlight),
-            10 => Ok(DisplayPriority::DisplaypriorityTopmost),
+            -1 => Ok(DisplayPriority::Invalid),
+            0 => Ok(DisplayPriority::Bottom),
+            1 => Ok(DisplayPriority::Almostbottom),
+            2 => Ok(DisplayPriority::Below2),
+            3 => Ok(DisplayPriority::Below1),
+            4 => Ok(DisplayPriority::Below),
+            5 => Ok(DisplayPriority::Normal),
+            6 => Ok(DisplayPriority::Above),
+            7 => Ok(DisplayPriority::Above1),
+            8 => Ok(DisplayPriority::Above2),
+            9 => Ok(DisplayPriority::Highlight),
+            10 => Ok(DisplayPriority::Topmost),
             _ => Err(value),
         }
     }
@@ -411,67 +454,68 @@ impl TryFrom<i32> for DisplayPriority {
 #[repr(i32)]
 pub enum FrameStatsCounter {
     /// < number of ZLayers
-    FramestatscounterNblayers = 0,
+    Nblayers = 0,
     /// < number of defined OpenGl_Structure
-    FramestatscounterNbstructs = 1,
+    Nbstructs = 1,
     /// < estimated GPU memory used for geometry
-    FramestatscounterEstimatedbytesgeom = 2,
+    Estimatedbytesgeom = 2,
     /// < estimated GPU memory used for FBOs
-    FramestatscounterEstimatedbytesfbos = 3,
+    Estimatedbytesfbos = 3,
     /// < estimated GPU memory used for textures
-    FramestatscounterEstimatedbytestextures = 4,
+    Estimatedbytestextures = 4,
     /// < number of not culled ZLayers
-    FramestatscounterNblayersnotculled = 5,
+    Nblayersnotculled = 5,
     /// < number of not culled OpenGl_Structure
-    FramestatscounterNbstructsnotculled = 6,
+    Nbstructsnotculled = 6,
     /// < number of not culled OpenGl_Group
-    FramestatscounterNbgroupsnotculled = 7,
+    Nbgroupsnotculled = 7,
     /// < number of not culled OpenGl_Element
-    FramestatscounterNbelemsnotculled = 8,
+    Nbelemsnotculled = 8,
     /// < number of not culled OpenGl_PrimitiveArray
     /// < drawing triangles
-    FramestatscounterNbelemsfillnotculled = 9,
+    Nbelemsfillnotculled = 9,
     /// < number of not culled OpenGl_PrimitiveArray
     /// < drawing lines
-    FramestatscounterNbelemslinenotculled = 10,
+    Nbelemslinenotculled = 10,
     /// < number of not culled OpenGl_PrimitiveArray
     /// < drawing points
-    FramestatscounterNbelemspointnotculled = 11,
+    Nbelemspointnotculled = 11,
     /// < number of not culled OpenGl_Text
-    FramestatscounterNbelemstextnotculled = 12,
+    Nbelemstextnotculled = 12,
     /// < number of not culled (as structure)
     /// < triangles
-    FramestatscounterNbtrianglesnotculled = 13,
+    Nbtrianglesnotculled = 13,
     /// < number of not culled (as structure) line
     /// < segments
-    FramestatscounterNblinesnotculled = 14,
+    Nblinesnotculled = 14,
     /// < number of not culled (as structure) points
-    FramestatscounterNbpointsnotculled = 15,
+    Nbpointsnotculled = 15,
     /// < number of ZLayers in immediate layer
-    FramestatscounterNblayersimmediate = 16,
+    Nblayersimmediate = 16,
     /// < number of OpenGl_Structure in immediate layer
-    FramestatscounterNbstructsimmediate = 17,
+    Nbstructsimmediate = 17,
     /// < number of OpenGl_Group in immediate layer
-    FramestatscounterNbgroupsimmediate = 18,
+    Nbgroupsimmediate = 18,
     /// < number of OpenGl_Element in immediate layer
-    FramestatscounterNbelemsimmediate = 19,
+    Nbelemsimmediate = 19,
     /// < number of OpenGl_PrimitiveArray drawing
     /// < triangles in immediate layer
-    FramestatscounterNbelemsfillimmediate = 20,
+    Nbelemsfillimmediate = 20,
     /// < number of OpenGl_PrimitiveArray drawing
     /// < lines in immediate layer
-    FramestatscounterNbelemslineimmediate = 21,
+    Nbelemslineimmediate = 21,
     /// < number of OpenGl_PrimitiveArray drawing
     /// < points in immediate layer
-    FramestatscounterNbelemspointimmediate = 22,
+    Nbelemspointimmediate = 22,
     /// < number of OpenGl_Text in immediate layer
-    FramestatscounterNbelemstextimmediate = 23,
+    Nbelemstextimmediate = 23,
     /// < number of triangles in immediate layer
-    FramestatscounterNbtrianglesimmediate = 24,
+    Nbtrianglesimmediate = 24,
     /// < number of line segments in immediate layer
-    FramestatscounterNblinesimmediate = 25,
+    Nblinesimmediate = 25,
     /// < number of points in immediate layer
-    FramestatscounterNbpointsimmediate = 26,
+    Nbpointsimmediate = 26,
+    Nb = 27,
 }
 
 impl From<FrameStatsCounter> for i32 {
@@ -485,33 +529,34 @@ impl TryFrom<i32> for FrameStatsCounter {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(FrameStatsCounter::FramestatscounterNblayers),
-            1 => Ok(FrameStatsCounter::FramestatscounterNbstructs),
-            2 => Ok(FrameStatsCounter::FramestatscounterEstimatedbytesgeom),
-            3 => Ok(FrameStatsCounter::FramestatscounterEstimatedbytesfbos),
-            4 => Ok(FrameStatsCounter::FramestatscounterEstimatedbytestextures),
-            5 => Ok(FrameStatsCounter::FramestatscounterNblayersnotculled),
-            6 => Ok(FrameStatsCounter::FramestatscounterNbstructsnotculled),
-            7 => Ok(FrameStatsCounter::FramestatscounterNbgroupsnotculled),
-            8 => Ok(FrameStatsCounter::FramestatscounterNbelemsnotculled),
-            9 => Ok(FrameStatsCounter::FramestatscounterNbelemsfillnotculled),
-            10 => Ok(FrameStatsCounter::FramestatscounterNbelemslinenotculled),
-            11 => Ok(FrameStatsCounter::FramestatscounterNbelemspointnotculled),
-            12 => Ok(FrameStatsCounter::FramestatscounterNbelemstextnotculled),
-            13 => Ok(FrameStatsCounter::FramestatscounterNbtrianglesnotculled),
-            14 => Ok(FrameStatsCounter::FramestatscounterNblinesnotculled),
-            15 => Ok(FrameStatsCounter::FramestatscounterNbpointsnotculled),
-            16 => Ok(FrameStatsCounter::FramestatscounterNblayersimmediate),
-            17 => Ok(FrameStatsCounter::FramestatscounterNbstructsimmediate),
-            18 => Ok(FrameStatsCounter::FramestatscounterNbgroupsimmediate),
-            19 => Ok(FrameStatsCounter::FramestatscounterNbelemsimmediate),
-            20 => Ok(FrameStatsCounter::FramestatscounterNbelemsfillimmediate),
-            21 => Ok(FrameStatsCounter::FramestatscounterNbelemslineimmediate),
-            22 => Ok(FrameStatsCounter::FramestatscounterNbelemspointimmediate),
-            23 => Ok(FrameStatsCounter::FramestatscounterNbelemstextimmediate),
-            24 => Ok(FrameStatsCounter::FramestatscounterNbtrianglesimmediate),
-            25 => Ok(FrameStatsCounter::FramestatscounterNblinesimmediate),
-            26 => Ok(FrameStatsCounter::FramestatscounterNbpointsimmediate),
+            0 => Ok(FrameStatsCounter::Nblayers),
+            1 => Ok(FrameStatsCounter::Nbstructs),
+            2 => Ok(FrameStatsCounter::Estimatedbytesgeom),
+            3 => Ok(FrameStatsCounter::Estimatedbytesfbos),
+            4 => Ok(FrameStatsCounter::Estimatedbytestextures),
+            5 => Ok(FrameStatsCounter::Nblayersnotculled),
+            6 => Ok(FrameStatsCounter::Nbstructsnotculled),
+            7 => Ok(FrameStatsCounter::Nbgroupsnotculled),
+            8 => Ok(FrameStatsCounter::Nbelemsnotculled),
+            9 => Ok(FrameStatsCounter::Nbelemsfillnotculled),
+            10 => Ok(FrameStatsCounter::Nbelemslinenotculled),
+            11 => Ok(FrameStatsCounter::Nbelemspointnotculled),
+            12 => Ok(FrameStatsCounter::Nbelemstextnotculled),
+            13 => Ok(FrameStatsCounter::Nbtrianglesnotculled),
+            14 => Ok(FrameStatsCounter::Nblinesnotculled),
+            15 => Ok(FrameStatsCounter::Nbpointsnotculled),
+            16 => Ok(FrameStatsCounter::Nblayersimmediate),
+            17 => Ok(FrameStatsCounter::Nbstructsimmediate),
+            18 => Ok(FrameStatsCounter::Nbgroupsimmediate),
+            19 => Ok(FrameStatsCounter::Nbelemsimmediate),
+            20 => Ok(FrameStatsCounter::Nbelemsfillimmediate),
+            21 => Ok(FrameStatsCounter::Nbelemslineimmediate),
+            22 => Ok(FrameStatsCounter::Nbelemspointimmediate),
+            23 => Ok(FrameStatsCounter::Nbelemstextimmediate),
+            24 => Ok(FrameStatsCounter::Nbtrianglesimmediate),
+            25 => Ok(FrameStatsCounter::Nblinesimmediate),
+            26 => Ok(FrameStatsCounter::Nbpointsimmediate),
+            27 => Ok(FrameStatsCounter::Nb),
             _ => Err(value),
         }
     }
@@ -522,11 +567,11 @@ impl TryFrom<i32> for FrameStatsCounter {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum FrameStatsTimer {
-    FramestatstimerElapsedframe = 0,
-    FramestatstimerCpuframe = 1,
-    FramestatstimerCpuculling = 2,
-    FramestatstimerCpupicking = 3,
-    FramestatstimerCpudynamics = 4,
+    Elapsedframe = 0,
+    Cpuframe = 1,
+    Cpuculling = 2,
+    Cpupicking = 3,
+    Cpudynamics = 4,
 }
 
 impl From<FrameStatsTimer> for i32 {
@@ -540,11 +585,11 @@ impl TryFrom<i32> for FrameStatsTimer {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(FrameStatsTimer::FramestatstimerElapsedframe),
-            1 => Ok(FrameStatsTimer::FramestatstimerCpuframe),
-            2 => Ok(FrameStatsTimer::FramestatstimerCpuculling),
-            3 => Ok(FrameStatsTimer::FramestatstimerCpupicking),
-            4 => Ok(FrameStatsTimer::FramestatstimerCpudynamics),
+            0 => Ok(FrameStatsTimer::Elapsedframe),
+            1 => Ok(FrameStatsTimer::Cpuframe),
+            2 => Ok(FrameStatsTimer::Cpuculling),
+            3 => Ok(FrameStatsTimer::Cpupicking),
+            4 => Ok(FrameStatsTimer::Cpudynamics),
             _ => Err(value),
         }
     }
@@ -655,57 +700,57 @@ impl TryFrom<i32> for LevelOfTextureAnisotropy {
 #[repr(i32)]
 pub enum NameOfMaterial {
     /// < Brass        (Physic)
-    NameofmaterialBrass = 0,
+    Brass = 0,
     /// < Bronze       (Physic)
-    NameofmaterialBronze = 1,
+    Bronze = 1,
     /// < Copper       (Physic)
-    NameofmaterialCopper = 2,
+    Copper = 2,
     /// < Gold         (Physic)
-    NameofmaterialGold = 3,
+    Gold = 3,
     /// < Pewter       (Physic)
-    NameofmaterialPewter = 4,
+    Pewter = 4,
     /// < Plastered    (Generic)
-    NameofmaterialPlastered = 5,
+    Plastered = 5,
     /// < Plastified   (Generic)
-    NameofmaterialPlastified = 6,
+    Plastified = 6,
     /// < Silver       (Physic)
-    NameofmaterialSilver = 7,
+    Silver = 7,
     /// < Steel        (Physic)
-    NameofmaterialSteel = 8,
+    Steel = 8,
     /// < Stone        (Physic)
-    NameofmaterialStone = 9,
+    Stone = 9,
     /// < Shiny Plastified (Generic)
-    NameofmaterialShinyplastified = 10,
+    Shinyplastified = 10,
     /// < Satin        (Generic)
-    NameofmaterialSatin = 11,
+    Satin = 11,
     /// < Metalized    (Generic)
-    NameofmaterialMetalized = 12,
+    Metalized = 12,
     /// < Ionized      (Generic)
-    NameofmaterialIonized = 13,
+    Ionized = 13,
     /// < Chrome       (Physic)
-    NameofmaterialChrome = 14,
+    Chrome = 14,
     /// < Aluminum     (Physic)
-    NameofmaterialAluminum = 15,
+    Aluminum = 15,
     /// < Obsidian     (Physic)
-    NameofmaterialObsidian = 16,
+    Obsidian = 16,
     /// < Neon         (Physic)
-    NameofmaterialNeon = 17,
+    Neon = 17,
     /// < Jade         (Physic)
-    NameofmaterialJade = 18,
+    Jade = 18,
     /// < Charcoal     (Physic)
-    NameofmaterialCharcoal = 19,
+    Charcoal = 19,
     /// < Water        (Physic)
-    NameofmaterialWater = 20,
+    Water = 20,
     /// < Glass        (Physic)
-    NameofmaterialGlass = 21,
+    Glass = 21,
     /// < Diamond      (Physic)
-    NameofmaterialDiamond = 22,
+    Diamond = 22,
     /// < Transparent  (Physic)
-    NameofmaterialTransparent = 23,
+    Transparent = 23,
     /// < Default      (Generic);
-    NameofmaterialDefault = 24,
+    Default = 24,
     /// < User-defined (Physic);
-    NameofmaterialUserdefined = 25,
+    Userdefined = 25,
 }
 
 impl From<NameOfMaterial> for i32 {
@@ -719,32 +764,32 @@ impl TryFrom<i32> for NameOfMaterial {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(NameOfMaterial::NameofmaterialBrass),
-            1 => Ok(NameOfMaterial::NameofmaterialBronze),
-            2 => Ok(NameOfMaterial::NameofmaterialCopper),
-            3 => Ok(NameOfMaterial::NameofmaterialGold),
-            4 => Ok(NameOfMaterial::NameofmaterialPewter),
-            5 => Ok(NameOfMaterial::NameofmaterialPlastered),
-            6 => Ok(NameOfMaterial::NameofmaterialPlastified),
-            7 => Ok(NameOfMaterial::NameofmaterialSilver),
-            8 => Ok(NameOfMaterial::NameofmaterialSteel),
-            9 => Ok(NameOfMaterial::NameofmaterialStone),
-            10 => Ok(NameOfMaterial::NameofmaterialShinyplastified),
-            11 => Ok(NameOfMaterial::NameofmaterialSatin),
-            12 => Ok(NameOfMaterial::NameofmaterialMetalized),
-            13 => Ok(NameOfMaterial::NameofmaterialIonized),
-            14 => Ok(NameOfMaterial::NameofmaterialChrome),
-            15 => Ok(NameOfMaterial::NameofmaterialAluminum),
-            16 => Ok(NameOfMaterial::NameofmaterialObsidian),
-            17 => Ok(NameOfMaterial::NameofmaterialNeon),
-            18 => Ok(NameOfMaterial::NameofmaterialJade),
-            19 => Ok(NameOfMaterial::NameofmaterialCharcoal),
-            20 => Ok(NameOfMaterial::NameofmaterialWater),
-            21 => Ok(NameOfMaterial::NameofmaterialGlass),
-            22 => Ok(NameOfMaterial::NameofmaterialDiamond),
-            23 => Ok(NameOfMaterial::NameofmaterialTransparent),
-            24 => Ok(NameOfMaterial::NameofmaterialDefault),
-            25 => Ok(NameOfMaterial::NameofmaterialUserdefined),
+            0 => Ok(NameOfMaterial::Brass),
+            1 => Ok(NameOfMaterial::Bronze),
+            2 => Ok(NameOfMaterial::Copper),
+            3 => Ok(NameOfMaterial::Gold),
+            4 => Ok(NameOfMaterial::Pewter),
+            5 => Ok(NameOfMaterial::Plastered),
+            6 => Ok(NameOfMaterial::Plastified),
+            7 => Ok(NameOfMaterial::Silver),
+            8 => Ok(NameOfMaterial::Steel),
+            9 => Ok(NameOfMaterial::Stone),
+            10 => Ok(NameOfMaterial::Shinyplastified),
+            11 => Ok(NameOfMaterial::Satin),
+            12 => Ok(NameOfMaterial::Metalized),
+            13 => Ok(NameOfMaterial::Ionized),
+            14 => Ok(NameOfMaterial::Chrome),
+            15 => Ok(NameOfMaterial::Aluminum),
+            16 => Ok(NameOfMaterial::Obsidian),
+            17 => Ok(NameOfMaterial::Neon),
+            18 => Ok(NameOfMaterial::Jade),
+            19 => Ok(NameOfMaterial::Charcoal),
+            20 => Ok(NameOfMaterial::Water),
+            21 => Ok(NameOfMaterial::Glass),
+            22 => Ok(NameOfMaterial::Diamond),
+            23 => Ok(NameOfMaterial::Transparent),
+            24 => Ok(NameOfMaterial::Default),
+            25 => Ok(NameOfMaterial::Userdefined),
             _ => Err(value),
         }
     }
@@ -987,34 +1032,34 @@ impl TryFrom<i32> for RenderingMode {
 #[repr(i32)]
 pub enum ShaderFlags {
     /// < per-vertex color
-    ShaderflagsVertcolor = 1,
+    Vertcolor = 1,
     /// < handle RGB texturing
-    ShaderflagsTexturergb = 2,
+    Texturergb = 2,
     /// < handle environment map (obsolete, to be removed)
-    ShaderflagsTextureenv = 4,
-    ShaderflagsTexturenormal = 6,
+    Textureenv = 4,
+    Texturenormal = 6,
     /// < point marker without sprite
-    ShaderflagsPointsimple = 8,
+    Pointsimple = 8,
     /// < point sprite with RGB image
-    ShaderflagsPointsprite = 16,
-    ShaderflagsPointspritea = 24,
+    Pointsprite = 16,
+    Pointspritea = 24,
     /// < stipple line
-    ShaderflagsStippleline = 32,
+    Stippleline = 32,
     /// < handle 1 clipping plane
-    ShaderflagsClipplanes1 = 64,
+    Clipplanes1 = 64,
     /// < handle 2 clipping planes
-    ShaderflagsClipplanes2 = 128,
-    ShaderflagsClipplanesn = 192,
+    Clipplanes2 = 128,
+    Clipplanesn = 192,
     /// < handle chains of clipping planes
-    ShaderflagsClipchains = 256,
+    Clipchains = 256,
     /// < draw mesh edges (wireframe)
-    ShaderflagsMeshedges = 512,
-    ShaderflagsAlphatest = 1024,
-    ShaderflagsWriteoit = 2048,
+    Meshedges = 512,
+    Alphatest = 1024,
+    Writeoit = 2048,
     /// < handle Depth Peeling OIT
-    ShaderflagsOitdepthpeeling = 4096,
+    Oitdepthpeeling = 4096,
     /// < overall number of combinations
-    ShaderflagsNb = 8192,
+    Nb = 8192,
 }
 
 impl From<ShaderFlags> for i32 {
@@ -1028,23 +1073,23 @@ impl TryFrom<i32> for ShaderFlags {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            1 => Ok(ShaderFlags::ShaderflagsVertcolor),
-            2 => Ok(ShaderFlags::ShaderflagsTexturergb),
-            4 => Ok(ShaderFlags::ShaderflagsTextureenv),
-            6 => Ok(ShaderFlags::ShaderflagsTexturenormal),
-            8 => Ok(ShaderFlags::ShaderflagsPointsimple),
-            16 => Ok(ShaderFlags::ShaderflagsPointsprite),
-            24 => Ok(ShaderFlags::ShaderflagsPointspritea),
-            32 => Ok(ShaderFlags::ShaderflagsStippleline),
-            64 => Ok(ShaderFlags::ShaderflagsClipplanes1),
-            128 => Ok(ShaderFlags::ShaderflagsClipplanes2),
-            192 => Ok(ShaderFlags::ShaderflagsClipplanesn),
-            256 => Ok(ShaderFlags::ShaderflagsClipchains),
-            512 => Ok(ShaderFlags::ShaderflagsMeshedges),
-            1024 => Ok(ShaderFlags::ShaderflagsAlphatest),
-            2048 => Ok(ShaderFlags::ShaderflagsWriteoit),
-            4096 => Ok(ShaderFlags::ShaderflagsOitdepthpeeling),
-            8192 => Ok(ShaderFlags::ShaderflagsNb),
+            1 => Ok(ShaderFlags::Vertcolor),
+            2 => Ok(ShaderFlags::Texturergb),
+            4 => Ok(ShaderFlags::Textureenv),
+            6 => Ok(ShaderFlags::Texturenormal),
+            8 => Ok(ShaderFlags::Pointsimple),
+            16 => Ok(ShaderFlags::Pointsprite),
+            24 => Ok(ShaderFlags::Pointspritea),
+            32 => Ok(ShaderFlags::Stippleline),
+            64 => Ok(ShaderFlags::Clipplanes1),
+            128 => Ok(ShaderFlags::Clipplanes2),
+            192 => Ok(ShaderFlags::Clipplanesn),
+            256 => Ok(ShaderFlags::Clipchains),
+            512 => Ok(ShaderFlags::Meshedges),
+            1024 => Ok(ShaderFlags::Alphatest),
+            2048 => Ok(ShaderFlags::Writeoit),
+            4096 => Ok(ShaderFlags::Oitdepthpeeling),
+            8192 => Ok(ShaderFlags::Nb),
             _ => Err(value),
         }
     }
@@ -1057,14 +1102,14 @@ impl TryFrom<i32> for ShaderFlags {
 pub enum GlslExtension {
     /// < OpenGL ES 2.0 extension
     /// < GL_OES_standard_derivatives
-    GlslextensionGlOesStandardDerivatives = 0,
+    GlOesStandardDerivatives = 0,
     /// < OpenGL ES 2.0 extension
     /// < GL_EXT_shader_texture_lod
-    GlslextensionGlExtShaderTextureLod = 1,
+    GlExtShaderTextureLod = 1,
     /// < OpenGL ES 2.0 extension GL_EXT_frag_depth
-    GlslextensionGlExtFragDepth = 2,
+    GlExtFragDepth = 2,
     /// < OpenGL 2.0 extension GL_EXT_gpu_shader4
-    GlslextensionGlExtGpuShader4 = 3,
+    GlExtGpuShader4 = 3,
 }
 
 impl From<GlslExtension> for i32 {
@@ -1078,10 +1123,10 @@ impl TryFrom<i32> for GlslExtension {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GlslExtension::GlslextensionGlOesStandardDerivatives),
-            1 => Ok(GlslExtension::GlslextensionGlExtShaderTextureLod),
-            2 => Ok(GlslExtension::GlslextensionGlExtFragDepth),
-            3 => Ok(GlslExtension::GlslextensionGlExtGpuShader4),
+            0 => Ok(GlslExtension::GlOesStandardDerivatives),
+            1 => Ok(GlslExtension::GlExtShaderTextureLod),
+            2 => Ok(GlslExtension::GlExtFragDepth),
+            3 => Ok(GlslExtension::GlExtGpuShader4),
             _ => Err(value),
         }
     }
@@ -1093,23 +1138,23 @@ impl TryFrom<i32> for GlslExtension {
 #[repr(i32)]
 pub enum StereoMode {
     /// < OpenGL QuadBuffer
-    StereomodeQuadbuffer = 0,
+    Quadbuffer = 0,
     /// < Anaglyph glasses, the type should be specified in addition
-    StereomodeAnaglyph = 1,
+    Anaglyph = 1,
     /// < Row-interlaced stereo
-    StereomodeRowinterlaced = 2,
+    Rowinterlaced = 2,
     /// < Column-interlaced stereo
-    StereomodeColumninterlaced = 3,
+    Columninterlaced = 3,
     /// < chess-board stereo for DLP TVs
-    StereomodeChessboard = 4,
+    Chessboard = 4,
     /// < horizontal pair
-    StereomodeSidebyside = 5,
+    Sidebyside = 5,
     /// < vertical   pair
-    StereomodeOverunder = 6,
+    Overunder = 6,
     /// < software PageFlip for shutter glasses, should NOT be used!
-    StereomodeSoftpageflip = 7,
+    Softpageflip = 7,
     /// < OpenVR (HMD)
-    StereomodeOpenvr = 8,
+    Openvr = 8,
 }
 
 impl From<StereoMode> for i32 {
@@ -1123,15 +1168,15 @@ impl TryFrom<i32> for StereoMode {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(StereoMode::StereomodeQuadbuffer),
-            1 => Ok(StereoMode::StereomodeAnaglyph),
-            2 => Ok(StereoMode::StereomodeRowinterlaced),
-            3 => Ok(StereoMode::StereomodeColumninterlaced),
-            4 => Ok(StereoMode::StereomodeChessboard),
-            5 => Ok(StereoMode::StereomodeSidebyside),
-            6 => Ok(StereoMode::StereomodeOverunder),
-            7 => Ok(StereoMode::StereomodeSoftpageflip),
-            8 => Ok(StereoMode::StereomodeOpenvr),
+            0 => Ok(StereoMode::Quadbuffer),
+            1 => Ok(StereoMode::Anaglyph),
+            2 => Ok(StereoMode::Rowinterlaced),
+            3 => Ok(StereoMode::Columninterlaced),
+            4 => Ok(StereoMode::Chessboard),
+            5 => Ok(StereoMode::Sidebyside),
+            6 => Ok(StereoMode::Overunder),
+            7 => Ok(StereoMode::Softpageflip),
+            8 => Ok(StereoMode::Openvr),
             _ => Err(value),
         }
     }
@@ -1173,12 +1218,12 @@ impl TryFrom<i32> for TextPath {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum TextureSetBits {
-    TexturesetbitsNone = 0,
-    TexturesetbitsBasecolor = 1,
-    TexturesetbitsEmissive = 2,
-    TexturesetbitsOcclusion = 4,
-    TexturesetbitsNormal = 8,
-    TexturesetbitsMetallicroughness = 16,
+    None = 0,
+    Basecolor = 1,
+    Emissive = 2,
+    Occlusion = 4,
+    Normal = 8,
+    Metallicroughness = 16,
 }
 
 impl From<TextureSetBits> for i32 {
@@ -1192,12 +1237,12 @@ impl TryFrom<i32> for TextureSetBits {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(TextureSetBits::TexturesetbitsNone),
-            1 => Ok(TextureSetBits::TexturesetbitsBasecolor),
-            2 => Ok(TextureSetBits::TexturesetbitsEmissive),
-            4 => Ok(TextureSetBits::TexturesetbitsOcclusion),
-            8 => Ok(TextureSetBits::TexturesetbitsNormal),
-            16 => Ok(TextureSetBits::TexturesetbitsMetallicroughness),
+            0 => Ok(TextureSetBits::None),
+            1 => Ok(TextureSetBits::Basecolor),
+            2 => Ok(TextureSetBits::Emissive),
+            4 => Ok(TextureSetBits::Occlusion),
+            8 => Ok(TextureSetBits::Normal),
+            16 => Ok(TextureSetBits::Metallicroughness),
             _ => Err(value),
         }
     }
@@ -1226,25 +1271,25 @@ pub enum TextureUnit {
     Textureunit15 = 15,
     /// sampler2D occDepthPeelingDepth.
     /// 1st texture unit for Depth Peeling lookups.
-    TextureunitDepthpeelingdepth = -6,
+    Depthpeelingdepth = -6,
     /// sampler2D occDepthPeelingFrontColor.
     /// 2nd texture unit for Depth Peeling lookups.
-    TextureunitDepthpeelingfrontcolor = -5,
+    Depthpeelingfrontcolor = -5,
     /// sampler2D occShadowMapSampler.
     /// Directional light source shadowmap texture.
-    TextureunitShadowmap = -4,
+    Shadowmap = -4,
     /// sampler2D occEnvLUT.
     /// Lookup table for approximated PBR environment lighting.
     /// Configured as index at the end of available texture units - 3.
-    TextureunitPbrenvironmentlut = -3,
+    Pbrenvironmentlut = -3,
     /// sampler2D occDiffIBLMapSHCoeffs.
     /// Diffuse (irradiance) IBL map's spherical harmonics coefficients baked for PBR from environment
     /// cubemap image. Configured as index at the end of available texture units - 2.
-    TextureunitPbribldiffusesh = -2,
+    Pbribldiffusesh = -2,
     /// samplerCube occSpecIBLMap.
     /// Specular IBL (Image-Based Lighting) environment map baked for PBR from environment cubemap
     /// image. Configured as index at the end of available texture units - 1.
-    TextureunitPbriblspecular = -1,
+    Pbriblspecular = -1,
 }
 
 impl From<TextureUnit> for i32 {
@@ -1274,12 +1319,12 @@ impl TryFrom<i32> for TextureUnit {
             13 => Ok(TextureUnit::Textureunit13),
             14 => Ok(TextureUnit::Textureunit14),
             15 => Ok(TextureUnit::Textureunit15),
-            -6 => Ok(TextureUnit::TextureunitDepthpeelingdepth),
-            -5 => Ok(TextureUnit::TextureunitDepthpeelingfrontcolor),
-            -4 => Ok(TextureUnit::TextureunitShadowmap),
-            -3 => Ok(TextureUnit::TextureunitPbrenvironmentlut),
-            -2 => Ok(TextureUnit::TextureunitPbribldiffusesh),
-            -1 => Ok(TextureUnit::TextureunitPbriblspecular),
+            -6 => Ok(TextureUnit::Depthpeelingdepth),
+            -5 => Ok(TextureUnit::Depthpeelingfrontcolor),
+            -4 => Ok(TextureUnit::Shadowmap),
+            -3 => Ok(TextureUnit::Pbrenvironmentlut),
+            -2 => Ok(TextureUnit::Pbribldiffusesh),
+            -1 => Ok(TextureUnit::Pbriblspecular),
             _ => Err(value),
         }
     }
@@ -1291,9 +1336,9 @@ impl TryFrom<i32> for TextureUnit {
 #[repr(i32)]
 pub enum ToneMappingMethod {
     /// < Don't use tone mapping
-    TonemappingmethodDisabled = 0,
+    Disabled = 0,
     /// < Use filmic tone mapping
-    TonemappingmethodFilmic = 1,
+    Filmic = 1,
 }
 
 impl From<ToneMappingMethod> for i32 {
@@ -1307,8 +1352,8 @@ impl TryFrom<i32> for ToneMappingMethod {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(ToneMappingMethod::TonemappingmethodDisabled),
-            1 => Ok(ToneMappingMethod::TonemappingmethodFilmic),
+            0 => Ok(ToneMappingMethod::Disabled),
+            1 => Ok(ToneMappingMethod::Filmic),
             _ => Err(value),
         }
     }
@@ -1408,13 +1453,13 @@ impl TryFrom<i32> for TypeOfAnswer {
 pub enum TypeOfBackfacingModel {
     /// < automatic back face culling enabled for opaque groups
     /// < with closed flag
-    TypeofbackfacingmodelAuto = 0,
+    Auto = 0,
     /// < no culling (double-sided shading)
-    TypeofbackfacingmodelDoublesided = 1,
+    Doublesided = 1,
     /// < back  face culling
-    TypeofbackfacingmodelBackculled = 2,
+    Backculled = 2,
     /// < front face culling
-    TypeofbackfacingmodelFrontculled = 3,
+    Frontculled = 3,
 }
 
 impl From<TypeOfBackfacingModel> for i32 {
@@ -1428,10 +1473,10 @@ impl TryFrom<i32> for TypeOfBackfacingModel {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(TypeOfBackfacingModel::TypeofbackfacingmodelAuto),
-            1 => Ok(TypeOfBackfacingModel::TypeofbackfacingmodelDoublesided),
-            2 => Ok(TypeOfBackfacingModel::TypeofbackfacingmodelBackculled),
-            3 => Ok(TypeOfBackfacingModel::TypeofbackfacingmodelFrontculled),
+            0 => Ok(TypeOfBackfacingModel::Auto),
+            1 => Ok(TypeOfBackfacingModel::Doublesided),
+            2 => Ok(TypeOfBackfacingModel::Backculled),
+            3 => Ok(TypeOfBackfacingModel::Frontculled),
             _ => Err(value),
         }
     }
@@ -1501,13 +1546,13 @@ impl TryFrom<i32> for TypeOfConnection {
 #[repr(i32)]
 pub enum TypeOfLightSource {
     /// < ambient light
-    TypeoflightsourceAmbient = 0,
+    Ambient = 0,
     /// < directional light
-    TypeoflightsourceDirectional = 1,
+    Directional = 1,
     /// < positional light
-    TypeoflightsourcePositional = 2,
+    Positional = 2,
     /// < spot light
-    TypeoflightsourceSpot = 3,
+    Spot = 3,
 }
 
 impl From<TypeOfLightSource> for i32 {
@@ -1521,10 +1566,10 @@ impl TryFrom<i32> for TypeOfLightSource {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(TypeOfLightSource::TypeoflightsourceAmbient),
-            1 => Ok(TypeOfLightSource::TypeoflightsourceDirectional),
-            2 => Ok(TypeOfLightSource::TypeoflightsourcePositional),
-            3 => Ok(TypeOfLightSource::TypeoflightsourceSpot),
+            0 => Ok(TypeOfLightSource::Ambient),
+            1 => Ok(TypeOfLightSource::Directional),
+            2 => Ok(TypeOfLightSource::Positional),
+            3 => Ok(TypeOfLightSource::Spot),
             _ => Err(value),
         }
     }
@@ -1536,57 +1581,57 @@ impl TryFrom<i32> for TypeOfLightSource {
 #[repr(i32)]
 pub enum TypeOfLimit {
     /// < maximum number of active light sources
-    TypeoflimitMaxnblights = 0,
+    Maxnblights = 0,
     /// < maximum number of active clipping planes
-    TypeoflimitMaxnbclipplanes = 1,
+    Maxnbclipplanes = 1,
     /// < maximum number of views
-    TypeoflimitMaxnbviews = 2,
+    Maxnbviews = 2,
     /// < maximum size of texture
-    TypeoflimitMaxtexturesize = 3,
+    Maxtexturesize = 3,
     /// < maximum width  for image dump
-    TypeoflimitMaxviewdumpsizex = 4,
+    Maxviewdumpsizex = 4,
     /// < maximum height for image dump
-    TypeoflimitMaxviewdumpsizey = 5,
+    Maxviewdumpsizey = 5,
     /// < maximum number of combined texture units for
     /// < multitexturing
-    TypeoflimitMaxcombinedtextureunits = 6,
+    Maxcombinedtextureunits = 6,
     /// < maximum number of MSAA samples
-    TypeoflimitMaxmsaa = 7,
+    Maxmsaa = 7,
     /// < indicates whether PBR metallic-roughness shading model is
     /// < supported
-    TypeoflimitHaspbr = 8,
+    Haspbr = 8,
     /// < indicates whether ray tracing is supported
-    TypeoflimitHasraytracing = 9,
+    Hasraytracing = 9,
     /// < indicates whether ray tracing textures are
     /// < supported
-    TypeoflimitHasraytracingtextures = 10,
+    Hasraytracingtextures = 10,
     /// < indicates whether adaptive screen
     /// < sampling is supported
-    TypeoflimitHasraytracingadaptivesampling = 11,
+    Hasraytracingadaptivesampling = 11,
     /// < indicates whether optimized
     /// < adaptive screen sampling is
     /// < supported (hardware supports
     /// < atomic float operations)
-    TypeoflimitHasraytracingadaptivesamplingatomic = 12,
+    Hasraytracingadaptivesamplingatomic = 12,
     /// < indicates whether sRGB rendering is supported
-    TypeoflimitHassrgb = 13,
+    Hassrgb = 13,
     /// < indicates whether necessary GL extensions for Weighted,
     /// < Blended OIT available (without MSAA).
-    TypeoflimitHasblendedoit = 14,
+    Hasblendedoit = 14,
     /// < indicates whether necessary GL extensions for
     /// < Weighted, Blended OIT available (with MSAA).
-    TypeoflimitHasblendedoitmsaa = 15,
+    Hasblendedoitmsaa = 15,
     /// < indicates whether Flat shading
     /// < (Graphic3d_TypeOfShadingModel_PhongFacet) is supported
-    TypeoflimitHasflatshading = 16,
+    Hasflatshading = 16,
     /// < indicates whether advanced mesh edges presentation is
     /// < supported
-    TypeoflimitHasmeshedges = 17,
+    Hasmeshedges = 17,
     /// < indicates whether workaround for Intel driver problem
     /// < with empty FBO for images with big width is applied.
-    TypeoflimitIsworkaroundfbo = 18,
+    Isworkaroundfbo = 18,
     /// < number of elements in this enumeration
-    TypeoflimitNb = 19,
+    Nb = 19,
 }
 
 impl From<TypeOfLimit> for i32 {
@@ -1600,26 +1645,26 @@ impl TryFrom<i32> for TypeOfLimit {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(TypeOfLimit::TypeoflimitMaxnblights),
-            1 => Ok(TypeOfLimit::TypeoflimitMaxnbclipplanes),
-            2 => Ok(TypeOfLimit::TypeoflimitMaxnbviews),
-            3 => Ok(TypeOfLimit::TypeoflimitMaxtexturesize),
-            4 => Ok(TypeOfLimit::TypeoflimitMaxviewdumpsizex),
-            5 => Ok(TypeOfLimit::TypeoflimitMaxviewdumpsizey),
-            6 => Ok(TypeOfLimit::TypeoflimitMaxcombinedtextureunits),
-            7 => Ok(TypeOfLimit::TypeoflimitMaxmsaa),
-            8 => Ok(TypeOfLimit::TypeoflimitHaspbr),
-            9 => Ok(TypeOfLimit::TypeoflimitHasraytracing),
-            10 => Ok(TypeOfLimit::TypeoflimitHasraytracingtextures),
-            11 => Ok(TypeOfLimit::TypeoflimitHasraytracingadaptivesampling),
-            12 => Ok(TypeOfLimit::TypeoflimitHasraytracingadaptivesamplingatomic),
-            13 => Ok(TypeOfLimit::TypeoflimitHassrgb),
-            14 => Ok(TypeOfLimit::TypeoflimitHasblendedoit),
-            15 => Ok(TypeOfLimit::TypeoflimitHasblendedoitmsaa),
-            16 => Ok(TypeOfLimit::TypeoflimitHasflatshading),
-            17 => Ok(TypeOfLimit::TypeoflimitHasmeshedges),
-            18 => Ok(TypeOfLimit::TypeoflimitIsworkaroundfbo),
-            19 => Ok(TypeOfLimit::TypeoflimitNb),
+            0 => Ok(TypeOfLimit::Maxnblights),
+            1 => Ok(TypeOfLimit::Maxnbclipplanes),
+            2 => Ok(TypeOfLimit::Maxnbviews),
+            3 => Ok(TypeOfLimit::Maxtexturesize),
+            4 => Ok(TypeOfLimit::Maxviewdumpsizex),
+            5 => Ok(TypeOfLimit::Maxviewdumpsizey),
+            6 => Ok(TypeOfLimit::Maxcombinedtextureunits),
+            7 => Ok(TypeOfLimit::Maxmsaa),
+            8 => Ok(TypeOfLimit::Haspbr),
+            9 => Ok(TypeOfLimit::Hasraytracing),
+            10 => Ok(TypeOfLimit::Hasraytracingtextures),
+            11 => Ok(TypeOfLimit::Hasraytracingadaptivesampling),
+            12 => Ok(TypeOfLimit::Hasraytracingadaptivesamplingatomic),
+            13 => Ok(TypeOfLimit::Hassrgb),
+            14 => Ok(TypeOfLimit::Hasblendedoit),
+            15 => Ok(TypeOfLimit::Hasblendedoitmsaa),
+            16 => Ok(TypeOfLimit::Hasflatshading),
+            17 => Ok(TypeOfLimit::Hasmeshedges),
+            18 => Ok(TypeOfLimit::Isworkaroundfbo),
+            19 => Ok(TypeOfLimit::Nb),
             _ => Err(value),
         }
     }
@@ -1806,29 +1851,29 @@ impl TryFrom<i32> for TypeOfShaderObject {
 #[repr(i32)]
 pub enum TypeOfShadingModel {
     /// Use Shading Model, specified as default for entire Viewer.
-    TypeofshadingmodelDefault = -1,
+    Default = -1,
     /// Unlit Shading (or shadeless), lighting is ignored and facet is fully filled by its material
     /// color. This model is useful for artificial/auxiliary objects, not intended to be lit, or for
     /// objects with pre-calculated lighting information (e.g. captured by camera).
-    TypeofshadingmodelUnlit = 0,
+    Unlit = 0,
     /// Flat Shading for Phong material model, calculated using triangle normal.
     /// Could be useful for mesh element analysis.
     /// This shading model does NOT require normals to be defined within vertex attributes.
-    TypeofshadingmodelPhongfacet = 1,
+    Phongfacet = 1,
     /// Gouraud shading uses the same material definition as Phong reflection model,
     /// but emulates an obsolete per-vertex calculations with result color interpolated across
     /// fragments, as implemented by T&L hardware blocks on old graphics hardware. This shading model
     /// requires normals to be defined within vertex attributes.
-    TypeofshadingmodelGouraud = 2,
+    Gouraud = 2,
     /// Phong reflection model, an empirical model defined by Diffuse/Ambient/Specular/Shininess
     /// components. Lighting is calculated per-fragment basing on nodal normal (normal is interpolated
     /// across fragments of triangle). This shading model requires normals to be defined within vertex
     /// attributes.
-    TypeofshadingmodelPhong = 3,
+    Phong = 3,
     /// Metallic-roughness physically based (PBR) illumination system.
-    TypeofshadingmodelPbr = 4,
+    Pbr = 4,
     /// Same as Graphic3d_TypeOfShadingModel_Pbr but using flat per-triangle normal.
-    TypeofshadingmodelPbrfacet = 5,
+    Pbrfacet = 5,
 }
 
 impl From<TypeOfShadingModel> for i32 {
@@ -1842,13 +1887,13 @@ impl TryFrom<i32> for TypeOfShadingModel {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            -1 => Ok(TypeOfShadingModel::TypeofshadingmodelDefault),
-            0 => Ok(TypeOfShadingModel::TypeofshadingmodelUnlit),
-            1 => Ok(TypeOfShadingModel::TypeofshadingmodelPhongfacet),
-            2 => Ok(TypeOfShadingModel::TypeofshadingmodelGouraud),
-            3 => Ok(TypeOfShadingModel::TypeofshadingmodelPhong),
-            4 => Ok(TypeOfShadingModel::TypeofshadingmodelPbr),
-            5 => Ok(TypeOfShadingModel::TypeofshadingmodelPbrfacet),
+            -1 => Ok(TypeOfShadingModel::Default),
+            0 => Ok(TypeOfShadingModel::Unlit),
+            1 => Ok(TypeOfShadingModel::Phongfacet),
+            2 => Ok(TypeOfShadingModel::Gouraud),
+            3 => Ok(TypeOfShadingModel::Phong),
+            4 => Ok(TypeOfShadingModel::Pbr),
+            5 => Ok(TypeOfShadingModel::Pbrfacet),
             _ => Err(value),
         }
     }
@@ -1900,7 +1945,7 @@ pub enum TypeOfTexture {
     /// 3D texture (a set of image planes).
     Typeoftexture3d = 2,
     /// Cubemap texture (6 image planes defining cube sides).
-    TypeoftextureCubemap = 3,
+    Cubemap = 3,
     /// Obsolete type - Graphic3d_TextureRoot::SetMipmapsGeneration() should be used instead.
     Tot2dMipmap = 4,
 }
@@ -1919,7 +1964,7 @@ impl TryFrom<i32> for TypeOfTexture {
             0 => Ok(TypeOfTexture::Typeoftexture1d),
             1 => Ok(TypeOfTexture::Typeoftexture2d),
             2 => Ok(TypeOfTexture::Typeoftexture3d),
-            3 => Ok(TypeOfTexture::TypeoftextureCubemap),
+            3 => Ok(TypeOfTexture::Cubemap),
             4 => Ok(TypeOfTexture::Tot2dMipmap),
             _ => Err(value),
         }
@@ -2056,6 +2101,48 @@ impl TryFrom<i32> for VerticalTextAlignment {
     }
 }
 
+/// This enumeration defines the list of predefined layers, which can not be removed (but settings
+/// can be overridden). Custom layers might be added with positive index (>= 1) if standard list is
+/// insufficient for application needs; these layers will be displayed on top of predefined ones.
+/// C++ enum: `Graphic3d_ZLayerId`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ZLayerId {
+    /// < identifier for invalid ZLayer
+    Unknown = -1,
+    /// < default Z-layer for main presentations
+    Default = 0,
+    Top = -2,
+    /// < overlay for 3D presentations with independent Depth
+    Topmost = -3,
+    /// < overlay for 2D presentations (On-Screen-Display)
+    Toposd = -4,
+    /// < underlay for 2D presentations (On-Screen-Display)
+    Botosd = -5,
+}
+
+impl From<ZLayerId> for i32 {
+    fn from(value: ZLayerId) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ZLayerId {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            -1 => Ok(ZLayerId::Unknown),
+            0 => Ok(ZLayerId::Default),
+            -2 => Ok(ZLayerId::Top),
+            -3 => Ok(ZLayerId::Topmost),
+            -4 => Ok(ZLayerId::Toposd),
+            -5 => Ok(ZLayerId::Botosd),
+            _ => Err(value),
+        }
+    }
+}
+
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
     HandleAISColoredDrawer, HandleNCollectionBuffer, HandlePrs3dDrawer,
@@ -2081,6 +2168,20 @@ unsafe impl crate::CppDeletable for ArrayOfPoints {
 }
 
 impl ArrayOfPoints {
+    /// **Source:** `Graphic3d_ArrayOfPoints.hxx`:29 - `Graphic3d_ArrayOfPoints::Graphic3d_ArrayOfPoints()`
+    /// Creates an array of points (Graphic3d_TOPA_POINTS).
+    /// The array must be filled using the AddVertex(Point) method.
+    /// @param theMaxVertexs maximum number of points
+    /// @param theArrayFlags array flags
+    pub fn new_int2(theMaxVertexs: i32, theArrayFlags: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_ArrayOfPoints_ctor_int2(
+                theMaxVertexs,
+                theArrayFlags,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_ArrayOfPoints.hxx`:41 - `Graphic3d_ArrayOfPoints::Graphic3d_ArrayOfPoints()`
     /// Creates an array of points (Graphic3d_TOPA_POINTS).
     /// The array must be filled using the AddVertex(Point) method.
@@ -2638,15 +2739,6 @@ impl HandleGraphic3dArrayOfPoints {
     }
 }
 
-// ── Skipped symbols for ArrayOfPoints (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_ArrayOfPoints.hxx`:29 - `Graphic3d_ArrayOfPoints::Graphic3d_ArrayOfPoints`
-//   constructor: Creates an array of points (Graphic3d_TOPA_POINTS).
-//   constructor: The array must be filled using the AddVertex(Point) method.
-//   constructor: @param theMaxVertexs maximum number of points
-//   Reason: param 'theArrayFlags' uses unknown type 'Graphic3d_ArrayFlags'
-//   // pub fn new_int_arrayflags(theMaxVertexs: i32, theArrayFlags: ArrayFlags) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Graphic3d_ArrayOfPolygons.hxx
 // ========================
@@ -2664,6 +2756,90 @@ unsafe impl crate::CppDeletable for ArrayOfPolygons {
 }
 
 impl ArrayOfPolygons {
+    /// **Source:** `Graphic3d_ArrayOfPolygons.hxx`:94 - `Graphic3d_ArrayOfPolygons::Graphic3d_ArrayOfPolygons()`
+    /// Creates an array of polygons (Graphic3d_TOPA_POLYGONS), a polygon can be filled as:
+    /// 1) Creating a single polygon defined with his vertexes, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfPolygons (7);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x7, y7, z7);
+    /// @endcode
+    /// 2) Creating separate polygons defined with a predefined number of bounds and the number of
+    /// vertex per bound, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfPolygons (7, 2);
+    /// myArray->AddBound (4);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x4, y4, z4);
+    /// myArray->AddBound (3);
+    /// myArray->AddVertex (x5, y5, z5);
+    /// ....
+    /// myArray->AddVertex (x7, y7, z7);
+    /// @endcode
+    /// 3) Creating a single indexed polygon defined with his vertex ans edges, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfPolygons (4, 0, 6);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x4, y4, z4);
+    /// myArray->AddEdge (1);
+    /// myArray->AddEdge (2);
+    /// myArray->AddEdge (3);
+    /// myArray->AddEdge (1);
+    /// myArray->AddEdge (2);
+    /// myArray->AddEdge (4);
+    /// @endcode
+    /// 4) Creating separate polygons defined with a predefined number of bounds and the number of
+    /// edges per bound, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfPolygons (6, 4, 14);
+    /// myArray->AddBound (3);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// myArray->AddVertex (x2, y2, z2);
+    /// myArray->AddVertex (x3, y3, z3);
+    /// myArray->AddEdge (1);
+    /// myArray->AddEdge (2);
+    /// myArray->AddEdge (3);
+    /// myArray->AddBound (3);
+    /// myArray->AddVertex (x4, y4, z4);
+    /// myArray->AddVertex (x5, y5, z5);
+    /// myArray->AddVertex (x6, y6, z6);
+    /// myArray->AddEdge (4);
+    /// myArray->AddEdge (5);
+    /// myArray->AddEdge (6);
+    /// myArray->AddBound (4);
+    /// myArray->AddEdge (2);
+    /// myArray->AddEdge (3);
+    /// myArray->AddEdge (5);
+    /// myArray->AddEdge (6);
+    /// myArray->AddBound (4);
+    /// myArray->AddEdge (1);
+    /// myArray->AddEdge (3);
+    /// myArray->AddEdge (5);
+    /// myArray->AddEdge (4);
+    /// @endcode
+    /// @param theMaxVertexs defines the maximum allowed vertex number in the array
+    /// @param theMaxBounds  defines the maximum allowed bound  number in the array
+    /// @param theMaxEdges   defines the maximum allowed edge   number in the array
+    /// @param theArrayFlags array flags
+    pub fn new_int4(
+        theMaxVertexs: i32,
+        theMaxBounds: i32,
+        theMaxEdges: i32,
+        theArrayFlags: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_ArrayOfPolygons_ctor_int4(
+                theMaxVertexs,
+                theMaxBounds,
+                theMaxEdges,
+                theArrayFlags,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_ArrayOfPolygons.hxx`:110 - `Graphic3d_ArrayOfPolygons::Graphic3d_ArrayOfPolygons()`
     /// Creates an array of polygons (Graphic3d_TOPA_POLYGONS):
     /// @param theMaxVertexs defines the maximum allowed vertex number in the array
@@ -3325,15 +3501,6 @@ impl HandleGraphic3dArrayOfPolygons {
     }
 }
 
-// ── Skipped symbols for ArrayOfPolygons (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_ArrayOfPolygons.hxx`:94 - `Graphic3d_ArrayOfPolygons::Graphic3d_ArrayOfPolygons`
-//   constructor: Creates an array of polygons (Graphic3d_TOPA_POLYGONS), a polygon can be filled as:
-//   constructor: 1) Creating a single polygon defined with his vertexes, i.e:
-//   constructor: @code
-//   Reason: param 'theArrayFlags' uses unknown type 'Graphic3d_ArrayFlags'
-//   // pub fn new_int3_arrayflags(theMaxVertexs: i32, theMaxBounds: i32, theMaxEdges: i32, theArrayFlags: ArrayFlags) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Graphic3d_ArrayOfPolylines.hxx
 // ========================
@@ -3349,6 +3516,90 @@ unsafe impl crate::CppDeletable for ArrayOfPolylines {
 }
 
 impl ArrayOfPolylines {
+    /// **Source:** `Graphic3d_ArrayOfPolylines.hxx`:92 - `Graphic3d_ArrayOfPolylines::Graphic3d_ArrayOfPolylines()`
+    /// Creates an array of polylines (Graphic3d_TOPA_POLYLINES), a polyline can be filled as:
+    /// 1) Creating a single polyline defined with his vertexes, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfPolylines (7);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x7, y7, z7);
+    /// @endcode
+    /// 2) Creating separate polylines defined with a predefined number of bounds and the number of
+    /// vertex per bound, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfPolylines (7, 2);
+    /// myArray->AddBound (4);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x4, y4, z4);
+    /// myArray->AddBound (3);
+    /// myArray->AddVertex (x5, y5, z5);
+    /// ....
+    /// myArray->AddVertex (x7, y7, z7);
+    /// @endcode
+    /// 3) Creating a single indexed polyline defined with his vertex and edges, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfPolylines (4, 0, 6);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x4, y4, z4);
+    /// myArray->AddEdge (1);
+    /// myArray->AddEdge (2);
+    /// myArray->AddEdge (3);
+    /// myArray->AddEdge (1);
+    /// myArray->AddEdge (2);
+    /// myArray->AddEdge (4);
+    /// @endcode
+    /// 4) creating separate polylines defined with a predefined number of bounds and the number of
+    /// edges per bound, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfPolylines (6, 4, 14);
+    /// myArray->AddBound (3);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// myArray->AddVertex (x2, y2, z2);
+    /// myArray->AddVertex (x3, y3, z3);
+    /// myArray->AddEdge (1);
+    /// myArray->AddEdge (2);
+    /// myArray->AddEdge (3);
+    /// myArray->AddBound (3);
+    /// myArray->AddVertex (x4, y4, z4);
+    /// myArray->AddVertex (x5, y5, z5);
+    /// myArray->AddVertex (x6, y6, z6);
+    /// myArray->AddEdge (4);
+    /// myArray->AddEdge (5);
+    /// myArray->AddEdge (6);
+    /// myArray->AddBound (4);
+    /// myArray->AddEdge (2);
+    /// myArray->AddEdge (3);
+    /// myArray->AddEdge (5);
+    /// myArray->AddEdge (6);
+    /// myArray->AddBound (4);
+    /// myArray->AddEdge (1);
+    /// myArray->AddEdge (3);
+    /// myArray->AddEdge (5);
+    /// myArray->AddEdge (4);
+    /// @endcode
+    /// @param theMaxVertexs defines the maximum allowed vertex number in the array
+    /// @param theMaxBounds  defines the maximum allowed bound  number in the array
+    /// @param theMaxEdges   defines the maximum allowed edge   number in the array
+    /// @param theArrayFlags array flags
+    pub fn new_int4(
+        theMaxVertexs: i32,
+        theMaxBounds: i32,
+        theMaxEdges: i32,
+        theArrayFlags: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_ArrayOfPolylines_ctor_int4(
+                theMaxVertexs,
+                theMaxBounds,
+                theMaxEdges,
+                theArrayFlags,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_ArrayOfPolylines.hxx`:112 - `Graphic3d_ArrayOfPolylines::Graphic3d_ArrayOfPolylines()`
     /// Creates an array of polylines (Graphic3d_TOPA_POLYLINES).
     /// @param theMaxVertexs defines the maximum allowed vertex number in the array
@@ -3979,15 +4230,6 @@ impl HandleGraphic3dArrayOfPolylines {
         }
     }
 }
-
-// ── Skipped symbols for ArrayOfPolylines (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_ArrayOfPolylines.hxx`:92 - `Graphic3d_ArrayOfPolylines::Graphic3d_ArrayOfPolylines`
-//   constructor: Creates an array of polylines (Graphic3d_TOPA_POLYLINES), a polyline can be filled as:
-//   constructor: 1) Creating a single polyline defined with his vertexes, i.e:
-//   constructor: @code
-//   Reason: param 'theArrayFlags' uses unknown type 'Graphic3d_ArrayFlags'
-//   // pub fn new_int3_arrayflags(theMaxVertexs: i32, theMaxBounds: i32, theMaxEdges: i32, theArrayFlags: ArrayFlags) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From Graphic3d_ArrayOfPrimitives.hxx
@@ -5243,6 +5485,48 @@ impl ArrayOfPrimitives {
         unsafe { &*(crate::ffi::Graphic3d_ArrayOfPrimitives_get_type_descriptor()) }
     }
 
+    /// **Source:** `Graphic3d_ArrayOfPrimitives.hxx`:73 - `Graphic3d_ArrayOfPrimitives::CreateArray()`
+    /// Create an array of specified type.
+    pub fn create_array_typeofprimitivearray_int3(
+        theType: crate::graphic3d::TypeOfPrimitiveArray,
+        theMaxVertexs: i32,
+        theMaxEdges: i32,
+        theArrayFlags: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfPrimitives> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_ArrayOfPrimitives_create_array_typeofprimitivearray_int3(
+                    theType.into(),
+                    theMaxVertexs,
+                    theMaxEdges,
+                    theArrayFlags,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Graphic3d_ArrayOfPrimitives.hxx`:82 - `Graphic3d_ArrayOfPrimitives::CreateArray()`
+    /// Create an array of specified type.
+    pub fn create_array_typeofprimitivearray_int4(
+        theType: crate::graphic3d::TypeOfPrimitiveArray,
+        theMaxVertexs: i32,
+        theMaxBounds: i32,
+        theMaxEdges: i32,
+        theArrayFlags: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfPrimitives> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_ArrayOfPrimitives_create_array_typeofprimitivearray_int4(
+                    theType.into(),
+                    theMaxVertexs,
+                    theMaxBounds,
+                    theMaxEdges,
+                    theArrayFlags,
+                ),
+            )
+        }
+    }
+
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
@@ -5513,18 +5797,6 @@ impl HandleGraphic3dArrayOfPrimitives {
     }
 }
 
-// ── Skipped symbols for ArrayOfPrimitives (2 total) ──
-// SKIPPED: **Source:** `Graphic3d_ArrayOfPrimitives.hxx`:73 - `Graphic3d_ArrayOfPrimitives::CreateArray`
-//   static_method: Create an array of specified type.
-//   Reason: param 'theArrayFlags' uses unknown type 'Graphic3d_ArrayFlags'
-//   // pub fn create_array(theType: TypeOfPrimitiveArray, theMaxVertexs: i32, theMaxEdges: i32, theArrayFlags: ArrayFlags) -> OwnedPtr<Handle<Graphic3d_ArrayOfPrimitives>>;
-//
-// SKIPPED: **Source:** `Graphic3d_ArrayOfPrimitives.hxx`:82 - `Graphic3d_ArrayOfPrimitives::CreateArray`
-//   static_method: Create an array of specified type.
-//   Reason: param 'theArrayFlags' uses unknown type 'Graphic3d_ArrayFlags'
-//   // pub fn create_array(theType: TypeOfPrimitiveArray, theMaxVertexs: i32, theMaxBounds: i32, theMaxEdges: i32, theArrayFlags: ArrayFlags) -> OwnedPtr<Handle<Graphic3d_ArrayOfPrimitives>>;
-//
-
 // ========================
 // From Graphic3d_ArrayOfQuadrangleStrips.hxx
 // ========================
@@ -5542,6 +5814,46 @@ unsafe impl crate::CppDeletable for ArrayOfQuadrangleStrips {
 }
 
 impl ArrayOfQuadrangleStrips {
+    /// **Source:** `Graphic3d_ArrayOfQuadrangleStrips.hxx`:52 - `Graphic3d_ArrayOfQuadrangleStrips::Graphic3d_ArrayOfQuadrangleStrips()`
+    /// Creates an array of quadrangle strips (Graphic3d_TOPA_QUADRANGLESTRIPS), a polygon can be
+    /// filled as: 1) Creating a single strip defined with his vertexes, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfQuadrangleStrips (7);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x7, y7, z7);
+    /// @endcode
+    /// 2) Creating separate strips defined with a predefined number of strips and the number of
+    /// vertex per strip, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfQuadrangleStrips (8, 2);
+    /// myArray->AddBound (4);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x4, y4, z4);
+    /// myArray->AddBound (4);
+    /// myArray->AddVertex (x5, y5, z5);
+    /// ....
+    /// myArray->AddVertex (x8, y8, z8);
+    /// @endcode
+    /// The number of quadrangle really drawn is: VertexNumber()/2 - Min(1, BoundNumber()).
+    /// @param theMaxVertexs defines the maximum allowed vertex number in the array
+    /// @param theMaxStrips  defines the maximum allowed strip  number in the array
+    /// @param theArrayFlags array flags
+    pub fn new_int3(
+        theMaxVertexs: i32,
+        theMaxStrips: i32,
+        theArrayFlags: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_ArrayOfQuadrangleStrips_ctor_int3(
+                theMaxVertexs,
+                theMaxStrips,
+                theArrayFlags,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_ArrayOfQuadrangleStrips.hxx`:66 - `Graphic3d_ArrayOfQuadrangleStrips::Graphic3d_ArrayOfQuadrangleStrips()`
     /// Creates an array of quadrangle strips (Graphic3d_TOPA_QUADRANGLESTRIPS).
     /// @param theMaxVertexs defines the maximum allowed vertex number in the array
@@ -6234,15 +6546,6 @@ impl HandleGraphic3dArrayOfQuadrangleStrips {
     }
 }
 
-// ── Skipped symbols for ArrayOfQuadrangleStrips (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_ArrayOfQuadrangleStrips.hxx`:52 - `Graphic3d_ArrayOfQuadrangleStrips::Graphic3d_ArrayOfQuadrangleStrips`
-//   constructor: Creates an array of quadrangle strips (Graphic3d_TOPA_QUADRANGLESTRIPS), a polygon can be
-//   constructor: filled as: 1) Creating a single strip defined with his vertexes, i.e:
-//   constructor: @code
-//   Reason: param 'theArrayFlags' uses unknown type 'Graphic3d_ArrayFlags'
-//   // pub fn new_int2_arrayflags(theMaxVertexs: i32, theMaxStrips: i32, theArrayFlags: ArrayFlags) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Graphic3d_ArrayOfQuadrangles.hxx
 // ========================
@@ -6260,6 +6563,42 @@ unsafe impl crate::CppDeletable for ArrayOfQuadrangles {
 }
 
 impl ArrayOfQuadrangles {
+    /// **Source:** `Graphic3d_ArrayOfQuadrangles.hxx`:48 - `Graphic3d_ArrayOfQuadrangles::Graphic3d_ArrayOfQuadrangles()`
+    /// Creates an array of quadrangles (Graphic3d_TOPA_QUADRANGLES), a quadrangle can be filled as:
+    /// 1) Creating a set of quadrangles defined with his vertexes, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfQuadrangles (8);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x8, y8, z8);
+    /// @endcode
+    /// 2) Creating a set of indexed quadrangles defined with his vertex ans edges, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfQuadrangles (6, 8);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x6, y6, z6);
+    /// myArray->AddEdges (1, 2, 3, 4);
+    /// myArray->AddEdges (3, 4, 5, 6);
+    /// @endcode
+    /// @param theMaxVertexs defines the maximum allowed vertex number in the array
+    /// @param theMaxEdges   defines the maximum allowed edge   number in the array (for indexed
+    /// array)
+    /// @param theArrayFlags array flags
+    pub fn new_int3(
+        theMaxVertexs: i32,
+        theMaxEdges: i32,
+        theArrayFlags: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_ArrayOfQuadrangles_ctor_int3(
+                theMaxVertexs,
+                theMaxEdges,
+                theArrayFlags,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_ArrayOfQuadrangles.hxx`:63 - `Graphic3d_ArrayOfQuadrangles::Graphic3d_ArrayOfQuadrangles()`
     /// Creates an array of quadrangles (Graphic3d_TOPA_QUADRANGLES).
     /// @param theMaxVertexs defines the maximum allowed vertex number in the array
@@ -6896,15 +7235,6 @@ impl HandleGraphic3dArrayOfQuadrangles {
     }
 }
 
-// ── Skipped symbols for ArrayOfQuadrangles (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_ArrayOfQuadrangles.hxx`:48 - `Graphic3d_ArrayOfQuadrangles::Graphic3d_ArrayOfQuadrangles`
-//   constructor: Creates an array of quadrangles (Graphic3d_TOPA_QUADRANGLES), a quadrangle can be filled as:
-//   constructor: 1) Creating a set of quadrangles defined with his vertexes, i.e:
-//   constructor: @code
-//   Reason: param 'theArrayFlags' uses unknown type 'Graphic3d_ArrayFlags'
-//   // pub fn new_int2_arrayflags(theMaxVertexs: i32, theMaxEdges: i32, theArrayFlags: ArrayFlags) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Graphic3d_ArrayOfSegments.hxx
 // ========================
@@ -6920,6 +7250,43 @@ unsafe impl crate::CppDeletable for ArrayOfSegments {
 }
 
 impl ArrayOfSegments {
+    /// **Source:** `Graphic3d_ArrayOfSegments.hxx`:47 - `Graphic3d_ArrayOfSegments::Graphic3d_ArrayOfSegments()`
+    /// Creates an array of segments (Graphic3d_TOPA_SEGMENTS), a segment can be filled as:
+    /// 1) Creating a set of segments defined with his vertexes, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfSegments (4);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x4, y4, z4);
+    /// @endcode
+    /// 2) Creating a set of indexed segments defined with his vertex and edges, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfSegments (4, 8);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x4, y4, z4);
+    /// myArray->AddEdges (1, 2);
+    /// myArray->AddEdges (3, 4);
+    /// myArray->AddEdges (2, 4);
+    /// myArray->AddEdges (1, 3);
+    /// @endcode
+    /// @param theMaxVertexs defines the maximum allowed vertex number in the array
+    /// @param theMaxEdges   defines the maximum allowed edge   number in the array
+    /// @param theArrayFlags array flags
+    pub fn new_int3(
+        theMaxVertexs: i32,
+        theMaxEdges: i32,
+        theArrayFlags: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_ArrayOfSegments_ctor_int3(
+                theMaxVertexs,
+                theMaxEdges,
+                theArrayFlags,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_ArrayOfSegments.hxx`:63 - `Graphic3d_ArrayOfSegments::Graphic3d_ArrayOfSegments()`
     /// Creates an array of segments (Graphic3d_TOPA_SEGMENTS).
     /// @param theMaxVertexs defines the maximum allowed vertex number in the array
@@ -7494,15 +7861,6 @@ impl HandleGraphic3dArrayOfSegments {
     }
 }
 
-// ── Skipped symbols for ArrayOfSegments (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_ArrayOfSegments.hxx`:47 - `Graphic3d_ArrayOfSegments::Graphic3d_ArrayOfSegments`
-//   constructor: Creates an array of segments (Graphic3d_TOPA_SEGMENTS), a segment can be filled as:
-//   constructor: 1) Creating a set of segments defined with his vertexes, i.e:
-//   constructor: @code
-//   Reason: param 'theArrayFlags' uses unknown type 'Graphic3d_ArrayFlags'
-//   // pub fn new_int2_arrayflags(theMaxVertexs: i32, theMaxEdges: i32, theArrayFlags: ArrayFlags) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Graphic3d_ArrayOfTriangleFans.hxx
 // ========================
@@ -7518,6 +7876,46 @@ unsafe impl crate::CppDeletable for ArrayOfTriangleFans {
 }
 
 impl ArrayOfTriangleFans {
+    /// **Source:** `Graphic3d_ArrayOfTriangleFans.hxx`:50 - `Graphic3d_ArrayOfTriangleFans::Graphic3d_ArrayOfTriangleFans()`
+    /// Creates an array of triangle fans (Graphic3d_TOPA_TRIANGLEFANS), a polygon can be filled as:
+    /// 1) Creating a single fan defined with his vertexes, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfTriangleFans (7);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x7, y7, z7);
+    /// @endcode
+    /// 2) creating separate fans defined with a predefined number of fans and the number of vertex
+    /// per fan, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfTriangleFans (8, 2);
+    /// myArray->AddBound (4);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x4, y4, z4);
+    /// myArray->AddBound (4);
+    /// myArray->AddVertex (x5, y5, z5);
+    /// ....
+    /// myArray->AddVertex (x8, y8, z8);
+    /// @endcode
+    /// The number of triangle really drawn is: VertexNumber() - 2 * Min(1, BoundNumber())
+    /// @param theMaxVertexs defines the maximum allowed vertex number in the array
+    /// @param theMaxFans    defines the maximum allowed fan    number in the array
+    /// @param theArrayFlags array flags
+    pub fn new_int3(
+        theMaxVertexs: i32,
+        theMaxFans: i32,
+        theArrayFlags: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_ArrayOfTriangleFans_ctor_int3(
+                theMaxVertexs,
+                theMaxFans,
+                theArrayFlags,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_ArrayOfTriangleFans.hxx`:64 - `Graphic3d_ArrayOfTriangleFans::Graphic3d_ArrayOfTriangleFans()`
     /// Creates an array of triangle fans (Graphic3d_TOPA_TRIANGLEFANS).
     /// @param theMaxVertexs defines the maximum allowed vertex number in the array
@@ -8174,15 +8572,6 @@ impl HandleGraphic3dArrayOfTriangleFans {
     }
 }
 
-// ── Skipped symbols for ArrayOfTriangleFans (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_ArrayOfTriangleFans.hxx`:50 - `Graphic3d_ArrayOfTriangleFans::Graphic3d_ArrayOfTriangleFans`
-//   constructor: Creates an array of triangle fans (Graphic3d_TOPA_TRIANGLEFANS), a polygon can be filled as:
-//   constructor: 1) Creating a single fan defined with his vertexes, i.e:
-//   constructor: @code
-//   Reason: param 'theArrayFlags' uses unknown type 'Graphic3d_ArrayFlags'
-//   // pub fn new_int2_arrayflags(theMaxVertexs: i32, theMaxFans: i32, theArrayFlags: ArrayFlags) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Graphic3d_ArrayOfTriangleStrips.hxx
 // ========================
@@ -8198,6 +8587,47 @@ unsafe impl crate::CppDeletable for ArrayOfTriangleStrips {
 }
 
 impl ArrayOfTriangleStrips {
+    /// **Source:** `Graphic3d_ArrayOfTriangleStrips.hxx`:51 - `Graphic3d_ArrayOfTriangleStrips::Graphic3d_ArrayOfTriangleStrips()`
+    /// Creates an array of triangle strips (Graphic3d_TOPA_TRIANGLESTRIPS), a polygon can be filled
+    /// as: 1) Creating a single strip defined with his vertexes, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfTriangleStrips (7);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x7, y7, z7);
+    /// @endcode
+    /// 2) Creating separate strips defined with a predefined number of strips and the number of
+    /// vertex per strip, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfTriangleStrips (8, 2);
+    /// myArray->AddBound (4);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x4, y4, z4);
+    /// myArray->AddBound (4);
+    /// myArray->AddVertex (x5, y5, z5);
+    /// ....
+    /// myArray->AddVertex (x8, y8, z8);
+    /// @endcode
+    /// @param theMaxVertexs defines the maximum allowed vertex number in the array
+    /// @param theMaxStrips  defines the maximum allowed strip  number in the array;
+    /// the number of triangle really drawn is: VertexNumber() - 2 * Min(1,
+    /// BoundNumber())
+    /// @param theArrayFlags array flags
+    pub fn new_int3(
+        theMaxVertexs: i32,
+        theMaxStrips: i32,
+        theArrayFlags: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_ArrayOfTriangleStrips_ctor_int3(
+                theMaxVertexs,
+                theMaxStrips,
+                theArrayFlags,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_ArrayOfTriangleStrips.hxx`:77 - `Graphic3d_ArrayOfTriangleStrips::Graphic3d_ArrayOfTriangleStrips()`
     /// Creates an array of triangle strips (Graphic3d_TOPA_TRIANGLESTRIPS).
     /// @param theMaxVertexs defines the maximum allowed vertex number in the array
@@ -8949,15 +9379,6 @@ impl HandleGraphic3dArrayOfTriangleStrips {
     }
 }
 
-// ── Skipped symbols for ArrayOfTriangleStrips (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_ArrayOfTriangleStrips.hxx`:51 - `Graphic3d_ArrayOfTriangleStrips::Graphic3d_ArrayOfTriangleStrips`
-//   constructor: Creates an array of triangle strips (Graphic3d_TOPA_TRIANGLESTRIPS), a polygon can be filled
-//   constructor: as: 1) Creating a single strip defined with his vertexes, i.e:
-//   constructor: @code
-//   Reason: param 'theArrayFlags' uses unknown type 'Graphic3d_ArrayFlags'
-//   // pub fn new_int2_arrayflags(theMaxVertexs: i32, theMaxStrips: i32, theArrayFlags: ArrayFlags) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Graphic3d_ArrayOfTriangles.hxx
 // ========================
@@ -8973,6 +9394,41 @@ unsafe impl crate::CppDeletable for ArrayOfTriangles {
 }
 
 impl ArrayOfTriangles {
+    /// **Source:** `Graphic3d_ArrayOfTriangles.hxx`:45 - `Graphic3d_ArrayOfTriangles::Graphic3d_ArrayOfTriangles()`
+    /// Creates an array of triangles (Graphic3d_TOPA_TRIANGLES), a triangle can be filled as:
+    /// 1) Creating a set of triangles defined with his vertexes, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfTriangles (6);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x6, y6, z6);
+    /// @endcode
+    /// 3) Creating a set of indexed triangles defined with his vertex and edges, i.e:
+    /// @code
+    /// myArray = Graphic3d_ArrayOfTriangles (4, 6);
+    /// myArray->AddVertex (x1, y1, z1);
+    /// ....
+    /// myArray->AddVertex (x4, y4, z4);
+    /// myArray->AddEdges (1, 2, 3);
+    /// myArray->AddEdges (2, 3, 4);
+    /// @endcode
+    /// @param theMaxVertexs  defines the maximum allowed vertex number in the array
+    /// @param theMaxEdges    defines the maximum allowed edge   number in the array
+    /// @param theArrayFlags array flags
+    pub fn new_int3(
+        theMaxVertexs: i32,
+        theMaxEdges: i32,
+        theArrayFlags: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_ArrayOfTriangles_ctor_int3(
+                theMaxVertexs,
+                theMaxEdges,
+                theArrayFlags,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_ArrayOfTriangles.hxx`:67 - `Graphic3d_ArrayOfTriangles::Graphic3d_ArrayOfTriangles()`
     /// Creates an array of triangles (Graphic3d_TOPA_TRIANGLES).
     /// @param theMaxVertexs  defines the maximum allowed vertex number in the array
@@ -9618,15 +10074,6 @@ impl HandleGraphic3dArrayOfTriangles {
         }
     }
 }
-
-// ── Skipped symbols for ArrayOfTriangles (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_ArrayOfTriangles.hxx`:45 - `Graphic3d_ArrayOfTriangles::Graphic3d_ArrayOfTriangles`
-//   constructor: Creates an array of triangles (Graphic3d_TOPA_TRIANGLES), a triangle can be filled as:
-//   constructor: 1) Creating a set of triangles defined with his vertexes, i.e:
-//   constructor: @code
-//   Reason: param 'theArrayFlags' uses unknown type 'Graphic3d_ArrayFlags'
-//   // pub fn new_int2_arrayflags(theMaxVertexs: i32, theMaxEdges: i32, theArrayFlags: ArrayFlags) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From Graphic3d_AspectFillArea3d.hxx
@@ -16861,6 +17308,18 @@ impl CStructure {
         unsafe { crate::ffi::Graphic3d_CStructure_is_visible_int(self as *const Self, theViewId) }
     }
 
+    /// **Source:** `Graphic3d_CStructure.hxx`:134 - `Graphic3d_CStructure::SetZLayer()`
+    /// Set z layer ID to display the structure in specified layer
+    pub fn set_z_layer(&mut self, theLayerIndex: i32) {
+        unsafe { crate::ffi::Graphic3d_CStructure_set_z_layer(self as *mut Self, theLayerIndex) }
+    }
+
+    /// **Source:** `Graphic3d_CStructure.hxx`:137 - `Graphic3d_CStructure::ZLayer()`
+    /// Get z layer ID
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::Graphic3d_CStructure_z_layer(self as *const Self) }
+    }
+
     /// **Source:** `Graphic3d_CStructure.hxx`:141 - `Graphic3d_CStructure::HighlightStyle()`
     /// Returns valid handle to highlight style of the structure in case if
     /// highlight flag is set to true
@@ -17141,18 +17600,6 @@ impl HandleGraphic3dCStructure {
     }
 }
 
-// ── Skipped symbols for CStructure (2 total) ──
-// SKIPPED: **Source:** `Graphic3d_CStructure.hxx`:134 - `Graphic3d_CStructure::SetZLayer`
-//   method: Set z layer ID to display the structure in specified layer
-//   Reason: param 'theLayerIndex' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn set_z_layer(&mut self, theLayerIndex: ZLayerId);
-//
-// SKIPPED: **Source:** `Graphic3d_CStructure.hxx`:137 - `Graphic3d_CStructure::ZLayer`
-//   method: Get z layer ID
-//   Reason: return type 'Graphic3d_ZLayerId' is unknown
-//   // pub fn z_layer(&self) -> OwnedPtr<Graphic3d_ZLayerId>;
-//
-
 // ========================
 // From Graphic3d_CView.hxx
 // ========================
@@ -17296,6 +17743,18 @@ impl CView {
         }
     }
 
+    /// **Source:** `Graphic3d_CView.hxx`:126 - `Graphic3d_CView::ZLayerTarget()`
+    /// Returns ZLayerId target
+    pub fn z_layer_target(&self) -> i32 {
+        unsafe { crate::ffi::Graphic3d_CView_z_layer_target(self as *const Self) }
+    }
+
+    /// **Source:** `Graphic3d_CView.hxx`:129 - `Graphic3d_CView::SetZLayerTarget()`
+    /// Sets ZLayerId target.
+    pub fn set_z_layer_target(&mut self, theTarget: i32) {
+        unsafe { crate::ffi::Graphic3d_CView_set_z_layer_target(self as *mut Self, theTarget) }
+    }
+
     /// **Source:** `Graphic3d_CView.hxx`:132 - `Graphic3d_CView::ZLayerRedrawMode()`
     /// Returns ZLayerId redraw mode
     pub fn z_layer_redraw_mode(&self) -> bool {
@@ -17325,6 +17784,12 @@ impl CView {
     /// Graphic3d_TOS_COMPUTED.
     pub fn re_compute(&mut self, theStructure: &crate::ffi::HandleGraphic3dStructure) {
         unsafe { crate::ffi::Graphic3d_CView_re_compute(self as *mut Self, theStructure) }
+    }
+
+    /// **Source:** `Graphic3d_CView.hxx`:148 - `Graphic3d_CView::Update()`
+    /// Invalidates bounding box of specified ZLayerId.
+    pub fn update(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::Graphic3d_CView_update(self as *mut Self, theLayerId) }
     }
 
     /// **Source:** `Graphic3d_CView.hxx`:152 - `Graphic3d_CView::Compute()`
@@ -17507,11 +17972,105 @@ impl CView {
         }
     }
 
+    /// **Source:** `Graphic3d_CView.hxx`:305 - `Graphic3d_CView::InvalidateBVHData()`
+    /// Marks BVH tree and the set of BVH primitives of correspondent priority list with id theLayerId
+    /// as outdated.
+    pub fn invalidate_bvh_data(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::Graphic3d_CView_invalidate_bvh_data(self as *mut Self, theLayerId) }
+    }
+
+    /// **Source:** `Graphic3d_CView.hxx`:312 - `Graphic3d_CView::InsertLayerBefore()`
+    /// Add a layer to the view.
+    /// @param[in] theNewLayerId  id of new layer, should be > 0 (negative values are reserved for
+    /// default layers).
+    /// @param[in] theSettings    new layer settings
+    /// @param[in] theLayerAfter  id of layer to append new layer before
+    pub fn insert_layer_before(
+        &mut self,
+        theNewLayerId: i32,
+        theSettings: &ZLayerSettings,
+        theLayerAfter: i32,
+    ) {
+        unsafe {
+            crate::ffi::Graphic3d_CView_insert_layer_before(
+                self as *mut Self,
+                theNewLayerId,
+                theSettings,
+                theLayerAfter,
+            )
+        }
+    }
+
+    /// **Source:** `Graphic3d_CView.hxx`:321 - `Graphic3d_CView::InsertLayerAfter()`
+    /// Add a layer to the view.
+    /// @param[in] theNewLayerId   id of new layer, should be > 0 (negative values are reserved for
+    /// default layers).
+    /// @param[in] theSettings     new layer settings
+    /// @param[in] theLayerBefore  id of layer to append new layer after
+    pub fn insert_layer_after(
+        &mut self,
+        theNewLayerId: i32,
+        theSettings: &ZLayerSettings,
+        theLayerBefore: i32,
+    ) {
+        unsafe {
+            crate::ffi::Graphic3d_CView_insert_layer_after(
+                self as *mut Self,
+                theNewLayerId,
+                theSettings,
+                theLayerBefore,
+            )
+        }
+    }
+
     /// **Source:** `Graphic3d_CView.hxx`:327 - `Graphic3d_CView::ZLayerMax()`
     /// Returns the maximum Z layer ID.
     /// First layer ID is Graphic3d_ZLayerId_Default, last ID is ZLayerMax().
     pub fn z_layer_max(&self) -> i32 {
         unsafe { crate::ffi::Graphic3d_CView_z_layer_max(self as *const Self) }
+    }
+
+    /// **Source:** `Graphic3d_CView.hxx`:333 - `Graphic3d_CView::Layer()`
+    /// Returns layer with given ID or NULL if undefined.
+    pub fn layer(&self, theLayerId: i32) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dLayer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_CView_layer(
+                self as *const Self,
+                theLayerId,
+            ))
+        }
+    }
+
+    /// **Source:** `Graphic3d_CView.hxx`:336 - `Graphic3d_CView::InvalidateZLayerBoundingBox()`
+    /// Returns the bounding box of all structures displayed in the Z layer.
+    pub fn invalidate_z_layer_bounding_box(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::Graphic3d_CView_invalidate_z_layer_bounding_box(
+                self as *mut Self,
+                theLayerId,
+            )
+        }
+    }
+
+    /// **Source:** `Graphic3d_CView.hxx`:342 - `Graphic3d_CView::RemoveZLayer()`
+    /// Remove Z layer from the specified view. All structures
+    /// displayed at the moment in layer will be displayed in default layer
+    /// ( the bottom-level z layer ). To unset layer ID from associated
+    /// structures use method UnsetZLayer (...).
+    pub fn remove_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::Graphic3d_CView_remove_z_layer(self as *mut Self, theLayerId) }
+    }
+
+    /// **Source:** `Graphic3d_CView.hxx`:345 - `Graphic3d_CView::SetZLayerSettings()`
+    /// Sets the settings for a single Z layer of specified view.
+    pub fn set_z_layer_settings(&mut self, theLayerId: i32, theSettings: &ZLayerSettings) {
+        unsafe {
+            crate::ffi::Graphic3d_CView_set_z_layer_settings(
+                self as *mut Self,
+                theLayerId,
+                theSettings,
+            )
+        }
     }
 
     /// **Source:** `Graphic3d_CView.hxx`:349 - `Graphic3d_CView::ConsiderZoomPersistenceObjects()`
@@ -18310,26 +18869,11 @@ impl HandleGraphic3dCView {
     }
 }
 
-// ── Skipped symbols for CView (14 total) ──
+// ── Skipped symbols for CView (4 total) ──
 // SKIPPED: **Source:** `Graphic3d_CView.hxx`:61 - `Graphic3d_CView::Graphic3d_CView`
 //   constructor: Constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_handlegraphic3dstructuremanager(theMgr: &HandleStructureManager) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:126 - `Graphic3d_CView::ZLayerTarget`
-//   method: Returns ZLayerId target
-//   Reason: return type 'Graphic3d_ZLayerId' is unknown
-//   // pub fn z_layer_target(&self) -> OwnedPtr<Graphic3d_ZLayerId>;
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:129 - `Graphic3d_CView::SetZLayerTarget`
-//   method: Sets ZLayerId target.
-//   Reason: param 'theTarget' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn set_z_layer_target(&mut self, theTarget: ZLayerId);
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:148 - `Graphic3d_CView::Update`
-//   method: Invalidates bounding box of specified ZLayerId.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn update(&mut self, theLayerId: ZLayerId);
 //
 // SKIPPED: **Source:** `Graphic3d_CView.hxx`:283 - `Graphic3d_CView::SetWindow`
 //   method: Creates and maps rendering window to the view.
@@ -18338,52 +18882,10 @@ impl HandleGraphic3dCView {
 //   Reason: param 'theContext' uses unknown type 'Aspect_RenderingContext'
 //   // pub fn set_window(&mut self, theParentVIew: &HandleCView, theWindow: &HandleWindow, theContext: RenderingContext);
 //
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:305 - `Graphic3d_CView::InvalidateBVHData`
-//   method: Marks BVH tree and the set of BVH primitives of correspondent priority list with id theLayerId
-//   method: as outdated.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn invalidate_bvh_data(&mut self, theLayerId: ZLayerId);
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:312 - `Graphic3d_CView::InsertLayerBefore`
-//   method: Add a layer to the view.
-//   method: @param[in] theNewLayerId  id of new layer, should be > 0 (negative values are reserved for
-//   method: default layers).
-//   Reason: param 'theNewLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn insert_layer_before(&mut self, theNewLayerId: ZLayerId, theSettings: &ZLayerSettings, theLayerAfter: ZLayerId);
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:321 - `Graphic3d_CView::InsertLayerAfter`
-//   method: Add a layer to the view.
-//   method: @param[in] theNewLayerId   id of new layer, should be > 0 (negative values are reserved for
-//   method: default layers).
-//   Reason: param 'theNewLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn insert_layer_after(&mut self, theNewLayerId: ZLayerId, theSettings: &ZLayerSettings, theLayerBefore: ZLayerId);
-//
 // SKIPPED: **Source:** `Graphic3d_CView.hxx`:330 - `Graphic3d_CView::Layers`
 //   method: Returns the list of layers.
 //   Reason: has unbindable types: return: unresolved template type (const NCollection_List<opencascade::handle<Graphic3d_Layer>>&)
 //   // pub fn layers(&self) -> /* const NCollection_List<opencascade::handle<Graphic3d_Layer>>& */;
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:333 - `Graphic3d_CView::Layer`
-//   method: Returns layer with given ID or NULL if undefined.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn layer(&self, theLayerId: ZLayerId) -> OwnedPtr<Handle<Graphic3d_Layer>>;
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:336 - `Graphic3d_CView::InvalidateZLayerBoundingBox`
-//   method: Returns the bounding box of all structures displayed in the Z layer.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn invalidate_z_layer_bounding_box(&mut self, theLayerId: ZLayerId);
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:342 - `Graphic3d_CView::RemoveZLayer`
-//   method: Remove Z layer from the specified view. All structures
-//   method: displayed at the moment in layer will be displayed in default layer
-//   method: ( the bottom-level z layer ). To unset layer ID from associated
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn remove_z_layer(&mut self, theLayerId: ZLayerId);
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:345 - `Graphic3d_CView::SetZLayerSettings`
-//   method: Sets the settings for a single Z layer of specified view.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn set_z_layer_settings(&mut self, theLayerId: ZLayerId, theSettings: &ZLayerSettings);
 //
 // SKIPPED: **Source:** `Graphic3d_CView.hxx`:613 - `Graphic3d_CView::Subviews`
 //   method: Return subview list.
@@ -23618,10 +24120,88 @@ impl GraphicDriver {
         }
     }
 
+    /// **Source:** `Graphic3d_GraphicDriver.hxx`:108 - `Graphic3d_GraphicDriver::InsertLayerBefore()`
+    /// Adds a layer to all views.
+    /// To add a structure to desired layer on display it is necessary to set the layer ID for the
+    /// structure.
+    /// @param[in] theNewLayerId  id of new layer, should be > 0 (negative values are reserved for
+    /// default layers).
+    /// @param[in] theSettings    new layer settings
+    /// @param[in] theLayerAfter  id of layer to append new layer before
+    pub fn insert_layer_before(
+        &mut self,
+        theNewLayerId: i32,
+        theSettings: &ZLayerSettings,
+        theLayerAfter: i32,
+    ) {
+        unsafe {
+            crate::ffi::Graphic3d_GraphicDriver_insert_layer_before(
+                self as *mut Self,
+                theNewLayerId,
+                theSettings,
+                theLayerAfter,
+            )
+        }
+    }
+
+    /// **Source:** `Graphic3d_GraphicDriver.hxx`:117 - `Graphic3d_GraphicDriver::InsertLayerAfter()`
+    /// Adds a layer to all views.
+    /// @param[in] theNewLayerId   id of new layer, should be > 0 (negative values are reserved for
+    /// default layers).
+    /// @param[in] theSettings     new layer settings
+    /// @param[in] theLayerBefore  id of layer to append new layer after
+    pub fn insert_layer_after(
+        &mut self,
+        theNewLayerId: i32,
+        theSettings: &ZLayerSettings,
+        theLayerBefore: i32,
+    ) {
+        unsafe {
+            crate::ffi::Graphic3d_GraphicDriver_insert_layer_after(
+                self as *mut Self,
+                theNewLayerId,
+                theSettings,
+                theLayerBefore,
+            )
+        }
+    }
+
+    /// **Source:** `Graphic3d_GraphicDriver.hxx`:125 - `Graphic3d_GraphicDriver::RemoveZLayer()`
+    /// Removes Z layer. All structures displayed at the moment in layer will be displayed in
+    /// default layer (the bottom-level z layer). By default, there are always default
+    /// bottom-level layer that can't be removed.  The passed theLayerId should be not less than 0
+    /// (reserved for default layers that can not be removed).
+    pub fn remove_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::Graphic3d_GraphicDriver_remove_z_layer(self as *mut Self, theLayerId) }
+    }
+
     /// **Source:** `Graphic3d_GraphicDriver.hxx`:128 - `Graphic3d_GraphicDriver::ZLayers()`
     /// Returns list of Z layers defined for the graphical driver.
     pub fn z_layers(&self, theLayerSeq: &mut crate::ffi::TColStd_SequenceOfInteger) {
         unsafe { crate::ffi::Graphic3d_GraphicDriver_z_layers(self as *const Self, theLayerSeq) }
+    }
+
+    /// **Source:** `Graphic3d_GraphicDriver.hxx`:131 - `Graphic3d_GraphicDriver::SetZLayerSettings()`
+    /// Sets the settings for a single Z layer.
+    pub fn set_z_layer_settings(&mut self, theLayerId: i32, theSettings: &ZLayerSettings) {
+        unsafe {
+            crate::ffi::Graphic3d_GraphicDriver_set_z_layer_settings(
+                self as *mut Self,
+                theLayerId,
+                theSettings,
+            )
+        }
+    }
+
+    /// **Source:** `Graphic3d_GraphicDriver.hxx`:135 - `Graphic3d_GraphicDriver::ZLayerSettings()`
+    /// Returns the settings of a single Z layer.
+    pub fn z_layer_settings(&self, theLayerId: i32) -> &ZLayerSettings {
+        unsafe {
+            &*(crate::ffi::Graphic3d_GraphicDriver_z_layer_settings(
+                self as *const Self,
+                theLayerId,
+            ))
+        }
     }
 
     /// **Source:** `Graphic3d_GraphicDriver.hxx`:140 - `Graphic3d_GraphicDriver::ViewExists()`
@@ -23769,39 +24349,6 @@ impl HandleGraphic3dGraphicDriver {
         }
     }
 }
-
-// ── Skipped symbols for GraphicDriver (5 total) ──
-// SKIPPED: **Source:** `Graphic3d_GraphicDriver.hxx`:108 - `Graphic3d_GraphicDriver::InsertLayerBefore`
-//   method: Adds a layer to all views.
-//   method: To add a structure to desired layer on display it is necessary to set the layer ID for the
-//   method: structure.
-//   Reason: param 'theNewLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn insert_layer_before(&mut self, theNewLayerId: ZLayerId, theSettings: &ZLayerSettings, theLayerAfter: ZLayerId);
-//
-// SKIPPED: **Source:** `Graphic3d_GraphicDriver.hxx`:117 - `Graphic3d_GraphicDriver::InsertLayerAfter`
-//   method: Adds a layer to all views.
-//   method: @param[in] theNewLayerId   id of new layer, should be > 0 (negative values are reserved for
-//   method: default layers).
-//   Reason: param 'theNewLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn insert_layer_after(&mut self, theNewLayerId: ZLayerId, theSettings: &ZLayerSettings, theLayerBefore: ZLayerId);
-//
-// SKIPPED: **Source:** `Graphic3d_GraphicDriver.hxx`:125 - `Graphic3d_GraphicDriver::RemoveZLayer`
-//   method: Removes Z layer. All structures displayed at the moment in layer will be displayed in
-//   method: default layer (the bottom-level z layer). By default, there are always default
-//   method: bottom-level layer that can't be removed.  The passed theLayerId should be not less than 0
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn remove_z_layer(&mut self, theLayerId: ZLayerId);
-//
-// SKIPPED: **Source:** `Graphic3d_GraphicDriver.hxx`:131 - `Graphic3d_GraphicDriver::SetZLayerSettings`
-//   method: Sets the settings for a single Z layer.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn set_z_layer_settings(&mut self, theLayerId: ZLayerId, theSettings: &ZLayerSettings);
-//
-// SKIPPED: **Source:** `Graphic3d_GraphicDriver.hxx`:135 - `Graphic3d_GraphicDriver::ZLayerSettings`
-//   method: Returns the settings of a single Z layer.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn z_layer_settings(&self, theLayerId: ZLayerId) -> &ZLayerSettings;
-//
 
 // ========================
 // From Graphic3d_GraphicDriverFactory.hxx
@@ -25312,6 +25859,12 @@ impl Layer {
         unsafe { &*(crate::ffi::Graphic3d_Layer_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Graphic3d_Layer.hxx`:50 - `Graphic3d_Layer::LayerId()`
+    /// Return layer id.
+    pub fn layer_id(&self) -> i32 {
+        unsafe { crate::ffi::Graphic3d_Layer_layer_id(self as *const Self) }
+    }
+
     /// **Source:** `Graphic3d_Layer.hxx`:65 - `Graphic3d_Layer::IsImmediate()`
     /// Return true if layer was marked with immediate flag.
     pub fn is_immediate(&self) -> bool {
@@ -25623,16 +26176,11 @@ impl HandleGraphic3dLayer {
     }
 }
 
-// ── Skipped symbols for Layer (5 total) ──
+// ── Skipped symbols for Layer (4 total) ──
 // SKIPPED: **Source:** `Graphic3d_Layer.hxx`:43 - `Graphic3d_Layer::Graphic3d_Layer`
 //   constructor: Initializes associated priority list and layer properties
 //   Reason: param 'theBuilder' uses unknown Handle type
-//   // pub fn new_zlayerid_handlebvhbuilder<double, 3>(theId: ZLayerId, theBuilder: &HandleBuilder<double, 3>) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_Layer.hxx`:50 - `Graphic3d_Layer::LayerId`
-//   method: Return layer id.
-//   Reason: return type 'Graphic3d_ZLayerId' is unknown
-//   // pub fn layer_id(&self) -> OwnedPtr<Graphic3d_ZLayerId>;
+//   // pub fn new_int_handlebvhbuilder<double, 3>(theId: i32, theBuilder: &HandleBuilder<double, 3>) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `Graphic3d_Layer.hxx`:53 - `Graphic3d_Layer::FrustumCullingBVHBuilder`
 //   method: Returns BVH tree builder for frustum culling.
@@ -28506,6 +29054,21 @@ impl PresentationAttributes {
         }
     }
 
+    /// **Source:** `Graphic3d_PresentationAttributes.hxx`:71 - `Graphic3d_PresentationAttributes::ZLayer()`
+    /// Returns presentation Zlayer, Graphic3d_ZLayerId_Default by default.
+    /// Graphic3d_ZLayerId_UNKNOWN means undefined (a layer of main presentation to be used).
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::Graphic3d_PresentationAttributes_z_layer(self as *const Self) }
+    }
+
+    /// **Source:** `Graphic3d_PresentationAttributes.hxx`:74 - `Graphic3d_PresentationAttributes::SetZLayer()`
+    /// Sets presentation Zlayer.
+    pub fn set_z_layer(&mut self, theLayer: i32) {
+        unsafe {
+            crate::ffi::Graphic3d_PresentationAttributes_set_z_layer(self as *mut Self, theLayer)
+        }
+    }
+
     /// **Source:** `Graphic3d_PresentationAttributes.hxx`:78 - `Graphic3d_PresentationAttributes::DisplayMode()`
     /// Returns display mode, 0 by default.
     /// -1 means undefined (main display mode of presentation to be used).
@@ -28725,19 +29288,6 @@ impl HandleGraphic3dPresentationAttributes {
         }
     }
 }
-
-// ── Skipped symbols for PresentationAttributes (2 total) ──
-// SKIPPED: **Source:** `Graphic3d_PresentationAttributes.hxx`:71 - `Graphic3d_PresentationAttributes::ZLayer`
-//   method: Returns presentation Zlayer, Graphic3d_ZLayerId_Default by default.
-//   method: Graphic3d_ZLayerId_UNKNOWN means undefined (a layer of main presentation to be used).
-//   Reason: return type 'Graphic3d_ZLayerId' is unknown
-//   // pub fn z_layer(&self) -> OwnedPtr<Graphic3d_ZLayerId>;
-//
-// SKIPPED: **Source:** `Graphic3d_PresentationAttributes.hxx`:74 - `Graphic3d_PresentationAttributes::SetZLayer`
-//   method: Sets presentation Zlayer.
-//   Reason: param 'theLayer' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn set_z_layer(&mut self, theLayer: ZLayerId);
-//
 
 // ========================
 // From Graphic3d_PriorityDefinitionError.hxx
@@ -31007,6 +31557,22 @@ impl Structure {
         unsafe { crate::ffi::Graphic3d_Structure_set_infinite_state(self as *mut Self, theToSet) }
     }
 
+    /// **Source:** `Graphic3d_Structure.hxx`:138 - `Graphic3d_Structure::SetZLayer()`
+    /// Set Z layer ID for the structure. The Z layer mechanism
+    /// allows to display structures presented in higher layers in overlay
+    /// of structures in lower layers by switching off z buffer depth
+    /// test between layers
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::Graphic3d_Structure_set_z_layer(self as *mut Self, theLayerId) }
+    }
+
+    /// **Source:** `Graphic3d_Structure.hxx`:142 - `Graphic3d_Structure::GetZLayer()`
+    /// Get Z layer ID of displayed structure.
+    /// The method returns -1 if the structure has no ID (deleted from graphic driver).
+    pub fn get_z_layer(&self) -> i32 {
+        unsafe { crate::ffi::Graphic3d_Structure_get_z_layer(self as *const Self) }
+    }
+
     /// **Source:** `Graphic3d_Structure.hxx`:146 - `Graphic3d_Structure::SetClipPlanes()`
     /// Changes a sequence of clip planes slicing the structure on rendering.
     /// @param[in] thePlanes  the set of clip planes.
@@ -31631,20 +32197,7 @@ impl HandleGraphic3dStructure {
     }
 }
 
-// ── Skipped symbols for Structure (3 total) ──
-// SKIPPED: **Source:** `Graphic3d_Structure.hxx`:138 - `Graphic3d_Structure::SetZLayer`
-//   method: Set Z layer ID for the structure. The Z layer mechanism
-//   method: allows to display structures presented in higher layers in overlay
-//   method: of structures in lower layers by switching off z buffer depth
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn set_z_layer(&mut self, theLayerId: ZLayerId);
-//
-// SKIPPED: **Source:** `Graphic3d_Structure.hxx`:142 - `Graphic3d_Structure::GetZLayer`
-//   method: Get Z layer ID of displayed structure.
-//   method: The method returns -1 if the structure has no ID (deleted from graphic driver).
-//   Reason: return type 'Graphic3d_ZLayerId' is unknown
-//   // pub fn get_z_layer(&self) -> OwnedPtr<Graphic3d_ZLayerId>;
-//
+// ── Skipped symbols for Structure (1 total) ──
 // SKIPPED: **Source:** `Graphic3d_Structure.hxx`:362 - `Graphic3d_Structure::Network`
 //   static_method: Returns <ASet> the group of structures :
 //   static_method: - directly or indirectly connected to <AStructure> if the
@@ -32071,6 +32624,12 @@ impl StructureManager {
         unsafe { &*(crate::ffi::Graphic3d_StructureManager_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Graphic3d_StructureManager.hxx`:64 - `Graphic3d_StructureManager::Update()`
+    /// Invalidates bounding box of specified ZLayerId.
+    pub fn update(&self, theLayerId: i32) {
+        unsafe { crate::ffi::Graphic3d_StructureManager_update(self as *const Self, theLayerId) }
+    }
+
     /// **Source:** `Graphic3d_StructureManager.hxx`:68 - `Graphic3d_StructureManager::Remove()`
     /// Deletes and erases the 3D structure manager.
     pub fn remove(&mut self) {
@@ -32221,6 +32780,23 @@ impl StructureManager {
                 theStructure,
                 theOldPriority.into(),
                 theNewPriority.into(),
+            )
+        }
+    }
+
+    /// **Source:** `Graphic3d_StructureManager.hxx`:124 - `Graphic3d_StructureManager::ChangeZLayer()`
+    /// Change Z layer for structure. The Z layer mechanism allows to display structures in higher
+    /// layers in overlay of structures in lower layers.
+    pub fn change_z_layer(
+        &mut self,
+        theStructure: &crate::ffi::HandleGraphic3dStructure,
+        theLayerId: i32,
+    ) {
+        unsafe {
+            crate::ffi::Graphic3d_StructureManager_change_z_layer(
+                self as *mut Self,
+                theStructure,
+                theLayerId,
             )
         }
     }
@@ -32485,18 +33061,7 @@ impl HandleGraphic3dStructureManager {
     }
 }
 
-// ── Skipped symbols for StructureManager (3 total) ──
-// SKIPPED: **Source:** `Graphic3d_StructureManager.hxx`:64 - `Graphic3d_StructureManager::Update`
-//   method: Invalidates bounding box of specified ZLayerId.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn update(&self, theLayerId: ZLayerId);
-//
-// SKIPPED: **Source:** `Graphic3d_StructureManager.hxx`:124 - `Graphic3d_StructureManager::ChangeZLayer`
-//   method: Change Z layer for structure. The Z layer mechanism allows to display structures in higher
-//   method: layers in overlay of structures in lower layers.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn change_z_layer(&mut self, theStructure: &HandleStructure, theLayerId: ZLayerId);
-//
+// ── Skipped symbols for StructureManager (1 total) ──
 // SKIPPED: **Source:** `Graphic3d_StructureManager.hxx`:160 - `Graphic3d_StructureManager::RecomputeStructures`
 //   method: Recomputes all structures from theStructures.
 //   Reason: has unbindable types: param 'theStructures': unresolved template type (const NCollection_Map<Graphic3d_Structure *>&)
@@ -38874,7 +39439,7 @@ impl ZLayerSettings {
 // ========================
 
 pub use crate::ffi::{
-    Graphic3d_Array1OfAttribute as Array1OfAttribute, Graphic3d_ArrayFlags as ArrayFlags,
+    Graphic3d_Array1OfAttribute as Array1OfAttribute,
     Graphic3d_ArrayOfIndexedMapOfStructure as ArrayOfIndexedMapOfStructure,
     Graphic3d_BndBox3d as BndBox3d, Graphic3d_BndBox4f as BndBox4f,
     Graphic3d_GraphicDriverFactoryList as GraphicDriverFactoryList,
@@ -38889,5 +39454,4 @@ pub use crate::ffi::{
     Graphic3d_Vec2d as Vec2d, Graphic3d_Vec2i as Vec2i, Graphic3d_Vec3 as Vec3,
     Graphic3d_Vec3d as Vec3d, Graphic3d_Vec3i as Vec3i, Graphic3d_Vec4 as Vec4,
     Graphic3d_Vec4d as Vec4d, Graphic3d_Vec4i as Vec4i, Graphic3d_Vec4ub as Vec4ub,
-    Graphic3d_ZLayerId as ZLayerId,
 };

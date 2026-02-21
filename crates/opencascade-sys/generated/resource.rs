@@ -14,61 +14,61 @@
 #[repr(i32)]
 pub enum FormatType {
     /// < SJIS (Shift Japanese Industrial Standards) encoding
-    FormattypeSjis = 0,
+    Sjis = 0,
     /// < EUC (Extended Unix Code) multi-byte encoding primarily for Japanese,
     /// < Korean, and simplified Chinese
-    FormattypeEuc = 1,
+    Euc = 1,
     /// < format type indicating non-conversion behavior
-    FormattypeNoconversion = 2,
+    Noconversion = 2,
     /// < GB (Guobiao) encoding for Simplified Chinese
-    FormattypeGb = 3,
+    Gb = 3,
     /// < multi-byte UTF-8 encoding
-    FormattypeUtf8 = 4,
+    Utf8 = 4,
     /// < active system-defined locale; this value is strongly NOT
     /// < recommended to use
-    FormattypeSystemlocale = 5,
+    Systemlocale = 5,
     /// < cp1250 (Central European) encoding
-    FormattypeCp1250 = 6,
+    Cp1250 = 6,
     /// < cp1251 (Cyrillic) encoding
-    FormattypeCp1251 = 7,
+    Cp1251 = 7,
     /// < cp1252 (Western European) encoding
-    FormattypeCp1252 = 8,
+    Cp1252 = 8,
     /// < cp1253 (Greek) encoding
-    FormattypeCp1253 = 9,
+    Cp1253 = 9,
     /// < cp1254 (Turkish) encoding
-    FormattypeCp1254 = 10,
+    Cp1254 = 10,
     /// < cp1255 (Hebrew) encoding
-    FormattypeCp1255 = 11,
+    Cp1255 = 11,
     /// < cp1256 (Arabic) encoding
-    FormattypeCp1256 = 12,
+    Cp1256 = 12,
     /// < cp1257 (Baltic) encoding
-    FormattypeCp1257 = 13,
+    Cp1257 = 13,
     /// < cp1258 (Vietnamese) encoding
-    FormattypeCp1258 = 14,
+    Cp1258 = 14,
     /// < ISO 8859-1 (Western European) encoding
-    FormattypeIso88591 = 15,
+    Iso88591 = 15,
     /// < ISO 8859-2 (Central European) encoding
-    FormattypeIso88592 = 16,
+    Iso88592 = 16,
     /// < ISO 8859-3 (Turkish) encoding
-    FormattypeIso88593 = 17,
+    Iso88593 = 17,
     /// < ISO 8859-4 (Northern European) encoding
-    FormattypeIso88594 = 18,
+    Iso88594 = 18,
     /// < ISO 8859-5 (Cyrillic) encoding
-    FormattypeIso88595 = 19,
+    Iso88595 = 19,
     /// < ISO 8859-6 (Arabic) encoding
-    FormattypeIso88596 = 20,
+    Iso88596 = 20,
     /// < ISO 8859-7 (Greek) encoding
-    FormattypeIso88597 = 21,
+    Iso88597 = 21,
     /// < ISO 8859-8 (Hebrew) encoding
-    FormattypeIso88598 = 22,
+    Iso88598 = 22,
     /// < ISO 8859-9 (Turkish) encoding
-    FormattypeIso88599 = 23,
+    Iso88599 = 23,
     /// < ISO 850 (Western European) encoding
-    FormattypeCp850 = 24,
+    Cp850 = 24,
     /// < GBK  (UnifiedChinese) encoding
-    FormattypeGbk = 25,
+    Gbk = 25,
     /// < Big5 (TradChinese) encoding
-    FormattypeBig5 = 26,
+    Big5 = 26,
 }
 
 impl From<FormatType> for i32 {
@@ -82,33 +82,33 @@ impl TryFrom<i32> for FormatType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(FormatType::FormattypeSjis),
-            1 => Ok(FormatType::FormattypeEuc),
-            2 => Ok(FormatType::FormattypeNoconversion),
-            3 => Ok(FormatType::FormattypeGb),
-            4 => Ok(FormatType::FormattypeUtf8),
-            5 => Ok(FormatType::FormattypeSystemlocale),
-            6 => Ok(FormatType::FormattypeCp1250),
-            7 => Ok(FormatType::FormattypeCp1251),
-            8 => Ok(FormatType::FormattypeCp1252),
-            9 => Ok(FormatType::FormattypeCp1253),
-            10 => Ok(FormatType::FormattypeCp1254),
-            11 => Ok(FormatType::FormattypeCp1255),
-            12 => Ok(FormatType::FormattypeCp1256),
-            13 => Ok(FormatType::FormattypeCp1257),
-            14 => Ok(FormatType::FormattypeCp1258),
-            15 => Ok(FormatType::FormattypeIso88591),
-            16 => Ok(FormatType::FormattypeIso88592),
-            17 => Ok(FormatType::FormattypeIso88593),
-            18 => Ok(FormatType::FormattypeIso88594),
-            19 => Ok(FormatType::FormattypeIso88595),
-            20 => Ok(FormatType::FormattypeIso88596),
-            21 => Ok(FormatType::FormattypeIso88597),
-            22 => Ok(FormatType::FormattypeIso88598),
-            23 => Ok(FormatType::FormattypeIso88599),
-            24 => Ok(FormatType::FormattypeCp850),
-            25 => Ok(FormatType::FormattypeGbk),
-            26 => Ok(FormatType::FormattypeBig5),
+            0 => Ok(FormatType::Sjis),
+            1 => Ok(FormatType::Euc),
+            2 => Ok(FormatType::Noconversion),
+            3 => Ok(FormatType::Gb),
+            4 => Ok(FormatType::Utf8),
+            5 => Ok(FormatType::Systemlocale),
+            6 => Ok(FormatType::Cp1250),
+            7 => Ok(FormatType::Cp1251),
+            8 => Ok(FormatType::Cp1252),
+            9 => Ok(FormatType::Cp1253),
+            10 => Ok(FormatType::Cp1254),
+            11 => Ok(FormatType::Cp1255),
+            12 => Ok(FormatType::Cp1256),
+            13 => Ok(FormatType::Cp1257),
+            14 => Ok(FormatType::Cp1258),
+            15 => Ok(FormatType::Iso88591),
+            16 => Ok(FormatType::Iso88592),
+            17 => Ok(FormatType::Iso88593),
+            18 => Ok(FormatType::Iso88594),
+            19 => Ok(FormatType::Iso88595),
+            20 => Ok(FormatType::Iso88596),
+            21 => Ok(FormatType::Iso88597),
+            22 => Ok(FormatType::Iso88598),
+            23 => Ok(FormatType::Iso88599),
+            24 => Ok(FormatType::Cp850),
+            25 => Ok(FormatType::Gbk),
+            26 => Ok(FormatType::Big5),
             _ => Err(value),
         }
     }

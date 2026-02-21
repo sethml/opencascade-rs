@@ -40,8 +40,8 @@ impl TryFrom<i32> for ElementType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum ExtAlgo {
-    ExtalgoGrad = 0,
-    ExtalgoTree = 1,
+    Grad = 0,
+    Tree = 1,
 }
 
 impl From<ExtAlgo> for i32 {
@@ -55,8 +55,8 @@ impl TryFrom<i32> for ExtAlgo {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(ExtAlgo::ExtalgoGrad),
-            1 => Ok(ExtAlgo::ExtalgoTree),
+            0 => Ok(ExtAlgo::Grad),
+            1 => Ok(ExtAlgo::Tree),
             _ => Err(value),
         }
     }
@@ -66,9 +66,9 @@ impl TryFrom<i32> for ExtAlgo {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum ExtFlag {
-    ExtflagMin = 0,
-    ExtflagMax = 1,
-    ExtflagMinmax = 2,
+    Min = 0,
+    Max = 1,
+    Minmax = 2,
 }
 
 impl From<ExtFlag> for i32 {
@@ -82,9 +82,9 @@ impl TryFrom<i32> for ExtFlag {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(ExtFlag::ExtflagMin),
-            1 => Ok(ExtFlag::ExtflagMax),
-            2 => Ok(ExtFlag::ExtflagMinmax),
+            0 => Ok(ExtFlag::Min),
+            1 => Ok(ExtFlag::Max),
+            2 => Ok(ExtFlag::Minmax),
             _ => Err(value),
         }
     }

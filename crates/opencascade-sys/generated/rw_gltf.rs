@@ -12,19 +12,19 @@
 #[repr(i32)]
 pub enum GltfAccessorCompType {
     /// < unknown or invalid type
-    GltfaccessorcomptypeUnknown = 0,
+    Unknown = 0,
     /// < GL_BYTE
-    GltfaccessorcomptypeInt8 = 5120,
+    Int8 = 5120,
     /// < GL_UNSIGNED_BYTE
-    GltfaccessorcomptypeUint8 = 5121,
+    Uint8 = 5121,
     /// < GL_SHORT
-    GltfaccessorcomptypeInt16 = 5122,
+    Int16 = 5122,
     /// < GL_UNSIGNED_SHORT
-    GltfaccessorcomptypeUint16 = 5123,
+    Uint16 = 5123,
     /// < GL_UNSIGNED_INT
-    GltfaccessorcomptypeUint32 = 5125,
+    Uint32 = 5125,
     /// < GL_FLOAT
-    GltfaccessorcomptypeFloat32 = 5126,
+    Float32 = 5126,
 }
 
 impl From<GltfAccessorCompType> for i32 {
@@ -38,13 +38,13 @@ impl TryFrom<i32> for GltfAccessorCompType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GltfAccessorCompType::GltfaccessorcomptypeUnknown),
-            5120 => Ok(GltfAccessorCompType::GltfaccessorcomptypeInt8),
-            5121 => Ok(GltfAccessorCompType::GltfaccessorcomptypeUint8),
-            5122 => Ok(GltfAccessorCompType::GltfaccessorcomptypeInt16),
-            5123 => Ok(GltfAccessorCompType::GltfaccessorcomptypeUint16),
-            5125 => Ok(GltfAccessorCompType::GltfaccessorcomptypeUint32),
-            5126 => Ok(GltfAccessorCompType::GltfaccessorcomptypeFloat32),
+            0 => Ok(GltfAccessorCompType::Unknown),
+            5120 => Ok(GltfAccessorCompType::Int8),
+            5121 => Ok(GltfAccessorCompType::Uint8),
+            5122 => Ok(GltfAccessorCompType::Int16),
+            5123 => Ok(GltfAccessorCompType::Uint16),
+            5125 => Ok(GltfAccessorCompType::Uint32),
+            5126 => Ok(GltfAccessorCompType::Float32),
             _ => Err(value),
         }
     }
@@ -57,21 +57,21 @@ impl TryFrom<i32> for GltfAccessorCompType {
 #[repr(i32)]
 pub enum GltfAccessorLayout {
     /// < unknown or invalid type
-    GltfaccessorlayoutUnknown = 0,
+    Unknown = 0,
     /// < "SCALAR"
-    GltfaccessorlayoutScalar = 1,
+    Scalar = 1,
     /// < "VEC2"
-    GltfaccessorlayoutVec2 = 2,
+    Vec2 = 2,
     /// < "VEC3"
-    GltfaccessorlayoutVec3 = 3,
+    Vec3 = 3,
     /// < "VEC4"
-    GltfaccessorlayoutVec4 = 4,
+    Vec4 = 4,
     /// < "MAT2"
-    GltfaccessorlayoutMat2 = 5,
+    Mat2 = 5,
     /// < "MAT3"
-    GltfaccessorlayoutMat3 = 6,
+    Mat3 = 6,
     /// < "MAT4"
-    GltfaccessorlayoutMat4 = 7,
+    Mat4 = 7,
 }
 
 impl From<GltfAccessorLayout> for i32 {
@@ -85,14 +85,14 @@ impl TryFrom<i32> for GltfAccessorLayout {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GltfAccessorLayout::GltfaccessorlayoutUnknown),
-            1 => Ok(GltfAccessorLayout::GltfaccessorlayoutScalar),
-            2 => Ok(GltfAccessorLayout::GltfaccessorlayoutVec2),
-            3 => Ok(GltfAccessorLayout::GltfaccessorlayoutVec3),
-            4 => Ok(GltfAccessorLayout::GltfaccessorlayoutVec4),
-            5 => Ok(GltfAccessorLayout::GltfaccessorlayoutMat2),
-            6 => Ok(GltfAccessorLayout::GltfaccessorlayoutMat3),
-            7 => Ok(GltfAccessorLayout::GltfaccessorlayoutMat4),
+            0 => Ok(GltfAccessorLayout::Unknown),
+            1 => Ok(GltfAccessorLayout::Scalar),
+            2 => Ok(GltfAccessorLayout::Vec2),
+            3 => Ok(GltfAccessorLayout::Vec3),
+            4 => Ok(GltfAccessorLayout::Vec4),
+            5 => Ok(GltfAccessorLayout::Mat2),
+            6 => Ok(GltfAccessorLayout::Mat3),
+            7 => Ok(GltfAccessorLayout::Mat4),
             _ => Err(value),
         }
     }
@@ -104,12 +104,12 @@ impl TryFrom<i32> for GltfAccessorLayout {
 #[repr(i32)]
 pub enum GltfAlphaMode {
     /// < alpha value is ignored and the rendered output is fully opaque
-    GltfalphamodeOpaque = 0,
+    Opaque = 0,
     /// < rendered output is either fully opaque or fully transparent
     /// < depending on the alpha value and the specified alpha cutoff value
-    GltfalphamodeMask = 1,
+    Mask = 1,
     /// < alpha value is used to composite the source and destination areas
-    GltfalphamodeBlend = 2,
+    Blend = 2,
 }
 
 impl From<GltfAlphaMode> for i32 {
@@ -123,9 +123,9 @@ impl TryFrom<i32> for GltfAlphaMode {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GltfAlphaMode::GltfalphamodeOpaque),
-            1 => Ok(GltfAlphaMode::GltfalphamodeMask),
-            2 => Ok(GltfAlphaMode::GltfalphamodeBlend),
+            0 => Ok(GltfAlphaMode::Opaque),
+            1 => Ok(GltfAlphaMode::Mask),
+            2 => Ok(GltfAlphaMode::Blend),
             _ => Err(value),
         }
     }
@@ -137,23 +137,23 @@ impl TryFrom<i32> for GltfAlphaMode {
 #[repr(i32)]
 pub enum GltfArrayType {
     /// < unknown or invalid type
-    GltfarraytypeUnknown = 0,
+    Unknown = 0,
     /// < "indices"    within "primitive"  element
-    GltfarraytypeIndices = 1,
+    Indices = 1,
     /// < "POSITION"   within "attributes" element
-    GltfarraytypePosition = 2,
+    Position = 2,
     /// < "NORMAL"     within "attributes" element
-    GltfarraytypeNormal = 3,
+    Normal = 3,
     /// < "COLOR"      within "attributes" element
-    GltfarraytypeColor = 4,
+    Color = 4,
     /// < "TEXCOORD_0" within "attributes" element
-    GltfarraytypeTcoord0 = 5,
+    Tcoord0 = 5,
     /// < "TEXCOORD_1" within "attributes" element
-    GltfarraytypeTcoord1 = 6,
+    Tcoord1 = 6,
     /// < "JOINT"      within "attributes" element
-    GltfarraytypeJoint = 7,
+    Joint = 7,
     /// < "WEIGHT"     within "attributes" element
-    GltfarraytypeWeight = 8,
+    Weight = 8,
 }
 
 impl From<GltfArrayType> for i32 {
@@ -167,15 +167,15 @@ impl TryFrom<i32> for GltfArrayType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GltfArrayType::GltfarraytypeUnknown),
-            1 => Ok(GltfArrayType::GltfarraytypeIndices),
-            2 => Ok(GltfArrayType::GltfarraytypePosition),
-            3 => Ok(GltfArrayType::GltfarraytypeNormal),
-            4 => Ok(GltfArrayType::GltfarraytypeColor),
-            5 => Ok(GltfArrayType::GltfarraytypeTcoord0),
-            6 => Ok(GltfArrayType::GltfarraytypeTcoord1),
-            7 => Ok(GltfArrayType::GltfarraytypeJoint),
-            8 => Ok(GltfArrayType::GltfarraytypeWeight),
+            0 => Ok(GltfArrayType::Unknown),
+            1 => Ok(GltfArrayType::Indices),
+            2 => Ok(GltfArrayType::Position),
+            3 => Ok(GltfArrayType::Normal),
+            4 => Ok(GltfArrayType::Color),
+            5 => Ok(GltfArrayType::Tcoord0),
+            6 => Ok(GltfArrayType::Tcoord1),
+            7 => Ok(GltfArrayType::Joint),
+            8 => Ok(GltfArrayType::Weight),
             _ => Err(value),
         }
     }
@@ -187,11 +187,11 @@ impl TryFrom<i32> for GltfArrayType {
 #[repr(i32)]
 pub enum GltfBufferViewTarget {
     /// < unknown or invalid type
-    GltfbufferviewtargetUnknown = 0,
+    Unknown = 0,
     /// < GL_ARRAY_BUFFER
-    GltfbufferviewtargetArrayBuffer = 34962,
+    ArrayBuffer = 34962,
     /// < GL_ELEMENT_ARRAY_BUFFER
-    GltfbufferviewtargetElementArrayBuffer = 34963,
+    ElementArrayBuffer = 34963,
 }
 
 impl From<GltfBufferViewTarget> for i32 {
@@ -205,9 +205,9 @@ impl TryFrom<i32> for GltfBufferViewTarget {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GltfBufferViewTarget::GltfbufferviewtargetUnknown),
-            34962 => Ok(GltfBufferViewTarget::GltfbufferviewtargetArrayBuffer),
-            34963 => Ok(GltfBufferViewTarget::GltfbufferviewtargetElementArrayBuffer),
+            0 => Ok(GltfBufferViewTarget::Unknown),
+            34962 => Ok(GltfBufferViewTarget::ArrayBuffer),
+            34963 => Ok(GltfBufferViewTarget::ElementArrayBuffer),
             _ => Err(value),
         }
     }
@@ -220,21 +220,21 @@ impl TryFrom<i32> for GltfBufferViewTarget {
 #[repr(i32)]
 pub enum GltfPrimitiveMode {
     /// < unknown or invalid type
-    GltfprimitivemodeUnknown = -1,
+    Unknown = -1,
     /// < GL_POINTS
-    GltfprimitivemodePoints = 0,
+    Points = 0,
     /// < GL_LINES
-    GltfprimitivemodeLines = 1,
+    Lines = 1,
     /// < GL_LINE_LOOP
-    GltfprimitivemodeLineloop = 2,
+    Lineloop = 2,
     /// < GL_LINE_STRIP
-    GltfprimitivemodeLinestrip = 3,
+    Linestrip = 3,
     /// < GL_TRIANGLES
-    GltfprimitivemodeTriangles = 4,
+    Triangles = 4,
     /// < GL_TRIANGLE_STRIP
-    GltfprimitivemodeTrianglestrip = 5,
+    Trianglestrip = 5,
     /// < GL_TRIANGLE_FAN
-    GltfprimitivemodeTrianglefan = 6,
+    Trianglefan = 6,
 }
 
 impl From<GltfPrimitiveMode> for i32 {
@@ -248,14 +248,14 @@ impl TryFrom<i32> for GltfPrimitiveMode {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            -1 => Ok(GltfPrimitiveMode::GltfprimitivemodeUnknown),
-            0 => Ok(GltfPrimitiveMode::GltfprimitivemodePoints),
-            1 => Ok(GltfPrimitiveMode::GltfprimitivemodeLines),
-            2 => Ok(GltfPrimitiveMode::GltfprimitivemodeLineloop),
-            3 => Ok(GltfPrimitiveMode::GltfprimitivemodeLinestrip),
-            4 => Ok(GltfPrimitiveMode::GltfprimitivemodeTriangles),
-            5 => Ok(GltfPrimitiveMode::GltfprimitivemodeTrianglestrip),
-            6 => Ok(GltfPrimitiveMode::GltfprimitivemodeTrianglefan),
+            -1 => Ok(GltfPrimitiveMode::Unknown),
+            0 => Ok(GltfPrimitiveMode::Points),
+            1 => Ok(GltfPrimitiveMode::Lines),
+            2 => Ok(GltfPrimitiveMode::Lineloop),
+            3 => Ok(GltfPrimitiveMode::Linestrip),
+            4 => Ok(GltfPrimitiveMode::Triangles),
+            5 => Ok(GltfPrimitiveMode::Trianglestrip),
+            6 => Ok(GltfPrimitiveMode::Trianglefan),
             _ => Err(value),
         }
     }
@@ -267,45 +267,45 @@ impl TryFrom<i32> for GltfPrimitiveMode {
 #[repr(i32)]
 pub enum GltfRootElement {
     /// < "asset"       element, mandatory
-    GltfrootelementAsset = 0,
+    Asset = 0,
     /// < "scenes"      element, mandatory
-    GltfrootelementScenes = 1,
+    Scenes = 1,
     /// < "scene"       element, optional
-    GltfrootelementScene = 2,
+    Scene = 2,
     /// < "nodes"       element, mandatory
-    GltfrootelementNodes = 3,
+    Nodes = 3,
     /// < "meshes"      element, mandatory
-    GltfrootelementMeshes = 4,
+    Meshes = 4,
     /// < "accessors"   element, mandatory
-    GltfrootelementAccessors = 5,
+    Accessors = 5,
     /// < "bufferViews" element, mandatory
-    GltfrootelementBufferviews = 6,
+    Bufferviews = 6,
     /// < "buffers"     element, mandatory
-    GltfrootelementBuffers = 7,
+    Buffers = 7,
     /// < number of mandatory elements
-    GltfrootelementNbMandatory = 8,
+    NbMandatory = 8,
     /// < "materials"  element,
-    GltfrootelementMaterials = 9,
+    Materials = 9,
     /// < "programs"   element,
-    GltfrootelementPrograms = 10,
+    Programs = 10,
     /// < "samplers"   element,
-    GltfrootelementSamplers = 11,
+    Samplers = 11,
     /// < "shaders"    element,
-    GltfrootelementShaders = 12,
+    Shaders = 12,
     /// < "skins"      element,
-    GltfrootelementSkins = 13,
+    Skins = 13,
     /// < "techniques" element,
-    GltfrootelementTechniques = 14,
+    Techniques = 14,
     /// < "textures"   element,
-    GltfrootelementTextures = 15,
+    Textures = 15,
     /// < "images"     element,
-    GltfrootelementImages = 16,
+    Images = 16,
     /// < "extensionsUsed"     element,
-    GltfrootelementExtensionsused = 17,
+    Extensionsused = 17,
     /// < "extensionsRequired" element,
-    GltfrootelementExtensionsrequired = 18,
+    Extensionsrequired = 18,
     /// < overall number of elements
-    GltfrootelementNb = 19,
+    Nb = 19,
 }
 
 impl From<GltfRootElement> for i32 {
@@ -319,26 +319,26 @@ impl TryFrom<i32> for GltfRootElement {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GltfRootElement::GltfrootelementAsset),
-            1 => Ok(GltfRootElement::GltfrootelementScenes),
-            2 => Ok(GltfRootElement::GltfrootelementScene),
-            3 => Ok(GltfRootElement::GltfrootelementNodes),
-            4 => Ok(GltfRootElement::GltfrootelementMeshes),
-            5 => Ok(GltfRootElement::GltfrootelementAccessors),
-            6 => Ok(GltfRootElement::GltfrootelementBufferviews),
-            7 => Ok(GltfRootElement::GltfrootelementBuffers),
-            8 => Ok(GltfRootElement::GltfrootelementNbMandatory),
-            9 => Ok(GltfRootElement::GltfrootelementMaterials),
-            10 => Ok(GltfRootElement::GltfrootelementPrograms),
-            11 => Ok(GltfRootElement::GltfrootelementSamplers),
-            12 => Ok(GltfRootElement::GltfrootelementShaders),
-            13 => Ok(GltfRootElement::GltfrootelementSkins),
-            14 => Ok(GltfRootElement::GltfrootelementTechniques),
-            15 => Ok(GltfRootElement::GltfrootelementTextures),
-            16 => Ok(GltfRootElement::GltfrootelementImages),
-            17 => Ok(GltfRootElement::GltfrootelementExtensionsused),
-            18 => Ok(GltfRootElement::GltfrootelementExtensionsrequired),
-            19 => Ok(GltfRootElement::GltfrootelementNb),
+            0 => Ok(GltfRootElement::Asset),
+            1 => Ok(GltfRootElement::Scenes),
+            2 => Ok(GltfRootElement::Scene),
+            3 => Ok(GltfRootElement::Nodes),
+            4 => Ok(GltfRootElement::Meshes),
+            5 => Ok(GltfRootElement::Accessors),
+            6 => Ok(GltfRootElement::Bufferviews),
+            7 => Ok(GltfRootElement::Buffers),
+            8 => Ok(GltfRootElement::NbMandatory),
+            9 => Ok(GltfRootElement::Materials),
+            10 => Ok(GltfRootElement::Programs),
+            11 => Ok(GltfRootElement::Samplers),
+            12 => Ok(GltfRootElement::Shaders),
+            13 => Ok(GltfRootElement::Skins),
+            14 => Ok(GltfRootElement::Techniques),
+            15 => Ok(GltfRootElement::Textures),
+            16 => Ok(GltfRootElement::Images),
+            17 => Ok(GltfRootElement::Extensionsused),
+            18 => Ok(GltfRootElement::Extensionsrequired),
+            19 => Ok(GltfRootElement::Nb),
             _ => Err(value),
         }
     }
@@ -349,12 +349,12 @@ impl TryFrom<i32> for GltfRootElement {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum WriterTrsfFormat {
-    WritertrsfformatCompact = 0,
+    Compact = 0,
     /// < 4x4 transformation Matrix
-    WritertrsfformatMat4 = 1,
+    Mat4 = 1,
     /// < transformation decomposed into Translation vector, Rotation
     /// < quaternion and Scale factor (T * R * S)
-    WritertrsfformatTrs = 2,
+    Trs = 2,
 }
 
 impl From<WriterTrsfFormat> for i32 {
@@ -368,9 +368,9 @@ impl TryFrom<i32> for WriterTrsfFormat {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(WriterTrsfFormat::WritertrsfformatCompact),
-            1 => Ok(WriterTrsfFormat::WritertrsfformatMat4),
-            2 => Ok(WriterTrsfFormat::WritertrsfformatTrs),
+            0 => Ok(WriterTrsfFormat::Compact),
+            1 => Ok(WriterTrsfFormat::Mat4),
+            2 => Ok(WriterTrsfFormat::Trs),
             _ => Err(value),
         }
     }

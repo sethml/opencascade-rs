@@ -14,9 +14,9 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum Volume {
-    VolumeAutodetection = 0,
-    VolumeClosed = 1,
-    VolumeOpened = 2,
+    Autodetection = 0,
+    Closed = 1,
+    Opened = 2,
 }
 
 impl From<Volume> for i32 {
@@ -30,9 +30,9 @@ impl TryFrom<i32> for Volume {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(Volume::VolumeAutodetection),
-            1 => Ok(Volume::VolumeClosed),
-            2 => Ok(Volume::VolumeOpened),
+            0 => Ok(Volume::Autodetection),
+            1 => Ok(Volume::Closed),
+            2 => Ok(Volume::Opened),
             _ => Err(value),
         }
     }

@@ -278,7 +278,7 @@ impl Face {
     pub fn normal_at(&self, pos: DVec3) -> DVec3 {
         let surface = b_rep::Tool::surface_face(&self.inner);
         let projector =
-            geom_api::ProjectPointOnSurf::new_pnt_handlegeomsurface_extalgo(&make_point(pos), &surface, extrema::ExtAlgo::ExtalgoGrad);
+            geom_api::ProjectPointOnSurf::new_pnt_handlegeomsurface_extalgo(&make_point(pos), &surface, extrema::ExtAlgo::Grad);
         let mut u: f64 = 0.0;
         let mut v: f64 = 0.0;
 

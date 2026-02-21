@@ -49,14 +49,14 @@ pub fn get_deflection(
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DatumAttribute {
-    DatumattributeXaxislength = 0,
-    DatumattributeYaxislength = 1,
-    DatumattributeZaxislength = 2,
-    DatumattributeShadingtuberadiuspercent = 3,
-    DatumattributeShadingconeradiuspercent = 4,
-    DatumattributeShadingconelengthpercent = 5,
-    DatumattributeShadingoriginradiuspercent = 6,
-    DatumattributeShadingnumberoffacettes = 7,
+    Xaxislength = 0,
+    Yaxislength = 1,
+    Zaxislength = 2,
+    Shadingtuberadiuspercent = 3,
+    Shadingconeradiuspercent = 4,
+    Shadingconelengthpercent = 5,
+    Shadingoriginradiuspercent = 6,
+    Shadingnumberoffacettes = 7,
 }
 
 impl From<DatumAttribute> for i32 {
@@ -70,14 +70,14 @@ impl TryFrom<i32> for DatumAttribute {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DatumAttribute::DatumattributeXaxislength),
-            1 => Ok(DatumAttribute::DatumattributeYaxislength),
-            2 => Ok(DatumAttribute::DatumattributeZaxislength),
-            3 => Ok(DatumAttribute::DatumattributeShadingtuberadiuspercent),
-            4 => Ok(DatumAttribute::DatumattributeShadingconeradiuspercent),
-            5 => Ok(DatumAttribute::DatumattributeShadingconelengthpercent),
-            6 => Ok(DatumAttribute::DatumattributeShadingoriginradiuspercent),
-            7 => Ok(DatumAttribute::DatumattributeShadingnumberoffacettes),
+            0 => Ok(DatumAttribute::Xaxislength),
+            1 => Ok(DatumAttribute::Yaxislength),
+            2 => Ok(DatumAttribute::Zaxislength),
+            3 => Ok(DatumAttribute::Shadingtuberadiuspercent),
+            4 => Ok(DatumAttribute::Shadingconeradiuspercent),
+            5 => Ok(DatumAttribute::Shadingconelengthpercent),
+            6 => Ok(DatumAttribute::Shadingoriginradiuspercent),
+            7 => Ok(DatumAttribute::Shadingnumberoffacettes),
             _ => Err(value),
         }
     }
@@ -89,18 +89,18 @@ impl TryFrom<i32> for DatumAttribute {
 #[repr(i32)]
 pub enum DatumAxes {
     /// < X axis of the datum
-    DatumaxesXaxis = 1,
+    Xaxis = 1,
     /// < Y axis of the datum
-    DatumaxesYaxis = 2,
+    Yaxis = 2,
     /// < Z axis of the datum
-    DatumaxesZaxis = 4,
+    Zaxis = 4,
     /// < XOY 2D axes
-    DatumaxesXyaxes = 3,
+    Xyaxes = 3,
     /// < YOZ 2D axes
-    DatumaxesYzaxes = 6,
+    Yzaxes = 6,
     /// < XOZ 2D axes
-    DatumaxesXzaxes = 5,
-    DatumaxesXyzaxes = 7,
+    Xzaxes = 5,
+    Xyzaxes = 7,
 }
 
 impl From<DatumAxes> for i32 {
@@ -114,13 +114,13 @@ impl TryFrom<i32> for DatumAxes {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            1 => Ok(DatumAxes::DatumaxesXaxis),
-            2 => Ok(DatumAxes::DatumaxesYaxis),
-            4 => Ok(DatumAxes::DatumaxesZaxis),
-            3 => Ok(DatumAxes::DatumaxesXyaxes),
-            6 => Ok(DatumAxes::DatumaxesYzaxes),
-            5 => Ok(DatumAxes::DatumaxesXzaxes),
-            7 => Ok(DatumAxes::DatumaxesXyzaxes),
+            1 => Ok(DatumAxes::Xaxis),
+            2 => Ok(DatumAxes::Yaxis),
+            4 => Ok(DatumAxes::Zaxis),
+            3 => Ok(DatumAxes::Xyaxes),
+            6 => Ok(DatumAxes::Yzaxes),
+            5 => Ok(DatumAxes::Xzaxes),
+            7 => Ok(DatumAxes::Xyzaxes),
             _ => Err(value),
         }
     }
@@ -158,17 +158,17 @@ impl TryFrom<i32> for DatumMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DatumParts {
-    DatumpartsOrigin = 0,
-    DatumpartsXaxis = 1,
-    DatumpartsYaxis = 2,
-    DatumpartsZaxis = 3,
-    DatumpartsXarrow = 4,
-    DatumpartsYarrow = 5,
-    DatumpartsZarrow = 6,
-    DatumpartsXoyaxis = 7,
-    DatumpartsYozaxis = 8,
-    DatumpartsXozaxis = 9,
-    DatumpartsNone = 10,
+    Origin = 0,
+    Xaxis = 1,
+    Yaxis = 2,
+    Zaxis = 3,
+    Xarrow = 4,
+    Yarrow = 5,
+    Zarrow = 6,
+    Xoyaxis = 7,
+    Yozaxis = 8,
+    Xozaxis = 9,
+    None = 10,
 }
 
 impl From<DatumParts> for i32 {
@@ -182,17 +182,17 @@ impl TryFrom<i32> for DatumParts {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DatumParts::DatumpartsOrigin),
-            1 => Ok(DatumParts::DatumpartsXaxis),
-            2 => Ok(DatumParts::DatumpartsYaxis),
-            3 => Ok(DatumParts::DatumpartsZaxis),
-            4 => Ok(DatumParts::DatumpartsXarrow),
-            5 => Ok(DatumParts::DatumpartsYarrow),
-            6 => Ok(DatumParts::DatumpartsZarrow),
-            7 => Ok(DatumParts::DatumpartsXoyaxis),
-            8 => Ok(DatumParts::DatumpartsYozaxis),
-            9 => Ok(DatumParts::DatumpartsXozaxis),
-            10 => Ok(DatumParts::DatumpartsNone),
+            0 => Ok(DatumParts::Origin),
+            1 => Ok(DatumParts::Xaxis),
+            2 => Ok(DatumParts::Yaxis),
+            3 => Ok(DatumParts::Zaxis),
+            4 => Ok(DatumParts::Xarrow),
+            5 => Ok(DatumParts::Yarrow),
+            6 => Ok(DatumParts::Zarrow),
+            7 => Ok(DatumParts::Xoyaxis),
+            8 => Ok(DatumParts::Yozaxis),
+            9 => Ok(DatumParts::Xozaxis),
+            10 => Ok(DatumParts::None),
             _ => Err(value),
         }
     }
@@ -340,18 +340,18 @@ impl TryFrom<i32> for TypeOfHLR {
 #[repr(i32)]
 pub enum TypeOfHighlight {
     /// < no highlighting
-    TypeofhighlightNone = 0,
+    None = 0,
     /// < entire object is selected
-    TypeofhighlightSelected = 1,
+    Selected = 1,
     /// < entire object is dynamically highlighted
-    TypeofhighlightDynamic = 2,
+    Dynamic = 2,
     /// < part of the object is selected
-    TypeofhighlightLocalselected = 3,
+    Localselected = 3,
     /// < part of the object is dynamically highlighted
-    TypeofhighlightLocaldynamic = 4,
+    Localdynamic = 4,
     /// < sub-intensity style
-    TypeofhighlightSubintensity = 5,
-    TypeofhighlightNb = 6,
+    Subintensity = 5,
+    Nb = 6,
 }
 
 impl From<TypeOfHighlight> for i32 {
@@ -365,13 +365,13 @@ impl TryFrom<i32> for TypeOfHighlight {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(TypeOfHighlight::TypeofhighlightNone),
-            1 => Ok(TypeOfHighlight::TypeofhighlightSelected),
-            2 => Ok(TypeOfHighlight::TypeofhighlightDynamic),
-            3 => Ok(TypeOfHighlight::TypeofhighlightLocalselected),
-            4 => Ok(TypeOfHighlight::TypeofhighlightLocaldynamic),
-            5 => Ok(TypeOfHighlight::TypeofhighlightSubintensity),
-            6 => Ok(TypeOfHighlight::TypeofhighlightNb),
+            0 => Ok(TypeOfHighlight::None),
+            1 => Ok(TypeOfHighlight::Selected),
+            2 => Ok(TypeOfHighlight::Dynamic),
+            3 => Ok(TypeOfHighlight::Localselected),
+            4 => Ok(TypeOfHighlight::Localdynamic),
+            5 => Ok(TypeOfHighlight::Subintensity),
+            6 => Ok(TypeOfHighlight::Nb),
             _ => Err(value),
         }
     }
@@ -3184,6 +3184,16 @@ impl Drawer {
         }
     }
 
+    /// Inherited: **Source:** `Graphic3d_PresentationAttributes.hxx`:71 - `Graphic3d_PresentationAttributes::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::Prs3d_Drawer_inherited_ZLayer(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_PresentationAttributes.hxx`:74 - `Graphic3d_PresentationAttributes::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayer: i32) {
+        unsafe { crate::ffi::Prs3d_Drawer_inherited_SetZLayer(self as *mut Self, theLayer) }
+    }
+
     /// Inherited: **Source:** `Graphic3d_PresentationAttributes.hxx`:78 - `Graphic3d_PresentationAttributes::DisplayMode()`
     pub fn display_mode(&self) -> i32 {
         unsafe { crate::ffi::Prs3d_Drawer_inherited_DisplayMode(self as *const Self) }
@@ -4649,6 +4659,18 @@ impl PresentationShadow {
                 theToSet,
             )
         }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_Structure.hxx`:138 - `Graphic3d_Structure::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::Prs3d_PresentationShadow_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_Structure.hxx`:142 - `Graphic3d_Structure::GetZLayer()`
+    pub fn get_z_layer(&self) -> i32 {
+        unsafe { crate::ffi::Prs3d_PresentationShadow_inherited_GetZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:146 - `Graphic3d_Structure::SetClipPlanes()`

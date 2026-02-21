@@ -352,14 +352,14 @@ impl TryFrom<i32> for OpenMode {
 #[repr(i32)]
 pub enum SignalMode {
     /// < Do not set or remove signal handlers
-    SignalmodeAsis = 0,
+    Asis = 0,
     /// < Set OCCT signal handlers
-    SignalmodeSet = 1,
+    Set = 1,
     /// < Set OCCT signal handler but only if no handler is set, for each
     /// < particular signal type
-    SignalmodeSetunhandled = 2,
+    Setunhandled = 2,
     /// < Unset signal handler to system default
-    SignalmodeUnset = 3,
+    Unset = 3,
 }
 
 impl From<SignalMode> for i32 {
@@ -373,10 +373,10 @@ impl TryFrom<i32> for SignalMode {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(SignalMode::SignalmodeAsis),
-            1 => Ok(SignalMode::SignalmodeSet),
-            2 => Ok(SignalMode::SignalmodeSetunhandled),
-            3 => Ok(SignalMode::SignalmodeUnset),
+            0 => Ok(SignalMode::Asis),
+            1 => Ok(SignalMode::Set),
+            2 => Ok(SignalMode::Setunhandled),
+            3 => Ok(SignalMode::Unset),
             _ => Err(value),
         }
     }
@@ -10444,13 +10444,26 @@ impl Thread {
         unsafe { crate::ffi::OSD_Thread_wait_int_address(self as *mut Self, time, theResult) }
     }
 
+    /// **Source:** `OSD_Thread.hxx`:107 - `OSD_Thread::GetId()`
+    /// Returns ID of the currently controlled thread ID,
+    /// or 0 if no thread is run
+    pub fn get_id(&self) -> std::ffi::c_ulong {
+        unsafe { crate::ffi::OSD_Thread_get_id(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Thread.hxx`:110 - `OSD_Thread::Current()`
+    /// Auxiliary: returns ID of the current thread
+    pub fn current() -> std::ffi::c_ulong {
+        unsafe { crate::ffi::OSD_Thread_current() }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Thread_to_owned(self as *const Self)) }
     }
 }
 
-// ── Skipped symbols for Thread (4 total) ──
+// ── Skipped symbols for Thread (2 total) ──
 // SKIPPED: **Source:** `OSD_Thread.hxx`:42 - `OSD_Thread::OSD_Thread`
 //   constructor: Initialize the tool by the thread function
 //   constructor: Note: On Windows, you might have to take an address of the thread
@@ -10462,17 +10475,6 @@ impl Thread {
 //   method: If the current thread handle is not null, nullifies it.
 //   Reason: param 'func' uses unknown type 'const OSD_ThreadFunction&'
 //   // pub fn set_function(&mut self, func: &ThreadFunction);
-//
-// SKIPPED: **Source:** `OSD_Thread.hxx`:107 - `OSD_Thread::GetId`
-//   method: Returns ID of the currently controlled thread ID,
-//   method: or 0 if no thread is run
-//   Reason: return type 'Standard_ThreadId' is unknown
-//   // pub fn get_id(&self) -> OwnedPtr<Standard_ThreadId>;
-//
-// SKIPPED: **Source:** `OSD_Thread.hxx`:110 - `OSD_Thread::Current`
-//   static_method: Auxiliary: returns ID of the current thread
-//   Reason: return type 'Standard_ThreadId' is unknown
-//   // pub fn current() -> OwnedPtr<Standard_ThreadId>;
 //
 
 // ========================

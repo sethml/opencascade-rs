@@ -29,52 +29,52 @@
 #[repr(i32)]
 pub enum FormatVersion {
     /// < First supported version
-    FormatversionVersion2 = 2,
+    Version2 = 2,
     /// < OCCT 6.3.0
     /// < * XML: Adding DeltaOnModification functionality to set of
     /// < Standard attributes [#0019403]
     /// < * BIN: Add Delta to numbers data, changes in ShapeSection
     /// < [#0019986, #0019403]
-    FormatversionVersion3 = 3,
+    Version3 = 3,
     /// < OCCT 6.3.1
     /// < * XML: Naming mechanism improvement [#0021004]
     /// < * BIN: entry, ContextLabel for tree [#0021004]
-    FormatversionVersion4 = 4,
+    Version4 = 4,
     /// < OCCT 6.3.1
     /// < * XML: Separation of OCAF to Lite and Standard parts
     /// < completion [#0021093]
     /// < * BIN: Convert old format to new [#0021093]
-    FormatversionVersion5 = 5,
+    Version5 = 5,
     /// < OCCT 6.5.0
     /// < * XML: Add location [#0022192]
     /// < * BIN: Add location [#0022192]
-    FormatversionVersion6 = 6,
+    Version6 = 6,
     /// < OCCT 6.7.0
     /// < * XML: Add orientation [#0023766]
     /// < * BIN: Add orientation, type migration [#0023766]
-    FormatversionVersion7 = 7,
+    Version7 = 7,
     /// < OCCT 7.0.0
     /// < * XML: Replace TPrsStd_AISPresentation attribute with
     /// < TDataXtd_Presentation [#0026290]
     /// < * BIN: Stop convert old format [#0026290]
-    FormatversionVersion8 = 8,
+    Version8 = 8,
     /// < OCCT 7.1.0
     /// < * BIN: Add GUIDs, Process user defined guid [#0027932]
-    FormatversionVersion9 = 9,
+    Version9 = 9,
     /// < OCCT 7.2.0
     /// < * BIN: ReadTOC changed to handle 64-bit file length
     /// < [#0028736]
-    FormatversionVersion10 = 10,
+    Version10 = 10,
     /// < OCCT 7.6.0
     /// < * BIN, XML: TopTools_FormatVersion_CURRENT changed to 3 and
     /// < BinTools_FormatVersion_CURRENT changed to 4 to preserve
     /// < per-vertex normal information in case of triangulation-only
     /// < Faces [#0031136]
-    FormatversionVersion11 = 11,
+    Version11 = 11,
     /// < OCCT 7.6.0
     /// < * BIN: New binary format for fast reading of part of OCAF
     /// < document [#0031918]
-    FormatversionVersion12 = 12,
+    Version12 = 12,
 }
 
 impl From<FormatVersion> for i32 {
@@ -88,17 +88,17 @@ impl TryFrom<i32> for FormatVersion {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            2 => Ok(FormatVersion::FormatversionVersion2),
-            3 => Ok(FormatVersion::FormatversionVersion3),
-            4 => Ok(FormatVersion::FormatversionVersion4),
-            5 => Ok(FormatVersion::FormatversionVersion5),
-            6 => Ok(FormatVersion::FormatversionVersion6),
-            7 => Ok(FormatVersion::FormatversionVersion7),
-            8 => Ok(FormatVersion::FormatversionVersion8),
-            9 => Ok(FormatVersion::FormatversionVersion9),
-            10 => Ok(FormatVersion::FormatversionVersion10),
-            11 => Ok(FormatVersion::FormatversionVersion11),
-            12 => Ok(FormatVersion::FormatversionVersion12),
+            2 => Ok(FormatVersion::Version2),
+            3 => Ok(FormatVersion::Version3),
+            4 => Ok(FormatVersion::Version4),
+            5 => Ok(FormatVersion::Version5),
+            6 => Ok(FormatVersion::Version6),
+            7 => Ok(FormatVersion::Version7),
+            8 => Ok(FormatVersion::Version8),
+            9 => Ok(FormatVersion::Version9),
+            10 => Ok(FormatVersion::Version10),
+            11 => Ok(FormatVersion::Version11),
+            12 => Ok(FormatVersion::Version12),
             _ => Err(value),
         }
     }

@@ -12,15 +12,15 @@
 #[repr(i32)]
 pub enum FontAspect {
     /// < special value reserved for undefined aspect
-    FontaspectUndefined = -1,
+    Undefined = -1,
     /// < normal (regular) aspect
-    FontaspectRegular = 0,
+    Regular = 0,
     /// < bold aspect
-    FontaspectBold = 1,
+    Bold = 1,
     /// < italic aspect
-    FontaspectItalic = 2,
+    Italic = 2,
     /// < bold+italic aspect
-    FontaspectBolditalic = 3,
+    Bolditalic = 3,
 }
 
 impl From<FontAspect> for i32 {
@@ -34,11 +34,11 @@ impl TryFrom<i32> for FontAspect {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            -1 => Ok(FontAspect::FontaspectUndefined),
-            0 => Ok(FontAspect::FontaspectRegular),
-            1 => Ok(FontAspect::FontaspectBold),
-            2 => Ok(FontAspect::FontaspectItalic),
-            3 => Ok(FontAspect::FontaspectBolditalic),
+            -1 => Ok(FontAspect::Undefined),
+            0 => Ok(FontAspect::Regular),
+            1 => Ok(FontAspect::Bold),
+            2 => Ok(FontAspect::Italic),
+            3 => Ok(FontAspect::Bolditalic),
             _ => Err(value),
         }
     }
@@ -50,14 +50,14 @@ impl TryFrom<i32> for FontAspect {
 #[repr(i32)]
 pub enum Hinting {
     /// < no      hinting (FT_LOAD_NO_HINTING)
-    HintingOff = 0,
+    Off = 0,
     /// < default hinting (FT_LOAD_TARGET_NORMAL)
-    HintingNormal = 1,
+    Normal = 1,
     /// < light   hinting (FT_LOAD_TARGET_LIGHT)
-    HintingLight = 2,
-    HintingForceautohint = 16,
+    Light = 2,
+    Forceautohint = 16,
     /// < disallow autohinting (FT_LOAD_NO_AUTOHINT)
-    HintingNoautohint = 32,
+    Noautohint = 32,
 }
 
 impl From<Hinting> for i32 {
@@ -71,11 +71,11 @@ impl TryFrom<i32> for Hinting {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(Hinting::HintingOff),
-            1 => Ok(Hinting::HintingNormal),
-            2 => Ok(Hinting::HintingLight),
-            16 => Ok(Hinting::HintingForceautohint),
-            32 => Ok(Hinting::HintingNoautohint),
+            0 => Ok(Hinting::Off),
+            1 => Ok(Hinting::Normal),
+            2 => Ok(Hinting::Light),
+            16 => Ok(Hinting::Forceautohint),
+            32 => Ok(Hinting::Noautohint),
             _ => Err(value),
         }
     }
@@ -87,12 +87,12 @@ impl TryFrom<i32> for Hinting {
 #[repr(i32)]
 pub enum StrictLevel {
     /// < search only for exact font
-    StrictlevelStrict = 0,
+    Strict = 0,
     /// < search for exact font match and for aliases (ignore global
     /// < fallback)
-    StrictlevelAliases = 1,
+    Aliases = 1,
     /// < search for any font, including global fallback
-    StrictlevelAny = 2,
+    Any = 2,
 }
 
 impl From<StrictLevel> for i32 {
@@ -106,9 +106,9 @@ impl TryFrom<i32> for StrictLevel {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(StrictLevel::StrictlevelStrict),
-            1 => Ok(StrictLevel::StrictlevelAliases),
-            2 => Ok(StrictLevel::StrictlevelAny),
+            0 => Ok(StrictLevel::Strict),
+            1 => Ok(StrictLevel::Aliases),
+            2 => Ok(StrictLevel::Any),
             _ => Err(value),
         }
     }
@@ -120,13 +120,13 @@ impl TryFrom<i32> for StrictLevel {
 #[repr(i32)]
 pub enum UnicodeSubset {
     /// < western letters
-    UnicodesubsetWestern = 0,
+    Western = 0,
     /// < modern Korean letters
-    UnicodesubsetKorean = 1,
+    Korean = 1,
     /// < Chinese characters (Chinese, Japanese, Korean and Vietnam)
-    UnicodesubsetCjk = 2,
+    Cjk = 2,
     /// < Arabic  characters
-    UnicodesubsetArabic = 3,
+    Arabic = 3,
 }
 
 impl From<UnicodeSubset> for i32 {
@@ -140,10 +140,10 @@ impl TryFrom<i32> for UnicodeSubset {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(UnicodeSubset::UnicodesubsetWestern),
-            1 => Ok(UnicodeSubset::UnicodesubsetKorean),
-            2 => Ok(UnicodeSubset::UnicodesubsetCjk),
-            3 => Ok(UnicodeSubset::UnicodesubsetArabic),
+            0 => Ok(UnicodeSubset::Western),
+            1 => Ok(UnicodeSubset::Korean),
+            2 => Ok(UnicodeSubset::Cjk),
+            3 => Ok(UnicodeSubset::Arabic),
             _ => Err(value),
         }
     }

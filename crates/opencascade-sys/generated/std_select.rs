@@ -92,23 +92,23 @@ impl TryFrom<i32> for TypeOfFace {
 #[repr(i32)]
 pub enum TypeOfSelectionImage {
     /// < normalized   depth (grayscale)
-    TypeofselectionimageNormalizeddepth = 0,
+    Normalizeddepth = 0,
     /// < normalized   depth, inverted
-    TypeofselectionimageNormalizeddepthinverted = 1,
+    Normalizeddepthinverted = 1,
     /// < unnormalized depth (grayscale)
-    TypeofselectionimageUnnormalizeddepth = 2,
+    Unnormalizeddepth = 2,
     /// < color of detected object
-    TypeofselectionimageColoreddetectedobject = 3,
+    Coloreddetectedobject = 3,
     /// < random color for each entity
-    TypeofselectionimageColoredentity = 4,
+    Coloredentity = 4,
     /// < random color for each entity type
-    TypeofselectionimageColoredentitytype = 5,
+    Coloredentitytype = 5,
     /// < random color for each owner
-    TypeofselectionimageColoredowner = 6,
+    Coloredowner = 6,
     /// < color of selection mode
-    TypeofselectionimageColoredselectionmode = 7,
+    Coloredselectionmode = 7,
     /// < normal direction values
-    TypeofselectionimageSurfacenormal = 8,
+    Surfacenormal = 8,
 }
 
 impl From<TypeOfSelectionImage> for i32 {
@@ -122,15 +122,15 @@ impl TryFrom<i32> for TypeOfSelectionImage {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(TypeOfSelectionImage::TypeofselectionimageNormalizeddepth),
-            1 => Ok(TypeOfSelectionImage::TypeofselectionimageNormalizeddepthinverted),
-            2 => Ok(TypeOfSelectionImage::TypeofselectionimageUnnormalizeddepth),
-            3 => Ok(TypeOfSelectionImage::TypeofselectionimageColoreddetectedobject),
-            4 => Ok(TypeOfSelectionImage::TypeofselectionimageColoredentity),
-            5 => Ok(TypeOfSelectionImage::TypeofselectionimageColoredentitytype),
-            6 => Ok(TypeOfSelectionImage::TypeofselectionimageColoredowner),
-            7 => Ok(TypeOfSelectionImage::TypeofselectionimageColoredselectionmode),
-            8 => Ok(TypeOfSelectionImage::TypeofselectionimageSurfacenormal),
+            0 => Ok(TypeOfSelectionImage::Normalizeddepth),
+            1 => Ok(TypeOfSelectionImage::Normalizeddepthinverted),
+            2 => Ok(TypeOfSelectionImage::Unnormalizeddepth),
+            3 => Ok(TypeOfSelectionImage::Coloreddetectedobject),
+            4 => Ok(TypeOfSelectionImage::Coloredentity),
+            5 => Ok(TypeOfSelectionImage::Coloredentitytype),
+            6 => Ok(TypeOfSelectionImage::Coloredowner),
+            7 => Ok(TypeOfSelectionImage::Coloredselectionmode),
+            8 => Ok(TypeOfSelectionImage::Surfacenormal),
             _ => Err(value),
         }
     }
@@ -534,6 +534,13 @@ impl BRepOwner {
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:177 - `SelectMgr_EntityOwner::IsForcedHilight()`
     pub fn is_forced_hilight(&self) -> bool {
         unsafe { crate::ffi::StdSelect_BRepOwner_inherited_IsForcedHilight(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::StdSelect_BRepOwner_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:195 - `SelectMgr_EntityOwner::IsSameSelectable()`
@@ -1396,6 +1403,16 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::StdSelect_Shape_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::StdSelect_Shape_inherited_ZLayer(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:67 - `PrsMgr_PresentableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::StdSelect_Shape_inherited_SetZLayer(self as *mut Self, theLayerId) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`

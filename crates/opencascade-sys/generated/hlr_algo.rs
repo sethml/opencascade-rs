@@ -49,19 +49,19 @@ pub fn add_min_max(
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum PolyMask {
-    PolymaskEmskoutlin1 = 1,
-    PolymaskEmskoutlin2 = 2,
-    PolymaskEmskoutlin3 = 4,
-    PolymaskEmskgralin1 = 8,
-    PolymaskEmskgralin2 = 16,
-    PolymaskEmskgralin3 = 32,
-    PolymaskFmskback = 64,
-    PolymaskFmskside = 128,
-    PolymaskFmskhiding = 256,
-    PolymaskFmskflat = 512,
-    PolymaskFmskonoutl = 1024,
-    PolymaskFmskorback = 2048,
-    PolymaskFmskfrback = 4096,
+    Emskoutlin1 = 1,
+    Emskoutlin2 = 2,
+    Emskoutlin3 = 4,
+    Emskgralin1 = 8,
+    Emskgralin2 = 16,
+    Emskgralin3 = 32,
+    Fmskback = 64,
+    Fmskside = 128,
+    Fmskhiding = 256,
+    Fmskflat = 512,
+    Fmskonoutl = 1024,
+    Fmskorback = 2048,
+    Fmskfrback = 4096,
 }
 
 impl From<PolyMask> for i32 {
@@ -75,19 +75,19 @@ impl TryFrom<i32> for PolyMask {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            1 => Ok(PolyMask::PolymaskEmskoutlin1),
-            2 => Ok(PolyMask::PolymaskEmskoutlin2),
-            4 => Ok(PolyMask::PolymaskEmskoutlin3),
-            8 => Ok(PolyMask::PolymaskEmskgralin1),
-            16 => Ok(PolyMask::PolymaskEmskgralin2),
-            32 => Ok(PolyMask::PolymaskEmskgralin3),
-            64 => Ok(PolyMask::PolymaskFmskback),
-            128 => Ok(PolyMask::PolymaskFmskside),
-            256 => Ok(PolyMask::PolymaskFmskhiding),
-            512 => Ok(PolyMask::PolymaskFmskflat),
-            1024 => Ok(PolyMask::PolymaskFmskonoutl),
-            2048 => Ok(PolyMask::PolymaskFmskorback),
-            4096 => Ok(PolyMask::PolymaskFmskfrback),
+            1 => Ok(PolyMask::Emskoutlin1),
+            2 => Ok(PolyMask::Emskoutlin2),
+            4 => Ok(PolyMask::Emskoutlin3),
+            8 => Ok(PolyMask::Emskgralin1),
+            16 => Ok(PolyMask::Emskgralin2),
+            32 => Ok(PolyMask::Emskgralin3),
+            64 => Ok(PolyMask::Fmskback),
+            128 => Ok(PolyMask::Fmskside),
+            256 => Ok(PolyMask::Fmskhiding),
+            512 => Ok(PolyMask::Fmskflat),
+            1024 => Ok(PolyMask::Fmskonoutl),
+            2048 => Ok(PolyMask::Fmskorback),
+            4096 => Ok(PolyMask::Fmskfrback),
             _ => Err(value),
         }
     }

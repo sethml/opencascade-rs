@@ -29,13 +29,13 @@ pub fn read_file_charptr_progressrange(
 pub enum SubMeshReason {
     /// < new object, should occur only ones in valid OBJ file (at the
     /// < very beginning)
-    SubmeshreasonNewobject = 0,
+    Newobject = 0,
     /// < new group (g item)
-    SubmeshreasonNewgroup = 1,
+    Newgroup = 1,
     /// < new material (usemtl item)
-    SubmeshreasonNewmaterial = 2,
+    Newmaterial = 2,
     /// < new smoothing group (s item)
-    SubmeshreasonNewsmoothgroup = 3,
+    Newsmoothgroup = 3,
 }
 
 impl From<SubMeshReason> for i32 {
@@ -49,10 +49,10 @@ impl TryFrom<i32> for SubMeshReason {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(SubMeshReason::SubmeshreasonNewobject),
-            1 => Ok(SubMeshReason::SubmeshreasonNewgroup),
-            2 => Ok(SubMeshReason::SubmeshreasonNewmaterial),
-            3 => Ok(SubMeshReason::SubmeshreasonNewsmoothgroup),
+            0 => Ok(SubMeshReason::Newobject),
+            1 => Ok(SubMeshReason::Newgroup),
+            2 => Ok(SubMeshReason::Newmaterial),
+            3 => Ok(SubMeshReason::Newsmoothgroup),
             _ => Err(value),
         }
     }

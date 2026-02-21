@@ -421,9 +421,9 @@ pub fn compute_proj_vertex_presentation(
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DimensionSelectionMode {
-    DimensionselectionmodeAll = 0,
-    DimensionselectionmodeLine = 1,
-    DimensionselectionmodeText = 2,
+    All = 0,
+    Line = 1,
+    Text = 2,
 }
 
 impl From<DimensionSelectionMode> for i32 {
@@ -437,9 +437,9 @@ impl TryFrom<i32> for DimensionSelectionMode {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DimensionSelectionMode::DimensionselectionmodeAll),
-            1 => Ok(DimensionSelectionMode::DimensionselectionmodeLine),
-            2 => Ok(DimensionSelectionMode::DimensionselectionmodeText),
+            0 => Ok(DimensionSelectionMode::All),
+            1 => Ok(DimensionSelectionMode::Line),
+            2 => Ok(DimensionSelectionMode::Text),
             _ => Err(value),
         }
     }
@@ -450,9 +450,9 @@ impl TryFrom<i32> for DimensionSelectionMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DisplaySpecialSymbol {
-    DisplayspecialsymbolNo = 0,
-    DisplayspecialsymbolBefore = 1,
-    DisplayspecialsymbolAfter = 2,
+    No = 0,
+    Before = 1,
+    After = 2,
 }
 
 impl From<DisplaySpecialSymbol> for i32 {
@@ -466,9 +466,9 @@ impl TryFrom<i32> for DisplaySpecialSymbol {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DisplaySpecialSymbol::DisplayspecialsymbolNo),
-            1 => Ok(DisplaySpecialSymbol::DisplayspecialsymbolBefore),
-            2 => Ok(DisplaySpecialSymbol::DisplayspecialsymbolAfter),
+            0 => Ok(DisplaySpecialSymbol::No),
+            1 => Ok(DisplaySpecialSymbol::Before),
+            2 => Ok(DisplaySpecialSymbol::After),
             _ => Err(value),
         }
     }
@@ -614,9 +614,9 @@ impl TryFrom<i32> for KindOfSurface {
 #[repr(i32)]
 pub enum TypeOfAngle {
     /// < the angle between two lines built on geometry parameters
-    TypeofangleInterior = 0,
+    Interior = 0,
     /// < the angle equal 2 PI minus the interior angle
-    TypeofangleExterior = 1,
+    Exterior = 1,
 }
 
 impl From<TypeOfAngle> for i32 {
@@ -630,8 +630,8 @@ impl TryFrom<i32> for TypeOfAngle {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(TypeOfAngle::TypeofangleInterior),
-            1 => Ok(TypeOfAngle::TypeofangleExterior),
+            0 => Ok(TypeOfAngle::Interior),
+            1 => Ok(TypeOfAngle::Exterior),
             _ => Err(value),
         }
     }
@@ -643,13 +643,13 @@ impl TryFrom<i32> for TypeOfAngle {
 #[repr(i32)]
 pub enum TypeOfAngleArrowVisibility {
     /// < both arrows of the first and the second angle tips
-    TypeofanglearrowvisibilityBoth = 0,
+    Both = 0,
     /// < only first point arrow
-    TypeofanglearrowvisibilityFirst = 1,
+    First = 1,
     /// < only second point arrow
-    TypeofanglearrowvisibilitySecond = 2,
+    Second = 2,
     /// < arrows are not visible
-    TypeofanglearrowvisibilityNone = 3,
+    None = 3,
 }
 
 impl From<TypeOfAngleArrowVisibility> for i32 {
@@ -663,10 +663,10 @@ impl TryFrom<i32> for TypeOfAngleArrowVisibility {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(TypeOfAngleArrowVisibility::TypeofanglearrowvisibilityBoth),
-            1 => Ok(TypeOfAngleArrowVisibility::TypeofanglearrowvisibilityFirst),
-            2 => Ok(TypeOfAngleArrowVisibility::TypeofanglearrowvisibilitySecond),
-            3 => Ok(TypeOfAngleArrowVisibility::TypeofanglearrowvisibilityNone),
+            0 => Ok(TypeOfAngleArrowVisibility::Both),
+            1 => Ok(TypeOfAngleArrowVisibility::First),
+            2 => Ok(TypeOfAngleArrowVisibility::Second),
+            3 => Ok(TypeOfAngleArrowVisibility::None),
             _ => Err(value),
         }
     }
@@ -677,9 +677,9 @@ impl TryFrom<i32> for TypeOfAngleArrowVisibility {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum TypeOfDist {
-    TypeofdistUnknown = 0,
-    TypeofdistHorizontal = 1,
-    TypeofdistVertical = 2,
+    Unknown = 0,
+    Horizontal = 1,
+    Vertical = 2,
 }
 
 impl From<TypeOfDist> for i32 {
@@ -693,9 +693,9 @@ impl TryFrom<i32> for TypeOfDist {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(TypeOfDist::TypeofdistUnknown),
-            1 => Ok(TypeOfDist::TypeofdistHorizontal),
-            2 => Ok(TypeOfDist::TypeofdistVertical),
+            0 => Ok(TypeOfDist::Unknown),
+            1 => Ok(TypeOfDist::Horizontal),
+            2 => Ok(TypeOfDist::Vertical),
             _ => Err(value),
         }
     }
@@ -1652,6 +1652,13 @@ impl AngleDimension {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_AngleDimension_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -1702,6 +1709,11 @@ impl AngleDimension {
         unsafe {
             &mut *(crate::ffi::PrsDim_AngleDimension_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_AngleDimension_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -3083,6 +3095,13 @@ impl Chamf2dDimension {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_Chamf2dDimension_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -3136,6 +3155,11 @@ impl Chamf2dDimension {
         unsafe {
             &mut *(crate::ffi::PrsDim_Chamf2dDimension_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_Chamf2dDimension_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -4542,6 +4566,13 @@ impl Chamf3dDimension {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_Chamf3dDimension_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -4595,6 +4626,11 @@ impl Chamf3dDimension {
         unsafe {
             &mut *(crate::ffi::PrsDim_Chamf3dDimension_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_Chamf3dDimension_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -6000,6 +6036,13 @@ impl ConcentricRelation {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_ConcentricRelation_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -6055,6 +6098,11 @@ impl ConcentricRelation {
         unsafe {
             &mut *(crate::ffi::PrsDim_ConcentricRelation_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_ConcentricRelation_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -7614,6 +7662,13 @@ impl DiameterDimension {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_DiameterDimension_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -7667,6 +7722,11 @@ impl DiameterDimension {
         unsafe {
             &mut *(crate::ffi::PrsDim_DiameterDimension_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_DiameterDimension_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -9155,6 +9215,11 @@ impl Dimension {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::PrsDim_Dimension_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -9199,6 +9264,11 @@ impl Dimension {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::PrsDim_Dimension_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_Dimension_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -10180,6 +10250,13 @@ impl DimensionOwner {
         unsafe { crate::ffi::PrsDim_DimensionOwner_inherited_IsForcedHilight(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_DimensionOwner_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:184 - `SelectMgr_EntityOwner::UpdateHighlightTrsf()`
     pub fn update_highlight_trsf(
         &mut self,
@@ -11037,6 +11114,16 @@ impl EllipseRadiusDimension {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_EllipseRadiusDimension_inherited_SetZLayer(
+                self as *mut Self,
+                theLayerId,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -11098,6 +11185,11 @@ impl EllipseRadiusDimension {
                 self as *mut Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_EllipseRadiusDimension_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -12816,6 +12908,16 @@ impl EqualDistanceRelation {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_EqualDistanceRelation_inherited_SetZLayer(
+                self as *mut Self,
+                theLayerId,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -12877,6 +12979,11 @@ impl EqualDistanceRelation {
                 self as *mut Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_EqualDistanceRelation_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -14365,6 +14472,16 @@ impl EqualRadiusRelation {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_EqualRadiusRelation_inherited_SetZLayer(
+                self as *mut Self,
+                theLayerId,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -14426,6 +14543,11 @@ impl EqualRadiusRelation {
                 self as *mut Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_EqualRadiusRelation_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -15900,6 +16022,11 @@ impl FixRelation {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::PrsDim_FixRelation_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -15946,6 +16073,11 @@ impl FixRelation {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::PrsDim_FixRelation_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_FixRelation_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -17253,6 +17385,13 @@ impl IdenticRelation {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_IdenticRelation_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -17303,6 +17442,11 @@ impl IdenticRelation {
         unsafe {
             &mut *(crate::ffi::PrsDim_IdenticRelation_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_IdenticRelation_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -18885,6 +19029,13 @@ impl LengthDimension {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_LengthDimension_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -18935,6 +19086,11 @@ impl LengthDimension {
         unsafe {
             &mut *(crate::ffi::PrsDim_LengthDimension_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_LengthDimension_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -20382,6 +20538,13 @@ impl MaxRadiusDimension {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_MaxRadiusDimension_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -20437,6 +20600,11 @@ impl MaxRadiusDimension {
         unsafe {
             &mut *(crate::ffi::PrsDim_MaxRadiusDimension_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_MaxRadiusDimension_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -21864,6 +22032,13 @@ impl MidPointRelation {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_MidPointRelation_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -21917,6 +22092,11 @@ impl MidPointRelation {
         unsafe {
             &mut *(crate::ffi::PrsDim_MidPointRelation_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_MidPointRelation_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -23372,6 +23552,13 @@ impl MinRadiusDimension {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_MinRadiusDimension_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -23427,6 +23614,11 @@ impl MinRadiusDimension {
         unsafe {
             &mut *(crate::ffi::PrsDim_MinRadiusDimension_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_MinRadiusDimension_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -24846,6 +25038,13 @@ impl OffsetDimension {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_OffsetDimension_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -24896,6 +25095,11 @@ impl OffsetDimension {
         unsafe {
             &mut *(crate::ffi::PrsDim_OffsetDimension_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_OffsetDimension_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -26289,6 +26493,13 @@ impl ParallelRelation {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_ParallelRelation_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -26342,6 +26553,11 @@ impl ParallelRelation {
         unsafe {
             &mut *(crate::ffi::PrsDim_ParallelRelation_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_ParallelRelation_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -27790,6 +28006,16 @@ impl PerpendicularRelation {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_PerpendicularRelation_inherited_SetZLayer(
+                self as *mut Self,
+                theLayerId,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -27851,6 +28077,11 @@ impl PerpendicularRelation {
                 self as *mut Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_PerpendicularRelation_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -29422,6 +29653,13 @@ impl RadiusDimension {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_RadiusDimension_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -29472,6 +29710,11 @@ impl RadiusDimension {
         unsafe {
             &mut *(crate::ffi::PrsDim_RadiusDimension_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_RadiusDimension_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -30769,6 +31012,11 @@ impl Relation {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::PrsDim_Relation_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe { crate::ffi::PrsDim_Relation_inherited_UpdateSelection(self as *mut Self, theMode) }
@@ -30811,6 +31059,11 @@ impl Relation {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::PrsDim_Relation_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_Relation_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -32401,6 +32654,13 @@ impl SymmetricRelation {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_SymmetricRelation_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -32454,6 +32714,11 @@ impl SymmetricRelation {
         unsafe {
             &mut *(crate::ffi::PrsDim_SymmetricRelation_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_SymmetricRelation_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -33873,6 +34138,13 @@ impl TangentRelation {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsDim_TangentRelation_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -33923,6 +34195,11 @@ impl TangentRelation {
         unsafe {
             &mut *(crate::ffi::PrsDim_TangentRelation_inherited_Presentations(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsDim_TangentRelation_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`

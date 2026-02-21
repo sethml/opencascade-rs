@@ -111,17 +111,17 @@ pub fn length_unit_from_string(
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum LengthUnit {
-    LengthunitUndefined = 0,
-    LengthunitInch = 1,
-    LengthunitMillimeter = 2,
-    LengthunitFoot = 4,
-    LengthunitMile = 5,
-    LengthunitMeter = 6,
-    LengthunitKilometer = 7,
-    LengthunitMil = 8,
-    LengthunitMicron = 9,
-    LengthunitCentimeter = 10,
-    LengthunitMicroinch = 11,
+    Undefined = 0,
+    Inch = 1,
+    Millimeter = 2,
+    Foot = 4,
+    Mile = 5,
+    Meter = 6,
+    Kilometer = 7,
+    Mil = 8,
+    Micron = 9,
+    Centimeter = 10,
+    Microinch = 11,
 }
 
 impl From<LengthUnit> for i32 {
@@ -135,17 +135,17 @@ impl TryFrom<i32> for LengthUnit {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(LengthUnit::LengthunitUndefined),
-            1 => Ok(LengthUnit::LengthunitInch),
-            2 => Ok(LengthUnit::LengthunitMillimeter),
-            4 => Ok(LengthUnit::LengthunitFoot),
-            5 => Ok(LengthUnit::LengthunitMile),
-            6 => Ok(LengthUnit::LengthunitMeter),
-            7 => Ok(LengthUnit::LengthunitKilometer),
-            8 => Ok(LengthUnit::LengthunitMil),
-            9 => Ok(LengthUnit::LengthunitMicron),
-            10 => Ok(LengthUnit::LengthunitCentimeter),
-            11 => Ok(LengthUnit::LengthunitMicroinch),
+            0 => Ok(LengthUnit::Undefined),
+            1 => Ok(LengthUnit::Inch),
+            2 => Ok(LengthUnit::Millimeter),
+            4 => Ok(LengthUnit::Foot),
+            5 => Ok(LengthUnit::Mile),
+            6 => Ok(LengthUnit::Meter),
+            7 => Ok(LengthUnit::Kilometer),
+            8 => Ok(LengthUnit::Mil),
+            9 => Ok(LengthUnit::Micron),
+            10 => Ok(LengthUnit::Centimeter),
+            11 => Ok(LengthUnit::Microinch),
             _ => Err(value),
         }
     }

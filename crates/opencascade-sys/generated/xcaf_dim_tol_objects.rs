@@ -11,10 +11,10 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum AngularQualifier {
-    AngularqualifierNone = 0,
-    AngularqualifierSmall = 1,
-    AngularqualifierLarge = 2,
-    AngularqualifierEqual = 3,
+    None = 0,
+    Small = 1,
+    Large = 2,
+    Equal = 3,
 }
 
 impl From<AngularQualifier> for i32 {
@@ -28,10 +28,10 @@ impl TryFrom<i32> for AngularQualifier {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(AngularQualifier::AngularqualifierNone),
-            1 => Ok(AngularQualifier::AngularqualifierSmall),
-            2 => Ok(AngularQualifier::AngularqualifierLarge),
-            3 => Ok(AngularQualifier::AngularqualifierEqual),
+            0 => Ok(AngularQualifier::None),
+            1 => Ok(AngularQualifier::Small),
+            2 => Ok(AngularQualifier::Large),
+            3 => Ok(AngularQualifier::Equal),
             _ => Err(value),
         }
     }
@@ -42,11 +42,11 @@ impl TryFrom<i32> for AngularQualifier {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DatumModifWithValue {
-    DatummodifwithvalueNone = 0,
-    DatummodifwithvalueCircularorcylindrical = 1,
-    DatummodifwithvalueDistance = 2,
-    DatummodifwithvalueProjected = 3,
-    DatummodifwithvalueSpherical = 4,
+    None = 0,
+    Circularorcylindrical = 1,
+    Distance = 2,
+    Projected = 3,
+    Spherical = 4,
 }
 
 impl From<DatumModifWithValue> for i32 {
@@ -60,11 +60,11 @@ impl TryFrom<i32> for DatumModifWithValue {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DatumModifWithValue::DatummodifwithvalueNone),
-            1 => Ok(DatumModifWithValue::DatummodifwithvalueCircularorcylindrical),
-            2 => Ok(DatumModifWithValue::DatummodifwithvalueDistance),
-            3 => Ok(DatumModifWithValue::DatummodifwithvalueProjected),
-            4 => Ok(DatumModifWithValue::DatummodifwithvalueSpherical),
+            0 => Ok(DatumModifWithValue::None),
+            1 => Ok(DatumModifWithValue::Circularorcylindrical),
+            2 => Ok(DatumModifWithValue::Distance),
+            3 => Ok(DatumModifWithValue::Projected),
+            4 => Ok(DatumModifWithValue::Spherical),
             _ => Err(value),
         }
     }
@@ -75,28 +75,28 @@ impl TryFrom<i32> for DatumModifWithValue {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DatumSingleModif {
-    DatumsinglemodifAnycrosssection = 0,
-    DatumsinglemodifAnyLongitudinalsection = 1,
-    DatumsinglemodifBasic = 2,
-    DatumsinglemodifContactingfeature = 3,
-    DatumsinglemodifDegreeoffreedomconstraintu = 4,
-    DatumsinglemodifDegreeoffreedomconstraintv = 5,
-    DatumsinglemodifDegreeoffreedomconstraintw = 6,
-    DatumsinglemodifDegreeoffreedomconstraintx = 7,
-    DatumsinglemodifDegreeoffreedomconstrainty = 8,
-    DatumsinglemodifDegreeoffreedomconstraintz = 9,
-    DatumsinglemodifDistancevariable = 10,
-    DatumsinglemodifFreestate = 11,
-    DatumsinglemodifLeastmaterialrequirement = 12,
-    DatumsinglemodifLine = 13,
-    DatumsinglemodifMajordiameter = 14,
-    DatumsinglemodifMaximummaterialrequirement = 15,
-    DatumsinglemodifMinordiameter = 16,
-    DatumsinglemodifOrientation = 17,
-    DatumsinglemodifPitchdiameter = 18,
-    DatumsinglemodifPlane = 19,
-    DatumsinglemodifPoint = 20,
-    DatumsinglemodifTranslation = 21,
+    Anycrosssection = 0,
+    AnyLongitudinalsection = 1,
+    Basic = 2,
+    Contactingfeature = 3,
+    Degreeoffreedomconstraintu = 4,
+    Degreeoffreedomconstraintv = 5,
+    Degreeoffreedomconstraintw = 6,
+    Degreeoffreedomconstraintx = 7,
+    Degreeoffreedomconstrainty = 8,
+    Degreeoffreedomconstraintz = 9,
+    Distancevariable = 10,
+    Freestate = 11,
+    Leastmaterialrequirement = 12,
+    Line = 13,
+    Majordiameter = 14,
+    Maximummaterialrequirement = 15,
+    Minordiameter = 16,
+    Orientation = 17,
+    Pitchdiameter = 18,
+    Plane = 19,
+    Point = 20,
+    Translation = 21,
 }
 
 impl From<DatumSingleModif> for i32 {
@@ -110,28 +110,28 @@ impl TryFrom<i32> for DatumSingleModif {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DatumSingleModif::DatumsinglemodifAnycrosssection),
-            1 => Ok(DatumSingleModif::DatumsinglemodifAnyLongitudinalsection),
-            2 => Ok(DatumSingleModif::DatumsinglemodifBasic),
-            3 => Ok(DatumSingleModif::DatumsinglemodifContactingfeature),
-            4 => Ok(DatumSingleModif::DatumsinglemodifDegreeoffreedomconstraintu),
-            5 => Ok(DatumSingleModif::DatumsinglemodifDegreeoffreedomconstraintv),
-            6 => Ok(DatumSingleModif::DatumsinglemodifDegreeoffreedomconstraintw),
-            7 => Ok(DatumSingleModif::DatumsinglemodifDegreeoffreedomconstraintx),
-            8 => Ok(DatumSingleModif::DatumsinglemodifDegreeoffreedomconstrainty),
-            9 => Ok(DatumSingleModif::DatumsinglemodifDegreeoffreedomconstraintz),
-            10 => Ok(DatumSingleModif::DatumsinglemodifDistancevariable),
-            11 => Ok(DatumSingleModif::DatumsinglemodifFreestate),
-            12 => Ok(DatumSingleModif::DatumsinglemodifLeastmaterialrequirement),
-            13 => Ok(DatumSingleModif::DatumsinglemodifLine),
-            14 => Ok(DatumSingleModif::DatumsinglemodifMajordiameter),
-            15 => Ok(DatumSingleModif::DatumsinglemodifMaximummaterialrequirement),
-            16 => Ok(DatumSingleModif::DatumsinglemodifMinordiameter),
-            17 => Ok(DatumSingleModif::DatumsinglemodifOrientation),
-            18 => Ok(DatumSingleModif::DatumsinglemodifPitchdiameter),
-            19 => Ok(DatumSingleModif::DatumsinglemodifPlane),
-            20 => Ok(DatumSingleModif::DatumsinglemodifPoint),
-            21 => Ok(DatumSingleModif::DatumsinglemodifTranslation),
+            0 => Ok(DatumSingleModif::Anycrosssection),
+            1 => Ok(DatumSingleModif::AnyLongitudinalsection),
+            2 => Ok(DatumSingleModif::Basic),
+            3 => Ok(DatumSingleModif::Contactingfeature),
+            4 => Ok(DatumSingleModif::Degreeoffreedomconstraintu),
+            5 => Ok(DatumSingleModif::Degreeoffreedomconstraintv),
+            6 => Ok(DatumSingleModif::Degreeoffreedomconstraintw),
+            7 => Ok(DatumSingleModif::Degreeoffreedomconstraintx),
+            8 => Ok(DatumSingleModif::Degreeoffreedomconstrainty),
+            9 => Ok(DatumSingleModif::Degreeoffreedomconstraintz),
+            10 => Ok(DatumSingleModif::Distancevariable),
+            11 => Ok(DatumSingleModif::Freestate),
+            12 => Ok(DatumSingleModif::Leastmaterialrequirement),
+            13 => Ok(DatumSingleModif::Line),
+            14 => Ok(DatumSingleModif::Majordiameter),
+            15 => Ok(DatumSingleModif::Maximummaterialrequirement),
+            16 => Ok(DatumSingleModif::Minordiameter),
+            17 => Ok(DatumSingleModif::Orientation),
+            18 => Ok(DatumSingleModif::Pitchdiameter),
+            19 => Ok(DatumSingleModif::Plane),
+            20 => Ok(DatumSingleModif::Point),
+            21 => Ok(DatumSingleModif::Translation),
             _ => Err(value),
         }
     }
@@ -142,11 +142,11 @@ impl TryFrom<i32> for DatumSingleModif {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DatumTargetType {
-    DatumtargettypePoint = 0,
-    DatumtargettypeLine = 1,
-    DatumtargettypeRectangle = 2,
-    DatumtargettypeCircle = 3,
-    DatumtargettypeArea = 4,
+    Point = 0,
+    Line = 1,
+    Rectangle = 2,
+    Circle = 3,
+    Area = 4,
 }
 
 impl From<DatumTargetType> for i32 {
@@ -160,11 +160,11 @@ impl TryFrom<i32> for DatumTargetType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DatumTargetType::DatumtargettypePoint),
-            1 => Ok(DatumTargetType::DatumtargettypeLine),
-            2 => Ok(DatumTargetType::DatumtargettypeRectangle),
-            3 => Ok(DatumTargetType::DatumtargettypeCircle),
-            4 => Ok(DatumTargetType::DatumtargettypeArea),
+            0 => Ok(DatumTargetType::Point),
+            1 => Ok(DatumTargetType::Line),
+            2 => Ok(DatumTargetType::Rectangle),
+            3 => Ok(DatumTargetType::Circle),
+            4 => Ok(DatumTargetType::Area),
             _ => Err(value),
         }
     }
@@ -175,35 +175,35 @@ impl TryFrom<i32> for DatumTargetType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DimensionFormVariance {
-    DimensionformvarianceNone = 0,
-    DimensionformvarianceA = 1,
-    DimensionformvarianceB = 2,
-    DimensionformvarianceC = 3,
-    DimensionformvarianceCd = 4,
-    DimensionformvarianceD = 5,
-    DimensionformvarianceE = 6,
-    DimensionformvarianceEf = 7,
-    DimensionformvarianceF = 8,
-    DimensionformvarianceFg = 9,
-    DimensionformvarianceG = 10,
-    DimensionformvarianceH = 11,
-    DimensionformvarianceJs = 12,
-    DimensionformvarianceJ = 13,
-    DimensionformvarianceK = 14,
-    DimensionformvarianceM = 15,
-    DimensionformvarianceN = 16,
-    DimensionformvarianceP = 17,
-    DimensionformvarianceR = 18,
-    DimensionformvarianceS = 19,
-    DimensionformvarianceT = 20,
-    DimensionformvarianceU = 21,
-    DimensionformvarianceV = 22,
-    DimensionformvarianceX = 23,
-    DimensionformvarianceY = 24,
-    DimensionformvarianceZ = 25,
-    DimensionformvarianceZa = 26,
-    DimensionformvarianceZb = 27,
-    DimensionformvarianceZc = 28,
+    None = 0,
+    A = 1,
+    B = 2,
+    C = 3,
+    Cd = 4,
+    D = 5,
+    E = 6,
+    Ef = 7,
+    F = 8,
+    Fg = 9,
+    G = 10,
+    H = 11,
+    Js = 12,
+    J = 13,
+    K = 14,
+    M = 15,
+    N = 16,
+    P = 17,
+    R = 18,
+    S = 19,
+    T = 20,
+    U = 21,
+    V = 22,
+    X = 23,
+    Y = 24,
+    Z = 25,
+    Za = 26,
+    Zb = 27,
+    Zc = 28,
 }
 
 impl From<DimensionFormVariance> for i32 {
@@ -217,35 +217,35 @@ impl TryFrom<i32> for DimensionFormVariance {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DimensionFormVariance::DimensionformvarianceNone),
-            1 => Ok(DimensionFormVariance::DimensionformvarianceA),
-            2 => Ok(DimensionFormVariance::DimensionformvarianceB),
-            3 => Ok(DimensionFormVariance::DimensionformvarianceC),
-            4 => Ok(DimensionFormVariance::DimensionformvarianceCd),
-            5 => Ok(DimensionFormVariance::DimensionformvarianceD),
-            6 => Ok(DimensionFormVariance::DimensionformvarianceE),
-            7 => Ok(DimensionFormVariance::DimensionformvarianceEf),
-            8 => Ok(DimensionFormVariance::DimensionformvarianceF),
-            9 => Ok(DimensionFormVariance::DimensionformvarianceFg),
-            10 => Ok(DimensionFormVariance::DimensionformvarianceG),
-            11 => Ok(DimensionFormVariance::DimensionformvarianceH),
-            12 => Ok(DimensionFormVariance::DimensionformvarianceJs),
-            13 => Ok(DimensionFormVariance::DimensionformvarianceJ),
-            14 => Ok(DimensionFormVariance::DimensionformvarianceK),
-            15 => Ok(DimensionFormVariance::DimensionformvarianceM),
-            16 => Ok(DimensionFormVariance::DimensionformvarianceN),
-            17 => Ok(DimensionFormVariance::DimensionformvarianceP),
-            18 => Ok(DimensionFormVariance::DimensionformvarianceR),
-            19 => Ok(DimensionFormVariance::DimensionformvarianceS),
-            20 => Ok(DimensionFormVariance::DimensionformvarianceT),
-            21 => Ok(DimensionFormVariance::DimensionformvarianceU),
-            22 => Ok(DimensionFormVariance::DimensionformvarianceV),
-            23 => Ok(DimensionFormVariance::DimensionformvarianceX),
-            24 => Ok(DimensionFormVariance::DimensionformvarianceY),
-            25 => Ok(DimensionFormVariance::DimensionformvarianceZ),
-            26 => Ok(DimensionFormVariance::DimensionformvarianceZa),
-            27 => Ok(DimensionFormVariance::DimensionformvarianceZb),
-            28 => Ok(DimensionFormVariance::DimensionformvarianceZc),
+            0 => Ok(DimensionFormVariance::None),
+            1 => Ok(DimensionFormVariance::A),
+            2 => Ok(DimensionFormVariance::B),
+            3 => Ok(DimensionFormVariance::C),
+            4 => Ok(DimensionFormVariance::Cd),
+            5 => Ok(DimensionFormVariance::D),
+            6 => Ok(DimensionFormVariance::E),
+            7 => Ok(DimensionFormVariance::Ef),
+            8 => Ok(DimensionFormVariance::F),
+            9 => Ok(DimensionFormVariance::Fg),
+            10 => Ok(DimensionFormVariance::G),
+            11 => Ok(DimensionFormVariance::H),
+            12 => Ok(DimensionFormVariance::Js),
+            13 => Ok(DimensionFormVariance::J),
+            14 => Ok(DimensionFormVariance::K),
+            15 => Ok(DimensionFormVariance::M),
+            16 => Ok(DimensionFormVariance::N),
+            17 => Ok(DimensionFormVariance::P),
+            18 => Ok(DimensionFormVariance::R),
+            19 => Ok(DimensionFormVariance::S),
+            20 => Ok(DimensionFormVariance::T),
+            21 => Ok(DimensionFormVariance::U),
+            22 => Ok(DimensionFormVariance::V),
+            23 => Ok(DimensionFormVariance::X),
+            24 => Ok(DimensionFormVariance::Y),
+            25 => Ok(DimensionFormVariance::Z),
+            26 => Ok(DimensionFormVariance::Za),
+            27 => Ok(DimensionFormVariance::Zb),
+            28 => Ok(DimensionFormVariance::Zc),
             _ => Err(value),
         }
     }
@@ -256,26 +256,26 @@ impl TryFrom<i32> for DimensionFormVariance {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DimensionGrade {
-    DimensiongradeIt01 = 0,
-    DimensiongradeIt0 = 1,
-    DimensiongradeIt1 = 2,
-    DimensiongradeIt2 = 3,
-    DimensiongradeIt3 = 4,
-    DimensiongradeIt4 = 5,
-    DimensiongradeIt5 = 6,
-    DimensiongradeIt6 = 7,
-    DimensiongradeIt7 = 8,
-    DimensiongradeIt8 = 9,
-    DimensiongradeIt9 = 10,
-    DimensiongradeIt10 = 11,
-    DimensiongradeIt11 = 12,
-    DimensiongradeIt12 = 13,
-    DimensiongradeIt13 = 14,
-    DimensiongradeIt14 = 15,
-    DimensiongradeIt15 = 16,
-    DimensiongradeIt16 = 17,
-    DimensiongradeIt17 = 18,
-    DimensiongradeIt18 = 19,
+    It01 = 0,
+    It0 = 1,
+    It1 = 2,
+    It2 = 3,
+    It3 = 4,
+    It4 = 5,
+    It5 = 6,
+    It6 = 7,
+    It7 = 8,
+    It8 = 9,
+    It9 = 10,
+    It10 = 11,
+    It11 = 12,
+    It12 = 13,
+    It13 = 14,
+    It14 = 15,
+    It15 = 16,
+    It16 = 17,
+    It17 = 18,
+    It18 = 19,
 }
 
 impl From<DimensionGrade> for i32 {
@@ -289,26 +289,26 @@ impl TryFrom<i32> for DimensionGrade {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DimensionGrade::DimensiongradeIt01),
-            1 => Ok(DimensionGrade::DimensiongradeIt0),
-            2 => Ok(DimensionGrade::DimensiongradeIt1),
-            3 => Ok(DimensionGrade::DimensiongradeIt2),
-            4 => Ok(DimensionGrade::DimensiongradeIt3),
-            5 => Ok(DimensionGrade::DimensiongradeIt4),
-            6 => Ok(DimensionGrade::DimensiongradeIt5),
-            7 => Ok(DimensionGrade::DimensiongradeIt6),
-            8 => Ok(DimensionGrade::DimensiongradeIt7),
-            9 => Ok(DimensionGrade::DimensiongradeIt8),
-            10 => Ok(DimensionGrade::DimensiongradeIt9),
-            11 => Ok(DimensionGrade::DimensiongradeIt10),
-            12 => Ok(DimensionGrade::DimensiongradeIt11),
-            13 => Ok(DimensionGrade::DimensiongradeIt12),
-            14 => Ok(DimensionGrade::DimensiongradeIt13),
-            15 => Ok(DimensionGrade::DimensiongradeIt14),
-            16 => Ok(DimensionGrade::DimensiongradeIt15),
-            17 => Ok(DimensionGrade::DimensiongradeIt16),
-            18 => Ok(DimensionGrade::DimensiongradeIt17),
-            19 => Ok(DimensionGrade::DimensiongradeIt18),
+            0 => Ok(DimensionGrade::It01),
+            1 => Ok(DimensionGrade::It0),
+            2 => Ok(DimensionGrade::It1),
+            3 => Ok(DimensionGrade::It2),
+            4 => Ok(DimensionGrade::It3),
+            5 => Ok(DimensionGrade::It4),
+            6 => Ok(DimensionGrade::It5),
+            7 => Ok(DimensionGrade::It6),
+            8 => Ok(DimensionGrade::It7),
+            9 => Ok(DimensionGrade::It8),
+            10 => Ok(DimensionGrade::It9),
+            11 => Ok(DimensionGrade::It10),
+            12 => Ok(DimensionGrade::It11),
+            13 => Ok(DimensionGrade::It12),
+            14 => Ok(DimensionGrade::It13),
+            15 => Ok(DimensionGrade::It14),
+            16 => Ok(DimensionGrade::It15),
+            17 => Ok(DimensionGrade::It16),
+            18 => Ok(DimensionGrade::It17),
+            19 => Ok(DimensionGrade::It18),
             _ => Err(value),
         }
     }
@@ -319,30 +319,30 @@ impl TryFrom<i32> for DimensionGrade {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DimensionModif {
-    DimensionmodifControlledradius = 0,
-    DimensionmodifSquare = 1,
-    DimensionmodifStatisticaltolerance = 2,
-    DimensionmodifContinuousfeature = 3,
-    DimensionmodifTwopointsize = 4,
-    DimensionmodifLocalsizedefinedbysphere = 5,
-    DimensionmodifLeastsquaresassociationcriterion = 6,
-    DimensionmodifMaximuminscribedassociation = 7,
-    DimensionmodifMinimumcircumscribedassociation = 8,
-    DimensionmodifCircumferencediameter = 9,
-    DimensionmodifAreadiameter = 10,
-    DimensionmodifVolumediameter = 11,
-    DimensionmodifMaximumsize = 12,
-    DimensionmodifMinimumsize = 13,
-    DimensionmodifAveragesize = 14,
-    DimensionmodifMediansize = 15,
-    DimensionmodifMidrangesize = 16,
-    DimensionmodifRangeofsizes = 17,
-    DimensionmodifAnyrestrictedportionoffeature = 18,
-    DimensionmodifAnycrosssection = 19,
-    DimensionmodifSpecificfixedcrosssection = 20,
-    DimensionmodifCommontolerance = 21,
-    DimensionmodifFreestatecondition = 22,
-    DimensionmodifBetween = 23,
+    Controlledradius = 0,
+    Square = 1,
+    Statisticaltolerance = 2,
+    Continuousfeature = 3,
+    Twopointsize = 4,
+    Localsizedefinedbysphere = 5,
+    Leastsquaresassociationcriterion = 6,
+    Maximuminscribedassociation = 7,
+    Minimumcircumscribedassociation = 8,
+    Circumferencediameter = 9,
+    Areadiameter = 10,
+    Volumediameter = 11,
+    Maximumsize = 12,
+    Minimumsize = 13,
+    Averagesize = 14,
+    Mediansize = 15,
+    Midrangesize = 16,
+    Rangeofsizes = 17,
+    Anyrestrictedportionoffeature = 18,
+    Anycrosssection = 19,
+    Specificfixedcrosssection = 20,
+    Commontolerance = 21,
+    Freestatecondition = 22,
+    Between = 23,
 }
 
 impl From<DimensionModif> for i32 {
@@ -356,30 +356,30 @@ impl TryFrom<i32> for DimensionModif {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DimensionModif::DimensionmodifControlledradius),
-            1 => Ok(DimensionModif::DimensionmodifSquare),
-            2 => Ok(DimensionModif::DimensionmodifStatisticaltolerance),
-            3 => Ok(DimensionModif::DimensionmodifContinuousfeature),
-            4 => Ok(DimensionModif::DimensionmodifTwopointsize),
-            5 => Ok(DimensionModif::DimensionmodifLocalsizedefinedbysphere),
-            6 => Ok(DimensionModif::DimensionmodifLeastsquaresassociationcriterion),
-            7 => Ok(DimensionModif::DimensionmodifMaximuminscribedassociation),
-            8 => Ok(DimensionModif::DimensionmodifMinimumcircumscribedassociation),
-            9 => Ok(DimensionModif::DimensionmodifCircumferencediameter),
-            10 => Ok(DimensionModif::DimensionmodifAreadiameter),
-            11 => Ok(DimensionModif::DimensionmodifVolumediameter),
-            12 => Ok(DimensionModif::DimensionmodifMaximumsize),
-            13 => Ok(DimensionModif::DimensionmodifMinimumsize),
-            14 => Ok(DimensionModif::DimensionmodifAveragesize),
-            15 => Ok(DimensionModif::DimensionmodifMediansize),
-            16 => Ok(DimensionModif::DimensionmodifMidrangesize),
-            17 => Ok(DimensionModif::DimensionmodifRangeofsizes),
-            18 => Ok(DimensionModif::DimensionmodifAnyrestrictedportionoffeature),
-            19 => Ok(DimensionModif::DimensionmodifAnycrosssection),
-            20 => Ok(DimensionModif::DimensionmodifSpecificfixedcrosssection),
-            21 => Ok(DimensionModif::DimensionmodifCommontolerance),
-            22 => Ok(DimensionModif::DimensionmodifFreestatecondition),
-            23 => Ok(DimensionModif::DimensionmodifBetween),
+            0 => Ok(DimensionModif::Controlledradius),
+            1 => Ok(DimensionModif::Square),
+            2 => Ok(DimensionModif::Statisticaltolerance),
+            3 => Ok(DimensionModif::Continuousfeature),
+            4 => Ok(DimensionModif::Twopointsize),
+            5 => Ok(DimensionModif::Localsizedefinedbysphere),
+            6 => Ok(DimensionModif::Leastsquaresassociationcriterion),
+            7 => Ok(DimensionModif::Maximuminscribedassociation),
+            8 => Ok(DimensionModif::Minimumcircumscribedassociation),
+            9 => Ok(DimensionModif::Circumferencediameter),
+            10 => Ok(DimensionModif::Areadiameter),
+            11 => Ok(DimensionModif::Volumediameter),
+            12 => Ok(DimensionModif::Maximumsize),
+            13 => Ok(DimensionModif::Minimumsize),
+            14 => Ok(DimensionModif::Averagesize),
+            15 => Ok(DimensionModif::Mediansize),
+            16 => Ok(DimensionModif::Midrangesize),
+            17 => Ok(DimensionModif::Rangeofsizes),
+            18 => Ok(DimensionModif::Anyrestrictedportionoffeature),
+            19 => Ok(DimensionModif::Anycrosssection),
+            20 => Ok(DimensionModif::Specificfixedcrosssection),
+            21 => Ok(DimensionModif::Commontolerance),
+            22 => Ok(DimensionModif::Freestatecondition),
+            23 => Ok(DimensionModif::Between),
             _ => Err(value),
         }
     }
@@ -390,10 +390,10 @@ impl TryFrom<i32> for DimensionModif {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DimensionQualifier {
-    DimensionqualifierNone = 0,
-    DimensionqualifierMin = 1,
-    DimensionqualifierMax = 2,
-    DimensionqualifierAvg = 3,
+    None = 0,
+    Min = 1,
+    Max = 2,
+    Avg = 3,
 }
 
 impl From<DimensionQualifier> for i32 {
@@ -407,10 +407,10 @@ impl TryFrom<i32> for DimensionQualifier {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DimensionQualifier::DimensionqualifierNone),
-            1 => Ok(DimensionQualifier::DimensionqualifierMin),
-            2 => Ok(DimensionQualifier::DimensionqualifierMax),
-            3 => Ok(DimensionQualifier::DimensionqualifierAvg),
+            0 => Ok(DimensionQualifier::None),
+            1 => Ok(DimensionQualifier::Min),
+            2 => Ok(DimensionQualifier::Max),
+            3 => Ok(DimensionQualifier::Avg),
             _ => Err(value),
         }
     }
@@ -421,38 +421,38 @@ impl TryFrom<i32> for DimensionQualifier {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DimensionType {
-    DimensiontypeLocationNone = 0,
-    DimensiontypeLocationCurveddistance = 1,
-    DimensiontypeLocationLineardistance = 2,
-    DimensiontypeLocationLineardistanceFromcentertoouter = 3,
-    DimensiontypeLocationLineardistanceFromcentertoinner = 4,
-    DimensiontypeLocationLineardistanceFromoutertocenter = 5,
-    DimensiontypeLocationLineardistanceFromoutertoouter = 6,
-    DimensiontypeLocationLineardistanceFromoutertoinner = 7,
-    DimensiontypeLocationLineardistanceFrominnertocenter = 8,
-    DimensiontypeLocationLineardistanceFrominnertoouter = 9,
-    DimensiontypeLocationLineardistanceFrominnertoinner = 10,
-    DimensiontypeLocationAngular = 11,
-    DimensiontypeLocationOriented = 12,
-    DimensiontypeLocationWithpath = 13,
-    DimensiontypeSizeCurvelength = 14,
-    DimensiontypeSizeDiameter = 15,
-    DimensiontypeSizeSphericaldiameter = 16,
-    DimensiontypeSizeRadius = 17,
-    DimensiontypeSizeSphericalradius = 18,
-    DimensiontypeSizeToroidalminordiameter = 19,
-    DimensiontypeSizeToroidalmajordiameter = 20,
-    DimensiontypeSizeToroidalminorradius = 21,
-    DimensiontypeSizeToroidalmajorradius = 22,
-    DimensiontypeSizeToroidalhighmajordiameter = 23,
-    DimensiontypeSizeToroidallowmajordiameter = 24,
-    DimensiontypeSizeToroidalhighmajorradius = 25,
-    DimensiontypeSizeToroidallowmajorradius = 26,
-    DimensiontypeSizeThickness = 27,
-    DimensiontypeSizeAngular = 28,
-    DimensiontypeSizeWithpath = 29,
-    DimensiontypeCommonlabel = 30,
-    DimensiontypeDimensionpresentation = 31,
+    LocationNone = 0,
+    LocationCurveddistance = 1,
+    LocationLineardistance = 2,
+    LocationLineardistanceFromcentertoouter = 3,
+    LocationLineardistanceFromcentertoinner = 4,
+    LocationLineardistanceFromoutertocenter = 5,
+    LocationLineardistanceFromoutertoouter = 6,
+    LocationLineardistanceFromoutertoinner = 7,
+    LocationLineardistanceFrominnertocenter = 8,
+    LocationLineardistanceFrominnertoouter = 9,
+    LocationLineardistanceFrominnertoinner = 10,
+    LocationAngular = 11,
+    LocationOriented = 12,
+    LocationWithpath = 13,
+    SizeCurvelength = 14,
+    SizeDiameter = 15,
+    SizeSphericaldiameter = 16,
+    SizeRadius = 17,
+    SizeSphericalradius = 18,
+    SizeToroidalminordiameter = 19,
+    SizeToroidalmajordiameter = 20,
+    SizeToroidalminorradius = 21,
+    SizeToroidalmajorradius = 22,
+    SizeToroidalhighmajordiameter = 23,
+    SizeToroidallowmajordiameter = 24,
+    SizeToroidalhighmajorradius = 25,
+    SizeToroidallowmajorradius = 26,
+    SizeThickness = 27,
+    SizeAngular = 28,
+    SizeWithpath = 29,
+    Commonlabel = 30,
+    Dimensionpresentation = 31,
 }
 
 impl From<DimensionType> for i32 {
@@ -466,38 +466,38 @@ impl TryFrom<i32> for DimensionType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DimensionType::DimensiontypeLocationNone),
-            1 => Ok(DimensionType::DimensiontypeLocationCurveddistance),
-            2 => Ok(DimensionType::DimensiontypeLocationLineardistance),
-            3 => Ok(DimensionType::DimensiontypeLocationLineardistanceFromcentertoouter),
-            4 => Ok(DimensionType::DimensiontypeLocationLineardistanceFromcentertoinner),
-            5 => Ok(DimensionType::DimensiontypeLocationLineardistanceFromoutertocenter),
-            6 => Ok(DimensionType::DimensiontypeLocationLineardistanceFromoutertoouter),
-            7 => Ok(DimensionType::DimensiontypeLocationLineardistanceFromoutertoinner),
-            8 => Ok(DimensionType::DimensiontypeLocationLineardistanceFrominnertocenter),
-            9 => Ok(DimensionType::DimensiontypeLocationLineardistanceFrominnertoouter),
-            10 => Ok(DimensionType::DimensiontypeLocationLineardistanceFrominnertoinner),
-            11 => Ok(DimensionType::DimensiontypeLocationAngular),
-            12 => Ok(DimensionType::DimensiontypeLocationOriented),
-            13 => Ok(DimensionType::DimensiontypeLocationWithpath),
-            14 => Ok(DimensionType::DimensiontypeSizeCurvelength),
-            15 => Ok(DimensionType::DimensiontypeSizeDiameter),
-            16 => Ok(DimensionType::DimensiontypeSizeSphericaldiameter),
-            17 => Ok(DimensionType::DimensiontypeSizeRadius),
-            18 => Ok(DimensionType::DimensiontypeSizeSphericalradius),
-            19 => Ok(DimensionType::DimensiontypeSizeToroidalminordiameter),
-            20 => Ok(DimensionType::DimensiontypeSizeToroidalmajordiameter),
-            21 => Ok(DimensionType::DimensiontypeSizeToroidalminorradius),
-            22 => Ok(DimensionType::DimensiontypeSizeToroidalmajorradius),
-            23 => Ok(DimensionType::DimensiontypeSizeToroidalhighmajordiameter),
-            24 => Ok(DimensionType::DimensiontypeSizeToroidallowmajordiameter),
-            25 => Ok(DimensionType::DimensiontypeSizeToroidalhighmajorradius),
-            26 => Ok(DimensionType::DimensiontypeSizeToroidallowmajorradius),
-            27 => Ok(DimensionType::DimensiontypeSizeThickness),
-            28 => Ok(DimensionType::DimensiontypeSizeAngular),
-            29 => Ok(DimensionType::DimensiontypeSizeWithpath),
-            30 => Ok(DimensionType::DimensiontypeCommonlabel),
-            31 => Ok(DimensionType::DimensiontypeDimensionpresentation),
+            0 => Ok(DimensionType::LocationNone),
+            1 => Ok(DimensionType::LocationCurveddistance),
+            2 => Ok(DimensionType::LocationLineardistance),
+            3 => Ok(DimensionType::LocationLineardistanceFromcentertoouter),
+            4 => Ok(DimensionType::LocationLineardistanceFromcentertoinner),
+            5 => Ok(DimensionType::LocationLineardistanceFromoutertocenter),
+            6 => Ok(DimensionType::LocationLineardistanceFromoutertoouter),
+            7 => Ok(DimensionType::LocationLineardistanceFromoutertoinner),
+            8 => Ok(DimensionType::LocationLineardistanceFrominnertocenter),
+            9 => Ok(DimensionType::LocationLineardistanceFrominnertoouter),
+            10 => Ok(DimensionType::LocationLineardistanceFrominnertoinner),
+            11 => Ok(DimensionType::LocationAngular),
+            12 => Ok(DimensionType::LocationOriented),
+            13 => Ok(DimensionType::LocationWithpath),
+            14 => Ok(DimensionType::SizeCurvelength),
+            15 => Ok(DimensionType::SizeDiameter),
+            16 => Ok(DimensionType::SizeSphericaldiameter),
+            17 => Ok(DimensionType::SizeRadius),
+            18 => Ok(DimensionType::SizeSphericalradius),
+            19 => Ok(DimensionType::SizeToroidalminordiameter),
+            20 => Ok(DimensionType::SizeToroidalmajordiameter),
+            21 => Ok(DimensionType::SizeToroidalminorradius),
+            22 => Ok(DimensionType::SizeToroidalmajorradius),
+            23 => Ok(DimensionType::SizeToroidalhighmajordiameter),
+            24 => Ok(DimensionType::SizeToroidallowmajordiameter),
+            25 => Ok(DimensionType::SizeToroidalhighmajorradius),
+            26 => Ok(DimensionType::SizeToroidallowmajorradius),
+            27 => Ok(DimensionType::SizeThickness),
+            28 => Ok(DimensionType::SizeAngular),
+            29 => Ok(DimensionType::SizeWithpath),
+            30 => Ok(DimensionType::Commonlabel),
+            31 => Ok(DimensionType::Dimensionpresentation),
             _ => Err(value),
         }
     }
@@ -508,9 +508,9 @@ impl TryFrom<i32> for DimensionType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum GeomToleranceMatReqModif {
-    GeomtolerancematreqmodifNone = 0,
-    GeomtolerancematreqmodifM = 1,
-    GeomtolerancematreqmodifL = 2,
+    None = 0,
+    M = 1,
+    L = 2,
 }
 
 impl From<GeomToleranceMatReqModif> for i32 {
@@ -524,9 +524,9 @@ impl TryFrom<i32> for GeomToleranceMatReqModif {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GeomToleranceMatReqModif::GeomtolerancematreqmodifNone),
-            1 => Ok(GeomToleranceMatReqModif::GeomtolerancematreqmodifM),
-            2 => Ok(GeomToleranceMatReqModif::GeomtolerancematreqmodifL),
+            0 => Ok(GeomToleranceMatReqModif::None),
+            1 => Ok(GeomToleranceMatReqModif::M),
+            2 => Ok(GeomToleranceMatReqModif::L),
             _ => Err(value),
         }
     }
@@ -537,23 +537,23 @@ impl TryFrom<i32> for GeomToleranceMatReqModif {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum GeomToleranceModif {
-    GeomtolerancemodifAnyCrossSection = 0,
-    GeomtolerancemodifCommonZone = 1,
-    GeomtolerancemodifEachRadialElement = 2,
-    GeomtolerancemodifFreeState = 3,
-    GeomtolerancemodifLeastMaterialRequirement = 4,
-    GeomtolerancemodifLineElement = 5,
-    GeomtolerancemodifMajorDiameter = 6,
-    GeomtolerancemodifMaximumMaterialRequirement = 7,
-    GeomtolerancemodifMinorDiameter = 8,
-    GeomtolerancemodifNotConvex = 9,
-    GeomtolerancemodifPitchDiameter = 10,
-    GeomtolerancemodifReciprocityRequirement = 11,
-    GeomtolerancemodifSeparateRequirement = 12,
-    GeomtolerancemodifStatisticalTolerance = 13,
-    GeomtolerancemodifTangentPlane = 14,
-    GeomtolerancemodifAllAround = 15,
-    GeomtolerancemodifAllOver = 16,
+    AnyCrossSection = 0,
+    CommonZone = 1,
+    EachRadialElement = 2,
+    FreeState = 3,
+    LeastMaterialRequirement = 4,
+    LineElement = 5,
+    MajorDiameter = 6,
+    MaximumMaterialRequirement = 7,
+    MinorDiameter = 8,
+    NotConvex = 9,
+    PitchDiameter = 10,
+    ReciprocityRequirement = 11,
+    SeparateRequirement = 12,
+    StatisticalTolerance = 13,
+    TangentPlane = 14,
+    AllAround = 15,
+    AllOver = 16,
 }
 
 impl From<GeomToleranceModif> for i32 {
@@ -567,23 +567,23 @@ impl TryFrom<i32> for GeomToleranceModif {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GeomToleranceModif::GeomtolerancemodifAnyCrossSection),
-            1 => Ok(GeomToleranceModif::GeomtolerancemodifCommonZone),
-            2 => Ok(GeomToleranceModif::GeomtolerancemodifEachRadialElement),
-            3 => Ok(GeomToleranceModif::GeomtolerancemodifFreeState),
-            4 => Ok(GeomToleranceModif::GeomtolerancemodifLeastMaterialRequirement),
-            5 => Ok(GeomToleranceModif::GeomtolerancemodifLineElement),
-            6 => Ok(GeomToleranceModif::GeomtolerancemodifMajorDiameter),
-            7 => Ok(GeomToleranceModif::GeomtolerancemodifMaximumMaterialRequirement),
-            8 => Ok(GeomToleranceModif::GeomtolerancemodifMinorDiameter),
-            9 => Ok(GeomToleranceModif::GeomtolerancemodifNotConvex),
-            10 => Ok(GeomToleranceModif::GeomtolerancemodifPitchDiameter),
-            11 => Ok(GeomToleranceModif::GeomtolerancemodifReciprocityRequirement),
-            12 => Ok(GeomToleranceModif::GeomtolerancemodifSeparateRequirement),
-            13 => Ok(GeomToleranceModif::GeomtolerancemodifStatisticalTolerance),
-            14 => Ok(GeomToleranceModif::GeomtolerancemodifTangentPlane),
-            15 => Ok(GeomToleranceModif::GeomtolerancemodifAllAround),
-            16 => Ok(GeomToleranceModif::GeomtolerancemodifAllOver),
+            0 => Ok(GeomToleranceModif::AnyCrossSection),
+            1 => Ok(GeomToleranceModif::CommonZone),
+            2 => Ok(GeomToleranceModif::EachRadialElement),
+            3 => Ok(GeomToleranceModif::FreeState),
+            4 => Ok(GeomToleranceModif::LeastMaterialRequirement),
+            5 => Ok(GeomToleranceModif::LineElement),
+            6 => Ok(GeomToleranceModif::MajorDiameter),
+            7 => Ok(GeomToleranceModif::MaximumMaterialRequirement),
+            8 => Ok(GeomToleranceModif::MinorDiameter),
+            9 => Ok(GeomToleranceModif::NotConvex),
+            10 => Ok(GeomToleranceModif::PitchDiameter),
+            11 => Ok(GeomToleranceModif::ReciprocityRequirement),
+            12 => Ok(GeomToleranceModif::SeparateRequirement),
+            13 => Ok(GeomToleranceModif::StatisticalTolerance),
+            14 => Ok(GeomToleranceModif::TangentPlane),
+            15 => Ok(GeomToleranceModif::AllAround),
+            16 => Ok(GeomToleranceModif::AllOver),
             _ => Err(value),
         }
     }
@@ -594,22 +594,22 @@ impl TryFrom<i32> for GeomToleranceModif {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum GeomToleranceType {
-    GeomtolerancetypeNone = 0,
-    GeomtolerancetypeAngularity = 1,
-    GeomtolerancetypeCircularrunout = 2,
-    GeomtolerancetypeCircularityorroundness = 3,
-    GeomtolerancetypeCoaxiality = 4,
-    GeomtolerancetypeConcentricity = 5,
-    GeomtolerancetypeCylindricity = 6,
-    GeomtolerancetypeFlatness = 7,
-    GeomtolerancetypeParallelism = 8,
-    GeomtolerancetypePerpendicularity = 9,
-    GeomtolerancetypePosition = 10,
-    GeomtolerancetypeProfileofline = 11,
-    GeomtolerancetypeProfileofsurface = 12,
-    GeomtolerancetypeStraightness = 13,
-    GeomtolerancetypeSymmetry = 14,
-    GeomtolerancetypeTotalrunout = 15,
+    None = 0,
+    Angularity = 1,
+    Circularrunout = 2,
+    Circularityorroundness = 3,
+    Coaxiality = 4,
+    Concentricity = 5,
+    Cylindricity = 6,
+    Flatness = 7,
+    Parallelism = 8,
+    Perpendicularity = 9,
+    Position = 10,
+    Profileofline = 11,
+    Profileofsurface = 12,
+    Straightness = 13,
+    Symmetry = 14,
+    Totalrunout = 15,
 }
 
 impl From<GeomToleranceType> for i32 {
@@ -623,22 +623,22 @@ impl TryFrom<i32> for GeomToleranceType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GeomToleranceType::GeomtolerancetypeNone),
-            1 => Ok(GeomToleranceType::GeomtolerancetypeAngularity),
-            2 => Ok(GeomToleranceType::GeomtolerancetypeCircularrunout),
-            3 => Ok(GeomToleranceType::GeomtolerancetypeCircularityorroundness),
-            4 => Ok(GeomToleranceType::GeomtolerancetypeCoaxiality),
-            5 => Ok(GeomToleranceType::GeomtolerancetypeConcentricity),
-            6 => Ok(GeomToleranceType::GeomtolerancetypeCylindricity),
-            7 => Ok(GeomToleranceType::GeomtolerancetypeFlatness),
-            8 => Ok(GeomToleranceType::GeomtolerancetypeParallelism),
-            9 => Ok(GeomToleranceType::GeomtolerancetypePerpendicularity),
-            10 => Ok(GeomToleranceType::GeomtolerancetypePosition),
-            11 => Ok(GeomToleranceType::GeomtolerancetypeProfileofline),
-            12 => Ok(GeomToleranceType::GeomtolerancetypeProfileofsurface),
-            13 => Ok(GeomToleranceType::GeomtolerancetypeStraightness),
-            14 => Ok(GeomToleranceType::GeomtolerancetypeSymmetry),
-            15 => Ok(GeomToleranceType::GeomtolerancetypeTotalrunout),
+            0 => Ok(GeomToleranceType::None),
+            1 => Ok(GeomToleranceType::Angularity),
+            2 => Ok(GeomToleranceType::Circularrunout),
+            3 => Ok(GeomToleranceType::Circularityorroundness),
+            4 => Ok(GeomToleranceType::Coaxiality),
+            5 => Ok(GeomToleranceType::Concentricity),
+            6 => Ok(GeomToleranceType::Cylindricity),
+            7 => Ok(GeomToleranceType::Flatness),
+            8 => Ok(GeomToleranceType::Parallelism),
+            9 => Ok(GeomToleranceType::Perpendicularity),
+            10 => Ok(GeomToleranceType::Position),
+            11 => Ok(GeomToleranceType::Profileofline),
+            12 => Ok(GeomToleranceType::Profileofsurface),
+            13 => Ok(GeomToleranceType::Straightness),
+            14 => Ok(GeomToleranceType::Symmetry),
+            15 => Ok(GeomToleranceType::Totalrunout),
             _ => Err(value),
         }
     }
@@ -649,9 +649,9 @@ impl TryFrom<i32> for GeomToleranceType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum GeomToleranceTypeValue {
-    GeomtolerancetypevalueNone = 0,
-    GeomtolerancetypevalueDiameter = 1,
-    GeomtolerancetypevalueSphericaldiameter = 2,
+    None = 0,
+    Diameter = 1,
+    Sphericaldiameter = 2,
 }
 
 impl From<GeomToleranceTypeValue> for i32 {
@@ -665,9 +665,9 @@ impl TryFrom<i32> for GeomToleranceTypeValue {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GeomToleranceTypeValue::GeomtolerancetypevalueNone),
-            1 => Ok(GeomToleranceTypeValue::GeomtolerancetypevalueDiameter),
-            2 => Ok(GeomToleranceTypeValue::GeomtolerancetypevalueSphericaldiameter),
+            0 => Ok(GeomToleranceTypeValue::None),
+            1 => Ok(GeomToleranceTypeValue::Diameter),
+            2 => Ok(GeomToleranceTypeValue::Sphericaldiameter),
             _ => Err(value),
         }
     }
@@ -678,10 +678,10 @@ impl TryFrom<i32> for GeomToleranceTypeValue {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum GeomToleranceZoneModif {
-    GeomtolerancezonemodifNone = 0,
-    GeomtolerancezonemodifProjected = 1,
-    GeomtolerancezonemodifRunout = 2,
-    GeomtolerancezonemodifNonuniform = 3,
+    None = 0,
+    Projected = 1,
+    Runout = 2,
+    Nonuniform = 3,
 }
 
 impl From<GeomToleranceZoneModif> for i32 {
@@ -695,10 +695,10 @@ impl TryFrom<i32> for GeomToleranceZoneModif {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(GeomToleranceZoneModif::GeomtolerancezonemodifNone),
-            1 => Ok(GeomToleranceZoneModif::GeomtolerancezonemodifProjected),
-            2 => Ok(GeomToleranceZoneModif::GeomtolerancezonemodifRunout),
-            3 => Ok(GeomToleranceZoneModif::GeomtolerancezonemodifNonuniform),
+            0 => Ok(GeomToleranceZoneModif::None),
+            1 => Ok(GeomToleranceZoneModif::Projected),
+            2 => Ok(GeomToleranceZoneModif::Runout),
+            3 => Ok(GeomToleranceZoneModif::Nonuniform),
             _ => Err(value),
         }
     }
@@ -709,9 +709,9 @@ impl TryFrom<i32> for GeomToleranceZoneModif {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum ToleranceZoneAffectedPlane {
-    TolerancezoneaffectedplaneNone = 0,
-    TolerancezoneaffectedplaneIntersection = 1,
-    TolerancezoneaffectedplaneOrientation = 2,
+    None = 0,
+    Intersection = 1,
+    Orientation = 2,
 }
 
 impl From<ToleranceZoneAffectedPlane> for i32 {
@@ -725,9 +725,9 @@ impl TryFrom<i32> for ToleranceZoneAffectedPlane {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(ToleranceZoneAffectedPlane::TolerancezoneaffectedplaneNone),
-            1 => Ok(ToleranceZoneAffectedPlane::TolerancezoneaffectedplaneIntersection),
-            2 => Ok(ToleranceZoneAffectedPlane::TolerancezoneaffectedplaneOrientation),
+            0 => Ok(ToleranceZoneAffectedPlane::None),
+            1 => Ok(ToleranceZoneAffectedPlane::Intersection),
+            2 => Ok(ToleranceZoneAffectedPlane::Orientation),
             _ => Err(value),
         }
     }

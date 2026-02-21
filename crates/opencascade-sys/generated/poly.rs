@@ -157,6 +157,48 @@ pub fn intersect_tri_line(
     unsafe { crate::ffi::Poly_intersect_tri_line(theStart, theDir, theV0, theV1, theV2, theParam) }
 }
 
+/// C++ enum: `Poly_MeshPurpose`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum MeshPurpose {
+    /// < no special use (default)
+    None = 0,
+    /// < mesh for algorithms
+    Calculation = 1,
+    /// < mesh for presentation (LODs usage)
+    Presentation = 2,
+    /// < mesh marked as currently active in a list
+    Active = 4,
+    /// < mesh has currently loaded data
+    Loaded = 8,
+    Anyfallback = 16,
+    /// < application-defined flags
+    User = 32,
+}
+
+impl From<MeshPurpose> for i32 {
+    fn from(value: MeshPurpose) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for MeshPurpose {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(MeshPurpose::None),
+            1 => Ok(MeshPurpose::Calculation),
+            2 => Ok(MeshPurpose::Presentation),
+            4 => Ok(MeshPurpose::Active),
+            8 => Ok(MeshPurpose::Loaded),
+            16 => Ok(MeshPurpose::Anyfallback),
+            32 => Ok(MeshPurpose::User),
+            _ => Err(value),
+        }
+    }
+}
+
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
     HandleRWGltfGltfLatePrimitiveArray, HandleRWMeshTriangulationSource, HandleStandardTransient,

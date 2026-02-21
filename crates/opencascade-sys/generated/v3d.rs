@@ -5742,12 +5742,48 @@ impl View {
     /// Internally this method calls Redraw() with an offscreen render buffer of requested target size
     /// (theWidth x theHeight), so that there is no need resizing a window control for making a dump
     /// of different size.
-    pub fn to_pix_map(
+    pub fn to_pix_map_pixmap_imagedumpoptions(
         &mut self,
         theImage: &mut crate::image::PixMap,
         theParams: &ImageDumpOptions,
     ) -> bool {
-        unsafe { crate::ffi::V3d_View_to_pix_map(self as *mut Self, theImage, theParams) }
+        unsafe {
+            crate::ffi::V3d_View_to_pix_map_pixmap_imagedumpoptions(
+                self as *mut Self,
+                theImage,
+                theParams,
+            )
+        }
+    }
+
+    /// **Source:** `V3d_View.hxx`:990 - `V3d_View::ToPixMap()`
+    /// Dumps the full contents of the view to a pixmap.
+    /// Internally this method calls Redraw() with an offscreen render buffer of requested target size
+    /// (theWidth x theHeight), so that there is no need resizing a window control for making a dump
+    /// of different size.
+    /// @param theImage          target image, will be re-allocated to match theWidth x theHeight
+    /// @param theWidth          target image width
+    /// @param theHeight         target image height
+    /// @param theBufferType     type of the view buffer to dump (color / depth)
+    /// @param theToAdjustAspect when true, active view aspect ratio will be overridden by (theWidth /
+    /// theHeight)
+    /// @param theStereoOptions  how to dump stereographic camera
+    pub fn to_pix_map_pixmap_int2_buffertype_bool_int2_stereodumpoptions_charptr(
+        &mut self,
+        theImage: &mut crate::image::PixMap,
+        theWidth: i32,
+        theHeight: i32,
+        theBufferType: crate::graphic3d::BufferType,
+        theToAdjustAspect: bool,
+        theTargetZLayerId: i32,
+        theIsSingleLayer: i32,
+        theStereoOptions: crate::v3d::StereoDumpOptions,
+        theLightName: &str,
+    ) -> bool {
+        let c_theLightName = std::ffi::CString::new(theLightName).unwrap();
+        unsafe {
+            crate::ffi::V3d_View_to_pix_map_pixmap_int2_buffertype_bool_int2_stereodumpoptions_charptr(self as *mut Self, theImage, theWidth, theHeight, theBufferType.into(), theToAdjustAspect, theTargetZLayerId, theIsSingleLayer, theStereoOptions.into(), c_theLightName.as_ptr())
+        }
     }
 
     /// **Source:** `V3d_View.hxx`:1013 - `V3d_View::SetBackFacingModel()`
@@ -6060,7 +6096,7 @@ impl HandleV3dView {
     }
 }
 
-// ── Skipped symbols for View (4 total) ──
+// ── Skipped symbols for View (3 total) ──
 // SKIPPED: **Source:** `V3d_View.hxx`:76 - `V3d_View::SetWindow`
 //   method: Activates the view in the specified Window
 //   method: If <aContext> is not NULL the graphic context is used
@@ -6072,13 +6108,6 @@ impl HandleV3dView {
 //   method: Return iterator for defined lights.
 //   Reason: return type 'V3d_ListOfLightIterator' is unknown
 //   // pub fn active_light_iterator(&self) -> OwnedPtr<V3d_ListOfLightIterator>;
-//
-// SKIPPED: **Source:** `V3d_View.hxx`:990 - `V3d_View::ToPixMap`
-//   method: Dumps the full contents of the view to a pixmap.
-//   method: Internally this method calls Redraw() with an offscreen render buffer of requested target size
-//   method: (theWidth x theHeight), so that there is no need resizing a window control for making a dump
-//   Reason: param 'theTargetZLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn to_pix_map(&mut self, theImage: &mut PixMap, theWidth: i32, theHeight: i32, theBufferType: &BufferType, theToAdjustAspect: bool, theTargetZLayerId: ZLayerId, theIsSingleLayer: i32, theStereoOptions: StereoDumpOptions, theLightName: *const char) -> bool;
 //
 // SKIPPED: **Source:** `V3d_View.hxx`:1113 - `V3d_View::Subviews`
 //   method: Return subview list.
@@ -6379,6 +6408,113 @@ impl Viewer {
     /// foreground ). The first layer ID in sequence is the default layer that can't be removed.
     pub fn get_all_z_layers(&self, theLayerSeq: &mut crate::ffi::TColStd_SequenceOfInteger) {
         unsafe { crate::ffi::V3d_Viewer_get_all_z_layers(self as *const Self, theLayerSeq) }
+    }
+
+    /// **Source:** `V3d_Viewer.hxx`:199 - `V3d_Viewer::AddZLayer()`
+    /// Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value.
+    /// The Z layers are controlled entirely by viewer, it is not possible to add a layer to a
+    /// particular view. Custom layers will be inserted before Graphic3d_ZLayerId_Top (e.g. between
+    /// Graphic3d_ZLayerId_Default and before Graphic3d_ZLayerId_Top).
+    /// @param[out] theLayerId  id of created layer
+    /// @param[in] theSettings  new layer settings
+    /// @return FALSE if the layer can not be created
+    pub fn add_z_layer(
+        &mut self,
+        theLayerId: &mut crate::graphic3d::ZLayerId,
+        theSettings: &crate::graphic3d::ZLayerSettings,
+    ) -> bool {
+        let mut theLayerId_i32_: i32 = (*theLayerId).into();
+        let result_ = unsafe {
+            crate::ffi::V3d_Viewer_add_z_layer(self as *mut Self, &mut theLayerId_i32_, theSettings)
+        };
+        *theLayerId = crate::graphic3d::ZLayerId::try_from(theLayerId_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `V3d_Viewer.hxx`:216 - `V3d_Viewer::InsertLayerBefore()`
+    /// Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value.
+    /// The Z layers are controlled entirely by viewer, it is not possible to add a layer to a
+    /// particular view. Layer rendering order is defined by its position in list (altered by
+    /// theLayerAfter) and IsImmediate() flag (all layers with IsImmediate() flag are drawn
+    /// afterwards);
+    /// @param[out] theNewLayerId  id of created layer; layer id is arbitrary and does not depend on
+    /// layer position in the list
+    /// @param[in] theSettings     new layer settings
+    /// @param[in] theLayerAfter   id of layer to append new layer before
+    /// @return FALSE if the layer can not be created
+    pub fn insert_layer_before(
+        &mut self,
+        theNewLayerId: &mut crate::graphic3d::ZLayerId,
+        theSettings: &crate::graphic3d::ZLayerSettings,
+        theLayerAfter: i32,
+    ) -> bool {
+        let mut theNewLayerId_i32_: i32 = (*theNewLayerId).into();
+        let result_ = unsafe {
+            crate::ffi::V3d_Viewer_insert_layer_before(
+                self as *mut Self,
+                &mut theNewLayerId_i32_,
+                theSettings,
+                theLayerAfter,
+            )
+        };
+        *theNewLayerId = crate::graphic3d::ZLayerId::try_from(theNewLayerId_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `V3d_Viewer.hxx`:230 - `V3d_Viewer::InsertLayerAfter()`
+    /// Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value.
+    /// The Z layers are controlled entirely by viewer, it is not possible to add a layer to a
+    /// particular view. Layer rendering order is defined by its position in list (altered by
+    /// theLayerAfter) and IsImmediate() flag (all layers with IsImmediate() flag are drawn
+    /// afterwards);
+    /// @param[out] theNewLayerId  id of created layer; layer id is arbitrary and does not depend on
+    /// layer position in the list
+    /// @param[in] theSettings     new layer settings
+    /// @param[in] theLayerBefore  id of layer to append new layer after
+    /// @return FALSE if the layer can not be created
+    pub fn insert_layer_after(
+        &mut self,
+        theNewLayerId: &mut crate::graphic3d::ZLayerId,
+        theSettings: &crate::graphic3d::ZLayerSettings,
+        theLayerBefore: i32,
+    ) -> bool {
+        let mut theNewLayerId_i32_: i32 = (*theNewLayerId).into();
+        let result_ = unsafe {
+            crate::ffi::V3d_Viewer_insert_layer_after(
+                self as *mut Self,
+                &mut theNewLayerId_i32_,
+                theSettings,
+                theLayerBefore,
+            )
+        };
+        *theNewLayerId = crate::graphic3d::ZLayerId::try_from(theNewLayerId_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `V3d_Viewer.hxx`:237 - `V3d_Viewer::RemoveZLayer()`
+    /// Remove Z layer with ID <theLayerId>.
+    /// Method returns Standard_False if the layer can not be removed or doesn't exists.
+    /// By default, there are always default bottom-level layer that can't be removed.
+    pub fn remove_z_layer(&mut self, theLayerId: i32) -> bool {
+        unsafe { crate::ffi::V3d_Viewer_remove_z_layer(self as *mut Self, theLayerId) }
+    }
+
+    /// **Source:** `V3d_Viewer.hxx`:240 - `V3d_Viewer::ZLayerSettings()`
+    /// Returns the settings of a single Z layer.
+    pub fn z_layer_settings(&self, theLayerId: i32) -> &crate::graphic3d::ZLayerSettings {
+        unsafe { &*(crate::ffi::V3d_Viewer_z_layer_settings(self as *const Self, theLayerId)) }
+    }
+
+    /// **Source:** `V3d_Viewer.hxx`:244 - `V3d_Viewer::SetZLayerSettings()`
+    /// Sets the settings for a single Z layer.
+    pub fn set_z_layer_settings(
+        &mut self,
+        theLayerId: i32,
+        theSettings: &crate::graphic3d::ZLayerSettings,
+    ) {
+        unsafe {
+            crate::ffi::V3d_Viewer_set_z_layer_settings(self as *mut Self, theLayerId, theSettings)
+        }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:249 - `V3d_Viewer::ActiveViews()`
@@ -6919,45 +7055,7 @@ impl HandleV3dViewer {
     }
 }
 
-// ── Skipped symbols for Viewer (10 total) ──
-// SKIPPED: **Source:** `V3d_Viewer.hxx`:199 - `V3d_Viewer::AddZLayer`
-//   method: Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value.
-//   method: The Z layers are controlled entirely by viewer, it is not possible to add a layer to a
-//   method: particular view. Custom layers will be inserted before Graphic3d_ZLayerId_Top (e.g. between
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId&'
-//   // pub fn add_z_layer(&mut self, theLayerId: &mut ZLayerId, theSettings: &ZLayerSettings) -> bool;
-//
-// SKIPPED: **Source:** `V3d_Viewer.hxx`:216 - `V3d_Viewer::InsertLayerBefore`
-//   method: Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value.
-//   method: The Z layers are controlled entirely by viewer, it is not possible to add a layer to a
-//   method: particular view. Layer rendering order is defined by its position in list (altered by
-//   Reason: param 'theNewLayerId' uses unknown type 'Graphic3d_ZLayerId&'
-//   // pub fn insert_layer_before(&mut self, theNewLayerId: &mut ZLayerId, theSettings: &ZLayerSettings, theLayerAfter: ZLayerId) -> bool;
-//
-// SKIPPED: **Source:** `V3d_Viewer.hxx`:230 - `V3d_Viewer::InsertLayerAfter`
-//   method: Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value.
-//   method: The Z layers are controlled entirely by viewer, it is not possible to add a layer to a
-//   method: particular view. Layer rendering order is defined by its position in list (altered by
-//   Reason: param 'theNewLayerId' uses unknown type 'Graphic3d_ZLayerId&'
-//   // pub fn insert_layer_after(&mut self, theNewLayerId: &mut ZLayerId, theSettings: &ZLayerSettings, theLayerBefore: ZLayerId) -> bool;
-//
-// SKIPPED: **Source:** `V3d_Viewer.hxx`:237 - `V3d_Viewer::RemoveZLayer`
-//   method: Remove Z layer with ID <theLayerId>.
-//   method: Method returns Standard_False if the layer can not be removed or doesn't exists.
-//   method: By default, there are always default bottom-level layer that can't be removed.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn remove_z_layer(&mut self, theLayerId: ZLayerId) -> bool;
-//
-// SKIPPED: **Source:** `V3d_Viewer.hxx`:240 - `V3d_Viewer::ZLayerSettings`
-//   method: Returns the settings of a single Z layer.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn z_layer_settings(&self, theLayerId: ZLayerId) -> &ZLayerSettings;
-//
-// SKIPPED: **Source:** `V3d_Viewer.hxx`:244 - `V3d_Viewer::SetZLayerSettings`
-//   method: Sets the settings for a single Z layer.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn set_z_layer_settings(&mut self, theLayerId: ZLayerId, theSettings: &ZLayerSettings);
-//
+// ── Skipped symbols for Viewer (4 total) ──
 // SKIPPED: **Source:** `V3d_Viewer.hxx`:252 - `V3d_Viewer::ActiveViewIterator`
 //   method: Return an iterator for active views.
 //   Reason: return type 'V3d_ListOfViewIterator' is unknown

@@ -16,6 +16,37 @@ pub fn get_view_name_mode() -> bool {
     unsafe { crate::ffi::XCAFPrs_get_view_name_mode() }
 }
 
+/// Document explorer flags.
+/// C++ enum: `XCAFPrs_DocumentExplorerFlags`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum DocumentExplorerFlags {
+    /// < no flags
+    None = 0,
+    Onlyleafnodes = 1,
+    /// < do not fetch styles
+    Nostyle = 2,
+}
+
+impl From<DocumentExplorerFlags> for i32 {
+    fn from(value: DocumentExplorerFlags) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for DocumentExplorerFlags {
+    type Error = i32;
+
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
+        match value {
+            0 => Ok(DocumentExplorerFlags::None),
+            1 => Ok(DocumentExplorerFlags::Onlyleafnodes),
+            2 => Ok(DocumentExplorerFlags::Nostyle),
+            _ => Err(value),
+        }
+    }
+}
+
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
     HandleAISColoredShape, HandleAISInteractiveObject, HandleAISShape, HandleGraphic3dTexture2D,
@@ -751,6 +782,11 @@ impl AISObject {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_SetZLayer(self as *mut Self, theLayerId) }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         unsafe {
@@ -795,6 +831,11 @@ impl AISObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::XCAFPrs_AISObject_inherited_Presentations(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::XCAFPrs_AISObject_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -1404,6 +1445,92 @@ impl DocumentExplorer {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentExplorer_ctor()) }
     }
 
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:90 - `XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer()`
+    /// Constructor for exploring the whole document.
+    /// @param theDocument document to explore
+    /// @param theFlags    iteration flags
+    /// @param theDefStyle default style for nodes with undefined style
+    pub fn new_handletdocstddocument_int_style(
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theFlags: i32,
+        theDefStyle: &Style,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFPrs_DocumentExplorer_ctor_handletdocstddocument_int_style(
+                    theDocument,
+                    theFlags,
+                    theDefStyle,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:99 - `XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer()`
+    /// Constructor for exploring specified list of root shapes in the document.
+    /// @param theDocument  document to explore
+    /// @param theRoots     root labels to explore within specified document
+    /// @param theFlags     iteration flags
+    /// @param theDefStyle  default style for nodes with undefined style
+    pub fn new_handletdocstddocument_labelsequence_int_style(
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theRoots: &crate::ffi::TDF_LabelSequence,
+        theFlags: i32,
+        theDefStyle: &Style,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentExplorer_ctor_handletdocstddocument_labelsequence_int_style(theDocument, theRoots, theFlags, theDefStyle))
+        }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:109 - `XCAFPrs_DocumentExplorer::Init()`
+    /// Initialize the iterator from a single root shape in the document.
+    /// @param theDocument  document to explore
+    /// @param theRoot      single root label to explore within specified document
+    /// @param theFlags     iteration flags
+    /// @param theDefStyle  default style for nodes with undefined style
+    pub fn init_handletdocstddocument_label_int_style(
+        &mut self,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theRoot: &crate::tdf::Label,
+        theFlags: i32,
+        theDefStyle: &Style,
+    ) {
+        unsafe {
+            crate::ffi::XCAFPrs_DocumentExplorer_init_handletdocstddocument_label_int_style(
+                self as *mut Self,
+                theDocument,
+                theRoot,
+                theFlags,
+                theDefStyle,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:119 - `XCAFPrs_DocumentExplorer::Init()`
+    /// Initialize the iterator from the list of root shapes in the document.
+    /// @param theDocument  document to explore
+    /// @param theRoots     root labels to explore within specified document
+    /// @param theFlags     iteration flags
+    /// @param theDefStyle  default style for nodes with undefined style
+    pub fn init_handletdocstddocument_labelsequence_int_style(
+        &mut self,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theRoots: &crate::ffi::TDF_LabelSequence,
+        theFlags: i32,
+        theDefStyle: &Style,
+    ) {
+        unsafe {
+            crate::ffi::XCAFPrs_DocumentExplorer_init_handletdocstddocument_labelsequence_int_style(
+                self as *mut Self,
+                theDocument,
+                theRoots,
+                theFlags,
+                theDefStyle,
+            )
+        }
+    }
+
     /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:125 - `XCAFPrs_DocumentExplorer::More()`
     /// Return TRUE if iterator points to the valid node.
     pub fn more(&self) -> bool {
@@ -1524,36 +1651,6 @@ impl DocumentExplorer {
         }
     }
 }
-
-// ── Skipped symbols for DocumentExplorer (4 total) ──
-// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:90 - `XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer`
-//   constructor: Constructor for exploring the whole document.
-//   constructor: @param theDocument document to explore
-//   constructor: @param theFlags    iteration flags
-//   Reason: param 'theFlags' uses unknown type 'XCAFPrs_DocumentExplorerFlags'
-//   // pub fn new_handletdocstddocument_documentexplorerflags_style(theDocument: &HandleDocument, theFlags: DocumentExplorerFlags, theDefStyle: &Style) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:99 - `XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer`
-//   constructor: Constructor for exploring specified list of root shapes in the document.
-//   constructor: @param theDocument  document to explore
-//   constructor: @param theRoots     root labels to explore within specified document
-//   Reason: param 'theFlags' uses unknown type 'XCAFPrs_DocumentExplorerFlags'
-//   // pub fn new_handletdocstddocument_labelsequence_documentexplorerflags_style(theDocument: &HandleDocument, theRoots: &LabelSequence, theFlags: DocumentExplorerFlags, theDefStyle: &Style) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:109 - `XCAFPrs_DocumentExplorer::Init`
-//   method: Initialize the iterator from a single root shape in the document.
-//   method: @param theDocument  document to explore
-//   method: @param theRoot      single root label to explore within specified document
-//   Reason: param 'theFlags' uses unknown type 'XCAFPrs_DocumentExplorerFlags'
-//   // pub fn init(&mut self, theDocument: &HandleDocument, theRoot: &Label, theFlags: DocumentExplorerFlags, theDefStyle: &Style);
-//
-// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:119 - `XCAFPrs_DocumentExplorer::Init`
-//   method: Initialize the iterator from the list of root shapes in the document.
-//   method: @param theDocument  document to explore
-//   method: @param theRoots     root labels to explore within specified document
-//   Reason: param 'theFlags' uses unknown type 'XCAFPrs_DocumentExplorerFlags'
-//   // pub fn init(&mut self, theDocument: &HandleDocument, theRoots: &LabelSequence, theFlags: DocumentExplorerFlags, theDefStyle: &Style);
-//
 
 // ========================
 // From XCAFPrs_DocumentIdIterator.hxx
@@ -2292,9 +2389,3 @@ impl HandleXCAFPrsTexture {
         }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi::XCAFPrs_DocumentExplorerFlags as DocumentExplorerFlags;

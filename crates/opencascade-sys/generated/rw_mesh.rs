@@ -38,8 +38,8 @@ pub fn format_name(
 #[repr(i32)]
 pub enum CafReaderStatusEx {
     /// < empty status
-    CafreaderstatusexNone = 0,
-    CafreaderstatusexPartial = 1,
+    None = 0,
+    Partial = 1,
 }
 
 impl From<CafReaderStatusEx> for i32 {
@@ -53,8 +53,8 @@ impl TryFrom<i32> for CafReaderStatusEx {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(CafReaderStatusEx::CafreaderstatusexNone),
-            1 => Ok(CafReaderStatusEx::CafreaderstatusexPartial),
+            0 => Ok(CafReaderStatusEx::None),
+            1 => Ok(CafReaderStatusEx::Partial),
             _ => Err(value),
         }
     }
@@ -69,11 +69,11 @@ impl TryFrom<i32> for CafReaderStatusEx {
 #[repr(i32)]
 pub enum CoordinateSystem {
     /// < undefined
-    CoordinatesystemUndefined = -1,
+    Undefined = -1,
     /// < +YForward+Zup+Xright
-    CoordinatesystemPosyfwdPoszup = 0,
+    PosyfwdPoszup = 0,
     /// < -ZForward+Yup+Xright
-    CoordinatesystemNegzfwdPosyup = 1,
+    NegzfwdPosyup = 1,
 }
 
 impl From<CoordinateSystem> for i32 {
@@ -87,9 +87,9 @@ impl TryFrom<i32> for CoordinateSystem {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            -1 => Ok(CoordinateSystem::CoordinatesystemUndefined),
-            0 => Ok(CoordinateSystem::CoordinatesystemPosyfwdPoszup),
-            1 => Ok(CoordinateSystem::CoordinatesystemNegzfwdPosyup),
+            -1 => Ok(CoordinateSystem::Undefined),
+            0 => Ok(CoordinateSystem::PosyfwdPoszup),
+            1 => Ok(CoordinateSystem::NegzfwdPosyup),
             _ => Err(value),
         }
     }
@@ -101,22 +101,22 @@ impl TryFrom<i32> for CoordinateSystem {
 #[repr(i32)]
 pub enum NameFormat {
     /// < omit the name
-    NameformatEmpty = 0,
+    Empty = 0,
     /// < return Product name
-    NameformatProduct = 1,
+    Product = 1,
     /// < return Instance name
-    NameformatInstance = 2,
+    Instance = 2,
     /// < return Instance name when available and Product name
     /// < otherwise
-    NameformatInstanceorproduct = 3,
+    Instanceorproduct = 3,
     /// < return Product name when available and Instance name
     /// < otherwise
-    NameformatProductorinstance = 4,
+    Productorinstance = 4,
     /// < generate "Product [Instance]" name
-    NameformatProductandinstance = 5,
+    Productandinstance = 5,
     /// < generate name combining Product+Instance+Ocaf
     /// < (useful for debugging purposes)
-    NameformatProductandinstanceandocaf = 6,
+    Productandinstanceandocaf = 6,
 }
 
 impl From<NameFormat> for i32 {
@@ -130,13 +130,13 @@ impl TryFrom<i32> for NameFormat {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(NameFormat::NameformatEmpty),
-            1 => Ok(NameFormat::NameformatProduct),
-            2 => Ok(NameFormat::NameformatInstance),
-            3 => Ok(NameFormat::NameformatInstanceorproduct),
-            4 => Ok(NameFormat::NameformatProductorinstance),
-            5 => Ok(NameFormat::NameformatProductandinstance),
-            6 => Ok(NameFormat::NameformatProductandinstanceandocaf),
+            0 => Ok(NameFormat::Empty),
+            1 => Ok(NameFormat::Product),
+            2 => Ok(NameFormat::Instance),
+            3 => Ok(NameFormat::Instanceorproduct),
+            4 => Ok(NameFormat::Productorinstance),
+            5 => Ok(NameFormat::Productandinstance),
+            6 => Ok(NameFormat::Productandinstanceandocaf),
             _ => Err(value),
         }
     }

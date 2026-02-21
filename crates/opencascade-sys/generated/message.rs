@@ -137,23 +137,23 @@ pub fn to_osd_metric(
 #[repr(i32)]
 pub enum ConsoleColor {
     /// < default (white) color
-    ConsolecolorDefault = 0,
+    Default = 0,
     /// < black   color
-    ConsolecolorBlack = 1,
+    Black = 1,
     /// < white   color
-    ConsolecolorWhite = 2,
+    White = 2,
     /// < red     color
-    ConsolecolorRed = 3,
+    Red = 3,
     /// < blue    color
-    ConsolecolorBlue = 4,
+    Blue = 4,
     /// < green   color
-    ConsolecolorGreen = 5,
+    Green = 5,
     /// < yellow  color
-    ConsolecolorYellow = 6,
+    Yellow = 6,
     /// < cyan    color
-    ConsolecolorCyan = 7,
+    Cyan = 7,
     /// < magenta color
-    ConsolecolorMagenta = 8,
+    Magenta = 8,
 }
 
 impl From<ConsoleColor> for i32 {
@@ -167,15 +167,15 @@ impl TryFrom<i32> for ConsoleColor {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(ConsoleColor::ConsolecolorDefault),
-            1 => Ok(ConsoleColor::ConsolecolorBlack),
-            2 => Ok(ConsoleColor::ConsolecolorWhite),
-            3 => Ok(ConsoleColor::ConsolecolorRed),
-            4 => Ok(ConsoleColor::ConsolecolorBlue),
-            5 => Ok(ConsoleColor::ConsolecolorGreen),
-            6 => Ok(ConsoleColor::ConsolecolorYellow),
-            7 => Ok(ConsoleColor::ConsolecolorCyan),
-            8 => Ok(ConsoleColor::ConsolecolorMagenta),
+            0 => Ok(ConsoleColor::Default),
+            1 => Ok(ConsoleColor::Black),
+            2 => Ok(ConsoleColor::White),
+            3 => Ok(ConsoleColor::Red),
+            4 => Ok(ConsoleColor::Blue),
+            5 => Ok(ConsoleColor::Green),
+            6 => Ok(ConsoleColor::Yellow),
+            7 => Ok(ConsoleColor::Cyan),
+            8 => Ok(ConsoleColor::Magenta),
             _ => Err(value),
         }
     }
@@ -225,31 +225,31 @@ impl TryFrom<i32> for Gravity {
 #[repr(i32)]
 pub enum MetricType {
     /// < no computation
-    MetrictypeNone = 0,
+    None = 0,
     /// < OSD_Chronometer::GetThreadCPU user time
-    MetrictypeThreadcpuusertime = 1,
+    Threadcpuusertime = 1,
     /// < OSD_Chronometer::GetThreadCPU system time
-    MetrictypeThreadcpusystemtime = 2,
+    Threadcpusystemtime = 2,
     /// < OSD_Chronometer::GetProcessCPU user time
-    MetrictypeProcesscpuusertime = 3,
+    Processcpuusertime = 3,
     /// < OSD_Chronometer::GetProcessCPU system time
-    MetrictypeProcesscpusystemtime = 4,
+    Processcpusystemtime = 4,
     /// < OSD_Timer elapsed time
-    MetrictypeWallclock = 5,
+    Wallclock = 5,
     /// < OSD_MemInfo::MemPrivate
-    MetrictypeMemprivate = 6,
+    Memprivate = 6,
     /// < OSD_MemInfo::MemVirtual
-    MetrictypeMemvirtual = 7,
+    Memvirtual = 7,
     /// < OSD_MemInfo::MemWorkingSet
-    MetrictypeMemworkingset = 8,
+    Memworkingset = 8,
     /// < OSD_MemInfo::MemWorkingSetPeak
-    MetrictypeMemworkingsetpeak = 9,
+    Memworkingsetpeak = 9,
     /// < OSD_MemInfo::MemSwapUsage
-    MetrictypeMemswapusage = 10,
+    Memswapusage = 10,
     /// < OSD_MemInfo::MemSwapUsagePeak
-    MetrictypeMemswapusagepeak = 11,
+    Memswapusagepeak = 11,
     /// < OSD_MemInfo::MemHeapUsage
-    MetrictypeMemheapusage = 12,
+    Memheapusage = 12,
 }
 
 impl From<MetricType> for i32 {
@@ -263,19 +263,19 @@ impl TryFrom<i32> for MetricType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(MetricType::MetrictypeNone),
-            1 => Ok(MetricType::MetrictypeThreadcpuusertime),
-            2 => Ok(MetricType::MetrictypeThreadcpusystemtime),
-            3 => Ok(MetricType::MetrictypeProcesscpuusertime),
-            4 => Ok(MetricType::MetrictypeProcesscpusystemtime),
-            5 => Ok(MetricType::MetrictypeWallclock),
-            6 => Ok(MetricType::MetrictypeMemprivate),
-            7 => Ok(MetricType::MetrictypeMemvirtual),
-            8 => Ok(MetricType::MetrictypeMemworkingset),
-            9 => Ok(MetricType::MetrictypeMemworkingsetpeak),
-            10 => Ok(MetricType::MetrictypeMemswapusage),
-            11 => Ok(MetricType::MetrictypeMemswapusagepeak),
-            12 => Ok(MetricType::MetrictypeMemheapusage),
+            0 => Ok(MetricType::None),
+            1 => Ok(MetricType::Threadcpuusertime),
+            2 => Ok(MetricType::Threadcpusystemtime),
+            3 => Ok(MetricType::Processcpuusertime),
+            4 => Ok(MetricType::Processcpusystemtime),
+            5 => Ok(MetricType::Wallclock),
+            6 => Ok(MetricType::Memprivate),
+            7 => Ok(MetricType::Memvirtual),
+            8 => Ok(MetricType::Memworkingset),
+            9 => Ok(MetricType::Memworkingsetpeak),
+            10 => Ok(MetricType::Memswapusage),
+            11 => Ok(MetricType::Memswapusagepeak),
+            12 => Ok(MetricType::Memheapusage),
             _ => Err(value),
         }
     }

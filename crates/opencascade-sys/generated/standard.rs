@@ -97,21 +97,21 @@ pub unsafe fn stack_trace(
 #[repr(i32)]
 pub enum JsonKey {
     /// < no key
-    JsonkeyNone = 0,
+    None = 0,
     /// < "{"
-    JsonkeyOpenchild = 1,
+    Openchild = 1,
     /// < "}"
-    JsonkeyClosechild = 2,
+    Closechild = 2,
     /// < "["
-    JsonkeyOpencontainer = 3,
+    Opencontainer = 3,
     /// < "]"
-    JsonkeyClosecontainer = 4,
+    Closecontainer = 4,
     /// < "\""
-    JsonkeyQuote = 5,
+    Quote = 5,
     /// < ": "
-    JsonkeySeparatorkeytovalue = 6,
+    Separatorkeytovalue = 6,
     /// < ", "
-    JsonkeySeparatorvaluetovalue = 7,
+    Separatorvaluetovalue = 7,
 }
 
 impl From<JsonKey> for i32 {
@@ -125,14 +125,14 @@ impl TryFrom<i32> for JsonKey {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(JsonKey::JsonkeyNone),
-            1 => Ok(JsonKey::JsonkeyOpenchild),
-            2 => Ok(JsonKey::JsonkeyClosechild),
-            3 => Ok(JsonKey::JsonkeyOpencontainer),
-            4 => Ok(JsonKey::JsonkeyClosecontainer),
-            5 => Ok(JsonKey::JsonkeyQuote),
-            6 => Ok(JsonKey::JsonkeySeparatorkeytovalue),
-            7 => Ok(JsonKey::JsonkeySeparatorvaluetovalue),
+            0 => Ok(JsonKey::None),
+            1 => Ok(JsonKey::Openchild),
+            2 => Ok(JsonKey::Closechild),
+            3 => Ok(JsonKey::Opencontainer),
+            4 => Ok(JsonKey::Closecontainer),
+            5 => Ok(JsonKey::Quote),
+            6 => Ok(JsonKey::Separatorkeytovalue),
+            7 => Ok(JsonKey::Separatorvaluetovalue),
             _ => Err(value),
         }
     }
@@ -59649,8 +59649,8 @@ pub use crate::ffi::{
     Standard_Address as Address, Standard_IStream as IStream, Standard_JmpBuf as JmpBuf,
     Standard_OStream as OStream, Standard_PCharacter as PCharacter,
     Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream,
-    Standard_ThreadId as ThreadId, Standard_Utf16Char as Utf16Char,
-    Standard_Utf32Char as Utf32Char, Standard_WideChar as WideChar,
+    Standard_Utf16Char as Utf16Char, Standard_Utf32Char as Utf32Char,
+    Standard_WideChar as WideChar,
 };
 
 // Manual bindings:

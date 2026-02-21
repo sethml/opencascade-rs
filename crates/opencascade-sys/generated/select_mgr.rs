@@ -25,9 +25,9 @@ pub fn compute_sensitive_prs(
 #[repr(i32)]
 pub enum FilterType {
     /// < an object should be suitable for all filters.
-    FiltertypeAnd = 0,
+    And = 0,
     /// < an object should be suitable at least one filter.
-    FiltertypeOr = 1,
+    Or = 1,
 }
 
 impl From<FilterType> for i32 {
@@ -41,8 +41,8 @@ impl TryFrom<i32> for FilterType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(FilterType::FiltertypeAnd),
-            1 => Ok(FilterType::FiltertypeOr),
+            0 => Ok(FilterType::And),
+            1 => Ok(FilterType::Or),
             _ => Err(value),
         }
     }
@@ -56,10 +56,10 @@ impl TryFrom<i32> for FilterType {
 pub enum PickingStrategy {
     /// < the first detected entity passing selection filter
     /// < is accepted (e.g. any)
-    PickingstrategyFirstacceptable = 0,
+    Firstacceptable = 0,
     /// < only topmost detected entity passing selection filter
     /// < is accepted
-    PickingstrategyOnlytopmost = 1,
+    Onlytopmost = 1,
 }
 
 impl From<PickingStrategy> for i32 {
@@ -73,8 +73,8 @@ impl TryFrom<i32> for PickingStrategy {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(PickingStrategy::PickingstrategyFirstacceptable),
-            1 => Ok(PickingStrategy::PickingstrategyOnlytopmost),
+            0 => Ok(PickingStrategy::Firstacceptable),
+            1 => Ok(PickingStrategy::Onlytopmost),
             _ => Err(value),
         }
     }
@@ -86,13 +86,13 @@ impl TryFrom<i32> for PickingStrategy {
 #[repr(i32)]
 pub enum SelectionType {
     /// < undefined selection type
-    SelectiontypeUnknown = -1,
+    Unknown = -1,
     /// < selection by point (frustum with some tolerance or axis)
-    SelectiontypePoint = 0,
+    Point = 0,
     /// < rectangle selection
-    SelectiontypeBox = 1,
+    Box = 1,
     /// < polygonal selection
-    SelectiontypePolyline = 2,
+    Polyline = 2,
 }
 
 impl From<SelectionType> for i32 {
@@ -106,10 +106,10 @@ impl TryFrom<i32> for SelectionType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            -1 => Ok(SelectionType::SelectiontypeUnknown),
-            0 => Ok(SelectionType::SelectiontypePoint),
-            1 => Ok(SelectionType::SelectiontypeBox),
-            2 => Ok(SelectionType::SelectiontypePolyline),
+            -1 => Ok(SelectionType::Unknown),
+            0 => Ok(SelectionType::Point),
+            1 => Ok(SelectionType::Box),
+            2 => Ok(SelectionType::Polyline),
             _ => Err(value),
         }
     }
@@ -200,13 +200,13 @@ impl TryFrom<i32> for TypeOfBVHUpdate {
 pub enum TypeOfDepthTolerance {
     /// < use a predefined tolerance value (defined in 3D world
     /// < scale) to compare any entities
-    TypeofdepthtoleranceUniform = 0,
+    Uniform = 0,
     /// < use a predefined tolerance value (defined in
     /// < pixels) to compare any entities
-    TypeofdepthtoleranceUniformpixels = 1,
+    Uniformpixels = 1,
     /// < use sensitivity factor (in pixels) assigned
     /// < to specific entity
-    TypeofdepthtoleranceSensitivityfactor = 2,
+    Sensitivityfactor = 2,
 }
 
 impl From<TypeOfDepthTolerance> for i32 {
@@ -220,9 +220,9 @@ impl TryFrom<i32> for TypeOfDepthTolerance {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(TypeOfDepthTolerance::TypeofdepthtoleranceUniform),
-            1 => Ok(TypeOfDepthTolerance::TypeofdepthtoleranceUniformpixels),
-            2 => Ok(TypeOfDepthTolerance::TypeofdepthtoleranceSensitivityfactor),
+            0 => Ok(TypeOfDepthTolerance::Uniform),
+            1 => Ok(TypeOfDepthTolerance::Uniformpixels),
+            2 => Ok(TypeOfDepthTolerance::Sensitivityfactor),
             _ => Err(value),
         }
     }
@@ -1735,6 +1735,13 @@ impl BVHThreadPool_BVHThread {
     /// Inherited: **Source:** `OSD_Thread.hxx`:83 - `OSD_Thread::Wait()`
     pub fn wait(&mut self) -> bool {
         unsafe { crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_Wait(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_Thread.hxx`:107 - `OSD_Thread::GetId()`
+    pub fn get_id(&self) -> std::ffi::c_ulong {
+        unsafe {
+            crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_GetId(self as *const Self)
+        }
     }
 }
 
@@ -3666,6 +3673,12 @@ impl EntityOwner {
         unsafe { crate::ffi::SelectMgr_EntityOwner_is_forced_hilight(self as *const Self) }
     }
 
+    /// **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
+    /// Set Z layer ID and update all presentations.
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::SelectMgr_EntityOwner_set_z_layer(self as *mut Self, theLayerId) }
+    }
+
     /// **Source:** `SelectMgr_EntityOwner.hxx`:184 - `SelectMgr_EntityOwner::UpdateHighlightTrsf()`
     /// Implements immediate application of location transformation of parent object to dynamic
     /// highlight structure
@@ -3990,13 +4003,6 @@ impl HandleSelectMgrEntityOwner {
         }
     }
 }
-
-// ── Skipped symbols for EntityOwner (1 total) ──
-// SKIPPED: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer`
-//   method: Set Z layer ID and update all presentations.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn set_z_layer(&mut self, theLayerId: ZLayerId);
-//
 
 // ========================
 // From SelectMgr_Filter.hxx
@@ -5697,6 +5703,14 @@ impl SelectableObject {
         }
     }
 
+    /// **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
+    /// Set Z layer ID and update all presentations of the selectable object.
+    /// The layers mechanism allows drawing objects in higher layers in overlay of objects in lower
+    /// layers.
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::SelectMgr_SelectableObject_set_z_layer(self as *mut Self, theLayerId) }
+    }
+
     /// **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     /// Sets update status FULL to selections of the object. Must be used as the only method of
     /// UpdateSelection from outer classes to prevent BVH structures from being outdated.
@@ -5801,6 +5815,11 @@ impl SelectableObject {
                 self as *mut Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_ZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -7387,14 +7406,7 @@ impl HandleSelectMgrSelectableObject {
     }
 }
 
-// ── Skipped symbols for SelectableObject (2 total) ──
-// SKIPPED: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer`
-//   method: Set Z layer ID and update all presentations of the selectable object.
-//   method: The layers mechanism allows drawing objects in higher layers in overlay of objects in lower
-//   method: layers.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn set_z_layer(&mut self, theLayerId: ZLayerId);
-//
+// ── Skipped symbols for SelectableObject (1 total) ──
 // SKIPPED: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected`
 //   method: Returns a bounding box of sensitive entities with the owners given if they are a part of
 //   method: activated selection

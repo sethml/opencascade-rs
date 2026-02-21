@@ -11,9 +11,9 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum ProjectionType {
-    ProjectiontypeNocamera = 0,
-    ProjectiontypeParallel = 1,
-    ProjectiontypeCentral = 2,
+    Nocamera = 0,
+    Parallel = 1,
+    Central = 2,
 }
 
 impl From<ProjectionType> for i32 {
@@ -27,9 +27,9 @@ impl TryFrom<i32> for ProjectionType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(ProjectionType::ProjectiontypeNocamera),
-            1 => Ok(ProjectionType::ProjectiontypeParallel),
-            2 => Ok(ProjectionType::ProjectiontypeCentral),
+            0 => Ok(ProjectionType::Nocamera),
+            1 => Ok(ProjectionType::Parallel),
+            2 => Ok(ProjectionType::Central),
             _ => Err(value),
         }
     }

@@ -284,7 +284,29 @@ fn main() -> Result<()> {
 
     // Collect all classes and enums by module
     let all_classes: Vec<_> = parsed.iter().flat_map(|h| &h.classes).collect();
-    let all_enums: Vec<_> = parsed.iter().flat_map(|h| &h.enums).collect();
+    let all_enums_raw: Vec<_> = parsed.iter().flat_map(|h| &h.enums).collect();
+    // Deduplicate enums with the same name (anonymous enums synthesized from
+    // constant prefixes may collide with named enums; merge their variants).
+    let all_enums: Vec<_> = {
+        let mut seen: std::collections::HashMap<&str, usize> = std::collections::HashMap::new();
+        let mut merged: Vec<model::ParsedEnum> = Vec::new();
+        for e in &all_enums_raw {
+            if let Some(&idx) = seen.get(e.name.as_str()) {
+                // Merge variants from duplicate into existing
+                let existing_variant_names: HashSet<String> = merged[idx].variants.iter().map(|v| v.name.clone()).collect();
+                for v in &e.variants {
+                    if !existing_variant_names.contains(&v.name) {
+                        merged[idx].variants.push(v.clone());
+                    }
+                }
+            } else {
+                seen.insert(&e.name, merged.len());
+                merged.push((*e).clone());
+            }
+        }
+        merged
+    };
+    let all_enums: Vec<_> = all_enums.iter().collect();
     let all_functions: Vec<_> = parsed.iter().flat_map(|h| &h.functions).collect();
 
     // Get collection type names (needed for symbol resolution filtering)

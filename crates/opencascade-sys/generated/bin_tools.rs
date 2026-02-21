@@ -154,13 +154,13 @@ pub fn read_shape_charptr_progressrange(
 #[repr(i32)]
 pub enum FormatVersion {
     /// < Does not write CurveOnSurface UV Points into the file.
-    FormatversionVersion1 = 1,
+    Version1 = 1,
     /// < Stores CurveOnSurface UV Points.
-    FormatversionVersion2 = 2,
+    Version2 = 2,
     /// On reading format is recognized from Version string.
-    FormatversionVersion3 = 3,
+    Version3 = 3,
     /// < Stores per-vertex normal information in case
-    FormatversionVersion4 = 4,
+    Version4 = 4,
 }
 
 impl From<FormatVersion> for i32 {
@@ -174,10 +174,10 @@ impl TryFrom<i32> for FormatVersion {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            1 => Ok(FormatVersion::FormatversionVersion1),
-            2 => Ok(FormatVersion::FormatversionVersion2),
-            3 => Ok(FormatVersion::FormatversionVersion3),
-            4 => Ok(FormatVersion::FormatversionVersion4),
+            1 => Ok(FormatVersion::Version1),
+            2 => Ok(FormatVersion::Version2),
+            3 => Ok(FormatVersion::Version3),
+            4 => Ok(FormatVersion::Version4),
             _ => Err(value),
         }
     }
@@ -188,35 +188,35 @@ impl TryFrom<i32> for FormatVersion {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum ObjectType {
-    ObjecttypeUnknown = 0,
+    Unknown = 0,
     /// < 8-bits reference
-    ObjecttypeReference8 = 1,
+    Reference8 = 1,
     /// < 16-bits reference
-    ObjecttypeReference16 = 2,
+    Reference16 = 2,
     /// < 32-bits reference
-    ObjecttypeReference32 = 3,
+    Reference32 = 3,
     /// < 64-bits reference
-    ObjecttypeReference64 = 4,
-    ObjecttypeLocation = 5,
-    ObjecttypeSimplelocation = 6,
-    ObjecttypeEmptylocation = 7,
-    ObjecttypeLocationend = 8,
-    ObjecttypeCurve = 9,
-    ObjecttypeEmptycurve = 10,
-    ObjecttypeCurve2d = 11,
-    ObjecttypeEmptycurve2d = 12,
-    ObjecttypeSurface = 13,
-    ObjecttypeEmptysurface = 14,
-    ObjecttypePolygon3d = 15,
-    ObjecttypeEmptypolygon3d = 16,
-    ObjecttypePolygonontriangulation = 17,
-    ObjecttypeEmptypolygonontriangulation = 18,
-    ObjecttypeTriangulation = 19,
-    ObjecttypeEmptytriangulation = 20,
+    Reference64 = 4,
+    Location = 5,
+    Simplelocation = 6,
+    Emptylocation = 7,
+    Locationend = 8,
+    Curve = 9,
+    Emptycurve = 10,
+    Curve2d = 11,
+    Emptycurve2d = 12,
+    Surface = 13,
+    Emptysurface = 14,
+    Polygon3d = 15,
+    Emptypolygon3d = 16,
+    Polygonontriangulation = 17,
+    Emptypolygonontriangulation = 18,
+    Triangulation = 19,
+    Emptytriangulation = 20,
     /// < identifier of the null shape
-    ObjecttypeEmptyshape = 198,
+    Emptyshape = 198,
     /// < identifier of the shape record end
-    ObjecttypeEndshape = 199,
+    Endshape = 199,
 }
 
 impl From<ObjectType> for i32 {
@@ -230,29 +230,29 @@ impl TryFrom<i32> for ObjectType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(ObjectType::ObjecttypeUnknown),
-            1 => Ok(ObjectType::ObjecttypeReference8),
-            2 => Ok(ObjectType::ObjecttypeReference16),
-            3 => Ok(ObjectType::ObjecttypeReference32),
-            4 => Ok(ObjectType::ObjecttypeReference64),
-            5 => Ok(ObjectType::ObjecttypeLocation),
-            6 => Ok(ObjectType::ObjecttypeSimplelocation),
-            7 => Ok(ObjectType::ObjecttypeEmptylocation),
-            8 => Ok(ObjectType::ObjecttypeLocationend),
-            9 => Ok(ObjectType::ObjecttypeCurve),
-            10 => Ok(ObjectType::ObjecttypeEmptycurve),
-            11 => Ok(ObjectType::ObjecttypeCurve2d),
-            12 => Ok(ObjectType::ObjecttypeEmptycurve2d),
-            13 => Ok(ObjectType::ObjecttypeSurface),
-            14 => Ok(ObjectType::ObjecttypeEmptysurface),
-            15 => Ok(ObjectType::ObjecttypePolygon3d),
-            16 => Ok(ObjectType::ObjecttypeEmptypolygon3d),
-            17 => Ok(ObjectType::ObjecttypePolygonontriangulation),
-            18 => Ok(ObjectType::ObjecttypeEmptypolygonontriangulation),
-            19 => Ok(ObjectType::ObjecttypeTriangulation),
-            20 => Ok(ObjectType::ObjecttypeEmptytriangulation),
-            198 => Ok(ObjectType::ObjecttypeEmptyshape),
-            199 => Ok(ObjectType::ObjecttypeEndshape),
+            0 => Ok(ObjectType::Unknown),
+            1 => Ok(ObjectType::Reference8),
+            2 => Ok(ObjectType::Reference16),
+            3 => Ok(ObjectType::Reference32),
+            4 => Ok(ObjectType::Reference64),
+            5 => Ok(ObjectType::Location),
+            6 => Ok(ObjectType::Simplelocation),
+            7 => Ok(ObjectType::Emptylocation),
+            8 => Ok(ObjectType::Locationend),
+            9 => Ok(ObjectType::Curve),
+            10 => Ok(ObjectType::Emptycurve),
+            11 => Ok(ObjectType::Curve2d),
+            12 => Ok(ObjectType::Emptycurve2d),
+            13 => Ok(ObjectType::Surface),
+            14 => Ok(ObjectType::Emptysurface),
+            15 => Ok(ObjectType::Polygon3d),
+            16 => Ok(ObjectType::Emptypolygon3d),
+            17 => Ok(ObjectType::Polygonontriangulation),
+            18 => Ok(ObjectType::Emptypolygonontriangulation),
+            19 => Ok(ObjectType::Triangulation),
+            20 => Ok(ObjectType::Emptytriangulation),
+            198 => Ok(ObjectType::Emptyshape),
+            199 => Ok(ObjectType::Endshape),
             _ => Err(value),
         }
     }

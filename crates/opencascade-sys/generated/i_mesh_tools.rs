@@ -12,11 +12,11 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum MeshAlgoType {
-    MeshalgotypeDefault = -1,
-    MeshalgotypeWatson = 0,
+    Default = -1,
+    Watson = 0,
     /// < generate 2D Delaunay triangulation based on Delabella
     /// < algorithm (BRepMesh_DelabellaMeshAlgoFactory)
-    MeshalgotypeDelabella = 1,
+    Delabella = 1,
 }
 
 impl From<MeshAlgoType> for i32 {
@@ -30,9 +30,9 @@ impl TryFrom<i32> for MeshAlgoType {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            -1 => Ok(MeshAlgoType::MeshalgotypeDefault),
-            0 => Ok(MeshAlgoType::MeshalgotypeWatson),
-            1 => Ok(MeshAlgoType::MeshalgotypeDelabella),
+            -1 => Ok(MeshAlgoType::Default),
+            0 => Ok(MeshAlgoType::Watson),
+            1 => Ok(MeshAlgoType::Delabella),
             _ => Err(value),
         }
     }

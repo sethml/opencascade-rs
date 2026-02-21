@@ -12,11 +12,11 @@
 #[repr(i32)]
 pub enum DisplayStatus {
     /// < the Interactive Object is displayed in the main viewer
-    DisplaystatusDisplayed = 0,
+    Displayed = 0,
     /// < the Interactive Object is hidden in main viewer
-    DisplaystatusErased = 1,
+    Erased = 1,
     /// < the Interactive Object is nowhere displayed
-    DisplaystatusNone = 2,
+    None = 2,
 }
 
 impl From<DisplayStatus> for i32 {
@@ -30,9 +30,9 @@ impl TryFrom<i32> for DisplayStatus {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(DisplayStatus::DisplaystatusDisplayed),
-            1 => Ok(DisplayStatus::DisplaystatusErased),
-            2 => Ok(DisplayStatus::DisplaystatusNone),
+            0 => Ok(DisplayStatus::Displayed),
+            1 => Ok(DisplayStatus::Erased),
+            2 => Ok(DisplayStatus::None),
             _ => Err(value),
         }
     }
@@ -121,6 +121,20 @@ impl PresentableObject {
     /// Return presentations.
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
         unsafe { &mut *(crate::ffi::PrsMgr_PresentableObject_presentations(self as *mut Self)) }
+    }
+
+    /// **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
+    /// Get ID of Z layer for main presentation.
+    pub fn z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsMgr_PresentableObject_z_layer(self as *const Self) }
+    }
+
+    /// **Source:** `PrsMgr_PresentableObject.hxx`:67 - `PrsMgr_PresentableObject::SetZLayer()`
+    /// Set Z layer ID and update all presentations of the presentable object.
+    /// The layers mechanism allows drawing objects in higher layers in overlay of objects in lower
+    /// layers.
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe { crate::ffi::PrsMgr_PresentableObject_set_z_layer(self as *mut Self, theLayerId) }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
@@ -1776,20 +1790,6 @@ impl HandlePrsMgrPresentableObject {
     }
 }
 
-// ── Skipped symbols for PresentableObject (2 total) ──
-// SKIPPED: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer`
-//   method: Get ID of Z layer for main presentation.
-//   Reason: return type 'Graphic3d_ZLayerId' is unknown
-//   // pub fn z_layer(&self) -> OwnedPtr<Graphic3d_ZLayerId>;
-//
-// SKIPPED: **Source:** `PrsMgr_PresentableObject.hxx`:67 - `PrsMgr_PresentableObject::SetZLayer`
-//   method: Set Z layer ID and update all presentations of the presentable object.
-//   method: The layers mechanism allows drawing objects in higher layers in overlay of objects in lower
-//   method: layers.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn set_z_layer(&mut self, theLayerId: ZLayerId);
-//
-
 // ========================
 // From PrsMgr_Presentation.hxx
 // ========================
@@ -1963,6 +1963,18 @@ impl Presentation {
         unsafe {
             crate::ffi::PrsMgr_Presentation_inherited_SetInfiniteState(self as *mut Self, theToSet)
         }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_Structure.hxx`:138 - `Graphic3d_Structure::SetZLayer()`
+    pub fn set_z_layer(&mut self, theLayerId: i32) {
+        unsafe {
+            crate::ffi::PrsMgr_Presentation_inherited_SetZLayer(self as *mut Self, theLayerId)
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_Structure.hxx`:142 - `Graphic3d_Structure::GetZLayer()`
+    pub fn get_z_layer(&self) -> i32 {
+        unsafe { crate::ffi::PrsMgr_Presentation_inherited_GetZLayer(self as *const Self) }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:146 - `Graphic3d_Structure::SetClipPlanes()`
@@ -2507,6 +2519,32 @@ impl PresentationManager {
         }
     }
 
+    /// **Source:** `PrsMgr_PresentationManager.hxx`:86 - `PrsMgr_PresentationManager::SetZLayer()`
+    /// Set Z layer ID for all presentations of the object.
+    pub fn set_z_layer(
+        &mut self,
+        thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject,
+        theLayerId: i32,
+    ) {
+        unsafe {
+            crate::ffi::PrsMgr_PresentationManager_set_z_layer(
+                self as *mut Self,
+                thePrsObject,
+                theLayerId,
+            )
+        }
+    }
+
+    /// **Source:** `PrsMgr_PresentationManager.hxx`:93 - `PrsMgr_PresentationManager::GetZLayer()`
+    /// Get Z layer ID assigned to all presentations of the object.
+    /// Method returns -1 value if object has no presentations and is
+    /// impossible to get layer index.
+    pub fn get_z_layer(&self, thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject) -> i32 {
+        unsafe {
+            crate::ffi::PrsMgr_PresentationManager_get_z_layer(self as *const Self, thePrsObject)
+        }
+    }
+
     /// **Source:** `PrsMgr_PresentationManager.hxx`:95 - `PrsMgr_PresentationManager::IsDisplayed()`
     pub fn is_displayed(
         &self,
@@ -2597,6 +2635,30 @@ impl PresentationManager {
     /// displayed in immediate mode.
     pub fn is_immediate_mode_on(&self) -> bool {
         unsafe { crate::ffi::PrsMgr_PresentationManager_is_immediate_mode_on(self as *const Self) }
+    }
+
+    /// **Source:** `PrsMgr_PresentationManager.hxx`:135 - `PrsMgr_PresentationManager::Color()`
+    /// Highlights the graphic object thePrsObject in the color theColor.
+    /// thePrsObject has the display mode theMode;
+    /// this has the default value of 0, that is, the wireframe display mode.
+    pub fn color(
+        &mut self,
+        thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject,
+        theStyle: &crate::ffi::HandlePrs3dDrawer,
+        theMode: i32,
+        theSelObj: &crate::ffi::HandlePrsMgrPresentableObject,
+        theImmediateStructLayerId: i32,
+    ) {
+        unsafe {
+            crate::ffi::PrsMgr_PresentationManager_color(
+                self as *mut Self,
+                thePrsObject,
+                theStyle,
+                theMode,
+                theSelObj,
+                theImmediateStructLayerId,
+            )
+        }
     }
 
     /// **Source:** `PrsMgr_PresentationManager.hxx`:142 - `PrsMgr_PresentationManager::Connect()`
@@ -2837,27 +2899,6 @@ impl HandlePrsMgrPresentationManager {
         }
     }
 }
-
-// ── Skipped symbols for PresentationManager (3 total) ──
-// SKIPPED: **Source:** `PrsMgr_PresentationManager.hxx`:86 - `PrsMgr_PresentationManager::SetZLayer`
-//   method: Set Z layer ID for all presentations of the object.
-//   Reason: param 'theLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn set_z_layer(&mut self, thePrsObject: &HandlePresentableObject, theLayerId: ZLayerId);
-//
-// SKIPPED: **Source:** `PrsMgr_PresentationManager.hxx`:93 - `PrsMgr_PresentationManager::GetZLayer`
-//   method: Get Z layer ID assigned to all presentations of the object.
-//   method: Method returns -1 value if object has no presentations and is
-//   method: impossible to get layer index.
-//   Reason: return type 'Graphic3d_ZLayerId' is unknown
-//   // pub fn get_z_layer(&self, thePrsObject: &HandlePresentableObject) -> OwnedPtr<Graphic3d_ZLayerId>;
-//
-// SKIPPED: **Source:** `PrsMgr_PresentationManager.hxx`:135 - `PrsMgr_PresentationManager::Color`
-//   method: Highlights the graphic object thePrsObject in the color theColor.
-//   method: thePrsObject has the display mode theMode;
-//   method: this has the default value of 0, that is, the wireframe display mode.
-//   Reason: param 'theImmediateStructLayerId' uses unknown type 'Graphic3d_ZLayerId'
-//   // pub fn color(&mut self, thePrsObject: &HandlePresentableObject, theStyle: &HandleDrawer, theMode: i32, theSelObj: &HandlePresentableObject, theImmediateStructLayerId: ZLayerId);
-//
 
 // ========================
 // Additional type re-exports
