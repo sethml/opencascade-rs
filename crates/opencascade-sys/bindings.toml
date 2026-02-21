@@ -74,19 +74,15 @@ exclude_headers = [
 # Include specific individual headers (from modules not fully included above).
 include_headers = []
 
-# Exclude specific methods/constructors that clang completely misresolves in batch
-# parsing mode — both canonical AND display names show the wrong type, so the
-# parser's heuristic guards cannot detect it. These methods are excluded
-# individually so the rest of each class remains accessible.
+# Exclude specific methods/constructors that can't be bound. These methods are
+# excluded individually so the rest of each class remains accessible.
 # Format: "ClassName::MethodName" for methods, "ClassName::ClassName" for constructors.
 exclude_methods = [
-    # C++ `New()` factory method name-collides with constructor wrapper `fn new()`
-    "Storage_CallBack::New",
-    "Storage_DefaultCallBack::New",
-
-    # `const char**` (double pointer) mapped as `&mut &str` but FFI needs raw pointer
+    # These take a const char *&, and advance the pointer after parsing.
     "XmlObjMgt::GetInteger",
     "XmlObjMgt::GetReal",
+    "XmlObjMgt::GetReal",
+
     # Protected/hidden operator new — skip constructors but keep methods accessible.
     "Message_LazyProgressScope::Message_LazyProgressScope",
     "Poly_CoherentTriPtr::Poly_CoherentTriPtr",

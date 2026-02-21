@@ -1112,6 +1112,11 @@ unsafe impl crate::CppDeletable for CallBack {
 }
 
 impl CallBack {
+    /// **Source:** `Storage_CallBack.hxx`:34 - `Storage_CallBack::New()`
+    pub fn new(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardPersistent> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Storage_CallBack_new(self as *const Self)) }
+    }
+
     /// **Source:** `Storage_CallBack.hxx`:36 - `Storage_CallBack::Add()`
     pub fn add(
         &self,
@@ -1259,12 +1264,6 @@ impl HandleStorageCallBack {
         }
     }
 }
-
-// ── Skipped symbols for CallBack (1 total) ──
-// SKIPPED: **Source:** `Storage_CallBack.hxx`:34 - `Storage_CallBack::New`
-//   Reason: excluded by bindings.toml
-//   // pub fn new(&self) -> OwnedPtr<Handle<Standard_Persistent>>;
-//
 
 // ========================
 // From Storage_Data.hxx
@@ -1747,6 +1746,15 @@ impl DefaultCallBack {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Storage_DefaultCallBack_ctor()) }
     }
 
+    /// **Source:** `Storage_DefaultCallBack.hxx`:36 - `Storage_DefaultCallBack::New()`
+    pub fn new_2(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardPersistent> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Storage_DefaultCallBack_new_2(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `Storage_DefaultCallBack.hxx`:38 - `Storage_DefaultCallBack::Add()`
     pub fn add(
         &self,
@@ -1937,12 +1945,6 @@ impl HandleStorageDefaultCallBack {
         }
     }
 }
-
-// ── Skipped symbols for DefaultCallBack (1 total) ──
-// SKIPPED: **Source:** `Storage_DefaultCallBack.hxx`:36 - `Storage_DefaultCallBack::New`
-//   Reason: excluded by bindings.toml
-//   // pub fn new(&self) -> OwnedPtr<Handle<Standard_Persistent>>;
-//
 
 // ========================
 // From Storage_HArrayOfCallBack.hxx

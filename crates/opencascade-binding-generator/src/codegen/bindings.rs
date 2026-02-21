@@ -1273,13 +1273,19 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
 
 /// Compute overload suffix with const/mut disambiguation for direct methods.
 /// Returns (rust_name, suffix_used) for each method in the list.
-fn compute_direct_method_names(methods: &[&Method]) -> Vec<String> {
+/// `constructor_names` contains the impl_method_names of constructors (e.g. "new", "new_2")
+/// so that methods whose snake_case name collides with a constructor get a suffix.
+fn compute_direct_method_names(methods: &[&Method], constructor_names: &HashSet<String>) -> Vec<String> {
     let mut name_counts: HashMap<String, usize> = HashMap::new();
     for method in methods {
         *name_counts.entry(method.name.clone()).or_insert(0) += 1;
     }
 
     let mut seen_names: HashMap<String, usize> = HashMap::new();
+    // Pre-seed with constructor names so methods colliding with them get _2 suffix
+    for name in constructor_names {
+        seen_names.insert(name.clone(), 1);
+    }
 
     methods
         .iter()
@@ -1328,7 +1334,9 @@ fn compute_direct_method_names(methods: &[&Method]) -> Vec<String> {
 
 /// Compute overload suffix with const/mut disambiguation for wrapper methods.
 /// Returns the base fn_name (without class prefix) for each method.
-fn compute_wrapper_method_names(methods: &[&Method]) -> Vec<String> {
+/// `constructor_names` contains the impl_method_names of constructors (e.g. "new", "new_2")
+/// so that methods whose snake_case name collides with a constructor get a suffix.
+fn compute_wrapper_method_names(methods: &[&Method], constructor_names: &HashSet<String>) -> Vec<String> {
     let mut name_counts: HashMap<String, usize> = HashMap::new();
     for method in methods {
         *name_counts.entry(method.name.clone()).or_insert(0) += 1;
@@ -1362,7 +1370,11 @@ fn compute_wrapper_method_names(methods: &[&Method]) -> Vec<String> {
     // Pass 2: resolve cross-name collisions (different C++ names that produce
     // the same snake_case name, e.g. SetInteger/setInteger → set_integer).
     // Append _2, _3, ... to later duplicates.
+    // Pre-seed with constructor names so methods colliding with them get _2 suffix.
     let mut seen: HashMap<String, usize> = HashMap::new();
+    for name in constructor_names {
+        seen.insert(name.clone(), 1);
+    }
     for name in &mut names {
         let count = seen.entry(name.clone()).or_insert(0);
         *count += 1;
@@ -1650,7 +1662,14 @@ pub fn compute_class_bindings(
         .copied()
         .collect();
 
-    let direct_method_names = compute_direct_method_names(&direct_methods_raw);
+    // Build set of constructor impl_method_names so that method name disambiguation
+    // can avoid collisions (e.g. C++ `New()` → `new` colliding with constructor `new()`).
+    let constructor_names: HashSet<String> = constructors
+        .iter()
+        .map(|c| c.impl_method_name.clone())
+        .collect();
+
+    let direct_method_names = compute_direct_method_names(&direct_methods_raw, &constructor_names);
     let direct_methods: Vec<DirectMethodBinding> = direct_methods_raw
         .iter()
         .zip(direct_method_names.iter())
@@ -1688,7 +1707,7 @@ pub fn compute_class_bindings(
         })
         .collect();
 
-    let wrapper_fn_names = compute_wrapper_method_names(&wrapper_methods_raw);
+    let wrapper_fn_names = compute_wrapper_method_names(&wrapper_methods_raw, &constructor_names);
 
     // Build reserved_names set for static method conflict detection
     let mut reserved_names: HashSet<String> = HashSet::new();
@@ -5743,7 +5762,7 @@ mod tests {
         ];
 
         let method_refs: Vec<&Method> = methods.iter().collect();
-        let names = compute_wrapper_method_names(&method_refs);
+        let names = compute_wrapper_method_names(&method_refs, &HashSet::new());
 
         // Should get different suffixes based on param types
         assert_ne!(names[0], names[1]);
