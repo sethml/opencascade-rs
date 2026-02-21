@@ -6,17 +6,6 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `TCollection.hxx`:40 - `TCollection::NextPrimeForMap`
-/// Returns a  prime number greater than  <I> suitable
-/// to dimension a Map.  When  <I> becomes great there
-/// is  a  limit on  the  result (today  the  limit is
-/// around 1 000 000). This is not a limit of the number of
-/// items but a limit in the number  of buckets.  i.e.
-/// there will be more collisions  in  the map.
-pub fn next_prime_for_map(I: i32) -> i32 {
-    unsafe { crate::ffi::TCollection_next_prime_for_map(I) }
-}
-
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::HandleStandardTransient;
 

@@ -145,9 +145,14 @@ pub fn generate_ffi(
     function_bindings: &[super::bindings::FunctionBinding],
     handle_able_classes: &HashSet<String>,
     extra_typedef_names: &HashSet<String>,
+    exclude_classes: &HashSet<String>,
 ) -> (String, Vec<NestedTypeInfo>) {
-    // Get all classes with protected destructors
-    let protected_destructor_class_names = symbol_table.protected_destructor_class_names();
+    // Get all classes with protected destructors, and merge in excluded classes
+    // (excluded classes should not get destructors/CppDeletable either)
+    let mut protected_destructor_class_names = symbol_table.protected_destructor_class_names();
+    for cls in exclude_classes {
+        protected_destructor_class_names.insert(cls.clone());
+    }
 
     // All enum names (needed for opaque type filtering)
     let all_enum_names = &symbol_table.all_enum_names;

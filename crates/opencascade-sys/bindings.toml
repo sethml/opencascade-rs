@@ -82,6 +82,12 @@ exclude_headers = [
     # it's entirely hidden behind the TDF_Label value-type facade.
     "TDF_LabelNode.hxx",
 
+    # Deprecated class: Message_ProgressScope should be used instead.
+    "Message_ProgressSentry.hxx",
+
+    # Deprecated class (OCCT 7.9): NCollection_Primes should be used instead.
+    "TCollection.hxx",
+
     # Third-party dependency (rapidjson): these headers #include rapidjson which
     # is not bundled with our OCCT build.
     "RWGltf_GltfOStreamWriter.hxx",
@@ -110,6 +116,12 @@ exclude_methods = [
     # `const char**` (double pointer) mapped as `&mut &str` but FFI needs raw pointer
     "XmlObjMgt::GetInteger",
     "XmlObjMgt::GetReal",
+]
+
+# Exclude specific classes/types from destructor generation.
+# Forward-declared-only nested types cannot be safely deleted.
+exclude_classes = [
+    "Message_ProgressScope::NullString",  # Forward-declared only, no full definition
 ]
 
 [general]
