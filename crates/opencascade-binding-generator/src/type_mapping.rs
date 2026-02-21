@@ -379,7 +379,7 @@ pub fn type_uses_unknown_class(ty: &Type, all_classes: &std::collections::HashSe
                 return false;
             }
             // Void pointer types — Standard_Address (void*) and literal "void" — are known
-            if class_name == "Standard_Address" || class_name == "void" {
+            if crate::model::is_void_type_name(class_name) {
                 return false;
             }
             // Primitive types mapped as Type::Class (e.g., "char" from Standard_Character)
@@ -414,7 +414,7 @@ pub fn type_uses_unknown_handle(
                 return false;
             }
             // Void pointer types — Standard_Address (void*) and literal "void" — are known
-            if class_name == "Standard_Address" || class_name == "void" {
+            if crate::model::is_void_type_name(class_name) {
                 return false;
             }
             // Primitive types mapped as Type::Class (e.g., "char" from Standard_Character)

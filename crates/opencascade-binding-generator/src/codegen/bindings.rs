@@ -5,7 +5,7 @@
 //! ffi.rs, wrappers.hxx, and per-module re-exports consume this struct
 //! without re-deriving any decisions.
 
-use crate::model::{Constructor, Method, Param, ParsedClass, ParsedField, StaticMethod, Type};
+use crate::model::{Constructor, Method, Param, ParsedClass, ParsedField, StaticMethod, Type, is_void_type_name, is_opaque_class_name};
 use crate::module_graph;
 use crate::resolver::{self, SymbolTable};
 use crate::type_mapping::{self, map_return_type, map_return_type_in_context, map_type_in_context, map_type_to_rust, TypeContext};
@@ -476,7 +476,7 @@ fn type_uses_unknown_type(ty: &Type, ctx: &TypeContext) -> bool {
 /// These need C++ wrappers that accept const T& instead.
 fn has_by_value_class_or_handle_params(params: &[Param], all_enums: &HashSet<String>) -> bool {
     params.iter().any(|p| match &p.ty {
-        Type::Class(name) => !all_enums.contains(name) && name != "char" && name != "Standard_Address" && name != "void",
+        Type::Class(name) => !all_enums.contains(name) && is_opaque_class_name(name),
         Type::Handle(_) => true,
         _ => false,
     })
@@ -636,7 +636,7 @@ fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) ->
 /// Convert a return Type to Rust type string for re-export files
 fn return_type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) -> String {
     match ty {
-        Type::Class(name) if name != "char" && name != "Standard_Address" && name != "void" => {
+        Type::Class(name) if is_opaque_class_name(name) => {
             let inner = if let Some(ctx) = reexport_ctx {
                 ctx.resolve_class(name)
             } else {
@@ -654,7 +654,7 @@ fn return_type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeConte
             "std::string::String".to_string()
         }
         // Class pointer returns -> Option<&T> / Option<&mut T>
-        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name != "Standard_Address" && name != "void") => {
+        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if !is_void_type_name(name)) => {
             if let Type::Class(name) = inner.as_ref() {
                 let resolved = if let Some(ctx) = reexport_ctx {
                     ctx.resolve_class(name)
@@ -666,7 +666,7 @@ fn return_type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeConte
                 unreachable!()
             }
         }
-        Type::MutPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name != "char" && name != "Standard_Address" && name != "void") => {
+        Type::MutPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if is_opaque_class_name(name)) => {
             if let Type::Class(name) = inner.as_ref() {
                 let resolved = if let Some(ctx) = reexport_ctx {
                     ctx.resolve_class(name)
@@ -866,7 +866,7 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> R
         // all_class_names for param filtering don't have generated destructors.
         // Enum types are represented as Type::Class in raw parsed types — allow them.
         if let Type::Class(name) = ret {
-            if name != "Standard_Address" && name != "void" {
+            if !is_void_type_name(name) {
                 if let Some(deletable) = ctx.deletable_class_names {
                     if !deletable.contains(name.as_str()) && !ctx.all_enums.contains(name.as_str()) {
                         return Err(format!("return type '{}' is not CppDeletable", name));
@@ -988,7 +988,7 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> Result
         // Same CppDeletable check as for instance methods (see is_method_bindable).
         // Enum types are represented as Type::Class in raw parsed types — allow them.
         if let Type::Class(name) = ret {
-            if name != "Standard_Address" && name != "void" {
+            if !is_void_type_name(name) {
                 if let Some(deletable) = ctx.deletable_class_names {
                     if !deletable.contains(name.as_str()) && !ctx.all_enums.contains(name.as_str()) {
                         return Err(format!("return type '{}' is not CppDeletable", name));
@@ -1181,7 +1181,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
     // boundary; the C++ wrapper passes the reference to the original method
     // which accepts by value (C++ handles the implicit copy).
     let effective_ty = match ty {
-        Type::Class(name) if name != "char" && name != "Standard_Address" && name != "void" && !ffi_ctx.all_enums.contains(name) => {
+        Type::Class(name) if is_opaque_class_name(name) && !ffi_ctx.all_enums.contains(name) => {
             Type::ConstRef(Box::new(ty.clone()))
         }
         Type::Handle(_) => {
@@ -1857,7 +1857,7 @@ pub fn compute_class_bindings(
             let needs_static_lifetime = method
                 .return_type
                 .as_ref()
-                .map(|ty| ty.is_reference() || matches!(ty, Type::ConstPtr(inner) | Type::MutPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name != "char" && name != "Standard_Address" && name != "void")))
+                .map(|ty| ty.is_reference() || matches!(ty, Type::ConstPtr(inner) | Type::MutPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if is_opaque_class_name(name))))
                 .unwrap_or(false);
 
             StaticMethodBinding {
@@ -2898,7 +2898,7 @@ fn compute_inherited_method_bindings(
 
                         // Convert by-value class/handle params to const ref (same as build_param_binding)
                         let effective_ty = match &p.ty.original {
-                            Type::Class(name) if name != "char" && name != "Standard_Address" && name != "void" && p.ty.enum_cpp_name.is_none() => {
+                            Type::Class(name) if is_opaque_class_name(name) && p.ty.enum_cpp_name.is_none() => {
                                 Type::ConstRef(Box::new(p.ty.original.clone()))
                             }
                             Type::Handle(_) => {
@@ -3397,7 +3397,7 @@ pub fn compute_all_function_bindings(
             }
             // CppDeletable check for return types (same as class methods)
             if let Type::Class(name) = &ret.original {
-                if name != "Standard_Address" && name != "void" {
+                if !is_void_type_name(name) {
                     if let Some(ref deletable) = ffi_ctx.deletable_class_names {
                         if !deletable.contains(name.as_str()) && !ffi_ctx.all_enums.contains(name.as_str()) {
                             skipped.push(SkippedSymbol {

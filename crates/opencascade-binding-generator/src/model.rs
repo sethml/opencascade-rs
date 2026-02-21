@@ -493,6 +493,19 @@ pub enum Type {
     Class(String),
 }
 
+/// Check if a class name represents a void pointer type.
+/// Standard_Address is a typedef for void*, and "void" is the parsed
+/// form of literal void* parameters.
+pub fn is_void_type_name(name: &str) -> bool {
+    name == "Standard_Address" || name == "void"
+}
+
+/// Check if a class name is a real opaque C++ class (not a primitive
+/// mapped to a special Rust type like char or void pointer types).
+pub fn is_opaque_class_name(name: &str) -> bool {
+    name != "char" && !is_void_type_name(name)
+}
+
 impl Type {
     /// Get a short name for this type (for generating overload suffixes)
     pub fn short_name(&self) -> String {
@@ -597,7 +610,7 @@ impl Type {
     /// Methods with these types are bound as `unsafe fn` with `*mut c_void` types.
     pub fn is_void_ptr(&self) -> bool {
         match self {
-            Type::Class(name) => name == "Standard_Address" || name == "void",
+            Type::Class(name) => is_void_type_name(name),
             Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
                 inner.is_void_ptr()
             }
@@ -640,7 +653,7 @@ impl Type {
         match self {
             Type::ConstPtr(inner) | Type::MutPtr(inner) => {
                 match inner.as_ref() {
-                    Type::Class(name) if name != "char" && name != "Standard_Address" && name != "void" => Some(name.as_str()),
+                    Type::Class(name) if is_opaque_class_name(name) => Some(name.as_str()),
                     _ => None,
                 }
             }
