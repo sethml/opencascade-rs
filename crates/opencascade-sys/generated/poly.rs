@@ -607,6 +607,17 @@ impl CoherentNode {
         unsafe { crate::ffi::Poly_CoherentNode_remove_triangle(self as *mut Self, theTri, theA) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:142 - `Poly_CoherentNode::TriangleIterator()`
+    ///
+    /// Create an iterator of incident triangles.
+    pub fn triangle_iterator(&self) -> crate::OwnedPtr<CoherentTriPtr_Iterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentNode_triangle_iterator(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `Poly_CoherentNode.hxx`:144 - `Poly_CoherentNode::Dump()`
     pub fn dump(&self, theStream: &mut crate::ffi::Standard_OStream) {
         unsafe { crate::ffi::Poly_CoherentNode_dump(self as *const Self, theStream) }
@@ -880,12 +891,180 @@ impl CoherentNode {
     }
 }
 
-// ── Skipped symbols for CoherentNode (1 total) ──
-// SKIPPED: **Source:** `Poly_CoherentNode.hxx`:142 - `Poly_CoherentNode::TriangleIterator`
-//   method: Create an iterator of incident triangles.
-//   Reason: return type 'Poly_CoherentTriPtr::Iterator' is unknown
-//   // pub fn triangle_iterator(&self) -> OwnedPtr<Poly_CoherentTriPtr::Iterator>;
+// ========================
+// From Poly_CoherentTriPtr.hxx
+// ========================
+
+/// **Source:** `Poly_CoherentTriPtr.hxx`:34 - `Poly_CoherentTriPtr`
+///
+/// Implementation of both list node for Poly_CoherentTriangle type and
+/// round double-linked list of these nodes.
+pub use crate::ffi::Poly_CoherentTriPtr as CoherentTriPtr;
+
+impl CoherentTriPtr {
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:108 - `Poly_CoherentTriPtr::GetTriangle()`
+    ///
+    /// Query the stored pointer to Triangle.
+    pub fn get_triangle(&self) -> &CoherentTriangle {
+        unsafe { &*(crate::ffi::Poly_CoherentTriPtr_get_triangle(self as *const Self)) }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:113 - `Poly_CoherentTriPtr::SetTriangle()`
+    ///
+    /// Initialize this instance with a pointer to triangle.
+    pub fn set_triangle(&mut self, pTri: &CoherentTriangle) {
+        unsafe { crate::ffi::Poly_CoherentTriPtr_set_triangle(self as *mut Self, pTri as *const _) }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:118 - `Poly_CoherentTriPtr::Next()`
+    ///
+    /// Query the next pointer in the list.
+    pub fn next(&mut self) -> &mut CoherentTriPtr {
+        unsafe { &mut *(crate::ffi::Poly_CoherentTriPtr_next(self as *mut Self)) }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:123 - `Poly_CoherentTriPtr::Previous()`
+    ///
+    /// Query the previous pointer in the list.
+    pub fn previous(&mut self) -> &mut CoherentTriPtr {
+        unsafe { &mut *(crate::ffi::Poly_CoherentTriPtr_previous(self as *mut Self)) }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:132 - `Poly_CoherentTriPtr::Append()`
+    ///
+    /// Append a pointer to triangle into the list after the current instance.
+    /// @param pTri
+    /// Triangle that is to be included in the list after this one.
+    /// @param theA
+    /// Allocator where the new pointer instance is created.
+    pub fn append(
+        &mut self,
+        pTri: &CoherentTriangle,
+        theA: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) {
+        unsafe { crate::ffi::Poly_CoherentTriPtr_append(self as *mut Self, pTri as *const _, theA) }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:142 - `Poly_CoherentTriPtr::Prepend()`
+    ///
+    /// Prepend a pointer to triangle into the list before the current instance.
+    /// @param pTri
+    /// Triangle that is to be included in the list before this one.
+    /// @param theA
+    /// Allocator where the new pointer instance is created.
+    pub fn prepend(
+        &mut self,
+        pTri: &CoherentTriangle,
+        theA: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) {
+        unsafe {
+            crate::ffi::Poly_CoherentTriPtr_prepend(self as *mut Self, pTri as *const _, theA)
+        }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:152 - `Poly_CoherentTriPtr::Remove()`
+    ///
+    /// Remove a pointer to triangle from its list.
+    /// @param thePtr
+    /// This class instance that should be removed from its list.
+    /// @param theA
+    /// Allocator where the current pointer instance was created.
+    pub fn remove(thePtr: &mut CoherentTriPtr, theA: &crate::ffi::HandleNCollectionBaseAllocator) {
+        unsafe { crate::ffi::Poly_CoherentTriPtr_remove(thePtr as *mut _, theA) }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:158 - `Poly_CoherentTriPtr::RemoveList()`
+    ///
+    /// Remove the list containing the given pointer to triangle.
+    pub fn remove_list(
+        thePtr: &mut CoherentTriPtr,
+        arg1: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) {
+        unsafe { crate::ffi::Poly_CoherentTriPtr_remove_list(thePtr as *mut _, arg1) }
+    }
+}
+
+// ── Skipped symbols for CoherentTriPtr (1 total) ──
+// SKIPPED: **Source:** `Poly_CoherentTriPtr.hxx`:93 - `Poly_CoherentTriPtr::Poly_CoherentTriPtr`
+//   constructor: Constructor.
+//   Reason: excluded by bindings.toml
+//   // pub fn new_coherenttriangle(theTri: &CoherentTriangle) -> OwnedPtr<Self>;
 //
+
+/// **Source:** `Poly_CoherentTriPtr.hxx`:42 - `Poly_CoherentTriPtr_Iterator`
+///
+/// Iterator class for this list of triangles. Because the list is round,
+/// an iteration can be started from any member and it finishes before taking
+/// this member again. The iteration sense is always forward (Next).
+pub use crate::ffi::Poly_CoherentTriPtr_Iterator as CoherentTriPtr_Iterator;
+
+unsafe impl crate::CppDeletable for CoherentTriPtr_Iterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Poly_CoherentTriPtr_Iterator_destructor(ptr);
+    }
+}
+
+impl CoherentTriPtr_Iterator {
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:46 - `Poly_CoherentTriPtr_Iterator::Poly_CoherentTriPtr_Iterator()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentTriPtr_Iterator_ctor()) }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:53 - `Poly_CoherentTriPtr_Iterator::Poly_CoherentTriPtr_Iterator()`
+    /// Constructor
+    pub fn new_coherenttriptr(thePtr: &CoherentTriPtr) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentTriPtr_Iterator_ctor_coherenttriptr(
+                thePtr,
+            ))
+        }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:60 - `Poly_CoherentTriPtr_Iterator::First()`
+    /// Query the triangle that started the current iteration.
+    pub fn first(&self) -> Option<&CoherentTriangle> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Poly_CoherentTriPtr_Iterator_first(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:66 - `Poly_CoherentTriPtr_Iterator::More()`
+    /// Query if there is available triangle pointer on this iteration
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::Poly_CoherentTriPtr_Iterator_more(self as *const Self) }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:69 - `Poly_CoherentTriPtr_Iterator::Next()`
+    /// Go to the next iteration.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::Poly_CoherentTriPtr_Iterator_next(self as *mut Self) }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:72 - `Poly_CoherentTriPtr_Iterator::Value()`
+    /// Get the current iterated triangle
+    pub fn value(&self) -> &CoherentTriangle {
+        unsafe { &*(crate::ffi::Poly_CoherentTriPtr_Iterator_value(self as *const Self)) }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:75 - `Poly_CoherentTriPtr_Iterator::ChangeValue()`
+    /// Get the current iterated triangle (mutable)
+    pub fn change_value(&mut self) -> &mut CoherentTriangle {
+        unsafe { &mut *(crate::ffi::Poly_CoherentTriPtr_Iterator_change_value(self as *mut Self)) }
+    }
+
+    /// **Source:** `Poly_CoherentTriPtr.hxx`:81 - `Poly_CoherentTriPtr_Iterator::PtrValue()`
+    /// Get the current iterated pointer to triangle
+    pub fn ptr_value(&self) -> &CoherentTriPtr {
+        unsafe { &*(crate::ffi::Poly_CoherentTriPtr_Iterator_ptr_value(self as *const Self)) }
+    }
+}
 
 // ========================
 // From Poly_CoherentTriangle.hxx

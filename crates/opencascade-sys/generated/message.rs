@@ -3836,6 +3836,50 @@ impl ExecStatus {
 }
 
 // ========================
+// From Message_LazyProgressScope.hxx
+// ========================
+
+/// **Source:** `Message_LazyProgressScope.hxx`:27 - `Message_LazyProgressScope`
+/// Progress scope with lazy updates and abort fetches.
+///
+/// Although Message_ProgressIndicator implementation is encouraged to spare GUI updates,
+/// even optimized implementation might show a noticeable overhead on a very small update step (e.g.
+/// per triangle).
+///
+/// The class splits initial (displayed) number of overall steps into larger chunks specified in
+/// constructor, so that displayed progress is updated at larger steps.
+pub use crate::ffi::Message_LazyProgressScope as LazyProgressScope;
+
+impl LazyProgressScope {
+    /// **Source:** `Message_LazyProgressScope.hxx`:49 - `Message_LazyProgressScope::Next()`
+    /// Increment progress with 1.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::Message_LazyProgressScope_next(self as *mut Self) }
+    }
+
+    /// **Source:** `Message_LazyProgressScope.hxx`:62 - `Message_LazyProgressScope::More()`
+    /// Return TRUE if progress has been aborted - return the cached state lazily updated.
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::Message_LazyProgressScope_more(self as *const Self) }
+    }
+
+    /// **Source:** `Message_LazyProgressScope.hxx`:65 - `Message_LazyProgressScope::IsAborted()`
+    /// Return TRUE if progress has been aborted - fetches actual value from the Progress.
+    pub fn is_aborted(&mut self) -> bool {
+        unsafe { crate::ffi::Message_LazyProgressScope_is_aborted(self as *mut Self) }
+    }
+}
+
+// ── Skipped symbols for LazyProgressScope (1 total) ──
+// SKIPPED: **Source:** `Message_LazyProgressScope.hxx`:36 - `Message_LazyProgressScope::Message_LazyProgressScope`
+//   constructor: Main constructor.
+//   constructor: @param[in] theRange  progress range to scope
+//   constructor: @param[in] theName   name of this scope
+//   Reason: excluded by bindings.toml
+//   // pub fn new_progressrange_charptr_real2_bool(theRange: &ProgressRange, theName: *const char, theMax: f64, thePatchStep: f64, theIsInf: bool) -> OwnedPtr<Self>;
+//
+
+// ========================
 // From Message_Level.hxx
 // ========================
 

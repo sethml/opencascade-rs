@@ -618,8 +618,16 @@ fn generate_output(
     let collection_type_names: std::collections::HashSet<String> =
         all_collections.iter().map(|c| c.typedef_name.clone()).collect();
     let extra_typedef_names = parser::get_collected_typedef_names();
-    let all_bindings =
+    let mut all_bindings =
         codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names, exclude_methods, manual_type_names);
+
+    // Mark exclude_classes as having protected destructors so both the C++ wrappers
+    // (which check has_protected_destructor) and the Rust FFI side skip new/delete.
+    for b in &mut all_bindings {
+        if exclude_classes.contains(&b.cpp_name) {
+            b.has_protected_destructor = true;
+        }
+    }
 
     // Compute FunctionBindings once for ALL free functions — shared by all three generators
     let (all_function_bindings, all_skipped_functions) = codegen::bindings::compute_all_function_bindings(

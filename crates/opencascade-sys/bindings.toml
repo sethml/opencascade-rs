@@ -24,6 +24,12 @@ exclude_modules = [
     "Wasm",                # WebAssembly bindings
     "Xw",                  # X Window system bindings
 
+    # === EXPRESS schema parser (internal codegen tool, not user-facing) ===
+    "Express",             # EXPRESS schema parser (String type conflicts with Rust String)
+
+    # === Internal implementation details of OCCT's meshing subsystem ===
+    "BRepMeshData",
+
     # === Precompiled header stubs (not real modules) ===
     "TKBRep",              # PCH stub
     "TKDEIGES",            # PCH stub
@@ -33,26 +39,10 @@ exclude_modules = [
     "TKV3d",               # PCH stub
     "TKXSBase",            # PCH stub
     "TKernel",             # PCH stub
-
-    # === EXPRESS schema parser (internal codegen tool, not user-facing) ===
-    "Express",             # EXPRESS schema parser (String type conflicts with Rust String)
 ]
 
 # Exclude specific headers (even if their module is in `modules` above).
 exclude_headers = [
-    # Protected operator new/delete: class cannot be heap-allocated via std::make_unique.
-    "Message_LazyProgressScope.hxx",  # Inherits protected new/delete from Message_ProgressScope
-    "Poly_CoherentTriPtr.hxx",         # No suitable operator delete
-
-    # DEFINE_INC_ALLOC macro hides global operator new — these classes can only be
-    # heap-allocated through NCollection_BaseAllocator placement new.
-    "BRepMeshData_Curve.hxx",
-    "BRepMeshData_Edge.hxx",
-    "BRepMeshData_Face.hxx",
-    "BRepMeshData_Model.hxx",
-    "BRepMeshData_PCurve.hxx",
-    "BRepMeshData_Wire.hxx",
-    "Poly_CoherentTriPtr.hxx",         # No suitable operator delete
 
     # Internal-only class: all constructors/destructors are private, accessible only
     # to friend classes TDF_Data and TDF_Label. No public API returns TDF_LabelNode*;
@@ -101,13 +91,20 @@ exclude_methods = [
     # Returns MeshVS_NodePair (typedef for std::pair<int,int>) which the generator
     # misresolves as an opaque class type.
     "BRepMesh_GeomTool::CellsCount",
+
+    # Protected/hidden operator new — skip constructors but keep methods accessible.
+    "Message_LazyProgressScope::Message_LazyProgressScope",
+    "Poly_CoherentTriPtr::Poly_CoherentTriPtr",
 ]
 
 # Exclude specific classes/types from destructor generation.
-# Forward-declared-only nested types cannot be safely deleted.
 exclude_classes = [
     "Message_ProgressScope::NullString",  # Forward-declared only, no full definition
     "MeshVS_NodePair",                    # Typedef for std::pair<int,int>, not a real class
+
+    # Protected/hidden operator delete — skip destructors but keep methods accessible.
+    "Message_LazyProgressScope",
+    "Poly_CoherentTriPtr",
 ]
 
 [general]
