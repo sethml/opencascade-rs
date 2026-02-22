@@ -2506,6 +2506,14 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:117 - `BRepMesh_DataStructureOfDelaun::LinksOfDomain()`
+    /// Returns map of indices of links registered in mesh.
+    pub fn links_of_domain(&self) -> &crate::ffi::IMeshData_MapOfInteger {
+        unsafe {
+            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_links_of_domain(self as *const Self))
+        }
+    }
+
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:123 - `BRepMesh_DataStructureOfDelaun::SubstituteLink()`
     /// Substitutes the link with the given index by new one.
     /// @param theIndex index of link to be substituted.
@@ -2574,6 +2582,14 @@ impl DataStructureOfDelaun {
     pub fn get_element(&mut self, theIndex: i32) -> &Triangle {
         unsafe {
             &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_element(self as *mut Self, theIndex))
+        }
+    }
+
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:160 - `BRepMesh_DataStructureOfDelaun::ElementsOfDomain()`
+    /// Returns map of indices of elements registered in mesh.
+    pub fn elements_of_domain(&self) -> &crate::ffi::IMeshData_MapOfInteger {
+        unsafe {
+            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_elements_of_domain(self as *const Self))
         }
     }
 
@@ -2793,23 +2809,13 @@ impl HandleBRepMeshDataStructureOfDelaun {
     }
 }
 
-// ── Skipped symbols for DataStructureOfDelaun (4 total) ──
+// ── Skipped symbols for DataStructureOfDelaun (2 total) ──
 // SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:86 - `BRepMesh_DataStructureOfDelaun::LinksConnectedTo`
 //   method: Get list of links attached to the node with the given index.
 //   method: @param theIndex index of node whose links should be retrieved.
 //   method: @return list of links attached to the node.
 //   Reason: return type 'IMeshData::ListOfInteger const&' is unknown
 //   // pub fn links_connected_to(&self, theIndex: i32) -> &ListOfInteger;
-//
-// SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:117 - `BRepMesh_DataStructureOfDelaun::LinksOfDomain`
-//   method: Returns map of indices of links registered in mesh.
-//   Reason: return type 'IMeshData::MapOfInteger const&' is unknown
-//   // pub fn links_of_domain(&self) -> &MapOfInteger;
-//
-// SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:160 - `BRepMesh_DataStructureOfDelaun::ElementsOfDomain`
-//   method: Returns map of indices of elements registered in mesh.
-//   Reason: return type 'IMeshData::MapOfInteger const&' is unknown
-//   // pub fn elements_of_domain(&self) -> &MapOfInteger;
 //
 // SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:176 - `BRepMesh_DataStructureOfDelaun::ElementNodes`
 //   method: Returns indices of nodes forming the given element.
@@ -3744,6 +3750,59 @@ impl Delaun {
         }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:46 - `BRepMesh_Delaun::BRepMesh_Delaun()`
+    /// Creates the triangulation with an empty Mesh data structure.
+    pub fn new_array1ofvertexofdelaun(
+        theVertices: &mut crate::ffi::IMeshData_Array1OfVertexOfDelaun,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_ctor_array1ofvertexofdelaun(
+                theVertices,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepMesh_Delaun.hxx`:49 - `BRepMesh_Delaun::BRepMesh_Delaun()`
+    /// Creates the triangulation with an existent Mesh data structure.
+    pub fn new_handlebrepmeshdatastructureofdelaun_array1ofvertexofdelaun(
+        theOldMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
+        theVertices: &mut crate::ffi::IMeshData_Array1OfVertexOfDelaun,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_array1ofvertexofdelaun(theOldMesh, theVertices))
+        }
+    }
+
+    /// **Source:** `BRepMesh_Delaun.hxx`:53 - `BRepMesh_Delaun::BRepMesh_Delaun()`
+    /// Creates the triangulation with an existant Mesh data structure.
+    pub fn new_handlebrepmeshdatastructureofdelaun_vectorofinteger(
+        theOldMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
+        theVertexIndices: &mut crate::ffi::IMeshData_VectorOfInteger,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_vectorofinteger(theOldMesh, theVertexIndices))
+        }
+    }
+
+    /// **Source:** `BRepMesh_Delaun.hxx`:57 - `BRepMesh_Delaun::BRepMesh_Delaun()`
+    /// Creates the triangulation with an existant Mesh data structure.
+    pub fn new_handlebrepmeshdatastructureofdelaun_vectorofinteger_int2(
+        theOldMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
+        theVertexIndices: &mut crate::ffi::IMeshData_VectorOfInteger,
+        theCellsCountU: i32,
+        theCellsCountV: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_vectorofinteger_int2(theOldMesh, theVertexIndices, theCellsCountU, theCellsCountV))
+        }
+    }
+
+    /// **Source:** `BRepMesh_Delaun.hxx`:63 - `BRepMesh_Delaun::Init()`
+    /// Initializes the triangulation with an array of vertices.
+    pub fn init(&mut self, theVertices: &mut crate::ffi::IMeshData_Array1OfVertexOfDelaun) {
+        unsafe { crate::ffi::BRepMesh_Delaun_init(self as *mut Self, theVertices) }
+    }
+
     /// **Source:** `BRepMesh_Delaun.hxx`:66 - `BRepMesh_Delaun::InitCirclesTool()`
     /// Forces initialization of circles cell filter using working structure.
     pub fn init_circles_tool(&mut self, theCellsCountU: i32, theCellsCountV: i32) {
@@ -3760,6 +3819,22 @@ impl Delaun {
     /// Removes a vertex from the triangulation.
     pub fn remove_vertex(&mut self, theVertex: &Vertex) {
         unsafe { crate::ffi::BRepMesh_Delaun_remove_vertex(self as *mut Self, theVertex) }
+    }
+
+    /// **Source:** `BRepMesh_Delaun.hxx`:73 - `BRepMesh_Delaun::AddVertices()`
+    /// Adds some vertices into the triangulation.
+    pub fn add_vertices(
+        &mut self,
+        theVerticesIndices: &mut crate::ffi::IMeshData_VectorOfInteger,
+        theRange: &crate::message::ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_Delaun_add_vertices(
+                self as *mut Self,
+                theVerticesIndices,
+                theRange,
+            )
+        }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:78 - `BRepMesh_Delaun::UseEdge()`
@@ -3860,6 +3935,12 @@ impl Delaun {
         }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:132 - `BRepMesh_Delaun::SetAuxVertices()`
+    /// Explicitly sets ids of auxiliary vertices used to build mesh and used by 3rd-party algorithms.
+    pub fn set_aux_vertices(&mut self, theSupVert: &crate::ffi::IMeshData_VectorOfInteger) {
+        unsafe { crate::ffi::BRepMesh_Delaun_set_aux_vertices(self as *mut Self, theSupVert) }
+    }
+
     /// **Source:** `BRepMesh_Delaun.hxx`:140 - `BRepMesh_Delaun::RemoveAuxElements()`
     /// Destruction of auxiliary triangles containing the given vertices.
     /// Removes auxiliary vertices also.
@@ -3868,43 +3949,6 @@ impl Delaun {
         unsafe { crate::ffi::BRepMesh_Delaun_remove_aux_elements(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for Delaun (7 total) ──
-// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:46 - `BRepMesh_Delaun::BRepMesh_Delaun`
-//   constructor: Creates the triangulation with an empty Mesh data structure.
-//   Reason: param 'theVertices' uses unknown type 'IMeshData::Array1OfVertexOfDelaun&'
-//   // pub fn new_array1ofvertexofdelaun(theVertices: &mut Array1OfVertexOfDelaun) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:49 - `BRepMesh_Delaun::BRepMesh_Delaun`
-//   constructor: Creates the triangulation with an existent Mesh data structure.
-//   Reason: param 'theVertices' uses unknown type 'IMeshData::Array1OfVertexOfDelaun&'
-//   // pub fn new_handlebrepmeshdatastructureofdelaun_array1ofvertexofdelaun(theOldMesh: &HandleDataStructureOfDelaun, theVertices: &mut Array1OfVertexOfDelaun) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:53 - `BRepMesh_Delaun::BRepMesh_Delaun`
-//   constructor: Creates the triangulation with an existant Mesh data structure.
-//   Reason: param 'theVertexIndices' uses unknown type 'IMeshData::VectorOfInteger&'
-//   // pub fn new_handlebrepmeshdatastructureofdelaun_vectorofinteger(theOldMesh: &HandleDataStructureOfDelaun, theVertexIndices: &mut VectorOfInteger) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:57 - `BRepMesh_Delaun::BRepMesh_Delaun`
-//   constructor: Creates the triangulation with an existant Mesh data structure.
-//   Reason: param 'theVertexIndices' uses unknown type 'IMeshData::VectorOfInteger&'
-//   // pub fn new_handlebrepmeshdatastructureofdelaun_vectorofinteger_int2(theOldMesh: &HandleDataStructureOfDelaun, theVertexIndices: &mut VectorOfInteger, theCellsCountU: i32, theCellsCountV: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:63 - `BRepMesh_Delaun::Init`
-//   method: Initializes the triangulation with an array of vertices.
-//   Reason: param 'theVertices' uses unknown type 'IMeshData::Array1OfVertexOfDelaun&'
-//   // pub fn init(&mut self, theVertices: &mut Array1OfVertexOfDelaun);
-//
-// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:73 - `BRepMesh_Delaun::AddVertices`
-//   method: Adds some vertices into the triangulation.
-//   Reason: param 'theVerticesIndices' uses unknown type 'IMeshData::VectorOfInteger&'
-//   // pub fn add_vertices(&mut self, theVerticesIndices: &mut VectorOfInteger, theRange: &ProgressRange);
-//
-// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:132 - `BRepMesh_Delaun::SetAuxVertices`
-//   method: Explicitly sets ids of auxiliary vertices used to build mesh and used by 3rd-party algorithms.
-//   Reason: param 'theSupVert' uses unknown type 'IMeshData::VectorOfInteger const&'
-//   // pub fn set_aux_vertices(&mut self, theSupVert: &VectorOfInteger);
-//
 
 // ========================
 // From BRepMesh_DelaunayBaseMeshAlgo.hxx
@@ -6488,6 +6532,23 @@ impl MeshTool {
         unsafe { &*(crate::ffi::BRepMesh_MeshTool_get_structure(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:86 - `BRepMesh_MeshTool::DumpTriangles()`
+    /// Dumps triangles to specified file.
+    pub fn dump_triangles(
+        &mut self,
+        theFileName: &str,
+        theTriangles: &mut crate::ffi::IMeshData_MapOfInteger,
+    ) {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe {
+            crate::ffi::BRepMesh_MeshTool_dump_triangles(
+                self as *mut Self,
+                c_theFileName.as_ptr(),
+                theTriangles as *mut _,
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_MeshTool.hxx`:90 - `BRepMesh_MeshTool::AddAndLegalizeTriangle()`
     /// Adds new triangle with specified nodes to mesh.
     /// Legalizes triangle in case if it violates circle criteria.
@@ -6544,10 +6605,58 @@ impl MeshTool {
         unsafe { crate::ffi::BRepMesh_MeshTool_clean_frontier_links(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:142 - `BRepMesh_MeshTool::EraseTriangles()`
+    /// Erases the given set of triangles.
+    /// Fills map of loop edges forming the contour surrounding the erased triangles.
+    pub fn erase_triangles(
+        &mut self,
+        theTriangles: &crate::ffi::IMeshData_MapOfInteger,
+        theLoopEdges: &mut crate::ffi::IMeshData_MapOfIntegerInteger,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_MeshTool_erase_triangles(
+                self as *mut Self,
+                theTriangles,
+                theLoopEdges,
+            )
+        }
+    }
+
+    /// **Source:** `BRepMesh_MeshTool.hxx`:147 - `BRepMesh_MeshTool::EraseTriangle()`
+    /// Erases triangle with the given index and adds the free edges into the map.
+    /// When an edge is suppressed more than one time it is destroyed.
+    pub fn erase_triangle(
+        &mut self,
+        theTriangleIndex: i32,
+        theLoopEdges: &mut crate::ffi::IMeshData_MapOfIntegerInteger,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_MeshTool_erase_triangle(
+                self as *mut Self,
+                theTriangleIndex,
+                theLoopEdges,
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_MeshTool.hxx`:151 - `BRepMesh_MeshTool::EraseFreeLinks()`
     /// Erases all links that have no elements connected to them.
     pub fn erase_free_links(&mut self) {
         unsafe { crate::ffi::BRepMesh_MeshTool_erase_free_links(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepMesh_MeshTool.hxx`:154 - `BRepMesh_MeshTool::EraseFreeLinks()`
+    /// Erases links from the specified map that have no elements connected to them.
+    pub fn erase_free_links_mapofintegerinteger(
+        &mut self,
+        theLinks: &crate::ffi::IMeshData_MapOfIntegerInteger,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_MeshTool_erase_free_links_mapofintegerinteger(
+                self as *mut Self,
+                theLinks,
+            )
+        }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:157 - `BRepMesh_MeshTool::GetEdgesByType()`
@@ -6676,33 +6785,11 @@ impl HandleBRepMeshMeshTool {
     }
 }
 
-// ── Skipped symbols for MeshTool (5 total) ──
-// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:86 - `BRepMesh_MeshTool::DumpTriangles`
-//   method: Dumps triangles to specified file.
-//   Reason: param 'theTriangles' uses unknown type 'IMeshData::MapOfInteger*'
-//   // pub fn dump_triangles(&mut self, theFileName: *const char, theTriangles: *mut MapOfInteger);
-//
+// ── Skipped symbols for MeshTool (1 total) ──
 // SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:103 - `BRepMesh_MeshTool::AddTriangle`
 //   method: Adds new triangle with specified nodes to mesh.
 //   Reason: has unbindable types: param 'theEdges': C-style array (Standard_Integer[3]&)
 //   // pub fn add_triangle(&mut self, thePoint1: i32, thePoint2: i32, thePoint3: i32, theEdges: /* Standard_Integer[3]& */);
-//
-// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:142 - `BRepMesh_MeshTool::EraseTriangles`
-//   method: Erases the given set of triangles.
-//   method: Fills map of loop edges forming the contour surrounding the erased triangles.
-//   Reason: param 'theTriangles' uses unknown type 'IMeshData::MapOfInteger const&'
-//   // pub fn erase_triangles(&mut self, theTriangles: &MapOfInteger, theLoopEdges: &mut MapOfIntegerInteger);
-//
-// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:147 - `BRepMesh_MeshTool::EraseTriangle`
-//   method: Erases triangle with the given index and adds the free edges into the map.
-//   method: When an edge is suppressed more than one time it is destroyed.
-//   Reason: param 'theLoopEdges' uses unknown type 'IMeshData::MapOfIntegerInteger&'
-//   // pub fn erase_triangle(&mut self, theTriangleIndex: i32, theLoopEdges: &mut MapOfIntegerInteger);
-//
-// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:154 - `BRepMesh_MeshTool::EraseFreeLinks`
-//   method: Erases links from the specified map that have no elements connected to them.
-//   Reason: param 'theLinks' uses unknown type 'IMeshData::MapOfIntegerInteger const&'
-//   // pub fn erase_free_links(&mut self, theLinks: &MapOfIntegerInteger);
 //
 
 /// **Source:** `BRepMesh_MeshTool.hxx`:33 - `BRepMesh_MeshTool_NodeClassifier`
@@ -8105,6 +8192,40 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:69 - `BRepMesh_SelectorOfDataStructureOfDelaun::Nodes()`
+    /// Returns selected nodes.
+    pub fn nodes(&self) -> &crate::ffi::IMeshData_MapOfInteger {
+        unsafe {
+            &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_nodes(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:72 - `BRepMesh_SelectorOfDataStructureOfDelaun::Links()`
+    /// Returns selected links.
+    pub fn links(&self) -> &crate::ffi::IMeshData_MapOfInteger {
+        unsafe {
+            &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_links(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:75 - `BRepMesh_SelectorOfDataStructureOfDelaun::Elements()`
+    /// Returns selected elements.
+    pub fn elements(&self) -> &crate::ffi::IMeshData_MapOfInteger {
+        unsafe {
+            &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_elements(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:78 - `BRepMesh_SelectorOfDataStructureOfDelaun::FrontierLinks()`
+    /// Gives the list of incices of frontier links.
+    pub fn frontier_links(&self) -> &crate::ffi::IMeshData_MapOfInteger {
+        unsafe {
+            &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_frontier_links(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
@@ -8264,28 +8385,6 @@ impl HandleBRepMeshSelectorOfDataStructureOfDelaun {
         }
     }
 }
-
-// ── Skipped symbols for SelectorOfDataStructureOfDelaun (4 total) ──
-// SKIPPED: **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:69 - `BRepMesh_SelectorOfDataStructureOfDelaun::Nodes`
-//   method: Returns selected nodes.
-//   Reason: return type 'IMeshData::MapOfInteger const&' is unknown
-//   // pub fn nodes(&self) -> &MapOfInteger;
-//
-// SKIPPED: **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:72 - `BRepMesh_SelectorOfDataStructureOfDelaun::Links`
-//   method: Returns selected links.
-//   Reason: return type 'IMeshData::MapOfInteger const&' is unknown
-//   // pub fn links(&self) -> &MapOfInteger;
-//
-// SKIPPED: **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:75 - `BRepMesh_SelectorOfDataStructureOfDelaun::Elements`
-//   method: Returns selected elements.
-//   Reason: return type 'IMeshData::MapOfInteger const&' is unknown
-//   // pub fn elements(&self) -> &MapOfInteger;
-//
-// SKIPPED: **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:78 - `BRepMesh_SelectorOfDataStructureOfDelaun::FrontierLinks`
-//   method: Gives the list of incices of frontier links.
-//   Reason: return type 'IMeshData::MapOfInteger const&' is unknown
-//   // pub fn frontier_links(&self) -> &MapOfInteger;
-//
 
 // ========================
 // From BRepMesh_ShapeTool.hxx
