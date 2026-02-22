@@ -346,7 +346,7 @@ NCollection typedefs (e.g., `TopTools_ListOfShape`) get iterator wrappers:
 
 ### Standard Streams (iostream)
 
-OCCT uses `Standard_OStream` (typedef for `std::ostream`) and `Standard_IStream` (typedef for `std::istream`) in many debug/dump methods. These are declared as `manual_types` in `bindings.toml` so the generator recognizes them as known types without generating class bindings.
+OCCT uses `Standard_OStream` (typedef for `std::ostream`) and `Standard_IStream` (typedef for `std::istream`) in many debug/dump methods. These are declared as `manual_types` in `bindings.toml` so the generator recognizes them as known types without generating class bindings. The same mechanism is also used for selected namespace-scoped typedef aliases (for example `IMeshData::MapOfInteger`) to unblock signatures that otherwise appear as unknown types.
 
 Manual bindings in the `standard` module provide access to the global C++ stream objects:
 
@@ -384,7 +384,8 @@ Some C++ function signatures can't be auto-generated. Manual replacements live i
 
 The generator appends `include!("../manual/<module>.rs");` (with a comment explaining why) to the generated module re-export file when a corresponding `manual/<module>.rs` exists. Because `include!()` is a textual insertion, the manual code has full access to the module's type aliases. The `extern "C"` declarations in manual files are not marked `pub`, so they are private to the module. `build.rs` globs `manual/*_wrappers.cpp` and compiles them alongside `generated/wrappers.cpp`. Since Rust allows multiple `impl` blocks for a type, manual methods appear seamlessly alongside the auto-generated ones.
 
-Currently only `standard` iostream accessors (`cout()`, `cerr()`, etc.) require manual bindings. See `crates/opencascade-sys/manual/`.
+Currently only `standard` iostream accessors (`cout()`, `cerr()`, etc.) require manual bindings in `crates/opencascade-sys/manual/`. Separately, `bindings.toml` `manual_types` is used to mark opaque known types (including selected namespace-scoped typedef aliases) so auto-generated methods using those types are not skipped as unknown.
+
 
 ---
 
@@ -409,7 +410,7 @@ Example from `gp.rs`:
 
 | Count | % | Category | Description |
 |------:|----:|----------|-------------|
-| 132 | 83.0% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`IMeshData::MapOfInteger`, `WNT_HIDSpaceMouse`, `ShapePersistent_Geom::...`, etc.) |
+| 132 | 83.0% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`WNT_HIDSpaceMouse`, `ShapePersistent_Geom::...`, etc.) |
 | 12 | 7.5% | **Rvalue reference** | C++ move semantics (`T&&`) — all have equivalent const-ref overloads already bound (won't fix) |
 | 6 | 3.8% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
 | 5 | 3.1% | **Unresolved template type** | Template instantiations that can't be resolved (`NCollection_List<const char*>::Iterator`, etc.) |
@@ -424,14 +425,12 @@ The "unknown type" category (83% of all skips) is dominated by a few types:
 | Count | Type | How to Unblock |
 |------:|------|----------------|
 | 32 | `Handle(ShapePersistent_Geom::geometryBase<...>)` | Protected nested template class — header not in binding set |
-| 7 | `IMeshData::MapOfInteger` | Namespace-scoped NCollection template typedef — not yet resolvable |
 | 5 | `AVStream`, `AVPacket`, `AVFrame`, etc. | FFmpeg types in media module — external dependency |
 | 5 | `WNT_HIDSpaceMouse` | Windows-only type, WNT module excluded |
 | 5 | `RWGltf_GltfOStreamWriter` | External RapidJSON dependency — not in binding set |
 | 4 | `GLXFBConfig` | X11/Linux display type — platform-specific |
 | 3 | `Aspect_XDisplay`, `Aspect_XVisualInfo` | X11/Linux display types — platform-specific |
-| 3 | `IMeshData::Array1OfVertexOfDelaun` | Namespace-scoped NCollection template typedef — not yet resolvable |
-| 3 | `IMeshData::VectorOfInteger` | Namespace-scoped NCollection template typedef — not yet resolvable |
+
 
 ### Important Skipped Symbols
 
@@ -441,7 +440,8 @@ Most skipped symbols are in internal, low-use, or specialized modules. However, 
 
 **Document Framework (1 symbol)** — `TDF_*` (1). The unknown type is `TDF_LabelNode*` — a raw pointer to a class not in the binding set. Previously, `TDocStd_XLinkPtr` (pointer typedef for `TDocStd_XLink*`) also caused 3 skips, but these are now resolved via pointer typedef resolution. Methods returning references with reference params are bound as `unsafe fn` (see "Unsafe Reference Returns" above).
 
-**Shape Meshing (50 symbols across 2 modules)** — `BRepMesh_*` (45), `IMeshData_*` (5). Many BRepMesh methods reference internal mesh data types (`IMeshData::MapOfInteger`, `IMeshData::VectorOfInteger`) that are namespace-scoped NCollection template typedefs not yet resolvable. Namespace-scoped Handle typedefs (`IMeshData::IEdgeHandle`, `IMeshData::IFaceHandle`, etc.) are resolved via canonical type analysis. Also includes C-style array params, `std::pair` return types, and unresolved templates. The core `BRepMesh_IncrementalMesh` meshing API is fully bound.
+**Shape Meshing** — `BRepMesh_*` and `IMeshData_*`. Namespace-scoped IMeshData typedef aliases used by key meshing APIs (`IMeshData::MapOfInteger`, `IMeshData::VectorOfInteger`, `IMeshData::Array1OfVertexOfDelaun`, etc.) are now recognized via `bindings.toml` `manual_types`, which unblocks a set of previously skipped BRepMesh methods. Remaining skips in meshing are primarily C-style array params, unresolved template forms, and internal pointer-heavy signatures.
+
 
 **Shape Analysis/Fix (0 symbols)** — All symbols are fully bound.
 
