@@ -390,7 +390,7 @@ See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for exa
 
 ## Skipped Symbols
 
-The binding generator skips ~432 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator skips ~281 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -409,33 +409,33 @@ Example from `gp.rs`:
 
 | Count | % | Category | Description |
 |------:|----:|----------|-------------|
-| 106 | 24.5% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`ShapeProcess::OperationsFlags`, `IMeshData::MapOfInteger`, etc.) |
-| 90 | 20.8% | **Unresolved template type** | Template instantiations that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `NCollection_Vec3<...>`, etc.) |
-| 84 | 19.4% | **Unknown Handle type** | Handle to a class not in the binding set (`Handle(ShapePersistent_Geom::...)`, `Handle(BVH_Builder<...>)`, etc.) |
-| 72 | 16.7% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
-| 19 | 4.4% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
-| 17 | 3.9% | **String ref param** | `const char*&` or `const char* const&` parameters — needs manual binding |
-| 15 | 3.5% | **Stream (shared_ptr)** | `std::shared_ptr<std::istream/ostream>` — smart-pointer-wrapped streams not yet bindable |
-| 12 | 2.8% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
-| 10 | 2.3% | **Not CppDeletable** | Return type class has no destructor in the binding set |
-| 4 | 0.9% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
-| 2 | 0.5% | **Excluded by bindings.toml** | Explicitly excluded in config (e.g., ambiguous overload workarounds) |
-| 1 | 0.2% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
+| 66 | 23.5% | **Unresolved template type** | Template instantiations that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `NCollection_Vec3<...>`, etc.) |
+| 58 | 20.6% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
+| 57 | 20.3% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`IMeshData::MapOfInteger`, `WNT_HIDSpaceMouse`, etc.) |
+| 54 | 19.2% | **Unknown Handle type** | Handle to a class not in the binding set (`Handle(ShapePersistent_Geom::...)`, `Handle(ShapePersistent_BRep::...)`, etc.) |
+| 13 | 4.6% | **String ref param** | `const char*&` or `const char* const&` parameters — needs manual binding |
+| 11 | 3.9% | **Stream (shared_ptr)** | `std::shared_ptr<std::istream/ostream>` — smart-pointer-wrapped streams not yet bindable |
+| 8 | 2.8% | **Not CppDeletable** | Return type class has no destructor in the binding set |
+| 4 | 1.4% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
+| 4 | 1.4% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
+| 4 | 1.4% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
+| 1 | 0.4% | **Excluded by bindings.toml** | Explicitly excluded in config (e.g., ambiguous overload workarounds) |
+| 1 | 0.4% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
 
 ### Most Common Unknown Types
 
-The "unknown type" and "unknown Handle type" categories (43.9% of all skips) are dominated by a few types:
+The "unknown type" and "unknown Handle type" categories (39.5% of all skips) are dominated by a few types:
 
 | Count | Type | How to Unblock |
 |------:|------|----------------|
-| 12 | `Handle(ShapePersistent_Geom::...)` | Nested template Handle types in shape persistence — low priority |
-| 10 | `Handle(ShapePersistent_Geom::...)` | Nested template Handle types in shape persistence — low priority |
-| 9 | `ShapeProcess::OperationsFlags` | Class-scoped using alias to `std::bitset` — non-OCCT type, not bindable |
-| 6 | `Handle(NCollection_Shared<...>)` | Handle to NCollection_Shared template — low priority |
-| 5 | `WNT_HIDSpaceMouse` | Windows-only type, WNT module excluded |
-| 5 | `RWGltf_GltfOStreamWriter` | External RapidJSON dependency — not in binding set |
-| 5 | `Handle(BVH_Builder<double, 3>)` | Template Handle type in BVH internals — low priority |
-| 5 | `AVStream` | FFmpeg type in media module — external dependency |
+| 32 | `Handle(ShapePersistent_Geom::geometryBase<...>)` | Protected nested template class — header not in binding set |
+| 12 | `Handle(ShapePersistent_BRep::...)` | Nested classes in persistence layer — header not in binding set |
+| 9 | `AVStream`, `AVPacket`, `AVFrame`, etc. | FFmpeg types in media module — external dependency |
+| 6 | `IMeshData::MapOfInteger` | Namespace-scoped NCollection template typedef — not yet resolvable |
+| 4 | `WNT_HIDSpaceMouse` | Windows-only type, WNT module excluded |
+| 4 | `Handle(ShapePersistent_Poly::instance<...>)` | Protected nested template class — header not in binding set |
+| 3 | `RWGltf_GltfOStreamWriter` | External RapidJSON dependency — not in binding set |
+| 3 | `GLXFBConfig` | X11/Linux display type — platform-specific |
 
 ### Important Skipped Symbols
 
@@ -445,7 +445,7 @@ Most skipped symbols are in internal, low-use, or specialized modules. However, 
 
 **Document Framework (1 symbol)** — `TDF_*` (1). The unknown type is `TDF_LabelNode*` — a raw pointer to a class not in the binding set. Previously, `TDocStd_XLinkPtr` (pointer typedef for `TDocStd_XLink*`) also caused 3 skips, but these are now resolved via pointer typedef resolution. Methods returning references with reference params are bound as `unsafe fn` (see "Unsafe Reference Returns" above).
 
-**Shape Meshing (62 symbols across 2 modules)** — `BRepMesh_*` (57), `IMeshData_*` (5). Many BRepMesh methods reference internal mesh data types (`IMeshData::MapOfInteger`, `IMeshData::VectorOfInteger`) that are namespace-scoped NCollection template typedefs not yet resolvable. Namespace-scoped Handle typedefs (`IMeshData::IEdgeHandle`, `IMeshData::IFaceHandle`, etc.) are resolved via canonical type analysis. Also includes C-style array params, `std::pair` return types, and unresolved templates (10). The core `BRepMesh_IncrementalMesh` meshing API is fully bound.
+**Shape Meshing (50 symbols across 2 modules)** — `BRepMesh_*` (45), `IMeshData_*` (5). Many BRepMesh methods reference internal mesh data types (`IMeshData::MapOfInteger`, `IMeshData::VectorOfInteger`) that are namespace-scoped NCollection template typedefs not yet resolvable. Namespace-scoped Handle typedefs (`IMeshData::IEdgeHandle`, `IMeshData::IFaceHandle`, etc.) are resolved via canonical type analysis. Also includes C-style array params, `std::pair` return types, and unresolved templates. The core `BRepMesh_IncrementalMesh` meshing API is fully bound.
 
 **Shape Analysis/Fix (0 symbols)** — All symbols are fully bound.
 
@@ -569,6 +569,10 @@ Currently headers are selected via `bindings.toml`. OCCT ships 6,875 `.hxx` head
 5. **Windows-only headers** — `OSD_WNT.hxx` includes `<windows.h>`, fails on macOS/Linux. Non-blocking.
 
 6. **Nested C++ types** (SOLVED) — OCCT defines ~173 nested structs, enums, and typedefs inside classes (e.g., `Poly_CoherentTriangulation::TwoIntegers`, `AIS_PointCloud::DisplayMode`, `BOPTools_PairSelector::PairIDs`). The parser now detects parent class scope via clang's semantic parent and qualifies nested types as `Parent::Nested`. The generator flattens `::` to `_` for Rust FFI names (`Parent_Nested`) while keeping qualified names in C++ wrappers. Destructors are auto-generated for all nested opaque types. This unblocked 58 new types, 67 new methods, and 76 nested type destructors.
+
+7. **Template instantiation Handle types** (SOLVED) — Methods returning or accepting `Handle(BVH_Builder<double, 3>)` or `Handle(NCollection_Shared<...>)` were skipped because the template instantiation isn't a named class. A `[template_instantiations]` section in `bindings.toml` declares specific template instantiations to bind. The generator creates C++ typedefs (e.g., `typedef BVH_Builder<double, 3> BVH_Builder_double_3;`), rewrites all Handle references in parsed data, and treats aliases as normal classes for Handle support. This resolved ~30 previously-skipped symbols.
+
+8. **Nested class inheritance** (SOLVED) — Nested classes like `ShapePersistent_BRep::Curve3D` had unqualified base class names (e.g., `GCurve` instead of `ShapePersistent_BRep::GCurve`), breaking the transitive closure in `compute_handle_able_classes()`. The parser now qualifies sibling base class references when qualifying nested type names.
 
 ### System Include Path Auto-Detection
 

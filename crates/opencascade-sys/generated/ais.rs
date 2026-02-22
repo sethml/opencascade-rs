@@ -3086,6 +3086,19 @@ impl Axis {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_Axis_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_Axis_inherited_GlobalSelectionMode(self as *const Self) }
@@ -4831,6 +4844,19 @@ impl CameraFrustum {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_CameraFrustum_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_CameraFrustum_inherited_GlobalSelectionMode(self as *const Self) }
@@ -5945,6 +5971,19 @@ impl Circle {
     ) {
         unsafe {
             crate::ffi::AIS_Circle_inherited_SetAssemblyOwner(self as *mut Self, theOwner, theMode)
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_Circle_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
         }
     }
 
@@ -7541,6 +7580,19 @@ impl ColorScale {
                 theOwner,
                 theMode,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_ColorScale_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
         }
     }
 
@@ -10326,6 +10378,19 @@ impl ColoredShape {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_ColoredShape_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_ColoredShape_inherited_GlobalSelectionMode(self as *const Self) }
@@ -11510,6 +11575,21 @@ impl ConnectedInteractive {
                 self as *mut Self,
                 theOwner,
                 theMode,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::AIS_ConnectedInteractive_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
             )
         }
     }
@@ -14597,6 +14677,25 @@ impl InteractiveContext {
         }
     }
 
+    /// **Source:** `AIS_InteractiveContext.hxx`:830 - `AIS_InteractiveContext::EntityOwners()`
+    /// Returns a collection containing all entity owners created for the interactive object in
+    /// specified selection mode (in all active modes if the Mode == -1)
+    pub fn entity_owners(
+        &self,
+        theOwners: &mut crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+        theIObj: &crate::ffi::HandleAISInteractiveObject,
+        theMode: i32,
+    ) {
+        unsafe {
+            crate::ffi::AIS_InteractiveContext_entity_owners(
+                self as *const Self,
+                theOwners,
+                theIObj,
+                theMode,
+            )
+        }
+    }
+
     /// **Source:** `AIS_InteractiveContext.hxx`:836 - `AIS_InteractiveContext::FilterType()`
     /// @name Selection Filters management
     /// @return the context selection filter type.
@@ -15675,14 +15774,6 @@ impl HandleAISInteractiveContext {
     }
 }
 
-// ── Skipped symbols for InteractiveContext (1 total) ──
-// SKIPPED: **Source:** `AIS_InteractiveContext.hxx`:830 - `AIS_InteractiveContext::EntityOwners`
-//   method: Returns a collection containing all entity owners created for the interactive object in
-//   method: specified selection mode (in all active modes if the Mode == -1)
-//   Reason: param 'theOwners' uses unknown type 'Handle(NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>>)&'
-//   // pub fn entity_owners(&self, theOwners: &mut HandleShared<NCollection_IndexedMap<opencascade_handle<SelectMgr_EntityOwner>>>, theIObj: &HandleInteractiveObject, theMode: i32);
-//
-
 // ========================
 // From AIS_InteractiveObject.hxx
 // ========================
@@ -16164,6 +16255,19 @@ impl InteractiveObject {
                 theOwner,
                 theMode,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_InteractiveObject_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
         }
     }
 
@@ -18237,6 +18341,19 @@ impl LightSource {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_LightSource_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_LightSource_inherited_GlobalSelectionMode(self as *const Self) }
@@ -19698,6 +19815,19 @@ impl Line {
     ) {
         unsafe {
             crate::ffi::AIS_Line_inherited_SetAssemblyOwner(self as *mut Self, theOwner, theMode)
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_Line_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
         }
     }
 
@@ -21334,6 +21464,19 @@ impl Manipulator {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_Manipulator_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_Manipulator_inherited_GlobalSelectionMode(self as *const Self) }
@@ -22819,6 +22962,19 @@ impl MediaPlayer {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_MediaPlayer_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_MediaPlayer_inherited_GlobalSelectionMode(self as *const Self) }
@@ -24076,6 +24232,21 @@ impl MultipleConnectedInteractive {
                 self as *mut Self,
                 theOwner,
                 theMode,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::AIS_MultipleConnectedInteractive_inherited_BndBoxOfSelected(
+                    self as *mut Self,
+                    theOwners,
+                ),
             )
         }
     }
@@ -25654,6 +25825,19 @@ impl Plane {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_Plane_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_Plane_inherited_GlobalSelectionMode(self as *const Self) }
@@ -26758,6 +26942,19 @@ impl PlaneTrihedron {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_PlaneTrihedron_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_PlaneTrihedron_inherited_GlobalSelectionMode(self as *const Self) }
@@ -27847,6 +28044,19 @@ impl Point {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_Point_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_Point_inherited_GlobalSelectionMode(self as *const Self) }
@@ -28905,6 +29115,19 @@ impl PointCloud {
                 theOwner,
                 theMode,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_PointCloud_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
         }
     }
 
@@ -30605,6 +30828,19 @@ impl RubberBand {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_RubberBand_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_RubberBand_inherited_GlobalSelectionMode(self as *const Self) }
@@ -32187,6 +32423,19 @@ impl Shape {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_Shape_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_Shape_inherited_GlobalSelectionMode(self as *const Self) }
@@ -33573,6 +33822,19 @@ impl TextLabel {
                 theOwner,
                 theMode,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_TextLabel_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
         }
     }
 
@@ -35052,6 +35314,19 @@ impl TexturedShape {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_TexturedShape_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_TexturedShape_inherited_GlobalSelectionMode(self as *const Self) }
@@ -36136,6 +36411,19 @@ impl Triangulation {
                 theOwner,
                 theMode,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_Triangulation_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
         }
     }
 
@@ -37451,6 +37739,19 @@ impl Trihedron {
                 theOwner,
                 theMode,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_Trihedron_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
         }
     }
 
@@ -41128,6 +41429,19 @@ impl ViewCube {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_ViewCube_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     pub fn global_selection_mode(&self) -> i32 {
         unsafe { crate::ffi::AIS_ViewCube_inherited_GlobalSelectionMode(self as *const Self) }
@@ -42536,6 +42850,13 @@ impl ViewCubeSensitive {
         unsafe { crate::ffi::AIS_ViewCubeSensitive_inherited_ToBuildBVH(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe {
+            crate::ffi::AIS_ViewCubeSensitive_inherited_SetBuilder(self as *mut Self, theBuilder)
+        }
+    }
+
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         unsafe { crate::ffi::AIS_ViewCubeSensitive_inherited_MarkDirty(self as *mut Self) }
@@ -43328,6 +43649,19 @@ impl XRTrackedDevice {
                 theOwner,
                 theMode,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_XRTrackedDevice_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
         }
     }
 

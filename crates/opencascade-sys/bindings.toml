@@ -109,3 +109,16 @@ resolve_deps = true
 Standard_OStream = { header = "Standard_OStream.hxx" }
 Standard_IStream = { header = "Standard_IStream.hxx" }
 Standard_SStream = { header = "Standard_SStream.hxx" }
+
+# Template instantiation aliases: declare C++ template instantiations as opaque
+# Rust types. The generator creates C++ typedefs, Rust opaque types, and Handle
+# wrappers for each entry. The TOML key is the exact C++ template spelling as it
+# appears in parsed method signatures.
+# Format: "Template<Args>" = { header = "Header.hxx", module = "Module", handle = true }
+[template_instantiations]
+"BVH_Builder<double, 3>" = { header = "BVH_Builder.hxx", module = "BVH", handle = true }
+"BVH_Tree<double, 3>" = { header = "BVH_Tree.hxx", module = "BVH", handle = true }
+"NCollection_Shared<NCollection_List<gp_Pnt2d>>" = { header = "NCollection_Shared.hxx", module = "NCollection", handle = true }
+"NCollection_Shared<TColStd_PackedMapOfInteger>" = { header = "NCollection_Shared.hxx", module = "NCollection", handle = true }
+"NCollection_Shared<NCollection_DynamicArray<BRepMesh_Vertex>>" = { header = "NCollection_Shared.hxx", module = "NCollection", handle = true }
+"NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>>" = { header = "NCollection_Shared.hxx", module = "NCollection", handle = true }

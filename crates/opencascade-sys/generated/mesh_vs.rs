@@ -549,6 +549,16 @@ impl CommonSensitiveEntity {
         }
     }
 
+    /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe {
+            crate::ffi::MeshVS_CommonSensitiveEntity_inherited_SetBuilder(
+                self as *mut Self,
+                theBuilder,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         unsafe { crate::ffi::MeshVS_CommonSensitiveEntity_inherited_MarkDirty(self as *mut Self) }
@@ -3958,6 +3968,19 @@ impl Mesh {
     ) {
         unsafe {
             crate::ffi::MeshVS_Mesh_inherited_SetAssemblyOwner(self as *mut Self, theOwner, theMode)
+        }
+    }
+
+    /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::MeshVS_Mesh_inherited_BndBoxOfSelected(
+                self as *mut Self,
+                theOwners,
+            ))
         }
     }
 

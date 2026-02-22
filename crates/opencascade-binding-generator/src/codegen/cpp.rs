@@ -247,6 +247,7 @@ pub fn generate_wrappers(
     function_bindings: &[super::bindings::FunctionBinding],
     nested_types: &[super::rust::NestedTypeInfo],
     handle_able_classes: &HashSet<String>,
+    template_instantiations: &std::collections::HashMap<String, crate::config::TemplateInstantiation>,
 ) -> String {
     let mut output = String::new();
 
@@ -259,12 +260,33 @@ pub fn generate_wrappers(
     writeln!(output).unwrap();
 
     // Collect ALL headers needed
-    let headers = collect_all_required_headers(all_classes, known_headers);
+    let mut headers = collect_all_required_headers(all_classes, known_headers);
+    // Add headers needed for template instantiations
+    for inst in template_instantiations.values() {
+        if known_headers.contains(&inst.header) && !headers.contains(&inst.header) {
+            headers.push(inst.header.clone());
+        }
+    }
     
     for header in &headers {
         writeln!(output, "#include <{}>", header).unwrap();
     }
     writeln!(output).unwrap();
+
+    // Generate typedefs for template instantiation aliases.
+    // These MUST come before Handle typedefs since handles reference the alias names.
+    // Only class typedefs are emitted here; Handle typedefs and destructors are
+    // handled by the existing collect_handle_types / nested_types mechanisms.
+    if !template_instantiations.is_empty() {
+        writeln!(output, "// Template instantiation aliases").unwrap();
+        let mut sorted_tmpls: Vec<_> = template_instantiations.iter().collect();
+        sorted_tmpls.sort_by_key(|(k, _)| (*k).clone());
+        for (spelling, _inst) in &sorted_tmpls {
+            let alias = crate::config::template_alias_name(spelling);
+            writeln!(output, "typedef {} {};", spelling, alias).unwrap();
+        }
+        writeln!(output).unwrap();
+    }
 
     // Generate Handle typedefs for ALL classes
     let handle_types = collect_handle_types(all_classes, handle_able_classes);

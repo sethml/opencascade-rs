@@ -645,6 +645,16 @@ impl InteriorSensitivePointSet {
         }
     }
 
+    /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe {
+            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_SetBuilder(
+                self as *mut Self,
+                theBuilder,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         unsafe {
@@ -1926,6 +1936,13 @@ impl SensitiveCurve {
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:75 - `Select3D_SensitiveSet::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
         unsafe { crate::ffi::Select3D_SensitiveCurve_inherited_ToBuildBVH(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe {
+            crate::ffi::Select3D_SensitiveCurve_inherited_SetBuilder(self as *mut Self, theBuilder)
+        }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
@@ -3908,6 +3925,13 @@ impl SensitiveGroup {
         unsafe { crate::ffi::Select3D_SensitiveGroup_inherited_ToBuildBVH(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe {
+            crate::ffi::Select3D_SensitiveGroup_inherited_SetBuilder(self as *mut Self, theBuilder)
+        }
+    }
+
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         unsafe { crate::ffi::Select3D_SensitiveGroup_inherited_MarkDirty(self as *mut Self) }
@@ -4728,6 +4752,13 @@ impl SensitivePoly {
         unsafe { crate::ffi::Select3D_SensitivePoly_inherited_ToBuildBVH(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe {
+            crate::ffi::Select3D_SensitivePoly_inherited_SetBuilder(self as *mut Self, theBuilder)
+        }
+    }
+
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         unsafe { crate::ffi::Select3D_SensitivePoly_inherited_MarkDirty(self as *mut Self) }
@@ -5515,6 +5546,16 @@ impl SensitivePrimitiveArray {
         }
     }
 
+    /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe {
+            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_SetBuilder(
+                self as *mut Self,
+                theBuilder,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         unsafe {
@@ -6196,6 +6237,12 @@ impl SensitiveSet {
         unsafe { crate::ffi::Select3D_SensitiveSet_to_build_bvh(self as *const Self) }
     }
 
+    /// **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
+    /// Sets the method (builder) used to construct BVH.
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe { crate::ffi::Select3D_SensitiveSet_set_builder(self as *mut Self, theBuilder) }
+    }
+
     /// **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     /// Marks BVH tree of the set as outdated. It will be rebuild
     /// at the next call of BVH()
@@ -6249,6 +6296,19 @@ impl SensitiveSet {
     /// **Source:** `Select3D_SensitiveSet.hxx`:33 - `Select3D_SensitiveSet::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Select3D_SensitiveSet_get_type_descriptor()) }
+    }
+
+    /// **Source:** `Select3D_SensitiveSet.hxx`:36 - `Select3D_SensitiveSet::DefaultBVHBuilder()`
+    /// Return global instance to default BVH builder.
+    pub fn default_bvh_builder() -> &'static crate::ffi::HandleBVHBuilderdouble3 {
+        unsafe { &*(crate::ffi::Select3D_SensitiveSet_default_bvh_builder()) }
+    }
+
+    /// **Source:** `Select3D_SensitiveSet.hxx`:40 - `Select3D_SensitiveSet::SetDefaultBVHBuilder()`
+    /// Assign new BVH builder to be used by default for new sensitive sets (assigning is NOT
+    /// thread-safe!).
+    pub fn set_default_bvh_builder(theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe { crate::ffi::Select3D_SensitiveSet_set_default_bvh_builder(theBuilder) }
     }
 
     /// Upcast to Select3D_SensitiveEntity
@@ -6610,27 +6670,11 @@ impl HandleSelect3DSensitiveSet {
     }
 }
 
-// ── Skipped symbols for SensitiveSet (4 total) ──
+// ── Skipped symbols for SensitiveSet (1 total) ──
 // SKIPPED: **Source:** `Select3D_SensitiveSet.hxx`:44 - `Select3D_SensitiveSet::Select3D_SensitiveSet`
 //   constructor: Creates new empty sensitive set and its content
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_handleselectmgrentityowner(theOwnerId: &HandleEntityOwner) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder`
-//   method: Sets the method (builder) used to construct BVH.
-//   Reason: param 'theBuilder' uses unknown type 'Handle(BVH_Builder<double, 3>) const&'
-//   // pub fn set_builder(&mut self, theBuilder: &HandleBuilder<double, 3>);
-//
-// SKIPPED: **Source:** `Select3D_SensitiveSet.hxx`:36 - `Select3D_SensitiveSet::DefaultBVHBuilder`
-//   static_method: Return global instance to default BVH builder.
-//   Reason: return type 'Handle(BVH_Builder<double, 3>) const&' is unknown
-//   // pub fn default_bvh_builder() -> &HandleBuilder<double, 3>;
-//
-// SKIPPED: **Source:** `Select3D_SensitiveSet.hxx`:40 - `Select3D_SensitiveSet::SetDefaultBVHBuilder`
-//   static_method: Assign new BVH builder to be used by default for new sensitive sets (assigning is NOT
-//   static_method: thread-safe!).
-//   Reason: param 'theBuilder' uses unknown type 'Handle(BVH_Builder<double, 3>) const&'
-//   // pub fn set_default_bvh_builder(theBuilder: &HandleBuilder<double, 3>);
 //
 
 // ========================
@@ -7634,6 +7678,16 @@ impl SensitiveTriangulation {
         }
     }
 
+    /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe {
+            crate::ffi::Select3D_SensitiveTriangulation_inherited_SetBuilder(
+                self as *mut Self,
+                theBuilder,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         unsafe {
@@ -8055,6 +8109,13 @@ impl SensitiveWire {
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:75 - `Select3D_SensitiveSet::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
         unsafe { crate::ffi::Select3D_SensitiveWire_inherited_ToBuildBVH(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe {
+            crate::ffi::Select3D_SensitiveWire_inherited_SetBuilder(self as *mut Self, theBuilder)
+        }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`

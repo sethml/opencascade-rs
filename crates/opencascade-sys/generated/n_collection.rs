@@ -2177,4 +2177,10 @@ impl HandleNCollectionWinHeapAllocator {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::NCollection_Utf8String as Utf8String;
+pub use crate::ffi::{
+    NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex as Shared_NCollection_DynamicArray_BRepMesh_Vertex,
+    NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner as Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner,
+    NCollection_Shared_NCollection_List_gp_Pnt2d as Shared_NCollection_List_gp_Pnt2d,
+    NCollection_Shared_TColStd_PackedMapOfInteger as Shared_TColStd_PackedMapOfInteger,
+    NCollection_Utf8String as Utf8String,
+};

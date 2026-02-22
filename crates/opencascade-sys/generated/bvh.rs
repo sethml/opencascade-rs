@@ -839,6 +839,6 @@ impl HandleBVHTreeBaseTransient {
 // ========================
 
 pub use crate::ffi::{
-    BVH_Array3d as Array3d, BVH_Mat4d as Mat4d, BVH_Vec2i as Vec2i, BVH_Vec3d as Vec3d,
-    BVH_Vec4f as Vec4f,
+    BVH_Array3d as Array3d, BVH_Builder_double_3 as Builder_double_3, BVH_Mat4d as Mat4d,
+    BVH_Tree_double_3 as Tree_double_3, BVH_Vec2i as Vec2i, BVH_Vec3d as Vec3d, BVH_Vec4f as Vec4f,
 };

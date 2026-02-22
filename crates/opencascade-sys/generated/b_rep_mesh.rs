@@ -399,6 +399,21 @@ impl BoundaryParamsRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:41 - `BRepMesh_NURBSRangeSplitter::GenerateSurfaceNodes()`
+    pub fn generate_surface_nodes(
+        &self,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GenerateSurfaceNodes(
+                    self as *const Self,
+                    theParameters,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
     pub fn reset(
         &mut self,
@@ -891,6 +906,22 @@ impl ConeRangeSplitter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_ConeRangeSplitter.hxx`:40 - `BRepMesh_ConeRangeSplitter::GenerateSurfaceNodes()`
+    /// Returns list of nodes generated using surface data and specified parameters.
+    pub fn generate_surface_nodes(
+        &self,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_ConeRangeSplitter_generate_surface_nodes(
+                    self as *const Self,
+                    theParameters,
+                ),
+            )
+        }
+    }
+
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
         unsafe {
@@ -981,18 +1012,13 @@ impl ConeRangeSplitter {
     }
 }
 
-// ── Skipped symbols for ConeRangeSplitter (2 total) ──
+// ── Skipped symbols for ConeRangeSplitter (1 total) ──
 // SKIPPED: **Source:** `BRepMesh_ConeRangeSplitter.hxx`:35 - `BRepMesh_ConeRangeSplitter::GetSplitSteps`
 //   method: Returns split intervals along U and V direction.
 //   method: @param theParameters meshing parameters.
 //   method: @param[out] theStepsNb number of steps along corresponding direction.
 //   Reason: has unbindable types: param 'theStepsNb': unresolved template type (std::pair<Standard_Integer, Standard_Integer>&); return: unresolved template type (std::pair<Standard_Real, Standard_Real>)
 //   // pub fn get_split_steps(&self, theParameters: &Parameters, theStepsNb: /* std::pair<Standard_Integer, Standard_Integer>& */) -> OwnedPtr<std::pair<Standard_Real, Standard_Real>>;
-//
-// SKIPPED: **Source:** `BRepMesh_ConeRangeSplitter.hxx`:40 - `BRepMesh_ConeRangeSplitter::GenerateSurfaceNodes`
-//   method: Returns list of nodes generated using surface data and specified parameters.
-//   Reason: return type 'Handle(NCollection_Shared<NCollection_List<gp_Pnt2d>>)' is unknown
-//   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<NCollection_Shared<NCollection_List<gp_Pnt2d>>>>;
 //
 
 // ========================
@@ -2149,6 +2175,22 @@ impl CylinderRangeSplitter {
         }
     }
 
+    /// **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:40 - `BRepMesh_CylinderRangeSplitter::GenerateSurfaceNodes()`
+    /// Returns list of nodes generated using surface data and specified parameters.
+    pub fn generate_surface_nodes(
+        &self,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_CylinderRangeSplitter_generate_surface_nodes(
+                    self as *const Self,
+                    theParameters,
+                ),
+            )
+        }
+    }
+
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
         unsafe {
@@ -2228,13 +2270,6 @@ impl CylinderRangeSplitter {
         }
     }
 }
-
-// ── Skipped symbols for CylinderRangeSplitter (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:40 - `BRepMesh_CylinderRangeSplitter::GenerateSurfaceNodes`
-//   method: Returns list of nodes generated using surface data and specified parameters.
-//   Reason: return type 'Handle(NCollection_Shared<NCollection_List<gp_Pnt2d>>)' is unknown
-//   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<NCollection_Shared<NCollection_List<gp_Pnt2d>>>>;
-//
 
 // ========================
 // From BRepMesh_DataStructureOfDelaun.hxx
@@ -2779,6 +2814,23 @@ impl DefaultRangeSplitter {
         }
     }
 
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:61 - `BRepMesh_DefaultRangeSplitter::GenerateSurfaceNodes()`
+    /// Returns list of nodes generated using surface data and specified parameters.
+    /// By default returns null ptr.
+    pub fn generate_surface_nodes(
+        &self,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_DefaultRangeSplitter_generate_surface_nodes(
+                    self as *const Self,
+                    theParameters,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     /// Returns point in 3d space corresponded to the given
     /// point defined in parametric space of surface.
@@ -2804,13 +2856,7 @@ impl DefaultRangeSplitter {
     }
 }
 
-// ── Skipped symbols for DefaultRangeSplitter (5 total) ──
-// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:61 - `BRepMesh_DefaultRangeSplitter::GenerateSurfaceNodes`
-//   method: Returns list of nodes generated using surface data and specified parameters.
-//   method: By default returns null ptr.
-//   Reason: return type 'Handle(NCollection_Shared<NCollection_List<gp_Pnt2d>>)' is unknown
-//   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<NCollection_Shared<NCollection_List<gp_Pnt2d>>>>;
-//
+// ── Skipped symbols for DefaultRangeSplitter (4 total) ──
 // SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU`
 //   method: Returns U range.
 //   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Real, Standard_Real> const&)
@@ -3649,6 +3695,38 @@ impl Delaun {
         unsafe { crate::ffi::BRepMesh_Delaun_process_constraints(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:93 - `BRepMesh_Delaun::Frontier()`
+    /// Gives the list of frontier edges.
+    pub fn frontier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedTColStdPackedMapOfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_frontier(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepMesh_Delaun.hxx`:96 - `BRepMesh_Delaun::InternalEdges()`
+    /// Gives the list of internal edges.
+    pub fn internal_edges(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedTColStdPackedMapOfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_internal_edges(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepMesh_Delaun.hxx`:99 - `BRepMesh_Delaun::FreeEdges()`
+    /// Gives the list of free edges used only one time
+    pub fn free_edges(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedTColStdPackedMapOfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_free_edges(self as *const Self))
+        }
+    }
+
     /// **Source:** `BRepMesh_Delaun.hxx`:102 - `BRepMesh_Delaun::GetVertex()`
     /// Gives vertex with the given index
     pub fn get_vertex(&self, theIndex: i32) -> &Vertex {
@@ -3705,7 +3783,7 @@ impl Delaun {
     }
 }
 
-// ── Skipped symbols for Delaun (10 total) ──
+// ── Skipped symbols for Delaun (7 total) ──
 // SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:46 - `BRepMesh_Delaun::BRepMesh_Delaun`
 //   constructor: Creates the triangulation with an empty Mesh data structure.
 //   Reason: param 'theVertices' uses unknown type 'IMeshData::Array1OfVertexOfDelaun&'
@@ -3735,21 +3813,6 @@ impl Delaun {
 //   method: Adds some vertices into the triangulation.
 //   Reason: param 'theVerticesIndices' uses unknown type 'IMeshData::VectorOfInteger&'
 //   // pub fn add_vertices(&mut self, theVerticesIndices: &mut VectorOfInteger, theRange: &ProgressRange);
-//
-// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:93 - `BRepMesh_Delaun::Frontier`
-//   method: Gives the list of frontier edges.
-//   Reason: return type 'Handle(NCollection_Shared<TColStd_PackedMapOfInteger>)' is unknown
-//   // pub fn frontier(&self) -> OwnedPtr<Handle<NCollection_Shared<TColStd_PackedMapOfInteger>>>;
-//
-// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:96 - `BRepMesh_Delaun::InternalEdges`
-//   method: Gives the list of internal edges.
-//   Reason: return type 'Handle(NCollection_Shared<TColStd_PackedMapOfInteger>)' is unknown
-//   // pub fn internal_edges(&self) -> OwnedPtr<Handle<NCollection_Shared<TColStd_PackedMapOfInteger>>>;
-//
-// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:99 - `BRepMesh_Delaun::FreeEdges`
-//   method: Gives the list of free edges used only one time
-//   Reason: return type 'Handle(NCollection_Shared<TColStd_PackedMapOfInteger>)' is unknown
-//   // pub fn free_edges(&self) -> OwnedPtr<Handle<NCollection_Shared<TColStd_PackedMapOfInteger>>>;
 //
 // SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:132 - `BRepMesh_Delaun::SetAuxVertices`
 //   method: Explicitly sets ids of auxiliary vertices used to build mesh and used by 3rd-party algorithms.
@@ -4931,6 +4994,21 @@ impl ExtrusionRangeSplitter {
     pub fn adjust_range(&mut self) {
         unsafe {
             crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AdjustRange(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:41 - `BRepMesh_NURBSRangeSplitter::GenerateSurfaceNodes()`
+    pub fn generate_surface_nodes(
+        &self,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GenerateSurfaceNodes(
+                    self as *const Self,
+                    theParameters,
+                ),
+            )
         }
     }
 
@@ -6343,6 +6421,20 @@ impl MeshTool {
         unsafe { crate::ffi::BRepMesh_MeshTool_erase_free_links(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:157 - `BRepMesh_MeshTool::GetEdgesByType()`
+    /// Gives the list of edges with type defined by input parameter.
+    pub fn get_edges_by_type(
+        &self,
+        theEdgeType: crate::b_rep_mesh::DegreeOfFreedom,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedTColStdPackedMapOfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshTool_get_edges_by_type(
+                self as *const Self,
+                theEdgeType.into(),
+            ))
+        }
+    }
+
     /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_MeshTool_dynamic_type(self as *const Self)) }
@@ -6455,7 +6547,7 @@ impl HandleBRepMeshMeshTool {
     }
 }
 
-// ── Skipped symbols for MeshTool (6 total) ──
+// ── Skipped symbols for MeshTool (5 total) ──
 // SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:86 - `BRepMesh_MeshTool::DumpTriangles`
 //   method: Dumps triangles to specified file.
 //   Reason: param 'theTriangles' uses unknown type 'IMeshData::MapOfInteger*'
@@ -6482,11 +6574,6 @@ impl HandleBRepMeshMeshTool {
 //   method: Erases links from the specified map that have no elements connected to them.
 //   Reason: param 'theLinks' uses unknown type 'IMeshData::MapOfIntegerInteger const&'
 //   // pub fn erase_free_links(&mut self, theLinks: &MapOfIntegerInteger);
-//
-// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:157 - `BRepMesh_MeshTool::GetEdgesByType`
-//   method: Gives the list of edges with type defined by input parameter.
-//   Reason: return type 'Handle(NCollection_Shared<TColStd_PackedMapOfInteger>)' is unknown
-//   // pub fn get_edges_by_type(&self, theEdgeType: DegreeOfFreedom) -> OwnedPtr<Handle<NCollection_Shared<TColStd_PackedMapOfInteger>>>;
 //
 
 /// **Source:** `BRepMesh_MeshTool.hxx`:33 - `BRepMesh_MeshTool_NodeClassifier`
@@ -7455,6 +7542,22 @@ impl NURBSRangeSplitter {
         unsafe { crate::ffi::BRepMesh_NURBSRangeSplitter_adjust_range(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:41 - `BRepMesh_NURBSRangeSplitter::GenerateSurfaceNodes()`
+    /// Returns list of nodes generated using surface data and specified parameters.
+    pub fn generate_surface_nodes(
+        &self,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_NURBSRangeSplitter_generate_surface_nodes(
+                    self as *const Self,
+                    theParameters,
+                ),
+            )
+        }
+    }
+
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
         unsafe {
@@ -7557,13 +7660,6 @@ impl NURBSRangeSplitter {
         }
     }
 }
-
-// ── Skipped symbols for NURBSRangeSplitter (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:41 - `BRepMesh_NURBSRangeSplitter::GenerateSurfaceNodes`
-//   method: Returns list of nodes generated using surface data and specified parameters.
-//   Reason: return type 'Handle(NCollection_Shared<NCollection_List<gp_Pnt2d>>)' is unknown
-//   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<NCollection_Shared<NCollection_List<gp_Pnt2d>>>>;
-//
 
 // ========================
 // From BRepMesh_OrientedEdge.hxx
@@ -8584,6 +8680,22 @@ impl SphereRangeSplitter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SphereRangeSplitter_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_SphereRangeSplitter.hxx`:34 - `BRepMesh_SphereRangeSplitter::GenerateSurfaceNodes()`
+    /// Returns list of nodes generated using surface data and specified parameters.
+    pub fn generate_surface_nodes(
+        &self,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_SphereRangeSplitter_generate_surface_nodes(
+                    self as *const Self,
+                    theParameters,
+                ),
+            )
+        }
+    }
+
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
         unsafe {
@@ -8674,13 +8786,6 @@ impl SphereRangeSplitter {
     }
 }
 
-// ── Skipped symbols for SphereRangeSplitter (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_SphereRangeSplitter.hxx`:34 - `BRepMesh_SphereRangeSplitter::GenerateSurfaceNodes`
-//   method: Returns list of nodes generated using surface data and specified parameters.
-//   Reason: return type 'Handle(NCollection_Shared<NCollection_List<gp_Pnt2d>>)' is unknown
-//   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<NCollection_Shared<NCollection_List<gp_Pnt2d>>>>;
-//
-
 // ========================
 // From BRepMesh_TorusRangeSplitter.hxx
 // ========================
@@ -8701,6 +8806,22 @@ impl TorusRangeSplitter {
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_TorusRangeSplitter_ctor()) }
+    }
+
+    /// **Source:** `BRepMesh_TorusRangeSplitter.hxx`:34 - `BRepMesh_TorusRangeSplitter::GenerateSurfaceNodes()`
+    /// Returns list of nodes generated using surface data and specified parameters.
+    pub fn generate_surface_nodes(
+        &self,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_TorusRangeSplitter_generate_surface_nodes(
+                    self as *const Self,
+                    theParameters,
+                ),
+            )
+        }
     }
 
     /// **Source:** `BRepMesh_TorusRangeSplitter.hxx`:38 - `BRepMesh_TorusRangeSplitter::AddPoint()`
@@ -8809,13 +8930,6 @@ impl TorusRangeSplitter {
         }
     }
 }
-
-// ── Skipped symbols for TorusRangeSplitter (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_TorusRangeSplitter.hxx`:34 - `BRepMesh_TorusRangeSplitter::GenerateSurfaceNodes`
-//   method: Returns list of nodes generated using surface data and specified parameters.
-//   Reason: return type 'Handle(NCollection_Shared<NCollection_List<gp_Pnt2d>>)' is unknown
-//   // pub fn generate_surface_nodes(&self, theParameters: &Parameters) -> OwnedPtr<Handle<NCollection_Shared<NCollection_List<gp_Pnt2d>>>>;
-//
 
 // ========================
 // From BRepMesh_Triangle.hxx
@@ -9022,6 +9136,21 @@ impl UVParamRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:61 - `BRepMesh_DefaultRangeSplitter::GenerateSurfaceNodes()`
+    pub fn generate_surface_nodes(
+        &self,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GenerateSurfaceNodes(
+                    self as *const Self,
+                    theParameters,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
@@ -9149,6 +9278,21 @@ impl UndefinedRangeSplitter {
     pub fn adjust_range(&mut self) {
         unsafe {
             crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AdjustRange(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:41 - `BRepMesh_NURBSRangeSplitter::GenerateSurfaceNodes()`
+    pub fn generate_surface_nodes(
+        &self,
+        theParameters: &crate::i_mesh_tools::Parameters,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GenerateSurfaceNodes(
+                    self as *const Self,
+                    theParameters,
+                ),
+            )
         }
     }
 
@@ -9457,6 +9601,22 @@ impl VertexTool {
         unsafe { crate::ffi::BRepMesh_VertexTool_delete_vertex(self as *mut Self, theIndex) }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:93 - `BRepMesh_VertexTool::Vertices()`
+    /// Returns set of mesh vertices.
+    pub fn vertices(
+        &self,
+    ) -> &crate::ffi::HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex {
+        unsafe { &*(crate::ffi::BRepMesh_VertexTool_vertices(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepMesh_VertexTool.hxx`:96 - `BRepMesh_VertexTool::ChangeVertices()`
+    /// Returns set of mesh vertices.
+    pub fn change_vertices(
+        &mut self,
+    ) -> &mut crate::ffi::HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex {
+        unsafe { &mut *(crate::ffi::BRepMesh_VertexTool_change_vertices(self as *mut Self)) }
+    }
+
     /// **Source:** `BRepMesh_VertexTool.hxx`:99 - `BRepMesh_VertexTool::FindKey()`
     /// Returns vertex by the given index.
     pub fn find_key(&mut self, theIndex: i32) -> &Vertex {
@@ -9620,17 +9780,7 @@ impl HandleBRepMeshVertexTool {
     }
 }
 
-// ── Skipped symbols for VertexTool (3 total) ──
-// SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:93 - `BRepMesh_VertexTool::Vertices`
-//   method: Returns set of mesh vertices.
-//   Reason: return type 'Handle(NCollection_Shared<NCollection_DynamicArray<BRepMesh_Vertex>>) const&' is unknown
-//   // pub fn vertices(&self) -> &HandleShared<NCollection_DynamicArray<BRepMesh_Vertex>>;
-//
-// SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:96 - `BRepMesh_VertexTool::ChangeVertices`
-//   method: Returns set of mesh vertices.
-//   Reason: return type 'Handle(NCollection_Shared<NCollection_DynamicArray<BRepMesh_Vertex>>)&' is unknown
-//   // pub fn change_vertices(&mut self) -> &mut HandleShared<NCollection_DynamicArray<BRepMesh_Vertex>>;
-//
+// ── Skipped symbols for VertexTool (1 total) ──
 // SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:129 - `BRepMesh_VertexTool::GetListOfDelNodes`
 //   method: Returns the list with indexes of vertices that have movability attribute
 //   method: equal to BRepMesh_Deleted and can be replaced with another node.

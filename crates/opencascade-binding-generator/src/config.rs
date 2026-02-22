@@ -6,6 +6,21 @@ use anyhow::{Context, Result};
 use serde::Deserialize;
 use std::path::{Path, PathBuf};
 
+/// Convert a C++ template spelling to a safe Rust/C++ identifier.
+/// e.g. `BVH_Builder<double, 3>` → `BVH_Builder_double_3`
+/// e.g. `NCollection_Shared<NCollection_List<gp_Pnt2d>>` → `NCollection_Shared_NCollection_List_gp_Pnt2d`
+pub fn template_alias_name(template_spelling: &str) -> String {
+    template_spelling
+        .replace("::", "_")
+        .replace('<', "_")
+        .replace('>', "")
+        .replace(", ", "_")
+        .replace(',', "_")
+        .replace(' ', "")
+        .trim_end_matches('_')
+        .to_string()
+}
+
 /// Top-level configuration structure.
 #[derive(Debug, Deserialize)]
 pub struct BindingConfig {
@@ -55,6 +70,13 @@ pub struct BindingConfig {
     /// Format: `TypeName = { header = "Header.hxx" }`
     #[serde(default)]
     pub manual_types: std::collections::HashMap<String, ManualType>,
+
+    /// Template instantiation aliases: declare specific C++ template instantiations
+    /// as opaque types so methods using them aren't skipped as "unknown type".
+    /// The generator creates C++ typedefs, Rust opaque types, and Handle wrappers.
+    /// Format: `"Template<Args>" = { header = "Header.hxx", module = "Module", handle = true }`
+    #[serde(default)]
+    pub template_instantiations: std::collections::HashMap<String, TemplateInstantiation>,
 }
 
 /// A manually-defined opaque type referenced by auto-generated bindings.
@@ -62,6 +84,18 @@ pub struct BindingConfig {
 pub struct ManualType {
     /// The C++ header that defines this type (for wrappers.cpp includes).
     pub header: String,
+}
+
+/// A C++ template instantiation declared as an opaque Rust type.
+#[derive(Debug, Deserialize)]
+pub struct TemplateInstantiation {
+    /// The C++ header that defines the template (for wrappers.cpp includes).
+    pub header: String,
+    /// The OCCT module this type belongs to (for re-export file placement).
+    pub module: String,
+    /// Whether this instantiation inherits from Standard_Transient and needs Handle support.
+    #[serde(default)]
+    pub handle: bool,
 }
 
 /// General configuration options.

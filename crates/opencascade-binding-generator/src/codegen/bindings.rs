@@ -3122,6 +3122,7 @@ pub fn compute_all_class_bindings(
     extra_typedef_names: &HashSet<String>,
     exclude_methods: &HashSet<(String, String)>,
     manual_type_names: &HashSet<String>,
+    handle_able_classes: &HashSet<String>,
 ) -> Vec<ClassBindings> {
     // Classes with CppDeletable impls: ParsedClasses (without protected dtor) +
     // the manually-specified known collections (which get generated destructors) +
@@ -3165,8 +3166,6 @@ pub fn compute_all_class_bindings(
     all_class_names.extend(extra_typedef_names.iter().cloned());
     all_class_names.extend(manual_type_names.iter().cloned());
     let all_enum_names = &symbol_table.all_enum_names;
-
-    let handle_able_classes = compute_handle_able_classes(all_classes);
 
     let ffi_ctx = TypeContext {
         current_module: "ffi",
@@ -3279,6 +3278,7 @@ pub fn compute_all_function_bindings(
     extra_typedef_names: &HashSet<String>,
     known_headers: &HashSet<String>,
     manual_type_names: &HashSet<String>,
+    handle_able_classes: &HashSet<String>,
 ) -> (Vec<FunctionBinding>, Vec<SkippedSymbol>) {
     let all_functions = symbol_table.all_included_functions();
     if all_functions.is_empty() {
@@ -3310,8 +3310,6 @@ pub fn compute_all_function_bindings(
     all_class_names.extend(extra_typedef_names.iter().cloned());
     all_class_names.extend(manual_type_names.iter().cloned());
     let all_enum_names = &symbol_table.all_enum_names;
-
-    let handle_able_classes = compute_handle_able_classes(all_classes);
 
     let ffi_ctx = TypeContext {
         current_module: "ffi",

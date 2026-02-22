@@ -16501,6 +16501,20 @@ unsafe impl crate::CppDeletable for BvhCStructureSetTrsfPers {
 }
 
 impl BvhCStructureSetTrsfPers {
+    /// **Source:** `Graphic3d_BvhCStructureSetTrsfPers.hxx`:40 - `Graphic3d_BvhCStructureSetTrsfPers::Graphic3d_BvhCStructureSetTrsfPers()`
+    /// Creates an empty primitive set for BVH clipping.
+    pub fn new_handlebvhbuilderdouble3(
+        theBuilder: &crate::ffi::HandleBVHBuilderdouble3,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_BvhCStructureSetTrsfPers_ctor_handlebvhbuilderdouble3(
+                    theBuilder,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `Graphic3d_BvhCStructureSetTrsfPers.hxx`:43 - `Graphic3d_BvhCStructureSetTrsfPers::Size()`
     /// Returns total number of structures.
     pub fn size(&self) -> i32 {
@@ -16599,29 +16613,54 @@ impl BvhCStructureSetTrsfPers {
     pub fn mark_dirty(&mut self) {
         unsafe { crate::ffi::Graphic3d_BvhCStructureSetTrsfPers_mark_dirty(self as *mut Self) }
     }
-}
 
-// ── Skipped symbols for BvhCStructureSetTrsfPers (4 total) ──
-// SKIPPED: **Source:** `Graphic3d_BvhCStructureSetTrsfPers.hxx`:40 - `Graphic3d_BvhCStructureSetTrsfPers::Graphic3d_BvhCStructureSetTrsfPers`
-//   constructor: Creates an empty primitive set for BVH clipping.
-//   Reason: param 'theBuilder' uses unknown Handle type
-//   // pub fn new_handlebvhbuilder<double, 3>(theBuilder: &HandleBuilder<double, 3>) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_BvhCStructureSetTrsfPers.hxx`:82 - `Graphic3d_BvhCStructureSetTrsfPers::BVH`
-//   method: Returns BVH tree for the given world view projection (builds it if necessary).
-//   Reason: return type 'Handle(BVH_Tree<double, 3>) const&' is unknown
-//   // pub fn bvh(&mut self, theCamera: &HandleCamera, theProjectionMatrix: &Mat4d, theWorldViewMatrix: &Mat4d, theViewportWidth: i32, theViewportHeight: i32, theWVPState: &WorldViewProjState) -> &HandleTree<double, 3>;
-//
-// SKIPPED: **Source:** `Graphic3d_BvhCStructureSetTrsfPers.hxx`:91 - `Graphic3d_BvhCStructureSetTrsfPers::Builder`
-//   method: Returns builder for bottom-level BVH.
-//   Reason: return type 'Handle(BVH_Builder<double, 3>) const&' is unknown
-//   // pub fn builder(&self) -> &HandleBuilder<double, 3>;
-//
-// SKIPPED: **Source:** `Graphic3d_BvhCStructureSetTrsfPers.hxx`:94 - `Graphic3d_BvhCStructureSetTrsfPers::SetBuilder`
-//   method: Assigns builder for bottom-level BVH.
-//   Reason: param 'theBuilder' uses unknown type 'Handle(BVH_Builder<double, 3>) const&'
-//   // pub fn set_builder(&mut self, theBuilder: &HandleBuilder<double, 3>);
-//
+    /// **Source:** `Graphic3d_BvhCStructureSetTrsfPers.hxx`:82 - `Graphic3d_BvhCStructureSetTrsfPers::BVH()`
+    /// Returns BVH tree for the given world view projection (builds it if necessary).
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn bvh(
+        &mut self,
+        theCamera: &crate::ffi::HandleGraphic3dCamera,
+        theProjectionMatrix: &crate::ffi::Graphic3d_Mat4d,
+        theWorldViewMatrix: &crate::ffi::Graphic3d_Mat4d,
+        theViewportWidth: i32,
+        theViewportHeight: i32,
+        theWVPState: &WorldViewProjState,
+    ) -> &crate::ffi::HandleBVHTreedouble3 {
+        unsafe {
+            &*(crate::ffi::Graphic3d_BvhCStructureSetTrsfPers_bvh(
+                self as *mut Self,
+                theCamera,
+                theProjectionMatrix,
+                theWorldViewMatrix,
+                theViewportWidth,
+                theViewportHeight,
+                theWVPState,
+            ))
+        }
+    }
+
+    /// **Source:** `Graphic3d_BvhCStructureSetTrsfPers.hxx`:91 - `Graphic3d_BvhCStructureSetTrsfPers::Builder()`
+    /// Returns builder for bottom-level BVH.
+    pub fn builder(&self) -> &crate::ffi::HandleBVHBuilderdouble3 {
+        unsafe { &*(crate::ffi::Graphic3d_BvhCStructureSetTrsfPers_builder(self as *const Self)) }
+    }
+
+    /// **Source:** `Graphic3d_BvhCStructureSetTrsfPers.hxx`:94 - `Graphic3d_BvhCStructureSetTrsfPers::SetBuilder()`
+    /// Assigns builder for bottom-level BVH.
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe {
+            crate::ffi::Graphic3d_BvhCStructureSetTrsfPers_set_builder(
+                self as *mut Self,
+                theBuilder,
+            )
+        }
+    }
+}
 
 // ========================
 // From Graphic3d_CLight.hxx
@@ -25868,6 +25907,19 @@ unsafe impl crate::CppDeletable for Layer {
 }
 
 impl Layer {
+    /// **Source:** `Graphic3d_Layer.hxx`:43 - `Graphic3d_Layer::Graphic3d_Layer()`
+    /// Initializes associated priority list and layer properties
+    pub fn new_int_handlebvhbuilderdouble3(
+        theId: i32,
+        theBuilder: &crate::ffi::HandleBVHBuilderdouble3,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Graphic3d_Layer_ctor_int_handlebvhbuilderdouble3(
+                theId, theBuilder,
+            ))
+        }
+    }
+
     /// **Source:** `Graphic3d_Layer.hxx`:40 - `Graphic3d_Layer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Graphic3d_Layer_dynamic_type(self as *const Self)) }
@@ -25877,6 +25929,26 @@ impl Layer {
     /// Return layer id.
     pub fn layer_id(&self) -> i32 {
         unsafe { crate::ffi::Graphic3d_Layer_layer_id(self as *const Self) }
+    }
+
+    /// **Source:** `Graphic3d_Layer.hxx`:53 - `Graphic3d_Layer::FrustumCullingBVHBuilder()`
+    /// Returns BVH tree builder for frustum culling.
+    pub fn frustum_culling_bvh_builder(&self) -> &crate::ffi::HandleBVHBuilderdouble3 {
+        unsafe { &*(crate::ffi::Graphic3d_Layer_frustum_culling_bvh_builder(self as *const Self)) }
+    }
+
+    /// **Source:** `Graphic3d_Layer.hxx`:59 - `Graphic3d_Layer::SetFrustumCullingBVHBuilder()`
+    /// Assigns BVH tree builder for frustum culling.
+    pub fn set_frustum_culling_bvh_builder(
+        &mut self,
+        theBuilder: &crate::ffi::HandleBVHBuilderdouble3,
+    ) {
+        unsafe {
+            crate::ffi::Graphic3d_Layer_set_frustum_culling_bvh_builder(
+                self as *mut Self,
+                theBuilder,
+            )
+        }
     }
 
     /// **Source:** `Graphic3d_Layer.hxx`:65 - `Graphic3d_Layer::IsImmediate()`
@@ -26190,22 +26262,7 @@ impl HandleGraphic3dLayer {
     }
 }
 
-// ── Skipped symbols for Layer (4 total) ──
-// SKIPPED: **Source:** `Graphic3d_Layer.hxx`:43 - `Graphic3d_Layer::Graphic3d_Layer`
-//   constructor: Initializes associated priority list and layer properties
-//   Reason: param 'theBuilder' uses unknown Handle type
-//   // pub fn new_int_handlebvhbuilder<double, 3>(theId: i32, theBuilder: &HandleBuilder<double, 3>) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_Layer.hxx`:53 - `Graphic3d_Layer::FrustumCullingBVHBuilder`
-//   method: Returns BVH tree builder for frustum culling.
-//   Reason: return type 'Handle(BVH_Builder<double, 3>) const&' is unknown
-//   // pub fn frustum_culling_bvh_builder(&self) -> &HandleBuilder<double, 3>;
-//
-// SKIPPED: **Source:** `Graphic3d_Layer.hxx`:59 - `Graphic3d_Layer::SetFrustumCullingBVHBuilder`
-//   method: Assigns BVH tree builder for frustum culling.
-//   Reason: param 'theBuilder' uses unknown type 'Handle(BVH_Builder<double, 3>) const&'
-//   // pub fn set_frustum_culling_bvh_builder(&mut self, theBuilder: &HandleBuilder<double, 3>);
-//
+// ── Skipped symbols for Layer (1 total) ──
 // SKIPPED: **Source:** `Graphic3d_Layer.hxx`:97 - `Graphic3d_Layer::ArrayOfStructures`
 //   method: Returns array of structures.
 //   Reason: return type 'Graphic3d_ArrayOfIndexedMapOfStructure const&' is unknown

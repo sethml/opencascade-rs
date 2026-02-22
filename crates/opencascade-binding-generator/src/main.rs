@@ -93,7 +93,7 @@ fn main() -> Result<()> {
     }
 
     // Determine explicit headers from config file or CLI arguments
-    let (explicit_headers, resolve_deps, exclude_set, exclude_modules, exclude_methods, non_allocatable_classes, manual_type_names) = if let Some(ref config_path) = args.config {
+    let (explicit_headers, resolve_deps, exclude_set, exclude_modules, exclude_methods, non_allocatable_classes, manual_type_names, template_instantiations) = if let Some(ref config_path) = args.config {
         let cfg = config::load_config(config_path)?;
         let resolve = cfg.general.resolve_deps;
 
@@ -138,9 +138,10 @@ fn main() -> Result<()> {
         let exclude_mods: Vec<String> = cfg.exclude_modules;
         let non_alloc_cls: HashSet<String> = cfg.non_allocatable_classes.into_iter().collect();
         let manual_names: HashSet<String> = cfg.manual_types.keys().cloned().collect();
-        (headers, resolve, excludes, exclude_mods, method_exclusions, non_alloc_cls, manual_names)
+        let tmpl_inst = cfg.template_instantiations;
+        (headers, resolve, excludes, exclude_mods, method_exclusions, non_alloc_cls, manual_names, tmpl_inst)
     } else if !args.headers.is_empty() {
-        (args.headers.clone(), args.resolve_deps, std::collections::HashSet::new(), Vec::new(), HashSet::new(), HashSet::new(), HashSet::new())
+        (args.headers.clone(), args.resolve_deps, std::collections::HashSet::new(), Vec::new(), HashSet::new(), HashSet::new(), HashSet::new(), HashMap::new())
     } else {
         anyhow::bail!("Either --config <file.toml> or positional header arguments are required");
     };
@@ -206,6 +207,20 @@ fn main() -> Result<()> {
 
     println!("Parsing {} headers...", headers_to_process.len());
     let mut parsed = parser::parse_headers(&headers_to_process, &args.include_dirs, args.verbose)?;
+
+    // Rewrite template Handle types to alias names based on template_instantiations config.
+    // This transforms e.g. Type::Handle("BVH_Builder<double, 3>") into
+    // Type::Handle("BVH_Builder_double_3") so downstream code sees clean alias names.
+    let template_alias_map: HashMap<String, String> = template_instantiations
+        .iter()
+        .map(|(spelling, _)| (spelling.clone(), config::template_alias_name(spelling)))
+        .collect();
+    if !template_alias_map.is_empty() {
+        let rewritten = rewrite_template_types(&mut parsed, &template_alias_map);
+        if rewritten > 0 {
+            println!("  Rewrote {} template Handle type references to alias names", rewritten);
+        }
+    }
 
     // Detect "utility namespace classes" — classes with no underscore in the name
     // (class name == module name), only static methods, and no instance methods/constructors.
@@ -317,7 +332,19 @@ fn main() -> Result<()> {
     // Compute handle-able classes via transitive closure of inheritance graph.
     // This is done before the symbol table so the resolver can use it instead of
     // relying on the old per-class parser heuristic.
-    let handle_able_classes = codegen::bindings::compute_handle_able_classes(&all_classes);
+    let mut handle_able_classes = codegen::bindings::compute_handle_able_classes(&all_classes);
+
+    // Add template instantiation alias names to the known type sets.
+    // These were already rewritten in the parsed data (Handle inner names),
+    // so we just need to register the alias names as known handle-able classes.
+    let mut manual_type_names = manual_type_names;
+    for (spelling, inst) in &template_instantiations {
+        let alias = config::template_alias_name(spelling);
+        manual_type_names.insert(alias.clone());
+        if inst.handle {
+            handle_able_classes.insert(alias);
+        }
+    }
 
     // Build symbol table (Pass 1 of two-pass architecture)
     // This resolves all symbols and makes binding decisions ONCE
@@ -395,7 +422,71 @@ fn main() -> Result<()> {
     }
 
     // Generate FFI output
-    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &non_allocatable_classes, &handle_able_classes, &manual_type_names)
+    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &non_allocatable_classes, &handle_able_classes, &manual_type_names, &template_instantiations)
+}
+
+/// Rewrite template spellings in Handle types to alias names.
+/// Walks all method signatures (params, returns) and translates
+/// e.g. Type::Handle("BVH_Builder<double, 3>") → Type::Handle("BVH_Builder_double_3").
+/// Returns the number of types rewritten.
+fn rewrite_template_types(
+    parsed: &mut [model::ParsedHeader],
+    alias_map: &HashMap<String, String>,
+) -> usize {
+    let mut count = 0;
+    for header in parsed.iter_mut() {
+        for class in &mut header.classes {
+            for method in &mut class.methods {
+                if let Some(ref mut ret) = method.return_type {
+                    count += rewrite_type(ret, alias_map);
+                }
+                for param in &mut method.params {
+                    count += rewrite_type(&mut param.ty, alias_map);
+                }
+            }
+            for method in &mut class.static_methods {
+                if let Some(ref mut ret) = method.return_type {
+                    count += rewrite_type(ret, alias_map);
+                }
+                for param in &mut method.params {
+                    count += rewrite_type(&mut param.ty, alias_map);
+                }
+            }
+            for ctor in &mut class.constructors {
+                for param in &mut ctor.params {
+                    count += rewrite_type(&mut param.ty, alias_map);
+                }
+            }
+        }
+        for func in &mut header.functions {
+            if let Some(ref mut ret) = func.return_type {
+                count += rewrite_type(ret, alias_map);
+            }
+            for param in &mut func.params {
+                count += rewrite_type(&mut param.ty, alias_map);
+            }
+        }
+    }
+    count
+}
+
+/// Rewrite a single type, translating template Handle names to alias names.
+/// Returns 1 if a rewrite was performed, 0 otherwise.
+fn rewrite_type(ty: &mut model::Type, alias_map: &HashMap<String, String>) -> usize {
+    match ty {
+        model::Type::Handle(ref mut name) => {
+            if let Some(alias) = alias_map.get(name.as_str()) {
+                *name = alias.clone();
+                return 1;
+            }
+            0
+        }
+        model::Type::ConstRef(inner)
+        | model::Type::MutRef(inner)
+        | model::Type::ConstPtr(inner)
+        | model::Type::MutPtr(inner) => rewrite_type(inner, alias_map),
+        _ => 0,
+    }
 }
 
 /// Detect "utility namespace classes" and convert their static methods to free functions.
@@ -618,6 +709,7 @@ fn generate_output(
     non_allocatable_classes: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
     manual_type_names: &HashSet<String>,
+    template_instantiations: &HashMap<String, config::TemplateInstantiation>,
 ) -> Result<()> {
     use model::ParsedClass;
 
@@ -639,9 +731,13 @@ fn generate_output(
     // Compute ClassBindings once for ALL classes — shared by all three generators
     let collection_type_names: std::collections::HashSet<String> =
         all_collections.iter().map(|c| c.typedef_name.clone()).collect();
-    let extra_typedef_names = parser::get_collected_typedef_names();
+    let mut extra_typedef_names = parser::get_collected_typedef_names();
+    // Add template instantiation alias names so they get destructor generation
+    for (spelling, _) in template_instantiations {
+        extra_typedef_names.insert(config::template_alias_name(spelling));
+    }
     let mut all_bindings =
-        codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names, exclude_methods, manual_type_names);
+        codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names, exclude_methods, manual_type_names, &handle_able_classes);
 
     // Mark non-allocatable classes as having protected destructors so both the
     // C++ wrappers (which check has_protected_destructor) and the Rust FFI side
@@ -654,7 +750,7 @@ fn generate_output(
 
     // Compute FunctionBindings once for ALL free functions — shared by all three generators
     let (all_function_bindings, all_skipped_functions) = codegen::bindings::compute_all_function_bindings(
-        symbol_table, all_classes, &collection_type_names, &extra_typedef_names, known_headers, manual_type_names,
+        symbol_table, all_classes, &collection_type_names, &extra_typedef_names, known_headers, manual_type_names, &handle_able_classes,
     );
 
     // Track generated files for formatting
@@ -690,6 +786,7 @@ fn generate_output(
         &all_function_bindings,
         &nested_types,
         &handle_able_classes,
+        template_instantiations,
     );
     let cpp_path = args.output.join("wrappers.cpp");
     std::fs::write(&cpp_path, &cpp_code)?;

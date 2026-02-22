@@ -5736,6 +5736,21 @@ impl SelectableObject {
         }
     }
 
+    /// **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected()`
+    /// Returns a bounding box of sensitive entities with the owners given if they are a part of
+    /// activated selection
+    pub fn bnd_box_of_selected(
+        &mut self,
+        theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
+    ) -> crate::OwnedPtr<crate::bnd::Box> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SelectableObject_bnd_box_of_selected(
+                self as *mut Self,
+                theOwners,
+            ))
+        }
+    }
+
     /// **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     /// Returns the mode for selection of object as a whole; 0 by default.
     pub fn global_selection_mode(&self) -> i32 {
@@ -7406,14 +7421,6 @@ impl HandleSelectMgrSelectableObject {
     }
 }
 
-// ── Skipped symbols for SelectableObject (1 total) ──
-// SKIPPED: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected`
-//   method: Returns a bounding box of sensitive entities with the owners given if they are a part of
-//   method: activated selection
-//   Reason: param 'theOwners' uses unknown type 'Handle(NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>>) const&'
-//   // pub fn bnd_box_of_selected(&mut self, theOwners: &HandleShared<NCollection_IndexedMap<opencascade_handle<SelectMgr_EntityOwner>>>) -> OwnedPtr<Bnd_Box>;
-//
-
 // ========================
 // From SelectMgr_SelectableObjectSet.hxx
 // ========================
@@ -7537,14 +7544,16 @@ impl SelectableObjectSet {
             ))
         }
     }
-}
 
-// ── Skipped symbols for SelectableObjectSet (1 total) ──
-// SKIPPED: **Source:** `SelectMgr_SelectableObjectSet.hxx`:188 - `SelectMgr_SelectableObjectSet::BVH`
-//   method: Returns computed BVH for the theSubset given.
-//   Reason: return type 'Handle(BVH_Tree<double, 3>) const&' is unknown
-//   // pub fn bvh(&self, theSubset: SelectableObjectSet_BVHSubset) -> &HandleTree<double, 3>;
-//
+    /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:188 - `SelectMgr_SelectableObjectSet::BVH()`
+    /// Returns computed BVH for the theSubset given.
+    pub fn bvh(
+        &self,
+        theSubset: &crate::ffi::SelectMgr_SelectableObjectSet_BVHSubset,
+    ) -> &crate::ffi::HandleBVHTreedouble3 {
+        unsafe { &*(crate::ffi::SelectMgr_SelectableObjectSet_bvh(self as *const Self, theSubset)) }
+    }
+}
 
 /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:68 - `SelectMgr_SelectableObjectSet_Iterator`
 /// Class to iterate sequentually over all objects from every subset.
@@ -9363,6 +9372,18 @@ unsafe impl crate::CppDeletable for SensitiveEntitySet {
 }
 
 impl SensitiveEntitySet {
+    /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:36 - `SelectMgr_SensitiveEntitySet::SelectMgr_SensitiveEntitySet()`
+    /// Empty constructor.
+    pub fn new_handlebvhbuilderdouble3(
+        theBuilder: &crate::ffi::HandleBVHBuilderdouble3,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::SelectMgr_SensitiveEntitySet_ctor_handlebvhbuilderdouble3(theBuilder),
+            )
+        }
+    }
+
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:33 - `SelectMgr_SensitiveEntitySet::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::SelectMgr_SensitiveEntitySet_dynamic_type(self as *const Self)) }
@@ -9519,13 +9540,6 @@ impl HandleSelectMgrSensitiveEntitySet {
         unsafe { &mut *(crate::ffi::HandleSelectMgrSensitiveEntitySet_get_mut(self as *mut Self)) }
     }
 }
-
-// ── Skipped symbols for SensitiveEntitySet (1 total) ──
-// SKIPPED: **Source:** `SelectMgr_SensitiveEntitySet.hxx`:36 - `SelectMgr_SensitiveEntitySet::SelectMgr_SensitiveEntitySet`
-//   constructor: Empty constructor.
-//   Reason: param 'theBuilder' uses unknown Handle type
-//   // pub fn new_handlebvhbuilder<double, 3>(theBuilder: &HandleBuilder<double, 3>) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From SelectMgr_SortCriterion.hxx
@@ -11172,6 +11186,29 @@ impl ViewerSelector {
         unsafe { crate::ffi::SelectMgr_ViewerSelector_contains(self as *const Self, theObject) }
     }
 
+    /// **Source:** `SelectMgr_ViewerSelector.hxx`:183 - `SelectMgr_ViewerSelector::EntitySetBuilder()`
+    /// Returns the default builder used to construct BVH of entity set.
+    pub fn entity_set_builder(&mut self) -> crate::OwnedPtr<crate::ffi::HandleBVHBuilderdouble3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_ViewerSelector_entity_set_builder(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `SelectMgr_ViewerSelector.hxx`:188 - `SelectMgr_ViewerSelector::SetEntitySetBuilder()`
+    /// Sets the default builder used to construct BVH of entity set.
+    /// The new builder will be also assigned for already defined objects, but computed BVH trees will
+    /// not be invalidated.
+    pub fn set_entity_set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+        unsafe {
+            crate::ffi::SelectMgr_ViewerSelector_set_entity_set_builder(
+                self as *mut Self,
+                theBuilder,
+            )
+        }
+    }
+
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:196 - `SelectMgr_ViewerSelector::Modes()`
     /// Returns the list of selection modes ModeList found in
     /// this selector for the selectable object aSelectableObject.
@@ -11691,20 +11728,6 @@ impl HandleSelectMgrViewerSelector {
         }
     }
 }
-
-// ── Skipped symbols for ViewerSelector (2 total) ──
-// SKIPPED: **Source:** `SelectMgr_ViewerSelector.hxx`:183 - `SelectMgr_ViewerSelector::EntitySetBuilder`
-//   method: Returns the default builder used to construct BVH of entity set.
-//   Reason: return type 'Handle(BVH_Builder<double, 3>)' is unknown
-//   // pub fn entity_set_builder(&mut self) -> OwnedPtr<Handle<BVH_Builder<double, 3>>>;
-//
-// SKIPPED: **Source:** `SelectMgr_ViewerSelector.hxx`:188 - `SelectMgr_ViewerSelector::SetEntitySetBuilder`
-//   method: Sets the default builder used to construct BVH of entity set.
-//   method: The new builder will be also assigned for already defined objects, but computed BVH trees will
-//   method: not be invalidated.
-//   Reason: param 'theBuilder' uses unknown type 'Handle(BVH_Builder<double, 3>) const&'
-//   // pub fn set_entity_set_builder(&mut self, theBuilder: &HandleBuilder<double, 3>);
-//
 
 // ========================
 // Additional type re-exports

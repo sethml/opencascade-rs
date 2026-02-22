@@ -750,11 +750,23 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
                 // Parse nested classes/structs defined inside this class
                 if is_nested_public && child.is_definition() {
                     let mut parsed = parse_class(&child, source_header, verbose);
+                    // Collect the original (unqualified) names of sibling nested classes
+                    // so we can fix base class references after qualification.
+                    let sibling_names: HashSet<String> = parsed.iter().map(|c| c.name.clone()).collect();
                     for nested in &mut parsed {
                         // Qualify the nested class name with parent: Parent::Nested
                         // Always prepend since multi-level nesting (A::B::C) needs all levels.
                         nested.name = format!("{}::{}", name, nested.name);
                         // nested.module is inherited from source_header
+                        // Also qualify base class names that reference sibling nested classes.
+                        // Without this, the inheritance graph can't connect e.g.
+                        // ShapePersistent_BRep::Curve3D -> GCurve (should be
+                        // ShapePersistent_BRep::GCurve) for handle-able class computation.
+                        for base in &mut nested.base_classes {
+                            if sibling_names.contains(base.as_str()) {
+                                *base = format!("{}::{}", name, base);
+                            }
+                        }
                     }
                     nested_classes.extend(parsed);
                 }
