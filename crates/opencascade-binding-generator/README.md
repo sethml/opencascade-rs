@@ -575,10 +575,6 @@ pub mod b_rep_algo_api;
 
 ---
 
-**Special-case/heuristic patterns in the codebase:**
-
-1. **Enum variant name splitting (`split('_')`)** — Used only in enum variant name generation after prefix stripping (e.g., `TopAbs_COMPOUND` → `Compound`). Class/type short names use `short_name_for_module()` (e.g., `BRepOffset_Status` with module `BRepOffset` → `Status`), handle upcast/downcast helper names also use `short_name_for_module()` with module lookup, and free functions use parser-provided function names (not underscore splitting).
-
 ## Known Issues
 
 ### UB crash in `clang` crate (v2.0.0) — worked around via `--release` build

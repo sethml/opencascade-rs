@@ -353,6 +353,15 @@ pub fn extract_short_class_name(class_name: &str) -> String {
     }
 }
 
+fn short_name_for_type_in_context(class_name: &str, ctx: &TypeContext) -> String {
+    if let Some(type_to_module) = ctx.type_to_module {
+        if let Some(module) = type_to_module.get(class_name) {
+            return short_name_for_module(class_name, module);
+        }
+    }
+    extract_short_class_name(class_name)
+}
+
 /// Context for type mapping within a specific module
 pub struct TypeContext<'a> {
     /// The current module name (e.g., "gp")
@@ -475,7 +484,7 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
             }
             
             let type_module = lookup_module_for_type(class_name, ctx.type_to_module);
-            let short_name = extract_short_class_name(class_name);
+            let short_name = short_name_for_type_in_context(class_name, ctx);
             
             // Check if this is a same-module reference
             if type_module.as_deref() == Some(ctx.current_module) 
