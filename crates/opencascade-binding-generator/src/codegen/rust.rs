@@ -642,44 +642,11 @@ fn emit_free_function_wrapper(
 
     // Build args with proper conversions: nullable ptr, class ptr, enum, CString, &mut enum
     let args: Vec<String> = func.params.iter()
-        .map(|p| {
-            if p.is_nullable_ptr {
-                if p.rust_ffi_type.starts_with("*const") {
-                    format!("{}.map_or(std::ptr::null(), |r| r as *const _)", p.rust_name)
-                } else {
-                    format!("{}.map_or(std::ptr::null_mut(), |r| r as *mut _)", p.rust_name)
-                }
-            } else if p.is_class_ptr {
-                if p.rust_ffi_type.starts_with("*const") {
-                    format!("{} as *const _", p.rust_name)
-                } else {
-                    format!("{} as *mut _", p.rust_name)
-                }
-            } else if p.mut_ref_enum_rust_type.is_some() {
-                format!("&mut {}_i32_", p.rust_name)
-            } else if p.rust_reexport_type == "&str" {
-                format!("c_{}.as_ptr()", p.rust_name)
-            } else if p.enum_rust_type.is_some() {
-                format!("{}.into()", p.rust_name)
-            } else {
-                p.rust_name.clone()
-            }
-        })
+        .map(|p| super::bindings::convert_arg(p))
         .collect();
 
     // Generate prelude for CString (&str) params and &mut enum params
-    let prelude: String = func.params.iter()
-        .map(|p| {
-            let mut s = String::new();
-            if p.rust_reexport_type == "&str" {
-                s.push_str(&format!("    let c_{} = std::ffi::CString::new({}).unwrap();\n", p.rust_name, p.rust_name));
-            }
-            if p.mut_ref_enum_rust_type.is_some() {
-                s.push_str(&format!("    let mut {}_i32_: i32 = (*{}).into();\n", p.rust_name, p.rust_name));
-            }
-            s
-        })
-        .collect();
+    let prelude = super::bindings::cstr_prelude_params(&func.params, "    ");
 
     // Build return type string.
     // For unsafe_lifetime free functions, add lifetime 'a to reference return types.
@@ -696,59 +663,29 @@ fn emit_free_function_wrapper(
     // Build call expression
     let call_expr = format!("crate::ffi::{}({})", func.cpp_wrapper_name, args.join(", "));
 
-    // Build body with proper conversions: enum returns, OwnedPtr wrapping, and pointer-to-reference
+    // Build body with proper conversions: enum returns, OwnedPtr wrapping, pointer-to-reference, class ptr returns
     let reexport_rt = func.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
-    let body = if let Some(ref rt) = func.return_type {
-        if let Some(ref rust_type) = rt.enum_rust_type {
-            format!("{}::try_from({}).unwrap()", rust_type, call_expr)
-        } else if rt.needs_unique_ptr {
-            format!("crate::OwnedPtr::from_raw({})", call_expr)
-        } else if let Some(rtype) = reexport_rt {
-            if rtype == "std::string::String" {
-                format!("std::ffi::CStr::from_ptr({}).to_string_lossy().into_owned()", call_expr)
-            } else if rtype.starts_with("&mut ") {
-                format!("&mut *({})", call_expr)
-            } else if rtype.starts_with('&') {
-                format!("&*({})", call_expr)
-            } else {
-                call_expr
-            }
-        } else {
-            call_expr
-        }
-    } else {
-        call_expr
-    };
+    let is_enum_return = func.return_type.as_ref().and_then(|rt| rt.enum_rust_type.as_ref());
+    let needs_owned_ptr = func.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
+    let is_class_ptr_ret = func.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
+    let body = super::bindings::build_reexport_body(
+        &call_expr,
+        reexport_rt,
+        is_enum_return.map(|s| s.as_str()),
+        needs_owned_ptr,
+        is_class_ptr_ret,
+    );
 
     // Generate postamble for &mut enum writeback
-    let postamble: String = func.params.iter()
-        .filter_map(|p| {
-            p.mut_ref_enum_rust_type.as_ref().map(|enum_type| {
-                format!("    *{} = {}::try_from({}_i32_).unwrap();\n", p.rust_name, enum_type, p.rust_name)
-            })
-        })
-        .collect();
-
+    let postamble = super::bindings::mut_ref_enum_postamble_params(&func.params, "    ");
     let has_return = !return_type_str.is_empty();
+    let body = super::bindings::wrap_body_with_postamble(&body, &postamble, has_return);
 
     let unsafe_kw = if func.is_unsafe { "unsafe " } else { "" };
     let lifetime_param = if func.unsafe_lifetime { "<'a>" } else { "" };
     writeln!(output, "pub {}fn {}{}({}){} {{", unsafe_kw, func.rust_ffi_name, lifetime_param, params.join(", "), return_type_str).unwrap();
     write!(output, "{}", prelude).unwrap();
-
-    if postamble.is_empty() {
-        writeln!(output, "    unsafe {{ {} }}", body).unwrap();
-    } else if has_return {
-        writeln!(output, "    let result_ = unsafe {{ {} }};", body).unwrap();
-        write!(output, "{}", postamble).unwrap();
-        writeln!(output, "    result_").unwrap();
-    } else {
-        writeln!(output, "    unsafe {{ {} }};", body).unwrap();
-        // Trim trailing newline from postamble for clean formatting
-        write!(output, "{}", postamble.trim_end_matches('\n')).unwrap();
-        writeln!(output).unwrap();
-    }
-
+    writeln!(output, "    {}", body).unwrap();
     writeln!(output, "}}").unwrap();
 }
 

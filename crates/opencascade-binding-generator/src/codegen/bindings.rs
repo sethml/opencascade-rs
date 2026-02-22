@@ -4590,7 +4590,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 /// Produces the `pub use crate::ffi::X as ShortName;` line and the `impl ShortName { ... }`
 /// block with constructor, wrapper, static, upcast, to_owned, and to_handle methods.
 /// Convert a param argument for FFI call: add `.into()` if it's a value enum.
-fn convert_arg(p: &ParamBinding) -> String {
+pub(super) fn convert_arg(p: &ParamBinding) -> String {
     if p.is_nullable_ptr {
         if p.rust_ffi_type.starts_with("*const") {
             format!("{}.map_or(std::ptr::null(), |r| r as *const _)", p.rust_name)
@@ -4640,14 +4640,14 @@ fn convert_arg_resolved(name: &str, p: &ResolvedParamBinding) -> String {
 
 /// Generate let-bindings for CString (&str) params and &mut enum params.
 /// These must appear before the unsafe block so the temporaries live long enough.
-fn cstr_prelude_params(params: &[ParamBinding]) -> String {
+pub(super) fn cstr_prelude_params(params: &[ParamBinding], indent: &str) -> String {
     let mut result = String::new();
     for p in params {
         if p.rust_reexport_type == "&str" {
-            result.push_str(&format!("        let c_{} = std::ffi::CString::new({}).unwrap();\n", p.rust_name, p.rust_name));
+            result.push_str(&format!("{}let c_{} = std::ffi::CString::new({}).unwrap();\n", indent, p.rust_name, p.rust_name));
         }
         if p.mut_ref_enum_rust_type.is_some() {
-            result.push_str(&format!("        let mut {}_i32_: i32 = (*{}).into();\n", p.rust_name, p.rust_name));
+            result.push_str(&format!("{}let mut {}_i32_: i32 = (*{}).into();\n", indent, p.rust_name, p.rust_name));
         }
     }
     result
@@ -4667,7 +4667,7 @@ fn cstr_prelude_resolved(params: &[ResolvedParamBinding], names: &[String]) -> S
 }
 
 /// Generate the postamble for &mut enum params: write back from i32 to typed enum.
-fn mut_ref_enum_postamble_params(params: &[ParamBinding], indent: &str) -> String {
+pub(super) fn mut_ref_enum_postamble_params(params: &[ParamBinding], indent: &str) -> String {
     let mut result = String::new();
     for p in params {
         if let Some(ref enum_type) = p.mut_ref_enum_rust_type {
@@ -4695,7 +4695,7 @@ fn mut_ref_enum_postamble_resolved(params: &[ResolvedParamBinding], names: &[Str
 /// For void returns (has_return=false):
 ///   <body>;
 ///   <postamble trimmed>
-fn wrap_body_with_postamble(body: &str, postamble: &str, has_return: bool) -> String {
+pub(super) fn wrap_body_with_postamble(body: &str, postamble: &str, has_return: bool) -> String {
     if postamble.is_empty() {
         return body.to_string();
     }
@@ -4710,7 +4710,7 @@ fn wrap_body_with_postamble(body: &str, postamble: &str, has_return: bool) -> St
 
 /// Build the body expression for a re-export method call.
 /// Handles the conversion from FFI raw pointer returns to Rust references/OwnedPtr.
-fn build_reexport_body(raw_call: &str, reexport_type: Option<&str>, is_enum: Option<&str>, needs_owned_ptr: bool, is_class_ptr_return: bool) -> String {
+pub(super) fn build_reexport_body(raw_call: &str, reexport_type: Option<&str>, is_enum: Option<&str>, needs_owned_ptr: bool, is_class_ptr_return: bool) -> String {
     if is_class_ptr_return {
         // Class pointer returns are bound as Option<&T> / Option<&mut T>.
         // The FFI returns a raw pointer; we null-check and convert.
@@ -4825,7 +4825,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             ));
         } else {
             // Regular constructor: delegates to ffi function
-            let prelude = cstr_prelude_params(&ctor.params);
+            let prelude = cstr_prelude_params(&ctor.params, "        ");
             let unsafe_kw = if ctor.is_unsafe { "unsafe " } else { "" };
             impl_methods.push(format!(
                 "{}    pub {}fn {}({}) -> crate::OwnedPtr<Self> {{\n{}        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}({})) }}\n    }}\n",
@@ -4876,7 +4876,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let needs_owned_ptr = wm.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
         let reexport_rt = wm.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
 
-        let prelude = cstr_prelude_params(&wm.params);
+        let prelude = cstr_prelude_params(&wm.params, "        ");
 
         let is_class_ptr_ret = wm.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
         let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret);
@@ -4943,7 +4943,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let needs_owned_ptr = dm.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
         let reexport_rt = dm.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
 
-        let prelude = cstr_prelude_params(&dm.params);
+        let prelude = cstr_prelude_params(&dm.params, "        ");
 
         let is_class_ptr_ret = dm.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
         let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret);
@@ -5009,7 +5009,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let needs_owned_ptr = sm.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
         let reexport_rt = sm.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
 
-        let prelude = cstr_prelude_params(&sm.params);
+        let prelude = cstr_prelude_params(&sm.params, "        ");
 
         let is_class_ptr_ret = sm.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
         let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret);
