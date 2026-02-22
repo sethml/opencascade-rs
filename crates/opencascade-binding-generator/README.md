@@ -414,7 +414,7 @@ Currently only `standard` iostream accessors (`cout()`, `cerr()`, etc.) require 
 
 ## Skipped Symbols
 
-The binding generator currently skips **126** symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator currently skips **94** symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -433,15 +433,15 @@ Example from `select_mgr.rs`:
 
 | Count | % | Category | Description |
 |------:|----:|----------|-------------|
-| 66 | 52.4% | **Unknown/unresolved type** | Parameter or return type is not in the resolved known-type set |
-| 42 | 33.3% | **Unknown Handle type** | `Handle(T)` where `T` is unresolved or excluded |
-| 12 | 9.5% | **Rvalue reference** | C++ move semantics (`T&&`) — const-ref overloads usually exist |
-| 2 | 1.6% | **Excluded by bindings.toml** | Explicitly excluded in config |
-| 2 | 1.6% | **Unresolved template type** | Template instantiations that still cannot be represented safely |
-| 1 | 0.8% | **Ambiguous overload** | C++ overload would produce conflicting wrapper signatures |
-| 1 | 0.8% | **Not CppDeletable** | Return type has no destructor in the binding set |
+| 66 | 70.2% | **Unknown/unresolved type** | Parameter or return type is not in the resolved known-type set |
+| 12 | 12.8% | **Rvalue reference** | C++ move semantics (`T&&`) — const-ref overloads usually exist |
+| 10 | 10.6% | **Unknown Handle type** | `Handle(T)` where `T` is unresolved or excluded |
+| 2 | 2.1% | **Excluded by bindings.toml** | Explicitly excluded in config |
+| 2 | 2.1% | **Unresolved template type** | Template instantiations that still cannot be represented safely |
+| 1 | 1.1% | **Ambiguous overload** | C++ overload would produce conflicting wrapper signatures |
+| 1 | 1.1% | **Not CppDeletable** | Return type has no destructor in the binding set |
 
-Combined unresolved coverage (`Unknown/unresolved type` + `Unknown Handle type`) is **108 / 126 (85.7%)**.
+Combined unresolved coverage (`Unknown/unresolved type` + `Unknown Handle type`) is **76 / 94 (80.9%)**.
 
 Fixed-size arrays (`T (&)[N]`, `const T (&)[N]`, and `T arr[N]` parameter syntax) are now bindable; there are currently **no** remaining skips categorized as C-style arrays.
 
@@ -449,24 +449,24 @@ Fixed-size arrays (`T (&)[N]`, `const T (&)[N]`, and `T arr[N]` parameter syntax
 
 | Count | Type | How to Unblock |
 |------:|------|----------------|
-| 12 | `Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)` | Protected nested template class — not exposed as a bindable type |
-| 10 | `Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)` | Protected nested template class — not exposed as a bindable type |
-| 10 | `Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)` | Protected nested template class — not exposed as a bindable type |
-| 5 | `WNT_HIDSpaceMouse const&` | Windows-only type, WNT module excluded |
 | 5 | `AVStream const&` | FFmpeg media type — external dependency |
+| 5 | `WNT_HIDSpaceMouse const&` | Windows-only type, WNT module excluded |
 | 5 | `RWGltf_GltfOStreamWriter*` | RapidJSON-backed writer type — external dependency |
 | 4 | `GLXFBConfig` | X11/Linux display type — platform-specific |
 | 3 | `IMeshData_Edge *const const&` | Internal mesh pointer signature in specialized APIs |
 | 3 | `Aspect_XDisplay*` | X11/Linux display type — platform-specific |
 | 3 | `IMeshData_Face *const const&` | Internal mesh pointer signature in specialized APIs |
+| 2 | `NSOpenGLContext*` | macOS OpenGL context type in platform-specific APIs |
+| 2 | `ProxPnt_Status const&` | Internal proximity/status type not currently in known class set |
+| 2 | `AVCodecContext*` | FFmpeg codec context — external dependency |
 
 ### Important Skipped Symbols
 
 Most skipped symbols are in specialized or platform-specific areas. Current hotspots:
 
-**Shape Persistent (39 symbols)** — all in `shape_persistent`, predominantly unknown `Handle(ShapePersistent_Geom::geometryBase<...>)` forms for protected nested templates.
+**Shape Persistent (7 symbols)** — `shape_persistent` dropped significantly after alias normalization; remaining skips are unknown handle instantiations of deeply nested persistence templates (`pTObject<...>`, `ShapePersistent_Poly::instance<...>`).
 
-**UI/Platform Integration (16 symbols)** — `aspect` (13) plus `graphic3d` (3), mostly platform/window-system types (`GLXFBConfig`, `Aspect_XDisplay*`, and related display handles).
+**UI/Platform Integration (21 symbols)** — `aspect` (13), `graphic3d` (3), `osd` (3), `v3d` (1), `ais` (1), mostly platform/window-system types (`GLXFBConfig`, `Aspect_XDisplay*`, `NSOpenGLContext*`, and related handles).
 
 **Data Exchange (8 symbols)** — `rw_gltf` (5), `iges_control` (1), `step_control` (1), `rw_stl` (1). Predominantly external/third-party types, plus `T&&` overloads where safe const-ref equivalents are already bound.
 

@@ -62,6 +62,20 @@ fn normalize_template_spelling(s: &str) -> String {
     s.chars().filter(|c| !c.is_whitespace()).collect()
 }
 
+/// Normalize known OCCT internal template spellings to their public typedef aliases.
+///
+/// Some persistence APIs expose handles to aliases like `ShapePersistent_Geom::Curve`,
+/// but clang may report canonical inner names like `ShapePersistent_Geom::geometryBase<Geom_Curve>`.
+/// Rewriting these to alias names keeps them bindable against the known-type set.
+fn normalize_occt_alias_type_name(type_name: &str) -> String {
+    match normalize_template_spelling(type_name).as_str() {
+        "ShapePersistent_Geom::geometryBase<Geom_Curve>" => "ShapePersistent_Geom::Curve".to_string(),
+        "ShapePersistent_Geom::geometryBase<Geom_Surface>" => "ShapePersistent_Geom::Surface".to_string(),
+        "ShapePersistent_Geom::geometryBase<Geom2d_Curve>" => "ShapePersistent_Geom2d::Curve".to_string(),
+        _ => type_name.trim().to_string(),
+    }
+}
+
 /// Strip C++ type qualifier prefixes (const, volatile, struct, class, typename, enum)
 /// from a type spelling. Call sites used to chain these manually; this centralizes the
 /// stripping logic and avoids accidental divergence.
@@ -1626,7 +1640,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     let clean_for_lookup = strip_type_qualifiers(trimmed_spelling);
     if clean_for_lookup.contains('<') && !clean_for_lookup.starts_with("opencascade::handle<") && !clean_for_lookup.starts_with("Handle(") {
         if let Some(typedef_name) = lookup_typedef(clean_for_lookup) {
-            return Type::Class(typedef_name);
+            return Type::Class(normalize_occt_alias_type_name(&typedef_name));
         }
     }
 
@@ -1724,7 +1738,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
                     }).unwrap_or(false);
 
                 if !pointee_is_primitive_canonical {
-                    let inner = Type::Class(base.to_string());
+                    let inner = Type::Class(normalize_occt_alias_type_name(base));
                     if let Some(pointee) = clang_type.get_pointee_type() {
                         let is_const = pointee.is_const_qualified();
                         return match kind {
@@ -1861,7 +1875,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         } else {
             extract_template_arg(clean_spelling)
         };
-        return Type::Handle(inner);
+        return Type::Handle(normalize_occt_alias_type_name(&inner));
     }
 
     // For nested types (e.g., TColgp_Array1OfPnt::value_type) or template types,
@@ -1875,7 +1889,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         // For template types, check if this is a known typedef
         if clean_name.contains('<') {
             if let Some(typedef_name) = lookup_typedef(clean_name) {
-                return Type::Class(typedef_name);
+                return Type::Class(normalize_occt_alias_type_name(&typedef_name));
             }
         }
         let canonical_base = strip_type_decorators(&canonical_spelling);
@@ -1887,7 +1901,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         let canonical_looks_like_class = canonical_base
             .starts_with(|c: char| c.is_ascii_uppercase());
         if !canonical_base.contains("::") && !canonical_base.contains('<') && !canonical_base.is_empty() && canonical_looks_like_class {
-            return Type::Class(canonical_base.to_string());
+            return Type::Class(normalize_occt_alias_type_name(canonical_base));
         }
     }
     
@@ -1903,7 +1917,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
                     // This is a nested type - include the parent class name to mark it as nested
                     if let Some(parent_name) = parent.get_name() {
                         let nested_name = format!("{}::{}", parent_name, clean_name);
-                        return Type::Class(nested_name);
+                        return Type::Class(normalize_occt_alias_type_name(&nested_name));
                     }
                 }
             }
@@ -1917,7 +1931,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // because reference/pointer wrapping strips the typedef TypeKind layer by the time
     // we recurse into the pointee type.
     if let Some(resolved_name) = lookup_simple_typedef(clean_name) {
-        return Type::Class(resolved_name);
+        return Type::Class(normalize_occt_alias_type_name(&resolved_name));
     }
 
     // Late-stage canonical resolution for unrecognized typedefs.
@@ -1955,7 +1969,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         }
     }
 
-    Type::Class(clean_name.to_string())
+    Type::Class(normalize_occt_alias_type_name(clean_name))
 }
 
 /// Extract template argument from Handle<T> or similar

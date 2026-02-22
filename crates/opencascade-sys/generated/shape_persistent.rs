@@ -2277,19 +2277,37 @@ impl Geom {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_ctor()) }
     }
-}
 
-// ── Skipped symbols for Geom (2 total) ──
-// SKIPPED: **Source:** `ShapePersistent_Geom.hxx`:181 - `ShapePersistent_Geom::Translate`
-//   static_method: Create a persistent object for a curve
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleCurve, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom.hxx`:184 - `ShapePersistent_Geom::Translate`
-//   static_method: Create a persistent object for a curve
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)' is unknown
-//   // pub fn translate(theSurf: &HandleSurface, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Surface>>>;
-//
+    /// **Source:** `ShapePersistent_Geom.hxx`:181 - `ShapePersistent_Geom::Translate()`
+    /// Create a persistent object for a curve
+    pub fn translate_handlegeomcurve_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeomCurve,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapePersistent_Geom_translate_handlegeomcurve_transientpersistentmap(
+                    theCurve, theMap,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom.hxx`:184 - `ShapePersistent_Geom::Translate()`
+    /// Create a persistent object for a curve
+    pub fn translate_handlegeomsurface_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomSurface,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapePersistent_Geom_translate_handlegeomsurface_transientpersistentmap(
+                    theSurf, theMap,
+                ),
+            )
+        }
+    }
+}
 
 /// **Source:** `ShapePersistent_Geom.hxx`:38 - `ShapePersistent_Geom_Geometry`
 pub use crate::ffi::ShapePersistent_Geom_Geometry as Geom_Geometry;
@@ -2599,6 +2617,19 @@ impl Geom2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom2d_ctor()) }
     }
 
+    /// **Source:** `ShapePersistent_Geom2d.hxx`:49 - `ShapePersistent_Geom2d::Translate()`
+    /// Create a persistent object for a curve
+    pub fn translate(
+        theCurve: &crate::ffi::HandleGeom2dCurve,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom2d_translate(
+                theCurve, theMap,
+            ))
+        }
+    }
+
     /// Upcast to ShapePersistent_Geom
     pub fn as_geom(&self) -> &Geom {
         unsafe {
@@ -2615,13 +2646,6 @@ impl Geom2d {
         }
     }
 }
-
-// ── Skipped symbols for Geom2d (1 total) ──
-// SKIPPED: **Source:** `ShapePersistent_Geom2d.hxx`:49 - `ShapePersistent_Geom2d::Translate`
-//   static_method: Create a persistent object for a curve
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleCurve, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom2d_Curve>>>;
-//
 
 // ========================
 // From ShapePersistent_Geom2d_Curve.hxx
@@ -2641,6 +2665,105 @@ impl Geom2d_Curve {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom2d_Curve_ctor()) }
+    }
+
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:212 - `ShapePersistent_Geom2d_Curve::Translate()`
+    /// Create a persistent object for a line
+    pub fn translate_handlegeom2dline_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeom2dLine,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dline_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:215 - `ShapePersistent_Geom2d_Curve::Translate()`
+    /// Create a persistent object for a circle
+    pub fn translate_handlegeom2dcircle_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeom2dCircle,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dcircle_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:218 - `ShapePersistent_Geom2d_Curve::Translate()`
+    /// Create a persistent object for a ellipse
+    pub fn translate_handlegeom2dellipse_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeom2dEllipse,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dellipse_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:221 - `ShapePersistent_Geom2d_Curve::Translate()`
+    /// Create a persistent object for a hyperbola
+    pub fn translate_handlegeom2dhyperbola_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeom2dHyperbola,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dhyperbola_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:224 - `ShapePersistent_Geom2d_Curve::Translate()`
+    /// Create a persistent object for a parabola
+    pub fn translate_handlegeom2dparabola_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeom2dParabola,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dparabola_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:227 - `ShapePersistent_Geom2d_Curve::Translate()`
+    /// Create a persistent object for a Bezier curve
+    pub fn translate_handlegeom2dbeziercurve_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeom2dBezierCurve,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dbeziercurve_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:230 - `ShapePersistent_Geom2d_Curve::Translate()`
+    /// Create a persistent object for a BSpline curve
+    pub fn translate_handlegeom2dbsplinecurve_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeom2dBSplineCurve,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dbsplinecurve_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:233 - `ShapePersistent_Geom2d_Curve::Translate()`
+    /// Create a persistent object for a trimmed curve
+    pub fn translate_handlegeom2dtrimmedcurve_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeom2dTrimmedCurve,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dtrimmedcurve_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:236 - `ShapePersistent_Geom2d_Curve::Translate()`
+    /// Create a persistent object for an offset curve
+    pub fn translate_handlegeom2doffsetcurve_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeom2dOffsetCurve,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2doffsetcurve_transientpersistentmap(theCurve, theMap))
+        }
     }
 
     /// Upcast to ShapePersistent_Geom2d
@@ -2680,53 +2803,6 @@ impl Geom2d_Curve {
     }
 }
 
-// ── Skipped symbols for Geom2d_Curve (9 total) ──
-// SKIPPED: **Source:** `ShapePersistent_Geom2d_Curve.hxx`:212 - `ShapePersistent_Geom2d_Curve::Translate`
-//   static_method: Create a persistent object for a line
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleLine, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom2d_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom2d_Curve.hxx`:215 - `ShapePersistent_Geom2d_Curve::Translate`
-//   static_method: Create a persistent object for a circle
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleCircle, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom2d_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom2d_Curve.hxx`:218 - `ShapePersistent_Geom2d_Curve::Translate`
-//   static_method: Create a persistent object for a ellipse
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleEllipse, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom2d_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom2d_Curve.hxx`:221 - `ShapePersistent_Geom2d_Curve::Translate`
-//   static_method: Create a persistent object for a hyperbola
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleHyperbola, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom2d_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom2d_Curve.hxx`:224 - `ShapePersistent_Geom2d_Curve::Translate`
-//   static_method: Create a persistent object for a parabola
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleParabola, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom2d_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom2d_Curve.hxx`:227 - `ShapePersistent_Geom2d_Curve::Translate`
-//   static_method: Create a persistent object for a Bezier curve
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleBezierCurve, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom2d_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom2d_Curve.hxx`:230 - `ShapePersistent_Geom2d_Curve::Translate`
-//   static_method: Create a persistent object for a BSpline curve
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleBSplineCurve, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom2d_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom2d_Curve.hxx`:233 - `ShapePersistent_Geom2d_Curve::Translate`
-//   static_method: Create a persistent object for a trimmed curve
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleTrimmedCurve, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom2d_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom2d_Curve.hxx`:236 - `ShapePersistent_Geom2d_Curve::Translate`
-//   static_method: Create a persistent object for an offset curve
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleOffsetCurve, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom2d_Curve>>>;
-//
-
 // ========================
 // From ShapePersistent_Geom_Curve.hxx
 // ========================
@@ -2746,54 +2822,106 @@ impl Geom_Curve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Curve_ctor()) }
     }
-}
 
-// ── Skipped symbols for Geom_Curve (9 total) ──
-// SKIPPED: **Source:** `ShapePersistent_Geom_Curve.hxx`:215 - `ShapePersistent_Geom_Curve::Translate`
-//   static_method: Create a persistent object for a line
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleLine, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Curve.hxx`:218 - `ShapePersistent_Geom_Curve::Translate`
-//   static_method: Create a persistent object for a circle
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleCircle, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Curve.hxx`:221 - `ShapePersistent_Geom_Curve::Translate`
-//   static_method: Create a persistent object for a ellipse
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleEllipse, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Curve.hxx`:224 - `ShapePersistent_Geom_Curve::Translate`
-//   static_method: Create a persistent object for a hyperbola
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleHyperbola, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Curve.hxx`:227 - `ShapePersistent_Geom_Curve::Translate`
-//   static_method: Create a persistent object for a parabola
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleParabola, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Curve.hxx`:230 - `ShapePersistent_Geom_Curve::Translate`
-//   static_method: Create a persistent object for a Bezier curve
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleBezierCurve, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Curve.hxx`:233 - `ShapePersistent_Geom_Curve::Translate`
-//   static_method: Create a persistent object for a BSpline curve
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleBSplineCurve, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Curve.hxx`:236 - `ShapePersistent_Geom_Curve::Translate`
-//   static_method: Create a persistent object for a trimmed curve
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleTrimmedCurve, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Curve>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Curve.hxx`:239 - `ShapePersistent_Geom_Curve::Translate`
-//   static_method: Create a persistent object for an offset curve
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)' is unknown
-//   // pub fn translate(theCurve: &HandleOffsetCurve, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Curve>>>;
-//
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:215 - `ShapePersistent_Geom_Curve::Translate()`
+    /// Create a persistent object for a line
+    pub fn translate_handlegeomline_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeomLine,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomline_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:218 - `ShapePersistent_Geom_Curve::Translate()`
+    /// Create a persistent object for a circle
+    pub fn translate_handlegeomcircle_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeomCircle,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomcircle_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:221 - `ShapePersistent_Geom_Curve::Translate()`
+    /// Create a persistent object for a ellipse
+    pub fn translate_handlegeomellipse_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeomEllipse,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomellipse_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:224 - `ShapePersistent_Geom_Curve::Translate()`
+    /// Create a persistent object for a hyperbola
+    pub fn translate_handlegeomhyperbola_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeomHyperbola,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomhyperbola_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:227 - `ShapePersistent_Geom_Curve::Translate()`
+    /// Create a persistent object for a parabola
+    pub fn translate_handlegeomparabola_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeomParabola,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomparabola_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:230 - `ShapePersistent_Geom_Curve::Translate()`
+    /// Create a persistent object for a Bezier curve
+    pub fn translate_handlegeombeziercurve_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeomBezierCurve,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeombeziercurve_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:233 - `ShapePersistent_Geom_Curve::Translate()`
+    /// Create a persistent object for a BSpline curve
+    pub fn translate_handlegeombsplinecurve_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeomBSplineCurve,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeombsplinecurve_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:236 - `ShapePersistent_Geom_Curve::Translate()`
+    /// Create a persistent object for a trimmed curve
+    pub fn translate_handlegeomtrimmedcurve_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeomTrimmedCurve,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomtrimmedcurve_transientpersistentmap(theCurve, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:239 - `ShapePersistent_Geom_Curve::Translate()`
+    /// Create a persistent object for an offset curve
+    pub fn translate_handlegeomoffsetcurve_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeomOffsetCurve,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomoffsetcurve_transientpersistentmap(theCurve, theMap))
+        }
+    }
+}
 
 // ========================
 // From ShapePersistent_Geom_Surface.hxx
@@ -2814,64 +2942,128 @@ impl Geom_Surface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Surface_ctor()) }
     }
-}
 
-// ── Skipped symbols for Geom_Surface (11 total) ──
-// SKIPPED: **Source:** `ShapePersistent_Geom_Surface.hxx`:311 - `ShapePersistent_Geom_Surface::Translate`
-//   static_method: Create a persistent object for a plane
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)' is unknown
-//   // pub fn translate(theSurf: &HandlePlane, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Surface>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Surface.hxx`:314 - `ShapePersistent_Geom_Surface::Translate`
-//   static_method: Create a persistent object for a cylinder
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)' is unknown
-//   // pub fn translate(theSurf: &HandleCylindricalSurface, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Surface>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Surface.hxx`:317 - `ShapePersistent_Geom_Surface::Translate`
-//   static_method: Create a persistent object for a cone
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)' is unknown
-//   // pub fn translate(theSurf: &HandleConicalSurface, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Surface>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Surface.hxx`:320 - `ShapePersistent_Geom_Surface::Translate`
-//   static_method: Create a persistent object for a sphere
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)' is unknown
-//   // pub fn translate(theSurf: &HandleSphericalSurface, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Surface>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Surface.hxx`:323 - `ShapePersistent_Geom_Surface::Translate`
-//   static_method: Create a persistent object for a torus
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)' is unknown
-//   // pub fn translate(theSurf: &HandleToroidalSurface, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Surface>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Surface.hxx`:326 - `ShapePersistent_Geom_Surface::Translate`
-//   static_method: Create a persistent object for a surface of linear extrusion
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)' is unknown
-//   // pub fn translate(theSurf: &HandleSurfaceOfLinearExtrusion, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Surface>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Surface.hxx`:330 - `ShapePersistent_Geom_Surface::Translate`
-//   static_method: Create a persistent object for a surface of evolution
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)' is unknown
-//   // pub fn translate(theSurf: &HandleSurfaceOfRevolution, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Surface>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Surface.hxx`:333 - `ShapePersistent_Geom_Surface::Translate`
-//   static_method: Create a persistent object for a Bezier surface
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)' is unknown
-//   // pub fn translate(theSurf: &HandleBezierSurface, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Surface>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Surface.hxx`:336 - `ShapePersistent_Geom_Surface::Translate`
-//   static_method: Create a persistent object for a BSpline surface
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)' is unknown
-//   // pub fn translate(theSurf: &HandleBSplineSurface, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Surface>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Surface.hxx`:339 - `ShapePersistent_Geom_Surface::Translate`
-//   static_method: Create a persistent object for a rectangylar trimmed surface
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)' is unknown
-//   // pub fn translate(theSurf: &HandleRectangularTrimmedSurface, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Surface>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_Geom_Surface.hxx`:343 - `ShapePersistent_Geom_Surface::Translate`
-//   static_method: Create a persistent object for an offset surface
-//   Reason: return type 'Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)' is unknown
-//   // pub fn translate(theSurf: &HandleOffsetSurface, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_Geom::geometryBase<Geom_Surface>>>;
-//
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:311 - `ShapePersistent_Geom_Surface::Translate()`
+    /// Create a persistent object for a plane
+    pub fn translate_handlegeomplane_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomPlane,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomplane_transientpersistentmap(theSurf, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:314 - `ShapePersistent_Geom_Surface::Translate()`
+    /// Create a persistent object for a cylinder
+    pub fn translate_handlegeomcylindricalsurface_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomCylindricalSurface,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomcylindricalsurface_transientpersistentmap(theSurf, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:317 - `ShapePersistent_Geom_Surface::Translate()`
+    /// Create a persistent object for a cone
+    pub fn translate_handlegeomconicalsurface_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomConicalSurface,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomconicalsurface_transientpersistentmap(theSurf, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:320 - `ShapePersistent_Geom_Surface::Translate()`
+    /// Create a persistent object for a sphere
+    pub fn translate_handlegeomsphericalsurface_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomSphericalSurface,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomsphericalsurface_transientpersistentmap(theSurf, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:323 - `ShapePersistent_Geom_Surface::Translate()`
+    /// Create a persistent object for a torus
+    pub fn translate_handlegeomtoroidalsurface_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomToroidalSurface,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomtoroidalsurface_transientpersistentmap(theSurf, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:326 - `ShapePersistent_Geom_Surface::Translate()`
+    /// Create a persistent object for a surface of linear extrusion
+    pub fn translate_handlegeomsurfaceoflinearextrusion_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomSurfaceOfLinearExtrusion,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomsurfaceoflinearextrusion_transientpersistentmap(theSurf, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:330 - `ShapePersistent_Geom_Surface::Translate()`
+    /// Create a persistent object for a surface of evolution
+    pub fn translate_handlegeomsurfaceofrevolution_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomSurfaceOfRevolution,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomsurfaceofrevolution_transientpersistentmap(theSurf, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:333 - `ShapePersistent_Geom_Surface::Translate()`
+    /// Create a persistent object for a Bezier surface
+    pub fn translate_handlegeombeziersurface_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomBezierSurface,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeombeziersurface_transientpersistentmap(theSurf, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:336 - `ShapePersistent_Geom_Surface::Translate()`
+    /// Create a persistent object for a BSpline surface
+    pub fn translate_handlegeombsplinesurface_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomBSplineSurface,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeombsplinesurface_transientpersistentmap(theSurf, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:339 - `ShapePersistent_Geom_Surface::Translate()`
+    /// Create a persistent object for a rectangylar trimmed surface
+    pub fn translate_handlegeomrectangulartrimmedsurface_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomRectangularTrimmedSurface,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomrectangulartrimmedsurface_transientpersistentmap(theSurf, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:343 - `ShapePersistent_Geom_Surface::Translate()`
+    /// Create a persistent object for an offset surface
+    pub fn translate_handlegeomoffsetsurface_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomOffsetSurface,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomoffsetsurface_transientpersistentmap(theSurf, theMap))
+        }
+    }
+}
 
 // ========================
 // From ShapePersistent_Poly.hxx
