@@ -575,41 +575,6 @@ pub mod b_rep_algo_api;
 
 ---
 
-## Future Work
-
-### Expanding to All OCCT Headers
-
-Currently headers are selected via `bindings.toml`. OCCT ships 6,875 `.hxx` headers across ~349 modules. An experimental all-headers run produced 6,565 types and 90,295 functions in 333 modules, but surfaced issues:
-
-1. **Fortran common blocks** (11 instances) — `AdvApp2Var_Data.hxx` defines structs like `maovpar_1_` that don't follow OCCT naming. The generator skips them (no bindable members).
-
-2. **Non-type template parameters** (1 instance) — `BVH_Tree<T, int N>` has an `int N` template param that Rust can't represent. Filtered out.
-
-3. **Raw pointer-heavy type spellings** (remaining edge cases) — pointer template arguments are now auto-bound when aliasable, but some non-template/raw-pointer signatures (for example `IMeshData_Edge *const`) still leak into unresolved-type paths and need additional normalization.
-
-4. **Scale concerns** — ffi.rs would grow to 356K lines (6x). The entire extern "C" block is one compilation unit, causing long compile times. Would need per-module splitting or feature flags.
-
-5. **Windows-only headers** — `OSD_WNT.hxx` includes `<windows.h>`, fails on macOS/Linux. Non-blocking.
-
-6. **Nested C++ types** (SOLVED) — OCCT defines ~173 nested structs, enums, and typedefs inside classes (e.g., `Poly_CoherentTriangulation::TwoIntegers`, `AIS_PointCloud::DisplayMode`, `BOPTools_PairSelector::PairIDs`). The parser now detects parent class scope via clang's semantic parent and qualifies nested types as `Parent::Nested`. The generator flattens `::` to `_` for Rust FFI names (`Parent_Nested`) while keeping qualified names in C++ wrappers. Destructors are auto-generated for all nested opaque types. This unblocked 58 new types, 67 new methods, and 76 nested type destructors.
-
-7. **Template instantiation Handle types** (SOLVED) — Methods returning or accepting `Handle(BVH_Builder<double, 3>)` or `Handle(NCollection_Shared<...>)` were skipped because the template instantiation isn't a named class. A `[template_instantiations]` section in `bindings.toml` declares specific template instantiations to bind. The generator creates C++ typedefs (e.g., `typedef BVH_Builder<double, 3> BVH_Builder_double_3;`), rewrites all Handle references in parsed data, and treats aliases as normal classes for Handle support. This resolved ~30 previously-skipped symbols.
-
-8. **Nested class inheritance** (SOLVED) — Nested classes like `ShapePersistent_BRep::Curve3D` had unqualified base class names (e.g., `GCurve` instead of `ShapePersistent_BRep::GCurve`), breaking the transitive closure in `compute_handle_able_classes()`. The parser now qualifies sibling base class references when qualifying nested type names.
-
-9. **Fixed-size arrays** (SOLVED) — OCCT APIs with parameters like `Standard_Integer (&theEdges)[3]` and `Standard_Integer theEdges[3]` were previously skipped as C-style arrays. The parser now models constant arrays explicitly (`Type::FixedArray`), Rust re-exports expose them as `&[T; N]` / `&mut [T; N]`, and wrappers bridge via element pointers at the extern C layer (with cast-back for array references in C++). This unblocked APIs such as `BRepMesh_MeshTool::AddTriangle`.
-
-
-### System Include Path Auto-Detection
-
-Currently `-I` path is passed manually. Could auto-detect from `occt-sys`.
-
-### Explicit `bindings.toml` Config for Manual Bindings
-
-An explicit `bindings.toml` section for declaring manual bindings would allow skipping problematic signatures without requiring code changes to the generator.
-
----
-
 **Special-case/heuristic patterns in the codebase:**
 
 1. **Short name convention (`split('_').skip(1)`)** — Used in enum variant name generation for converting OCCT enum variants (e.g., `TopAbs_COMPOUND` → `Compound`). This assumes a single module-prefix underscore. For class/type names, `short_name_for_module()` is used instead, which correctly handles the module prefix (e.g., `BRepOffset_Status` with module `BRepOffset` → `Status`). Handle upcast/downcast method names also use `short_name_for_module()` with proper module lookup.
