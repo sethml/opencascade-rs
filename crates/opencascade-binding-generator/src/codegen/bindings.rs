@@ -3056,51 +3056,16 @@ pub fn compute_all_class_bindings(
     manual_type_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
 ) -> Vec<ClassBindings> {
-    // Classes with CppDeletable impls: ParsedClasses (without protected dtor) +
-    // the manually-specified known collections (which get generated destructors) +
-    // NCollection typedef names from extra_typedef_names (e.g. gp_Vec3f, gp_Pnt2f).
-    // Nested types (Parent::Nested) get destructors generated, so include them too.
-    let mut deletable_class_names: HashSet<String> = all_classes
-        .iter()
-        .filter(|c| !c.has_protected_destructor)
-        .map(|c| c.name.clone())
-        .chain(collection_names.iter().cloned())
-        .chain(extra_typedef_names.iter().cloned())
-        .collect();
-
-    // Add nested types (those with :: in their name) as deletable
-    // since we generate destructors for them
-    let mut known_class_names: HashSet<&str> = all_classes.iter().map(|c| c.name.as_str()).collect();
-    // Include collection names and extra typedef names so nested types like
-    // V3d_ListOfLight::Iterator are recognized when V3d_ListOfLight is a collection
-    known_class_names.extend(collection_names.iter().map(|s| s.as_str()));
-    known_class_names.extend(extra_typedef_names.iter().map(|s| s.as_str()));
-    for class in all_classes {
-        for method in &class.methods {
-            if let Some(ref ret) = method.return_type {
-                collect_nested_deletable_names(ret, &known_class_names, &mut deletable_class_names);
+    let (deletable_class_names, all_class_names) = build_type_context_sets(
+        all_classes, collection_names, extra_typedef_names, manual_type_names,
+        |known_class_names, deletable| {
+            for class in all_classes {
+                crate::model::for_each_type_in_class(class, &mut |ty| {
+                    collect_nested_deletable_names(ty, known_class_names, deletable);
+                });
             }
-            for param in &method.params {
-                collect_nested_deletable_names(&param.ty, &known_class_names, &mut deletable_class_names);
-            }
-        }
-        for method in &class.static_methods {
-            if let Some(ref ret) = method.return_type {
-                collect_nested_deletable_names(ret, &known_class_names, &mut deletable_class_names);
-            }
-            for param in &method.params {
-                collect_nested_deletable_names(&param.ty, &known_class_names, &mut deletable_class_names);
-            }
-        }
-    }
-
-    // Full known-type set (for param filtering): adds NCollection template typedefs
-    // so methods passing them as params pass the unknown-type filter.
-    let mut all_class_names: HashSet<String> =
-        all_classes.iter().map(|c| c.name.clone()).collect();
-    all_class_names.extend(collection_names.iter().cloned());
-    all_class_names.extend(extra_typedef_names.iter().cloned());
-    all_class_names.extend(manual_type_names.iter().cloned());
+        },
+    );
     let all_enum_names = &symbol_table.all_enum_names;
 
     let ffi_ctx = TypeContext {
@@ -3132,6 +3097,48 @@ pub fn compute_all_class_bindings(
             compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes, &all_classes_by_name, Some(&reexport_ctx), exclude_methods)
         })
         .collect()
+}
+
+/// Build the `deletable_class_names` and `all_class_names` sets used by both
+/// class and function binding computation. The `extra_types` callback is invoked
+/// with the `known_class_names` and `deletable_class_names` sets so that callers
+/// can scan method/function signatures for nested deletable types.
+fn build_type_context_sets(
+    all_classes: &[&ParsedClass],
+    collection_names: &HashSet<String>,
+    extra_typedef_names: &HashSet<String>,
+    manual_type_names: &HashSet<String>,
+    scan_nested: impl FnOnce(&HashSet<&str>, &mut HashSet<String>),
+) -> (HashSet<String>, HashSet<String>) {
+    // Classes with CppDeletable impls: ParsedClasses (without protected dtor) +
+    // known collections + NCollection typedef names (e.g. gp_Vec3f, gp_Pnt2f).
+    let mut deletable_class_names: HashSet<String> = all_classes
+        .iter()
+        .filter(|c| !c.has_protected_destructor)
+        .map(|c| c.name.clone())
+        .chain(collection_names.iter().cloned())
+        .chain(extra_typedef_names.iter().cloned())
+        .collect();
+
+    // Build known_class_names for nested type discovery.
+    // Include collection names and extra typedef names so nested types like
+    // V3d_ListOfLight::Iterator are recognized when V3d_ListOfLight is a collection.
+    let mut known_class_names: HashSet<&str> = all_classes.iter().map(|c| c.name.as_str()).collect();
+    known_class_names.extend(collection_names.iter().map(|s| s.as_str()));
+    known_class_names.extend(extra_typedef_names.iter().map(|s| s.as_str()));
+
+    // Scan method/function signatures for nested deletable types
+    scan_nested(&known_class_names, &mut deletable_class_names);
+
+    // Full known-type set (for param filtering): adds NCollection template typedefs
+    // so methods passing them as params pass the unknown-type filter.
+    let mut all_class_names: HashSet<String> =
+        all_classes.iter().map(|c| c.name.clone()).collect();
+    all_class_names.extend(collection_names.iter().cloned());
+    all_class_names.extend(extra_typedef_names.iter().cloned());
+    all_class_names.extend(manual_type_names.iter().cloned());
+
+    (deletable_class_names, all_class_names)
 }
 
 // ── Free function bindings ──────────────────────────────────────────────────
@@ -3221,32 +3228,19 @@ pub fn compute_all_function_bindings(
         return (Vec::new(), Vec::new());
     }
 
-    // Build TypeContext
-    let mut deletable_class_names: HashSet<String> = all_classes
-        .iter()
-        .filter(|c| !c.has_protected_destructor)
-        .map(|c| c.name.clone())
-        .chain(collection_names.iter().cloned())
-        .collect();
-
-    // Add nested types as deletable (they get destructor generation)
-    let mut known_class_names: HashSet<&str> = all_classes.iter().map(|c| c.name.as_str()).collect();
-    known_class_names.extend(collection_names.iter().map(|s| s.as_str()));
-    known_class_names.extend(extra_typedef_names.iter().map(|s| s.as_str()));
-    for func in &all_functions {
-        if let Some(ref ret) = func.return_type {
-            collect_nested_deletable_names(&ret.original, &known_class_names, &mut deletable_class_names);
-        }
-        for param in &func.params {
-            collect_nested_deletable_names(&param.ty.original, &known_class_names, &mut deletable_class_names);
-        }
-    }
-
-    let mut all_class_names: HashSet<String> =
-        all_classes.iter().map(|c| c.name.clone()).collect();
-    all_class_names.extend(collection_names.iter().cloned());
-    all_class_names.extend(extra_typedef_names.iter().cloned());
-    all_class_names.extend(manual_type_names.iter().cloned());
+    let (deletable_class_names, all_class_names) = build_type_context_sets(
+        all_classes, collection_names, extra_typedef_names, manual_type_names,
+        |known_class_names, deletable| {
+            for func in &all_functions {
+                if let Some(ref ret) = func.return_type {
+                    collect_nested_deletable_names(&ret.original, known_class_names, deletable);
+                }
+                for param in &func.params {
+                    collect_nested_deletable_names(&param.ty.original, known_class_names, deletable);
+                }
+            }
+        },
+    );
     let all_enum_names = &symbol_table.all_enum_names;
 
     let ffi_ctx = TypeContext {
