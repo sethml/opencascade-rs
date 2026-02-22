@@ -452,13 +452,13 @@ Fixed-size arrays (`T (&)[N]`, `const T (&)[N]`, and `T arr[N]` parameter syntax
 | 12 | `Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)` | Protected nested template class — not exposed as a bindable type |
 | 10 | `Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)` | Protected nested template class — not exposed as a bindable type |
 | 10 | `Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)` | Protected nested template class — not exposed as a bindable type |
-| 3 | `GLXFBConfig` | X11/Linux display type — platform-specific |
-| 2 | `ProxPnt_Status const&` | Internal status/reference type in ProxPnt APIs |
-| 1 | `Graphic3d_ArrayOfIndexedMapOfStructure const&` | Internal collection alias not currently modeled as known type |
-| 1 | `Handle(NCollection_Shared<NCollection_Map<IMeshData_Edge *>>) const&` | Template-heavy internal handle alias in meshing internals |
-| 1 | `AVBufferRef*` | FFmpeg media type — external dependency |
-| 1 | `FT_Outline_ const*` | FreeType C type from font internals |
-| 1 | `FT_LibraryRec_*` | FreeType C type from font internals |
+| 5 | `WNT_HIDSpaceMouse const&` | Windows-only type, WNT module excluded |
+| 5 | `AVStream const&` | FFmpeg media type — external dependency |
+| 5 | `RWGltf_GltfOStreamWriter*` | RapidJSON-backed writer type — external dependency |
+| 4 | `GLXFBConfig` | X11/Linux display type — platform-specific |
+| 3 | `IMeshData_Edge *const const&` | Internal mesh pointer signature in specialized APIs |
+| 3 | `Aspect_XDisplay*` | X11/Linux display type — platform-specific |
+| 3 | `IMeshData_Face *const const&` | Internal mesh pointer signature in specialized APIs |
 
 ### Important Skipped Symbols
 
@@ -468,7 +468,7 @@ Most skipped symbols are in specialized or platform-specific areas. Current hots
 
 **Document Framework (1 symbol)** — `tdf` (1). Remaining unknown type is `TDF_LabelNode*` (internal raw pointer type not in binding set).
 
-**Shape Meshing (8 symbols)** — `b_rep_mesh` (3), `i_mesh_data` (5). Namespace-scoped IMeshData typedef aliases are now auto-resolved; remaining skips are one unresolved template form plus internal pointer/handle-heavy signatures.
+**Shape Meshing (8 symbols)** — `b_rep_mesh` (3), `i_mesh_data` (5). Namespace-scoped IMeshData typedef aliases are now auto-resolved; remaining skips are one unresolved template form (`NCollection_Sequence<const gp_Pnt2d *> const&` in `BRepMesh_Classifier::RegisterWire`) plus internal pointer/handle-heavy signatures.
 
 **Shape Analysis/Fix (0 symbols)** — Fully bound for current header set.
 
