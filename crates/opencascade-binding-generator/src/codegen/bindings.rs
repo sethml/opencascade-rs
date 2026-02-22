@@ -348,6 +348,9 @@ pub struct ReturnTypeBinding {
     pub enum_rust_type: Option<String>,
     /// If this is a raw pointer return to a known class type (const T* / T*)
     pub is_class_ptr_return: bool,
+    /// If this is a mutable reference to an enum (EnumType& → *mut i32).
+    /// The C++ wrapper returns int32_t* via reinterpret_cast.
+    pub is_mut_ref_enum_return: bool,
 }
 
 /// A resolved parameter binding (from SymbolTable, for inherited methods).
@@ -387,6 +390,9 @@ pub struct ResolvedReturnTypeBinding {
     pub enum_rust_type: Option<String>,
     /// If this is a raw pointer return to a known class type (const T* / T*)
     pub is_class_ptr_return: bool,
+    /// If this is a mutable reference to an enum (EnumType& → *mut i32).
+    /// The C++ wrapper returns int32_t* via reinterpret_cast.
+    pub is_mut_ref_enum_return: bool,
 }
 
 /// Pre-computed binding decisions for a single free function.
@@ -870,10 +876,7 @@ fn check_return_type_bindable(ret: &Type, ctx: &TypeContext) -> Result<(), Strin
             }
         }
     }
-    // MutRef to enum return type can't be bound — extern "C" expects int32_t& but C++ has EnumType&
-    if return_type_is_mut_ref_enum(ret, ctx.all_enums) {
-        return Err("return type is &mut enum (not representable in extern \"C\")".to_string());
-    }
+    // MutRef to enum return is now handled via C++ wrapper (returns int32_t* pointer).
     Ok(())
 }
 
@@ -937,22 +940,11 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> Result
     Ok(())
 }
 
-/// Check if a return type is a mutable reference to an enum.
-/// Extern "C" can't handle these: Rust side has `&mut i32` but C++ has `EnumType&`.
-fn return_type_is_mut_ref_enum(ty: &Type, all_enums: &HashSet<String>) -> bool {
-    if let Type::MutRef(inner) = ty {
-        if let Type::Class(name) = inner.as_ref() {
-            return all_enums.contains(name);
-        }
-    }
-    false
-}
-
 // ── Building ParamBinding / ReturnTypeBinding ───────────────────────────────
 
 /// Extract the enum C++ name from a type, unwrapping const references.
-/// MutRef to enums is NOT extracted — these are output parameters that need
-/// special handling (local variable + writeback), not supported yet.
+/// MutRef to enums is NOT extracted here — MutRef enum returns are handled
+/// separately in build_return_type_binding with is_mut_ref_enum_return.
 fn extract_enum_name(ty: &Type, all_enums: &HashSet<String>) -> Option<String> {
     match ty {
         Type::Class(name) if all_enums.contains(name) => Some(name.clone()),
@@ -1183,7 +1175,34 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
             enum_cpp_name: Some(enum_cpp_name),
             enum_rust_type,
             is_class_ptr_return: false,
+            is_mut_ref_enum_return: false,
         };
+    }
+
+    // Check if this return type is a &mut reference to an enum (e.g. TopAbs_Orientation&)
+    // These are bound as *mut i32 in FFI and &mut EnumType in reexport
+    if let Type::MutRef(inner) = ty {
+        if let Type::Class(name) = inner.as_ref() {
+            if ffi_ctx.all_enums.contains(name.as_str()) {
+                let enum_cpp_name = name.clone();
+                let enum_rust_type = ffi_ctx.enum_rust_types
+                    .and_then(|map| map.get(&enum_cpp_name))
+                    .cloned();
+                let reexport_type = enum_rust_type.clone()
+                    .map(|t| format!("&mut {}", t))
+                    .unwrap_or_else(|| "&mut i32".to_string());
+                return ReturnTypeBinding {
+                    rust_ffi_type: "*mut i32".to_string(),
+                    rust_reexport_type: reexport_type,
+                    cpp_type: "int32_t*".to_string(),
+                    needs_unique_ptr: false,
+                    enum_cpp_name: Some(enum_cpp_name),
+                    enum_rust_type,
+                    is_class_ptr_return: false,
+                    is_mut_ref_enum_return: true,
+                };
+            }
+        }
     }
 
     // Check if this return type is a class pointer (const T* or T* where T is a known class)
@@ -1212,6 +1231,7 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
             enum_cpp_name: None,
             enum_rust_type: None,
             is_class_ptr_return: true,
+            is_mut_ref_enum_return: false,
         };
     }
 
@@ -1229,6 +1249,7 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
         enum_cpp_name: None,
         enum_rust_type: None,
         is_class_ptr_return: false,
+        is_mut_ref_enum_return: false,
     }
 }
 
@@ -2902,18 +2923,29 @@ fn compute_inherited_method_bindings(
                         let enum_rust_type = rt.enum_cpp_name.as_ref()
                             .and_then(|n| symbol_table.enum_rust_types.get(n))
                             .cloned();
+                        let is_mut_ref_enum = rt.enum_cpp_name.is_some() && matches!(rt.original, Type::MutRef(_));
                         ResolvedReturnTypeBinding {
-                            rust_ffi_type: if rt.enum_cpp_name.is_some() { "i32".to_string() } else { map_return_type(&rt.original).rust_type },
-                            rust_reexport_type: if let Some(ref enum_name) = rt.enum_cpp_name {
+                            rust_ffi_type: if is_mut_ref_enum {
+                                "*mut i32".to_string()
+                            } else if rt.enum_cpp_name.is_some() {
+                                "i32".to_string()
+                            } else {
+                                map_return_type(&rt.original).rust_type
+                            },
+                            rust_reexport_type: if is_mut_ref_enum {
+                                let base = symbol_table.enum_rust_types.get(rt.enum_cpp_name.as_ref().unwrap()).cloned().unwrap_or_else(|| "i32".to_string());
+                                format!("&mut {}", base)
+                            } else if let Some(ref enum_name) = rt.enum_cpp_name {
                                 symbol_table.enum_rust_types.get(enum_name).cloned().unwrap_or_else(|| "i32".to_string())
                             } else {
                                 return_type_to_rust_string(&rt.original, reexport_ctx)
                             },
-                            cpp_type: rt.cpp_type.clone(),
+                            cpp_type: if is_mut_ref_enum { "int32_t*".to_string() } else { rt.cpp_type.clone() },
                             needs_unique_ptr: rt.needs_unique_ptr,
                             enum_cpp_name: rt.enum_cpp_name.clone(),
                             enum_rust_type,
                             is_class_ptr_return: rt.original.class_ptr_inner_name().is_some(),
+                            is_mut_ref_enum_return: is_mut_ref_enum,
                         }
                     });
 
@@ -3713,7 +3745,14 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                 fn_name = wm.ffi_fn_name
             )
             .unwrap();
-            if rt.enum_cpp_name.is_some() {
+            if rt.is_mut_ref_enum_return {
+                writeln!(
+                    output,
+                    "    return reinterpret_cast<int32_t*>(&(self_->{method}({args_str})));",
+                    method = wm.cpp_method_name
+                )
+                .unwrap();
+            } else if rt.enum_cpp_name.is_some() {
                 writeln!(
                     output,
                     "    return static_cast<int32_t>(self_->{method}({args_str}));",
@@ -3810,7 +3849,20 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         let call_expr = format!("self_->{}({})", wm.cpp_method_name, args_str);
 
         if let Some(ref rt) = wm.return_type {
-            if let Some(ref _enum_name) = rt.enum_cpp_name {
+            if rt.is_mut_ref_enum_return {
+                // Mut ref enum return: return pointer via reinterpret_cast
+                writeln!(
+                    output,
+                    "extern \"C\" int32_t* {fn_name}({params}) {{",
+                    fn_name = wm.ffi_fn_name
+                )
+                .unwrap();
+                writeln!(
+                    output,
+                    "    return reinterpret_cast<int32_t*>(&({call_expr}));"
+                )
+                .unwrap();
+            } else if let Some(ref _enum_name) = rt.enum_cpp_name {
                 // Enum return: cast to int32_t
                 writeln!(
                     output,
@@ -3886,12 +3938,21 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                 fn_name = wm.ffi_fn_name
             )
             .unwrap();
-            writeln!(
-                output,
-                "    return self_->{method}({args_str});",
-                method = wm.cpp_method_name
-            )
-            .unwrap();
+            if rt.is_mut_ref_enum_return {
+                writeln!(
+                    output,
+                    "    return reinterpret_cast<int32_t*>(&(self_->{method}({args_str})));",
+                    method = wm.cpp_method_name
+                )
+                .unwrap();
+            } else {
+                writeln!(
+                    output,
+                    "    return self_->{method}({args_str});",
+                    method = wm.cpp_method_name
+                )
+                .unwrap();
+            }
         } else {
             writeln!(
                 output,
@@ -3946,12 +4007,21 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                 fn_name = wm.ffi_fn_name
             )
             .unwrap();
-            writeln!(
-                output,
-                "    return self_->{method}({args_str});",
-                method = wm.cpp_method_name
-            )
-            .unwrap();
+            if rt.is_mut_ref_enum_return {
+                writeln!(
+                    output,
+                    "    return reinterpret_cast<int32_t*>(&(self_->{method}({args_str})));",
+                    method = wm.cpp_method_name
+                )
+                .unwrap();
+            } else {
+                writeln!(
+                    output,
+                    "    return self_->{method}({args_str});",
+                    method = wm.cpp_method_name
+                )
+                .unwrap();
+            }
         } else {
             writeln!(
                 output,
@@ -4001,6 +4071,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         // Determine return type
         let ret_type_cpp = match &wm.return_type {
             Some(rt) if rt.needs_unique_ptr => format!("{}*", rt.cpp_type),
+            Some(rt) if rt.is_mut_ref_enum_return => "int32_t*".to_string(),
             Some(rt) if rt.enum_cpp_name.is_some() => "int32_t".to_string(),
             Some(rt) => rt.cpp_type.clone(),
             None => "void".to_string(),
@@ -4045,6 +4116,13 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                     output,
                     "    auto result_ = new {cpp_type}(self_->{method}({args_str}));",
                     cpp_type = rt.cpp_type,
+                    method = wm.cpp_method_name,
+                )
+                .unwrap();
+            } else if rt.is_mut_ref_enum_return {
+                writeln!(
+                    output,
+                    "    auto result_ = reinterpret_cast<int32_t*>(&(self_->{method}({args_str})));",
                     method = wm.cpp_method_name,
                 )
                 .unwrap();
@@ -4133,12 +4211,21 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                 fn_name = wm.ffi_fn_name
             )
             .unwrap();
-            writeln!(
-                output,
-                "    return self_->{method}({args_str});",
-                method = wm.cpp_method_name
-            )
-            .unwrap();
+            if rt.is_mut_ref_enum_return {
+                writeln!(
+                    output,
+                    "    return reinterpret_cast<int32_t*>(&(self_->{method}({args_str})));",
+                    method = wm.cpp_method_name
+                )
+                .unwrap();
+            } else {
+                writeln!(
+                    output,
+                    "    return self_->{method}({args_str});",
+                    method = wm.cpp_method_name
+                )
+                .unwrap();
+            }
         } else {
             writeln!(
                 output,
@@ -4193,6 +4280,8 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             // Static methods with &mut enum output params need preamble/postamble
             let ret_type_cpp = if needs_up {
                 format!("{}*", ret_type)
+            } else if sm.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return) {
+                "int32_t*".to_string()
             } else if has_enum_return {
                 "int32_t".to_string()
             } else {
@@ -4227,6 +4316,13 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                         output,
                         "    auto result_ = new {cpp_type}({cn}::{method}({args_str}));",
                         cpp_type = rt.cpp_type,
+                        method = sm.cpp_method_name,
+                    )
+                    .unwrap();
+                } else if sm.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return) {
+                    writeln!(
+                        output,
+                        "    auto result_ = reinterpret_cast<int32_t*>(&({cn}::{method}({args_str})));",
                         method = sm.cpp_method_name,
                     )
                     .unwrap();
@@ -4296,6 +4392,19 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             writeln!(
                 output,
                 "    return new {ret_type}({cn}::{method}({args_str}));",
+                method = sm.cpp_method_name
+            )
+            .unwrap();
+        } else if sm.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return) {
+            writeln!(
+                output,
+                "extern \"C\" int32_t* {fn_name}({params_str}) {{",
+                fn_name = sm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return reinterpret_cast<int32_t*>(&({cn}::{method}({args_str})));",
                 method = sm.cpp_method_name
             )
             .unwrap();
@@ -4466,6 +4575,8 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             Some(rt) => {
                 if rt.needs_unique_ptr {
                     (format!("{}*", rt.cpp_type), true)
+                } else if rt.is_mut_ref_enum_return {
+                    ("int32_t*".to_string(), false)
                 } else if rt.enum_cpp_name.is_some() {
                     ("int32_t".to_string(), false)
                 } else {
@@ -4509,6 +4620,13 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                         output,
                         "    auto result_ = new {inner_type}(self->{method}({args_str}));",
                         inner_type = rt.cpp_type,
+                        method = im.cpp_method_name
+                    )
+                    .unwrap();
+                } else if im.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return) {
+                    writeln!(
+                        output,
+                        "    auto result_ = reinterpret_cast<int32_t*>(&(self->{method}({args_str})));",
                         method = im.cpp_method_name
                     )
                     .unwrap();
@@ -4561,6 +4679,13 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                     output,
                     "    return new {inner_type}(self->{method}({args_str}));",
                     inner_type = im.return_type.as_ref().unwrap().cpp_type,
+                    method = im.cpp_method_name
+                )
+                .unwrap();
+            } else if im.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return) {
+                writeln!(
+                    output,
+                    "    return reinterpret_cast<int32_t*>(&(self->{method}({args_str})));",
                     method = im.cpp_method_name
                 )
                 .unwrap();
@@ -4730,7 +4855,15 @@ pub(super) fn wrap_body_with_postamble(body: &str, postamble: &str, has_return: 
 
 /// Build the body expression for a re-export method call.
 /// Handles the conversion from FFI raw pointer returns to Rust references/OwnedPtr.
-pub(super) fn build_reexport_body(raw_call: &str, reexport_type: Option<&str>, is_enum: Option<&str>, needs_owned_ptr: bool, is_class_ptr_return: bool) -> String {
+pub(super) fn build_reexport_body(raw_call: &str, reexport_type: Option<&str>, is_enum: Option<&str>, needs_owned_ptr: bool, is_class_ptr_return: bool, is_mut_ref_enum_return: bool) -> String {
+    if is_mut_ref_enum_return {
+        // &mut enum return: FFI returns *mut i32, cast to *mut EnumType and dereference
+        if let Some(enum_type) = is_enum {
+            return format!("unsafe {{ &mut *({} as *mut {}) }}", raw_call, enum_type);
+        } else {
+            return format!("unsafe {{ &mut *({}) }}", raw_call);
+        }
+    }
     if is_class_ptr_return {
         // Class pointer returns are bound as Option<&T> / Option<&mut T>.
         // The FFI returns a raw pointer; we null-check and convert.
@@ -4899,7 +5032,8 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let prelude = cstr_prelude_params(&wm.params, "        ");
 
         let is_class_ptr_ret = wm.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
-        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret);
+        let is_mut_ref_enum_ret = wm.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return);
+        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret, is_mut_ref_enum_ret);
         let postamble = mut_ref_enum_postamble_params(&wm.params, "        ");
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);
@@ -4966,7 +5100,8 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let prelude = cstr_prelude_params(&dm.params, "        ");
 
         let is_class_ptr_ret = dm.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
-        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret);
+        let is_mut_ref_enum_ret = dm.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return);
+        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret, is_mut_ref_enum_ret);
         let postamble = mut_ref_enum_postamble_params(&dm.params, "        ");
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);
@@ -5032,7 +5167,8 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let prelude = cstr_prelude_params(&sm.params, "        ");
 
         let is_class_ptr_ret = sm.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
-        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret);
+        let is_mut_ref_enum_ret = sm.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return);
+        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret, is_mut_ref_enum_ret);
         let postamble = mut_ref_enum_postamble_params(&sm.params, "        ");
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);
@@ -5131,7 +5267,8 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let prelude = cstr_prelude_resolved(&im.params, &param_names);
 
         let is_class_ptr_ret = im.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
-        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret);
+        let is_mut_ref_enum_ret = im.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return);
+        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret, is_mut_ref_enum_ret);
         let postamble = mut_ref_enum_postamble_resolved(&im.params, &param_names, "        ");
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);

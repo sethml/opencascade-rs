@@ -3970,6 +3970,14 @@ impl SurfData {
         unsafe { crate::ffi::ChFiDS_SurfData_set_index_of_c2(self as *mut Self, Index) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:81 - `ChFiDS_SurfData::ChangeOrientation()`
+    pub fn change_orientation(&mut self) -> &mut crate::top_abs::Orientation {
+        unsafe {
+            &mut *(crate::ffi::ChFiDS_SurfData_change_orientation(self as *mut Self)
+                as *mut crate::top_abs::Orientation)
+        }
+    }
+
     /// **Source:** `ChFiDS_SurfData.hxx`:83 - `ChFiDS_SurfData::ChangeInterferenceOnS1()`
     pub fn change_interference_on_s1(&mut self) -> &mut FaceInterference {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_interference_on_s1(self as *mut Self)) }
@@ -4268,12 +4276,6 @@ impl HandleChFiDSSurfData {
         }
     }
 }
-
-// ── Skipped symbols for SurfData (1 total) ──
-// SKIPPED: **Source:** `ChFiDS_SurfData.hxx`:81 - `ChFiDS_SurfData::ChangeOrientation`
-//   Reason: return type is &mut enum (not representable in extern "C")
-//   // pub fn change_orientation(&mut self) -> &mut Orientation;
-//
 
 // ========================
 // Additional type re-exports

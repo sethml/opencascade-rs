@@ -10048,6 +10048,15 @@ impl ArgumentAnalyzer {
         unsafe { &*(crate::ffi::BOPAlgo_ArgumentAnalyzer_get_shape2(self as *const Self)) }
     }
 
+    /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:52 - `BOPAlgo_ArgumentAnalyzer::OperationType()`
+    /// returns ref
+    pub fn operation_type(&mut self) -> &mut crate::bop_algo::Operation {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_ArgumentAnalyzer_operation_type(self as *mut Self)
+                as *mut crate::bop_algo::Operation)
+        }
+    }
+
     /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:55 - `BOPAlgo_ArgumentAnalyzer::StopOnFirstFaulty()`
     /// returns ref
     pub fn stop_on_first_faulty(&mut self) -> &mut bool {
@@ -10276,13 +10285,6 @@ impl ArgumentAnalyzer {
         unsafe { crate::ffi::BOPAlgo_ArgumentAnalyzer_inherited_UseOBB(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for ArgumentAnalyzer (1 total) ──
-// SKIPPED: **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:52 - `BOPAlgo_ArgumentAnalyzer::OperationType`
-//   method: returns ref
-//   Reason: return type is &mut enum (not representable in extern "C")
-//   // pub fn operation_type(&mut self) -> &mut Operation;
-//
 
 // ========================
 // From BOPAlgo_BOP.hxx

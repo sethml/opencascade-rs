@@ -7427,6 +7427,14 @@ impl Pave {
         unsafe { crate::ffi::TopOpeBRepBuild_Pave_parameter_real(self as *mut Self, Par) }
     }
 
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:57 - `TopOpeBRepBuild_Pave::InterferenceType()`
+    pub fn interference_type(&mut self) -> &mut crate::top_ope_b_rep_ds::Kind {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepBuild_Pave_interference_type(self as *mut Self)
+                as *mut crate::top_ope_b_rep_ds::Kind)
+        }
+    }
+
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:59 - `TopOpeBRepBuild_Pave::IsShape()`
     pub fn is_shape(&self) -> bool {
         unsafe { crate::ffi::TopOpeBRepBuild_Pave_is_shape(self as *const Self) }
@@ -7586,12 +7594,6 @@ impl HandleTopOpeBRepBuildPave {
         }
     }
 }
-
-// ── Skipped symbols for Pave (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_Pave.hxx`:57 - `TopOpeBRepBuild_Pave::InterferenceType`
-//   Reason: return type is &mut enum (not representable in extern "C")
-//   // pub fn interference_type(&mut self) -> &mut Kind;
-//
 
 // ========================
 // From TopOpeBRepBuild_PaveClassifier.hxx

@@ -203,7 +203,13 @@ fn generate_function_wrappers(
 
             // Determine return pattern from pre-computed return type binding
             if let Some(ref rt) = func.return_type {
-                if rt.enum_cpp_name.is_some() {
+                if rt.is_mut_ref_enum_return {
+                    writeln!(
+                        output,
+                        "extern \"C\" int32_t* {}({}) {{ return reinterpret_cast<int32_t*>(&({})); }}",
+                        wrapper_name, params_str, call
+                    ).unwrap();
+                } else if rt.enum_cpp_name.is_some() {
                     writeln!(
                         output,
                         "extern \"C\" {} {}({}) {{ return static_cast<int32_t>({}); }}",

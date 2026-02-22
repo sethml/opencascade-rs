@@ -1639,6 +1639,14 @@ impl PntFace {
         }
     }
 
+    /// **Source:** `LocOpe_PntFace.hxx`:63 - `LocOpe_PntFace::ChangeOrientation()`
+    pub fn change_orientation(&mut self) -> &mut crate::top_abs::Orientation {
+        unsafe {
+            &mut *(crate::ffi::LocOpe_PntFace_change_orientation(self as *mut Self)
+                as *mut crate::top_abs::Orientation)
+        }
+    }
+
     /// **Source:** `LocOpe_PntFace.hxx`:65 - `LocOpe_PntFace::Parameter()`
     pub fn parameter(&self) -> f64 {
         unsafe { crate::ffi::LocOpe_PntFace_parameter(self as *const Self) }
@@ -1654,12 +1662,6 @@ impl PntFace {
         unsafe { crate::ffi::LocOpe_PntFace_v_parameter(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for PntFace (1 total) ──
-// SKIPPED: **Source:** `LocOpe_PntFace.hxx`:63 - `LocOpe_PntFace::ChangeOrientation`
-//   Reason: return type is &mut enum (not representable in extern "C")
-//   // pub fn change_orientation(&mut self) -> &mut Orientation;
-//
 
 // ========================
 // From LocOpe_Prism.hxx
