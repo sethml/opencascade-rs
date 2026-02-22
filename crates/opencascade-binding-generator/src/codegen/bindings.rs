@@ -996,41 +996,28 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
         }
     }
 
-    // Check for const char*& output params (Standard_CString&) — these are string output parameters.
-    // MutRef(ConstPtr(Class("char"))) maps to *mut *const c_char in FFI and &mut *const c_char in reexport.
+    // const char*& output params (Standard_CString&): maps to *mut *const c_char in FFI.
     // C++ wrapper takes char const** and dereferences to get the char*& lvalue.
-    if let Type::MutRef(inner) = ty {
-        if let Type::ConstPtr(inner2) = inner.as_ref() {
-            if let Type::Class(class_name) = inner2.as_ref() {
-                if class_name == "char" {
-                    return ParamBinding {
-                        cpp_name: cpp_name.clone(),
-                        rust_name: rust_name.clone(),
-                        rust_ffi_type: "*mut *const std::ffi::c_char".to_string(),
-                        rust_reexport_type: "&mut *const std::ffi::c_char".to_string(),
-                        cpp_type: "char const**".to_string(),
-                        cpp_arg_expr: format!("*{}", cpp_name),
-                        enum_rust_type: None,
-                        mut_ref_enum_cpp_name: None,
-                        mut_ref_enum_rust_type: None,
-                        is_nullable_ptr: false,
-                        is_class_ptr: false,
-                    };
-                }
-            }
-        }
+    if ty.is_string_ref_output() {
+        return ParamBinding {
+            cpp_name: cpp_name.clone(),
+            rust_name: rust_name.clone(),
+            rust_ffi_type: "*mut *const std::ffi::c_char".to_string(),
+            rust_reexport_type: "&mut *const std::ffi::c_char".to_string(),
+            cpp_type: "char const**".to_string(),
+            cpp_arg_expr: format!("*{}", cpp_name),
+            enum_rust_type: None,
+            mut_ref_enum_cpp_name: None,
+            mut_ref_enum_rust_type: None,
+            is_nullable_ptr: false,
+            is_class_ptr: false,
+        };
     }
 
-    // Check for const char* const& input params — strip the const ref wrapper and pass as const char*.
-    // ConstRef(ConstPtr(Class("char"))) becomes ConstPtr(Class("char")) which maps to &str.
-    if let Type::ConstRef(inner) = ty {
-        if let Type::ConstPtr(inner2) = inner.as_ref() {
-            if let Type::Class(class_name) = inner2.as_ref() {
-                if class_name == "char" {
-                    // Delegate to the normal ConstPtr(Class("char")) path — use original param name
-                    return build_param_binding(name, inner.as_ref(), is_nullable, ffi_ctx, reexport_ctx);
-                }
-            }
+    // const char* const& input params: strip the const ref and pass as const char* (&str).
+    if ty.is_string_ref_input() {
+        if let Type::ConstRef(inner) = ty {
+            return build_param_binding(name, inner.as_ref(), is_nullable, ffi_ctx, reexport_ctx);
         }
     }
 

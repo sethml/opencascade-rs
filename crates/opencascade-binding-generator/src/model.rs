@@ -542,6 +542,32 @@ impl Type {
         }
     }
 
+    /// Check if this type is a mutable string ref output param: `const char*&` (MutRef(ConstPtr(Class("char")))).
+    /// These are Standard_CString& output parameters in C++.
+    pub fn is_string_ref_output(&self) -> bool {
+        if let Type::MutRef(inner) = self {
+            if let Type::ConstPtr(inner2) = inner.as_ref() {
+                if let Type::Class(name) = inner2.as_ref() {
+                    return name == "char";
+                }
+            }
+        }
+        false
+    }
+
+    /// Check if this type is a const string ref input param: `const char* const&` (ConstRef(ConstPtr(Class("char")))).
+    /// These are const Standard_CString& parameters in C++.
+    pub fn is_string_ref_input(&self) -> bool {
+        if let Type::ConstRef(inner) = self {
+            if let Type::ConstPtr(inner2) = inner.as_ref() {
+                if let Type::Class(name) = inner2.as_ref() {
+                    return name == "char";
+                }
+            }
+        }
+        false
+    }
+
     /// Check if this is a void pointer type (Standard_Address = void*, or literal void*)
     /// Methods with these types are bound as `unsafe fn` with `*mut c_void` types.
     pub fn is_void_ptr(&self) -> bool {
