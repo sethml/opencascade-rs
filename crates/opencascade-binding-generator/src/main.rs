@@ -78,6 +78,25 @@ fn manual_include_directive(output_dir: &std::path::Path, rust_module_name: &str
     }
 }
 
+fn parse_class_method_pairs(entries: &[String], field_name: &str) -> HashSet<(String, String)> {
+    entries
+        .iter()
+        .filter_map(|s| {
+            if let Some(pos) = s.rfind("::") {
+                let class_name = s[..pos].to_string();
+                let method_name = s[pos + 2..].to_string();
+                Some((class_name, method_name))
+            } else {
+                eprintln!(
+                    "Warning: invalid {} entry (expected ClassName::MethodName): {}",
+                    field_name, s
+                );
+                None
+            }
+        })
+        .collect()
+}
+
 
 fn main() -> Result<()> {
     let args = Args::parse();
@@ -93,7 +112,7 @@ fn main() -> Result<()> {
     }
 
     // Determine explicit headers from config file or CLI arguments
-    let (explicit_headers, resolve_deps, exclude_set, exclude_modules, exclude_methods, non_allocatable_classes, manual_type_names, template_instantiations) = if let Some(ref config_path) = args.config {
+    let (explicit_headers, resolve_deps, exclude_set, exclude_modules, exclude_methods, ambiguous_methods, non_allocatable_classes, manual_type_names, template_instantiations, occt_alias_type_overrides) = if let Some(ref config_path) = args.config {
         let cfg = config::load_config(config_path)?;
         let resolve = cfg.general.resolve_deps;
 
@@ -117,31 +136,41 @@ fn main() -> Result<()> {
         println!("Loaded config: {} module patterns, {} exclude module patterns, {} individual headers, {} header exclusions -> {} headers",
             cfg.modules.len(), cfg.exclude_modules.len(), cfg.include_headers.len(), cfg.exclude_headers.len(), headers.len());
 
-        // Parse exclude_methods into (ClassName, MethodName) pairs.
-        // Uses rsplit to support nested classes: "Outer::Inner::Method" splits
-        // as class="Outer::Inner", method="Method".
-        let method_exclusions: HashSet<(String, String)> = cfg.exclude_methods
-            .iter()
-            .filter_map(|s| {
-                if let Some(pos) = s.rfind("::") {
-                    let class_name = s[..pos].to_string();
-                    let method_name = s[pos + 2..].to_string();
-                    Some((class_name, method_name))
-                } else {
-                    eprintln!("Warning: invalid exclude_methods entry (expected ClassName::MethodName): {}", s);
-                    None
-                }
-            })
-            .collect();
+        let method_exclusions = parse_class_method_pairs(&cfg.exclude_methods, "exclude_methods");
+        let ambiguous_method_exclusions =
+            parse_class_method_pairs(&cfg.ambiguous_methods, "ambiguous_methods");
 
         let excludes: std::collections::HashSet<String> = cfg.exclude_headers.into_iter().collect();
         let exclude_mods: Vec<String> = cfg.exclude_modules;
         let non_alloc_cls: HashSet<String> = cfg.non_allocatable_classes.into_iter().collect();
         let manual_names: HashSet<String> = cfg.manual_types.keys().cloned().collect();
         let tmpl_inst = cfg.template_instantiations;
-        (headers, resolve, excludes, exclude_mods, method_exclusions, non_alloc_cls, manual_names, tmpl_inst)
+        let occt_alias_overrides = cfg.occt_alias_type_overrides;
+        (
+            headers,
+            resolve,
+            excludes,
+            exclude_mods,
+            method_exclusions,
+            ambiguous_method_exclusions,
+            non_alloc_cls,
+            manual_names,
+            tmpl_inst,
+            occt_alias_overrides,
+        )
     } else if !args.headers.is_empty() {
-        (args.headers.clone(), args.resolve_deps, std::collections::HashSet::new(), Vec::new(), HashSet::new(), HashSet::new(), HashSet::new(), HashMap::new())
+        (
+            args.headers.clone(),
+            args.resolve_deps,
+            std::collections::HashSet::new(),
+            Vec::new(),
+            HashSet::new(),
+            HashSet::new(),
+            HashSet::new(),
+            HashSet::new(),
+            HashMap::new(),
+            HashMap::new(),
+        )
     } else {
         anyhow::bail!("Either --config <file.toml> or positional header arguments are required");
     };
@@ -206,7 +235,12 @@ fn main() -> Result<()> {
     };
 
     println!("Parsing {} headers...", headers_to_process.len());
-    let mut parsed = parser::parse_headers(&headers_to_process, &args.include_dirs, args.verbose)?;
+    let mut parsed = parser::parse_headers(
+        &headers_to_process,
+        &args.include_dirs,
+        &occt_alias_type_overrides,
+        args.verbose,
+    )?;
 
     // Rewrite template Handle types to alias names based on template_instantiations config.
     // This transforms e.g. Type::Handle("BVH_Builder<double, 3>") into
@@ -488,7 +522,7 @@ fn main() -> Result<()> {
     }
 
     // Generate FFI output
-    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &non_allocatable_classes, &handle_able_classes, &manual_type_names, &template_instantiations)
+    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers, &exclude_methods, &ambiguous_methods, &non_allocatable_classes, &handle_able_classes, &manual_type_names, &template_instantiations)
 }
 
 /// Rewrite template spellings in Handle types to alias names.
@@ -889,6 +923,7 @@ fn generate_output(
     symbol_table: &resolver::SymbolTable,
     known_headers: &HashSet<String>,
     exclude_methods: &HashSet<(String, String)>,
+    ambiguous_methods: &HashSet<(String, String)>,
     non_allocatable_classes: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
     manual_type_names: &HashSet<String>,
@@ -920,7 +955,7 @@ fn generate_output(
         extra_typedef_names.insert(config::template_alias_name(spelling));
     }
     let mut all_bindings =
-        codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names, exclude_methods, manual_type_names, &handle_able_classes);
+        codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names, exclude_methods, ambiguous_methods, manual_type_names, &handle_able_classes);
 
     // Mark non-allocatable classes as having protected destructors so both the
     // C++ wrappers (which check has_protected_destructor) and the Rust FFI side

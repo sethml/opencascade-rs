@@ -59,6 +59,11 @@ pub struct BindingConfig {
     #[serde(default)]
     pub exclude_methods: Vec<String>,
 
+    /// Methods that are known to produce ambiguous overload errors in generated C++ wrappers.
+    /// Format: "ClassName::MethodName".
+    #[serde(default)]
+    pub ambiguous_methods: Vec<String>,
+
     /// Non-allocatable classes: suppress constructors and destructors (including
     /// CppDeletable/ToOwned), but keep the opaque struct and all methods.
     /// Use for classes with protected/hidden operator new/delete that can still
@@ -80,6 +85,12 @@ pub struct BindingConfig {
     /// Format: `"Template<Args>" = { header = "Header.hxx", module = "Module", handle = true }`
     #[serde(default)]
     pub template_instantiations: std::collections::HashMap<String, TemplateInstantiation>,
+
+    /// Canonical OCCT type spellings that should be rewritten to public aliases during parsing.
+    /// This is used when clang reports internal template spellings that differ from public typedef names.
+    /// Format: "CanonicalTypeSpelling" = "PublicAliasName"
+    #[serde(default)]
+    pub occt_alias_type_overrides: std::collections::HashMap<String, String>,
 }
 
 /// A manually-defined opaque type referenced by auto-generated bindings.

@@ -920,14 +920,8 @@ fn stub_return_type_string(ty: &Type) -> String {
     }
 }
 
-/// Common filter for instance methods (both direct and wrapper)
-/// Methods that cause ambiguous overload errors due to multiple inheritance.
-/// Format: (class_name, method_name)
-/// TODO: Add to bindings.toml or fix in some other way.
-const AMBIGUOUS_METHODS: &[(&str, &str)] = &[
-    ("BOPAlgo_ParallelAlgo", "Perform"),
-];
-
+/// Common filter for instance methods (both direct and wrapper).
+/// Methods listed in `ambiguous_methods` are skipped to avoid C++ overload ambiguity.
 /// Check parameters for unknown types, nullable pointer inner types, and class pointer inner types.
 /// Shared by is_method_bindable, is_constructor_bindable, and is_static_method_bindable.
 fn check_params_bindable(params: &[Param], ctx: &TypeContext) -> Result<(), String> {
@@ -995,15 +989,20 @@ fn check_return_type_bindable(ret: &Type, ctx: &TypeContext) -> Result<(), Strin
     Ok(())
 }
 
-fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> Result<(), String> {
+fn is_method_bindable(
+    method: &Method,
+    ctx: &TypeContext,
+    class_name: &str,
+    ambiguous_methods: &HashSet<(String, String)>,
+) -> Result<(), String> {
     if method.has_unbindable_types() {
         let unbindable_details = describe_unbindable_types_method(method);
         return Err(format!("has unbindable types: {}", unbindable_details));
     }
     // const char*& and const char* const& params are now handled via build_param_binding.
     // Skip methods that cause ambiguous call errors in C++ wrappers
-    if AMBIGUOUS_METHODS.iter().any(|(c, m)| *c == class_name && *m == method.name) {
-        return Err("causes ambiguous overload in C++ (listed in AMBIGUOUS_METHODS)".to_string());
+    if ambiguous_methods.contains(&(class_name.to_string(), method.name.clone())) {
+        return Err("causes ambiguous overload in C++ (listed in bindings.toml ambiguous_methods)".to_string());
     }
     // Const/mut return mismatch is now handled via C++ wrappers (ConstMutReturnFix).
     // &mut enum output params are now handled via C++ wrappers (MutRefEnumParam).
@@ -1636,6 +1635,7 @@ pub fn compute_class_bindings(
     all_classes_by_name: &HashMap<String, &ParsedClass>,
     reexport_ctx: Option<&ReexportTypeContext>,
     exclude_methods: &HashSet<(String, String)>,
+    ambiguous_methods: &HashSet<(String, String)>,
 ) -> ClassBindings {
     // Flatten C++ nested class names (e.g., "Parent::Child" -> "Parent_Child")
     // for use as valid Rust identifiers in ffi.rs
@@ -1741,7 +1741,7 @@ pub fn compute_class_bindings(
             });
             continue;
         }
-        if let Err(reason) = is_method_bindable(method, ffi_ctx, cpp_name) {
+        if let Err(reason) = is_method_bindable(method, ffi_ctx, cpp_name, ambiguous_methods) {
             skipped_symbols.push(SkippedSymbol {
                 kind: "method",
                 module: class.module.clone(),
@@ -3257,6 +3257,7 @@ pub fn compute_all_class_bindings(
     collection_names: &HashSet<String>,
     extra_typedef_names: &HashSet<String>,
     exclude_methods: &HashSet<(String, String)>,
+    ambiguous_methods: &HashSet<(String, String)>,
     manual_type_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
 ) -> Vec<ClassBindings> {
@@ -3298,7 +3299,7 @@ pub fn compute_all_class_bindings(
                 class_public_info: &class_public_info,
                 current_module_rust: crate::module_graph::module_to_rust_name(&class.module),
             };
-            compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes, &all_classes_by_name, Some(&reexport_ctx), exclude_methods)
+            compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes, &all_classes_by_name, Some(&reexport_ctx), exclude_methods, ambiguous_methods)
         })
         .collect()
 }
@@ -5616,6 +5617,7 @@ mod tests {
             &all_classes_by_name,
             None,
             &HashSet::new(),
+            &HashSet::new(),
         );
 
         assert_eq!(bindings.cpp_name, "gp_Pnt");
@@ -5705,6 +5707,7 @@ mod tests {
             &handle_able_classes,
             &all_classes_by_name,
             None,
+            &HashSet::new(),
             &HashSet::new(),
         );
 

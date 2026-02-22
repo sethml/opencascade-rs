@@ -9956,7 +9956,7 @@ impl ParallelAlgo {
 // ── Skipped symbols for ParallelAlgo (1 total) ──
 // SKIPPED: **Source:** `BOPAlgo_Algo.hxx`:94 - `BOPAlgo_ParallelAlgo::Perform`
 //   method: The main method to implement the operation
-//   Reason: causes ambiguous overload in C++ (listed in AMBIGUOUS_METHODS)
+//   Reason: causes ambiguous overload in C++ (listed in bindings.toml ambiguous_methods)
 //   // pub fn perform(&mut self);
 //
 

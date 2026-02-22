@@ -88,6 +88,12 @@ exclude_methods = [
     "Poly_CoherentTriPtr::Poly_CoherentTriPtr",
 ]
 
+# Methods that are known to trigger ambiguous overload errors in generated C++ wrappers.
+# Format: "ClassName::MethodName".
+ambiguous_methods = [
+    "BOPAlgo_ParallelAlgo::Perform",
+]
+
 # Non-allocatable classes: suppress constructors and destructors (including
 # CppDeletable/ToOwned) but keep the opaque struct and all methods.
 # Use for classes with protected/hidden operator new/delete, forward-declared
@@ -97,6 +103,14 @@ non_allocatable_classes = [
     "Message_LazyProgressScope",           # Protected operator new/delete (protected inheritance)
     "Poly_CoherentTriPtr",                 # Hidden operator new/delete (DEFINE_NCOLLECTION_ALLOC)
 ]
+
+
+# Canonical OCCT type spellings that should be rewritten to public typedef aliases.
+# This is used when clang reports internal template names in canonical form.
+[occt_alias_type_overrides]
+"ShapePersistent_Geom::geometryBase<Geom_Curve>" = "ShapePersistent_Geom::Curve"
+"ShapePersistent_Geom::geometryBase<Geom_Surface>" = "ShapePersistent_Geom::Surface"
+"ShapePersistent_Geom::geometryBase<Geom2d_Curve>" = "ShapePersistent_Geom2d::Curve"
 
 [general]
 resolve_deps = true

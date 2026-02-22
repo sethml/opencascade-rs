@@ -55,6 +55,10 @@ thread_local! {
     /// These are tracked separately so callers can selectively add them to
     /// known-type sets without importing every collected template typedef name.
     static NAMESPACE_TYPEDEF_NAMES: RefCell<HashSet<String>> = RefCell::new(HashSet::new());
+
+    /// Map of canonical OCCT type spellings to public alias names loaded from config.
+    /// Keys are whitespace-normalized to match `normalize_template_spelling()` lookups.
+    static OCCT_ALIAS_TYPE_OVERRIDES: RefCell<HashMap<String, String>> = RefCell::new(HashMap::new());
 }
 
 /// Strip whitespace from a C++ type spelling for typedef map key/lookup.
@@ -68,12 +72,13 @@ fn normalize_template_spelling(s: &str) -> String {
 /// but clang may report canonical inner names like `ShapePersistent_Geom::geometryBase<Geom_Curve>`.
 /// Rewriting these to alias names keeps them bindable against the known-type set.
 fn normalize_occt_alias_type_name(type_name: &str) -> String {
-    match normalize_template_spelling(type_name).as_str() {
-        "ShapePersistent_Geom::geometryBase<Geom_Curve>" => "ShapePersistent_Geom::Curve".to_string(),
-        "ShapePersistent_Geom::geometryBase<Geom_Surface>" => "ShapePersistent_Geom::Surface".to_string(),
-        "ShapePersistent_Geom::geometryBase<Geom2d_Curve>" => "ShapePersistent_Geom2d::Curve".to_string(),
-        _ => type_name.trim().to_string(),
-    }
+    let key = normalize_template_spelling(type_name);
+    OCCT_ALIAS_TYPE_OVERRIDES.with(|m| {
+        m.borrow()
+            .get(&key)
+            .cloned()
+            .unwrap_or_else(|| type_name.trim().to_string())
+    })
 }
 
 fn class_type(type_name: &str) -> Type {
@@ -371,6 +376,16 @@ fn lookup_simple_typedef(name: &str) -> Option<String> {
     SIMPLE_TYPEDEF_MAP.with(|m| m.borrow().get(name).cloned())
 }
 
+fn set_occt_alias_type_overrides(overrides: &HashMap<String, String>) {
+    let normalized: HashMap<String, String> = overrides
+        .iter()
+        .map(|(from, to)| (normalize_template_spelling(from), to.trim().to_string()))
+        .collect();
+    OCCT_ALIAS_TYPE_OVERRIDES.with(|m| {
+        *m.borrow_mut() = normalized;
+    });
+}
+
 
 
 /// Parse a collection of OCCT header files
@@ -381,12 +396,15 @@ fn lookup_simple_typedef(name: &str) -> Option<String> {
 pub fn parse_headers(
     headers: &[impl AsRef<Path>],
     include_dirs: &[impl AsRef<Path>],
+    occt_alias_type_overrides: &HashMap<String, String>,
     verbose: bool,
 ) -> Result<Vec<ParsedHeader>> {
     let clang =
         Clang::new().map_err(|e| anyhow::anyhow!("Failed to initialize libclang: {}", e))?;
     let index = Index::new(&clang, false, true);
 
+
+    set_occt_alias_type_overrides(occt_alias_type_overrides);
     // Build canonical path set for target headers
     let header_paths: Vec<std::path::PathBuf> = headers
         .iter()
