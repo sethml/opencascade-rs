@@ -1816,10 +1816,21 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         }
     }
 
-    // Handle C-style array types: ConstantArray (int[16]) and IncompleteArray (int[]).
-    // In function parameters, arrays decay to pointers. Fixed-size array references
-    // are handled above in the LValueReference branch.
-    if kind == TypeKind::ConstantArray || kind == TypeKind::IncompleteArray {
+    // Handle C-style array types.
+    // - ConstantArray (int[16]) keeps the fixed size in the IR so we can expose
+    //   it as Rust &[T; N] / &mut [T; N] in re-exports while lowering to pointers
+    //   at the FFI boundary.
+    // - IncompleteArray (int[]) remains pointer-like.
+    if kind == TypeKind::ConstantArray {
+        if let Some(elem) = clang_type.get_element_type() {
+            let inner = parse_type(&elem);
+            if let Some(size) = parse_fixed_array_size(&spelling) {
+                return Type::FixedArray(Box::new(inner), size);
+            }
+            return Type::Class(spelling);
+        }
+    }
+    if kind == TypeKind::IncompleteArray {
         if let Some(elem) = clang_type.get_element_type() {
             let inner = parse_type(&elem);
             return Type::MutPtr(Box::new(inner));

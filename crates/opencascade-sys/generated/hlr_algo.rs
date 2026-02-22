@@ -9,36 +9,16 @@
 /// **Source:** `HLRAlgo.hxx`:51 - `HLRAlgo::UpdateMinMax`
 /// Iterator  on the  visible or  hidden  parts of  an
 /// EdgeStatus.
-pub unsafe fn update_min_max(x: f64, y: f64, z: f64, Min: Option<&mut f64>, Max: Option<&mut f64>) {
-    unsafe {
-        crate::ffi::HLRAlgo_update_min_max(
-            x,
-            y,
-            z,
-            Min.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            Max.map_or(std::ptr::null_mut(), |r| r as *mut _),
-        )
-    }
+pub fn update_min_max(x: f64, y: f64, z: f64, Min: &mut [f64; 16], Max: &mut [f64; 16]) {
+    unsafe { crate::ffi::HLRAlgo_update_min_max(x, y, z, Min.as_mut_ptr(), Max.as_mut_ptr()) }
 }
 /// **Source:** `HLRAlgo.hxx`:57 - `HLRAlgo::EnlargeMinMax`
-pub unsafe fn enlarge_min_max(tol: f64, Min: Option<&mut f64>, Max: Option<&mut f64>) {
-    unsafe {
-        crate::ffi::HLRAlgo_enlarge_min_max(
-            tol,
-            Min.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            Max.map_or(std::ptr::null_mut(), |r| r as *mut _),
-        )
-    }
+pub fn enlarge_min_max(tol: f64, Min: &mut [f64; 16], Max: &mut [f64; 16]) {
+    unsafe { crate::ffi::HLRAlgo_enlarge_min_max(tol, Min.as_mut_ptr(), Max.as_mut_ptr()) }
 }
 /// **Source:** `HLRAlgo.hxx`:61 - `HLRAlgo::InitMinMax`
-pub unsafe fn init_min_max(Big: f64, Min: Option<&mut f64>, Max: Option<&mut f64>) {
-    unsafe {
-        crate::ffi::HLRAlgo_init_min_max(
-            Big,
-            Min.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            Max.map_or(std::ptr::null_mut(), |r| r as *mut _),
-        )
-    }
+pub fn init_min_max(Big: f64, Min: &mut [f64; 16], Max: &mut [f64; 16]) {
+    unsafe { crate::ffi::HLRAlgo_init_min_max(Big, Min.as_mut_ptr(), Max.as_mut_ptr()) }
 }
 /// **Source:** `HLRAlgo.hxx`:65 - `HLRAlgo::EncodeMinMax`
 pub fn encode_min_max(

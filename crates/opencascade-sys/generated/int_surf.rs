@@ -33,17 +33,13 @@ pub fn make_transition(
 ///
 /// If surface is not periodic in correspond direction then
 /// its period is considered to be equal to 0.
-pub unsafe fn set_period(
+pub fn set_period(
     theFirstSurf: &crate::ffi::HandleAdaptor3dSurface,
     theSecondSurf: &crate::ffi::HandleAdaptor3dSurface,
-    theArrOfPeriod: Option<&mut f64>,
+    theArrOfPeriod: &mut [f64; 4],
 ) {
     unsafe {
-        crate::ffi::IntSurf_set_period(
-            theFirstSurf,
-            theSecondSurf,
-            theArrOfPeriod.map_or(std::ptr::null_mut(), |r| r as *mut _),
-        )
+        crate::ffi::IntSurf_set_period(theFirstSurf, theSecondSurf, theArrOfPeriod.as_mut_ptr())
     }
 }
 

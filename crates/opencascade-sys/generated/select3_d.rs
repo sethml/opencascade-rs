@@ -7455,16 +7455,16 @@ impl SensitiveTriangulation {
     /// @param[out] theTriangle  triangle node indexes
     /// @param[out] theTriNodes  triangle nodes (with pre-applied transformation)
     /// @return TRUE if defined
-    pub fn last_detected_triangle_triangle_pntptr(
+    pub fn last_detected_triangle_triangle_pnt3(
         &self,
         theTriangle: &mut crate::poly::Triangle,
-        theTriNodes: Option<&mut crate::gp::Pnt>,
+        theTriNodes: &mut [crate::gp::Pnt; 3],
     ) -> bool {
         unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_last_detected_triangle_triangle_pntptr(
+            crate::ffi::Select3D_SensitiveTriangulation_last_detected_triangle_triangle_pnt3(
                 self as *const Self,
                 theTriangle,
-                theTriNodes.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                theTriNodes.as_mut_ptr(),
             )
         }
     }

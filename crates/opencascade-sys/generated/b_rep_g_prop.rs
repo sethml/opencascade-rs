@@ -1236,7 +1236,7 @@ impl MeshProps {
         p3: &crate::gp::Pnt,
         Apex: &crate::gp::Pnt,
         isVolume: bool,
-        GProps: Option<&mut f64>,
+        GProps: &mut [f64; 10],
         NbGaussPoints: i32,
         GaussPnts: *const f64,
     ) {
@@ -1247,7 +1247,7 @@ impl MeshProps {
                 p3,
                 Apex,
                 isVolume,
-                GProps.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                GProps.as_mut_ptr(),
                 NbGaussPoints,
                 GaussPnts,
             )

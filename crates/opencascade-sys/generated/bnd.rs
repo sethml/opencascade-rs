@@ -2431,13 +2431,8 @@ impl OBB {
     /// Index == 5: ( XHSize(), -YHSize(),  ZHSize())
     /// Index == 6: (-XHSize(),  YHSize(),  ZHSize())
     /// Index == 7: ( XHSize(),  YHSize(),  ZHSize()).
-    pub fn get_vertex(&self, theP: Option<&mut crate::gp::Pnt>) -> bool {
-        unsafe {
-            crate::ffi::Bnd_OBB_get_vertex(
-                self as *const Self,
-                theP.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
-        }
+    pub fn get_vertex(&self, theP: &mut [crate::gp::Pnt; 8]) -> bool {
+        unsafe { crate::ffi::Bnd_OBB_get_vertex(self as *const Self, theP.as_mut_ptr()) }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:237 - `Bnd_OBB::SquareExtent()`

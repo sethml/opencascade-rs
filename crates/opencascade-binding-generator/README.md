@@ -189,10 +189,12 @@ fn example(surface: &Surface) { /* ... */ }
 
 ### Fixed-Size Array Reference Parameters
 
-Methods taking fixed-size C++ array references are now bound directly:
+Methods taking fixed-size C++ arrays are now bound directly:
 
 - `const T (&arr)[N]` → `&[T; N]`
 - `T (&arr)[N]` → `&mut [T; N]`
+- `const T arr[N]` → `&[T; N]` (array parameter decays to pointer in C++)
+- `T arr[N]` → `&mut [T; N]` (array parameter decays to pointer in C++)
 
 At the extern boundary, these lower to element pointers (`*const T` / `*mut T`). In C++ wrappers we reconstruct the array reference with `reinterpret_cast` back to `T (*)[N]` and pass `*...` into the original OCCT call.
 
@@ -203,7 +205,7 @@ let mut edges = [0_i32; 3];
 mesh_tool.add_triangle(p1, p2, p3, &mut edges);
 ```
 
-This unblocks APIs like `BRepMesh_MeshTool::AddTriangle(Standard_Integer (&theEdges)[3])` without hand-written bindings. By-value arrays (for example `T arr[N]`) are still treated as unbindable today.
+This unblocks APIs like `BRepMesh_MeshTool::AddTriangle(Standard_Integer (&theEdges)[3])` without hand-written bindings, and also fixed-size non-reference array parameters declared as `T arr[N]`.
 
 
 ### Class Pointer Returns
@@ -434,7 +436,7 @@ Example from `gp.rs`:
 | 66 | 48.9% | **Unknown/unresolved type** | Parameter or return type is not in the resolved known-type set |
 | 42 | 31.1% | **Unknown Handle type** | `Handle(T)` where `T` is unresolved or excluded |
 | 12 | 8.9% | **Rvalue reference** | C++ move semantics (`T&&`) — const-ref overloads usually exist |
-| 6 | 4.4% | **C-style array** | Primarily by-value arrays like `T arr[N]` and array-heavy pointer forms not yet mapped to safe Rust signatures |
+| 6 | 4.4% | **C-style array** | Primarily incomplete arrays (`T[]`) and specialized pointer-array forms not yet mapped to safe Rust signatures |
 | 5 | 3.7% | **Unresolved template type** | Template instantiations that can't be represented safely |
 | 2 | 1.5% | **Excluded by bindings.toml** | Explicitly excluded in config |
 | 1 | 0.7% | **Ambiguous overload** | C++ overload would produce conflicting wrapper signatures |
@@ -442,7 +444,7 @@ Example from `gp.rs`:
 
 Combined unresolved coverage (`Unknown/unresolved type` + `Unknown Handle type`) is **108 / 139 (77.7%)**.
 
-Fixed-size array references (`T (&)[N]` / `const T (&)[N]`) are now bindable; remaining array-related skips are mostly by-value arrays and specialized pointer-array forms.
+Fixed-size arrays (`T (&)[N]`, `const T (&)[N]`, and `T arr[N]` parameter syntax) are now bindable; remaining array-related skips are mostly incomplete arrays and specialized pointer-array forms.
 
 ### Most Common Unknown Types
 
@@ -596,7 +598,7 @@ Currently headers are selected via `bindings.toml`. OCCT ships 6,875 `.hxx` head
 
 8. **Nested class inheritance** (SOLVED) — Nested classes like `ShapePersistent_BRep::Curve3D` had unqualified base class names (e.g., `GCurve` instead of `ShapePersistent_BRep::GCurve`), breaking the transitive closure in `compute_handle_able_classes()`. The parser now qualifies sibling base class references when qualifying nested type names.
 
-9. **Fixed-size array references** (SOLVED) — OCCT APIs with parameters like `Standard_Integer (&theEdges)[3]` were previously skipped as C-style arrays. The parser now models constant arrays explicitly (`Type::FixedArray`), Rust re-exports expose them as `&[T; N]` / `&mut [T; N]`, and wrappers bridge via element pointers at the extern C layer with cast-back in C++. This unblocked APIs such as `BRepMesh_MeshTool::AddTriangle`.
+9. **Fixed-size arrays** (SOLVED) — OCCT APIs with parameters like `Standard_Integer (&theEdges)[3]` and `Standard_Integer theEdges[3]` were previously skipped as C-style arrays. The parser now models constant arrays explicitly (`Type::FixedArray`), Rust re-exports expose them as `&[T; N]` / `&mut [T; N]`, and wrappers bridge via element pointers at the extern C layer (with cast-back for array references in C++). This unblocked APIs such as `BRepMesh_MeshTool::AddTriangle`.
 
 
 ### System Include Path Auto-Detection

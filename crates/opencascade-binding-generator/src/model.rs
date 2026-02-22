@@ -603,6 +603,11 @@ impl Type {
         }
     }
 
+    /// Check if this is a direct fixed-size array parameter (`T[N]`).
+    pub fn is_fixed_array_param(&self) -> bool {
+        matches!(self, Type::FixedArray(_, _))
+    }
+
     /// Check if this type is a raw pointer (requires unsafe in FFI)
     /// Note: const char* is NOT considered a raw pointer here because we handle it specially
     /// with const char* pass-through wrappers.
@@ -694,7 +699,9 @@ impl Type {
     /// (Parent::Nested → Parent_Nested in Rust FFI), BUT unresolved template types
     /// and unqualified names without underscore remain unbindable.
     pub fn is_unbindable(&self) -> bool {
-        (self.is_array() && !self.is_fixed_array_ref()) || self.is_rvalue_ref() || self.is_unresolved_template_type()
+        (self.is_array() && !self.is_fixed_array_ref() && !self.is_fixed_array_param())
+            || self.is_rvalue_ref()
+            || self.is_unresolved_template_type()
     }
 
     /// Check if this type involves raw pointers that require the containing

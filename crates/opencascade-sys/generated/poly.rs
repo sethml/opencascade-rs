@@ -1637,13 +1637,13 @@ impl CoherentTriangulation {
     pub fn find_triangle(
         &self,
         theLink: &CoherentLink,
-        pTri: Option<&mut *const CoherentTriangle>,
+        pTri: &mut [*const CoherentTriangle; 2],
     ) -> bool {
         unsafe {
             crate::ffi::Poly_CoherentTriangulation_find_triangle(
                 self as *const Self,
                 theLink,
-                pTri.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                pTri.as_mut_ptr(),
             )
         }
     }
@@ -3051,11 +3051,11 @@ impl MergeNodesTool {
     /// **Source:** `Poly_MergeNodesTool.hxx`:114 - `Poly_MergeNodesTool::AddTriangle()`
     /// Add new triangle.
     /// @param[in] theElemNodes 3 element nodes
-    pub fn add_triangle(&mut self, theElemNodes: Option<&mut crate::gp::XYZ>) {
+    pub fn add_triangle(&mut self, theElemNodes: &mut [crate::gp::XYZ; 3]) {
         unsafe {
             crate::ffi::Poly_MergeNodesTool_add_triangle(
                 self as *mut Self,
-                theElemNodes.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                theElemNodes.as_mut_ptr(),
             )
         }
     }
@@ -3063,12 +3063,9 @@ impl MergeNodesTool {
     /// **Source:** `Poly_MergeNodesTool.hxx`:118 - `Poly_MergeNodesTool::AddQuad()`
     /// Add new quad.
     /// @param[in] theElemNodes 4 element nodes
-    pub fn add_quad(&mut self, theElemNodes: Option<&mut crate::gp::XYZ>) {
+    pub fn add_quad(&mut self, theElemNodes: &mut [crate::gp::XYZ; 4]) {
         unsafe {
-            crate::ffi::Poly_MergeNodesTool_add_quad(
-                self as *mut Self,
-                theElemNodes.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi::Poly_MergeNodesTool_add_quad(self as *mut Self, theElemNodes.as_mut_ptr())
         }
     }
 

@@ -5611,14 +5611,14 @@ impl SpecialPoints {
     /// theNewPoint is reference point together with theRefPt.
     pub fn adjust_point_and_vertex(
         theRefPoint: &crate::int_surf::PntOn2S,
-        theArrPeriods: Option<&mut f64>,
+        theArrPeriods: &mut [f64; 4],
         theNewPoint: &mut crate::int_surf::PntOn2S,
         theVertex: Option<&mut Point>,
     ) {
         unsafe {
             crate::ffi::IntPatch_SpecialPoints_adjust_point_and_vertex(
                 theRefPoint,
-                theArrPeriods.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                theArrPeriods.as_mut_ptr(),
                 theNewPoint,
                 theVertex.map_or(std::ptr::null_mut(), |r| r as *mut _),
             )

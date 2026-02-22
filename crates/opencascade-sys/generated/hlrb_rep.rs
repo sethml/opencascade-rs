@@ -2065,24 +2065,24 @@ impl Curve {
 
     /// **Source:** `HLRBRep_Curve.hxx`:77 - `HLRBRep_Curve::Update()`
     /// Update the minmax and the internal data
-    pub fn update(&mut self, TotMin: Option<&mut f64>, TotMax: Option<&mut f64>) -> f64 {
+    pub fn update(&mut self, TotMin: &mut [f64; 16], TotMax: &mut [f64; 16]) -> f64 {
         unsafe {
             crate::ffi::HLRBRep_Curve_update(
                 self as *mut Self,
-                TotMin.map_or(std::ptr::null_mut(), |r| r as *mut _),
-                TotMax.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                TotMin.as_mut_ptr(),
+                TotMax.as_mut_ptr(),
             )
         }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:80 - `HLRBRep_Curve::UpdateMinMax()`
     /// Update the minmax returns tol for enlarge;
-    pub fn update_min_max(&mut self, TotMin: Option<&mut f64>, TotMax: Option<&mut f64>) -> f64 {
+    pub fn update_min_max(&mut self, TotMin: &mut [f64; 16], TotMax: &mut [f64; 16]) -> f64 {
         unsafe {
             crate::ffi::HLRBRep_Curve_update_min_max(
                 self as *mut Self,
-                TotMin.map_or(std::ptr::null_mut(), |r| r as *mut _),
-                TotMax.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                TotMin.as_mut_ptr(),
+                TotMax.as_mut_ptr(),
             )
         }
     }

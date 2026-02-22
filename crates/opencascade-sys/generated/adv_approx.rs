@@ -383,7 +383,7 @@ impl EvaluatorFunction {
     pub unsafe fn evaluate(
         &mut self,
         Dimension: *mut i32,
-        StartEnd: Option<&mut f64>,
+        StartEnd: &mut [f64; 2],
         Parameter: *mut f64,
         DerivativeRequest: *mut i32,
         Result: *mut f64,
@@ -393,7 +393,7 @@ impl EvaluatorFunction {
             crate::ffi::AdvApprox_EvaluatorFunction_evaluate(
                 self as *mut Self,
                 Dimension,
-                StartEnd.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                StartEnd.as_mut_ptr(),
                 Parameter,
                 DerivativeRequest,
                 Result,
