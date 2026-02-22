@@ -93,6 +93,17 @@ fn parse_class_method_pairs(entries: &[String], field_name: &str) -> HashSet<(St
         .collect()
 }
 
+struct SelectionInputs {
+    explicit_headers: Vec<PathBuf>,
+    exclude_set: std::collections::HashSet<String>,
+    exclude_modules: Vec<String>,
+    exclude_methods: HashSet<(String, String)>,
+    ambiguous_methods: HashSet<(String, String)>,
+    non_allocatable_classes: HashSet<String>,
+    manual_type_names: HashSet<String>,
+    template_instantiations: HashMap<String, config::TemplateInstantiation>,
+    occt_alias_type_overrides: HashMap<String, String>,
+}
 
 fn main() -> Result<()> {
     let args = Args::parse();
@@ -108,7 +119,7 @@ fn main() -> Result<()> {
     }
 
     // Determine explicit headers from config file or CLI arguments
-    let (explicit_headers, exclude_set, exclude_modules, exclude_methods, ambiguous_methods, non_allocatable_classes, manual_type_names, template_instantiations, occt_alias_type_overrides) = if let Some(ref config_path) = args.config {
+    let inputs = if let Some(ref config_path) = args.config {
         let cfg = config::load_config(config_path)?;
 
         if args.include_dirs.is_empty() {
@@ -141,32 +152,44 @@ fn main() -> Result<()> {
         let manual_names: HashSet<String> = cfg.manual_types.keys().cloned().collect();
         let tmpl_inst = cfg.template_instantiations;
         let occt_alias_overrides = cfg.occt_alias_type_overrides;
-        (
-            headers,
-            excludes,
-            exclude_mods,
-            method_exclusions,
-            ambiguous_method_exclusions,
-            non_alloc_cls,
-            manual_names,
-            tmpl_inst,
-            occt_alias_overrides,
-        )
+        SelectionInputs {
+            explicit_headers: headers,
+            exclude_set: excludes,
+            exclude_modules: exclude_mods,
+            exclude_methods: method_exclusions,
+            ambiguous_methods: ambiguous_method_exclusions,
+            non_allocatable_classes: non_alloc_cls,
+            manual_type_names: manual_names,
+            template_instantiations: tmpl_inst,
+            occt_alias_type_overrides: occt_alias_overrides,
+        }
     } else if !args.headers.is_empty() {
-        (
-            args.headers.clone(),
-            std::collections::HashSet::new(),
-            Vec::new(),
-            HashSet::new(),
-            HashSet::new(),
-            HashSet::new(),
-            HashSet::new(),
-            HashMap::new(),
-            HashMap::new(),
-        )
+        SelectionInputs {
+            explicit_headers: args.headers.clone(),
+            exclude_set: std::collections::HashSet::new(),
+            exclude_modules: Vec::new(),
+            exclude_methods: HashSet::new(),
+            ambiguous_methods: HashSet::new(),
+            non_allocatable_classes: HashSet::new(),
+            manual_type_names: HashSet::new(),
+            template_instantiations: HashMap::new(),
+            occt_alias_type_overrides: HashMap::new(),
+        }
     } else {
         anyhow::bail!("Either --config <file.toml> or positional header arguments are required");
     };
+
+    let SelectionInputs {
+        explicit_headers,
+        exclude_set,
+        exclude_modules,
+        exclude_methods,
+        ambiguous_methods,
+        non_allocatable_classes,
+        manual_type_names,
+        template_instantiations,
+        occt_alias_type_overrides,
+    } = inputs;
 
     // Resolve header dependencies when include directories are available.
     let headers_to_process = if !args.include_dirs.is_empty() {
