@@ -371,29 +371,33 @@ pub struct TypeContext<'a> {
 
 /// Check if a type references an unknown class/handle
 /// Returns true if the type uses a Handle or Class that is not in all_classes
+/// Check if a class name is unknown (not in the known type set).
+/// Shared logic for type_uses_unknown_class and type_uses_unknown_handle.
+fn is_class_name_unknown(class_name: &str, all_classes: &std::collections::HashSet<String>) -> bool {
+    if all_classes.contains(class_name) {
+        return false;
+    }
+    // Void pointer types — Standard_Address (void*) and literal "void" — are known
+    if crate::model::is_void_type_name(class_name) {
+        return false;
+    }
+    // Primitive types mapped as Type::Class (e.g., "char" from Standard_Character)
+    if crate::codegen::rust::is_primitive_type(class_name) {
+        return false;
+    }
+    // Nested types (Parent::Nested) are known if the parent class is known
+    if let Some(parent) = class_name.split("::").next() {
+        if class_name.contains("::") && all_classes.contains(parent) {
+            return false;
+        }
+    }
+    true
+}
+
 pub fn type_uses_unknown_class(ty: &Type, all_classes: &std::collections::HashSet<String>) -> bool {
     match ty {
         Type::Handle(class_name) => !all_classes.contains(class_name),
-        Type::Class(class_name) => {
-            if all_classes.contains(class_name) {
-                return false;
-            }
-            // Void pointer types — Standard_Address (void*) and literal "void" — are known
-            if crate::model::is_void_type_name(class_name) {
-                return false;
-            }
-            // Primitive types mapped as Type::Class (e.g., "char" from Standard_Character)
-            if crate::codegen::rust::is_primitive_type(class_name) {
-                return false;
-            }
-            // Nested types (Parent::Nested) are known if the parent class is known
-            if let Some(parent) = class_name.split("::").next() {
-                if class_name.contains("::") && all_classes.contains(parent) {
-                    return false;
-                }
-            }
-            true
-        }
+        Type::Class(class_name) => is_class_name_unknown(class_name, all_classes),
         Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_class(inner, all_classes),
         _ => false,
     }
@@ -409,26 +413,7 @@ pub fn type_uses_unknown_handle(
 ) -> bool {
     match ty {
         Type::Handle(class_name) => !handle_able_classes.contains(class_name),
-        Type::Class(class_name) => {
-            if all_classes.contains(class_name) {
-                return false;
-            }
-            // Void pointer types — Standard_Address (void*) and literal "void" — are known
-            if crate::model::is_void_type_name(class_name) {
-                return false;
-            }
-            // Primitive types mapped as Type::Class (e.g., "char" from Standard_Character)
-            if crate::codegen::rust::is_primitive_type(class_name) {
-                return false;
-            }
-            // Nested types (Parent::Nested) are known if the parent class is known
-            if let Some(parent) = class_name.split("::").next() {
-                if class_name.contains("::") && all_classes.contains(parent) {
-                    return false;
-                }
-            }
-            true
-        }
+        Type::Class(class_name) => is_class_name_unknown(class_name, all_classes),
         Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
             type_uses_unknown_handle(inner, all_classes, handle_able_classes)
         }

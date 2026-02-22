@@ -807,6 +807,75 @@ const AMBIGUOUS_METHODS: &[(&str, &str)] = &[
     ("BOPAlgo_ParallelAlgo", "Perform"),
 ];
 
+/// Check parameters for unknown types, nullable pointer inner types, and class pointer inner types.
+/// Shared by is_method_bindable, is_constructor_bindable, and is_static_method_bindable.
+fn check_params_bindable(params: &[Param], ctx: &TypeContext) -> Result<(), String> {
+    // Check for unknown class/handle types in parameters
+    if let Some(p) = params.iter().find(|p| type_uses_unknown_type(&p.ty, ctx)) {
+        return Err(format!("param '{}' uses unknown type '{}'", p.name, p.ty.to_cpp_string()));
+    }
+    // Check nullable pointer params whose inner type is unknown
+    if let Some(p) = params.iter().find(|p| {
+        if p.is_nullable_ptr() {
+            match &p.ty {
+                Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_type(inner, ctx),
+                _ => false,
+            }
+        } else {
+            false
+        }
+    }) {
+        return Err(format!("nullable param '{}' inner type is unknown", p.name));
+    }
+    // Check class pointer params whose inner type is unknown.
+    // We check all_classes directly (not type_uses_unknown_type) because nested types
+    // like Parent::Nested are considered "known" by type_uses_unknown_type if the parent
+    // is known, but they don't have their own FFI type declarations.
+    if let Some(p) = params.iter().find(|p| {
+        if let Some(class_name) = p.ty.class_ptr_inner_name() {
+            !ctx.all_classes.contains(class_name) && !ctx.all_enums.contains(class_name)
+        } else {
+            false
+        }
+    }) {
+        return Err(format!("class pointer param '{}' inner type '{}' is unknown", p.name, p.ty.to_cpp_string()));
+    }
+    Ok(())
+}
+
+/// Check a return type for unknown types, CppDeletable, class pointer inner types, and &mut enum.
+/// Shared by is_method_bindable and is_static_method_bindable.
+fn check_return_type_bindable(ret: &Type, ctx: &TypeContext) -> Result<(), String> {
+    if type_uses_unknown_type(ret, ctx) {
+        return Err(format!("return type '{}' is unknown", ret.to_cpp_string()));
+    }
+    // Check class pointer returns for unknown inner types
+    if let Some(class_name) = ret.class_ptr_inner_name() {
+        if !ctx.all_classes.contains(class_name) && !ctx.all_enums.contains(class_name) {
+            return Err(format!("class pointer return inner type '{}' is unknown", ret.to_cpp_string()));
+        }
+    }
+    // OwnedPtr<T> return type requires CppDeletable for T. ParsedClasses have
+    // generated destructors; the 91 known collections do too. But NCollection
+    // template typedef names (e.g., TColStd_ListOfAsciiString) added to
+    // all_class_names for param filtering don't have generated destructors.
+    // Enum types are represented as Type::Class in raw parsed types — allow them.
+    if let Type::Class(name) = ret {
+        if !is_void_type_name(name) {
+            if let Some(deletable) = ctx.deletable_class_names {
+                if !deletable.contains(name.as_str()) && !ctx.all_enums.contains(name.as_str()) {
+                    return Err(format!("return type '{}' is not CppDeletable", name));
+                }
+            }
+        }
+    }
+    // MutRef to enum return type can't be bound — extern "C" expects int32_t& but C++ has EnumType&
+    if return_type_is_mut_ref_enum(ret, ctx.all_enums) {
+        return Err("return type is &mut enum (not representable in extern \"C\")".to_string());
+    }
+    Ok(())
+}
+
 fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> Result<(), String> {
     if method.has_unbindable_types() {
         let unbindable_details = describe_unbindable_types_method(method);
@@ -822,67 +891,9 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> R
     }
     // Const/mut return mismatch is now handled via C++ wrappers (ConstMutReturnFix).
     // &mut enum output params are now handled via C++ wrappers (MutRefEnumParam).
-    if let Some(p) = method
-        .params
-        .iter()
-        .find(|p| type_uses_unknown_type(&p.ty, ctx))
-    {
-        return Err(format!("param '{}' uses unknown type '{}'", p.name, p.ty.to_cpp_string()));
-    }
-    // Skip methods where a nullable pointer param's inner type is unknown
-    if let Some(p) = method.params.iter().find(|p| {
-        if p.is_nullable_ptr() {
-            match &p.ty {
-                Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_type(inner, ctx),
-                _ => false,
-            }
-        } else {
-            false
-        }
-    }) {
-        return Err(format!("nullable param '{}' inner type is unknown", p.name));
-    }
-    // Skip methods where a class pointer param's inner type is unknown.
-    // We check all_classes directly (not type_uses_unknown_type) because nested types
-    // like Parent::Nested are considered "known" by type_uses_unknown_type if the parent
-    // is known, but they don't have their own FFI type declarations.
-    if let Some(p) = method.params.iter().find(|p| {
-        if let Some(class_name) = p.ty.class_ptr_inner_name() {
-            !ctx.all_classes.contains(class_name) && !ctx.all_enums.contains(class_name)
-        } else {
-            false
-        }
-    }) {
-        return Err(format!("class pointer param '{}' inner type '{}' is unknown", p.name, p.ty.to_cpp_string()));
-    }
+    check_params_bindable(&method.params, ctx)?;
     if let Some(ref ret) = method.return_type {
-        if type_uses_unknown_type(ret, ctx) {
-            return Err(format!("return type '{}' is unknown", ret.to_cpp_string()));
-        }
-        // Check class pointer returns for unknown inner types (same as params)
-        if let Some(class_name) = ret.class_ptr_inner_name() {
-            if !ctx.all_classes.contains(class_name) && !ctx.all_enums.contains(class_name) {
-                return Err(format!("class pointer return inner type '{}' is unknown", ret.to_cpp_string()));
-            }
-        }
-        // OwnedPtr<T> return type requires CppDeletable for T. ParsedClasses have
-        // generated destructors; the 91 known collections do too. But NCollection
-        // template typedef names (e.g., TColStd_ListOfAsciiString) added to
-        // all_class_names for param filtering don't have generated destructors.
-        // Enum types are represented as Type::Class in raw parsed types — allow them.
-        if let Type::Class(name) = ret {
-            if !is_void_type_name(name) {
-                if let Some(deletable) = ctx.deletable_class_names {
-                    if !deletable.contains(name.as_str()) && !ctx.all_enums.contains(name.as_str()) {
-                        return Err(format!("return type '{}' is not CppDeletable", name));
-                    }
-                }
-            }
-        }
-        // MutRef to enum return type can't be bound — extern "C" expects int32_t& but C++ has EnumType&
-        if return_type_is_mut_ref_enum(ret, ctx.all_enums) {
-            return Err("return type is &mut enum (not representable in extern \"C\")".to_string());
-        }
+        check_return_type_bindable(ret, ctx)?;
     }
     Ok(())
 }
@@ -907,40 +918,9 @@ fn is_constructor_bindable(
     {
         return Err(format!("param '{}' uses unknown Handle type", p.name));
     }
-    // Also check for unknown class types in parameters.
-    // This catches NCollection typedef types (e.g., TDF_LabelMap) that aren't
-    // declared in the extern "C" FFI.
-    if let Some(p) = ctor
-        .params
-        .iter()
-        .find(|p| type_uses_unknown_type(&p.ty, ctx))
-    {
-        return Err(format!("param '{}' uses unknown type '{}'", p.name, p.ty.to_cpp_string()));
-    }
-    // Skip constructors where a nullable pointer param's inner type is unknown
-    if let Some(p) = ctor.params.iter().find(|p| {
-        if p.is_nullable_ptr() {
-            match &p.ty {
-                Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_type(inner, ctx),
-                _ => false,
-            }
-        } else {
-            false
-        }
-    }) {
-        return Err(format!("nullable param '{}' inner type is unknown", p.name));
-    }
-    // Skip constructors where a class pointer param's inner type is unknown.
-    // Check all_classes directly — nested types don't have FFI declarations.
-    if let Some(p) = ctor.params.iter().find(|p| {
-        if let Some(class_name) = p.ty.class_ptr_inner_name() {
-            !ctx.all_classes.contains(class_name) && !ctx.all_enums.contains(class_name)
-        } else {
-            false
-        }
-    }) {
-        return Err(format!("class pointer param '{}' inner type '{}' is unknown", p.name, p.ty.to_cpp_string()));
-    }
+    // Also check for unknown class types, nullable pointer inner types,
+    // and class pointer inner types.
+    check_params_bindable(&ctor.params, ctx)?;
     Ok(())
 }
 
@@ -955,57 +935,9 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> Result
         return Err(format!("has string ref param '{}' of type '{}' (needs manual binding)", param_name, type_name));
     }
     // &mut enum output params are now handled via C++ wrappers.
-    if let Some(p) = method
-        .params
-        .iter()
-        .find(|p| type_uses_unknown_type(&p.ty, ctx))
-    {
-        return Err(format!("param '{}' uses unknown type '{}'", p.name, p.ty.to_cpp_string()));
-    }
-    // Skip static methods where a nullable pointer param's inner type is unknown
-    if let Some(p) = method.params.iter().find(|p| {
-        if p.is_nullable_ptr() {
-            match &p.ty {
-                Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_type(inner, ctx),
-                _ => false,
-            }
-        } else {
-            false
-        }
-    }) {
-        return Err(format!("nullable param '{}' inner type is unknown", p.name));
-    }
-    // Skip static methods where a class pointer param's inner type is unknown.
-    // Check all_classes directly — nested types don't have FFI declarations.
-    if let Some(p) = method.params.iter().find(|p| {
-        if let Some(class_name) = p.ty.class_ptr_inner_name() {
-            !ctx.all_classes.contains(class_name) && !ctx.all_enums.contains(class_name)
-        } else {
-            false
-        }
-    }) {
-        return Err(format!("class pointer param '{}' inner type '{}' is unknown", p.name, p.ty.to_cpp_string()));
-    }
+    check_params_bindable(&method.params, ctx)?;
     if let Some(ref ret) = method.return_type {
-        if type_uses_unknown_type(ret, ctx) {
-            return Err(format!("return type '{}' is unknown", ret.to_cpp_string()));
-        }
-        // Same CppDeletable check as for instance methods (see is_method_bindable).
-        // Enum types are represented as Type::Class in raw parsed types — allow them.
-        if let Type::Class(name) = ret {
-            if !is_void_type_name(name) {
-                if let Some(deletable) = ctx.deletable_class_names {
-                    if !deletable.contains(name.as_str()) && !ctx.all_enums.contains(name.as_str()) {
-                        return Err(format!("return type '{}' is not CppDeletable", name));
-                    }
-                }
-            }
-        }
-        // C-string returns (const char*) are handled via C++ wrappers returning const char*.
-        // MutRef to enum return type can't be bound — extern "C" expects int32_t& but C++ has EnumType&
-        if return_type_is_mut_ref_enum(ret, ctx.all_enums) {
-            return Err("return type is &mut enum (not representable in extern \"C\")".to_string());
-        }
+        check_return_type_bindable(ret, ctx)?;
     }
     Ok(())
 }
