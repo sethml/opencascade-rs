@@ -14,6 +14,20 @@ use std::collections::{HashMap, HashSet};
 use std::path::Path;
 use std::time::Instant;
 
+/// Check if a clang TypeKind represents a C/C++ primitive type (int, double, char, etc.).
+/// Used to detect when a typedef resolves to a primitive through canonical type analysis.
+fn is_c_primitive_type_kind(kind: TypeKind) -> bool {
+    matches!(kind,
+        TypeKind::Bool | TypeKind::CharS | TypeKind::CharU |
+        TypeKind::SChar | TypeKind::UChar |
+        TypeKind::Short | TypeKind::UShort |
+        TypeKind::Int | TypeKind::UInt |
+        TypeKind::Long | TypeKind::ULong |
+        TypeKind::LongLong | TypeKind::ULongLong |
+        TypeKind::Float | TypeKind::Double | TypeKind::LongDouble
+    )
+}
+
 thread_local! {
     /// Map from NCollection template spellings to their typedef names.
     /// Populated by `collect_ncollection_typedefs()` before type parsing begins.
@@ -1536,17 +1550,11 @@ fn parse_type(clang_type: &clang::Type) -> Type {
                 && clang_type.get_declaration()
                     .filter(|d| d.get_kind() == clang::EntityKind::TypedefDecl)
                     .and_then(|d| d.get_typedef_underlying_type())
-                    .map(|u| matches!(u.get_kind(),
-                        TypeKind::Bool | TypeKind::CharS | TypeKind::CharU |
-                        TypeKind::SChar | TypeKind::UChar |
-                        TypeKind::Short | TypeKind::UShort |
-                        TypeKind::Int | TypeKind::UInt |
-                        TypeKind::Long | TypeKind::ULong |
-                        TypeKind::LongLong | TypeKind::ULongLong |
-                        TypeKind::Float | TypeKind::Double | TypeKind::LongDouble |
-                        TypeKind::Typedef |   // chain through another typedef (e.g., Standard_Integer)
-                        TypeKind::Elaborated  // clang sugar around typedef (e.g., Standard_Integer via Elaborated)
-                    ))
+                    .map(|u| {
+                        let uk = u.get_kind();
+                        is_c_primitive_type_kind(uk)
+                        || matches!(uk, TypeKind::Typedef | TypeKind::Elaborated)  // chain through another typedef
+                    })
                     .unwrap_or(false);
 
             !is_primitive_typedef
@@ -1601,17 +1609,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
                 let is_template_or_ns = base.contains('<') || base.contains("::");
                 let pointee_is_primitive_canonical = !is_template_or_ns
                     && clang_type.get_pointee_type().map(|pt| {
-                        let canon = pt.get_canonical_type();
-                        let ck = canon.get_kind();
-                        matches!(ck,
-                            TypeKind::Bool | TypeKind::CharS | TypeKind::CharU |
-                            TypeKind::SChar | TypeKind::UChar |
-                            TypeKind::Short | TypeKind::UShort |
-                            TypeKind::Int | TypeKind::UInt |
-                            TypeKind::Long | TypeKind::ULong |
-                            TypeKind::LongLong | TypeKind::ULongLong |
-                            TypeKind::Float | TypeKind::Double | TypeKind::LongDouble
-                        )
+                        is_c_primitive_type_kind(pt.get_canonical_type().get_kind())
                     }).unwrap_or(false);
 
                 if !pointee_is_primitive_canonical {
@@ -1781,15 +1779,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         }
 
         // Primitive typedef: canonical is a C primitive type
-        if matches!(canon_kind,
-            TypeKind::Bool | TypeKind::CharS | TypeKind::CharU |
-            TypeKind::SChar | TypeKind::UChar |
-            TypeKind::Short | TypeKind::UShort |
-            TypeKind::Int | TypeKind::UInt |
-            TypeKind::Long | TypeKind::ULong |
-            TypeKind::LongLong | TypeKind::ULongLong |
-            TypeKind::Float | TypeKind::Double | TypeKind::LongDouble
-        ) {
+        if is_c_primitive_type_kind(canon_kind) {
             if let Some(ty) = map_standard_type(canonical_clean) {
                 return ty;
             }
