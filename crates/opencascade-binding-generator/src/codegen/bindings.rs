@@ -289,7 +289,7 @@ pub struct InheritedMethodBinding {
     /// Parameters (resolved types from ancestor)
     pub params: Vec<ResolvedParamBinding>,
     /// Return type (resolved from ancestor)
-    pub return_type: Option<ResolvedReturnTypeBinding>,
+    pub return_type: Option<ReturnTypeBinding>,
     /// Original C++ method name
     pub cpp_method_name: String,
     /// Which ancestor class this came from
@@ -401,47 +401,6 @@ impl ReturnTypeBinding {
     }
 }
 
-impl ResolvedReturnTypeBinding {
-    /// Compute the C++ return type string for the extern "C" wrapper signature.
-    pub fn ffi_cpp_return_type(&self) -> String {
-        if self.needs_unique_ptr {
-            format!("{}*", self.cpp_type)
-        } else if self.is_mut_ref_enum_return {
-            "int32_t*".to_string()
-        } else if self.enum_cpp_name.is_some() {
-            "int32_t".to_string()
-        } else {
-            self.cpp_type.clone()
-        }
-    }
-
-    /// Generate the C++ return statement for a call expression.
-    pub fn format_cpp_return_stmt(&self, call_expr: &str, assign_to_variable: bool) -> String {
-        let expr = if self.is_mut_ref_enum_return {
-            format!("reinterpret_cast<int32_t*>(&({}))", call_expr)
-        } else if self.needs_unique_ptr {
-            format!("new {}({})", self.cpp_type, call_expr)
-        } else if self.enum_cpp_name.is_some() {
-            format!("static_cast<int32_t>({})", call_expr)
-        } else {
-            call_expr.to_string()
-        };
-
-        if assign_to_variable {
-            let auto_kw = if !self.is_mut_ref_enum_return && !self.needs_unique_ptr
-                && !self.enum_cpp_name.is_some()
-                && self.cpp_type.ends_with('&')
-            {
-                "auto&"
-            } else {
-                "auto"
-            };
-            format!("{} result_ = {};", auto_kw, expr)
-        } else {
-            format!("return {};", expr)
-        }
-    }
-}
 #[derive(Debug, Clone)]
 pub struct ResolvedParamBinding {
     pub name: String,
@@ -462,25 +421,6 @@ pub struct ResolvedParamBinding {
     pub is_nullable_ptr: bool,
     /// If this is a non-nullable class pointer param (const T* / T* where T is a known class)
     pub is_class_ptr: bool,
-}
-
-/// A resolved return type binding (from SymbolTable, for inherited methods).
-#[derive(Debug, Clone)]
-pub struct ResolvedReturnTypeBinding {
-    pub rust_ffi_type: String,
-    /// Type as it appears in re-export impl
-    pub rust_reexport_type: String,
-    pub cpp_type: String,
-    pub needs_unique_ptr: bool,
-    /// If this is an enum return, the original C++ enum name (for static_cast)
-    pub enum_cpp_name: Option<String>,
-    /// If this is a value enum return, the qualified Rust enum type
-    pub enum_rust_type: Option<String>,
-    /// If this is a raw pointer return to a known class type (const T* / T*)
-    pub is_class_ptr_return: bool,
-    /// If this is a mutable reference to an enum (EnumType& → *mut i32).
-    /// The C++ wrapper returns int32_t* via reinterpret_cast.
-    pub is_mut_ref_enum_return: bool,
 }
 
 /// Pre-computed binding decisions for a single free function.
@@ -3000,7 +2940,7 @@ fn compute_inherited_method_bindings(
                             .and_then(|n| symbol_table.enum_rust_types.get(n))
                             .cloned();
                         let is_mut_ref_enum = rt.enum_cpp_name.is_some() && matches!(rt.original, Type::MutRef(_));
-                        ResolvedReturnTypeBinding {
+                        ReturnTypeBinding {
                             rust_ffi_type: if is_mut_ref_enum {
                                 "*mut i32".to_string()
                             } else if rt.enum_cpp_name.is_some() {
@@ -4657,7 +4597,12 @@ pub(super) fn wrap_body_with_postamble(body: &str, postamble: &str, has_return: 
 
 /// Build the body expression for a re-export method call.
 /// Handles the conversion from FFI raw pointer returns to Rust references/OwnedPtr.
-pub(super) fn build_reexport_body(raw_call: &str, reexport_type: Option<&str>, is_enum: Option<&str>, needs_owned_ptr: bool, is_class_ptr_return: bool, is_mut_ref_enum_return: bool) -> String {
+pub(super) fn build_reexport_body(raw_call: &str, rt: Option<&ReturnTypeBinding>) -> String {
+    let reexport_type = rt.map(|r| r.rust_reexport_type.as_str());
+    let is_enum = rt.and_then(|r| r.enum_rust_type.as_deref());
+    let needs_owned_ptr = rt.map_or(false, |r| r.needs_unique_ptr);
+    let is_class_ptr_return = rt.map_or(false, |r| r.is_class_ptr_return);
+    let is_mut_ref_enum_return = rt.map_or(false, |r| r.is_mut_ref_enum_return);
     if is_mut_ref_enum_return {
         // &mut enum return: FFI returns *mut i32, cast to *mut EnumType and dereference
         if let Some(enum_type) = is_enum {
@@ -4827,15 +4772,10 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             .unwrap_or_default();
 
         let raw_call = format!("crate::ffi::{}({})", wm.ffi_fn_name, args.join(", "));
-        let is_enum_return = wm.return_type.as_ref().and_then(|rt| rt.enum_rust_type.as_ref());
-        let needs_owned_ptr = wm.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
-        let reexport_rt = wm.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
 
         let prelude = cstr_prelude_params(&wm.params, "        ");
 
-        let is_class_ptr_ret = wm.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
-        let is_mut_ref_enum_ret = wm.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return);
-        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret, is_mut_ref_enum_ret);
+        let body = build_reexport_body(&raw_call, wm.return_type.as_ref());
         let postamble = mut_ref_enum_postamble_params(&wm.params, "        ");
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);
@@ -4895,15 +4835,10 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
 
         let ffi_fn_name = format!("{}_{}", cn, dm.rust_name);
         let raw_call = format!("crate::ffi::{}({})", ffi_fn_name, args.join(", "));
-        let is_enum_return = dm.return_type.as_ref().and_then(|rt| rt.enum_rust_type.as_ref());
-        let needs_owned_ptr = dm.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
-        let reexport_rt = dm.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
 
         let prelude = cstr_prelude_params(&dm.params, "        ");
 
-        let is_class_ptr_ret = dm.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
-        let is_mut_ref_enum_ret = dm.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return);
-        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret, is_mut_ref_enum_ret);
+        let body = build_reexport_body(&raw_call, dm.return_type.as_ref());
         let postamble = mut_ref_enum_postamble_params(&dm.params, "        ");
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);
@@ -4962,15 +4897,10 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         );
         let doc = format_reexport_doc(&source_attr, &sm.doc_comment);
         let raw_call = format!("crate::ffi::{}({})", sm.ffi_fn_name, args.join(", "));
-        let is_enum_return = sm.return_type.as_ref().and_then(|rt| rt.enum_rust_type.as_ref());
-        let needs_owned_ptr = sm.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
-        let reexport_rt = sm.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
 
         let prelude = cstr_prelude_params(&sm.params, "        ");
 
-        let is_class_ptr_ret = sm.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
-        let is_mut_ref_enum_ret = sm.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return);
-        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret, is_mut_ref_enum_ret);
+        let body = build_reexport_body(&raw_call, sm.return_type.as_ref());
         let postamble = mut_ref_enum_postamble_params(&sm.params, "        ");
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);
@@ -5062,15 +4992,10 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             .unwrap_or_default();
 
         let raw_call = format!("crate::ffi::{}({})", im.ffi_fn_name, args.join(", "));
-        let is_enum_return = im.return_type.as_ref().and_then(|rt| rt.enum_rust_type.as_ref());
-        let needs_owned_ptr = im.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
-        let reexport_rt = im.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
 
         let prelude = cstr_prelude_resolved(&im.params, &param_names);
 
-        let is_class_ptr_ret = im.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
-        let is_mut_ref_enum_ret = im.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return);
-        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret, is_mut_ref_enum_ret);
+        let body = build_reexport_body(&raw_call, im.return_type.as_ref());
         let postamble = mut_ref_enum_postamble_resolved(&im.params, &param_names, "        ");
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);

@@ -203,35 +203,13 @@ fn generate_function_wrappers(
 
             // Determine return pattern from pre-computed return type binding
             if let Some(ref rt) = func.return_type {
-                if rt.is_mut_ref_enum_return {
-                    writeln!(
-                        output,
-                        "extern \"C\" int32_t* {}({}) {{ return reinterpret_cast<int32_t*>(&({})); }}",
-                        wrapper_name, params_str, call
-                    ).unwrap();
-                } else if rt.enum_cpp_name.is_some() {
-                    writeln!(
-                        output,
-                        "extern \"C\" {} {}({}) {{ return static_cast<int32_t>({}); }}",
-                        rt.cpp_type, wrapper_name, params_str, call
-                    ).unwrap();
-                } else if rt.needs_unique_ptr {
-                    // Return type is the base C++ type; wrapper returns pointer
-                    // cpp_type for unique_ptr returns is the base type (e.g. "gp_Pnt")
-                    // but the FFI returns a pointer to it
-                    let base_type = &rt.cpp_type;
-                    writeln!(
-                        output,
-                        "extern \"C\" {0}* {1}({2}) {{ return new {0}({3}); }}",
-                        base_type, wrapper_name, params_str, call
-                    ).unwrap();
-                } else {
-                    writeln!(
-                        output,
-                        "extern \"C\" {} {}({}) {{ return {}; }}",
-                        rt.cpp_type, wrapper_name, params_str, call
-                    ).unwrap();
-                }
+                let ret_type_cpp = rt.ffi_cpp_return_type();
+                let return_stmt = rt.format_cpp_return_stmt(&call, false);
+                writeln!(
+                    output,
+                    "extern \"C\" {} {}({}) {{ {} }}",
+                    ret_type_cpp, wrapper_name, params_str, return_stmt
+                ).unwrap();
             } else {
                 writeln!(
                     output,

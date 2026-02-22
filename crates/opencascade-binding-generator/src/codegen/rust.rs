@@ -664,18 +664,9 @@ fn emit_free_function_wrapper(
     let call_expr = format!("crate::ffi::{}({})", func.cpp_wrapper_name, args.join(", "));
 
     // Build body with proper conversions: enum returns, OwnedPtr wrapping, pointer-to-reference, class ptr returns
-    let reexport_rt = func.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
-    let is_enum_return = func.return_type.as_ref().and_then(|rt| rt.enum_rust_type.as_ref());
-    let needs_owned_ptr = func.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
-    let is_class_ptr_ret = func.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
-    let is_mut_ref_enum_ret = func.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return);
     let body = super::bindings::build_reexport_body(
         &call_expr,
-        reexport_rt,
-        is_enum_return.map(|s| s.as_str()),
-        needs_owned_ptr,
-        is_class_ptr_ret,
-        is_mut_ref_enum_ret,
+        func.return_type.as_ref(),
     );
 
     // Generate postamble for &mut enum writeback
