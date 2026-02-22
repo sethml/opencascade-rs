@@ -1195,6 +1195,21 @@ fn generate_rust_ffi_array2(info: &CollectionInfo) -> String {
 
 
 /// Generate C++ wrappers header for all collections
+pub fn collect_collection_headers(collections: &[CollectionInfo]) -> Vec<String> {
+    let mut headers: std::collections::HashSet<String> = std::collections::HashSet::new();
+    for info in collections {
+        headers.insert(format!("{}.hxx", info.element_type));
+        headers.insert(format!("{}.hxx", info.typedef_name));
+        if let Some(ref value_type) = info.value_type {
+            headers.insert(format!("{}.hxx", value_type));
+        }
+    }
+
+    let mut result: Vec<_> = headers.into_iter().collect();
+    result.sort();
+    result
+}
+
 pub fn generate_cpp_collections(collections: &[CollectionInfo]) -> String {
     if collections.is_empty() {
         return String::new();
@@ -1205,24 +1220,6 @@ pub fn generate_cpp_collections(collections: &[CollectionInfo]) -> String {
     output.push_str("\n// ========================\n");
     output.push_str("// Collection type wrappers\n");
     output.push_str("// ========================\n\n");
-    
-    // Collect unique headers needed
-    let mut headers: std::collections::HashSet<String> = std::collections::HashSet::new();
-    for info in collections {
-        headers.insert(format!("{}.hxx", info.element_type));
-        headers.insert(format!("{}.hxx", info.typedef_name));
-        if let Some(ref value_type) = info.value_type {
-            headers.insert(format!("{}.hxx", value_type));
-        }
-    }
-    
-    // Include headers (sorted for determinism)
-    let mut sorted_headers: Vec<_> = headers.into_iter().collect();
-    sorted_headers.sort();
-    for header in sorted_headers {
-        output.push_str(&format!("#include <{}>\n", header));
-    }
-    output.push('\n');
     
     // Generate wrappers for each collection
     for info in collections {
