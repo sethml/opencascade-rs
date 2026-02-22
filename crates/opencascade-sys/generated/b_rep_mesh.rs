@@ -9226,15 +9226,15 @@ impl Triangle {
 //   constructor: Constructor.
 //   constructor: @param theEdges array of edges of triangle.
 //   constructor: @param theOrientations array of edge's orientations.
-//   Reason: has unbindable types: param 'theEdges': C-style array (Standard_Integer[3]&); param 'theOrientations': C-style array (Standard_Boolean[3]&)
-//   // pub fn new_integer[3]_boolean[3]_degreeoffreedom(theEdges: /* Standard_Integer[3]& */, theOrientations: /* Standard_Boolean[3]& */, theMovability: DegreeOfFreedom) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'theEdges': C-style array (const Standard_Integer[3]&); param 'theOrientations': C-style array (const Standard_Boolean[3]&)
+//   // pub fn new_integer[3]_boolean[3]_degreeoffreedom(theEdges: /* const Standard_Integer[3]& */, theOrientations: /* const Standard_Boolean[3]& */, theMovability: DegreeOfFreedom) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `BRepMesh_Triangle.hxx`:60 - `BRepMesh_Triangle::Initialize`
 //   method: Initializes the triangle by the given parameters.
 //   method: @param theEdges array of edges of triangle.
 //   method: @param theOrientations array of edge's orientations.
-//   Reason: has unbindable types: param 'theEdges': C-style array (Standard_Integer[3]&); param 'theOrientations': C-style array (Standard_Boolean[3]&)
-//   // pub fn initialize(&mut self, theEdges: /* Standard_Integer[3]& */, theOrientations: /* Standard_Boolean[3]& */, theMovability: DegreeOfFreedom);
+//   Reason: has unbindable types: param 'theEdges': C-style array (const Standard_Integer[3]&); param 'theOrientations': C-style array (const Standard_Boolean[3]&)
+//   // pub fn initialize(&mut self, theEdges: /* const Standard_Integer[3]& */, theOrientations: /* const Standard_Boolean[3]& */, theMovability: DegreeOfFreedom);
 //
 // SKIPPED: **Source:** `BRepMesh_Triangle.hxx`:72 - `BRepMesh_Triangle::Edges`
 //   method: Gets edges with orientations composing the triangle.

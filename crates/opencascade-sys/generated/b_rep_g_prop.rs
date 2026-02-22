@@ -795,6 +795,44 @@ impl Gauss {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Gauss_ctor_gausstype(theType)) }
     }
 
+    /// **Source:** `BRepGProp_Gauss.hxx`:88 - `BRepGProp_Gauss::Compute()`
+    /// Computes the global properties of a solid region of 3D space which can be
+    /// delimited by the surface and point or surface and plane. Surface can be closed.
+    /// The method is quick and its precision is enough for many cases of analytical surfaces.
+    /// Non-adaptive 2D Gauss integration with predefined numbers of Gauss points
+    /// is used. Numbers of points depend on types of surfaces and curves.
+    /// Error of the computation is not calculated.
+    /// @param theSurface - bounding surface of the region;
+    /// @param theLocation - location of the point or the plane;
+    /// @param theCoeff - plane coefficients;
+    /// @param theIsByPoint - flag of restricition (point/plane);
+    /// @param[out] theOutMass - mass (volume) of region;
+    /// @param[out] theOutGravityCenter - garvity center of region;
+    /// @param[out] theOutInertia - matrix of inertia;
+    pub unsafe fn compute_face_pnt_realptr_bool_real_pnt_mat(
+        &mut self,
+        theSurface: &Face,
+        theLocation: &crate::gp::Pnt,
+        theCoeff: *mut f64,
+        theIsByPoint: bool,
+        theOutMass: &mut f64,
+        theOutGravityCenter: &mut crate::gp::Pnt,
+        theOutInertia: &mut crate::gp::Mat,
+    ) {
+        unsafe {
+            crate::ffi::BRepGProp_Gauss_compute_face_pnt_realptr_bool_real_pnt_mat(
+                self as *mut Self,
+                theSurface,
+                theLocation,
+                theCoeff,
+                theIsByPoint,
+                theOutMass,
+                theOutGravityCenter,
+                theOutInertia,
+            )
+        }
+    }
+
     /// **Source:** `BRepGProp_Gauss.hxx`:106 - `BRepGProp_Gauss::Compute()`
     /// Computes the global properties of a surface. Surface can be closed.
     /// The method is quick and its precision is enough for many cases of analytical surfaces.
@@ -819,6 +857,47 @@ impl Gauss {
                 self as *mut Self,
                 theSurface,
                 theLocation,
+                theOutMass,
+                theOutGravityCenter,
+                theOutInertia,
+            )
+        }
+    }
+
+    /// **Source:** `BRepGProp_Gauss.hxx`:126 - `BRepGProp_Gauss::Compute()`
+    /// Computes the global properties of a region of 3D space which can be
+    /// delimited by the surface and point or surface and plane. Surface can be closed.
+    /// The method is quick and its precision is enough for many cases of analytical surfaces.
+    /// Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used.
+    /// Numbers of points depend on types of surfaces and curves.
+    /// Error of the computation is not calculated.
+    /// @param theSurface - bounding surface of the region;
+    /// @param theDomain - surface boundings;
+    /// @param theLocation - location of the point or the plane;
+    /// @param theCoeff - plane coefficients;
+    /// @param theIsByPoint - flag of restricition (point/plane);
+    /// @param[out] theOutMass - mass (volume) of region;
+    /// @param[out] theOutGravityCenter - garvity center of region;
+    /// @param[out] theOutInertia - matrix of inertia;
+    pub unsafe fn compute_face_domain_pnt_realptr_bool_real_pnt_mat(
+        &mut self,
+        theSurface: &mut Face,
+        theDomain: &mut Domain,
+        theLocation: &crate::gp::Pnt,
+        theCoeff: *mut f64,
+        theIsByPoint: bool,
+        theOutMass: &mut f64,
+        theOutGravityCenter: &mut crate::gp::Pnt,
+        theOutInertia: &mut crate::gp::Mat,
+    ) {
+        unsafe {
+            crate::ffi::BRepGProp_Gauss_compute_face_domain_pnt_realptr_bool_real_pnt_mat(
+                self as *mut Self,
+                theSurface,
+                theDomain,
+                theLocation,
+                theCoeff,
+                theIsByPoint,
                 theOutMass,
                 theOutGravityCenter,
                 theOutInertia,
@@ -853,6 +932,51 @@ impl Gauss {
                 theSurface,
                 theDomain,
                 theLocation,
+                theOutMass,
+                theOutGravityCenter,
+                theOutInertia,
+            )
+        }
+    }
+
+    /// **Source:** `BRepGProp_Gauss.hxx`:169 - `BRepGProp_Gauss::Compute()`
+    /// Computes the global properties of the region of 3D space which can be
+    /// delimited by the surface and point or surface and plane.
+    /// Adaptive 2D Gauss integration is used.
+    /// If Epsilon more than 0.001 then algorithm performs non-adaptive integration.
+    /// @param theSurface - bounding surface of the region;
+    /// @param theDomain - surface boundings;
+    /// @param theLocation - location of the point or the plane;
+    /// @param theEps - maximal relative error of computed mass (volume) for face;
+    /// @param theCoeff - plane coefficients;
+    /// @param theIsByPoint - flag of restricition (point/plane);
+    /// @param[out] theOutMass - mass (volume) of region;
+    /// @param[out] theOutGravityCenter - garvity center of region;
+    /// @param[out] theOutInertia - matrix of inertia;
+    /// @return value of error which is calculated as
+    /// Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+    /// for two successive steps of adaptive integration.
+    pub unsafe fn compute_face_domain_pnt_real_realptr_bool_real_pnt_mat(
+        &mut self,
+        theSurface: &mut Face,
+        theDomain: &mut Domain,
+        theLocation: &crate::gp::Pnt,
+        theEps: f64,
+        theCoeff: *mut f64,
+        theByPoint: bool,
+        theOutMass: &mut f64,
+        theOutGravityCenter: &mut crate::gp::Pnt,
+        theOutInertia: &mut crate::gp::Mat,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::BRepGProp_Gauss_compute_face_domain_pnt_real_realptr_bool_real_pnt_mat(
+                self as *mut Self,
+                theSurface,
+                theDomain,
+                theLocation,
+                theEps,
+                theCoeff,
+                theByPoint,
                 theOutMass,
                 theOutGravityCenter,
                 theOutInertia,
@@ -897,29 +1021,6 @@ impl Gauss {
         }
     }
 }
-
-// ── Skipped symbols for Gauss (3 total) ──
-// SKIPPED: **Source:** `BRepGProp_Gauss.hxx`:88 - `BRepGProp_Gauss::Compute`
-//   method: Computes the global properties of a solid region of 3D space which can be
-//   method: delimited by the surface and point or surface and plane. Surface can be closed.
-//   method: The method is quick and its precision is enough for many cases of analytical surfaces.
-//   Reason: has unbindable types: param 'theCoeff': C-style array (Standard_Real[])
-//   // pub fn compute(&mut self, theSurface: &Face, theLocation: &Pnt, theCoeff: /* Standard_Real[] */, theIsByPoint: bool, theOutMass: &mut f64, theOutGravityCenter: &mut Pnt, theOutInertia: &mut Mat);
-//
-// SKIPPED: **Source:** `BRepGProp_Gauss.hxx`:126 - `BRepGProp_Gauss::Compute`
-//   method: Computes the global properties of a region of 3D space which can be
-//   method: delimited by the surface and point or surface and plane. Surface can be closed.
-//   method: The method is quick and its precision is enough for many cases of analytical surfaces.
-//   Reason: has unbindable types: param 'theCoeff': C-style array (Standard_Real[])
-//   // pub fn compute(&mut self, theSurface: &mut Face, theDomain: &mut Domain, theLocation: &Pnt, theCoeff: /* Standard_Real[] */, theIsByPoint: bool, theOutMass: &mut f64, theOutGravityCenter: &mut Pnt, theOutInertia: &mut Mat);
-//
-// SKIPPED: **Source:** `BRepGProp_Gauss.hxx`:169 - `BRepGProp_Gauss::Compute`
-//   method: Computes the global properties of the region of 3D space which can be
-//   method: delimited by the surface and point or surface and plane.
-//   method: Adaptive 2D Gauss integration is used.
-//   Reason: has unbindable types: param 'theCoeff': C-style array (Standard_Real[])
-//   // pub fn compute(&mut self, theSurface: &mut Face, theDomain: &mut Domain, theLocation: &Pnt, theEps: f64, theCoeff: /* Standard_Real[] */, theByPoint: bool, theOutMass: &mut f64, theOutGravityCenter: &mut Pnt, theOutInertia: &mut Mat) -> f64;
-//
 
 // ========================
 // From BRepGProp_MeshCinert.hxx
@@ -1124,6 +1225,35 @@ impl MeshProps {
         }
     }
 
+    /// **Source:** `BRepGProp_MeshProps.hxx`:66 - `BRepGProp_MeshProps::CalculateProps()`
+    /// Computes the global properties of triangle {p1, p2, p3} relatively
+    /// point Apex
+    /// If isVolume = true, volume properties are calculated
+    /// otherwise - surface ones
+    pub unsafe fn calculate_props(
+        p1: &crate::gp::Pnt,
+        p2: &crate::gp::Pnt,
+        p3: &crate::gp::Pnt,
+        Apex: &crate::gp::Pnt,
+        isVolume: bool,
+        GProps: Option<&mut f64>,
+        NbGaussPoints: i32,
+        GaussPnts: *const f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepGProp_MeshProps_calculate_props(
+                p1,
+                p2,
+                p3,
+                Apex,
+                isVolume,
+                GProps.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                NbGaussPoints,
+                GaussPnts,
+            )
+        }
+    }
+
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
         unsafe { &*(crate::ffi::BRepGProp_MeshProps_as_GProp_GProps(self as *const Self)) }
@@ -1190,15 +1320,6 @@ impl MeshProps {
         }
     }
 }
-
-// ── Skipped symbols for MeshProps (1 total) ──
-// SKIPPED: **Source:** `BRepGProp_MeshProps.hxx`:66 - `BRepGProp_MeshProps::CalculateProps`
-//   static_method: Computes the global properties of triangle {p1, p2, p3} relatively
-//   static_method: point Apex
-//   static_method: If isVolume = true, volume properties are calculated
-//   Reason: has unbindable types: param 'GProps': C-style array (Standard_Real[10])
-//   // pub fn calculate_props(p1: &Pnt, p2: &Pnt, p3: &Pnt, Apex: &Pnt, isVolume: bool, GProps: /* Standard_Real[10] */, NbGaussPoints: i32, GaussPnts: *const f64);
-//
 
 // ========================
 // From BRepGProp_Sinert.hxx

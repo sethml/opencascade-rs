@@ -24,6 +24,28 @@ pub fn make_transition(
 ) {
     unsafe { crate::ffi::IntSurf_make_transition(TgFirst, TgSecond, Normal, TFirst, TSecond) }
 }
+/// **Source:** `IntSurf.hxx`:56 - `IntSurf::SetPeriod`
+/// Fills theArrOfPeriod array by the period values of theFirstSurf and theSecondSurf.
+/// [0] = U-period of theFirstSurf,
+/// [1] = V-period of theFirstSurf,
+/// [2] = U-period of theSecondSurf,
+/// [3] = V-period of theSecondSurf.
+///
+/// If surface is not periodic in correspond direction then
+/// its period is considered to be equal to 0.
+pub unsafe fn set_period(
+    theFirstSurf: &crate::ffi::HandleAdaptor3dSurface,
+    theSecondSurf: &crate::ffi::HandleAdaptor3dSurface,
+    theArrOfPeriod: Option<&mut f64>,
+) {
+    unsafe {
+        crate::ffi::IntSurf_set_period(
+            theFirstSurf,
+            theSecondSurf,
+            theArrOfPeriod.map_or(std::ptr::null_mut(), |r| r as *mut _),
+        )
+    }
+}
 
 /// C++ enum: `IntSurf_Situation`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]

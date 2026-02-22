@@ -5596,16 +5596,35 @@ impl SpecialPoints {
             )
         }
     }
-}
 
-// ── Skipped symbols for SpecialPoints (1 total) ──
-// SKIPPED: **Source:** `IntPatch_SpecialPoints.hxx`:123 - `IntPatch_SpecialPoints::AdjustPointAndVertex`
-//   static_method: Sets theNewPoint parameters in 2D-space the closest to
-//   static_method: theRefPoint with help of adding/subtracting corresponding periods.
-//   static_method: theArrPeriods must be filled as follows:
-//   Reason: has unbindable types: param 'theArrPeriods': C-style array (Standard_Real[4])
-//   // pub fn adjust_point_and_vertex(theRefPoint: &PntOn2S, theArrPeriods: /* Standard_Real[4] */, theNewPoint: &mut PntOn2S, theVertex: *mut Point);
-//
+    /// **Source:** `IntPatch_SpecialPoints.hxx`:123 - `IntPatch_SpecialPoints::AdjustPointAndVertex()`
+    /// Sets theNewPoint parameters in 2D-space the closest to
+    /// theRefPoint with help of adding/subtracting corresponding periods.
+    /// theArrPeriods must be filled as follows:
+    /// {<U-period of 1st surface>, <V-period of 1st surface>,
+    /// <U-period of 2nd surface>, <V-period of 2nd surface>}.
+    /// If theVertex != 0 then its parameters will be filled as
+    /// corresponding parameters of theNewPoint.
+    ///
+    /// ATTENTION!!!
+    /// theNewPoint is not only Output parameter. It is Input/Output one. I.e.
+    /// theNewPoint is reference point together with theRefPt.
+    pub fn adjust_point_and_vertex(
+        theRefPoint: &crate::int_surf::PntOn2S,
+        theArrPeriods: Option<&mut f64>,
+        theNewPoint: &mut crate::int_surf::PntOn2S,
+        theVertex: Option<&mut Point>,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_SpecialPoints_adjust_point_and_vertex(
+                theRefPoint,
+                theArrPeriods.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                theNewPoint,
+                theVertex.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+}
 
 // ========================
 // From IntPatch_TheIWLineOfTheIWalking.hxx

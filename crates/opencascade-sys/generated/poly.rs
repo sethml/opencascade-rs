@@ -1622,6 +1622,32 @@ impl CoherentTriangulation {
         }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:330 - `Poly_CoherentTriangulation::FindTriangle()`
+    ///
+    /// Find one or two triangles that share the given couple of nodes.
+    /// @param theLink
+    /// Link (in fact, just a couple of nodes) on which the triangle is
+    /// searched.
+    /// @param pTri
+    /// <tt>[out]</tt> Array of two pointers to triangle. pTri[0] stores the
+    /// triangle to the left of the link, while pTri[1] stores the one to the
+    /// right of the link.
+    /// @return
+    /// True if at least one triangle is found and output as pTri.
+    pub fn find_triangle(
+        &self,
+        theLink: &CoherentLink,
+        pTri: Option<&mut *const CoherentTriangle>,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Poly_CoherentTriangulation_find_triangle(
+                self as *const Self,
+                theLink,
+                pTri.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+
     /// **Source:** `Poly_CoherentTriangulation.hxx`:336 - `Poly_CoherentTriangulation::ComputeLinks()`
     ///
     /// (Re)Calculate all links in this Triangulation.
@@ -1799,18 +1825,12 @@ impl HandlePolyCoherentTriangulation {
     }
 }
 
-// ── Skipped symbols for CoherentTriangulation (2 total) ──
+// ── Skipped symbols for CoherentTriangulation (1 total) ──
 // SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:198 - `Poly_CoherentTriangulation::RemoveDegenerated`
 //   method: Find and remove degenerated triangles in Triangulation.
 //   method: @param theTol
 //   Reason: param 'pLstRemovedNode' uses unknown type 'NCollection_List<TwoIntegers>*'
 //   // pub fn remove_degenerated(&mut self, theTol: f64, pLstRemovedNode: /* NCollection_List<TwoIntegers>* */) -> bool;
-//
-// SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:330 - `Poly_CoherentTriangulation::FindTriangle`
-//   method: Find one or two triangles that share the given couple of nodes.
-//   method: @param theLink
-//   Reason: has unbindable types: param 'pTri': C-style array (Poly_CoherentTriangle *[2])
-//   // pub fn find_triangle(&self, theLink: &CoherentLink, pTri: /* Poly_CoherentTriangle *[2] */) -> bool;
 //
 
 /// **Source:** `Poly_CoherentTriangulation.hxx`:112 - `Poly_CoherentTriangulation_IteratorOfTriangle`
@@ -3036,6 +3056,30 @@ impl MergeNodesTool {
         }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:114 - `Poly_MergeNodesTool::AddTriangle()`
+    /// Add new triangle.
+    /// @param[in] theElemNodes 3 element nodes
+    pub fn add_triangle(&mut self, theElemNodes: Option<&mut crate::gp::XYZ>) {
+        unsafe {
+            crate::ffi::Poly_MergeNodesTool_add_triangle(
+                self as *mut Self,
+                theElemNodes.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+
+    /// **Source:** `Poly_MergeNodesTool.hxx`:118 - `Poly_MergeNodesTool::AddQuad()`
+    /// Add new quad.
+    /// @param[in] theElemNodes 4 element nodes
+    pub fn add_quad(&mut self, theElemNodes: Option<&mut crate::gp::XYZ>) {
+        unsafe {
+            crate::ffi::Poly_MergeNodesTool_add_quad(
+                self as *mut Self,
+                theElemNodes.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+
     /// **Source:** `Poly_MergeNodesTool.hxx`:123 - `Poly_MergeNodesTool::AddElement()`
     /// Add new triangle or quad.
     /// @param[in] theElemNodes element nodes
@@ -3256,20 +3300,6 @@ impl HandlePolyMergeNodesTool {
         }
     }
 }
-
-// ── Skipped symbols for MergeNodesTool (2 total) ──
-// SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:114 - `Poly_MergeNodesTool::AddTriangle`
-//   method: Add new triangle.
-//   method: @param[in] theElemNodes 3 element nodes
-//   Reason: has unbindable types: param 'theElemNodes': C-style array (gp_XYZ[3])
-//   // pub fn add_triangle(&mut self, theElemNodes: /* gp_XYZ[3] */);
-//
-// SKIPPED: **Source:** `Poly_MergeNodesTool.hxx`:118 - `Poly_MergeNodesTool::AddQuad`
-//   method: Add new quad.
-//   method: @param[in] theElemNodes 4 element nodes
-//   Reason: has unbindable types: param 'theElemNodes': C-style array (gp_XYZ[4])
-//   // pub fn add_quad(&mut self, theElemNodes: /* gp_XYZ[4] */);
-//
 
 // ========================
 // From Poly_Polygon2D.hxx

@@ -7448,11 +7448,30 @@ impl SensitiveTriangulation {
     /// Get last detected triangle.
     /// @param[out] theTriangle  triangle node indexes
     /// @return TRUE if defined
-    pub fn last_detected_triangle(&self, theTriangle: &mut crate::poly::Triangle) -> bool {
+    pub fn last_detected_triangle_triangle(&self, theTriangle: &mut crate::poly::Triangle) -> bool {
         unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_last_detected_triangle(
+            crate::ffi::Select3D_SensitiveTriangulation_last_detected_triangle_triangle(
                 self as *const Self,
                 theTriangle,
+            )
+        }
+    }
+
+    /// **Source:** `Select3D_SensitiveTriangulation.hxx`:64 - `Select3D_SensitiveTriangulation::LastDetectedTriangle()`
+    /// Get last detected triangle.
+    /// @param[out] theTriangle  triangle node indexes
+    /// @param[out] theTriNodes  triangle nodes (with pre-applied transformation)
+    /// @return TRUE if defined
+    pub fn last_detected_triangle_triangle_pntptr(
+        &self,
+        theTriangle: &mut crate::poly::Triangle,
+        theTriNodes: Option<&mut crate::gp::Pnt>,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Select3D_SensitiveTriangulation_last_detected_triangle_triangle_pntptr(
+                self as *const Self,
+                theTriangle,
+                theTriNodes.map_or(std::ptr::null_mut(), |r| r as *mut _),
             )
         }
     }
@@ -7887,15 +7906,6 @@ impl HandleSelect3DSensitiveTriangulation {
         }
     }
 }
-
-// ── Skipped symbols for SensitiveTriangulation (1 total) ──
-// SKIPPED: **Source:** `Select3D_SensitiveTriangulation.hxx`:64 - `Select3D_SensitiveTriangulation::LastDetectedTriangle`
-//   method: Get last detected triangle.
-//   method: @param[out] theTriangle  triangle node indexes
-//   method: @param[out] theTriNodes  triangle nodes (with pre-applied transformation)
-//   Reason: has unbindable types: param 'theTriNodes': C-style array (gp_Pnt[3])
-//   // pub fn last_detected_triangle(&self, theTriangle: &mut Triangle, theTriNodes: /* gp_Pnt[3] */) -> bool;
-//
 
 // ========================
 // From Select3D_SensitiveWire.hxx

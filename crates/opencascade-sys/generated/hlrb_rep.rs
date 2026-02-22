@@ -2063,6 +2063,30 @@ impl Curve {
         unsafe { crate::ffi::HLRBRep_Curve_parameter3d(self as *const Self, P2d) }
     }
 
+    /// **Source:** `HLRBRep_Curve.hxx`:77 - `HLRBRep_Curve::Update()`
+    /// Update the minmax and the internal data
+    pub fn update(&mut self, TotMin: Option<&mut f64>, TotMax: Option<&mut f64>) -> f64 {
+        unsafe {
+            crate::ffi::HLRBRep_Curve_update(
+                self as *mut Self,
+                TotMin.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                TotMax.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_Curve.hxx`:80 - `HLRBRep_Curve::UpdateMinMax()`
+    /// Update the minmax returns tol for enlarge;
+    pub fn update_min_max(&mut self, TotMin: Option<&mut f64>, TotMax: Option<&mut f64>) -> f64 {
+        unsafe {
+            crate::ffi::HLRBRep_Curve_update_min_max(
+                self as *mut Self,
+                TotMin.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                TotMax.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+
     /// **Source:** `HLRBRep_Curve.hxx`:84 - `HLRBRep_Curve::Z()`
     /// Computes the Z    coordinate  of the  point  of
     /// parameter U on the curve in the viewing coordinate system
@@ -2345,18 +2369,6 @@ impl Curve {
         unsafe { crate::ffi::HLRBRep_Curve_multiplicities(self as *const Self, mu) }
     }
 }
-
-// ── Skipped symbols for Curve (2 total) ──
-// SKIPPED: **Source:** `HLRBRep_Curve.hxx`:77 - `HLRBRep_Curve::Update`
-//   method: Update the minmax and the internal data
-//   Reason: has unbindable types: param 'TotMin': C-style array (Standard_Real[16]); param 'TotMax': C-style array (Standard_Real[16])
-//   // pub fn update(&mut self, TotMin: /* Standard_Real[16] */, TotMax: /* Standard_Real[16] */) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_Curve.hxx`:80 - `HLRBRep_Curve::UpdateMinMax`
-//   method: Update the minmax returns tol for enlarge;
-//   Reason: has unbindable types: param 'TotMin': C-style array (Standard_Real[16]); param 'TotMax': C-style array (Standard_Real[16])
-//   // pub fn update_min_max(&mut self, TotMin: /* Standard_Real[16] */, TotMax: /* Standard_Real[16] */) -> f64;
-//
 
 // ========================
 // From HLRBRep_CurveTool.hxx

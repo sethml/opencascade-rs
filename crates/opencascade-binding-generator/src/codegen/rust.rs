@@ -640,11 +640,22 @@ fn emit_free_function_wrapper(
         })
         .collect();
 
-    // Build args with .into() for enum params, CString conversion for &str params,
-    // and &mut i32 local for &mut enum params
+    // Build args with proper conversions: nullable ptr, class ptr, enum, CString, &mut enum
     let args: Vec<String> = func.params.iter()
         .map(|p| {
-            if p.mut_ref_enum_rust_type.is_some() {
+            if p.is_nullable_ptr {
+                if p.rust_ffi_type.starts_with("*const") {
+                    format!("{}.map_or(std::ptr::null(), |r| r as *const _)", p.rust_name)
+                } else {
+                    format!("{}.map_or(std::ptr::null_mut(), |r| r as *mut _)", p.rust_name)
+                }
+            } else if p.is_class_ptr {
+                if p.rust_ffi_type.starts_with("*const") {
+                    format!("{} as *const _", p.rust_name)
+                } else {
+                    format!("{} as *mut _", p.rust_name)
+                }
+            } else if p.mut_ref_enum_rust_type.is_some() {
                 format!("&mut {}_i32_", p.rust_name)
             } else if p.rust_reexport_type == "&str" {
                 format!("c_{}.as_ptr()", p.rust_name)

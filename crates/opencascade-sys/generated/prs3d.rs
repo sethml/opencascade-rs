@@ -553,6 +553,36 @@ unsafe impl crate::CppDeletable for ArrowAspect {
 }
 
 impl ArrowAspect {
+    /// **Source:** `Prs3d_ArrowAspect.hxx`:32 - `Prs3d_ArrowAspect::Prs3d_ArrowAspect()`
+    /// Constructs an empty framework for displaying arrows
+    /// in representations of lengths. The lengths displayed
+    /// are either on their own or in chamfers, fillets,
+    /// diameters and radii.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Prs3d_ArrowAspect_ctor()) }
+    }
+
+    /// **Source:** `Prs3d_ArrowAspect.hxx`:37 - `Prs3d_ArrowAspect::Prs3d_ArrowAspect()`
+    /// Constructs a framework to display an arrow with a
+    /// shaft of the length aLength and having a head with
+    /// sides at the angle anAngle from each other.
+    pub fn new_real2(anAngle: f64, aLength: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Prs3d_ArrowAspect_ctor_real2(anAngle, aLength))
+        }
+    }
+
+    /// **Source:** `Prs3d_ArrowAspect.hxx`:39 - `Prs3d_ArrowAspect::Prs3d_ArrowAspect()`
+    pub fn new_handlegraphic3daspectline3d(
+        theAspect: &crate::ffi::HandleGraphic3dAspectLine3d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Prs3d_ArrowAspect_ctor_handlegraphic3daspectline3d(theAspect),
+            )
+        }
+    }
+
     /// **Source:** `Prs3d_ArrowAspect.hxx`:26 - `Prs3d_ArrowAspect::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Prs3d_ArrowAspect_dynamic_type(self as *const Self)) }
@@ -645,6 +675,15 @@ impl ArrowAspect {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dArrowAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Prs3d_ArrowAspect_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::Prs3d_ArrowAspect_inherited_IsInstance(self as *const Self, theType) }
@@ -725,26 +764,6 @@ impl HandlePrs3dArrowAspect {
         }
     }
 }
-
-// ── Skipped symbols for ArrowAspect (3 total) ──
-// SKIPPED: **Source:** `Prs3d_ArrowAspect.hxx`:32 - `Prs3d_ArrowAspect::Prs3d_ArrowAspect`
-//   constructor: Constructs an empty framework for displaying arrows
-//   constructor: in representations of lengths. The lengths displayed
-//   constructor: are either on their own or in chamfers, fillets,
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Prs3d_ArrowAspect.hxx`:37 - `Prs3d_ArrowAspect::Prs3d_ArrowAspect`
-//   constructor: Constructs a framework to display an arrow with a
-//   constructor: shaft of the length aLength and having a head with
-//   constructor: sides at the angle anAngle from each other.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_real2(anAngle: f64, aLength: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Prs3d_ArrowAspect.hxx`:39 - `Prs3d_ArrowAspect::Prs3d_ArrowAspect`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handlegraphic3daspectline3d(theAspect: &HandleAspectLine3d) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From Prs3d_BasicAspect.hxx
@@ -1164,6 +1183,12 @@ unsafe impl crate::CppDeletable for DatumAspect {
 }
 
 impl DatumAspect {
+    /// **Source:** `Prs3d_DatumAspect.hxx`:35 - `Prs3d_DatumAspect::Prs3d_DatumAspect()`
+    /// An empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Prs3d_DatumAspect_ctor()) }
+    }
+
     /// **Source:** `Prs3d_DatumAspect.hxx`:32 - `Prs3d_DatumAspect::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Prs3d_DatumAspect_dynamic_type(self as *const Self)) }
@@ -1370,6 +1395,15 @@ impl DatumAspect {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dDatumAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Prs3d_DatumAspect_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::Prs3d_DatumAspect_inherited_IsInstance(self as *const Self, theType) }
@@ -1451,13 +1485,6 @@ impl HandlePrs3dDatumAspect {
     }
 }
 
-// ── Skipped symbols for DatumAspect (1 total) ──
-// SKIPPED: **Source:** `Prs3d_DatumAspect.hxx`:35 - `Prs3d_DatumAspect::Prs3d_DatumAspect`
-//   constructor: An empty constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Prs3d_DimensionAspect.hxx
 // ========================
@@ -1473,6 +1500,12 @@ unsafe impl crate::CppDeletable for DimensionAspect {
 }
 
 impl DimensionAspect {
+    /// **Source:** `Prs3d_DimensionAspect.hxx`:32 - `Prs3d_DimensionAspect::Prs3d_DimensionAspect()`
+    /// Constructs an empty framework to define the display of dimensions.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Prs3d_DimensionAspect_ctor()) }
+    }
+
     /// **Source:** `Prs3d_DimensionAspect.hxx`:29 - `Prs3d_DimensionAspect::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Prs3d_DimensionAspect_dynamic_type(self as *const Self)) }
@@ -1728,6 +1761,15 @@ impl DimensionAspect {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dDimensionAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Prs3d_DimensionAspect_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -1819,13 +1861,6 @@ impl HandlePrs3dDimensionAspect {
         }
     }
 }
-
-// ── Skipped symbols for DimensionAspect (1 total) ──
-// SKIPPED: **Source:** `Prs3d_DimensionAspect.hxx`:32 - `Prs3d_DimensionAspect::Prs3d_DimensionAspect`
-//   constructor: Constructs an empty framework to define the display of dimensions.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
 
 // ========================
 // From Prs3d_DimensionUnits.hxx
@@ -3608,6 +3643,29 @@ unsafe impl crate::CppDeletable for IsoAspect {
 }
 
 impl IsoAspect {
+    /// **Source:** `Prs3d_IsoAspect.hxx`:35 - `Prs3d_IsoAspect::Prs3d_IsoAspect()`
+    /// Constructs a framework to define display attributes of isoparameters.
+    /// These include:
+    /// -   the color attribute aColor
+    /// -   the type of line aType
+    /// -   the width value aWidth
+    /// -   aNumber, the number of isoparameters to be   displayed.
+    pub fn new_color_typeofline_real_int(
+        theColor: &crate::quantity::Color,
+        theType: crate::aspect::TypeOfLine,
+        theWidth: f64,
+        theNumber: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Prs3d_IsoAspect_ctor_color_typeofline_real_int(
+                theColor,
+                theType.into(),
+                theWidth,
+                theNumber,
+            ))
+        }
+    }
+
     /// **Source:** `Prs3d_IsoAspect.hxx`:27 - `Prs3d_IsoAspect::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Prs3d_IsoAspect_dynamic_type(self as *const Self)) }
@@ -3669,6 +3727,13 @@ impl IsoAspect {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe { &mut *(crate::ffi::Prs3d_IsoAspect_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dIsoAspect> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Prs3d_IsoAspect_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `Prs3d_LineAspect.hxx`:52 - `Prs3d_LineAspect::SetColor()`
@@ -3788,15 +3853,6 @@ impl HandlePrs3dIsoAspect {
     }
 }
 
-// ── Skipped symbols for IsoAspect (1 total) ──
-// SKIPPED: **Source:** `Prs3d_IsoAspect.hxx`:35 - `Prs3d_IsoAspect::Prs3d_IsoAspect`
-//   constructor: Constructs a framework to define display attributes of isoparameters.
-//   constructor: These include:
-//   constructor: -   the color attribute aColor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_color_typeofline_real_int(theColor: &Color, theType: TypeOfLine, theWidth: f64, theNumber: i32) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Prs3d_LineAspect.hxx
 // ========================
@@ -3819,6 +3875,37 @@ unsafe impl crate::CppDeletable for LineAspect {
 }
 
 impl LineAspect {
+    /// **Source:** `Prs3d_LineAspect.hxx`:41 - `Prs3d_LineAspect::Prs3d_LineAspect()`
+    /// Constructs a framework for line aspect defined by
+    /// -   the color aColor
+    /// -   the type of line aType and
+    /// -   the line thickness aWidth.
+    /// Type of line refers to whether the line is solid or dotted, for example.
+    pub fn new_color_typeofline_real(
+        theColor: &crate::quantity::Color,
+        theType: crate::aspect::TypeOfLine,
+        theWidth: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Prs3d_LineAspect_ctor_color_typeofline_real(
+                theColor,
+                theType.into(),
+                theWidth,
+            ))
+        }
+    }
+
+    /// **Source:** `Prs3d_LineAspect.hxx`:45 - `Prs3d_LineAspect::Prs3d_LineAspect()`
+    pub fn new_handlegraphic3daspectline3d(
+        theAspect: &crate::ffi::HandleGraphic3dAspectLine3d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Prs3d_LineAspect_ctor_handlegraphic3daspectline3d(theAspect),
+            )
+        }
+    }
+
     /// **Source:** `Prs3d_LineAspect.hxx`:34 - `Prs3d_LineAspect::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Prs3d_LineAspect_dynamic_type(self as *const Self)) }
@@ -3890,6 +3977,13 @@ impl LineAspect {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe { &mut *(crate::ffi::Prs3d_LineAspect_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dLineAspect> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Prs3d_LineAspect_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3989,19 +4083,6 @@ impl HandlePrs3dLineAspect {
     }
 }
 
-// ── Skipped symbols for LineAspect (2 total) ──
-// SKIPPED: **Source:** `Prs3d_LineAspect.hxx`:41 - `Prs3d_LineAspect::Prs3d_LineAspect`
-//   constructor: Constructs a framework for line aspect defined by
-//   constructor: -   the color aColor
-//   constructor: -   the type of line aType and
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_color_typeofline_real(theColor: &Color, theType: TypeOfLine, theWidth: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Prs3d_LineAspect.hxx`:45 - `Prs3d_LineAspect::Prs3d_LineAspect`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handlegraphic3daspectline3d(theAspect: &HandleAspectLine3d) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Prs3d_PlaneAspect.hxx
 // ========================
@@ -4017,6 +4098,12 @@ unsafe impl crate::CppDeletable for PlaneAspect {
 }
 
 impl PlaneAspect {
+    /// **Source:** `Prs3d_PlaneAspect.hxx`:28 - `Prs3d_PlaneAspect::Prs3d_PlaneAspect()`
+    /// Constructs an empty framework for the display of planes.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Prs3d_PlaneAspect_ctor()) }
+    }
+
     /// **Source:** `Prs3d_PlaneAspect.hxx`:25 - `Prs3d_PlaneAspect::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Prs3d_PlaneAspect_dynamic_type(self as *const Self)) }
@@ -4192,6 +4279,15 @@ impl PlaneAspect {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dPlaneAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Prs3d_PlaneAspect_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::Prs3d_PlaneAspect_inherited_IsInstance(self as *const Self, theType) }
@@ -4273,13 +4369,6 @@ impl HandlePrs3dPlaneAspect {
     }
 }
 
-// ── Skipped symbols for PlaneAspect (1 total) ──
-// SKIPPED: **Source:** `Prs3d_PlaneAspect.hxx`:28 - `Prs3d_PlaneAspect::Prs3d_PlaneAspect`
-//   constructor: Constructs an empty framework for the display of planes.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Prs3d_PointAspect.hxx
 // ========================
@@ -4297,6 +4386,49 @@ unsafe impl crate::CppDeletable for PointAspect {
 }
 
 impl PointAspect {
+    /// **Source:** `Prs3d_PointAspect.hxx`:31 - `Prs3d_PointAspect::Prs3d_PointAspect()`
+    pub fn new_typeofmarker_color_real(
+        theType: crate::aspect::TypeOfMarker,
+        theColor: &crate::quantity::Color,
+        theScale: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Prs3d_PointAspect_ctor_typeofmarker_color_real(
+                theType.into(),
+                theColor,
+                theScale,
+            ))
+        }
+    }
+
+    /// **Source:** `Prs3d_PointAspect.hxx`:36 - `Prs3d_PointAspect::Prs3d_PointAspect()`
+    /// Defines the user defined marker point.
+    pub fn new_color_int2_handletcolstdharray1ofbyte(
+        theColor: &crate::quantity::Color,
+        theWidth: i32,
+        theHeight: i32,
+        theTexture: &crate::ffi::HandleTColStdHArray1OfByte,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Prs3d_PointAspect_ctor_color_int2_handletcolstdharray1ofbyte(
+                    theColor, theWidth, theHeight, theTexture,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Prs3d_PointAspect.hxx`:41 - `Prs3d_PointAspect::Prs3d_PointAspect()`
+    pub fn new_handlegraphic3daspectmarker3d(
+        theAspect: &crate::ffi::HandleGraphic3dAspectMarker3d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Prs3d_PointAspect_ctor_handlegraphic3daspectmarker3d(theAspect),
+            )
+        }
+    }
+
     /// **Source:** `Prs3d_PointAspect.hxx`:29 - `Prs3d_PointAspect::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Prs3d_PointAspect_dynamic_type(self as *const Self)) }
@@ -4385,6 +4517,15 @@ impl PointAspect {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dPointAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Prs3d_PointAspect_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::Prs3d_PointAspect_inherited_IsInstance(self as *const Self, theType) }
@@ -4465,21 +4606,6 @@ impl HandlePrs3dPointAspect {
         }
     }
 }
-
-// ── Skipped symbols for PointAspect (3 total) ──
-// SKIPPED: **Source:** `Prs3d_PointAspect.hxx`:31 - `Prs3d_PointAspect::Prs3d_PointAspect`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_typeofmarker_color_real(theType: TypeOfMarker, theColor: &Color, theScale: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Prs3d_PointAspect.hxx`:36 - `Prs3d_PointAspect::Prs3d_PointAspect`
-//   constructor: Defines the user defined marker point.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_color_int2_handletcolstdharray1ofbyte(theColor: &Color, theWidth: i32, theHeight: i32, theTexture: &HandleHArray1OfByte) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Prs3d_PointAspect.hxx`:41 - `Prs3d_PointAspect::Prs3d_PointAspect`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handlegraphic3daspectmarker3d(theAspect: &HandleAspectMarker3d) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From Prs3d_PresentationShadow.hxx
@@ -5175,6 +5301,24 @@ unsafe impl crate::CppDeletable for ShadingAspect {
 }
 
 impl ShadingAspect {
+    /// **Source:** `Prs3d_ShadingAspect.hxx`:35 - `Prs3d_ShadingAspect::Prs3d_ShadingAspect()`
+    /// Constructs an empty framework to display shading.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Prs3d_ShadingAspect_ctor()) }
+    }
+
+    /// **Source:** `Prs3d_ShadingAspect.hxx`:38 - `Prs3d_ShadingAspect::Prs3d_ShadingAspect()`
+    /// Constructor with initialization.
+    pub fn new_handlegraphic3daspectfillarea3d(
+        theAspect: &crate::ffi::HandleGraphic3dAspectFillArea3d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Prs3d_ShadingAspect_ctor_handlegraphic3daspectfillarea3d(theAspect),
+            )
+        }
+    }
+
     /// **Source:** `Prs3d_ShadingAspect.hxx`:32 - `Prs3d_ShadingAspect::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Prs3d_ShadingAspect_dynamic_type(self as *const Self)) }
@@ -5291,6 +5435,15 @@ impl ShadingAspect {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dShadingAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Prs3d_ShadingAspect_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -5377,18 +5530,6 @@ impl HandlePrs3dShadingAspect {
     }
 }
 
-// ── Skipped symbols for ShadingAspect (2 total) ──
-// SKIPPED: **Source:** `Prs3d_ShadingAspect.hxx`:35 - `Prs3d_ShadingAspect::Prs3d_ShadingAspect`
-//   constructor: Constructs an empty framework to display shading.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Prs3d_ShadingAspect.hxx`:38 - `Prs3d_ShadingAspect::Prs3d_ShadingAspect`
-//   constructor: Constructor with initialization.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handlegraphic3daspectfillarea3d(theAspect: &HandleAspectFillArea3d) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Prs3d_Text.hxx
 // ========================
@@ -5464,6 +5605,23 @@ unsafe impl crate::CppDeletable for TextAspect {
 }
 
 impl TextAspect {
+    /// **Source:** `Prs3d_TextAspect.hxx`:32 - `Prs3d_TextAspect::Prs3d_TextAspect()`
+    /// Constructs an empty framework for defining display attributes of text.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Prs3d_TextAspect_ctor()) }
+    }
+
+    /// **Source:** `Prs3d_TextAspect.hxx`:34 - `Prs3d_TextAspect::Prs3d_TextAspect()`
+    pub fn new_handlegraphic3daspecttext3d(
+        theAspect: &crate::ffi::HandleGraphic3dAspectText3d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Prs3d_TextAspect_ctor_handlegraphic3daspecttext3d(theAspect),
+            )
+        }
+    }
+
     /// **Source:** `Prs3d_TextAspect.hxx`:29 - `Prs3d_TextAspect::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Prs3d_TextAspect_dynamic_type(self as *const Self)) }
@@ -5642,6 +5800,13 @@ impl TextAspect {
         unsafe { &mut *(crate::ffi::Prs3d_TextAspect_as_Standard_Transient_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dTextAspect> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Prs3d_TextAspect_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::Prs3d_TextAspect_inherited_IsInstance(self as *const Self, theType) }
@@ -5722,17 +5887,6 @@ impl HandlePrs3dTextAspect {
         }
     }
 }
-
-// ── Skipped symbols for TextAspect (2 total) ──
-// SKIPPED: **Source:** `Prs3d_TextAspect.hxx`:32 - `Prs3d_TextAspect::Prs3d_TextAspect`
-//   constructor: Constructs an empty framework for defining display attributes of text.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Prs3d_TextAspect.hxx`:34 - `Prs3d_TextAspect::Prs3d_TextAspect`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handlegraphic3daspecttext3d(theAspect: &HandleAspectText3d) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From Prs3d_ToolCylinder.hxx

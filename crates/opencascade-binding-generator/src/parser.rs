@@ -701,7 +701,12 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
                     }
                 }
 
-                // Skip destructors, operators, and conversion functions
+                // Always track all method names (even if not public or skipped) - used for abstract class detection
+                if let Some(ref method_name) = child.get_name() {
+                    all_method_names.insert(method_name.clone());
+                }
+
+                // Skip destructors, operators, and conversion functions from binding generation
                 if let Some(ref method_name) = child.get_name() {
                     if method_name.starts_with('~')
                         || method_name.starts_with("operator")
@@ -710,9 +715,6 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
                     {
                         return EntityVisitResult::Continue;
                     }
-
-                    // Always track all method names (even if not public) - used for filtering inherited methods
-                    all_method_names.insert(method_name.clone());
                 }
 
                 // Skip deprecated methods
@@ -1649,6 +1651,19 @@ fn parse_type(clang_type: &clang::Type) -> Type {
 
     if kind == TypeKind::LValueReference {
         if let Some(pointee) = clang_type.get_pointee_type() {
+            let pk = pointee.get_kind();
+            // Reference-to-array (e.g., int(&)[3]) cannot be safely represented in FFI.
+            // Keep the array notation so is_array() returns true and the method is skipped.
+            if pk == TypeKind::ConstantArray || pk == TypeKind::IncompleteArray {
+                let arr_display = pointee.get_display_name();
+                let is_const = pointee.is_const_qualified();
+                let inner = Type::Class(arr_display);
+                return if is_const {
+                    Type::ConstRef(Box::new(inner))
+                } else {
+                    Type::MutRef(Box::new(inner))
+                };
+            }
             let is_const = pointee.is_const_qualified();
             let inner = parse_type(&pointee);
             return if is_const {
@@ -1677,6 +1692,17 @@ fn parse_type(clang_type: &clang::Type) -> Type {
             } else {
                 Type::MutPtr(Box::new(inner))
             };
+        }
+    }
+
+    // Handle C-style array types: ConstantArray (int[16]) and IncompleteArray (int[]).
+    // In function parameters, C arrays decay to pointers. For array reference params
+    // (int(&)[3]), the LValueReference wrapper is already applied and we just need
+    // to handle the inner ConstantArray → pointer conversion.
+    if kind == TypeKind::ConstantArray || kind == TypeKind::IncompleteArray {
+        if let Some(elem) = clang_type.get_element_type() {
+            let inner = parse_type(&elem);
+            return Type::MutPtr(Box::new(inner));
         }
     }
 

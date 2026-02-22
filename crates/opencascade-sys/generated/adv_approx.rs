@@ -377,16 +377,37 @@ unsafe impl crate::CppDeletable for EvaluatorFunction {
     }
 }
 
-// ── Skipped symbols for EvaluatorFunction (2 total) ──
+impl EvaluatorFunction {
+    /// **Source:** `AdvApprox_EvaluatorFunction.hxx`:37 - `AdvApprox_EvaluatorFunction::Evaluate()`
+    /// Function evaluation method to be defined by descendant
+    pub unsafe fn evaluate(
+        &mut self,
+        Dimension: *mut i32,
+        StartEnd: Option<&mut f64>,
+        Parameter: *mut f64,
+        DerivativeRequest: *mut i32,
+        Result: *mut f64,
+        ErrorCode: *mut i32,
+    ) {
+        unsafe {
+            crate::ffi::AdvApprox_EvaluatorFunction_evaluate(
+                self as *mut Self,
+                Dimension,
+                StartEnd.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                Parameter,
+                DerivativeRequest,
+                Result,
+                ErrorCode,
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for EvaluatorFunction (1 total) ──
 // SKIPPED: **Source:** `AdvApprox_EvaluatorFunction.hxx`:31 - `AdvApprox_EvaluatorFunction::AdvApprox_EvaluatorFunction`
 //   constructor: Empty constructor
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AdvApprox_EvaluatorFunction.hxx`:37 - `AdvApprox_EvaluatorFunction::Evaluate`
-//   method: Function evaluation method to be defined by descendant
-//   Reason: has unbindable types: param 'StartEnd': C-style array (Standard_Real[2])
-//   // pub fn evaluate(&mut self, Dimension: *mut i32, StartEnd: /* Standard_Real[2] */, Parameter: *mut f64, DerivativeRequest: *mut i32, Result: *mut f64, ErrorCode: *mut i32);
 //
 
 // ========================

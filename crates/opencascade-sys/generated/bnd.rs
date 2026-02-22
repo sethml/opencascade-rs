@@ -2419,6 +2419,27 @@ impl OBB {
         unsafe { crate::ffi::Bnd_OBB_enlarge(self as *mut Self, theGapAdd) }
     }
 
+    /// **Source:** `Bnd_OBB.hxx`:211 - `Bnd_OBB::GetVertex()`
+    /// Returns the array of vertices in <this>.
+    /// The local coordinate of the vertex depending on the
+    /// index of the array are follow:
+    /// Index == 0: (-XHSize(), -YHSize(), -ZHSize())
+    /// Index == 1: ( XHSize(), -YHSize(), -ZHSize())
+    /// Index == 2: (-XHSize(),  YHSize(), -ZHSize())
+    /// Index == 3: ( XHSize(),  YHSize(), -ZHSize())
+    /// Index == 4: (-XHSize(), -YHSize(),  ZHSize())
+    /// Index == 5: ( XHSize(), -YHSize(),  ZHSize())
+    /// Index == 6: (-XHSize(),  YHSize(),  ZHSize())
+    /// Index == 7: ( XHSize(),  YHSize(),  ZHSize()).
+    pub fn get_vertex(&self, theP: Option<&mut crate::gp::Pnt>) -> bool {
+        unsafe {
+            crate::ffi::Bnd_OBB_get_vertex(
+                self as *const Self,
+                theP.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+
     /// **Source:** `Bnd_OBB.hxx`:237 - `Bnd_OBB::SquareExtent()`
     /// Returns square diagonal of this box
     pub fn square_extent(&self) -> f64 {
@@ -2462,15 +2483,6 @@ impl OBB {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_OBB_to_owned(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for OBB (1 total) ──
-// SKIPPED: **Source:** `Bnd_OBB.hxx`:211 - `Bnd_OBB::GetVertex`
-//   method: Returns the array of vertices in <this>.
-//   method: The local coordinate of the vertex depending on the
-//   method: index of the array are follow:
-//   Reason: has unbindable types: param 'theP': C-style array (gp_Pnt[8])
-//   // pub fn get_vertex(&self, theP: /* gp_Pnt[8] */) -> bool;
-//
 
 // ========================
 // From Bnd_Range.hxx
