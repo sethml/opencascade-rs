@@ -2656,6 +2656,20 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:176 - `BRepMesh_DataStructureOfDelaun::ElementNodes()`
+    /// Returns indices of nodes forming the given element.
+    /// @param theElement element which nodes should be retrieved.
+    /// @param[out] theNodes nodes of the given element.
+    pub fn element_nodes(&mut self, theElement: &Triangle, theNodes: &mut [i32; 3]) {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_element_nodes(
+                self as *mut Self,
+                theElement,
+                theNodes.as_mut_ptr(),
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:179 - `BRepMesh_DataStructureOfDelaun::Dump()`
     pub fn dump(&mut self, theFileNameStr: &str) {
         let c_theFileNameStr = std::ffi::CString::new(theFileNameStr).unwrap();
@@ -2847,15 +2861,6 @@ impl HandleBRepMeshDataStructureOfDelaun {
         }
     }
 }
-
-// ── Skipped symbols for DataStructureOfDelaun (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:176 - `BRepMesh_DataStructureOfDelaun::ElementNodes`
-//   method: Returns indices of nodes forming the given element.
-//   method: @param theElement element which nodes should be retrieved.
-//   method: @param[out] theNodes nodes of the given element.
-//   Reason: has unbindable types: param 'theNodes': C-style array (Standard_Integer[3]&)
-//   // pub fn element_nodes(&mut self, theElement: &Triangle, theNodes: /* Standard_Integer[3]& */);
-//
 
 // ========================
 // From BRepMesh_DefaultRangeSplitter.hxx
@@ -5872,6 +5877,36 @@ impl GeomTool {
         }
     }
 
+    /// **Source:** `BRepMesh_GeomTool.hxx`:153 - `BRepMesh_GeomTool::IntLinLin()`
+    /// Checks intersection between two lines defined by two points.
+    /// @param theStartPnt1 start point of first line.
+    /// @param theEndPnt1 end point of first line.
+    /// @param theStartPnt2 start point of second line.
+    /// @param theEndPnt2 end point of second line.
+    /// @param[out] theIntPnt point of intersection.
+    /// @param[out] theParamOnSegment parameters of intersection point
+    /// corresponding to first and second segment.
+    /// @return status of intersection check.
+    pub fn int_lin_lin(
+        theStartPnt1: &crate::gp::XY,
+        theEndPnt1: &crate::gp::XY,
+        theStartPnt2: &crate::gp::XY,
+        theEndPnt2: &crate::gp::XY,
+        theIntPnt: &mut crate::gp::XY,
+        theParamOnSegment: &mut [f64; 2],
+    ) -> crate::OwnedPtr<crate::ffi::BRepMesh_GeomTool_IntFlag> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_GeomTool_int_lin_lin(
+                theStartPnt1,
+                theEndPnt1,
+                theStartPnt2,
+                theEndPnt2,
+                theIntPnt,
+                theParamOnSegment.as_mut_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `BRepMesh_GeomTool.hxx`:174 - `BRepMesh_GeomTool::IntSegSeg()`
     /// Checks intersection between the two segments.
     /// Checks that intersection point lies within ranges of both segments.
@@ -5942,15 +5977,6 @@ impl GeomTool {
         }
     }
 }
-
-// ── Skipped symbols for GeomTool (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:153 - `BRepMesh_GeomTool::IntLinLin`
-//   static_method: Checks intersection between two lines defined by two points.
-//   static_method: @param theStartPnt1 start point of first line.
-//   static_method: @param theEndPnt1 end point of first line.
-//   Reason: has unbindable types: param 'theParamOnSegment': C-style array (Standard_Real[2]&)
-//   // pub fn int_lin_lin(theStartPnt1: &XY, theEndPnt1: &XY, theStartPnt2: &XY, theEndPnt2: &XY, theIntPnt: &mut XY, theParamOnSegment: /* Standard_Real[2]& */) -> OwnedPtr<BRepMesh_GeomTool::IntFlag>;
-//
 
 // ========================
 // From BRepMesh_IncrementalMesh.hxx
@@ -6613,6 +6639,26 @@ impl MeshTool {
         }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:103 - `BRepMesh_MeshTool::AddTriangle()`
+    /// Adds new triangle with specified nodes to mesh.
+    pub fn add_triangle(
+        &mut self,
+        thePoint1: i32,
+        thePoint2: i32,
+        thePoint3: i32,
+        theEdges: &mut [i32; 3],
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_MeshTool_add_triangle(
+                self as *mut Self,
+                thePoint1,
+                thePoint2,
+                thePoint3,
+                theEdges.as_mut_ptr(),
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_MeshTool.hxx`:118 - `BRepMesh_MeshTool::AddLink()`
     /// Adds new link to mesh.
     /// Updates link index and link orientation parameters.
@@ -6834,13 +6880,6 @@ impl HandleBRepMeshMeshTool {
         }
     }
 }
-
-// ── Skipped symbols for MeshTool (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:103 - `BRepMesh_MeshTool::AddTriangle`
-//   method: Adds new triangle with specified nodes to mesh.
-//   Reason: has unbindable types: param 'theEdges': C-style array (Standard_Integer[3]&)
-//   // pub fn add_triangle(&mut self, thePoint1: i32, thePoint2: i32, thePoint3: i32, theEdges: /* Standard_Integer[3]& */);
-//
 
 /// **Source:** `BRepMesh_MeshTool.hxx`:33 - `BRepMesh_MeshTool_NodeClassifier`
 /// Helper functor intended to separate points to left and right from the constraint.
@@ -9357,6 +9396,62 @@ impl Triangle {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Triangle_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_Triangle.hxx`:49 - `BRepMesh_Triangle::BRepMesh_Triangle()`
+    /// Constructor.
+    /// @param theEdges array of edges of triangle.
+    /// @param theOrientations array of edge's orientations.
+    /// @param theMovability movability of triangle.
+    pub fn new_int3_bool3_degreeoffreedom(
+        theEdges: &mut [i32; 3],
+        theOrientations: &mut [bool; 3],
+        theMovability: crate::b_rep_mesh::DegreeOfFreedom,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_Triangle_ctor_int3_bool3_degreeoffreedom(
+                    theEdges.as_mut_ptr(),
+                    theOrientations.as_mut_ptr(),
+                    theMovability.into(),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepMesh_Triangle.hxx`:60 - `BRepMesh_Triangle::Initialize()`
+    /// Initializes the triangle by the given parameters.
+    /// @param theEdges array of edges of triangle.
+    /// @param theOrientations array of edge's orientations.
+    /// @param theMovability movability of triangle.
+    pub fn initialize(
+        &mut self,
+        theEdges: &mut [i32; 3],
+        theOrientations: &mut [bool; 3],
+        theMovability: crate::b_rep_mesh::DegreeOfFreedom,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_Triangle_initialize(
+                self as *mut Self,
+                theEdges.as_mut_ptr(),
+                theOrientations.as_mut_ptr(),
+                theMovability.into(),
+            )
+        }
+    }
+
+    /// **Source:** `BRepMesh_Triangle.hxx`:72 - `BRepMesh_Triangle::Edges()`
+    /// Gets edges with orientations composing the triangle.
+    /// @param[out] theEdges array edges are stored to.
+    /// @param[out] theOrientations array orientations are stored to.
+    pub fn edges(&self, theEdges: &mut [i32; 3], theOrientations: &mut [bool; 3]) {
+        unsafe {
+            crate::ffi::BRepMesh_Triangle_edges(
+                self as *const Self,
+                theEdges.as_mut_ptr(),
+                theOrientations.as_mut_ptr(),
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_Triangle.hxx`:79 - `BRepMesh_Triangle::Movability()`
     /// Returns movability of the triangle.
     pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
@@ -9384,29 +9479,6 @@ impl Triangle {
         unsafe { crate::ffi::BRepMesh_Triangle_is_equal(self as *const Self, theOther) }
     }
 }
-
-// ── Skipped symbols for Triangle (3 total) ──
-// SKIPPED: **Source:** `BRepMesh_Triangle.hxx`:49 - `BRepMesh_Triangle::BRepMesh_Triangle`
-//   constructor: Constructor.
-//   constructor: @param theEdges array of edges of triangle.
-//   constructor: @param theOrientations array of edge's orientations.
-//   Reason: has unbindable types: param 'theEdges': C-style array (const Standard_Integer[3]&); param 'theOrientations': C-style array (const Standard_Boolean[3]&)
-//   // pub fn new_integer[3]_boolean[3]_degreeoffreedom(theEdges: /* const Standard_Integer[3]& */, theOrientations: /* const Standard_Boolean[3]& */, theMovability: DegreeOfFreedom) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepMesh_Triangle.hxx`:60 - `BRepMesh_Triangle::Initialize`
-//   method: Initializes the triangle by the given parameters.
-//   method: @param theEdges array of edges of triangle.
-//   method: @param theOrientations array of edge's orientations.
-//   Reason: has unbindable types: param 'theEdges': C-style array (const Standard_Integer[3]&); param 'theOrientations': C-style array (const Standard_Boolean[3]&)
-//   // pub fn initialize(&mut self, theEdges: /* const Standard_Integer[3]& */, theOrientations: /* const Standard_Boolean[3]& */, theMovability: DegreeOfFreedom);
-//
-// SKIPPED: **Source:** `BRepMesh_Triangle.hxx`:72 - `BRepMesh_Triangle::Edges`
-//   method: Gets edges with orientations composing the triangle.
-//   method: @param[out] theEdges array edges are stored to.
-//   method: @param[out] theOrientations array orientations are stored to.
-//   Reason: has unbindable types: param 'theEdges': C-style array (Standard_Integer[3]&); param 'theOrientations': C-style array (Standard_Boolean[3]&)
-//   // pub fn edges(&self, theEdges: /* Standard_Integer[3]& */, theOrientations: /* Standard_Boolean[3]& */);
-//
 
 // ========================
 // From BRepMesh_Triangulator.hxx

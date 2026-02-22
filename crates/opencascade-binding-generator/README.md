@@ -187,6 +187,25 @@ use opencascade_sys::adaptor3d::Surface;
 fn example(surface: &Surface) { /* ... */ }
 ```
 
+### Fixed-Size Array Reference Parameters
+
+Methods taking fixed-size C++ array references are now bound directly:
+
+- `const T (&arr)[N]` → `&[T; N]`
+- `T (&arr)[N]` → `&mut [T; N]`
+
+At the extern boundary, these lower to element pointers (`*const T` / `*mut T`). In C++ wrappers we reconstruct the array reference with `reinterpret_cast` back to `T (*)[N]` and pass `*...` into the original OCCT call.
+
+```rust
+use opencascade_sys::b_rep_mesh::MeshTool;
+
+let mut edges = [0_i32; 3];
+mesh_tool.add_triangle(p1, p2, p3, &mut edges);
+```
+
+This unblocks APIs like `BRepMesh_MeshTool::AddTriangle(Standard_Integer (&theEdges)[3])` without hand-written bindings. By-value arrays (for example `T arr[N]`) are still treated as unbindable today.
+
+
 ### Class Pointer Returns
 
 Instance methods returning `const T*` or `T*` (where `T` is a known class type) are bound as `Option<&T>` or `Option<&mut T>` in Rust, with a null check. The C++ wrapper passes the raw pointer through — the Rust reexport checks for null and returns `None` or `Some(&ref)`. For const methods (`&self`), `T*` returns are downgraded to `Option<&T>` to avoid unsound `&self -> &mut T`. Static methods and free functions with class pointer returns are NOT bound this way (lifetime issues).
@@ -393,7 +412,7 @@ Currently only `standard` iostream accessors (`cout()`, `cerr()`, etc.) require 
 
 ## Skipped Symbols
 
-The binding generator currently skips ~135 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator currently skips ~139 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -415,13 +434,15 @@ Example from `gp.rs`:
 | 66 | 48.9% | **Unknown/unresolved type** | Parameter or return type is not in the resolved known-type set |
 | 42 | 31.1% | **Unknown Handle type** | `Handle(T)` where `T` is unresolved or excluded |
 | 12 | 8.9% | **Rvalue reference** | C++ move semantics (`T&&`) — const-ref overloads usually exist |
-| 6 | 4.4% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
+| 6 | 4.4% | **C-style array** | Primarily by-value arrays like `T arr[N]` and array-heavy pointer forms not yet mapped to safe Rust signatures |
 | 5 | 3.7% | **Unresolved template type** | Template instantiations that can't be represented safely |
 | 2 | 1.5% | **Excluded by bindings.toml** | Explicitly excluded in config |
 | 1 | 0.7% | **Ambiguous overload** | C++ overload would produce conflicting wrapper signatures |
 | 1 | 0.7% | **Not CppDeletable** | Return type has no destructor in the binding set |
 
-Combined unresolved coverage (`Unknown/unresolved type` + `Unknown Handle type`) is **108 / 135 (80.0%)**.
+Combined unresolved coverage (`Unknown/unresolved type` + `Unknown Handle type`) is **108 / 139 (77.7%)**.
+
+Fixed-size array references (`T (&)[N]` / `const T (&)[N]`) are now bindable; remaining array-related skips are mostly by-value arrays and specialized pointer-array forms.
 
 ### Most Common Unknown Types
 
@@ -574,6 +595,9 @@ Currently headers are selected via `bindings.toml`. OCCT ships 6,875 `.hxx` head
 7. **Template instantiation Handle types** (SOLVED) — Methods returning or accepting `Handle(BVH_Builder<double, 3>)` or `Handle(NCollection_Shared<...>)` were skipped because the template instantiation isn't a named class. A `[template_instantiations]` section in `bindings.toml` declares specific template instantiations to bind. The generator creates C++ typedefs (e.g., `typedef BVH_Builder<double, 3> BVH_Builder_double_3;`), rewrites all Handle references in parsed data, and treats aliases as normal classes for Handle support. This resolved ~30 previously-skipped symbols.
 
 8. **Nested class inheritance** (SOLVED) — Nested classes like `ShapePersistent_BRep::Curve3D` had unqualified base class names (e.g., `GCurve` instead of `ShapePersistent_BRep::GCurve`), breaking the transitive closure in `compute_handle_able_classes()`. The parser now qualifies sibling base class references when qualifying nested type names.
+
+9. **Fixed-size array references** (SOLVED) — OCCT APIs with parameters like `Standard_Integer (&theEdges)[3]` were previously skipped as C-style arrays. The parser now models constant arrays explicitly (`Type::FixedArray`), Rust re-exports expose them as `&[T; N]` / `&mut [T; N]`, and wrappers bridge via element pointers at the extern C layer with cast-back in C++. This unblocked APIs such as `BRepMesh_MeshTool::AddTriangle`.
+
 
 ### System Include Path Auto-Detection
 

@@ -1580,6 +1580,15 @@ fn parse_return_type(entity: &Entity) -> Option<Type> {
     Some(parse_type(&result_type))
 }
 
+fn parse_fixed_array_size(type_spelling: &str) -> Option<usize> {
+    let lb = type_spelling.rfind('[')?;
+    let rb = type_spelling[lb..].find(']')? + lb;
+    if rb <= lb + 1 {
+        return None;
+    }
+    type_spelling[lb + 1..rb].trim().parse::<usize>().ok()
+}
+
 /// Parse a clang type into our Type representation
 fn parse_type(clang_type: &clang::Type) -> Type {
     let kind = clang_type.get_kind();
@@ -1740,9 +1749,33 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     if kind == TypeKind::LValueReference {
         if let Some(pointee) = clang_type.get_pointee_type() {
             let pk = pointee.get_kind();
-            // Reference-to-array (e.g., int(&)[3]) cannot be safely represented in FFI.
-            // Keep the array notation so is_array() returns true and the method is skipped.
-            if pk == TypeKind::ConstantArray || pk == TypeKind::IncompleteArray {
+            // Reference-to-fixed-array (e.g., int(&)[3]) is represented as
+            // ConstRef/MutRef(FixedArray(elem, N)) and lowered in the wrapper layer
+            // to `elem const*` / `elem*` plus a reinterpret_cast to `elem (&)[N]`.
+            if pk == TypeKind::ConstantArray {
+                let is_const = pointee.is_const_qualified();
+                let arr_display = pointee.get_display_name();
+                if let Some(elem) = pointee.get_element_type() {
+                    let elem_ty = parse_type(&elem);
+                    let arr_ty = if let Some(size) = parse_fixed_array_size(&arr_display) {
+                        Type::FixedArray(Box::new(elem_ty), size)
+                    } else {
+                        Type::Class(arr_display)
+                    };
+                    return if is_const {
+                        Type::ConstRef(Box::new(arr_ty))
+                    } else {
+                        Type::MutRef(Box::new(arr_ty))
+                    };
+                }
+                return if is_const {
+                    Type::ConstRef(Box::new(Type::Class(arr_display)))
+                } else {
+                    Type::MutRef(Box::new(Type::Class(arr_display)))
+                };
+            }
+            // Incomplete array refs are not representable as fixed arrays.
+            if pk == TypeKind::IncompleteArray {
                 let arr_display = pointee.get_display_name();
                 let is_const = pointee.is_const_qualified();
                 let inner = Type::Class(arr_display);
@@ -1784,9 +1817,8 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     }
 
     // Handle C-style array types: ConstantArray (int[16]) and IncompleteArray (int[]).
-    // In function parameters, C arrays decay to pointers. For array reference params
-    // (int(&)[3]), the LValueReference wrapper is already applied and we just need
-    // to handle the inner ConstantArray → pointer conversion.
+    // In function parameters, arrays decay to pointers. Fixed-size array references
+    // are handled above in the LValueReference branch.
     if kind == TypeKind::ConstantArray || kind == TypeKind::IncompleteArray {
         if let Some(elem) = clang_type.get_element_type() {
             let inner = parse_type(&elem);

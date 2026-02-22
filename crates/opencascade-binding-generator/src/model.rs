@@ -408,6 +408,8 @@ pub enum Type {
     MutPtr(Box<Type>),
     /// Handle<T> / opencascade::handle<T>
     Handle(String),
+    /// Fixed-size C array type (e.g., `Standard_Integer[3]`)
+    FixedArray(Box<Type>, usize),
     /// An OCCT class type (e.g., "gp_Pnt", "TopoDS_Shape")
     Class(String),
 }
@@ -445,6 +447,7 @@ impl Type {
             Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => inner.short_name(),
             Type::ConstPtr(inner) | Type::MutPtr(inner) => format!("{}ptr", inner.short_name()),
             Type::Handle(name) => crate::type_mapping::handle_param_name(name),
+            Type::FixedArray(inner, size) => format!("{}{}", inner.short_name(), size),
             Type::Class(name) => extract_short_name(name),
             Type::CHAR16 => "char16".to_string(),
             Type::U8 => "u8".to_string(),
@@ -580,13 +583,22 @@ impl Type {
         }
     }
 
-    /// Check if this type is a C-style array (e.g., gp_Pnt[8])
+    /// Check if this type is a C-style array (e.g., gp_Pnt[8] or fixed-size array refs)
     pub fn is_array(&self) -> bool {
         match self {
+            Type::FixedArray(_, _) => true,
             Type::Class(name) => name.contains('[') && name.contains(']'),
             Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
                 inner.is_array()
             }
+            _ => false,
+        }
+    }
+
+    /// Check if this is a bindable fixed-array reference parameter (&[T; N] / &mut [T; N]).
+    pub fn is_fixed_array_ref(&self) -> bool {
+        match self {
+            Type::ConstRef(inner) | Type::MutRef(inner) => matches!(inner.as_ref(), Type::FixedArray(_, _)),
             _ => false,
         }
     }
@@ -682,7 +694,7 @@ impl Type {
     /// (Parent::Nested → Parent_Nested in Rust FFI), BUT unresolved template types
     /// and unqualified names without underscore remain unbindable.
     pub fn is_unbindable(&self) -> bool {
-        self.is_array() || self.is_rvalue_ref() || self.is_unresolved_template_type()
+        (self.is_array() && !self.is_fixed_array_ref()) || self.is_rvalue_ref() || self.is_unresolved_template_type()
     }
 
     /// Check if this type involves raw pointers that require the containing
@@ -703,8 +715,20 @@ impl Type {
             //   ConstRef(MutPtr(X)) → "X* const*" (correct: pointer to const-pointer-to-X)
             //   vs. "const X**" (wrong: pointer to pointer-to-const-X)
             // For simple types, "T const*" and "const T*" are equivalent in C/C++.
-            Type::ConstRef(inner) => format!("{} const*", inner.to_cpp_string()),
-            Type::MutRef(inner) => format!("{}*", inner.to_cpp_string()),
+            Type::ConstRef(inner) => {
+                if let Type::FixedArray(elem, _) = inner.as_ref() {
+                    format!("{} const*", elem.to_cpp_string())
+                } else {
+                    format!("{} const*", inner.to_cpp_string())
+                }
+            }
+            Type::MutRef(inner) => {
+                if let Type::FixedArray(elem, _) = inner.as_ref() {
+                    format!("{}*", elem.to_cpp_string())
+                } else {
+                    format!("{}*", inner.to_cpp_string())
+                }
+            }
             Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
                 "const char*".to_string()
             }
@@ -744,6 +768,7 @@ impl Type {
             Type::ConstPtr(inner) => format!("{} const*", inner.to_cpp_string()),
             Type::MutPtr(inner) => format!("{}*", inner.to_cpp_string()),
             Type::Handle(name) => format!("Handle({})", name),
+            Type::FixedArray(inner, size) => format!("{}[{}]", inner.to_cpp_string(), size),
             Type::Class(name) => name.clone(),
         }
     }
@@ -762,6 +787,7 @@ impl Type {
             Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
                 inner.is_unresolved_template_type()
             }
+            Type::FixedArray(inner, _) => inner.is_unresolved_template_type(),
             _ => false,
         }
     }
@@ -805,9 +831,7 @@ impl Type {
                 format!("*mut {}", inner_str)
             }
             Type::Handle(name) => {
-                // Use handle_type_name to properly flatten both :: and _ from names
                 let flat_name = name.replace("::", "_");
-                // Extract short name from full OCCT name
                 let short = if let Some(underscore_pos) = flat_name.find('_') {
                     &flat_name[underscore_pos + 1..]
                 } else {
@@ -815,10 +839,12 @@ impl Type {
                 };
                 format!("Handle{}", short)
             }
+            Type::FixedArray(inner, size) => {
+                let inner_str = inner.to_rust_type_string();
+                format!("[{}; {}]", inner_str, size)
+            }
             Type::Class(name) => {
-                // Flatten nested types: Parent::Nested -> Parent_Nested
                 let flat = Type::ffi_safe_class_name(name);
-                // Extract short name from full OCCT name (e.g., "gp_Pnt" -> "Pnt")
                 if let Some(underscore_pos) = flat.find('_') {
                     flat[underscore_pos + 1..].to_string()
                 } else {
@@ -879,7 +905,6 @@ impl Type {
                 format!("*mut {}", inner_str)
             }
             Type::Handle(name) => {
-                // Flatten :: for nested classes before extracting short name
                 let flat_name = name.replace("::", "_");
                 let short = if let Some(underscore_pos) = flat_name.find('_') {
                     &flat_name[underscore_pos + 1..]
@@ -888,16 +913,17 @@ impl Type {
                 };
                 format!("ffi::Handle{}", short)
             }
+            Type::FixedArray(inner, size) => {
+                let inner_str = inner.to_rust_ffi_type_string();
+                format!("[{}; {}]", inner_str, size)
+            }
             Type::Class(name) => {
-                // Flatten nested types: Parent::Nested -> Parent_Nested
                 let flat = Type::ffi_safe_class_name(name);
-                // Extract short name from full OCCT name (e.g., "gp_Pnt" -> "Pnt")
                 let short_name = if let Some(underscore_pos) = flat.find('_') {
                     &flat[underscore_pos + 1..]
                 } else {
                     flat.as_str()
                 };
-                // Handle FFI reserved names (Vec, Box, String, etc.)
                 let safe_name = match short_name {
                     "Vec" | "Box" | "String" | "Result" | "Option" | "Error" => {
                         format!("{}_", short_name)
@@ -940,7 +966,8 @@ impl Type {
             | Type::MutRef(inner)
             | Type::RValueRef(inner)
             | Type::ConstPtr(inner)
-            | Type::MutPtr(inner) => inner.visit_inner(f),
+            | Type::MutPtr(inner)
+            | Type::FixedArray(inner, _) => inner.visit_inner(f),
             _ => f(self),
         }
     }
@@ -952,7 +979,8 @@ impl Type {
             | Type::MutRef(inner)
             | Type::RValueRef(inner)
             | Type::ConstPtr(inner)
-            | Type::MutPtr(inner) => inner.visit_inner_mut(f),
+            | Type::MutPtr(inner)
+            | Type::FixedArray(inner, _) => inner.visit_inner_mut(f),
             _ => f(self),
         }
     }

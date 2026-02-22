@@ -580,9 +580,41 @@ fn classify_wrapper_kind(method: &Method, all_enums: &HashSet<String>) -> Wrappe
 }
 
 
+fn fixed_array_ref_parts(ty: &Type) -> Option<(&Type, usize, bool)> {
+    match ty {
+        Type::ConstRef(inner) => {
+            if let Type::FixedArray(elem, size) = inner.as_ref() {
+                Some((elem.as_ref(), *size, true))
+            } else {
+                None
+            }
+        }
+        Type::MutRef(inner) => {
+            if let Type::FixedArray(elem, size) = inner.as_ref() {
+                Some((elem.as_ref(), *size, false))
+            } else {
+                None
+            }
+        }
+        _ => None,
+    }
+}
+
 /// Convert a parameter to C++ argument expression for extern "C" wrappers.
 /// Dereferences pointers to match C++ method signatures (which take references).
+/// Dereferences pointers to match C++ method signatures (which take references).
 fn param_to_cpp_extern_c_arg(param_name: &str, ty: &Type) -> String {
+    if let Some((elem, size, is_const)) = fixed_array_ref_parts(ty) {
+        let qualifier = if is_const { " const" } else { "" };
+        return format!(
+            "*reinterpret_cast<{}{} (*)[{}]>({})",
+            elem.to_cpp_string(),
+            qualifier,
+            size,
+            param_name
+        );
+    }
+
     match ty {
         Type::ConstRef(_) | Type::MutRef(_) => format!("*{}", param_name),
         _ => param_name.to_string(),
@@ -659,6 +691,9 @@ fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) ->
             }
         }
         Type::Handle(name) => format!("crate::ffi::{}", type_mapping::handle_type_name(name)),
+        Type::FixedArray(inner, size) => {
+            format!("[{}; {}]", type_to_rust_string(inner, reexport_ctx), size)
+        }
         Type::ConstRef(inner) => format!("&{}", type_to_rust_string(inner, reexport_ctx)),
         Type::MutRef(inner) => {
             format!("&mut {}", type_to_rust_string(inner, reexport_ctx))
@@ -1039,6 +1074,37 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
         if let Type::ConstRef(inner) = ty {
             return build_param_binding(name, inner.as_ref(), is_nullable, ffi_ctx, reexport_ctx);
         }
+    }
+
+    if let Some((elem_ty, size, is_const)) = fixed_array_ref_parts(ty) {
+        let elem_rust = type_to_rust_string(elem_ty, reexport_ctx);
+        let elem_ffi = map_type_in_context(elem_ty, ffi_ctx).rust_type;
+        let elem_cpp = elem_ty.to_cpp_string();
+        return ParamBinding {
+            cpp_name,
+            rust_name,
+            rust_ffi_type: if is_const {
+                format!("*const {}", elem_ffi)
+            } else {
+                format!("*mut {}", elem_ffi)
+            },
+            rust_reexport_type: if is_const {
+                format!("&[{}; {}]", elem_rust, size)
+            } else {
+                format!("&mut [{}; {}]", elem_rust, size)
+            },
+            cpp_type: if is_const {
+                format!("{} const*", elem_cpp)
+            } else {
+                format!("{}*", elem_cpp)
+            },
+            cpp_arg_expr: param_to_cpp_extern_c_arg(name, ty),
+            enum_rust_type: None,
+            mut_ref_enum_cpp_name: None,
+            mut_ref_enum_rust_type: None,
+            is_nullable_ptr: false,
+            is_class_ptr: false,
+        };
     }
 
     // Check if this parameter is an enum type (by value or const ref)
@@ -2827,6 +2893,37 @@ fn compute_inherited_method_bindings(
                             };
                         }
 
+                        if let Some((elem_ty, size, is_const)) = fixed_array_ref_parts(&p.ty.original) {
+                            let elem_ffi = map_type_to_rust(elem_ty).rust_type;
+                            let elem_rust = type_to_rust_string(elem_ty, reexport_ctx);
+                            let elem_cpp = elem_ty.to_cpp_string();
+                            return ResolvedParamBinding {
+                                name: p.name.clone(),
+                                rust_name: p.rust_name.clone(),
+                                rust_ffi_type: if is_const {
+                                    format!("*const {}", elem_ffi)
+                                } else {
+                                    format!("*mut {}", elem_ffi)
+                                },
+                                rust_reexport_type: if is_const {
+                                    format!("&[{}; {}]", elem_rust, size)
+                                } else {
+                                    format!("&mut [{}; {}]", elem_rust, size)
+                                },
+                                cpp_type: if is_const {
+                                    format!("{} const*", elem_cpp)
+                                } else {
+                                    format!("{}*", elem_cpp)
+                                },
+                                cpp_arg_expr: param_to_cpp_extern_c_arg(&p.name, &p.ty.original),
+                                enum_rust_type: None,
+                                mut_ref_enum_cpp_name: None,
+                                mut_ref_enum_rust_type: None,
+                                is_nullable_ptr: false,
+                                is_class_ptr: false,
+                            };
+                        }
+
                         // Non-nullable class pointer params: const T* -> &T, T* -> &mut T
                         if let Some(_class_name) = p.ty.original.class_ptr_inner_name() {
                             let (rust_ffi_type, rust_reexport_type, cpp_type) = match &p.ty.original {
@@ -4478,7 +4575,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 /// block with constructor, wrapper, static, upcast, to_owned, and to_handle methods.
 /// Convert a param argument for FFI call: add `.into()` if it's a value enum.
 pub(super) fn convert_arg(p: &ParamBinding) -> String {
-    if p.is_nullable_ptr {
+    if p.rust_reexport_type.starts_with("&[") && p.rust_ffi_type.starts_with("*const") {
+        format!("{}.as_ptr()", p.rust_name)
+    } else if p.rust_reexport_type.starts_with("&mut [") && p.rust_ffi_type.starts_with("*mut") {
+        format!("{}.as_mut_ptr()", p.rust_name)
+    } else if p.is_nullable_ptr {
         if p.rust_ffi_type.starts_with("*const") {
             format!("{}.map_or(std::ptr::null(), |r| r as *const _)", p.rust_name)
         } else {
@@ -4502,7 +4603,11 @@ pub(super) fn convert_arg(p: &ParamBinding) -> String {
 }
 
 fn convert_arg_resolved(name: &str, p: &ResolvedParamBinding) -> String {
-    if p.is_nullable_ptr {
+    if p.rust_reexport_type.starts_with("&[") && p.rust_ffi_type.starts_with("*const") {
+        format!("{}.as_ptr()", name)
+    } else if p.rust_reexport_type.starts_with("&mut [") && p.rust_ffi_type.starts_with("*mut") {
+        format!("{}.as_mut_ptr()", name)
+    } else if p.is_nullable_ptr {
         if p.rust_ffi_type.starts_with("*const") {
             format!("{}.map_or(std::ptr::null(), |r| r as *const _)", name)
         } else {

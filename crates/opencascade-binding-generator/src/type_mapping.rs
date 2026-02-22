@@ -183,12 +183,21 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
                 source_module: inner_mapping.source_module,
             }
         }
+        Type::FixedArray(inner, size) => {
+            let inner_mapping = map_type_to_rust(inner);
+            RustTypeMapping {
+                rust_type: format!("[{}; {}]", inner_mapping.rust_type, size),
+                needs_unique_ptr: false,
+                needs_pin: false,
+                source_module: inner_mapping.source_module,
+            }
+        }
         Type::Handle(class_name) => {
             let source_module = extract_module_from_class(class_name);
             let handle_type = handle_type_name(class_name);
             RustTypeMapping {
                 rust_type: handle_type,
-                needs_unique_ptr: true, // Returned as *mut T, caller must free
+                needs_unique_ptr: true,
                 needs_pin: false,
                 source_module,
             }
@@ -399,6 +408,7 @@ pub fn type_uses_unknown_class(ty: &Type, all_classes: &std::collections::HashSe
         Type::Handle(class_name) => !all_classes.contains(class_name),
         Type::Class(class_name) => is_class_name_unknown(class_name, all_classes),
         Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_class(inner, all_classes),
+        Type::FixedArray(inner, _) => type_uses_unknown_class(inner, all_classes),
         _ => false,
     }
 }
@@ -417,6 +427,7 @@ pub fn type_uses_unknown_handle(
         Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
             type_uses_unknown_handle(inner, all_classes, handle_able_classes)
         }
+        Type::FixedArray(inner, _) => type_uses_unknown_handle(inner, all_classes, handle_able_classes),
         _ => false,
     }
 }
