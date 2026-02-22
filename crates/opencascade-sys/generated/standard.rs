@@ -59660,6 +59660,13 @@ pub use crate::ffi::{
     Standard_WideChar as WideChar,
 };
 
+// ── Skipped free functions (1 total) ──
+// SKIPPED: **Source:** `Standard.hxx`:41 - `Standard::GetAllocatorType`
+//   function: Returns default allocator type
+//   Reason: return type 'Standard::AllocatorType' is not CppDeletable
+//   // pub fn get_allocator_type() -> OwnedPtr<Standard::AllocatorType>;
+//
+
 // Manual bindings:
 // Manual bindings for C++ iostream global objects (std::cout, std::cerr, etc.)
 //

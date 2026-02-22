@@ -301,6 +301,13 @@ impl Actor {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags()`
+    pub fn set_processing_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_SetProcessingFlags(self as *mut Self, theFlags)
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
     pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -3125,27 +3132,31 @@ impl Reader {
     pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe { &*(crate::ffi::IGESToBRep_Reader_get_shape_fix_parameters(self as *const Self)) }
     }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:143 - `IGESToBRep_Reader::SetShapeProcessFlags()`
+    /// Sets flags defining operations to be performed on shapes.
+    /// @param theFlags The flags defining operations to be performed on shapes.
+    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::IGESToBRep_Reader_set_shape_process_flags(self as *mut Self, theFlags)
+        }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:147 - `IGESToBRep_Reader::GetShapeProcessFlags()`
+    /// Returns flags defining operations to be performed on shapes.
+    /// @return The flags defining operations to be performed on shapes.
+    pub fn get_shape_process_flags(&self) -> &crate::ffi::ShapeProcess_OperationsFlags {
+        unsafe { &*(crate::ffi::IGESToBRep_Reader_get_shape_process_flags(self as *const Self)) }
+    }
 }
 
-// ── Skipped symbols for Reader (3 total) ──
+// ── Skipped symbols for Reader (1 total) ──
 // SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:122 - `IGESToBRep_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
 //   method: @param theParameters the parameters for shape processing.
 //   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
 //   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
-//
-// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:143 - `IGESToBRep_Reader::SetShapeProcessFlags`
-//   method: Sets flags defining operations to be performed on shapes.
-//   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
-//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
-//
-// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:147 - `IGESToBRep_Reader::GetShapeProcessFlags`
-//   method: Returns flags defining operations to be performed on shapes.
-//   method: @return The flags defining operations to be performed on shapes.
-//   Reason: return type 'ShapeProcess::OperationsFlags const&' is unknown
-//   // pub fn get_shape_process_flags(&self) -> &OperationsFlags;
 //
 
 // ========================

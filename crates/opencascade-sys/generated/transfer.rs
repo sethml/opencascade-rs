@@ -341,6 +341,16 @@ impl ActorDispatch {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags()`
+    pub fn set_processing_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::Transfer_ActorDispatch_inherited_SetProcessingFlags(
+                self as *mut Self,
+                theFlags,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
     pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -626,6 +636,18 @@ impl ActorOfFinderProcess {
             &*(crate::ffi::Transfer_ActorOfFinderProcess_get_shape_fix_parameters(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:91 - `Transfer_ActorOfFinderProcess::SetShapeProcessFlags()`
+    /// Sets flags defining operations to be performed on shapes.
+    /// @param theFlags The flags defining operations to be performed on shapes.
+    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::Transfer_ActorOfFinderProcess_set_shape_process_flags(
+                self as *mut Self,
+                theFlags,
+            )
         }
     }
 
@@ -916,19 +938,13 @@ impl HandleTransferActorOfFinderProcess {
     }
 }
 
-// ── Skipped symbols for ActorOfFinderProcess (2 total) ──
+// ── Skipped symbols for ActorOfFinderProcess (1 total) ──
 // SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:70 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
 //   method: @param theParameters the parameters for shape processing.
 //   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
 //   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
-//
-// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:91 - `Transfer_ActorOfFinderProcess::SetShapeProcessFlags`
-//   method: Sets flags defining operations to be performed on shapes.
-//   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
-//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
 //
 
 // ========================
@@ -1717,6 +1733,18 @@ impl ActorOfTransientProcess {
         }
     }
 
+    /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags()`
+    /// Sets flags defining operations to be performed on shapes.
+    /// @param theFlags The flags defining operations to be performed on shapes.
+    pub fn set_processing_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::Transfer_ActorOfTransientProcess_set_processing_flags(
+                self as *mut Self,
+                theFlags,
+            )
+        }
+    }
+
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair: the flags defining operations to be performed on shapes and a boolean value that
@@ -2021,19 +2049,13 @@ impl HandleTransferActorOfTransientProcess {
     }
 }
 
-// ── Skipped symbols for ActorOfTransientProcess (2 total) ──
+// ── Skipped symbols for ActorOfTransientProcess (1 total) ──
 // SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:63 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
 //   method: @param theParameters the parameters for shape processing.
 //   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
 //   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
-//
-// SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags`
-//   method: Sets flags defining operations to be performed on shapes.
-//   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
-//   // pub fn set_processing_flags(&mut self, theFlags: &OperationsFlags);
 //
 
 // ========================

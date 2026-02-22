@@ -376,6 +376,16 @@ impl ActorWrite {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:91 - `Transfer_ActorOfFinderProcess::SetShapeProcessFlags()`
+    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::STEPCAFControl_ActorWrite_inherited_SetShapeProcessFlags(
+                self as *mut Self,
+                theFlags,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:96 - `Transfer_ActorOfFinderProcess::GetShapeProcessFlags()`
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -1869,6 +1879,15 @@ impl Reader {
         }
     }
 
+    /// **Source:** `STEPCAFControl_Reader.hxx`:254 - `STEPCAFControl_Reader::SetShapeProcessFlags()`
+    /// Sets flags defining operations to be performed on shapes.
+    /// @param theFlags The flags defining operations to be performed on shapes.
+    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_set_shape_process_flags(self as *mut Self, theFlags)
+        }
+    }
+
     /// **Source:** `STEPCAFControl_Reader.hxx`:259 - `STEPCAFControl_Reader::GetShapeProcessFlags()`
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
@@ -1899,7 +1918,7 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (3 total) ──
+// ── Skipped symbols for Reader (2 total) ──
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:154 - `STEPCAFControl_Reader::ExternFiles`
 //   method: Returns data on external files
 //   method: Returns Null handle if no external files are read
@@ -1912,12 +1931,6 @@ impl Reader {
 //   method: @param theParameters the parameters for shape processing.
 //   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
 //   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:254 - `STEPCAFControl_Reader::SetShapeProcessFlags`
-//   method: Sets flags defining operations to be performed on shapes.
-//   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
-//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
 //
 
 // ========================
@@ -2352,6 +2365,15 @@ impl Writer {
         }
     }
 
+    /// **Source:** `STEPCAFControl_Writer.hxx`:255 - `STEPCAFControl_Writer::SetShapeProcessFlags()`
+    /// Sets flags defining operations to be performed on shapes.
+    /// @param theFlags The flags defining operations to be performed on shapes.
+    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_set_shape_process_flags(self as *mut Self, theFlags)
+        }
+    }
+
     /// **Source:** `STEPCAFControl_Writer.hxx`:260 - `STEPCAFControl_Writer::GetShapeProcessFlags()`
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
@@ -2363,7 +2385,7 @@ impl Writer {
     }
 }
 
-// ── Skipped symbols for Writer (3 total) ──
+// ── Skipped symbols for Writer (2 total) ──
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:173 - `STEPCAFControl_Writer::ExternFiles`
 //   method: Returns data on external files
 //   method: Returns Null handle if no external files are read
@@ -2376,10 +2398,4 @@ impl Writer {
 //   method: @param theParameters the parameters for shape processing.
 //   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
 //   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:255 - `STEPCAFControl_Writer::SetShapeProcessFlags`
-//   method: Sets flags defining operations to be performed on shapes.
-//   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
-//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
 //

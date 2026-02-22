@@ -227,7 +227,7 @@ fn main() -> Result<()> {
     // These are OCCT's namespace-like patterns (e.g., `gp` with `gp::OX()`, `gp::Origin()`).
     // Convert their static methods to free functions so they appear as module-level
     // functions (e.g., `gp::ox()`) instead of awkward `gp::gp::ox()`.
-    convert_utility_classes_to_functions(&mut parsed, &exclude_methods, args.verbose);
+    let utility_class_names = convert_utility_classes_to_functions(&mut parsed, &exclude_methods, args.verbose);
 
     if args.verbose {
         println!("\nParsing complete. Summary:");
@@ -344,6 +344,15 @@ fn main() -> Result<()> {
         if inst.handle {
             handle_able_classes.insert(alias);
         }
+    }
+
+    // Add utility class names (classes converted to module-level functions) to the
+    // known type set.  Other classes may reference nested types qualified with
+    // the utility class name (e.g. ShapeProcess::OperationsFlags).  Without
+    // this, the parent class check in type_uses_unknown_class() fails because
+    // the utility class was removed from the parsed class list.
+    for name in &utility_class_names {
+        manual_type_names.insert(name.clone());
     }
 
     // Build symbol table (Pass 1 of two-pass architecture)
@@ -506,7 +515,8 @@ fn convert_utility_classes_to_functions(
     parsed: &mut [model::ParsedHeader],
     exclude_methods: &HashSet<(String, String)>,
     verbose: bool,
-) {
+) -> HashSet<String> {
+    let mut removed_class_names = HashSet::new();
     for header in parsed.iter_mut() {
         let mut functions_to_add = Vec::new();
         let mut classes_to_remove = Vec::new();
@@ -577,17 +587,19 @@ fn convert_utility_classes_to_functions(
                 });
             }
 
-            classes_to_remove.push(idx);
+            classes_to_remove.push((idx, class.name.clone()));
         }
 
         // Remove utility classes (in reverse order to preserve indices)
-        for idx in classes_to_remove.into_iter().rev() {
+        for (idx, name) in classes_to_remove.into_iter().rev() {
             header.classes.remove(idx);
+            removed_class_names.insert(name);
         }
 
         // Add converted functions
         header.functions.extend(functions_to_add);
     }
+    removed_class_names
 }
 
 /// Dump the symbol table for debugging purposes

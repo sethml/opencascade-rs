@@ -432,6 +432,16 @@ impl Reader {
         }
     }
 
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:315 - `XSControl_Reader::SetShapeProcessFlags()`
+    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_SetShapeProcessFlags(
+                self as *mut Self,
+                theFlags,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -719,6 +729,25 @@ impl Writer {
     pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
             &*(crate::ffi::IGESCAFControl_Writer_inherited_GetShapeFixParameters(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESControl_Writer.hxx`:149 - `IGESControl_Writer::SetShapeProcessFlags()`
+    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::IGESCAFControl_Writer_inherited_SetShapeProcessFlags(
+                self as *mut Self,
+                theFlags,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESControl_Writer.hxx`:153 - `IGESControl_Writer::GetShapeProcessFlags()`
+    pub fn get_shape_process_flags(&self) -> &crate::ffi::ShapeProcess_OperationsFlags {
+        unsafe {
+            &*(crate::ffi::IGESCAFControl_Writer_inherited_GetShapeProcessFlags(
                 self as *const Self,
             ))
         }

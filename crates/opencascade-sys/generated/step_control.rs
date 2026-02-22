@@ -374,6 +374,16 @@ impl ActorRead {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags()`
+    pub fn set_processing_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::STEPControl_ActorRead_inherited_SetProcessingFlags(
+                self as *mut Self,
+                theFlags,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
     pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -836,6 +846,16 @@ impl ActorWrite {
             &*(crate::ffi::STEPControl_ActorWrite_inherited_GetShapeFixParameters(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:91 - `Transfer_ActorOfFinderProcess::SetShapeProcessFlags()`
+    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::STEPControl_ActorWrite_inherited_SetShapeProcessFlags(
+                self as *mut Self,
+                theFlags,
+            )
         }
     }
 
@@ -1820,6 +1840,16 @@ impl Reader {
         }
     }
 
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:315 - `XSControl_Reader::SetShapeProcessFlags()`
+    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::STEPControl_Reader_inherited_SetShapeProcessFlags(
+                self as *mut Self,
+                theFlags,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -2063,6 +2093,15 @@ impl Writer {
         unsafe { &*(crate::ffi::STEPControl_Writer_get_shape_fix_parameters(self as *const Self)) }
     }
 
+    /// **Source:** `STEPControl_Writer.hxx`:160 - `STEPControl_Writer::SetShapeProcessFlags()`
+    /// Sets flags defining operations to be performed on shapes.
+    /// @param theFlags The flags defining operations to be performed on shapes.
+    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe {
+            crate::ffi::STEPControl_Writer_set_shape_process_flags(self as *mut Self, theFlags)
+        }
+    }
+
     /// **Source:** `STEPControl_Writer.hxx`:165 - `STEPControl_Writer::GetShapeProcessFlags()`
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
@@ -2072,17 +2111,11 @@ impl Writer {
     }
 }
 
-// ── Skipped symbols for Writer (2 total) ──
+// ── Skipped symbols for Writer (1 total) ──
 // SKIPPED: **Source:** `STEPControl_Writer.hxx`:142 - `STEPControl_Writer::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
 //   method: @param theParameters the parameters for shape processing.
 //   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
 //   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
-//
-// SKIPPED: **Source:** `STEPControl_Writer.hxx`:160 - `STEPControl_Writer::SetShapeProcessFlags`
-//   method: Sets flags defining operations to be performed on shapes.
-//   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
-//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
 //

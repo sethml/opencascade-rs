@@ -1610,6 +1610,13 @@ impl Reader {
         unsafe { &*(crate::ffi::XSControl_Reader_get_shape_fix_parameters(self as *const Self)) }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:315 - `XSControl_Reader::SetShapeProcessFlags()`
+    /// Sets flags defining operations to be performed on shapes.
+    /// @param theFlags The flags defining operations to be performed on shapes.
+    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+        unsafe { crate::ffi::XSControl_Reader_set_shape_process_flags(self as *mut Self, theFlags) }
+    }
+
     /// **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
@@ -1619,19 +1626,13 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (2 total) ──
+// ── Skipped symbols for Reader (1 total) ──
 // SKIPPED: **Source:** `XSControl_Reader.hxx`:297 - `XSControl_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
 //   method: @param theParameters the parameters for shape processing.
 //   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
 //   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
-//
-// SKIPPED: **Source:** `XSControl_Reader.hxx`:315 - `XSControl_Reader::SetShapeProcessFlags`
-//   method: Sets flags defining operations to be performed on shapes.
-//   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
-//   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
 //
 
 // ========================

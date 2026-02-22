@@ -314,6 +314,28 @@ impl ShapeProcessor {
         }
     }
 
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:60 - `XSAlgo_ShapeProcessor::ProcessShape()`
+    /// Process the shape by applying the specified operations.
+    /// @param theShape Shape to process.
+    /// @param theOperations Operations to be performed.
+    /// @param theProgress Progress indicator.
+    /// @return Processed shape. May be the same as the input shape if no modifications were made.
+    pub fn process_shape(
+        &mut self,
+        theShape: &crate::topo_ds::Shape,
+        theOperations: &crate::ffi::ShapeProcess_OperationsFlags,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSAlgo_ShapeProcessor_process_shape(
+                self as *mut Self,
+                theShape,
+                theOperations,
+                theProgress,
+            ))
+        }
+    }
+
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:67 - `XSAlgo_ShapeProcessor::GetContext()`
     /// Get the context of the last processing.
     /// Only valid after the ProcessShape() method was called.
@@ -558,12 +580,3 @@ impl ShapeProcessor {
         }
     }
 }
-
-// ── Skipped symbols for ShapeProcessor (1 total) ──
-// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:60 - `XSAlgo_ShapeProcessor::ProcessShape`
-//   method: Process the shape by applying the specified operations.
-//   method: @param theShape Shape to process.
-//   method: @param theOperations Operations to be performed.
-//   Reason: param 'theOperations' uses unknown type 'ShapeProcess::OperationsFlags const&'
-//   // pub fn process_shape(&mut self, theShape: &Shape, theOperations: &OperationsFlags, theProgress: &ProgressRange) -> OwnedPtr<TopoDS_Shape>;
-//

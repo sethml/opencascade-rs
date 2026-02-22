@@ -22,13 +22,41 @@ pub fn find_operator(name: &str, op: &mut crate::ffi::HandleShapeProcessOperator
 /// Performs a specified sequence of operators on Context
 /// Resource file and other data should be already loaded
 /// to Context (including description of sequence seq)
-pub fn perform(
+pub fn perform_handleshapeprocesscontext_charptr_progressrange(
     context: &crate::ffi::HandleShapeProcessContext,
     seq: &str,
     theProgress: &crate::message::ProgressRange,
 ) -> bool {
     let c_seq = std::ffi::CString::new(seq).unwrap();
-    unsafe { crate::ffi::ShapeProcess_perform(context, c_seq.as_ptr(), theProgress) }
+    unsafe {
+        crate::ffi::ShapeProcess_perform_handleshapeprocesscontext_charptr_progressrange(
+            context,
+            c_seq.as_ptr(),
+            theProgress,
+        )
+    }
+}
+/// **Source:** `ShapeProcess.hxx`:100 - `ShapeProcess::Perform`
+/// Performs a specified sequence of operators on @p theContext.
+/// @param theContext Context to perform operations on. Contains the shape to process
+/// and processing parameters. If processing parameters are not set, default values are
+/// used. Parameters should be in a scope of operation, for example, instead of
+/// "FromSTEP.FixShape.Tolerance3d"	we should use just "FixShape.Tolerance3d".
+/// @param theOperations Bitset of operations to perform.
+/// @param theProgress Progress indicator.
+/// @return true if at least one operation was performed, false otherwise.
+pub fn perform_handleshapeprocesscontext_operationsflags_progressrange(
+    theContext: &crate::ffi::HandleShapeProcessContext,
+    theOperations: &crate::ffi::ShapeProcess_OperationsFlags,
+    theProgress: &crate::message::ProgressRange,
+) -> bool {
+    unsafe {
+        crate::ffi::ShapeProcess_perform_handleshapeprocesscontext_operationsflags_progressrange(
+            theContext,
+            theOperations,
+            theProgress,
+        )
+    }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
