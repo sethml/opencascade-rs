@@ -393,7 +393,7 @@ Currently only `standard` iostream accessors (`cout()`, `cerr()`, etc.) require 
 
 ## Skipped Symbols
 
-The binding generator skips ~159 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator currently skips ~135 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -412,45 +412,47 @@ Example from `gp.rs`:
 
 | Count | % | Category | Description |
 |------:|----:|----------|-------------|
-| 132 | 83.0% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`WNT_HIDSpaceMouse`, `ShapePersistent_Geom::...`, etc.) |
-| 12 | 7.5% | **Rvalue reference** | C++ move semantics (`T&&`) — all have equivalent const-ref overloads already bound (won't fix) |
-| 6 | 3.8% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
-| 5 | 3.1% | **Unresolved template type** | Template instantiations that can't be resolved (`NCollection_List<const char*>::Iterator`, etc.) |
-| 2 | 1.3% | **Excluded by bindings.toml** | Explicitly excluded in config (e.g., ambiguous overload workarounds) |
-| 1 | 0.6% | **Not CppDeletable** | Return type class has no destructor in the binding set |
-| 1 | 0.6% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
+| 66 | 48.9% | **Unknown/unresolved type** | Parameter or return type is not in the resolved known-type set |
+| 42 | 31.1% | **Unknown Handle type** | `Handle(T)` where `T` is unresolved or excluded |
+| 12 | 8.9% | **Rvalue reference** | C++ move semantics (`T&&`) — const-ref overloads usually exist |
+| 6 | 4.4% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
+| 5 | 3.7% | **Unresolved template type** | Template instantiations that can't be represented safely |
+| 2 | 1.5% | **Excluded by bindings.toml** | Explicitly excluded in config |
+| 1 | 0.7% | **Ambiguous overload** | C++ overload would produce conflicting wrapper signatures |
+| 1 | 0.7% | **Not CppDeletable** | Return type has no destructor in the binding set |
+
+Combined unresolved coverage (`Unknown/unresolved type` + `Unknown Handle type`) is **108 / 135 (80.0%)**.
 
 ### Most Common Unknown Types
 
-The "unknown type" category (83% of all skips) is dominated by a few types:
-
 | Count | Type | How to Unblock |
 |------:|------|----------------|
-| 32 | `Handle(ShapePersistent_Geom::geometryBase<...>)` | Protected nested template class — header not in binding set |
-| 5 | `AVStream`, `AVPacket`, `AVFrame`, etc. | FFmpeg types in media module — external dependency |
-| 5 | `WNT_HIDSpaceMouse` | Windows-only type, WNT module excluded |
-| 5 | `RWGltf_GltfOStreamWriter` | External RapidJSON dependency — not in binding set |
+| 12 | `Handle(ShapePersistent_Geom::geometryBase<Geom_Surface>)` | Protected nested template class — not exposed as a bindable type |
+| 10 | `Handle(ShapePersistent_Geom::geometryBase<Geom_Curve>)` | Protected nested template class — not exposed as a bindable type |
+| 10 | `Handle(ShapePersistent_Geom::geometryBase<Geom2d_Curve>)` | Protected nested template class — not exposed as a bindable type |
+| 5 | `WNT_HIDSpaceMouse const` | Windows-only type, WNT module excluded |
+| 5 | `AVStream const` | FFmpeg media type — external dependency |
+| 5 | `RWGltf_GltfOStreamWriter` | RapidJSON-backed writer type — external dependency |
 | 4 | `GLXFBConfig` | X11/Linux display type — platform-specific |
-| 3 | `Aspect_XDisplay`, `Aspect_XVisualInfo` | X11/Linux display types — platform-specific |
-
+| 3 | `Aspect_XDisplay` | X11/Linux display type — platform-specific |
+| 3 | `IMeshData_Edge *const const` | Internal mesh pointer signature in specialized APIs |
+| 3 | `IMeshData_Face *const const` | Internal mesh pointer signature in specialized APIs |
 
 ### Important Skipped Symbols
 
-Most skipped symbols are in internal, low-use, or specialized modules. However, some affect functionality that users commonly need:
+Most skipped symbols are in specialized or platform-specific areas. Current hotspots:
 
-**Data Exchange (14 symbols)** — `STEPControl_*` (1), `IGESControl_*` (1), `XSControl_*` (1), `RWGltf_*` (5), `STEPCAFControl_*` (2), `Transfer_*` (2), `IGESToBRep_*` (1), `TCollection_*` (4). The rvalue-reference methods (8 `SetShapeFixParameters` + 4 string move/ctors) all have equivalent const-ref overloads already bound. The RWGltf methods require RapidJSON's `GltfOStreamWriter` (external dependency). The core `Read()`/`Write()` operations are fully bound.
+**Data Exchange (9 symbols)** — `rw_gltf` (5), `iges_control` (1), `step_control` (1), `xs_control` (1), `rw_stl` (1). Predominantly external/third-party types, plus a few `T&&` overloads where safe const-ref equivalents are already bound.
 
-**Document Framework (1 symbol)** — `TDF_*` (1). The unknown type is `TDF_LabelNode*` — a raw pointer to a class not in the binding set. Previously, `TDocStd_XLinkPtr` (pointer typedef for `TDocStd_XLink*`) also caused 3 skips, but these are now resolved via pointer typedef resolution. Methods returning references with reference params are bound as `unsafe fn` (see "Unsafe Reference Returns" above).
+**Document Framework (1 symbol)** — `tdf` (1). Remaining unknown type is `TDF_LabelNode*` (internal raw pointer type not in binding set).
 
-**Shape Meshing** — `BRepMesh_*` and `IMeshData_*`. Namespace-scoped IMeshData typedef aliases used by key meshing APIs (`IMeshData::MapOfInteger`, `IMeshData::VectorOfInteger`, `IMeshData::Array1OfVertexOfDelaun`, etc.) are now resolved by guarded namespace-typedef auto-resolution in the parser, which unblocks a set of previously skipped BRepMesh methods. Remaining skips in meshing are primarily C-style array params, unresolved template forms, and internal pointer-heavy signatures.
+**Shape Meshing (14 symbols)** — `b_rep_mesh` (9), `i_mesh_data` (5). Namespace-scoped IMeshData typedef aliases are now auto-resolved; remaining skips are mostly C-style arrays, one unresolved template form, and internal pointer-heavy signatures.
 
+**Shape Analysis/Fix (0 symbols)** — Fully bound for current header set.
 
+**Geometry (0 symbols in gp/Geom/Geom2d)** — Fully bound for core geometry modules.
 
-**Shape Analysis/Fix (0 symbols)** — All symbols are fully bound.
-
-**Geometry (0 symbols in gp/Geom/Geom2d)** — All core geometry operations are available.
-
-**Poly (5 symbols)** — C-style arrays (3), unresolved template (1), excluded by config (1). `Poly_CoherentTriangulation` internal access and `Poly_MakeLoops` helper interfaces. All core triangulation access is available.
+**Poly (2 symbols)** — one config exclusion and one unresolved type in low-level helper APIs.
 
 ### How Skipped Symbols Are Tracked
 
