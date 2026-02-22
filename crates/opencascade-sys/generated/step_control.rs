@@ -2083,6 +2083,6 @@ impl Writer {
 // SKIPPED: **Source:** `STEPControl_Writer.hxx`:160 - `STEPControl_Writer::SetShapeProcessFlags`
 //   method: Sets flags defining operations to be performed on shapes.
 //   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
 //   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
 //

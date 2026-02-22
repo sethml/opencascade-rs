@@ -2638,8 +2638,8 @@ impl AttributeIterator {
 
 // ── Skipped symbols for AttributeIterator (1 total) ──
 // SKIPPED: **Source:** `TDF_AttributeIterator.hxx`:52 - `TDF_AttributeIterator::TDF_AttributeIterator`
-//   Reason: param 'aLabelNode' uses unknown type 'TDF_LabelNodePtr'
-//   // pub fn new_labelnodeptr_bool(aLabelNode: LabelNodePtr, withoutForgotten: bool) -> OwnedPtr<Self>;
+//   Reason: param 'aLabelNode' uses unknown type 'TDF_LabelNode*'
+//   // pub fn new_labelnodeptr_bool(aLabelNode: *mut LabelNode, withoutForgotten: bool) -> OwnedPtr<Self>;
 //
 
 // ========================
@@ -8134,5 +8134,5 @@ pub use crate::ffi::{
     TDF_AttributeSequence as AttributeSequence, TDF_DeltaList as DeltaList, TDF_IDList as IDList,
     TDF_LabelDataMap as LabelDataMap, TDF_LabelIndexedMap as LabelIndexedMap,
     TDF_LabelIntegerMap as LabelIntegerMap, TDF_LabelList as LabelList, TDF_LabelMap as LabelMap,
-    TDF_LabelNodePtr as LabelNodePtr, TDF_LabelSequence as LabelSequence,
+    TDF_LabelNode as LabelNode, TDF_LabelSequence as LabelSequence,
 };

@@ -6435,7 +6435,7 @@ impl ProgressScope {
 //   constructor: Creates a new scope taking responsibility of the part of the progress
 //   constructor: scale described by theRange. The new scope has own range from 0 to
 //   constructor: theMax, which is mapped to the given range.
-//   Reason: class pointer param 'theName' inner type 'const Message_ProgressScope::NullString*' is unknown
+//   Reason: class pointer param 'theName' inner type 'Message_ProgressScope::NullString const*' is unknown
 //   // pub fn new_progressrange_nullstringptr_real_bool(theRange: &ProgressRange, theName: *const ProgressScope_NullString, theMax: f64, isInfinite: bool) -> OwnedPtr<Self>;
 //
 
@@ -6833,8 +6833,8 @@ impl HandleMessageReport {
 // ── Skipped symbols for Report (1 total) ──
 // SKIPPED: **Source:** `Message_Report.hxx`:111 - `Message_Report::ActiveMetrics`
 //   method: Returns computed metrics when alerts are performed
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_IndexedMap<Message_MetricType>&)
-//   // pub fn active_metrics(&self) -> /* const NCollection_IndexedMap<Message_MetricType>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_IndexedMap<Message_MetricType> const&)
+//   // pub fn active_metrics(&self) -> /* NCollection_IndexedMap<Message_MetricType> const& */;
 //
 
 // ========================

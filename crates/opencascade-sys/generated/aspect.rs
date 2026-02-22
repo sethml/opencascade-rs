@@ -8101,8 +8101,8 @@ impl WindowInputListener {
 // ── Skipped symbols for WindowInputListener (8 total) ──
 // SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:208 - `Aspect_WindowInputListener::Get3dMouseIsNoRotate`
 //   method: Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (FALSE, FALSE, FALSE) by default.
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Vec3<bool>&)
-//   // pub fn get3d_mouse_is_no_rotate(&self) -> /* const NCollection_Vec3<bool>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Vec3<bool> const&)
+//   // pub fn get3d_mouse_is_no_rotate(&self) -> /* NCollection_Vec3<bool> const& */;
 //
 // SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:211 - `Aspect_WindowInputListener::Change3dMouseIsNoRotate`
 //   method: Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (FALSE, FALSE, FALSE) by default.
@@ -8111,8 +8111,8 @@ impl WindowInputListener {
 //
 // SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:214 - `Aspect_WindowInputListener::Get3dMouseToReverse`
 //   method: Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (TRUE, FALSE, FALSE) by default.
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Vec3<bool>&)
-//   // pub fn get3d_mouse_to_reverse(&self) -> /* const NCollection_Vec3<bool>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Vec3<bool> const&)
+//   // pub fn get3d_mouse_to_reverse(&self) -> /* NCollection_Vec3<bool> const& */;
 //
 // SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:217 - `Aspect_WindowInputListener::Change3dMouseToReverse`
 //   method: Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (TRUE, FALSE, FALSE) by default.
@@ -8121,22 +8121,22 @@ impl WindowInputListener {
 //
 // SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:220 - `Aspect_WindowInputListener::Update3dMouse`
 //   method: Process 3d mouse input event (redirects to translation, rotation and keys).
-//   Reason: param 'theEvent' uses unknown type 'const WNT_HIDSpaceMouse&'
+//   Reason: param 'theEvent' uses unknown type 'WNT_HIDSpaceMouse const&'
 //   // pub fn update3d_mouse(&mut self, theEvent: &HIDSpaceMouse) -> bool;
 //
 // SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:223 - `Aspect_WindowInputListener::update3dMouseTranslation`
 //   method: Process 3d mouse input translation event.
-//   Reason: param 'theEvent' uses unknown type 'const WNT_HIDSpaceMouse&'
+//   Reason: param 'theEvent' uses unknown type 'WNT_HIDSpaceMouse const&'
 //   // pub fn update3d_mouse_translation(&mut self, theEvent: &HIDSpaceMouse) -> bool;
 //
 // SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:226 - `Aspect_WindowInputListener::update3dMouseRotation`
 //   method: Process 3d mouse input rotation event.
-//   Reason: param 'theEvent' uses unknown type 'const WNT_HIDSpaceMouse&'
+//   Reason: param 'theEvent' uses unknown type 'WNT_HIDSpaceMouse const&'
 //   // pub fn update3d_mouse_rotation(&mut self, theEvent: &HIDSpaceMouse) -> bool;
 //
 // SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:229 - `Aspect_WindowInputListener::update3dMouseKeys`
 //   method: Process 3d mouse input keys event.
-//   Reason: param 'theEvent' uses unknown type 'const WNT_HIDSpaceMouse&'
+//   Reason: param 'theEvent' uses unknown type 'WNT_HIDSpaceMouse const&'
 //   // pub fn update3d_mouse_keys(&mut self, theEvent: &HIDSpaceMouse) -> bool;
 //
 
@@ -9066,8 +9066,8 @@ impl HandleAspectXRSession {
 // SKIPPED: **Source:** `Aspect_XRSession.hxx`:121 - `Aspect_XRSession::ProjectionFrustum`
 //   method: Return projection frustum.
 //   method: @sa HasProjectionFrustums().
-//   Reason: has unbindable types: return: unresolved template type (const Aspect_FrustumLRBT<double>&)
-//   // pub fn projection_frustum(&self, theEye: Eye) -> /* const Aspect_FrustumLRBT<double>& */;
+//   Reason: has unbindable types: return: unresolved template type (Aspect_FrustumLRBT<double> const&)
+//   // pub fn projection_frustum(&self, theEye: Eye) -> /* Aspect_FrustumLRBT<double> const& */;
 //
 
 // ========================
@@ -9075,8 +9075,7 @@ impl HandleAspectXRSession {
 // ========================
 
 pub use crate::ffi::{
-    Aspect_RenderingContext as RenderingContext, Aspect_SequenceOfColor as SequenceOfColor,
-    Aspect_TouchMap as TouchMap, Aspect_TrackedDevicePoseArray as TrackedDevicePoseArray,
-    Aspect_XDisplay as XDisplay, Aspect_XRActionMap as XRActionMap,
-    Aspect_XVisualInfo as XVisualInfo,
+    Aspect_SequenceOfColor as SequenceOfColor, Aspect_TouchMap as TouchMap,
+    Aspect_TrackedDevicePoseArray as TrackedDevicePoseArray, Aspect_XDisplay as XDisplay,
+    Aspect_XRActionMap as XRActionMap, Aspect_XVisualInfo as XVisualInfo,
 };

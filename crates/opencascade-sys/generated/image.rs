@@ -1875,20 +1875,20 @@ impl HandleImagePixMap {
 //   method: Initialize 2D/3D image as wrapper over alien data.
 //   method: Data will not be copied! Notice that caller should ensure
 //   method: that data pointer will not be released during this wrapper lifetime.
-//   Reason: has unbindable types: param 'theSizeXYZ': unresolved template type (const NCollection_Vec3<Standard_Size>&)
-//   // pub fn init_wrapper3_d(&mut self, thePixelFormat: Format, theDataPtr: *mut u8, theSizeXYZ: /* const NCollection_Vec3<Standard_Size>& */, theSizeRowBytes: usize) -> bool;
+//   Reason: has unbindable types: param 'theSizeXYZ': unresolved template type (NCollection_Vec3<Standard_Size> const&)
+//   // pub fn init_wrapper3_d(&mut self, thePixelFormat: Format, theDataPtr: *mut u8, theSizeXYZ: /* NCollection_Vec3<Standard_Size> const& */, theSizeRowBytes: usize) -> bool;
 //
 // SKIPPED: **Source:** `Image_PixMap.hxx`:251 - `Image_PixMap::InitTrash3D`
 //   method: Initialize 2D/3D image with required dimensions.
 //   method: Memory will be left uninitialized (performance trick).
-//   Reason: has unbindable types: param 'theSizeXYZ': unresolved template type (const NCollection_Vec3<Standard_Size>&)
-//   // pub fn init_trash3_d(&mut self, thePixelFormat: Format, theSizeXYZ: /* const NCollection_Vec3<Standard_Size>& */, theSizeRowBytes: usize) -> bool;
+//   Reason: has unbindable types: param 'theSizeXYZ': unresolved template type (NCollection_Vec3<Standard_Size> const&)
+//   // pub fn init_trash3_d(&mut self, thePixelFormat: Format, theSizeXYZ: /* NCollection_Vec3<Standard_Size> const& */, theSizeRowBytes: usize) -> bool;
 //
 // SKIPPED: **Source:** `Image_PixMap.hxx`:257 - `Image_PixMap::InitZero3D`
 //   method: Initialize 2D/3D image with required dimensions.
 //   method: Buffer will be zeroed (black color for most formats).
-//   Reason: has unbindable types: param 'theSizeXYZ': unresolved template type (const NCollection_Vec3<Standard_Size>&)
-//   // pub fn init_zero3_d(&mut self, thePixelFormat: Format, theSizeXYZ: /* const NCollection_Vec3<Standard_Size>& */, theSizeRowBytes: usize, theValue: u8) -> bool;
+//   Reason: has unbindable types: param 'theSizeXYZ': unresolved template type (NCollection_Vec3<Standard_Size> const&)
+//   // pub fn init_zero3_d(&mut self, thePixelFormat: Format, theSizeXYZ: /* NCollection_Vec3<Standard_Size> const& */, theSizeRowBytes: usize, theValue: u8) -> bool;
 //
 
 // ========================
@@ -2193,8 +2193,8 @@ impl HandleImagePixMapData {
 // ── Skipped symbols for PixMapData (1 total) ──
 // SKIPPED: **Source:** `Image_PixMapData.hxx`:58 - `Image_PixMapData::Init`
 //   method: Initializer.
-//   Reason: has unbindable types: param 'theSizeXYZ': unresolved template type (const NCollection_Vec3<Standard_Size>&)
-//   // pub fn init(&mut self, theAlloc: &HandleBaseAllocator, theSizeBPP: usize, theSizeXYZ: /* const NCollection_Vec3<Standard_Size>& */, theSizeRowBytes: usize, theDataPtr: *mut u8) -> bool;
+//   Reason: has unbindable types: param 'theSizeXYZ': unresolved template type (NCollection_Vec3<Standard_Size> const&)
+//   // pub fn init(&mut self, theAlloc: &HandleBaseAllocator, theSizeBPP: usize, theSizeXYZ: /* NCollection_Vec3<Standard_Size> const& */, theSizeRowBytes: usize, theDataPtr: *mut u8) -> bool;
 //
 
 // ========================

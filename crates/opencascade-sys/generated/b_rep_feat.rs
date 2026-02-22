@@ -456,6 +456,31 @@ impl Builder {
         unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_Tools(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    pub fn p_pave_filler(&mut self) -> Option<&mut crate::bop_algo::PaveFiller> {
+        {
+            let ptr =
+                unsafe { crate::ffi::BRepFeat_Builder_inherited_PPaveFiller(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
+        {
+            let ptr = unsafe { crate::ffi::BRepFeat_Builder_inherited_PDS(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
     pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleIntToolsContext> {
         unsafe {
@@ -1456,6 +1481,34 @@ impl MakeCylindricalHole {
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
     pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Tools(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    pub fn p_pave_filler(&mut self) -> Option<&mut crate::bop_algo::PaveFiller> {
+        {
+            let ptr = unsafe {
+                crate::ffi::BRepFeat_MakeCylindricalHole_inherited_PPaveFiller(self as *mut Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
+        {
+            let ptr = unsafe {
+                crate::ffi::BRepFeat_MakeCylindricalHole_inherited_PDS(self as *mut Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`

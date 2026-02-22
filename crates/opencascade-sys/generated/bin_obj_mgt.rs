@@ -153,6 +153,90 @@ impl Persistent {
         unsafe { &mut *(crate::ffi::BinObjMgt_Persistent_put_guid(self as *mut Self, theValue)) }
     }
 
+    /// **Source:** `BinObjMgt_Persistent.hxx`:123 - `BinObjMgt_Persistent::PutCharArray()`
+    /// Put C array of char, theLength is the number of elements
+    pub unsafe fn put_char_array(
+        &mut self,
+        theArray: *mut std::ffi::c_char,
+        theLength: i32,
+    ) -> &mut Persistent {
+        unsafe {
+            &mut *(crate::ffi::BinObjMgt_Persistent_put_char_array(
+                self as *mut Self,
+                theArray,
+                theLength,
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:127 - `BinObjMgt_Persistent::PutByteArray()`
+    /// Put C array of unsigned chars, theLength is the number of elements
+    pub unsafe fn put_byte_array(&mut self, theArray: *mut u8, theLength: i32) -> &mut Persistent {
+        unsafe {
+            &mut *(crate::ffi::BinObjMgt_Persistent_put_byte_array(
+                self as *mut Self,
+                theArray,
+                theLength,
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:131 - `BinObjMgt_Persistent::PutExtCharArray()`
+    /// Put C array of ExtCharacter, theLength is the number of elements
+    pub unsafe fn put_ext_char_array(
+        &mut self,
+        theArray: *mut u16,
+        theLength: i32,
+    ) -> &mut Persistent {
+        unsafe {
+            &mut *(crate::ffi::BinObjMgt_Persistent_put_ext_char_array(
+                self as *mut Self,
+                theArray,
+                theLength,
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:135 - `BinObjMgt_Persistent::PutIntArray()`
+    /// Put C array of int, theLength is the number of elements
+    pub unsafe fn put_int_array(&mut self, theArray: *mut i32, theLength: i32) -> &mut Persistent {
+        unsafe {
+            &mut *(crate::ffi::BinObjMgt_Persistent_put_int_array(
+                self as *mut Self,
+                theArray,
+                theLength,
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:139 - `BinObjMgt_Persistent::PutRealArray()`
+    /// Put C array of double, theLength is the number of elements
+    pub unsafe fn put_real_array(&mut self, theArray: *mut f64, theLength: i32) -> &mut Persistent {
+        unsafe {
+            &mut *(crate::ffi::BinObjMgt_Persistent_put_real_array(
+                self as *mut Self,
+                theArray,
+                theLength,
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:143 - `BinObjMgt_Persistent::PutShortRealArray()`
+    /// Put C array of float, theLength is the number of elements
+    pub unsafe fn put_short_real_array(
+        &mut self,
+        theArray: *mut f32,
+        theLength: i32,
+    ) -> &mut Persistent {
+        unsafe {
+            &mut *(crate::ffi::BinObjMgt_Persistent_put_short_real_array(
+                self as *mut Self,
+                theArray,
+                theLength,
+            ))
+        }
+    }
+
     /// **Source:** `BinObjMgt_Persistent.hxx`:146 - `BinObjMgt_Persistent::GetCharacter()`
     ///
     /// # Safety
@@ -292,6 +376,94 @@ impl Persistent {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_guid(&self, theValue: &mut crate::standard::GUID) -> &Persistent {
         unsafe { &*(crate::ffi::BinObjMgt_Persistent_get_guid(self as *const Self, theValue)) }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:225 - `BinObjMgt_Persistent::GetCharArray()`
+    /// Get C array of char, theLength is the number of elements;
+    /// theArray must point to a
+    /// space enough to place theLength elements
+    pub unsafe fn get_char_array(
+        &self,
+        theArray: *mut std::ffi::c_char,
+        theLength: i32,
+    ) -> &Persistent {
+        unsafe {
+            &*(crate::ffi::BinObjMgt_Persistent_get_char_array(
+                self as *const Self,
+                theArray,
+                theLength,
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:231 - `BinObjMgt_Persistent::GetByteArray()`
+    /// Get C array of unsigned chars, theLength is the number of elements;
+    /// theArray must point to a
+    /// space enough to place theLength elements
+    pub unsafe fn get_byte_array(&self, theArray: *mut u8, theLength: i32) -> &Persistent {
+        unsafe {
+            &*(crate::ffi::BinObjMgt_Persistent_get_byte_array(
+                self as *const Self,
+                theArray,
+                theLength,
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:237 - `BinObjMgt_Persistent::GetExtCharArray()`
+    /// Get C array of ExtCharacter, theLength is the number of elements;
+    /// theArray must point to a
+    /// space enough to place theLength elements
+    pub unsafe fn get_ext_char_array(&self, theArray: *mut u16, theLength: i32) -> &Persistent {
+        unsafe {
+            &*(crate::ffi::BinObjMgt_Persistent_get_ext_char_array(
+                self as *const Self,
+                theArray,
+                theLength,
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:244 - `BinObjMgt_Persistent::GetIntArray()`
+    /// Get C array of int, theLength is the number of elements;
+    /// theArray must point to a
+    /// space enough to place theLength elements
+    pub unsafe fn get_int_array(&self, theArray: *mut i32, theLength: i32) -> &Persistent {
+        unsafe {
+            &*(crate::ffi::BinObjMgt_Persistent_get_int_array(
+                self as *const Self,
+                theArray,
+                theLength,
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:250 - `BinObjMgt_Persistent::GetRealArray()`
+    /// Get C array of double, theLength is the number of elements;
+    /// theArray must point to a
+    /// space enough to place theLength elements
+    pub unsafe fn get_real_array(&self, theArray: *mut f64, theLength: i32) -> &Persistent {
+        unsafe {
+            &*(crate::ffi::BinObjMgt_Persistent_get_real_array(
+                self as *const Self,
+                theArray,
+                theLength,
+            ))
+        }
+    }
+
+    /// **Source:** `BinObjMgt_Persistent.hxx`:256 - `BinObjMgt_Persistent::GetShortRealArray()`
+    /// Get C array of float, theLength is the number of elements;
+    /// theArray must point to a
+    /// space enough to place theLength elements
+    pub unsafe fn get_short_real_array(&self, theArray: *mut f32, theLength: i32) -> &Persistent {
+        unsafe {
+            &*(crate::ffi::BinObjMgt_Persistent_get_short_real_array(
+                self as *const Self,
+                theArray,
+                theLength,
+            ))
+        }
     }
 
     /// **Source:** `BinObjMgt_Persistent.hxx`:261 - `BinObjMgt_Persistent::Position()`
@@ -466,80 +638,6 @@ impl Persistent {
         }
     }
 }
-
-// ── Skipped symbols for Persistent (12 total) ──
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:123 - `BinObjMgt_Persistent::PutCharArray`
-//   method: Put C array of char, theLength is the number of elements
-//   Reason: param 'theArray' uses unknown type 'BinObjMgt_PChar'
-//   // pub fn put_char_array(&mut self, theArray: PChar, theLength: i32) -> &mut Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:127 - `BinObjMgt_Persistent::PutByteArray`
-//   method: Put C array of unsigned chars, theLength is the number of elements
-//   Reason: param 'theArray' uses unknown type 'BinObjMgt_PByte'
-//   // pub fn put_byte_array(&mut self, theArray: PByte, theLength: i32) -> &mut Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:131 - `BinObjMgt_Persistent::PutExtCharArray`
-//   method: Put C array of ExtCharacter, theLength is the number of elements
-//   Reason: param 'theArray' uses unknown type 'BinObjMgt_PExtChar'
-//   // pub fn put_ext_char_array(&mut self, theArray: PExtChar, theLength: i32) -> &mut Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:135 - `BinObjMgt_Persistent::PutIntArray`
-//   method: Put C array of int, theLength is the number of elements
-//   Reason: param 'theArray' uses unknown type 'BinObjMgt_PInteger'
-//   // pub fn put_int_array(&mut self, theArray: PInteger, theLength: i32) -> &mut Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:139 - `BinObjMgt_Persistent::PutRealArray`
-//   method: Put C array of double, theLength is the number of elements
-//   Reason: param 'theArray' uses unknown type 'BinObjMgt_PReal'
-//   // pub fn put_real_array(&mut self, theArray: PReal, theLength: i32) -> &mut Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:143 - `BinObjMgt_Persistent::PutShortRealArray`
-//   method: Put C array of float, theLength is the number of elements
-//   Reason: param 'theArray' uses unknown type 'BinObjMgt_PShortReal'
-//   // pub fn put_short_real_array(&mut self, theArray: PShortReal, theLength: i32) -> &mut Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:225 - `BinObjMgt_Persistent::GetCharArray`
-//   method: Get C array of char, theLength is the number of elements;
-//   method: theArray must point to a
-//   method: space enough to place theLength elements
-//   Reason: param 'theArray' uses unknown type 'BinObjMgt_PChar'
-//   // pub fn get_char_array(&self, theArray: PChar, theLength: i32) -> &Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:231 - `BinObjMgt_Persistent::GetByteArray`
-//   method: Get C array of unsigned chars, theLength is the number of elements;
-//   method: theArray must point to a
-//   method: space enough to place theLength elements
-//   Reason: param 'theArray' uses unknown type 'BinObjMgt_PByte'
-//   // pub fn get_byte_array(&self, theArray: PByte, theLength: i32) -> &Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:237 - `BinObjMgt_Persistent::GetExtCharArray`
-//   method: Get C array of ExtCharacter, theLength is the number of elements;
-//   method: theArray must point to a
-//   method: space enough to place theLength elements
-//   Reason: param 'theArray' uses unknown type 'BinObjMgt_PExtChar'
-//   // pub fn get_ext_char_array(&self, theArray: PExtChar, theLength: i32) -> &Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:244 - `BinObjMgt_Persistent::GetIntArray`
-//   method: Get C array of int, theLength is the number of elements;
-//   method: theArray must point to a
-//   method: space enough to place theLength elements
-//   Reason: param 'theArray' uses unknown type 'BinObjMgt_PInteger'
-//   // pub fn get_int_array(&self, theArray: PInteger, theLength: i32) -> &Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:250 - `BinObjMgt_Persistent::GetRealArray`
-//   method: Get C array of double, theLength is the number of elements;
-//   method: theArray must point to a
-//   method: space enough to place theLength elements
-//   Reason: param 'theArray' uses unknown type 'BinObjMgt_PReal'
-//   // pub fn get_real_array(&self, theArray: PReal, theLength: i32) -> &Persistent;
-//
-// SKIPPED: **Source:** `BinObjMgt_Persistent.hxx`:256 - `BinObjMgt_Persistent::GetShortRealArray`
-//   method: Get C array of float, theLength is the number of elements;
-//   method: theArray must point to a
-//   method: space enough to place theLength elements
-//   Reason: param 'theArray' uses unknown type 'BinObjMgt_PShortReal'
-//   // pub fn get_short_real_array(&self, theArray: PShortReal, theLength: i32) -> &Persistent;
-//
 
 // ========================
 // From BinObjMgt_Position.hxx
@@ -732,12 +830,3 @@ impl RRelocationTable {
         unsafe { crate::ffi::BinObjMgt_RRelocationTable_clear(self as *mut Self, doReleaseMemory) }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi::{
-    BinObjMgt_PByte as PByte, BinObjMgt_PChar as PChar, BinObjMgt_PExtChar as PExtChar,
-    BinObjMgt_PInteger as PInteger, BinObjMgt_PReal as PReal, BinObjMgt_PShortReal as PShortReal,
-};

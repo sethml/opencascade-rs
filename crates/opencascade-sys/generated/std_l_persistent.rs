@@ -790,12 +790,12 @@ impl HandleStdLPersistentHArray1OfPersistent {
 
 // ── Skipped symbols for HArray1OfPersistent (3 total) ──
 // SKIPPED: **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent`
-//   Reason: has unbindable types: param 'theOther': unresolved template type (const NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>&)
-//   // pub fn new_persistent>>(theOther: /* const NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>& */) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'theOther': unresolved template type (NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>> const&)
+//   // pub fn new_persistent>>(theOther: /* NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>> const& */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::Array1`
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>&)
-//   // pub fn array1(&self) -> /* const NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>> const&)
+//   // pub fn array1(&self) -> /* NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>> const& */;
 //
 // SKIPPED: **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::ChangeArray1`
 //   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>&)
@@ -1001,12 +1001,12 @@ impl HandleStdLPersistentHArray2OfPersistent {
 
 // ── Skipped symbols for HArray2OfPersistent (3 total) ──
 // SKIPPED: **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::StdLPersistent_HArray2OfPersistent`
-//   Reason: has unbindable types: param 'theOther': unresolved template type (const NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>>&)
-//   // pub fn new_persistent>>(theOther: /* const NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>>& */) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'theOther': unresolved template type (NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>> const&)
+//   // pub fn new_persistent>>(theOther: /* NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>> const& */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::Array2`
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>>&)
-//   // pub fn array2(&self) -> /* const NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>> const&)
+//   // pub fn array2(&self) -> /* NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>> const& */;
 //
 // SKIPPED: **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::ChangeArray2`
 //   Reason: has unbindable types: return: unresolved template type (NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>>&)

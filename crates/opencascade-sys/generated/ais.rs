@@ -1221,8 +1221,8 @@ impl HandleAISAnimation {
 // ── Skipped symbols for Animation (1 total) ──
 // SKIPPED: **Source:** `AIS_Animation.hxx`:134 - `AIS_Animation::Children`
 //   method: Return sequence of child animations.
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Sequence<opencascade::handle<AIS_Animation>>&)
-//   // pub fn children(&self) -> /* const NCollection_Sequence<opencascade::handle<AIS_Animation>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<opencascade::handle<AIS_Animation>> const&)
+//   // pub fn children(&self) -> /* NCollection_Sequence<opencascade::handle<AIS_Animation>> const& */;
 //
 
 // ========================
@@ -20438,12 +20438,12 @@ impl HandleAISManipulatorObjectSequence {
 
 // ── Skipped symbols for ManipulatorObjectSequence (4 total) ──
 // SKIPPED: **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::AIS_ManipulatorObjectSequence`
-//   Reason: has unbindable types: param 'theOther': unresolved template type (const NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>&)
-//   // pub fn new_interactiveobject>>(theOther: /* const NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>& */) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'theOther': unresolved template type (NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> const&)
+//   // pub fn new_interactiveobject>>(theOther: /* NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> const& */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::Sequence`
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>&)
-//   // pub fn sequence(&self) -> /* const NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> const&)
+//   // pub fn sequence(&self) -> /* NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> const& */;
 //
 // SKIPPED: **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::Append`
 //   Reason: has unbindable types: param 'theSequence': unresolved template type (NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>&)
@@ -31234,8 +31234,8 @@ impl HandleAISRubberBand {
 // ── Skipped symbols for RubberBand (1 total) ──
 // SKIPPED: **Source:** `AIS_RubberBand.hxx`:84 - `AIS_RubberBand::Points`
 //   method: @return points for the rubber band polygon.
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Sequence<Graphic3d_Vec2i>&)
-//   // pub fn points(&self) -> /* const NCollection_Sequence<Graphic3d_Vec2i>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<Graphic3d_Vec2i> const&)
+//   // pub fn points(&self) -> /* NCollection_Sequence<Graphic3d_Vec2i> const& */;
 //
 
 // ========================
@@ -40162,13 +40162,13 @@ impl ViewController {
 //   method: Perform selection in 3D viewer.
 //   method: This method is expected to be called from UI thread.
 //   method: @param thePnts picking point
-//   Reason: has unbindable types: param 'thePnts': unresolved template type (const NCollection_Sequence<Graphic3d_Vec2i>&)
-//   // pub fn select_in_viewer(&mut self, thePnts: /* const NCollection_Sequence<Graphic3d_Vec2i>& */, theScheme: SelectionScheme);
+//   Reason: has unbindable types: param 'thePnts': unresolved template type (NCollection_Sequence<Graphic3d_Vec2i> const&)
+//   // pub fn select_in_viewer(&mut self, thePnts: /* NCollection_Sequence<Graphic3d_Vec2i> const& */, theScheme: SelectionScheme);
 //
 // SKIPPED: **Source:** `AIS_ViewController.hxx`:442 - `AIS_ViewController::Update3dMouse`
 //   method: @name 3d mouse input
 //   method: Process 3d mouse input event (redirects to translation, rotation and keys).
-//   Reason: param 'theEvent' uses unknown type 'const WNT_HIDSpaceMouse&'
+//   Reason: param 'theEvent' uses unknown type 'WNT_HIDSpaceMouse const&'
 //   // pub fn update3d_mouse(&mut self, theEvent: &HIDSpaceMouse) -> bool;
 //
 

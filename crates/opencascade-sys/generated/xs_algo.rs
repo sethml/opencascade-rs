@@ -564,6 +564,6 @@ impl ShapeProcessor {
 //   method: Process the shape by applying the specified operations.
 //   method: @param theShape Shape to process.
 //   method: @param theOperations Operations to be performed.
-//   Reason: param 'theOperations' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   Reason: param 'theOperations' uses unknown type 'ShapeProcess::OperationsFlags const&'
 //   // pub fn process_shape(&mut self, theShape: &Shape, theOperations: &OperationsFlags, theProgress: &ProgressRange) -> OwnedPtr<TopoDS_Shape>;
 //

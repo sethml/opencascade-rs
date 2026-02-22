@@ -1921,6 +1921,19 @@ impl LocationDriver {
         }
     }
 
+    /// **Source:** `XmlMXCAFDoc_LocationDriver.hxx`:63 - `XmlMXCAFDoc_LocationDriver::SetSharedLocations()`
+    pub unsafe fn set_shared_locations(
+        &mut self,
+        theLocations: &*mut crate::top_tools::LocationSet,
+    ) {
+        unsafe {
+            crate::ffi::XmlMXCAFDoc_LocationDriver_set_shared_locations(
+                self as *mut Self,
+                theLocations,
+            )
+        }
+    }
+
     /// **Source:** `XmlMXCAFDoc_LocationDriver.hxx`:65 - `XmlMXCAFDoc_LocationDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XmlMXCAFDoc_LocationDriver_dynamic_type(self as *const Self)) }
@@ -2113,12 +2126,6 @@ impl HandleXmlMXCAFDocLocationDriver {
         }
     }
 }
-
-// ── Skipped symbols for LocationDriver (1 total) ──
-// SKIPPED: **Source:** `XmlMXCAFDoc_LocationDriver.hxx`:63 - `XmlMXCAFDoc_LocationDriver::SetSharedLocations`
-//   Reason: param 'theLocations' uses unknown type 'const TopTools_LocationSetPtr&'
-//   // pub fn set_shared_locations(&mut self, theLocations: &LocationSetPtr);
-//
 
 // ========================
 // From XmlMXCAFDoc_MaterialDriver.hxx

@@ -4113,6 +4113,15 @@ unsafe impl crate::CppDeletable for FaceInterferenceTool {
 }
 
 impl FaceInterferenceTool {
+    /// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:39 - `TopOpeBRepDS_FaceInterferenceTool::TopOpeBRepDS_FaceInterferenceTool()`
+    pub unsafe fn new_datastructureptr(P: &*mut DataStructure) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopOpeBRepDS_FaceInterferenceTool_ctor_datastructureptr(P),
+            )
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:43 - `TopOpeBRepDS_FaceInterferenceTool::Init()`
     /// Eisnew = true if E is a new edge built on edge I->Geometry()
     /// false if E is shape <=> I->Geometry()
@@ -4191,12 +4200,6 @@ impl FaceInterferenceTool {
     }
 }
 
-// ── Skipped symbols for FaceInterferenceTool (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:39 - `TopOpeBRepDS_FaceInterferenceTool::TopOpeBRepDS_FaceInterferenceTool`
-//   Reason: param 'P' uses unknown type 'const TopOpeBRepDS_PDataStructure&'
-//   // pub fn new_pdatastructure(P: &PDataStructure) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From TopOpeBRepDS_Filter.hxx
 // ========================
@@ -4212,13 +4215,12 @@ unsafe impl crate::CppDeletable for Filter {
 
 impl Filter {
     /// **Source:** `TopOpeBRepDS_Filter.hxx`:34 - `TopOpeBRepDS_Filter::TopOpeBRepDS_Filter()`
-    pub fn new_handletopopebrepdshdatastructure(
+    pub unsafe fn new_handletopopebrepdshdatastructure_shapeclassifierptr(
         HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        pClassif: &*mut crate::top_ope_b_rep_tool::ShapeClassifier,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TopOpeBRepDS_Filter_ctor_handletopopebrepdshdatastructure(HDS),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Filter_ctor_handletopopebrepdshdatastructure_shapeclassifierptr(HDS, pClassif))
         }
     }
 
@@ -4272,12 +4274,6 @@ impl Filter {
         }
     }
 }
-
-// ── Skipped symbols for Filter (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_Filter.hxx`:34 - `TopOpeBRepDS_Filter::TopOpeBRepDS_Filter`
-//   Reason: param 'pClassif' uses unknown type 'const TopOpeBRepTool_PShapeClassifier&'
-//   // pub fn new_handletopopebrepdshdatastructure_pshapeclassifier(HDS: &HandleHDataStructure, pClassif: &PShapeClassifier) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From TopOpeBRepDS_GapFiller.hxx
@@ -8957,5 +8953,5 @@ pub use crate::ffi::{
     TopOpeBRepDS_IndexedDataMapOfShapeWithState as IndexedDataMapOfShapeWithState,
     TopOpeBRepDS_ListIteratorOfListOfInterference as ListIteratorOfListOfInterference,
     TopOpeBRepDS_ListOfInterference as ListOfInterference,
-    TopOpeBRepDS_MapOfShapeData as MapOfShapeData, TopOpeBRepDS_PDataStructure as PDataStructure,
+    TopOpeBRepDS_MapOfShapeData as MapOfShapeData,
 };

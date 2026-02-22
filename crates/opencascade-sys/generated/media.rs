@@ -354,14 +354,14 @@ impl HandleMediaCodecContext {
 //   method: Open codec specified within the stream.
 //   method: @param theStream stream to open
 //   method: @param thePtsStartBase PTS start in seconds
-//   Reason: param 'theStream' uses unknown type 'const AVStream&'
+//   Reason: param 'theStream' uses unknown type 'AVStream const&'
 //   // pub fn init(&mut self, theStream: &AVStream, thePtsStartBase: f64, theNbThreads: i32) -> bool;
 //
 // SKIPPED: **Source:** `Media_CodecContext.hxx`:60 - `Media_CodecContext::Init`
 //   method: Open codec.
 //   method: @param theStream stream to open
 //   method: @param thePtsStartBase PTS start in seconds
-//   Reason: param 'theStream' uses unknown type 'const AVStream&'
+//   Reason: param 'theStream' uses unknown type 'AVStream const&'
 //   // pub fn init(&mut self, theStream: &AVStream, thePtsStartBase: f64, theNbThreads: i32, theCodecId: i32) -> bool;
 //
 
@@ -616,7 +616,7 @@ impl HandleMediaFormatContext {
 //
 // SKIPPED: **Source:** `Media_FormatContext.hxx`:99 - `Media_FormatContext::Stream`
 //   method: Return stream.
-//   Reason: return type 'const AVStream&' is unknown
+//   Reason: return type 'AVStream const&' is unknown
 //   // pub fn stream(&self, theIndex: u32) -> &AVStream;
 //
 // SKIPPED: **Source:** `Media_FormatContext.hxx`:102 - `Media_FormatContext::StreamInfo`
@@ -628,28 +628,28 @@ impl HandleMediaFormatContext {
 //   static_method: Convert time units into seconds. Returns zero for invalid value.
 //   static_method: @param theTimeBase  the timebase
 //   static_method: @param theTimeUnits value to convert
-//   Reason: param 'theTimeBase' uses unknown type 'const AVRational&'
+//   Reason: param 'theTimeBase' uses unknown type 'AVRational const&'
 //   // pub fn units_to_seconds(theTimeBase: &AVRational, theTimeUnits: i64) -> f64;
 //
 // SKIPPED: **Source:** `Media_FormatContext.hxx`:50 - `Media_FormatContext::StreamUnitsToSeconds`
 //   static_method: Convert time units into seconds using stream base.
 //   static_method: @param theStream    the stream;
 //   static_method: @param theTimeUnits value to convert;
-//   Reason: param 'theStream' uses unknown type 'const AVStream&'
+//   Reason: param 'theStream' uses unknown type 'AVStream const&'
 //   // pub fn stream_units_to_seconds(theStream: &AVStream, theTimeUnits: i64) -> f64;
 //
 // SKIPPED: **Source:** `Media_FormatContext.hxx`:62 - `Media_FormatContext::SecondsToUnits`
 //   static_method: Convert seconds into time units.
 //   static_method: @param theTimeBase    the timebase
 //   static_method: @param theTimeSeconds value to convert
-//   Reason: param 'theTimeBase' uses unknown type 'const AVRational&'
+//   Reason: param 'theTimeBase' uses unknown type 'AVRational const&'
 //   // pub fn seconds_to_units(theTimeBase: &AVRational, theTimeSeconds: f64) -> i64;
 //
 // SKIPPED: **Source:** `Media_FormatContext.hxx`:69 - `Media_FormatContext::StreamSecondsToUnits`
 //   static_method: Convert seconds into time units for stream.
 //   static_method: @param theStream      the stream
 //   static_method: @param theTimeSeconds value to convert
-//   Reason: param 'theStream' uses unknown type 'const AVStream&'
+//   Reason: param 'theStream' uses unknown type 'AVStream const&'
 //   // pub fn stream_seconds_to_units(theStream: &AVStream, theTimeSeconds: f64) -> i64;
 //
 
@@ -910,7 +910,7 @@ impl HandleMediaFrame {
 // ── Skipped symbols for Frame (2 total) ──
 // SKIPPED: **Source:** `Media_Frame.hxx`:79 - `Media_Frame::Frame`
 //   method: Return frame.
-//   Reason: return type 'const AVFrame*' is unknown
+//   Reason: return type 'AVFrame const*' is unknown
 //   // pub fn frame(&self) -> *const AVFrame;
 //
 // SKIPPED: **Source:** `Media_Frame.hxx`:82 - `Media_Frame::ChangeFrame`
@@ -1152,7 +1152,7 @@ impl HandleMediaPacket {
 // ── Skipped symbols for Packet (2 total) ──
 // SKIPPED: **Source:** `Media_Packet.hxx`:38 - `Media_Packet::Packet`
 //   method: Return packet.
-//   Reason: return type 'const AVPacket*' is unknown
+//   Reason: return type 'AVPacket const*' is unknown
 //   // pub fn packet(&self) -> *const AVPacket;
 //
 // SKIPPED: **Source:** `Media_Packet.hxx`:41 - `Media_Packet::ChangePacket`

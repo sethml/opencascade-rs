@@ -16609,17 +16609,17 @@ impl BvhCStructureSetTrsfPers {
 //
 // SKIPPED: **Source:** `Graphic3d_BvhCStructureSetTrsfPers.hxx`:82 - `Graphic3d_BvhCStructureSetTrsfPers::BVH`
 //   method: Returns BVH tree for the given world view projection (builds it if necessary).
-//   Reason: return type 'const Handle(BVH_Tree<double, 3>)&' is unknown
+//   Reason: return type 'Handle(BVH_Tree<double, 3>) const&' is unknown
 //   // pub fn bvh(&mut self, theCamera: &HandleCamera, theProjectionMatrix: &Mat4d, theWorldViewMatrix: &Mat4d, theViewportWidth: i32, theViewportHeight: i32, theWVPState: &WorldViewProjState) -> &HandleTree<double, 3>;
 //
 // SKIPPED: **Source:** `Graphic3d_BvhCStructureSetTrsfPers.hxx`:91 - `Graphic3d_BvhCStructureSetTrsfPers::Builder`
 //   method: Returns builder for bottom-level BVH.
-//   Reason: return type 'const Handle(BVH_Builder<double, 3>)&' is unknown
+//   Reason: return type 'Handle(BVH_Builder<double, 3>) const&' is unknown
 //   // pub fn builder(&self) -> &HandleBuilder<double, 3>;
 //
 // SKIPPED: **Source:** `Graphic3d_BvhCStructureSetTrsfPers.hxx`:94 - `Graphic3d_BvhCStructureSetTrsfPers::SetBuilder`
 //   method: Assigns builder for bottom-level BVH.
-//   Reason: param 'theBuilder' uses unknown type 'const Handle(BVH_Builder<double, 3>)&'
+//   Reason: param 'theBuilder' uses unknown type 'Handle(BVH_Builder<double, 3>) const&'
 //   // pub fn set_builder(&mut self, theBuilder: &HandleBuilder<double, 3>);
 //
 
@@ -18879,18 +18879,18 @@ impl HandleGraphic3dCView {
 //   method: Creates and maps rendering window to the view.
 //   method: @param[in] theParentVIew parent view or NULL
 //   method: @param[in] theWindow the window
-//   Reason: param 'theContext' uses unknown type 'Aspect_RenderingContext'
-//   // pub fn set_window(&mut self, theParentVIew: &HandleCView, theWindow: &HandleWindow, theContext: RenderingContext);
+//   Reason: param 'theContext' uses unknown type 'NSOpenGLContext*'
+//   // pub fn set_window(&mut self, theParentVIew: &HandleCView, theWindow: &HandleWindow, theContext: *mut NSOpenGLContext);
 //
 // SKIPPED: **Source:** `Graphic3d_CView.hxx`:330 - `Graphic3d_CView::Layers`
 //   method: Returns the list of layers.
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_List<opencascade::handle<Graphic3d_Layer>>&)
-//   // pub fn layers(&self) -> /* const NCollection_List<opencascade::handle<Graphic3d_Layer>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_List<opencascade::handle<Graphic3d_Layer>> const&)
+//   // pub fn layers(&self) -> /* NCollection_List<opencascade::handle<Graphic3d_Layer>> const& */;
 //
 // SKIPPED: **Source:** `Graphic3d_CView.hxx`:613 - `Graphic3d_CView::Subviews`
 //   method: Return subview list.
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Sequence<opencascade::handle<Graphic3d_CView>>&)
-//   // pub fn subviews(&self) -> /* const NCollection_Sequence<opencascade::handle<Graphic3d_CView>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<opencascade::handle<Graphic3d_CView>> const&)
+//   // pub fn subviews(&self) -> /* NCollection_Sequence<opencascade::handle<Graphic3d_CView>> const& */;
 //
 
 // ========================
@@ -19915,8 +19915,8 @@ impl HandleGraphic3dCamera {
 // SKIPPED: **Source:** `Graphic3d_Camera.hxx`:630 - `Graphic3d_Camera::SetCustomStereoFrustums`
 //   method: Set custom stereo frustums.
 //   method: These can be retrieved from APIs like OpenVR.
-//   Reason: has unbindable types: param 'theFrustumL': unresolved template type (const Aspect_FrustumLRBT<Standard_Real>&); param 'theFrustumR': unresolved template type (const Aspect_FrustumLRBT<Standard_Real>&)
-//   // pub fn set_custom_stereo_frustums(&mut self, theFrustumL: /* const Aspect_FrustumLRBT<Standard_Real>& */, theFrustumR: /* const Aspect_FrustumLRBT<Standard_Real>& */);
+//   Reason: has unbindable types: param 'theFrustumL': unresolved template type (Aspect_FrustumLRBT<Standard_Real> const&); param 'theFrustumR': unresolved template type (Aspect_FrustumLRBT<Standard_Real> const&)
+//   // pub fn set_custom_stereo_frustums(&mut self, theFrustumL: /* Aspect_FrustumLRBT<Standard_Real> const& */, theFrustumR: /* Aspect_FrustumLRBT<Standard_Real> const& */);
 //
 // SKIPPED: **Source:** `Graphic3d_Camera.hxx`:775 - `Graphic3d_Camera::FrustumPoints`
 //   method: Fill array of current view frustum corners.
@@ -22247,8 +22247,8 @@ impl HandleGraphic3dCubeMapSeparate {
 // SKIPPED: **Source:** `Graphic3d_CubeMapSeparate.hxx`:34 - `Graphic3d_CubeMapSeparate::Graphic3d_CubeMapSeparate`
 //   constructor: Initializes cubemap to be set directly from PixMaps.
 //   constructor: @theImages - array if PixMaps (has to have size equal 6).
-//   Reason: has unbindable types: param 'theImages': unresolved template type (const NCollection_Array1<opencascade::handle<Image_PixMap>>&)
-//   // pub fn new_pixmap>>(theImages: /* const NCollection_Array1<opencascade::handle<Image_PixMap>>& */) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'theImages': unresolved template type (NCollection_Array1<opencascade::handle<Image_PixMap>> const&)
+//   // pub fn new_pixmap>>(theImages: /* NCollection_Array1<opencascade::handle<Image_PixMap>> const& */) -> OwnedPtr<Self>;
 //
 
 // ========================
@@ -23017,8 +23017,8 @@ impl HandleGraphic3dFrameStats {
 //
 // SKIPPED: **Source:** `Graphic3d_FrameStats.hxx`:121 - `Graphic3d_FrameStats::DataFrames`
 //   method: Returns data frames.
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Array1<Graphic3d_FrameStatsData>&)
-//   // pub fn data_frames(&self) -> /* const NCollection_Array1<Graphic3d_FrameStatsData>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<Graphic3d_FrameStatsData> const&)
+//   // pub fn data_frames(&self) -> /* NCollection_Array1<Graphic3d_FrameStatsData> const& */;
 //
 // SKIPPED: **Source:** `Graphic3d_FrameStats.hxx`:124 - `Graphic3d_FrameStats::ChangeDataFrames`
 //   method: Returns data frames.
@@ -26198,17 +26198,17 @@ impl HandleGraphic3dLayer {
 //
 // SKIPPED: **Source:** `Graphic3d_Layer.hxx`:53 - `Graphic3d_Layer::FrustumCullingBVHBuilder`
 //   method: Returns BVH tree builder for frustum culling.
-//   Reason: return type 'const Handle(BVH_Builder<double, 3>)&' is unknown
+//   Reason: return type 'Handle(BVH_Builder<double, 3>) const&' is unknown
 //   // pub fn frustum_culling_bvh_builder(&self) -> &HandleBuilder<double, 3>;
 //
 // SKIPPED: **Source:** `Graphic3d_Layer.hxx`:59 - `Graphic3d_Layer::SetFrustumCullingBVHBuilder`
 //   method: Assigns BVH tree builder for frustum culling.
-//   Reason: param 'theBuilder' uses unknown type 'const Handle(BVH_Builder<double, 3>)&'
+//   Reason: param 'theBuilder' uses unknown type 'Handle(BVH_Builder<double, 3>) const&'
 //   // pub fn set_frustum_culling_bvh_builder(&mut self, theBuilder: &HandleBuilder<double, 3>);
 //
 // SKIPPED: **Source:** `Graphic3d_Layer.hxx`:97 - `Graphic3d_Layer::ArrayOfStructures`
 //   method: Returns array of structures.
-//   Reason: return type 'const Graphic3d_ArrayOfIndexedMapOfStructure&' is unknown
+//   Reason: return type 'Graphic3d_ArrayOfIndexedMapOfStructure const&' is unknown
 //   // pub fn array_of_structures(&self) -> &ArrayOfIndexedMapOfStructure;
 //
 
@@ -33084,8 +33084,8 @@ impl HandleGraphic3dStructureManager {
 // ── Skipped symbols for StructureManager (1 total) ──
 // SKIPPED: **Source:** `Graphic3d_StructureManager.hxx`:160 - `Graphic3d_StructureManager::RecomputeStructures`
 //   method: Recomputes all structures from theStructures.
-//   Reason: has unbindable types: param 'theStructures': unresolved template type (const NCollection_Map<Graphic3d_Structure *>&)
-//   // pub fn recompute_structures(&mut self, theStructures: /* const NCollection_Map<Graphic3d_Structure *>& */);
+//   Reason: has unbindable types: param 'theStructures': unresolved template type (NCollection_Map<Graphic3d_Structure *> const&)
+//   // pub fn recompute_structures(&mut self, theStructures: /* NCollection_Map<Graphic3d_Structure *> const& */);
 //
 
 // ========================

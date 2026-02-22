@@ -874,6 +874,21 @@ unsafe impl crate::CppDeletable for CircularGrid {
 }
 
 impl CircularGrid {
+    /// **Source:** `V3d_CircularGrid.hxx`:35 - `V3d_CircularGrid::V3d_CircularGrid()`
+    pub unsafe fn new_viewerptr_color2(
+        aViewer: &*mut Viewer,
+        aColor: &crate::quantity::Color,
+        aTenthColor: &crate::quantity::Color,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::V3d_CircularGrid_ctor_viewerptr_color2(
+                aViewer,
+                aColor,
+                aTenthColor,
+            ))
+        }
+    }
+
     /// **Source:** `V3d_CircularGrid.hxx`:33 - `V3d_CircularGrid::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::V3d_CircularGrid_dynamic_type(self as *const Self)) }
@@ -1204,12 +1219,6 @@ impl HandleV3dCircularGrid {
         }
     }
 }
-
-// ── Skipped symbols for CircularGrid (1 total) ──
-// SKIPPED: **Source:** `V3d_CircularGrid.hxx`:35 - `V3d_CircularGrid::V3d_CircularGrid`
-//   Reason: param 'aViewer' uses unknown type 'const V3d_ViewerPointer&'
-//   // pub fn new_viewerpointer_color2(aViewer: &ViewerPointer, aColor: &Color, aTenthColor: &Color) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From V3d_DirectionalLight.hxx
@@ -2712,6 +2721,21 @@ unsafe impl crate::CppDeletable for RectangularGrid {
 }
 
 impl RectangularGrid {
+    /// **Source:** `V3d_RectangularGrid.hxx`:34 - `V3d_RectangularGrid::V3d_RectangularGrid()`
+    pub unsafe fn new_viewerptr_color2(
+        aViewer: &*mut Viewer,
+        aColor: &crate::quantity::Color,
+        aTenthColor: &crate::quantity::Color,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::V3d_RectangularGrid_ctor_viewerptr_color2(
+                aViewer,
+                aColor,
+                aTenthColor,
+            ))
+        }
+    }
+
     /// **Source:** `V3d_RectangularGrid.hxx`:32 - `V3d_RectangularGrid::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::V3d_RectangularGrid_dynamic_type(self as *const Self)) }
@@ -3103,12 +3127,6 @@ impl HandleV3dRectangularGrid {
         }
     }
 }
-
-// ── Skipped symbols for RectangularGrid (1 total) ──
-// SKIPPED: **Source:** `V3d_RectangularGrid.hxx`:34 - `V3d_RectangularGrid::V3d_RectangularGrid`
-//   Reason: param 'aViewer' uses unknown type 'const V3d_ViewerPointer&'
-//   // pub fn new_viewerpointer_color2(aViewer: &ViewerPointer, aColor: &Color, aTenthColor: &Color) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From V3d_SpotLight.hxx
@@ -6101,8 +6119,8 @@ impl HandleV3dView {
 //   method: Activates the view in the specified Window
 //   method: If <aContext> is not NULL the graphic context is used
 //   method: to draw something in this view.
-//   Reason: param 'theContext' uses unknown type 'Aspect_RenderingContext'
-//   // pub fn set_window(&mut self, theWindow: &HandleWindow, theContext: RenderingContext);
+//   Reason: param 'theContext' uses unknown type 'NSOpenGLContext*'
+//   // pub fn set_window(&mut self, theWindow: &HandleWindow, theContext: *mut NSOpenGLContext);
 //
 // SKIPPED: **Source:** `V3d_View.hxx`:827 - `V3d_View::ActiveLightIterator`
 //   method: Return iterator for defined lights.
@@ -6111,8 +6129,8 @@ impl HandleV3dView {
 //
 // SKIPPED: **Source:** `V3d_View.hxx`:1113 - `V3d_View::Subviews`
 //   method: Return subview list.
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Sequence<opencascade::handle<V3d_View>>&)
-//   // pub fn subviews(&self) -> /* const NCollection_Sequence<opencascade::handle<V3d_View>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<opencascade::handle<V3d_View>> const&)
+//   // pub fn subviews(&self) -> /* NCollection_Sequence<opencascade::handle<V3d_View>> const& */;
 //
 
 // ========================
@@ -6420,15 +6438,10 @@ impl Viewer {
     /// @return FALSE if the layer can not be created
     pub fn add_z_layer(
         &mut self,
-        theLayerId: &mut crate::graphic3d::ZLayerId,
+        theLayerId: &mut i32,
         theSettings: &crate::graphic3d::ZLayerSettings,
     ) -> bool {
-        let mut theLayerId_i32_: i32 = (*theLayerId).into();
-        let result_ = unsafe {
-            crate::ffi::V3d_Viewer_add_z_layer(self as *mut Self, &mut theLayerId_i32_, theSettings)
-        };
-        *theLayerId = crate::graphic3d::ZLayerId::try_from(theLayerId_i32_).unwrap();
-        result_
+        unsafe { crate::ffi::V3d_Viewer_add_z_layer(self as *mut Self, theLayerId, theSettings) }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:216 - `V3d_Viewer::InsertLayerBefore()`
@@ -6444,21 +6457,18 @@ impl Viewer {
     /// @return FALSE if the layer can not be created
     pub fn insert_layer_before(
         &mut self,
-        theNewLayerId: &mut crate::graphic3d::ZLayerId,
+        theNewLayerId: &mut i32,
         theSettings: &crate::graphic3d::ZLayerSettings,
         theLayerAfter: i32,
     ) -> bool {
-        let mut theNewLayerId_i32_: i32 = (*theNewLayerId).into();
-        let result_ = unsafe {
+        unsafe {
             crate::ffi::V3d_Viewer_insert_layer_before(
                 self as *mut Self,
-                &mut theNewLayerId_i32_,
+                theNewLayerId,
                 theSettings,
                 theLayerAfter,
             )
-        };
-        *theNewLayerId = crate::graphic3d::ZLayerId::try_from(theNewLayerId_i32_).unwrap();
-        result_
+        }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:230 - `V3d_Viewer::InsertLayerAfter()`
@@ -6474,21 +6484,18 @@ impl Viewer {
     /// @return FALSE if the layer can not be created
     pub fn insert_layer_after(
         &mut self,
-        theNewLayerId: &mut crate::graphic3d::ZLayerId,
+        theNewLayerId: &mut i32,
         theSettings: &crate::graphic3d::ZLayerSettings,
         theLayerBefore: i32,
     ) -> bool {
-        let mut theNewLayerId_i32_: i32 = (*theNewLayerId).into();
-        let result_ = unsafe {
+        unsafe {
             crate::ffi::V3d_Viewer_insert_layer_after(
                 self as *mut Self,
-                &mut theNewLayerId_i32_,
+                theNewLayerId,
                 theSettings,
                 theLayerBefore,
             )
-        };
-        *theNewLayerId = crate::graphic3d::ZLayerId::try_from(theNewLayerId_i32_).unwrap();
-        result_
+        }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:237 - `V3d_Viewer::RemoveZLayer()`
@@ -7081,7 +7088,4 @@ impl HandleV3dViewer {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
-    V3d_ListOfLight as ListOfLight, V3d_ListOfView as ListOfView,
-    V3d_ViewerPointer as ViewerPointer,
-};
+pub use crate::ffi::{V3d_ListOfLight as ListOfLight, V3d_ListOfView as ListOfView};

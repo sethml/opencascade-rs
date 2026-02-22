@@ -3138,13 +3138,13 @@ impl Reader {
 // SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:143 - `IGESToBRep_Reader::SetShapeProcessFlags`
 //   method: Sets flags defining operations to be performed on shapes.
 //   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
 //   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
 //
 // SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:147 - `IGESToBRep_Reader::GetShapeProcessFlags`
 //   method: Returns flags defining operations to be performed on shapes.
 //   method: @return The flags defining operations to be performed on shapes.
-//   Reason: return type 'const ShapeProcess::OperationsFlags&' is unknown
+//   Reason: return type 'ShapeProcess::OperationsFlags const&' is unknown
 //   // pub fn get_shape_process_flags(&self) -> &OperationsFlags;
 //
 

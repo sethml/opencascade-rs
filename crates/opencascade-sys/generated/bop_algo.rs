@@ -10439,6 +10439,30 @@ impl BOP {
         unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Tools(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
+        {
+            let ptr = unsafe { crate::ffi::BOPAlgo_BOP_inherited_PPaveFiller(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
+        {
+            let ptr = unsafe { crate::ffi::BOPAlgo_BOP_inherited_PDS(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
     pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleIntToolsContext> {
         unsafe {
@@ -10748,6 +10772,32 @@ impl Builder {
     /// Clears the content of the algorithm.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BOPAlgo_Builder_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// Returns the PaveFiller, algorithm for sub-shapes intersection.
+    pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
+        {
+            let ptr = unsafe { crate::ffi::BOPAlgo_Builder_p_pave_filler(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Returns the Data Structure, holder of intersection information.
+    pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
+        {
+            let ptr = unsafe { crate::ffi::BOPAlgo_Builder_pds(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
     }
 
     /// **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
@@ -11120,18 +11170,6 @@ impl Builder {
         unsafe { crate::ffi::BOPAlgo_Builder_inherited_UseOBB(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for Builder (2 total) ──
-// SKIPPED: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller`
-//   method: Returns the PaveFiller, algorithm for sub-shapes intersection.
-//   Reason: return type 'BOPAlgo_PPaveFiller' is unknown
-//   // pub fn p_pave_filler(&mut self) -> OwnedPtr<BOPAlgo_PPaveFiller>;
-//
-// SKIPPED: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS`
-//   method: Returns the Data Structure, holder of intersection information.
-//   Reason: return type 'BOPDS_PDS' is unknown
-//   // pub fn pds(&mut self) -> OwnedPtr<BOPDS_PDS>;
-//
 
 // ========================
 // From BOPAlgo_BuilderArea.hxx
@@ -12274,6 +12312,32 @@ impl CellsBuilder {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
+        {
+            let ptr = unsafe {
+                crate::ffi::BOPAlgo_CellsBuilder_inherited_PPaveFiller(self as *mut Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
+        {
+            let ptr = unsafe { crate::ffi::BOPAlgo_CellsBuilder_inherited_PDS(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
     pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleIntToolsContext> {
         unsafe {
@@ -12768,6 +12832,18 @@ impl CheckerSI {
     /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:119 - `BOPAlgo_PaveFiller::DS()`
     pub fn ds(&mut self) -> &crate::bopds::DS {
         unsafe { &*(crate::ffi::BOPAlgo_CheckerSI_inherited_DS(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:121 - `BOPAlgo_PaveFiller::PDS()`
+    pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
+        {
+            let ptr = unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_PDS(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:126 - `BOPAlgo_PaveFiller::SetArguments()`
@@ -14186,6 +14262,31 @@ impl MakerVolume {
         unsafe { &mut *(crate::ffi::BOPAlgo_MakerVolume_as_BOPAlgo_Options_mut(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
+        {
+            let ptr =
+                unsafe { crate::ffi::BOPAlgo_MakerVolume_inherited_PPaveFiller(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
+        {
+            let ptr = unsafe { crate::ffi::BOPAlgo_MakerVolume_inherited_PDS(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
     pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleIntToolsContext> {
         unsafe {
@@ -14695,6 +14796,23 @@ impl PaveFiller {
         unsafe { &*(crate::ffi::BOPAlgo_PaveFiller_ds(self as *mut Self)) }
     }
 
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:121 - `BOPAlgo_PaveFiller::PDS()`
+    pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
+        {
+            let ptr = unsafe { crate::ffi::BOPAlgo_PaveFiller_pds(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:123 - `BOPAlgo_PaveFiller::Iterator()`
+    pub unsafe fn iterator(&mut self) -> &*mut crate::bopds::Iterator {
+        unsafe { &*(crate::ffi::BOPAlgo_PaveFiller_iterator(self as *mut Self)) }
+    }
+
     /// **Source:** `BOPAlgo_PaveFiller.hxx`:126 - `BOPAlgo_PaveFiller::SetArguments()`
     /// Sets the arguments for operation
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
@@ -14886,16 +15004,6 @@ impl PaveFiller {
         unsafe { crate::ffi::BOPAlgo_PaveFiller_inherited_UseOBB(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for PaveFiller (2 total) ──
-// SKIPPED: **Source:** `BOPAlgo_PaveFiller.hxx`:121 - `BOPAlgo_PaveFiller::PDS`
-//   Reason: return type 'BOPDS_PDS' is unknown
-//   // pub fn pds(&mut self) -> OwnedPtr<BOPDS_PDS>;
-//
-// SKIPPED: **Source:** `BOPAlgo_PaveFiller.hxx`:123 - `BOPAlgo_PaveFiller::Iterator`
-//   Reason: return type 'const BOPDS_PIterator&' is unknown
-//   // pub fn iterator(&mut self) -> &PIterator;
-//
 
 // ========================
 // From BOPAlgo_RemoveFeatures.hxx
@@ -15362,6 +15470,31 @@ impl Section {
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:86 - `BOPAlgo_Builder::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BOPAlgo_Section_inherited_Clear(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
+        {
+            let ptr =
+                unsafe { crate::ffi::BOPAlgo_Section_inherited_PPaveFiller(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
+        {
+            let ptr = unsafe { crate::ffi::BOPAlgo_Section_inherited_PDS(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
@@ -16033,6 +16166,31 @@ impl Splitter {
         unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_Tools(self as *const Self)) }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
+        {
+            let ptr =
+                unsafe { crate::ffi::BOPAlgo_Splitter_inherited_PPaveFiller(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
+        {
+            let ptr = unsafe { crate::ffi::BOPAlgo_Splitter_inherited_PDS(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
     pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleIntToolsContext> {
         unsafe {
@@ -16312,6 +16470,44 @@ impl Tools {
         unsafe { crate::ffi::BOPAlgo_Tools_fill_map(thePB1, theF, theMILI, theAllocator) }
     }
 
+    /// **Source:** `BOPAlgo_Tools.hxx`:111 - `BOPAlgo_Tools::PerformCommonBlocks()`
+    /// Create Common Blocks from the groups of pave blocks of <theMBlocks>
+    /// connection map.
+    pub unsafe fn perform_common_blocks_indexeddatamapofpaveblocklistofpaveblock_handlencollectionbaseallocator_dsptr_handleinttoolscontext(
+        theMBlocks: &mut crate::ffi::BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock,
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+        theDS: &mut *mut crate::bopds::DS,
+        theContext: &crate::ffi::HandleIntToolsContext,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_Tools_perform_common_blocks_indexeddatamapofpaveblocklistofpaveblock_handlencollectionbaseallocator_dsptr_handleinttoolscontext(theMBlocks, theAllocator, theDS, theContext)
+        }
+    }
+
+    /// **Source:** `BOPAlgo_Tools.hxx`:118 - `BOPAlgo_Tools::PerformCommonBlocks()`
+    /// Create Common Blocks on faces using the PB->Faces connection map <theMBlocks>.
+    pub unsafe fn perform_common_blocks_indexeddatamapofpaveblocklistofinteger_handlencollectionbaseallocator_dsptr_handleinttoolscontext(
+        theMBlocks: &crate::ffi::BOPDS_IndexedDataMapOfPaveBlockListOfInteger,
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+        pDS: &mut *mut crate::bopds::DS,
+        theContext: &crate::ffi::HandleIntToolsContext,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_Tools_perform_common_blocks_indexeddatamapofpaveblocklistofinteger_handlencollectionbaseallocator_dsptr_handleinttoolscontext(theMBlocks, theAllocator, pDS, theContext)
+        }
+    }
+
+    /// **Source:** `BOPAlgo_Tools.hxx`:124 - `BOPAlgo_Tools::ComputeToleranceOfCB()`
+    pub fn compute_tolerance_of_cb(
+        theCB: &crate::ffi::HandleBOPDSCommonBlock,
+        theDS: &mut crate::bopds::DS,
+        theContext: &crate::ffi::HandleIntToolsContext,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::BOPAlgo_Tools_compute_tolerance_of_cb(theCB, theDS as *mut _, theContext)
+        }
+    }
+
     /// **Source:** `BOPAlgo_Tools.hxx`:148 - `BOPAlgo_Tools::EdgesToWires()`
     /// Creates planar wires from the given edges.<br>
     /// The input edges are expected to be planar. And for the performance
@@ -16464,23 +16660,6 @@ impl Tools {
     }
 }
 
-// ── Skipped symbols for Tools (3 total) ──
-// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:111 - `BOPAlgo_Tools::PerformCommonBlocks`
-//   static_method: Create Common Blocks from the groups of pave blocks of <theMBlocks>
-//   static_method: connection map.
-//   Reason: param 'theDS' uses unknown type 'BOPDS_PDS&'
-//   // pub fn perform_common_blocks(theMBlocks: &mut IndexedDataMapOfPaveBlockListOfPaveBlock, theAllocator: &HandleBaseAllocator, theDS: &mut PDS, theContext: &HandleContext);
-//
-// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:118 - `BOPAlgo_Tools::PerformCommonBlocks`
-//   static_method: Create Common Blocks on faces using the PB->Faces connection map <theMBlocks>.
-//   Reason: param 'pDS' uses unknown type 'BOPDS_PDS&'
-//   // pub fn perform_common_blocks(theMBlocks: &IndexedDataMapOfPaveBlockListOfInteger, theAllocator: &HandleBaseAllocator, pDS: &mut PDS, theContext: &HandleContext);
-//
-// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:124 - `BOPAlgo_Tools::ComputeToleranceOfCB`
-//   Reason: param 'theDS' uses unknown type 'BOPDS_PDS'
-//   // pub fn compute_tolerance_of_cb(theCB: &HandleCommonBlock, theDS: PDS, theContext: &HandleContext) -> f64;
-//
-
 // ========================
 // From BOPAlgo_ToolsProvider.hxx
 // ========================
@@ -16582,6 +16761,32 @@ impl ToolsProvider {
     pub fn as_options_mut(&mut self) -> &mut Options {
         unsafe {
             &mut *(crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
+        {
+            let ptr = unsafe {
+                crate::ffi::BOPAlgo_ToolsProvider_inherited_PPaveFiller(self as *mut Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
+        {
+            let ptr = unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_PDS(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
         }
     }
 
@@ -17142,7 +17347,4 @@ impl WireSplitter {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
-    BOPAlgo_ListOfCheckResult as ListOfCheckResult, BOPAlgo_PBuilder as PBuilder,
-    BOPAlgo_PPaveFiller as PPaveFiller,
-};
+pub use crate::ffi::BOPAlgo_ListOfCheckResult as ListOfCheckResult;

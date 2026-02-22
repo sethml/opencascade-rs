@@ -1290,13 +1290,13 @@ impl ProximityDistTool {
 // ── Skipped symbols for ProximityDistTool (2 total) ──
 // SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:95 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool`
 //   constructor: Creates new tool for the given element sets.
-//   Reason: has unbindable types: param 'theAddStatus1': unresolved template type (const NCollection_Vector<ProxPnt_Status>&)
-//   // pub fn new_handlebrepextrematriangleset_int_array3d_vector<proxpnt_status>_handlebrepextrematriangleset_shapelist2(theSet1: &HandleTriangleSet, theNbSamples1: i32, theAddVertices1: &Array3d, theAddStatus1: /* const NCollection_Vector<ProxPnt_Status>& */, theSet2: &HandleTriangleSet, theShapeList1: &ShapeList, theShapeList2: &ShapeList) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'theAddStatus1': unresolved template type (NCollection_Vector<ProxPnt_Status> const&)
+//   // pub fn new_handlebrepextrematriangleset_int_array3d_vector<proxpnt_status>_handlebrepextrematriangleset_shapelist2(theSet1: &HandleTriangleSet, theNbSamples1: i32, theAddVertices1: &Array3d, theAddStatus1: /* NCollection_Vector<ProxPnt_Status> const& */, theSet2: &HandleTriangleSet, theShapeList1: &ShapeList, theShapeList2: &ShapeList) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:114 - `BRepExtrema_ProximityDistTool::LoadAdditionalPointsFirstSet`
 //   method: Loads given additional vertices and their statuses.
-//   Reason: has unbindable types: param 'theAddStatus1': unresolved template type (const NCollection_Vector<ProxPnt_Status>&)
-//   // pub fn load_additional_points_first_set(&mut self, theAddVertices1: &Array3d, theAddStatus1: /* const NCollection_Vector<ProxPnt_Status>& */);
+//   Reason: has unbindable types: param 'theAddStatus1': unresolved template type (NCollection_Vector<ProxPnt_Status> const&)
+//   // pub fn load_additional_points_first_set(&mut self, theAddVertices1: &Array3d, theAddStatus1: /* NCollection_Vector<ProxPnt_Status> const& */);
 //
 
 /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:52 - `BRepExtrema_ProximityDistTool_PrjState`
@@ -1829,13 +1829,13 @@ impl ShapeProximity {
 // SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:132 - `BRepExtrema_ShapeProximity::ProxPntStatus1`
 //   method: Returns the status of point on the 1st shape, which could be used as a reference point
 //   method: for the value of the proximity.
-//   Reason: return type 'const ProxPnt_Status&' is unknown
+//   Reason: return type 'ProxPnt_Status const&' is unknown
 //   // pub fn prox_pnt_status1(&self) -> &Status;
 //
 // SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:136 - `BRepExtrema_ShapeProximity::ProxPntStatus2`
 //   method: Returns the status of point on the 2nd shape, which could be used as a reference point
 //   method: for the value of the proximity.
-//   Reason: return type 'const ProxPnt_Status&' is unknown
+//   Reason: return type 'ProxPnt_Status const&' is unknown
 //   // pub fn prox_pnt_status2(&self) -> &Status;
 //
 

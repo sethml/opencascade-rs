@@ -4994,6 +4994,40 @@ impl BuilderON {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_BuilderON_ctor()) }
     }
 
+    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:39 - `TopOpeBRepBuild_BuilderON::TopOpeBRepBuild_BuilderON()`
+    pub unsafe fn new_builderptr_shape_gtopoptr_listofshapeptr_wireedgesetptr(
+        PB: &*mut Builder,
+        F: &crate::topo_ds::Shape,
+        PG: &*mut GTopo,
+        PLSclass: &*mut crate::ffi::TopoDS_ListOfShape,
+        PWES: &*mut WireEdgeSet,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_BuilderON_ctor_builderptr_shape_gtopoptr_listofshapeptr_wireedgesetptr(PB, F, PG, PLSclass, PWES))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:45 - `TopOpeBRepBuild_BuilderON::Perform()`
+    pub unsafe fn perform(
+        &mut self,
+        PB: &*mut Builder,
+        F: &crate::topo_ds::Shape,
+        PG: &*mut GTopo,
+        PLSclass: &*mut crate::ffi::TopoDS_ListOfShape,
+        PWES: &*mut WireEdgeSet,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_BuilderON_perform(
+                self as *mut Self,
+                PB,
+                F,
+                PG,
+                PLSclass,
+                PWES,
+            )
+        }
+    }
+
     /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:51 - `TopOpeBRepBuild_BuilderON::GFillONCheckI()`
     pub fn g_fill_on_check_i(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
         unsafe { crate::ffi::TopOpeBRepBuild_BuilderON_g_fill_on_check_i(self as *const Self, I) }
@@ -5015,6 +5049,27 @@ impl BuilderON {
         }
     }
 
+    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:58 - `TopOpeBRepBuild_BuilderON::Perform2d()`
+    pub unsafe fn perform2d(
+        &mut self,
+        PB: &*mut Builder,
+        F: &crate::topo_ds::Shape,
+        PG: &*mut GTopo,
+        PLSclass: &*mut crate::ffi::TopoDS_ListOfShape,
+        PWES: &*mut WireEdgeSet,
+    ) {
+        unsafe {
+            crate::ffi::TopOpeBRepBuild_BuilderON_perform2d(
+                self as *mut Self,
+                PB,
+                F,
+                PG,
+                PLSclass,
+                PWES,
+            )
+        }
+    }
+
     /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:64 - `TopOpeBRepBuild_BuilderON::GFillONParts2dWES2()`
     pub fn g_fill_on_parts2d_wes2(
         &mut self,
@@ -5030,20 +5085,6 @@ impl BuilderON {
         }
     }
 }
-
-// ── Skipped symbols for BuilderON (3 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_BuilderON.hxx`:39 - `TopOpeBRepBuild_BuilderON::TopOpeBRepBuild_BuilderON`
-//   Reason: param 'PB' uses unknown type 'const TopOpeBRepBuild_PBuilder&'
-//   // pub fn new_pbuilder_shape_pgtopo_plos_pwireedgeset(PB: &PBuilder, F: &Shape, PG: &PGTopo, PLSclass: &Plos, PWES: &PWireEdgeSet) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_BuilderON.hxx`:45 - `TopOpeBRepBuild_BuilderON::Perform`
-//   Reason: param 'PB' uses unknown type 'const TopOpeBRepBuild_PBuilder&'
-//   // pub fn perform(&mut self, PB: &PBuilder, F: &Shape, PG: &PGTopo, PLSclass: &Plos, PWES: &PWireEdgeSet);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_BuilderON.hxx`:58 - `TopOpeBRepBuild_BuilderON::Perform2d`
-//   Reason: param 'PB' uses unknown type 'const TopOpeBRepBuild_PBuilder&'
-//   // pub fn perform2d(&mut self, PB: &PBuilder, F: &Shape, PG: &PGTopo, PLSclass: &Plos, PWES: &PWireEdgeSet);
-//
 
 // ========================
 // From TopOpeBRepBuild_CompositeClassifier.hxx
@@ -10073,6 +10114,4 @@ pub use crate::ffi::{
     TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo as IndexedDataMapOfShapeVertexInfo,
     TopOpeBRepBuild_ListIteratorOfListOfLoop as ListIteratorOfListOfLoop,
     TopOpeBRepBuild_ListOfLoop as ListOfLoop, TopOpeBRepBuild_ListOfPave as ListOfPave,
-    TopOpeBRepBuild_PBuilder as PBuilder, TopOpeBRepBuild_PGTopo as PGTopo,
-    TopOpeBRepBuild_PWireEdgeSet as PWireEdgeSet,
 };

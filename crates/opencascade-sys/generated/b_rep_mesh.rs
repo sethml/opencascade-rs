@@ -865,8 +865,8 @@ impl HandleBRepMeshClassifier {
 //   method: Registers wire specified by sequence of points for
 //   method: further classification of points.
 //   method: @param theWire Wire to be registered. Specified by sequence of points.
-//   Reason: has unbindable types: param 'theWire': unresolved template type (const NCollection_Sequence<const gp_Pnt2d *>&); param 'theTolUV': unresolved template type (const std::pair<Standard_Real, Standard_Real>&); param 'theRangeU': unresolved template type (const std::pair<Standard_Real, Standard_Real>&); param 'theRangeV': unresolved template type (const std::pair<Standard_Real, Standard_Real>&)
-//   // pub fn register_wire(&mut self, theWire: /* const NCollection_Sequence<const gp_Pnt2d *>& */, theTolUV: /* const std::pair<Standard_Real, Standard_Real>& */, theRangeU: /* const std::pair<Standard_Real, Standard_Real>& */, theRangeV: /* const std::pair<Standard_Real, Standard_Real>& */);
+//   Reason: has unbindable types: param 'theWire': unresolved template type (NCollection_Sequence<const gp_Pnt2d *> const&); param 'theTolUV': unresolved template type (std::pair<Standard_Real, Standard_Real> const&); param 'theRangeU': unresolved template type (std::pair<Standard_Real, Standard_Real> const&); param 'theRangeV': unresolved template type (std::pair<Standard_Real, Standard_Real> const&)
+//   // pub fn register_wire(&mut self, theWire: /* NCollection_Sequence<const gp_Pnt2d *> const& */, theTolUV: /* std::pair<Standard_Real, Standard_Real> const& */, theRangeU: /* std::pair<Standard_Real, Standard_Real> const& */, theRangeV: /* std::pair<Standard_Real, Standard_Real> const& */);
 //
 
 // ========================
@@ -2681,17 +2681,17 @@ impl HandleBRepMeshDataStructureOfDelaun {
 //   method: Get list of links attached to the node with the given index.
 //   method: @param theIndex index of node whose links should be retrieved.
 //   method: @return list of links attached to the node.
-//   Reason: return type 'const IMeshData::ListOfInteger&' is unknown
+//   Reason: return type 'IMeshData::ListOfInteger const&' is unknown
 //   // pub fn links_connected_to(&self, theIndex: i32) -> &ListOfInteger;
 //
 // SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:117 - `BRepMesh_DataStructureOfDelaun::LinksOfDomain`
 //   method: Returns map of indices of links registered in mesh.
-//   Reason: return type 'const IMeshData::MapOfInteger&' is unknown
+//   Reason: return type 'IMeshData::MapOfInteger const&' is unknown
 //   // pub fn links_of_domain(&self) -> &MapOfInteger;
 //
 // SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:160 - `BRepMesh_DataStructureOfDelaun::ElementsOfDomain`
 //   method: Returns map of indices of elements registered in mesh.
-//   Reason: return type 'const IMeshData::MapOfInteger&' is unknown
+//   Reason: return type 'IMeshData::MapOfInteger const&' is unknown
 //   // pub fn elements_of_domain(&self) -> &MapOfInteger;
 //
 // SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:176 - `BRepMesh_DataStructureOfDelaun::ElementNodes`
@@ -2813,22 +2813,22 @@ impl DefaultRangeSplitter {
 //
 // SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU`
 //   method: Returns U range.
-//   Reason: has unbindable types: return: unresolved template type (const std::pair<Standard_Real, Standard_Real>&)
-//   // pub fn get_range_u(&self) -> /* const std::pair<Standard_Real, Standard_Real>& */;
+//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Real, Standard_Real> const&)
+//   // pub fn get_range_u(&self) -> /* std::pair<Standard_Real, Standard_Real> const& */;
 //
 // SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV`
 //   method: Returns V range.
-//   Reason: has unbindable types: return: unresolved template type (const std::pair<Standard_Real, Standard_Real>&)
-//   // pub fn get_range_v(&self) -> /* const std::pair<Standard_Real, Standard_Real>& */;
+//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Real, Standard_Real> const&)
+//   // pub fn get_range_v(&self) -> /* std::pair<Standard_Real, Standard_Real> const& */;
 //
 // SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta`
 //   method: Returns delta.
-//   Reason: has unbindable types: return: unresolved template type (const std::pair<Standard_Real, Standard_Real>&)
-//   // pub fn get_delta(&self) -> /* const std::pair<Standard_Real, Standard_Real>& */;
+//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Real, Standard_Real> const&)
+//   // pub fn get_delta(&self) -> /* std::pair<Standard_Real, Standard_Real> const& */;
 //
 // SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV`
-//   Reason: has unbindable types: return: unresolved template type (const std::pair<Standard_Real, Standard_Real>&)
-//   // pub fn get_tolerance_uv(&self) -> /* const std::pair<Standard_Real, Standard_Real>& */;
+//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Real, Standard_Real> const&)
+//   // pub fn get_tolerance_uv(&self) -> /* std::pair<Standard_Real, Standard_Real> const& */;
 //
 
 // ========================
@@ -3753,7 +3753,7 @@ impl Delaun {
 //
 // SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:132 - `BRepMesh_Delaun::SetAuxVertices`
 //   method: Explicitly sets ids of auxiliary vertices used to build mesh and used by 3rd-party algorithms.
-//   Reason: param 'theSupVert' uses unknown type 'const IMeshData::VectorOfInteger&'
+//   Reason: param 'theSupVert' uses unknown type 'IMeshData::VectorOfInteger const&'
 //   // pub fn set_aux_vertices(&mut self, theSupVert: &VectorOfInteger);
 //
 
@@ -5167,7 +5167,7 @@ impl HandleBRepMeshFaceChecker {
 // ── Skipped symbols for FaceChecker (1 total) ──
 // SKIPPED: **Source:** `BRepMesh_FaceChecker.hxx`:72 - `BRepMesh_FaceChecker::GetIntersectingEdges`
 //   method: Returns intersecting edges.
-//   Reason: return type 'const Handle(NCollection_Shared<NCollection_Map<IMeshData_Edge *>>)&' is unknown
+//   Reason: return type 'Handle(NCollection_Shared<NCollection_Map<IMeshData_Edge *>>) const&' is unknown
 //   // pub fn get_intersecting_edges(&self) -> &HandleShared<NCollection_Map<IMeshData_Edge *>>;
 //
 
@@ -5191,7 +5191,7 @@ impl FaceChecker_Segment {
 
 // ── Skipped symbols for FaceChecker_Segment (1 total) ──
 // SKIPPED: **Source:** `BRepMesh_FaceChecker.hxx`:46 - `BRepMesh_FaceChecker::Segment::BRepMesh_FaceChecker::Segment`
-//   Reason: param 'theEdgePtr' uses unknown type 'const IMeshData_Edge *const&'
+//   Reason: param 'theEdgePtr' uses unknown type 'IMeshData_Edge *const const&'
 //   // pub fn new_edge *const_pnt2dptr2(theEdgePtr: &Edge *const, thePoint1: *mut Pnt2d, thePoint2: *mut Pnt2d) -> OwnedPtr<Self>;
 //
 
@@ -6469,7 +6469,7 @@ impl HandleBRepMeshMeshTool {
 // SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:142 - `BRepMesh_MeshTool::EraseTriangles`
 //   method: Erases the given set of triangles.
 //   method: Fills map of loop edges forming the contour surrounding the erased triangles.
-//   Reason: param 'theTriangles' uses unknown type 'const IMeshData::MapOfInteger&'
+//   Reason: param 'theTriangles' uses unknown type 'IMeshData::MapOfInteger const&'
 //   // pub fn erase_triangles(&mut self, theTriangles: &MapOfInteger, theLoopEdges: &mut MapOfIntegerInteger);
 //
 // SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:147 - `BRepMesh_MeshTool::EraseTriangle`
@@ -6480,7 +6480,7 @@ impl HandleBRepMeshMeshTool {
 //
 // SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:154 - `BRepMesh_MeshTool::EraseFreeLinks`
 //   method: Erases links from the specified map that have no elements connected to them.
-//   Reason: param 'theLinks' uses unknown type 'const IMeshData::MapOfIntegerInteger&'
+//   Reason: param 'theLinks' uses unknown type 'IMeshData::MapOfIntegerInteger const&'
 //   // pub fn erase_free_links(&mut self, theLinks: &MapOfIntegerInteger);
 //
 // SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:157 - `BRepMesh_MeshTool::GetEdgesByType`
@@ -8013,22 +8013,22 @@ impl HandleBRepMeshSelectorOfDataStructureOfDelaun {
 // ── Skipped symbols for SelectorOfDataStructureOfDelaun (4 total) ──
 // SKIPPED: **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:69 - `BRepMesh_SelectorOfDataStructureOfDelaun::Nodes`
 //   method: Returns selected nodes.
-//   Reason: return type 'const IMeshData::MapOfInteger&' is unknown
+//   Reason: return type 'IMeshData::MapOfInteger const&' is unknown
 //   // pub fn nodes(&self) -> &MapOfInteger;
 //
 // SKIPPED: **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:72 - `BRepMesh_SelectorOfDataStructureOfDelaun::Links`
 //   method: Returns selected links.
-//   Reason: return type 'const IMeshData::MapOfInteger&' is unknown
+//   Reason: return type 'IMeshData::MapOfInteger const&' is unknown
 //   // pub fn links(&self) -> &MapOfInteger;
 //
 // SKIPPED: **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:75 - `BRepMesh_SelectorOfDataStructureOfDelaun::Elements`
 //   method: Returns selected elements.
-//   Reason: return type 'const IMeshData::MapOfInteger&' is unknown
+//   Reason: return type 'IMeshData::MapOfInteger const&' is unknown
 //   // pub fn elements(&self) -> &MapOfInteger;
 //
 // SKIPPED: **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:78 - `BRepMesh_SelectorOfDataStructureOfDelaun::FrontierLinks`
 //   method: Gives the list of incices of frontier links.
-//   Reason: return type 'const IMeshData::MapOfInteger&' is unknown
+//   Reason: return type 'IMeshData::MapOfInteger const&' is unknown
 //   // pub fn frontier_links(&self) -> &MapOfInteger;
 //
 
@@ -8916,8 +8916,8 @@ impl Triangulator {
 // ── Skipped symbols for Triangulator (3 total) ──
 // SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:44 - `BRepMesh_Triangulator::BRepMesh_Triangulator`
 //   constructor: Constructor. Initialized tool by the given parameters.
-//   Reason: has unbindable types: param 'theXYZs': unresolved template type (const NCollection_Vector<gp_XYZ>&); param 'theWires': unresolved template type (const NCollection_List<TColStd_SequenceOfInteger>&)
-//   // pub fn new_vector<gp_xyz>_list<tcolstd_sequenceofinteger>_dir(theXYZs: /* const NCollection_Vector<gp_XYZ>& */, theWires: /* const NCollection_List<TColStd_SequenceOfInteger>& */, theNorm: &Dir) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'theXYZs': unresolved template type (NCollection_Vector<gp_XYZ> const&); param 'theWires': unresolved template type (NCollection_List<TColStd_SequenceOfInteger> const&)
+//   // pub fn new_vector<gp_xyz>_list<tcolstd_sequenceofinteger>_dir(theXYZs: /* NCollection_Vector<gp_XYZ> const& */, theWires: /* NCollection_List<TColStd_SequenceOfInteger> const& */, theNorm: &Dir) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:49 - `BRepMesh_Triangulator::Perform`
 //   method: Performs triangulation of source wires and stores triangles the output list.
@@ -8926,8 +8926,8 @@ impl Triangulator {
 //
 // SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:38 - `BRepMesh_Triangulator::ToPolyTriangulation`
 //   static_method: Performs conversion of the given list of triangles to Poly_Triangulation.
-//   Reason: has unbindable types: param 'thePolyTriangles': unresolved template type (const NCollection_List<Poly_Triangle>&)
-//   // pub fn to_poly_triangulation(theNodes: &Array1OfPnt, thePolyTriangles: /* const NCollection_List<Poly_Triangle>& */) -> OwnedPtr<Handle<Poly_Triangulation>>;
+//   Reason: has unbindable types: param 'thePolyTriangles': unresolved template type (NCollection_List<Poly_Triangle> const&)
+//   // pub fn to_poly_triangulation(theNodes: &Array1OfPnt, thePolyTriangles: /* NCollection_List<Poly_Triangle> const& */) -> OwnedPtr<Handle<Poly_Triangulation>>;
 //
 
 // ========================
@@ -9050,7 +9050,7 @@ impl UVParamRangeSplitter {
 // ── Skipped symbols for UVParamRangeSplitter (4 total) ──
 // SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU`
 //   method: Returns U parameters.
-//   Reason: return type 'const IMeshData::IMapOfReal&' is unknown
+//   Reason: return type 'IMeshData::IMapOfReal const&' is unknown
 //   // pub fn get_parameters_u(&self) -> &IMapOfReal;
 //
 // SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:52 - `BRepMesh_UVParamRangeSplitter::GetParametersU`
@@ -9060,7 +9060,7 @@ impl UVParamRangeSplitter {
 //
 // SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV`
 //   method: Returns V parameters.
-//   Reason: return type 'const IMeshData::IMapOfReal&' is unknown
+//   Reason: return type 'IMeshData::IMapOfReal const&' is unknown
 //   // pub fn get_parameters_v(&self) -> &IMapOfReal;
 //
 // SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:58 - `BRepMesh_UVParamRangeSplitter::GetParametersV`
@@ -9623,7 +9623,7 @@ impl HandleBRepMeshVertexTool {
 // ── Skipped symbols for VertexTool (3 total) ──
 // SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:93 - `BRepMesh_VertexTool::Vertices`
 //   method: Returns set of mesh vertices.
-//   Reason: return type 'const Handle(NCollection_Shared<NCollection_DynamicArray<BRepMesh_Vertex>>)&' is unknown
+//   Reason: return type 'Handle(NCollection_Shared<NCollection_DynamicArray<BRepMesh_Vertex>>) const&' is unknown
 //   // pub fn vertices(&self) -> &HandleShared<NCollection_DynamicArray<BRepMesh_Vertex>>;
 //
 // SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:96 - `BRepMesh_VertexTool::ChangeVertices`
@@ -9634,6 +9634,6 @@ impl HandleBRepMeshVertexTool {
 // SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:129 - `BRepMesh_VertexTool::GetListOfDelNodes`
 //   method: Returns the list with indexes of vertices that have movability attribute
 //   method: equal to BRepMesh_Deleted and can be replaced with another node.
-//   Reason: return type 'const IMeshData::ListOfInteger&' is unknown
+//   Reason: return type 'IMeshData::ListOfInteger const&' is unknown
 //   // pub fn get_list_of_del_nodes(&self) -> &ListOfInteger;
 //

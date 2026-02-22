@@ -1903,8 +1903,8 @@ impl Reader {
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:154 - `STEPCAFControl_Reader::ExternFiles`
 //   method: Returns data on external files
 //   method: Returns Null handle if no external files are read
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>&)
-//   // pub fn extern_files(&self) -> /* const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>> const&)
+//   // pub fn extern_files(&self) -> /* NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>> const& */;
 //
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:236 - `STEPCAFControl_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
@@ -1916,7 +1916,7 @@ impl Reader {
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:254 - `STEPCAFControl_Reader::SetShapeProcessFlags`
 //   method: Sets flags defining operations to be performed on shapes.
 //   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
 //   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
 //
 
@@ -2367,8 +2367,8 @@ impl Writer {
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:173 - `STEPCAFControl_Writer::ExternFiles`
 //   method: Returns data on external files
 //   method: Returns Null handle if no external files are read
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>&)
-//   // pub fn extern_files(&self) -> /* const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>> const&)
+//   // pub fn extern_files(&self) -> /* NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>> const& */;
 //
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:237 - `STEPCAFControl_Writer::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
@@ -2380,6 +2380,6 @@ impl Writer {
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:255 - `STEPCAFControl_Writer::SetShapeProcessFlags`
 //   method: Sets flags defining operations to be performed on shapes.
 //   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
 //   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
 //

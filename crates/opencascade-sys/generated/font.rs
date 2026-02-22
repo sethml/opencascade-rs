@@ -657,7 +657,7 @@ impl HandleFontFTFont {
 //   method: Computes outline contour for the symbol.
 //   method: @param[in] theUChar     the character to be loaded as current one
 //   method: @param[out] theOutline   outline contour
-//   Reason: return type 'const FT_Outline_*' is unknown
+//   Reason: return type 'FT_Outline_ const*' is unknown
 //   // pub fn render_glyph_outline(&mut self, theChar: u32) -> *const Outline_;
 //
 
@@ -800,8 +800,8 @@ impl HandleFontFTLibrary {
 // ── Skipped symbols for FTLibrary (1 total) ──
 // SKIPPED: **Source:** `Font_FTLibrary.hxx`:41 - `Font_FTLibrary::Instance`
 //   method: Access FT_Library instance.
-//   Reason: return type 'FT_Library' is unknown
-//   // pub fn instance(&self) -> OwnedPtr<FT_Library>;
+//   Reason: return type 'FT_LibraryRec_*' is unknown
+//   // pub fn instance(&self) -> *mut LibraryRec_;
 //
 
 // ========================
@@ -1226,8 +1226,8 @@ impl HandleFontFontMgr {
 //
 // SKIPPED: **Source:** `Font_FontMgr.hxx`:146 - `Font_FontMgr::RegisterFonts`
 //   method: Register new fonts.
-//   Reason: has unbindable types: param 'theFonts': unresolved template type (const NCollection_Sequence<opencascade::handle<Font_SystemFont>>&)
-//   // pub fn register_fonts(&mut self, theFonts: /* const NCollection_Sequence<opencascade::handle<Font_SystemFont>>& */, theToOverride: bool) -> bool;
+//   Reason: has unbindable types: param 'theFonts': unresolved template type (NCollection_Sequence<opencascade::handle<Font_SystemFont>> const&)
+//   // pub fn register_fonts(&mut self, theFonts: /* NCollection_Sequence<opencascade::handle<Font_SystemFont>> const& */, theToOverride: bool) -> bool;
 //
 
 // ========================
@@ -1837,13 +1837,13 @@ impl HandleFontTextFormatter {
 // ── Skipped symbols for TextFormatter (2 total) ──
 // SKIPPED: **Source:** `Font_TextFormatter.hxx`:270 - `Font_TextFormatter::Corners`
 //   method: Returns internal container of the top left corners of a formatted rectangles.
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Vector<NCollection_Vec2<Standard_ShortReal>>&)
-//   // pub fn corners(&self) -> /* const NCollection_Vector<NCollection_Vec2<Standard_ShortReal>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Vector<NCollection_Vec2<Standard_ShortReal>> const&)
+//   // pub fn corners(&self) -> /* NCollection_Vector<NCollection_Vec2<Standard_ShortReal>> const& */;
 //
 // SKIPPED: **Source:** `Font_TextFormatter.hxx`:276 - `Font_TextFormatter::NewLines`
 //   method: Returns container of each line position at LF in formatted text
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Vector<Standard_ShortReal>&)
-//   // pub fn new_lines(&self) -> /* const NCollection_Vector<Standard_ShortReal>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Vector<Standard_ShortReal> const&)
+//   // pub fn new_lines(&self) -> /* NCollection_Vector<Standard_ShortReal> const& */;
 //
 
 /// **Source:** `Font_TextFormatter.hxx`:66 - `Font_TextFormatter_Iterator`

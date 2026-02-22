@@ -156,6 +156,21 @@ impl DSFiller {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRep_DSFiller_ctor()) }
     }
 
+    /// **Source:** `TopOpeBRep_DSFiller.hxx`:56 - `TopOpeBRep_DSFiller::PShapeClassifier()`
+    /// return field myPShapeClassifier.
+    /// set field myPShapeClassifier.
+    pub fn p_shape_classifier(&self) -> Option<&crate::top_ope_b_rep_tool::ShapeClassifier> {
+        {
+            let ptr =
+                unsafe { crate::ffi::TopOpeBRep_DSFiller_p_shape_classifier(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:62 - `TopOpeBRep_DSFiller::Insert()`
     /// Stores in <DS> the intersections of <S1> and <S2>.
     /// if orientFORWARD = True
@@ -348,14 +363,6 @@ impl DSFiller {
         unsafe { crate::ffi::TopOpeBRep_DSFiller_complete_ds2d(self as *const Self, HDS) }
     }
 }
-
-// ── Skipped symbols for DSFiller (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRep_DSFiller.hxx`:56 - `TopOpeBRep_DSFiller::PShapeClassifier`
-//   method: return field myPShapeClassifier.
-//   method: set field myPShapeClassifier.
-//   Reason: return type 'TopOpeBRepTool_PShapeClassifier' is unknown
-//   // pub fn p_shape_classifier(&self) -> OwnedPtr<TopOpeBRepTool_PShapeClassifier>;
-//
 
 // ========================
 // From TopOpeBRep_EdgesFiller.hxx
@@ -619,6 +626,18 @@ unsafe impl crate::CppDeletable for FFDumper {
 }
 
 impl FFDumper {
+    /// **Source:** `TopOpeBRep_FFDumper.hxx`:40 - `TopOpeBRep_FFDumper::TopOpeBRep_FFDumper()`
+    pub unsafe fn new_facesfillerptr(PFF: &*mut FacesFiller) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRep_FFDumper_ctor_facesfillerptr(PFF))
+        }
+    }
+
+    /// **Source:** `TopOpeBRep_FFDumper.hxx`:42 - `TopOpeBRep_FFDumper::Init()`
+    pub unsafe fn init(&mut self, PFF: &*mut FacesFiller) {
+        unsafe { crate::ffi::TopOpeBRep_FFDumper_init(self as *mut Self, PFF) }
+    }
+
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:44 - `TopOpeBRep_FFDumper::DumpLine()`
     pub fn dump_line_int(&mut self, I: i32) {
         unsafe { crate::ffi::TopOpeBRep_FFDumper_dump_line_int(self as *mut Self, I) }
@@ -656,6 +675,20 @@ impl FFDumper {
     ) {
         unsafe {
             crate::ffi::TopOpeBRep_FFDumper_dump_dsp(self as *const Self, VP, GK.into(), G, newinDS)
+        }
+    }
+
+    /// **Source:** `TopOpeBRep_FFDumper.hxx`:60 - `TopOpeBRep_FFDumper::PFacesFillerDummy()`
+    pub fn p_faces_filler_dummy(&self) -> Option<&FacesFiller> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TopOpeBRep_FFDumper_p_faces_filler_dummy(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -775,20 +808,6 @@ impl HandleTopOpeBRepFFDumper {
         }
     }
 }
-
-// ── Skipped symbols for FFDumper (3 total) ──
-// SKIPPED: **Source:** `TopOpeBRep_FFDumper.hxx`:40 - `TopOpeBRep_FFDumper::TopOpeBRep_FFDumper`
-//   Reason: param 'PFF' uses unknown type 'const TopOpeBRep_PFacesFiller&'
-//   // pub fn new_pfacesfiller(PFF: &PFacesFiller) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TopOpeBRep_FFDumper.hxx`:42 - `TopOpeBRep_FFDumper::Init`
-//   Reason: param 'PFF' uses unknown type 'const TopOpeBRep_PFacesFiller&'
-//   // pub fn init(&mut self, PFF: &PFacesFiller);
-//
-// SKIPPED: **Source:** `TopOpeBRep_FFDumper.hxx`:60 - `TopOpeBRep_FFDumper::PFacesFillerDummy`
-//   Reason: return type 'TopOpeBRep_PFacesFiller' is unknown
-//   // pub fn p_faces_filler_dummy(&self) -> OwnedPtr<TopOpeBRep_PFacesFiller>;
-//
 
 // ========================
 // From TopOpeBRep_FFTransitionTool.hxx
@@ -1122,6 +1141,30 @@ impl FacesFiller {
         unsafe {
             &mut *(crate::ffi::TopOpeBRep_FacesFiller_change_point_classifier(self as *mut Self))
         }
+    }
+
+    /// **Source:** `TopOpeBRep_FacesFiller.hxx`:67 - `TopOpeBRep_FacesFiller::PShapeClassifier()`
+    /// return field myPShapeClassifier.
+    pub fn p_shape_classifier(&self) -> Option<&crate::top_ope_b_rep_tool::ShapeClassifier> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TopOpeBRep_FacesFiller_p_shape_classifier(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// **Source:** `TopOpeBRep_FacesFiller.hxx`:70 - `TopOpeBRep_FacesFiller::SetPShapeClassifier()`
+    /// set field myPShapeClassifier.
+    pub unsafe fn set_p_shape_classifier(
+        &mut self,
+        PSC: &*mut crate::top_ope_b_rep_tool::ShapeClassifier,
+    ) {
+        unsafe { crate::ffi::TopOpeBRep_FacesFiller_set_p_shape_classifier(self as *mut Self, PSC) }
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:72 - `TopOpeBRep_FacesFiller::LoadLine()`
@@ -1509,6 +1552,48 @@ impl FacesFiller {
         }
     }
 
+    /// **Source:** `TopOpeBRep_FacesFiller.hxx`:212 - `TopOpeBRep_FacesFiller::PFacesIntersectorDummy()`
+    pub fn p_faces_intersector_dummy(&self) -> Option<&FacesIntersector> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TopOpeBRep_FacesFiller_p_faces_intersector_dummy(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// **Source:** `TopOpeBRep_FacesFiller.hxx`:214 - `TopOpeBRep_FacesFiller::PDataStructureDummy()`
+    pub fn p_data_structure_dummy(&self) -> Option<&crate::top_ope_b_rep_ds::DataStructure> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TopOpeBRep_FacesFiller_p_data_structure_dummy(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// **Source:** `TopOpeBRep_FacesFiller.hxx`:216 - `TopOpeBRep_FacesFiller::PLineInterDummy()`
+    pub fn p_line_inter_dummy(&self) -> Option<&LineInter> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TopOpeBRep_FacesFiller_p_line_inter_dummy(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:218 - `TopOpeBRep_FacesFiller::SetTraceIndex()`
     pub fn set_trace_index(&mut self, exF1: i32, exF2: i32) {
         unsafe { crate::ffi::TopOpeBRep_FacesFiller_set_trace_index(self as *mut Self, exF1, exF2) }
@@ -1567,30 +1652,6 @@ impl FacesFiller {
         unsafe { crate::ffi::TopOpeBRep_FacesFiller_equalp_pon_r(Lrest, VP1, VP2) }
     }
 }
-
-// ── Skipped symbols for FacesFiller (5 total) ──
-// SKIPPED: **Source:** `TopOpeBRep_FacesFiller.hxx`:67 - `TopOpeBRep_FacesFiller::PShapeClassifier`
-//   method: return field myPShapeClassifier.
-//   Reason: return type 'TopOpeBRepTool_PShapeClassifier' is unknown
-//   // pub fn p_shape_classifier(&self) -> OwnedPtr<TopOpeBRepTool_PShapeClassifier>;
-//
-// SKIPPED: **Source:** `TopOpeBRep_FacesFiller.hxx`:70 - `TopOpeBRep_FacesFiller::SetPShapeClassifier`
-//   method: set field myPShapeClassifier.
-//   Reason: param 'PSC' uses unknown type 'const TopOpeBRepTool_PShapeClassifier&'
-//   // pub fn set_p_shape_classifier(&mut self, PSC: &PShapeClassifier);
-//
-// SKIPPED: **Source:** `TopOpeBRep_FacesFiller.hxx`:212 - `TopOpeBRep_FacesFiller::PFacesIntersectorDummy`
-//   Reason: return type 'TopOpeBRep_PFacesIntersector' is unknown
-//   // pub fn p_faces_intersector_dummy(&self) -> OwnedPtr<TopOpeBRep_PFacesIntersector>;
-//
-// SKIPPED: **Source:** `TopOpeBRep_FacesFiller.hxx`:214 - `TopOpeBRep_FacesFiller::PDataStructureDummy`
-//   Reason: return type 'TopOpeBRepDS_PDataStructure' is unknown
-//   // pub fn p_data_structure_dummy(&self) -> OwnedPtr<TopOpeBRepDS_PDataStructure>;
-//
-// SKIPPED: **Source:** `TopOpeBRep_FacesFiller.hxx`:216 - `TopOpeBRep_FacesFiller::PLineInterDummy`
-//   Reason: return type 'TopOpeBRep_PLineInter' is unknown
-//   // pub fn p_line_inter_dummy(&self) -> OwnedPtr<TopOpeBRep_PLineInter>;
-//
 
 // ========================
 // From TopOpeBRep_FacesIntersector.hxx
@@ -4013,13 +4074,23 @@ impl VPointInter {
             ))
         }
     }
-}
 
-// ── Skipped symbols for VPointInter (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRep_VPointInter.hxx`:179 - `TopOpeBRep_VPointInter::PThePointOfIntersectionDummy`
-//   Reason: return type 'TopOpeBRep_PThePointOfIntersection' is unknown
-//   // pub fn p_the_point_of_intersection_dummy(&self) -> OwnedPtr<TopOpeBRep_PThePointOfIntersection>;
-//
+    /// **Source:** `TopOpeBRep_VPointInter.hxx`:179 - `TopOpeBRep_VPointInter::PThePointOfIntersectionDummy()`
+    pub fn p_the_point_of_intersection_dummy(&self) -> Option<&crate::int_patch::Point> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TopOpeBRep_VPointInter_p_the_point_of_intersection_dummy(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+}
 
 // ========================
 // From TopOpeBRep_VPointInterClassifier.hxx
@@ -4154,13 +4225,21 @@ impl VPointInterIterator {
             &mut *(crate::ffi::TopOpeBRep_VPointInterIterator_change_current_vp(self as *mut Self))
         }
     }
-}
 
-// ── Skipped symbols for VPointInterIterator (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRep_VPointInterIterator.hxx`:51 - `TopOpeBRep_VPointInterIterator::PLineInterDummy`
-//   Reason: return type 'TopOpeBRep_PLineInter' is unknown
-//   // pub fn p_line_inter_dummy(&self) -> OwnedPtr<TopOpeBRep_PLineInter>;
-//
+    /// **Source:** `TopOpeBRep_VPointInterIterator.hxx`:51 - `TopOpeBRep_VPointInterIterator::PLineInterDummy()`
+    pub fn p_line_inter_dummy(&self) -> Option<&LineInter> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TopOpeBRep_VPointInterIterator_p_line_inter_dummy(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+}
 
 // ========================
 // From TopOpeBRep_WPointInter.hxx
@@ -4225,13 +4304,21 @@ impl WPointInter {
     pub fn value(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::TopOpeBRep_WPointInter_value(self as *const Self)) }
     }
-}
 
-// ── Skipped symbols for WPointInter (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRep_WPointInter.hxx`:51 - `TopOpeBRep_WPointInter::PPntOn2SDummy`
-//   Reason: return type 'TopOpeBRep_PPntOn2S' is unknown
-//   // pub fn p_pnt_on2_s_dummy(&self) -> OwnedPtr<TopOpeBRep_PPntOn2S>;
-//
+    /// **Source:** `TopOpeBRep_WPointInter.hxx`:51 - `TopOpeBRep_WPointInter::PPntOn2SDummy()`
+    pub fn p_pnt_on2_s_dummy(&self) -> Option<&crate::int_surf::PntOn2S> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TopOpeBRep_WPointInter_p_pnt_on2_s_dummy(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+}
 
 // ========================
 // From TopOpeBRep_WPointInterIterator.hxx
@@ -4283,13 +4370,21 @@ impl WPointInterIterator {
     pub fn current_wp(&mut self) -> &WPointInter {
         unsafe { &*(crate::ffi::TopOpeBRep_WPointInterIterator_current_wp(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for WPointInterIterator (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRep_WPointInterIterator.hxx`:46 - `TopOpeBRep_WPointInterIterator::PLineInterDummy`
-//   Reason: return type 'TopOpeBRep_PLineInter' is unknown
-//   // pub fn p_line_inter_dummy(&self) -> OwnedPtr<TopOpeBRep_PLineInter>;
-//
+    /// **Source:** `TopOpeBRep_WPointInterIterator.hxx`:46 - `TopOpeBRep_WPointInterIterator::PLineInterDummy()`
+    pub fn p_line_inter_dummy(&self) -> Option<&LineInter> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TopOpeBRep_WPointInterIterator_p_line_inter_dummy(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+}
 
 // ========================
 // Additional type re-exports
@@ -4297,8 +4392,6 @@ impl WPointInterIterator {
 
 pub use crate::ffi::{
     TopOpeBRep_Array1OfLineInter as Array1OfLineInter,
-    TopOpeBRep_Array1OfVPointInter as Array1OfVPointInter, TopOpeBRep_PFacesFiller as PFacesFiller,
-    TopOpeBRep_PFacesIntersector as PFacesIntersector, TopOpeBRep_PLineInter as PLineInter,
-    TopOpeBRep_PPntOn2S as PPntOn2S, TopOpeBRep_PThePointOfIntersection as PThePointOfIntersection,
+    TopOpeBRep_Array1OfVPointInter as Array1OfVPointInter,
     TopOpeBRep_SequenceOfPoint2d as SequenceOfPoint2d,
 };

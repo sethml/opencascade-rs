@@ -1686,6 +1686,6 @@ impl Quadric {
 // ── Skipped symbols for Quadric (1 total) ──
 // SKIPPED: **Source:** `IntAna_Quadric.hxx`:95 - `IntAna_Quadric::SpecialPoints`
 //   method: Returns the list of special points (with singularities)
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_List<gp_Pnt>&)
-//   // pub fn special_points(&self) -> /* const NCollection_List<gp_Pnt>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_List<gp_Pnt> const&)
+//   // pub fn special_points(&self) -> /* NCollection_List<gp_Pnt> const& */;
 //

@@ -890,6 +890,62 @@ impl Unicode {
         unsafe { crate::ffi::Resource_Unicode_convert_big5_to_unicode(c_fromstr.as_ptr(), tostr) }
     }
 
+    /// **Source:** `Resource_Unicode.hxx`:69 - `Resource_Unicode::ConvertUnicodeToSJIS()`
+    /// Converts Unicode ExtendedString <fromstr> to non-ASCII
+    /// CString <tostr> in SJIS format, limited to <maxsize>
+    /// characters. To translate the whole <fromstr>, use more
+    /// than twice the length of <fromstr>. Returns true if
+    /// <maxsize> has not been reached before end of conversion.
+    pub unsafe fn convert_unicode_to_sjis(
+        fromstr: &crate::t_collection::ExtendedString,
+        tostr: &mut *mut std::ffi::c_char,
+        maxsize: i32,
+    ) -> bool {
+        unsafe { crate::ffi::Resource_Unicode_convert_unicode_to_sjis(fromstr, tostr, maxsize) }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:79 - `Resource_Unicode::ConvertUnicodeToEUC()`
+    /// Converts Unicode ExtendedString <fromstr> to non-ASCII
+    /// CString <tostr> in EUC format, limited to <maxsize>
+    /// characters. To translate the whole <fromstr>, use more
+    /// than twice the length of <fromstr>. Returns true if
+    /// <maxsize> has not been reached before end of conversion.
+    pub unsafe fn convert_unicode_to_euc(
+        fromstr: &crate::t_collection::ExtendedString,
+        tostr: &mut *mut std::ffi::c_char,
+        maxsize: i32,
+    ) -> bool {
+        unsafe { crate::ffi::Resource_Unicode_convert_unicode_to_euc(fromstr, tostr, maxsize) }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:89 - `Resource_Unicode::ConvertUnicodeToGB()`
+    /// Converts Unicode ExtendedString <fromstr> to non-ASCII
+    /// CString <tostr> in GB format, limited to <maxsize>
+    /// characters. To translate the whole <fromstr>, use more
+    /// than twice the length of <fromstr>. Returns true if
+    /// <maxsize> has not been reached before end of conversion.
+    pub unsafe fn convert_unicode_to_gb(
+        fromstr: &crate::t_collection::ExtendedString,
+        tostr: &mut *mut std::ffi::c_char,
+        maxsize: i32,
+    ) -> bool {
+        unsafe { crate::ffi::Resource_Unicode_convert_unicode_to_gb(fromstr, tostr, maxsize) }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:99 - `Resource_Unicode::ConvertUnicodeToANSI()`
+    /// Converts Unicode ExtendedString <fromstr> to non-ASCII
+    /// CString <tostr> in ANSI format, limited to <maxsize>
+    /// characters. To translate the whole <fromstr>, use more
+    /// than twice the length of <fromstr>.  Returns true if
+    /// <maxsize> has not been reached before end of conversion.
+    pub unsafe fn convert_unicode_to_ansi(
+        fromstr: &crate::t_collection::ExtendedString,
+        tostr: &mut *mut std::ffi::c_char,
+        maxsize: i32,
+    ) -> bool {
+        unsafe { crate::ffi::Resource_Unicode_convert_unicode_to_ansi(fromstr, tostr, maxsize) }
+    }
+
     /// **Source:** `Resource_Unicode.hxx`:108 - `Resource_Unicode::SetFormat()`
     /// Defines the current conversion format as typecode.
     /// This conversion format will then be used by the
@@ -954,51 +1010,45 @@ impl Unicode {
             )
         }
     }
-}
 
-// ── Skipped symbols for Unicode (6 total) ──
-// SKIPPED: **Source:** `Resource_Unicode.hxx`:69 - `Resource_Unicode::ConvertUnicodeToSJIS`
-//   static_method: Converts Unicode ExtendedString <fromstr> to non-ASCII
-//   static_method: CString <tostr> in SJIS format, limited to <maxsize>
-//   static_method: characters. To translate the whole <fromstr>, use more
-//   Reason: param 'tostr' uses unknown type 'Standard_PCharacter&'
-//   // pub fn convert_unicode_to_sjis(fromstr: &ExtendedString, tostr: &mut PCharacter, maxsize: i32) -> bool;
-//
-// SKIPPED: **Source:** `Resource_Unicode.hxx`:79 - `Resource_Unicode::ConvertUnicodeToEUC`
-//   static_method: Converts Unicode ExtendedString <fromstr> to non-ASCII
-//   static_method: CString <tostr> in EUC format, limited to <maxsize>
-//   static_method: characters. To translate the whole <fromstr>, use more
-//   Reason: param 'tostr' uses unknown type 'Standard_PCharacter&'
-//   // pub fn convert_unicode_to_euc(fromstr: &ExtendedString, tostr: &mut PCharacter, maxsize: i32) -> bool;
-//
-// SKIPPED: **Source:** `Resource_Unicode.hxx`:89 - `Resource_Unicode::ConvertUnicodeToGB`
-//   static_method: Converts Unicode ExtendedString <fromstr> to non-ASCII
-//   static_method: CString <tostr> in GB format, limited to <maxsize>
-//   static_method: characters. To translate the whole <fromstr>, use more
-//   Reason: param 'tostr' uses unknown type 'Standard_PCharacter&'
-//   // pub fn convert_unicode_to_gb(fromstr: &ExtendedString, tostr: &mut PCharacter, maxsize: i32) -> bool;
-//
-// SKIPPED: **Source:** `Resource_Unicode.hxx`:99 - `Resource_Unicode::ConvertUnicodeToANSI`
-//   static_method: Converts Unicode ExtendedString <fromstr> to non-ASCII
-//   static_method: CString <tostr> in ANSI format, limited to <maxsize>
-//   static_method: characters. To translate the whole <fromstr>, use more
-//   Reason: param 'tostr' uses unknown type 'Standard_PCharacter&'
-//   // pub fn convert_unicode_to_ansi(fromstr: &ExtendedString, tostr: &mut PCharacter, maxsize: i32) -> bool;
-//
-// SKIPPED: **Source:** `Resource_Unicode.hxx`:145 - `Resource_Unicode::ConvertUnicodeToFormat`
-//   static_method: Converts the Unicode string of extended characters to the non-ASCII string according to
-//   static_method: specified format. You need more than twice the length of the source string to complete the
-//   static_method: conversion. The function returns true if conversion is complete, i.e. the maximum number of
-//   Reason: param 'theToStr' uses unknown type 'Standard_PCharacter&'
-//   // pub fn convert_unicode_to_format(theFormat: FormatType, theFromStr: &ExtendedString, theToStr: &mut PCharacter, theMaxSize: i32) -> bool;
-//
-// SKIPPED: **Source:** `Resource_Unicode.hxx`:156 - `Resource_Unicode::ConvertUnicodeToFormat`
-//   static_method: Converts the Unicode string of extended characters to the non-ASCII string according to the
-//   static_method: format returned by the function GetFormat.
-//   static_method: @param[in] theFromStr  text to convert
-//   Reason: param 'theToStr' uses unknown type 'Standard_PCharacter&'
-//   // pub fn convert_unicode_to_format(theFromStr: &ExtendedString, theToStr: &mut PCharacter, theMaxSize: i32) -> bool;
-//
+    /// **Source:** `Resource_Unicode.hxx`:145 - `Resource_Unicode::ConvertUnicodeToFormat()`
+    /// Converts the Unicode string of extended characters to the non-ASCII string according to
+    /// specified format. You need more than twice the length of the source string to complete the
+    /// conversion. The function returns true if conversion is complete, i.e. the maximum number of
+    /// characters is not reached before the end of conversion.
+    /// @param[in] theFormat   destination encoding
+    /// @param[in] theFromStr  text to convert
+    /// @param[out] theToStr   destination buffer
+    /// @param[in] theMaxSize  destination buffer length
+    pub unsafe fn convert_unicode_to_format_formattype_extendedstring_charptr_int(
+        theFormat: crate::resource::FormatType,
+        theFromStr: &crate::t_collection::ExtendedString,
+        theToStr: &mut *mut std::ffi::c_char,
+        theMaxSize: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Resource_Unicode_convert_unicode_to_format_formattype_extendedstring_charptr_int(theFormat.into(), theFromStr, theToStr, theMaxSize)
+        }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:156 - `Resource_Unicode::ConvertUnicodeToFormat()`
+    /// Converts the Unicode string of extended characters to the non-ASCII string according to the
+    /// format returned by the function GetFormat.
+    /// @param[in] theFromStr  text to convert
+    /// @param[out] theToStr   destination buffer
+    /// @param[in] theMaxSize  destination buffer length
+    pub unsafe fn convert_unicode_to_format_extendedstring_charptr_int(
+        theFromStr: &crate::t_collection::ExtendedString,
+        theToStr: &mut *mut std::ffi::c_char,
+        theMaxSize: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Resource_Unicode_convert_unicode_to_format_extendedstring_charptr_int(
+                theFromStr, theToStr, theMaxSize,
+            )
+        }
+    }
+}
 
 // ========================
 // Additional type re-exports

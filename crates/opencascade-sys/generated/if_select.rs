@@ -27756,8 +27756,8 @@ impl HandleIFSelectSignatureList {
 // ── Skipped symbols for SignatureList (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:78 - `IFSelect_SignatureList::Init`
 //   method: Aknowledges the list in once. Name identifies the Signature
-//   Reason: has unbindable types: param 'list': unresolved template type (const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>&)
-//   // pub fn init(&mut self, name: *const char, count: &PType, list: /* const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>& */, nbnuls: i32);
+//   Reason: has unbindable types: param 'list': unresolved template type (NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> const&)
+//   // pub fn init(&mut self, name: *const char, count: &PType, list: /* NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> const& */, nbnuls: i32);
 //
 
 // ========================
@@ -31151,8 +31151,8 @@ impl HandleIFSelectWorkSession {
 //   method: Sets a list of Parameters, i.e. TypedValue, to be handled
 //   method: through an Editor
 //   method: The two lists are parallel, if <params> is longer than <uses>,
-//   Reason: has unbindable types: param 'params': unresolved template type (const NCollection_Vector<opencascade::handle<Standard_Transient>>&); param 'uselist': unresolved template type (const NCollection_Vector<Standard_Integer>&)
-//   // pub fn set_params(&mut self, params: /* const NCollection_Vector<opencascade::handle<Standard_Transient>>& */, uselist: /* const NCollection_Vector<Standard_Integer>& */);
+//   Reason: has unbindable types: param 'params': unresolved template type (NCollection_Vector<opencascade::handle<Standard_Transient>> const&); param 'uselist': unresolved template type (NCollection_Vector<Standard_Integer> const&)
+//   // pub fn set_params(&mut self, params: /* NCollection_Vector<opencascade::handle<Standard_Transient>> const& */, uselist: /* NCollection_Vector<Standard_Integer> const& */);
 //
 
 // ========================

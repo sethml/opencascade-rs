@@ -512,6 +512,6 @@ impl PlyWriterContext {
 // ── Skipped symbols for PlyWriterContext (1 total) ──
 // SKIPPED: **Source:** `RWPly_PlyWriterContext.hxx`:73 - `RWPly_PlyWriterContext::Open`
 //   method: Open file for writing.
-//   Reason: has unbindable types: param 'theStream': stream type (const std::shared_ptr<std::ostream>&)
-//   // pub fn open(&mut self, theName: &AsciiString, theStream: /* const std::shared_ptr<std::ostream>& */) -> bool;
+//   Reason: has unbindable types: param 'theStream': stream type (std::shared_ptr<std::ostream> const&)
+//   // pub fn open(&mut self, theName: &AsciiString, theStream: /* std::shared_ptr<std::ostream> const& */) -> bool;
 //

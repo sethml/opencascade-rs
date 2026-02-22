@@ -6729,3 +6729,9 @@ impl Wire {
         }
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::TopoDS_ListOfShape as ListOfShape;

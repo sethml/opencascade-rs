@@ -1573,6 +1573,10 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // canonical type is "int", construct the class type directly instead of recursing
     // into the pointee (whose display name might already be "int", losing the
     // typedef info).
+    //
+    // Exception: genuine primitive typedefs (e.g., MeshVS_DisplayModeFlags = Standard_Integer = int)
+    // should NOT be intercepted — let them fall through to normal reference handling
+    // which will resolve them to the primitive type through canonical resolution.
     if kind == TypeKind::LValueReference || kind == TypeKind::RValueReference || kind == TypeKind::Pointer
 
     {
@@ -1590,20 +1594,42 @@ fn parse_type(clang_type: &clang::Type) -> Type {
                 || base.contains('<')
                 || base.contains("::");
             if base_looks_like_type {
+                // For simple typedef names (not template/namespaced), check if the
+                // pointee's canonical type is actually a primitive. If so, this is a
+                // genuine typedef-to-primitive (e.g., MeshVS_DisplayModeFlags = int)
+                // and should be resolved normally, not preserved as a class name.
+                let is_template_or_ns = base.contains('<') || base.contains("::");
+                let pointee_is_primitive_canonical = !is_template_or_ns
+                    && clang_type.get_pointee_type().map(|pt| {
+                        let canon = pt.get_canonical_type();
+                        let ck = canon.get_kind();
+                        matches!(ck,
+                            TypeKind::Bool | TypeKind::CharS | TypeKind::CharU |
+                            TypeKind::SChar | TypeKind::UChar |
+                            TypeKind::Short | TypeKind::UShort |
+                            TypeKind::Int | TypeKind::UInt |
+                            TypeKind::Long | TypeKind::ULong |
+                            TypeKind::LongLong | TypeKind::ULongLong |
+                            TypeKind::Float | TypeKind::Double | TypeKind::LongDouble
+                        )
+                    }).unwrap_or(false);
 
-                let inner = Type::Class(base.to_string());
-                if let Some(pointee) = clang_type.get_pointee_type() {
-                    let is_const = pointee.is_const_qualified();
-                    return match kind {
-                        TypeKind::LValueReference if is_const => Type::ConstRef(Box::new(inner)),
-                        TypeKind::LValueReference => Type::MutRef(Box::new(inner)),
-                        TypeKind::RValueReference => Type::RValueRef(Box::new(inner)),
-                        TypeKind::Pointer if is_const => Type::ConstPtr(Box::new(inner)),
-                        TypeKind::Pointer => Type::MutPtr(Box::new(inner)),
-                        _ => inner,
-                    };
+                if !pointee_is_primitive_canonical {
+                    let inner = Type::Class(base.to_string());
+                    if let Some(pointee) = clang_type.get_pointee_type() {
+                        let is_const = pointee.is_const_qualified();
+                        return match kind {
+                            TypeKind::LValueReference if is_const => Type::ConstRef(Box::new(inner)),
+                            TypeKind::LValueReference => Type::MutRef(Box::new(inner)),
+                            TypeKind::RValueReference => Type::RValueRef(Box::new(inner)),
+                            TypeKind::Pointer if is_const => Type::ConstPtr(Box::new(inner)),
+                            TypeKind::Pointer => Type::MutPtr(Box::new(inner)),
+                            _ => inner,
+                        };
+                    }
+                    return inner;
                 }
-                return inner;
+                // Genuine primitive typedef — fall through to normal reference handling
             }
         }
     }
@@ -1725,6 +1751,49 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // we recurse into the pointee type.
     if let Some(resolved_name) = lookup_simple_typedef(clean_name) {
         return Type::Class(resolved_name);
+    }
+
+    // Late-stage canonical resolution for unrecognized typedefs.
+    // When a typedef's display name is unrecognized (not in map_standard_type, not a known
+    // class, not a simple typedef), try resolving through clang's canonical type.
+    // This handles:
+    // - Pointer typedefs: Standard_PCharacter = char*, BOPDS_PDS = BOPDS_DS*
+    // - Primitive typedefs not caught earlier (fallback for edge cases)
+    if matches!(kind, TypeKind::Typedef | TypeKind::Elaborated) {
+        let canon_kind = canonical.get_kind();
+
+        // Pointer typedef: canonical is a pointer type.
+        // Exclude function pointer typedefs (canonical pointee is a function type)
+        // such as StdObjMgt_Persistent::Instantiator = Handle(...) (*)()
+        if canon_kind == TypeKind::Pointer {
+            if let Some(pointee) = canonical.get_pointee_type() {
+                let pointee_kind = pointee.get_kind();
+                if !matches!(pointee_kind, TypeKind::FunctionPrototype | TypeKind::FunctionNoPrototype) {
+                    let is_const = pointee.is_const_qualified();
+                    let inner = parse_type(&pointee);
+                    return if is_const {
+                        Type::ConstPtr(Box::new(inner))
+                    } else {
+                        Type::MutPtr(Box::new(inner))
+                    };
+                }
+            }
+        }
+
+        // Primitive typedef: canonical is a C primitive type
+        if matches!(canon_kind,
+            TypeKind::Bool | TypeKind::CharS | TypeKind::CharU |
+            TypeKind::SChar | TypeKind::UChar |
+            TypeKind::Short | TypeKind::UShort |
+            TypeKind::Int | TypeKind::UInt |
+            TypeKind::Long | TypeKind::ULong |
+            TypeKind::LongLong | TypeKind::ULongLong |
+            TypeKind::Float | TypeKind::Double | TypeKind::LongDouble
+        ) {
+            if let Some(ty) = map_standard_type(canonical_clean) {
+                return ty;
+            }
+        }
     }
 
     Type::Class(clean_name.to_string())

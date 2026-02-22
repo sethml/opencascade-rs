@@ -1601,14 +1601,19 @@ impl ArrayStreamBuffer {
             )
         }
     }
-}
 
-// ── Skipped symbols for ArrayStreamBuffer (1 total) ──
-// SKIPPED: **Source:** `Standard_ArrayStreamBuffer.hxx`:99 - `Standard_ArrayStreamBuffer::xsgetn`
-//   method: Read a bunch of bytes at once.
-//   Reason: param 'theCount' uses unknown type 'std::streamsize'
-//   // pub fn xsgetn(&mut self, thePtr: *mut char, theCount: streamsize) -> OwnedPtr<std::streamsize>;
-//
+    /// **Source:** `Standard_ArrayStreamBuffer.hxx`:99 - `Standard_ArrayStreamBuffer::xsgetn()`
+    /// Read a bunch of bytes at once.
+    pub unsafe fn xsgetn(
+        &mut self,
+        thePtr: *mut std::ffi::c_char,
+        theCount: std::ffi::c_long,
+    ) -> std::ffi::c_long {
+        unsafe {
+            crate::ffi::Standard_ArrayStreamBuffer_xsgetn(self as *mut Self, thePtr, theCount)
+        }
+    }
+}
 
 // ========================
 // From Standard_CLocaleSentry.hxx
@@ -6609,6 +6614,26 @@ impl GUID {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_to_uuid(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:73 - `Standard_GUID::ToCString()`
+    /// translate the GUID into ascii string
+    /// the aStrGuid is allocated by user.
+    /// the guid have the following format:
+    ///
+    /// "00000000-0000-0000-0000-000000000000"
+    pub unsafe fn to_c_string(&self, aStrGuid: *mut std::ffi::c_char) {
+        unsafe { crate::ffi::Standard_GUID_to_c_string(self as *const Self, aStrGuid) }
+    }
+
+    /// **Source:** `Standard_GUID.hxx`:80 - `Standard_GUID::ToExtString()`
+    /// translate the GUID into unicode string
+    /// the aStrGuid is allocated by user.
+    /// the guid have the following format:
+    ///
+    /// "00000000-0000-0000-0000-000000000000"
+    pub unsafe fn to_ext_string(&self, aStrGuid: *mut u16) {
+        unsafe { crate::ffi::Standard_GUID_to_ext_string(self as *const Self, aStrGuid) }
+    }
+
     /// **Source:** `Standard_GUID.hxx`:82 - `Standard_GUID::IsSame()`
     pub fn is_same(&self, uid: &GUID) -> bool {
         unsafe { crate::ffi::Standard_GUID_is_same(self as *const Self, uid) }
@@ -6652,22 +6677,6 @@ impl GUID {
         }
     }
 }
-
-// ── Skipped symbols for GUID (2 total) ──
-// SKIPPED: **Source:** `Standard_GUID.hxx`:73 - `Standard_GUID::ToCString`
-//   method: translate the GUID into ascii string
-//   method: the aStrGuid is allocated by user.
-//   method: the guid have the following format:
-//   Reason: param 'aStrGuid' uses unknown type 'Standard_PCharacter'
-//   // pub fn to_c_string(&self, aStrGuid: PCharacter);
-//
-// SKIPPED: **Source:** `Standard_GUID.hxx`:80 - `Standard_GUID::ToExtString`
-//   method: translate the GUID into unicode string
-//   method: the aStrGuid is allocated by user.
-//   method: the guid have the following format:
-//   Reason: param 'aStrGuid' uses unknown type 'Standard_PExtCharacter'
-//   // pub fn to_ext_string(&self, aStrGuid: PExtCharacter);
-//
 
 // ========================
 // From Standard_ImmutableObject.hxx
@@ -59111,7 +59120,7 @@ impl HandleStandardType {
 // SKIPPED: **Source:** `Standard_Type.hxx`:165 - `Standard_Type::Register`
 //   static_method: Register a type; returns either new or existing descriptor.
 //   static_method: @param theInfo object stores system name of the class
-//   Reason: param 'theInfo' uses unknown type 'const std::type_info&'
+//   Reason: param 'theInfo' uses unknown type 'std::type_info const&'
 //   // pub fn register(theInfo: &type_info, theName: *const char, theSize: usize, theParent: &HandleType) -> *mut Type;
 //
 
@@ -59647,9 +59656,8 @@ impl HandleStandardUnderflow {
 
 pub use crate::ffi::{
     Standard_Address as Address, Standard_IStream as IStream, Standard_JmpBuf as JmpBuf,
-    Standard_OStream as OStream, Standard_PCharacter as PCharacter,
-    Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream,
-    Standard_Utf16Char as Utf16Char, Standard_WideChar as WideChar,
+    Standard_OStream as OStream, Standard_SStream as SStream, Standard_Utf16Char as Utf16Char,
+    Standard_WideChar as WideChar,
 };
 
 // Manual bindings:

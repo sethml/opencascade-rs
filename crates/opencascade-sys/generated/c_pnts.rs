@@ -343,7 +343,7 @@ impl MyGaussFunction {
 // SKIPPED: **Source:** `CPnts_MyGaussFunction.hxx`:39 - `CPnts_MyGaussFunction::Init`
 //   method: F  is a pointer on a  function  D is a client data
 //   method: Each value is computed with F(D)
-//   Reason: param 'F' uses unknown type 'const CPnts_RealFunction&'
+//   Reason: param 'F' uses unknown type 'CPnts_RealFunction const&'
 //   // pub fn init(&mut self, F: &RealFunction, D: Address);
 //
 
@@ -437,7 +437,7 @@ impl MyRootFunction {
 // SKIPPED: **Source:** `CPnts_MyRootFunction.hxx`:41 - `CPnts_MyRootFunction::Init`
 //   method: F  is a pointer on a  function  D is a client data
 //   method: Order is the order of integration to use
-//   Reason: param 'F' uses unknown type 'const CPnts_RealFunction&'
+//   Reason: param 'F' uses unknown type 'CPnts_RealFunction const&'
 //   // pub fn init(&mut self, F: &RealFunction, D: Address, Order: i32);
 //
 

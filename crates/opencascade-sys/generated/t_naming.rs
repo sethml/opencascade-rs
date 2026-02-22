@@ -2848,12 +2848,12 @@ impl RefShape {
 
 // ── Skipped symbols for RefShape (2 total) ──
 // SKIPPED: **Source:** `TNaming_RefShape.hxx`:41 - `TNaming_RefShape::FirstUse`
-//   Reason: param 'aPtr' uses unknown type 'const TNaming_PtrNode&'
-//   // pub fn first_use(&mut self, aPtr: &PtrNode);
+//   Reason: param 'aPtr' uses unknown type 'TNaming_Node* const&'
+//   // pub fn first_use(&mut self, aPtr: &*mut Node);
 //
 // SKIPPED: **Source:** `TNaming_RefShape.hxx`:43 - `TNaming_RefShape::FirstUse`
-//   Reason: return type 'TNaming_PtrNode' is unknown
-//   // pub fn first_use(&self) -> OwnedPtr<TNaming_PtrNode>;
+//   Reason: return type 'TNaming_Node*' is unknown
+//   // pub fn first_use(&self) -> *mut Node;
 //
 
 // ========================
@@ -4256,5 +4256,5 @@ impl HandleTNamingUsedShapes {
 pub use crate::ffi::{
     TNaming_DataMapOfShapePtrRefShape as DataMapOfShapePtrRefShape,
     TNaming_ListOfNamedShape as ListOfNamedShape, TNaming_MapOfNamedShape as MapOfNamedShape,
-    TNaming_PtrNode as PtrNode,
+    TNaming_Node as Node,
 };

@@ -927,7 +927,7 @@ impl HandleTransferActorOfFinderProcess {
 // SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:91 - `Transfer_ActorOfFinderProcess::SetShapeProcessFlags`
 //   method: Sets flags defining operations to be performed on shapes.
 //   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
 //   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
 //
 
@@ -2032,7 +2032,7 @@ impl HandleTransferActorOfTransientProcess {
 // SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags`
 //   method: Sets flags defining operations to be performed on shapes.
 //   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
 //   // pub fn set_processing_flags(&mut self, theFlags: &OperationsFlags);
 //
 

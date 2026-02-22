@@ -257,27 +257,23 @@ impl HArray1OfBoolean {
     }
 
     /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
-    pub fn new_int2_type(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi::TColStd_Array1OfBoolean_value_type,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_int2_bool(theLower: i32, theUpper: i32, theValue: &bool) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_int2_type(
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_int2_bool(
                 theLower, theUpper, theValue,
             ))
         }
     }
 
     /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColStd_Array1OfBoolean_value_type,
+    pub fn new_bool_int2_bool(
+        theBegin: &bool,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_type_int2_bool(
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_bool_int2_bool(
                 theBegin, theLower, theUpper, arg3,
             ))
         }
@@ -462,27 +458,23 @@ impl HArray1OfByte {
     }
 
     /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::TColStd_HArray1OfByte()`
-    pub fn new_int2_type(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi::TColStd_Array1OfByte_value_type,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_int2_u8(theLower: i32, theUpper: i32, theValue: &u8) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfByte_ctor_int2_type(
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfByte_ctor_int2_u8(
                 theLower, theUpper, theValue,
             ))
         }
     }
 
     /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::TColStd_HArray1OfByte()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColStd_Array1OfByte_value_type,
+    pub fn new_u8_int2_bool(
+        theBegin: &u8,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfByte_ctor_type_int2_bool(
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfByte_ctor_u8_int2_bool(
                 theBegin, theLower, theUpper, arg3,
             ))
         }
@@ -1523,27 +1515,23 @@ impl HArray1OfReal {
     }
 
     /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
-    pub fn new_int2_type(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi::TColStd_Array1OfReal_value_type,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_int2_real(theLower: i32, theUpper: i32, theValue: &f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_int2_type(
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_int2_real(
                 theLower, theUpper, theValue,
             ))
         }
     }
 
     /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
-    pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColStd_Array1OfReal_value_type,
+    pub fn new_real_int2_bool(
+        theBegin: &f64,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_type_int2_bool(
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_real_int2_bool(
                 theBegin, theLower, theUpper, arg3,
             ))
         }
@@ -1929,15 +1917,15 @@ impl HArray2OfBoolean {
     }
 
     /// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean::TColStd_HArray2OfBoolean()`
-    pub fn new_int4_type(
+    pub fn new_int4_bool(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TColStd_Array2OfBoolean_value_type,
+        theValue: &bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfBoolean_ctor_int4_type(
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfBoolean_ctor_int4_bool(
                 theRowLow, theRowUpp, theColLow, theColUpp, theValue,
             ))
         }
@@ -2512,15 +2500,15 @@ impl HArray2OfReal {
     }
 
     /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
-    pub fn new_int4_type(
+    pub fn new_int4_real(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TColStd_Array2OfReal_value_type,
+        theValue: &f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfReal_ctor_int4_type(
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfReal_ctor_int4_real(
                 theRowLow, theRowUpp, theColLow, theColUpp, theValue,
             ))
         }
@@ -4139,8 +4127,8 @@ impl HSequenceOfReal {
     }
 
     /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::TColStd_SequenceOfReal_value_type) {
-        unsafe { crate::ffi::TColStd_HSequenceOfReal_append_type(self as *mut Self, theItem) }
+    pub fn append_real(&mut self, theItem: &f64) {
+        unsafe { crate::ffi::TColStd_HSequenceOfReal_append_real(self as *mut Self, theItem) }
     }
 
     /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::Append()`

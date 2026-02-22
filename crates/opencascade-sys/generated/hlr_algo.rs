@@ -2248,8 +2248,8 @@ impl HandleHLRAlgoPolyAlgo {
 
 // ── Skipped symbols for PolyAlgo (2 total) ──
 // SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:38 - `HLRAlgo_PolyAlgo::PolyShell`
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>&)
-//   // pub fn poly_shell(&self) -> /* const NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>> const&)
+//   // pub fn poly_shell(&self) -> /* NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>> const& */;
 //
 // SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:40 - `HLRAlgo_PolyAlgo::ChangePolyShell`
 //   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>&)

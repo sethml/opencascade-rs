@@ -742,7 +742,13 @@ impl Type {
     /// References become pointers (const T& → const T*, T& → T*).
     pub fn to_cpp_extern_c_param(&self) -> String {
         match self {
-            Type::ConstRef(inner) => format!("const {}*", inner.to_cpp_string()),
+            // Use postfix const ("T const*") rather than prefix ("const T*") so that
+            // when the inner type is itself a pointer (e.g., ConstRef(MutPtr(Class("X")))),
+            // the const correctly qualifies the pointer level, not the pointee:
+            //   ConstRef(MutPtr(X)) → "X* const*" (correct: pointer to const-pointer-to-X)
+            //   vs. "const X**" (wrong: pointer to pointer-to-const-X)
+            // For simple types, "T const*" and "const T*" are equivalent in C/C++.
+            Type::ConstRef(inner) => format!("{} const*", inner.to_cpp_string()),
             Type::MutRef(inner) => format!("{}*", inner.to_cpp_string()),
             Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
                 "const char*".to_string()
@@ -770,10 +776,17 @@ impl Type {
             Type::CHAR16 => "char16_t".to_string(),
             Type::U8 => "uint8_t".to_string(),
             Type::I8 => "int8_t".to_string(),
-            Type::ConstRef(inner) => format!("const {}&", inner.to_cpp_string()),
+            // Use postfix const ("T const&") rather than prefix ("const T&") so that
+            // when the inner type is itself a pointer (e.g., ConstRef(MutPtr(Class("X")))),
+            // the const correctly qualifies the pointer level, not the pointee:
+            //   ConstRef(MutPtr(X)) → "X* const&" (correct: const-ref to pointer-to-X)
+            //   vs. "const X*&" (wrong: ref to pointer-to-const-X)
+            // For simple types, "T const&" and "const T&" are equivalent in C/C++.
+            Type::ConstRef(inner) => format!("{} const&", inner.to_cpp_string()),
             Type::MutRef(inner) => format!("{}&", inner.to_cpp_string()),
             Type::RValueRef(inner) => format!("{}&&", inner.to_cpp_string()),
-            Type::ConstPtr(inner) => format!("const {}*", inner.to_cpp_string()),
+            // Use postfix const for same reason as ConstRef above.
+            Type::ConstPtr(inner) => format!("{} const*", inner.to_cpp_string()),
             Type::MutPtr(inner) => format!("{}*", inner.to_cpp_string()),
             Type::Handle(name) => format!("Handle({})", name),
             Type::Class(name) => name.clone(),

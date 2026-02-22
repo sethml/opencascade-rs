@@ -653,6 +653,19 @@ impl BuilderAlgo {
         unsafe { &*(crate::ffi::BRepAlgoAPI_BuilderAlgo_section_edges(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:185 - `BRepAlgoAPI_BuilderAlgo::DSFiller()`
+    /// @name Getting tools performing the job
+    /// Returns the Intersection tool
+    pub unsafe fn ds_filler(&self) -> &*mut crate::bop_algo::PaveFiller {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_BuilderAlgo_ds_filler(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:188 - `BRepAlgoAPI_BuilderAlgo::Builder()`
+    /// Returns the Building tool
+    pub unsafe fn builder(&self) -> &*mut crate::bop_algo::Builder {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_BuilderAlgo_builder(self as *const Self)) }
+    }
+
     /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
     /// History tool
     pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
@@ -724,19 +737,6 @@ impl BuilderAlgo {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_inherited_Check(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for BuilderAlgo (2 total) ──
-// SKIPPED: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:185 - `BRepAlgoAPI_BuilderAlgo::DSFiller`
-//   method: @name Getting tools performing the job
-//   method: Returns the Intersection tool
-//   Reason: return type 'const BOPAlgo_PPaveFiller&' is unknown
-//   // pub fn ds_filler(&self) -> &PPaveFiller;
-//
-// SKIPPED: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:188 - `BRepAlgoAPI_BuilderAlgo::Builder`
-//   method: Returns the Building tool
-//   Reason: return type 'const BOPAlgo_PBuilder&' is unknown
-//   // pub fn builder(&self) -> &PBuilder;
-//
 
 // ========================
 // From BRepAlgoAPI_Check.hxx

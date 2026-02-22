@@ -412,12 +412,12 @@ impl HandleStdPersistentHArray1OfShape1 {
 
 // ── Skipped symbols for HArray1OfShape1 (3 total) ──
 // SKIPPED: **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::StdPersistent_HArray1OfShape1`
-//   Reason: has unbindable types: param 'theOther': unresolved template type (const NCollection_Array1<StdObject_Shape>&)
-//   // pub fn new_array1<stdobject_shape>(theOther: /* const NCollection_Array1<StdObject_Shape>& */) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'theOther': unresolved template type (NCollection_Array1<StdObject_Shape> const&)
+//   // pub fn new_array1<stdobject_shape>(theOther: /* NCollection_Array1<StdObject_Shape> const& */) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::Array1`
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Array1<StdObject_Shape>&)
-//   // pub fn array1(&self) -> /* const NCollection_Array1<StdObject_Shape>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<StdObject_Shape> const&)
+//   // pub fn array1(&self) -> /* NCollection_Array1<StdObject_Shape> const& */;
 //
 // SKIPPED: **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::ChangeArray1`
 //   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<StdObject_Shape>&)

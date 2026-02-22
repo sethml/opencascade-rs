@@ -6618,18 +6618,18 @@ impl HandleSelect3DSensitiveSet {
 //
 // SKIPPED: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder`
 //   method: Sets the method (builder) used to construct BVH.
-//   Reason: param 'theBuilder' uses unknown type 'const Handle(BVH_Builder<double, 3>)&'
+//   Reason: param 'theBuilder' uses unknown type 'Handle(BVH_Builder<double, 3>) const&'
 //   // pub fn set_builder(&mut self, theBuilder: &HandleBuilder<double, 3>);
 //
 // SKIPPED: **Source:** `Select3D_SensitiveSet.hxx`:36 - `Select3D_SensitiveSet::DefaultBVHBuilder`
 //   static_method: Return global instance to default BVH builder.
-//   Reason: return type 'const Handle(BVH_Builder<double, 3>)&' is unknown
+//   Reason: return type 'Handle(BVH_Builder<double, 3>) const&' is unknown
 //   // pub fn default_bvh_builder() -> &HandleBuilder<double, 3>;
 //
 // SKIPPED: **Source:** `Select3D_SensitiveSet.hxx`:40 - `Select3D_SensitiveSet::SetDefaultBVHBuilder`
 //   static_method: Assign new BVH builder to be used by default for new sensitive sets (assigning is NOT
 //   static_method: thread-safe!).
-//   Reason: param 'theBuilder' uses unknown type 'const Handle(BVH_Builder<double, 3>)&'
+//   Reason: param 'theBuilder' uses unknown type 'Handle(BVH_Builder<double, 3>) const&'
 //   // pub fn set_default_bvh_builder(theBuilder: &HandleBuilder<double, 3>);
 //
 
@@ -8240,8 +8240,8 @@ impl HandleSelect3DSensitiveWire {
 // ── Skipped symbols for SensitiveWire (1 total) ──
 // SKIPPED: **Source:** `Select3D_SensitiveWire.hxx`:40 - `Select3D_SensitiveWire::GetEdges`
 //   method: returns the sensitive edges stored in this wire
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>>&)
-//   // pub fn get_edges(&mut self) -> /* const NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>> const&)
+//   // pub fn get_edges(&mut self) -> /* NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>> const& */;
 //
 
 // ========================

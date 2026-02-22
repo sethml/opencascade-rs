@@ -7341,8 +7341,8 @@ impl WLineTool {
 //   static_method: Extends every line from theSlin (if it is possible) to be started/finished
 //   static_method: in strictly determined point (in the place of joint of two lines).
 //   static_method: As result, some gaps between two lines will vanish.
-//   Reason: has unbindable types: param 'theListOfCriticalPoints': unresolved template type (const NCollection_List<gp_Pnt>&)
-//   // pub fn extend_two_w_lines(theSlin: &mut SequenceOfLine, theS1: &HandleSurface, theS2: &HandleSurface, theToler3D: f64, theArrPeriods: *const f64, theBoxS1: &Box2d, theBoxS2: &Box2d, theListOfCriticalPoints: /* const NCollection_List<gp_Pnt>& */);
+//   Reason: has unbindable types: param 'theListOfCriticalPoints': unresolved template type (NCollection_List<gp_Pnt> const&)
+//   // pub fn extend_two_w_lines(theSlin: &mut SequenceOfLine, theS1: &HandleSurface, theS2: &HandleSurface, theToler3D: f64, theArrPeriods: *const f64, theBoxS1: &Box2d, theBoxS2: &Box2d, theListOfCriticalPoints: /* NCollection_List<gp_Pnt> const& */);
 //
 
 // ========================

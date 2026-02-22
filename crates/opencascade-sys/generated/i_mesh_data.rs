@@ -574,12 +574,12 @@ impl HandleIMeshDataEdge {
 // ── Skipped symbols for Edge (2 total) ──
 // SKIPPED: **Source:** `IMeshData_Edge.hxx`:39 - `IMeshData_Edge::AddPCurve`
 //   method: Adds discrete pcurve for the specified discrete face.
-//   Reason: param 'theDFace' uses unknown type 'const IMeshData_Face *const&'
+//   Reason: param 'theDFace' uses unknown type 'IMeshData_Face *const const&'
 //   // pub fn add_p_curve(&mut self, theDFace: &Face *const, theOrientation: Orientation) -> &HandlePCurve;
 //
 // SKIPPED: **Source:** `IMeshData_Edge.hxx`:44 - `IMeshData_Edge::GetPCurve`
 //   method: Returns pcurve for the specified discrete face.
-//   Reason: param 'theDFace' uses unknown type 'const IMeshData_Face *const&'
+//   Reason: param 'theDFace' uses unknown type 'IMeshData_Face *const const&'
 //   // pub fn get_p_curve(&self, theDFace: &Face *const, theOrientation: Orientation) -> &HandlePCurve;
 //
 
@@ -1284,7 +1284,7 @@ impl HandleIMeshDataPCurve {
 // ── Skipped symbols for PCurve (1 total) ──
 // SKIPPED: **Source:** `IMeshData_PCurve.hxx`:61 - `IMeshData_PCurve::GetFace`
 //   method: Returns discrete face pcurve is associated to.
-//   Reason: return type 'const IMeshData_Face *const&' is unknown
+//   Reason: return type 'IMeshData_Face *const const&' is unknown
 //   // pub fn get_face(&self) -> &Face *const;
 //
 
@@ -2141,11 +2141,11 @@ impl HandleIMeshDataWire {
 // SKIPPED: **Source:** `IMeshData_Wire.hxx`:42 - `IMeshData_Wire::AddEdge`
 //   method: Adds new discrete edge with specified orientation to wire chain.
 //   method: @return index of added edge in wire chain.
-//   Reason: param 'theDEdge' uses unknown type 'const IMeshData_Edge *const&'
+//   Reason: param 'theDEdge' uses unknown type 'IMeshData_Edge *const const&'
 //   // pub fn add_edge(&mut self, theDEdge: &Edge *const, theOrientation: Orientation) -> i32;
 //
 // SKIPPED: **Source:** `IMeshData_Wire.hxx`:46 - `IMeshData_Wire::GetEdge`
 //   method: Returns discrete edge with the given index.
-//   Reason: return type 'const IMeshData_Edge *const&' is unknown
+//   Reason: return type 'IMeshData_Edge *const const&' is unknown
 //   // pub fn get_edge(&self, theIndex: i32) -> &Edge *const;
 //

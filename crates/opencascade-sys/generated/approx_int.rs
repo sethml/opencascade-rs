@@ -72,8 +72,8 @@ impl KnotTools {
 //
 // SKIPPED: **Source:** `ApproxInt_KnotTools.hxx`:75 - `ApproxInt_KnotTools::BuildCurvature`
 //   static_method: Builds discrete curvature
-//   Reason: has unbindable types: param 'theCoords': unresolved template type (const NCollection_LocalArray<Standard_Real>&)
-//   // pub fn build_curvature(theCoords: /* const NCollection_LocalArray<Standard_Real>& */, theDim: i32, thePars: &Vector, theCurv: &mut Array1OfReal, theMaxCurv: &mut f64);
+//   Reason: has unbindable types: param 'theCoords': unresolved template type (NCollection_LocalArray<Standard_Real> const&)
+//   // pub fn build_curvature(theCoords: /* NCollection_LocalArray<Standard_Real> const& */, theDim: i32, thePars: &Vector, theCurv: &mut Array1OfReal, theMaxCurv: &mut f64);
 //
 
 // ========================

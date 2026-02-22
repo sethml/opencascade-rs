@@ -1956,12 +1956,12 @@ impl Writer {
 // SKIPPED: **Source:** `IGESControl_Writer.hxx`:149 - `IGESControl_Writer::SetShapeProcessFlags`
 //   method: Sets flags defining operations to be performed on shapes.
 //   method: @param theFlags The flags defining operations to be performed on shapes.
-//   Reason: param 'theFlags' uses unknown type 'const ShapeProcess::OperationsFlags&'
+//   Reason: param 'theFlags' uses unknown type 'ShapeProcess::OperationsFlags const&'
 //   // pub fn set_shape_process_flags(&mut self, theFlags: &OperationsFlags);
 //
 // SKIPPED: **Source:** `IGESControl_Writer.hxx`:153 - `IGESControl_Writer::GetShapeProcessFlags`
 //   method: Returns flags defining operations to be performed on shapes.
 //   method: @return The flags defining operations to be performed on shapes.
-//   Reason: return type 'const ShapeProcess::OperationsFlags&' is unknown
+//   Reason: return type 'ShapeProcess::OperationsFlags const&' is unknown
 //   // pub fn get_shape_process_flags(&self) -> &OperationsFlags;
 //

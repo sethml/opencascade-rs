@@ -4395,14 +4395,20 @@ impl XLinkIterator {
     pub fn next(&mut self) {
         unsafe { crate::ffi::TDocStd_XLinkIterator_next(self as *mut Self) }
     }
-}
 
-// ── Skipped symbols for XLinkIterator (1 total) ──
-// SKIPPED: **Source:** `TDocStd_XLinkIterator.hxx`:52 - `TDocStd_XLinkIterator::Value`
-//   method: Returns the current item; a null handle if there is none.
-//   Reason: return type 'TDocStd_XLinkPtr' is unknown
-//   // pub fn value(&self) -> OwnedPtr<TDocStd_XLinkPtr>;
-//
+    /// **Source:** `TDocStd_XLinkIterator.hxx`:52 - `TDocStd_XLinkIterator::Value()`
+    /// Returns the current item; a null handle if there is none.
+    pub fn value(&self) -> Option<&XLink> {
+        {
+            let ptr = unsafe { crate::ffi::TDocStd_XLinkIterator_value(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+}
 
 // ========================
 // From TDocStd_XLinkRoot.hxx
@@ -4502,6 +4508,18 @@ impl XLinkRoot {
         aDF: &crate::ffi::HandleTDFData,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdXLinkRoot> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkRoot_set(aDF)) }
+    }
+
+    /// **Source:** `TDocStd_XLinkRoot.hxx`:49 - `TDocStd_XLinkRoot::Insert()`
+    /// Inserts <anXLinkPtr> at the beginning of the XLink chain.
+    pub unsafe fn insert(anXLinkPtr: &*mut XLink) {
+        unsafe { crate::ffi::TDocStd_XLinkRoot_insert(anXLinkPtr) }
+    }
+
+    /// **Source:** `TDocStd_XLinkRoot.hxx`:52 - `TDocStd_XLinkRoot::Remove()`
+    /// Removes <anXLinkPtr> from the XLink chain, if it exists.
+    pub unsafe fn remove(anXLinkPtr: &*mut XLink) {
+        unsafe { crate::ffi::TDocStd_XLinkRoot_remove(anXLinkPtr) }
     }
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:76 - `TDocStd_XLinkRoot::get_type_name()`
@@ -4861,18 +4879,6 @@ impl HandleTDocStdXLinkRoot {
     }
 }
 
-// ── Skipped symbols for XLinkRoot (2 total) ──
-// SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:49 - `TDocStd_XLinkRoot::Insert`
-//   static_method: Inserts <anXLinkPtr> at the beginning of the XLink chain.
-//   Reason: param 'anXLinkPtr' uses unknown type 'const TDocStd_XLinkPtr&'
-//   // pub fn insert(anXLinkPtr: &XLinkPtr);
-//
-// SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:52 - `TDocStd_XLinkRoot::Remove`
-//   static_method: Removes <anXLinkPtr> from the XLink chain, if it exists.
-//   Reason: param 'anXLinkPtr' uses unknown type 'const TDocStd_XLinkPtr&'
-//   // pub fn remove(anXLinkPtr: &XLinkPtr);
-//
-
 // ========================
 // From TDocStd_XLinkTool.hxx
 // ========================
@@ -4987,5 +4993,5 @@ impl XLinkTool {
 
 pub use crate::ffi::{
     TDocStd_SequenceOfApplicationDelta as SequenceOfApplicationDelta,
-    TDocStd_SequenceOfDocument as SequenceOfDocument, TDocStd_XLinkPtr as XLinkPtr,
+    TDocStd_SequenceOfDocument as SequenceOfDocument,
 };

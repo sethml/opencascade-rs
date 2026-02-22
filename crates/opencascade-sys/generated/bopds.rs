@@ -2930,6 +2930,13 @@ impl Iterator {
         }
     }
 
+    /// **Source:** `BOPDS_Iterator.hxx`:55 - `BOPDS_Iterator::SetDS()`
+    /// Modifier
+    /// Sets the data structure <pDS> to process
+    pub unsafe fn set_ds(&mut self, pDS: &*mut DS) {
+        unsafe { crate::ffi::BOPDS_Iterator_set_ds(self as *mut Self, pDS) }
+    }
+
     /// **Source:** `BOPDS_Iterator.hxx`:59 - `BOPDS_Iterator::DS()`
     /// Selector
     /// Returns the data structure
@@ -3034,14 +3041,6 @@ impl Iterator {
         unsafe { crate::ffi::BOPDS_Iterator_nb_ext_interfs() }
     }
 }
-
-// ── Skipped symbols for Iterator (1 total) ──
-// SKIPPED: **Source:** `BOPDS_Iterator.hxx`:55 - `BOPDS_Iterator::SetDS`
-//   method: Modifier
-//   method: Sets the data structure <pDS> to process
-//   Reason: param 'pDS' uses unknown type 'const BOPDS_PDS&'
-//   // pub fn set_ds(&mut self, pDS: &PDS);
-//
 
 // ========================
 // From BOPDS_IteratorSI.hxx
@@ -3997,6 +3996,13 @@ impl SubIterator {
         }
     }
 
+    /// **Source:** `BOPDS_SubIterator.hxx`:48 - `BOPDS_SubIterator::SetDS()`
+    /// Sets the data structure <pDS> to process.
+    /// It is used to access the shapes and their bounding boxes.
+    pub unsafe fn set_ds(&mut self, pDS: &*mut DS) {
+        unsafe { crate::ffi::BOPDS_SubIterator_set_ds(self as *mut Self, pDS) }
+    }
+
     /// **Source:** `BOPDS_SubIterator.hxx`:51 - `BOPDS_SubIterator::DS()`
     /// Returns the data structure
     pub fn ds(&self) -> &DS {
@@ -4067,14 +4073,6 @@ impl SubIterator {
     }
 }
 
-// ── Skipped symbols for SubIterator (1 total) ──
-// SKIPPED: **Source:** `BOPDS_SubIterator.hxx`:48 - `BOPDS_SubIterator::SetDS`
-//   method: Sets the data structure <pDS> to process.
-//   method: It is used to access the shapes and their bounding boxes.
-//   Reason: param 'pDS' uses unknown type 'const BOPDS_PDS&'
-//   // pub fn set_ds(&mut self, pDS: &PDS);
-//
-
 // ========================
 // From BOPDS_Tools.hxx
 // ========================
@@ -4140,13 +4138,12 @@ pub use crate::ffi::{
     BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock as IndexedDataMapOfPaveBlockListOfPaveBlock,
     BOPDS_IndexedMapOfPaveBlock as IndexedMapOfPaveBlock, BOPDS_ListOfPave as ListOfPave,
     BOPDS_ListOfPaveBlock as ListOfPaveBlock, BOPDS_MapOfPair as MapOfPair,
-    BOPDS_MapOfPaveBlock as MapOfPaveBlock, BOPDS_PIterator as PIterator,
-    BOPDS_VectorOfCurve as VectorOfCurve, BOPDS_VectorOfFaceInfo as VectorOfFaceInfo,
-    BOPDS_VectorOfInterfEE as VectorOfInterfEE, BOPDS_VectorOfInterfEF as VectorOfInterfEF,
-    BOPDS_VectorOfInterfEZ as VectorOfInterfEZ, BOPDS_VectorOfInterfFF as VectorOfInterfFF,
-    BOPDS_VectorOfInterfFZ as VectorOfInterfFZ, BOPDS_VectorOfInterfVE as VectorOfInterfVE,
-    BOPDS_VectorOfInterfVF as VectorOfInterfVF, BOPDS_VectorOfInterfVV as VectorOfInterfVV,
-    BOPDS_VectorOfInterfVZ as VectorOfInterfVZ, BOPDS_VectorOfInterfZZ as VectorOfInterfZZ,
+    BOPDS_MapOfPaveBlock as MapOfPaveBlock, BOPDS_VectorOfCurve as VectorOfCurve,
+    BOPDS_VectorOfFaceInfo as VectorOfFaceInfo, BOPDS_VectorOfInterfEE as VectorOfInterfEE,
+    BOPDS_VectorOfInterfEF as VectorOfInterfEF, BOPDS_VectorOfInterfEZ as VectorOfInterfEZ,
+    BOPDS_VectorOfInterfFF as VectorOfInterfFF, BOPDS_VectorOfInterfFZ as VectorOfInterfFZ,
+    BOPDS_VectorOfInterfVE as VectorOfInterfVE, BOPDS_VectorOfInterfVF as VectorOfInterfVF,
+    BOPDS_VectorOfInterfVV as VectorOfInterfVV, BOPDS_VectorOfInterfVZ as VectorOfInterfVZ,
+    BOPDS_VectorOfInterfZZ as VectorOfInterfZZ,
     BOPDS_VectorOfListOfPaveBlock as VectorOfListOfPaveBlock, BOPDS_VectorOfPoint as VectorOfPoint,
-    BOPDS_PDS as PDS,
 };

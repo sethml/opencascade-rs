@@ -2597,11 +2597,15 @@ unsafe impl crate::CppDeletable for ElementalColorPrsBuilder {
 impl ElementalColorPrsBuilder {
     /// **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:41 - `MeshVS_ElementalColorPrsBuilder::MeshVS_ElementalColorPrsBuilder()`
     /// Constructor
-    pub fn new_handlemeshvsmesh(Parent: &crate::ffi::HandleMeshVSMesh) -> crate::OwnedPtr<Self> {
+    pub fn new_handlemeshvsmesh_int_handlemeshvsdatasource_int2(
+        Parent: &crate::ffi::HandleMeshVSMesh,
+        Flags: &i32,
+        DS: &crate::ffi::HandleMeshVSDataSource,
+        Id: i32,
+        Priority: &i32,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::MeshVS_ElementalColorPrsBuilder_ctor_handlemeshvsmesh(Parent),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::MeshVS_ElementalColorPrsBuilder_ctor_handlemeshvsmesh_int_handlemeshvsdatasource_int2(Parent, Flags, DS, Id, Priority))
         }
     }
 
@@ -3071,13 +3075,6 @@ impl HandleMeshVSElementalColorPrsBuilder {
         }
     }
 }
-
-// ── Skipped symbols for ElementalColorPrsBuilder (1 total) ──
-// SKIPPED: **Source:** `MeshVS_ElementalColorPrsBuilder.hxx`:41 - `MeshVS_ElementalColorPrsBuilder::MeshVS_ElementalColorPrsBuilder`
-//   constructor: Constructor
-//   Reason: param 'Flags' uses unknown type 'const MeshVS_DisplayModeFlags&'
-//   // pub fn new_handlemeshvsmesh_displaymodeflags_handlemeshvsdatasource_int_builderpriority(Parent: &HandleMesh, Flags: &DisplayModeFlags, DS: &HandleDataSource, Id: i32, Priority: &BuilderPriority) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From MeshVS_HArray1OfSequenceOfInteger.hxx
@@ -5474,11 +5471,15 @@ unsafe impl crate::CppDeletable for MeshPrsBuilder {
 impl MeshPrsBuilder {
     /// **Source:** `MeshVS_MeshPrsBuilder.hxx`:42 - `MeshVS_MeshPrsBuilder::MeshVS_MeshPrsBuilder()`
     /// Creates builder with certain display mode flags, data source, ID and priority
-    pub fn new_handlemeshvsmesh(Parent: &crate::ffi::HandleMeshVSMesh) -> crate::OwnedPtr<Self> {
+    pub fn new_handlemeshvsmesh_int_handlemeshvsdatasource_int2(
+        Parent: &crate::ffi::HandleMeshVSMesh,
+        Flags: &i32,
+        DS: &crate::ffi::HandleMeshVSDataSource,
+        Id: i32,
+        Priority: &i32,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::MeshVS_MeshPrsBuilder_ctor_handlemeshvsmesh(
-                Parent,
-            ))
+            crate::OwnedPtr::from_raw(crate::ffi::MeshVS_MeshPrsBuilder_ctor_handlemeshvsmesh_int_handlemeshvsdatasource_int2(Parent, Flags, DS, Id, Priority))
         }
     }
 
@@ -5875,13 +5876,6 @@ impl HandleMeshVSMeshPrsBuilder {
     }
 }
 
-// ── Skipped symbols for MeshPrsBuilder (1 total) ──
-// SKIPPED: **Source:** `MeshVS_MeshPrsBuilder.hxx`:42 - `MeshVS_MeshPrsBuilder::MeshVS_MeshPrsBuilder`
-//   constructor: Creates builder with certain display mode flags, data source, ID and priority
-//   Reason: param 'Flags' uses unknown type 'const MeshVS_DisplayModeFlags&'
-//   // pub fn new_handlemeshvsmesh_displaymodeflags_handlemeshvsdatasource_int_builderpriority(Parent: &HandleMesh, Flags: &DisplayModeFlags, DS: &HandleDataSource, Id: i32, Priority: &BuilderPriority) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From MeshVS_NodalColorPrsBuilder.hxx
 // ========================
@@ -5910,11 +5904,15 @@ unsafe impl crate::CppDeletable for NodalColorPrsBuilder {
 
 impl NodalColorPrsBuilder {
     /// **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:55 - `MeshVS_NodalColorPrsBuilder::MeshVS_NodalColorPrsBuilder()`
-    pub fn new_handlemeshvsmesh(Parent: &crate::ffi::HandleMeshVSMesh) -> crate::OwnedPtr<Self> {
+    pub fn new_handlemeshvsmesh_int_handlemeshvsdatasource_int2(
+        Parent: &crate::ffi::HandleMeshVSMesh,
+        Flags: &i32,
+        DS: &crate::ffi::HandleMeshVSDataSource,
+        Id: i32,
+        Priority: &i32,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::MeshVS_NodalColorPrsBuilder_ctor_handlemeshvsmesh(Parent),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::MeshVS_NodalColorPrsBuilder_ctor_handlemeshvsmesh_int_handlemeshvsdatasource_int2(Parent, Flags, DS, Id, Priority))
         }
     }
 
@@ -6389,12 +6387,6 @@ impl HandleMeshVSNodalColorPrsBuilder {
         }
     }
 }
-
-// ── Skipped symbols for NodalColorPrsBuilder (1 total) ──
-// SKIPPED: **Source:** `MeshVS_NodalColorPrsBuilder.hxx`:55 - `MeshVS_NodalColorPrsBuilder::MeshVS_NodalColorPrsBuilder`
-//   Reason: param 'Flags' uses unknown type 'const MeshVS_DisplayModeFlags&'
-//   // pub fn new_handlemeshvsmesh_displaymodeflags_handlemeshvsdatasource_int_builderpriority(Parent: &HandleMesh, Flags: &DisplayModeFlags, DS: &HandleDataSource, Id: i32, Priority: &BuilderPriority) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From MeshVS_PrsBuilder.hxx
@@ -8428,17 +8420,17 @@ unsafe impl crate::CppDeletable for TextPrsBuilder {
 
 impl TextPrsBuilder {
     /// **Source:** `MeshVS_TextPrsBuilder.hxx`:37 - `MeshVS_TextPrsBuilder::MeshVS_TextPrsBuilder()`
-    pub fn new_handlemeshvsmesh_real_color(
+    pub fn new_handlemeshvsmesh_real_color_int_handlemeshvsdatasource_int2(
         Parent: &crate::ffi::HandleMeshVSMesh,
         Height: f64,
         Color: &crate::quantity::Color,
+        Flags: &i32,
+        DS: &crate::ffi::HandleMeshVSDataSource,
+        Id: i32,
+        Priority: &i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::MeshVS_TextPrsBuilder_ctor_handlemeshvsmesh_real_color(
-                    Parent, Height, Color,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::MeshVS_TextPrsBuilder_ctor_handlemeshvsmesh_real_color_int_handlemeshvsdatasource_int2(Parent, Height, Color, Flags, DS, Id, Priority))
         }
     }
 
@@ -8777,12 +8769,6 @@ impl HandleMeshVSTextPrsBuilder {
     }
 }
 
-// ── Skipped symbols for TextPrsBuilder (1 total) ──
-// SKIPPED: **Source:** `MeshVS_TextPrsBuilder.hxx`:37 - `MeshVS_TextPrsBuilder::MeshVS_TextPrsBuilder`
-//   Reason: param 'Flags' uses unknown type 'const MeshVS_DisplayModeFlags&'
-//   // pub fn new_handlemeshvsmesh_real_color_displaymodeflags_handlemeshvsdatasource_int_builderpriority(Parent: &HandleMesh, Height: f64, Color: &Color, Flags: &DisplayModeFlags, DS: &HandleDataSource, Id: i32, Priority: &BuilderPriority) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From MeshVS_Tool.hxx
 // ========================
@@ -8939,20 +8925,41 @@ unsafe impl crate::CppDeletable for VectorPrsBuilder {
 
 impl VectorPrsBuilder {
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:41 - `MeshVS_VectorPrsBuilder::MeshVS_VectorPrsBuilder()`
-    pub fn new_handlemeshvsmesh_real_color(
+    pub fn new_handlemeshvsmesh_real_color_int_handlemeshvsdatasource_int2_bool(
         Parent: &crate::ffi::HandleMeshVSMesh,
         MaxLength: f64,
         VectorColor: &crate::quantity::Color,
+        Flags: &i32,
+        DS: &crate::ffi::HandleMeshVSDataSource,
+        Id: i32,
+        Priority: &i32,
+        IsSimplePrs: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::MeshVS_VectorPrsBuilder_ctor_handlemeshvsmesh_real_color(
-                    Parent,
-                    MaxLength,
-                    VectorColor,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::MeshVS_VectorPrsBuilder_ctor_handlemeshvsmesh_real_color_int_handlemeshvsdatasource_int2_bool(Parent, MaxLength, VectorColor, Flags, DS, Id, Priority, IsSimplePrs))
         }
+    }
+
+    /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:41 - `MeshVS_VectorPrsBuilder::MeshVS_VectorPrsBuilder()`
+    pub fn new_handlemeshvsmesh_real_color_int_handlemeshvsdatasource_int2(
+        Parent: &crate::ffi::HandleMeshVSMesh,
+        MaxLength: f64,
+        VectorColor: &crate::quantity::Color,
+        Flags: &i32,
+        DS: &crate::ffi::HandleMeshVSDataSource,
+        Id: i32,
+        Priority: &i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlemeshvsmesh_real_color_int_handlemeshvsdatasource_int2_bool(
+            Parent,
+            MaxLength,
+            VectorColor,
+            Flags,
+            DS,
+            Id,
+            Priority,
+            false,
+        )
     }
 
     /// **Source:** `MeshVS_VectorPrsBuilder.hxx`:52 - `MeshVS_VectorPrsBuilder::Build()`
@@ -9388,23 +9395,15 @@ impl HandleMeshVSVectorPrsBuilder {
     }
 }
 
-// ── Skipped symbols for VectorPrsBuilder (1 total) ──
-// SKIPPED: **Source:** `MeshVS_VectorPrsBuilder.hxx`:41 - `MeshVS_VectorPrsBuilder::MeshVS_VectorPrsBuilder`
-//   Reason: param 'Flags' uses unknown type 'const MeshVS_DisplayModeFlags&'
-//   // pub fn new_handlemeshvsmesh_real_color_displaymodeflags_handlemeshvsdatasource_int_builderpriority_bool(Parent: &HandleMesh, MaxLength: f64, VectorColor: &Color, Flags: &DisplayModeFlags, DS: &HandleDataSource, Id: i32, Priority: &BuilderPriority, IsSimplePrs: bool) -> OwnedPtr<Self>;
-//
-
 // ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
     MeshVS_Array1OfSequenceOfInteger as Array1OfSequenceOfInteger,
-    MeshVS_BuilderPriority as BuilderPriority,
     MeshVS_DataMapOfIntegerAsciiString as DataMapOfIntegerAsciiString,
     MeshVS_DataMapOfIntegerColor as DataMapOfIntegerColor,
     MeshVS_DataMapOfIntegerOwner as DataMapOfIntegerOwner,
     MeshVS_DataMapOfIntegerTwoColors as DataMapOfIntegerTwoColors,
     MeshVS_DataMapOfIntegerVector as DataMapOfIntegerVector,
-    MeshVS_DisplayModeFlags as DisplayModeFlags,
 };

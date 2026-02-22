@@ -3203,7 +3203,4 @@ impl mkTondgE {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
-    TopOpeBRepTool_IndexedDataMapOfShapeBox as IndexedDataMapOfShapeBox,
-    TopOpeBRepTool_PShapeClassifier as PShapeClassifier, TopOpeBRepTool_Plos as Plos,
-};
+pub use crate::ffi::TopOpeBRepTool_IndexedDataMapOfShapeBox as IndexedDataMapOfShapeBox;

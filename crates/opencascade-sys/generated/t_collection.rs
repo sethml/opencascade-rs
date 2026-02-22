@@ -1093,7 +1093,7 @@ impl AsciiString {
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:110 - `TCollection_AsciiString::TCollection_AsciiString`
 //   constructor: Initialize UTF-8 Unicode string from wide-char string considering it as Unicode string
 //   constructor: (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16).
-//   Reason: param 'theStringUtf' uses unknown type 'const Standard_WideChar*'
+//   Reason: param 'theStringUtf' uses unknown type 'Standard_WideChar const*'
 //   // pub fn new_widecharptr(theStringUtf: *const WideChar) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:263 - `TCollection_AsciiString::Move`
@@ -1593,6 +1593,16 @@ impl ExtendedString {
         unsafe { crate::ffi::TCollection_ExtendedString_hash_code(self as *const Self) }
     }
 
+    /// **Source:** `TCollection_ExtendedString.hxx`:365 - `TCollection_ExtendedString::ToUTF8CString()`
+    /// Converts the internal <mystring> to UTF8 coding and
+    /// returns length of the out CString. A memory for the
+    /// <theCString> should be allocated before call!
+    pub unsafe fn to_utf8c_string(&self, theCString: &mut *mut std::ffi::c_char) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_to_utf8c_string(self as *const Self, theCString)
+        }
+    }
+
     /// **Source:** `TCollection_ExtendedString.hxx`:370 - `TCollection_ExtendedString::LengthOfCString()`
     /// Returns expected CString length in UTF8 coding.
     /// It can be used for  memory  calculation  before converting
@@ -1619,11 +1629,11 @@ impl ExtendedString {
     }
 }
 
-// ── Skipped symbols for ExtendedString (4 total) ──
+// ── Skipped symbols for ExtendedString (3 total) ──
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:76 - `TCollection_ExtendedString::TCollection_ExtendedString`
 //   constructor: Initialize from wide-char string considering it as Unicode string
 //   constructor: (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16).
-//   Reason: param 'theStringUtf' uses unknown type 'const Standard_WideChar*'
+//   Reason: param 'theStringUtf' uses unknown type 'Standard_WideChar const*'
 //   // pub fn new_widecharptr(theStringUtf: *const WideChar) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:118 - `TCollection_ExtendedString::AssignCat`
@@ -1635,13 +1645,6 @@ impl ExtendedString {
 //   method: Moves string without reallocations
 //   Reason: has unbindable types: param 'theOther': rvalue reference (TCollection_ExtendedString&&)
 //   // pub fn move_(&mut self, theOther: /* TCollection_ExtendedString&& */);
-//
-// SKIPPED: **Source:** `TCollection_ExtendedString.hxx`:365 - `TCollection_ExtendedString::ToUTF8CString`
-//   method: Converts the internal <mystring> to UTF8 coding and
-//   method: returns length of the out CString. A memory for the
-//   method: <theCString> should be allocated before call!
-//   Reason: param 'theCString' uses unknown type 'Standard_PCharacter&'
-//   // pub fn to_utf8c_string(&self, theCString: &mut PCharacter) -> i32;
 //
 
 // ========================

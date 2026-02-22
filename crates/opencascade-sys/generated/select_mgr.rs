@@ -797,7 +797,7 @@ impl HandleSelectMgrAndOrFilter {
 // ── Skipped symbols for AndOrFilter (1 total) ──
 // SKIPPED: **Source:** `SelectMgr_AndOrFilter.hxx`:41 - `SelectMgr_AndOrFilter::SetDisabledObjects`
 //   method: Disable selection of specified objects.
-//   Reason: param 'theObjects' uses unknown type 'const Handle(NCollection_Shared<NCollection_Map<const Standard_Transient *>>)&'
+//   Reason: param 'theObjects' uses unknown type 'Handle(NCollection_Shared<NCollection_Map<const Standard_Transient *>>) const&'
 //   // pub fn set_disabled_objects(&mut self, theObjects: &HandleShared<NCollection_Map<const Standard_Transient *>>);
 //
 
@@ -7410,7 +7410,7 @@ impl HandleSelectMgrSelectableObject {
 // SKIPPED: **Source:** `SelectMgr_SelectableObject.hxx`:178 - `SelectMgr_SelectableObject::BndBoxOfSelected`
 //   method: Returns a bounding box of sensitive entities with the owners given if they are a part of
 //   method: activated selection
-//   Reason: param 'theOwners' uses unknown type 'const Handle(NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>>)&'
+//   Reason: param 'theOwners' uses unknown type 'Handle(NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>>) const&'
 //   // pub fn bnd_box_of_selected(&mut self, theOwners: &HandleShared<NCollection_IndexedMap<opencascade_handle<SelectMgr_EntityOwner>>>) -> OwnedPtr<Bnd_Box>;
 //
 
@@ -7542,7 +7542,7 @@ impl SelectableObjectSet {
 // ── Skipped symbols for SelectableObjectSet (1 total) ──
 // SKIPPED: **Source:** `SelectMgr_SelectableObjectSet.hxx`:188 - `SelectMgr_SelectableObjectSet::BVH`
 //   method: Returns computed BVH for the theSubset given.
-//   Reason: return type 'const Handle(BVH_Tree<double, 3>)&' is unknown
+//   Reason: return type 'Handle(BVH_Tree<double, 3>) const&' is unknown
 //   // pub fn bvh(&self, theSubset: SelectableObjectSet_BVHSubset) -> &HandleTree<double, 3>;
 //
 
@@ -8598,8 +8598,8 @@ impl HandleSelectMgrSelection {
 // ── Skipped symbols for Selection (2 total) ──
 // SKIPPED: **Source:** `SelectMgr_Selection.hxx`:88 - `SelectMgr_Selection::Entities`
 //   method: Return entities.
-//   Reason: has unbindable types: return: unresolved template type (const NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>>&)
-//   // pub fn entities(&self) -> /* const NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>>& */;
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>> const&)
+//   // pub fn entities(&self) -> /* NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>> const& */;
 //
 // SKIPPED: **Source:** `SelectMgr_Selection.hxx`:94 - `SelectMgr_Selection::ChangeEntities`
 //   method: Return entities.
@@ -11702,7 +11702,7 @@ impl HandleSelectMgrViewerSelector {
 //   method: Sets the default builder used to construct BVH of entity set.
 //   method: The new builder will be also assigned for already defined objects, but computed BVH trees will
 //   method: not be invalidated.
-//   Reason: param 'theBuilder' uses unknown type 'const Handle(BVH_Builder<double, 3>)&'
+//   Reason: param 'theBuilder' uses unknown type 'Handle(BVH_Builder<double, 3>) const&'
 //   // pub fn set_entity_set_builder(&mut self, theBuilder: &HandleBuilder<double, 3>);
 //
 
