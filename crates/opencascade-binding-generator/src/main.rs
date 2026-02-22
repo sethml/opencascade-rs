@@ -438,6 +438,10 @@ fn main() -> Result<()> {
         &manual_type_names,
     );
 
+    // Use the enriched handle_able_classes from the resolver, which discovers
+    // additional Handle types by scanning method signatures (including static methods)
+    let handle_able_classes = symbol_table.handle_able_classes.clone();
+
     if args.verbose {
         println!("\nSymbol table built:");
         println!("  {} classes", symbol_table.classes.len());

@@ -6388,6 +6388,17 @@ impl Scene {
         }
     }
 
+    /// **Source:** `VrmlData_Scene.hxx`:98 - `VrmlData_Scene::NamedNodesIterator()`
+    ///
+    /// Get the iterator of named nodes.
+    pub fn named_nodes_iterator(&self) -> crate::OwnedPtr<crate::ffi::VrmlData_MapOfNode_Iterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Scene_named_nodes_iterator(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `VrmlData_Scene.hxx`:103 - `VrmlData_Scene::Allocator()`
     ///
     /// Allocator used by all nodes contained in the Scene.
@@ -6743,13 +6754,6 @@ impl Scene {
         }
     }
 }
-
-// ── Skipped symbols for Scene (1 total) ──
-// SKIPPED: **Source:** `VrmlData_Scene.hxx`:98 - `VrmlData_Scene::NamedNodesIterator`
-//   method: Get the iterator of named nodes.
-//   Reason: return type 'VrmlData_MapOfNode::Iterator' is not CppDeletable
-//   // pub fn named_nodes_iterator(&self) -> OwnedPtr<VrmlData_MapOfNode::Iterator>;
-//
 
 // ========================
 // From VrmlData_ShapeConvert.hxx

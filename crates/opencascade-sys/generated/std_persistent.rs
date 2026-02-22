@@ -1135,21 +1135,29 @@ impl TopLoc {
     }
 
     /// **Source:** `StdPersistent_TopLoc.hxx`:68 - `StdPersistent_TopLoc::Translate()`
-    pub fn translate(
+    pub fn translate_location_transientpersistentmap(
         theLoc: &crate::top_loc::Location,
         theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdPersistentTopLocItemLocation> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StdPersistent_TopLoc_translate(theLoc, theMap))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StdPersistent_TopLoc_translate_location_transientpersistentmap(
+                    theLoc, theMap,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StdPersistent_TopLoc.hxx`:70 - `StdPersistent_TopLoc::Translate()`
+    pub fn translate_handletoplocdatum3d_transientpersistentmap(
+        theDatum: &crate::ffi::HandleTopLocDatum3D,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdPersistentTopLocDatum3D> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdPersistent_TopLoc_translate_handletoplocdatum3d_transientpersistentmap(theDatum, theMap))
         }
     }
 }
-
-// ── Skipped symbols for TopLoc (1 total) ──
-// SKIPPED: **Source:** `StdPersistent_TopLoc.hxx`:70 - `StdPersistent_TopLoc::Translate`
-//   Reason: return type 'Handle(StdPersistent_TopLoc::Datum3D)' is unknown
-//   // pub fn translate(theDatum: &HandleDatum3D, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<StdPersistent_TopLoc::Datum3D>>;
-//
 
 /// **Source:** `StdPersistent_TopLoc.hxx`:28 - `StdPersistent_TopLoc_Datum3D`
 pub use crate::ffi::StdPersistent_TopLoc_Datum3D as TopLoc_Datum3D;
@@ -1195,6 +1203,37 @@ impl TopLoc_Datum3D {
             .to_string_lossy()
             .into_owned()
         }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStdPersistentTopLocDatum3D> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdPersistent_TopLoc_Datum3D_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleStdPersistentTopLocDatum3D;
+
+unsafe impl crate::CppDeletable for HandleStdPersistentTopLocDatum3D {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStdPersistentTopLocDatum3D_destructor(ptr);
+    }
+}
+
+impl HandleStdPersistentTopLocDatum3D {
+    /// Dereference this Handle to access the underlying StdPersistent_TopLoc_Datum3D
+    pub fn get(&self) -> &crate::ffi::StdPersistent_TopLoc_Datum3D {
+        unsafe { &*(crate::ffi::HandleStdPersistentTopLocDatum3D_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StdPersistent_TopLoc_Datum3D
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StdPersistent_TopLoc_Datum3D {
+        unsafe { &mut *(crate::ffi::HandleStdPersistentTopLocDatum3D_get_mut(self as *mut Self)) }
     }
 }
 

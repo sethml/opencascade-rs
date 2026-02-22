@@ -5535,6 +5535,16 @@ impl View {
         unsafe { &*(crate::ffi::V3d_View_active_lights(self as *const Self)) }
     }
 
+    /// **Source:** `V3d_View.hxx`:827 - `V3d_View::ActiveLightIterator()`
+    /// Return iterator for defined lights.
+    pub fn active_light_iterator(&self) -> crate::OwnedPtr<crate::ffi::V3d_ListOfLight_Iterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::V3d_View_active_light_iterator(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `V3d_View.hxx`:833 - `V3d_View::LightLimit()`
     /// Returns the MAX number of light associated to the view.
     pub fn light_limit(&self) -> i32 {
@@ -6120,18 +6130,13 @@ impl HandleV3dView {
     }
 }
 
-// ── Skipped symbols for View (2 total) ──
+// ── Skipped symbols for View (1 total) ──
 // SKIPPED: **Source:** `V3d_View.hxx`:76 - `V3d_View::SetWindow`
 //   method: Activates the view in the specified Window
 //   method: If <aContext> is not NULL the graphic context is used
 //   method: to draw something in this view.
 //   Reason: param 'theContext' uses unknown type 'NSOpenGLContext*'
 //   // pub fn set_window(&mut self, theWindow: &HandleWindow, theContext: *mut NSOpenGLContext);
-//
-// SKIPPED: **Source:** `V3d_View.hxx`:827 - `V3d_View::ActiveLightIterator`
-//   method: Return iterator for defined lights.
-//   Reason: return type 'V3d_ListOfLight::Iterator' is not CppDeletable
-//   // pub fn active_light_iterator(&self) -> OwnedPtr<V3d_ListOfLight::Iterator>;
 //
 
 // ========================
@@ -6531,6 +6536,16 @@ impl Viewer {
         unsafe { &*(crate::ffi::V3d_Viewer_active_views(self as *const Self)) }
     }
 
+    /// **Source:** `V3d_Viewer.hxx`:252 - `V3d_Viewer::ActiveViewIterator()`
+    /// Return an iterator for active views.
+    pub fn active_view_iterator(&self) -> crate::OwnedPtr<crate::ffi::V3d_ListOfView_Iterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::V3d_Viewer_active_view_iterator(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `V3d_Viewer.hxx`:258 - `V3d_Viewer::LastActiveView()`
     /// returns true if there is only one active view.
     pub fn last_active_view(&self) -> bool {
@@ -6541,6 +6556,16 @@ impl Viewer {
     /// Return a list of defined views.
     pub fn defined_views(&self) -> &crate::ffi::V3d_ListOfView {
         unsafe { &*(crate::ffi::V3d_Viewer_defined_views(self as *const Self)) }
+    }
+
+    /// **Source:** `V3d_Viewer.hxx`:265 - `V3d_Viewer::DefinedViewIterator()`
+    /// Return an iterator for defined views.
+    pub fn defined_view_iterator(&self) -> crate::OwnedPtr<crate::ffi::V3d_ListOfView_Iterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::V3d_Viewer_defined_view_iterator(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:276 - `V3d_Viewer::SetDefaultLights()`
@@ -6617,10 +6642,30 @@ impl Viewer {
         unsafe { &*(crate::ffi::V3d_Viewer_active_lights(self as *const Self)) }
     }
 
+    /// **Source:** `V3d_Viewer.hxx`:305 - `V3d_Viewer::ActiveLightIterator()`
+    /// Return an iterator for defined lights.
+    pub fn active_light_iterator(&self) -> crate::OwnedPtr<crate::ffi::V3d_ListOfLight_Iterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::V3d_Viewer_active_light_iterator(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `V3d_Viewer.hxx`:312 - `V3d_Viewer::DefinedLights()`
     /// Return a list of defined lights.
     pub fn defined_lights(&self) -> &crate::ffi::V3d_ListOfLight {
         unsafe { &*(crate::ffi::V3d_Viewer_defined_lights(self as *const Self)) }
+    }
+
+    /// **Source:** `V3d_Viewer.hxx`:315 - `V3d_Viewer::DefinedLightIterator()`
+    /// Return an iterator for defined lights.
+    pub fn defined_light_iterator(&self) -> crate::OwnedPtr<crate::ffi::V3d_ListOfLight_Iterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::V3d_Viewer_defined_light_iterator(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:322 - `V3d_Viewer::Erase()`
@@ -7062,28 +7107,6 @@ impl HandleV3dViewer {
         }
     }
 }
-
-// ── Skipped symbols for Viewer (4 total) ──
-// SKIPPED: **Source:** `V3d_Viewer.hxx`:252 - `V3d_Viewer::ActiveViewIterator`
-//   method: Return an iterator for active views.
-//   Reason: return type 'V3d_ListOfView::Iterator' is not CppDeletable
-//   // pub fn active_view_iterator(&self) -> OwnedPtr<V3d_ListOfView::Iterator>;
-//
-// SKIPPED: **Source:** `V3d_Viewer.hxx`:265 - `V3d_Viewer::DefinedViewIterator`
-//   method: Return an iterator for defined views.
-//   Reason: return type 'V3d_ListOfView::Iterator' is not CppDeletable
-//   // pub fn defined_view_iterator(&self) -> OwnedPtr<V3d_ListOfView::Iterator>;
-//
-// SKIPPED: **Source:** `V3d_Viewer.hxx`:305 - `V3d_Viewer::ActiveLightIterator`
-//   method: Return an iterator for defined lights.
-//   Reason: return type 'V3d_ListOfLight::Iterator' is not CppDeletable
-//   // pub fn active_light_iterator(&self) -> OwnedPtr<V3d_ListOfLight::Iterator>;
-//
-// SKIPPED: **Source:** `V3d_Viewer.hxx`:315 - `V3d_Viewer::DefinedLightIterator`
-//   method: Return an iterator for defined lights.
-//   Reason: return type 'V3d_ListOfLight::Iterator' is not CppDeletable
-//   // pub fn defined_light_iterator(&self) -> OwnedPtr<V3d_ListOfLight::Iterator>;
-//
 
 // ========================
 // Additional type re-exports

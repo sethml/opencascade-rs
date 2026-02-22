@@ -3070,7 +3070,11 @@ pub fn compute_all_class_bindings(
 
     // Add nested types (those with :: in their name) as deletable
     // since we generate destructors for them
-    let known_class_names: HashSet<&str> = all_classes.iter().map(|c| c.name.as_str()).collect();
+    let mut known_class_names: HashSet<&str> = all_classes.iter().map(|c| c.name.as_str()).collect();
+    // Include collection names and extra typedef names so nested types like
+    // V3d_ListOfLight::Iterator are recognized when V3d_ListOfLight is a collection
+    known_class_names.extend(collection_names.iter().map(|s| s.as_str()));
+    known_class_names.extend(extra_typedef_names.iter().map(|s| s.as_str()));
     for class in all_classes {
         for method in &class.methods {
             if let Some(ref ret) = method.return_type {
@@ -3226,7 +3230,9 @@ pub fn compute_all_function_bindings(
         .collect();
 
     // Add nested types as deletable (they get destructor generation)
-    let known_class_names: HashSet<&str> = all_classes.iter().map(|c| c.name.as_str()).collect();
+    let mut known_class_names: HashSet<&str> = all_classes.iter().map(|c| c.name.as_str()).collect();
+    known_class_names.extend(collection_names.iter().map(|s| s.as_str()));
+    known_class_names.extend(extra_typedef_names.iter().map(|s| s.as_str()));
     for func in &all_functions {
         if let Some(ref ret) = func.return_type {
             collect_nested_deletable_names(&ret.original, &known_class_names, &mut deletable_class_names);

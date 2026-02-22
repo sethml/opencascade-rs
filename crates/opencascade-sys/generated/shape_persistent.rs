@@ -55,6 +55,174 @@ impl BRep {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_ctor()) }
     }
 
+    /// **Source:** `ShapePersistent_BRep.hxx`:518 - `ShapePersistent_BRep::Translate()`
+    /// Create a persistent object for a point on a 3D curve
+    pub fn translate_real_handlegeomcurve_location_transientpersistentmap(
+        theParam: f64,
+        theCurve: &crate::ffi::HandleGeomCurve,
+        theLoc: &crate::top_loc::Location,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointOnCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_translate_real_handlegeomcurve_location_transientpersistentmap(theParam, theCurve, theLoc, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_BRep.hxx`:523 - `ShapePersistent_BRep::Translate()`
+    /// Create a persistent object for a point on a 3D curve on a surface
+    pub fn translate_real_handlegeom2dcurve_handlegeomsurface_location_transientpersistentmap(
+        theParam: f64,
+        theCurve: &crate::ffi::HandleGeom2dCurve,
+        theSurf: &crate::ffi::HandleGeomSurface,
+        theLoc: &crate::top_loc::Location,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointOnCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_translate_real_handlegeom2dcurve_handlegeomsurface_location_transientpersistentmap(theParam, theCurve, theSurf, theLoc, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_BRep.hxx`:530 - `ShapePersistent_BRep::Translate()`
+    /// Create a persistent object for a point on a surface
+    pub fn translate_real2_handlegeomsurface_location_transientpersistentmap(
+        theParam: f64,
+        theParam2: f64,
+        theSurf: &crate::ffi::HandleGeomSurface,
+        theLoc: &crate::top_loc::Location,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_translate_real2_handlegeomsurface_location_transientpersistentmap(theParam, theParam2, theSurf, theLoc, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_BRep.hxx`:536 - `ShapePersistent_BRep::Translate()`
+    /// Create a persistent object for a curve on a surface
+    pub fn translate_handlegeom2dcurve_real2_handlegeomsurface_location_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeom2dCurve,
+        theFirstParam: f64,
+        theLastParam: f64,
+        theSurf: &crate::ffi::HandleGeomSurface,
+        theLoc: &crate::top_loc::Location,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_translate_handlegeom2dcurve_real2_handlegeomsurface_location_transientpersistentmap(theCurve, theFirstParam, theLastParam, theSurf, theLoc, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_BRep.hxx`:543 - `ShapePersistent_BRep::Translate()`
+    /// Create a persistent object for a curve on a closed surface
+    pub fn translate_handlegeom2dcurve2_real2_handlegeomsurface_location_shape_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeom2dCurve,
+        theCurve2: &crate::ffi::HandleGeom2dCurve,
+        theFirstParam: f64,
+        theLastParam: f64,
+        theSurf: &crate::ffi::HandleGeomSurface,
+        theLoc: &crate::top_loc::Location,
+        theContinuity: crate::geom_abs::Shape,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveOnClosedSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_translate_handlegeom2dcurve2_real2_handlegeomsurface_location_shape_transientpersistentmap(theCurve, theCurve2, theFirstParam, theLastParam, theSurf, theLoc, theContinuity.into(), theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_BRep.hxx`:553 - `ShapePersistent_BRep::Translate()`
+    /// Create a persistent object for a curve on two surfaces
+    pub fn translate_handlegeomsurface2_location2_shape_transientpersistentmap(
+        theSurf: &crate::ffi::HandleGeomSurface,
+        theSurf2: &crate::ffi::HandleGeomSurface,
+        theLoc: &crate::top_loc::Location,
+        theLoc2: &crate::top_loc::Location,
+        theContinuity: crate::geom_abs::Shape,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveOn2Surfaces> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_translate_handlegeomsurface2_location2_shape_transientpersistentmap(theSurf, theSurf2, theLoc, theLoc2, theContinuity.into(), theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_BRep.hxx`:561 - `ShapePersistent_BRep::Translate()`
+    /// Create a persistent object for a 3D curve
+    pub fn translate_handlegeomcurve_real2_location_transientpersistentmap(
+        theCurve: &crate::ffi::HandleGeomCurve,
+        theFirstParam: f64,
+        theLastParam: f64,
+        theLoc: &crate::top_loc::Location,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurve3D> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_translate_handlegeomcurve_real2_location_transientpersistentmap(theCurve, theFirstParam, theLastParam, theLoc, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_BRep.hxx`:567 - `ShapePersistent_BRep::Translate()`
+    /// Create a persistent object for a 3D polygon
+    pub fn translate_handlepolypolygon3d_location_transientpersistentmap(
+        thePoly: &crate::ffi::HandlePolyPolygon3D,
+        theLoc: &crate::top_loc::Location,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygon3D> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_translate_handlepolypolygon3d_location_transientpersistentmap(thePoly, theLoc, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_BRep.hxx`:571 - `ShapePersistent_BRep::Translate()`
+    /// Create a persistent object for a polygon on a closed surface
+    pub fn translate_handlepolypolygon2d2_handlegeomsurface_location_transientpersistentmap(
+        thePoly: &crate::ffi::HandlePolyPolygon2D,
+        thePoly2: &crate::ffi::HandlePolyPolygon2D,
+        theSurf: &crate::ffi::HandleGeomSurface,
+        theLoc: &crate::top_loc::Location,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnClosedSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_translate_handlepolypolygon2d2_handlegeomsurface_location_transientpersistentmap(thePoly, thePoly2, theSurf, theLoc, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_BRep.hxx`:578 - `ShapePersistent_BRep::Translate()`
+    /// Create a persistent object for a polygon on a surface
+    pub fn translate_handlepolypolygon2d_handlegeomsurface_location_transientpersistentmap(
+        thePoly: &crate::ffi::HandlePolyPolygon2D,
+        theSurf: &crate::ffi::HandleGeomSurface,
+        theLoc: &crate::top_loc::Location,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_translate_handlepolypolygon2d_handlegeomsurface_location_transientpersistentmap(thePoly, theSurf, theLoc, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_BRep.hxx`:584 - `ShapePersistent_BRep::Translate()`
+    /// Create a persistent object for a polygon on a surface
+    pub fn translate_handlepolypolygonontriangulation2_handlepolytriangulation_location_transientpersistentmap(
+        thePolyOnTriang: &crate::ffi::HandlePolyPolygonOnTriangulation,
+        thePolyOnTriang2: &crate::ffi::HandlePolyPolygonOnTriangulation,
+        thePolyTriang: &crate::ffi::HandlePolyTriangulation,
+        theLoc: &crate::top_loc::Location,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnClosedTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_translate_handlepolypolygonontriangulation2_handlepolytriangulation_location_transientpersistentmap(thePolyOnTriang, thePolyOnTriang2, thePolyTriang, theLoc, theMap))
+        }
+    }
+
+    /// **Source:** `ShapePersistent_BRep.hxx`:591 - `ShapePersistent_BRep::Translate()`
+    /// Create a persistent object for a polygon on a surface
+    pub fn translate_handlepolypolygonontriangulation_handlepolytriangulation_location_transientpersistentmap(
+        thePolyOnTriang: &crate::ffi::HandlePolyPolygonOnTriangulation,
+        thePolyTriang: &crate::ffi::HandlePolyTriangulation,
+        theLoc: &crate::top_loc::Location,
+        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_translate_handlepolypolygonontriangulation_handlepolytriangulation_location_transientpersistentmap(thePolyOnTriang, thePolyTriang, theLoc, theMap))
+        }
+    }
+
     /// Upcast to ShapePersistent_TopoDS
     pub fn as_topo_ds(&self) -> &TopoDS {
         unsafe {
@@ -72,7 +240,7 @@ impl BRep {
     }
 }
 
-// ── Skipped symbols for BRep (15 total) ──
+// ── Skipped symbols for BRep (3 total) ──
 // SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:504 - `ShapePersistent_BRep::Translate`
 //   static_method: Create a persistent object for a vertex
 //   Reason: return type 'Handle(ShapePersistent_TopoDS::pTObject<ShapePersistent_BRep::pTVertex, StdLPersistent_HArray1::instance<StdLPersistent_HArray1OfPersistent>>)' is unknown
@@ -87,66 +255,6 @@ impl BRep {
 //   static_method: Create a persistent object for a face
 //   Reason: return type 'Handle(ShapePersistent_TopoDS::pTObject<ShapePersistent_BRep::pTFace, StdLPersistent_HArray1::instance<StdLPersistent_HArray1OfPersistent>>)' is unknown
 //   // pub fn translate(theFace: &Face, theMap: &mut TransientPersistentMap, theTriangleMode: TriangleMode) -> OwnedPtr<Handle<ShapePersistent_TopoDS::pTObject<ShapePersistent_BRep::pTFace, StdLPersistent_HArray1::instance<StdLPersistent_HArray1OfPersistent>>>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:518 - `ShapePersistent_BRep::Translate`
-//   static_method: Create a persistent object for a point on a 3D curve
-//   Reason: return type 'Handle(ShapePersistent_BRep::PointOnCurve)' is unknown
-//   // pub fn translate(theParam: f64, theCurve: &HandleCurve, theLoc: &Location, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_BRep::PointOnCurve>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:523 - `ShapePersistent_BRep::Translate`
-//   static_method: Create a persistent object for a point on a 3D curve on a surface
-//   Reason: return type 'Handle(ShapePersistent_BRep::PointOnCurveOnSurface)' is unknown
-//   // pub fn translate(theParam: f64, theCurve: &HandleCurve, theSurf: &HandleSurface, theLoc: &Location, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_BRep::PointOnCurveOnSurface>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:530 - `ShapePersistent_BRep::Translate`
-//   static_method: Create a persistent object for a point on a surface
-//   Reason: return type 'Handle(ShapePersistent_BRep::PointOnSurface)' is unknown
-//   // pub fn translate(theParam: f64, theParam2: f64, theSurf: &HandleSurface, theLoc: &Location, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_BRep::PointOnSurface>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:536 - `ShapePersistent_BRep::Translate`
-//   static_method: Create a persistent object for a curve on a surface
-//   Reason: return type 'Handle(ShapePersistent_BRep::CurveOnSurface)' is unknown
-//   // pub fn translate(theCurve: &HandleCurve, theFirstParam: f64, theLastParam: f64, theSurf: &HandleSurface, theLoc: &Location, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_BRep::CurveOnSurface>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:543 - `ShapePersistent_BRep::Translate`
-//   static_method: Create a persistent object for a curve on a closed surface
-//   Reason: return type 'Handle(ShapePersistent_BRep::CurveOnClosedSurface)' is unknown
-//   // pub fn translate(theCurve: &HandleCurve, theCurve2: &HandleCurve, theFirstParam: f64, theLastParam: f64, theSurf: &HandleSurface, theLoc: &Location, theContinuity: Shape, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_BRep::CurveOnClosedSurface>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:553 - `ShapePersistent_BRep::Translate`
-//   static_method: Create a persistent object for a curve on two surfaces
-//   Reason: return type 'Handle(ShapePersistent_BRep::CurveOn2Surfaces)' is unknown
-//   // pub fn translate(theSurf: &HandleSurface, theSurf2: &HandleSurface, theLoc: &Location, theLoc2: &Location, theContinuity: Shape, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_BRep::CurveOn2Surfaces>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:561 - `ShapePersistent_BRep::Translate`
-//   static_method: Create a persistent object for a 3D curve
-//   Reason: return type 'Handle(ShapePersistent_BRep::Curve3D)' is unknown
-//   // pub fn translate(theCurve: &HandleCurve, theFirstParam: f64, theLastParam: f64, theLoc: &Location, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_BRep::Curve3D>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:567 - `ShapePersistent_BRep::Translate`
-//   static_method: Create a persistent object for a 3D polygon
-//   Reason: return type 'Handle(ShapePersistent_BRep::Polygon3D)' is unknown
-//   // pub fn translate(thePoly: &HandlePolygon3D, theLoc: &Location, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_BRep::Polygon3D>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:571 - `ShapePersistent_BRep::Translate`
-//   static_method: Create a persistent object for a polygon on a closed surface
-//   Reason: return type 'Handle(ShapePersistent_BRep::PolygonOnClosedSurface)' is unknown
-//   // pub fn translate(thePoly: &HandlePolygon2D, thePoly2: &HandlePolygon2D, theSurf: &HandleSurface, theLoc: &Location, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_BRep::PolygonOnClosedSurface>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:578 - `ShapePersistent_BRep::Translate`
-//   static_method: Create a persistent object for a polygon on a surface
-//   Reason: return type 'Handle(ShapePersistent_BRep::PolygonOnSurface)' is unknown
-//   // pub fn translate(thePoly: &HandlePolygon2D, theSurf: &HandleSurface, theLoc: &Location, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_BRep::PolygonOnSurface>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:584 - `ShapePersistent_BRep::Translate`
-//   static_method: Create a persistent object for a polygon on a surface
-//   Reason: return type 'Handle(ShapePersistent_BRep::PolygonOnClosedTriangulation)' is unknown
-//   // pub fn translate(thePolyOnTriang: &HandlePolygonOnTriangulation, thePolyOnTriang2: &HandlePolygonOnTriangulation, thePolyTriang: &HandleTriangulation, theLoc: &Location, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_BRep::PolygonOnClosedTriangulation>>;
-//
-// SKIPPED: **Source:** `ShapePersistent_BRep.hxx`:591 - `ShapePersistent_BRep::Translate`
-//   static_method: Create a persistent object for a polygon on a surface
-//   Reason: return type 'Handle(ShapePersistent_BRep::PolygonOnTriangulation)' is unknown
-//   // pub fn translate(thePolyOnTriang: &HandlePolygonOnTriangulation, thePolyTriang: &HandleTriangulation, theLoc: &Location, theMap: &mut TransientPersistentMap) -> OwnedPtr<Handle<ShapePersistent_BRep::PolygonOnTriangulation>>;
 //
 
 /// **Source:** `ShapePersistent_BRep.hxx`:39 - `ShapePersistent_BRep_PointRepresentation`
@@ -554,6 +662,39 @@ impl BRep_PointOnCurve {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointOnCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_PointOnCurve_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapePersistentBRepPointOnCurve;
+
+unsafe impl crate::CppDeletable for HandleShapePersistentBRepPointOnCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapePersistentBRepPointOnCurve_destructor(ptr);
+    }
+}
+
+impl HandleShapePersistentBRepPointOnCurve {
+    /// Dereference this Handle to access the underlying ShapePersistent_BRep_PointOnCurve
+    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PointOnCurve {
+        unsafe { &*(crate::ffi::HandleShapePersistentBRepPointOnCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PointOnCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PointOnCurve {
+        unsafe {
+            &mut *(crate::ffi::HandleShapePersistentBRepPointOnCurve_get_mut(self as *mut Self))
+        }
+    }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:91 - `ShapePersistent_BRep_PointsOnSurface`
@@ -686,6 +827,43 @@ impl BRep_PointOnCurveOnSurface {
             )
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointOnCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface_to_handle(obj.into_raw()),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapePersistentBRepPointOnCurveOnSurface;
+
+unsafe impl crate::CppDeletable for HandleShapePersistentBRepPointOnCurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapePersistentBRepPointOnCurveOnSurface_destructor(ptr);
+    }
+}
+
+impl HandleShapePersistentBRepPointOnCurveOnSurface {
+    /// Dereference this Handle to access the underlying ShapePersistent_BRep_PointOnCurveOnSurface
+    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface {
+        unsafe {
+            &*(crate::ffi::HandleShapePersistentBRepPointOnCurveOnSurface_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PointOnCurveOnSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface {
+        unsafe {
+            &mut *(crate::ffi::HandleShapePersistentBRepPointOnCurveOnSurface_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:123 - `ShapePersistent_BRep_PointOnSurface`
@@ -734,6 +912,39 @@ impl BRep_PointOnSurface {
             crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_PointOnSurface_import(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_PointOnSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapePersistentBRepPointOnSurface;
+
+unsafe impl crate::CppDeletable for HandleShapePersistentBRepPointOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapePersistentBRepPointOnSurface_destructor(ptr);
+    }
+}
+
+impl HandleShapePersistentBRepPointOnSurface {
+    /// Dereference this Handle to access the underlying ShapePersistent_BRep_PointOnSurface
+    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PointOnSurface {
+        unsafe { &*(crate::ffi::HandleShapePersistentBRepPointOnSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PointOnSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PointOnSurface {
+        unsafe {
+            &mut *(crate::ffi::HandleShapePersistentBRepPointOnSurface_get_mut(self as *mut Self))
         }
     }
 }
@@ -1173,6 +1384,37 @@ impl BRep_Curve3D {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurve3D> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_Curve3D_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapePersistentBRepCurve3D;
+
+unsafe impl crate::CppDeletable for HandleShapePersistentBRepCurve3D {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapePersistentBRepCurve3D_destructor(ptr);
+    }
+}
+
+impl HandleShapePersistentBRepCurve3D {
+    /// Dereference this Handle to access the underlying ShapePersistent_BRep_Curve3D
+    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_Curve3D {
+        unsafe { &*(crate::ffi::HandleShapePersistentBRepCurve3D_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_Curve3D
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_Curve3D {
+        unsafe { &mut *(crate::ffi::HandleShapePersistentBRepCurve3D_get_mut(self as *mut Self)) }
+    }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:210 - `ShapePersistent_BRep_CurveOnSurface`
@@ -1235,6 +1477,39 @@ impl BRep_CurveOnSurface {
             crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_CurveOnSurface_import(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_CurveOnSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapePersistentBRepCurveOnSurface;
+
+unsafe impl crate::CppDeletable for HandleShapePersistentBRepCurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapePersistentBRepCurveOnSurface_destructor(ptr);
+    }
+}
+
+impl HandleShapePersistentBRepCurveOnSurface {
+    /// Dereference this Handle to access the underlying ShapePersistent_BRep_CurveOnSurface
+    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_CurveOnSurface {
+        unsafe { &*(crate::ffi::HandleShapePersistentBRepCurveOnSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_CurveOnSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_CurveOnSurface {
+        unsafe {
+            &mut *(crate::ffi::HandleShapePersistentBRepCurveOnSurface_get_mut(self as *mut Self))
         }
     }
 }
@@ -1308,6 +1583,43 @@ impl BRep_CurveOnClosedSurface {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveOnClosedSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface_to_handle(obj.into_raw()),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapePersistentBRepCurveOnClosedSurface;
+
+unsafe impl crate::CppDeletable for HandleShapePersistentBRepCurveOnClosedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapePersistentBRepCurveOnClosedSurface_destructor(ptr);
+    }
+}
+
+impl HandleShapePersistentBRepCurveOnClosedSurface {
+    /// Dereference this Handle to access the underlying ShapePersistent_BRep_CurveOnClosedSurface
+    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface {
+        unsafe {
+            &*(crate::ffi::HandleShapePersistentBRepCurveOnClosedSurface_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_CurveOnClosedSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface {
+        unsafe {
+            &mut *(crate::ffi::HandleShapePersistentBRepCurveOnClosedSurface_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:255 - `ShapePersistent_BRep_Polygon3D`
@@ -1366,6 +1678,37 @@ impl BRep_Polygon3D {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygon3D> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_Polygon3D_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapePersistentBRepPolygon3D;
+
+unsafe impl crate::CppDeletable for HandleShapePersistentBRepPolygon3D {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapePersistentBRepPolygon3D_destructor(ptr);
+    }
+}
+
+impl HandleShapePersistentBRepPolygon3D {
+    /// Dereference this Handle to access the underlying ShapePersistent_BRep_Polygon3D
+    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_Polygon3D {
+        unsafe { &*(crate::ffi::HandleShapePersistentBRepPolygon3D_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_Polygon3D
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_Polygon3D {
+        unsafe { &mut *(crate::ffi::HandleShapePersistentBRepPolygon3D_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1437,6 +1780,43 @@ impl BRep_PolygonOnTriangulation {
             crate::OwnedPtr::from_raw(
                 crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation_import(self as *const Self),
             )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation_to_handle(obj.into_raw()),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapePersistentBRepPolygonOnTriangulation;
+
+unsafe impl crate::CppDeletable for HandleShapePersistentBRepPolygonOnTriangulation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapePersistentBRepPolygonOnTriangulation_destructor(ptr);
+    }
+}
+
+impl HandleShapePersistentBRepPolygonOnTriangulation {
+    /// Dereference this Handle to access the underlying ShapePersistent_BRep_PolygonOnTriangulation
+    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation {
+        unsafe {
+            &*(crate::ffi::HandleShapePersistentBRepPolygonOnTriangulation_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PolygonOnTriangulation
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation {
+        unsafe {
+            &mut *(crate::ffi::HandleShapePersistentBRepPolygonOnTriangulation_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 }
@@ -1517,6 +1897,49 @@ impl BRep_PolygonOnClosedTriangulation {
             )
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnClosedTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapePersistentBRepPolygonOnClosedTriangulation;
+
+unsafe impl crate::CppDeletable for HandleShapePersistentBRepPolygonOnClosedTriangulation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapePersistentBRepPolygonOnClosedTriangulation_destructor(ptr);
+    }
+}
+
+impl HandleShapePersistentBRepPolygonOnClosedTriangulation {
+    /// Dereference this Handle to access the underlying ShapePersistent_BRep_PolygonOnClosedTriangulation
+    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation {
+        unsafe {
+            &*(crate::ffi::HandleShapePersistentBRepPolygonOnClosedTriangulation_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PolygonOnClosedTriangulation
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation {
+        unsafe {
+            &mut *(crate::ffi::HandleShapePersistentBRepPolygonOnClosedTriangulation_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:307 - `ShapePersistent_BRep_PolygonOnSurface`
@@ -1584,6 +2007,41 @@ impl BRep_PolygonOnSurface {
             crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_PolygonOnSurface_import(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_PolygonOnSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapePersistentBRepPolygonOnSurface;
+
+unsafe impl crate::CppDeletable for HandleShapePersistentBRepPolygonOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapePersistentBRepPolygonOnSurface_destructor(ptr);
+    }
+}
+
+impl HandleShapePersistentBRepPolygonOnSurface {
+    /// Dereference this Handle to access the underlying ShapePersistent_BRep_PolygonOnSurface
+    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PolygonOnSurface {
+        unsafe {
+            &*(crate::ffi::HandleShapePersistentBRepPolygonOnSurface_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PolygonOnSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PolygonOnSurface {
+        unsafe {
+            &mut *(crate::ffi::HandleShapePersistentBRepPolygonOnSurface_get_mut(self as *mut Self))
         }
     }
 }
@@ -1658,6 +2116,43 @@ impl BRep_PolygonOnClosedSurface {
             )
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnClosedSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface_to_handle(obj.into_raw()),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapePersistentBRepPolygonOnClosedSurface;
+
+unsafe impl crate::CppDeletable for HandleShapePersistentBRepPolygonOnClosedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapePersistentBRepPolygonOnClosedSurface_destructor(ptr);
+    }
+}
+
+impl HandleShapePersistentBRepPolygonOnClosedSurface {
+    /// Dereference this Handle to access the underlying ShapePersistent_BRep_PolygonOnClosedSurface
+    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface {
+        unsafe {
+            &*(crate::ffi::HandleShapePersistentBRepPolygonOnClosedSurface_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PolygonOnClosedSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface {
+        unsafe {
+            &mut *(crate::ffi::HandleShapePersistentBRepPolygonOnClosedSurface_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:342 - `ShapePersistent_BRep_CurveOn2Surfaces`
@@ -1724,6 +2219,41 @@ impl BRep_CurveOn2Surfaces {
             crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces_import(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveOn2Surfaces> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapePersistentBRepCurveOn2Surfaces;
+
+unsafe impl crate::CppDeletable for HandleShapePersistentBRepCurveOn2Surfaces {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapePersistentBRepCurveOn2Surfaces_destructor(ptr);
+    }
+}
+
+impl HandleShapePersistentBRepCurveOn2Surfaces {
+    /// Dereference this Handle to access the underlying ShapePersistent_BRep_CurveOn2Surfaces
+    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces {
+        unsafe {
+            &*(crate::ffi::HandleShapePersistentBRepCurveOn2Surfaces_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_CurveOn2Surfaces
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces {
+        unsafe {
+            &mut *(crate::ffi::HandleShapePersistentBRepCurveOn2Surfaces_get_mut(self as *mut Self))
         }
     }
 }
