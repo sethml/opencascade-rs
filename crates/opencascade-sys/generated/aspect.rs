@@ -3018,14 +3018,6 @@ impl HandleAspectCircularGrid {
     }
 }
 
-// ── Skipped symbols for CircularGrid (1 total) ──
-// SKIPPED: **Source:** `Aspect_CircularGrid.hxx`:29 - `Aspect_CircularGrid::Aspect_CircularGrid`
-//   constructor: creates a new grid. By default this grid is not
-//   constructor: active.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_real_int_real3(aRadiusStep: f64, aDivisionNumber: i32, XOrigin: f64, anYOrigin: f64, aRotationAngle: f64) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Aspect_DisplayConnection.hxx
 // ========================
@@ -6181,15 +6173,6 @@ impl HandleAspectRectangularGrid {
         }
     }
 }
-
-// ── Skipped symbols for RectangularGrid (1 total) ──
-// SKIPPED: **Source:** `Aspect_RectangularGrid.hxx`:32 - `Aspect_RectangularGrid::Aspect_RectangularGrid`
-//   constructor: creates a new grid. By default this grid is not
-//   constructor: active.
-//   constructor: The first angle is given relatively to the horizontal.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_real7(aXStep: f64, aYStep: f64, anXOrigin: f64, anYOrigin: f64, aFirstAngle: f64, aSecondAngle: f64, aRotationAngle: f64) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From Aspect_ScrollDelta.hxx

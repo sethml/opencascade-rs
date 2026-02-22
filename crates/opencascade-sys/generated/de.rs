@@ -914,19 +914,6 @@ impl HandleDEConfigurationNode {
     }
 }
 
-// ── Skipped symbols for ConfigurationNode (2 total) ──
-// SKIPPED: **Source:** `DE_ConfigurationNode.hxx`:54 - `DE_ConfigurationNode::DE_ConfigurationNode`
-//   constructor: Initializes all field by default
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `DE_ConfigurationNode.hxx`:58 - `DE_ConfigurationNode::DE_ConfigurationNode`
-//   constructor: Copies values of all fields
-//   constructor: @param[in] theConfigurationNode object to copy
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handledeconfigurationnode(theConfigurationNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
-//
-
 /// **Source:** `DE_ConfigurationNode.hxx`:145 - `DE_ConfigurationNode_DE_SectionGlobal`
 pub use crate::ffi::DE_ConfigurationNode_DE_SectionGlobal as ConfigurationNode_DE_SectionGlobal;
 
@@ -1420,20 +1407,6 @@ impl HandleDEProvider {
     }
 }
 
-// ── Skipped symbols for Provider (2 total) ──
-// SKIPPED: **Source:** `DE_Provider.hxx`:49 - `DE_Provider::DE_Provider`
-//   constructor: Default constructor
-//   constructor: Configure translation process with global configuration
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `DE_Provider.hxx`:53 - `DE_Provider::DE_Provider`
-//   constructor: Configure translation process
-//   constructor: @param[in] theNode object to copy
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handledeconfigurationnode(theNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From DE_ShapeFixConfigurationNode.hxx
 // ========================
@@ -1783,19 +1756,6 @@ impl HandleDEShapeFixConfigurationNode {
         }
     }
 }
-
-// ── Skipped symbols for ShapeFixConfigurationNode (2 total) ──
-// SKIPPED: **Source:** `DE_ShapeFixConfigurationNode.hxx`:29 - `DE_ShapeFixConfigurationNode::DE_ShapeFixConfigurationNode`
-//   constructor: Initializes all field by default
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `DE_ShapeFixConfigurationNode.hxx`:33 - `DE_ShapeFixConfigurationNode::DE_ShapeFixConfigurationNode`
-//   constructor: Copies values of all fields
-//   constructor: @param[in] theConfigurationNode object to copy
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handledeshapefixconfigurationnode(theConfigurationNode: &HandleShapeFixConfigurationNode) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From DE_ShapeFixParameters.hxx

@@ -381,12 +381,6 @@ impl HandleNLPlateHGPPConstraint {
     }
 }
 
-// ── Skipped symbols for HGPPConstraint (1 total) ──
-// SKIPPED: **Source:** `NLPlate_HGPPConstraint.hxx`:39 - `NLPlate_HGPPConstraint::NLPlate_HGPPConstraint`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From NLPlate_HPG0Constraint.hxx
 // ========================

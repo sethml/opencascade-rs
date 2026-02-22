@@ -606,13 +606,6 @@ impl HandleRWMeshCafReader {
     }
 }
 
-// ── Skipped symbols for CafReader (1 total) ──
-// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:66 - `RWMesh_CafReader::RWMesh_CafReader`
-//   constructor: Empty constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 /// **Source:** `RWMesh_CafReader.hxx`:55 - `RWMesh_CafReader_CafDocumentTools`
 /// Structure holding tools for filling the document.
 pub use crate::ffi::RWMesh_CafReader_CafDocumentTools as CafReader_CafDocumentTools;
@@ -1578,13 +1571,6 @@ impl HandleRWMeshMaterialMap {
     }
 }
 
-// ── Skipped symbols for MaterialMap (1 total) ──
-// SKIPPED: **Source:** `RWMesh_MaterialMap.hxx`:29 - `RWMesh_MaterialMap::RWMesh_MaterialMap`
-//   constructor: Main constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_asciistring(theFile: &AsciiString) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From RWMesh_NodeAttributes.hxx
 // ========================
@@ -1998,13 +1984,6 @@ impl HandleRWMeshTriangulationReader {
         }
     }
 }
-
-// ── Skipped symbols for TriangulationReader (1 total) ──
-// SKIPPED: **Source:** `RWMesh_TriangulationReader.hxx`:59 - `RWMesh_TriangulationReader::RWMesh_TriangulationReader`
-//   constructor: Constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
 
 /// **Source:** `RWMesh_TriangulationReader.hxx`:29 - `RWMesh_TriangulationReader_LoadingStatistic`
 pub use crate::ffi::RWMesh_TriangulationReader_LoadingStatistic as TriangulationReader_LoadingStatistic;

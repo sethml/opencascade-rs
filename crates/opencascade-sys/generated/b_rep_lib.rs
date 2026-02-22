@@ -3783,13 +3783,6 @@ impl PointCloudShape {
     }
 }
 
-// ── Skipped symbols for PointCloudShape (1 total) ──
-// SKIPPED: **Source:** `BRepLib_PointCloudShape.hxx`:34 - `BRepLib_PointCloudShape::BRepLib_PointCloudShape`
-//   constructor: Constructor initialized by shape
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_shape_real(theShape: &Shape, theTol: f64) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From BRepLib_ToolTriangulatedShape.hxx
 // ========================

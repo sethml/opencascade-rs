@@ -18920,12 +18920,7 @@ impl HandleGraphic3dCView {
     }
 }
 
-// ── Skipped symbols for CView (2 total) ──
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:61 - `Graphic3d_CView::Graphic3d_CView`
-//   constructor: Constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handlegraphic3dstructuremanager(theMgr: &HandleStructureManager) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for CView (1 total) ──
 // SKIPPED: **Source:** `Graphic3d_CView.hxx`:283 - `Graphic3d_CView::SetWindow`
 //   method: Creates and maps rendering window to the view.
 //   method: @param[in] theParentVIew parent view or NULL
@@ -21081,18 +21076,6 @@ impl HandleGraphic3dCubeMap {
     }
 }
 
-// ── Skipped symbols for CubeMap (2 total) ──
-// SKIPPED: **Source:** `Graphic3d_CubeMap.hxx`:28 - `Graphic3d_CubeMap::Graphic3d_CubeMap`
-//   constructor: Constructor defining loading cubemap from file.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_asciistring_bool(theFileName: &AsciiString, theToGenerateMipmaps: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_CubeMap.hxx`:32 - `Graphic3d_CubeMap::Graphic3d_CubeMap`
-//   constructor: Constructor defining direct cubemap initialization from PixMap.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handleimagepixmap_bool(thePixmap: &HandlePixMap, theToGenerateMipmaps: bool) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Graphic3d_CubeMapOrder.hxx
 // ========================
@@ -23090,13 +23073,6 @@ impl HandleGraphic3dFrameStats {
         }
     }
 }
-
-// ── Skipped symbols for FrameStats (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_FrameStats.hxx`:31 - `Graphic3d_FrameStats::Graphic3d_FrameStats`
-//   constructor: Default constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
 
 // ========================
 // From Graphic3d_FrameStatsData.hxx

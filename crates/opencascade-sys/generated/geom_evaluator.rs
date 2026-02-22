@@ -220,12 +220,6 @@ impl HandleGeomEvaluatorCurve {
     }
 }
 
-// ── Skipped symbols for Curve (1 total) ──
-// SKIPPED: **Source:** `GeomEvaluator_Curve.hxx`:29 - `GeomEvaluator_Curve::GeomEvaluator_Curve`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From GeomEvaluator_OffsetCurve.hxx
 // ========================
@@ -1167,12 +1161,6 @@ impl HandleGeomEvaluatorSurface {
         }
     }
 }
-
-// ── Skipped symbols for Surface (1 total) ──
-// SKIPPED: **Source:** `GeomEvaluator_Surface.hxx`:29 - `GeomEvaluator_Surface::GeomEvaluator_Surface`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
 
 // ========================
 // From GeomEvaluator_SurfaceOfExtrusion.hxx

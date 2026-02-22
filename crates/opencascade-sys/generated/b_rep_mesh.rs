@@ -303,13 +303,6 @@ impl HandleBRepMeshBaseMeshAlgo {
     }
 }
 
-// ── Skipped symbols for BaseMeshAlgo (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:35 - `BRepMesh_BaseMeshAlgo::BRepMesh_BaseMeshAlgo`
-//   constructor: Constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From BRepMesh_BoundaryParamsRangeSplitter.hxx
 // ========================
@@ -1358,13 +1351,6 @@ impl HandleBRepMeshConstrainedBaseMeshAlgo {
     }
 }
 
-// ── Skipped symbols for ConstrainedBaseMeshAlgo (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:29 - `BRepMesh_ConstrainedBaseMeshAlgo::BRepMesh_ConstrainedBaseMeshAlgo`
-//   constructor: Constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From BRepMesh_Context.hxx
 // ========================
@@ -2202,13 +2188,6 @@ impl HandleBRepMeshCustomBaseMeshAlgo {
         }
     }
 }
-
-// ── Skipped symbols for CustomBaseMeshAlgo (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:31 - `BRepMesh_CustomBaseMeshAlgo::BRepMesh_CustomBaseMeshAlgo`
-//   constructor: Constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
 
 // ========================
 // From BRepMesh_CylinderRangeSplitter.hxx

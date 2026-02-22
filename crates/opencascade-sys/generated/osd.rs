@@ -6058,13 +6058,6 @@ impl HandleOSDFileSystem {
     }
 }
 
-// ── Skipped symbols for FileSystem (1 total) ──
-// SKIPPED: **Source:** `OSD_FileSystem.hxx`:98 - `OSD_FileSystem::OSD_FileSystem`
-//   constructor: Constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From OSD_FileSystemSelector.hxx
 // ========================

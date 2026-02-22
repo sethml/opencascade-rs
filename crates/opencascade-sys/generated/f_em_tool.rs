@@ -612,13 +612,6 @@ impl HandleFEmToolElementaryCriterion {
     }
 }
 
-// ── Skipped symbols for ElementaryCriterion (1 total) ──
-// SKIPPED: **Source:** `FEmTool_ElementaryCriterion.hxx`:39 - `FEmTool_ElementaryCriterion::FEmTool_ElementaryCriterion`
-//   constructor: Empty constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From FEmTool_ElementsOfRefMatrix.hxx
 // ========================

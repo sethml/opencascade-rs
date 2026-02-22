@@ -708,18 +708,6 @@ impl HandleVrmlDataArrayVec3d {
     }
 }
 
-// ── Skipped symbols for ArrayVec3d (2 total) ──
-// SKIPPED: **Source:** `VrmlData_ArrayVec3d.hxx`:34 - `VrmlData_ArrayVec3d::VrmlData_ArrayVec3d`
-//   constructor: Empty constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `VrmlData_ArrayVec3d.hxx`:43 - `VrmlData_ArrayVec3d::VrmlData_ArrayVec3d`
-//   constructor: Constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_scene_charptr_size_xyzptr(theScene: &Scene, theName: *const char, nVec: usize, arrVec: *const XYZ) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From VrmlData_Box.hxx
 // ========================
@@ -2711,18 +2699,6 @@ impl HandleVrmlDataFaceted {
     }
 }
 
-// ── Skipped symbols for Faceted (2 total) ──
-// SKIPPED: **Source:** `VrmlData_Faceted.hxx`:33 - `VrmlData_Faceted::VrmlData_Faceted`
-//   constructor: Empty constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `VrmlData_Faceted.hxx`:44 - `VrmlData_Faceted::VrmlData_Faceted`
-//   constructor: Empty constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_scene_charptr_bool3_real(theScene: &Scene, theName: *const char, isCCW: bool, isSolid: bool, isConvex: bool, theCreaseAngle: f64) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From VrmlData_Geometry.hxx
 // ========================
@@ -3047,18 +3023,6 @@ impl HandleVrmlDataGeometry {
         }
     }
 }
-
-// ── Skipped symbols for Geometry (2 total) ──
-// SKIPPED: **Source:** `VrmlData_Geometry.hxx`:35 - `VrmlData_Geometry::VrmlData_Geometry`
-//   constructor: Empty constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `VrmlData_Geometry.hxx`:43 - `VrmlData_Geometry::VrmlData_Geometry`
-//   constructor: Constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_scene_charptr(theScene: &Scene, theName: *const char) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From VrmlData_Group.hxx
@@ -5977,13 +5941,6 @@ impl HandleVrmlDataNode {
     }
 }
 
-// ── Skipped symbols for Node (1 total) ──
-// SKIPPED: **Source:** `VrmlData_Node.hxx`:43 - `VrmlData_Node::VrmlData_Node`
-//   constructor: Empty constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From VrmlData_Normal.hxx
 // ========================
@@ -7696,18 +7653,6 @@ impl HandleVrmlDataTexture {
     }
 }
 
-// ── Skipped symbols for Texture (2 total) ──
-// SKIPPED: **Source:** `VrmlData_Texture.hxx`:32 - `VrmlData_Texture::VrmlData_Texture`
-//   constructor: Empty constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `VrmlData_Texture.hxx`:41 - `VrmlData_Texture::VrmlData_Texture`
-//   constructor: Constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_scene_charptr_bool2(theScene: &Scene, theName: *const char, theRepeatS: bool, theRepeatT: bool) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From VrmlData_TextureCoordinate.hxx
 // ========================
@@ -8299,18 +8244,6 @@ impl HandleVrmlDataTextureTransform {
         }
     }
 }
-
-// ── Skipped symbols for TextureTransform (2 total) ──
-// SKIPPED: **Source:** `VrmlData_TextureTransform.hxx`:32 - `VrmlData_TextureTransform::VrmlData_TextureTransform`
-//   constructor: Empty constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `VrmlData_TextureTransform.hxx`:40 - `VrmlData_TextureTransform::VrmlData_TextureTransform`
-//   constructor: Constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_scene_charptr(theScene: &Scene, theName: *const char) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From VrmlData_UnknownNode.hxx

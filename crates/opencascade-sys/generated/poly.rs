@@ -2386,14 +2386,6 @@ impl MakeLoops {
     }
 }
 
-// ── Skipped symbols for MakeLoops (1 total) ──
-// SKIPPED: **Source:** `Poly_MakeLoops.hxx`:181 - `Poly_MakeLoops::Poly_MakeLoops`
-//   constructor: Constructor. If helper is NULL then the algorithm will
-//   constructor: probably return a wrong result
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_helperptr_handlencollectionbaseallocator(theHelper: *const MakeLoops_Helper, theAlloc: &HandleBaseAllocator) -> OwnedPtr<Self>;
-//
-
 /// **Source:** `Poly_MakeLoops.hxx`:45 - `Poly_MakeLoops_Link`
 /// The Link structure
 pub use crate::ffi::Poly_MakeLoops_Link as MakeLoops_Link;

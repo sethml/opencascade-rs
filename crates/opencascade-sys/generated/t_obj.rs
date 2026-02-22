@@ -1925,14 +1925,6 @@ impl HandleTObjLabelIterator {
     }
 }
 
-// ── Skipped symbols for LabelIterator (1 total) ──
-// SKIPPED: **Source:** `TObj_LabelIterator.hxx`:49 - `TObj_LabelIterator::TObj_LabelIterator`
-//   constructor: Creates an iterator an initialize it by theLabel and recursive flag.
-//   constructor: If isRecursive is Standard_True make recursive iterations
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_label_bool(theLabel: &Label, isRecursive: bool) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From TObj_Model.hxx
 // ========================

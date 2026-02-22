@@ -1641,35 +1641,23 @@ pub fn compute_class_bindings(
             });
         }
         ctors
-    } else {
-        // Record skipped constructors for abstract/protected-destructor classes
-        if effectively_abstract {
-            for ctor in &class.constructors {
-                skipped_symbols.push(SkippedSymbol {
-                    kind: "constructor",
-                    module: class.module.clone(),
-                    cpp_name: format!("{}::{}", class.name, class.name),
-                    source_header: class.source_header.clone(),
-                    source_line: ctor.source_line,
-                    doc_comment: ctor.comment.clone(),
-                    skip_reason: "class is abstract (has unimplemented pure virtual methods)".to_string(),
-                    stub_rust_decl: generate_ctor_stub(cpp_name, ctor),
-                });
-            }
-        } else if class.has_protected_destructor {
-            for ctor in &class.constructors {
-                skipped_symbols.push(SkippedSymbol {
-                    kind: "constructor",
-                    module: class.module.clone(),
-                    cpp_name: format!("{}::{}", class.name, class.name),
-                    source_header: class.source_header.clone(),
-                    source_line: ctor.source_line,
-                    doc_comment: ctor.comment.clone(),
-                    skip_reason: "class has protected destructor".to_string(),
-                    stub_rust_decl: generate_ctor_stub(cpp_name, ctor),
-                });
-            }
+    } else if class.has_protected_destructor {
+        for ctor in &class.constructors {
+            skipped_symbols.push(SkippedSymbol {
+                kind: "constructor",
+                module: class.module.clone(),
+                cpp_name: format!("{}::{}", class.name, class.name),
+                source_header: class.source_header.clone(),
+                source_line: ctor.source_line,
+                doc_comment: ctor.comment.clone(),
+                skip_reason: "class has protected destructor".to_string(),
+                stub_rust_decl: generate_ctor_stub(cpp_name, ctor),
+            });
         }
+        Vec::new()
+    } else {
+        // Abstract class constructors are expected to be skipped -- don't emit skip comments
+        // since this is normal behavior for abstract classes, not a binding limitation.
         Vec::new()
     };
 

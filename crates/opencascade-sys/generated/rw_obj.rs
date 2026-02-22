@@ -1372,13 +1372,6 @@ impl HandleRWObjReader {
     }
 }
 
-// ── Skipped symbols for Reader (1 total) ──
-// SKIPPED: **Source:** `RWObj_Reader.hxx`:48 - `RWObj_Reader::RWObj_Reader`
-//   constructor: Empty constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From RWObj_SubMesh.hxx
 // ========================

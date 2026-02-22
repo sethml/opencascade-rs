@@ -804,10 +804,3 @@ impl EvaluatorFunction {
         }
     }
 }
-
-// ── Skipped symbols for EvaluatorFunction (1 total) ──
-// SKIPPED: **Source:** `BSplCLib_EvaluatorFunction.hxx`:32 - `BSplCLib_EvaluatorFunction::BSplCLib_EvaluatorFunction`
-//   constructor: Empty constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//

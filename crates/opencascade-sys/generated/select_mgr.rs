@@ -2400,14 +2400,6 @@ impl HandleSelectMgrBaseFrustum {
     }
 }
 
-// ── Skipped symbols for BaseFrustum (1 total) ──
-// SKIPPED: **Source:** `SelectMgr_BaseFrustum.hxx`:31 - `SelectMgr_BaseFrustum::SelectMgr_BaseFrustum`
-//   constructor: Creates new selecting volume with pixel tolerance set to 2,
-//   constructor: orthographic camera and empty frustum builder
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From SelectMgr_BaseIntersector.hxx
 // ========================
@@ -3147,13 +3139,6 @@ impl HandleSelectMgrBaseIntersector {
         }
     }
 }
-
-// ── Skipped symbols for BaseIntersector (1 total) ──
-// SKIPPED: **Source:** `SelectMgr_BaseIntersector.hxx`:41 - `SelectMgr_BaseIntersector::SelectMgr_BaseIntersector`
-//   constructor: Creates new empty selecting volume
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
 
 // ========================
 // From SelectMgr_CompositionFilter.hxx
@@ -8841,13 +8826,6 @@ impl HandleSelectMgrSelectionImageFiller {
         }
     }
 }
-
-// ── Skipped symbols for SelectionImageFiller (1 total) ──
-// SKIPPED: **Source:** `SelectMgr_SelectionImageFiller.hxx`:37 - `SelectMgr_SelectionImageFiller::SelectMgr_SelectionImageFiller`
-//   constructor: Main constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_pixmap_viewerselectorptr(thePixMap: &mut PixMap, theSelector: *mut ViewerSelector) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From SelectMgr_SelectionManager.hxx

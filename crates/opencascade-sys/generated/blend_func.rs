@@ -5068,12 +5068,6 @@ impl GenChamfInv {
     }
 }
 
-// ── Skipped symbols for GenChamfInv (1 total) ──
-// SKIPPED: **Source:** `BlendFunc_GenChamfInv.hxx`:30 - `BlendFunc_GenChamfInv::BlendFunc_GenChamfInv`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handleadaptor3dsurface2_handleadaptor3dcurve(S1: &HandleSurface, S2: &HandleSurface, C: &HandleCurve) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From BlendFunc_GenChamfer.hxx
 // ========================
@@ -5520,12 +5514,6 @@ impl GenChamfer {
         unsafe { crate::ffi::BlendFunc_GenChamfer_inherited_GetStateNumber(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for GenChamfer (1 total) ──
-// SKIPPED: **Source:** `BlendFunc_GenChamfer.hxx`:39 - `BlendFunc_GenChamfer::BlendFunc_GenChamfer`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handleadaptor3dsurface2_handleadaptor3dcurve(S1: &HandleSurface, S2: &HandleSurface, CG: &HandleCurve) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From BlendFunc_Ruled.hxx

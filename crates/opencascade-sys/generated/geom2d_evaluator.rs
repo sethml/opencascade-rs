@@ -306,12 +306,6 @@ impl HandleGeom2dEvaluatorCurve {
     }
 }
 
-// ── Skipped symbols for Curve (1 total) ──
-// SKIPPED: **Source:** `Geom2dEvaluator_Curve.hxx`:29 - `Geom2dEvaluator_Curve::Geom2dEvaluator_Curve`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Geom2dEvaluator_OffsetCurve.hxx
 // ========================

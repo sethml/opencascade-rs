@@ -6670,13 +6670,6 @@ impl HandleSelect3DSensitiveSet {
     }
 }
 
-// ── Skipped symbols for SensitiveSet (1 total) ──
-// SKIPPED: **Source:** `Select3D_SensitiveSet.hxx`:44 - `Select3D_SensitiveSet::Select3D_SensitiveSet`
-//   constructor: Creates new empty sensitive set and its content
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_handleselectmgrentityowner(theOwnerId: &HandleEntityOwner) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From Select3D_SensitiveSphere.hxx
 // ========================

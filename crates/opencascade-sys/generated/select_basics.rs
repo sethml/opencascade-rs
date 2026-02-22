@@ -537,10 +537,3 @@ impl SelectingVolumeManager {
         }
     }
 }
-
-// ── Skipped symbols for SelectingVolumeManager (1 total) ──
-// SKIPPED: **Source:** `SelectBasics_SelectingVolumeManager.hxx`:35 - `SelectBasics_SelectingVolumeManager::SelectBasics_SelectingVolumeManager`
-//   constructor: Empty constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//

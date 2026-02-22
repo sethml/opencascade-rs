@@ -96,12 +96,6 @@ impl Function {
     }
 }
 
-// ── Skipped symbols for Function (1 total) ──
-// SKIPPED: **Source:** `AppCont_Function.hxx`:30 - `AppCont_Function::AppCont_Function`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From AppCont_LeastSquare.hxx
 // ========================

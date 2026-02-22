@@ -395,12 +395,6 @@ impl HandleStdObjMgtPersistent {
     }
 }
 
-// ── Skipped symbols for Persistent (1 total) ──
-// SKIPPED: **Source:** `StdObjMgt_Persistent.hxx`:37 - `StdObjMgt_Persistent::StdObjMgt_Persistent`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From StdObjMgt_ReadData.hxx
 // ========================

@@ -333,12 +333,7 @@ impl HandleRWStlReader {
     }
 }
 
-// ── Skipped symbols for Reader (2 total) ──
-// SKIPPED: **Source:** `RWStl_Reader.hxx`:40 - `RWStl_Reader::RWStl_Reader`
-//   constructor: Default constructor.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for Reader (1 total) ──
 // SKIPPED: **Source:** `RWStl_Reader.hxx`:74 - `RWStl_Reader::ReadAscii`
 //   method: Reads data from the stream assumed to contain Ascii STL data.
 //   method: The stream can be opened either in binary or in Ascii mode.

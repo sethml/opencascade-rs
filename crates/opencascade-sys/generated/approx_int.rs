@@ -252,9 +252,3 @@ impl SvSurfaces {
         unsafe { crate::ffi::ApproxInt_SvSurfaces_get_use_solver(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for SvSurfaces (1 total) ──
-// SKIPPED: **Source:** `ApproxInt_SvSurfaces.hxx`:46 - `ApproxInt_SvSurfaces::ApproxInt_SvSurfaces`
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//

@@ -10053,14 +10053,6 @@ impl HandlePrsDimDimension {
     }
 }
 
-// ── Skipped symbols for Dimension (1 total) ──
-// SKIPPED: **Source:** `PrsDim_Dimension.hxx`:219 - `PrsDim_Dimension::PrsDim_Dimension`
-//   constructor: Constructor with default parameters values.
-//   constructor: @param[in] theType  the type of dimension.
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new_kindofdimension(theType: KindOfDimension) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From PrsDim_DimensionOwner.hxx
 // ========================

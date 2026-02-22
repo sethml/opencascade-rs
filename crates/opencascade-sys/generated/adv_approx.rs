@@ -403,13 +403,6 @@ impl EvaluatorFunction {
     }
 }
 
-// ── Skipped symbols for EvaluatorFunction (1 total) ──
-// SKIPPED: **Source:** `AdvApprox_EvaluatorFunction.hxx`:31 - `AdvApprox_EvaluatorFunction::AdvApprox_EvaluatorFunction`
-//   constructor: Empty constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From AdvApprox_PrefAndRec.hxx
 // ========================

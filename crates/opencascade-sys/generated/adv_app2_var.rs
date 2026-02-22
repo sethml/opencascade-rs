@@ -1249,13 +1249,6 @@ impl EvaluatorFunc2Var {
     }
 }
 
-// ── Skipped symbols for EvaluatorFunc2Var (1 total) ──
-// SKIPPED: **Source:** `AdvApp2Var_EvaluatorFunc2Var.hxx`:28 - `AdvApp2Var_EvaluatorFunc2Var::AdvApp2Var_EvaluatorFunc2Var`
-//   constructor: Empty constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From AdvApp2Var_Framework.hxx
 // ========================

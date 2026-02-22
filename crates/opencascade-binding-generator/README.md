@@ -321,7 +321,9 @@ All methods use extern "C" C++ wrapper functions, since there is no direct Rust�
 | By-value Handle param | Wrapper accepts `const Handle<T>&` |
 | By-value class param | Wrapper accepts `const T&` |
 | Const/mut return fix | `ConstMutReturnFix`: const-cast for non-const `self` |
+| `const char*&` param (string ref) | Local `const char*` var, pass by ref, writeback to Rust-allocated string |
 | `&mut` enum out-param | Local `int32_t` var + writeback |
+| `&mut` enum return | `reinterpret_cast<int32_t*>(&obj.Method())` returning `*mut i32` |
 | `const T*` return | Pass-through as pointer (Rust uses `Option<&T>`) |
 | `T*` return (non-const method) | Pass-through as pointer (Rust uses `Option<&mut T>`) |
 | `T*` return (const method) | Pass-through as pointer (Rust uses `Option<&T>`, downgraded for soundness) |
@@ -376,21 +378,19 @@ The `OStream` and `IStream` type aliases are re-exported from the `standard` mod
 
 ### Manual Bindings
 
-Some C++ function signatures can't be auto-generated — for example, methods with `const char*&` or `const char* const&` parameters (a reference to a `const char*`). The generator detects these (`ExclusionReason::StringRefParam` in `resolver.rs`) and skips them automatically.
-
-Manual replacements live in `crates/opencascade-sys/manual/`:
+Some C++ function signatures can't be auto-generated. Manual replacements live in `crates/opencascade-sys/manual/`:
 - `<module>.rs` — `extern "C"` declarations + `impl` blocks
 - `<module>_wrappers.cpp` — C++ wrapper functions
 
-The generator appends `include!("../manual/<module>.rs");` (with a comment explaining why) to the generated module re-export file when a corresponding `manual/<module>.rs` exists. Because `include!()` is a textual insertion, the manual code has full access to the module's type aliases (e.g., `AdvancedEvolved`, `Finder`). The `extern "C"` declarations in manual files are not marked `pub`, so they are private to the module and not exposed as part of the public API. `build.rs` globs `manual/*_wrappers.cpp` and compiles them alongside `generated/wrappers.cpp`. Since Rust allows multiple `impl` blocks for a type, manual methods appear seamlessly alongside the auto-generated ones.
+The generator appends `include!("../manual/<module>.rs");` (with a comment explaining why) to the generated module re-export file when a corresponding `manual/<module>.rs` exists. Because `include!()` is a textual insertion, the manual code has full access to the module's type aliases. The `extern "C"` declarations in manual files are not marked `pub`, so they are private to the module. `build.rs` globs `manual/*_wrappers.cpp` and compiles them alongside `generated/wrappers.cpp`. Since Rust allows multiple `impl` blocks for a type, manual methods appear seamlessly alongside the auto-generated ones.
 
-See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for examples (`Transfer_Finder::GetStringAttribute`, `BRepFill_AdvancedEvolved::SetTemporaryDirectory`, and `standard` iostream accessors).
+Currently only `standard` iostream accessors (`cout()`, `cerr()`, etc.) require manual bindings. See `crates/opencascade-sys/manual/`.
 
 ---
 
 ## Skipped Symbols
 
-The binding generator skips ~394 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator skips ~159 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -409,22 +409,17 @@ Example from `gp.rs`:
 
 | Count | % | Category | Description |
 |------:|----:|----------|-------------|
-| 91 | 23.1% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`IMeshData::MapOfInteger`, `WNT_HIDSpaceMouse`, etc.) |
-| 91 | 23.1% | **Unresolved template type** | Template instantiations that can't be resolved (`NCollection_DataMap<...>`, `std::pair<...>`, `NCollection_Vec3<...>`, etc.) |
-| 72 | 18.3% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
-| 55 | 14.0% | **Unknown Handle type** | Handle to a class not in the binding set (`Handle(ShapePersistent_Geom::...)`, `Handle(ShapePersistent_BRep::...)`, etc.) |
-| 19 | 4.8% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
-| 19 | 4.8% | **Stream (shared_ptr)** | `std::shared_ptr<std::istream/ostream>` — smart-pointer-wrapped streams not yet bindable |
-| 17 | 4.3% | **String ref param** | `const char*&` or `const char* const&` parameters — needs manual binding |
-| 12 | 3.0% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
-| 11 | 2.8% | **Not CppDeletable** | Return type class has no destructor in the binding set |
-| 4 | 1.0% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
-| 2 | 0.5% | **Excluded by bindings.toml** | Explicitly excluded in config (e.g., ambiguous overload workarounds) |
-| 1 | 0.3% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
+| 132 | 83.0% | **Unknown/unresolved type** | Parameter or return type not in the binding set (`IMeshData::MapOfInteger`, `WNT_HIDSpaceMouse`, `ShapePersistent_Geom::...`, etc.) |
+| 12 | 7.5% | **Rvalue reference** | C++ move semantics (`T&&`) — all have equivalent const-ref overloads already bound (won't fix) |
+| 6 | 3.8% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
+| 5 | 3.1% | **Unresolved template type** | Template instantiations that can't be resolved (`NCollection_List<const char*>::Iterator`, etc.) |
+| 2 | 1.3% | **Excluded by bindings.toml** | Explicitly excluded in config (e.g., ambiguous overload workarounds) |
+| 1 | 0.6% | **Not CppDeletable** | Return type class has no destructor in the binding set |
+| 1 | 0.6% | **Ambiguous overload** | C++ overload that would produce identical wrapper signatures |
 
 ### Most Common Unknown Types
 
-The "unknown type" and "unknown Handle type" categories (37.1% of all skips) are dominated by a few types:
+The "unknown type" category (83% of all skips) is dominated by a few types:
 
 | Count | Type | How to Unblock |
 |------:|------|----------------|
@@ -442,7 +437,7 @@ The "unknown type" and "unknown Handle type" categories (37.1% of all skips) are
 
 Most skipped symbols are in internal, low-use, or specialized modules. However, some affect functionality that users commonly need:
 
-**Data Exchange (22 symbols)** — `STEPControl_*` (1), `IGESControl_*` (1), `XSControl_*` (9), `RWGltf_*` (6), `RWObj_*` (2), `RWStl` (2), `RWPly` (1). Dominated by string ref params (8, mostly `const char*&` in `XSControl_Vars`) and unknown types (6), plus rvalue references (3), unresolved templates (2), abstract classes (2), and stream types (1). The core `Read()`/`Write()` operations are fully bound. `ShapeProcess::OperationsFlags` params (previously blocking 4 data exchange methods) are now resolved.
+**Data Exchange (14 symbols)** — `STEPControl_*` (1), `IGESControl_*` (1), `XSControl_*` (1), `RWGltf_*` (5), `STEPCAFControl_*` (2), `Transfer_*` (2), `IGESToBRep_*` (1), `TCollection_*` (4). The rvalue-reference methods (8 `SetShapeFixParameters` + 4 string move/ctors) all have equivalent const-ref overloads already bound. The RWGltf methods require RapidJSON's `GltfOStreamWriter` (external dependency). The core `Read()`/`Write()` operations are fully bound.
 
 **Document Framework (1 symbol)** — `TDF_*` (1). The unknown type is `TDF_LabelNode*` — a raw pointer to a class not in the binding set. Previously, `TDocStd_XLinkPtr` (pointer typedef for `TDocStd_XLink*`) also caused 3 skips, but these are now resolved via pointer typedef resolution. Methods returning references with reference params are bound as `unsafe fn` (see "Unsafe Reference Returns" above).
 
@@ -452,7 +447,7 @@ Most skipped symbols are in internal, low-use, or specialized modules. However, 
 
 **Geometry (0 symbols in gp/Geom/Geom2d)** — All core geometry operations are available.
 
-**Poly (7 symbols)** — C-style arrays (3), unresolved template (1), unknown type (1), abstract class (1), excluded by config (1). `Poly_CoherentTriangulation` internal access and `Poly_MakeLoops` helper interfaces. All core triangulation access is available.
+**Poly (5 symbols)** — C-style arrays (3), unresolved template (1), excluded by config (1). `Poly_CoherentTriangulation` internal access and `Poly_MakeLoops` helper interfaces. All core triangulation access is available.
 
 ### How Skipped Symbols Are Tracked
 
@@ -581,7 +576,7 @@ Currently `-I` path is passed manually. Could auto-detect from `occt-sys`.
 
 ### Explicit `bindings.toml` Config for Manual Bindings
 
-The current `StringRefParam` detection automatically catches `const char*&` cases. An explicit `bindings.toml` section for declaring manual bindings would allow skipping other problematic signatures beyond string refs without requiring code changes to the generator.
+An explicit `bindings.toml` section for declaring manual bindings would allow skipping problematic signatures without requiring code changes to the generator.
 
 ---
 

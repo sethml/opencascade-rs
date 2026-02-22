@@ -1139,13 +1139,6 @@ impl HandleMoniToolElement {
     }
 }
 
-// ── Skipped symbols for Element (1 total) ──
-// SKIPPED: **Source:** `MoniTool_Element.hxx`:40 - `MoniTool_Element::MoniTool_Element`
-//   constructor: Empty constructor
-//   Reason: class is abstract (has unimplemented pure virtual methods)
-//   // pub fn new() -> OwnedPtr<Self>;
-//
-
 // ========================
 // From MoniTool_HSequenceOfElement.hxx
 // ========================
