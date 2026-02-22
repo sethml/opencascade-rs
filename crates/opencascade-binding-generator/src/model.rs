@@ -199,34 +199,7 @@ impl Constructor {
     /// based on parameter types, with consecutive identical types compressed.
     /// E.g., (f64, f64, f64) -> "_real3", (Pnt, Pnt) -> "_pnt2"
     pub fn overload_suffix(&self) -> String {
-        if self.params.is_empty() {
-            return String::new();
-        }
-
-        let type_names: Vec<String> = self
-            .params
-            .iter()
-            .map(|p| p.ty.short_name().to_lowercase())
-            .collect();
-
-        // Compress consecutive identical types: ["real", "real", "real"] -> ["real3"]
-        let mut parts: Vec<String> = Vec::new();
-        let mut i = 0;
-        while i < type_names.len() {
-            let current = &type_names[i];
-            let mut count = 1;
-            while i + count < type_names.len() && &type_names[i + count] == current {
-                count += 1;
-            }
-            if count > 1 {
-                parts.push(format!("{}{}", current, count));
-            } else {
-                parts.push(current.clone());
-            }
-            i += count;
-        }
-
-        format!("_{}", parts.join("_"))
+        overload_suffix_from_params(&self.params)
     }
 
     /// Check if this constructor has any unbindable types (C strings, streams, void pointers, etc.)
@@ -300,34 +273,7 @@ impl Method {
     /// based on parameter types, with consecutive identical types compressed.
     /// E.g., (Pnt) -> "_pnt", (Box, Trsf) -> "_box_trsf", (f64, f64, f64) -> "_real3"
     pub fn overload_suffix(&self) -> String {
-        if self.params.is_empty() {
-            return String::new();
-        }
-
-        let type_names: Vec<String> = self
-            .params
-            .iter()
-            .map(|p| p.ty.short_name().to_lowercase())
-            .collect();
-
-        // Compress consecutive identical types: ["real", "real", "real"] -> ["real3"]
-        let mut parts: Vec<String> = Vec::new();
-        let mut i = 0;
-        while i < type_names.len() {
-            let current = &type_names[i];
-            let mut count = 1;
-            while i + count < type_names.len() && &type_names[i + count] == current {
-                count += 1;
-            }
-            if count > 1 {
-                parts.push(format!("{}{}", current, count));
-            } else {
-                parts.push(current.clone());
-            }
-            i += count;
-        }
-
-        format!("_{}", parts.join("_"))
+        overload_suffix_from_params(&self.params)
     }
 }
 
@@ -381,34 +327,7 @@ impl StaticMethod {
     /// based on parameter types, with consecutive identical types compressed.
     /// E.g., (f64, f64, f64) -> "_real3", (Shape, Builder) -> "_shape_builder"
     pub fn overload_suffix(&self) -> String {
-        if self.params.is_empty() {
-            return String::new();
-        }
-
-        let type_names: Vec<String> = self
-            .params
-            .iter()
-            .map(|p| p.ty.short_name().to_lowercase())
-            .collect();
-
-        // Compress consecutive identical types: ["real", "real", "real"] -> ["real3"]
-        let mut parts: Vec<String> = Vec::new();
-        let mut i = 0;
-        while i < type_names.len() {
-            let current = &type_names[i];
-            let mut count = 1;
-            while i + count < type_names.len() && &type_names[i + count] == current {
-                count += 1;
-            }
-            if count > 1 {
-                parts.push(format!("{}{}", current, count));
-            } else {
-                parts.push(current.clone());
-            }
-            i += count;
-        }
-
-        format!("_{}", parts.join("_"))
+        overload_suffix_from_params(&self.params)
     }
 }
 
@@ -969,4 +888,164 @@ fn extract_short_name(name: &str) -> String {
     } else {
         leaf.to_lowercase()
     }
+}
+
+// =============================================================================
+// Type visitor helpers
+// =============================================================================
+
+impl Type {
+    /// Recursively unwrap reference/pointer wrappers and call `f` on each
+    /// innermost (leaf) type. Unwraps ConstRef, MutRef, RValueRef, ConstPtr,
+    /// and MutPtr.
+    pub fn visit_inner(&self, f: &mut impl FnMut(&Type)) {
+        match self {
+            Type::ConstRef(inner)
+            | Type::MutRef(inner)
+            | Type::RValueRef(inner)
+            | Type::ConstPtr(inner)
+            | Type::MutPtr(inner) => inner.visit_inner(f),
+            _ => f(self),
+        }
+    }
+
+    /// Mutable version of `visit_inner`.
+    pub fn visit_inner_mut(&mut self, f: &mut impl FnMut(&mut Type)) {
+        match self {
+            Type::ConstRef(inner)
+            | Type::MutRef(inner)
+            | Type::RValueRef(inner)
+            | Type::ConstPtr(inner)
+            | Type::MutPtr(inner) => inner.visit_inner_mut(f),
+            _ => f(self),
+        }
+    }
+}
+
+/// Visit every type in a class's methods, static methods, and constructors.
+/// Calls `f` on each parameter type and return type.
+pub fn for_each_type_in_class(class: &ParsedClass, f: &mut impl FnMut(&Type)) {
+    for method in &class.methods {
+        for param in &method.params {
+            f(&param.ty);
+        }
+        if let Some(ref ret) = method.return_type {
+            f(ret);
+        }
+    }
+    for method in &class.static_methods {
+        for param in &method.params {
+            f(&param.ty);
+        }
+        if let Some(ref ret) = method.return_type {
+            f(ret);
+        }
+    }
+    for ctor in &class.constructors {
+        for param in &ctor.params {
+            f(&param.ty);
+        }
+    }
+}
+
+/// Mutable version of `for_each_type_in_class`.
+pub fn for_each_type_in_class_mut(class: &mut ParsedClass, f: &mut impl FnMut(&mut Type)) {
+    for method in &mut class.methods {
+        for param in &mut method.params {
+            f(&mut param.ty);
+        }
+        if let Some(ref mut ret) = method.return_type {
+            f(ret);
+        }
+    }
+    for method in &mut class.static_methods {
+        for param in &mut method.params {
+            f(&mut param.ty);
+        }
+        if let Some(ref mut ret) = method.return_type {
+            f(ret);
+        }
+    }
+    for ctor in &mut class.constructors {
+        for param in &mut ctor.params {
+            f(&mut param.ty);
+        }
+    }
+}
+
+/// Visit every type in a function's parameters and return type.
+pub fn for_each_type_in_function(func: &ParsedFunction, f: &mut impl FnMut(&Type)) {
+    for param in &func.params {
+        f(&param.ty);
+    }
+    if let Some(ref ret) = func.return_type {
+        f(ret);
+    }
+}
+
+/// Mutable version of `for_each_type_in_function`.
+pub fn for_each_type_in_function_mut(func: &mut ParsedFunction, f: &mut impl FnMut(&mut Type)) {
+    for param in &mut func.params {
+        f(&mut param.ty);
+    }
+    if let Some(ref mut ret) = func.return_type {
+        f(ret);
+    }
+}
+
+/// Visit every type in a parsed header (all classes and all free functions).
+pub fn for_each_type_in_header(header: &ParsedHeader, f: &mut impl FnMut(&Type)) {
+    for class in &header.classes {
+        for_each_type_in_class(class, f);
+    }
+    for func in &header.functions {
+        for_each_type_in_function(func, f);
+    }
+}
+
+/// Mutable version of `for_each_type_in_header`.
+pub fn for_each_type_in_header_mut(header: &mut ParsedHeader, f: &mut impl FnMut(&mut Type)) {
+    for class in &mut header.classes {
+        for_each_type_in_class_mut(class, f);
+    }
+    for func in &mut header.functions {
+        for_each_type_in_function_mut(func, f);
+    }
+}
+
+// =============================================================================
+// Shared helpers for duplicated logic
+// =============================================================================
+
+/// Generate an overload suffix from parameter types.
+/// Consecutive identical types are compressed: ["real", "real", "real"] -> "_real3".
+/// Used by Constructor, Method, and StaticMethod.
+pub fn overload_suffix_from_params(params: &[Param]) -> String {
+    if params.is_empty() {
+        return String::new();
+    }
+
+    let type_names: Vec<String> = params
+        .iter()
+        .map(|p| p.ty.short_name().to_lowercase())
+        .collect();
+
+    // Compress consecutive identical types: ["real", "real", "real"] -> ["real3"]
+    let mut parts: Vec<String> = Vec::new();
+    let mut i = 0;
+    while i < type_names.len() {
+        let current = &type_names[i];
+        let mut count = 1;
+        while i + count < type_names.len() && &type_names[i + count] == current {
+            count += 1;
+        }
+        if count > 1 {
+            parts.push(format!("{}{}", current, count));
+        } else {
+            parts.push(current.clone());
+        }
+        i += count;
+    }
+
+    format!("_{}", parts.join("_"))
 }

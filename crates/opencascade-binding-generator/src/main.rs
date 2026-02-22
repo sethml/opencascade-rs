@@ -490,66 +490,37 @@ fn rewrite_template_types(
 ) -> usize {
     let mut count = 0;
     for header in parsed.iter_mut() {
-        for class in &mut header.classes {
-            for method in &mut class.methods {
-                if let Some(ref mut ret) = method.return_type {
-                    count += rewrite_type(ret, alias_map);
-                }
-                for param in &mut method.params {
-                    count += rewrite_type(&mut param.ty, alias_map);
-                }
-            }
-            for method in &mut class.static_methods {
-                if let Some(ref mut ret) = method.return_type {
-                    count += rewrite_type(ret, alias_map);
-                }
-                for param in &mut method.params {
-                    count += rewrite_type(&mut param.ty, alias_map);
-                }
-            }
-            for ctor in &mut class.constructors {
-                for param in &mut ctor.params {
-                    count += rewrite_type(&mut param.ty, alias_map);
-                }
-            }
-        }
-        for func in &mut header.functions {
-            if let Some(ref mut ret) = func.return_type {
-                count += rewrite_type(ret, alias_map);
-            }
-            for param in &mut func.params {
-                count += rewrite_type(&mut param.ty, alias_map);
-            }
-        }
+        model::for_each_type_in_header_mut(header, &mut |ty| {
+            count += rewrite_type(ty, alias_map);
+        });
     }
     count
 }
 
 /// Rewrite a single type, translating template names to alias names.
 /// Handles both Handle types and Class types containing template angle brackets.
-/// Returns 1 if a rewrite was performed, 0 otherwise.
+/// Recursively unwraps reference/pointer wrappers.
+/// Returns the number of rewrites performed.
 fn rewrite_type(ty: &mut model::Type, alias_map: &HashMap<String, String>) -> usize {
-    match ty {
-        model::Type::Handle(ref mut name) => {
-            if let Some(alias) = alias_map.get(name.as_str()) {
-                *name = alias.clone();
-                return 1;
+    let mut count = 0;
+    ty.visit_inner_mut(&mut |inner| {
+        match inner {
+            model::Type::Handle(ref mut name) => {
+                if let Some(alias) = alias_map.get(name.as_str()) {
+                    *name = alias.clone();
+                    count += 1;
+                }
             }
-            0
-        }
-        model::Type::Class(ref mut name) if name.contains('<') => {
-            if let Some(alias) = alias_map.get(name.as_str()) {
-                *name = alias.clone();
-                return 1;
+            model::Type::Class(ref mut name) if name.contains('<') => {
+                if let Some(alias) = alias_map.get(name.as_str()) {
+                    *name = alias.clone();
+                    count += 1;
+                }
             }
-            0
+            _ => {}
         }
-        model::Type::ConstRef(inner)
-        | model::Type::MutRef(inner)
-        | model::Type::ConstPtr(inner)
-        | model::Type::MutPtr(inner) => rewrite_type(inner, alias_map),
-        _ => 0,
-    }
+    });
+    count
 }
 
 /// Collect all unresolved template type spellings from parsed data.
@@ -560,54 +531,16 @@ fn rewrite_type(ty: &mut model::Type, alias_map: &HashMap<String, String>) -> us
 fn collect_template_class_types(parsed: &[model::ParsedHeader]) -> HashSet<String> {
     let mut templates = HashSet::new();
 
-    fn collect_from_type(ty: &model::Type, templates: &mut HashSet<String>) {
-        match ty {
-            model::Type::Class(name) if name.contains('<') => {
-                templates.insert(name.clone());
-            }
-            model::Type::ConstRef(inner)
-            | model::Type::MutRef(inner)
-            | model::Type::ConstPtr(inner)
-            | model::Type::MutPtr(inner)
-            | model::Type::RValueRef(inner) => {
-                collect_from_type(inner, templates);
-            }
-            _ => {}
-        }
-    }
-
     for header in parsed {
-        for class in &header.classes {
-            for method in &class.methods {
-                if let Some(ref ret) = method.return_type {
-                    collect_from_type(ret, &mut templates);
+        model::for_each_type_in_header(header, &mut |ty| {
+            ty.visit_inner(&mut |inner| {
+                if let model::Type::Class(name) = inner {
+                    if name.contains('<') {
+                        templates.insert(name.clone());
+                    }
                 }
-                for param in &method.params {
-                    collect_from_type(&param.ty, &mut templates);
-                }
-            }
-            for method in &class.static_methods {
-                if let Some(ref ret) = method.return_type {
-                    collect_from_type(ret, &mut templates);
-                }
-                for param in &method.params {
-                    collect_from_type(&param.ty, &mut templates);
-                }
-            }
-            for ctor in &class.constructors {
-                for param in &ctor.params {
-                    collect_from_type(&param.ty, &mut templates);
-                }
-            }
-        }
-        for func in &header.functions {
-            if let Some(ref ret) = func.return_type {
-                collect_from_type(ret, &mut templates);
-            }
-            for param in &func.params {
-                collect_from_type(&param.ty, &mut templates);
-            }
-        }
+            });
+        });
     }
     // Filter out template types that would produce invalid C++ typedefs:
     // - Types with raw pointer arguments (e.g., NCollection_Map<Graphic3d_Structure *>)

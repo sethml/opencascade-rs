@@ -56,80 +56,47 @@ pub fn collect_referenced_types(
             result.handles.insert(class.name.clone());
         }
 
-        // From constructors
-        for ctor in &class.constructors {
-            for param in &ctor.params {
-                collect_types_from_type(&param.ty, &mut result);
-            }
-        }
-
-        // From methods
-        for method in &class.methods {
-            for param in &method.params {
-                collect_types_from_type(&param.ty, &mut result);
-            }
-            if let Some(ref ret) = method.return_type {
-                collect_types_from_type(ret, &mut result);
-            }
-        }
-
-        // From static methods
-        for method in &class.static_methods {
-            for param in &method.params {
-                collect_types_from_type(&param.ty, &mut result);
-            }
-            if let Some(ref ret) = method.return_type {
-                collect_types_from_type(ret, &mut result);
-            }
-        }
+        crate::model::for_each_type_in_class(class, &mut |ty| {
+            collect_types_from_type(ty, &mut result);
+        });
     }
 
-    // From free functions
     for func in functions {
-        for param in &func.params {
-            collect_types_from_type(&param.ty, &mut result);
-        }
-        if let Some(ref ret) = func.return_type {
-            collect_types_from_type(ret, &mut result);
-        }
+        crate::model::for_each_type_in_function(func, &mut |ty| {
+            collect_types_from_type(ty, &mut result);
+        });
     }
 
     result
 }
 
-/// Recursively collect OCCT class and Handle types from a type
+/// Recursively collect OCCT class and Handle types from a type.
+/// Uses `visit_inner` to unwrap reference/pointer wrappers.
 fn collect_types_from_type(ty: &Type, collected: &mut CollectedTypes) {
-    // Skip unbindable types (arrays, void ptrs, etc.) — but NOT streams,
+    // Skip unbindable types (arrays, rvalue refs, etc.) — but NOT streams,
     // which are manually-defined opaque types that we DO want to collect.
     if ty.is_unbindable() {
         return;
     }
 
-    match ty {
-        Type::Class(name) => {
-            // Skip primitive types and template instantiations (e.g., NCollection_Shared<...>)
-            // that may come from canonical type resolution
-            if !is_primitive_type(name) && !name.contains('<') {
-                collected.classes.insert(name.clone());
+    ty.visit_inner(&mut |inner| {
+        match inner {
+            Type::Class(name) => {
+                // Skip primitive types and template instantiations (e.g., NCollection_Shared<...>)
+                if !is_primitive_type(name) && !name.contains('<') {
+                    collected.classes.insert(name.clone());
+                }
             }
-        }
-        Type::Handle(name) => {
-            // Record the Handle type AND the inner class
-            // Skip template instantiations (e.g., NCollection_Shared<...>) which
-            // aren't valid as standalone Rust/C++ type names.
-            if !name.contains('<') {
-                collected.handles.insert(name.clone());
-                collected.classes.insert(name.clone());
+            Type::Handle(name) => {
+                // Record the Handle type AND the inner class
+                if !name.contains('<') {
+                    collected.handles.insert(name.clone());
+                    collected.classes.insert(name.clone());
+                }
             }
+            _ => {}
         }
-        Type::ConstRef(inner)
-        | Type::MutRef(inner)
-        | Type::ConstPtr(inner)
-        | Type::MutPtr(inner) => {
-            collect_types_from_type(inner, collected);
-        }
-        _ => {}
-    }
+    });
 }
 
 /// Check if a type name is a primitive (not an OCCT class)

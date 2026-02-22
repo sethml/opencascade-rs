@@ -768,48 +768,23 @@ pub fn build_symbol_table(
     // Also add any class name that appears inside Type::Handle(...) in method signatures.
     // If C++ code uses Handle(X) for a type, X must inherit from Standard_Transient,
     // so it's handle-able even if its own header is excluded.
-    fn collect_handle_types(ty: &crate::model::Type, set: &mut HashSet<String>) {
-        match ty {
-            crate::model::Type::Handle(name) => {
+    // Uses for_each_type_in_class / for_each_type_in_function to visit all types
+    // (methods, static methods, constructors, free functions).
+    let mut collect_handle = |ty: &crate::model::Type| {
+        ty.visit_inner(&mut |inner| {
+            if let crate::model::Type::Handle(name) = inner {
                 // Only add clean OCCT type names (not template forms like NCollection_Shared<...>)
-                // Nested class types (Parent::Child) are OK.
                 if !name.contains('<') {
-                    set.insert(name.clone());
+                    handle_able_classes.insert(name.clone());
                 }
             }
-            crate::model::Type::ConstRef(inner)
-            | crate::model::Type::MutRef(inner)
-            | crate::model::Type::ConstPtr(inner)
-            | crate::model::Type::MutPtr(inner)
-            | crate::model::Type::RValueRef(inner) => {
-                collect_handle_types(inner, set);
-            }
-            _ => {}
-        }
-    }
+        });
+    };
     for class in all_classes {
-        for method in &class.methods {
-            for param in &method.params {
-                collect_handle_types(&param.ty, &mut handle_able_classes);
-            }
-            if let Some(ret) = &method.return_type {
-                collect_handle_types(ret, &mut handle_able_classes);
-            }
-        }
-        for ctor in &class.constructors {
-            for param in &ctor.params {
-                collect_handle_types(&param.ty, &mut handle_able_classes);
-            }
-        }
+        crate::model::for_each_type_in_class(class, &mut collect_handle);
     }
-    // Also scan standalone functions
     for func in all_functions {
-        for param in &func.params {
-            collect_handle_types(&param.ty, &mut handle_able_classes);
-        }
-        if let Some(ret) = &func.return_type {
-            collect_handle_types(ret, &mut handle_able_classes);
-        }
+        crate::model::for_each_type_in_function(func, &mut collect_handle);
     }
     // These referenced Handle types also need to be known class names
     all_class_names.extend(handle_able_classes.iter().cloned());
