@@ -27,10 +27,6 @@ pub fn template_alias_name(template_spelling: &str) -> String {
 /// Top-level configuration structure.
 #[derive(Debug, Deserialize)]
 pub struct BindingConfig {
-    /// General settings.
-    #[serde(default)]
-    pub general: GeneralConfig,
-
     /// Include headers from these OCCT modules.
     /// Supports glob patterns: "*" matches all modules, "Geom*" matches
     /// Geom, GeomAdaptor, GeomAPI, etc.
@@ -110,24 +106,6 @@ pub struct TemplateInstantiation {
     /// Whether this instantiation inherits from Standard_Transient and needs Handle support.
     #[serde(default)]
     pub handle: bool,
-}
-
-/// General configuration options.
-#[derive(Debug, Deserialize)]
-pub struct GeneralConfig {
-    /// Whether to automatically resolve header dependencies.
-    #[serde(default = "default_true")]
-    pub resolve_deps: bool,
-}
-
-impl Default for GeneralConfig {
-    fn default() -> Self {
-        Self { resolve_deps: true }
-    }
-}
-
-fn default_true() -> bool {
-    true
 }
 
 /// Load and parse a TOML configuration file.

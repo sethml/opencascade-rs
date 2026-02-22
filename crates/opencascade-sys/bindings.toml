@@ -1,17 +1,13 @@
 # OCCT Binding Generator Configuration
 #
-# This file configures which OCCT headers are processed by the binding generator.
+# This file controls header selection and symbol-level binding exceptions.
 #
-# - `modules`: Include ALL headers from these OCCT modules. Supports glob patterns:
-#   "*" matches all modules, "Geom*" matches Geom, GeomAdaptor, GeomAPI, etc.
-#
-# - `exclude_modules`: Exclude entire modules (applied after `modules` expansion).
-#   Supports glob patterns.
-#
-# - `exclude_headers`: Exclude specific headers, even if their module is included.
-#
-# - `include_headers`: Include specific individual headers from modules not listed
-#   in `modules`. Use this for selective inclusion from large modules.
+# Main sections:
+# - `modules`, `exclude_modules`, `include_headers`, `exclude_headers`: header selection
+# - `exclude_methods`, `ambiguous_methods`, `non_allocatable_classes`: symbol/class filtering
+# - `[occt_alias_type_overrides]`: canonical OCCT type spelling rewrites
+# - `[manual_types]`: opaque manual types treated as known
+# - `[template_instantiations]`: explicit template alias generation
 
 # Include all OCCT modules by default, with exclusions below.
 modules = ["*"]
@@ -111,9 +107,6 @@ non_allocatable_classes = [
 "ShapePersistent_Geom::geometryBase<Geom_Curve>" = "ShapePersistent_Geom::Curve"
 "ShapePersistent_Geom::geometryBase<Geom_Surface>" = "ShapePersistent_Geom::Surface"
 "ShapePersistent_Geom::geometryBase<Geom2d_Curve>" = "ShapePersistent_Geom2d::Curve"
-
-[general]
-resolve_deps = true
 
 # Opaque types defined in manual/ files. These are not parsed from OCCT headers
 # but referenced by auto-generated bindings. The generator adds them to the known

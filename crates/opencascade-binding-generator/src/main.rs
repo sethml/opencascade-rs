@@ -43,10 +43,6 @@ struct Args {
     #[arg(short, long)]
     verbose: bool,
 
-    /// Automatically include header dependencies (recursively)
-    #[arg(long, default_value = "true")]
-    resolve_deps: bool,
-
     /// Dump the symbol table for debugging (shows all resolved symbols and their binding status)
     #[arg(long)]
     dump_symbols: bool,
@@ -112,9 +108,8 @@ fn main() -> Result<()> {
     }
 
     // Determine explicit headers from config file or CLI arguments
-    let (explicit_headers, resolve_deps, exclude_set, exclude_modules, exclude_methods, ambiguous_methods, non_allocatable_classes, manual_type_names, template_instantiations, occt_alias_type_overrides) = if let Some(ref config_path) = args.config {
+    let (explicit_headers, exclude_set, exclude_modules, exclude_methods, ambiguous_methods, non_allocatable_classes, manual_type_names, template_instantiations, occt_alias_type_overrides) = if let Some(ref config_path) = args.config {
         let cfg = config::load_config(config_path)?;
-        let resolve = cfg.general.resolve_deps;
 
         if args.include_dirs.is_empty() {
             anyhow::bail!("--config requires at least one -I <include_dir>");
@@ -148,7 +143,6 @@ fn main() -> Result<()> {
         let occt_alias_overrides = cfg.occt_alias_type_overrides;
         (
             headers,
-            resolve,
             excludes,
             exclude_mods,
             method_exclusions,
@@ -161,7 +155,6 @@ fn main() -> Result<()> {
     } else if !args.headers.is_empty() {
         (
             args.headers.clone(),
-            args.resolve_deps,
             std::collections::HashSet::new(),
             Vec::new(),
             HashSet::new(),
@@ -175,8 +168,8 @@ fn main() -> Result<()> {
         anyhow::bail!("Either --config <file.toml> or positional header arguments are required");
     };
 
-    // Resolve header dependencies if requested
-    let headers_to_process = if resolve_deps && !args.include_dirs.is_empty() {
+    // Resolve header dependencies when include directories are available.
+    let headers_to_process = if !args.include_dirs.is_empty() {
         // Use first include dir as OCCT include root
         let occt_include_dir = &args.include_dirs[0];
 
