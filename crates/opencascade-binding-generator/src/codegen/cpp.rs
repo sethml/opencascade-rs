@@ -225,6 +225,14 @@ fn collect_function_required_headers(
     result
 }
 
+fn extend_unique_headers(headers: &mut Vec<String>, additional_headers: impl IntoIterator<Item = String>) {
+    for header in additional_headers {
+        if !headers.contains(&header) {
+            headers.push(header);
+        }
+    }
+}
+
 pub fn generate_wrappers(
     all_classes: &[&ParsedClass],
     collections: &[super::collections::CollectionInfo],
@@ -245,27 +253,23 @@ pub fn generate_wrappers(
 
     // Collect ALL headers needed
     let mut headers = collect_all_required_headers(all_classes, known_headers);
-    for header in collect_function_required_headers(function_bindings, known_headers) {
-        if !headers.contains(&header) {
-            headers.push(header);
-        }
-    }
-    for header in super::collections::collect_collection_headers(collections) {
-        if !headers.contains(&header) {
-            headers.push(header);
-        }
-    }
-
-    headers.push("cstdint".to_string());
-    headers.push("new".to_string());
+    extend_unique_headers(
+        &mut headers,
+        collect_function_required_headers(function_bindings, known_headers),
+    );
+    extend_unique_headers(
+        &mut headers,
+        super::collections::collect_collection_headers(collections),
+    );
+    extend_unique_headers(&mut headers, ["cstdint".to_string(), "new".to_string()]);
 
     // Add headers needed for template instantiations
     for inst in template_instantiations.values() {
         // OCCT headers (.hxx) must be in known_headers; standard library headers
         // (no extension, e.g., "utility", "memory") are always available.
         let is_std_header = !inst.header.contains('.');
-        if (is_std_header || known_headers.contains(&inst.header)) && !headers.contains(&inst.header) {
-            headers.push(inst.header.clone());
+        if is_std_header || known_headers.contains(&inst.header) {
+            extend_unique_headers(&mut headers, [inst.header.clone()]);
         }
     }
 
