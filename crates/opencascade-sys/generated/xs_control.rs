@@ -4227,6 +4227,68 @@ impl Vars {
         unsafe { crate::ffi::XSControl_Vars_set(self as *mut Self, c_name.as_ptr(), val) }
     }
 
+    /// **Source:** `XSControl_Vars.hxx`:56 - `XSControl_Vars::Get()`
+    pub fn get(
+        &self,
+        name: &mut *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Vars_get(self as *const Self, name))
+        }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:58 - `XSControl_Vars::GetGeom()`
+    pub fn get_geom(
+        &self,
+        name: &mut *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Vars_get_geom(
+                self as *const Self,
+                name,
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:60 - `XSControl_Vars::GetCurve2d()`
+    pub fn get_curve2d(
+        &self,
+        name: &mut *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Vars_get_curve2d(
+                self as *const Self,
+                name,
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:62 - `XSControl_Vars::GetCurve()`
+    pub fn get_curve(
+        &self,
+        name: &mut *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Vars_get_curve(
+                self as *const Self,
+                name,
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:64 - `XSControl_Vars::GetSurface()`
+    pub fn get_surface(
+        &self,
+        name: &mut *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Vars_get_surface(
+                self as *const Self,
+                name,
+            ))
+        }
+    }
+
     /// **Source:** `XSControl_Vars.hxx`:66 - `XSControl_Vars::SetPoint()`
     pub fn set_point(&mut self, name: &str, val: &crate::gp::Pnt) {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -4239,10 +4301,37 @@ impl Vars {
         unsafe { crate::ffi::XSControl_Vars_set_point2d(self as *mut Self, c_name.as_ptr(), val) }
     }
 
+    /// **Source:** `XSControl_Vars.hxx`:70 - `XSControl_Vars::GetPoint()`
+    pub fn get_point(&self, name: &mut *const std::ffi::c_char, pnt: &mut crate::gp::Pnt) -> bool {
+        unsafe { crate::ffi::XSControl_Vars_get_point(self as *const Self, name, pnt) }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:72 - `XSControl_Vars::GetPoint2d()`
+    pub fn get_point2d(
+        &self,
+        name: &mut *const std::ffi::c_char,
+        pnt: &mut crate::gp::Pnt2d,
+    ) -> bool {
+        unsafe { crate::ffi::XSControl_Vars_get_point2d(self as *const Self, name, pnt) }
+    }
+
     /// **Source:** `XSControl_Vars.hxx`:74 - `XSControl_Vars::SetShape()`
     pub fn set_shape(&mut self, name: &str, val: &crate::topo_ds::Shape) {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe { crate::ffi::XSControl_Vars_set_shape(self as *mut Self, c_name.as_ptr(), val) }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:76 - `XSControl_Vars::GetShape()`
+    pub fn get_shape(
+        &self,
+        name: &mut *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Vars_get_shape(
+                self as *const Self,
+                name,
+            ))
+        }
     }
 
     /// **Source:** `XSControl_Vars.hxx`:78 - `XSControl_Vars::DynamicType()`
@@ -4352,40 +4441,6 @@ impl HandleXSControlVars {
         }
     }
 }
-
-// ── Skipped symbols for Vars (8 total) ──
-// SKIPPED: **Source:** `XSControl_Vars.hxx`:56 - `XSControl_Vars::Get`
-//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
-//   // pub fn get(&self, name: &mut *const char) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `XSControl_Vars.hxx`:58 - `XSControl_Vars::GetGeom`
-//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
-//   // pub fn get_geom(&self, name: &mut *const char) -> OwnedPtr<Handle<Geom_Geometry>>;
-//
-// SKIPPED: **Source:** `XSControl_Vars.hxx`:60 - `XSControl_Vars::GetCurve2d`
-//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
-//   // pub fn get_curve2d(&self, name: &mut *const char) -> OwnedPtr<Handle<Geom2d_Curve>>;
-//
-// SKIPPED: **Source:** `XSControl_Vars.hxx`:62 - `XSControl_Vars::GetCurve`
-//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
-//   // pub fn get_curve(&self, name: &mut *const char) -> OwnedPtr<Handle<Geom_Curve>>;
-//
-// SKIPPED: **Source:** `XSControl_Vars.hxx`:64 - `XSControl_Vars::GetSurface`
-//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
-//   // pub fn get_surface(&self, name: &mut *const char) -> OwnedPtr<Handle<Geom_Surface>>;
-//
-// SKIPPED: **Source:** `XSControl_Vars.hxx`:70 - `XSControl_Vars::GetPoint`
-//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
-//   // pub fn get_point(&self, name: &mut *const char, pnt: &mut Pnt) -> bool;
-//
-// SKIPPED: **Source:** `XSControl_Vars.hxx`:72 - `XSControl_Vars::GetPoint2d`
-//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
-//   // pub fn get_point2d(&self, name: &mut *const char, pnt: &mut Pnt2d) -> bool;
-//
-// SKIPPED: **Source:** `XSControl_Vars.hxx`:76 - `XSControl_Vars::GetShape`
-//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
-//   // pub fn get_shape(&self, name: &mut *const char) -> OwnedPtr<TopoDS_Shape>;
-//
 
 // ========================
 // From XSControl_WorkSession.hxx

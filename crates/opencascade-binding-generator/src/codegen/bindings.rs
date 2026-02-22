@@ -860,8 +860,9 @@ fn check_return_type_bindable(ret: &Type, ctx: &TypeContext) -> Result<(), Strin
     // template typedef names (e.g., TColStd_ListOfAsciiString) added to
     // all_class_names for param filtering don't have generated destructors.
     // Enum types are represented as Type::Class in raw parsed types — allow them.
+    // Primitive types (char, int, etc.) are also Type::Class after canonical resolution — allow them.
     if let Type::Class(name) = ret {
-        if !is_void_type_name(name) {
+        if !is_void_type_name(name) && !super::rust::is_primitive_type(name) {
             if let Some(deletable) = ctx.deletable_class_names {
                 if !deletable.contains(name.as_str()) && !ctx.all_enums.contains(name.as_str()) {
                     return Err(format!("return type '{}' is not CppDeletable", name));
@@ -881,10 +882,7 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> R
         let unbindable_details = describe_unbindable_types_method(method);
         return Err(format!("has unbindable types: {}", unbindable_details));
     }
-    // Skip methods with const char*& or const char* const& params (need manual bindings)
-    if let Some((param_name, type_name)) = resolver::method_has_string_ref_param(method) {
-        return Err(format!("has string ref param '{}' of type '{}' (needs manual binding)", param_name, type_name));
-    }
+    // const char*& and const char* const& params are now handled via build_param_binding.
     // Skip methods that cause ambiguous call errors in C++ wrappers
     if AMBIGUOUS_METHODS.iter().any(|(c, m)| *c == class_name && *m == method.name) {
         return Err("causes ambiguous overload in C++ (listed in AMBIGUOUS_METHODS)".to_string());
@@ -930,10 +928,7 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> Result
         let unbindable_details = describe_unbindable_types_static(method);
         return Err(format!("has unbindable types: {}", unbindable_details));
     }
-    // Skip static methods with const char*& or const char* const& params (need manual bindings)
-    if let Some((param_name, type_name)) = resolver::static_method_has_string_ref_param(method) {
-        return Err(format!("has string ref param '{}' of type '{}' (needs manual binding)", param_name, type_name));
-    }
+    // const char*& and const char* const& params are now handled via build_param_binding.
     // &mut enum output params are now handled via C++ wrappers.
     check_params_bindable(&method.params, ctx)?;
     if let Some(ref ret) = method.return_type {
@@ -997,6 +992,44 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
                     is_nullable_ptr: false,
                     is_class_ptr: false,
                 };
+            }
+        }
+    }
+
+    // Check for const char*& output params (Standard_CString&) — these are string output parameters.
+    // MutRef(ConstPtr(Class("char"))) maps to *mut *const c_char in FFI and &mut *const c_char in reexport.
+    // C++ wrapper takes char const** and dereferences to get the char*& lvalue.
+    if let Type::MutRef(inner) = ty {
+        if let Type::ConstPtr(inner2) = inner.as_ref() {
+            if let Type::Class(class_name) = inner2.as_ref() {
+                if class_name == "char" {
+                    return ParamBinding {
+                        cpp_name: cpp_name.clone(),
+                        rust_name: rust_name.clone(),
+                        rust_ffi_type: "*mut *const std::ffi::c_char".to_string(),
+                        rust_reexport_type: "&mut *const std::ffi::c_char".to_string(),
+                        cpp_type: "char const**".to_string(),
+                        cpp_arg_expr: format!("*{}", cpp_name),
+                        enum_rust_type: None,
+                        mut_ref_enum_cpp_name: None,
+                        mut_ref_enum_rust_type: None,
+                        is_nullable_ptr: false,
+                        is_class_ptr: false,
+                    };
+                }
+            }
+        }
+    }
+
+    // Check for const char* const& input params — strip the const ref wrapper and pass as const char*.
+    // ConstRef(ConstPtr(Class("char"))) becomes ConstPtr(Class("char")) which maps to &str.
+    if let Type::ConstRef(inner) = ty {
+        if let Type::ConstPtr(inner2) = inner.as_ref() {
+            if let Type::Class(class_name) = inner2.as_ref() {
+                if class_name == "char" {
+                    // Delegate to the normal ConstPtr(Class("char")) path — use original param name
+                    return build_param_binding(name, inner.as_ref(), is_nullable, ffi_ctx, reexport_ctx);
+                }
             }
         }
     }
@@ -1199,7 +1232,7 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
     let rust_ffi_type = mapped.rust_type;
     let rust_reexport_type = return_type_to_rust_string(ty, reexport_ctx);
     let cpp_type = ty.to_cpp_string();
-    let needs_unique_ptr = (ty.is_class() && !ty.is_void_ptr()) || ty.is_handle();
+    let needs_unique_ptr = (ty.is_class() && !ty.is_void_ptr() && !ty.is_primitive_class()) || ty.is_handle();
 
     ReturnTypeBinding {
         rust_ffi_type,
@@ -3345,7 +3378,7 @@ pub fn compute_all_function_bindings(
             }
             // CppDeletable check for return types (same as class methods)
             if let Type::Class(name) = &ret.original {
-                if !is_void_type_name(name) {
+                if !is_void_type_name(name) && !super::rust::is_primitive_type(name) {
                     if let Some(ref deletable) = ffi_ctx.deletable_class_names {
                         if !deletable.contains(name.as_str()) && !ffi_ctx.all_enums.contains(name.as_str()) {
                             skipped.push(SkippedSymbol {

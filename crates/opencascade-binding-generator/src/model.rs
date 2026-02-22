@@ -492,6 +492,16 @@ impl Type {
         matches!(self, Type::Class(_))
     }
 
+    /// Check if this is a Type::Class with a primitive type name (e.g., "char" from Standard_Character).
+    /// These are resolved from C++ typedefs to primitive names but remain as Type::Class in the AST.
+    pub fn is_primitive_class(&self) -> bool {
+        if let Type::Class(name) = self {
+            crate::codegen::rust::is_primitive_type(name)
+        } else {
+            false
+        }
+    }
+
     /// Check if this is a Handle type
     pub fn is_handle(&self) -> bool {
         matches!(self, Type::Handle(_))

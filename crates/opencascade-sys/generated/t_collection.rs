@@ -1035,6 +1035,17 @@ impl AsciiString {
         unsafe { crate::ffi::TCollection_AsciiString_usefull_length(self as *const Self) }
     }
 
+    /// **Source:** `TCollection_AsciiString.hxx`:671 - `TCollection_AsciiString::Value()`
+    /// Returns character at position <where> in <me>.
+    /// If <where> is less than zero or greater than the length of <me>,
+    /// an exception is raised.
+    /// Example:
+    /// aString contains "Hello"
+    /// aString.Value(2) returns 'e'
+    pub fn value(&self, where_: i32) -> std::ffi::c_char {
+        unsafe { crate::ffi::TCollection_AsciiString_value(self as *const Self, where_) }
+    }
+
     /// **Source:** `TCollection_AsciiString.hxx`:676 - `TCollection_AsciiString::HashCode()`
     /// Computes a hash code for the given ASCII string
     /// Returns the same integer value as the hash function for TCollection_ExtendedString
@@ -1089,7 +1100,7 @@ impl AsciiString {
     }
 }
 
-// ── Skipped symbols for AsciiString (3 total) ──
+// ── Skipped symbols for AsciiString (2 total) ──
 // SKIPPED: **Source:** `TCollection_AsciiString.hxx`:110 - `TCollection_AsciiString::TCollection_AsciiString`
 //   constructor: Initialize UTF-8 Unicode string from wide-char string considering it as Unicode string
 //   constructor: (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16).
@@ -1100,13 +1111,6 @@ impl AsciiString {
 //   method: Moves string without reallocations
 //   Reason: has unbindable types: param 'theOther': rvalue reference (TCollection_AsciiString&&)
 //   // pub fn move_(&mut self, theOther: /* TCollection_AsciiString&& */);
-//
-// SKIPPED: **Source:** `TCollection_AsciiString.hxx`:671 - `TCollection_AsciiString::Value`
-//   method: Returns character at position <where> in <me>.
-//   method: If <where> is less than zero or greater than the length of <me>,
-//   method: an exception is raised.
-//   Reason: return type 'char' is not CppDeletable
-//   // pub fn value(&self, where_: i32) -> char;
 //
 
 // ========================
@@ -2513,6 +2517,17 @@ impl HAsciiString {
         unsafe { crate::ffi::TCollection_HAsciiString_usefull_length(self as *const Self) }
     }
 
+    /// **Source:** `TCollection_HAsciiString.hxx`:481 - `TCollection_HAsciiString::Value()`
+    /// Returns character at position <where> in <me>.
+    /// If <where> is less than zero or greater than the length of
+    /// <me>, an exception is raised.
+    /// Example:
+    /// aString contains "Hello"
+    /// aString.Value(2) returns 'e'
+    pub fn value(&self, where_: i32) -> std::ffi::c_char {
+        unsafe { crate::ffi::TCollection_HAsciiString_value(self as *const Self, where_) }
+    }
+
     /// **Source:** `TCollection_HAsciiString.hxx`:484 - `TCollection_HAsciiString::String()`
     /// Returns the field myString.
     pub fn string(&self) -> &AsciiString {
@@ -2653,18 +2668,11 @@ impl HandleTCollectionHAsciiString {
     }
 }
 
-// ── Skipped symbols for HAsciiString (2 total) ──
+// ── Skipped symbols for HAsciiString (1 total) ──
 // SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:69 - `TCollection_HAsciiString::TCollection_HAsciiString`
 //   constructor: Initializes a HAsciiString with a AsciiString.
 //   Reason: has unbindable types: param 'theString': rvalue reference (TCollection_AsciiString&&)
 //   // pub fn new_asciistring(theString: /* TCollection_AsciiString&& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TCollection_HAsciiString.hxx`:481 - `TCollection_HAsciiString::Value`
-//   method: Returns character at position <where> in <me>.
-//   method: If <where> is less than zero or greater than the length of
-//   method: <me>, an exception is raised.
-//   Reason: return type 'char' is not CppDeletable
-//   // pub fn value(&self, where_: i32) -> char;
 //
 
 // ========================

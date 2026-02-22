@@ -246,6 +246,22 @@ impl AttrList {
         }
     }
 
+    /// **Source:** `MoniTool_AttrList.hxx`:108 - `MoniTool_AttrList::GetStringAttribute()`
+    /// Returns an attribute from its name, as String
+    /// If no attribute has this name, or not a String
+    /// <val> is 0.0 and returned value is False
+    /// Else, it is True
+    pub fn get_string_attribute(&self, name: &str, val: &mut *const std::ffi::c_char) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::MoniTool_AttrList_get_string_attribute(
+                self as *const Self,
+                c_name.as_ptr(),
+                val,
+            )
+        }
+    }
+
     /// **Source:** `MoniTool_AttrList.hxx`:112 - `MoniTool_AttrList::StringAttribute()`
     /// Returns a String attribute from its name. "" if not recorded
     pub fn string_attribute(&self, name: &str) -> std::string::String {
@@ -306,15 +322,6 @@ impl AttrList {
         }
     }
 }
-
-// ── Skipped symbols for AttrList (1 total) ──
-// SKIPPED: **Source:** `MoniTool_AttrList.hxx`:108 - `MoniTool_AttrList::GetStringAttribute`
-//   method: Returns an attribute from its name, as String
-//   method: If no attribute has this name, or not a String
-//   method: <val> is 0.0 and returned value is False
-//   Reason: has string ref param 'val' of type 'const char*&' (needs manual binding)
-//   // pub fn get_string_attribute(&self, name: *const char, val: &mut *const char) -> bool;
-//
 
 // ========================
 // From MoniTool_CaseData.hxx
@@ -716,6 +723,12 @@ impl CaseData {
         unsafe { crate::ffi::MoniTool_CaseData_real(self as *const Self, nd, val) }
     }
 
+    /// **Source:** `MoniTool_CaseData.hxx`:257 - `MoniTool_CaseData::Text()`
+    /// Returns a text (stored in TCollection_HAsciiString)
+    pub fn text(&self, nd: i32, text: &mut *const std::ffi::c_char) -> bool {
+        unsafe { crate::ffi::MoniTool_CaseData_text(self as *const Self, nd, text) }
+    }
+
     /// **Source:** `MoniTool_CaseData.hxx`:260 - `MoniTool_CaseData::Integer()`
     /// Returns an Integer
     pub fn integer(&self, nd: i32, val: &mut i32) -> bool {
@@ -893,13 +906,6 @@ impl HandleMoniToolCaseData {
         }
     }
 }
-
-// ── Skipped symbols for CaseData (1 total) ──
-// SKIPPED: **Source:** `MoniTool_CaseData.hxx`:257 - `MoniTool_CaseData::Text`
-//   method: Returns a text (stored in TCollection_HAsciiString)
-//   Reason: has string ref param 'text' of type 'const char*&' (needs manual binding)
-//   // pub fn text(&self, nd: i32, text: &mut *const char) -> bool;
-//
 
 // ========================
 // From MoniTool_DataInfo.hxx
@@ -3010,6 +3016,26 @@ impl TypedValue {
         }
     }
 
+    /// **Source:** `MoniTool_TypedValue.hxx`:70 - `MoniTool_TypedValue::Internals()`
+    /// Access to internal data which have no other access
+    pub fn internals(
+        &self,
+        interp: &mut crate::ffi::MoniTool_ValueInterpret,
+        satisf: &mut crate::ffi::MoniTool_ValueSatisfies,
+        satisname: &mut *const std::ffi::c_char,
+        enums: &mut crate::ffi::TColStd_DataMapOfAsciiStringInteger,
+    ) {
+        unsafe {
+            crate::ffi::MoniTool_TypedValue_internals(
+                self as *const Self,
+                interp,
+                satisf,
+                satisname,
+                enums,
+            )
+        }
+    }
+
     /// **Source:** `MoniTool_TypedValue.hxx`:77 - `MoniTool_TypedValue::Name()`
     /// Returns the name
     pub fn name(&self) -> std::string::String {
@@ -3683,13 +3709,6 @@ impl HandleMoniToolTypedValue {
         }
     }
 }
-
-// ── Skipped symbols for TypedValue (1 total) ──
-// SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:70 - `MoniTool_TypedValue::Internals`
-//   method: Access to internal data which have no other access
-//   Reason: has string ref param 'satisname' of type 'const char*&' (needs manual binding)
-//   // pub fn internals(&self, interp: &mut ValueInterpret, satisf: &mut ValueSatisfies, satisname: &mut *const char, enums: &mut DataMapOfAsciiStringInteger);
-//
 
 // ========================
 // Additional type re-exports

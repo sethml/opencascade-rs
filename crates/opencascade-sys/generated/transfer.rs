@@ -3344,6 +3344,22 @@ impl Finder {
         }
     }
 
+    /// **Source:** `Transfer_Finder.hxx`:118 - `Transfer_Finder::GetStringAttribute()`
+    /// Returns an attribute from its name, as String
+    /// If no attribute has this name, or not a String
+    /// <val> is 0.0 and returned value is False
+    /// Else, it is True
+    pub fn get_string_attribute(&self, name: &str, val: &mut *const std::ffi::c_char) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Finder_get_string_attribute(
+                self as *const Self,
+                c_name.as_ptr(),
+                val,
+            )
+        }
+    }
+
     /// **Source:** `Transfer_Finder.hxx`:122 - `Transfer_Finder::StringAttribute()`
     /// Returns a String attribute from its name. "" if not recorded
     pub fn string_attribute(&self, name: &str) -> std::string::String {
@@ -3538,15 +3554,6 @@ impl HandleTransferFinder {
         }
     }
 }
-
-// ── Skipped symbols for Finder (1 total) ──
-// SKIPPED: **Source:** `Transfer_Finder.hxx`:118 - `Transfer_Finder::GetStringAttribute`
-//   method: Returns an attribute from its name, as String
-//   method: If no attribute has this name, or not a String
-//   method: <val> is 0.0 and returned value is False
-//   Reason: has string ref param 'val' of type 'const char*&' (needs manual binding)
-//   // pub fn get_string_attribute(&self, name: *const char, val: &mut *const char) -> bool;
-//
 
 // ========================
 // From Transfer_FinderProcess.hxx
@@ -11873,10 +11880,3 @@ impl HandleTransferVoidBinder {
 pub use crate::ffi::{
     Transfer_SequenceOfBinder as SequenceOfBinder, Transfer_SequenceOfFinder as SequenceOfFinder,
 };
-
-// Manual bindings:
-// Manual binding for Transfer_Finder::GetStringAttribute
-//
-// The C++ method has a `Standard_CString&` output parameter (const char*&),
-// which can't be auto-generated. See Transfer_Finder.hxx:118.
-include!("../manual/transfer.rs");

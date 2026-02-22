@@ -9733,6 +9733,28 @@ impl StepReaderData {
         }
     }
 
+    /// **Source:** `StepData_StepReaderData.hxx`:367 - `StepData_StepReaderData::ReadEnumParam()`
+    pub fn read_enum_param(
+        &self,
+        num: i32,
+        nump: i32,
+        mess: &str,
+        ach: &mut crate::ffi::HandleInterfaceCheck,
+        text: &mut *const std::ffi::c_char,
+    ) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe {
+            crate::ffi::StepData_StepReaderData_read_enum_param(
+                self as *const Self,
+                num,
+                nump,
+                c_mess.as_ptr(),
+                ach,
+                text,
+            )
+        }
+    }
+
     /// **Source:** `StepData_StepReaderData.hxx`:376 - `StepData_StepReaderData::FailEnumValue()`
     /// Fills a check with a fail message if enumeration value does
     /// match parameter definition
@@ -10198,12 +10220,6 @@ impl HandleStepDataStepReaderData {
         }
     }
 }
-
-// ── Skipped symbols for StepReaderData (1 total) ──
-// SKIPPED: **Source:** `StepData_StepReaderData.hxx`:367 - `StepData_StepReaderData::ReadEnumParam`
-//   Reason: has string ref param 'text' of type 'const char*&' (needs manual binding)
-//   // pub fn read_enum_param(&self, num: i32, nump: i32, mess: *const char, ach: &mut HandleCheck, text: &mut *const char) -> bool;
-//
 
 // ========================
 // From StepData_StepReaderTool.hxx

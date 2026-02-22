@@ -5005,6 +5005,18 @@ impl GlobalSection {
         }
     }
 
+    /// **Source:** `IGESData_GlobalSection.hxx`:70 - `IGESData_GlobalSection::Separator()`
+    /// Returns the parameter delimiter character.
+    pub fn separator(&self) -> std::ffi::c_char {
+        unsafe { crate::ffi::IGESData_GlobalSection_separator(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_GlobalSection.hxx`:73 - `IGESData_GlobalSection::EndMark()`
+    /// Returns the record delimiter character.
+    pub fn end_mark(&self) -> std::ffi::c_char {
+        unsafe { crate::ffi::IGESData_GlobalSection_end_mark(self as *const Self) }
+    }
+
     /// **Source:** `IGESData_GlobalSection.hxx`:76 - `IGESData_GlobalSection::SendName()`
     /// Returns the name of the sending system.
     pub fn send_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
@@ -5426,18 +5438,6 @@ impl GlobalSection {
         }
     }
 }
-
-// ── Skipped symbols for GlobalSection (2 total) ──
-// SKIPPED: **Source:** `IGESData_GlobalSection.hxx`:70 - `IGESData_GlobalSection::Separator`
-//   method: Returns the parameter delimiter character.
-//   Reason: return type 'char' is not CppDeletable
-//   // pub fn separator(&self) -> char;
-//
-// SKIPPED: **Source:** `IGESData_GlobalSection.hxx`:73 - `IGESData_GlobalSection::EndMark`
-//   method: Returns the record delimiter character.
-//   Reason: return type 'char' is not CppDeletable
-//   // pub fn end_mark(&self) -> char;
-//
 
 // ========================
 // From IGESData_HArray1OfIGESEntity.hxx
@@ -9914,6 +9914,62 @@ impl IGESReaderData {
         unsafe { &*(crate::ffi::IGESData_IGESReaderData_dir_part(self as *const Self, num)) }
     }
 
+    /// **Source:** `IGESData_IGESReaderData.hxx`:99 - `IGESData_IGESReaderData::DirValues()`
+    /// returns values recorded in directory part n0 <num>
+    pub fn dir_values(
+        &self,
+        num: i32,
+        i1: &mut i32,
+        i2: &mut i32,
+        i3: &mut i32,
+        i4: &mut i32,
+        i5: &mut i32,
+        i6: &mut i32,
+        i7: &mut i32,
+        i8: &mut i32,
+        i9: &mut i32,
+        i10: &mut i32,
+        i11: &mut i32,
+        i12: &mut i32,
+        i13: &mut i32,
+        i14: &mut i32,
+        i15: &mut i32,
+        i16: &mut i32,
+        i17: &mut i32,
+        res1: &mut *const std::ffi::c_char,
+        res2: &mut *const std::ffi::c_char,
+        label: &mut *const std::ffi::c_char,
+        subs: &mut *const std::ffi::c_char,
+    ) {
+        unsafe {
+            crate::ffi::IGESData_IGESReaderData_dir_values(
+                self as *const Self,
+                num,
+                i1,
+                i2,
+                i3,
+                i4,
+                i5,
+                i6,
+                i7,
+                i8,
+                i9,
+                i10,
+                i11,
+                i12,
+                i13,
+                i14,
+                i15,
+                i16,
+                i17,
+                res1,
+                res2,
+                label,
+                subs,
+            )
+        }
+    }
+
     /// **Source:** `IGESData_IGESReaderData.hxx`:123 - `IGESData_IGESReaderData::DirType()`
     /// returns "type" and "form" info from a directory part
     pub fn dir_type(&self, num: i32) -> crate::OwnedPtr<IGESType> {
@@ -10268,13 +10324,6 @@ impl HandleIGESDataIGESReaderData {
         }
     }
 }
-
-// ── Skipped symbols for IGESReaderData (1 total) ──
-// SKIPPED: **Source:** `IGESData_IGESReaderData.hxx`:99 - `IGESData_IGESReaderData::DirValues`
-//   method: returns values recorded in directory part n0 <num>
-//   Reason: has string ref param 'res1' of type 'const char*&' (needs manual binding)
-//   // pub fn dir_values(&self, num: i32, i1: &mut i32, i2: &mut i32, i3: &mut i32, i4: &mut i32, i5: &mut i32, i6: &mut i32, i7: &mut i32, i8: &mut i32, i9: &mut i32, i10: &mut i32, i11: &mut i32, i12: &mut i32, i13: &mut i32, i14: &mut i32, i15: &mut i32, i16: &mut i32, i17: &mut i32, res1: &mut *const char, res2: &mut *const char, label: &mut *const char, subs: &mut *const char);
-//
 
 // ========================
 // From IGESData_IGESReaderTool.hxx

@@ -1093,8 +1093,7 @@ fn resolve_method(
         BindingStatus::Excluded(ExclusionReason::NeedsExplicitLifetimes)
     } else if let Some((param_name, type_name)) = method_has_unsupported_by_value_params(method, all_enum_names) {
         BindingStatus::Excluded(ExclusionReason::UnsupportedByValueParam { param_name, type_name })
-    } else if let Some((param_name, type_name)) = method_has_string_ref_param(method) {
-        BindingStatus::Excluded(ExclusionReason::StringRefParam { param_name, type_name })
+    // string ref params (const char*& and const char* const&) are now handled in build_param_binding
     } else {
         BindingStatus::Included
     };
@@ -1152,8 +1151,7 @@ fn resolve_static_method(
         BindingStatus::Excluded(ExclusionReason::UnbindableStaticMethod)
     } else if let Some((param_name, type_name)) = static_method_has_unsupported_by_value_params(method, all_enum_names) {
         BindingStatus::Excluded(ExclusionReason::UnsupportedByValueParam { param_name, type_name })
-    } else if let Some((param_name, type_name)) = static_method_has_string_ref_param(method) {
-        BindingStatus::Excluded(ExclusionReason::StringRefParam { param_name, type_name })
+    // string ref params (const char*& and const char* const&) are now handled in build_param_binding
     } else {
         BindingStatus::Included
     };

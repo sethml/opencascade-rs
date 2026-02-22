@@ -11349,6 +11349,37 @@ impl STAT {
         unsafe { crate::ffi::Interface_STAT_add_step(self as *mut Self, weight) }
     }
 
+    /// **Source:** `Interface_STAT.hxx`:124 - `Interface_STAT::Description()`
+    /// Returns global description (cumulated weights of all phases,
+    /// count of phases,1 for default, and title)
+    pub fn description(
+        &self,
+        nbphases: &mut i32,
+        total: &mut f64,
+        title: &mut *const std::ffi::c_char,
+    ) {
+        unsafe {
+            crate::ffi::Interface_STAT_description(self as *const Self, nbphases, total, title)
+        }
+    }
+
+    /// **Source:** `Interface_STAT.hxx`:131 - `Interface_STAT::Phase()`
+    /// Returns description of a phase, given its rank
+    /// (n0 for first step, count of steps, default gives one;
+    /// weight, name)
+    pub fn phase(
+        &self,
+        num: i32,
+        n0step: &mut i32,
+        nbstep: &mut i32,
+        weight: &mut f64,
+        name: &mut *const std::ffi::c_char,
+    ) {
+        unsafe {
+            crate::ffi::Interface_STAT_phase(self as *const Self, num, n0step, nbstep, weight, name)
+        }
+    }
+
     /// **Source:** `Interface_STAT.hxx`:141 - `Interface_STAT::Step()`
     /// Returns weight of a Step, related to the cumul given for the
     /// phase.
@@ -11460,21 +11491,6 @@ impl STAT {
         }
     }
 }
-
-// ── Skipped symbols for STAT (2 total) ──
-// SKIPPED: **Source:** `Interface_STAT.hxx`:124 - `Interface_STAT::Description`
-//   method: Returns global description (cumulated weights of all phases,
-//   method: count of phases,1 for default, and title)
-//   Reason: has string ref param 'title' of type 'const char*&' (needs manual binding)
-//   // pub fn description(&self, nbphases: &mut i32, total: &mut f64, title: &mut *const char);
-//
-// SKIPPED: **Source:** `Interface_STAT.hxx`:131 - `Interface_STAT::Phase`
-//   method: Returns description of a phase, given its rank
-//   method: (n0 for first step, count of steps, default gives one;
-//   method: weight, name)
-//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
-//   // pub fn phase(&self, num: i32, n0step: &mut i32, nbstep: &mut i32, weight: &mut f64, name: &mut *const char);
-//
 
 // ========================
 // From Interface_ShareFlags.hxx

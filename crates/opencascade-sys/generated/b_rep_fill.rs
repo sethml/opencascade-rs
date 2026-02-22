@@ -502,19 +502,24 @@ impl AdvancedEvolved {
         unsafe { &*(crate::ffi::BRepFill_AdvancedEvolved_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:64 - `BRepFill_AdvancedEvolved::SetTemporaryDirectory()`
+    /// Sets directory where the debug shapes will be saved
+    pub fn set_temporary_directory(&mut self, thePath: &str) {
+        let c_thePath = std::ffi::CString::new(thePath).unwrap();
+        unsafe {
+            crate::ffi::BRepFill_AdvancedEvolved_set_temporary_directory(
+                self as *mut Self,
+                c_thePath.as_ptr(),
+            )
+        }
+    }
+
     /// **Source:** `BRepFill_AdvancedEvolved.hxx`:67 - `BRepFill_AdvancedEvolved::SetParallelMode()`
     /// Sets/Unsets computation in parallel mode
     pub fn set_parallel_mode(&mut self, theVal: bool) {
         unsafe { crate::ffi::BRepFill_AdvancedEvolved_set_parallel_mode(self as *mut Self, theVal) }
     }
 }
-
-// ── Skipped symbols for AdvancedEvolved (1 total) ──
-// SKIPPED: **Source:** `BRepFill_AdvancedEvolved.hxx`:64 - `BRepFill_AdvancedEvolved::SetTemporaryDirectory`
-//   method: Sets directory where the debug shapes will be saved
-//   Reason: has string ref param 'thePath' of type 'const char* const&' (needs manual binding)
-//   // pub fn set_temporary_directory(&mut self, thePath: &*const char);
-//
 
 // ========================
 // From BRepFill_ApproxSeewing.hxx
@@ -6238,10 +6243,3 @@ impl TrimSurfaceTool {
 // ========================
 
 pub use crate::ffi::BRepFill_DataMapOfShapeHArray2OfShape as DataMapOfShapeHArray2OfShape;
-
-// Manual bindings:
-// Manual binding for BRepFill_AdvancedEvolved::SetTemporaryDirectory
-//
-// The C++ method takes `const Standard_CString&` (const char* const&),
-// which can't be auto-generated. See BRepFill_AdvancedEvolved.hxx:64.
-include!("../manual/b_rep_fill.rs");
