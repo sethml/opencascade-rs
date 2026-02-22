@@ -109,10 +109,6 @@ resolve_deps = true
 Standard_OStream = { header = "Standard_OStream.hxx" }
 Standard_IStream = { header = "Standard_IStream.hxx" }
 Standard_SStream = { header = "Standard_SStream.hxx" }
-"IMeshData::MapOfInteger" = { header = "IMeshData_Types.hxx" }
-"IMeshData::MapOfIntegerInteger" = { header = "IMeshData_Types.hxx" }
-"IMeshData::VectorOfInteger" = { header = "IMeshData_Types.hxx" }
-"IMeshData::Array1OfVertexOfDelaun" = { header = "IMeshData_Types.hxx" }
 
 # Template instantiation aliases: declare C++ template instantiations as opaque
 # Rust types. The generator creates C++ typedefs, Rust opaque types, and Handle

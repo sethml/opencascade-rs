@@ -424,6 +424,13 @@ fn main() -> Result<()> {
         manual_type_names.insert(name.clone());
     }
 
+    // Add guarded namespace-scoped typedef aliases discovered by parser
+    // (e.g., IMeshData::MapOfInteger) so resolver treats them as known types
+    // during bindability filtering.
+    for name in parser::get_collected_namespace_typedef_names() {
+        manual_type_names.insert(name);
+    }
+
     // Build symbol table (Pass 1 of two-pass architecture)
     // This resolves all symbols and makes binding decisions ONCE
     let ordered_modules = graph.modules_in_order();

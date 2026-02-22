@@ -422,6 +422,24 @@ impl BoundaryParamsRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
+    pub fn get_parameters_u(&self) -> &crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetParametersU(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
+    pub fn get_parameters_v(&self) -> &crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetParametersV(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
         unsafe {
@@ -715,6 +733,22 @@ impl CircleTool {
         unsafe { crate::ffi::BRepMesh_CircleTool_delete(self as *mut Self, theIndex) }
     }
 
+    /// **Source:** `BRepMesh_CircleTool.hxx`:118 - `BRepMesh_CircleTool::Select()`
+    /// Select the circles shot by the given point.
+    /// @param thePoint bullet point.
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn select(
+        &mut self,
+        thePoint: &crate::gp::XY,
+    ) -> &mut crate::ffi::IMeshData_ListOfInteger {
+        unsafe { &mut *(crate::ffi::BRepMesh_CircleTool_select(self as *mut Self, thePoint)) }
+    }
+
     /// **Source:** `BRepMesh_CircleTool.hxx`:90 - `BRepMesh_CircleTool::MakeCircle()`
     /// Computes circle on three points.
     /// @param thePoint1 first point.
@@ -742,14 +776,6 @@ impl CircleTool {
         }
     }
 }
-
-// ── Skipped symbols for CircleTool (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_CircleTool.hxx`:118 - `BRepMesh_CircleTool::Select`
-//   method: Select the circles shot by the given point.
-//   method: @param thePoint bullet point.
-//   Reason: return type 'IMeshData::ListOfInteger&' is unknown
-//   // pub fn select(&mut self, thePoint: &XY) -> &mut ListOfInteger;
-//
 
 // ========================
 // From BRepMesh_Classifier.hxx
@@ -2471,6 +2497,19 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:86 - `BRepMesh_DataStructureOfDelaun::LinksConnectedTo()`
+    /// Get list of links attached to the node with the given index.
+    /// @param theIndex index of node whose links should be retrieved.
+    /// @return list of links attached to the node.
+    pub fn links_connected_to(&self, theIndex: i32) -> &crate::ffi::IMeshData_ListOfInteger {
+        unsafe {
+            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_links_connected_to(
+                self as *const Self,
+                theIndex,
+            ))
+        }
+    }
+
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:93 - `BRepMesh_DataStructureOfDelaun::NbLinks()`
     /// @name API for accessing mesh links.
     /// Returns number of links.
@@ -2809,14 +2848,7 @@ impl HandleBRepMeshDataStructureOfDelaun {
     }
 }
 
-// ── Skipped symbols for DataStructureOfDelaun (2 total) ──
-// SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:86 - `BRepMesh_DataStructureOfDelaun::LinksConnectedTo`
-//   method: Get list of links attached to the node with the given index.
-//   method: @param theIndex index of node whose links should be retrieved.
-//   method: @return list of links attached to the node.
-//   Reason: return type 'IMeshData::ListOfInteger const&' is unknown
-//   // pub fn links_connected_to(&self, theIndex: i32) -> &ListOfInteger;
-//
+// ── Skipped symbols for DataStructureOfDelaun (1 total) ──
 // SKIPPED: **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:176 - `BRepMesh_DataStructureOfDelaun::ElementNodes`
 //   method: Returns indices of nodes forming the given element.
 //   method: @param theElement element which nodes should be retrieved.
@@ -5154,6 +5186,24 @@ impl ExtrusionRangeSplitter {
                 theDFace,
                 theParameters,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
+    pub fn get_parameters_u(&self) -> &crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetParametersU(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
+    pub fn get_parameters_v(&self) -> &crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetParametersV(
+                self as *const Self,
+            ))
         }
     }
 
@@ -7825,6 +7875,24 @@ impl NURBSRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
+    pub fn get_parameters_u(&self) -> &crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetParametersU(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
+    pub fn get_parameters_v(&self) -> &crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetParametersV(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
@@ -9169,6 +9237,24 @@ impl TorusRangeSplitter {
         }
     }
 
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
+    pub fn get_parameters_u(&self) -> &crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetParametersU(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
+    pub fn get_parameters_v(&self) -> &crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetParametersV(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
         unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_inherited_AdjustRange(self as *mut Self) }
@@ -9417,6 +9503,42 @@ impl UVParamRangeSplitter {
         }
     }
 
+    /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
+    /// Returns U parameters.
+    pub fn get_parameters_u(&self) -> &crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_get_parameters_u(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:52 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
+    /// Returns U parameters.
+    pub fn get_parameters_u_mut(&mut self) -> &mut crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_UVParamRangeSplitter_get_parameters_u_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
+    /// Returns V parameters.
+    pub fn get_parameters_v(&self) -> &crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_get_parameters_v(self as *const Self))
+        }
+    }
+
+    /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:58 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
+    /// Returns V parameters.
+    pub fn get_parameters_v_mut(&mut self) -> &mut crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_UVParamRangeSplitter_get_parameters_v_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
         unsafe {
@@ -9542,28 +9664,6 @@ impl UVParamRangeSplitter {
     }
 }
 
-// ── Skipped symbols for UVParamRangeSplitter (4 total) ──
-// SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU`
-//   method: Returns U parameters.
-//   Reason: return type 'IMeshData::IMapOfReal const&' is unknown
-//   // pub fn get_parameters_u(&self) -> &IMapOfReal;
-//
-// SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:52 - `BRepMesh_UVParamRangeSplitter::GetParametersU`
-//   method: Returns U parameters.
-//   Reason: return type 'IMeshData::IMapOfReal&' is unknown
-//   // pub fn get_parameters_u(&mut self) -> &mut IMapOfReal;
-//
-// SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV`
-//   method: Returns V parameters.
-//   Reason: return type 'IMeshData::IMapOfReal const&' is unknown
-//   // pub fn get_parameters_v(&self) -> &IMapOfReal;
-//
-// SKIPPED: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:58 - `BRepMesh_UVParamRangeSplitter::GetParametersV`
-//   method: Returns V parameters.
-//   Reason: return type 'IMeshData::IMapOfReal&' is unknown
-//   // pub fn get_parameters_v(&mut self) -> &mut IMapOfReal;
-//
-
 // ========================
 // From BRepMesh_UndefinedRangeSplitter.hxx
 // ========================
@@ -9674,6 +9774,24 @@ impl UndefinedRangeSplitter {
                 theDFace,
                 theParameters,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
+    pub fn get_parameters_u(&self) -> &crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetParametersU(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
+    pub fn get_parameters_v(&self) -> &crate::ffi::IMeshData_IMapOfReal {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetParametersV(
+                self as *const Self,
+            ))
         }
     }
 
@@ -10053,6 +10171,13 @@ impl VertexTool {
         unsafe { crate::ffi::BRepMesh_VertexTool_remove_last(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:129 - `BRepMesh_VertexTool::GetListOfDelNodes()`
+    /// Returns the list with indexes of vertices that have movability attribute
+    /// equal to BRepMesh_Deleted and can be replaced with another node.
+    pub fn get_list_of_del_nodes(&self) -> &crate::ffi::IMeshData_ListOfInteger {
+        unsafe { &*(crate::ffi::BRepMesh_VertexTool_get_list_of_del_nodes(self as *const Self)) }
+    }
+
     /// **Source:** `BRepMesh_VertexTool.hxx`:135 - `BRepMesh_VertexTool::Statistics()`
     /// Prints statistics.
     pub fn statistics(&self, theStream: &mut crate::ffi::Standard_OStream) {
@@ -10175,11 +10300,3 @@ impl HandleBRepMeshVertexTool {
         }
     }
 }
-
-// ── Skipped symbols for VertexTool (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_VertexTool.hxx`:129 - `BRepMesh_VertexTool::GetListOfDelNodes`
-//   method: Returns the list with indexes of vertices that have movability attribute
-//   method: equal to BRepMesh_Deleted and can be replaced with another node.
-//   Reason: return type 'IMeshData::ListOfInteger const&' is unknown
-//   // pub fn get_list_of_del_nodes(&self) -> &ListOfInteger;
-//

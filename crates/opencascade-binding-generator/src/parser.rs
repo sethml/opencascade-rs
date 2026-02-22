@@ -49,6 +49,12 @@ thread_local! {
     /// Only contains typedefs where the underlying type is another OCCT class/typedef
     /// (not template specializations, primitives, or pointers).
     static SIMPLE_TYPEDEF_MAP: RefCell<HashMap<String, String>> = RefCell::new(HashMap::new());
+
+    /// Namespace-scoped typedef aliases collected from OCCT namespaces.
+    /// Examples: IMeshData::MapOfInteger, IMeshData::VectorOfInteger.
+    /// These are tracked separately so callers can selectively add them to
+    /// known-type sets without importing every collected template typedef name.
+    static NAMESPACE_TYPEDEF_NAMES: RefCell<HashSet<String>> = RefCell::new(HashSet::new());
 }
 
 /// Strip whitespace from a C++ type spelling for typedef map key/lookup.
@@ -82,6 +88,54 @@ fn strip_type_decorators(s: &str) -> &str {
         .trim()
 }
 
+/// Returns true if a namespace chain looks like an OCCT namespace path.
+/// Guard rails:
+/// - excludes std/opencascade namespaces
+/// - every segment must start with an uppercase character
+fn is_occt_namespace_chain(path: &str) -> bool {
+    !path.is_empty()
+        && path.split("::").all(|segment| {
+            !segment.is_empty()
+                && segment != "std"
+                && segment != "opencascade"
+                && segment.starts_with(|c: char| c.is_ascii_uppercase())
+        })
+}
+
+/// Build a guarded namespace-scoped typedef alias when a typedef name itself
+/// is unqualified (e.g. local `MapOfInteger` in namespace `IMeshData`).
+/// Returns `Some("IMeshData::MapOfInteger")` for OCCT namespace paths.
+fn namespace_scoped_typedef_alias(entity: &Entity, typedef_name: &str) -> Option<String> {
+    if typedef_name.contains('_') || typedef_name.contains("::") {
+        return None;
+    }
+
+    let mut namespace_parts = Vec::new();
+    let mut parent = entity.get_semantic_parent();
+    while let Some(p) = parent {
+        if p.get_kind() == EntityKind::Namespace {
+            if let Some(ns) = p.get_name() {
+                if !ns.is_empty() && !ns.starts_with("(anonymous") {
+                    namespace_parts.push(ns);
+                }
+            }
+        }
+        parent = p.get_semantic_parent();
+    }
+
+    if namespace_parts.is_empty() {
+        return None;
+    }
+
+    namespace_parts.reverse();
+    let namespace = namespace_parts.join("::");
+    if !is_occt_namespace_chain(&namespace) {
+        return None;
+    }
+
+    Some(format!("{}::{}", namespace, typedef_name))
+}
+
 /// Walk the AST to collect all typedef/using declarations that resolve to
 /// template specializations (NCollection, math_VectorBase, etc.).
 /// Populates the thread-local TYPEDEF_MAP.
@@ -96,16 +150,24 @@ fn strip_type_decorators(s: &str) -> &str {
 /// same template, we prefer names from included modules.
 fn collect_ncollection_typedefs(root: &Entity, included_modules: &HashSet<String>) {
     let mut map: HashMap<String, Vec<String>> = HashMap::new();
+    let mut namespace_typedefs: HashSet<String> = HashSet::new();
 
     root.visit_children(|entity, _| {
         if entity.get_kind() == EntityKind::TypedefDecl
             || entity.get_kind() == EntityKind::TypeAliasDecl
         {
             if let Some(name) = entity.get_name() {
-                // Only record if the typedef name looks like an OCCT type
-                // (contains underscore — e.g., math_Vector, TopTools_ListOfShape)
-                if !name.contains('_') {
+                let namespace_alias = namespace_scoped_typedef_alias(&entity, &name);
+                // Record OCCT-style typedef names, and additionally allow
+                // guarded namespace-scoped aliases for unqualified local names.
+                if !name.contains('_') && namespace_alias.is_none() {
                     return EntityVisitResult::Recurse;
+                }
+
+                let mut typedef_names = vec![name.clone()];
+                if let Some(alias) = namespace_alias {
+                    namespace_typedefs.insert(alias.clone());
+                    typedef_names.push(alias);
                 }
 
                 if let Some(underlying) = entity.get_typedef_underlying_type() {
@@ -115,7 +177,11 @@ fn collect_ncollection_typedefs(root: &Entity, included_modules: &HashSet<String
                     // since those are STL types that can't be wrapped as opaque OCCT classes.
                     if display.contains('<') && !display.starts_with("std::") {
                         let display_key = normalize_template_spelling(&display);
-                        map.entry(display_key.clone()).or_default().push(name.clone());
+                        for typedef_name in &typedef_names {
+                            map.entry(display_key.clone())
+                                .or_default()
+                                .push(typedef_name.clone());
+                        }
 
                         // Also insert under the canonical spelling so lookups
                         // work when OCCT headers use C++ primitives (e.g. float)
@@ -123,7 +189,11 @@ fn collect_ncollection_typedefs(root: &Entity, included_modules: &HashSet<String
                         let canonical = underlying.get_canonical_type().get_display_name();
                         let canonical_key = normalize_template_spelling(&canonical);
                         if canonical_key != display_key && canonical.contains('<') {
-                            map.entry(canonical_key).or_default().push(name.clone());
+                            for typedef_name in &typedef_names {
+                                map.entry(canonical_key.clone())
+                                    .or_default()
+                                    .push(typedef_name.clone());
+                            }
                         }
                     }
                 }
@@ -155,6 +225,9 @@ fn collect_ncollection_typedefs(root: &Entity, included_modules: &HashSet<String
     TYPEDEF_MAP.with(|m| {
         *m.borrow_mut() = map;
     });
+    NAMESPACE_TYPEDEF_NAMES.with(|m| {
+        *m.borrow_mut() = namespace_typedefs;
+    });
 }
 
 /// Look up a type's display name in the typedef map.
@@ -171,6 +244,12 @@ pub fn get_collected_typedef_names() -> HashSet<String> {
     TYPEDEF_MAP.with(|m| m.borrow().values().flat_map(|v| v.iter()).cloned().collect())
 }
 
+/// Get namespace-scoped typedef aliases collected during the last parse.
+/// These are a guarded subset (OCCT-style namespace paths only).
+pub fn get_collected_namespace_typedef_names() -> HashSet<String> {
+    NAMESPACE_TYPEDEF_NAMES.with(|m| m.borrow().clone())
+}
+
 /// Walk the AST to collect simple (non-template) typedef declarations where
 /// the underlying type is another OCCT class name. Populates SIMPLE_TYPEDEF_MAP.
 ///
@@ -184,14 +263,16 @@ pub fn get_collected_typedef_names() -> HashSet<String> {
 /// by `collect_ncollection_typedefs()`.
 fn collect_simple_typedefs(root: &Entity) {
     let mut map: HashMap<String, String> = HashMap::new();
+    let mut namespace_typedefs: HashSet<String> = HashSet::new();
 
     root.visit_children(|entity, _| {
         if entity.get_kind() == EntityKind::TypedefDecl
             || entity.get_kind() == EntityKind::TypeAliasDecl
         {
             if let Some(name) = entity.get_name() {
-                // Only OCCT-style names (contain underscore)
-                if !name.contains('_') {
+                let namespace_alias = namespace_scoped_typedef_alias(&entity, &name);
+                // Keep existing OCCT-style typedefs and guarded namespace-scoped aliases.
+                if !name.contains('_') && namespace_alias.is_none() {
                     return EntityVisitResult::Recurse;
                 }
 
@@ -230,6 +311,10 @@ fn collect_simple_typedefs(root: &Entity) {
 
                         if looks_like_class {
                             map.insert(name.clone(), clean.to_string());
+                            if let Some(alias) = namespace_alias.clone() {
+                                namespace_typedefs.insert(alias.clone());
+                                map.insert(alias, clean.to_string());
+                            }
                         }
                     }
                 }
@@ -256,6 +341,9 @@ fn collect_simple_typedefs(root: &Entity) {
     eprintln!("  Collected {} simple typedef entries", map.len());
     SIMPLE_TYPEDEF_MAP.with(|m| {
         *m.borrow_mut() = map;
+    });
+    NAMESPACE_TYPEDEF_NAMES.with(|m| {
+        m.borrow_mut().extend(namespace_typedefs);
     });
 }
 
@@ -1988,6 +2076,15 @@ mod tests {
             extract_template_arg("opencascade::handle<Geom_Curve>"),
             "Geom_Curve"
         );
+    }
+
+    #[test]
+    fn test_is_occt_namespace_chain() {
+        assert!(is_occt_namespace_chain("IMeshData"));
+        assert!(is_occt_namespace_chain("ShapePersistent_BRep"));
+        assert!(!is_occt_namespace_chain("std"));
+        assert!(!is_occt_namespace_chain("opencascade"));
+        assert!(!is_occt_namespace_chain("lowercase"));
     }
 
     #[test]

@@ -346,7 +346,8 @@ NCollection typedefs (e.g., `TopTools_ListOfShape`) get iterator wrappers:
 
 ### Standard Streams (iostream)
 
-OCCT uses `Standard_OStream` (typedef for `std::ostream`) and `Standard_IStream` (typedef for `std::istream`) in many debug/dump methods. These are declared as `manual_types` in `bindings.toml` so the generator recognizes them as known types without generating class bindings. The same mechanism is also used for selected namespace-scoped typedef aliases (for example `IMeshData::MapOfInteger`) to unblock signatures that otherwise appear as unknown types.
+OCCT uses `Standard_OStream` (typedef for `std::ostream`) and `Standard_IStream` (typedef for `std::istream`) in many debug/dump methods. These are declared as `manual_types` in `bindings.toml` so the generator recognizes them as known types without generating class bindings. Namespace-scoped typedef aliases (for example `IMeshData::MapOfInteger`) are now resolved automatically by guarded parser logic that recognizes OCCT namespace typedef declarations.
+
 
 Manual bindings in the `standard` module provide access to the global C++ stream objects:
 
@@ -384,7 +385,8 @@ Some C++ function signatures can't be auto-generated. Manual replacements live i
 
 The generator appends `include!("../manual/<module>.rs");` (with a comment explaining why) to the generated module re-export file when a corresponding `manual/<module>.rs` exists. Because `include!()` is a textual insertion, the manual code has full access to the module's type aliases. The `extern "C"` declarations in manual files are not marked `pub`, so they are private to the module. `build.rs` globs `manual/*_wrappers.cpp` and compiles them alongside `generated/wrappers.cpp`. Since Rust allows multiple `impl` blocks for a type, manual methods appear seamlessly alongside the auto-generated ones.
 
-Currently only `standard` iostream accessors (`cout()`, `cerr()`, etc.) require manual bindings in `crates/opencascade-sys/manual/`. Separately, `bindings.toml` `manual_types` is used to mark opaque known types (including selected namespace-scoped typedef aliases) so auto-generated methods using those types are not skipped as unknown.
+Currently only `standard` iostream accessors (`cout()`, `cerr()`, etc.) require manual bindings in `crates/opencascade-sys/manual/`. `bindings.toml` `manual_types` remains useful for explicit opaque known types, while guarded namespace-typedef auto-resolution handles OCCT namespace aliases without per-type config entries.
+
 
 
 ---
@@ -440,7 +442,8 @@ Most skipped symbols are in internal, low-use, or specialized modules. However, 
 
 **Document Framework (1 symbol)** — `TDF_*` (1). The unknown type is `TDF_LabelNode*` — a raw pointer to a class not in the binding set. Previously, `TDocStd_XLinkPtr` (pointer typedef for `TDocStd_XLink*`) also caused 3 skips, but these are now resolved via pointer typedef resolution. Methods returning references with reference params are bound as `unsafe fn` (see "Unsafe Reference Returns" above).
 
-**Shape Meshing** — `BRepMesh_*` and `IMeshData_*`. Namespace-scoped IMeshData typedef aliases used by key meshing APIs (`IMeshData::MapOfInteger`, `IMeshData::VectorOfInteger`, `IMeshData::Array1OfVertexOfDelaun`, etc.) are now recognized via `bindings.toml` `manual_types`, which unblocks a set of previously skipped BRepMesh methods. Remaining skips in meshing are primarily C-style array params, unresolved template forms, and internal pointer-heavy signatures.
+**Shape Meshing** — `BRepMesh_*` and `IMeshData_*`. Namespace-scoped IMeshData typedef aliases used by key meshing APIs (`IMeshData::MapOfInteger`, `IMeshData::VectorOfInteger`, `IMeshData::Array1OfVertexOfDelaun`, etc.) are now resolved by guarded namespace-typedef auto-resolution in the parser, which unblocks a set of previously skipped BRepMesh methods. Remaining skips in meshing are primarily C-style array params, unresolved template forms, and internal pointer-heavy signatures.
+
 
 
 **Shape Analysis/Fix (0 symbols)** — All symbols are fully bound.
