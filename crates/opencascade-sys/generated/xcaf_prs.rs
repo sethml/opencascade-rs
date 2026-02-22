@@ -2402,3 +2402,9 @@ impl HandleXCAFPrsTexture {
         }
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::XCAFPrs_IndexedDataMapOfShapeStyle as IndexedDataMapOfShapeStyle;

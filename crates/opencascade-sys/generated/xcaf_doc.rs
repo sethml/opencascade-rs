@@ -5942,6 +5942,36 @@ impl DimTolTool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_lock(self as *const Self, theViewL) }
     }
 
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:240 - `XCAFDoc_DimTolTool::GetGDTPresentations()`
+    /// fill the map GDT label -> shape presentation
+    pub fn get_gdt_presentations(
+        &self,
+        theGDTLabelToShape: &mut crate::ffi::NCollection_IndexedDataMap_TDF_Label_TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_get_gdt_presentations(
+                self as *const Self,
+                theGDTLabelToShape,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:246 - `XCAFDoc_DimTolTool::SetGDTPresentations()`
+    /// Set shape presentation for GDT labels according to given map (theGDTLabelToPrs)
+    /// theGDTLabelToPrsName map is an additional argument, can be used to set presentation names.
+    /// If label is not in the theGDTLabelToPrsName map, the presentation name will be empty
+    pub fn set_gdt_presentations(
+        &mut self,
+        theGDTLabelToPrs: &mut crate::ffi::NCollection_IndexedDataMap_TDF_Label_TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_set_gdt_presentations(
+                self as *mut Self,
+                theGDTLabelToPrs,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:250 - `XCAFDoc_DimTolTool::Unlock()`
     /// Unlock the given GDT.
     pub fn unlock(&self, theViewL: &crate::tdf::Label) {
@@ -6422,20 +6452,6 @@ impl HandleXCAFDocDimTolTool {
         }
     }
 }
-
-// ── Skipped symbols for DimTolTool (2 total) ──
-// SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:240 - `XCAFDoc_DimTolTool::GetGDTPresentations`
-//   method: fill the map GDT label -> shape presentation
-//   Reason: has unbindable types: param 'theGDTLabelToShape': unresolved template type (NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>&)
-//   // pub fn get_gdt_presentations(&self, theGDTLabelToShape: /* NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>& */);
-//
-// SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:246 - `XCAFDoc_DimTolTool::SetGDTPresentations`
-//   method: Set shape presentation for GDT labels according to given map (theGDTLabelToPrs)
-//   method: theGDTLabelToPrsName map is an additional argument, can be used to set presentation names.
-//   method: If label is not in the theGDTLabelToPrsName map, the presentation name will be empty
-//   Reason: has unbindable types: param 'theGDTLabelToPrs': unresolved template type (NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>&)
-//   // pub fn set_gdt_presentations(&mut self, theGDTLabelToPrs: /* NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>& */);
-//
 
 // ========================
 // From XCAFDoc_Dimension.hxx
@@ -7777,6 +7793,43 @@ impl Editor {
         }
     }
 
+    /// **Source:** `XCAFDoc_Editor.hxx`:97 - `XCAFDoc_Editor::CloneMetaData()`
+    /// Copies metadata contains from the source label to the destination label.
+    /// Protected against creating a new label for non-existent tools
+    /// @param[in] theSrcLabel original label to copy from
+    /// @param[in] theDstLabel destination shape label to set attributes
+    /// @param[in] theVisMatMap relating map of the original VisMaterial and created. Can be NULL for
+    /// the same document
+    /// @param[in] theToCopyColor copying visible value and shape color (handled all color type)
+    /// @param[in] theToCopyLayer copying layer
+    /// @param[in] theToCopyMaterial copying  material
+    /// @param[in] theToCopyVisMaterial copying visual material
+    /// @param[in] theToCopyAttributes copying of other node attributes, for example, a shape's
+    /// property
+    pub fn clone_meta_data(
+        theSrcLabel: &crate::tdf::Label,
+        theDstLabel: &crate::tdf::Label,
+        theVisMatMap: &mut crate::ffi::NCollection_DataMap_opencascade_handle_XCAFDoc_VisMaterial_opencascade_handle_XCAFDoc_VisMaterial,
+        theToCopyColor: bool,
+        theToCopyLayer: bool,
+        theToCopyMaterial: bool,
+        theToCopyVisMaterial: bool,
+        theToCopyAttributes: bool,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Editor_clone_meta_data(
+                theSrcLabel,
+                theDstLabel,
+                theVisMatMap as *mut _,
+                theToCopyColor,
+                theToCopyLayer,
+                theToCopyMaterial,
+                theToCopyVisMaterial,
+                theToCopyAttributes,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_Editor.hxx`:110 - `XCAFDoc_Editor::GetParentShapeLabels()`
     /// Gets shape labels that has down relation with the input label.
     /// @param[in] theLabel input label
@@ -7844,15 +7897,6 @@ impl Editor {
         }
     }
 }
-
-// ── Skipped symbols for Editor (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:97 - `XCAFDoc_Editor::CloneMetaData`
-//   static_method: Copies metadata contains from the source label to the destination label.
-//   static_method: Protected against creating a new label for non-existent tools
-//   static_method: @param[in] theSrcLabel original label to copy from
-//   Reason: param 'theVisMatMap' uses unknown type 'NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>, opencascade::handle<XCAFDoc_VisMaterial>>*'
-//   // pub fn clone_meta_data(theSrcLabel: &Label, theDstLabel: &Label, theVisMatMap: /* NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>, opencascade::handle<XCAFDoc_VisMaterial>>* */, theToCopyColor: bool, theToCopyLayer: bool, theToCopyMaterial: bool, theToCopyVisMaterial: bool, theToCopyAttributes: bool);
-//
 
 // ========================
 // From XCAFDoc_GeomTolerance.hxx

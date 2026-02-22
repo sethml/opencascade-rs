@@ -670,6 +670,20 @@ unsafe impl crate::CppDeletable for MtlReader {
 }
 
 impl MtlReader {
+    /// **Source:** `RWObj_MtlReader.hxx`:27 - `RWObj_MtlReader::RWObj_MtlReader()`
+    /// Main constructor.
+    pub fn new_datamap_tcollection_asciistring_rwobj_material(
+        theMaterials: &mut crate::ffi::NCollection_DataMap_TCollection_AsciiString_RWObj_Material,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::RWObj_MtlReader_ctor_datamap_tcollection_asciistring_rwobj_material(
+                    theMaterials,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `RWObj_MtlReader.hxx`:33 - `RWObj_MtlReader::Read()`
     /// Read the file.
     pub fn read(
@@ -680,13 +694,6 @@ impl MtlReader {
         unsafe { crate::ffi::RWObj_MtlReader_read(self as *mut Self, theFolder, theFile) }
     }
 }
-
-// ── Skipped symbols for MtlReader (1 total) ──
-// SKIPPED: **Source:** `RWObj_MtlReader.hxx`:27 - `RWObj_MtlReader::RWObj_MtlReader`
-//   constructor: Main constructor.
-//   Reason: has unbindable types: param 'theMaterials': unresolved template type (NCollection_DataMap<TCollection_AsciiString, RWObj_Material>&)
-//   // pub fn new_datamap<tcollection_asciistring, rwobj_material>(theMaterials: /* NCollection_DataMap<TCollection_AsciiString, RWObj_Material>& */) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From RWObj_ObjMaterialMap.hxx

@@ -5987,6 +5987,12 @@ impl View {
         }
     }
 
+    /// **Source:** `V3d_View.hxx`:1113 - `V3d_View::Subviews()`
+    /// Return subview list.
+    pub fn subviews(&self) -> &crate::ffi::NCollection_Sequence_opencascade_handle_V3d_View {
+        unsafe { &*(crate::ffi::V3d_View_subviews(self as *const Self)) }
+    }
+
     /// **Source:** `V3d_View.hxx`:1116 - `V3d_View::PickSubview()`
     /// Pick subview from the given 2D point.
     pub fn pick_subview(
@@ -6114,7 +6120,7 @@ impl HandleV3dView {
     }
 }
 
-// ── Skipped symbols for View (3 total) ──
+// ── Skipped symbols for View (2 total) ──
 // SKIPPED: **Source:** `V3d_View.hxx`:76 - `V3d_View::SetWindow`
 //   method: Activates the view in the specified Window
 //   method: If <aContext> is not NULL the graphic context is used
@@ -6126,11 +6132,6 @@ impl HandleV3dView {
 //   method: Return iterator for defined lights.
 //   Reason: return type 'V3d_ListOfLight::Iterator' is not CppDeletable
 //   // pub fn active_light_iterator(&self) -> OwnedPtr<V3d_ListOfLight::Iterator>;
-//
-// SKIPPED: **Source:** `V3d_View.hxx`:1113 - `V3d_View::Subviews`
-//   method: Return subview list.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<opencascade::handle<V3d_View>> const&)
-//   // pub fn subviews(&self) -> /* NCollection_Sequence<opencascade::handle<V3d_View>> const& */;
 //
 
 // ========================

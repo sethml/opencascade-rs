@@ -222,6 +222,75 @@ fn main() -> Result<()> {
         }
     }
 
+    // Auto-collect remaining template type spellings from parsed data.
+    // These are Type::Class(name) entries where name still contains '<' after the
+    // explicit template_instantiations rewrite above. We auto-infer headers and
+    // generate typedefs so these template types become bindable.
+    let known_headers_for_templates: HashSet<String> = if !args.include_dirs.is_empty() {
+        let occt_include_dir = &args.include_dirs[0];
+        std::fs::read_dir(occt_include_dir)
+            .map(|entries| {
+                entries
+                    .filter_map(|e| e.ok())
+                    .filter_map(|e| {
+                        let path = e.path();
+                        if path.extension().and_then(|s| s.to_str()) == Some("hxx") {
+                            path.file_name().and_then(|s| s.to_str()).map(|s| s.to_string())
+                        } else {
+                            None
+                        }
+                    })
+                    .collect()
+            })
+            .unwrap_or_default()
+    } else {
+        HashSet::new()
+    };
+    let auto_template_types = collect_template_class_types(&parsed);
+    let mut template_instantiations = template_instantiations;
+    if !auto_template_types.is_empty() {
+        let mut auto_count = 0;
+        for spelling in &auto_template_types {
+            // Skip types already in template_instantiations
+            if template_instantiations.contains_key(spelling) {
+                continue;
+            }
+            // Try to infer the header for this template type
+            if let Some(header) = infer_template_header(spelling, &known_headers_for_templates) {
+                // Determine the OCCT module from the base type name
+                let base = spelling.split('<').next().unwrap_or(spelling).trim();
+                let module = if base.contains('_') {
+                    base.split('_').next().unwrap_or(base).to_string()
+                } else if base.contains("::") {
+                    base.split("::").next().unwrap_or(base).to_string()
+                } else {
+                    base.to_string()
+                };
+                template_instantiations.insert(
+                    spelling.clone(),
+                    config::TemplateInstantiation {
+                        header,
+                        module,
+                        handle: false,
+                    },
+                );
+                auto_count += 1;
+            }
+        }
+        if auto_count > 0 {
+            println!("  Auto-detected {} template type instantiations", auto_count);
+            // Build extended alias map and rewrite the newly discovered template types
+            let extended_alias_map: HashMap<String, String> = template_instantiations
+                .iter()
+                .map(|(spelling, _)| (spelling.clone(), config::template_alias_name(spelling)))
+                .collect();
+            let rewritten = rewrite_template_types(&mut parsed, &extended_alias_map);
+            if rewritten > 0 {
+                println!("  Rewrote {} template Class type references to alias names", rewritten);
+            }
+        }
+    }
+
     // Detect "utility namespace classes" — classes with no underscore in the name
     // (class name == module name), only static methods, and no instance methods/constructors.
     // These are OCCT's namespace-like patterns (e.g., `gp` with `gp::OX()`, `gp::Origin()`).
@@ -399,32 +468,9 @@ fn main() -> Result<()> {
         return Ok(());
     }
 
-    // Collect set of known header filenames that actually exist
-    // This is used to filter out headers for types that don't have their own header files
-    let known_headers: HashSet<String> = if !args.include_dirs.is_empty() {
-        let occt_include_dir = &args.include_dirs[0];
-        std::fs::read_dir(occt_include_dir)
-            .map(|entries| {
-                entries
-                    .filter_map(|e| e.ok())
-                    .filter_map(|e| {
-                        let path = e.path();
-                        if path.extension().and_then(|s| s.to_str()) == Some("hxx") {
-                            path.file_name().and_then(|s| s.to_str()).map(|s| s.to_string())
-                        } else {
-                            None
-                        }
-                    })
-                    .collect()
-            })
-            .unwrap_or_default()
-    } else {
-        HashSet::new()
-    };
-    // Remove excluded headers from the known set so they won't be included
-    // in wrappers.cpp (e.g., RWGltf_GltfOStreamWriter.hxx depends on rapidjson
-    // which is not bundled)
-    let known_headers: HashSet<String> = known_headers.difference(&exclude_set).cloned().collect();
+    // Reuse the known headers computed earlier for template type inference.
+    // Apply exclusions for headers that shouldn't be included in wrappers.cpp.
+    let known_headers: HashSet<String> = known_headers_for_templates.difference(&exclude_set).cloned().collect();
 
     if args.verbose {
         println!("  Found {} known OCCT headers", known_headers.len());
@@ -479,11 +525,19 @@ fn rewrite_template_types(
     count
 }
 
-/// Rewrite a single type, translating template Handle names to alias names.
+/// Rewrite a single type, translating template names to alias names.
+/// Handles both Handle types and Class types containing template angle brackets.
 /// Returns 1 if a rewrite was performed, 0 otherwise.
 fn rewrite_type(ty: &mut model::Type, alias_map: &HashMap<String, String>) -> usize {
     match ty {
         model::Type::Handle(ref mut name) => {
+            if let Some(alias) = alias_map.get(name.as_str()) {
+                *name = alias.clone();
+                return 1;
+            }
+            0
+        }
+        model::Type::Class(ref mut name) if name.contains('<') => {
             if let Some(alias) = alias_map.get(name.as_str()) {
                 *name = alias.clone();
                 return 1;
@@ -497,6 +551,185 @@ fn rewrite_type(ty: &mut model::Type, alias_map: &HashMap<String, String>) -> us
         _ => 0,
     }
 }
+
+/// Collect all unresolved template type spellings from parsed data.
+/// These are Type::Class(name) entries where name contains '<', appearing in
+/// method params, return types, constructor params, static method params/returns,
+/// and free function params/returns.
+/// Returns a set of unique template type spellings (e.g., "NCollection_Vec3<Standard_Size>").
+fn collect_template_class_types(parsed: &[model::ParsedHeader]) -> HashSet<String> {
+    let mut templates = HashSet::new();
+
+    fn collect_from_type(ty: &model::Type, templates: &mut HashSet<String>) {
+        match ty {
+            model::Type::Class(name) if name.contains('<') => {
+                templates.insert(name.clone());
+            }
+            model::Type::ConstRef(inner)
+            | model::Type::MutRef(inner)
+            | model::Type::ConstPtr(inner)
+            | model::Type::MutPtr(inner)
+            | model::Type::RValueRef(inner) => {
+                collect_from_type(inner, templates);
+            }
+            _ => {}
+        }
+    }
+
+    for header in parsed {
+        for class in &header.classes {
+            for method in &class.methods {
+                if let Some(ref ret) = method.return_type {
+                    collect_from_type(ret, &mut templates);
+                }
+                for param in &method.params {
+                    collect_from_type(&param.ty, &mut templates);
+                }
+            }
+            for method in &class.static_methods {
+                if let Some(ref ret) = method.return_type {
+                    collect_from_type(ret, &mut templates);
+                }
+                for param in &method.params {
+                    collect_from_type(&param.ty, &mut templates);
+                }
+            }
+            for ctor in &class.constructors {
+                for param in &ctor.params {
+                    collect_from_type(&param.ty, &mut templates);
+                }
+            }
+        }
+        for func in &header.functions {
+            if let Some(ref ret) = func.return_type {
+                collect_from_type(ret, &mut templates);
+            }
+            for param in &func.params {
+                collect_from_type(&param.ty, &mut templates);
+            }
+        }
+    }
+    // Filter out template types that would produce invalid C++ typedefs:
+    // - Types with raw pointer arguments (e.g., NCollection_Map<Graphic3d_Structure *>)
+    //   produce alias names with '*' which are invalid C++ identifiers
+    // - Types with '::' in template arguments that contain nested class names
+    //   (e.g., NCollection_List<const char *>::Iterator) can't be typedef'd
+    // - Types referencing unqualified nested classes (e.g., NCollection_List<TwoIntegers>)
+    //   where the inner type doesn't follow OCCT naming (no '_' separator)
+    templates.retain(|spelling| {
+        // Reject types with raw pointers in template args
+        if spelling.contains('*') {
+            return false;
+        }
+        // Reject iterator types (Foo<...>::Iterator)
+        if spelling.contains(">::") {
+            return false;
+        }
+        // Check all template arguments for validity
+        let args_str = if let Some(start) = spelling.find('<') {
+            &spelling[start + 1..spelling.len().saturating_sub(1)]
+        } else {
+            return false;
+        };
+        // Each template argument must be a resolvable type:
+        // - Known OCCT types (contain '_' like gp_Pnt, Standard_Real)
+        // - Qualified nested types (contain '::')
+        // - Primitive types (bool, int, double, etc.)
+        // - Numeric literals (e.g., '3' in BVH_Builder<double, 3>)
+        // - Handle wrapper types (opencascade::handle<...>)
+        for arg in split_template_args(args_str) {
+            let arg = arg.trim();
+            if arg.is_empty() {
+                continue;
+            }
+            // Handle wrapper: opencascade::handle<Foo>
+            if arg.starts_with("opencascade::handle<") {
+                continue;
+            }
+            // Nested type with template (e.g., StdLPersistent_HArray1::instance<...>)
+            if arg.contains("::") && arg.contains('<') {
+                return false;
+            }
+            // Numeric literal
+            if arg.chars().all(|c| c.is_ascii_digit()) {
+                continue;
+            }
+            // Known primitive types
+            if matches!(arg, "bool" | "int" | "double" | "float" | "char" | "unsigned" | "long") {
+                continue;
+            }
+            // OCCT-style type with underscore (Standard_Real, gp_Pnt, etc.) or std:: prefix
+            if arg.contains('_') || arg.starts_with("std::") {
+                continue;
+            }
+            // Qualified nested type (Parent::Nested)
+            if arg.contains("::") {
+                continue;
+            }
+            // Unqualified name without underscore (e.g., "TwoIntegers", "BVHThread",
+            // "Operation") — likely an unqualified nested class name, not safe to typedef
+            return false;
+        }
+        true
+    });
+
+    templates
+}
+
+/// Split template arguments at the top level, respecting nested angle brackets.
+/// e.g., "Standard_Real, opencascade::handle<Foo>" -> ["Standard_Real", "opencascade::handle<Foo>"]
+fn split_template_args(args: &str) -> Vec<&str> {
+    let mut result = Vec::new();
+    let mut depth = 0;
+    let mut start = 0;
+    for (i, c) in args.char_indices() {
+        match c {
+            '<' => depth += 1,
+            '>' => depth -= 1,
+            ',' if depth == 0 => {
+                result.push(&args[start..i]);
+                start = i + 1;
+            }
+            _ => {}
+        }
+    }
+    if start < args.len() {
+        result.push(&args[start..]);
+    }
+    result
+}
+
+/// Infer the C++ header filename for a template type spelling.
+/// Returns None if the header cannot be determined or doesn't exist.
+///
+/// Strategy:
+/// - Extract the base template name (before '<')
+/// - For OCCT types (contain '_' or known prefixes), try BaseType.hxx
+/// - For std:: types, return the appropriate standard header
+/// - Only returns headers that exist in known_headers
+fn infer_template_header(spelling: &str, known_headers: &HashSet<String>) -> Option<String> {
+    let base = spelling.split('<').next().unwrap_or(spelling).trim();
+
+    // std:: types need standard library headers (always available)
+    if base.starts_with("std::") {
+        return match base {
+            "std::pair" => Some("utility".to_string()),
+            "std::shared_ptr" | "std::unique_ptr" | "std::weak_ptr" => Some("memory".to_string()),
+            "std::vector" => Some("vector".to_string()),
+            "std::string" => Some("string".to_string()),
+            _ => None,
+        };
+    }
+
+    // OCCT types: header is typically BaseType.hxx
+    let header = format!("{}.hxx", base);
+    if known_headers.contains(&header) {
+        return Some(header);
+    }
+
+    None
+}
+
 
 /// Detect "utility namespace classes" and convert their static methods to free functions.
 ///
@@ -772,6 +1005,7 @@ fn generate_output(
     println!("Generating ffi.rs...");
     let (ffi_code, nested_types) = codegen::rust::generate_ffi(
         all_classes,
+        &all_functions,
         &all_headers_list,
         &all_collections,
         symbol_table,
@@ -872,7 +1106,7 @@ fn generate_output(
     }
 
     // B. Opaque referenced types (types referenced in method signatures but not defined)
-    let collected_types = codegen::rust::collect_referenced_types(all_classes, &handle_able_classes);
+    let collected_types = codegen::rust::collect_referenced_types(all_classes, &all_functions, &handle_able_classes);
     let defined_classes: HashSet<String> = all_classes.iter().map(|c| c.name.clone()).collect();
     let all_enum_names = &symbol_table.all_enum_names;
 

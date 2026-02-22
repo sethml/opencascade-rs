@@ -404,6 +404,16 @@ impl PlyWriterContext {
         unsafe { crate::ffi::RWPly_PlyWriterContext_is_opened(self as *const Self) }
     }
 
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:73 - `RWPly_PlyWriterContext::Open()`
+    /// Open file for writing.
+    pub fn open(
+        &mut self,
+        theName: &crate::t_collection::AsciiString,
+        theStream: &crate::ffi::std_shared_ptr_std_ostream,
+    ) -> bool {
+        unsafe { crate::ffi::RWPly_PlyWriterContext_open(self as *mut Self, theName, theStream) }
+    }
+
     /// **Source:** `RWPly_PlyWriterContext.hxx`:81 - `RWPly_PlyWriterContext::WriteHeader()`
     /// Write the header.
     /// @param[in] theNbNodes number of vertex nodes
@@ -508,10 +518,3 @@ impl PlyWriterContext {
         unsafe { crate::ffi::RWPly_PlyWriterContext_close(self as *mut Self, theIsAborted) }
     }
 }
-
-// ── Skipped symbols for PlyWriterContext (1 total) ──
-// SKIPPED: **Source:** `RWPly_PlyWriterContext.hxx`:73 - `RWPly_PlyWriterContext::Open`
-//   method: Open file for writing.
-//   Reason: has unbindable types: param 'theStream': stream type (std::shared_ptr<std::ostream> const&)
-//   // pub fn open(&mut self, theName: &AsciiString, theStream: /* std::shared_ptr<std::ostream> const& */) -> bool;
-//

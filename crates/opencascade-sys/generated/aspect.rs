@@ -5592,6 +5592,19 @@ impl OpenVRSession {
         unsafe { crate::ffi::Aspect_OpenVRSession_inherited_DisplayFrequency(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Aspect_XRSession.hxx`:121 - `Aspect_XRSession::ProjectionFrustum()`
+    pub fn projection_frustum(
+        &self,
+        theEye: crate::aspect::Eye,
+    ) -> &crate::ffi::Aspect_FrustumLRBT_double {
+        unsafe {
+            &*(crate::ffi::Aspect_OpenVRSession_inherited_ProjectionFrustum(
+                self as *const Self,
+                theEye.into(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Aspect_XRSession.hxx`:131 - `Aspect_XRSession::HeadPose()`
     pub fn head_pose(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::Aspect_OpenVRSession_inherited_HeadPose(self as *const Self)) }
@@ -8096,29 +8109,45 @@ impl WindowInputListener {
             )
         }
     }
+
+    /// **Source:** `Aspect_WindowInputListener.hxx`:208 - `Aspect_WindowInputListener::Get3dMouseIsNoRotate()`
+    /// Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (FALSE, FALSE, FALSE) by default.
+    pub fn get3d_mouse_is_no_rotate(&self) -> &crate::ffi::NCollection_Vec3_bool {
+        unsafe {
+            &*(crate::ffi::Aspect_WindowInputListener_get3d_mouse_is_no_rotate(self as *const Self))
+        }
+    }
+
+    /// **Source:** `Aspect_WindowInputListener.hxx`:211 - `Aspect_WindowInputListener::Change3dMouseIsNoRotate()`
+    /// Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (FALSE, FALSE, FALSE) by default.
+    pub fn change3d_mouse_is_no_rotate(&mut self) -> &mut crate::ffi::NCollection_Vec3_bool {
+        unsafe {
+            &mut *(crate::ffi::Aspect_WindowInputListener_change3d_mouse_is_no_rotate(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `Aspect_WindowInputListener.hxx`:214 - `Aspect_WindowInputListener::Get3dMouseToReverse()`
+    /// Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (TRUE, FALSE, FALSE) by default.
+    pub fn get3d_mouse_to_reverse(&self) -> &crate::ffi::NCollection_Vec3_bool {
+        unsafe {
+            &*(crate::ffi::Aspect_WindowInputListener_get3d_mouse_to_reverse(self as *const Self))
+        }
+    }
+
+    /// **Source:** `Aspect_WindowInputListener.hxx`:217 - `Aspect_WindowInputListener::Change3dMouseToReverse()`
+    /// Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (TRUE, FALSE, FALSE) by default.
+    pub fn change3d_mouse_to_reverse(&mut self) -> &mut crate::ffi::NCollection_Vec3_bool {
+        unsafe {
+            &mut *(crate::ffi::Aspect_WindowInputListener_change3d_mouse_to_reverse(
+                self as *mut Self,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for WindowInputListener (8 total) ──
-// SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:208 - `Aspect_WindowInputListener::Get3dMouseIsNoRotate`
-//   method: Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (FALSE, FALSE, FALSE) by default.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Vec3<bool> const&)
-//   // pub fn get3d_mouse_is_no_rotate(&self) -> /* NCollection_Vec3<bool> const& */;
-//
-// SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:211 - `Aspect_WindowInputListener::Change3dMouseIsNoRotate`
-//   method: Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (FALSE, FALSE, FALSE) by default.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Vec3<bool>&)
-//   // pub fn change3d_mouse_is_no_rotate(&mut self) -> /* NCollection_Vec3<bool>& */;
-//
-// SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:214 - `Aspect_WindowInputListener::Get3dMouseToReverse`
-//   method: Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (TRUE, FALSE, FALSE) by default.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Vec3<bool> const&)
-//   // pub fn get3d_mouse_to_reverse(&self) -> /* NCollection_Vec3<bool> const& */;
-//
-// SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:217 - `Aspect_WindowInputListener::Change3dMouseToReverse`
-//   method: Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (TRUE, FALSE, FALSE) by default.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Vec3<bool>&)
-//   // pub fn change3d_mouse_to_reverse(&mut self) -> /* NCollection_Vec3<bool>& */;
-//
+// ── Skipped symbols for WindowInputListener (4 total) ──
 // SKIPPED: **Source:** `Aspect_WindowInputListener.hxx`:220 - `Aspect_WindowInputListener::Update3dMouse`
 //   method: Process 3d mouse input event (redirects to translation, rotation and keys).
 //   Reason: param 'theEvent' uses unknown type 'WNT_HIDSpaceMouse const&'
@@ -8730,6 +8759,18 @@ impl XRSession {
         unsafe { crate::ffi::Aspect_XRSession_display_frequency(self as *const Self) }
     }
 
+    /// **Source:** `Aspect_XRSession.hxx`:121 - `Aspect_XRSession::ProjectionFrustum()`
+    /// Return projection frustum.
+    /// @sa HasProjectionFrustums().
+    pub fn projection_frustum(
+        &self,
+        theEye: crate::aspect::Eye,
+    ) -> &crate::ffi::Aspect_FrustumLRBT_double {
+        unsafe {
+            &*(crate::ffi::Aspect_XRSession_projection_frustum(self as *const Self, theEye.into()))
+        }
+    }
+
     /// **Source:** `Aspect_XRSession.hxx`:131 - `Aspect_XRSession::HeadPose()`
     /// Return head orientation in right-handed system:
     /// +y is up
@@ -9062,20 +9103,14 @@ impl HandleAspectXRSession {
     }
 }
 
-// ── Skipped symbols for XRSession (1 total) ──
-// SKIPPED: **Source:** `Aspect_XRSession.hxx`:121 - `Aspect_XRSession::ProjectionFrustum`
-//   method: Return projection frustum.
-//   method: @sa HasProjectionFrustums().
-//   Reason: has unbindable types: return: unresolved template type (Aspect_FrustumLRBT<double> const&)
-//   // pub fn projection_frustum(&self, theEye: Eye) -> /* Aspect_FrustumLRBT<double> const& */;
-//
-
 // ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    Aspect_SequenceOfColor as SequenceOfColor, Aspect_TouchMap as TouchMap,
-    Aspect_TrackedDevicePoseArray as TrackedDevicePoseArray, Aspect_XDisplay as XDisplay,
-    Aspect_XRActionMap as XRActionMap, Aspect_XVisualInfo as XVisualInfo,
+    Aspect_FrustumLRBT_Standard_Real as FrustumLRBT_Standard_Real,
+    Aspect_FrustumLRBT_double as FrustumLRBT_double, Aspect_SequenceOfColor as SequenceOfColor,
+    Aspect_TouchMap as TouchMap, Aspect_TrackedDevicePoseArray as TrackedDevicePoseArray,
+    Aspect_XDisplay as XDisplay, Aspect_XRActionMap as XRActionMap,
+    Aspect_XVisualInfo as XVisualInfo,
 };

@@ -521,17 +521,26 @@ impl SelectingVolumeManager {
             )
         }
     }
+
+    /// **Source:** `SelectBasics_SelectingVolumeManager.hxx`:171 - `SelectBasics_SelectingVolumeManager::GetPlanes()`
+    /// Stores plane equation coefficients (in the following form:
+    /// Ax + By + Cz + D = 0) to the given vector
+    pub fn get_planes(
+        &self,
+        thePlaneEquations: &mut crate::ffi::NCollection_Vector_NCollection_Vec4_Standard_Real,
+    ) {
+        unsafe {
+            crate::ffi::SelectBasics_SelectingVolumeManager_get_planes(
+                self as *const Self,
+                thePlaneEquations,
+            )
+        }
+    }
 }
 
-// ── Skipped symbols for SelectingVolumeManager (2 total) ──
+// ── Skipped symbols for SelectingVolumeManager (1 total) ──
 // SKIPPED: **Source:** `SelectBasics_SelectingVolumeManager.hxx`:35 - `SelectBasics_SelectingVolumeManager::SelectBasics_SelectingVolumeManager`
 //   constructor: Empty constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `SelectBasics_SelectingVolumeManager.hxx`:171 - `SelectBasics_SelectingVolumeManager::GetPlanes`
-//   method: Stores plane equation coefficients (in the following form:
-//   method: Ax + By + Cz + D = 0) to the given vector
-//   Reason: has unbindable types: param 'thePlaneEquations': unresolved template type (NCollection_Vector<NCollection_Vec4<Standard_Real>>&)
-//   // pub fn get_planes(&self, thePlaneEquations: /* NCollection_Vector<NCollection_Vec4<Standard_Real>>& */);
 //

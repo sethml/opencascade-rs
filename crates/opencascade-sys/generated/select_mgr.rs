@@ -1302,6 +1302,19 @@ impl AxisIntersector {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:126 - `SelectMgr_BaseIntersector::GetPlanes()`
+    pub fn get_planes(
+        &self,
+        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+    ) {
+        unsafe {
+            crate::ffi::SelectMgr_AxisIntersector_inherited_GetPlanes(
+                self as *const Self,
+                thePlaneEquations,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:250 - `SelectMgr_BaseIntersector::RaySphereIntersection()`
     pub fn ray_sphere_intersection(
         &self,
@@ -2011,6 +2024,19 @@ impl BaseFrustum {
         }
     }
 
+    /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:126 - `SelectMgr_BaseIntersector::GetPlanes()`
+    pub fn get_planes(
+        &self,
+        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+    ) {
+        unsafe {
+            crate::ffi::SelectMgr_BaseFrustum_inherited_GetPlanes(
+                self as *const Self,
+                thePlaneEquations,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:133 - `SelectMgr_BaseIntersector::OverlapsBox()`
     pub fn overlaps_box(
         &self,
@@ -2561,6 +2587,19 @@ impl BaseIntersector {
         unsafe { &*(crate::ffi::SelectMgr_BaseIntersector_get_mouse_position(self as *const Self)) }
     }
 
+    /// **Source:** `SelectMgr_BaseIntersector.hxx`:126 - `SelectMgr_BaseIntersector::GetPlanes()`
+    /// Stores plane equation coefficients (in the following form:
+    /// Ax + By + Cz + D = 0) to the given vector.
+    /// This method only clears input vector for the base class.
+    pub fn get_planes(
+        &self,
+        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+    ) {
+        unsafe {
+            crate::ffi::SelectMgr_BaseIntersector_get_planes(self as *const Self, thePlaneEquations)
+        }
+    }
+
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:133 - `SelectMgr_BaseIntersector::OverlapsBox()`
     /// SAT intersection test between defined volume and given axis-aligned box
     pub fn overlaps_box_vec32_viewcliprange_pickresult(
@@ -3109,18 +3148,11 @@ impl HandleSelectMgrBaseIntersector {
     }
 }
 
-// ── Skipped symbols for BaseIntersector (2 total) ──
+// ── Skipped symbols for BaseIntersector (1 total) ──
 // SKIPPED: **Source:** `SelectMgr_BaseIntersector.hxx`:41 - `SelectMgr_BaseIntersector::SelectMgr_BaseIntersector`
 //   constructor: Creates new empty selecting volume
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `SelectMgr_BaseIntersector.hxx`:126 - `SelectMgr_BaseIntersector::GetPlanes`
-//   method: Stores plane equation coefficients (in the following form:
-//   method: Ax + By + Cz + D = 0) to the given vector.
-//   method: This method only clears input vector for the base class.
-//   Reason: has unbindable types: param 'thePlaneEquations': unresolved template type (NCollection_Vector<SelectMgr_Vec4>&)
-//   // pub fn get_planes(&self, thePlaneEquations: /* NCollection_Vector<SelectMgr_Vec4>& */);
 //
 
 // ========================
@@ -5328,15 +5360,22 @@ impl RectangularFrustum {
             &*(crate::ffi::SelectMgr_RectangularFrustum_get_mouse_position(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for RectangularFrustum (1 total) ──
-// SKIPPED: **Source:** `SelectMgr_RectangularFrustum.hxx`:258 - `SelectMgr_RectangularFrustum::GetPlanes`
-//   method: Stores plane equation coefficients (in the following form:
-//   method: Ax + By + Cz + D = 0) to the given vector
-//   Reason: has unbindable types: param 'thePlaneEquations': unresolved template type (NCollection_Vector<SelectMgr_Vec4>&)
-//   // pub fn get_planes(&self, thePlaneEquations: /* NCollection_Vector<SelectMgr_Vec4>& */);
-//
+    /// **Source:** `SelectMgr_RectangularFrustum.hxx`:258 - `SelectMgr_RectangularFrustum::GetPlanes()`
+    /// Stores plane equation coefficients (in the following form:
+    /// Ax + By + Cz + D = 0) to the given vector
+    pub fn get_planes(
+        &self,
+        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+    ) {
+        unsafe {
+            crate::ffi::SelectMgr_RectangularFrustum_get_planes(
+                self as *const Self,
+                thePlaneEquations,
+            )
+        }
+    }
+}
 
 /// **Source:** `SelectMgr_RectangularFrustum.hxx`:37 - `SelectMgr_RectangularFrustum_SelectionRectangle`
 /// Auxiliary structure to define selection primitive (point or box)
@@ -8286,6 +8325,21 @@ impl SelectingVolumeManager {
         }
     }
 
+    /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:290 - `SelectMgr_SelectingVolumeManager::GetPlanes()`
+    /// Stores plane equation coefficients (in the following form:
+    /// Ax + By + Cz + D = 0) to the given vector
+    pub fn get_planes(
+        &self,
+        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+    ) {
+        unsafe {
+            crate::ffi::SelectMgr_SelectingVolumeManager_get_planes(
+                self as *const Self,
+                thePlaneEquations,
+            )
+        }
+    }
+
     /// Upcast to SelectBasics_SelectingVolumeManager
     pub fn as_select_basics_selecting_volume_manager(
         &self,
@@ -8306,14 +8360,6 @@ impl SelectingVolumeManager {
         }
     }
 }
-
-// ── Skipped symbols for SelectingVolumeManager (1 total) ──
-// SKIPPED: **Source:** `SelectMgr_SelectingVolumeManager.hxx`:290 - `SelectMgr_SelectingVolumeManager::GetPlanes`
-//   method: Stores plane equation coefficients (in the following form:
-//   method: Ax + By + Cz + D = 0) to the given vector
-//   Reason: has unbindable types: param 'thePlaneEquations': unresolved template type (NCollection_Vector<SelectMgr_Vec4>&)
-//   // pub fn get_planes(&self, thePlaneEquations: /* NCollection_Vector<SelectMgr_Vec4>& */);
-//
 
 // ========================
 // From SelectMgr_Selection.hxx
@@ -8411,6 +8457,22 @@ impl Selection {
     /// returns the selection mode represented by this selection
     pub fn mode(&self) -> i32 {
         unsafe { crate::ffi::SelectMgr_Selection_mode(self as *const Self) }
+    }
+
+    /// **Source:** `SelectMgr_Selection.hxx`:88 - `SelectMgr_Selection::Entities()`
+    /// Return entities.
+    pub fn entities(
+        &self,
+    ) -> &crate::ffi::NCollection_Vector_opencascade_handle_SelectMgr_SensitiveEntity {
+        unsafe { &*(crate::ffi::SelectMgr_Selection_entities(self as *const Self)) }
+    }
+
+    /// **Source:** `SelectMgr_Selection.hxx`:94 - `SelectMgr_Selection::ChangeEntities()`
+    /// Return entities.
+    pub fn change_entities(
+        &mut self,
+    ) -> &mut crate::ffi::NCollection_Vector_opencascade_handle_SelectMgr_SensitiveEntity {
+        unsafe { &mut *(crate::ffi::SelectMgr_Selection_change_entities(self as *mut Self)) }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:102 - `SelectMgr_Selection::UpdateStatus()`
@@ -8603,18 +8665,6 @@ impl HandleSelectMgrSelection {
         }
     }
 }
-
-// ── Skipped symbols for Selection (2 total) ──
-// SKIPPED: **Source:** `SelectMgr_Selection.hxx`:88 - `SelectMgr_Selection::Entities`
-//   method: Return entities.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>> const&)
-//   // pub fn entities(&self) -> /* NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>> const& */;
-//
-// SKIPPED: **Source:** `SelectMgr_Selection.hxx`:94 - `SelectMgr_Selection::ChangeEntities`
-//   method: Return entities.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>>&)
-//   // pub fn change_entities(&mut self) -> /* NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>>& */;
-//
 
 // ========================
 // From SelectMgr_SelectionImageFiller.hxx
@@ -9994,6 +10044,21 @@ impl TriangularFrustum {
         unsafe { crate::ffi::SelectMgr_TriangularFrustum_clear(self as *mut Self) }
     }
 
+    /// **Source:** `SelectMgr_TriangularFrustum.hxx`:182 - `SelectMgr_TriangularFrustum::GetPlanes()`
+    /// Stores plane equation coefficients (in the following form:
+    /// Ax + By + Cz + D = 0) to the given vector
+    pub fn get_planes(
+        &self,
+        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+    ) {
+        unsafe {
+            crate::ffi::SelectMgr_TriangularFrustum_get_planes(
+                self as *const Self,
+                thePlaneEquations,
+            )
+        }
+    }
+
     /// **Source:** `SelectMgr_TriangularFrustum.hxx`:202 - `SelectMgr_TriangularFrustum::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::SelectMgr_TriangularFrustum_dynamic_type(self as *const Self)) }
@@ -10044,14 +10109,6 @@ impl HandleSelectMgrTriangularFrustum {
         unsafe { &mut *(crate::ffi::HandleSelectMgrTriangularFrustum_get_mut(self as *mut Self)) }
     }
 }
-
-// ── Skipped symbols for TriangularFrustum (1 total) ──
-// SKIPPED: **Source:** `SelectMgr_TriangularFrustum.hxx`:182 - `SelectMgr_TriangularFrustum::GetPlanes`
-//   method: Stores plane equation coefficients (in the following form:
-//   method: Ax + By + Cz + D = 0) to the given vector
-//   Reason: has unbindable types: param 'thePlaneEquations': unresolved template type (NCollection_Vector<SelectMgr_Vec4>&)
-//   // pub fn get_planes(&self, thePlaneEquations: /* NCollection_Vector<SelectMgr_Vec4>& */);
-//
 
 /// **Source:** `SelectMgr_TriangularFrustum.hxx`:30 - `SelectMgr_TriangularFrustum_SelectionTriangle`
 /// Auxiliary structure to define selection triangle
@@ -10405,6 +10462,21 @@ impl TriangularFrustumSet {
                 theTrsf,
                 theIsFilled,
                 theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+
+    /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:177 - `SelectMgr_TriangularFrustumSet::GetPlanes()`
+    /// Stores plane equation coefficients (in the following form:
+    /// Ax + By + Cz + D = 0) to the given vector
+    pub fn get_planes(
+        &self,
+        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+    ) {
+        unsafe {
+            crate::ffi::SelectMgr_TriangularFrustumSet_get_planes(
+                self as *const Self,
+                thePlaneEquations,
             )
         }
     }
@@ -10836,14 +10908,6 @@ impl HandleSelectMgrTriangularFrustumSet {
         }
     }
 }
-
-// ── Skipped symbols for TriangularFrustumSet (1 total) ──
-// SKIPPED: **Source:** `SelectMgr_TriangularFrustumSet.hxx`:177 - `SelectMgr_TriangularFrustumSet::GetPlanes`
-//   method: Stores plane equation coefficients (in the following form:
-//   method: Ax + By + Cz + D = 0) to the given vector
-//   Reason: has unbindable types: param 'thePlaneEquations': unresolved template type (NCollection_Vector<SelectMgr_Vec4>&)
-//   // pub fn get_planes(&self, thePlaneEquations: /* NCollection_Vector<SelectMgr_Vec4>& */);
-//
 
 /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:35 - `SelectMgr_TriangularFrustumSet_SelectionPolyline`
 /// Auxiliary structure to define selection polyline

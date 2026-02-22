@@ -4599,6 +4599,13 @@ impl Triangulation {
         unsafe { &mut *(crate::ffi::Poly_Triangulation_internal_uv_nodes(self as *mut Self)) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:332 - `Poly_Triangulation::InternalNormals()`
+    /// Return an internal array of normals.
+    /// Normal()/SetNormal() should be used instead in portable code.
+    pub fn internal_normals(&mut self) -> &mut crate::ffi::NCollection_Array1_gp_Vec3f {
+        unsafe { &mut *(crate::ffi::Poly_Triangulation_internal_normals(self as *mut Self)) }
+    }
+
     /// **Source:** `Poly_Triangulation.hxx`:356 - `Poly_Triangulation::NbDeferredNodes()`
     /// @name late-load deferred data interface
     /// Returns number of deferred nodes that can be loaded using LoadDeferredData().
@@ -4794,14 +4801,6 @@ impl HandlePolyTriangulation {
         }
     }
 }
-
-// ── Skipped symbols for Triangulation (1 total) ──
-// SKIPPED: **Source:** `Poly_Triangulation.hxx`:332 - `Poly_Triangulation::InternalNormals`
-//   method: Return an internal array of normals.
-//   method: Normal()/SetNormal() should be used instead in portable code.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<gp_Vec3f>&)
-//   // pub fn internal_normals(&mut self) -> /* NCollection_Array1<gp_Vec3f>& */;
-//
 
 // ========================
 // From Poly_TriangulationParameters.hxx

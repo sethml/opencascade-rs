@@ -5818,6 +5818,21 @@ impl WorkSession {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1042 - `IFSelect_WorkSession::SetParams()`
+    pub fn set_params(
+        &mut self,
+        params: &crate::ffi::NCollection_Vector_opencascade_handle_Standard_Transient,
+        uselist: &crate::ffi::NCollection_Vector_Standard_Integer,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_WorkSession_inherited_SetParams(
+                self as *mut Self,
+                params,
+                uselist,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1052 - `IFSelect_WorkSession::TraceStatics()`
     pub fn trace_statics(&self, use_: i32, mode: i32) {
         unsafe {

@@ -245,6 +245,7 @@ pub mod shape_process;
 pub mod shape_process_api;
 pub mod shape_upgrade;
 pub mod standard;
+pub mod std;
 pub mod std_drivers;
 pub mod std_fail;
 pub mod std_l_drivers;

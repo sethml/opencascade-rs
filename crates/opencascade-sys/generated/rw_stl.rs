@@ -78,6 +78,24 @@ pub fn read_file_charptr_real_progressrange(
         ))
     }
 }
+/// **Source:** `RWStl.hxx`:77 - `RWStl::ReadFile`
+/// Read specified STL file and fills triangulation list for multi-domain case.
+/// @param[in] theFile file path to read
+/// @param[in] theMergeAngle maximum angle in radians between triangles to merge equal nodes;
+/// M_PI/2 means ignore angle
+/// @param[out] theTriangList triangulation list for multi-domain case
+/// @param[in] theProgress progress indicator
+pub fn read_file_charptr_real_sequence_opencascade_handle_poly_triangulation_progressrange(
+    theFile: &str,
+    theMergeAngle: f64,
+    theTriangList: &mut crate::ffi::NCollection_Sequence_opencascade_handle_Poly_Triangulation,
+    theProgress: &crate::message::ProgressRange,
+) {
+    let c_theFile = std::ffi::CString::new(theFile).unwrap();
+    unsafe {
+        crate::ffi::RWStl_read_file_charptr_real_sequence_opencascade_handle_poly_triangulation_progressrange(c_theFile.as_ptr(), theMergeAngle, theTriangList, theProgress)
+    }
+}
 /// **Source:** `RWStl.hxx`:85 - `RWStl::ReadBinary`
 /// Read triangulation from a binary STL file
 /// In case of error, returns Null handle.

@@ -2517,6 +2517,26 @@ impl Range {
         unsafe { crate::ffi::Bnd_Range_union(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `Bnd_Range.hxx`:65 - `Bnd_Range::Split()`
+    /// Splits <this> to several sub-ranges by theVal value
+    /// (e.g. range [3, 15] will be split by theVal==5 to the two
+    /// ranges: [3, 5] and [5, 15]). New ranges will be pushed to
+    /// theList (theList must be initialized correctly before
+    /// calling this method).
+    /// If thePeriod != 0.0 then at least one boundary of
+    /// new ranges (if <*this> intersects theVal+k*thePeriod) will be equal to
+    /// theVal+thePeriod*k, where k is an integer number (k = 0, +/-1, +/-2, ...).
+    /// (let thePeriod in above example be 4 ==> we will obtain
+    /// four ranges: [3, 5], [5, 9], [9, 13] and [13, 15].
+    pub fn split(
+        &self,
+        theVal: f64,
+        theList: &mut crate::ffi::NCollection_List_Bnd_Range,
+        thePeriod: f64,
+    ) {
+        unsafe { crate::ffi::Bnd_Range_split(self as *const Self, theVal, theList, thePeriod) }
+    }
+
     /// **Source:** `Bnd_Range.hxx`:78 - `Bnd_Range::IsIntersected()`
     /// Checks if <this> intersects values like
     /// theVal+k*thePeriod, where k is an integer number (k = 0, +/-1, +/-2, ...).
@@ -2653,15 +2673,6 @@ impl Range {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Range_to_owned(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for Range (1 total) ──
-// SKIPPED: **Source:** `Bnd_Range.hxx`:65 - `Bnd_Range::Split`
-//   method: Splits <this> to several sub-ranges by theVal value
-//   method: (e.g. range [3, 15] will be split by theVal==5 to the two
-//   method: ranges: [3, 5] and [5, 15]). New ranges will be pushed to
-//   Reason: has unbindable types: param 'theList': unresolved template type (NCollection_List<Bnd_Range>&)
-//   // pub fn split(&self, theVal: f64, theList: /* NCollection_List<Bnd_Range>& */, thePeriod: f64);
-//
 
 // ========================
 // From Bnd_Sphere.hxx
@@ -2832,10 +2843,17 @@ impl Tools {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Tools_ctor()) }
     }
 
+    /// **Source:** `Bnd_Tools.hxx`:28 - `Bnd_Tools::Bnd2BVH()`
+    /// @name Bnd_Box to BVH_Box conversion
+    /// Converts the given Bnd_Box2d to BVH_Box
+    pub fn bnd2_bvh_box2d(theBox: &Box2d) -> crate::OwnedPtr<crate::ffi::BVH_Box_Standard_Real_2> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Tools_bnd2_bvh_box2d(theBox)) }
+    }
+
     /// **Source:** `Bnd_Tools.hxx`:36 - `Bnd_Tools::Bnd2BVH()`
     /// Converts the given Bnd_Box to BVH_Box
-    pub fn bnd2_bvh(theBox: &Box) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Tools_bnd2_bvh(theBox)) }
+    pub fn bnd2_bvh_box(theBox: &Box) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Tools_bnd2_bvh_box(theBox)) }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
@@ -2843,14 +2861,6 @@ impl Tools {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Tools_to_owned(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for Tools (1 total) ──
-// SKIPPED: **Source:** `Bnd_Tools.hxx`:28 - `Bnd_Tools::Bnd2BVH`
-//   static_method: @name Bnd_Box to BVH_Box conversion
-//   static_method: Converts the given Bnd_Box2d to BVH_Box
-//   Reason: has unbindable types: return: unresolved template type (BVH_Box<Standard_Real, 2>)
-//   // pub fn bnd2_bvh(theBox: &Box2d) -> OwnedPtr<BVH_Box<Standard_Real, 2>>;
-//
 
 // ========================
 // Additional type re-exports

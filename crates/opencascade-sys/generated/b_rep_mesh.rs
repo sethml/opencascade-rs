@@ -482,6 +482,42 @@ impl BoundaryParamsRangeSplitter {
             ))
         }
     }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetRangeU(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetRangeV(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetDelta(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetToleranceUV(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -880,8 +916,8 @@ impl HandleBRepMeshClassifier {
 //   method: Registers wire specified by sequence of points for
 //   method: further classification of points.
 //   method: @param theWire Wire to be registered. Specified by sequence of points.
-//   Reason: has unbindable types: param 'theWire': unresolved template type (NCollection_Sequence<const gp_Pnt2d *> const&); param 'theTolUV': unresolved template type (std::pair<Standard_Real, Standard_Real> const&); param 'theRangeU': unresolved template type (std::pair<Standard_Real, Standard_Real> const&); param 'theRangeV': unresolved template type (std::pair<Standard_Real, Standard_Real> const&)
-//   // pub fn register_wire(&mut self, theWire: /* NCollection_Sequence<const gp_Pnt2d *> const& */, theTolUV: /* std::pair<Standard_Real, Standard_Real> const& */, theRangeU: /* std::pair<Standard_Real, Standard_Real> const& */, theRangeV: /* std::pair<Standard_Real, Standard_Real> const& */);
+//   Reason: has unbindable types: param 'theWire': unresolved template type (NCollection_Sequence<const gp_Pnt2d *> const&)
+//   // pub fn register_wire(&mut self, theWire: /* NCollection_Sequence<const gp_Pnt2d *> const& */, theTolUV: &pair_Standard_Real_Standard_Real, theRangeU: &pair_Standard_Real_Standard_Real, theRangeV: &pair_Standard_Real_Standard_Real);
 //
 
 // ========================
@@ -904,6 +940,24 @@ impl ConeRangeSplitter {
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_ctor()) }
+    }
+
+    /// **Source:** `BRepMesh_ConeRangeSplitter.hxx`:35 - `BRepMesh_ConeRangeSplitter::GetSplitSteps()`
+    /// Returns split intervals along U and V direction.
+    /// @param theParameters meshing parameters.
+    /// @param[out] theStepsNb number of steps along corresponding direction.
+    pub fn get_split_steps(
+        &self,
+        theParameters: &crate::i_mesh_tools::Parameters,
+        theStepsNb: &mut crate::ffi::std_pair_Standard_Integer_Standard_Integer,
+    ) -> crate::OwnedPtr<crate::ffi::std_pair_Standard_Real_Standard_Real> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_get_split_steps(
+                self as *const Self,
+                theParameters,
+                theStepsNb,
+            ))
+        }
     }
 
     /// **Source:** `BRepMesh_ConeRangeSplitter.hxx`:40 - `BRepMesh_ConeRangeSplitter::GenerateSurfaceNodes()`
@@ -1010,16 +1064,35 @@ impl ConeRangeSplitter {
             &*(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetSurface(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for ConeRangeSplitter (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_ConeRangeSplitter.hxx`:35 - `BRepMesh_ConeRangeSplitter::GetSplitSteps`
-//   method: Returns split intervals along U and V direction.
-//   method: @param theParameters meshing parameters.
-//   method: @param[out] theStepsNb number of steps along corresponding direction.
-//   Reason: has unbindable types: param 'theStepsNb': unresolved template type (std::pair<Standard_Integer, Standard_Integer>&); return: unresolved template type (std::pair<Standard_Real, Standard_Real>)
-//   // pub fn get_split_steps(&self, theParameters: &Parameters, theStepsNb: /* std::pair<Standard_Integer, Standard_Integer>& */) -> OwnedPtr<std::pair<Standard_Real, Standard_Real>>;
-//
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetRangeU(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetRangeV(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetDelta(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetToleranceUV(self as *const Self))
+        }
+    }
+}
 
 // ========================
 // From BRepMesh_ConstrainedBaseMeshAlgo.hxx
@@ -2269,6 +2342,36 @@ impl CylinderRangeSplitter {
             &*(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetSurface(self as *const Self))
         }
     }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetRangeU(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetRangeV(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetDelta(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetToleranceUV(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -2854,28 +2957,32 @@ impl DefaultRangeSplitter {
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
         unsafe { &*(crate::ffi::BRepMesh_DefaultRangeSplitter_get_surface(self as *const Self)) }
     }
-}
 
-// ── Skipped symbols for DefaultRangeSplitter (4 total) ──
-// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU`
-//   method: Returns U range.
-//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Real, Standard_Real> const&)
-//   // pub fn get_range_u(&self) -> /* std::pair<Standard_Real, Standard_Real> const& */;
-//
-// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV`
-//   method: Returns V range.
-//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Real, Standard_Real> const&)
-//   // pub fn get_range_v(&self) -> /* std::pair<Standard_Real, Standard_Real> const& */;
-//
-// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta`
-//   method: Returns delta.
-//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Real, Standard_Real> const&)
-//   // pub fn get_delta(&self) -> /* std::pair<Standard_Real, Standard_Real> const& */;
-//
-// SKIPPED: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV`
-//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Real, Standard_Real> const&)
-//   // pub fn get_tolerance_uv(&self) -> /* std::pair<Standard_Real, Standard_Real> const& */;
-//
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    /// Returns U range.
+    pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe { &*(crate::ffi::BRepMesh_DefaultRangeSplitter_get_range_u(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    /// Returns V range.
+    pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe { &*(crate::ffi::BRepMesh_DefaultRangeSplitter_get_range_v(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    /// Returns delta.
+    pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe { &*(crate::ffi::BRepMesh_DefaultRangeSplitter_get_delta(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_DefaultRangeSplitter_get_tolerance_uv(self as *const Self))
+        }
+    }
+}
 
 // ========================
 // From BRepMesh_Deflection.hxx
@@ -5082,6 +5189,36 @@ impl ExtrusionRangeSplitter {
             ))
         }
     }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetRangeU(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetRangeV(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetDelta(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetToleranceUV(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -5714,19 +5851,32 @@ impl GeomTool {
             )
         }
     }
+
+    /// **Source:** `BRepMesh_GeomTool.hxx`:206 - `BRepMesh_GeomTool::CellsCount()`
+    pub fn cells_count(
+        theSurface: &crate::ffi::HandleAdaptor3dSurface,
+        theVerticesNb: i32,
+        theDeflection: f64,
+        theRangeSplitter: &DefaultRangeSplitter,
+    ) -> crate::OwnedPtr<crate::ffi::std_pair_Standard_Integer_Standard_Integer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_GeomTool_cells_count(
+                theSurface,
+                theVerticesNb,
+                theDeflection,
+                theRangeSplitter as *const _,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for GeomTool (2 total) ──
+// ── Skipped symbols for GeomTool (1 total) ──
 // SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:153 - `BRepMesh_GeomTool::IntLinLin`
 //   static_method: Checks intersection between two lines defined by two points.
 //   static_method: @param theStartPnt1 start point of first line.
 //   static_method: @param theEndPnt1 end point of first line.
 //   Reason: has unbindable types: param 'theParamOnSegment': C-style array (Standard_Real[2]&)
 //   // pub fn int_lin_lin(theStartPnt1: &XY, theEndPnt1: &XY, theStartPnt2: &XY, theEndPnt2: &XY, theIntPnt: &mut XY, theParamOnSegment: /* Standard_Real[2]& */) -> OwnedPtr<BRepMesh_GeomTool::IntFlag>;
-//
-// SKIPPED: **Source:** `BRepMesh_GeomTool.hxx`:206 - `BRepMesh_GeomTool::CellsCount`
-//   Reason: has unbindable types: return: unresolved template type (std::pair<Standard_Integer, Standard_Integer>)
-//   // pub fn cells_count(theSurface: &HandleSurface, theVerticesNb: i32, theDeflection: f64, theRangeSplitter: *const DefaultRangeSplitter) -> OwnedPtr<std::pair<Standard_Integer, Standard_Integer>>;
 //
 
 // ========================
@@ -7659,6 +7809,36 @@ impl NURBSRangeSplitter {
             &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetSurface(self as *const Self))
         }
     }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetRangeU(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetRangeV(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetDelta(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetToleranceUV(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -8784,6 +8964,36 @@ impl SphereRangeSplitter {
             &*(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetSurface(self as *const Self))
         }
     }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetRangeU(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetRangeV(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetDelta(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetToleranceUV(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -8929,6 +9139,36 @@ impl TorusRangeSplitter {
             &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetSurface(self as *const Self))
         }
     }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetRangeU(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetRangeV(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetDelta(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetToleranceUV(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -9019,30 +9259,48 @@ unsafe impl crate::CppDeletable for Triangulator {
 }
 
 impl Triangulator {
+    /// **Source:** `BRepMesh_Triangulator.hxx`:44 - `BRepMesh_Triangulator::BRepMesh_Triangulator()`
+    /// Constructor. Initialized tool by the given parameters.
+    pub fn new_vector_gp_xyz_list_tcolstd_sequenceofinteger_dir(
+        theXYZs: &crate::ffi::NCollection_Vector_gp_XYZ,
+        theWires: &crate::ffi::NCollection_List_TColStd_SequenceOfInteger,
+        theNorm: &crate::gp::Dir,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Triangulator_ctor_vector_gp_xyz_list_tcolstd_sequenceofinteger_dir(theXYZs, theWires, theNorm))
+        }
+    }
+
+    /// **Source:** `BRepMesh_Triangulator.hxx`:49 - `BRepMesh_Triangulator::Perform()`
+    /// Performs triangulation of source wires and stores triangles the output list.
+    pub fn perform(
+        &mut self,
+        thePolyTriangles: &mut crate::ffi::NCollection_List_Poly_Triangle,
+    ) -> bool {
+        unsafe { crate::ffi::BRepMesh_Triangulator_perform(self as *mut Self, thePolyTriangles) }
+    }
+
     /// **Source:** `BRepMesh_Triangulator.hxx`:53 - `BRepMesh_Triangulator::SetMessenger()`
     /// Set messenger for output information
     /// without this Message::DefaultMessenger() will be used
     pub fn set_messenger(&mut self, theMess: &crate::ffi::HandleMessageMessenger) {
         unsafe { crate::ffi::BRepMesh_Triangulator_set_messenger(self as *mut Self, theMess) }
     }
-}
 
-// ── Skipped symbols for Triangulator (3 total) ──
-// SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:44 - `BRepMesh_Triangulator::BRepMesh_Triangulator`
-//   constructor: Constructor. Initialized tool by the given parameters.
-//   Reason: has unbindable types: param 'theXYZs': unresolved template type (NCollection_Vector<gp_XYZ> const&); param 'theWires': unresolved template type (NCollection_List<TColStd_SequenceOfInteger> const&)
-//   // pub fn new_vector<gp_xyz>_list<tcolstd_sequenceofinteger>_dir(theXYZs: /* NCollection_Vector<gp_XYZ> const& */, theWires: /* NCollection_List<TColStd_SequenceOfInteger> const& */, theNorm: &Dir) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:49 - `BRepMesh_Triangulator::Perform`
-//   method: Performs triangulation of source wires and stores triangles the output list.
-//   Reason: has unbindable types: param 'thePolyTriangles': unresolved template type (NCollection_List<Poly_Triangle>&)
-//   // pub fn perform(&mut self, thePolyTriangles: /* NCollection_List<Poly_Triangle>& */) -> bool;
-//
-// SKIPPED: **Source:** `BRepMesh_Triangulator.hxx`:38 - `BRepMesh_Triangulator::ToPolyTriangulation`
-//   static_method: Performs conversion of the given list of triangles to Poly_Triangulation.
-//   Reason: has unbindable types: param 'thePolyTriangles': unresolved template type (NCollection_List<Poly_Triangle> const&)
-//   // pub fn to_poly_triangulation(theNodes: &Array1OfPnt, thePolyTriangles: /* NCollection_List<Poly_Triangle> const& */) -> OwnedPtr<Handle<Poly_Triangulation>>;
-//
+    /// **Source:** `BRepMesh_Triangulator.hxx`:38 - `BRepMesh_Triangulator::ToPolyTriangulation()`
+    /// Performs conversion of the given list of triangles to Poly_Triangulation.
+    pub fn to_poly_triangulation(
+        theNodes: &crate::ffi::TColgp_Array1OfPnt,
+        thePolyTriangles: &crate::ffi::NCollection_List_Poly_Triangle,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Triangulator_to_poly_triangulation(
+                theNodes,
+                thePolyTriangles,
+            ))
+        }
+    }
+}
 
 // ========================
 // From BRepMesh_UVParamRangeSplitter.hxx
@@ -9172,6 +9430,36 @@ impl UVParamRangeSplitter {
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
         unsafe {
             &*(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetSurface(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetRangeU(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetRangeV(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetDelta(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetToleranceUV(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -9362,6 +9650,36 @@ impl UndefinedRangeSplitter {
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
         unsafe {
             &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetSurface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetRangeU(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetRangeV(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetDelta(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetToleranceUV(
                 self as *const Self,
             ))
         }

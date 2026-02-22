@@ -1159,6 +1159,22 @@ impl ProximityDistTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityDistTool_ctor()) }
     }
 
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:95 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool()`
+    /// Creates new tool for the given element sets.
+    pub fn new_handlebrepextrematriangleset_int_array3d_vector_proxpnt_status_handlebrepextrematriangleset_shapelist2(
+        theSet1: &crate::ffi::HandleBRepExtremaTriangleSet,
+        theNbSamples1: i32,
+        theAddVertices1: &crate::ffi::BVH_Array3d,
+        theAddStatus1: &crate::ffi::NCollection_Vector_ProxPnt_Status,
+        theSet2: &crate::ffi::HandleBRepExtremaTriangleSet,
+        theShapeList1: &crate::ffi::BRepExtrema_ShapeList,
+        theShapeList2: &crate::ffi::BRepExtrema_ShapeList,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityDistTool_ctor_handlebrepextrematriangleset_int_array3d_vector_proxpnt_status_handlebrepextrematriangleset_shapelist2(theSet1, theNbSamples1, theAddVertices1, theAddStatus1, theSet2, theShapeList1, theShapeList2))
+        }
+    }
+
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:106 - `BRepExtrema_ProximityDistTool::LoadTriangleSets()`
     /// Loads the given element sets into the tool.
     pub fn load_triangle_sets(
@@ -1187,6 +1203,22 @@ impl ProximityDistTool {
                 self as *mut Self,
                 theShapeList1,
                 theShapeList2,
+            )
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:114 - `BRepExtrema_ProximityDistTool::LoadAdditionalPointsFirstSet()`
+    /// Loads given additional vertices and their statuses.
+    pub fn load_additional_points_first_set(
+        &mut self,
+        theAddVertices1: &crate::ffi::BVH_Array3d,
+        theAddStatus1: &crate::ffi::NCollection_Vector_ProxPnt_Status,
+    ) {
+        unsafe {
+            crate::ffi::BRepExtrema_ProximityDistTool_load_additional_points_first_set(
+                self as *mut Self,
+                theAddVertices1,
+                theAddStatus1,
             )
         }
     }
@@ -1286,18 +1318,6 @@ impl ProximityDistTool {
         }
     }
 }
-
-// ── Skipped symbols for ProximityDistTool (2 total) ──
-// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:95 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool`
-//   constructor: Creates new tool for the given element sets.
-//   Reason: has unbindable types: param 'theAddStatus1': unresolved template type (NCollection_Vector<ProxPnt_Status> const&)
-//   // pub fn new_handlebrepextrematriangleset_int_array3d_vector<proxpnt_status>_handlebrepextrematriangleset_shapelist2(theSet1: &HandleTriangleSet, theNbSamples1: i32, theAddVertices1: &Array3d, theAddStatus1: /* NCollection_Vector<ProxPnt_Status> const& */, theSet2: &HandleTriangleSet, theShapeList1: &ShapeList, theShapeList2: &ShapeList) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:114 - `BRepExtrema_ProximityDistTool::LoadAdditionalPointsFirstSet`
-//   method: Loads given additional vertices and their statuses.
-//   Reason: has unbindable types: param 'theAddStatus1': unresolved template type (NCollection_Vector<ProxPnt_Status> const&)
-//   // pub fn load_additional_points_first_set(&mut self, theAddVertices1: &Array3d, theAddStatus1: /* NCollection_Vector<ProxPnt_Status> const& */);
-//
 
 /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:52 - `BRepExtrema_ProximityDistTool_PrjState`
 /// Struct with information about projection point state from 2nd BVH,

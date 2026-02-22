@@ -1096,6 +1096,12 @@ impl GltfLatePrimitiveArray {
         }
     }
 
+    /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:78 - `RWGltf_GltfLatePrimitiveArray::Data()`
+    /// Return primitive array data elements.
+    pub fn data(&self) -> &crate::ffi::NCollection_Sequence_RWGltf_GltfPrimArrayData {
+        unsafe { &*(crate::ffi::RWGltf_GltfLatePrimitiveArray_data(self as *const Self)) }
+    }
+
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:81 - `RWGltf_GltfLatePrimitiveArray::AddPrimArrayData()`
     /// Add primitive array data element.
     pub fn add_prim_array_data(
@@ -1675,6 +1681,15 @@ impl GltfLatePrimitiveArray {
         }
     }
 
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:332 - `Poly_Triangulation::InternalNormals()`
+    pub fn internal_normals(&mut self) -> &mut crate::ffi::NCollection_Array1_gp_Vec3f {
+        unsafe {
+            &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_InternalNormals(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:368 - `Poly_Triangulation::LoadDeferredData()`
     pub fn load_deferred_data(&mut self, theFileSystem: &crate::ffi::HandleOSDFileSystem) -> bool {
         unsafe {
@@ -1825,13 +1840,6 @@ impl HandleRWGltfGltfLatePrimitiveArray {
         }
     }
 }
-
-// ── Skipped symbols for GltfLatePrimitiveArray (1 total) ──
-// SKIPPED: **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:78 - `RWGltf_GltfLatePrimitiveArray::Data`
-//   method: Return primitive array data elements.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<RWGltf_GltfPrimArrayData> const&)
-//   // pub fn data(&self) -> /* NCollection_Sequence<RWGltf_GltfPrimArrayData> const& */;
-//
 
 // ========================
 // From RWGltf_GltfMaterialMap.hxx

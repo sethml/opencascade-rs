@@ -621,6 +621,76 @@ impl CachedFileSystem {
         unsafe { crate::ffi::OSD_CachedFileSystem_is_supported_path(self as *const Self, theUrl) }
     }
 
+    /// **Source:** `OSD_CachedFileSystem.hxx`:47 - `OSD_CachedFileSystem::IsOpenIStream()`
+    /// Returns TRUE if current input stream is opened for reading operations.
+    pub fn is_open_i_stream(&self, theStream: &crate::ffi::std_shared_ptr_std_istream) -> bool {
+        unsafe { crate::ffi::OSD_CachedFileSystem_is_open_i_stream(self as *const Self, theStream) }
+    }
+
+    /// **Source:** `OSD_CachedFileSystem.hxx`:51 - `OSD_CachedFileSystem::IsOpenOStream()`
+    /// Returns TRUE if current output stream is opened for writing operations.
+    pub fn is_open_o_stream(&self, theStream: &crate::ffi::std_shared_ptr_std_ostream) -> bool {
+        unsafe { crate::ffi::OSD_CachedFileSystem_is_open_o_stream(self as *const Self, theStream) }
+    }
+
+    /// **Source:** `OSD_CachedFileSystem.hxx`:56 - `OSD_CachedFileSystem::OpenIStream()`
+    /// Opens stream for specified file URL for reading operations or returns previously created
+    /// stream pointing to the same URL.
+    pub fn open_i_stream(
+        &mut self,
+        theUrl: &crate::t_collection::AsciiString,
+        theParams: u32,
+        theOffset: i64,
+        theOldStream: &crate::ffi::std_shared_ptr_std_istream,
+    ) -> crate::OwnedPtr<crate::ffi::std_shared_ptr_std_istream> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_CachedFileSystem_open_i_stream(
+                self as *mut Self,
+                theUrl,
+                theParams,
+                theOffset,
+                theOldStream,
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_CachedFileSystem.hxx`:64 - `OSD_CachedFileSystem::OpenOStream()`
+    /// Opens stream for specified file URL for writing operations (std::ostream) by calling parent's
+    /// method.
+    pub fn open_o_stream(
+        &mut self,
+        theUrl: &crate::t_collection::AsciiString,
+        theMode: u32,
+    ) -> crate::OwnedPtr<crate::ffi::std_shared_ptr_std_ostream> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_CachedFileSystem_open_o_stream(
+                self as *mut Self,
+                theUrl,
+                theMode,
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_CachedFileSystem.hxx`:69 - `OSD_CachedFileSystem::OpenStreamBuffer()`
+    /// Opens stream buffer for specified file URL.
+    pub fn open_stream_buffer(
+        &mut self,
+        theUrl: &crate::t_collection::AsciiString,
+        theMode: u32,
+        theOffset: i64,
+        theOutBufSize: Option<&mut i64>,
+    ) -> crate::OwnedPtr<crate::ffi::std_shared_ptr_std_streambuf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_CachedFileSystem_open_stream_buffer(
+                self as *mut Self,
+                theUrl,
+                theMode,
+                theOffset,
+                theOutBufSize.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            ))
+        }
+    }
+
     /// **Source:** `OSD_CachedFileSystem.hxx`:27 - `OSD_CachedFileSystem::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
@@ -751,35 +821,6 @@ impl HandleOSDCachedFileSystem {
         }
     }
 }
-
-// ── Skipped symbols for CachedFileSystem (5 total) ──
-// SKIPPED: **Source:** `OSD_CachedFileSystem.hxx`:47 - `OSD_CachedFileSystem::IsOpenIStream`
-//   method: Returns TRUE if current input stream is opened for reading operations.
-//   Reason: has unbindable types: param 'theStream': stream type (std::shared_ptr<std::istream> const&)
-//   // pub fn is_open_i_stream(&self, theStream: /* std::shared_ptr<std::istream> const& */) -> bool;
-//
-// SKIPPED: **Source:** `OSD_CachedFileSystem.hxx`:51 - `OSD_CachedFileSystem::IsOpenOStream`
-//   method: Returns TRUE if current output stream is opened for writing operations.
-//   Reason: has unbindable types: param 'theStream': stream type (std::shared_ptr<std::ostream> const&)
-//   // pub fn is_open_o_stream(&self, theStream: /* std::shared_ptr<std::ostream> const& */) -> bool;
-//
-// SKIPPED: **Source:** `OSD_CachedFileSystem.hxx`:56 - `OSD_CachedFileSystem::OpenIStream`
-//   method: Opens stream for specified file URL for reading operations or returns previously created
-//   method: stream pointing to the same URL.
-//   Reason: has unbindable types: param 'theOldStream': stream type (std::shared_ptr<std::istream> const&); return: stream type (std::shared_ptr<std::istream>)
-//   // pub fn open_i_stream(&mut self, theUrl: &AsciiString, theParams: u32, theOffset: i64, theOldStream: /* std::shared_ptr<std::istream> const& */) -> OwnedPtr<std::shared_ptr<std::istream>>;
-//
-// SKIPPED: **Source:** `OSD_CachedFileSystem.hxx`:64 - `OSD_CachedFileSystem::OpenOStream`
-//   method: Opens stream for specified file URL for writing operations (std::ostream) by calling parent's
-//   method: method.
-//   Reason: has unbindable types: return: stream type (std::shared_ptr<std::ostream>)
-//   // pub fn open_o_stream(&mut self, theUrl: &AsciiString, theMode: u32) -> OwnedPtr<std::shared_ptr<std::ostream>>;
-//
-// SKIPPED: **Source:** `OSD_CachedFileSystem.hxx`:69 - `OSD_CachedFileSystem::OpenStreamBuffer`
-//   method: Opens stream buffer for specified file URL.
-//   Reason: has unbindable types: return: unresolved template type (std::shared_ptr<std::streambuf>)
-//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: u32, theOffset: i64, theOutBufSize: *mut i64) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
-//
 
 // ========================
 // From OSD_Chronometer.hxx
@@ -5746,6 +5787,99 @@ impl FileSystem {
         unsafe { crate::ffi::OSD_FileSystem_is_supported_path(self as *const Self, theUrl) }
     }
 
+    /// **Source:** `OSD_FileSystem.hxx`:49 - `OSD_FileSystem::IsOpenIStream()`
+    /// Returns TRUE if current input stream is opened for reading operations.
+    pub fn is_open_i_stream(&self, theStream: &crate::ffi::std_shared_ptr_std_istream) -> bool {
+        unsafe { crate::ffi::OSD_FileSystem_is_open_i_stream(self as *const Self, theStream) }
+    }
+
+    /// **Source:** `OSD_FileSystem.hxx`:52 - `OSD_FileSystem::IsOpenOStream()`
+    /// Returns TRUE if current output stream is opened for writing operations.
+    pub fn is_open_o_stream(&self, theStream: &crate::ffi::std_shared_ptr_std_ostream) -> bool {
+        unsafe { crate::ffi::OSD_FileSystem_is_open_o_stream(self as *const Self, theStream) }
+    }
+
+    /// **Source:** `OSD_FileSystem.hxx`:68 - `OSD_FileSystem::OpenIStream()`
+    /// Opens stream for specified file URL for reading operations (std::istream).
+    /// Default implementation create a stream from file buffer returned by
+    /// OSD_FileSystem::OpenFileBuffer().
+    /// @param[in] theUrl        path to open
+    /// @param[in] theMode       flags describing the requested input mode for the stream
+    /// (std::ios_base::in will be implicitly added)
+    /// @param[in] theOffset     expected stream position from the beginning of the file (beginning of
+    /// the stream by default);
+    /// -1 would keep seek position undefined (in case of reusing
+    /// theOldStream)
+    /// @param[in] theOldStream  a pointer to existing stream pointing to theUrl to be reused (without
+    /// re-opening)
+    /// @return pointer to newly created opened stream, to theOldStream if it can be reused or NULL in
+    /// case of failure.
+    pub fn open_i_stream(
+        &mut self,
+        theUrl: &crate::t_collection::AsciiString,
+        theMode: u32,
+        theOffset: i64,
+        theOldStream: &crate::ffi::std_shared_ptr_std_istream,
+    ) -> crate::OwnedPtr<crate::ffi::std_shared_ptr_std_istream> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_FileSystem_open_i_stream(
+                self as *mut Self,
+                theUrl,
+                theMode,
+                theOffset,
+                theOldStream,
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_FileSystem.hxx`:81 - `OSD_FileSystem::OpenOStream()`
+    /// Opens stream for specified file URL for writing operations (std::ostream).
+    /// Default implementation create a stream from file buffer returned by
+    /// OSD_FileSystem::OpenFileBuffer().
+    /// @param[in] theUrl        path to open
+    /// @param[in] theMode       flags describing the requested output mode for the stream
+    /// (std::ios_base::out will be implicitly added)
+    /// @return pointer to newly created opened stream or NULL in case of failure.
+    pub fn open_o_stream(
+        &mut self,
+        theUrl: &crate::t_collection::AsciiString,
+        theMode: u32,
+    ) -> crate::OwnedPtr<crate::ffi::std_shared_ptr_std_ostream> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_FileSystem_open_o_stream(
+                self as *mut Self,
+                theUrl,
+                theMode,
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_FileSystem.hxx`:92 - `OSD_FileSystem::OpenStreamBuffer()`
+    /// Opens stream buffer for specified file URL.
+    /// @param[in] theUrl          path to open
+    /// @param[in] theMode         flags describing the requested input mode for the stream
+    /// @param[in] theOffset       expected stream position from the beginning of the buffer
+    /// (beginning of the stream buffer by default)
+    /// @param[out] theOutBufSize  total buffer size (only if buffer is opened for read)
+    /// @return pointer to newly created opened stream buffer or NULL in case of failure.
+    pub fn open_stream_buffer(
+        &mut self,
+        theUrl: &crate::t_collection::AsciiString,
+        theMode: u32,
+        theOffset: i64,
+        theOutBufSize: Option<&mut i64>,
+    ) -> crate::OwnedPtr<crate::ffi::std_shared_ptr_std_streambuf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_FileSystem_open_stream_buffer(
+                self as *mut Self,
+                theUrl,
+                theMode,
+                theOffset,
+                theOutBufSize.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            ))
+        }
+    }
+
     /// **Source:** `OSD_FileSystem.hxx`:25 - `OSD_FileSystem::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
@@ -5924,42 +6058,11 @@ impl HandleOSDFileSystem {
     }
 }
 
-// ── Skipped symbols for FileSystem (6 total) ──
+// ── Skipped symbols for FileSystem (1 total) ──
 // SKIPPED: **Source:** `OSD_FileSystem.hxx`:98 - `OSD_FileSystem::OSD_FileSystem`
 //   constructor: Constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `OSD_FileSystem.hxx`:49 - `OSD_FileSystem::IsOpenIStream`
-//   method: Returns TRUE if current input stream is opened for reading operations.
-//   Reason: has unbindable types: param 'theStream': stream type (std::shared_ptr<std::istream> const&)
-//   // pub fn is_open_i_stream(&self, theStream: /* std::shared_ptr<std::istream> const& */) -> bool;
-//
-// SKIPPED: **Source:** `OSD_FileSystem.hxx`:52 - `OSD_FileSystem::IsOpenOStream`
-//   method: Returns TRUE if current output stream is opened for writing operations.
-//   Reason: has unbindable types: param 'theStream': stream type (std::shared_ptr<std::ostream> const&)
-//   // pub fn is_open_o_stream(&self, theStream: /* std::shared_ptr<std::ostream> const& */) -> bool;
-//
-// SKIPPED: **Source:** `OSD_FileSystem.hxx`:68 - `OSD_FileSystem::OpenIStream`
-//   method: Opens stream for specified file URL for reading operations (std::istream).
-//   method: Default implementation create a stream from file buffer returned by
-//   method: OSD_FileSystem::OpenFileBuffer().
-//   Reason: has unbindable types: param 'theOldStream': stream type (std::shared_ptr<std::istream> const&); return: stream type (std::shared_ptr<std::istream>)
-//   // pub fn open_i_stream(&mut self, theUrl: &AsciiString, theMode: u32, theOffset: i64, theOldStream: /* std::shared_ptr<std::istream> const& */) -> OwnedPtr<std::shared_ptr<std::istream>>;
-//
-// SKIPPED: **Source:** `OSD_FileSystem.hxx`:81 - `OSD_FileSystem::OpenOStream`
-//   method: Opens stream for specified file URL for writing operations (std::ostream).
-//   method: Default implementation create a stream from file buffer returned by
-//   method: OSD_FileSystem::OpenFileBuffer().
-//   Reason: has unbindable types: return: stream type (std::shared_ptr<std::ostream>)
-//   // pub fn open_o_stream(&mut self, theUrl: &AsciiString, theMode: u32) -> OwnedPtr<std::shared_ptr<std::ostream>>;
-//
-// SKIPPED: **Source:** `OSD_FileSystem.hxx`:92 - `OSD_FileSystem::OpenStreamBuffer`
-//   method: Opens stream buffer for specified file URL.
-//   method: @param[in] theUrl          path to open
-//   method: @param[in] theMode         flags describing the requested input mode for the stream
-//   Reason: has unbindable types: return: unresolved template type (std::shared_ptr<std::streambuf>)
-//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: u32, theOffset: i64, theOutBufSize: *mut i64) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
 //
 
 // ========================
@@ -6019,6 +6122,78 @@ impl FileSystemSelector {
     /// Returns TRUE if URL defines a supported protocol.
     pub fn is_supported_path(&self, theUrl: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::OSD_FileSystemSelector_is_supported_path(self as *const Self, theUrl) }
+    }
+
+    /// **Source:** `OSD_FileSystemSelector.hxx`:45 - `OSD_FileSystemSelector::IsOpenIStream()`
+    /// Returns TRUE if current input stream is opened for reading operations.
+    pub fn is_open_i_stream(&self, theStream: &crate::ffi::std_shared_ptr_std_istream) -> bool {
+        unsafe {
+            crate::ffi::OSD_FileSystemSelector_is_open_i_stream(self as *const Self, theStream)
+        }
+    }
+
+    /// **Source:** `OSD_FileSystemSelector.hxx`:49 - `OSD_FileSystemSelector::IsOpenOStream()`
+    /// Returns TRUE if current output stream is opened for writing operations.
+    pub fn is_open_o_stream(&self, theStream: &crate::ffi::std_shared_ptr_std_ostream) -> bool {
+        unsafe {
+            crate::ffi::OSD_FileSystemSelector_is_open_o_stream(self as *const Self, theStream)
+        }
+    }
+
+    /// **Source:** `OSD_FileSystemSelector.hxx`:53 - `OSD_FileSystemSelector::OpenIStream()`
+    /// Opens input stream using one of registered protocols.
+    pub fn open_i_stream(
+        &mut self,
+        theUrl: &crate::t_collection::AsciiString,
+        theMode: u32,
+        theOffset: i64,
+        theOldStream: &crate::ffi::std_shared_ptr_std_istream,
+    ) -> crate::OwnedPtr<crate::ffi::std_shared_ptr_std_istream> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_FileSystemSelector_open_i_stream(
+                self as *mut Self,
+                theUrl,
+                theMode,
+                theOffset,
+                theOldStream,
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_FileSystemSelector.hxx`:61 - `OSD_FileSystemSelector::OpenOStream()`
+    /// Opens output stream using one of registered protocols.
+    pub fn open_o_stream(
+        &mut self,
+        theUrl: &crate::t_collection::AsciiString,
+        theMode: u32,
+    ) -> crate::OwnedPtr<crate::ffi::std_shared_ptr_std_ostream> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_FileSystemSelector_open_o_stream(
+                self as *mut Self,
+                theUrl,
+                theMode,
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_FileSystemSelector.hxx`:66 - `OSD_FileSystemSelector::OpenStreamBuffer()`
+    /// Opens stream buffer using one of registered protocols.
+    pub fn open_stream_buffer(
+        &mut self,
+        theUrl: &crate::t_collection::AsciiString,
+        theMode: u32,
+        theOffset: i64,
+        theOutBufSize: Option<&mut i64>,
+    ) -> crate::OwnedPtr<crate::ffi::std_shared_ptr_std_streambuf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_FileSystemSelector_open_stream_buffer(
+                self as *mut Self,
+                theUrl,
+                theMode,
+                theOffset,
+                theOutBufSize.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            ))
+        }
     }
 
     /// **Source:** `OSD_FileSystemSelector.hxx`:24 - `OSD_FileSystemSelector::get_type_name()`
@@ -6158,33 +6333,6 @@ impl HandleOSDFileSystemSelector {
     }
 }
 
-// ── Skipped symbols for FileSystemSelector (5 total) ──
-// SKIPPED: **Source:** `OSD_FileSystemSelector.hxx`:45 - `OSD_FileSystemSelector::IsOpenIStream`
-//   method: Returns TRUE if current input stream is opened for reading operations.
-//   Reason: has unbindable types: param 'theStream': stream type (std::shared_ptr<std::istream> const&)
-//   // pub fn is_open_i_stream(&self, theStream: /* std::shared_ptr<std::istream> const& */) -> bool;
-//
-// SKIPPED: **Source:** `OSD_FileSystemSelector.hxx`:49 - `OSD_FileSystemSelector::IsOpenOStream`
-//   method: Returns TRUE if current output stream is opened for writing operations.
-//   Reason: has unbindable types: param 'theStream': stream type (std::shared_ptr<std::ostream> const&)
-//   // pub fn is_open_o_stream(&self, theStream: /* std::shared_ptr<std::ostream> const& */) -> bool;
-//
-// SKIPPED: **Source:** `OSD_FileSystemSelector.hxx`:53 - `OSD_FileSystemSelector::OpenIStream`
-//   method: Opens input stream using one of registered protocols.
-//   Reason: has unbindable types: param 'theOldStream': stream type (std::shared_ptr<std::istream> const&); return: stream type (std::shared_ptr<std::istream>)
-//   // pub fn open_i_stream(&mut self, theUrl: &AsciiString, theMode: u32, theOffset: i64, theOldStream: /* std::shared_ptr<std::istream> const& */) -> OwnedPtr<std::shared_ptr<std::istream>>;
-//
-// SKIPPED: **Source:** `OSD_FileSystemSelector.hxx`:61 - `OSD_FileSystemSelector::OpenOStream`
-//   method: Opens output stream using one of registered protocols.
-//   Reason: has unbindable types: return: stream type (std::shared_ptr<std::ostream>)
-//   // pub fn open_o_stream(&mut self, theUrl: &AsciiString, theMode: u32) -> OwnedPtr<std::shared_ptr<std::ostream>>;
-//
-// SKIPPED: **Source:** `OSD_FileSystemSelector.hxx`:66 - `OSD_FileSystemSelector::OpenStreamBuffer`
-//   method: Opens stream buffer using one of registered protocols.
-//   Reason: has unbindable types: return: unresolved template type (std::shared_ptr<std::streambuf>)
-//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: u32, theOffset: i64, theOutBufSize: *mut i64) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
-//
-
 // ========================
 // From OSD_Host.hxx
 // ========================
@@ -6308,6 +6456,38 @@ impl LocalFileSystem {
         unsafe { crate::ffi::OSD_LocalFileSystem_is_supported_path(self as *const Self, theUrl) }
     }
 
+    /// **Source:** `OSD_LocalFileSystem.hxx`:32 - `OSD_LocalFileSystem::IsOpenIStream()`
+    /// Returns TRUE if current input stream is opened for reading operations.
+    pub fn is_open_i_stream(&self, theStream: &crate::ffi::std_shared_ptr_std_istream) -> bool {
+        unsafe { crate::ffi::OSD_LocalFileSystem_is_open_i_stream(self as *const Self, theStream) }
+    }
+
+    /// **Source:** `OSD_LocalFileSystem.hxx`:36 - `OSD_LocalFileSystem::IsOpenOStream()`
+    /// Returns TRUE if current output stream is opened for writing operations.
+    pub fn is_open_o_stream(&self, theStream: &crate::ffi::std_shared_ptr_std_ostream) -> bool {
+        unsafe { crate::ffi::OSD_LocalFileSystem_is_open_o_stream(self as *const Self, theStream) }
+    }
+
+    /// **Source:** `OSD_LocalFileSystem.hxx`:40 - `OSD_LocalFileSystem::OpenStreamBuffer()`
+    /// Opens stream buffer for specified file URL.
+    pub fn open_stream_buffer(
+        &mut self,
+        theUrl: &crate::t_collection::AsciiString,
+        theMode: u32,
+        theOffset: i64,
+        theOutBufSize: Option<&mut i64>,
+    ) -> crate::OwnedPtr<crate::ffi::std_shared_ptr_std_streambuf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_LocalFileSystem_open_stream_buffer(
+                self as *mut Self,
+                theUrl,
+                theMode,
+                theOffset,
+                theOutBufSize.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            ))
+        }
+    }
+
     /// **Source:** `OSD_LocalFileSystem.hxx`:22 - `OSD_LocalFileSystem::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
@@ -6350,6 +6530,40 @@ impl LocalFileSystem {
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDLocalFileSystem> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_LocalFileSystem_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `OSD_FileSystem.hxx`:68 - `OSD_FileSystem::OpenIStream()`
+    pub fn open_i_stream(
+        &mut self,
+        theUrl: &crate::t_collection::AsciiString,
+        theMode: u32,
+        theOffset: i64,
+        theOldStream: &crate::ffi::std_shared_ptr_std_istream,
+    ) -> crate::OwnedPtr<crate::ffi::std_shared_ptr_std_istream> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_LocalFileSystem_inherited_OpenIStream(
+                self as *mut Self,
+                theUrl,
+                theMode,
+                theOffset,
+                theOldStream,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `OSD_FileSystem.hxx`:81 - `OSD_FileSystem::OpenOStream()`
+    pub fn open_o_stream(
+        &mut self,
+        theUrl: &crate::t_collection::AsciiString,
+        theMode: u32,
+    ) -> crate::OwnedPtr<crate::ffi::std_shared_ptr_std_ostream> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_LocalFileSystem_inherited_OpenOStream(
+                self as *mut Self,
+                theUrl,
+                theMode,
+            ))
         }
     }
 
@@ -6438,23 +6652,6 @@ impl HandleOSDLocalFileSystem {
         }
     }
 }
-
-// ── Skipped symbols for LocalFileSystem (3 total) ──
-// SKIPPED: **Source:** `OSD_LocalFileSystem.hxx`:32 - `OSD_LocalFileSystem::IsOpenIStream`
-//   method: Returns TRUE if current input stream is opened for reading operations.
-//   Reason: has unbindable types: param 'theStream': stream type (std::shared_ptr<std::istream> const&)
-//   // pub fn is_open_i_stream(&self, theStream: /* std::shared_ptr<std::istream> const& */) -> bool;
-//
-// SKIPPED: **Source:** `OSD_LocalFileSystem.hxx`:36 - `OSD_LocalFileSystem::IsOpenOStream`
-//   method: Returns TRUE if current output stream is opened for writing operations.
-//   Reason: has unbindable types: param 'theStream': stream type (std::shared_ptr<std::ostream> const&)
-//   // pub fn is_open_o_stream(&self, theStream: /* std::shared_ptr<std::ostream> const& */) -> bool;
-//
-// SKIPPED: **Source:** `OSD_LocalFileSystem.hxx`:40 - `OSD_LocalFileSystem::OpenStreamBuffer`
-//   method: Opens stream buffer for specified file URL.
-//   Reason: has unbindable types: return: unresolved template type (std::shared_ptr<std::streambuf>)
-//   // pub fn open_stream_buffer(&mut self, theUrl: &AsciiString, theMode: u32, theOffset: i64, theOutBufSize: *mut i64) -> OwnedPtr<std::shared_ptr<std::streambuf>>;
-//
 
 // ========================
 // From OSD_MAllocHook.hxx

@@ -2549,6 +2549,15 @@ impl TriangulationSource {
         }
     }
 
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:332 - `Poly_Triangulation::InternalNormals()`
+    pub fn internal_normals(&mut self) -> &mut crate::ffi::NCollection_Array1_gp_Vec3f {
+        unsafe {
+            &mut *(crate::ffi::RWMesh_TriangulationSource_inherited_InternalNormals(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:364 - `Poly_Triangulation::HasDeferredData()`
     pub fn has_deferred_data(&self) -> bool {
         unsafe {

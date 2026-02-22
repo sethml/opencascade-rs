@@ -636,6 +636,31 @@ impl HArray1OfPersistent {
         }
     }
 
+    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
+    pub fn new_array1_opencascade_handle_stdobjmgt_persistent(
+        theOther: &crate::ffi::NCollection_Array1_opencascade_handle_StdObjMgt_Persistent,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdLPersistent_HArray1OfPersistent_ctor_array1_opencascade_handle_stdobjmgt_persistent(theOther))
+        }
+    }
+
+    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::Array1()`
+    pub fn array1(
+        &self,
+    ) -> &crate::ffi::NCollection_Array1_opencascade_handle_StdObjMgt_Persistent {
+        unsafe { &*(crate::ffi::StdLPersistent_HArray1OfPersistent_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::ChangeArray1()`
+    pub fn change_array1(
+        &mut self,
+    ) -> &mut crate::ffi::NCollection_Array1_opencascade_handle_StdObjMgt_Persistent {
+        unsafe {
+            &mut *(crate::ffi::StdLPersistent_HArray1OfPersistent_change_array1(self as *mut Self))
+        }
+    }
+
     /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
@@ -788,20 +813,6 @@ impl HandleStdLPersistentHArray1OfPersistent {
     }
 }
 
-// ── Skipped symbols for HArray1OfPersistent (3 total) ──
-// SKIPPED: **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent`
-//   Reason: has unbindable types: param 'theOther': unresolved template type (NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>> const&)
-//   // pub fn new_persistent>>(theOther: /* NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::Array1`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>> const&)
-//   // pub fn array1(&self) -> /* NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>> const& */;
-//
-// SKIPPED: **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::ChangeArray1`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>&)
-//   // pub fn change_array1(&mut self) -> /* NCollection_Array1<opencascade::handle<StdObjMgt_Persistent>>& */;
-//
-
 // ========================
 // From StdLPersistent_HArray2.hxx
 // ========================
@@ -844,6 +855,31 @@ impl HArray2OfPersistent {
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             )
+        }
+    }
+
+    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::StdLPersistent_HArray2OfPersistent()`
+    pub fn new_array2_opencascade_handle_stdobjmgt_persistent(
+        theOther: &crate::ffi::NCollection_Array2_opencascade_handle_StdObjMgt_Persistent,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdLPersistent_HArray2OfPersistent_ctor_array2_opencascade_handle_stdobjmgt_persistent(theOther))
+        }
+    }
+
+    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::Array2()`
+    pub fn array2(
+        &self,
+    ) -> &crate::ffi::NCollection_Array2_opencascade_handle_StdObjMgt_Persistent {
+        unsafe { &*(crate::ffi::StdLPersistent_HArray2OfPersistent_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::ChangeArray2()`
+    pub fn change_array2(
+        &mut self,
+    ) -> &mut crate::ffi::NCollection_Array2_opencascade_handle_StdObjMgt_Persistent {
+        unsafe {
+            &mut *(crate::ffi::StdLPersistent_HArray2OfPersistent_change_array2(self as *mut Self))
         }
     }
 
@@ -998,20 +1034,6 @@ impl HandleStdLPersistentHArray2OfPersistent {
         }
     }
 }
-
-// ── Skipped symbols for HArray2OfPersistent (3 total) ──
-// SKIPPED: **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::StdLPersistent_HArray2OfPersistent`
-//   Reason: has unbindable types: param 'theOther': unresolved template type (NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>> const&)
-//   // pub fn new_persistent>>(theOther: /* NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::Array2`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>> const&)
-//   // pub fn array2(&self) -> /* NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>> const& */;
-//
-// SKIPPED: **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::ChangeArray2`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>>&)
-//   // pub fn change_array2(&mut self) -> /* NCollection_Array2<opencascade::handle<StdObjMgt_Persistent>>& */;
-//
 
 // ========================
 // From StdLPersistent_HString.hxx

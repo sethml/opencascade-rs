@@ -2039,6 +2039,20 @@ impl PolyAlgo {
         unsafe { crate::ffi::HLRAlgo_PolyAlgo_init(self as *mut Self, theNbShells) }
     }
 
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:38 - `HLRAlgo_PolyAlgo::PolyShell()`
+    pub fn poly_shell(
+        &self,
+    ) -> &crate::ffi::NCollection_Array1_opencascade_handle_HLRAlgo_PolyShellData {
+        unsafe { &*(crate::ffi::HLRAlgo_PolyAlgo_poly_shell(self as *const Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:40 - `HLRAlgo_PolyAlgo::ChangePolyShell()`
+    pub fn change_poly_shell(
+        &mut self,
+    ) -> &mut crate::ffi::NCollection_Array1_opencascade_handle_HLRAlgo_PolyShellData {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyAlgo_change_poly_shell(self as *mut Self)) }
+    }
+
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:42 - `HLRAlgo_PolyAlgo::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::HLRAlgo_PolyAlgo_clear(self as *mut Self) }
@@ -2245,16 +2259,6 @@ impl HandleHLRAlgoPolyAlgo {
         }
     }
 }
-
-// ── Skipped symbols for PolyAlgo (2 total) ──
-// SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:38 - `HLRAlgo_PolyAlgo::PolyShell`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>> const&)
-//   // pub fn poly_shell(&self) -> /* NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>> const& */;
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:40 - `HLRAlgo_PolyAlgo::ChangePolyShell`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>&)
-//   // pub fn change_poly_shell(&mut self) -> /* NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>>& */;
-//
 
 // ========================
 // From HLRAlgo_PolyData.hxx
@@ -3114,6 +3118,20 @@ impl PolyShellData {
         unsafe { crate::ffi::HLRAlgo_PolyShellData_hiding(self as *const Self) }
     }
 
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:46 - `HLRAlgo_PolyShellData::PolyData()`
+    pub fn poly_data(
+        &mut self,
+    ) -> &mut crate::ffi::NCollection_Array1_opencascade_handle_HLRAlgo_PolyData {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyShellData_poly_data(self as *mut Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:48 - `HLRAlgo_PolyShellData::HidingPolyData()`
+    pub fn hiding_poly_data(
+        &mut self,
+    ) -> &mut crate::ffi::NCollection_Array1_opencascade_handle_HLRAlgo_PolyData {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyShellData_hiding_poly_data(self as *mut Self)) }
+    }
+
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:50 - `HLRAlgo_PolyShellData::Edges()`
     pub fn edges(&mut self) -> &mut crate::ffi::HLRAlgo_ListOfBPoint {
         unsafe { &mut *(crate::ffi::HLRAlgo_PolyShellData_edges(self as *mut Self)) }
@@ -3244,16 +3262,6 @@ impl HandleHLRAlgoPolyShellData {
         }
     }
 }
-
-// ── Skipped symbols for PolyShellData (2 total) ──
-// SKIPPED: **Source:** `HLRAlgo_PolyShellData.hxx`:46 - `HLRAlgo_PolyShellData::PolyData`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>&)
-//   // pub fn poly_data(&mut self) -> /* NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>& */;
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyShellData.hxx`:48 - `HLRAlgo_PolyShellData::HidingPolyData`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>&)
-//   // pub fn hiding_poly_data(&mut self) -> /* NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>>& */;
-//
 
 /// **Source:** `HLRAlgo_PolyShellData.hxx`:33 - `HLRAlgo_PolyShellData_ShellIndices`
 pub use crate::ffi::HLRAlgo_PolyShellData_ShellIndices as PolyShellData_ShellIndices;

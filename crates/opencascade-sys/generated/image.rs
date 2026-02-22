@@ -400,6 +400,15 @@ impl AlienPixMap {
         unsafe { crate::ffi::Image_AlienPixMap_inherited_SizeZ(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Image_PixMap.hxx`:120 - `Image_PixMap::SizeXYZ()`
+    pub fn size_xyz(&self) -> crate::OwnedPtr<crate::ffi::NCollection_Vec3_Standard_Size> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Image_AlienPixMap_inherited_SizeXYZ(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Image_PixMap.hxx`:126 - `Image_PixMap::Ratio()`
     pub fn ratio(&self) -> f64 {
         unsafe { crate::ffi::Image_AlienPixMap_inherited_Ratio(self as *const Self) }
@@ -461,6 +470,42 @@ impl AlienPixMap {
                 thePixelFormat.into(),
                 theSizeX,
                 theSizeY,
+                theSizeRowBytes,
+                theValue,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Image_PixMap.hxx`:251 - `Image_PixMap::InitTrash3D()`
+    pub fn init_trash3_d(
+        &mut self,
+        thePixelFormat: crate::image::Format,
+        theSizeXYZ: &crate::ffi::NCollection_Vec3_Standard_Size,
+        theSizeRowBytes: usize,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_InitTrash3D(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theSizeXYZ,
+                theSizeRowBytes,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Image_PixMap.hxx`:257 - `Image_PixMap::InitZero3D()`
+    pub fn init_zero3_d(
+        &mut self,
+        thePixelFormat: crate::image::Format,
+        theSizeXYZ: &crate::ffi::NCollection_Vec3_Standard_Size,
+        theSizeRowBytes: usize,
+        theValue: u8,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Image_AlienPixMap_inherited_InitZero3D(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theSizeXYZ,
                 theSizeRowBytes,
                 theValue,
             )
@@ -1262,6 +1307,12 @@ impl PixMap {
         unsafe { crate::ffi::Image_PixMap_size_z(self as *const Self) }
     }
 
+    /// **Source:** `Image_PixMap.hxx`:120 - `Image_PixMap::SizeXYZ()`
+    /// Return image width x height x depth in pixels.
+    pub fn size_xyz(&self) -> crate::OwnedPtr<crate::ffi::NCollection_Vec3_Standard_Size> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Image_PixMap_size_xyz(self as *const Self)) }
+    }
+
     /// **Source:** `Image_PixMap.hxx`:126 - `Image_PixMap::Ratio()`
     /// Return width / height.
     pub fn ratio(&self) -> f64 {
@@ -1433,6 +1484,69 @@ impl PixMap {
     /// Method correctly deallocate internal buffer.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::Image_PixMap_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `Image_PixMap.hxx`:244 - `Image_PixMap::InitWrapper3D()`
+    /// Initialize 2D/3D image as wrapper over alien data.
+    /// Data will not be copied! Notice that caller should ensure
+    /// that data pointer will not be released during this wrapper lifetime.
+    /// You may call InitCopy() to perform data copying.
+    pub unsafe fn init_wrapper3_d(
+        &mut self,
+        thePixelFormat: crate::image::Format,
+        theDataPtr: *mut u8,
+        theSizeXYZ: &crate::ffi::NCollection_Vec3_Standard_Size,
+        theSizeRowBytes: usize,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Image_PixMap_init_wrapper3_d(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theDataPtr,
+                theSizeXYZ,
+                theSizeRowBytes,
+            )
+        }
+    }
+
+    /// **Source:** `Image_PixMap.hxx`:251 - `Image_PixMap::InitTrash3D()`
+    /// Initialize 2D/3D image with required dimensions.
+    /// Memory will be left uninitialized (performance trick).
+    pub fn init_trash3_d(
+        &mut self,
+        thePixelFormat: crate::image::Format,
+        theSizeXYZ: &crate::ffi::NCollection_Vec3_Standard_Size,
+        theSizeRowBytes: usize,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Image_PixMap_init_trash3_d(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theSizeXYZ,
+                theSizeRowBytes,
+            )
+        }
+    }
+
+    /// **Source:** `Image_PixMap.hxx`:257 - `Image_PixMap::InitZero3D()`
+    /// Initialize 2D/3D image with required dimensions.
+    /// Buffer will be zeroed (black color for most formats).
+    pub fn init_zero3_d(
+        &mut self,
+        thePixelFormat: crate::image::Format,
+        theSizeXYZ: &crate::ffi::NCollection_Vec3_Standard_Size,
+        theSizeRowBytes: usize,
+        theValue: u8,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Image_PixMap_init_zero3_d(
+                self as *mut Self,
+                thePixelFormat.into(),
+                theSizeXYZ,
+                theSizeRowBytes,
+                theValue,
+            )
+        }
     }
 
     /// **Source:** `Image_PixMap.hxx`:272 - `Image_PixMap::IsTopDown()`
@@ -1865,32 +1979,6 @@ impl HandleImagePixMap {
     }
 }
 
-// ── Skipped symbols for PixMap (4 total) ──
-// SKIPPED: **Source:** `Image_PixMap.hxx`:120 - `Image_PixMap::SizeXYZ`
-//   method: Return image width x height x depth in pixels.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Vec3<Standard_Size>)
-//   // pub fn size_xyz(&self) -> OwnedPtr<NCollection_Vec3<Standard_Size>>;
-//
-// SKIPPED: **Source:** `Image_PixMap.hxx`:244 - `Image_PixMap::InitWrapper3D`
-//   method: Initialize 2D/3D image as wrapper over alien data.
-//   method: Data will not be copied! Notice that caller should ensure
-//   method: that data pointer will not be released during this wrapper lifetime.
-//   Reason: has unbindable types: param 'theSizeXYZ': unresolved template type (NCollection_Vec3<Standard_Size> const&)
-//   // pub fn init_wrapper3_d(&mut self, thePixelFormat: Format, theDataPtr: *mut u8, theSizeXYZ: /* NCollection_Vec3<Standard_Size> const& */, theSizeRowBytes: usize) -> bool;
-//
-// SKIPPED: **Source:** `Image_PixMap.hxx`:251 - `Image_PixMap::InitTrash3D`
-//   method: Initialize 2D/3D image with required dimensions.
-//   method: Memory will be left uninitialized (performance trick).
-//   Reason: has unbindable types: param 'theSizeXYZ': unresolved template type (NCollection_Vec3<Standard_Size> const&)
-//   // pub fn init_trash3_d(&mut self, thePixelFormat: Format, theSizeXYZ: /* NCollection_Vec3<Standard_Size> const& */, theSizeRowBytes: usize) -> bool;
-//
-// SKIPPED: **Source:** `Image_PixMap.hxx`:257 - `Image_PixMap::InitZero3D`
-//   method: Initialize 2D/3D image with required dimensions.
-//   method: Buffer will be zeroed (black color for most formats).
-//   Reason: has unbindable types: param 'theSizeXYZ': unresolved template type (NCollection_Vec3<Standard_Size> const&)
-//   // pub fn init_zero3_d(&mut self, thePixelFormat: Format, theSizeXYZ: /* NCollection_Vec3<Standard_Size> const& */, theSizeRowBytes: usize, theValue: u8) -> bool;
-//
-
 // ========================
 // From Image_PixMapData.hxx
 // ========================
@@ -1914,7 +2002,7 @@ impl PixMapData {
 
     /// **Source:** `Image_PixMapData.hxx`:43 - `Image_PixMapData::Init()`
     /// Initializer.
-    pub unsafe fn init(
+    pub unsafe fn init_handlencollectionbaseallocator_size4_u8ptr(
         &mut self,
         theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
         theSizeBPP: usize,
@@ -1924,7 +2012,7 @@ impl PixMapData {
         theDataPtr: *mut u8,
     ) -> bool {
         unsafe {
-            crate::ffi::Image_PixMapData_init(
+            crate::ffi::Image_PixMapData_init_handlencollectionbaseallocator_size4_u8ptr(
                 self as *mut Self,
                 theAlloc,
                 theSizeBPP,
@@ -1933,6 +2021,21 @@ impl PixMapData {
                 theSizeRowBytes,
                 theDataPtr,
             )
+        }
+    }
+
+    /// **Source:** `Image_PixMapData.hxx`:58 - `Image_PixMapData::Init()`
+    /// Initializer.
+    pub unsafe fn init_handlencollectionbaseallocator_size_vec3_standard_size_size_u8ptr(
+        &mut self,
+        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+        theSizeBPP: usize,
+        theSizeXYZ: &crate::ffi::NCollection_Vec3_Standard_Size,
+        theSizeRowBytes: usize,
+        theDataPtr: *mut u8,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Image_PixMapData_init_handlencollectionbaseallocator_size_vec3_standard_size_size_u8ptr(self as *mut Self, theAlloc, theSizeBPP, theSizeXYZ, theSizeRowBytes, theDataPtr)
         }
     }
 
@@ -2189,13 +2292,6 @@ impl HandleImagePixMapData {
         }
     }
 }
-
-// ── Skipped symbols for PixMapData (1 total) ──
-// SKIPPED: **Source:** `Image_PixMapData.hxx`:58 - `Image_PixMapData::Init`
-//   method: Initializer.
-//   Reason: has unbindable types: param 'theSizeXYZ': unresolved template type (NCollection_Vec3<Standard_Size> const&)
-//   // pub fn init(&mut self, theAlloc: &HandleBaseAllocator, theSizeBPP: usize, theSizeXYZ: /* NCollection_Vec3<Standard_Size> const& */, theSizeRowBytes: usize, theDataPtr: *mut u8) -> bool;
-//
 
 // ========================
 // From Image_SupportedFormats.hxx

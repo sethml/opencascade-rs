@@ -549,4 +549,7 @@ impl WriteData_ObjectSentry {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::StdObjMgt_TransientPersistentMap as TransientPersistentMap;
+pub use crate::ffi::{
+    StdObjMgt_MapOfInstantiators as MapOfInstantiators,
+    StdObjMgt_TransientPersistentMap as TransientPersistentMap,
+};

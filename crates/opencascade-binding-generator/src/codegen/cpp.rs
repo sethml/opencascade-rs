@@ -263,7 +263,10 @@ pub fn generate_wrappers(
     let mut headers = collect_all_required_headers(all_classes, known_headers);
     // Add headers needed for template instantiations
     for inst in template_instantiations.values() {
-        if known_headers.contains(&inst.header) && !headers.contains(&inst.header) {
+        // OCCT headers (.hxx) must be in known_headers; standard library headers
+        // (no extension, e.g., "utility", "memory") are always available.
+        let is_std_header = !inst.header.contains('.');
+        if (is_std_header || known_headers.contains(&inst.header)) && !headers.contains(&inst.header) {
             headers.push(inst.header.clone());
         }
     }

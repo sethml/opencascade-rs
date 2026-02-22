@@ -2700,14 +2700,25 @@ impl Intersection {
     ) -> f64 {
         unsafe { crate::ffi::IntPatch_Intersection_define_uv_max_step(theS1, theD1, theS2, theD2) }
     }
-}
 
-// ── Skipped symbols for Intersection (1 total) ──
-// SKIPPED: **Source:** `IntPatch_Intersection.hxx`:194 - `IntPatch_Intersection::PrepareSurfaces`
-//   static_method: Prepares surfaces for intersection
-//   Reason: has unbindable types: param 'theSeqHS1': unresolved template type (NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>&); param 'theSeqHS2': unresolved template type (NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>&)
-//   // pub fn prepare_surfaces(theS1: &HandleSurface, theD1: &HandleTopolTool, theS2: &HandleSurface, theD2: &HandleTopolTool, Tol: f64, theSeqHS1: /* NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>& */, theSeqHS2: /* NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>& */);
-//
+    /// **Source:** `IntPatch_Intersection.hxx`:194 - `IntPatch_Intersection::PrepareSurfaces()`
+    /// Prepares surfaces for intersection
+    pub fn prepare_surfaces(
+        theS1: &crate::ffi::HandleAdaptor3dSurface,
+        theD1: &crate::ffi::HandleAdaptor3dTopolTool,
+        theS2: &crate::ffi::HandleAdaptor3dSurface,
+        theD2: &crate::ffi::HandleAdaptor3dTopolTool,
+        Tol: f64,
+        theSeqHS1: &mut crate::ffi::NCollection_Vector_opencascade_handle_Adaptor3d_Surface,
+        theSeqHS2: &mut crate::ffi::NCollection_Vector_opencascade_handle_Adaptor3d_Surface,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_Intersection_prepare_surfaces(
+                theS1, theD1, theS2, theD2, Tol, theSeqHS1, theSeqHS2,
+            )
+        }
+    }
+}
 
 // ========================
 // From IntPatch_Line.hxx
@@ -7334,16 +7345,43 @@ impl WLineTool {
             crate::ffi::IntPatch_WLineTool_join_w_lines(theSlin, theSPnt, theS1, theS2, theTol3D)
         }
     }
-}
 
-// ── Skipped symbols for WLineTool (1 total) ──
-// SKIPPED: **Source:** `IntPatch_WLineTool.hxx`:74 - `IntPatch_WLineTool::ExtendTwoWLines`
-//   static_method: Extends every line from theSlin (if it is possible) to be started/finished
-//   static_method: in strictly determined point (in the place of joint of two lines).
-//   static_method: As result, some gaps between two lines will vanish.
-//   Reason: has unbindable types: param 'theListOfCriticalPoints': unresolved template type (NCollection_List<gp_Pnt> const&)
-//   // pub fn extend_two_w_lines(theSlin: &mut SequenceOfLine, theS1: &HandleSurface, theS2: &HandleSurface, theToler3D: f64, theArrPeriods: *const f64, theBoxS1: &Box2d, theBoxS2: &Box2d, theListOfCriticalPoints: /* NCollection_List<gp_Pnt> const& */);
-//
+    /// **Source:** `IntPatch_WLineTool.hxx`:74 - `IntPatch_WLineTool::ExtendTwoWLines()`
+    /// Extends every line from theSlin (if it is possible) to be started/finished
+    /// in strictly determined point (in the place of joint of two lines).
+    /// As result, some gaps between two lines will vanish.
+    /// The Walking lines are supposed (algorithm will do nothing for not-Walking line)
+    /// to be computed as a result of intersection. Both theS1 and theS2
+    /// must be quadrics. Other cases are not supported.
+    /// theArrPeriods must be filled as follows (every value must not be negative;
+    /// if the surface is not periodic the period must be equal to 0.0 strictly):
+    /// {<U-period of 1st surface>, <V-period of 1st surface>,
+    /// <U-period of 2nd surface>, <V-period of 2nd surface>}.
+    /// theListOfCriticalPoints must contain 3D-points where joining is disabled.
+    pub unsafe fn extend_two_w_lines(
+        theSlin: &mut crate::ffi::IntPatch_SequenceOfLine,
+        theS1: &crate::ffi::HandleAdaptor3dSurface,
+        theS2: &crate::ffi::HandleAdaptor3dSurface,
+        theToler3D: f64,
+        theArrPeriods: *const f64,
+        theBoxS1: &crate::bnd::Box2d,
+        theBoxS2: &crate::bnd::Box2d,
+        theListOfCriticalPoints: &crate::ffi::NCollection_List_gp_Pnt,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_WLineTool_extend_two_w_lines(
+                theSlin,
+                theS1,
+                theS2,
+                theToler3D,
+                theArrPeriods,
+                theBoxS1,
+                theBoxS2,
+                theListOfCriticalPoints,
+            )
+        }
+    }
+}
 
 // ========================
 // Additional type re-exports

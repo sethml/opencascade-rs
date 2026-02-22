@@ -4051,6 +4051,27 @@ impl Dump {
         }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:361 - `Standard_Dump::SplitJson()`
+    /// Converts stream into map of values.
+    ///
+    /// The one level stream example: 'key_1: value_1, key_2: value_2'
+    /// In output: values contain 'key_1: value_1' and 'key_2: value_2'.
+    ///
+    /// The two level stream example: 'key_1: value_1, key_2: value_2, key_3: {sublevel_key_1:
+    /// sublevel_value_1}, key_4: value_4' In output values contain 'key_1: value_1', 'key_2:
+    /// value_2', 'key_3: {sublevel_key_1: sublevel_value_1}' and 'key_4: value_4'. The sublevel value
+    /// might be processed later using the same method.
+    ///
+    /// @param theStreamStr stream value
+    /// @param[out] theKeyToValues  container of split values. It contains key to value and position
+    /// of the value in the stream text
+    pub fn split_json(
+        theStreamStr: &crate::t_collection::AsciiString,
+        theKeyToValues: &mut crate::ffi::NCollection_IndexedDataMap_TCollection_AsciiString_Standard_DumpValue,
+    ) -> bool {
+        unsafe { crate::ffi::Standard_Dump_split_json(theStreamStr, theKeyToValues) }
+    }
+
     /// **Source:** `Standard_Dump.hxx`:366 - `Standard_Dump::HierarchicalValueIndices()`
     /// Returns container of indices in values, that has hierarchical value
     pub fn hierarchical_value_indices(
@@ -4229,14 +4250,6 @@ impl Dump {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_dump_field_to_name(theField)) }
     }
 }
-
-// ── Skipped symbols for Dump (1 total) ──
-// SKIPPED: **Source:** `Standard_Dump.hxx`:361 - `Standard_Dump::SplitJson`
-//   static_method: Converts stream into map of values.
-//   static_method: The one level stream example: 'key_1: value_1, key_2: value_2'
-//   Reason: has unbindable types: param 'theKeyToValues': unresolved template type (NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>&)
-//   // pub fn split_json(theStreamStr: &AsciiString, theKeyToValues: /* NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue>& */) -> bool;
-//
 
 // ========================
 // From Standard_ErrorHandler.hxx

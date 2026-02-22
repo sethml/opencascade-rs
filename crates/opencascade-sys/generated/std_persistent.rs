@@ -271,6 +271,29 @@ impl HArray1OfShape1 {
         }
     }
 
+    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::StdPersistent_HArray1OfShape1()`
+    pub fn new_array1_stdobject_shape(
+        theOther: &crate::ffi::NCollection_Array1_StdObject_Shape,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StdPersistent_HArray1OfShape1_ctor_array1_stdobject_shape(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::Array1()`
+    pub fn array1(&self) -> &crate::ffi::NCollection_Array1_StdObject_Shape {
+        unsafe { &*(crate::ffi::StdPersistent_HArray1OfShape1_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::NCollection_Array1_StdObject_Shape {
+        unsafe {
+            &mut *(crate::ffi::StdPersistent_HArray1OfShape1_change_array1(self as *mut Self))
+        }
+    }
+
     /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StdPersistent_HArray1OfShape1_dynamic_type(self as *const Self)) }
@@ -409,20 +432,6 @@ impl HandleStdPersistentHArray1OfShape1 {
         }
     }
 }
-
-// ── Skipped symbols for HArray1OfShape1 (3 total) ──
-// SKIPPED: **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::StdPersistent_HArray1OfShape1`
-//   Reason: has unbindable types: param 'theOther': unresolved template type (NCollection_Array1<StdObject_Shape> const&)
-//   // pub fn new_array1<stdobject_shape>(theOther: /* NCollection_Array1<StdObject_Shape> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::Array1`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<StdObject_Shape> const&)
-//   // pub fn array1(&self) -> /* NCollection_Array1<StdObject_Shape> const& */;
-//
-// SKIPPED: **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::ChangeArray1`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<StdObject_Shape>&)
-//   // pub fn change_array1(&mut self) -> /* NCollection_Array1<StdObject_Shape>& */;
-//
 
 // ========================
 // From StdPersistent_Naming.hxx

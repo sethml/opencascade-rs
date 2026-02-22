@@ -29347,6 +29347,24 @@ impl RepositionedTessellatedGeometricSet {
         }
     }
 
+    /// **Source:** `StepVisual_RepositionedTessellatedGeometricSet.hxx`:37 - `StepVisual_RepositionedTessellatedGeometricSet::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theItems: &crate::ffi::NCollection_Handle_StepVisual_Array1OfTessellatedItem,
+        theLocation: &crate::ffi::HandleStepGeomAxis2Placement3d,
+    ) {
+        unsafe {
+            crate::ffi::StepVisual_RepositionedTessellatedGeometricSet_init(
+                self as *mut Self,
+                theName,
+                theItems,
+                theLocation,
+            )
+        }
+    }
+
     /// **Source:** `StepVisual_RepositionedTessellatedGeometricSet.hxx`:42 - `StepVisual_RepositionedTessellatedGeometricSet::Location()`
     /// Returns location
     pub fn location(&self) -> crate::OwnedPtr<crate::ffi::HandleStepGeomAxis2Placement3d> {
@@ -29474,6 +29492,19 @@ impl RepositionedTessellatedGeometricSet {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepVisual_RepositionedTessellatedGeometricSet_to_handle(
                     obj.into_raw(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepVisual_TessellatedGeometricSet.hxx`:42 - `StepVisual_TessellatedGeometricSet::Items()`
+    pub fn items(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::NCollection_Handle_StepVisual_Array1OfTessellatedItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepVisual_RepositionedTessellatedGeometricSet_inherited_Items(
+                    self as *const Self,
                 ),
             )
         }
@@ -29643,13 +29674,6 @@ impl HandleStepVisualRepositionedTessellatedGeometricSet {
         }
     }
 }
-
-// ── Skipped symbols for RepositionedTessellatedGeometricSet (1 total) ──
-// SKIPPED: **Source:** `StepVisual_RepositionedTessellatedGeometricSet.hxx`:37 - `StepVisual_RepositionedTessellatedGeometricSet::Init`
-//   method: Initialize all fields (own and inherited)
-//   Reason: has unbindable types: param 'theItems': unresolved template type (NCollection_Handle<StepVisual_Array1OfTessellatedItem> const&)
-//   // pub fn init(&mut self, theName: &HandleHAsciiString, theItems: /* NCollection_Handle<StepVisual_Array1OfTessellatedItem> const& */, theLocation: &HandleAxis2Placement3d);
-//
 
 // ========================
 // From StepVisual_RepositionedTessellatedItem.hxx
@@ -35263,10 +35287,38 @@ impl TessellatedCurveSet {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepVisual_TessellatedCurveSet_ctor()) }
     }
 
+    /// **Source:** `StepVisual_TessellatedCurveSet.hxx`:42 - `StepVisual_TessellatedCurveSet::Init()`
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theCoordList: &crate::ffi::HandleStepVisualCoordinatesList,
+        theCurves: &crate::ffi::NCollection_Handle_StepVisual_VectorOfHSequenceOfInteger,
+    ) {
+        unsafe {
+            crate::ffi::StepVisual_TessellatedCurveSet_init(
+                self as *mut Self,
+                theName,
+                theCoordList,
+                theCurves,
+            )
+        }
+    }
+
     /// **Source:** `StepVisual_TessellatedCurveSet.hxx`:47 - `StepVisual_TessellatedCurveSet::CoordList()`
     pub fn coord_list(&self) -> crate::OwnedPtr<crate::ffi::HandleStepVisualCoordinatesList> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::StepVisual_TessellatedCurveSet_coord_list(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepVisual_TessellatedCurveSet.hxx`:48 - `StepVisual_TessellatedCurveSet::Curves()`
+    pub fn curves(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::NCollection_Handle_StepVisual_VectorOfHSequenceOfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_TessellatedCurveSet_curves(
                 self as *const Self,
             ))
         }
@@ -35526,16 +35578,6 @@ impl HandleStepVisualTessellatedCurveSet {
         }
     }
 }
-
-// ── Skipped symbols for TessellatedCurveSet (2 total) ──
-// SKIPPED: **Source:** `StepVisual_TessellatedCurveSet.hxx`:42 - `StepVisual_TessellatedCurveSet::Init`
-//   Reason: has unbindable types: param 'theCurves': unresolved template type (NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger> const&)
-//   // pub fn init(&mut self, theName: &HandleHAsciiString, theCoordList: &HandleCoordinatesList, theCurves: /* NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger> const& */);
-//
-// SKIPPED: **Source:** `StepVisual_TessellatedCurveSet.hxx`:48 - `StepVisual_TessellatedCurveSet::Curves`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger>)
-//   // pub fn curves(&self) -> OwnedPtr<NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger>>;
-//
 
 // ========================
 // From StepVisual_TessellatedEdge.hxx
@@ -36655,6 +36697,32 @@ impl TessellatedGeometricSet {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepVisual_TessellatedGeometricSet_ctor()) }
     }
 
+    /// **Source:** `StepVisual_TessellatedGeometricSet.hxx`:39 - `StepVisual_TessellatedGeometricSet::Init()`
+    pub fn init(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theItems: &crate::ffi::NCollection_Handle_StepVisual_Array1OfTessellatedItem,
+    ) {
+        unsafe {
+            crate::ffi::StepVisual_TessellatedGeometricSet_init(
+                self as *mut Self,
+                theName,
+                theItems,
+            )
+        }
+    }
+
+    /// **Source:** `StepVisual_TessellatedGeometricSet.hxx`:42 - `StepVisual_TessellatedGeometricSet::Items()`
+    pub fn items(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::NCollection_Handle_StepVisual_Array1OfTessellatedItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_TessellatedGeometricSet_items(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `StepVisual_TessellatedGeometricSet.hxx`:48 - `StepVisual_TessellatedGeometricSet::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
@@ -36923,16 +36991,6 @@ impl HandleStepVisualTessellatedGeometricSet {
         }
     }
 }
-
-// ── Skipped symbols for TessellatedGeometricSet (2 total) ──
-// SKIPPED: **Source:** `StepVisual_TessellatedGeometricSet.hxx`:39 - `StepVisual_TessellatedGeometricSet::Init`
-//   Reason: has unbindable types: param 'theItems': unresolved template type (NCollection_Handle<StepVisual_Array1OfTessellatedItem> const&)
-//   // pub fn init(&mut self, theName: &HandleHAsciiString, theItems: /* NCollection_Handle<StepVisual_Array1OfTessellatedItem> const& */);
-//
-// SKIPPED: **Source:** `StepVisual_TessellatedGeometricSet.hxx`:42 - `StepVisual_TessellatedGeometricSet::Items`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Handle<StepVisual_Array1OfTessellatedItem>)
-//   // pub fn items(&self) -> OwnedPtr<NCollection_Handle<StepVisual_Array1OfTessellatedItem>>;
-//
 
 // ========================
 // From StepVisual_TessellatedItem.hxx

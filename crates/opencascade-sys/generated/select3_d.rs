@@ -7947,6 +7947,14 @@ impl SensitiveWire {
         }
     }
 
+    /// **Source:** `Select3D_SensitiveWire.hxx`:40 - `Select3D_SensitiveWire::GetEdges()`
+    /// returns the sensitive edges stored in this wire
+    pub fn get_edges(
+        &mut self,
+    ) -> &crate::ffi::NCollection_Vector_opencascade_handle_Select3D_SensitiveEntity {
+        unsafe { &*(crate::ffi::Select3D_SensitiveWire_get_edges(self as *mut Self)) }
+    }
+
     /// **Source:** `Select3D_SensitiveWire.hxx`:43 - `Select3D_SensitiveWire::Set()`
     /// Sets the owner for all entities in wire
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
@@ -8297,13 +8305,6 @@ impl HandleSelect3DSensitiveWire {
         }
     }
 }
-
-// ── Skipped symbols for SensitiveWire (1 total) ──
-// SKIPPED: **Source:** `Select3D_SensitiveWire.hxx`:40 - `Select3D_SensitiveWire::GetEdges`
-//   method: returns the sensitive edges stored in this wire
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>> const&)
-//   // pub fn get_edges(&mut self) -> /* NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>> const& */;
-//
 
 // ========================
 // Additional type re-exports

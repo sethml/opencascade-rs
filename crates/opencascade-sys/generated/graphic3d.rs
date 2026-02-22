@@ -18069,6 +18069,12 @@ impl CView {
         unsafe { crate::ffi::Graphic3d_CView_z_layer_max(self as *const Self) }
     }
 
+    /// **Source:** `Graphic3d_CView.hxx`:330 - `Graphic3d_CView::Layers()`
+    /// Returns the list of layers.
+    pub fn layers(&self) -> &crate::ffi::NCollection_List_opencascade_handle_Graphic3d_Layer {
+        unsafe { &*(crate::ffi::Graphic3d_CView_layers(self as *const Self)) }
+    }
+
     /// **Source:** `Graphic3d_CView.hxx`:333 - `Graphic3d_CView::Layer()`
     /// Returns layer with given ID or NULL if undefined.
     pub fn layer(&self, theLayerId: i32) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dLayer> {
@@ -18694,6 +18700,12 @@ impl CView {
         }
     }
 
+    /// **Source:** `Graphic3d_CView.hxx`:613 - `Graphic3d_CView::Subviews()`
+    /// Return subview list.
+    pub fn subviews(&self) -> &crate::ffi::NCollection_Sequence_opencascade_handle_Graphic3d_CView {
+        unsafe { &*(crate::ffi::Graphic3d_CView_subviews(self as *const Self)) }
+    }
+
     /// **Source:** `Graphic3d_CView.hxx`:616 - `Graphic3d_CView::AddSubview()`
     /// Add subview to the list.
     pub fn add_subview(&mut self, theView: &crate::ffi::HandleGraphic3dCView) {
@@ -18908,7 +18920,7 @@ impl HandleGraphic3dCView {
     }
 }
 
-// ── Skipped symbols for CView (4 total) ──
+// ── Skipped symbols for CView (2 total) ──
 // SKIPPED: **Source:** `Graphic3d_CView.hxx`:61 - `Graphic3d_CView::Graphic3d_CView`
 //   constructor: Constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
@@ -18920,16 +18932,6 @@ impl HandleGraphic3dCView {
 //   method: @param[in] theWindow the window
 //   Reason: param 'theContext' uses unknown type 'NSOpenGLContext*'
 //   // pub fn set_window(&mut self, theParentVIew: &HandleCView, theWindow: &HandleWindow, theContext: *mut NSOpenGLContext);
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:330 - `Graphic3d_CView::Layers`
-//   method: Returns the list of layers.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<opencascade::handle<Graphic3d_Layer>> const&)
-//   // pub fn layers(&self) -> /* NCollection_List<opencascade::handle<Graphic3d_Layer>> const& */;
-//
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:613 - `Graphic3d_CView::Subviews`
-//   method: Return subview list.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<opencascade::handle<Graphic3d_CView>> const&)
-//   // pub fn subviews(&self) -> /* NCollection_Sequence<opencascade::handle<Graphic3d_CView>> const& */;
 //
 
 // ========================
@@ -19763,6 +19765,23 @@ impl Camera {
         unsafe { crate::ffi::Graphic3d_Camera_is_custom_stereo_frustum(self as *const Self) }
     }
 
+    /// **Source:** `Graphic3d_Camera.hxx`:630 - `Graphic3d_Camera::SetCustomStereoFrustums()`
+    /// Set custom stereo frustums.
+    /// These can be retrieved from APIs like OpenVR.
+    pub fn set_custom_stereo_frustums(
+        &mut self,
+        theFrustumL: &crate::ffi::Aspect_FrustumLRBT_Standard_Real,
+        theFrustumR: &crate::ffi::Aspect_FrustumLRBT_Standard_Real,
+    ) {
+        unsafe {
+            crate::ffi::Graphic3d_Camera_set_custom_stereo_frustums(
+                self as *mut Self,
+                theFrustumL,
+                theFrustumR,
+            )
+        }
+    }
+
     /// **Source:** `Graphic3d_Camera.hxx`:635 - `Graphic3d_Camera::IsCustomStereoProjection()`
     /// Return TRUE if custom stereo projection matrices are set.
     pub fn is_custom_stereo_projection(&self) -> bool {
@@ -19804,6 +19823,24 @@ impl Camera {
     pub fn set_custom_mono_projection(&mut self, theProj: &crate::ffi::Graphic3d_Mat4d) {
         unsafe {
             crate::ffi::Graphic3d_Camera_set_custom_mono_projection(self as *mut Self, theProj)
+        }
+    }
+
+    /// **Source:** `Graphic3d_Camera.hxx`:775 - `Graphic3d_Camera::FrustumPoints()`
+    /// Fill array of current view frustum corners.
+    /// The size of this array is equal to FrustumVerticesNB.
+    /// The order of vertices is as defined in FrustumVert_* enumeration.
+    pub fn frustum_points(
+        &self,
+        thePoints: &mut crate::ffi::NCollection_Array1_Graphic3d_Vec3d,
+        theModelWorld: &crate::ffi::Graphic3d_Mat4d,
+    ) {
+        unsafe {
+            crate::ffi::Graphic3d_Camera_frustum_points(
+                self as *const Self,
+                thePoints,
+                theModelWorld,
+            )
         }
     }
 
@@ -19949,21 +19986,6 @@ impl HandleGraphic3dCamera {
         }
     }
 }
-
-// ── Skipped symbols for Camera (2 total) ──
-// SKIPPED: **Source:** `Graphic3d_Camera.hxx`:630 - `Graphic3d_Camera::SetCustomStereoFrustums`
-//   method: Set custom stereo frustums.
-//   method: These can be retrieved from APIs like OpenVR.
-//   Reason: has unbindable types: param 'theFrustumL': unresolved template type (Aspect_FrustumLRBT<Standard_Real> const&); param 'theFrustumR': unresolved template type (Aspect_FrustumLRBT<Standard_Real> const&)
-//   // pub fn set_custom_stereo_frustums(&mut self, theFrustumL: /* Aspect_FrustumLRBT<Standard_Real> const& */, theFrustumR: /* Aspect_FrustumLRBT<Standard_Real> const& */);
-//
-// SKIPPED: **Source:** `Graphic3d_Camera.hxx`:775 - `Graphic3d_Camera::FrustumPoints`
-//   method: Fill array of current view frustum corners.
-//   method: The size of this array is equal to FrustumVerticesNB.
-//   method: The order of vertices is as defined in FrustumVert_* enumeration.
-//   Reason: has unbindable types: param 'thePoints': unresolved template type (NCollection_Array1<Graphic3d_Vec3d>&)
-//   // pub fn frustum_points(&self, thePoints: /* NCollection_Array1<Graphic3d_Vec3d>& */, theModelWorld: &Mat4d);
-//
 
 // ========================
 // From Graphic3d_CameraTile.hxx
@@ -21824,6 +21846,21 @@ impl CubeMapSeparate {
         }
     }
 
+    /// **Source:** `Graphic3d_CubeMapSeparate.hxx`:34 - `Graphic3d_CubeMapSeparate::Graphic3d_CubeMapSeparate()`
+    /// Initializes cubemap to be set directly from PixMaps.
+    /// @theImages - array if PixMaps (has to have size equal 6).
+    pub fn new_array1_opencascade_handle_image_pixmap(
+        theImages: &crate::ffi::NCollection_Array1_opencascade_handle_Image_PixMap,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_CubeMapSeparate_ctor_array1_opencascade_handle_image_pixmap(
+                    theImages,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `Graphic3d_CubeMapSeparate.hxx`:25 - `Graphic3d_CubeMapSeparate::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Graphic3d_CubeMapSeparate_dynamic_type(self as *const Self)) }
@@ -22281,14 +22318,6 @@ impl HandleGraphic3dCubeMapSeparate {
         }
     }
 }
-
-// ── Skipped symbols for CubeMapSeparate (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_CubeMapSeparate.hxx`:34 - `Graphic3d_CubeMapSeparate::Graphic3d_CubeMapSeparate`
-//   constructor: Initializes cubemap to be set directly from PixMaps.
-//   constructor: @theImages - array if PixMaps (has to have size equal 6).
-//   Reason: has unbindable types: param 'theImages': unresolved template type (NCollection_Array1<opencascade::handle<Image_PixMap>> const&)
-//   // pub fn new_pixmap>>(theImages: /* NCollection_Array1<opencascade::handle<Image_PixMap>> const& */) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From Graphic3d_CullingTool.hxx
@@ -22911,6 +22940,20 @@ impl FrameStats {
         unsafe { crate::ffi::Graphic3d_FrameStats_last_data_frame_index(self as *const Self) }
     }
 
+    /// **Source:** `Graphic3d_FrameStats.hxx`:121 - `Graphic3d_FrameStats::DataFrames()`
+    /// Returns data frames.
+    pub fn data_frames(&self) -> &crate::ffi::NCollection_Array1_Graphic3d_FrameStatsData {
+        unsafe { &*(crate::ffi::Graphic3d_FrameStats_data_frames(self as *const Self)) }
+    }
+
+    /// **Source:** `Graphic3d_FrameStats.hxx`:124 - `Graphic3d_FrameStats::ChangeDataFrames()`
+    /// Returns data frames.
+    pub fn change_data_frames(
+        &mut self,
+    ) -> &mut crate::ffi::NCollection_Array1_Graphic3d_FrameStatsData {
+        unsafe { &mut *(crate::ffi::Graphic3d_FrameStats_change_data_frames(self as *mut Self)) }
+    }
+
     /// **Source:** `Graphic3d_FrameStats.hxx`:129 - `Graphic3d_FrameStats::ChangeCounter()`
     /// Returns value of specified counter for modification, should be called between ::FrameStart()
     /// and ::FrameEnd() calls.
@@ -23048,21 +23091,11 @@ impl HandleGraphic3dFrameStats {
     }
 }
 
-// ── Skipped symbols for FrameStats (3 total) ──
+// ── Skipped symbols for FrameStats (1 total) ──
 // SKIPPED: **Source:** `Graphic3d_FrameStats.hxx`:31 - `Graphic3d_FrameStats::Graphic3d_FrameStats`
 //   constructor: Default constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Graphic3d_FrameStats.hxx`:121 - `Graphic3d_FrameStats::DataFrames`
-//   method: Returns data frames.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<Graphic3d_FrameStatsData> const&)
-//   // pub fn data_frames(&self) -> /* NCollection_Array1<Graphic3d_FrameStatsData> const& */;
-//
-// SKIPPED: **Source:** `Graphic3d_FrameStats.hxx`:124 - `Graphic3d_FrameStats::ChangeDataFrames`
-//   method: Returns data frames.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<Graphic3d_FrameStatsData>&)
-//   // pub fn change_data_frames(&mut self) -> /* NCollection_Array1<Graphic3d_FrameStatsData>& */;
 //
 
 // ========================
@@ -38370,6 +38403,31 @@ impl TransformPers {
         }
     }
 
+    /// **Source:** `Graphic3d_TransformPers.hxx`:282 - `Graphic3d_TransformPers::persistentRotationMatrix()`
+    /// Create orientation matrix based on camera and view dimensions.
+    /// Default implementation locks rotation by nullifying rotation component.
+    /// Camera and view dimensions are not used, by default.
+    /// @param[in] theCamera  camera definition
+    /// @param[in] theViewportWidth  the width of viewport
+    /// @param[in] theViewportHeight  the height of viewport
+    pub fn persistent_rotation_matrix(
+        &self,
+        theCamera: &crate::ffi::HandleGraphic3dCamera,
+        theViewportWidth: i32,
+        theViewportHeight: i32,
+    ) -> crate::OwnedPtr<crate::ffi::NCollection_Mat3_Standard_Real> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_TransformPers_persistent_rotation_matrix(
+                    self as *const Self,
+                    theCamera,
+                    theViewportWidth,
+                    theViewportHeight,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `Graphic3d_TransformPers.hxx`:367 - `Graphic3d_TransformPers::ComputeApply()`
     /// Perform computations for applying transformation persistence on specified matrices.
     /// @param[in] theCamera  camera definition
@@ -38553,15 +38611,6 @@ impl HandleGraphic3dTransformPers {
         }
     }
 }
-
-// ── Skipped symbols for TransformPers (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_TransformPers.hxx`:282 - `Graphic3d_TransformPers::persistentRotationMatrix`
-//   method: Create orientation matrix based on camera and view dimensions.
-//   method: Default implementation locks rotation by nullifying rotation component.
-//   method: Camera and view dimensions are not used, by default.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Mat3<Standard_Real>)
-//   // pub fn persistent_rotation_matrix(&self, theCamera: &HandleCamera, theViewportWidth: i32, theViewportHeight: i32) -> OwnedPtr<NCollection_Mat3<Standard_Real>>;
-//
 
 // ========================
 // From Graphic3d_TransformPersScaledAbove.hxx
@@ -38799,6 +38848,25 @@ impl TransformPersScaledAbove {
             crate::ffi::Graphic3d_TransformPersScaledAbove_inherited_SetOffset2d(
                 self as *mut Self,
                 theOffset,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Graphic3d_TransformPers.hxx`:282 - `Graphic3d_TransformPers::persistentRotationMatrix()`
+    pub fn persistent_rotation_matrix(
+        &self,
+        theCamera: &crate::ffi::HandleGraphic3dCamera,
+        theViewportWidth: i32,
+        theViewportHeight: i32,
+    ) -> crate::OwnedPtr<crate::ffi::NCollection_Mat3_Standard_Real> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Graphic3d_TransformPersScaledAbove_inherited_persistentRotationMatrix(
+                    self as *const Self,
+                    theCamera,
+                    theViewportWidth,
+                    theViewportHeight,
+                ),
             )
         }
     }

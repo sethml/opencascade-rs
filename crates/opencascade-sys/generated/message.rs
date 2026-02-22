@@ -6608,6 +6608,12 @@ impl Report {
         unsafe { crate::ffi::Message_Report_clear_handlestandardtype(self as *mut Self, theType) }
     }
 
+    /// **Source:** `Message_Report.hxx`:111 - `Message_Report::ActiveMetrics()`
+    /// Returns computed metrics when alerts are performed
+    pub fn active_metrics(&self) -> &crate::ffi::NCollection_IndexedMap_Message_MetricType {
+        unsafe { &*(crate::ffi::Message_Report_active_metrics(self as *const Self)) }
+    }
+
     /// **Source:** `Message_Report.hxx`:118 - `Message_Report::SetActiveMetric()`
     /// Sets metrics to compute when alerts are performed
     /// @param theMetrics container of metrics
@@ -6829,13 +6835,6 @@ impl HandleMessageReport {
         }
     }
 }
-
-// ── Skipped symbols for Report (1 total) ──
-// SKIPPED: **Source:** `Message_Report.hxx`:111 - `Message_Report::ActiveMetrics`
-//   method: Returns computed metrics when alerts are performed
-//   Reason: has unbindable types: return: unresolved template type (NCollection_IndexedMap<Message_MetricType> const&)
-//   // pub fn active_metrics(&self) -> /* NCollection_IndexedMap<Message_MetricType> const& */;
-//
 
 // ========================
 // Additional type re-exports

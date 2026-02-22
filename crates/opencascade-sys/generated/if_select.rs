@@ -27443,6 +27443,27 @@ impl SignatureList {
         }
     }
 
+    /// **Source:** `IFSelect_SignatureList.hxx`:78 - `IFSelect_SignatureList::Init()`
+    /// Aknowledges the list in once. Name identifies the Signature
+    pub fn init(
+        &mut self,
+        name: &str,
+        count: &crate::ffi::Storage_PType,
+        list: &crate::ffi::NCollection_IndexedDataMap_TCollection_AsciiString_opencascade_handle_Standard_Transient,
+        nbnuls: i32,
+    ) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_SignatureList_init(
+                self as *mut Self,
+                c_name.as_ptr(),
+                count,
+                list,
+                nbnuls,
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_SignatureList.hxx`:89 - `IFSelect_SignatureList::List()`
     /// Returns the list of signatures, as a sequence of strings
     /// (but without their respective counts). It is ordered.
@@ -27752,13 +27773,6 @@ impl HandleIFSelectSignatureList {
         }
     }
 }
-
-// ── Skipped symbols for SignatureList (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:78 - `IFSelect_SignatureList::Init`
-//   method: Aknowledges the list in once. Name identifies the Signature
-//   Reason: has unbindable types: param 'list': unresolved template type (NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> const&)
-//   // pub fn init(&mut self, name: *const char, count: &PType, list: /* NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> const& */, nbnuls: i32);
-//
 
 // ========================
 // From IFSelect_TransformStandard.hxx
@@ -30809,6 +30823,33 @@ impl WorkSession {
         }
     }
 
+    /// **Source:** `IFSelect_WorkSession.hxx`:1042 - `IFSelect_WorkSession::SetParams()`
+    /// Sets a list of Parameters, i.e. TypedValue, to be handled
+    /// through an Editor
+    /// The two lists are parallel, if <params> is longer than <uses>,
+    /// surnumeral parameters are for general use
+    ///
+    /// EditForms are created to handle these parameters (list, edit)
+    /// on the basis of a ParamEditor  xst-params-edit
+    ///
+    /// A use number dispatches the parameter to a given EditForm
+    /// EditForms are defined as follows
+    /// Name                Use   Means
+    /// xst-params          all   All Parameters (complete list)
+    /// xst-params-general  1     Generals
+    /// xst-params-load     2     LoadFile (no Transfer)
+    /// xst-params-send     3     SendFile (Write, no Transfer)
+    /// xst-params-split    4     Split
+    /// xst-param-read      5     Transfer on Reading
+    /// xst-param-write     6     Transfer on Writing
+    pub fn set_params(
+        &mut self,
+        params: &crate::ffi::NCollection_Vector_opencascade_handle_Standard_Transient,
+        uselist: &crate::ffi::NCollection_Vector_Standard_Integer,
+    ) {
+        unsafe { crate::ffi::IFSelect_WorkSession_set_params(self as *mut Self, params, uselist) }
+    }
+
     /// **Source:** `IFSelect_WorkSession.hxx`:1052 - `IFSelect_WorkSession::TraceStatics()`
     /// Traces the Statics attached to a given use number
     /// If <use> is given positive (normal), the trace is embedded
@@ -31145,15 +31186,6 @@ impl HandleIFSelectWorkSession {
         }
     }
 }
-
-// ── Skipped symbols for WorkSession (1 total) ──
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1042 - `IFSelect_WorkSession::SetParams`
-//   method: Sets a list of Parameters, i.e. TypedValue, to be handled
-//   method: through an Editor
-//   method: The two lists are parallel, if <params> is longer than <uses>,
-//   Reason: has unbindable types: param 'params': unresolved template type (NCollection_Vector<opencascade::handle<Standard_Transient>> const&); param 'uselist': unresolved template type (NCollection_Vector<Standard_Integer> const&)
-//   // pub fn set_params(&mut self, params: /* NCollection_Vector<opencascade::handle<Standard_Transient>> const& */, uselist: /* NCollection_Vector<Standard_Integer> const& */);
-//
 
 // ========================
 // Additional type re-exports

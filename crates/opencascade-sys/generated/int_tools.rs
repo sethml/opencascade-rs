@@ -4095,5 +4095,5 @@ pub use crate::ffi::{
     IntTools_SequenceOfCommonPrts as SequenceOfCommonPrts,
     IntTools_SequenceOfCurves as SequenceOfCurves,
     IntTools_SequenceOfPntOn2Faces as SequenceOfPntOn2Faces,
-    IntTools_SequenceOfRanges as SequenceOfRanges,
+    IntTools_SequenceOfRanges as SequenceOfRanges, IntTools_SequenceOfRoots as SequenceOfRoots,
 };

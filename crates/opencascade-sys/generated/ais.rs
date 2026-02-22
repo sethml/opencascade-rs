@@ -954,6 +954,12 @@ impl Animation {
         unsafe { crate::ffi::AIS_Animation_copy_from(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `AIS_Animation.hxx`:134 - `AIS_Animation::Children()`
+    /// Return sequence of child animations.
+    pub fn children(&self) -> &crate::ffi::NCollection_Sequence_opencascade_handle_AIS_Animation {
+        unsafe { &*(crate::ffi::AIS_Animation_children(self as *const Self)) }
+    }
+
     /// **Source:** `AIS_Animation.hxx`:150 - `AIS_Animation::StartTimer()`
     /// Start animation with internally defined timer instance.
     /// Calls ::Start() internally.
@@ -1218,13 +1224,6 @@ impl HandleAISAnimation {
     }
 }
 
-// ── Skipped symbols for Animation (1 total) ──
-// SKIPPED: **Source:** `AIS_Animation.hxx`:134 - `AIS_Animation::Children`
-//   method: Return sequence of child animations.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<opencascade::handle<AIS_Animation>> const&)
-//   // pub fn children(&self) -> /* NCollection_Sequence<opencascade::handle<AIS_Animation>> const& */;
-//
-
 // ========================
 // From AIS_AnimationAxisRotation.hxx
 // ========================
@@ -1443,6 +1442,11 @@ impl AnimationAxisRotation {
         unsafe {
             crate::ffi::AIS_AnimationAxisRotation_inherited_CopyFrom(self as *mut Self, theOther)
         }
+    }
+
+    /// Inherited: **Source:** `AIS_Animation.hxx`:134 - `AIS_Animation::Children()`
+    pub fn children(&self) -> &crate::ffi::NCollection_Sequence_opencascade_handle_AIS_Animation {
+        unsafe { &*(crate::ffi::AIS_AnimationAxisRotation_inherited_Children(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `AIS_Animation.hxx`:150 - `AIS_Animation::StartTimer()`
@@ -1832,6 +1836,11 @@ impl AnimationCamera {
         unsafe { crate::ffi::AIS_AnimationCamera_inherited_CopyFrom(self as *mut Self, theOther) }
     }
 
+    /// Inherited: **Source:** `AIS_Animation.hxx`:134 - `AIS_Animation::Children()`
+    pub fn children(&self) -> &crate::ffi::NCollection_Sequence_opencascade_handle_AIS_Animation {
+        unsafe { &*(crate::ffi::AIS_AnimationCamera_inherited_Children(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `AIS_Animation.hxx`:150 - `AIS_Animation::StartTimer()`
     pub fn start_timer(
         &mut self,
@@ -2175,6 +2184,11 @@ impl AnimationObject {
     /// Inherited: **Source:** `AIS_Animation.hxx`:131 - `AIS_Animation::CopyFrom()`
     pub fn copy_from(&mut self, theOther: &crate::ffi::HandleAISAnimation) {
         unsafe { crate::ffi::AIS_AnimationObject_inherited_CopyFrom(self as *mut Self, theOther) }
+    }
+
+    /// Inherited: **Source:** `AIS_Animation.hxx`:134 - `AIS_Animation::Children()`
+    pub fn children(&self) -> &crate::ffi::NCollection_Sequence_opencascade_handle_AIS_Animation {
+        unsafe { &*(crate::ffi::AIS_AnimationObject_inherited_Children(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `AIS_Animation.hxx`:150 - `AIS_Animation::StartTimer()`
@@ -4022,6 +4036,11 @@ impl BaseAnimationObject {
         unsafe {
             crate::ffi::AIS_BaseAnimationObject_inherited_CopyFrom(self as *mut Self, theOther)
         }
+    }
+
+    /// Inherited: **Source:** `AIS_Animation.hxx`:134 - `AIS_Animation::Children()`
+    pub fn children(&self) -> &crate::ffi::NCollection_Sequence_opencascade_handle_AIS_Animation {
+        unsafe { &*(crate::ffi::AIS_BaseAnimationObject_inherited_Children(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `AIS_Animation.hxx`:150 - `AIS_Animation::StartTimer()`
@@ -20422,9 +20441,52 @@ impl ManipulatorObjectSequence {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::AIS_ManipulatorObjectSequence_ctor()) }
     }
 
+    /// **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::AIS_ManipulatorObjectSequence()`
+    pub fn new_sequence_opencascade_handle_ais_interactiveobject(
+        theOther: &crate::ffi::NCollection_Sequence_opencascade_handle_AIS_InteractiveObject,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AIS_ManipulatorObjectSequence_ctor_sequence_opencascade_handle_ais_interactiveobject(theOther))
+        }
+    }
+
+    /// **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::Sequence()`
+    pub fn sequence(
+        &self,
+    ) -> &crate::ffi::NCollection_Sequence_opencascade_handle_AIS_InteractiveObject {
+        unsafe { &*(crate::ffi::AIS_ManipulatorObjectSequence_sequence(self as *const Self)) }
+    }
+
     /// **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::Append()`
-    pub fn append(&mut self, theItem: &crate::ffi::HandleAISInteractiveObject) {
-        unsafe { crate::ffi::AIS_ManipulatorObjectSequence_append(self as *mut Self, theItem) }
+    pub fn append_handleaisinteractiveobject(
+        &mut self,
+        theItem: &crate::ffi::HandleAISInteractiveObject,
+    ) {
+        unsafe {
+            crate::ffi::AIS_ManipulatorObjectSequence_append_handleaisinteractiveobject(
+                self as *mut Self,
+                theItem,
+            )
+        }
+    }
+
+    /// **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::Append()`
+    pub fn append_sequence_opencascade_handle_ais_interactiveobject(
+        &mut self,
+        theSequence: &mut crate::ffi::NCollection_Sequence_opencascade_handle_AIS_InteractiveObject,
+    ) {
+        unsafe {
+            crate::ffi::AIS_ManipulatorObjectSequence_append_sequence_opencascade_handle_ais_interactiveobject(self as *mut Self, theSequence)
+        }
+    }
+
+    /// **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::ChangeSequence()`
+    pub fn change_sequence(
+        &mut self,
+    ) -> &mut crate::ffi::NCollection_Sequence_opencascade_handle_AIS_InteractiveObject {
+        unsafe {
+            &mut *(crate::ffi::AIS_ManipulatorObjectSequence_change_sequence(self as *mut Self))
+        }
     }
 
     /// **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::DynamicType()`
@@ -20565,24 +20627,6 @@ impl HandleAISManipulatorObjectSequence {
         }
     }
 }
-
-// ── Skipped symbols for ManipulatorObjectSequence (4 total) ──
-// SKIPPED: **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::AIS_ManipulatorObjectSequence`
-//   Reason: has unbindable types: param 'theOther': unresolved template type (NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> const&)
-//   // pub fn new_interactiveobject>>(theOther: /* NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::Sequence`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> const&)
-//   // pub fn sequence(&self) -> /* NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> const& */;
-//
-// SKIPPED: **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::Append`
-//   Reason: has unbindable types: param 'theSequence': unresolved template type (NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>&)
-//   // pub fn append(&mut self, theSequence: /* NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>& */);
-//
-// SKIPPED: **Source:** `AIS_Manipulator.hxx`:31 - `AIS_ManipulatorObjectSequence::ChangeSequence`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>&)
-//   // pub fn change_sequence(&mut self) -> /* NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>& */;
-//
 
 /// **Source:** `AIS_Manipulator.hxx`:93 - `AIS_Manipulator`
 /// Interactive object class to manipulate local transformation of another interactive
@@ -30350,6 +30394,12 @@ impl RubberBand {
         unsafe { crate::ffi::AIS_RubberBand_remove_last_point(self as *mut Self) }
     }
 
+    /// **Source:** `AIS_RubberBand.hxx`:84 - `AIS_RubberBand::Points()`
+    /// @return points for the rubber band polygon.
+    pub fn points(&self) -> &crate::ffi::NCollection_Sequence_Graphic3d_Vec2i {
+        unsafe { &*(crate::ffi::AIS_RubberBand_points(self as *const Self)) }
+    }
+
     /// **Source:** `AIS_RubberBand.hxx`:87 - `AIS_RubberBand::ClearPoints()`
     /// Remove all points for the rubber band polygon.
     pub fn clear_points(&mut self) {
@@ -31466,13 +31516,6 @@ impl HandleAISRubberBand {
         }
     }
 }
-
-// ── Skipped symbols for RubberBand (1 total) ──
-// SKIPPED: **Source:** `AIS_RubberBand.hxx`:84 - `AIS_RubberBand::Points`
-//   method: @return points for the rubber band polygon.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<Graphic3d_Vec2i> const&)
-//   // pub fn points(&self) -> /* NCollection_Sequence<Graphic3d_Vec2i> const& */;
-//
 
 // ========================
 // From AIS_Selection.hxx
@@ -39524,15 +39567,34 @@ impl ViewController {
     /// This method is expected to be called from UI thread.
     /// @param thePnt picking point
     /// @param theScheme selection scheme
-    pub fn select_in_viewer(
+    pub fn select_in_viewer_vec2i_selectionscheme(
         &mut self,
         thePnt: &crate::ffi::Graphic3d_Vec2i,
         theScheme: crate::ais::SelectionScheme,
     ) {
         unsafe {
-            crate::ffi::AIS_ViewController_select_in_viewer(
+            crate::ffi::AIS_ViewController_select_in_viewer_vec2i_selectionscheme(
                 self as *mut Self,
                 thePnt,
+                theScheme.into(),
+            )
+        }
+    }
+
+    /// **Source:** `AIS_ViewController.hxx`:321 - `AIS_ViewController::SelectInViewer()`
+    /// Perform selection in 3D viewer.
+    /// This method is expected to be called from UI thread.
+    /// @param thePnts picking point
+    /// @param theScheme selection scheme
+    pub fn select_in_viewer_sequence_graphic3d_vec2i_selectionscheme(
+        &mut self,
+        thePnts: &crate::ffi::NCollection_Sequence_Graphic3d_Vec2i,
+        theScheme: crate::ais::SelectionScheme,
+    ) {
+        unsafe {
+            crate::ffi::AIS_ViewController_select_in_viewer_sequence_graphic3d_vec2i_selectionscheme(
+                self as *mut Self,
+                thePnts,
                 theScheme.into(),
             )
         }
@@ -40456,16 +40518,41 @@ impl ViewController {
             )
         }
     }
+
+    /// Inherited: **Source:** `Aspect_WindowInputListener.hxx`:208 - `Aspect_WindowInputListener::Get3dMouseIsNoRotate()`
+    pub fn get3d_mouse_is_no_rotate(&self) -> &crate::ffi::NCollection_Vec3_bool {
+        unsafe {
+            &*(crate::ffi::AIS_ViewController_inherited_Get3dMouseIsNoRotate(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Aspect_WindowInputListener.hxx`:211 - `Aspect_WindowInputListener::Change3dMouseIsNoRotate()`
+    pub fn change3d_mouse_is_no_rotate(&mut self) -> &mut crate::ffi::NCollection_Vec3_bool {
+        unsafe {
+            &mut *(crate::ffi::AIS_ViewController_inherited_Change3dMouseIsNoRotate(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Aspect_WindowInputListener.hxx`:214 - `Aspect_WindowInputListener::Get3dMouseToReverse()`
+    pub fn get3d_mouse_to_reverse(&self) -> &crate::ffi::NCollection_Vec3_bool {
+        unsafe {
+            &*(crate::ffi::AIS_ViewController_inherited_Get3dMouseToReverse(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Aspect_WindowInputListener.hxx`:217 - `Aspect_WindowInputListener::Change3dMouseToReverse()`
+    pub fn change3d_mouse_to_reverse(&mut self) -> &mut crate::ffi::NCollection_Vec3_bool {
+        unsafe {
+            &mut *(crate::ffi::AIS_ViewController_inherited_Change3dMouseToReverse(
+                self as *mut Self,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for ViewController (2 total) ──
-// SKIPPED: **Source:** `AIS_ViewController.hxx`:321 - `AIS_ViewController::SelectInViewer`
-//   method: Perform selection in 3D viewer.
-//   method: This method is expected to be called from UI thread.
-//   method: @param thePnts picking point
-//   Reason: has unbindable types: param 'thePnts': unresolved template type (NCollection_Sequence<Graphic3d_Vec2i> const&)
-//   // pub fn select_in_viewer(&mut self, thePnts: /* NCollection_Sequence<Graphic3d_Vec2i> const& */, theScheme: SelectionScheme);
-//
+// ── Skipped symbols for ViewController (1 total) ──
 // SKIPPED: **Source:** `AIS_ViewController.hxx`:442 - `AIS_ViewController::Update3dMouse`
 //   method: @name 3d mouse input
 //   method: Process 3d mouse input event (redirects to translation, rotation and keys).

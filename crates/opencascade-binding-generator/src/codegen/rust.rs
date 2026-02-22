@@ -37,9 +37,10 @@ pub struct CollectedTypes {
     pub handles: BTreeSet<String>,
 }
 
-/// Collect all referenced OCCT types from class methods and constructors
+/// Collect all referenced OCCT types from class methods, constructors, and free functions
 pub fn collect_referenced_types(
     classes: &[&ParsedClass],
+    functions: &[&crate::model::ParsedFunction],
     handle_able_classes: &HashSet<String>,
 ) -> CollectedTypes {
     let mut result = CollectedTypes {
@@ -80,6 +81,16 @@ pub fn collect_referenced_types(
             if let Some(ref ret) = method.return_type {
                 collect_types_from_type(ret, &mut result);
             }
+        }
+    }
+
+    // From free functions
+    for func in functions {
+        for param in &func.params {
+            collect_types_from_type(&param.ty, &mut result);
+        }
+        if let Some(ref ret) = func.return_type {
+            collect_types_from_type(ret, &mut result);
         }
     }
 
@@ -151,6 +162,7 @@ pub fn is_primitive_type(name: &str) -> bool {
 /// Returns the generated Rust code as a String.
 pub fn generate_ffi(
     all_classes: &[&ParsedClass],
+    all_functions: &[&crate::model::ParsedFunction],
     all_headers: &[String],
     collections: &[super::collections::CollectionInfo],
     symbol_table: &crate::resolver::SymbolTable,
@@ -190,7 +202,7 @@ pub fn generate_ffi(
     let handle_decls = generate_handle_declarations(all_classes, handle_able_classes, &symbol_table.handle_able_classes);
 
     // Collect opaque type declarations (types referenced but not defined)
-    let collected_types = collect_referenced_types(all_classes, handle_able_classes);
+    let collected_types = collect_referenced_types(all_classes, all_functions, handle_able_classes);
     let (opaque_type_decls, nested_types) = generate_opaque_declarations(
         &collected_types,
         all_classes,

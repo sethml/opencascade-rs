@@ -36,6 +36,60 @@ impl KnotTools {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ApproxInt_KnotTools_ctor()) }
     }
 
+    /// **Source:** `ApproxInt_KnotTools.hxx`:64 - `ApproxInt_KnotTools::BuildKnots()`
+    /// Main function to build optimal knot sequence.
+    /// At least one set from (thePntsXYZ, thePntsU1V1, thePntsU2V2) should exist.
+    /// @param thePntsXYZ - Set of 3d points.
+    /// @param thePntsU1V1 - Set of 2d points.
+    /// @param thePntsU2V2 - Set of 2d points.
+    /// @param thePars - Expected parameters associated with set.
+    /// @param theApproxXYZ - Flag, existence of 3d set.
+    /// @param theApproxU1V1 - Flag existence of first 2d set.
+    /// @param theApproxU2V2 - Flag existence of second 2d set.
+    /// @param theMinNbPnts - Minimal number of points per knot interval.
+    /// @param theKnots - output knots sequence.
+    pub fn build_knots(
+        thePntsXYZ: &crate::ffi::TColgp_Array1OfPnt,
+        thePntsU1V1: &crate::ffi::TColgp_Array1OfPnt2d,
+        thePntsU2V2: &crate::ffi::TColgp_Array1OfPnt2d,
+        thePars: &crate::ffi::math_Vector,
+        theApproxXYZ: bool,
+        theApproxU1V1: bool,
+        theApproxU2V2: bool,
+        theMinNbPnts: i32,
+        theKnots: &mut crate::ffi::NCollection_Vector_Standard_Integer,
+    ) {
+        unsafe {
+            crate::ffi::ApproxInt_KnotTools_build_knots(
+                thePntsXYZ,
+                thePntsU1V1,
+                thePntsU2V2,
+                thePars,
+                theApproxXYZ,
+                theApproxU1V1,
+                theApproxU2V2,
+                theMinNbPnts,
+                theKnots,
+            )
+        }
+    }
+
+    /// **Source:** `ApproxInt_KnotTools.hxx`:75 - `ApproxInt_KnotTools::BuildCurvature()`
+    /// Builds discrete curvature
+    pub fn build_curvature(
+        theCoords: &crate::ffi::NCollection_LocalArray_Standard_Real,
+        theDim: i32,
+        thePars: &crate::ffi::math_Vector,
+        theCurv: &mut crate::ffi::TColStd_Array1OfReal,
+        theMaxCurv: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::ApproxInt_KnotTools_build_curvature(
+                theCoords, theDim, thePars, theCurv, theMaxCurv,
+            )
+        }
+    }
+
     /// **Source:** `ApproxInt_KnotTools.hxx`:82 - `ApproxInt_KnotTools::DefineParType()`
     /// Defines preferable parametrization type for theWL
     pub fn define_par_type(
@@ -61,20 +115,6 @@ impl KnotTools {
         }
     }
 }
-
-// ── Skipped symbols for KnotTools (2 total) ──
-// SKIPPED: **Source:** `ApproxInt_KnotTools.hxx`:64 - `ApproxInt_KnotTools::BuildKnots`
-//   static_method: Main function to build optimal knot sequence.
-//   static_method: At least one set from (thePntsXYZ, thePntsU1V1, thePntsU2V2) should exist.
-//   static_method: @param thePntsXYZ - Set of 3d points.
-//   Reason: has unbindable types: param 'theKnots': unresolved template type (NCollection_Vector<Standard_Integer>&)
-//   // pub fn build_knots(thePntsXYZ: &Array1OfPnt, thePntsU1V1: &Array1OfPnt2d, thePntsU2V2: &Array1OfPnt2d, thePars: &Vector, theApproxXYZ: bool, theApproxU1V1: bool, theApproxU2V2: bool, theMinNbPnts: i32, theKnots: /* NCollection_Vector<Standard_Integer>& */);
-//
-// SKIPPED: **Source:** `ApproxInt_KnotTools.hxx`:75 - `ApproxInt_KnotTools::BuildCurvature`
-//   static_method: Builds discrete curvature
-//   Reason: has unbindable types: param 'theCoords': unresolved template type (NCollection_LocalArray<Standard_Real> const&)
-//   // pub fn build_curvature(theCoords: /* NCollection_LocalArray<Standard_Real> const& */, theDim: i32, thePars: &Vector, theCurv: &mut Array1OfReal, theMaxCurv: &mut f64);
-//
 
 // ========================
 // From ApproxInt_SvSurfaces.hxx

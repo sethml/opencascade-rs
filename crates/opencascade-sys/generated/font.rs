@@ -963,15 +963,27 @@ impl FontMgr {
         }
     }
 
+    /// **Source:** `Font_FontMgr.hxx`:133 - `Font_FontMgr::CheckFont()`
+    /// Read font file and retrieve information from it (the list of font faces).
+    pub fn check_font_sequence_opencascade_handle_font_systemfont_asciistring(
+        &self,
+        theFonts: &mut crate::ffi::NCollection_Sequence_opencascade_handle_Font_SystemFont,
+        theFontPath: &crate::t_collection::AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Font_FontMgr_check_font_sequence_opencascade_handle_font_systemfont_asciistring(self as *const Self, theFonts, theFontPath)
+        }
+    }
+
     /// **Source:** `Font_FontMgr.hxx`:137 - `Font_FontMgr::CheckFont()`
     /// Read font file and retrieve information from it.
-    pub fn check_font(
+    pub fn check_font_charptr(
         &self,
         theFontPath: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleFontSystemFont> {
         let c_theFontPath = std::ffi::CString::new(theFontPath).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Font_FontMgr_check_font(
+            crate::OwnedPtr::from_raw(crate::ffi::Font_FontMgr_check_font_charptr(
                 self as *const Self,
                 c_theFontPath.as_ptr(),
             ))
@@ -988,6 +1000,18 @@ impl FontMgr {
         theToOverride: bool,
     ) -> bool {
         unsafe { crate::ffi::Font_FontMgr_register_font(self as *mut Self, theFont, theToOverride) }
+    }
+
+    /// **Source:** `Font_FontMgr.hxx`:146 - `Font_FontMgr::RegisterFonts()`
+    /// Register new fonts.
+    pub fn register_fonts(
+        &mut self,
+        theFonts: &crate::ffi::NCollection_Sequence_opencascade_handle_Font_SystemFont,
+        theToOverride: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Font_FontMgr_register_fonts(self as *mut Self, theFonts, theToOverride)
+        }
     }
 
     /// **Source:** `Font_FontMgr.hxx`:161 - `Font_FontMgr::ToTraceAliases()`
@@ -1217,18 +1241,6 @@ impl HandleFontFontMgr {
         }
     }
 }
-
-// ── Skipped symbols for FontMgr (2 total) ──
-// SKIPPED: **Source:** `Font_FontMgr.hxx`:133 - `Font_FontMgr::CheckFont`
-//   method: Read font file and retrieve information from it (the list of font faces).
-//   Reason: has unbindable types: param 'theFonts': unresolved template type (NCollection_Sequence<opencascade::handle<Font_SystemFont>>&)
-//   // pub fn check_font(&self, theFonts: /* NCollection_Sequence<opencascade::handle<Font_SystemFont>>& */, theFontPath: &AsciiString) -> bool;
-//
-// SKIPPED: **Source:** `Font_FontMgr.hxx`:146 - `Font_FontMgr::RegisterFonts`
-//   method: Register new fonts.
-//   Reason: has unbindable types: param 'theFonts': unresolved template type (NCollection_Sequence<opencascade::handle<Font_SystemFont>> const&)
-//   // pub fn register_fonts(&mut self, theFonts: /* NCollection_Sequence<opencascade::handle<Font_SystemFont>> const& */, theToOverride: bool) -> bool;
-//
 
 // ========================
 // From Font_Rect.hxx
@@ -1710,6 +1722,18 @@ impl TextFormatter {
         unsafe { crate::ffi::Font_TextFormatter_bnd_box(self as *const Self, theBndBox) }
     }
 
+    /// **Source:** `Font_TextFormatter.hxx`:270 - `Font_TextFormatter::Corners()`
+    /// Returns internal container of the top left corners of a formatted rectangles.
+    pub fn corners(&self) -> &crate::ffi::NCollection_Vector_NCollection_Vec2_Standard_ShortReal {
+        unsafe { &*(crate::ffi::Font_TextFormatter_corners(self as *const Self)) }
+    }
+
+    /// **Source:** `Font_TextFormatter.hxx`:276 - `Font_TextFormatter::NewLines()`
+    /// Returns container of each line position at LF in formatted text
+    pub fn new_lines(&self) -> &crate::ffi::NCollection_Vector_Standard_ShortReal {
+        unsafe { &*(crate::ffi::Font_TextFormatter_new_lines(self as *const Self)) }
+    }
+
     /// **Source:** `Font_TextFormatter.hxx`:299 - `Font_TextFormatter::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Font_TextFormatter_dynamic_type(self as *const Self)) }
@@ -1833,18 +1857,6 @@ impl HandleFontTextFormatter {
         }
     }
 }
-
-// ── Skipped symbols for TextFormatter (2 total) ──
-// SKIPPED: **Source:** `Font_TextFormatter.hxx`:270 - `Font_TextFormatter::Corners`
-//   method: Returns internal container of the top left corners of a formatted rectangles.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Vector<NCollection_Vec2<Standard_ShortReal>> const&)
-//   // pub fn corners(&self) -> /* NCollection_Vector<NCollection_Vec2<Standard_ShortReal>> const& */;
-//
-// SKIPPED: **Source:** `Font_TextFormatter.hxx`:276 - `Font_TextFormatter::NewLines`
-//   method: Returns container of each line position at LF in formatted text
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Vector<Standard_ShortReal> const&)
-//   // pub fn new_lines(&self) -> /* NCollection_Vector<Standard_ShortReal> const& */;
-//
 
 /// **Source:** `Font_TextFormatter.hxx`:66 - `Font_TextFormatter_Iterator`
 /// Iterator through formatted symbols.
