@@ -32115,6 +32115,22 @@ impl Structure {
         }
     }
 
+    /// **Source:** `Graphic3d_Structure.hxx`:362 - `Graphic3d_Structure::Network()`
+    /// Returns <ASet> the group of structures :
+    /// - directly or indirectly connected to <AStructure> if the
+    /// TypeOfConnection == TOC_DESCENDANT
+    /// - to which <AStructure> is directly or indirectly connected
+    /// if the TypeOfConnection == TOC_ANCESTOR
+    pub fn network(
+        theStructure: &mut Structure,
+        theType: crate::graphic3d::TypeOfConnection,
+        theSet: &mut crate::ffi::NCollection_Map_Graphic3d_Structure_ptr,
+    ) {
+        unsafe {
+            crate::ffi::Graphic3d_Structure_network(theStructure as *mut _, theType.into(), theSet)
+        }
+    }
+
     /// **Source:** `Graphic3d_Structure.hxx`:450 - `Graphic3d_Structure::PrintNetwork()`
     /// Prints information about the network associated
     /// with the structure <AStructure>.
@@ -32276,15 +32292,6 @@ impl HandleGraphic3dStructure {
         }
     }
 }
-
-// ── Skipped symbols for Structure (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_Structure.hxx`:362 - `Graphic3d_Structure::Network`
-//   static_method: Returns <ASet> the group of structures :
-//   static_method: - directly or indirectly connected to <AStructure> if the
-//   static_method: TypeOfConnection == TOC_DESCENDANT
-//   Reason: has unbindable types: param 'theSet': unresolved template type (NCollection_Map<Graphic3d_Structure *>&)
-//   // pub fn network(theStructure: *mut Structure, theType: TypeOfConnection, theSet: /* NCollection_Map<Graphic3d_Structure *>& */);
-//
 
 // ========================
 // From Graphic3d_StructureDefinitionError.hxx
@@ -32965,6 +32972,20 @@ impl StructureManager {
         unsafe { crate::ffi::Graphic3d_StructureManager_recompute_structures(self as *mut Self) }
     }
 
+    /// **Source:** `Graphic3d_StructureManager.hxx`:160 - `Graphic3d_StructureManager::RecomputeStructures()`
+    /// Recomputes all structures from theStructures.
+    pub fn recompute_structures_map_graphic3d_structure_ptr(
+        &mut self,
+        theStructures: &crate::ffi::NCollection_Map_Graphic3d_Structure_ptr,
+    ) {
+        unsafe {
+            crate::ffi::Graphic3d_StructureManager_recompute_structures_map_graphic3d_structure_ptr(
+                self as *mut Self,
+                theStructures,
+            )
+        }
+    }
+
     /// **Source:** `Graphic3d_StructureManager.hxx`:163 - `Graphic3d_StructureManager::RegisterObject()`
     pub fn register_object(
         &mut self,
@@ -33146,13 +33167,6 @@ impl HandleGraphic3dStructureManager {
         }
     }
 }
-
-// ── Skipped symbols for StructureManager (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_StructureManager.hxx`:160 - `Graphic3d_StructureManager::RecomputeStructures`
-//   method: Recomputes all structures from theStructures.
-//   Reason: has unbindable types: param 'theStructures': unresolved template type (NCollection_Map<Graphic3d_Structure *> const&)
-//   // pub fn recompute_structures(&mut self, theStructures: /* NCollection_Map<Graphic3d_Structure *> const& */);
-//
 
 // ========================
 // From Graphic3d_Text.hxx

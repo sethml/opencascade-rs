@@ -414,34 +414,34 @@ Currently only `standard` iostream accessors (`cout()`, `cerr()`, etc.) require 
 
 ## Skipped Symbols
 
-The binding generator currently skips ~129 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator currently skips **126** symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
 - **Skip reason** explaining why the symbol was excluded
 - **Commented-out Rust stub** showing the best-guess declaration
 
-Example from `gp.rs`:
+Example from `select_mgr.rs`:
 ```rust
-// SKIPPED: **Source:** `gp_XYZ.hxx`:109 - `gp_XYZ::GetData`
-//   method: Returns a const ptr to coordinates location.
-//   Reason: has unbindable types: return: raw pointer (const double*)
-//   // pub fn get_data(&self) -> /* const double* */;
+// SKIPPED: **Source:** `SelectMgr_BVHThreadPool.hxx`:101 - `SelectMgr_BVHThreadPool::Threads`
+//   method: Returns array of threads
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<BVHThread>&)
+//   // pub fn threads(&mut self) -> /* NCollection_Array1<BVHThread>& */;
 ```
 
 ### Skip Reason Breakdown
 
 | Count | % | Category | Description |
 |------:|----:|----------|-------------|
-| 66 | 51.2% | **Unknown/unresolved type** | Parameter or return type is not in the resolved known-type set |
-| 42 | 32.6% | **Unknown Handle type** | `Handle(T)` where `T` is unresolved or excluded |
-| 12 | 9.3% | **Rvalue reference** | C++ move semantics (`T&&`) — const-ref overloads usually exist |
-| 5 | 3.9% | **Unresolved template type** | Template instantiations that can't be represented safely |
+| 66 | 52.4% | **Unknown/unresolved type** | Parameter or return type is not in the resolved known-type set |
+| 42 | 33.3% | **Unknown Handle type** | `Handle(T)` where `T` is unresolved or excluded |
+| 12 | 9.5% | **Rvalue reference** | C++ move semantics (`T&&`) — const-ref overloads usually exist |
 | 2 | 1.6% | **Excluded by bindings.toml** | Explicitly excluded in config |
+| 2 | 1.6% | **Unresolved template type** | Template instantiations that still cannot be represented safely |
 | 1 | 0.8% | **Ambiguous overload** | C++ overload would produce conflicting wrapper signatures |
 | 1 | 0.8% | **Not CppDeletable** | Return type has no destructor in the binding set |
 
-Combined unresolved coverage (`Unknown/unresolved type` + `Unknown Handle type`) is **108 / 129 (83.7%)**.
+Combined unresolved coverage (`Unknown/unresolved type` + `Unknown Handle type`) is **108 / 126 (85.7%)**.
 
 Fixed-size arrays (`T (&)[N]`, `const T (&)[N]`, and `T arr[N]` parameter syntax) are now bindable; there are currently **no** remaining skips categorized as C-style arrays.
 
@@ -464,13 +464,13 @@ Fixed-size arrays (`T (&)[N]`, `const T (&)[N]`, and `T arr[N]` parameter syntax
 
 Most skipped symbols are in specialized or platform-specific areas. Current hotspots:
 
-**Data Exchange (8 symbols)** — `rw_gltf` (5), `iges_control` (1), `step_control` (1), `rw_stl` (1). Predominantly external/third-party types, plus a few `T&&` overloads where safe const-ref equivalents are already bound.
+**Shape Persistent (39 symbols)** — all in `shape_persistent`, predominantly unknown `Handle(ShapePersistent_Geom::geometryBase<...>)` forms for protected nested templates.
 
-**Document Framework (1 symbol)** — `tdf` (1). Remaining unknown type is `TDF_LabelNode*` (internal raw pointer type not in binding set).
+**UI/Platform Integration (16 symbols)** — `aspect` (13) plus `graphic3d` (3), mostly platform/window-system types (`GLXFBConfig`, `Aspect_XDisplay*`, and related display handles).
 
-**Shape Meshing (8 symbols)** — `b_rep_mesh` (3), `i_mesh_data` (5). Namespace-scoped IMeshData typedef aliases are now auto-resolved; remaining skips are one unresolved template form (`NCollection_Sequence<const gp_Pnt2d *> const&` in `BRepMesh_Classifier::RegisterWire`) plus internal pointer/handle-heavy signatures.
+**Data Exchange (8 symbols)** — `rw_gltf` (5), `iges_control` (1), `step_control` (1), `rw_stl` (1). Predominantly external/third-party types, plus `T&&` overloads where safe const-ref equivalents are already bound.
 
-**Shape Analysis/Fix (0 symbols)** — Fully bound for current header set.
+**Shape Meshing (7 symbols)** — `i_mesh_data` (5), `b_rep_mesh` (2). `BRepMesh_Classifier::RegisterWire` is now bound; remaining skips are internal pointer/handle-heavy signatures.
 
 **Geometry (0 symbols in gp/Geom/Geom2d)** — Fully bound for core geometry modules.
 
@@ -585,7 +585,7 @@ Currently headers are selected via `bindings.toml`. OCCT ships 6,875 `.hxx` head
 
 2. **Non-type template parameters** (1 instance) — `BVH_Tree<T, int N>` has an `int N` template param that Rust can't represent. Filtered out.
 
-3. **Raw pointer syntax in type names** (2 instances) — `IMeshData_Edge *const` leaking into names. Already filtered with a `contains('*')` check.
+3. **Raw pointer-heavy type spellings** (remaining edge cases) — pointer template arguments are now auto-bound when aliasable, but some non-template/raw-pointer signatures (for example `IMeshData_Edge *const`) still leak into unresolved-type paths and need additional normalization.
 
 4. **Scale concerns** — ffi.rs would grow to 356K lines (6x). The entire extern "C" block is one compilation unit, causing long compile times. Would need per-module splitting or feature flags.
 

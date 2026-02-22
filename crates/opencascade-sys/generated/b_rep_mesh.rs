@@ -813,6 +813,33 @@ impl Classifier {
         }
     }
 
+    /// **Source:** `BRepMesh_Classifier.hxx`:51 - `BRepMesh_Classifier::RegisterWire()`
+    /// Registers wire specified by sequence of points for
+    /// further classification of points.
+    /// @param theWire Wire to be registered. Specified by sequence of points.
+    /// @param theTolUV Tolerance to be used for calculations in parametric space.
+    /// @param theUmin Lower U boundary of the face in parametric space.
+    /// @param theUmax Upper U boundary of the face in parametric space.
+    /// @param theVmin Lower V boundary of the face in parametric space.
+    /// @param theVmax Upper V boundary of the face in parametric space.
+    pub fn register_wire(
+        &mut self,
+        theWire: &crate::ffi::NCollection_Sequence_constgp_Pnt2d_ptr,
+        theTolUV: &crate::ffi::std_pair_Standard_Real_Standard_Real,
+        theRangeU: &crate::ffi::std_pair_Standard_Real_Standard_Real,
+        theRangeV: &crate::ffi::std_pair_Standard_Real_Standard_Real,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_Classifier_register_wire(
+                self as *mut Self,
+                theWire,
+                theTolUV,
+                theRangeU,
+                theRangeV,
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_Classifier_dynamic_type(self as *const Self)) }
@@ -929,15 +956,6 @@ impl HandleBRepMeshClassifier {
         }
     }
 }
-
-// ── Skipped symbols for Classifier (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_Classifier.hxx`:51 - `BRepMesh_Classifier::RegisterWire`
-//   method: Registers wire specified by sequence of points for
-//   method: further classification of points.
-//   method: @param theWire Wire to be registered. Specified by sequence of points.
-//   Reason: has unbindable types: param 'theWire': unresolved template type (NCollection_Sequence<const gp_Pnt2d *> const&)
-//   // pub fn register_wire(&mut self, theWire: /* NCollection_Sequence<const gp_Pnt2d *> const& */, theTolUV: &pair_Standard_Real_Standard_Real, theRangeU: &pair_Standard_Real_Standard_Real, theRangeV: &pair_Standard_Real_Standard_Real);
-//
 
 // ========================
 // From BRepMesh_ConeRangeSplitter.hxx

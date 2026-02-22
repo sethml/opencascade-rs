@@ -9,6 +9,7 @@ use std::path::{Path, PathBuf};
 /// Convert a C++ template spelling to a safe Rust/C++ identifier.
 /// e.g. `BVH_Builder<double, 3>` → `BVH_Builder_double_3`
 /// e.g. `NCollection_Shared<NCollection_List<gp_Pnt2d>>` → `NCollection_Shared_NCollection_List_gp_Pnt2d`
+/// e.g. `NCollection_Sequence<const gp_Pnt2d *>` → `NCollection_Sequence_constgp_Pnt2d_ptr`
 pub fn template_alias_name(template_spelling: &str) -> String {
     template_spelling
         .replace("::", "_")
@@ -16,6 +17,8 @@ pub fn template_alias_name(template_spelling: &str) -> String {
         .replace('>', "")
         .replace(", ", "_")
         .replace(',', "_")
+        .replace('*', "_ptr")
+        .replace('&', "_ref")
         .replace(' ', "")
         .trim_end_matches('_')
         .to_string()

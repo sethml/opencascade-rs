@@ -554,17 +554,11 @@ fn collect_template_class_types(parsed: &[model::ParsedHeader]) -> HashSet<Strin
         });
     }
     // Filter out template types that would produce invalid C++ typedefs:
-    // - Types with raw pointer arguments (e.g., NCollection_Map<Graphic3d_Structure *>)
-    //   produce alias names with '*' which are invalid C++ identifiers
     // - Types with '::' in template arguments that contain nested class names
     //   (e.g., NCollection_List<const char *>::Iterator) can't be typedef'd
     // - Types referencing unqualified nested classes (e.g., NCollection_List<TwoIntegers>)
     //   where the inner type doesn't follow OCCT naming (no '_' separator)
     templates.retain(|spelling| {
-        // Reject types with raw pointers in template args
-        if spelling.contains('*') {
-            return false;
-        }
         // Reject iterator types (Foo<...>::Iterator)
         if spelling.contains(">::") {
             return false;
