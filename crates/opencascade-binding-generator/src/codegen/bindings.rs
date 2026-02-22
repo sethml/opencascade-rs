@@ -353,7 +353,95 @@ pub struct ReturnTypeBinding {
     pub is_mut_ref_enum_return: bool,
 }
 
-/// A resolved parameter binding (from SymbolTable, for inherited methods).
+impl ReturnTypeBinding {
+    /// Compute the C++ return type string for the extern "C" wrapper signature.
+    /// Handles unique_ptr (pointer), mut ref enum (int32_t*), value enum (int32_t),
+    /// and passthrough cases.
+    pub fn ffi_cpp_return_type(&self) -> String {
+        if self.needs_unique_ptr {
+            format!("{}*", self.cpp_type)
+        } else if self.is_mut_ref_enum_return {
+            "int32_t*".to_string()
+        } else if self.enum_cpp_name.is_some() {
+            "int32_t".to_string()
+        } else {
+            self.cpp_type.clone()
+        }
+    }
+
+    /// Generate the C++ return statement for a call expression.
+    /// Returns the statement text (without leading indent or trailing newline).
+    ///
+    /// When `assign_to_variable` is true, generates `auto result_ = <expr>;`
+    /// instead of `return <expr>;` (used in multi-statement wrappers).
+    pub fn format_cpp_return_stmt(&self, call_expr: &str, assign_to_variable: bool) -> String {
+        let expr = if self.is_mut_ref_enum_return {
+            format!("reinterpret_cast<int32_t*>(&({}))", call_expr)
+        } else if self.needs_unique_ptr {
+            format!("new {}({})", self.cpp_type, call_expr)
+        } else if self.enum_cpp_name.is_some() {
+            format!("static_cast<int32_t>({})", call_expr)
+        } else {
+            call_expr.to_string()
+        };
+
+        if assign_to_variable {
+            let auto_kw = if !self.is_mut_ref_enum_return && !self.needs_unique_ptr
+                && !self.enum_cpp_name.is_some()
+                && self.cpp_type.ends_with('&')
+            {
+                "auto&"
+            } else {
+                "auto"
+            };
+            format!("{} result_ = {};", auto_kw, expr)
+        } else {
+            format!("return {};", expr)
+        }
+    }
+}
+
+impl ResolvedReturnTypeBinding {
+    /// Compute the C++ return type string for the extern "C" wrapper signature.
+    pub fn ffi_cpp_return_type(&self) -> String {
+        if self.needs_unique_ptr {
+            format!("{}*", self.cpp_type)
+        } else if self.is_mut_ref_enum_return {
+            "int32_t*".to_string()
+        } else if self.enum_cpp_name.is_some() {
+            "int32_t".to_string()
+        } else {
+            self.cpp_type.clone()
+        }
+    }
+
+    /// Generate the C++ return statement for a call expression.
+    pub fn format_cpp_return_stmt(&self, call_expr: &str, assign_to_variable: bool) -> String {
+        let expr = if self.is_mut_ref_enum_return {
+            format!("reinterpret_cast<int32_t*>(&({}))", call_expr)
+        } else if self.needs_unique_ptr {
+            format!("new {}({})", self.cpp_type, call_expr)
+        } else if self.enum_cpp_name.is_some() {
+            format!("static_cast<int32_t>({})", call_expr)
+        } else {
+            call_expr.to_string()
+        };
+
+        if assign_to_variable {
+            let auto_kw = if !self.is_mut_ref_enum_return && !self.needs_unique_ptr
+                && !self.enum_cpp_name.is_some()
+                && self.cpp_type.ends_with('&')
+            {
+                "auto&"
+            } else {
+                "auto"
+            };
+            format!("{} result_ = {};", auto_kw, expr)
+        } else {
+            format!("return {};", expr)
+        }
+    }
+}
 #[derive(Debug, Clone)]
 pub struct ResolvedParamBinding {
     pub name: String,
@@ -3745,28 +3833,8 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                 fn_name = wm.ffi_fn_name
             )
             .unwrap();
-            if rt.is_mut_ref_enum_return {
-                writeln!(
-                    output,
-                    "    return reinterpret_cast<int32_t*>(&(self_->{method}({args_str})));",
-                    method = wm.cpp_method_name
-                )
-                .unwrap();
-            } else if rt.enum_cpp_name.is_some() {
-                writeln!(
-                    output,
-                    "    return static_cast<int32_t>(self_->{method}({args_str}));",
-                    method = wm.cpp_method_name
-                )
-                .unwrap();
-            } else {
-                writeln!(
-                    output,
-                    "    return self_->{method}({args_str});",
-                    method = wm.cpp_method_name
-                )
-                .unwrap();
-            }
+            let call_expr = format!("self_->{}({})", wm.cpp_method_name, args_str);
+            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
         }
         writeln!(output, "}}").unwrap();
     }
@@ -3849,43 +3917,14 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         let call_expr = format!("self_->{}({})", wm.cpp_method_name, args_str);
 
         if let Some(ref rt) = wm.return_type {
-            if rt.is_mut_ref_enum_return {
-                // Mut ref enum return: return pointer via reinterpret_cast
-                writeln!(
-                    output,
-                    "extern \"C\" int32_t* {fn_name}({params}) {{",
-                    fn_name = wm.ffi_fn_name
-                )
-                .unwrap();
-                writeln!(
-                    output,
-                    "    return reinterpret_cast<int32_t*>(&({call_expr}));"
-                )
-                .unwrap();
-            } else if let Some(ref _enum_name) = rt.enum_cpp_name {
-                // Enum return: cast to int32_t
-                writeln!(
-                    output,
-                    "extern \"C\" int32_t {fn_name}({params}) {{",
-                    fn_name = wm.ffi_fn_name
-                )
-                .unwrap();
-                writeln!(
-                    output,
-                    "    return static_cast<int32_t>({call_expr});"
-                )
-                .unwrap();
-            } else {
-                // Non-enum return (rare for EnumConversion kind, but handle it)
-                writeln!(
-                    output,
-                    "extern \"C\" {} {fn_name}({params}) {{",
-                    rt.cpp_type,
-                    fn_name = wm.ffi_fn_name
-                )
-                .unwrap();
-                writeln!(output, "    return {call_expr};").unwrap();
-            }
+            let ret_type_cpp = rt.ffi_cpp_return_type();
+            writeln!(
+                output,
+                "extern \"C\" {ret_type_cpp} {fn_name}({params}) {{",
+                fn_name = wm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
         } else {
             // Void return, enum params only
             writeln!(
@@ -3931,28 +3970,15 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             .join(", ");
 
         if let Some(ref rt) = wm.return_type {
+            let ret_type_cpp = rt.ffi_cpp_return_type();
             writeln!(
                 output,
-                "extern \"C\" {} {fn_name}({params}) {{",
-                rt.cpp_type,
+                "extern \"C\" {ret_type_cpp} {fn_name}({params}) {{",
                 fn_name = wm.ffi_fn_name
             )
             .unwrap();
-            if rt.is_mut_ref_enum_return {
-                writeln!(
-                    output,
-                    "    return reinterpret_cast<int32_t*>(&(self_->{method}({args_str})));",
-                    method = wm.cpp_method_name
-                )
-                .unwrap();
-            } else {
-                writeln!(
-                    output,
-                    "    return self_->{method}({args_str});",
-                    method = wm.cpp_method_name
-                )
-                .unwrap();
-            }
+            let call_expr = format!("self_->{}({})", wm.cpp_method_name, args_str);
+            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
         } else {
             writeln!(
                 output,
@@ -4000,28 +4026,15 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             .join(", ");
 
         if let Some(ref rt) = wm.return_type {
+            let ret_type_cpp = rt.ffi_cpp_return_type();
             writeln!(
                 output,
-                "extern \"C\" {} {fn_name}({params}) {{",
-                rt.cpp_type,
+                "extern \"C\" {ret_type_cpp} {fn_name}({params}) {{",
                 fn_name = wm.ffi_fn_name
             )
             .unwrap();
-            if rt.is_mut_ref_enum_return {
-                writeln!(
-                    output,
-                    "    return reinterpret_cast<int32_t*>(&(self_->{method}({args_str})));",
-                    method = wm.cpp_method_name
-                )
-                .unwrap();
-            } else {
-                writeln!(
-                    output,
-                    "    return self_->{method}({args_str});",
-                    method = wm.cpp_method_name
-                )
-                .unwrap();
-            }
+            let call_expr = format!("self_->{}({})", wm.cpp_method_name, args_str);
+            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
         } else {
             writeln!(
                 output,
@@ -4069,13 +4082,9 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         };
 
         // Determine return type
-        let ret_type_cpp = match &wm.return_type {
-            Some(rt) if rt.needs_unique_ptr => format!("{}*", rt.cpp_type),
-            Some(rt) if rt.is_mut_ref_enum_return => "int32_t*".to_string(),
-            Some(rt) if rt.enum_cpp_name.is_some() => "int32_t".to_string(),
-            Some(rt) => rt.cpp_type.clone(),
-            None => "void".to_string(),
-        };
+        let ret_type_cpp = wm.return_type.as_ref()
+            .map(|rt| rt.ffi_cpp_return_type())
+            .unwrap_or_else(|| "void".to_string());
 
         writeln!(
             output,
@@ -4106,43 +4115,9 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             .collect::<Vec<_>>()
             .join(", ");
 
-        let has_enum_return = wm.return_type.as_ref()
-            .and_then(|rt| rt.enum_cpp_name.as_ref())
-            .is_some();
-
         if let Some(ref rt) = wm.return_type {
-            if rt.needs_unique_ptr {
-                writeln!(
-                    output,
-                    "    auto result_ = new {cpp_type}(self_->{method}({args_str}));",
-                    cpp_type = rt.cpp_type,
-                    method = wm.cpp_method_name,
-                )
-                .unwrap();
-            } else if rt.is_mut_ref_enum_return {
-                writeln!(
-                    output,
-                    "    auto result_ = reinterpret_cast<int32_t*>(&(self_->{method}({args_str})));",
-                    method = wm.cpp_method_name,
-                )
-                .unwrap();
-            } else if has_enum_return {
-                writeln!(
-                    output,
-                    "    auto result_ = static_cast<int32_t>(self_->{method}({args_str}));",
-                    method = wm.cpp_method_name,
-                )
-                .unwrap();
-            } else {
-                let auto_kw = if rt.cpp_type.ends_with('&') { "auto&" } else { "auto" };
-                writeln!(
-                    output,
-                    "    {auto_kw} result_ = self_->{method}({args_str});",
-                    auto_kw = auto_kw,
-                    method = wm.cpp_method_name,
-                )
-                .unwrap();
-            }
+            let call_expr = format!("self_->{}({})", wm.cpp_method_name, args_str);
+            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, true)).unwrap();
         } else {
             writeln!(
                 output,
@@ -4204,28 +4179,15 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             .join(", ");
 
         if let Some(ref rt) = wm.return_type {
+            let ret_type_cpp = rt.ffi_cpp_return_type();
             writeln!(
                 output,
-                "extern \"C\" {} {fn_name}({params}) {{",
-                rt.cpp_type,
+                "extern \"C\" {ret_type_cpp} {fn_name}({params}) {{",
                 fn_name = wm.ffi_fn_name
             )
             .unwrap();
-            if rt.is_mut_ref_enum_return {
-                writeln!(
-                    output,
-                    "    return reinterpret_cast<int32_t*>(&(self_->{method}({args_str})));",
-                    method = wm.cpp_method_name
-                )
-                .unwrap();
-            } else {
-                writeln!(
-                    output,
-                    "    return self_->{method}({args_str});",
-                    method = wm.cpp_method_name
-                )
-                .unwrap();
-            }
+            let call_expr = format!("self_->{}({})", wm.cpp_method_name, args_str);
+            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
         } else {
             writeln!(
                 output,
@@ -4258,17 +4220,6 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             .collect::<Vec<_>>()
             .join(", ");
 
-        let (ret_type, needs_up) = match &sm.return_type {
-            Some(rt) => (rt.cpp_type.clone(), rt.needs_unique_ptr),
-            None => ("void".to_string(), false),
-        };
-
-        let has_enum_return = sm
-            .return_type
-            .as_ref()
-            .and_then(|rt| rt.enum_cpp_name.as_ref())
-            .is_some();
-
         let has_mut_ref_enum = sm.params.iter().any(|p| p.mut_ref_enum_cpp_name.is_some());
 
         // Check for c_string return (const char* -> const char*)
@@ -4278,15 +4229,9 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 
         if has_mut_ref_enum {
             // Static methods with &mut enum output params need preamble/postamble
-            let ret_type_cpp = if needs_up {
-                format!("{}*", ret_type)
-            } else if sm.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return) {
-                "int32_t*".to_string()
-            } else if has_enum_return {
-                "int32_t".to_string()
-            } else {
-                ret_type.clone()
-            };
+            let ret_type_cpp = sm.return_type.as_ref()
+                .map(|rt| rt.ffi_cpp_return_type())
+                .unwrap_or_else(|| "void".to_string());
 
             writeln!(
                 output,
@@ -4311,38 +4256,8 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 
             // Call
             if let Some(ref rt) = sm.return_type {
-                if rt.needs_unique_ptr {
-                    writeln!(
-                        output,
-                        "    auto result_ = new {cpp_type}({cn}::{method}({args_str}));",
-                        cpp_type = rt.cpp_type,
-                        method = sm.cpp_method_name,
-                    )
-                    .unwrap();
-                } else if sm.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return) {
-                    writeln!(
-                        output,
-                        "    auto result_ = reinterpret_cast<int32_t*>(&({cn}::{method}({args_str})));",
-                        method = sm.cpp_method_name,
-                    )
-                    .unwrap();
-                } else if has_enum_return {
-                    writeln!(
-                        output,
-                        "    auto result_ = static_cast<int32_t>({cn}::{method}({args_str}));",
-                        method = sm.cpp_method_name,
-                    )
-                    .unwrap();
-                } else {
-                    let auto_kw = if rt.cpp_type.ends_with('&') { "auto&" } else { "auto" };
-                    writeln!(
-                        output,
-                        "    {auto_kw} result_ = {cn}::{method}({args_str});",
-                        auto_kw = auto_kw,
-                        method = sm.cpp_method_name,
-                    )
-                    .unwrap();
-                }
+                let call_expr = format!("{}::{}({})", cn, sm.cpp_method_name, args_str);
+                writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, true)).unwrap();
             } else {
                 writeln!(
                     output,
@@ -4382,55 +4297,26 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                 method = sm.cpp_method_name
             )
             .unwrap();
-        } else if needs_up {
+        } else if let Some(ref rt) = sm.return_type {
+            let ret_type_cpp = rt.ffi_cpp_return_type();
             writeln!(
                 output,
-                "extern \"C\" {ret_type}* {fn_name}({params_str}) {{",
+                "extern \"C\" {ret_type_cpp} {fn_name}({params_str}) {{",
                 fn_name = sm.ffi_fn_name
             )
             .unwrap();
-            writeln!(
-                output,
-                "    return new {ret_type}({cn}::{method}({args_str}));",
-                method = sm.cpp_method_name
-            )
-            .unwrap();
-        } else if sm.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return) {
-            writeln!(
-                output,
-                "extern \"C\" int32_t* {fn_name}({params_str}) {{",
-                fn_name = sm.ffi_fn_name
-            )
-            .unwrap();
-            writeln!(
-                output,
-                "    return reinterpret_cast<int32_t*>(&({cn}::{method}({args_str})));",
-                method = sm.cpp_method_name
-            )
-            .unwrap();
-        } else if has_enum_return {
-            writeln!(
-                output,
-                "extern \"C\" int32_t {fn_name}({params_str}) {{",
-                fn_name = sm.ffi_fn_name
-            )
-            .unwrap();
-            writeln!(
-                output,
-                "    return static_cast<int32_t>({cn}::{method}({args_str}));",
-                method = sm.cpp_method_name
-            )
-            .unwrap();
+            let call_expr = format!("{}::{}({})", cn, sm.cpp_method_name, args_str);
+            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
         } else {
             writeln!(
                 output,
-                "extern \"C\" {ret_type} {fn_name}({params_str}) {{",
+                "extern \"C\" void {fn_name}({params_str}) {{",
                 fn_name = sm.ffi_fn_name
             )
             .unwrap();
             writeln!(
                 output,
-                "    return {cn}::{method}({args_str});",
+                "    {cn}::{method}({args_str});",
                 method = sm.cpp_method_name
             )
             .unwrap();
@@ -4571,19 +4457,9 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 
         let has_mut_ref_enum = im.params.iter().any(|p| p.mut_ref_enum_cpp_name.is_some());
 
-        let (ret_type_cpp, needs_up) = match &im.return_type {
-            Some(rt) => {
-                if rt.needs_unique_ptr {
-                    (format!("{}*", rt.cpp_type), true)
-                } else if rt.is_mut_ref_enum_return {
-                    ("int32_t*".to_string(), false)
-                } else if rt.enum_cpp_name.is_some() {
-                    ("int32_t".to_string(), false)
-                } else {
-                    (rt.cpp_type.clone(), false)
-                }
-            }
-            None => ("void".to_string(), false),
+        let ret_type_cpp = match &im.return_type {
+            Some(rt) => rt.ffi_cpp_return_type(),
+            None => "void".to_string(),
         };
 
         writeln!(
@@ -4606,47 +4482,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             }
         }
 
-        let has_enum_return = im
-            .return_type
-            .as_ref()
-            .and_then(|rt| rt.enum_cpp_name.as_ref())
-            .is_some();
-
         if has_mut_ref_enum {
             // Multi-statement pattern: call, postamble, return
             if let Some(ref rt) = im.return_type {
-                if needs_up {
-                    writeln!(
-                        output,
-                        "    auto result_ = new {inner_type}(self->{method}({args_str}));",
-                        inner_type = rt.cpp_type,
-                        method = im.cpp_method_name
-                    )
-                    .unwrap();
-                } else if im.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return) {
-                    writeln!(
-                        output,
-                        "    auto result_ = reinterpret_cast<int32_t*>(&(self->{method}({args_str})));",
-                        method = im.cpp_method_name
-                    )
-                    .unwrap();
-                } else if has_enum_return {
-                    writeln!(
-                        output,
-                        "    auto result_ = static_cast<int32_t>(self->{method}({args_str}));",
-                        method = im.cpp_method_name
-                    )
-                    .unwrap();
-                } else {
-                    let auto_kw = if rt.cpp_type.ends_with('&') { "auto&" } else { "auto" };
-                    writeln!(
-                        output,
-                        "    {auto_kw} result_ = self->{method}({args_str});",
-                        auto_kw = auto_kw,
-                        method = im.cpp_method_name
-                    )
-                    .unwrap();
-                }
+                let call_expr = format!("self->{}({})", im.cpp_method_name, args_str);
+                writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, true)).unwrap();
             } else {
                 writeln!(
                     output,
@@ -4674,35 +4514,9 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             }
         } else {
             // Simple single-statement pattern (no &mut enum params)
-            if needs_up {
-                writeln!(
-                    output,
-                    "    return new {inner_type}(self->{method}({args_str}));",
-                    inner_type = im.return_type.as_ref().unwrap().cpp_type,
-                    method = im.cpp_method_name
-                )
-                .unwrap();
-            } else if im.return_type.as_ref().map_or(false, |rt| rt.is_mut_ref_enum_return) {
-                writeln!(
-                    output,
-                    "    return reinterpret_cast<int32_t*>(&(self->{method}({args_str})));",
-                    method = im.cpp_method_name
-                )
-                .unwrap();
-            } else if has_enum_return {
-                writeln!(
-                    output,
-                    "    return static_cast<int32_t>(self->{method}({args_str}));",
-                    method = im.cpp_method_name
-                )
-                .unwrap();
-            } else if im.return_type.is_some() {
-                writeln!(
-                    output,
-                    "    return self->{method}({args_str});",
-                    method = im.cpp_method_name
-                )
-                .unwrap();
+            if let Some(ref rt) = im.return_type {
+                let call_expr = format!("self->{}({})", im.cpp_method_name, args_str);
+                writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
             } else {
                 writeln!(
                     output,
