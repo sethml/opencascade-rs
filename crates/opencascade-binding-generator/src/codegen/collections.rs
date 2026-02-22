@@ -224,18 +224,15 @@ pub fn parse_collection_typedef(typedef_name: &str) -> Option<CollectionInfo> {
     let metadata = known.get(typedef_name)?;
     
     // Extract module from typedef name (e.g., "TopTools" from "TopTools_ListOfShape")
-    let module = if let Some(underscore_pos) = typedef_name.find('_') {
-        crate::module_graph::module_to_rust_name(&typedef_name[..underscore_pos])
+    let (module_cpp, module) = if let Some(underscore_pos) = typedef_name.find('_') {
+        let module_cpp = &typedef_name[..underscore_pos];
+        (module_cpp, crate::module_graph::module_to_rust_name(module_cpp))
     } else {
         return None;
     };
     
     // Extract short name (e.g., "ListOfShape" from "TopTools_ListOfShape")
-    let short_name = if let Some(underscore_pos) = typedef_name.find('_') {
-        typedef_name[underscore_pos + 1..].to_string()
-    } else {
-        return None;
-    };
+    let short_name = crate::type_mapping::short_name_for_module(typedef_name, module_cpp);
     
     match metadata {
         CollectionMetadata::Simple { element_type, kind } => {

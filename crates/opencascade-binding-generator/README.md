@@ -577,16 +577,7 @@ pub mod b_rep_algo_api;
 
 **Special-case/heuristic patterns in the codebase:**
 
-1. **Short name convention (`split('_').skip(1)`)** — Used in enum variant name generation for converting OCCT enum variants (e.g., `TopAbs_COMPOUND` → `Compound`). This assumes a single module-prefix underscore. For class/type names, `short_name_for_module()` is used instead, which correctly handles the module prefix (e.g., `BRepOffset_Status` with module `BRepOffset` → `Status`). Handle upcast/downcast method names also use `short_name_for_module()` with proper module lookup.
-
-**Previously problematic special cases (now resolved):**
-
-- **Copy constructor detection for `to_owned()`**: Uses libclang's `is_copy_constructor()` to detect explicit copy constructors and `is_move_constructor()` to detect move constructors. Classes with an explicit public non-deleted copy constructor (`Some(true)`) always get `to_owned()`, those with an explicitly deleted/private copy constructor (`Some(false)`) never do. When no explicit copy constructor is present (`None`), falls back to a conservative module allowlist (`["TopoDS", "gp", "TopLoc", "Bnd", "GProp"]`) because implicit copy constructors can be silently deleted when a class has non-copyable members.
-
-- **Handle upcast/downcast `split('_').skip(1)`**: Previously used `split('_').skip(1)` to derive short names for handle upcast/downcast methods, which broke for multi-underscore module prefixes like `DE_BREP_*`. Now uses `short_name_for_module()` with the proper module from the symbol table.
-
-- **Handle type detection**: Unified through a single transitive closure algorithm (`compute_handle_able_classes()`) that walks the full inheritance graph starting from `Standard_Transient`. This replaces the old parser heuristic with hardcoded prefixes (`"Geom_*"`, `"Geom2d_*"`, `"Law_*"`) and fixes the inheritance graph by including `Standard_*` base classes.
-- **Inheritance graph**: Fixed `extract_base_classes()` to include `Standard_*` classes, so the full inheritance hierarchy is now represented, enabling more accurate dependency analysis and upcasts.
+1. **Enum variant name splitting (`split('_')`)** — Used only in enum variant name generation after prefix stripping (e.g., `TopAbs_COMPOUND` → `Compound`). Class/type short names use `short_name_for_module()` (e.g., `BRepOffset_Status` with module `BRepOffset` → `Status`), handle upcast/downcast helper names also use `short_name_for_module()` with module lookup, and free functions use parser-provided function names (not underscore splitting).
 
 ## Known Issues
 

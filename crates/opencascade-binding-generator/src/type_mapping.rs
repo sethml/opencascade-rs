@@ -346,7 +346,8 @@ fn extract_module_from_class(class_name: &str) -> Option<String> {
 /// Extract short class name (without module prefix)
 pub fn extract_short_class_name(class_name: &str) -> String {
     if let Some(underscore_pos) = class_name.find('_') {
-        class_name[underscore_pos + 1..].to_string()
+        let module = &class_name[..underscore_pos];
+        short_name_for_module(class_name, module)
     } else {
         class_name.to_string()
     }

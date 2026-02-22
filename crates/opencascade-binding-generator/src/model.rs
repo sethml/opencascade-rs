@@ -839,11 +839,7 @@ impl Type {
             }
             Type::Handle(name) => {
                 let flat_name = name.replace("::", "_");
-                let short = if let Some(underscore_pos) = flat_name.find('_') {
-                    &flat_name[underscore_pos + 1..]
-                } else {
-                    flat_name.as_str()
-                };
+                let short = short_name_for_leaf(&flat_name);
                 format!("Handle{}", short)
             }
             Type::FixedArray(inner, size) => {
@@ -852,11 +848,7 @@ impl Type {
             }
             Type::Class(name) => {
                 let flat = Type::ffi_safe_class_name(name);
-                if let Some(underscore_pos) = flat.find('_') {
-                    flat[underscore_pos + 1..].to_string()
-                } else {
-                    flat
-                }
+                short_name_for_leaf(&flat)
             }
         }
     }
@@ -913,11 +905,7 @@ impl Type {
             }
             Type::Handle(name) => {
                 let flat_name = name.replace("::", "_");
-                let short = if let Some(underscore_pos) = flat_name.find('_') {
-                    &flat_name[underscore_pos + 1..]
-                } else {
-                    flat_name.as_str()
-                };
+                let short = short_name_for_leaf(&flat_name);
                 format!("ffi::Handle{}", short)
             }
             Type::FixedArray(inner, size) => {
@@ -926,16 +914,12 @@ impl Type {
             }
             Type::Class(name) => {
                 let flat = Type::ffi_safe_class_name(name);
-                let short_name = if let Some(underscore_pos) = flat.find('_') {
-                    &flat[underscore_pos + 1..]
-                } else {
-                    flat.as_str()
-                };
-                let safe_name = match short_name {
+                let short_name = short_name_for_leaf(&flat);
+                let safe_name = match short_name.as_str() {
                     "Vec" | "Box" | "String" | "Result" | "Option" | "Error" => {
                         format!("{}_", short_name)
                     }
-                    _ => short_name.to_string(),
+                    _ => short_name,
                 };
                 format!("ffi::{}", safe_name)
             }
@@ -952,10 +936,15 @@ fn extract_short_name(name: &str) -> String {
     } else {
         name
     };
+    short_name_for_leaf(leaf).to_lowercase()
+}
+
+fn short_name_for_leaf(leaf: &str) -> String {
     if let Some(underscore_pos) = leaf.find('_') {
-        leaf[underscore_pos + 1..].to_lowercase()
+        let module = &leaf[..underscore_pos];
+        crate::type_mapping::short_name_for_module(leaf, module)
     } else {
-        leaf.to_lowercase()
+        leaf.to_string()
     }
 }
 
