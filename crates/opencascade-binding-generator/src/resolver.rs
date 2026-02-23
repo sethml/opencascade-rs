@@ -1193,6 +1193,7 @@ fn resolve_function(
 
 /// Check if a function references unknown Handle/class types.
 /// Enum types (Type::Class that are in all_enum_names) are known — they map to i32.
+/// Bitmask types (e.g., std::ios_base::openmode) are known — they map to u32/i32.
 /// MutRef to enum is NOT skipped here — those are output parameters that
 /// need special handling (local variable + writeback), not supported yet.
 fn function_uses_unknown_handle(
@@ -1207,9 +1208,13 @@ fn function_uses_unknown_handle(
         // MutRef to enum is NOT skipped — extern "C" can't bind int32_t& ↔ EnumType&.
         match ty {
             Type::Class(name) if all_enum_names.contains(name) => return false,
+            Type::Class(name) if crate::model::std_bitmask_ffi_type(name).is_some() => return false,
             Type::ConstRef(inner) => {
                 if let Type::Class(name) = inner.as_ref() {
                     if all_enum_names.contains(name) {
+                        return false;
+                    }
+                    if crate::model::std_bitmask_ffi_type(name).is_some() {
                         return false;
                     }
                 }
@@ -1242,6 +1247,19 @@ fn resolve_type(ty: &Type, all_enum_names: &HashSet<String>, type_to_module: &Ha
             needs_pin: false,
             source_module: None,
             enum_cpp_name: Some(name.clone()),
+        };
+    }
+
+    // Check if this type is a standard library bitmask type (e.g., std::ios_base::openmode)
+    if let Some(ffi_ty) = extract_bitmask_from_type(ty) {
+        return ResolvedType {
+            original: ty.clone(),
+            rust_ffi_type: ffi_ty.to_rust_type_string(),
+            cpp_type: ffi_ty.to_cpp_string(),
+            needs_unique_ptr: false,
+            needs_pin: false,
+            source_module: None,
+            enum_cpp_name: None,
         };
     }
 
@@ -1281,6 +1299,17 @@ fn extract_enum_name_from_type(ty: &Type, all_enums: &HashSet<String>) -> Option
         // Only unwrap const refs and rvalue refs, NOT MutRef (output params need special handling)
         Type::ConstRef(inner) | Type::RValueRef(inner) => {
             extract_enum_name_from_type(inner, all_enums)
+        }
+        _ => None,
+    }
+}
+
+/// Extract a standard library bitmask FFI type from a type, unwrapping references.
+fn extract_bitmask_from_type(ty: &Type) -> Option<Type> {
+    match ty {
+        Type::Class(name) => crate::model::std_bitmask_ffi_type(name),
+        Type::ConstRef(inner) | Type::RValueRef(inner) => {
+            extract_bitmask_from_type(inner)
         }
         _ => None,
     }

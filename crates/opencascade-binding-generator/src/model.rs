@@ -421,10 +421,23 @@ pub fn is_void_type_name(name: &str) -> bool {
     name == "Standard_Address" || name == "void"
 }
 
+/// Check if a class name represents a C++ standard library bitmask type.
+/// These types are integer-compatible bitmasks that need explicit `static_cast`
+/// in C++ wrapper code because on some platforms (e.g., Linux/libstdc++),
+/// they are proper enum types that don't implicitly convert from integers.
+/// Returns the corresponding FFI integer type if it is a bitmask type.
+pub fn std_bitmask_ffi_type(name: &str) -> Option<Type> {
+    match name {
+        "std::ios_base::openmode" => Some(Type::U32),
+        _ => None,
+    }
+}
+
 /// Check if a class name is a real opaque C++ class (not a primitive
-/// mapped to a special Rust type like char or void pointer types).
+/// mapped to a special Rust type like char or void pointer types,
+/// and not a standard library bitmask type).
 pub fn is_opaque_class_name(name: &str) -> bool {
-    name != "char" && !is_void_type_name(name)
+    name != "char" && !is_void_type_name(name) && std_bitmask_ffi_type(name).is_none()
 }
 
 impl Type {

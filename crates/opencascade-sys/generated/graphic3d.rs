@@ -17967,6 +17967,27 @@ impl CView {
         }
     }
 
+    /// **Source:** `Graphic3d_CView.hxx`:283 - `Graphic3d_CView::SetWindow()`
+    /// Creates and maps rendering window to the view.
+    /// @param[in] theParentVIew parent view or NULL
+    /// @param[in] theWindow the window
+    /// @param[in] theContext the rendering context; if NULL the context will be created internally
+    pub unsafe fn set_window(
+        &mut self,
+        theParentVIew: &crate::ffi::HandleGraphic3dCView,
+        theWindow: &crate::ffi::HandleAspectWindow,
+        theContext: *mut std::ffi::c_void,
+    ) {
+        unsafe {
+            crate::ffi::Graphic3d_CView_set_window(
+                self as *mut Self,
+                theParentVIew,
+                theWindow,
+                theContext,
+            )
+        }
+    }
+
     /// **Source:** `Graphic3d_CView.hxx`:288 - `Graphic3d_CView::Window()`
     /// Returns the window associated to the view.
     pub fn window(&self) -> crate::OwnedPtr<crate::ffi::HandleAspectWindow> {
@@ -18919,15 +18940,6 @@ impl HandleGraphic3dCView {
         }
     }
 }
-
-// ── Skipped symbols for CView (1 total) ──
-// SKIPPED: **Source:** `Graphic3d_CView.hxx`:283 - `Graphic3d_CView::SetWindow`
-//   method: Creates and maps rendering window to the view.
-//   method: @param[in] theParentVIew parent view or NULL
-//   method: @param[in] theWindow the window
-//   Reason: param 'theContext' uses unknown type 'NSOpenGLContext*'
-//   // pub fn set_window(&mut self, theParentVIew: &HandleCView, theWindow: &HandleWindow, theContext: *mut NSOpenGLContext);
-//
 
 // ========================
 // From Graphic3d_Camera.hxx

@@ -1601,19 +1601,14 @@ impl ArrayStreamBuffer {
             )
         }
     }
-
-    /// **Source:** `Standard_ArrayStreamBuffer.hxx`:99 - `Standard_ArrayStreamBuffer::xsgetn()`
-    /// Read a bunch of bytes at once.
-    pub unsafe fn xsgetn(
-        &mut self,
-        thePtr: *mut std::ffi::c_char,
-        theCount: std::ffi::c_long,
-    ) -> std::ffi::c_long {
-        unsafe {
-            crate::ffi::Standard_ArrayStreamBuffer_xsgetn(self as *mut Self, thePtr, theCount)
-        }
-    }
 }
+
+// ── Skipped symbols for ArrayStreamBuffer (1 total) ──
+// SKIPPED: **Source:** `Standard_ArrayStreamBuffer.hxx`:99 - `Standard_ArrayStreamBuffer::xsgetn`
+//   method: Read a bunch of bytes at once.
+//   Reason: param 'theCount' uses unknown type 'std::streamsize'
+//   // pub fn xsgetn(&mut self, thePtr: *mut char, theCount: streamsize) -> OwnedPtr<std::streamsize>;
+//
 
 // ========================
 // From Standard_CLocaleSentry.hxx

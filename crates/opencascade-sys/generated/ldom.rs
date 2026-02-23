@@ -1734,13 +1734,13 @@ impl SBuffer {
     pub fn underflow(&mut self) -> i32 {
         unsafe { crate::ffi::LDOM_SBuffer_underflow(self as *mut Self) }
     }
-
-    /// **Source:** `LDOM_OSStream.hxx`:74 - `LDOM_SBuffer::xsputn()`
-    pub fn xsputn(&mut self, s: &str, n: std::ffi::c_long) -> std::ffi::c_long {
-        let c_s = std::ffi::CString::new(s).unwrap();
-        unsafe { crate::ffi::LDOM_SBuffer_xsputn(self as *mut Self, c_s.as_ptr(), n) }
-    }
 }
+
+// ── Skipped symbols for SBuffer (1 total) ──
+// SKIPPED: **Source:** `LDOM_OSStream.hxx`:74 - `LDOM_SBuffer::xsputn`
+//   Reason: param 'n' uses unknown type 'std::streamsize'
+//   // pub fn xsputn(&mut self, s: *const char, n: streamsize) -> OwnedPtr<std::streamsize>;
+//
 
 /// **Source:** `LDOM_OSStream.hxx`:97 - `LDOM_OSStream`
 /// Subclass if std::ostream allowing to increase performance

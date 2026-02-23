@@ -1644,12 +1644,26 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         return Type::Usize;
     }
 
-    // Check if this is a typedef to size_t by examining the declaration
-    // This catches cases where get_display_name() returns the canonical type
+    // Check for fixed-width integer types BEFORE canonical resolution.
+    // On LP64 Linux, uint64_t is a typedef for "unsigned long", but on macOS it's
+    // "unsigned long long". We want uint64_t to always map to u64/i64 regardless
+    // of platform, rather than letting canonical resolution turn it into c_ulong.
+    // (We intentionally do NOT remap "unsigned long" itself, since it's 32 bits
+    // on some platforms.)
+    if let Some(fixed) = map_fixed_width_integer(trimmed_spelling) {
+        return fixed;
+    }
+
+    // Check if this is a typedef to size_t or a fixed-width integer by examining
+    // the declaration. This catches cases where get_display_name() returns the
+    // canonical type but the declaration still carries the original typedef name.
     if let Some(decl) = clang_type.get_declaration() {
         if let Some(decl_name) = decl.get_name() {
             if decl_name == "size_t" || decl_name.ends_with("_Size") {
                 return Type::Usize;
+            }
+            if let Some(fixed) = map_fixed_width_integer(&decl_name) {
+                return fixed;
             }
         }
     }
@@ -1984,7 +1998,12 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         }
 
         // Primitive typedef: canonical is a C primitive type
-        if is_c_primitive_type_kind(canon_kind) {
+        // Skip namespaced/template types (e.g., std::ios_base::openmode) — same guard
+        // as the early canonical resolution. On macOS, std::ios_base::openmode has
+        // canonical type "unsigned int", but on Linux it's a proper enum that doesn't
+        // accept implicit conversion from uint32_t. Preserving the original type name
+        // allows the codegen to emit explicit static_cast.
+        if is_c_primitive_type_kind(canon_kind) && !spelling_is_template_or_namespaced {
             if let Some(ty) = map_standard_type(canonical_clean) {
                 return ty;
             }
@@ -2041,6 +2060,10 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "unsigned long long" => Some(Type::U64),
         "short" => Some(Type::I16),
         "int16_t" => Some(Type::I16),
+        "int32_t" => Some(Type::I32),
+        "int64_t" => Some(Type::I64),
+        "uint32_t" => Some(Type::U32),
+        "uint64_t" => Some(Type::U64),
         "unsigned short" | "uint16_t" => Some(Type::U16),
         "char16_t" => Some(Type::CHAR16),
         "char32_t" => Some(Type::U32),
@@ -2055,6 +2078,23 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "Standard_OStream" | "std::ostream" => Some(Type::Class("Standard_OStream".to_string())),
         "Standard_IStream" | "std::istream" => Some(Type::Class("Standard_IStream".to_string())),
         "Standard_SStream" | "std::stringstream" => Some(Type::Class("Standard_SStream".to_string())),
+        _ => None,
+    }
+}
+
+/// Map C99/C++ fixed-width integer typedef names to our Type enum.
+///
+/// These typedefs (`uint64_t`, `int64_t`, etc.) resolve to different canonical
+/// types on different platforms (e.g. `uint64_t` is `unsigned long` on LP64
+/// Linux but `unsigned long long` on macOS). We intercept them before canonical
+/// resolution so the generated Rust FFI always uses fixed-width types (`u64`,
+/// `i64`) instead of platform-dependent ones (`c_ulong`).
+fn map_fixed_width_integer(name: &str) -> Option<Type> {
+    match name {
+        "uint64_t" => Some(Type::U64),
+        "int64_t" => Some(Type::I64),
+        "uint32_t" => Some(Type::U32),
+        "int32_t" => Some(Type::I32),
         _ => None,
     }
 }

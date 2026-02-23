@@ -5,7 +5,7 @@
 //! ffi.rs, wrappers.hxx, and per-module re-exports consume this struct
 //! without re-deriving any decisions.
 
-use crate::model::{Constructor, Method, Param, ParsedClass, ParsedField, StaticMethod, Type, is_void_type_name, is_opaque_class_name};
+use crate::model::{Constructor, Method, Param, ParsedClass, ParsedField, StaticMethod, Type, is_void_type_name, is_opaque_class_name, std_bitmask_ffi_type};
 use crate::module_graph;
 use crate::resolver::{self, SymbolTable};
 use crate::type_mapping::{self, map_return_type, map_return_type_in_context, map_type_in_context, map_type_to_rust, TypeContext};
@@ -498,9 +498,14 @@ fn type_uses_unknown_type(ty: &Type, ctx: &TypeContext) -> bool {
     // Enum types are known (mapped to i32), so skip them
     match ty {
         Type::Class(name) if ctx.all_enums.contains(name) => return false,
+        // Std bitmask types are known (mapped to their FFI integer type)
+        Type::Class(name) if std_bitmask_ffi_type(name).is_some() => return false,
         Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => {
             if let Type::Class(name) = inner.as_ref() {
                 if ctx.all_enums.contains(name) {
+                    return false;
+                }
+                if std_bitmask_ffi_type(name).is_some() {
                     return false;
                 }
             }
@@ -514,7 +519,7 @@ fn type_uses_unknown_type(ty: &Type, ctx: &TypeContext) -> bool {
     }
 }
 
-/// Check if a method has by-value class or handle parameters (not enums).
+/// Check if a method has by-value class or handle parameters (not enums, not bitmask types).
 /// These need C++ wrappers that accept const T& instead.
 fn has_by_value_class_or_handle_params(params: &[Param], all_enums: &HashSet<String>) -> bool {
     params.iter().any(|p| match &p.ty {
@@ -736,6 +741,8 @@ fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) ->
                 "*mut std::ffi::c_void".to_string()
             } else if name == "void" {
                 "std::ffi::c_void".to_string()
+            } else if let Some(ffi_ty) = std_bitmask_ffi_type(name) {
+                ffi_ty.to_rust_type_string()
             } else if let Some(ctx) = reexport_ctx {
                 ctx.resolve_class(name)
             } else {
@@ -1069,6 +1076,20 @@ fn extract_enum_name(ty: &Type, all_enums: &HashSet<String>) -> Option<String> {
     }
 }
 
+/// Extract a standard library bitmask type name and its FFI integer type.
+/// Supports both by-value and const-ref forms.
+fn extract_bitmask_type(ty: &Type) -> Option<(String, Type)> {
+    match ty {
+        Type::Class(name) => {
+            std_bitmask_ffi_type(name).map(|ffi_ty| (name.clone(), ffi_ty))
+        }
+        Type::ConstRef(inner) | Type::RValueRef(inner) => {
+            extract_bitmask_type(inner)
+        }
+        _ => None,
+    }
+}
+
 fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeContext, reexport_ctx: Option<&ReexportTypeContext>) -> ParamBinding {
     let cpp_name = name.to_string();
     let rust_name = safe_param_name(name);
@@ -1160,6 +1181,28 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
             cpp_type: "int32_t".to_string(),
             cpp_arg_expr: format!("static_cast<{}>({})", enum_cpp_name, name),
             enum_rust_type,
+            mut_ref_enum_cpp_name: None,
+            mut_ref_enum_rust_type: None,
+            is_nullable_ptr: false,
+            is_class_ptr: false,
+        };
+    }
+
+    // Check if this parameter is a standard library bitmask type (e.g., std::ios_base::openmode).
+    // These are represented as Type::Class but should be passed as integers with a static_cast.
+    // On macOS/libc++, openmode is a typedef for unsigned int (implicit conversion works),
+    // but on Linux/libstdc++, it's a proper enum requiring explicit cast.
+    if let Some((bitmask_cpp_name, ffi_ty)) = extract_bitmask_type(ty) {
+        let rust_type_str = ffi_ty.to_rust_type_string();
+        let cpp_type_str = ffi_ty.to_cpp_string();
+        return ParamBinding {
+            cpp_name,
+            rust_name,
+            rust_ffi_type: rust_type_str.clone(),
+            rust_reexport_type: rust_type_str,
+            cpp_type: cpp_type_str,
+            cpp_arg_expr: format!("static_cast<{}>({})", bitmask_cpp_name, name),
+            enum_rust_type: None,
             mut_ref_enum_cpp_name: None,
             mut_ref_enum_rust_type: None,
             is_nullable_ptr: false,
@@ -1306,6 +1349,23 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
             needs_unique_ptr: false,
             enum_cpp_name: Some(enum_cpp_name),
             enum_rust_type,
+            is_class_ptr_return: false,
+            is_mut_ref_enum_return: false,
+        };
+    }
+
+    // Check if this return type is a std bitmask type (e.g., std::ios_base::openmode).
+    // These are returned as their FFI integer type with a static_cast.
+    if let Some((_bitmask_cpp_name, ffi_ty)) = extract_bitmask_type(ty) {
+        let rust_type_str = ffi_ty.to_rust_type_string();
+        let cpp_type_str = ffi_ty.to_cpp_string();
+        return ReturnTypeBinding {
+            rust_ffi_type: rust_type_str.clone(),
+            rust_reexport_type: rust_type_str,
+            cpp_type: cpp_type_str,
+            needs_unique_ptr: false,
+            enum_cpp_name: None,
+            enum_rust_type: None,
             is_class_ptr_return: false,
             is_mut_ref_enum_return: false,
         };
@@ -3026,6 +3086,25 @@ fn compute_inherited_method_bindings(
                                     };
                                 }
                             }
+                        }
+
+                        // Check for std bitmask types (e.g., std::ios_base::openmode)
+                        if let Some((bitmask_cpp_name, ffi_ty)) = extract_bitmask_type(&p.ty.original) {
+                            let rust_type_str = ffi_ty.to_rust_type_string();
+                            let cpp_type_str = ffi_ty.to_cpp_string();
+                            return ResolvedParamBinding {
+                                name: p.name.clone(),
+                                rust_name: p.rust_name.clone(),
+                                rust_ffi_type: rust_type_str.clone(),
+                                rust_reexport_type: rust_type_str,
+                                cpp_type: cpp_type_str,
+                                cpp_arg_expr: format!("static_cast<{}>({})", bitmask_cpp_name, p.name),
+                                enum_rust_type: None,
+                                mut_ref_enum_cpp_name: None,
+                                mut_ref_enum_rust_type: None,
+                                is_nullable_ptr: false,
+                                is_class_ptr: false,
+                            };
                         }
 
                         // Convert by-value class/handle params to const ref (same as build_param_binding)

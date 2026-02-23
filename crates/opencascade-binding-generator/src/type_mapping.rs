@@ -230,6 +230,11 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
                 source_module: None,
             }
         }
+        Type::Class(class_name) if crate::model::std_bitmask_ffi_type(class_name).is_some() => {
+            // Standard library bitmask types (e.g., std::ios_base::openmode)
+            // mapped to their FFI integer type
+            map_type_to_rust(&crate::model::std_bitmask_ffi_type(class_name).unwrap())
+        }
         Type::Class(class_name) => {
             let source_module = extract_module_from_class(class_name);
             RustTypeMapping {
@@ -404,6 +409,10 @@ fn is_class_name_unknown(class_name: &str, all_classes: &std::collections::HashS
     if crate::codegen::rust::is_primitive_type(class_name) {
         return false;
     }
+    // Standard library bitmask types (e.g., std::ios_base::openmode) are known
+    if crate::model::std_bitmask_ffi_type(class_name).is_some() {
+        return false;
+    }
     // Nested types (Parent::Nested) are known if the parent class is known
     if let Some(parent) = class_name.split("::").next() {
         if class_name.contains("::") && all_classes.contains(parent) {
@@ -481,6 +490,11 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
                     needs_pin: false,
                     source_module: None,
                 };
+            }
+            // Standard library bitmask types (e.g., std::ios_base::openmode)
+            // are mapped to their FFI integer type (e.g., u32)
+            if let Some(ffi_ty) = crate::model::std_bitmask_ffi_type(class_name) {
+                return map_type_to_rust(&ffi_ty);
             }
             
             let type_module = lookup_module_for_type(class_name, ctx.type_to_module);
