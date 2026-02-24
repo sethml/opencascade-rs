@@ -2073,6 +2073,10 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         // Standard_Address is void* — bound as *mut c_void in unsafe functions.
         // Represented as Type::Class("Standard_Address") so is_void_ptr() can detect it.
         "Standard_Address" => Some(Type::Class("Standard_Address".to_string())),
+        // Aspect_RenderingContext is a platform-dependent typedef:
+        // void* on Linux, NSOpenGLContext* on macOS, EAGLContext* on iOS.
+        // Intercept before canonical resolution to get consistent cross-platform output.
+        "Aspect_RenderingContext" => Some(Type::Class("Aspect_RenderingContext".to_string())),
         // Stream types - map both OCCT typedef names and bare C++ names to the
         // same Type::Class so they're recognized as known manual_types.
         "Standard_OStream" | "std::ostream" => Some(Type::Class("Standard_OStream".to_string())),

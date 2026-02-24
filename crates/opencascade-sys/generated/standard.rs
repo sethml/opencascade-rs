@@ -59663,9 +59663,8 @@ impl HandleStandardUnderflow {
 // ========================
 
 pub use crate::ffi::{
-    Standard_Address as Address, Standard_IStream as IStream, Standard_JmpBuf as JmpBuf,
-    Standard_OStream as OStream, Standard_SStream as SStream, Standard_Utf16Char as Utf16Char,
-    Standard_WideChar as WideChar,
+    Standard_IStream as IStream, Standard_JmpBuf as JmpBuf, Standard_OStream as OStream,
+    Standard_SStream as SStream, Standard_Utf16Char as Utf16Char, Standard_WideChar as WideChar,
 };
 
 // ── Skipped free functions (1 total) ──

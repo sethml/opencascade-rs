@@ -737,7 +737,7 @@ fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) ->
         Type::Class(name) => {
             if name == "char" {
                 "std::ffi::c_char".to_string()
-            } else if name == "Standard_Address" {
+            } else if name == "Standard_Address" || name == "Aspect_RenderingContext" {
                 "*mut std::ffi::c_void".to_string()
             } else if name == "void" {
                 "std::ffi::c_void".to_string()

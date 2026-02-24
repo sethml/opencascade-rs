@@ -82,8 +82,8 @@ fn collect_types_from_type(ty: &Type, collected: &mut CollectedTypes) {
     ty.visit_inner(&mut |inner| {
         match inner {
             Type::Class(name) => {
-                // Skip primitive types and template instantiations (e.g., NCollection_Shared<...>)
-                if !is_primitive_type(name) && !name.contains('<') {
+                // Skip primitive types, void pointer types, and template instantiations (e.g., NCollection_Shared<...>)
+                if !is_primitive_type(name) && !name.contains('<') && !crate::model::is_void_type_name(name) {
                     collected.classes.insert(name.clone());
                 }
             }

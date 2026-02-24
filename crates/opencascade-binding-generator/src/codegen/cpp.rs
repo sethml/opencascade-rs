@@ -93,7 +93,7 @@ fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>, known_
                 // Also skip Standard_Address which is defined in Standard_TypeDef.hxx, not its own file
                 if matches!(name.as_str(), 
                     "bool" | "char" | "int" | "unsigned" | "float" | "double" | 
-                    "void" | "size_t" | "Standard_Address"
+                    "void" | "size_t" | "Standard_Address" | "Aspect_RenderingContext"
                 ) {
                     return;
                 }

@@ -415,10 +415,10 @@ pub enum Type {
 }
 
 /// Check if a class name represents a void pointer type.
-/// Standard_Address is a typedef for void*, and "void" is the parsed
-/// form of literal void* parameters.
+/// Standard_Address and Aspect_RenderingContext are typedefs for void* or platform pointers,
+/// and "void" is the parsed form of literal void* parameters.
 pub fn is_void_type_name(name: &str) -> bool {
-    name == "Standard_Address" || name == "void"
+    name == "Standard_Address" || name == "void" || name == "Aspect_RenderingContext"
 }
 
 /// Check if a class name represents a C++ standard library bitmask type.

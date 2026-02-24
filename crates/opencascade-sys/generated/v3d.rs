@@ -4178,13 +4178,13 @@ impl View {
     /// Otherwise an internal graphic context is created.
     /// Warning: The view is centered and resized to preserve
     /// the height/width ratio of the window.
-    pub fn set_window_handleaspectwindow_voidptr(
+    pub unsafe fn set_window_handleaspectwindow_renderingcontext(
         &mut self,
         theWindow: &crate::ffi::HandleAspectWindow,
         theContext: *mut std::ffi::c_void,
     ) {
         unsafe {
-            crate::ffi::V3d_View_set_window_handleaspectwindow_voidptr(
+            crate::ffi::V3d_View_set_window_handleaspectwindow_renderingcontext(
                 self as *mut Self,
                 theWindow,
                 theContext,
