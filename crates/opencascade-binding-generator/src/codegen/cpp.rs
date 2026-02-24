@@ -90,7 +90,9 @@ fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>, known_
         match ty {
             Type::Class(name) => {
                 // Skip primitive types that don't have headers
-                // Also skip Standard_Address which is defined in Standard_TypeDef.hxx, not its own file
+                // Skip primitive types that don't have headers
+                // Also skip void-pointer types (Standard_Address, void_pointer_types from config)
+                // which are typedefs in Standard_TypeDef.hxx, not their own files.
                 if matches!(name.as_str(), 
                     "bool" | "char" | "int" | "unsigned" | "float" | "double" | "size_t"
                 ) || crate::model::is_void_type_name(name.as_str()) {

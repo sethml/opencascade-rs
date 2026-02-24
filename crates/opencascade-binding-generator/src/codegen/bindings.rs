@@ -5,7 +5,7 @@
 //! ffi.rs, wrappers.hxx, and per-module re-exports consume this struct
 //! without re-deriving any decisions.
 
-use crate::model::{Constructor, Method, Param, ParsedClass, ParsedField, StaticMethod, Type, is_void_type_name, is_opaque_class_name, std_bitmask_ffi_type};
+use crate::model::{Constructor, Method, Param, ParsedClass, ParsedField, StaticMethod, Type, is_void_type_name, is_void_ptr_type_name, is_opaque_class_name, std_bitmask_ffi_type};
 use crate::module_graph;
 use crate::resolver::{self, SymbolTable};
 use crate::type_mapping::{self, map_return_type, map_return_type_in_context, map_type_in_context, map_type_to_rust, TypeContext};
@@ -737,7 +737,7 @@ fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) ->
         Type::Class(name) => {
             if name == "char" {
                 "std::ffi::c_char".to_string()
-            } else if is_void_type_name(name) && name != "void" {
+            } else if is_void_ptr_type_name(name) {
                 "*mut std::ffi::c_void".to_string()
             } else if name == "void" {
                 "std::ffi::c_void".to_string()

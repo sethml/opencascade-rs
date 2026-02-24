@@ -437,6 +437,13 @@ pub fn is_void_type_name(name: &str) -> bool {
         || VOID_POINTER_TYPES.with(|s| s.borrow().contains(name))
 }
 
+/// Check if a class name represents a void *pointer* type (maps to `*mut c_void`).
+/// Like `is_void_type_name` but excludes the bare `"void"` C++ type (which maps to
+/// `c_void`, not `*mut c_void`). Use this when generating pointer-type Rust signatures.
+pub fn is_void_ptr_type_name(name: &str) -> bool {
+    name == "Standard_Address" || VOID_POINTER_TYPES.with(|s| s.borrow().contains(name))
+}
+
 /// Check if a class name represents a C++ standard library bitmask type.
 /// These types are integer-compatible bitmasks that need explicit `static_cast`
 /// in C++ wrapper code because on some platforms (e.g., Linux/libstdc++),
