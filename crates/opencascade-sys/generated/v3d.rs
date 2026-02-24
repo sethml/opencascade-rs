@@ -4171,27 +4171,6 @@ impl View {
         unsafe { &*(crate::ffi::V3d_View_dynamic_type(self as *const Self)) }
     }
 
-    /// **Source:** `V3d_View.hxx`:76 - `V3d_View::SetWindow()`
-    /// Activates the view in the specified Window
-    /// If <aContext> is not NULL the graphic context is used
-    /// to draw something in this view.
-    /// Otherwise an internal graphic context is created.
-    /// Warning: The view is centered and resized to preserve
-    /// the height/width ratio of the window.
-    pub unsafe fn set_window_handleaspectwindow_renderingcontext(
-        &mut self,
-        theWindow: &crate::ffi::HandleAspectWindow,
-        theContext: *mut std::ffi::c_void,
-    ) {
-        unsafe {
-            crate::ffi::V3d_View_set_window_handleaspectwindow_renderingcontext(
-                self as *mut Self,
-                theWindow,
-                theContext,
-            )
-        }
-    }
-
     /// **Source:** `V3d_View.hxx`:93 - `V3d_View::SetWindow()`
     /// Activates the view as subview of another view.
     /// @param[in] theParentView parent view to put subview into
@@ -4207,7 +4186,7 @@ impl View {
     /// Example: to split parent view horizontally into 2 subview,
     /// define one subview with Size=(0.5,1.0),Offset=(0.0,0.0), and 2nd with
     /// Size=(0.5,1.0),Offset=(5.0,0.0);
-    pub fn set_window_handlev3dview_vec2d_typeoftriedronposition_vec2d_vec2i(
+    pub fn set_window(
         &mut self,
         theParentView: &crate::ffi::HandleV3dView,
         theSize: &crate::ffi::Graphic3d_Vec2d,
@@ -4216,7 +4195,7 @@ impl View {
         theMargins: &crate::ffi::Graphic3d_Vec2i,
     ) {
         unsafe {
-            crate::ffi::V3d_View_set_window_handlev3dview_vec2d_typeoftriedronposition_vec2d_vec2i(
+            crate::ffi::V3d_View_set_window(
                 self as *mut Self,
                 theParentView,
                 theSize,
@@ -6150,6 +6129,15 @@ impl HandleV3dView {
         }
     }
 }
+
+// ── Skipped symbols for View (1 total) ──
+// SKIPPED: **Source:** `V3d_View.hxx`:76 - `V3d_View::SetWindow`
+//   method: Activates the view in the specified Window
+//   method: If <aContext> is not NULL the graphic context is used
+//   method: to draw something in this view.
+//   Reason: param 'theContext' uses unknown type 'NSOpenGLContext*'
+//   // pub fn set_window(&mut self, theWindow: &HandleWindow, theContext: *mut NSOpenGLContext);
+//
 
 // ========================
 // From V3d_Viewer.hxx

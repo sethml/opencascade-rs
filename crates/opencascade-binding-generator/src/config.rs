@@ -87,6 +87,13 @@ pub struct BindingConfig {
     /// Format: "CanonicalTypeSpelling" = "PublicAliasName"
     #[serde(default)]
     pub occt_alias_type_overrides: std::collections::HashMap<String, String>,
+
+    /// C++ typedef names that are platform-dependent pointer types and should map to
+    /// `*mut std::ffi::c_void` at the FFI boundary (making methods unsafe).
+    /// Use for typedefs like `Aspect_RenderingContext` whose canonical form differs
+    /// by platform (void* on Linux, NSOpenGLContext* on macOS, EAGLContext* on iOS).
+    #[serde(default)]
+    pub void_pointer_types: Vec<String>,
 }
 
 /// A manually-defined opaque type referenced by auto-generated bindings.

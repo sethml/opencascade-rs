@@ -92,9 +92,8 @@ fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>, known_
                 // Skip primitive types that don't have headers
                 // Also skip Standard_Address which is defined in Standard_TypeDef.hxx, not its own file
                 if matches!(name.as_str(), 
-                    "bool" | "char" | "int" | "unsigned" | "float" | "double" | 
-                    "void" | "size_t" | "Standard_Address" | "Aspect_RenderingContext"
-                ) {
+                    "bool" | "char" | "int" | "unsigned" | "float" | "double" | "size_t"
+                ) || crate::model::is_void_type_name(name.as_str()) {
                     return;
                 }
                 // For nested types (Parent::Nested), include the parent class header

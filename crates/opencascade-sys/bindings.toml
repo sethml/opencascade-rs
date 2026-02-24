@@ -117,6 +117,13 @@ Standard_OStream = { header = "Standard_OStream.hxx" }
 Standard_IStream = { header = "Standard_IStream.hxx" }
 Standard_SStream = { header = "Standard_SStream.hxx" }
 
+# Platform-dependent pointer typedefs that should map to *mut std::ffi::c_void
+# in the FFI layer. Clang canonicalizes these to platform-specific pointer types
+# (e.g. NSOpenGLContext* on macOS, void* on Linux), producing inconsistent output.
+# Intercepting by name before canonical resolution gives uniform cross-platform FFI.
+# Methods using these types are marked unsafe.
+void_pointer_types = ["Aspect_RenderingContext"]
+
 # Template instantiation aliases: declare C++ template instantiations as opaque
 # Rust types. The generator creates C++ typedefs, Rust opaque types, and Handle
 # wrappers for each entry. The TOML key is the exact C++ template spelling as it

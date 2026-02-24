@@ -2073,15 +2073,15 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         // Standard_Address is void* — bound as *mut c_void in unsafe functions.
         // Represented as Type::Class("Standard_Address") so is_void_ptr() can detect it.
         "Standard_Address" => Some(Type::Class("Standard_Address".to_string())),
-        // Aspect_RenderingContext is a platform-dependent typedef:
-        // void* on Linux, NSOpenGLContext* on macOS, EAGLContext* on iOS.
-        // Intercept before canonical resolution to get consistent cross-platform output.
-        "Aspect_RenderingContext" => Some(Type::Class("Aspect_RenderingContext".to_string())),
         // Stream types - map both OCCT typedef names and bare C++ names to the
         // same Type::Class so they're recognized as known manual_types.
         "Standard_OStream" | "std::ostream" => Some(Type::Class("Standard_OStream".to_string())),
         "Standard_IStream" | "std::istream" => Some(Type::Class("Standard_IStream".to_string())),
         "Standard_SStream" | "std::stringstream" => Some(Type::Class("Standard_SStream".to_string())),
+        // Check void_pointer_types registered from bindings.toml. These are platform-dependent
+        // pointer typedefs that clang would otherwise canonicalize to platform-specific types.
+        // Intercepting before canonical resolution ensures consistent cross-platform output.
+        _ if crate::model::is_void_type_name(clean) => Some(Type::Class(clean.to_string())),
         _ => None,
     }
 }

@@ -202,8 +202,8 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
                 source_module,
             }
         }
-        Type::Class(class_name) if class_name == "Standard_Address" || class_name == "Aspect_RenderingContext" => {
-            // Standard_Address is a typedef for void* — map to raw c_void pointer
+        Type::Class(class_name) if crate::model::is_void_type_name(class_name) && class_name != "void" => {
+            // void-pointer types (Standard_Address, void_pointer_types from config) — *mut c_void
             RustTypeMapping {
                 rust_type: "*mut std::ffi::c_void".to_string(),
                 needs_unique_ptr: false,
@@ -463,8 +463,8 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
                 source_module: None,
             }
         }
-        Type::Class(class_name) if class_name == "Standard_Address" || class_name == "Aspect_RenderingContext" => {
-            // Standard_Address is a typedef for void* — map to raw c_void pointer
+        Type::Class(class_name) if crate::model::is_void_type_name(class_name) && class_name != "void" => {
+            // void-pointer types (Standard_Address, void_pointer_types from config) — *mut c_void
             RustTypeMapping {
                 rust_type: "*mut std::ffi::c_void".to_string(),
                 needs_unique_ptr: false,

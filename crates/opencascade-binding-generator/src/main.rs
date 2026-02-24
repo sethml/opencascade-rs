@@ -103,6 +103,7 @@ struct SelectionInputs {
     manual_type_names: HashSet<String>,
     template_instantiations: HashMap<String, config::TemplateInstantiation>,
     occt_alias_type_overrides: HashMap<String, String>,
+    void_pointer_types: HashSet<String>,
 }
 
 fn main() -> Result<()> {
@@ -152,6 +153,7 @@ fn main() -> Result<()> {
         let manual_names: HashSet<String> = cfg.manual_types.keys().cloned().collect();
         let tmpl_inst = cfg.template_instantiations;
         let occt_alias_overrides = cfg.occt_alias_type_overrides;
+        let void_ptr_types: HashSet<String> = cfg.void_pointer_types.into_iter().collect();
         SelectionInputs {
             explicit_headers: headers,
             exclude_set: excludes,
@@ -162,6 +164,7 @@ fn main() -> Result<()> {
             manual_type_names: manual_names,
             template_instantiations: tmpl_inst,
             occt_alias_type_overrides: occt_alias_overrides,
+            void_pointer_types: void_ptr_types,
         }
     } else if !args.headers.is_empty() {
         SelectionInputs {
@@ -174,6 +177,7 @@ fn main() -> Result<()> {
             manual_type_names: HashSet::new(),
             template_instantiations: HashMap::new(),
             occt_alias_type_overrides: HashMap::new(),
+            void_pointer_types: HashSet::new(),
         }
     } else {
         anyhow::bail!("Either --config <file.toml> or positional header arguments are required");
@@ -189,6 +193,7 @@ fn main() -> Result<()> {
         manual_type_names,
         template_instantiations,
         occt_alias_type_overrides,
+        void_pointer_types,
     } = inputs;
 
     // Resolve header dependencies when include directories are available.
@@ -251,6 +256,7 @@ fn main() -> Result<()> {
     };
 
     println!("Parsing {} headers...", headers_to_process.len());
+    crate::model::set_void_pointer_type_names(void_pointer_types);
     let mut parsed = parser::parse_headers(
         &headers_to_process,
         &args.include_dirs,

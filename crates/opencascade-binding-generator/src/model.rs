@@ -5,6 +5,7 @@
 
 #![allow(dead_code)] // Some fields/methods are reserved for future use
 
+use std::cell::RefCell;
 use std::collections::HashSet;
 use std::path::PathBuf;
 
@@ -414,11 +415,26 @@ pub enum Type {
     Class(String),
 }
 
+thread_local! {
+    /// Configured void-pointer type names loaded from bindings.toml.
+    /// These are C++ typedef names that map to *mut c_void at the FFI boundary.
+    static VOID_POINTER_TYPES: RefCell<HashSet<String>> = RefCell::new(HashSet::new());
+}
+
+/// Call once before parsing/codegen to register void-pointer type names from config.
+pub fn set_void_pointer_type_names(names: HashSet<String>) {
+    VOID_POINTER_TYPES.with(|s| {
+        *s.borrow_mut() = names;
+    });
+}
+
 /// Check if a class name represents a void pointer type.
-/// Standard_Address and Aspect_RenderingContext are typedefs for void* or platform pointers,
-/// and "void" is the parsed form of literal void* parameters.
+/// Standard_Address is void*, "void" is the pointee of void*, and any
+/// type registered via void_pointer_types in bindings.toml (e.g. Aspect_RenderingContext)
+/// is treated the same as Standard_Address at the FFI boundary.
 pub fn is_void_type_name(name: &str) -> bool {
-    name == "Standard_Address" || name == "void" || name == "Aspect_RenderingContext"
+    name == "Standard_Address" || name == "void"
+        || VOID_POINTER_TYPES.with(|s| s.borrow().contains(name))
 }
 
 /// Check if a class name represents a C++ standard library bitmask type.
